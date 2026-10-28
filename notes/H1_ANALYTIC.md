@@ -100,3 +100,22 @@ Every factor is a 1D elementary function of one K_ρ. No singularity at K = 0 (c
 G on boxes (proved enclosure). In (5.2) every l-term is a product/ratio of 1D functions of K_ρ through k_{l,ρ} = (K_ρ + 2πl_ρ)/L. Enclosures used: sin² on an interval (endpoints + interior extrema); a_{0,ρ} decreasing on [0, π]; α_l = (−1)^{l}|a_l|, so |1 − α| = 1 ∓ |a|; |g_{l,ν}|² ≤ |1 − α_ν|²/|k̂_{l,ν}|², and at l_ν = 0 also ≤ ((L²−1)K_ν/(24L sinc(π/2L)))² (cos x ≥ 1 − x²/2); |P_lg_l| ≤ |g_l| (the projection is dropped; this is the main loss in G); ‖Z‖ ≤ F_CS|K|²; at l = 0, |K|²/|k̂_0|² ≤ L²γ_L and |K̂|²/|k̂_0|² ∈ [min_ρL²a_{0,ρ}², L²] (a ratio of sums), so no 0/0 appears at K = 0. Hence B_L ≤ γ_L F_CS + Ḡ_L is enclosed on any box, including boxes that contain K = 0.
 
 Script (scratch): /tmp/h1a/bb.py. Sorted chamber 0 ≤ K_1 ≤ … ≤ K_4 ≤ π (B_L is invariant under permutations and sign flips of K, so no symmetry of ρ_1 itself is assumed), initial 16⁴ grid, 16-way bisection while the box bound exceeds the target, G inherited from the parent box when that already suffices. Floating point: no directed rounding; the final bound is inflated by 10^{−9} relative. The margins below are > 20%, far above float64 error (≤ 10^{−12} relative on these sums).
+
+## 7. Results
+
+Certified enclosure at L = 13 (bb.py, target 10): sup_{K∈chamber} B_13(K) ≤ 9.9995. 25,169 boxes, 8,075 G evaluations, 0 failed leaves, 95 s on the Mac. Largest box values: γF_CS ≤ 8.31 and Ḡ ≤ 3.45 (not at the same box). [P + interval check]
+
+Point values of the majorants (no boxes; 305 points: 300 random, the corner, the F_CS peak, and points near 0):
+| L | sup B (crude: F_CS, |g|) | its γF_CS part | its G part | sharp B (F with h = 6, |P_lg_l|), L = 13 only | measured sup ρ_1² (H2_CERTIFY_L13 §1) |
+|---|---|---|---|---|---|
+| 13 | 7.98 | 6.91 | 1.05 | 5.86 | 4.366 |
+| 15 | 7.67 | 6.90 | 0.77 | — | — |
+| 17 | 7.48 | 6.89 | 0.59 | — | — |
+| 21 | 7.26 | 6.89 | 0.38 | — | — |
+The point maximum is at (2.42, 2.42, 2.42, 2.98) for every L. The gauge part falls like L^{−2} (S_L ≥ (L² − L^{−2})/16 grows while τ ≈ 18–22 stays fixed). The transverse part is L-independent up to γ_L. Near K = 0, B → γ_L + 1 ≈ 2.
+
+Where the loss is. Measured sup ρ_1² = 4.37. Sharp B: 5.86 (ratio 1.34; from ‖PDP‖ ≤ max d and ‖Z‖ ≤ 1/min d, i.e. two norm inequalities that ignore the direction of the extremal b). Crude B: 7.98 (F → F_CS: +18%; |P_lg_l| → |g_l|: G from 0.03 to 1). Box enclosure: 10.0 (first-order width loss of the 1D factors). None of these losses matters for (H1_13): 10.0 < 13.
+
+j-dependence. Nothing in B_L depends on j: §3 (b) bounds the fine symbol d^M by 1/|q̃^M_0| for every M ∈ {1, L, L², …, ∞}, and §3 (d) bounds the coarse symbol d^{ML} from below by the truncated M = ∞ sum for every ML ≥ L. So the bound is uniform in j ≥ 1 including j = ∞. No monotonicity in j and no O5 rate are used.
+
+K → 0. No separate argument is needed. All enclosures are finite on boxes that contain K = 0 (§6), and B_13 ≤ 2.01 there. At K = 0 itself ρ_1 = 1 (H(0) = L e_{l=0} ⊗ 1).

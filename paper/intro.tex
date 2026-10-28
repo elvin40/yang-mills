@@ -21,10 +21,10 @@ The paper has two targets. The first target is a proof of enough of Theorem 2 to
 \begin{mainthm}[weak Theorem 2; proved in Section~\ref{sec:flow}]\label{thm:A}
 Let $G=SU(2)$, $d=4$, and $L$ odd, $L>11$ (or $L$ odd, $L\ge3$, with Ba{\l}aban's inductive assumption (H0) and his construction of $\beta_j(g)$ at this $L$ as explicit hypotheses).
 \begin{itemize}
-\item[(i)] Assume the uniform inequality (H2) (Section~\ref{sec:twostep}), the fixed-level inputs (PI), (F), $(M_j)$, V1, (G2) (Section~\ref{sec:routeK}), and the history hypothesis L5 (Section~\ref{sec:L5}). Then the conclusions (b), (c$'$), (S) of Theorem~\ref{thm:2w} (Theorem 2w) hold. Status of the implication: \status{proved+verified, conditional}, by Route K (Theorem~\ref{thm:K} and Lemma~\ref{lem:Ddprime}).
+\item[(i)] Assume the uniform inequality (H2) (Section~\ref{sec:twostep}), the fixed-level inputs (PI), (F), $(M_j)$, V1, (G2) (Section~\ref{sec:routeK}), the history hypothesis L5 (Section~\ref{sec:L5}), and the $K$-independence of $\beta_j(g)$ (item 9 of Section~\ref{sec:remains}). Then the conclusions (b), (c$'$), (S) of Theorem~\ref{thm:2w} (Theorem 2w) hold. Status of the implication: \status{proved+verified, conditional}, by Route K (Theorem~\ref{thm:K} and Lemma~\ref{lem:Ddprime}).
 \item[(ii)] Given the conclusions of Theorem 2w, Ba{\l}aban's Theorem 1 holds for the bare coupling $g_0(K,g)$, for every $K$ and every $g\in\,]0,g_1]$, without his coupling assumption. Status: \status{proved, unverified (sweep), conditional on Route K or Route B inputs, on L5, and on Balaban's published proofs} (Section~\ref{sec:conclusion}).
 \end{itemize}
-A second, formally distinct route (Route B, \ThmPW{} in Section~\ref{sec:routeB}) also gives (i). Both routes rest on (H2).
+A second, formally distinct route (Route B, \ThmPW{} in Section~\ref{sec:routeB}) also gives (i), under its own input set (items B1--B7 of Section~\ref{sec:rem-inputs}). Both routes rest on (H2).
 \end{mainthm}
 
 \begin{mainthm}[finite-torus existence; proved in Section~\ref{sec:torus}]\label{thm:B}
@@ -51,6 +51,8 @@ Every result carries a status tag in small capitals. The tags mean the following
 \item \status{cited}: a standard result; its text was not re-read. \status{cited, source checked}: the source was read, the transfer to the lattice is standard and not proved here.
 \item \status{proved here}: a short proof given in full in this paper (Section~\ref{sec:torus}). \status{hypothesis}: assumed, and owned by a named block. \status{formal}: a formal step whose analytic justification is not written. \status{derived sketch}: a route with steps listed, not a proof.
 \item \status{interval enclosure, verified}: a rigorous interval-arithmetic enclosure, rerun by a verifier.
+\item \status{verified reduction}: a reduction confirmed by a verifier file; the inputs stay open.
+\item \status{proved modulo named blocks}: proved given the hypotheses owned by the named blocks.
 \end{itemize}
 A compound tag such as \status{proved+verified, conditional on (H2)} combines these meanings. Tags refer to the project files cited next to them. In \status{verified quote}, a quote of a source other than Ba{\l}aban's papers was checked verbatim against a copy of that source in the project. Project files are cited as \file{NAME.md}; a section sign after a file name (for example \file{KAPPA_BOUNDED_VERIFY} \S4) refers to a section of that file, not of this paper. ``Grade $n$'' and ``item $n$'' after a verifier file name refer to the numbered verdicts of that file. The paper as a whole is not verified as one document.
 
@@ -64,7 +66,7 @@ Related work 2. OpenAI, ``The canonical massive continuum limit of the two-dimen
 
 \emph{How content from these works reached this project.} The record (file times, \file{PLAN.md}, read lists; \file{THEOREM2_PROOF_v2_VERIFY} \S I) shows the following.
 \begin{enumerate}
-\item This chapter was written without reading the Sussman--Alp\"oge repository. Only the citation block above (\file{reports/SUSSMAN_ALPOGE_MAP.md} \S5.1) was read.
+\item Section~\ref{sec:flow} was written without reading the Sussman--Alp\"oge repository. Only the citation block above (\file{reports/SUSSMAN_ALPOGE_MAP.md} \S5.1) was read.
 \item First channel. On the night of 2026-10-27, \file{reports/ONLINE_SWEEP.md} \S2 (about 20:20) read the Sussman--Alp\"oge repository directly. It reported that they prove a weak two-sided flow with an additive constant, never need per-step positivity, use a first-passage cutoff, and invoke only containment $g_k\le\gamma$. This is the first project file with Sussman--Alp\"oge content.
 \item Second channel. \file{reports/SUSSMAN_ALPOGE_MAP.md} (about 20:28) was written by a separate agent under a firewall. Through it, the bounded-$\kappa$ idea entered the project: the weak form of Theorem 2 needs only $\kappa_k$ bounded, not convergence (their Lemma 4.19 structure; \file{PLAN.md} line 146). \file{KAPPA_BOUNDED.md} (about 20:39) received this idea through its prompt. Its read list excludes the map and ONLINE\_SWEEP.
 \item Lemma D$'$ and the cross-scale sweep predate any Sussman--Alp\"oge content in project files. The shooting-without-positivity lemma and the band with additive constant appear in \file{THEOREM2_PROOF_VERIFY} Point 5(b) (about 20:05) and \file{LEMMA_DPRIME.md} (about 20:10). \file{LEMMA_DPRIME_SWEEP.md} (about 20:16--20:23) overlaps ONLINE\_SWEEP in time, but its read list is LEMMA\_DPRIME and its verifier only; it did not read ONLINE\_SWEEP. Lemma D$''$ is in \file{KAPPA_BOUNDED.md}, written after the map.
