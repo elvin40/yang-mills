@@ -150,3 +150,48 @@ if __name__ == "__main__":
         rng = np.random.default_rng(7); Ks = [rng.uniform(-np.pi, np.pi, 4) for _ in range(10)]
         if L == 13: Ks += [np.array([a, a, np.pi, np.pi]) for a in (2.354493, 2.478694, 2.479644)]  # face argmax j = 1, 2, inf
         compare(L, Ks, [1, 2, "inf"])
+
+
+def extra():
+    """Lemma S/G conventions vs my E and production qsym; recursive Delta at L = 3; F-bound of Lemma T at L = 13 face points."""
+    sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+    import h2_scan as h2
+    from h1cert_rho1 import prof, rho1
+    from math import comb
+    rng = np.random.default_rng(11)
+    for L in (3, 5, 13):
+        pf = prof(L); h = (L - 1) // 2
+        for K in (rng.uniform(-np.pi, np.pi, 4), np.array([2.48, 2.48, np.pi, np.pi])):
+            E = Esym(L, K); Ep = h2.qsym(pf, K[None] / L, L)[0]
+            lv = np.indices((L,) * 4).reshape(4, -1).T; k = (K + 2 * np.pi * lv) / L; kh = np.exp(1j * k) - 1
+            SL = lambda x: np.exp(1j * np.outer(x.ravel(), np.arange(L))).sum(1).reshape(x.shape)  # sum_{t=0}^{L-1} e^{ixt}
+            al = np.exp(1j * k[..., None] * (np.arange(2 * h + 1) - h)).sum(-1) / L                  # alpha(k_rho)
+            A = al.prod(1); Kh = np.exp(1j * K) - 1
+            Phi = np.empty_like(al)
+            for nu in range(4):
+                o = np.delete(al, nu, 1)
+                er = [np.ones(len(o)), o.sum(1), o[:, 0] * o[:, 1] + o[:, 0] * o[:, 2] + o[:, 1] * o[:, 2], o.prod(1)]
+                Phi[:, nu] = sum(er[r] / comb(3, r) for r in range(4)) / 4
+            g = Phi * (al - 1) / kh
+            ES = np.einsum("lm,mn->lmn", SL(k) * A[:, None], np.eye(4)) - Kh[None, :, None] * g[:, None, :]
+            rel = lambda a, b: np.abs(a - b).max() / np.abs(b).max()
+            print(f"L={L} K={np.round(K,3)}: |E_mine - qsym|/|qsym| = {rel(E, Ep):.1e}, |E_mine - LemmaS+G| = {rel(E, ES):.1e}")
+    # recursive level-1 kernel at L = 3 (my j = 1 solves) vs Prop. A at M = 3
+    L = 3; pf = prof(L); Dr = Delta_recursive(L)
+    for K in (np.array([2.215, 2.215, np.pi, np.pi]), rng.uniform(-np.pi, np.pi, 4)):
+        lv = np.indices((L,) * 4).reshape(4, -1).T; k = (K + 2 * np.pi * lv) / L
+        D1 = Dr(k); DA = kernel(k, dprop([(K[a] + 2 * np.pi * np.arange(L)) / L for a in range(4)], 3).reshape(-1, 4))
+        c = np.einsum("lab,lab->l", D1.conj(), DA).real / np.einsum("lab,lab->l", DA.conj(), DA).real
+        X, kk, _, _ = solve(L, K, Delta=lambda q: D1); r_rec = rho_parts(L, X, kk)[0]
+        X, kk, _, _ = solve(L, K, M=3); r_A = rho_parts(L, X, kk)[0]
+        print(f"L=3 K={np.round(K,3)}: Delta_rec/Delta_PropA scale {c.min():.10f}..{c.max():.10f} (L^-2={1/9:.10f}), "
+              f"shape dev {np.abs(D1 - c[:, None, None] * DA).max() / np.abs(D1).max():.1e}; rho_1 j=2 rec {r_rec:.12f} PropA {r_A:.12f} prod {rho1(3, 3, K, pf):.12f}")
+    # Lemma T: rho_t^2 <= gamma_L F(K), F with |n| <= 6 (my direct sum)
+    L = 13; gam = np.sinc(1 / (2 * L))**-2
+    for a in (2.354493, 2.479644, np.pi):
+        K = np.array([a, a, np.pi, np.pi]); n = np.stack(np.meshgrid(*[np.arange(-6, 7)] * 4, indexing="ij"), -1).reshape(-1, 4)
+        q = K + 2 * np.pi * n; s2 = np.sin(K / 2)**2 / (q / 2)**2
+        dlow = (s2.prod(1)[:, None] * s2 / (q**2).sum(1)[:, None]).sum(0).min(); F = 1 / ((K**2).sum() * dlow)
+        for j, M in ((1, 1), ("inf", "inf")):
+            X, kk, _, _ = solve(L, K, M=M); r1, rt, gg = rho_parts(L, X, kk)
+            print(f"L=13 j={j} K=({a:.4f},{a:.4f},pi,pi): rho_t^2 = {rt:.6f} <= gamma F = {gam*F:.6f}; G = {gg:.3e}; rho_1^2 = {r1**2:.6f}")
