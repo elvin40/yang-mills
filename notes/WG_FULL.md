@@ -291,3 +291,45 @@ if C″_𝒟ρ_{**} ≤ ¼. This holds if:
  - Theorem WG-G closes the (W_G) input of A1-W for the final G (open point O1 of SOURCES_A1_WALK §9), at the level of 7.1.
  - Theorem WG-G1 closes the tree expansion of G_1 asserted on pp. 423 and 427, at the level of 7.2.
  - Not closed here: (QG_1Q*)^{−1} (A1-W applied to the trees of WG-G1, SOURCES_A1_WALK §6.3(a)); Ğ_2 of p. 432 (assertion only); (C); the Z_0-compressed variant (O3); the complex configurations (O4).
+
+## 8. Ledger
+
+| item | where | status |
+|---|---|---|
+| G^{−1} = G_0^{−1} − Δ′_π; (3.130) with sign check | 1.1 | [V] pp. 419–421; sign [P] |
+| Lemma N: the Neumann series gives the inverse in finite volume; no separate existence of G needed | 1.2 | [P] |
+| Rearrangement of the expanded series | 1.4 | [P] (Fubini, from the absolute bounds of §3–§4) |
+| V non-local; one J per term; R_b = parallel transport | 2.1–2.2 | [V] (3.120); polarization [P] |
+| Chains Λ, Λ_D and adjoints; P-product has 4 walk blocks | 2.3 | [P]; P from p. 415 [V] |
+| Rule R-D and I-D | 2.4 | [P] given (3.44)-type mixed norms in (I1)–(I2) [R] |
+| ι-blocks: local, one domain, weight O(Mα_0) | 2.5 | [P] given (I5) [V] and (I7) [I] |
+| N_V = 9, 24 patterns | 2.6 | [P] |
+| Lemma C (concatenation, θ-split, Lemma 2.1 at junctions, rate (1 − θ)δ) | §3 | [P] given (I4) [R] and C0 [I] |
+| Theorem WG-G: G = Σ_λ T_λ, (L1)–(L2), (B1) with (B_0′, ρ_*, (1 − θ)½δ_0), (B2) with C′_𝒟 = 97C_𝒟, M ≥ M_*, Mα_0 ≤ a_* | §4 | [P] given (I1)–(I5) [R], (I7) [I], C0 [I] |
+| WG-1: literal (3.108) form at V-junctions needs α_0 ≤ c′M^{−11} | 4.7 | [P]; supersedes SOURCES_WG 2.9 (M^{−3}) and 3.0 (M^{−8}); admissible in Balaban's order, not implied by Mα_0 ≤ a_0 |
+| G_1^{−1} = G^{−1} − Δ_π^{(2)}; (3.135) factorization | 5.1 | [V] (3.128), (3.134)–(3.135); algebra [P] |
+| Structure of Δ^{(2)}; branch = (QGQ*)^{−1}QG applied to J | 5.2 | [V] (3.126), (3.136), p. 427; K_b locality [I] |
+| No loop: G_0 → G → (QGQ*)^{−1} → H → Δ^{(2)} → G_1 | 5.3 | [P]; Balaban's order [V] pp. 422–423, 426 |
+| A1-W with G from WG-G: step ρ_W = max{K_W/M_1, c_Wρ_*}, rate ½ε | 5.4 | [P] given (I6) |
+| Lemma B (branch bound, one factor Mα_0) | 5.5 | [P] given (I4)–(I6); C0 for vectors [I]; consistent with (3.136)–(3.137) [V] |
+| Tree terms, tree distance, (5.7.1), k_2 = 12, N_2 = 9 | 5.6–5.7 | [P] |
+| Tree counting (depth-first code), convergence, Theorem WG-G1 with rate (1 − θ)½ε | 5.8–5.10 | [P] given WG-G, (I6), C^{(2)}-locality [I] |
+| Uniformity in regular U; smallness from (3.36) | §6 | [P] given the inputs; (3.36) role [V] |
+| Fixed rate loss (1 − θ), once | 6.3 | [P]; Balaban's δ_0 convention [V] pp. 423, 427 |
+| Level of inputs: Thms 3.7 (by reference), 3.9, 3.10 (printed sketches), Lemma 2.1 (printed) | 7.1 | [V]; same level as the accepted A1 inputs |
+| G_1 needs A1-W in addition | 7.2 | [V] p. 422 "will not repeat", p. 426 "assuming (3.132)" |
+
+Inputs of Theorem WG (complete list).
+ 1. CMP 99 Thm 3.10 (G_0 walks, (3.107)–(3.108), all norms of (3.42)–(3.47)) [R, printed sketch].
+ 2. CMP 99 Thm 3.7 + Cor. 3.8 (G′ walks, (3.90), (3.94)) [R, by reference to CMP 95 Prop. 1.2, CMP 96 Prop. 2.2].
+ 3. CMP 99 Thm 3.9 (C′ walks, (3.98)–(3.99)) [R, printed sketch].
+ 4. CMP 96 Lemma 2.1 (c_1(κ)) and the Schur constant Σ(κ) of A1_KERNEL §5 [R].
+ 5. (3.36) and the J-bound |J| ≤ O(1)Mα_0(L^jη)^{−3} [V].
+ 6. For G_1 only: Theorem A1-W (A1_WALK_FULL; SOURCES_A1_WALK §7.1), itself conditional on (C) and its [I] items.
+ 7. Unprinted items [I]: C0 (scale bookkeeping and the S-rescaling), (I7) locality of Q, Q′, D, R_b and merging of local factors, ι-domain assignment, C^{(2)}-locality of K_b.
+ Constant order: (d, L) → θ → M_* → a_* → [A1-W] → M_*′, M_W → a_{**} → α_0; optional WG-1: α_0 ≤ c′M^{−11} (N_V = 9).
+
+Proposed A1w ledger row (for an independent verifier): "(W_G) for G PROVED (WG_FULL §4) given printed CMP 99 Thms 3.7, 3.9, 3.10 + Lemma 2.1 + (3.36) + [I] C0/(I7); rate (1 − θ)½δ_0, step ρ_*; literal (3.108) per-step form needs α_0 ≤ c′M^{−11} (WG-1). Tree expansion of G_1 PROVED (WG_FULL §5) given the same + A1-W (conditional on (C)) + C^{(2)}-locality [I]; rate (1 − θ)½ε."
+
+## 9. Status
+Author write-out complete. Not verified. Next: an independent verifier of §3 (Lemma C, Step 2 in particular), §4.3–§4.5 (step and tag counts), §5.5–§5.8 (branch bound, tree distance, depth-first code), and the C0 bookkeeping for the vector Ĵ in 5.5.
