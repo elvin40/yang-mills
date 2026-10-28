@@ -1,7 +1,7 @@
 # THM37_FULL — paper-grade write-out of CMP 99 Theorem 3.7 and Corollary 3.8 (walk expansion of G′)
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (first of three); Table 1 row R3, with R36 (M_1 version) and R7 (complex form) for this operator.
-Status: author write-out COMPLETE, not verified (see 9.3).
+Status: PAPER-GRADE relative to tagged inputs after these fixes (THM37_FULL_VERIFY V1–V7 applied 2026-10-28; see 9.3 and the change log at the end).
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [R-full] printed with full proof; [R-sketch] printed sketch or proof by reference; [V] read on the page image in this session; [P] proved in this file or in a project file named; [I] reading not proved.
 
@@ -31,7 +31,7 @@ followed by the Hölder bounds (3.43)–(3.45), the L²-bounds
 and the global bounds (3.47).
  Name clash. In Thm 3.1 "M_1" is a threshold on M (a constant of d, L). In CMP 116 and in WG_FULL 0.3, M_1 is the walk-cube size. In this file M_1 always means the CMP 116 cube size; Balaban's Thm 3.1 threshold is written M_th.
 
-1.4 The localized operators [V pp. 408–409]. 𝒟_j is a family of cubes □ with centres on ML^jηZ^d, each a union of 2^d big blocks, at least one in B^j(Λ_j); 𝒟 = ∪_j 𝒟_j "is a partition of the lattice T" (with T_1∖Ω_1 in place of Λ_0). {h_□} is the partition of unity of CMP 96 end of Sect. A with Σ_□ h_□² = 1. □̃^n is the concentric cube of size (2 + 2n)ML^jη. For □ ∈ 𝒟_j a sequence {Ω_n(□)}_{n=0,…,j+1} is built: Ω_{j+1}(□) = □̃^3 ∩ B^{j+1}(Λ_{j+1}) (if □̃^3 meets it), Ω_j(□) = □̃^4, and Ω_n(□) concentric cubes with dist(Ω_n(□)^c, Ω_{n+1}(□)) = 2R_0M_0L^nη, so Ω_0(□) ⊂ □̃^5. Here M = KR_0M_0 with R_0, M_0 the smallest admissible CMP 96 parameters. p. 409 [V]: with the O(1) of (3.35) equal to 12, □̃^5 lies in one cube of the (3.35) class, so Cor. 3.6 applies. G′_□(U) := G′ built for {Ω_n(□)}. Cor. 3.6 [V p. 408]: under (3.35) with O(1)Mα_0 ≤ a_1 and Ω′_0 ⊂ □, "Theorems 3.1–3.3 hold for the operators G′(U), (Q′(U)G′²(U)Q′*(U))^{−1}, G(U) constructed for the sequence {Ω′_j}."
+1.4 The localized operators [V pp. 408–409]. 𝒟_j is a family of cubes □ with centres on ML^jηZ^d, each a union of 2^d big blocks, at least one in B^j(Λ_j); 𝒟 = ∪_j 𝒟_j "is a partition of the lattice T" (with T_1∖Ω_1 in place of Λ_0); the cubes overlap, so "partition" means cover. p. 408 prints no condition □ ⊂ B^j ∪ B^{j+1}. {h_□} is the partition of unity of CMP 96 end of Sect. A with Σ_□ h_□² = 1. □̃^n is the concentric cube of size (2 + 2n)ML^jη. For □ ∈ 𝒟_j a sequence {Ω_n(□)}_{n=0,…,j+1} is built: Ω_{j+1}(□) = □̃^3 ∩ B^{j+1}(Λ_{j+1}) (if □̃^3 meets it), Ω_j(□) = □̃^4, and Ω_n(□) concentric cubes with dist(Ω_n(□)^c, Ω_{n+1}(□)) = 2R_0M_0L^nη, so Ω_0(□) ⊂ □̃^5. Here M = KR_0M_0 with R_0, M_0 the smallest admissible CMP 96 parameters. p. 409 [V]: with the O(1) of (3.35) equal to 12, □̃^5 lies in one cube of the (3.35) class, so Cor. 3.6 applies. G′_□(U) := G′ built for {Ω_n(□)}. Cor. 3.6 [V p. 408]: under (3.35) with O(1)Mα_0 ≤ a_1 and Ω′_0 ⊂ □, "Theorems 3.1–3.3 hold for the operators G′(U), (Q′(U)G′²(U)Q′*(U))^{−1}, G(U) constructed for the sequence {Ω′_j}."
  G′_0 := Σ_{□∈𝒟} h_□G′_□h_□ (3.87).
 
 1.5 The parametrix identity [V p. 409]. For x ∈ Δ(y), y ∈ Λ_j,
@@ -83,7 +83,7 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
  sup_{y∈𝔅} Σ_{y′∈𝔅} e^{−αδ_0d(y,y′)} ≤ c_1(α), (2.61)
  hence Σ_{y_1,…,y_n∈𝔅} e^{−αδ_0d(y,y_1)} ··· e^{−αδ_0d(y_{n−1},y_n)} ≤ c_1(α)^n (2.62)
  and Σ_{y_1,…,y_{n−1}∈𝔅} e^{−δ_0d(y,y_1)} ··· e^{−δ_0d(y_{n−1},y_n)} ≤ c_1(α)^n e^{−(1−α)δ_0d(y,y′)}. (2.63)"
- Here c_0(α) = Σ_{z∈Z} e^{−αδ_0|z|} < 4/(αδ_0) and the condition is "¼αδ_0RM > 2d log c_0(½α) + 1. (2.59)" [V p. 233]. Note: WG_FULL (I4) writes "½αδ_0RM"; the page image shows ¼αδ_0RM. The ¼ form is the stronger requirement; this file uses the printed ¼ form.
+ Here c_0(α) = Σ_{z∈Z} e^{−αδ_0|z|} < 4/(αδ_0) and the condition is "¼αδ_0RM > 2d log c_0(½α) + 1. (2.59)" [V p. 233]. Note: WG_FULL (I4) writes "½αδ_0RM"; the page image shows ¼αδ_0RM. The ¼ form is the stronger requirement; this file uses the printed ¼ form. Balaban's own α = ½ rewrite on p. 234, "δ_0RM > 16d log c_0 + 1", should read "+ 8" (printed slip, not load-bearing).
  Conclusion [V p. 234]: |(R^nλ)(x)| ≤ (O(M^{−1})c_1)^n e^{−½δ_0d(y,y′)}|λ| (2.65) and |(G′λ)(x)| ≤ O(1)(L^jη)²e^{−½δ_0d(y,y′)}|λ| (2.66).
  "Proposition 2.2. If we have (2.1), (2.2) and M is sufficiently large, then the operator G′ = Δ′_a^{−1} (a = 1) satisfies the inequalities |(G′λ)(x)|, |(∇G′λ)(x)|, |(G′∇*λ)(x)|, ‖ζ∇G′λ‖_α, ‖ζG′∇*λ‖_α, |(ΔG′λ)(x)| ≤ O(1)[(L^jη)², L^jη, L^jη, (L^jη)^{1−α}(‖ζ‖_α + |ζ|), (L^jη)^{1−α}(‖ζ‖_α + |ζ|), 1]·e^{−½δ_0d(y,y′)}|λ|, x ∈ B^j(y) or supp ζ ⊂ B^j(y), y ∈ Λ_j, supp λ ⊂ B^{j′}(y′), y′ ∈ Λ_{j′}. (2.67) The random walk representation (2.50) is convergent in the norms defined by these inequalities."
  Hypotheses of Prop. 2.2: (2.1), (2.2) (the conditions on the domain sequence {Ω_j}), U = 1, M large, and (implicitly, through Lemma 2.1) RM with (2.59). Grade [R-full]: the summation (2.52)–(2.66) is printed in full; the one-step bound (2.44) rests on (2.43), which cites CMP 95 Lemmas 2.2, 2.4 and Prop. 2.3.
@@ -101,12 +101,12 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
  These are the conventions of CMP 96 (2.52) [V] (sup) and CMP 99 (3.46) [V] (L²). The μ-weighted kernel convention of WG_FULL 0.2 (m(y, y′), S-rescaling) is obtained from N_∞ and N_2 by the bookkeeping C0 of WG_FULL; that conversion is not redone here [I, C0].
 
 3.2 Hypotheses. Fix d, L (L ≥ 2 a power of 2 is not needed; L ≥ 2 suffices here).
- (H1) Regularity. U is G-valued and satisfies (3.35) with O(1)Mα_0 ≤ a_1 (the condition of Cor. 3.6 [V p. 408]). (3.36) is not used.
- (H2) Layer width. RM satisfies CMP 96 (2.59) at the rate α = θ: ¼θδ_0RM > 2d log c_0(½θ) + 1, where θ ∈ (0, 1) is the split parameter of §5. Balaban's (3.94) is θ = ½.
+ (H1) Regularity. U is G-valued and satisfies (3.35) for all class cubes of size up to 12LMξ (O(1) = 12L), with 12L³Mα_0 ≤ a_1 (the condition of Cor. 3.6 [V p. 408], strengthened for interface cubes as in 3.3). (3.36) is not used.
+ (H2) Layer width. RM satisfies CMP 96 (2.59) at the rate α = θ: ¼θδ_0RM > 2d log c_0(½θ) + 1, where θ ∈ (0, 1) is the split parameter of §5. Balaban's (3.94) is θ = ½. Also R > 12dL (used in 3.3 and 8.3; R is a large power of L, so this is a mild condition).
  (H3) Cube size. M ≥ M_37(d, L, θ), the threshold fixed in 5.4. M is a power of L with M = KR_0M_0 [V p. 408].
  (H-PU) Cover and partition of unity [R: CMP 96 (2.36), CMP 99 p. 408 "the partition of unity {h_□} defined at the end of Sect. A in [4]"; asserted, not constructed; see 3.4]. A family 𝒟 = ∪_j 𝒟_j of cubes and functions h_□ ≥ 0 with:
-  (a) every □ ∈ 𝒟_j is a cube of 2^d big blocks of size Mξ_j, □ ∩ B^j(Λ_j) ≠ ∅, and □ ⊂ B^j(Λ_j) ∪ B^{j+1}(Λ_{j+1}) (the class of (3.35));
-  (b) supp h_□ ⊂ □, and dist(supp h_□, ∂□) ≥ ⅓Mξ_j except on faces of □ that lie on a level interface Σ_{j+1}, where the margin is ≥ ⅓Mξ_j/L (3.4);
+  (a) every □ ∈ 𝒟_j is a cube of 2^d big blocks of size Mξ_j, □ ∩ B^j(Λ_j) ≠ ∅, and □ ⊂ B^j(Λ_j) ∪ B^{j+1}(Λ_{j+1}) (the class of (3.35)); the non-crossing clause is NOT printed (V1) and corrects the printed cover (3.4);
+  (b) supp h_□ ⊂ □, and dist(supp h_□, ∂□) ≥ ⅓Mξ_j except on faces of a coarse cube □ ∈ 𝒟_j that lie on the level interface Σ_j (between B^{j−1} and B^j), where the margin is ≥ ⅓Mξ_{j−1} = ⅓Mξ_j/L (3.4);
   (c) Σ_□ h_□² = 1 on Ω_0;
   (d) for every bond b with endpoints at level n, |(∂h_□)(b)| ≤ c_hL/(Mξ_n), and |(Δh_□)(x)| ≤ c_hL²/(Mξ_n)², with c_h = c_h(d);
   (e) every block meets at most C_pt cubes of 𝒟, and every □ meets at most C_𝒟^in cubes of 𝒟, with C_pt ≤ C_𝒟^in ≤ 3(2L + 2)^d.
