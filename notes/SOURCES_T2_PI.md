@@ -73,7 +73,7 @@ Status [R]: for the one-step bordered matrix, invertibility for all real K is U3
 
 (I2) Gauge covariance. For a fine gauge transformation u, Δ(U^u) = R(u)Δ(U)R(u)^{−1}, D_k(U^u) = R(u)D_k(U)R(u)^{−1}, Q̃(U^u) = R(u|_{anchors})Q̃(U)R(u)^{−1}, where R(u) acts on each fluctuation coordinate by Ad of u at one site (the base point of the link in the left trivialization; the anchor for a multiplier; the site for a ghost). For Δ this is exact at every U, critical or not: A(e^{iAd_u B}U^u) = A((e^{iB}U)^u) = A(e^{iB}U) [P]. For D_k it holds by definition [P]. For Q̃ it follows from covariance of the averaging, (0.6) and the p. 265 sentence above [V], composed over the j steps [I: the composed form Ū(U^u)(c) = u(c_−)Ū(U)(c)u(c_+)^{−1} is read off (0.4), not written out]. SOURCES_T2_S123 §2 (I3) quotes the same covariance from CMP 99 p. 395 (3.32) [V there]. Only u with values in the σ_3 torus, and constant u (for charge conjugation), are used below.
 
-(I3) Lattice symmetry. Γ(U^σ) = Γ(U) for the axis permutation σ: e_0 → e_1, e_1 → e_2, e_2 → e_0, e_3 → e_3, acting about a block centre. Reason: odd L and centred blocks make the block lattice and the anchor set invariant; the Wilson action is invariant; the contour family is the full permutation family quoted above, so (0.4) is invariant; σ maps links to links with their orientation, so no change of trivialization occurs [I: invariance of the composed linearized averaging under σ read off (0.4), not checked entry by entry]. Lemma 5.3 (optional, obligation (b)) uses the full hypercubic group including reflections; Theorem PI uses only σ.
+(I3) Lattice symmetry. For the axis permutation σ: e_0 → e_1, e_1 → e_2, e_2 → e_0, e_3 → e_3, acting about the centre of cell 0, Bord(U^σ) = 𝒫 Bord(U) 𝒫^{−1} and G(U^σ) = 𝒫 G(U) 𝒫^{−1}, with 𝒫 an orthogonal matrix that maps the coordinates at a site (link) z to those at σz. In particular Γ(U^σ) = Γ(U), and ρ_{σc}(U^σ) = ρ_c(U) for the local densities of §3. Reason: odd L and centred blocks make the block lattice and the anchor set invariant; the Wilson action is invariant; the contour family is the full permutation family quoted above, so (0.4) is invariant; σ maps links to links with their orientation, so no change of trivialization occurs [I: invariance of the composed linearized averaging under σ read off (0.4), not checked entry by entry]. Lemma 5.3 (optional, obligation (b)) uses the full hypercubic group including reflections; Theorem PI uses only σ.
 
 Charge conjugation. The constant transformation c = e^{iπσ_1/2} maps U_θ to U_{−θ} and is a global gauge transformation. By (I2), Γ(U_{−θ}) = Γ(U_θ) [P given (I2)].
 
@@ -110,3 +110,112 @@ Use link midpoints as positions. For link directions μ, ν define
   Π̂_{μν}(p) := Σ_{x: dir μ} Σ_{y: dir ν} e^{ip·(x−y)} R_0(x, y),   Π̂^W_{μν}(p) the same for the Wilson density.   (3.2)
 
 By Lemma 3.3(b) the double sum converges absolutely for |Im p| < m′. So Π̂ is analytic there [P given (I1)]. By Lemma 3.3(c), Π̂_{μν}(p) = Σ_{x ∈ cell 0, dir μ} Σ_{y, dir ν} e^{ip·(x−y)} R(x, y) with R := Σ_c R_c the total second-derivative kernel: Π̂ is the per-cell (umklapp-diagonal) second-order kernel of Γ at the trivial background, the object called Π_Λ(P) in BETA_FP_H §3.1 (there in coarse momentum P = Λp). Its domain of analyticity is |Im P| < Λm′ in coarse units. The diagonal entries are real and even: Π̂_{νν}(p)‾ = Π̂_{νν}(−p) by realness, and Π̂_{νν}(−p) = Π̂_{νν}(p) by the symmetry R_0(x, y) = R_0(y, x) and relabelling.
+
+## 4. The constant field: the f² coefficient is the second-order kernel on the linear potential — obligation (c), first half
+
+Notation. ℓ(x) := x_0 δ_{μ(x),1} (x a link, μ(x) its direction, x_0 the 0-coordinate of its base point), so θ^{cf}_φ = φℓ. The potential grows linearly; the field strength dℓ = 1 on (0,1) plaquettes is constant. Write X(φ) := X(U_{φℓ}), G(φ) := G(U_{φℓ}).
+
+### 4.1 Invertibility at small flux (magnetic Neumann series)
+Lemma 4.1 [P given (I1), (I2) and analyticity of the averaging near the identity]. There are φ_0 > 0, m″ > 0, C with: for |φ| ≤ φ_0 and z ∈ 𝒞 ∪ [0, c_X/2], z − X(φ) is invertible and |(z − X(φ))^{−1}(u, v)| ≤ C e^{−m″|u−v|}; the same for G(φ). In particular spec X(φ) ⊂ (c_X/2, ‖X‖] lies inside 𝒞, and ρ_c(U_{φℓ}) is defined.
+Proof. U_{φℓ} is gauge equivalent to the symmetric-gauge field, and the bounds are gauge invariant (|kernels| are unchanged by the orthogonal 𝒰 of Lemma 3.2). In symmetric gauge the background is invariant under magnetic translations by ΛZ⁴, so by (I2) X(φ) commutes with them. By U3_LEMMA51 Lemma 3.1, X(φ)(u, v) = W_φ(u, v) x_φ(u, v) with W_φ(u, v) = exp(ieφ u∧v/2) acting sector-wise (charge e of the colour sector, U3_LEMMA51 Lemma 2.1) and x_φ invariant under coarse translations, of range 2r. Evaluating x_φ with u in cell 0, where all link angles in range are O(|φ|(Λ + r)²), and using analyticity of the Wilson action, of D_k and of the averaging (0.4) in the link variables near the identity, gives |x_φ − x_0| ≤ C|φ| entrywise. Let g_0 be the kernel of (z − X(1))^{−1} (Lemma 3.3(a)) and S := W_φ g_0 (entrywise product). Since W_φ(u, w)W_φ(w, v) = W_φ(u, v) e^{ieφ(u−w)∧(w−v)/2} (U3_LEMMA51 Lemma 3.2), (z − X(φ))S = W_φ(1 + E) with
+  |E(u, v)| ≤ Σ_w [ |x_φ − x_0|(u, w) + |x_0(u, w)| |e^{ieφ(u−w)∧(w−v)/2} − 1| ] |g_0(w, v)| ≤ C|φ|(1 + |u − v|) e^{−m|u−v|}.
+Kernels with |K(u, v)| ≤ k(u − v), k ∈ ℓ¹ with weight e^{m₁|·|} (m₁ < m), form a Banach algebra under the twisted product, because |phases| = 1 and the bound passes to convolutions. So for |φ| ≤ φ_0 the operator W_φ(1 + E) is inverted by a Neumann series inside this algebra, and S(W_φ(1 + E))^{−1} is a right inverse with kernel ≤ C e^{−m″|u−v|}. X(φ) is bounded and self-adjoint, so this is the inverse. Uniformity in z follows from compactness. The ghost is the same. This is the argument of SOURCES_T2_S123 Lemma 1.2 (Nenciu-type inverse; SOURCES_T2_S123_VERIFY grade 2, CONFIRMED), here applied to the fine composed operators at fixed j. ∎
+
+### 4.2 Differentiability along the linear potential
+Lemma 4.2 [P given Lemmas 3.3, 4.1]. F(φ) := ρ_0(U_{φℓ}) is C² on |φ| < φ_0, even, and
+
+  F″(0) = Σ_{x,y} ℓ(x)ℓ(y) R_0(x, y) = Σ_{x,y: dir 1} x_0 y_0 R_0(x, y),   (4.1)
+
+the double sum being absolutely convergent.
+Proof. Entries of X(φ) are analytic in φ, vanish for |u − v| > 2r, and obey |∂_φ^k X(φ)(u, v)| ≤ C_k(1 + |u|)^k, since each link angle φℓ(x) has φ-derivative ℓ(x), |ℓ(x)| ≤ |x|. Put 𝓡_φ := (z − X(φ))^{−1}. The resolvent identity 𝓡_{φ+h} − 𝓡_φ = 𝓡_{φ+h}(X(φ + h) − X(φ))𝓡_φ holds for bounded operators. Take its (u, u′) entry with u, u′ in cell 0. The middle factor divided by h converges entrywise to ∂_φX(φ) and is bounded by C(1 + |v|) (mean value theorem). The outer factors are bounded by C e^{−m″|u−v|} and C e^{−m″|v′−u′|} (Lemma 4.1), and 𝓡_{φ+h} → 𝓡_φ entrywise by the same identity. Dominated convergence gives ∂_φ𝓡_φ(u, u′) = [𝓡_φ ∂_φX 𝓡_φ](u, u′) as an absolutely convergent sum, continuous in φ. Once more: ∂_φ²𝓡_φ(u, u′) = [𝓡_φ ∂_φ²X 𝓡_φ + 2𝓡_φ ∂_φX 𝓡_φ ∂_φX 𝓡_φ](u, u′); the chain cell 0 → v → w → cell 0 carries e^{−m″(|v| + |v−w| + |w|)} against (1 + |v|)(1 + |w|), so it converges absolutely and is continuous in φ. Integrating against log z over the compact 𝒞 and adding the ghost term gives F ∈ C². Evenness: charge conjugation (§2.2). At φ = 0, ∂_φX(0) = Σ_x ℓ(x)X_x and ∂_φ²X(0) = Σ_{x,y} ℓ(x)ℓ(y)X_{xy} (finite sums entrywise). Inserting these and exchanging the sums (Fubini; the bound of Lemma 3.3(b) times |ℓ(x)ℓ(y)| ≤ |x||y| is summable) gives (4.1). ∎
+
+### 4.3 The per-cell density and the absence of extra terms
+Magnetic translations. Translating U_{φℓ} by Λc gives U_{φℓ + φΛc_0 δ_{μ1}}, and φΛc_0 δ_{μ1} = dχ with χ(x) = φΛc_0 x_1. Lemma 3.2 (it does not need finite support) gives ρ_c(U_{φℓ}) = ρ_0(U_{φℓ}) for every c. So Γ̄(U_{φℓ}) = F(φ) exactly, the limit defining Γ̄ is trivial, and
+
+  [φ²] Γ̄(U_{θ^{cf}_φ}) = ½ Σ_{x,y: dir 1} x_0 y_0 R_0(x, y),   Γ̄(U_{θ^{cf}_φ}) − Γ̄(1) = φ² [φ²]Γ̄ + o(φ²).   (4.3)
+
+What (4.3) contains, and what it does not.
+- The contact (tadpole) contribution is inside R_0: it is the X_{xy} term, the same object as the tr(M^{−1}M″) term of the plane-wave formula (NUMERICS §5). Nothing else of second order exists, because F″ is computed exactly by Lemma 4.2.
+- No boundary term arises: no summation by parts is used, and the sum is evaluated at the single cell 0, where it converges absolutely.
+- The result does not depend on the gauge of the linear potential. For θ = φ(ℓ + dq) with q a polynomial, Lemma 3.2 gives the same F. At the level of (4.1) this is the identity Σ_y R_0(x, y)(dq)(y) = 0 for polynomial q (Lemma 5.1 below and its polynomial extension). So symmetric gauge and Landau gauge give the same number.
+- The quadratic form ½⟨A, ΠA⟩ of the total kernel has no per-cell meaning at A = φℓ: (Πℓ)(x) is a coarse-periodic function with zero cell average, multiplied by the growing ℓ(x). This is why the per-cell limit must be taken with a gauge-invariant local density, as here, and not with the A-form of the quadratic functional.
+- Coarse units. f = Λ²φ, so [f²](log Z_Λ(V_f)) = Λ^{−4}[φ²]Γ̄, and [φ²]Ā = Λ⁴/2 (Ā = Λ⁴(1 − cos φ)). Hence S_j^{cf} = [φ²]Γ̄ / (Λ⁴/2) = [f²](log Z_Λ(V_f))/n_2 with n_2 = ½.
+
+## 5. The plane wave, the moment identity, and the proof of Theorem PI — obligations (b), (c)
+
+### 5.1 One-sided gauge sums
+Lemma 5.1 [P given (I1), (I2)]. For every link x and every direction ν, Σ_{y: dir ν} R_0(x, y) = 0. More generally Σ_y R_0(x, y)(dq)(y) = 0 for every polynomial q on sites.
+Proof. For finitely supported χ, Lemma 3.2 gives ρ_0(U_{θ + t dχ}) = ρ_0(U_θ) for θ near 0 with finite support. Differentiate in θ(x), set θ = 0, differentiate in t at t = 0: Σ_y R_0(x, y)(dχ)(y) = 0. For a polynomial q of degree k put χ_n := q·1_{|z| ≤ n}. Then dχ_n = dq on links within distance n − 1 of cell 0, |dχ_n| ≤ C n^k on the boundary shell, and dχ_n = 0 outside. So |Σ_y R_0(x, y)(dq − dχ_n)(y)| ≤ C Σ_{|y| ≥ n−1} e^{−m′|y|}(1 + |y|)^k → 0 (Lemma 3.3(b)). The choice q(z) = z_ν gives dq = δ_{μ(y),ν}. ∎
+The same holds for the Wilson density (finite range, exact gauge invariance).
+
+### 5.2 The moment identity
+Lemma 5.2 [P given Lemmas 3.3, 5.1]. s ↦ Π̂_{11}(s e_0) is real-analytic and even near 0, Π̂_{11}(0) = 0, and
+
+  [s²] Π̂_{11}(s e_0) = Σ_{x,y: dir 1} x_0 y_0 R_0(x, y) = F″(0).   (5.1)
+
+Proof. For direction-1 links the midpoint and the base point have the same 0-coordinate, so Π̂_{11}(s e_0) = Σ_{x,y: dir 1} cos(s(x_0 − y_0)) R_0(x, y) (the sine part cancels by the symmetry of R_0). Use |cos u − 1 + u²/2| ≤ u⁴/24 and Σ (x_0 − y_0)⁴|R_0(x, y)| < ∞. The s⁰ term is Σ_x Σ_y R_0(x, y) = 0 by Lemma 5.1. The s² term is −½ Σ (x_0 − y_0)² R_0 = −½ Σ_x x_0² Σ_y R_0(x, y) − ½ Σ_y y_0² Σ_x R_0(x, y) + Σ x_0y_0 R_0(x, y). The first two vanish by Lemma 5.1 and the symmetry of R_0. The last equality in (5.1) is (4.1). ∎
+Combining with (4.3): [φ²] Γ̄(U_{θ^{cf}_φ}) = ½ [s²] Π̂_{11}(s e_0). The same computation for the Wilson density gives [φ²] Ā = ½ [s²] Π̂^W_{11}(s e_0).
+
+This is the core of obligation (c). In words: the linear potential ℓ = x_0 e_1 is the s → 0 limit of the plane waves sin(s x_0)/s · e_1, and the two terms that distinguish the local density at cell 0 from the per-cell average (the x_0², y_0² moments, equivalently the e^{±is(x_0+y_0)} parts) vanish by one-sided gauge invariance.
+
+### 5.3 The plane wave
+Lemma 5.3 [P given Lemma 3.3]. w(p) = ½ Π̂_{22}(p e_1) and t(p) = ½ Π̂^W_{22}(p e_1) for small real p ≠ 0. Explicitly t(p) = Λ⁴(1 − cos p).
+Proof. θ_1 := cos(p x_1)δ_{μ2} is bounded, so ‖X(U_{aθ_1}) − X(1)‖ ≤ C|a|, and ρ_c(U_{aθ_1}) is analytic in a on a fixed disc, with bounds uniform in c (Neumann series; Lemma 3.3(a)). Cauchy estimates let ∂_a² commute with the average over c. As in Lemma 4.2, ∂_a²ρ_c|_0 = Σ_{x,y} θ_1(x)θ_1(y)R_c(x, y) = Σ_{x,y: dir 2} cos(p(x_1 + Λc_1)) cos(p(y_1 + Λc_1)) R_0(x, y), by Lemma 3.3(c). Write the product of cosines as ½[cos(p(x_1 − y_1)) + cos(p(x_1 + y_1 + 2Λc_1))]. The second term averages to 0 over |c|_∞ ≤ N as N → ∞ when 2Λp ∉ 2πZ, which holds for small p ≠ 0; the sums converge uniformly by Lemma 3.3(b). The first term gives ½ Σ cos(p(x_1 − y_1)) R_0 = ½ Π̂_{22}(p e_1). For the Wilson action the (1,2) plaquette angle is a[cos(p(x_1 + 1)) − cos(p x_1)], whose square averages to a²(1 − cos p); with 1 − cos ψ = ψ²/2 + O(ψ⁴), the second a-derivative per fine site is 1 − cos p, and per coarse cell Λ⁴(1 − cos p). ∎
+
+### 5.4 Proof of Theorem PI
+(i) By Lemma 5.3 and §3.4, w and t are real-analytic and even near p = 0. They vanish at p = 0 by Lemma 5.1 (Π̂_{22}(0) = Σ_{x,y: dir 2} R_0 = 0). t(p) = Λ⁴(1 − cos p) has a simple p² zero. So β^{pw} = w/t extends to an even real-analytic function near 0, and S_j^{pw} = β^{pw}(0) = [p²]Π̂_{22}(p e_1)/[p²]Π̂^W_{22}(p e_1) = [p²]Π̂_{22}(p e_1)/Λ⁴.
+(ii) Lemmas 4.1, 4.2 and (4.3).
+(iii) By (I3), ρ_{σc}(U^σ) = ρ_c(U); σ fixes cell 0, so R_0(σx, σy) = R_0(x, y). σ is orthogonal and fixes the centre of cell 0, so Π̂_{σμ,σν}(σp) = Π̂_{μν}(p). With σe_0 = e_1, σe_1 = e_2: Π̂_{22}(s e_1) = Π̂_{11}(s e_0). The same holds for Π̂^W. Hence, by §5.2 and §4.3,
+
+  S_j^{pw} = [s²]Π̂_{11}(s e_0)/Λ⁴ = 2[φ²]Γ̄(U_{θ^{cf}_φ})/Λ⁴ = [φ²]Γ̄ / [φ²]Ā = S_j^{cf} = 𝒞(Λ).   ∎
+
+What the proof uses: (I1) (massiveness at U = 1 at this j), (I2) (gauge covariance), (I3) (one axis permutation), and the analyticity of the averaging near the identity. It does not use transversality in Fourier form, the full hypercubic group, Prop. 2.1 of BETA_FP_LEMMA43, (G2), (F), (M_j), or V1.
+
+### 5.5 The one-structure lemma (obligation (b)) and π_Λ
+Lemma 5.4 [P given (I1), (I2), and invariance under the full hypercubic group about the centre of cell 0, the reflection part being an extension of (I3) [I]]. Π̂_{μν}(p) = π_Λ(|p|²δ_{μν} − p_μp_ν) + O(|p|⁴), and the same for Π̂^W with π_W = Λ⁴.
+Proof. Lemma 5.1 with χ = e^{−ip·z} (by the same truncation argument, exponential decay beating the bounded χ) gives the transversality Σ_ν Π̂_{μν}(p) p̂_ν = 0, p̂_ν = 2 sin(p_ν/2) (midpoint positions). Π̂(0) = 0 (Lemma 5.1). Reflection invariance and the symmetry of R_0 make Π̂ even and symmetric in (μ, ν). So Π̂_{μν}(p) = c_{μναβ}p_αp_β + O(p⁴) with c invariant under the hypercubic group: c = a δ_{μν}δ_{αβ} + b(δ_{μα}δ_{νβ} + δ_{μβ}δ_{να}) + c′ δ_{μναβ}. Transversality at order p³ (p̂ = p + O(p³)) gives a p_μ|p|² + 2b p_μ|p|² + c′ p_μ³ = 0 for all p, so c′ = 0 and b = −a/2. Put π_Λ := a. For the Wilson density, Π̂^W_{22}(p e_1) = 2t(p) = Λ⁴p² + O(p⁴), so π_W = Λ⁴. ∎
+Consequence: S_j^{pw} = S_j^{cf} = π_Λ/π_W, which is (iii) in the form of BETA_FP_H §3.1. Any plane wave with polarization orthogonal to its momentum, along any axis, gives the same limit. BETA_FP_H_VERIFY §5 confirmed the transversality + hypercubic step; Lemma 5.4 is that step with the analyticity now proved from (I1).
+
+## 6. The expansion point: the code versus Balaban's functional
+
+### 6.1 Theorem PI has no expansion-point question
+Theorem PI is a statement about one functional, Γ of (1.1), on fine abelian backgrounds. The code evaluates exactly this Γ at the fine plane wave U_0(a) (NUMERICS §5; ym_oneloop `one_step` in real space). At the constant field, Γ(U_0^φ) is the constrained functional log Z_Λ(V_f) itself (§1.1). So "plane-wave p² coefficient of what the code computes = constant-field f² coefficient of log Z_Λ" is Theorem PI as stated, with no correction. The fact that the fine wave is not a constrained stationary point (SOURCES_D1_VERIFY V4; U3_VERIFY §6) does not enter.
+
+### 6.2 Where the expansion point does enter: identification with Balaban's kernel
+Balaban's per-step quantity is built from the true coarse functional Φ(V) := log Z_Λ(V): Γ evaluated at the constrained minimizer U(V), plus the multiplier term −⟨J, C̃^{(2)}⟩ (U3_VERIFY §6 (c)). Its second-order kernel at V = 1 is what a second-moment definition of β uses (SOURCES_T2_V1 §1, §3). The code's plane wave probes Γ″[A_bg, A_bg] with A_bg the fine wave; the true kernel is Γ″[H_1Q̃A_bg, H_1Q̃A_bg] plus the J-term (Γ′(1) = 0 removes the U″ term, U3_VERIFY §6 (a)). U3_VERIFY §6 (b), (c) argues that the difference is O(p⁴) in w, so the p² coefficient is unchanged; SOURCES_D1_VERIFY V4 gives the same at sketch level and corrects the scale to (Lp)². These are [I] (sketch level, graded CONFIRMED as sketches).
+
+Corollary 6.1 (a second route to the U3_VERIFY §6 statement) [R: (I1)–(I3) for Φ as a functional of the coarse field, see below]. Apply the proof of Theorem PI to Φ, with coarse abelian fields in place of fine ones, the coarse Wilson action as normalization, and local densities ρ_c^Φ(V) := ρ_c(U(V)) + (local density of the J-term). The proof gives π^{true}_Λ/π^W_{coarse} = lim_{f→0}[Φ(V_f) − Φ(1)]/(n_2f²). At the constant field Φ(V_f) = Γ(U_0^φ) exactly (U(V_f) = U_0^φ up to gauge and J = 0, §1.1). So π^{true}_Λ/π^W_{coarse} = 𝒞(Λ) = S_j^{pw}: the code's p → 0 limit equals the p² coefficient of the true kernel, exactly.
+What this needs. (i) Gauge invariance of Φ: CMP 109 p. 254 [V: page image, PDF p. 6]: "t(V, U) is a gauge invariant kernel …. If ϱ is a gauge invariant function, then Tϱ is gauge invariant also." (ii) Exponential locality and analyticity of the minimizer map V ↦ U(V) near V = 1 and along the constant field, so that ρ_c^Φ has exponentially localized Taylor kernels in V. At fixed j this follows from (I1) and Lemma 4.1 by the implicit function theorem applied to the constrained stationarity equations [I: not written]. (iii) The analogue of (I3) for Φ, which follows from (I3) and uniqueness of the minimizer [I].
+So Corollary 6.1 replaces the O(p⁴) bookkeeping of U3_VERIFY §6 by a locality statement about the minimizer map at fixed j. It is a fixed-level statement. It does not give the uniform-in-k version A6 that Route B needs (THEOREM2_PROOF_v4 §4.2a, §10 B5).
+
+### 6.3 Finite p
+At finite p the code's β^{pw}(p) differs from β^{pw}(0) by an even analytic O(p²) term (Theorem PI (i)). Its natural scale is (Λp)², because the kernels R_0 have range of order Λ fine spacings (Lemma 3.3: the decay rate m′ is of order δ_j/Λ). This term has two sources: the genuine O(P⁴) part of the kernel ratio (dimension-6 terms, BETA_FP_H §3.2) and the expansion-point difference between Γ″[A_bg, A_bg] and the true kernel at finite p (SOURCES_D1_VERIFY V4). Neither affects the p → 0 limit. §8.2 checks the listed numbers against this.
+
+## 7. The massless pieces — obligation (d); the lattice transfer of (F)
+
+### 7.1 Which combination is probe-independent
+At V_f, Prop. 2.1 of BETA_FP_LEMMA43 holds exactly (BETA_FP_H (1.1); BETA_FP_H_VERIFY §2, CONFIRMED):
+  log Z_Λ(V_f) = Fine(Λ; f) − Γ_c(Λ; f).
+Each bracket is massless. At the constant field each has an f² ln|f| term (BETA_FP_H §1, "Per-cell densities and signs"; Theorem 3.1 proof, l. 110). At the plane wave the fine bracket has a p² ln(1/p²) term (Lüscher–Weisz (5.7), as used in BETA_FP_LEMMA43 Cor. 3.1), and the coarse bracket has the compensating log. So neither bracket has an f² coefficient or a p² coefficient. Lemma 3.3 fails for them: the kernels of the inverse operators decay only polynomially, and the second moments Σ x_0²|R_0| used in Lemma 5.2 diverge. Precisely:
+
+(d1) [P, Theorem PI] Probe-independent: log Z_Λ = Fine − Γ_c jointly, at fixed Λ. This is the only form in which (PI) enters Theorem K. In KAPPA_BOUNDED Prop. 1.1 (l. 34) and BETA_FP_H Theorem 3.1, (PI) converts the plane-wave S_j into the constant-field coefficient of log Z_{Λ_j} (and of log Z_1, where both probes give 0: at Λ = 1 the constraint is trivial and log Z_1 is constant). The split into Fine and Γ_c, and the separate limits of their Λ-differences by (F) and (M_j), are then taken entirely on the constant-field side, where Prop. 2.1 is exact. No plane-wave statement about either bracket is used.
+
+(d2) [R: LW (5.7); (F_lat) of §7.2] The Λ-differences of the fine bracket have the same normalized second-order coefficient for both probes: c log(Λ/Λ′). Plane wave: the fine bracket at coarse momentum P is the Wilson vacuum polarization at fine momentum P/Λ, whose per-tree value is c_2 ln(Λ²/P²) + κ_W^F + O(P²/Λ²) (LW (5.7)); the Λ-difference is c_2 ln(Λ²/Λ′²) = c log(Λ/Λ′). Constant field: BETA_FP_H (3.1). The constants κ_W^F and B do not need to agree; they refer to different infrared variables (P² versus |f|) and cancel in the difference.
+
+(d3) [I] The Λ-differences of the coarse bracket are then probe-independent if the plane-wave coarse bracket is defined through the identity, Γ_c^{pw} := Fine − log Z_Λ. If it is defined as the coarse Gaussian one-loop with the plane-wave kernel, it differs by the defect 𝔡_Y of BETA_FP_PW Lemma 2.3 [proved, unverified there]. Neither version is used by Route K.
+
+(d4) Not probe-independent: Fine(Λ) alone and Γ_c(Λ) alone. Their non-logarithmic constants (B at the constant field, κ_W^F at the plane wave) are tied to the infrared variable, and have no common meaning.
+
+### 7.2 Lattice transfer of (F)
+(F_lat). Per fine cell, the fine bracket at constant fine flux φ is a Λ-independent function F_W(φ) with F_W(φ) = n_2φ²[c_2 ln(1/|φ|) + B] + o(φ²) (real part, or log|det|), c_2 = c/2 = 11N²/(24π²).
+
+Step A (scaling and (3.1)) [P]. The fine bracket depends on Λ only through φ = f/Λ² (BETA_FP_H_VERIFY §2, CONFIRMED). Per coarse cell Fine(Λ; f) = Λ⁴F_W(f/Λ²). Given (F_lat), Λ⁴(f/Λ²)²n_2[c_2 ln(Λ²/|f|) + B] − (Λ → Λ′) = n_2 f² c_2 ln(Λ²/Λ′²), and Λ⁴ o(f²/Λ⁴) = o(f²) at fixed Λ. Hence [Fine(Λ; f) − Fine(Λ′; f)]/(n_2f²) → c log(Λ/Λ′), which is BETA_FP_H (3.1). Only c_2 enters; B cancels.
+
+Step B (the log coefficient is an angular integral of the degree −4 part) [I]. Write the formal f² integrand of the per-cell log|det| of the fine Feynman operator, from the Moyal expansion (U3_LEMMA51 (3.1)–(3.3)), as I(K) = I_{−4}(K) + O(|K|^{−2}) near K = 0, with I_{−4} homogeneous of degree −4 (spin–spin term b_0𝔨_1b_0𝔨_1 and the orbital P_2 terms; the tadpole b_0𝔨_2 is degree −2). The true per-cell function equals the K-integral of I cut off at |K| ≈ |φ|^{1/2}, up to O(φ²) without logarithm. Then n_2c_2 = ½(2π)^{−4}∫_{S³} I_{−4} dΩ. The region |K| ≲ |φ|^{1/2} and the Nielsen–Olesen band need the same kind of spectral control as (M_j) at level 0 (SOURCES_T2_S123 (S1), (S2)|_{t=0}, (S3), proved there at t = 0 given its (I3) [CONFIRMED in SOURCES_T2_S123_VERIFY]; BETA_FP_M Prop. 4.4 region 1 [argued]). For a single massless functional, rather than a Λ-difference, no project file writes this two-region argument with the logarithm. Status: standard background-field reasoning, not proved here.
+
+Step C (the lattice degree −4 part equals the continuum one) [P given U3_LEMMA51 Lemma 3.4 (U3_LEMMA51_VERIFY item 4b)]. In midpoint symmetric gauge the fine Wilson Hessian symbol equals its continuum background-Feynman symbol times (1 + an even O(|k|²) term) at each order in f (U3_LEMMA51 Lemma 3.4). The ghost symbol is |k̂|² = |k|²(1 + O(|k|²)). I_{−4} is built only from the leading homogeneous parts of 𝔨_0 (degree 2), 𝔨_1(0) and the ghost. A relative O(|K|²) correction lowers the degree to −2, which gives no logarithm. So I_{−4}^{lat} = I_{−4}^{cont}, and the lattice c_2 equals the continuum c_2.
+
+Step D (continuum value) [cited; source checked in BETA_FP_H_VERIFY §4, CONFIRMED; not rechecked here, no network]. G. Savvidy, arXiv:1910.00654, eq. (1.4): L_g = −F − (11N/(96π²)) g²F [ln(2g²F/μ⁴) − 1], F = (H² − E²)/2; original Phys. Lett. 71B (1977) 133. Conversion to Wilson β = 2N/g² and fine flux (BETA_FP_H_VERIFY §4): c_2 = 2N·11N/(48π²) = 11N²/(24π²); c = 2c_2 = 11N²/(12π²) = 0.371511 for SU(2) (arithmetic rechecked: 44/(12π²) = 0.37151).
+
+Cross-check (consistency, not a proof). LW (5.7) gives the lattice plane-wave log coefficient c_2 per ln(1/q²) directly on the lattice. By (d2), the plane-wave and constant-field Λ-differences of the fine bracket agree, so Step C is consistent with the lattice plane-wave value.
+Status of (F) after this section: Step A [P]; Step C [P given U3_LEMMA51 Lemma 3.4]; Step B [I]; Step D [cited, source checked]. The "lattice = continuum" part is now reduced to Step B, a two-region statement of the same type as (M_j) at level 0.
