@@ -76,6 +76,32 @@ with θ_t the background angle before link t (including the link itself if s_t =
 
 ## 6. Status
 
-Formulas derived in this session; validated numerically against ym_momentum (§7). Not independently verified by a second derivation.
+Formulas derived in this session (not independently re-derived). They pass every numerical check below. The averaging Taylor profile (§5) equals the JAX Jacobian of ym_oneloop.make_avg_fn with taylor2 to 5·10^{−14} (L = 3, all four directions, orders 0, 1, 2).
 
-## 7. Validation and results
+Per-K integrand differs from ym_momentum. With the auxiliary rows the anchor part of 2D'PD'^† moves from the τ_1 of sector K into the τ_2 of sectors K ± p. A dense per-K check with the explicit projector P (same symbols) reproduces ym_momentum per K to 1e−12. So the two integrands differ by a p-shift that integrates to zero over the BZ. On the grid the difference is a quadrature error. It is exactly zero for commensurate p, and it falls with Ng (L = 3, p = 0.2: Δw = 2.9e−5 at Ng = 6, 2.8e−6 at Ng = 8). That is 10–100× below the grid error of w itself.
+
+Speed-ups: the trace kernel is JAX-jitted. The shifted K grid is reduced by the reflections K_1, K_2, K_3 → −K and the 2↔3 swap (16-fold, odd L only). This reduction is exact per K to all printed digits at L = 3, 5. The grid sum equals the full grid to 1e−15 at L = 3. The reduction is wrong for even L (corner anchors), and the code turns it off there.
+
+## 7. Validation and results (Mac, 2026-10-27)
+
+| check | umk | reference |
+|---|---|---|
+| L=2, Ng=12, β at p = 0.1/0.2/0.4 | 0.629883 / 0.630711 / 0.634038 → p→0 fit 0.6296 | 0.6299/0.6307/0.6340, 0.630 (w agrees to 1e−8 rel.) |
+| L=3, Ng=8, β at p = 0.1/0.2/0.4 | 0.666761 / 0.669172 / 0.689300 | 0.6667/0.6692/0.6893 (w rel. diff 1e−5, quadrature, §6) |
+| L=4, Ng=6, p=0.2 | 0.757507 | 0.757475 |
+| abelian (σ_3 only), L=3 / L=5 | 0.246913580 = 20/81 / 0.249600000 = 624/2500 | (1 − L^{−4})/4 |
+| pure gauge, commensurate p (L=3 Ng=8 p=2π/24; L=4 Ng=3 p=π/6) | w = 3e−16; 1.5e−14 | 0 |
+| pure gauge, L=3 Ng=8 p=0.2 (incommensurate) | w = −4.2e−6 (quadrature error, same size as §6) | 0 |
+
+New: L = 5 (shifted grid, symmetry-reduced):
+
+| L=5 | p = 0.1 (Lp = 0.5) | p = 0.2 (Lp = 1) |
+|---|---|---|
+| Ng = 8 | 0.75318 | 0.77028 |
+| Ng = 12 | 0.74898 | 0.76817 |
+
+Quadratic p → 0 extrapolation from p = 0.1, 0.2 (Ng = 12): β_1(L=5) ≈ 0.743 (grid error ≈ 0.4% at p = 0.1 between Ng = 8 and 12). Universal part c log 5 = 0.598. Successive first-step values: 0.630 (L=2), 0.664 (3), 0.757 (4, p = 0.2 only), 0.743 (5). The rise from L = 3 to 5 is 0.079, against c log(5/3) = 0.190. The L = 4 point is even L at a single p with Lp = 0.8, so it is not directly comparable.
+
+Caveat for large L: the plane-wave bias is O((Lp)²). At L = 15, p = 0.2 means Lp = 3, close to the coarse zone edge, so a fit in fine p at p = 0.1, 0.2 does not give β_1(0). The box launcher therefore also runs fixed coarse momentum Lp = 1 and 0.5. Use those values for the p → 0 fit and for the comparison with c log L + const.
+
+Timing (Mac): ~40 µs per (K, umklapp) block; L = 5: Ng = 8 in 10–18 s, Ng = 12 in 40 s per p. Box runs (L = 5…15, Ng = 8, 12): `numerics/umk_launch.sh`, not launched.

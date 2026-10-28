@@ -9,3 +9,8 @@ Claims logged. First flags to test: (a) §1.3 uses (PI)+(F) at Λ=1 (needs Fine(
 - (2.2) has the same form as KAPPA (1.1). Outer Moyal terms vanish in the per-cell trace (VERIFY §3). Good: KAPPA needs no derivative bound on δσ for those terms.
 - BETA_FP_H counts b_2 ⊃ b_0{𝔨_1,b_0} ~ |K|^-5 (not -6). With δσ^(0) ~ |K|^4 this is |K|^-1, so fine.
 - (M) resolvent step was CORRECTED in VERIFY §5 (N–O zero). KAPPA's t-subdivision remark inherits that status; it does not repair the resolvent defect.
+
+## 3. U1 numbers and L = 3 JSON
+- U1 (5.2) sign: U1_VERIFY flagged that the definition and the numbers use opposite signs of κ_k. KAPPA uses the numbers' convention (κ_k = κ_W^F − C_k). With κ_0 = κ_W^F (S_0 = 0, d_0 = 0) this is consistent.
+- JSON 'beta' = S_1/4 (L=2, Ng=12, p=0.1: 4·0.157471 = 0.62988 = U1 value).
+- L = 3, Ng = 8: S_1(p) = 4·beta = 0.66671 (p=0.1), 0.66916 (0.2), 0.68930 (0.4). Ng = 6, p = 0.2: 0.68392 (Ng not converged at 2% level between 6 and 8).
