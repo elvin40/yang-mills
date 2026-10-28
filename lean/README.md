@@ -173,3 +173,12 @@ Window-to-pointwise (increments in [b/2, B′] ⇒ pointwise bounds) is not repe
 'YmLean.discrete_gronwall_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YmLean.contraction_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
+
+## CubeCount.lean (SOURCES_FX_O1.md §2–§3, Lemma [P] arithmetic core; statement check `VERIFY_CubeCount.md`)
+
+| Note | Lean |
+|---|---|
+| (F1) Fact B N ≤ 4^d(1+2ℓ), (F2) N ≥ 21^d ⇒ N ≤ (42/17)4^dℓ and ℓ ≥ N/(3·4^d) | `cube_count_sharp d hd N ℓ` |
+| O1-R′: + (F3) n_f ≤ (ρ+2)^d N_Y, N_Y ≤ N ⇒ ℓ ≥ N/(3·4^d) and ℓ ≥ n_f/(3·4^d(ρ+2)^d) | `cube_count_lower d hd ρ nf N NY ℓ hρ` |
+
+Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence. Axioms: `[propext, Classical.choice, Quot.sound]` for both.

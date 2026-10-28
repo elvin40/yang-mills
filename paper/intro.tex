@@ -1,0 +1,79 @@
+\section{Introduction}\label{sec:intro}
+
+\subsection{The problem}\label{sec:problem}
+
+The Clay problem on quantum Yang--Mills theory asks for a four-dimensional quantum gauge theory with compact simple gauge group that satisfies axioms at least as strong as those of Osterwalder and Schrader \cite{os1973,os1975}, and that has a mass gap \cite{jaffewitten}. One constructive approach starts from Wilson's lattice action on a torus with lattice spacing $\varepsilon$ and takes $\varepsilon\to0$. The bare coupling $g_0(\varepsilon)$ must then go to zero at the rate that asymptotic freedom prescribes, so that the effective coupling at a fixed physical scale stays fixed. This paper treats the first limit only: lattice spacing to zero on a fixed torus. It does not treat the infinite-volume limit or the mass gap (Section~\ref{sec:notgiven}).
+
+\subsection{Ba{\l}aban's programme and the missing Theorem 2}\label{sec:balaban}
+
+Between 1984 and 1989 Ba{\l}aban built a renormalization-group (RG) analysis of lattice gauge theories \cite{balaban95,balaban96,balaban98,balaban99a,balaban99b,balaban102a,balaban102b,balaban109,balaban116,balaban119,balaban122a,balaban122b}. His main output for $d=4$ is Theorem 1 of CMP 122 II: uniform bounds on the effective densities at every RG scale, under the hypothesis that the sequence of effective couplings stays small. The hypothesis was to be discharged by his Theorem 2, which controls the running coupling. The two statements read as follows.
+
+Theorem 2 (CMP 109 (1987), p.\ 259): ``Let $d = 4$, $G = SU(2)$, and let $\gamma$ be a sufficiently small positive constant, then for a sufficiently small positive $g$ there exists a bare coupling constant $g_0 = g_0(\varepsilon, g)$ such that the sequence of the effective coupling constants $g_k$ is contained in the interval $]0, \gamma]$, and $g_K = g$. Moreover, there exist constants $\beta, \beta'$, $0 < \beta \le \beta'$, such that $g_k$ satisfy the inequality $1/g^2 + \beta \log(L^k\varepsilon)^{-1} \le 1/g_k^2 \le 1/g^2 + \beta' \log(L^k\varepsilon)^{-1}$. (0.31)'' Balaban adds that the proof ``will be given in a separate paper''. It was never published (CMP 122 II p.\ 355, verbatim: ``has not been published yet, so we have Theorem 1 with the assumption'').
+
+Theorem 1 (CMP 122 II p.\ 355): ``If the sequence of the effective coupling constants is contained in an interval $]0, \gamma]$ with a sufficiently small positive $\gamma$, then the effective densities $\rho_k$ have the form, and satisfy all the conditions and bounds, described in Sect.\ 2 [III].'' The bound (0.1) there reads $\chi_k \exp[-(1/g_k^2)A(U_k) - E_-|T_\eta|] \le \rho_k \le \exp E_+|T_\eta|$ (corrected reading, \file{BALABAN_EXCERPTS_CHECK} item 3).
+
+Without Theorem 2, the hypothesis of Theorem 1 is an assumption on the unknown coupling flow. Every continuum statement built on Ba{\l}aban's bounds inherits this assumption.
+
+\subsection{The two targets and the main results}\label{sec:main}
+
+The paper has two targets. The first target is a proof of enough of Theorem 2 to remove the coupling hypothesis from Theorem 1. The second target is a finite-torus existence theorem for the continuum limit in compactness form, with the Osterwalder--Schrader properties proved on the limit. Both results are reductions: each holds under named hypotheses, and the paper records the status of every hypothesis.
+
+\begin{mainthm}[weak Theorem 2; proved in Section~\ref{sec:flow}]\label{thm:A}
+Let $G=SU(2)$, $d=4$, and $L$ odd, $L>11$ (or $L$ odd, $L\ge3$, with Ba{\l}aban's inductive assumption (H0) and his construction of $\beta_j(g)$ at this $L$ as explicit hypotheses).
+\begin{itemize}
+\item[(i)] Assume the uniform inequality (H2) (Section~\ref{sec:twostep}), the fixed-level inputs (PI), (F), $(M_j)$, V1, (G2) (Section~\ref{sec:routeK}), and the history hypothesis L5 (Section~\ref{sec:L5}). Then the conclusions (b), (c$'$), (S) of Theorem~\ref{thm:2w} (Theorem 2w) hold. Status of the implication: \status{proved+verified, conditional}, by Route K (Theorem~\ref{thm:K} and Lemma~\ref{lem:Ddprime}).
+\item[(ii)] Given the conclusions of Theorem 2w, Ba{\l}aban's Theorem 1 holds for the bare coupling $g_0(K,g)$, for every $K$ and every $g\in\,]0,g_1]$, without his coupling assumption. Status: \status{proved, unverified (sweep), conditional on Route K or Route B inputs, on L5, and on Balaban's published proofs} (Section~\ref{sec:conclusion}).
+\end{itemize}
+A second, formally distinct route (Route B, \ThmPW{} in Section~\ref{sec:routeB}) also gives (i). Both routes rest on (H2).
+\end{mainthm}
+
+\begin{mainthm}[finite-torus existence; proved in Section~\ref{sec:torus}]\label{thm:B}
+Let $G=SU(2)$, $d=4$, $L$ odd and large, and $\ell\in2\mathbb N$ fixed. Let $g_0=g_0(\varepsilon,g)$ be a shooting solution whose effective couplings satisfy $g_k\in\,]0,\gamma]$ for $0\le k\le K$ and $g_K=g$. Assume the uniform bound (H-U) of Definition~\ref{def:HU}. Then the lattice Schwinger functions of the centred plaquette density are relatively compact as $\varepsilon=L^{-K}\to0$, and every limit family satisfies the torus forms of (OS0)--(OS3). This is Theorem~\ref{thm:existence}, \status{proved modulo named blocks}. Nontriviality is the separate Theorem~\ref{thm:nontriv}, conditional on (NT).
+\end{mainthm}
+
+The hypothesis (H-U) is the output of three blocks: Theorem 2 (B-T2, that is, Theorem~\ref{thm:A}), sourced versions of Ba{\l}aban's bounds (B-S), and a bridge from the source form to (H-U) (B-N1). The dependency table, Section~\ref{sec:deptable}, gives the status of each block and is the single status table of the paper. Section~\ref{sec:remains} lists what remains.
+
+What the paper does not give: literal (0.31) at every $K$ (Section~\ref{sec:literal}), the limit of $\beta_j(0)$ and a rate (Section~\ref{sec:convergence}), uniqueness of the limit, infinite volume, rotation invariance, and a mass gap (Section~\ref{sec:notgiven}). Theorem~\ref{thm:B} is a compactness (``weak-existence'') result. Under Jaffe--Witten footnote~2 it is not an admissible solution of the Millennium problem (Section~\ref{sec:exists}).
+
+\subsection{Status conventions}\label{sec:status}
+
+Every result carries a status tag in small capitals. The tags mean the following.
+\begin{itemize}
+\item \status{proved+verified}: proved in a project file and confirmed by an independent verifier file.
+\item \status{proved+verified, conditional on $X$}: the implication is confirmed; $X$ is open or assumed.
+\item \status{proved, unverified}: proved in a project file; no verifier has graded it yet.
+\item \status{Lean}: formalized in Lean 4 + Mathlib, no \texttt{sorry}, axioms propext, Classical.choice, Quot.sound only.
+\item \status{verified quote}: read on the page image of Balaban's paper (\file{reports/BALABAN_EXCERPTS_CHECK.md} or a verifier file).
+\item \status{numerical, reproduced}: floating-point result reproduced by a verifier. \status{numerical, run by the verifier}: run once, by a verifier. \status{numerical}: not reproduced. None is certified.
+\item \status{argued}: a plausibility argument, not a proof. \status{open}: no proof. \status{refuted}: shown false.
+\item \status{Balaban}: an input taken from Balaban's published papers, used as stated there.
+\item \status{not written}: a proof plan; no project file contains the proof.
+\item \status{cited}: a standard result; its text was not re-read. \status{cited, source checked}: the source was read, the transfer to the lattice is standard and not proved here.
+\item \status{proved here}: a short proof given in full in this paper (Section~\ref{sec:torus}). \status{hypothesis}: assumed, and owned by a named block. \status{formal}: a formal step whose analytic justification is not written. \status{derived sketch}: a route with steps listed, not a proof.
+\item \status{interval enclosure, verified}: a rigorous interval-arithmetic enclosure, rerun by a verifier.
+\end{itemize}
+A compound tag such as \status{proved+verified, conditional on (H2)} combines these meanings. Tags refer to the project files cited next to them. In \status{verified quote}, a quote of a source other than Ba{\l}aban's papers was checked verbatim against a copy of that source in the project. Project files are cited as \file{NAME.md}; a section sign after a file name (for example \file{KAPPA_BOUNDED_VERIFY} \S4) refers to a section of that file, not of this paper. ``Grade $n$'' and ``item $n$'' after a verifier file name refer to the numbered verdicts of that file. The paper as a whole is not verified as one document.
+
+\subsection{Relation to other work}\label{sec:independence}
+
+Two recent works overlap with this paper. The record of how their content reached this project is given below; it is kept in the form fixed when the overlap was found.
+
+Related work 1. E. Sussman and L. Alp\"oge (with Claude; README: ``written largely by LLM \dots\ Novel mathematical ideas should be attributed to Claude (under the guidance of LA)''), ``The Yang--Mills continuum limit along Ba{\l}aban's renormalization group: a complete account of Theorem 0'' (LaTeX, files \file{theorem_0_complete_account_raw_{master,I,II,III}.tex}, 424k lines), and ``SU(2) Yang--Mills theory in four dimensions via Ba{\l}aban's renormalisation group: construction, axioms and non-triviality'' (\file{ym4_manuscript_zeroth_draft.pdf}, dated 6 October 2026) \cite{SA26-T0,SA26-YM4}. Repository: \url{https://github.com/ethanwsussman/Yang--Mills-LLM-experiment}, commit \texttt{1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310} (2026-10-27T05:45:28-05:00), accessed 2026-10-27. Repository created 2026-10-06. Disclaimer in README: ``This repository contains work-in-progress, written largely by LLM. Its content has not been satisfactorily vetted. All claims should be understood as tentative, pending verification.'' Suggested keys: SA26-T0 (account), SA26-YM4 (draft).
+
+Related work 2. OpenAI, ``The canonical massive continuum limit of the two-dimensional O(3) model'' (October 4, 2026), \texttt{github.com/openai/math}, family 215 (preprints folder; read locally from the PDF, \file{reports/ONLINE_SWEEP.md} \S1.2; text in \file{reports/o3_continuum.txt}) \cite{OAI26-O3}. Suggested key: OAI26-O3.
+
+\emph{How content from these works reached this project.} The record (file times, \file{PLAN.md}, read lists; \file{THEOREM2_PROOF_v2_VERIFY} \S I) shows the following.
+\begin{enumerate}
+\item This chapter was written without reading the Sussman--Alp\"oge repository. Only the citation block above (\file{reports/SUSSMAN_ALPOGE_MAP.md} \S5.1) was read.
+\item First channel. On the night of 2026-10-27, \file{reports/ONLINE_SWEEP.md} \S2 (about 20:20) read the Sussman--Alp\"oge repository directly. It reported that they prove a weak two-sided flow with an additive constant, never need per-step positivity, use a first-passage cutoff, and invoke only containment $g_k\le\gamma$. This is the first project file with Sussman--Alp\"oge content.
+\item Second channel. \file{reports/SUSSMAN_ALPOGE_MAP.md} (about 20:28) was written by a separate agent under a firewall. Through it, the bounded-$\kappa$ idea entered the project: the weak form of Theorem 2 needs only $\kappa_k$ bounded, not convergence (their Lemma 4.19 structure; \file{PLAN.md} line 146). \file{KAPPA_BOUNDED.md} (about 20:39) received this idea through its prompt. Its read list excludes the map and ONLINE\_SWEEP.
+\item Lemma D$'$ and the cross-scale sweep predate any Sussman--Alp\"oge content in project files. The shooting-without-positivity lemma and the band with additive constant appear in \file{THEOREM2_PROOF_VERIFY} Point 5(b) (about 20:05) and \file{LEMMA_DPRIME.md} (about 20:10). \file{LEMMA_DPRIME_SWEEP.md} (about 20:16--20:23) overlaps ONLINE\_SWEEP in time, but its read list is LEMMA\_DPRIME and its verifier only; it did not read ONLINE\_SWEEP. Lemma D$''$ is in \file{KAPPA_BOUNDED.md}, written after the map.
+\item Theorem K. Its result form, $|S_k-ck\log L|\le\kappa_*$, matches Sussman--Alp\"oge Lemma 4.2(b), $|\sum_l\beta^0_l-kc_0|\le c_2$ (as reported in \file{PLAN.md} line 146; cited there, not proved). The proof in this project (Prop.\ 1.1, Lemma 2.1, Prop.\ 2.2 of \file{KAPPA_BOUNDED}) was written by firewalled agents from Balaban's papers and project files.
+\item O(3) paper. Route B's doubling comparison follows the template of OAI26-O3 Lemma 6.1 (doubling difference; \file{BETA_FP_PW} uses the ``O(3) Lemma 6.1 form''). The idea of a coupling band in place of per-step positivity also appears there (ONLINE\_SWEEP \S1.2(a)). \file{BETA_FP_PW} read ONLINE\_SWEEP \S1.2, \S5, \S8 and o3\_continuum Lemma 6.1, and did not read ONLINE\_SWEEP \S2.
+\item Route B (other than the O(3) template), the numerics, and the symbol results of \S3.5 and \S5 were derived by firewalled agents from Balaban's papers and project files.
+\end{enumerate}
+Any write-up must cite SA26-T0, SA26-YM4, and OAI26-O3, and state these overlaps.
+
+\subsection{Organization}
+
+Section~\ref{sec:setup} fixes the notation for both parts of the paper. Section~\ref{sec:flow} proves the reduction of Theorem 2 (Theorem~\ref{thm:A}). Section~\ref{sec:torus} proves the finite-torus existence theorem modulo named blocks (Theorem~\ref{thm:B}) and contains the dependency table. Section~\ref{sec:numerics} collects the numerical results. Section~\ref{sec:remains} lists what remains. Appendix~\ref{app:lean} lists the Lean formalization, Appendix~\ref{app:ledger} indexes the results by status, Appendix~\ref{app:labels} maps the numbering of this paper to the names used in the project files, and Appendix~\ref{app:history} records the revision history.

@@ -27,7 +27,7 @@ Status 2026-10-27 (Claude, Opus; unverified). Firewall kept: /tmp/sa_repo and re
 
 Inputs.
 - (I), (E), (H-hist): as in HBETA §1, real histories.
-- (H-hol) Relative-polydisc holomorphy. For every j and every real history x = (x_0, …, x_{j−1}) ∈ ]0, γ]^j, β_j extends holomorphically in (g_0, …, g_{j−1}) to P_ρ(x) := Π_i {|g_i − x_i| < ρx_i}, with |β_j| ≤ M there; ρ ∈ ]0, ½], M independent of j, x, K.
+- (H-hol) Relative-polydisc holomorphy. For every j and every real history x = (x_0, …, x_{j−1}) ∈ ]0, γ]^j, β_j extends holomorphically in (g_0, …, g_{j−1}) to P_ρ(x) := Π_i {|g_i − x_i| < ρx_i}, with |β_j| ≤ M there; ρ ∈ ]0, 1/3], M independent of j, x, K.
 - (H-hist_C) The bound |∂β_j/∂g_i| ≤ C_1a_{j−1−i} of (H-hist) holds on the half polydisc P_{ρ/2}(x). For Balaban's one-argument form (A = 1, β_j = β_j(g_{j−1})) this FOLLOWS from (H-hol) + the real C¹ bound; see Step 0. For the history form see §5.
 - (B-hol) c ↦ B_j(c) is holomorphic on a complex neighbourhood of [−2r − τ, 2r + τ] containing Q (D2 §6.1 holomorphy in the source; [reduced, not re-checked here]). With (H-hol), both sides of (I) are holomorphic in c on the connected set Q and agree on the real segment. By the identity theorem (I) then holds on Q. So no separate complex (I) is needed.
 
@@ -51,3 +51,41 @@ Step 2 (summability). If Re u_K(c) > γ^{−2}, then Re u_i ≥ γ^{−2} + (β/
 Step 3 (bootstrap in Im c). Fix c ∈ Q. On the real segment [0, Re c] Lemma H gives |v_k| ≤ 3/2 and u_K(Re c) ≥ g^{−2} − 3r. Put c_t := Re c + it Im c and T := {t ∈ [0, 1] : for all s ≤ t, all k ≤ K: u_k(c_s) ∈ D}. 0 ∈ T. On T, Steps 0–2 apply, so |Im u_k(c_t)| ≤ (3/2)t|Im c| ≤ (3/2)τ < Y and Re u_K(c_t) ≥ g^{−2} − 3r − (3/2)τ > γ^{−2} by (a); Re u_k ≥ Re u_K since Re β_j ≥ β/2 > 0. The bounds are strict, so T is open; by continuity T is closed; T = [0, 1]. ∎
 
 Remark (normalization of the constant). 3/2 = 1 + (e^{x_C} − 1) with e^{x_C} ≤ 3/2. Any constant 1 + η, η > 0, is reachable by shrinking γ (x_C ≤ ln(1 + η)). 3/2 is a choice, not sharp.
+
+## 5. History form: what replaces Step 0 [derived; one new input]
+- Balaban: β_j "depends also on all preceding coupling constants" (CMP 109 p. 298, via HBETA (I)). Then Step 0 needs mixed second derivatives, because Im u_l ≠ 0 for every l < j.
+- Pure Cauchy on P_ρ(x) gives |∂_{g_l}∂_{g_i}β_j| ≤ 4M/(ρ²x_ix_l) with NO decay in j − 1 − l. Then the complex correction to ε_j is ~ YMg_{j−1}²·Σ_{l<j}g_l², and Σ_j of it grows like (log K)² at least. Not uniform. So history decay of second derivatives is needed, as (H-hist) is needed for first derivatives.
+- (H2-hist) [new input]: on P_{ρ/2}(x), |∂²β_j/∂g_i∂g_l| ≤ M_2a_{j−1−i}a_{j−1−l}/(x_ix_l), with the same a_m as (H-hist).
+- Derivation. As in Step 0, |∂_{g_i}β_j(z) − ∂_{g_i}β_j(g_r)| ≤ Σ_l √2g_{r,l}³Y·M_2a_{j−1−i}a_{j−1−l}/(g_{r,i}g_{r,l}). Multiply by |dz_i/du_i| ≤ ½g_{r,i}³. The extra part of Σ_i|∂_{u_i}β_j| is ε″_j ≤ (√2/2)YM_2(Σ_i g_{r,i}²a_{j−1−i})². Cauchy–Schwarz: (Σ_i g_i²a_{j−1−i})² ≤ AΣ_i g_i⁴a_{j−1−i}. So Σ_jε″_j ≤ (√2/2)YM_2A²S_4, S_4 := Σ_i(Re u_i)^{−2} ≤ Σ_m(γ^{−2} + βm/2)^{−2} ≤ 2γ²/β. Hence Σ_jε″_j ≤ √2YM_2A²γ²/β.
+- Result. In Lemma N3 replace (b) by x_C := 2C_1Aγ/β + √2·2τ·M_2A²γ²/β ≤ ln(3/2). Steps 1–3 are unchanged. Real (H-hist) is used at the real points g_r; (H2-hist) only for the thin complex correction.
+- Plausibility (not proof): the same irrelevance mechanism that would give a_m ~ L^{−αm} in (H-hist) acts on each argument separately, so a product a_{j−1−i}a_{j−1−l} for mixed derivatives is the natural form. Balaban states neither.
+
+## 6. Plausibility of (H-hol) [observation, not proof]
+- Balaban (THEOREM2 §3a, CMP 109 pp. 263–264 verbatim): E^{(j)} and β_j are "C^∞ … (or analytic)" in the coupling on [0, γ], uniformly with all derivatives. Analytic on the closed interval [0, γ] would give an ABSOLUTE disc around 0, stronger than (H-hol). That is likely false: large-field factors exp(−c ε_j²/g²) are not analytic at g = 0.
+- Relative discs avoid this. On |g − x| < ρx: Re g^{−2} = x^{−2}Re(1 + s̄)²/|1 + s|^4 ≥ x^{−2}(1 − 2ρ − ρ²)/(1 + ρ)^4, s := g/x − 1. For ρ ≤ 1/3 this is ≥ (2/9)(3/4)^4x^{−2} > 0.07x^{−2} (it fails for ρ ≥ √2 − 1). So |exp(−κg^{−2})| ≤ exp(−κ' x^{−2}) stays bounded and small. This is the HBETA §3(c) remark ("O(exp(−κu)) analytic for Re u ≥ γ^{−2}") in g-variables.
+- D3 fixes every threshold (ε_j, δ_j, R_j, p_0) by the reference couplings, so complex c never enters a characteristic function (D3 (L0)). The c-dependence of the small-field construction is then through Gaussian vertices with polynomial g-dependence and covariances depending on w (D3W8 C_f). A complex g with |g − x| < ρx keeps |gA| ≤ (1 + ρ)ε_j on the small-field domain. So relative-polydisc holomorphy with sup M = O(β′) is the natural expected form. Not checked against Balaban's estimates.
+
+## 7. Toy check [num; algebra only, no Yang–Mills input]
+One-argument toy β(g) = 1 + g cos g (holomorphic on relative discs, real |β′| ≤ C_1 ≈ 1, β ≥ 1), final coupling g = 0.25, reference trajectory shot backwards, complex c ∈ {0.3 ± 0.2i, 0.1 − 0.2i, 0.3, 0.2i}, finite-difference v_K. max|v_K + 1| = 0.111, 0.188, 0.222 for K = 50, 500, 5000. The increments shrink (saturation, no log K growth), and all stay below e^{x} − 1 ≈ 0.28 with x = C_1γ/β = 0.25. Run inline (python -I heredoc, no file kept).
+
+## 8. Ledger
+Proved here:
+- Normalization settled: the source is an additive shift of u = g^{−2} (w_0 = g_0^{−2} − f); τ is in absolute u-units; N3 is used only through the relative size (3/2)τg_k². The brief's multiplicative form is a different, weaker convention (§2).
+- N3 ⇔ complex Lemma H on the rectangle Q, pointwise in x; boundary layers and resets give the same constant (§2).
+- Lemma N3: under (I), (E), (H-hist), (H-hol), (B-hol) and the one-argument form, |δw_k| ≤ (3/2)τ for all k ≤ K, uniformly in K and ε; conditions (a)–(d) of §4, all met for τ ≤ r ≤ 1 and γ small. The constant 3/2 can be any 1 + η.
+- History form: same conclusion with (H2-hist) added (§5).
+- The Σg_j² divergence of the brief is located: it occurs only if the derivative bound comes from Cauchy on relative discs alone (per-step 1 + Cg²). Then |v_K| ~ K^{C/β} and the relative size τg²(1 + βKg²)^{C/β} diverges; measuring against w_k does not help (§3). The real C¹ bound (Balaban's inductive assumption) is what gives O(g³) per step; holomorphy is needed only for an O(g⁴) correction on the thin strip.
+- Direction: u_k decreases in k by (0.31); the brief's linear-in-k growth of w_k is the reversed index.
+
+Inputs, not proved here:
+- (H-hol): relative-polydisc holomorphy of β_j in its coupling arguments with sup bound M. Balaban asserts "C^∞ (or analytic)" but proves neither form for complex g. The relative form is consistent with exp(−κ/g²) large-field terms for ρ ≤ 1/3 (§6).
+- (H2-hist) (history form only): mixed second derivatives with product decay a_{j−1−i}a_{j−1−l}. New; the complex analogue of (H-hist).
+- (I), (H-hist), (E) as in HBETA; (E) rests on (T2-a1′).
+- (B-hol): holomorphy of B_j(c) on a neighbourhood of Q from the sourced small-field construction (D2 §6.1); used only to transfer (I) from real to complex c by the identity theorem.
+
+Not used / not sufficient:
+- W4 (holomorphy in activities): gives only per-step Cauchy O(1/r), not summable (§3).
+- (0.31) itself: only its lower slope β (via Lemma E) and the floor u_K ≥ γ^{−2} enter.
+- No L-dependent condition on τ; τ ≤ r and γ small suffice.
+
+Verdict: N3 is REDUCED, not closed. It holds with constant 3/2 given (H-hol) (one-argument form) or (H-hol) + (H2-hist) (history form), on top of HBETA's (I), (E), (H-hist). The obstruction to closing it is the same as for real (Hβ): Balaban gives no estimate of β_j at complex couplings and none for the history dependence. O2 choice B and O3 inherit exactly these inputs.
