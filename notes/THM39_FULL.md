@@ -89,3 +89,33 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
  (vi) (3.48) form (Thm 3.2): |C′(y, y′)| ≤ (8C_𝒟/γ_N)L^{|2−d/2|}(L^jη)^{−4}(L^{j′}η)^{−d}e^{−(½ε − |2−d/2|θ_L)d(y,y′)}.
  All constants are uniform in U (with the hypothesis), j, k, η, {Ω_j}, and the volume. The rate ½ε is a fixed positive number. It is not Balaban's ½δ_0 (§8.3).
 
+## 3. Step A: the walk expansion of N̂ (hypothesis (H1) of A1-W) [P given (T37), (I-Q), (I-B)]
+
+3.1 Expansion of G′². By (T37) and finite dimension, G′² = Σ_{(ω_1,ω_2)∈𝒲′×𝒲′}G′_{ω_1}G′_{ω_2}, absolutely convergent entrywise. Write ω_1 = (□_0, …, □_n) and ω_2 = (□′_0, …, □′_m). G′_{ω_1} ends with h_{□_n}; G′_{ω_2} begins with h_{□′_0}. So G′_{ω_1}G′_{ω_2} = 0 unless supp h_{□_n} ∩ supp h_{□′_0} ≠ ∅, hence unless □_n ∩ □′_0 ≠ ∅.
+
+3.2 Merged walks. For a non-vanishing pair put
+ ω := ω_1 ⊔ ω_2 := ((p, □_0), …, (p, □_{n−1}), (J, □_n ∪ □′_0), (p, □′_1), …, (p, □′_m)).
+Label p ("plain") marks a single cube. Label J ("junction") marks the merged domain; it records the ordered pair (□_n, □′_0). The junction factor is the product of the last factor of G′_{ω_1} and the first factor of G′_{ω_2}. □_n ∪ □′_0 is a connected union of two cubes of 𝒟, so it is an admissible domain (CMP 99 p. 413 [V]; CMP 116 p. 13 [V, via A1_WALK_FULL 6.7]). ω is a walk: neighbours of the junction domain meet □_n or □′_0. |ω| = n + m = |ω_1| + |ω_2|. The map (ω_1, ω_2) ↦ ω (with labels) is injective.
+ Define N_ω := Q′G′_{ω_1}G′_{ω_2}Q′* and N̂_ω := S^{−1}N_ωS^{−1}. Q′ is attached to the first factor and Q′* to the last factor; S^{−1} is a multiplication and does not depend on U. Then N̂ = Σ_ωN̂_ω, absolutely convergent by 3.4 below and Lemma 1.1 of A1_WALK_FULL.
+
+3.3 Locality.
+ (L1) Each plain factor has kernel in □_i × □_i up to c_loc (T37a). The junction factor has kernel in □_n × □′_0 ⊂ X × X, X = □_n ∪ □′_0. The attached Q′, Q′* move supports by one block, i.e. within c_loc (I-Q). With the enlarged domains of 2.1 (WG_FULL 0.4), every factor satisfies the ⅓M_1 band, provided M_1 ≥ 3c_loc.
+ (L2) A plain factor depends on U only on □̃_i^5 (T37b). The junction factor depends on U only on □̃_n^5 ∪ □̃′_0^5 ⊂ X̃^5. Q′(y) depends on U only on bonds of contours inside Δ(y) (I-Q), and Δ(y) ⊂ X⁺ when the kernel is nonzero. So N̂_ω depends on U only on ∪_iX̃_i^5.
+ (B3) Every domain is the enlargement of one cube or of two intersecting cubes. So diam X̃^5 ≤ c_X^NM_1 with c_X^N = c(d).
+
+3.4 The term bound (B1). Fix y ∈ Λ_j, y′ ∈ Λ_{j′}, and a unit vector e ∈ 𝔤. Insert 1 = Σ_{z∈𝔅}1_{Δ(z)} on 𝒦 between the two G′-terms (the blocks partition Ω_0, (I-B)). By 2.2, Q′*(1_{y′}e) is supported in Δ(y′) with sup norm 1. By (T37c) twice, and |Q′f(y)| ≤ sup_{Δ(y)}|f|:
+ μ(y′)|n_ω(y, y′)| = |(N_ω1_{y′}e)(y)| ≤ Σ_z B′²(L^jη)²(L^{j_z}η)²ρ′^{|ω|}e^{−δ′[d(ω_1,y,z) + d(ω_2,z,y′)]}.
+Only z with Δ(z) ⊂ □_n ∩ □′_0 contribute (T37a), so z lies in the junction domain. Two facts:
+ (F1) d(ω_1, y, z) + d(ω_2, z, y′) ≥ d(ω, y, y′). Proof: take near-optimal points x_1, …, x_n for ω_1 (x_i ∈ □_i ∩ 𝔅) and x′_1, …, x′_m for ω_2. For ω choose z in the junction slot. By the triangle inequality d(x_{n−1}, z) ≤ d(x_{n−1}, x_n) + d(x_n, z). The other terms are unchanged. (For n = 0 the junction slot is the first slot and y itself is the start point.) ∎
+ (F2) d(ω_2, z, y′) ≥ d(z, y′) by (D1).
+With θ = ½: e^{−δ′[…]} ≤ e^{−½δ′d(ω,y,y′)}e^{−½δ′d(z,y′)}. By scale conversion, L^{2(j_z−j′)} ≤ L²e^{2θ_Ld(z,y′)}, and 2θ_L ≤ ¼δ′. Hence
+ Σ_z (L^{j_z}η)²e^{−½δ′d(z,y′)} ≤ L²(L^{j′}η)²Σ_ze^{−¼δ′d(z,y′)} ≤ L²c_1(¼δ′)(L^{j′}η)².
+Divide by μ(y′)s(y)s(y′) = μ(y′)(L^jη)²(L^{j′}η)². Then use μ(y′)^{−1} = m(y, y′)(μ(y)/μ(y′))^{1/2} ≤ m(y, y′)L^{d/2}e^{(d/2)θ_Ld(y,y′)} and (D1):
+ |n̂_ω(y, y′)| ≤ b_G ρ_G^{|ω|} m(y, y′) e^{−δ_Gd(ω,y,y′)},
+ b_G := B′²L^{2+d/2}c_1(¼δ′), ρ_G := ρ′, δ_G := ½δ′ − (d/2)θ_L ≥ (7/16)δ′.
+The last inequality uses θ_L ≤ δ′/(8(d + 4)). The constants b_G and δ_G do not depend on M_1, M, U, j, k, η, or the volume. Lean: the junction sum is the pattern of `concat_two` in lean/YmLean/Concatenation.lean (one junction, rate split θ, constant a·b·c₁), here with the extra scale factor absorbed before the sum; the merged-walk inequality (F1) is not formalized.
+
+3.5 Counting (B2). Given a prefix ending in X, the next pair (α, X′) is a plain cube meeting X (≤ C_37·c(d) choices, with c(d) the number of cubes in X) or a junction pair (□, □′) with □ meeting X and □′ meeting □ (≤ C_37²c(d) choices). With the enlargement factor of WG_FULL 0.4, C_𝒟^N := 5^dc(d)C_37(1 + C_37) bounds the branching, the number of domains through a point, and the set form of A1_WALK_FULL (H1)(B2) for sets of diameter ≤ D_+M_1 (after enlarging by the geometry constant of A1_WALK_FULL 5.6 [I, same item]). For M_1 ≥ 2C_𝒟^Nc′: C_𝒟^Nρ_G ≤ ½.
+
+3.6 Conclusion. N̂ satisfies (H1) of A1_WALK_FULL 0.4 with (b_G, ρ_G = c′/M_1, δ_G, C_𝒟^N, c_X^N). N̂ is real symmetric (T37e). Remark: no V-junctions occur, so caveat WG-1 of A1_WALK_FULL 6.6 (α_0 ≤ c′M^{−1}M_1^{−10}) is not needed here; the per-step factor is c′/M_1 under Mα_0 ≤ a_37 alone.
+
