@@ -108,3 +108,49 @@ Findings.
 
 Is KAPPA2's use consistent? Yes, as far as print goes [P from the quotes]. KAPPA2 needs: (i) the large-field T step changes the rate only by a δ-fraction of the input rate, and (ii) all other changes are prefactors absorbed by constants. Sect. 3 supports (ii) directly (only prefactors change, and they carry g_k or ε_k). It is silent on (i) and defers to CMP 109/116, where KAPPA2 read (i) as 10δ. So the CMP 119 Sect. 3 item adds no new constant and no contradiction. The residual is not "an unread page in CMP 119 Sect. 3"; it is "Balaban never prints the large-field T-step loss". KAPPA2_VERIFY's caveat "its loss constant may differ from 10δ" stays true in the sense that no printed number fixes it; but the printed structure (same κ, prefactor-only changes, reduction to CMP 109 Sect. 6–7) agrees with homogeneity. Grade: reading CHECKED; homogeneity NOT FOUND in print; use CONSISTENT, tag [R → CMP 116 (2.33)–(2.41) + CMP 109 Sects. 6–7].
 
+## 5. CMP 98 C′_1 (row A9)
+
+Read on images: CMP 98 pp. 36, 39, 40 (pdf 20, 23, 24).
+- (139), p. 39: "|Q_{V_0}A| ≤ Q|A|, |Q″(V_0)A| ≤ C′_1L²α_0Q″|A|, (139) where the operator Q is defined as in [2], and Q″ is defined as (Q″A)_c = Σ_{b⊂B(c_−)∪B(c_+)} L^{−d}A_b. (140) The constant C′_1 depends on d and L."
+- (143), p. 39: "Now we will prove by induction the bound |Q_j(U_0)A| ≤ Q_j|A| + 2C′_1α_0(L^jη)²Q″_j|A|, j ≤ k, (143) assuming that U_0 satisfies the bound (52)."
+- p. 40, after (145): "2L^{−2} + L^{−2} + 4dC′_1α_0L^{−4} ≤ ¾ + 4dC′_1L^{−4}α_0 ≤ 1 if 16dC′_1L^{−4}α_0 ≤ 1, so the bound (143) is proved for all j ≤ k." Then (146)–(147): "|Q_k(U_0; c, b)| ≤ 1 + 2C′_1α_0."
+- Origin of C′_1, p. 36 [V]: (124) splits the linear form Q(V_0)A into the main term (125) and remainders built from g(−iad_Y), g^{−1}(−iad_{Y_x}) − 1, e^{iad_Y} − g(−iad_Y). "The remaining terms are small because the functions g(−z), g^{−1}(z), e^{iz} are equal to 1 for z = 0, so the operators occurring in these terms can be estimated by O(L²α_0) and the terms can be estimated by O(1)L²α_0L|A| < O(1)L²α_0Lα_1." The O(L²α_0) is the size of Y_x = (1/i) log V_0(Γ_{c,x}u(−c)) (p. 35; "Previously we had |Y_x| = O(L²α_0)", text layer l. 1316).
+
+Findings.
+- A9 reading of (143), including the factor 2C′_1α_0(L^jη)² and C′_1 = C′_1(d, L): CONFIRMED [V].
+- C′_1 is unprinted: CONFIRMED. Print gives only its dependence ("depends on d and L"). No numerical value appears on pp. 36–40.
+- A bound from the printed inequalities around (143): NO. (143)–(147) use C′_1 only as an input. The only printed relation, 16dC′_1L^{−4}α_0 ≤ 1, is a smallness condition on α_0 given C′_1; it is not a bound on C′_1. A bound would have to be computed from (124) itself: the power-series constants of g(−z) − 1, g^{−1}(z) − 1, e^{iz} − g(−z) on |z| ≤ O(L²α_0), times the O(1) in |Y_x| = O(L²α_0) (a non-abelian Stokes bound over the contours Γ_{c,x}), times the sums over x ∈ B(c_−). None of these O(1) are printed. So C′_1 is computable in principle, not readable.
+- Consequence for A9: unchanged. It is the (E_U) route only, an alternative to A1; nothing downstream uses a value of C′_1, only C′_1 < ∞ and α_0 small, which (143) delivers.
+
+## 5b. Row A12: the β_0 sentence and its page [V]
+- CMP 119 p. 255, after (2.6) (pdf 13): "where n > m, and β_0 > 0 can be chosen arbitrarily small, if g is sufficiently small."
+- CMP 122 II p. 389 (pdf 35), before (1.95): "We assume that g_k is so small that −2(1 + β_0)^{−1}p_0(g_k) + 1 + 2κ(100R_k)^d ≤ −(3/2)p_0(g_k) (for example, take β_0 = 1/7, then this means that −(1/4)p_0(g_k) + 1 + 2κ(100R_k)^d ≤ 0, and before we had stronger restrictions on p_0(g_k))."
+Grade: CORRECTED (page). The "arbitrarily small" sentence is on CMP 119 p. 255, not CMP 122 II p. 389. p. 389 has the example β_0 = 1/7, which v4 §1.2 cites correctly. Arithmetic [P]: 2/(1 + 1/7) = 7/4, and −(7/4)p_0 ≤ −(3/2)p_0 − (1/4)p_0, so the example line is right; the inequality needs β_0 < 1/3.
+Order of constants: both quotes fix β_0 first and then require g (hence γ) small. This is the order v4 uses ("β_0 fixed before γ"). CONFIRMED. No printed step needs β_0 → 0.
+
+## 6. Ledger
+
+| Item | Reading | Grade |
+|---|---|---|
+| A20a | R_{K+1} ≥ 1 | CONFIRMED (proved: R_j ≥ (log g_j^{−2})^r > 1 ⇒ R_j ≥ L, needs γ < e^{−1/2}) |
+| A20b | C_c independent of g | CONFIRMED as a reading (g enters only via log g_j^{−2} ≤ R_j, CMP 122 II p. 380, and explicit p_0, p_1 factors; O(1) value unprinted) |
+| A22-5 | Π (4.37)/(5.1), CMP 109 pp. 291–292 | CONFIRMED |
+| A22-8a | "Similar inequalities hold for other constants" | CORRECTED: found on CMP 119 p. 256 after (2.9); covers α's only by inference |
+| A22-8b | CMP 119 (2.28) α_{0,j}, α_{1,j} | CONFIRMED |
+| A22-8c | CMP 119 (2.41)–(2.42) B-terms | CORRECTED (minor): X ∩ Z̃_j ≠ ∅; space Ũ_j^c(X, α̃_0, α̃_1); bound B_0e^{−κd_j(X)} confirmed |
+| A22-9 | "(2.12)", "(2.23)" of SOURCES_VERIFY §6(d) | CORRECTED (citation): both are CMP 119 (pp. 256, 258); content confirmed |
+| A22-10 | "L odd" and unit-lattice page | CORRECTED: L odd > 11 on CMP 109 p. 251; k = K unit lattice on p. 259; not p. 256 |
+| A22-11a | (5.44) and the p. 298 irrelevance/derivative sentences | CONFIRMED (two readings) |
+| A22-11b | (3.54) constant (A14) | CORRECTED: printed as E_0α_3^{−5}; only the post-summation constant is unprinted |
+| A22-12 | 1989 bound-list constants | CONFIRMED for the use (scale-free: CMP 122 I p. 186; γ_0 = 1/2: CMP 122 II p. 380) |
+| A22-K | CMP 119 Sect. 3 T-step homogeneity and loss constant | NOT FOUND in print; use consistent (prefactor-only changes, same κ; defers to CMP 109 Sects. 6–7) |
+| A9 | (143) and C′_1 = C′_1(d, L) unprinted | CONFIRMED; a bound does NOT follow from (139)–(147) (NOT FOUND) |
+| A12 | β_0 "arbitrarily small" sentence | CORRECTED (page: CMP 119 p. 255); order β_0 before γ confirmed |
+
+Counts: 8 CONFIRMED (A20a, A20b, A22-5, A22-8b, A22-11a ×2, A22-12, A9 reading), 6 CORRECTED (A22-8a, A22-8c, A22-9, A22-10, A22-11b, A12), 2 NOT FOUND (A22-K loss constant; A9 bound on C′_1).
+
+Proposed moves in TRUST_LEDGER (for the owner; this file edits nothing else):
+- Close to §6 "verified readings": A20 (both halves), A12 (with the page correction), A22 (all six BALABAN_EXCERPTS items graded above; corrections listed).
+- Close A9 to §6 as a verified reading with the note "C′_1 unprinted and not derivable from the printed lines; value not used". Its mathematical status ("proved (Balaban), constant not printed") does not change.
+- Keep open, as one new narrow row replacing the KAPPA2 addition to A22: "Large-field T-step rate loss not printed by Balaban. CMP 119 Sect. 3 keeps κ and changes only prefactors (pp. 276–278); the rate bookkeeping is deferred to CMP 109 Sects. 6–7 / CMP 116 (2.33)–(2.41). Used by B22 (SOURCES_T2_KAPPA2)." Grade [R].
+- Side corrections for other files (not made here): THEOREM2.md §2 page "p. 256" → pp. 251, 259; THEOREM2_PROOF_v4 §1.4 caveat (2) and §10 item 10: the p. 256 sentence is now located; A14 text "value not given" → "E_0α_3^{−5}, the later constant is not given"; SOURCES_VERIFY §6(d) citation → CMP 119; SOURCES_D2/D3 (B6) → Z̃_j and Ũ_j^c. Name clash: Balaban's C_1 in CMP 119 (2.28) is not the budget C_1 of SOURCES_FX_R2.

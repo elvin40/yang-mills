@@ -36,3 +36,26 @@ Proviso (not new). The cancellation uses Step 2: a contributing Γ meets all n s
 - Caveat (not new): D2 §4.3 is itself [reduced]; the line-by-line rerun of Balaban (4.34)–(4.45), (5.43)–(5.44) is "not done". If that rerun expands f around x_□ to second order instead of freezing, a ∇²f would enter. The file's stated route avoids it.
 - Verdict: CONFIRMED. S1 is C¹ in f on the stated route.
 
+## 5. ASSEMBLY_N1 vs current (S) [read N1 §1, §3.4, §4.1, §4.3–4.5; HHIST_N1_VERIFY claims 1, 5, 6; UN1_VERIFY items 2, 4; D4D5_VERIFY §4, §7]
+
+Discrepancy CONFIRMED. ASSEMBLY_N1 still states (S) with N = C⁵ norm (l. 15), (n!)^{2+η} (l. 21, citing D3R §4.1), and Theorem N1 with ‖F‖_{11n}, (n!)^{2+2η}, s = 11, D > 2 (l. 6, 129, 134).
+Current verified form = D4D5 §5.1: C¹ norm N(f) = max(‖f‖_∞/r, ‖∇f‖_∞/ρ_1), order 1 + η, σ ∈ [16ε, ℓ/8], extra condition min diam ≤ σ. Verified: Lemma C arithmetic and order 1 + η (D4D5_VERIFY §4), (S) ⇒ (H-U) with s = 6, D = 1 + 2η (D4D5_VERIFY §7, HHIST_N1_VERIFY claim 6). Caveat carried from D4D5_VERIFY §4: order 1 + η needs (FX2) with the coarsest-scale radius; otherwise 1 + η + 4p_R/p_0 ≤ 2 + η (FX §6.3(c)), then D > 2 with s = 6.
+Edits ASSEMBLY_N1 needs (none applied here):
+- §0 l. 15: N := N_U (C¹, ρ_1-weighted). §1 l. 21: (n!)^{1+η}; add "min diam ≤ σ"; cite D4D5 §5.1, not D3R §4.1.
+- §1 item 3: F_r is C¹ (D2 l. 44), not "|∂^m f| ≤ C_m, m ≤ 5". Cosmetic: item 3 writes N_U with 2‖∇f‖/ρ_1 AND λ_i = 2N_U; that double-counts the factor 2 vs UN1_VERIFY item 2 (one 2 suffices). Harmless 2^n.
+- §3.4: |β_i| ≤ 10 and N ≥ 10n → |β_i| ≤ 6, N ≥ 6n.
+- §4.1: L_i^5 → L_i^3 (6 derivatives per block); ψ bounds |α| ≤ 1 suffice for N_U.
+- §4.3: exponent 2+η → 1+η; result (2C_Sσ^{−a})^n(n!)^{1+η}.
+- §4.4: (1+|k_i|)^5h^{−5} → (1+|k_i|)h^{−1}/ρ_1; Z = Σ(1+|q|)(1+|q|²)^{−3} < ∞; exponent count δ^{−4n}δ^{−n}δ^{−an}δ^N, N = 6n, p = (1−a)n.
+- §4.5: N = 6n ≥ 4n, constant 256^6. Still fine.
+- §5: s = 6, D > 1 (main) or D > 2 (fallback); (n!)^{1+2η}. §6 ledger item 1 and 4: replace D3R source with D4D5 Lemma C + (FX).
+Claim-5 fallback (σ ≥ ε^θ): s = max(6, ⌈4/θ⌉ + 1) with the C¹ count.
+
+## 6. Grades and B21 verdict
+
+1. (S) final form = D4D5 §5.1, derived by Lemma C from S1 + (FX); N1 cells h ∈ [ε, ℓ/512], σ = 16h. CONFIRMED. Arithmetic: σ_m = δ_m/4, h_m = δ_m/64, δ ∈ [64ε, ℓ/8]. Carry the D4D5_VERIFY §4 caveat: order 1 + η needs the (FX2) coarsest-scale radius; else ≤ 2 + η.
+2. Jacobian = Q_m, cancelled by tree decay because D ≤ σ; gradient cost in N_U; freezing, (Hβ), lattice gradient use ‖∇f‖ only; h ~ ε bump meets ≤ 16 cubes. CONFIRMED (§1, §4). Minor: in N1, D/σ = 6h/16h = 3/8, not 1/16; the formula bound is (2.75)⁴ ≈ 57, the true integer count is ≤ 2⁴ = 16 when 3h < Mε. Not load-bearing.
+3. Every factor of C^n(n!)^{1+η} is h-independent; σ enters only through Λ_1(σ)⁴ and the scale count, ≤ C_aσ^{−a}; only O4 is h-dependent. CONFIRMED. Q_m is the only h-dependent term and it is bounded through D/σ (§1). FX Step C(a) source cost is a relative bound paid by Y's own volume terms, so h does not enter (§3).
+4. B21 (S)-uniformity closed as a reduction given Lemma C, S1 at all m ≥ 0, (FX) in main form. CORRECTED (scope). The reduction holds (§1–§3). Corrections: (a) the main-form condition is already ledger item C13; say so, it is not a new condition; (b) inputs must also list the B19 residue (O3 ⇐ N3/B18, (FX-D) or the 2 + η fallback, Step A inference A1) and D2 §4.3 [reduced]; (c) the B21 row has a clause "C^∞ real-source form of (E14-c)" that the author did not read. Lemma C is a real-source bound with complexification only in t (D2 §7.1), so it plausibly covers (E14-c) for separated sources, but no file maps it.
+B21 regrade: YES to "reduced [R]" for the (S) clauses (support size down to h ~ ε, σ = 16ε, position) and the cutoff count (HHIST_N1_VERIFY Part 2). For the whole row, add one sentence mapping (E14-c) to D4D5 Lemma C, or keep that clause marked [unread].
+ASSEMBLY_N1 must be updated to the C¹ / (n!)^{1+η} / s = 6 form (§5 list) before the regrade is cited.
