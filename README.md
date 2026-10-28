@@ -13,9 +13,9 @@ Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an
 ### Target 1: Balaban's Theorem 2, weak form
 
 - Reduced to the single inequality (H2) plus the fixed-level inputs (PI), (F), (M_j), V1, (G2) and (H0)/L5 (THEOREM2_PROOF_v4.md section 10). The reduction of (B2) to (H2) is verified (B2_TWOSTEP_VERIFY.md); Theorem K and Theorem 2w are verified as conditional reductions. Theorem 2 weak form implies Theorem 1: proved, unverified.
-- (H2) is certified at L = 13 (2026-10-28): rho_1(j, K)^2 <= 10 < 13 for every level j >= 1 (incl. infinity) and every K, by an explicit majorant and an outward-rounded arb branch-and-bound (25,169 boxes, 58 s), so rho_2 <= 10 < 13 by rho2_le (Lean). Verified: H1_ANALYTIC_VERIFY, H1_ANALYTIC_VERIFY2 (H_j rebuilt from the definitions, agreement 5.8e-9), H2_CERTIFY_P5_VERIFY. Residue: the reading of Balaban's (0.4), the gauge choice, Prop. A at M >= 27 (second implementation only), bb_arb.py audited but not formally verified. At L = 3, 5, 9 (H2) is numerical only.
+- (H2) is certified at L = 13 (2026-10-28): rho_1(j, K)^2 <= 10 < 13 for every level j >= 1 (incl. infinity) and every K, by an explicit majorant and an outward-rounded arb branch-and-bound (25,169 boxes, 58 s), so rho_2 <= 10 < 13 by rho2_le (Lean). Verified: H1_ANALYTIC_VERIFY, H1_ANALYTIC_VERIFY2 (H_j rebuilt from the definitions, agreement 5.8e-9), H2_CERTIFY_P5_VERIFY. Residue: the reading of Balaban's (0.4), the gauge choice, Prop. A at M >= 27 (second implementation only), Lemma G and the bound chain beyond point checks, bb_arb.py audited but not formally verified. At L = 3, 5, 9 (H2) is numerical only.
 - Also: a point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 (verified, H2_CERTIFY_VERIFY.md). The L = 13 cell certificate (box sweep) runs as an independent cross-check; its result is not in yet.
-- Open: (PI), (F), (M_j), V1, (G2), L5. (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. At L = 13, (H2) is certified (above).
+- Open: (PI), (F), (M_j), V1, (G2), L5, and the K-independence of beta_j(g). (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. At L = 13, (H2) is certified (above).
 
 ### Target 2: finite-torus existence (compactness form)
 
