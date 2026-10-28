@@ -4,11 +4,11 @@ K^-adapted frame W = [Q, Kh], Q^dag = [I3 | -c], c_mu = Kh_mu / Kh_4, so Q^dag K
 Q^dag E P = Q^dag E =: V per block, hence
   A = Q^dag T Q = s^2 sum V D V^dag,  C = Q^dag T2 Q = s^2 sum V D P D V^dag,  b = Q^dag T Kh = s^2 sum V D P E^dag Kh,
   sigma = s^2 sum 1/|k^|^2,  Z = Q A^-1 Q^dag,  w = (Kh - Q A^-1 b)/|Kh|^2,  G = Q A^-1 C A^-1 Q^dag + w w^dag / sigma.
-The large Kh-direction eigenvalue of T never enters. Every quantity is a Taylor-1 model (TM) c + sum_nu delta_nu g_nu + R,
-|delta_nu| <= h, |R| <= r entrywise. Primitives: e^{ik}-1 (exact remainder h_k^2/2), E_q (second derivative a priori from the
+The large Kh-direction eigenvalue of T never enters. Every quantity is a Taylor-2 model (TM) c + sum delta_nu g_nu + sum delta_nu delta_la H_nl + R,
+|delta_nu| <= h, |R| <= r entrywise (block sums keep the first and second order exactly). Primitives: e^{ik}-1 (exact remainder h_k^2/2), E_q (second derivative a priori from the
 trigonometric structure), d^M (box sums for value and gradient at K_c; second-derivative bound
 by interval evaluation of the per-axis factors over the cell, see d_tm; tails as intervals). A^-1 by Oishi-Rump with X = A(K_c)^-1
-(eta = ||X A(K) - I|| < 1 over the whole cell). lambda_max by convexity in delta: max over the 16 vertices + ||r_G||_F.
+(eta = ||X A(K) - I|| < 1 over the whole cell). lambda_max: max over the 16 vertices of c + linear part (convex in delta) + ||quadratic part|| + ||r_G||_F.
 Float sums carry a priori rounding terms (premise P2); F carries P1'.
 Usage: python h1cert_cell2.py L M h N K1 K2 K3 K4   (M = inf, odd M < 2N+3 (full window), or M0:<M_0>; 'pi' = exact pi)
 """
@@ -28,41 +28,54 @@ class Near0(Exception): pass
 
 
 class TM:
-    """Taylor-1 model: c + sum_nu delta_nu g[nu] + R, |delta_nu| <= HH, |R| <= r entrywise. Axis 0 of c is a batch axis."""
-    def __init__(s, c, g, r): s.c, s.g, s.r = c, g, r
+    """Taylor-2 model: c + sum_nu delta_nu g[nu] + sum_{nu,la} delta_nu delta_la H[nu,la] + R, |delta_nu| <= HH, |R| <= r entrywise
+    (H symmetric in nu, la). Axis 0 of c is a batch axis. Products keep orders <= 2 exactly; the rest goes to r."""
+    def __init__(s, c, g, H, r): s.c, s.g, s.H, s.r = c, g, H, r
     def lin(s): return HH * np.abs(s.g).sum(0)
-    def mj(s): return np.abs(s.c) + s.lin() + s.r
-    def __add__(s, o): o = tm(o); return TM(s.c + o.c, s.g + o.g, s.r + o.r + EPS * (s.mj() + o.mj()))
-    def __neg__(s): return TM(-s.c, -s.g, s.r)
+    def quad(s): return HH**2 * np.abs(s.H).sum((0, 1))
+    def mj(s): return np.abs(s.c) + s.lin() + s.quad() + s.r
+    def __add__(s, o): o = tm(o); return TM(s.c + o.c, s.g + o.g, s.H + o.H, s.r + o.r + EPS * (s.mj() + o.mj()))
+    def __neg__(s): return TM(-s.c, -s.g, -s.H, s.r)
     def __sub__(s, o): return s + (-tm(o))
     def _prod(s, o, op):
-        o = tm(o); la, lb = s.lin(), o.lin()
-        r = op(np.abs(s.c) + la + s.r, o.r) + op(la, lb) + op(s.r, np.abs(o.c) + lb) + EPS * op(s.mj(), o.mj())
-        return TM(op(s.c, o.c), op(s.g, o.c) + op(s.c, o.g), r)
+        o = tm(o); la, lb, qa, qb = s.lin(), o.lin(), s.quad(), o.quad()
+        r = (op(la, qb) + op(qa, lb) + op(qa, qb) + op(s.r, np.abs(o.c) + lb + qb + o.r) + op(np.abs(s.c) + la + qa, o.r)
+             + EPS * op(s.mj(), o.mj()))
+        H = op(s.H, o.c) + op(s.c, o.H) + 0.5 * (op(s.g[:, None], o.g[None]) + op(s.g[None], o.g[:, None]))
+        return TM(op(s.c, o.c), op(s.g, o.c) + op(s.c, o.g), H, r)
     def __mul__(s, o):
-        if np.isscalar(o): return TM(s.c * o, s.g * o, s.r * abs(o) + EPS * abs(o) * s.mj())
+        if np.isscalar(o): return TM(s.c * o, s.g * o, s.H * o, s.r * abs(o) + EPS * abs(o) * s.mj())
         return s._prod(o, np.multiply)
     def __matmul__(s, o): return s._prod(o, np.matmul)
-    def H(s): return TM(np.swapaxes(s.c, -1, -2).conj(), np.swapaxes(s.g, -1, -2).conj(), np.swapaxes(s.r, -1, -2))
-    def conj(s): return TM(s.c.conj(), s.g.conj(), s.r)
-    def rs(s, *sh): return TM(s.c.reshape(sh), s.g.reshape((4,) + sh), s.r.reshape(sh))
-    def __getitem__(s, i): i = i if isinstance(i, tuple) else (i,); return TM(s.c[i], s.g[(slice(None),) + i], s.r[i])
+    def H_(s): return TM(*(np.swapaxes(x, -1, -2).conj() for x in (s.c, s.g, s.H)), np.swapaxes(s.r, -1, -2))
+    def conj(s): return TM(s.c.conj(), s.g.conj(), s.H.conj(), s.r)
+    def rs(s, *sh): return TM(s.c.reshape(sh), s.g.reshape((4,) + sh), s.H.reshape((4, 4) + sh), s.r.reshape(sh))
+    def __getitem__(s, i):
+        i = i if isinstance(i, tuple) else (i,); a = (slice(None),)
+        return TM(s.c[i], s.g[a + i], s.H[a + a + i], s.r[i])
     def sum(s, ax=0, eps=EPSS):
-        return TM(s.c.sum(ax, keepdims=True), s.g.sum(ax + 1, keepdims=True), s.r.sum(ax, keepdims=True) + eps * s.mj().sum(ax, keepdims=True))
-    def recip(s):  # real positive scalar entries: 1/a - 1/c + l/c^2 = e^2/(c^2 a) - R/c^2, e = l + R
-        c, e = s.c.real, s.lin() + s.r; lo = c - e
+        k = dict(keepdims=True)
+        return TM(s.c.sum(ax, **k), s.g.sum(ax + 1, **k), s.H.sum(ax + 2, **k), s.r.sum(ax, **k) + eps * s.mj().sum(ax, **k))
+    def recip(s):
+        """Real positive scalar entries. 1/(c+e) = 1/c - e/c^2 + e^2/c^3 - e^3/(c^3 (c+e)), e = l + q + R: keep 1/c - l/c^2 - q/c^2
+        + l^2/c^3; remainder R/c^2 + (Q+R)(2 La + Q + R)/c^3 + (La+Q+R)^3/(c^3 lo), lo = c - (La+Q+R) > 0."""
+        c, La, Q, R = s.c.real, s.lin(), s.quad(), s.r; e = La + Q + R; lo = c - e
         if not (lo > 0).all(): raise Near0
-        return TM(1 / c + 0j, -s.g.real / c**2 + 0j, (e**2 / (c**2 * lo) + s.r / c**2) * (1 + EPS) + EPS / c)
+        g = s.g.real; H = -s.H.real / c**2 + g[:, None] * g[None] / c**3
+        r = (R / c**2 + (Q + R) * (2 * La + Q + R) / c**3 + e**3 / (c**3 * lo)) * (1 + EPS) + EPS / c
+        return TM(1 / c + 0j, -g / c**2 + 0j, H + 0j, r)
 
 
-def tm(x): return x if isinstance(x, TM) else TM(np.asarray(x, complex), np.zeros((4,) + np.shape(x), complex), np.zeros(np.shape(x)))
+def tm(x):
+    if isinstance(x, TM): return x
+    x = np.asarray(x, complex); return TM(x, np.zeros((4,) + x.shape, complex), np.zeros((4, 4) + x.shape, complex), np.zeros(x.shape))
 
 
 def phase(th, scale):
-    """e^{i th} - 1 with th (B, 4) = (K + const)/scale: gradient wrt K_nu only in component nu, remainder (1/2)(h/scale)^2."""
-    c = np.exp(1j * th); g = np.zeros((4,) + th.shape, complex)
-    for nu in range(4): g[nu, :, nu] = 1j * c[:, nu] / scale
-    return TM(c - 1, g, np.full(th.shape, 0.5 * (HH / scale)**2 + 4 * U))
+    """e^{i th} - 1 with th (B, 4) = (K + const)/scale: derivatives wrt K_nu only in component nu, remainder (1/6)(h/scale)^3."""
+    c = np.exp(1j * th); g = np.zeros((4,) + th.shape, complex); H = np.zeros((4, 4) + th.shape, complex)
+    for nu in range(4): g[nu, :, nu] = 1j * c[:, nu] / scale; H[nu, nu, :, nu] = -0.5 * c[:, nu] / scale**2
+    return TM(c - 1, g, H, np.full(th.shape, (HH / scale)**3 / 6 + 4 * U))
 
 
 # ---------------------------------------------------------------- d^M as a Taylor model
@@ -171,7 +184,7 @@ def d_tm(L, M, Kc, h, N):
         tail = (Em[0][:, None, None, None] + Em[1][None, :, None, None] + Em[2][None, None, :, None] + Em[3][None, None, None, :])
         thi = tail.reshape(-1)[:, None] * (1 + 16 * U) / float((qmin * qmin).lower()) + diff
         c = c + thi / 2; r = r + thi / 2 * (1 + 1e-12)
-    return TM(c + 0j, grad + 0j, r)
+    return TM(c + 0j, grad + 0j, np.zeros((4, 4) + c.shape, complex), r)
 
 
 # ---------------------------------------------------------------- V' = Q'^dag E and m' = |k^|^2 P E^dag Kh as truncated Taylor series
@@ -199,17 +212,22 @@ class TP:
     def __sub__(s, o): return s + (-o)
     def conj(s): return TP({a: np.conj(x) for a, x in s.co.items()}, s.mj)
     def tm(s, shape):
-        """Taylor-1 model: value, gradient; remainder sum_{2<=|a|<=ORD} h^|a| |c_a| + sum_{m>ORD} h^m mj[m] (+ 2 h^MMAX mj[MMAX] for
+        """Taylor-2 model: value, gradient, Hessian/2; remainder sum_{3<=|a|<=ORD} h^|a| |c_a| + sum_{m>ORD} h^m mj[m] (+ 2 h^MMAX mj[MMAX] for
         m > MMAX: successive majorant ratios are < 0.1 there) + 1e-11 sum_m h^m mj[m] (float rounding of the coefficients, P1')."""
         z = np.zeros(shape, complex); h = HH
         c = s.co.get((0, 0, 0, 0), z) + z
         g = np.stack([s.co.get(tuple(int(i == nu) for i in range(4)), z) + z for nu in range(4)])
+        H = np.zeros((4, 4) + shape, complex)
+        for nu in range(4):
+            for la in range(4):
+                a = tuple(int(i == nu) + int(i == la) for i in range(4))
+                if a in s.co: H[nu, la] = H[nu, la] + s.co[a] * (1.0 if nu == la else 0.5)
         r = np.zeros(shape)
         for a, x in s.co.items():
-            if sum(a) >= 2: r = r + h**sum(a) * np.abs(x)
+            if sum(a) >= 3: r = r + h**sum(a) * np.abs(x)
         hm = h**np.arange(MMAX + 1).reshape((-1,) + (1,) * (s.mj.ndim - 1))
         r = r + (hm[ORD + 1:] * s.mj[ORD + 1:]).sum(0) + 2 * hm[-1] * s.mj[-1] + 1e-11 * (hm * s.mj).sum(0)
-        return TM(c, g, np.broadcast_to(r, shape) * (1 + 1e-12))
+        return TM(c, g, H, np.broadcast_to(r, shape) * (1 + 1e-12))
 
 
 def seq(c0, c1):  # majorant sequence [c0, c1/1!, c1/2!, ...]
@@ -259,29 +277,38 @@ def vm_tm(L, pf, Kc, h):
         t = tp_phase(th[:, rho], rho, L); er = np.zeros(4); er[rho] = 1
         kh = kh + TP({a: x[:, None] * er for a, x in t.co.items()}, t.mj)
     mp = (tp_sq(th, L) * mpp - tp_sq(Kc, 1.0) * kh).tm((Nb, 4))
-    Vt = TM(np.stack([v.c for v in V], 1), np.stack([v.g for v in V], 2), np.stack([v.r for v in V], 1))
+    Vt = TM(np.stack([v.c for v in V], 1), np.stack([v.g for v in V], 2), np.stack([v.H for v in V], 3), np.stack([v.r for v in V], 1))
     return Vt, mp.rs(Nb, 4, 1)
 
 
 # ---------------------------------------------------------------- Oishi-Rump inverse and final bound
-def verts(T):
+def verts(T):  # c + linear part at the 16 vertices (sup of a convex function of delta)
     return [T.c[0] + sum(s * HH * T.g[nu, 0] for nu, s in enumerate(sg)) for sg in itertools.product((-1, 1), repeat=4)]
 
 
 def inv_or(A, nR=None):
-    """TM of A(K)^-1 over the cell. X = A(K_c)^-1 (float); F = X A(K) - I, ||F|| <= eta = ||X A_c - I||_F + max_vertices ||X A_lin||
-    + ||X|| ||R_A||_F; A^-1 = X - X A_lin X + rem, ||rem|| <= ||X A_c - I|| ||X|| + ||X||^2 ||R_A|| + eta^2/(1 - eta) ||X||."""
+    """TM-2 of A(K)^-1 over the cell. X = A(K_c)^-1 (float). F = X A(K) - I = X A_l + G', G' = (X A_c - I) + X (A_q + R_A);
+    a = max_vertices ||X A_l|| (convex), g' = ||X A_c - I||_F + h^2 sum ||X H_nl|| + ||X|| ||R_A||, eta = a + g' < 1.
+    A^-1 = (I + F)^-1 X = X - X A_l X - X A_q X + X A_l X A_l X + rem,
+    ||rem|| <= ||X A_c - I|| ||X|| + ||X||^2 ||R_A|| + (2a + g') g' ||X|| + eta^3/(1 - eta) ||X||."""
     A0 = A.c[0]; X = np.linalg.inv(A0); n = len(A0)
     I = acb_mat(n, n, [1 if i == j else 0 for i in range(n) for j in range(n)])
     e0 = _radF(_mat(X) * _mat(A0) - I, acb_mat(n, n)); nX = _n2(X)
-    lin = max(float(_n2(X @ (Av - A0)).upper()) + EPS * np.linalg.norm(np.abs(X) @ np.abs(Av - A0)) for Av in verts(A))
+    fn = lambda M: float(_n2(M).upper()) + EPS * np.linalg.norm(np.abs(X) @ np.abs(M))
+    a = max(fn(X @ (Av - A0)) for Av in verts(A))
+    qn = HH**2 * sum(fn(X @ A.H[nu, la, 0]) for nu in range(4) for la in range(4))
     nR = np.linalg.norm(A.r[0]) * (1 + 1e-12) if nR is None else nR
-    eta = e0 + arb(lin) + nX * arb(nR)
+    gp = e0 + arb(qn) + nX * arb(nR); eta = arb(a) + gp
     if not eta < 1: raise ValueError(f"eta {float(eta.mid()):.3f}")
-    e2 = float((e0 * nX + nX * nX * arb(nR) + eta**2 / (1 - eta) * nX).upper())
-    g = np.stack([-X @ A.g[nu, 0] @ X for nu in range(4)])
-    r = np.full((n, n), e2) + EPS * HH * sum(np.abs(X) @ np.abs(A.g[nu, 0]) @ np.abs(X) for nu in range(4))
-    return TM(X[None], g[:, None], r[None]), float(eta.upper())
+    e2 = float((e0 * nX + nX * nX * arb(nR) + (2 * arb(a) + gp) * gp * nX + eta**3 / (1 - eta) * nX).upper())
+    G1 = [X @ A.g[nu, 0] @ X for nu in range(4)]
+    g = np.stack([-x for x in G1])
+    H = np.stack([np.stack([-X @ A.H[nu, la, 0] @ X + 0.5 * (G1[nu] @ A.g[la, 0] @ X + G1[la] @ A.g[nu, 0] @ X) for la in range(4)]) for nu in range(4)])
+    aX = np.abs(X)
+    r = np.full((n, n), e2) + EPS * (HH * sum(aX @ np.abs(A.g[nu, 0]) @ aX for nu in range(4))
+                                     + HH**2 * sum(aX @ np.abs(A.H[nu, la, 0]) @ aX + aX @ np.abs(A.g[nu, 0]) @ aX @ np.abs(A.g[la, 0]) @ aX
+                                                   for nu in range(4) for la in range(4)))
+    return TM(X[None], g[:, None], H[:, :, None], r[None]), float(eta.upper())
 
 
 def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
@@ -300,11 +327,11 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         e4 = np.zeros((1, 1, 4)); e4[0, 0, 3] = 1
         QH = Kh[:, 3:4].rs(1, 1, 1) * np.eye(3, 4)[None] - Kh[:, :3].rs(1, 3, 1) * e4   # Q'^dag, rows K^_4 e_mu - K^_mu e_4
         khc = kh.rs(Nb, 4, 1)
-        P = tm(np.eye(4)[None]) - (khc @ khc.H()) * inva.rs(Nb, 1, 1)
+        P = tm(np.eye(4)[None]) - (khc @ khc.H_()) * inva.rs(Nb, 1, 1)
         Khc = Kh.rs(1, 4, 1)
         VD = Vp * d.rs(Nb, 1, 4)                                         # V' D, V' = Q'^dag E = Q'^dag E P (P4)
-        A = (VD @ Vp.H()).sum() * s2
-        C = (VD @ P @ VD.H()).sum() * s2
+        A = (VD @ Vp.H_()).sum() * s2
+        C = (VD @ P @ VD.H_()).sum() * s2
         b = (VD @ (mp * inva.rs(Nb, 1, 1))).sum() * s2                   # Q'^dag T Kh = s^2 sum V' D P E^dag Kh
         sig = inva.sum() * s2
         lam0, U0 = np.linalg.eigh((A.c[0] + A.c[0].conj().T) / 2)
@@ -313,19 +340,20 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         A, C, b, QH = SH @ A @ S, SH @ C @ S, SH @ b, SH @ QH
         t3 = time.time()
         Y, eta = inv_or(A, nRA)
-        Q = QH.H()
+        Q = QH.H_()
         w = (Khc - Q @ (Y @ b)) * (Kh * Kh.conj()).sum(1, EPS).recip().rs(1, 1, 1)
-        G = Q @ (Y @ C @ Y) @ QH + (w @ w.H()) * sig.recip().rs(1, 1, 1)
+        G = Q @ (Y @ C @ Y) @ QH + (w @ w.H_()) * sig.recip().rs(1, 1, 1)
     except Near0:
         return None
     lam = max(lam_max_upper(_mat((Gv + Gv.conj().T) / 2)) for Gv in verts(G))
-    lam = lam + arb(np.linalg.norm(G.r[0]) * (1 + 1e-12) + EPS * 4 * np.linalg.norm(G.mj()[0]))
+    qG = HH**2 * sum(np.linalg.norm(G.H[nu, la, 0]) for nu in range(4) for la in range(4))   # ||quadratic part|| (Frobenius)
+    lam = lam + arb((np.linalg.norm(G.r[0]) + qG) * (1 + 1e-12) + EPS * 4 * np.linalg.norm(G.mj()[0]))
     ub = float((lam.sqrt() / L).upper())
     if log:
         relA = nRA / np.linalg.norm(A.c[0])
         log(f"  d {t1-t0:.1f}s, E {t2-t1:.1f}s, blocks {t3-t2:.1f}s; eta {eta:.3f}, |R_A|/|A| {relA:.2e}, "
             f"centre rho_1 {np.sqrt(max(np.linalg.eigvalsh((G.c[0] + G.c[0].conj().T) / 2))) / L:.6f}, "
-            f"|r_G|/lam {np.linalg.norm(G.r[0]) / float(lam.mid()):.2e}")
+            f"|r_G|/lam {np.linalg.norm(G.r[0]) / float(lam.mid()):.2e}, |quad_G|/lam {qG / float(lam.mid()):.2e}")
     return ub
 
 

@@ -73,36 +73,36 @@ theorem cell_invertible (A A₀ R : Matrix n n 𝕜) (E : Matrix n n ℝ)
           ((norm_nonneg _).trans hRA))
     _ = _ := by ring
 
-/-- A submatrix (injective row and column selections) has spectral norm at most that of the matrix. -/
+/-- A row selection `S = 1.submatrix e id` with `e` injective has `S Sᴴ = 1`, so `‖S‖₂ ≤ 1`. -/
+theorem sel_norm_le {m p : Type*} [Fintype m] [DecidableEq m] [Fintype p] [DecidableEq p]
+    (e : p → m) (he : Function.Injective e) : ‖(1 : Matrix m m 𝕜).submatrix e id‖ ≤ 1 := by
+  have hSS : (1 : Matrix m m 𝕜).submatrix e id * ((1 : Matrix m m 𝕜).submatrix e id)ᴴ = 1 := by
+    rw [conjTranspose_submatrix, conjTranspose_one, ← submatrix_mul _ _ _ _ _ Function.bijective_id,
+      Matrix.one_mul, submatrix_one _ he]
+  have h1 : ‖(1 : Matrix p p 𝕜)‖ ≤ 1 := by
+    rw [cstar_norm_def, map_one]; exact ContinuousLinearMap.norm_id_le
+  have : ‖(1 : Matrix m m 𝕜).submatrix e id‖ * ‖(1 : Matrix m m 𝕜).submatrix e id‖ ≤ 1 := by
+    rw [← l2_opNorm_conjTranspose ((1 : Matrix m m 𝕜).submatrix e id), ← l2_opNorm_conjTranspose_mul_self,
+      conjTranspose_conjTranspose, hSS]; exact h1
+  nlinarith [norm_nonneg ((1 : Matrix m m 𝕜).submatrix e id)]
+
+/-- A submatrix (injective row and column selections) has spectral norm at most that of the matrix:
+`M.submatrix f g = S_f M S_gᴴ` with `‖S_f‖, ‖S_g‖ ≤ 1`. -/
 theorem norm_submatrix_le {m m' k : Type*} [Fintype m] [DecidableEq m] [Fintype m'] [DecidableEq m']
     [Fintype k] [DecidableEq k] (M : Matrix m m 𝕜) (f : m' → m) (g : k → m)
     (hf : Function.Injective f) (hg : Function.Injective g) : ‖M.submatrix f g‖ ≤ ‖M‖ := by
-  have sel : ∀ {p : Type*} [Fintype p] [DecidableEq p] (e : p → m), Function.Injective e →
-      ‖(1 : Matrix m m 𝕜).submatrix e id‖ ≤ 1 := by
-    intro p _ _ e he
-    set S := (1 : Matrix m m 𝕜).submatrix e id
-    have hSS : S * Sᴴ = 1 := by
-      rw [conjTranspose_submatrix, conjTranspose_one, ← submatrix_mul _ _ _ _ _ Function.bijective_id,
-        Matrix.one_mul, submatrix_one _ he]
-    have h1 : ‖(1 : Matrix p p 𝕜)‖ ≤ 1 := by
-      rw [cstar_norm_def, map_one]; exact ContinuousLinearMap.norm_id_le
-    have : ‖S‖ * ‖S‖ ≤ 1 := by
-      rw [← l2_opNorm_conjTranspose S, ← l2_opNorm_conjTranspose_mul_self, conjTranspose_conjTranspose,
-        hSS]; exact h1
-    nlinarith [norm_nonneg S]
-  have hfac : M.submatrix f g = (1 : Matrix m m 𝕜).submatrix f id * M * ((1 : Matrix m m 𝕜).submatrix g id)ᴴ := by
+  have hfac : M.submatrix f g =
+      (1 : Matrix m m 𝕜).submatrix f id * M * ((1 : Matrix m m 𝕜).submatrix g id)ᴴ := by
     have h1 := one_submatrix_mul f (Equiv.refl m) M
     have h2 := mul_submatrix_one (Equiv.refl m) g (M.submatrix f id)
     simp only [Equiv.coe_refl, Equiv.refl_symm, Function.id_comp] at h1 h2
     rw [conjTranspose_submatrix, conjTranspose_one, h1, h2, submatrix_submatrix]; rfl
+  have hS := sel_norm_le (𝕜 := 𝕜) f hf
+  have hT := sel_norm_le (𝕜 := 𝕜) g hg
   rw [hfac]
   calc _ ≤ ‖(1 : Matrix m m 𝕜).submatrix f id‖ * ‖M‖ * ‖((1 : Matrix m m 𝕜).submatrix g id)ᴴ‖ :=
         (l2_opNorm_mul _ _).trans (mul_le_mul_of_nonneg_right (l2_opNorm_mul _ _) (norm_nonneg _))
-    _ ≤ 1 * ‖M‖ * 1 := by
-        rw [l2_opNorm_conjTranspose]
-        gcongr
-        · exact sel f hf
-        · exact sel g hg
+    _ ≤ 1 * ‖M‖ * 1 := by rw [l2_opNorm_conjTranspose]; gcongr
     _ = ‖M‖ := by ring
 
 /-- Rayleigh quotient numerator `re ⟪x, G x⟫`. `λ_max(G) ≤ c` for Hermitian `G` means `rq G x ≤ c ‖x‖²`. -/
