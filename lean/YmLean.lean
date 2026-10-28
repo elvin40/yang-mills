@@ -31,3 +31,4 @@ import YmLean.BlockInequalityE
 import YmLean.CauchyPerturbation
 import YmLean.CanonOrder
 import YmLean.ElemBounds
+import YmLean.SchurMarginal

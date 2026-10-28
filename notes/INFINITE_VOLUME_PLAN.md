@@ -11,7 +11,7 @@ Inputs read: THEOREM2_PROOF_v4.md §1, §6, §10; ASSEMBLY.md §0–§4; ASSEMBL
 - The compactness route is standard (§2, §3). It needs one new ingredient: Schwinger-function bounds that are uniform in ε AND in ℓ, for test functions with support in a fixed ball.
 - The plan below proposes to get that ingredient WITHOUT any infrared control. The proposal is a conditional source bound (CG) at the unit scale, plus positivity of the unit-scale marginal measure (§4.2). [I] This is the one step of new mathematics on the weak-sense route. It is plausibly within reach of the existing sourced chain, because it needs Steps A, C, D of (FX) and not Step B (the unit-scale cluster expansion on the ℓ-torus).
 - With (CG), the weak-sense statement (subsequential limit on R⁴; translations, hypercubic group B_4, reflection positivity, regularity, symmetry, nontriviality) follows by the same short arguments as ASSEMBLY §2.4–§2.8. Full O(4) invariance is NOT obtained. It is open even for lattice φ⁴₃ (reports/EUCLID_INV_LIT §1a [V]).
-- Uniqueness, clustering, and the mass gap are blocked. The coupling leaves Balaban's window ]0, γ] at a length scale ξ_g ≈ exp((g^{−2} − γ^{−2})/b) unit cells; infinite volume at fixed g reaches every scale above ξ_g. The side quest put the gap between Balaban's γ and any proved strong-coupling regime at ≥ 4.8×10¹⁷ in β (PLAN.md 2026-10-28 MASS_GAP_VERIFY line [V]).
+- Uniqueness, clustering, and the mass gap are blocked. The coupling leaves Balaban's window ]0, γ] at a length scale ξ_g ≈ exp((g^{−2} − γ^{−2})/c) unit cells, c = 0.3715, up to the constants of Lemma IV-ξ; infinite volume at fixed g reaches every scale above ξ_g. The side quest put the gap between Balaban's γ and any proved strong-coupling regime at ≥ 4.8×10¹⁷ in β (PLAN.md 2026-10-28 MASS_GAP_VERIFY line [V]).
 
 ## 1. What Target 2 delivers (fixed torus)
 
@@ -168,3 +168,28 @@ Tags: WR = within reach (short proof or audit, existing material); NM = needs ne
 Net dependency [I]. (IV-weak) without E1-R = Target 2's whole binding set (17 A + X2–X5 + 21 B, TRUST_LEDGER §5), MINUS the unit-scale part of B19 (FX Step B), PLUS IV-2 (audit) and IV-3 ((CG)). Everything else is a short argument already written in ASSEMBLY, with ℓ⁴ replaced by support volumes.
 Order of work. IV-1 and IV-2 first (audits, cheap, and IV-2 can fail visibly: one row whose constant hides |T|). Then IV-3, the only NM item. Then IV-5 (bookkeeping). IV-4, IV-6–IV-10 are done above or in ASSEMBLY.
 
+## 6. Conclusion
+
+Is a subsequential infinite-volume statement a realistic target? Yes, as a conditional statement of the same type as Target 2 [I]. Reasons:
+- The infinite-volume direction does not need infrared control if the bounds are moment bounds obtained through the unit-scale marginal, which is a probability measure on a compact space (§4.2). The infrared problem enters only through E4, uniqueness, and the gap, which the weak sense does not claim.
+- The coupling flow is already ℓ-free (§4.1).
+- The UV constants are volume-uniform per polymer in every row checked so far (§3.2 V7), and Balaban states E_± independent of T_η [V].
+- The only new mathematics is (CG), a conditional re-run of FX Steps A, C, D. It is moderate, of the kind the campaign has done many times. It is not verified, and it has one named risk (last-step R operation near V-large regions, §4.2).
+What it is not. It is weak existence. Jaffe–Witten footnote 2 excludes it as a Clay solution. It has no O(4) (open even for lattice Φ⁴₃), no clustering, no uniqueness, and no gap. The gap is blocked by a window ≥ 10¹⁷ in β.
+Side benefit [I]. If (CG) holds, Target 2 itself can drop FX Step B: the fixed-torus bounds follow from Lemma IV-M with ℓ fixed. This removes the one infrared-type step from Target 2.
+
+Candidate headline (conditional on Balaban's published papers, the Target 2 ledger, and (CG)):
+"For SU(2) in four dimensions, the renormalized Schwinger functions of the action density, along Balaban's renormalization-group trajectory, have subsequential limits on R⁴ as the lattice spacing tends to 0 and the periodic volume tends to infinity. Every limit is translation invariant, hypercubic invariant, reflection positive, tempered with the OS II linear growth bound, and nontrivial (neither zero nor the free composite)."
+Shorter: "Subsequential infinite-volume continuum limit of SU(2) Yang–Mills composite Schwinger functions, with all OS axioms except rotation invariance and clustering."
+The same shape as Gubinelli–Hofmanová for Φ⁴₃ [V, EUCLID_INV_LIT §1a].
+
+Recommended next step: IV-2 (audit: does any UV row hide a factor of the torus volume?) and IV-1 (one paragraph). Both are cheap and can refute the plan early. Then a written attempt at (CG) with an independent verifier.
+
+## 7. Ledger of this file
+
+[P] proved here (short, unverified): Lemma IV-M (moments from (CG)); Lemma IV-ξ (window length, given (c′) for the continued flow); the compactness extraction over an exhaustion (§3.1 step 2, sketch); the transfer of E0′ (sketch), E1-T, E1-H, E2, E3 (§3.3, from ASSEMBLY §2.4–§2.8 with supports in a ball); V3 bookkeeping (ℓ⁴ → |B|).
+[V] quotes checked in project files or page images this session: ASSEMBLY §1.1–§1.3, §2.2, §4; ASSEMBLY_N1 header, §1 item 4, l. 124; SOURCES_T2_VOL §1–§4; TRUST_LEDGER X1–X5, §4.2; SOURCES_FX §6.2–§6.4, l. 38; SOURCES_D4D5 §3 (a), §3.2(ii), §2 thermal-state line; SOURCES_D3 (B7), (B11), l. 35; SOURCES_T2_KUNIF l. 17–18, §3.2; A1_WALK_FULL l. 183; A15_WHOLE l. 55; QE_INV §3.4; HHOL K2; v4 §3.3 (c); PLAN.md mass-gap lines (window 4.8×10¹⁷); reports/EUCLID_INV_LIT §1a; CMP 122 II pp. 355–356 page images (Theorem 1, (0.1), "E_−, E_+ independent of k, T_η, U_k", and the remark on loop variables). CMP 122 II's introduction says nothing about infinite volume; it states only the volume-independent constants and lists "expectation values of physical observables, like loop variables" as future work [V, page image p. 356].
+[I] inferences: the reading of the audit (§3.2: V2 removable, V4 the obstruction); IV-1 (ℓ-free trajectory); the plausibility and reduction of (CG) (§4.2), including its named risk; the rescaling claim that the cumulant route is ℓ-uniform for ℓ ≤ ξ_g/(22M); the extension of (c′) past the unit scale; the E1-R comparison-type classification; the net dependency; the side benefit for Target 2; the normalization of W^{(2)} and its holomorphy.
+[R] standard results cited, text not re-read: OS I (CMP 31 (1973)) and OS II (CMP 42 (1975)) axioms and reconstruction (E0′ linear growth; E4 ⇔ unique vacuum); Glimm–Jaffe, Quantum Physics, §6, §19 (numbering, gap ⇔ exponential clustering); Seiler, LNP 159 (1982); Osterwalder–Seiler, Ann. Phys. 110 (1978) (lattice RP, X3); compactness of infinite-volume lattice Gibbs states for compact spins; Watanabe 1989 (not read by anyone in the project).
+
+STATUS: COMPLETE as a plan (unverified). No other file edited.

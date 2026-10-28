@@ -29,3 +29,12 @@ Grade A9: CONFIRMED.
 - Arithmetic re-done: 2/(1 + 1/7) = 7/4; −7/4 + 3/2 = −1/4. Requirement 2/(1 + β_0) > 3/2 ⇔ β_0 < 1/3. Correct.
 - Order: both sentences fix β_0 then demand g small. Correct.
 Grade A12: CONFIRMED (the page correction itself is right).
+
+## 4. A20 — CMP 119 p. 245 (pdf 3), p. 255 (pdf 13); CMP 122 II pp. 380, 383 (pdf 26, 29), images
+- CMP 119 p. 245: "R_0 is the smallest power of L such that R_0 ≥ (log g_0^{−2})^r, r ≥ 2". Match. p. 255 (2.5) match (see §3).
+- A20a check of the proof: g_j ≤ γ < e^{−1/2} ⇒ g_j² < e^{−1} ⇒ log g_j^{−2} > 1 ⇒ (log g_j^{−2})^r > 1 (r ≥ 2) ⇒ R_j = L^n > 1 ⇒ n ≥ 1 ⇒ R_j ≥ L. Valid. Uses only R_j ≥ (·)^r and R_j a power of L.
+- CMP 122 II p. 380: "except that for the last we have the corresponding constant O(log g_j^{−2}) instead of O(1). ... every large field domain Z_j contributes the constant O(1) log g_j^{−2}|Z_j| ≤ O(1) log g_j^{−2}(MR_j)^d d′_j(Z_j) ≤ O(1)M^dR_j^{d+1}d′_j(Z_j)". Verbatim match. γ_0 "absolute positive constant (in this factor we may take γ_0 = 1/2)": match.
+- CMP 122 II p. 383: (1.77) error term "O(1)A_0A_1²B_3⁴B_5M^{d+6}R_j^{d+3}p_0(g_j)p_1²(g_j)g_j" with "We assume that g_j is sufficiently small, so that the constant ... is small, or O(1)"; "All the integrals with respect to the group valued variables ... are estimated by 1"; "exp O(1)|Z_j ∩ Ω_j|"; "exp O(1)(MR_j)^{−d}|Z_j|"; (1.79) "T′_k(X)1 ≤ sup exp{Σ_j O(1)M^dR_j^{d+1}d′_j(Z_j)}·ΠΠ exp(−½γ_0A_1²p_0²(g_j)(d′_j(Z_j^{(i)}) + 1) − 2p_0(g_j))Π′exp(−p_0(g_j))". Match.
+- One addition the source file omits: p. 383 also says "we have to include only the constant with the logarithms in the last line into the integration measure" for the A_j integrals. This is the same log g_j^{−2} normalization constant, already moved into R_j on p. 380. No new g-dependence.
+- C_c g-free is a reading of unvalued O(1)s, as the file says; no printed sentence contradicts it.
+Grade A20: CONFIRMED (a: proved; b: reading supported by the printed lines, with the stated caveat).

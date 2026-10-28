@@ -70,3 +70,18 @@ Not Mathlib-ready in WG: (I1)–(I3) Balaban's walk expansions of G₀, G′, C�
 
 Not Mathlib-ready in WC: the group mean M (Federbush/Karcher), Lie-group first-order expansions of holonomies (they need matrix-Lie-group derivative identities; feasible in principle via `Matrix.exp` derivatives but hard), (A3-4.2)–(A3-6.1) inputs, CMP 109 term match (1.1), Q̃ and C of CMP 109.
 
+## 2. History chain (part 1)
+
+### 2a. SOURCES_G3_N2.md (Lemma G3, (Q) assembled from A7 + A8)
+
+The Schur-complement Gaussian marginal (2.4) and the one-bond corollary are in progress elsewhere. Not listed.
+
+- H1. Reference split: Q₀′ = T*diag(I, H₀)T with T = [[I,0],[H₀⁻¹Γ, I]], and Q = Q₀′ − P with P = diag(α₅Z + Γ*D_SΓ, α₅I) ≥ 0, ‖P‖ ≤ α₅ + G_Γ²δ_S. §3.2. `Matrix.fromBlocks`, `fromBlocks_multiply`, `conjTranspose`. Easy. Check value: the B-block of Q₀′⁻¹ is H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹ (the corrected form; SOURCES_Q 4.3 had it wrong).
+- H2. Upper bound Λ: for a positive 2×2 block matrix, ‖M‖ ≤ ‖M₁₁‖ + ‖M₂₂‖; hence ‖Q₀′⁻¹‖ ≤ Λ₀ = 1 + h + h²G_Γ²; (Hα) pΛ₀ ≤ ½ ⇒ Q ≥ (2Λ₀)⁻¹ and Γ_bb ≤ ‖Q⁻¹‖ ≤ 2Λ₀. §3.3. `Matrix.PosSemidef`, Loewner order on Hermitian matrices, Weyl/Rayleigh (CertBridge.`rq_weyl`). Medium. Load-bearing: Λ enters U(g) and S_χ.
+- H3. Lower bound c_−: Q > 0 ⇒ (Q⁻¹)_BB = Σ_B⁻¹ with Σ_B ≤ H₀ ⇒ (Q⁻¹)_BB ≥ H₀⁻¹ ≥ ‖H₀‖⁻¹I; compression to a bond keeps it; ‖sym K₀‖ ≤ sup|⟨B, A_ZB⟩| + ‖K₀ − A_Z‖ ⇒ c_− ≥ (γ₁^N + ε₀)⁻¹ ≥ 4/(5γ₁^N). §3.4. Block inverse (`Matrix.fromBlocks` inverse via Schur), operator monotonicity of inversion (`CFC`-order lemmas in `Mathlib.Analysis.CStarAlgebra`, or a direct finite-dim proof via congruence). Medium. Load-bearing: c_− is "(Q) with c_−", the open input of B13 / HHIST2 R3. The numpy check (2000 instances) becomes a theorem.
+- H4. One-bond calculus: max_{t>0} t^{n+1}e^{−t²/(4Λ)} = (2Λ(n+1))^{(n+1)/2}e^{−(n+1)/2} = D_n; U(g) = A_nD_nε₁⁻¹e^{−ε₁²/(4Λg²)} is increasing on (0, γ]; S_χ ≤ C_pγ^p for every p > 0. §4.1, 4.3. `Real.rpow`, derivative sign test (`StrictMonoOn` from `deriv`), `Real.tendsto_pow_mul_exp_neg_atTop_nhds_zero`. Easy–medium.
+- H5. Bond-count and (Hγ) inequalities: n_b ≤ η⁻¹e^{ηn_b}; (1/20)x − 4M⁴e^{−x/20} ≥ 0 for x ≥ x₀(M) (explicit x₀). §4.2 + VERIFY correction. `Real.add_one_le_exp`, `Real.exp_le_exp`. Easy.
+- H6. Sphere surface bound (2.2): for a Gaussian density p_b with c_− ≤ Γ_bb ≤ Λ, ∫_{|x|=r} p_b ≤ |S^{n−1}|r^{n−1}(2πc_−)^{−n/2}e^{−r²/(2Λ)}, with |S^{n−1}| = 2π^{n/2}/Γ(n/2). §2.5. `MeasureTheory.integral_fun_norm_addHaar`, `EuclideanSpace.volume_ball`, `Real.Gamma`. Hard (Mathlib has no surface measure on spheres as such; one would restate via the radial derivative of a ball integral). Prose: that ∂_g of the sharp cut is this surface integral (Leibniz/coarea for an indicator) stays prose unless done by the radial formula.
+
+Not Mathlib-ready in G3_N2: Balaban's pointwise chain (2.15)–(2.25); the Kotecký–Preiss derivative step (N3); A7/A8 inputs; G_Γ via the s-rule; the large-field level-set Jacobian (open even in prose).
+

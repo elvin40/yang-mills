@@ -1,6 +1,7 @@
 import Mathlib.LinearAlgebra.Matrix.PosDef
 import Mathlib.LinearAlgebra.Matrix.SchurComplement
 import Mathlib.Analysis.Matrix.Spectrum
+import Mathlib.Algebra.Order.Star.Real
 
 /-!
 # Schur complement, block inverse, and the one-bond marginal (SOURCES_G3_N2.md §2.4, §3.3–3.4)
@@ -91,6 +92,7 @@ theorem quad_at_min {A : Matrix ι ι ℝ} (B : Matrix ι κ ℝ) (D : Matrix κ
       x ⬝ᵥ ((D - Bᵀ * A⁻¹ * B) *ᵥ x) := by
   rw [quad_split B D hA, neg_add_cancel, zero_dotProduct, zero_add]
 
+omit [DecidableEq κ] in
 /-- **(3)+(4) Lower bound passes to the Schur complement** (SOURCES_G3_N2.md §2.4–2.5):
 if `c ≥ 0` and `c‖v‖² ≤ ⟨v, Qv⟩` for all `v`, then `c‖x‖² ≤ ⟨x, S_b x⟩` for all `x`.
 So `λ_min(S_b) ≥ λ_min(Q)`. -/
@@ -112,6 +114,7 @@ theorem compression_lower {A : Matrix ι ι ℝ} {B : Matrix ι κ ℝ} {C : Mat
   have h := hQ (Sum.elim 0 x)
   simpa [fromBlocks_mulVec, sumElim_dotProduct_sumElim] using h
 
+omit [DecidableEq κ] in
 /-- **(3) Schur complement of a positive-definite matrix is positive definite**
 (SOURCES_G3_N2.md §2.4, §3.4: `S_b > 0`, `Σ_B > 0`). -/
 theorem schur_posDef {A : Matrix ι ι ℝ} {B : Matrix ι κ ℝ} {D : Matrix κ κ ℝ}
@@ -120,10 +123,9 @@ theorem schur_posDef {A : Matrix ι ι ℝ} {B : Matrix ι κ ℝ} {D : Matrix �
   have hH : (D - Bᵀ * A⁻¹ * B).IsHermitian := by
     have hD : D.IsHermitian := by
       have := hQ.1.submatrix (Sum.inr : κ → ι ⊕ κ); exact this
-    have hAi : A⁻¹.IsHermitian := hA.1.inv
     refine hD.sub ?_
     simpa [conjTranspose_eq_transpose_of_trivial] using
-      hAi.conjTranspose_mul_mul (B := Bᴴ)
+      isHermitian_conjTranspose_mul_mul B hA.1.inv
   refine PosDef.of_dotProduct_mulVec_pos hH fun x hx => ?_
   simp only [star_trivial]
   rw [← quad_at_min B D hA]
@@ -142,9 +144,8 @@ theorem schur_eigenvalues_ge {A : Matrix ι ι ℝ} (B : Matrix ι κ ℝ) (D : 
   have h1 : (e : κ → ℝ) ⬝ᵥ e = 1 := by
     have := hS.eigenvectorBasis.orthonormal.1 j
     rw [EuclideanSpace.norm_eq] at this
-    have h2 : ∑ i, ‖e i‖ ^ 2 = 1 := by
-      have := congrArg (· ^ 2) this
-      simpa [Real.sq_sqrt (Finset.sum_nonneg fun i _ => sq_nonneg ‖e i‖)] using this
+    have h2 : ∑ i, ‖e i‖ ^ 2 = 1 :=
+      (Real.sqrt_eq_one (x := ∑ i, ‖e i‖ ^ 2)).1 this
     simpa [dotProduct, sq] using h2
   have := schur_lower B D hA hc hQ e
   simpa [h1] using this
@@ -166,22 +167,22 @@ theorem gamma_bb_eq {A : Matrix ι ι ℝ} {B : Matrix ι κ ℝ} {D : Matrix κ
     (fromBlocks A B Bᵀ D)⁻¹.toBlocks₂₂ = (D - Bᵀ * A⁻¹ * B)⁻¹ := by
   rw [block_inv_posDef hQ, toBlocks_fromBlocks₂₂]
 
-/-- **(2) Author's form** (SOURCES_G3_N2.md §3.3, verifier's correction in VERIFY V1).
-Correspondence: `ι` = X, `κ` = B, `G = Γ : B ← X`, `H = H₀`; `Q₀′ = fromBlocks (1 + GᵀH⁻¹G) Gᵀ G H`
-(`Γ* = Gᵀ` over ℝ). Its Schur complement `H − G(1 + GᵀH⁻¹G)⁻¹Gᵀ` has inverse
-`H⁻¹ + H⁻¹GGᵀH⁻¹`, so the B-block of `Q₀′⁻¹` is `H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹`. -/
-theorem schur_inv_author {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) :
-    (H - G * (1 + Gᵀ * H⁻¹ * G)⁻¹ * Gᵀ)⁻¹ = H⁻¹ + H⁻¹ * G * Gᵀ * H⁻¹ := by
-  have hA : (1 + Gᵀ * H⁻¹ * G).PosDef := by
-    refine PosDef.one.add_posSemidef ?_
-    simpa [conjTranspose_eq_transpose_of_trivial] using
-      hH.inv.posSemidef.conjTranspose_mul_mul_same G
+/-- `1 + GᵀH⁻¹G > 0` for `H > 0` (the X-block of `Q₀′`, SOURCES_G3_N2.md §3.2). -/
+theorem one_add_posDef {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) :
+    (1 + Gᵀ * H⁻¹ * G).PosDef := by
+  refine PosDef.one.add_posSemidef ?_
+  simpa [conjTranspose_eq_transpose_of_trivial] using
+    hH.inv.posSemidef.conjTranspose_mul_mul_same G
+
+/-- `S · (H⁻¹ + H⁻¹GGᵀH⁻¹) = 1` for `S = H − G(1 + GᵀH⁻¹G)⁻¹Gᵀ` (VERIFY V1, by hand there). -/
+theorem schur_mul_author {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) :
+    (H - G * (1 + Gᵀ * H⁻¹ * G)⁻¹ * Gᵀ) * (H⁻¹ + H⁻¹ * G * Gᵀ * H⁻¹) = 1 := by
+  have hA := one_add_posDef G hH
   have hHi : H * H⁻¹ = 1 := mul_nonsing_inv H ((isUnit_iff_isUnit_det H).1 hH.isUnit)
   have hAi : (1 + Gᵀ * H⁻¹ * G)⁻¹ * (1 + Gᵀ * H⁻¹ * G) = 1 :=
     nonsing_inv_mul _ ((isUnit_iff_isUnit_det _).1 hA.isUnit)
   set Ai := (1 + Gᵀ * H⁻¹ * G)⁻¹
   set Hi := H⁻¹
-  apply inv_eq_right_inv
   have key : Ai + Ai * (Gᵀ * Hi * G) = 1 := by rw [← hAi, Matrix.mul_add, Matrix.mul_one]
   calc (H - G * Ai * Gᵀ) * (Hi + Hi * G * Gᵀ * Hi)
       = H * Hi + H * Hi * (G * Gᵀ * Hi) - G * (Ai + Ai * (Gᵀ * Hi * G)) * (Gᵀ * Hi) := by
@@ -189,19 +190,19 @@ theorem schur_inv_author {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.P
     _ = 1 := by
         rw [key, hHi]; simp only [Matrix.mul_one, Matrix.one_mul, Matrix.mul_assoc]; abel
 
-/-- `Q₀′⁻¹` B-block `= H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹` (SOURCES_G3_N2.md §3.3), via `toBlocks₂₂_inv`. -/
+/-- **(2) Author's form**, Woodbury step: `(H − G(1 + GᵀH⁻¹G)⁻¹Gᵀ)⁻¹ = H⁻¹ + H⁻¹GGᵀH⁻¹`. -/
+theorem schur_inv_author {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) :
+    (H - G * (1 + Gᵀ * H⁻¹ * G)⁻¹ * Gᵀ)⁻¹ = H⁻¹ + H⁻¹ * G * Gᵀ * H⁻¹ :=
+  inv_eq_right_inv (schur_mul_author G hH)
+
+/-- **(2) Author's form** (SOURCES_G3_N2.md §3.3, verifier's correction in VERIFY V1).
+Correspondence: `ι` = X, `κ` = B, `G = Γ : B ← X`, `H = H₀`; `Q₀′ = fromBlocks (1 + GᵀH⁻¹G) Gᵀ G H`
+(`Γ* = Gᵀ` over ℝ). Its B-block of `Q₀′⁻¹` is the inverse of the Schur complement
+`H₀ − Γ(1 + Γ*H₀⁻¹Γ)⁻¹Γ*`, which is `H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹`. -/
 theorem author_Bblock {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) :
     (fromBlocks (1 + Gᵀ * H⁻¹ * G) Gᵀ G H)⁻¹.toBlocks₂₂ = H⁻¹ + H⁻¹ * G * Gᵀ * H⁻¹ := by
-  have hA : (1 + Gᵀ * H⁻¹ * G).PosDef := by
-    refine PosDef.one.add_posSemidef ?_
-    simpa [conjTranspose_eq_transpose_of_trivial] using
-      hH.inv.posSemidef.conjTranspose_mul_mul_same G
-  have hS : IsUnit (H - G * (1 + Gᵀ * H⁻¹ * G)⁻¹ * Gᵀ).det := by
-    rw [← isUnit_iff_isUnit_det, ← nonsing_inv_nonsing_inv _ ?_, schur_inv_author G hH]
-    · exact (isUnit_iff_isUnit_det _).2 <| by
-        sorry
-    · sorry
-  rw [toBlocks₂₂_inv _ _ _ _ ((isUnit_iff_isUnit_det _).1 hA.isUnit) hS, schur_inv_author G hH]
+  rw [toBlocks₂₂_inv _ _ _ _ ((isUnit_iff_isUnit_det _).1 (one_add_posDef G hH).isUnit)
+    (isUnit_det_of_right_inverse (schur_mul_author G hH)), schur_inv_author G hH]
 
 /-- **(5)** `c₋ = (γ₁ᴺ + ε₀)⁻¹ ≥ 4/(5γ₁ᴺ)` given `0 < γ₁ᴺ`, `ε₀ ≤ γ₁ᴺ/4`
 (SOURCES_G3_N2.md §3.4). `ε₀ ≥ 0` is not needed. -/
