@@ -187,3 +187,5 @@ Suggested TRUST_LEDGER edit (not made): A11 status "the later inequalities not l
 [P] §1 (T1)–(T4); §2–§7 class (b) derivations; §8 table; §9 cycle check.
 [I] v4 §1.2, §2.3 ((P-up), (P-low), (S), sweep items 5, 6); HIGHER_M1 §B2.2 order; p_1 form (CMP 122 I (1.27) via HTHR_VERIFY); A_0 ≫ A_1 (SOURCES_D3_VERIFY).
 Firewall kept. No existing file edited. Status: complete 2026-10-28, unverified.
+
+Corrections after verification (SOURCES_A11_CONST_VERIFY, 2026-10-28): list omissions p_0³(g_k) (p. 278), β_j(g_{j−1}) = β′_j (pp. 259, 282; no ratio bound needed), the multi-scale use of g_k^{−2}(·) − g_k^{−2} on p. 277 (needs (2.6) at general n − m); (2.6)×(2.7) gives (1 + β_0)², fixed by monotonicity of gℓ^q in g for ℓ > 2q (same fix for α_{i,j} and ε_{k+1} ≤ (1 + β_0)ε_k); u_j(x) = φ_ju_j + (1 − φ_j)u_{j−1} (φ swapped); order M_1 → M_2 → M (p. 245: M_2 = L²M_1, M ≫ M_2) — add M > M_2 to HIGHER_M1 §B; "r > 1" closed: p. 245 prints r ≥ 2; (3.7) halves need one strict; (2.46) keeps R_1, so R_1g^{κ_0−6} < 1 goes into S8; p. 283 sketch needs κ > 10 log L (outside A11). Inherited: p_1(g) form from CMP 122.
