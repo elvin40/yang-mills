@@ -1,6 +1,6 @@
 # SOURCES_HTHR2 — (H-thr) after M2prime, M4, M5
 
-Status: in progress (2026-10-27).
+Status: complete (2026-10-27). Unverified.
 Author: Claude (Opus), unverified. Firewall respected: /tmp/sa_repo and reports/SUSSMAN_ALPOGE_MAP.md not read. No existing file edited.
 Inputs read in full: SOURCES_HTHR.md, SOURCES_HTHR_VERIFY.md, SOURCES_W4.md (§1–§8), SOURCES_D2.md §6–§7.
 
@@ -90,3 +90,27 @@ Conditions on γ (all "γ small", independent of j, K, c):
  (G3′) right side of (3.4) ≤ ¼.
 Then Lemma H′ (HTHR §5) holds unchanged with η_j from (3.3): Σ|B_j′| ≤ ½, ½ ≤ |v_k| ≤ 3/2, g_k(c) ≤ γ. The W-Gronwall of §3.2 runs inside the same induction (it uses only V ≤ 3/2 and (H-hist2)), so there is no circularity.
 Size warning. κ_2 = ½L^{−(d+5)} is small (d = 4, L = 2: κ_2 ≈ 10^{−3}). For q = 2, (G1′) needs log γ^{−2} ≥ 5/(qκ_2) ≈ 2.5·10³. Mathematically harmless ("γ small"); it shows the R loss costs a lot in the constant, nothing in the form.
+
+## 4. Numerical checks [num] (python -I inline, no files kept)
+
+(N1) Integral bound ∫_{y_0}^∞ e^{h(y)}dy ≤ e^{h(y_0)}, h(y) = y + a y + P log y − κy^q (Ψ-type, q non-integer allowed). Ratio integral/bound (scipy quad, 400 units of y):
+ (a,P,κ,q) = (0.5,2,0.5,1.5): 0.555, 0.311, 0.193 at y_0 = 20, 40, 80 (G1 holds).
+ (0.5,2,0.05,2.0): 1.8 at y_0 = 20 (G1 fails), 0.402, 0.154 at 40, 80 (G1 holds).
+ (1,4,1,1.2): 8.22, 2.27, 1.19 at 20, 40, 80 (G1 fails at all three).
+So the bound holds exactly where the h′ ≤ −1 condition holds, and fails where it fails. The discrete sum Σ_{m≥1} ≤ β^{−1}∫ is monotonicity; HTHR §4 and HTHR_VERIFY Step 8 already checked it with brute-force sums.
+(N2) Lemma 7.1(a): 300 random trigonometric g on [−0.4, 0.4]: max of ‖g′‖/(2(‖g‖‖g″‖)^{1/2} + 2‖g‖/a) = 0.487 ≤ 1.
+
+## 5. Honest ledger
+
+ L1 [V] Balaban's block bound read on the page images (F3): exp(−½γ_0K_R^{−1}A_1²p_1²) < exp(−R^{−d−5}p_1²), with the assumption 2p_1 − (d+5)r_0 > p_0. Printing typo p_1 → p_1² in the middle expression noted. The (1.27) cutoff has a better factor exp(−γ_0A_1²p_1²) with no R loss (F2).
+ L2 [proved given F3, M3] Lemma T: the shell indicator is ≤ a large-field function 1 − χ at the lower threshold, so Balaban's printed TAIL factor bounds Δ_j itself. No density version is needed. R loss explicit: exponent ≥ κ_2(log s)^q, κ_2 = ½L^{−(d+5)}, q = 2p_1 − (d+5)r_0 > p_0 ≥ 1. Absorption of K_R into R^{d+5} needs R³ ≳ N^{β_0(d+2)}, true for γ small.
+ L3 [proved for the Gaussian leading form; reduced otherwise] Lemma D (density form of the block bound): σ_max² ≤ K_R/γ_0 by duality from (1.77)–(1.78). Needs a polynomial lower bound on σ_min (upper bound on the form, not read) and the coarea step for the nonlinear (1.27) variable. Not used in the final chain.
+ L4 [reduced] M4 with a_1 = 1, P_1 = −2q_1 from the analyticity radius α_1 = g C_1(log g^{−2})^{q_1} (CMP 119 (2.28), CMP 109 (1.13)). Open: unit conventions checked only through the displayed radii; transfer of the real tail to the complex background via (1.73)–(1.75) (quoted, F1), not traced through the cluster expansion.
+ L5 [proved given (H-hist2)] M5 removed. Lemma 7.1(a) on Δ_j(c) gives ‖Δ_j′‖ ≤ 2(‖Δ_j‖‖Δ_j″‖)^{1/2} + ‖Δ_j‖/r. ‖Δ_j‖ is exponentially small with no history derivative (L2). ‖Δ_j″‖ needs only a uniform bound, from (H-hist2) applied to B_j(·;ū) and to β_j as whole functions; no mixed ∂_s∂_w term. Cost: κ_2 → κ_2/2 in the decay.
+ L6 [NEW open input] (H-hist2): Σ_l|∂_wF| ≤ ε′_j, Σ|∂²_wF| ≤ ε″_j with Σε′, Σε″ < ∞, for F = B_j(·;ū) (frozen thresholds, |w − ū| ≤ 3r) and F = β_j. Same status as (H-hist) one order higher; free if (H-hist) is proved by Cauchy in the history. Summability (not just boundedness) is needed, or W grows with j and (3.4) loses uniformity in K.
+ L7 [not useful] Shell route at order 2 ("differentiate the shell width twice"): the pure threshold part of β_j″ is exponentially small (Lemma D), but β_j″ also contains 2∂_s∂_wB_j, which is M5 again. So that route does not remove M5; L5 does.
+ L8 [proved] Summation (3.4) uniform in K with the explicit γ^{−2}/β factor; conditions (G1′)–(G3′); numerics §4. Convergence needs q > 1, which Balaban's assumption q > p_0 ≥ 1 gives.
+ L9 [reduced, unchanged from HTHR] M3: history weights a_m for threshold dependence; bond count ≤ C(MR)^d. Integer parameters R, N frozen (HTHR L3, confirmed as a convention by HTHR_VERIFY Step 9).
+ L10 [open] Which E-class terms carry the (1.82) cutoff. It is introduced in the R-operation preparation (F5). If B_j comes only from regular-step E terms, only the (1.27) cutoff matters and κ_2(log s)^q can be replaced by γ_0A_1²(log s)^{2p_1} (F2; better). The worst case is used above, so the result holds either way.
+ L11 [cosmetic] Size: κ_2 ≈ 10^{−3} for d = 4, L = 2; (G1′) needs log γ^{−2} ≳ 2.5·10³ when q = 2.
+Net status. (H-thr) is proved in the form (3.3)–(3.4), conditional on M3, M4 (reduced, quotes F1, F6), (H-hist2) (new, order-2 version of (H-hist)), and the frozen-integer convention. M2′ is replaced by Balaban's printed tail bound (no density needed). M5 (history holomorphy) is no longer needed. Updated constant: x_thr ≤ 2(2ADC_T)^{1/2}β^{−1}γ^{−3}(log γ^{−2})^{P_T/2}exp(−(κ_2/2)(log γ^{−2})^q) + lower order. This is not in Balaban. Needs an independent verifier.
