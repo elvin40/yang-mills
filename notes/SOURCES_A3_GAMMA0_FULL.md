@@ -27,7 +27,7 @@ C is the linear map B̃ ↦ B of p. 428: B̃ lives on Λ̃ = Λ \ (∪A_x(y) ∪
  (H1) U satisfies the regularity conditions (3.35) and (3.36) [V p. 396] with parameters M, α_0.
  (H2) M ≥ max(M_1(d, L), L), with M_1 from CMP 99 Theorem 3.1.
  (H3) Mα_0 ≤ α_*(d, L), a small constant fixed in §6.
- Geometric consequence of (H1)–(H2) [P]. The cubes of (3.35) have side O(1)M with O(1) ≥ 10 and are unions of M-blocks [V p. 396]. So every set of unit diameter ≤ 8M inside the index-k region lies in one such cube. All sets used below have unit diameter ≤ 2L + 4 ≤ 8M by (H2) (L ≥ 2). In each such cube there is a gauge u with U^u = e^{iηA_bg} and |A_bg| ≤ c_3Mα_0 in unit units, c_3 = O(1) (3.35) at j = k. We call it a regular gauge for the set.
+ Geometric consequence of (H1)–(H2) [P]. The cubes of (3.35) have side O(1)M with O(1) ≥ 10 and are unions of M-blocks [V p. 396]. So every set of unit ℓ^∞-diameter ≤ 8M inside the index-k region lies in one such cube. All sets used below have unit ℓ^∞-diameter ≤ 4L ≤ 8M by (H2) (L ≥ 2). In each such cube there is a gauge u with U^u = e^{iηA_bg} and |A_bg| ≤ c_3Mα_0 in unit units, c_3 = O(1) (3.35) at j = k. We call it a regular gauge for the set.
 
 0.6 Theorem A3. Assume (H1)–(H3) and the inputs R1–R5 of §7. Then for every B̃,
  ⟨B̃, C*Δ_kC B̃⟩ ≥ γ_0‖B̃‖², γ_0 = γ_L/4 = m_L/(48d²L^d),
@@ -73,7 +73,7 @@ Normalization note for 1.1. A fine field is a 1-form. Line integrals ∫_{[x,x+e
  ε_2² := 1152(d−1)c_3²(Mα_0)² + 8(d−1)c_Q ε_e², ε_e := 12c_4Mα_0(1 + ε_Q) + ε_Q.
 Here ‖D_UX‖²_W := Σ_{q⊂W} η^{d−2}|(∂^UX)(q)|².
 
-2.3 Proof. Fix p ∈ 𝒫. Choose a regular gauge u = u_p for the unit 3-neighbourhood of p (§0.5; diameter ≤ 5 ≤ 8M). Put X^u, U^u. By (Cov),
+2.3 Proof. Fix p ∈ 𝒫. Choose a regular gauge u = u_p for the unit 3-neighbourhood of p (§0.5; ℓ^∞-diameter ≤ 7 ≤ 4L). Put X^u, U^u. By (Cov),
  |(∂_1^{U_1}Q_k(U)X)(p)| = |(∂_1^{U_1^{u_1}}Q_k(U^u)X^u)(p)|.
 Write Y := Q_k(U^u)X^u. Insert the free objects:
  ∂_1^{U_1^{u_1}}Y = ∂_1Q_k(1)X^u + (∂_1^{U_1^{u_1}} − ∂_1)Y + ∂_1(Q_k(U^u) − Q_k(1))X^u.
@@ -142,3 +142,33 @@ By 3.1, S_b ≤ dL^dP, so 2dL^{−d}S_b ≤ 2d²P. Hence
 Since 2d²L^d ≥ L², the coefficient of L^{d−2}Qt is below that of P. So with Z := P + L^{d−2}Qt,
  ‖B‖² = S_b + S_c ≤ [(3/m_L)(1 + 2d²L^d) + dL^d]Z.
 Finally (3/m_L)(1 + 2d²L^d) + dL^d ≤ 12d²L^d/m_L. Indeed, multiplied by m_L/3 this reads 1 + 2d²L^d + dL^dm_L/3 ≤ 4d²L^d, which holds because m_L ≤ ½ and d²L^d ≥ 16. ∎
+
+## §4 Lemma 4 (step (ii), covariant)
+
+4.0 Inputs. (Cov) as in §2.1, now for Q_1(U_1) and ∂_1^{U_1} on the unit lattice. (R3) as in §2.1. (R5) [R]: the trees A_x(y) of CMP 99 (3.156) are the sets T(y) of 3.0 (CMP 99 pp. 427–428 refer to [4] (2.154)–(2.155); the text is garbled). (R2′) [R, CMP 98 (139), one step]: for a corridor c and a regular unit gauge on the unit L-neighbourhood of R(c), |(Q_1(U_1)B)(c) − (Q_1(1)B)(c)| ≤ ε_{Q1}(Q̂_1|B|)(c), with Q̂_1 positive, supported within unit distance L of the corridor region R(c) := B(c_−) ∪ B(c_+) ∪ 𝒦(c), Σ_c(Q̂_1|B|)(c)² ≤ c_{Q1}‖B‖², and ε_{Q1} ≤ c(d, L)Mα_0.
+Gauge facts [P]. Under a unit gauge u_1, B^{u_1}(b) = Ad(u_1(b_−))B(b) (or the analogous rule). So |B^{u_1}(b)| = |B(b)|, and B(b) = 0 iff B^{u_1}(b) = 0. Hence the axial condition and the norms are gauge invariant. Q_1(U_1)B = 0 is gauge invariant by (Cov). The axial condition is a zero set on the fluctuation B. It is not a gauge condition on the background. So the background is never put in axial gauge; each local estimate uses its own regular gauge.
+
+4.1 Statement. Let B ∈ 𝒟 (B = 0 off Λ, B = 0 on every T(y), Q_1(U_1)B = 0). Put τ := 12c_4Mα_0. Then
+ ‖∂_1^{U_1}B‖² ≥ γ_L(1 − η_6)‖B‖², η_6 := (3L^d/m_L)[32d(d−1)τ²L^{−d} + c_{Q1}ε_{Q1}²]. (4.1)
+
+4.2 Block inequality, covariant and exact [P]. For each y, Σ_{b⊂B(y)}|B|² ≤ dL^dΣ_{p⊂B(y)}|(∂_1^{U_1}B)(p)|².
+Proof. Repeat 3.1. In the step plaquette, b_1, b_3 ∈ T(y), so B(b_1) = B(b_3) = 0. By (C),
+ (∂_1^{U_1}B)(p) = σ_2Ad(T_2)B(b_2) + σ_4Ad(T_4)B(b_4).
+Since Ad is orthogonal, |B(b_2)| = |Ad(T_2)B(b_2)| ≤ |(∂_1^{U_1}B)(p)| + |B(b_4)|. This is the step inequality of 3.1 with ∂_1 replaced by ∂_1^{U_1}. The rest of 3.1 (Cauchy–Schwarz, counting) uses only these step inequalities. No error term and no gauge choice is needed. ∎
+
+4.3 Corridor inequality, covariant [P given R2′, R3]. Fix a corridor c. R(c) is a box of ℓ^∞-diameter 2L. Its unit L-neighbourhood has ℓ^∞-diameter ≤ 4L ≤ 8M by (H2). Choose a regular gauge on it (§0.5) and let u = u_c be the induced unit gauge (R3). Apply (3.2) to B^u. Its norms equal those of B. Now bound the free quantities of B^u by covariant quantities of B.
+ (a) Plaquettes. For p ∈ 𝒫(c), by (C) and (Cov), (∂_1B^u)(p) = (∂_1^{U_1^u}B^u)(p) − Σ_bσ(Ad(T_{p,b}) − 1)B^u(b). By (R3) and (E), ‖Ad(T_{p,b}) − 1‖ ≤ τ. So
+ |(∂_1B^u)(p)|² ≤ 2|(∂_1^{U_1}B)(p)|² + 2τ²·4Σ_{b∈∂p}|B(b)|².
+ A corridor bond lies in at most 2(d−1) plaquettes of 𝒫(c); a face bond lies in exactly one. So
+ L^{−d}Σ_{𝒫(c)}|(∂_1B^u)(p)|² ≤ 2L^{−d}Σ_{𝒫(c)}|(∂_1^{U_1}B)(p)|² + 16(d−1)τ²L^{−d}Σ_{b∈R(c)}|B(b)|².
+ (b) Average. Since Q_1(U_1^u)B^u = 0 (by (Cov) and B ∈ 𝒟), (R2′) gives |(Q_1(1)B^u)(c)| ≤ ε_{Q1}(Q̂_1|B|)(c).
+ (c) Insert (a), (b) into (3.2) for B^u:
+ (m_L/3)L^{−d}Σ_{𝒦(c)}|B|² ≤ 2L^{−d}Σ_{𝒫(c)}|∂_1^{U_1}B|² + 16(d−1)τ²L^{−d}Σ_{R(c)}|B|² + ε_{Q1}²(Q̂_1|B|)(c)² + L^{−d}Σ_{B(c_−)∪B(c_+)}|B|². ∎
+
+4.4 Patching and proof of (4.1) [P]. Sum 4.3(c) over c. Each bond lies in R(c) for at most 2d corridors (a block bond: the ≤ 2d corridors of its block; a corridor bond: its own one). So Σ_cΣ_{R(c)}|B|² ≤ 2d‖B‖². The sets 𝒫(c) are disjoint. With P^U := ‖∂_1^{U_1}B‖² and S_b, S_c as in 3.0,
+ (m_L/3)L^{−d}S_c ≤ 2L^{−d}P^U + 2dL^{−d}S_b + ε_8‖B‖², ε_8 := 32d(d−1)τ²L^{−d} + c_{Q1}ε_{Q1}².
+By 4.2, S_b ≤ dL^dP^U. So
+ S_c ≤ (3L^d/m_L)[(2L^{−d} + 2d²)P^U + ε_8‖B‖²].
+Then ‖B‖² = S_b + S_c ≤ [6/m_L + 6d²L^d/m_L + dL^d]P^U + η_6‖B‖².
+The bracket is ≤ 12d²L^d/m_L = γ_L^{−1}: multiplied by m_L/6 it reads 1 + d²L^d + dL^dm_L/6 ≤ 2d²L^d, true since m_L ≤ ½ and d²L^d ≥ 16. Hence (1 − η_6)‖B‖² ≤ γ_L^{−1}P^U. ∎
+Remark. The factor 2 in 4.3(a) costs nothing in γ_L: the free assembly in 3.4 had slack in exactly this place. The only loss is (1 − η_6), with η_6 = O((Mα_0)²)·c(d, L). At U = 1, η_6 = 0 and (4.1) with Q_1B = 0 is (3.4).

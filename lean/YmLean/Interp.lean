@@ -36,6 +36,7 @@ def AffineEach (F : (S → ℝ) → E) : Prop :=
   ∀ s c t, F (Function.update s c t) =
     (1 - t) • F (Function.update s c 0) + t • F (Function.update s c 1)
 
+omit [Fintype S] in
 /-- Interpolation over the coordinates in `U`; the other coordinates stay at `s`. -/
 theorem convex_aux (F : (S → ℝ) → E) (hF : AffineEach F) (U : Finset S) (s : S → ℝ) :
     F s = ∑ T ∈ U.powerset, ((∏ c ∈ T, s c) * ∏ c ∈ U \ T, (1 - s c)) •
@@ -111,17 +112,17 @@ theorem monomial_affine (T : Finset S) : AffineEach (fun s : S → ℝ => ∏ c 
 
 end Convex
 
-/-- SOURCES_T2_KUNIF §5.2 (K3) under perturbation. `x k = Σ_{i<k} β_i^0` satisfies the
-hypothesis of `window_of_partial` (`|x k − k b| ≤ R`, so reference windows are within 2R of
-b(K − k)); |β_j − β_j^0| ≤ C_β g_j, 0 ≤ C_β, g_j ≤ γ, C_βγ ≤ b/4 ⇒ every window sum
-Σ_{k ≤ i < K} β_i lies in [(3b/4)(K−k) − 2R, (5b/4)(K−k) + 2R]. -/
+/-- SOURCES_T2_KUNIF §5.2 (K3) under perturbation. The hypothesis `hw` is the reference window
+bound |Σ_{k ≤ i < K} β_i^0 − b(K − k)| ≤ 2R in the exact form of the conclusion of
+`window_of_partial` for x k = Σ_{i<k} β_i^0. With |β_j − β_j^0| ≤ C_β g_j, 0 ≤ C_β, g_j ≤ γ,
+C_βγ ≤ b/4, every window sum Σ_{k ≤ i < K} β_i lies in [(3b/4)(K−k) − 2R, (5b/4)(K−k) + 2R]. -/
 theorem window_perturb (β β0 g : ℕ → ℝ) (b R Cβ γ : ℝ) (hC : 0 ≤ Cβ)
     (hβ : ∀ j, |β j - β0 j| ≤ Cβ * g j) (hg : ∀ j, g j ≤ γ) (hCγ : Cβ * γ ≤ b / 4)
-    (h : ∀ k, |(∑ i ∈ range k, β0 i) - k * b| ≤ R) (k K : ℕ) (hkK : k ≤ K) :
+    (k K : ℕ) (hkK : k ≤ K)
+    (hw : |(∑ i ∈ range K, β0 i) - (∑ i ∈ range k, β0 i) - b * ((K - k : ℕ) : ℝ)| ≤ 2 * R) :
     3 * b / 4 * ((K - k : ℕ) : ℝ) - 2 * R ≤ ∑ i ∈ Ico k K, β i ∧
       ∑ i ∈ Ico k K, β i ≤ 5 * b / 4 * ((K - k : ℕ) : ℝ) + 2 * R := by
-  have hw := window_of_partial (fun k => ∑ i ∈ range k, β0 i) b R h k K hkK
-  simp only [← sum_Ico_eq_sub _ hkK] at hw
+  rw [← sum_Ico_eq_sub _ hkK] at hw
   have hd : |∑ i ∈ Ico k K, β i - ∑ i ∈ Ico k K, β0 i| ≤ ((K - k : ℕ) : ℝ) * (b / 4) := by
     rw [← sum_sub_distrib]
     refine (abs_sum_le_sum_abs _ _).trans ?_
@@ -130,6 +131,15 @@ theorem window_perturb (β β0 g : ℕ → ℝ) (b R Cβ γ : ℝ) (hC : 0 ≤ C
       _ = _ := by rw [sum_const, Nat.card_Ico, nsmul_eq_mul]
   have hn : (0 : ℝ) ≤ ((K - k : ℕ) : ℝ) := Nat.cast_nonneg _
   constructor <;> nlinarith [abs_le.mp hw, abs_le.mp hd]
+
+/-- `window_perturb` fed by `window_of_partial` (Theorem K form |Σ_{i<k} β_i^0 − k b| ≤ R). -/
+theorem window_perturb_partial (β β0 g : ℕ → ℝ) (b R Cβ γ : ℝ) (hC : 0 ≤ Cβ)
+    (hβ : ∀ j, |β j - β0 j| ≤ Cβ * g j) (hg : ∀ j, g j ≤ γ) (hCγ : Cβ * γ ≤ b / 4)
+    (h : ∀ k, |(∑ i ∈ range k, β0 i) - k * b| ≤ R) (k K : ℕ) (hkK : k ≤ K) :
+    3 * b / 4 * ((K - k : ℕ) : ℝ) - 2 * R ≤ ∑ i ∈ Ico k K, β i ∧
+      ∑ i ∈ Ico k K, β i ≤ 5 * b / 4 * ((K - k : ℕ) : ℝ) + 2 * R :=
+  window_perturb β β0 g b R Cβ γ hC hβ hg hCγ k K hkK
+    (window_of_partial (fun k => ∑ i ∈ range k, β0 i) b R h k K hkK)
 
 /-- SOURCES_T2_KAPPA2, CMP 116 (2.36) `2 d_k(Z) ≥ L d_{k+1}(Z′)`: a bound at rate θκ in d_k
 gives rate θκ(L/2) in d_{k+1}. -/
@@ -193,6 +203,7 @@ end YmLean
 #print axioms YmLean.multilinear_convex
 #print axioms YmLean.monomial_affine
 #print axioms YmLean.window_perturb
+#print axioms YmLean.window_perturb_partial
 #print axioms YmLean.rescale_exp
 #print axioms YmLean.rescale_rate
 #print axioms YmLean.K1_iff

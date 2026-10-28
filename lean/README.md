@@ -24,6 +24,7 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `Tower.lean` | `weighted_tower`, `weighted_tower_le`, `tower_bounds`, `I1_compress`, `rq_conj`, `rayleigh_sum_bound`, `conj_rayleigh_bound`, `rank_one_bound`, `majorant_core`, `lemmaT_core` (167) | H1_ANALYTIC.md §2–§3, (1.1); H1_ANALYTIC_VERIFY.md V1 | VERIFY_Tower.md |
 | `Schur.lean` | `schur_test_weighted`, `schur_test` (65) | SOURCES_LOC.md §3.3; SOURCES_S2_FORM.md §2 Π3; SOURCES_A3_SIGMA.md 2.6 | VERIFY_CombesThomas.md |
 | `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 Lemma CT (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
+| `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (LINES) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
 
 ## Toolchain
 
