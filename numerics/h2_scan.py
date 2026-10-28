@@ -33,7 +33,7 @@ def qprof(L):
 def qsym(prof, Kf, L):
     """q_0 symbol at fine momenta Kf + 2 pi l / L, all l (ndindex order): (B, L^4, 4 coarse, 4 fine). Copy of umk_beta1.csym, one colour."""
     h = (L - 1) // 2; B = len(Kf)
-    lv = np.array(list(np.ndindex(*(4 * [L])))); lph = np.exp(-2j * np.pi * lv.sum(1) * h / L)
+    lph = np.exp(-2j * np.pi * np.indices((L,) * 4).reshape(4, -1).sum(0) * h / L)
     out = np.empty((B, L**4, 4, 4), complex)
     for mu, F in enumerate(prof):
         shape = F.shape[1:]; g = F[None].astype(complex)
@@ -81,8 +81,9 @@ def border(k, Q, Ainv_apply):
 
 def schur(Ed, Y, s):
     """Sum over the umklapp axis (-3): S = J - sum E Y, R = sum Y^dag Y (with the L^{-2} factors); returns Si, R."""
-    S = J5 - s**2 * np.einsum("...lia,...lib->...ab", Ed.conj(), Y)
-    R = s**2 * np.einsum("...lia,...lib->...ab", Y.conj(), Y)
+    sh = Ed.shape[:-3] + (-1, 5); E2, Y2 = Ed.reshape(sh), Y.reshape(sh)
+    S = J5 - s**2 * (Hc(E2) @ Y2)
+    R = s**2 * (Hc(Y2) @ Y2)
     return np.linalg.inv(S), R
 
 
@@ -91,7 +92,7 @@ class H2:
         self.L, self.j = L, j
         self.M = 1 if j == 2 else ("inf" if j == "inf" else L**(j - 2))
         self.prof = qprof(L)
-        self.lv = np.array(list(np.ndindex(*(4 * [L]))))
+        self.lv = np.indices((L,) * 4).reshape(4, -1).T
 
     def inner(self, K):
         """For all outer l: Delta_{j-1}(k_l) (L^4,4,4) and G(k_l) = H_{j-1}(k_l)^dag H_{j-1}(k_l) (L^4,4,4)."""
@@ -110,8 +111,9 @@ class H2:
             k = (kap[:, None, :] + 2 * np.pi * self.lv[None]) / L           # (L, L^4, 4)
             kh = np.exp(1j * k) - 1; a2 = np.sum(np.abs(kh)**2, -1); nv = kh / np.sqrt(a2)[..., None]
             def Ainv(X):
-                P = lambda Z: Z - nv[..., None] * np.einsum("...i,...ia->...a", nv.conj(), Z)[..., None, :]
-                return P(d[..., None] * P(X)) + nv[..., None] * (np.einsum("...i,...ia->...a", nv.conj(), X) / a2[..., None])[..., None, :]
+                nc = nv.conj()[..., None]; ip = lambda Z: (nc * Z).sum(-2, keepdims=True)
+                P = lambda Z: Z - nv[..., None] * ip(Z)
+                return P(d[..., None] * P(X)) + nv[..., None] * ip(X) / a2[..., None, None]
             Ed, Y = border(k, qsym(self.prof, kap / L, L), Ainv)
             Si, R = schur(Ed, Y, s)
             Sc = Si[..., :4]

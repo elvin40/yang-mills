@@ -1,0 +1,211 @@
+\section*{Preamble}
+
+Written 2026-10-27/28 (Opus). v3 = v2 (\file{THEOREM2_PROOF_v2.md}) with the corrections of \file{THEOREM2_PROOF_v2_VERIFY.md} \S A--\S N applied. Nothing else is changed. It does not edit v1 or v2. It is not itself verified as a whole document. The change log is at the end (Appendix).
+
+\paragraph{Tag legend.}
+\begin{itemize}
+\item \status{proved+verified}: proved in a project file and confirmed by an independent verifier file.
+\item \status{proved+verified, conditional on $X$}: the implication is confirmed; $X$ is open or assumed.
+\item \status{proved, unverified}: proved in a project file; no verifier has graded it yet.
+\item \status{Lean}: formalized in Lean 4 + Mathlib, no \texttt{sorry}, axioms propext, Classical.choice, Quot.sound only.
+\item \status{verified quote}: read on the page image of Balaban's paper (\file{reports/BALABAN_EXCERPTS_CHECK.md} or a verifier file).
+\item \status{numerical, reproduced}: floating-point result reproduced by a verifier. \status{numerical, run by the verifier}: run once, by a verifier. \status{numerical}: not reproduced. None is certified.
+\item \status{argued}: a plausibility argument, not a proof. \status{open}: no proof. \status{refuted}: shown false.
+\item \status{Balaban}: an input taken from Balaban's published papers, used as stated there.
+\item \status{not written}: a proof plan; no project file contains the proof.
+\end{itemize}
+
+\paragraph{Range of $L$.} Balaban assumes $L$ odd, $L>11$, as a standing assumption for the whole of CMP 109 (pp.\ 251--252) \cite{balaban109}. His construction of $\beta_j(g)$ for $g>0$ and his inductive assumption (H0) are therefore available only at odd $L>11$. Every statement below that uses (H0) or $\beta_j(g)$ at $g>0$ is stated for odd $L>11$, or carries ``(H0) and Balaban's construction at this $L$'' as an explicit hypothesis. Statements about the one-loop quantities $\beta_j(0)$, $S_k$, and the symbols $\sigma_j$ hold for odd $L\ge 3$.
+
+\section{Statement}
+
+\subsection{Balaban's statements \status{verified quote}}
+
+Theorem 2 (CMP 109 (1987), p.\ 259): ``Let $d = 4$, $G = SU(2)$, and let $\gamma$ be a sufficiently small positive constant, then for a sufficiently small positive $g$ there exists a bare coupling constant $g_0 = g_0(\varepsilon, g)$ such that the sequence of the effective coupling constants $g_k$ is contained in the interval $]0, \gamma]$, and $g_K = g$. Moreover, there exist constants $\beta, \beta'$, $0 < \beta \le \beta'$, such that $g_k$ satisfy the inequality $1/g^2 + \beta \log(L^k\varepsilon)^{-1} \le 1/g_k^2 \le 1/g^2 + \beta' \log(L^k\varepsilon)^{-1}$. (0.31)'' Balaban adds that the proof ``will be given in a separate paper''. It was never published (CMP 122 II p.\ 355, verbatim: ``has not been published yet, so we have Theorem 1 with the assumption'').
+
+Theorem 1 (CMP 122 II p.\ 355): ``If the sequence of the effective coupling constants is contained in an interval $]0, \gamma]$ with a sufficiently small positive $\gamma$, then the effective densities $\rho_k$ have the form, and satisfy all the conditions and bounds, described in Sect.\ 2 [III].'' The bound (0.1) there reads $\chi_k \exp[-(1/g_k^2)A(U_k) - E_-|T_\eta|] \le \rho_k \le \exp E_+|T_\eta|$ (corrected reading, \file{BALABAN_EXCERPTS_CHECK} item 3).
+
+\emph{Setting.} $\varepsilon = L^{-K}$, so $\log(L^k\varepsilon)^{-1} = (K-k)\log L$. $u_k := 1/g_k^2$. Recursion (CMP 109 (0.18)/(0.20)): $u_{k+1} = u_k - \beta_{k+1}(g_k)$. The increment $\beta_{k+1}$ depends on the whole history $g_0,\dots,g_k$ (CMP 109 p.\ 298, \status{verified quote}). $\beta_j(0)$ is the one-loop (Gaussian) increment; it is history-independent by definition. Balaban assumes $L$ odd, $L>11$, for the whole paper (CMP 109 pp.\ 251--252, OCR line 124, verbatim confirmed in \file{THEOREM2_PROOF_VERIFY} Step 6).
+
+\subsection{What Balaban's Theorem 1 actually needs (\file{LEMMA_DPRIME_SWEEP} \S2, \S7)}
+
+The quoted hypothesis of Theorem 1 is only $g_k\in\,]0,\gamma]$. The proof uses more. CMP 119 Theorem 1 (p.\ 262) assumes ``(I.0.33)'', a misnumbered reference to (0.31) of CMP 109. Its working form is CMP 119 p.\ 255--256 (2.6)--(2.9), for scales $m<n$:
+\begin{itemize}
+\item (2.6) $g_n \le (1 + g_n^2\beta'(n-m))^{1/2} g_m$ and $g_m \le (1+\beta_0) g_n$;
+\item (2.7) $(\log g_n^{-2})^p \le (1+\beta_0)(\log g_m^{-2})^p$ and $(\log g_m^{-2})^p \le (1 + g_n^2\beta'(n-m))^{\beta_0}(\log g_n^{-2})^p$;
+\item (2.8), (2.9) the same for $\varepsilon_j = g_j p_0(g_j)$ and $R_j$.
+\end{itemize}
+Here $\beta_0$ is Balaban's small constant ($1/7$ in CMP 122 II p.\ 389), not a coupling. \status{verified quote} for (2.6)--(2.9): page images, \file{LEMMA_DPRIME_SWEEP} \S1; the sweep itself is single-author, see \S2.3.
+
+In $u$-variables these follow from two pairwise bounds:
+\begin{itemize}
+\item (P-up) $u_m \le u_n + B'(n-m)$, with no additive constant;
+\item (P-low) $u_m \ge u_n + \beta(n-m) - D'$, with $\beta>0$, $D'\ge 0$ fixed,
+\end{itemize}
+plus the smallness condition
+\begin{itemize}
+\item (S) $\gamma^{-2} \ge c_{sw} D'$, $c_{sw} = \max(2, 1/(1-(1+\beta_0)^{-2})) = 64/15$ at $\beta_0 = 1/7$, and $\gamma \le \gamma_*(\beta_0,\beta,B',p_0,p_1,r,\nu,\kappa_0)$ (the conditions that literal (0.31) also needs). $\gamma_*$ is free of the $D'$-ratio conditions, but it depends on $R$ through $B'$ (it contains $\gamma^2B' \le (1+\beta_0)^2 - 1$ with $B' = 5b/4 + 2R$). The order of constants in \S6 ($R$ before $\gamma$) handles this.
+\end{itemize}
+$\beta_0$ must be fixed before $\gamma$.
+
+\subsection{The weak form proved conditionally in this chapter}
+
+\begin{theorem}[Theorem 2w (weak form)]
+Let $G = SU(2)$, $d=4$, $L$ odd, $L>11$ (equivalently: $L$ odd $\ge 3$ with (H0) and Balaban's construction of $\beta_j(g)$ at this $L$ as an explicit hypothesis). There are $\gamma>0$, $g_1\in\,]0,\gamma]$, $\beta>0$, $B'\ge\beta$, $D'\ge 0$ such that for every $K\ge 1$ and every $g\in\,]0,g_1]$ there is a bare coupling $g_0 = g_0(K,g)$ with
+\begin{itemize}
+\item (b) $g_k\in\,]0,\gamma]$ for $0\le k\le K$, and $g_K = g$;
+\item (c$'$) for all $0\le m\le n\le K$: $u_n + \beta(n-m) - D' \le u_m \le u_n + B'(n-m)$;
+\item (S) holds for $\gamma$, $D'$.
+\end{itemize}
+Consequence: Balaban's (0.31) holds up to the additive constant $D'$ on the lower side, with constants $\beta/\log L$ and $B'/\log L$. The two-sided bound fixes $1/g_k^2$ up to constants, as required.
+\end{theorem}
+
+Status: \status{proved+verified, conditional on (B2) and the fixed-level inputs of \S4} by Route K (Theorem K + Lemma D$''$). Second route: \status{proved, unverified, conditional on (U), ($B\theta$), and the plane-wave defects} by Route B (\file{BETA_FP_PW} Theorem 3.2 + Lemma D$''$). Both routes also need (H0) at this $L$ and L5 (\S2.4). See \S4.
+
+\subsection{Literal (0.31)}
+
+\begin{itemize}
+\item (L1) Literal (0.31) for every $K\ge K_0$ and every $g\in\,]0,\gamma]$. Needs eventual uniform positivity: there are $J$ and $\beta_*>0$ with $\beta_j(0)\ge\beta_*$ for all $j>J$, plus $\sup_j|\beta_j(0)|<\infty$ (Lemma D$'$ (d), \S2.1). \status{proved+verified; Lean} as an implication. Theorem K and Theorem B do NOT give eventual positivity: they bound window sums, not single increments. Eventual positivity follows from the convergence route (\S7), which is open.
+\item (L2) Literal (0.31) for every $K\ge 1$. Needs $\inf_j\beta_j(0)>0$ and $\sup_j\beta_j(0)<\infty$ (Lemmas D + E). If $\beta_j(0)\to\beta_\infty>0$, then ``every $\beta_j(0)>0$'' is equivalent to $\inf_j\beta_j(0)>0$ (Lemma D$'$ Step 8). \status{proved+verified; Lean} as an implication. Inputs open.
+\item Literal (0.31) is not needed for Theorem 1: \S1.2 shows the proof uses (c$'$) + (S). Literal (0.31) is used directly in one place only, the alternative choice of $\varepsilon_0$ in CMP 119 p.\ 248, which Balaban does not adopt.
+\item Necessity. Literal (0.31) at every $K\ge 1$ forces $\beta_K(0)\ge\beta\log L>0$ for every $K$ (window $k=K-1$, let $g\to 0$ using (H0); so $L$ odd $>11$). \status{proved, unverified}; elementary; \file{THEOREM2_PROOF_VERIFY} Point 5(a) agrees. So certified early steps are needed only for (L2), not for Theorem 1.
+\end{itemize}
+
+\section{Shooting lemmas}
+
+Notation: $u_k = 1/g_k^2$, $t = 1/g^2$, $T(k,K) := \sum_{i=k+1}^{K}\beta_i(g_{i-1})$. Clamp $\varphi(u) := \max(u, 1/\gamma^2)^{-1/2}$. Lemmas D$'$, D$''$, D, E are abstract statements about a sequence of functions $\beta_j$. Applied to Balaban's $\beta_j(g)$, they need $L$ odd $>11$ (or (H0) at this $L$) and L5.
+
+\subsection{Lemma D$'$ (shooting without early positivity) \status{proved+verified; Lean}}
+
+Sources: \file{LEMMA_DPRIME.md} \S1--\S2; \file{LEMMA_DPRIME_VERIFY.md} grades 1, 2, 5 (CONFIRMED). Step 7 of that file also holds grades 3, 4, 6, which are CORRECTED (Remark 1 overclaim, misreads in \S5, ledger); this chapter uses none of them except through the sweep (\S2.3). Lean: \file{lean/YmLean/LemmaDPrime.lean} (\texttt{YmLean.lemma\_DPrime}, 405 lines), statement check \file{lean/VERIFY_LemmaDPrime.md}.
+
+\begin{lemma}[Lemma D$'$]
+\emph{Hypotheses.} (i) $\beta_{k+1}$ continuous on $[0,\gamma_0]$ and $|\beta_{k+1}(g)-\beta_{k+1}(0)|\le C_1 g$, $C_1$ independent of $k$, $K$. (ii) $\sup_j|\beta_j(0)|\le B$. (iii$'$) there is $J$ with $\beta_j(0)\ge\beta_\infty/2$ for all $j>J$ (this is all the proof uses of ``$\beta_j(0)\to\beta_\infty>0$'').
+
+\emph{Constants.} $\gamma := \min(\gamma_0,\gamma_{Bal},\beta_\infty/(4C_1))$; $B' := B+\beta_\infty/4$; $D := J\cdot B'$; $D' := J(B+\beta_\infty/2)$; $g_1 := (1/\gamma^2+D)^{-1/2}$; $K_0 := J+\lceil 8D'/\beta_\infty\rceil$.
+
+\emph{Conclusions.}
+\begin{itemize}
+\item (a) $T(k,K)\ge -D$ for all $k<K$ along any couplings in $]0,\gamma]$.
+\item (b) For every $K\ge 1$ and $g\in\,]0,g_1]$ there is $g_0$ with all $g_k\in\,]0,\gamma]$ and $g_K = g$.
+\item (c) $u_K + (\beta_\infty/4)(K-k) - D' \le u_k \le u_K + B'(K-k)$. The upper side has no constant.
+\item (d) For $K\ge K_0$: literal (0.31) with lower constant $\beta_\infty/8$, and shooting for every $g\in\,]0,\gamma]$. If every $\beta_j(0)>0$: literal (0.31) for all $K$ (Step 8 = Lemmas D + E).
+\end{itemize}
+\end{lemma}
+
+\emph{Proof idea.} Clamped flow $\tilde u_{k+1} = \tilde u_k - \beta_{k+1}(\varphi(\tilde u_k))$ is continuous in $u_0$. Its tail sums lie in $[-D, B'(K-k)]$ for every $u_0$, because clamped couplings lie in $]0,\gamma]$. IVT on $[t-D,t+B'K]$ gives $\tilde u_K = t$. Then $\tilde u_k\ge t-D\ge 1/\gamma^2$ for $g\le g_1$, so the clamp is never active. The bound is derived for the clamped flow first; there is no circularity. For history-dependent $\beta$ this proof needs $\beta_{k+1}$ defined and continuous on the whole cube $]0,\gamma]^{k+1}$; see L5 in \S2.4.
+
+\emph{Lean.} The Lean hypotheses are weaker (ContinuousOn instead of $C^1$; (iii$'$) instead of convergence). Step 8 is \texttt{lemma\_DPrime\_step8} (\file{lean/YmLean/LemmaDE.lean}). Lean covers one-argument $\beta_j(g)$ only, not the history form.
+
+\begin{remark}[Remark 4]
+Without $g\le g_1$, (b) can fail at small $K$ ($\beta_1=\beta_2=\beta_3=-0.8$, $K=3$, $g=\gamma$). \status{proved+verified}
+\end{remark}
+
+\subsection{Lemma D$''$ (tail-sum form; no index $J$) \status{proved+verified}}
+
+Source: \file{KAPPA_BOUNDED.md} \S5.3; \file{KAPPA_BOUNDED_VERIFY} \S6 (CONFIRMED: ``No $J$ needed''); hand rederivation in \file{THEOREM2_PROOF_v2_VERIFY} \S A.
+
+\begin{lemma}[Lemma D$''$]
+\emph{Hypotheses.} (i) as in 2.1, and the window bound
+\[
+\text{(5.1)}\quad T_0(k,K) := \sum_{i=k+1}^{K}\beta_i(0)\in[\,b(K-k)-2R,\; b(K-k)+2R\,]\quad\text{for all }0\le k<K,
+\]
+with $b := c\log L>0$ and some $R\ge 0$. (Route K gives $R=\kappa_*$; Route B gives $R=C_B$.)
+
+\emph{Constants.} $\gamma := \min(\gamma_0,\gamma_{Bal},b/(4C_1))$; $\beta := 3b/4$; $B' := 5b/4+2R$; $D=D' := 2R$; $g_1 := (1/\gamma^2+D)^{-1/2}$.
+
+\emph{Conclusions.} (b) of 2.1, and the pairwise bound
+\[
+\text{(c$'$)}\quad u_n+\beta(n-m)-D'\le u_m\le u_n+B'(n-m),\quad 0\le m\le n\le K,
+\]
+upper side without constant.
+\end{lemma}
+
+\emph{Proof.} $|T-T_0|\le C_1\gamma(K-k)\le(b/4)(K-k)$. Add (5.1). Steps 2--5 of Lemma D$'$ use only continuity and the bracket $\tilde T\in[-D,B'(K-k)]$; this bracket now comes from (5.1). The pairwise form is the same window argument with $K\to n$. The proof is the clamped-flow proof of 2.1; for history-dependent $\beta$ the L5 caveat of \S2.4 applies.
+
+Not in Lean (the Lean lemma has hypothesis (iii$'$), not (5.1)). The reduction is short; formalizing it is a small task. \status{open as Lean work}
+
+Literal (0.31) from (5.1) alone holds only for windows with $n-m\ge 8R/b$; short windows near $K$ are not controlled (see \S1.4).
+
+\subsection{Lemma D$''$ meets Balaban's proof: the cross-scale sweep \status{proved, unverified (sweep); 4 of 19 table rows verified}}
+
+Source: \file{LEMMA_DPRIME_SWEEP.md} (all 12 Balaban files; OCR grep plus page image for every non-single-scale hit). \file{LEMMA_DPRIME_VERIFY} Steps 4--5 checked comparisons A--E on page images (CMP 122 I p.\ 192, p.\ 198 (1.94); II p.\ 381 $\times 2$, p.\ 386) and corrected two misreadings of A (factor $(1+\beta_0)^2(k-j)^{\beta_0}$; $\delta'_j = g_jA_1p_1(g_j)$). The five comparisons map to four table rows: A = row 11, E = row 12, C and D = row 16, B = row 18.
+
+\emph{Result.} 19 cross-scale uses of the coupling sequence (table in SWEEP \S7), all in CMP 119 and CMP 122 I--II; none in CMP 95, 96, 98, 99, 102, 109, 116. Each is covered by (b) + (c$'$) + (S) of \S1.2:
+\begin{itemize}
+\item items 1, 7, 10, 12, 17 need (P-up) with no constant (e.g.\ (2.6) line 1 is exactly (P-up));
+\item items 2, 3, 11, 13, 15, 16, 18 need (P-low) with fixed multiplicative slack $(1+\beta_0)$ or $(1+\beta_0)^2$; item 2 ((2.6) line 2) gives the constant $64/15$; item 11 needs only $2.42D'$;
+\item items 4 ((2.8)--(2.9), $\varepsilon$ and $R$ ratios), 6 (CMP 119 (3.7), (3.8), (3.12), (3.13)), and 9 (CMP 122 I (1.52)), the last two of the form $\varepsilon_{k+1}\le(1+\beta_0)\varepsilon_k$, use both sides; they follow as items 1 and 3 do (item 4 from items 1--3);
+\item item 14 (CMP 122 I p.\ 200, $R_{k-N_0+1}$ vs $R_k$) uses the lower side; it follows as item 3 does;
+\item item 5 (CMP 119 (2.31), (2.46): $\sum_j g_j^{\kappa_0}\le g_n^{\kappa_0-6}$) needs linear growth (P-low) and $\gamma^{-2}\ge 2D'$;
+\item item 0 is CMP 119 Theorem 1 assuming (0.31); its proof works with (2.6)--(2.9);
+\item item 8 (CMP 119 p.\ 284) is in a sketch, not load-bearing.
+\end{itemize}
+Caveats \status{open}: (1) the sweep is a grep plus page images, not a line-by-line read; (2) ``Similar inequalities hold for other constants, which will be introduced later'' (CMP 119 p.\ 256) was not located; (3) Balaban says $\beta_0$ ``can be chosen arbitrarily small, if $g$ is sufficiently small''; under (P-low) the floor is $\beta_0\gtrsim D\gamma^2/2$, so $\beta_0$ must be fixed first; no step was found that needs $\beta_0\to 0$; (4) the sweep has no independent verifier beyond rows 11, 12, 16, 18; (5) \file{BALABAN_EXCERPTS_CHECK} item 11 lists readings not checked on page images: $\Pi$ (4.37)/(5.1), CMP 119 (2.42), the (2.12)/(2.23) ambiguity, the ``$L$ odd'' page, the Sect.\ 3 estimates, and the 1989 bound lists.
+
+\subsection{Lemma D and Lemma E \status{proved+verified; Lean}}
+
+Sources: \file{LEMMAS.md} (corrected), \file{LEMMAS_DE_VERIFY.md} \S1.4, \S1.5, \S2.4; \file{lean/YmLean/LemmaDE.lean} (\texttt{lemma\_D}, \texttt{lemma\_E}, \texttt{lemma\_DE}).
+\begin{itemize}
+\item \textbf{Lemma D.} If $b\le\beta_j(g)\le b'$ on $]0,\gamma]$ with $b>0$, then for every $K$ and $g\in\,]0,\gamma]$ shooting succeeds and $t+b(K-k)\le u_k\le t+b'(K-k)$. This is literal (0.31). The first IVT interval in the draft was wrong and was refuted by the verifier; the corrected interval is $[t+bK,\,t+b'K]$. The nested-interval variant for $\beta$ defined only on admissible histories (\file{LEMMAS_DE_VERIFY} \S1.5) is \status{proved+verified}, not in Lean.
+\item \textbf{Lemma E.} If $\beta_0\le\beta_j(0)\le\beta_0'$ and $|\beta_j(g)-\beta_j(0)|\le Cg^2$, then for $\gamma\le\sqrt{\beta_0/(2C)}$: $\beta_0/2\le\beta_j(g)\le\beta_0'+\beta_0/2$. The verifier checked this $Cg^2$ form; the $C^1$ form ($C_1g$, $\gamma\le\beta_0/(2C_1)$) is the same two-line proof \status{proved, trivial variant}. Lean has the $Cg^2$ form.
+\item \textbf{History dependence (ledger item L5)} \status{open}. Balaban's $\beta_{k+1}$ depends on $(g_0,\dots,g_k)$. Lemma D$'$ Remark 3 states the cube-continuity version (same proof). The gap is sharper than v2 stated (\file{THEOREM2_PROOF_v2_VERIFY} \S F):
+  \begin{itemize}
+  \item \emph{Domain.} Balaban defines $\beta_{k+1}$ only on histories for which his Theorem 1 induction has run to step $k$ (\file{LEMMAS_DE_VERIFY} \S2 item 1). By the sweep (\S2.3), that induction uses (2.6)--(2.9), that is (c$'$) + (S), on the history, not only $g_i\in\,]0,\gamma]$.
+  \item \emph{The new gap.} The clamped shooting of \S2.1--\S2.2 evaluates $\beta$ on clamped histories $\tilde g_i=\varphi(\tilde u_i)$. A clamped history can violate the growth side of (c$'$): from $\max(a,c)-\max(b,c)\ge\min(a-b,0)$ one gets only $u_m\ge u_n-D'$, not $u_m\ge u_n+\beta(n-m)-D'$. So the clamped shooting evaluates $\beta$ on histories outside Balaban's domain. The clamp proof is valid only under the cube hypothesis, which Balaban does not supply.
+  \item \emph{A variant that avoids it} \status{not written}. Use a nested-interval proof in the style of \file{LEMMAS_DE_VERIFY} \S1.5, with domain $D_k=\{u_0,\dots,u_k\ge\gamma^{-2}\}$ of true (unclamped) trajectories. On such trajectories, (c$'$) up to step $k$ follows from the tail-sum bound (a$''$) of Lemma D$''$, and (S) holds by the choice of $\gamma$. So every evaluation of $\beta$ stays inside Balaban's domain. At each step $k$, keep the set of $u_0$ whose trajectory stays in $D_k$; show by IVT, step by step, that this set contains a closed interval on which $u_k$ sweeps a range that contains the next target interval. For Lemma D (all increments positive) this is written. For Lemma D$''$ the increments can be negative, so the nested intervals need new envelopes, built from the window bounds $[b(n-m)-2R-(b/4)(n-m),\dots]$. The adaptation is plausible; it is not written and not verified.
+  \item Lean is one-argument only.
+  \end{itemize}
+\end{itemize}
+
+\section{The exact structure of the one-loop sums}
+
+\subsection{Telescoping \status{proved+verified, corrected scope}}
+$S_k :=$ $p\to 0$ $F^2$-coefficient of the composed $k$-step gauge-fixed one-loop integral (U1 (1.2)). Then $S_k=\sum_{j=1}^{k}\beta_j(0)$, $S_0=0$ (\file{BETA_FP} Prop.\ 1.1; \file{BETA_FP_VERIFY} item 1). Scope: exact for the $p\to0$ coefficient at fixed $k$, not for $\log Z_k$ at fixed $p$ (the plane wave is off-shell).
+
+\subsection{Prop.\ 2.1, anchor-free identity \status{proved+verified}}
+Source: \file{BETA_FP_LEMMA43} Prop.\ 2.1; \file{BETA_FP_LEMMA43_VERIFY} items 1, 3--4 (hand rederivation; lattice check with the real CMP 109 averaging at random SU(2) backgrounds, relative difference $10^{-14}$).
+
+Under (G1) $=\{\Delta D=0,\ \tilde QD=D_c\iota_a^T\}$:
+\[
+\log Z_\Lambda(V)=\bigl[\log\det X-\tfrac12\log\det K\bigr]-\bigl[\log\det(D_c^TD_c)-\tfrac12\log\det(\Delta_\Lambda(V)+D_cD_c^T)\bigr].
+\]
+In words: constrained one-loop = fine Wilson one-loop in background Feynman gauge minus the one-loop of the coarse Gaussian theory with kernel $\Delta_\Lambda(V)$. All point-anchor objects cancel; the constant is exactly 0.
+\begin{itemize}
+\item $\tilde QD=D_c\iota_a^T$ is exact at any background (lattice $10^{-15}$). $\Delta D=0$ is load-bearing (raw Hessian gives $O(1)$ errors).
+\item At the constant abelian field $V_f$ the background is critical, so $\Delta D=0$ is exact and Prop.\ 2.1 holds exactly (\file{BETA_FP_H_VERIFY} \S2, CONFIRMED). At a plane wave it holds up to the defect $\mathfrak d_Y$ (\file{BETA_FP_PW} Lemma 2.3) \status{proved, unverified}.
+\item Per-cell infinite-volume densities only: on a torus the constant zero modes must be removed. This is input (G2) \status{formal}.
+\end{itemize}
+
+\subsection{The constant $c$ \status{proved+verified}}
+$c=11N^2/(12\pi^2)=2N\cdot b_0/(8\pi^2)$, $b_0=11N/3$; SU(2): $c=0.371511$. Normalization $1/g_B^2=2N/g^2$ (\file{R2_VERIFY}; \file{BETA_FP_LEMMA43_VERIFY} \S5). The log coefficient of the fine piece at constant field is $c_2=c/2$ per $\ln(1/\varphi)$, checked against Savvidy, arXiv:1910.00654 eq.\ (1.4) (\file{BETA_FP_H_VERIFY} \S4) = input (F) \status{cited, source checked; lattice = continuum log coefficient is standard, not proved in project files}.
+
+$b:=c\log L$: $0.25751$ ($L=2$), $0.40815$ (3), $0.51502$ (4), $0.59793$ (5), $0.72293$ (7).
+
+\subsection{The decomposition $S_k=ck\log L+\kappa_W^F-\kappa_k$}
+\begin{itemize}
+\item As bookkeeping the split is empty: any $c'$ gives an exact identity if $\kappa_k$ is defined as the remainder (\file{U1_VERIFY}). Boundedness of a remainder-defined $\kappa_k$ is a restatement, not progress.
+\item Content comes from defining $\kappa_k$ by the coarse theory alone. \file{KAPPA_BOUNDED} Prop.\ 1.1 \status{proved+verified, conditional on (PI), (F), ($M_j$), V1, (G2)}: with the Wilson level $j=0$ as reference,
+\[
+S_j=cj\log L-d_j,\qquad \kappa_j=\kappa_W^F+d_j,
+\]
+\[
+d_j:=-\frac{1}{2n_2}\int_0^1dt\int_{\BZ}\frac{dK}{(2\pi)^4}\,\tr\bigl[b_{t,2}\,\delta\sigma_j^{(0)}+b_{t,1}\,\delta\sigma_j^{(1)}+b_{t,0}\,\delta\sigma_j^{(2)}\bigr],
+\]
+where $\delta\sigma_j^{(m)}=\sigma_j^{(m)}-\sigma_0^{(m)}$ are differences of the $f^m$ Taylor symbols of the coarse kernel at level $j$ and level 0, and $b_{t,m}$ are the Moyal inverse coefficients of the interpolated coarse operator. No limit symbols $\sigma_\infty$ are used.
+\item Checks \status{numerical, reproduced}: $\rho(1)=\kappa_W^F$ (L\"uscher--Weisz (5.7) \cite{luscherweisz1995}); $L=2$: $d_1=-0.372$, $\kappa_1=1.114$; $L=3$: $d_1=c\log3-\beta_1=-0.256\pm0.01$ (\file{KAPPA_BOUNDED_VERIFY} \S4: fits give $-0.254\dots-0.258$). This checks the definition of $d_j$ through $S_j$; it does not evaluate (1.1) from the symbols independently.
+\item Cor.\ 3.1 of \file{BETA_FP_LEMMA43} ($\mathcal C(\Lambda)=c\log\Lambda+\kappa_W^F-\rho(\Lambda)$) is exact as an identity. ``The whole $\log\Lambda$ sits in the fine piece'' is equivalent to $\rho(\Lambda)=o(\log\Lambda)$. It is not a separate fact (\file{BETA_FP_LEMMA43_VERIFY} item 2; v1 overclaim removed).
+\item Given convergence $\beta_j(0)\to\beta_\infty$, Ces\`aro gives $\beta_\infty=c\log L-\lim\kappa_k/k$. So v1's (H$'$) ``$\kappa_k=o(k)$'' is EQUIVALENT to $\beta_\infty=c\log L$, not weaker (\file{THEOREM2_PROOF_VERIFY} Point 4). Theorem K (\S4) gives $\kappa_k$ bounded, hence $\kappa_k=o(k)$ trivially.
+\end{itemize}
+
+\subsection{Level-uniform symbol facts used below \status{proved+verified}}
+Source: \file{U3_AW.md}, \file{U3_AW_VERIFY.md} (grades 1--4 CONFIRMED); \file{U3_REPAIRS_VERIFY}.
+\begin{itemize}
+\item O5/A0: $\Delta_M$ real-analytic on a fixed strip, $|\partial^\alpha(\Delta_M-\Delta_\infty)|\le CM^{-2}$, uniform to $K=0$ (odd $L$, centered blocks). Prop.\ B: $c_0|\hat K|^{-2}P'_T\le P'_TS_MP'_T\le C_1|\hat K|^{-2}P'_T$, $c_0=(2/\pi)^{12}$, $C_1\le1363$. Existential constants.
+\item Prop.\ E (evenness): $\sigma_j(f;-K)=\sigma_j(f;K)$ in the midpoint trivialization, all $f$, $j$. Tested in $d=2$ only.
+\item Theorem W: $\sigma_j^{(1)}(0)=\tau_c=(3ie/2)(E_{10}-E_{01})$ for every $j\ge0$, from the exact Ward identity $\Delta_j(f)D_f=0$. Numerically $0.750000$, $0.75015$, $0.75051$ at $j=0,1,2$ vs $0.75$ ($d=2$ proxy).
+\item Theorem A3: $|\sigma_j^{(1)}(K)-\tau_c|\le C_A|K|^2$, real $K$, uniform in $j$ ($C^0$ only).
+\item Prop.\ A2: $\sigma_j^{(m)}$, $m\le2$, analytic on the same strip at every fixed $j$ (not uniform in $j$ for $m=1$ derivatives, $m=2$).
+\item Lemma M: Maxwell coefficient exactly 1 at every level.
+\end{itemize}
+
