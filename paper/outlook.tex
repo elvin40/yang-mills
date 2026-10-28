@@ -1,0 +1,86 @@
+\section{Closure plan}\label{sec:closure}
+
+Source: \file{CLOSURE_PLAN.md}, an unverified planning file. It lists what keeps Theorem 2w, and then Theorem~\ref{thm:B}, a reduction, in four tables. It ranks the work and estimates the cost. Everything in this section is \status{plan}. Nothing in it is a result.
+
+An item is closed when one of these holds: it is a published theorem with a full printed proof, and we accept it as published mathematics; it is a printed sketch, and a paper-grade write-out exists and has passed a verifier; it is an unproved assertion, and a new proof exists and has passed a verifier. A reading [I] is closed by a page-image read or by a proof that makes the reading unnecessary.
+
+\paragraph{The four tables.}
+{\small\tablefiles
+\begin{longtable}{p{0.2\linewidth}p{0.1\linewidth}p{0.6\linewidth}}
+\hline
+table & size & state \\ \hline \endhead
+1. [R] inputs: Ba{\l}aban's printed theorems and sketches & 46 & 28 closed; 18 need work, 7 of them short page reads. Load-bearing: the covariant write-outs of CMP 99 Thms 3.7, 3.9, 3.10 (R1--R3; A1w, A2, A7, A16 rest on them), the transfer of CMP 109 p.~254 (R26), C33 ``in exactly the same way'' (R37), and the T-step items of A23 (R42, Theorem~\ref{thm:B} only) \\
+2. [I] readings & 56 & 8 done; about 30 image reads or half-page checks; about 12 short proofs; 3 open estimates that are not readings (I-20, I-49, I-56). The $s$-rule I-22 is the most reused; the plan proposes it as a new convention \\
+3. Conventions & 48 & C1--C42 plus 6 proposed rows. 26 are free choices; 4 fix unprinted parts (C1, C34, C35, C37); 3 change printed parts (C9, C10, C16; C9 is now unused); 5 are hypotheses in disguise (C3, C4, C18, C22, C31) \\
+4. The condition (C) & 1 & stated for $G$ and $G_1$ (row A1). Proved pieces: Lemma CT (Lean), (KE$'$), (H$_Q$), S2 for $G$ and $G_1$, the extension of \file{SOURCES_QE_INV.md}. A3's $\gamma_0$ and Theorem L of \file{WC_FULL.md} bound different operators and do not give (C). Estimate about 15\,h. Round 8 drafts a full proof (Proposition~\ref{prop:Ccond}); verification pending \\ \hline
+\end{longtable}}
+
+\paragraph{The top five targets.}
+\begin{enumerate}
+\item (C) for $G$ and $G_1$ as one paper-grade theorem. It sits under A1, A1w, A2, A7, A8, A16, and through them under G3, B13, LOC, and the propagator inputs of A13. About 15\,h, 8 agents. Round 8: draft written (Section~\ref{sec:src-r8}).
+\item The covariant write-outs of CMP 99 Thms 3.7, 3.9, 3.10, with the $M_1$ version and the complex form. Every walk expansion rests on them. About 20\,h, 12 agents.
+\item B3 (F) and the $\beta_1$ tension. This is the only Group B item of Theorem 2w without a full-strength reduction. About 15--20\,h, 10 agents, uncertain. If B3 fails, Theorem 2w needs Route B (B9), which has no verifier file. Round 8: (L-LL) proved, pending verification; the converged-grid test is running (Section~\ref{sec:numr8}).
+\item The $s$-rule convention and its consumer check (I-22), with the completeness of the A16 property list (I-35). About 7\,h, 4 agents.
+\item The transfer of CMP 109 p.~254 (R26) with I-10 and I-09. All of \file{WC_FULL.md}, and so A2, A7, A8, rest on it. About 8\,h, 5 agents.
+\end{enumerate}
+
+\paragraph{Effort.} The plan counts about 78 items: 18 in Table 1, about 45 in Table 2 after merging duplicates, 9 in Table 3, (C), and 5 Group B items outside the tables. The ranked list sums to about 155--160 agent-hours and about 90 agent runs. At the pace of the campaign this is 30--45\,h of wall time, or three to four sessions. B3 carries most of the uncertainty.
+
+\paragraph{Residue after closure.} If every row of the four tables closes, the following stays, by design or by scope (\file{CLOSURE_PLAN.md} \S8).
+\begin{enumerate}
+\item Finite torus. Theorem~\ref{thm:B} gives subsequential limits on the torus with (OS0)--(OS3). It gives no infinite-volume limit, no mass gap, and no uniqueness of the limit. It is not a solution of the Clay problem.
+\item Torus size: C31 (side $\ge22M$ final-scale cells) and the side inequality of (C). Round 8 proposes to derive the second from the first (Proposition~\ref{prop:Ccond}).
+\item Fixed $L$ and group: Theorem 2w holds at the certified $L\in\{13,15,17,21\}$ (C3), for SU(2) and $d=4$ (C4).
+\item Weak form: existence of a bare coupling $g_0(K,g)$, not uniqueness or monotonicity; the window bound is two-sided only in the (c$'$) form; B4 holds only as $o(f^2)$.
+\item A thermal state and one observable (C18): periodic time, the centred plaquette density, the test space $\mathcal D_n$.
+\item Trust in published mathematics: the class-A items (published propositions of CMP 95--122, and A13 itself) are accepted, not re-proved. The only one re-proved, CMP 96 Lemma 2.4, had a wrong proof step for $L\ge10$, so this trust is not free of risk.
+\item The external citations X2--X5.
+\item Verification grade: ``verified'' means an independent agent checked the write-out against page images. No human referee has read it. Lean covers only small lemmas (Section~\ref{sec:rem-ledger}, Lean support).
+\end{enumerate}
+
+\section{Beyond the finite torus}\label{sec:beyond}
+
+Source: \file{INFINITE_VOLUME_PLAN.md}, an unverified planning file. Everything in this section is \status{plan}. Nothing in it is proved in the sense of Section~\ref{sec:status}. The short arguments that the plan marks as proved have no verifier, and they are stated here as steps of the plan.
+
+\paragraph{What Theorem~\ref{thm:B} gives.} At a fixed torus side $\ell$, Theorem~\ref{thm:B} gives subsequential limits, as the lattice spacing $\varepsilon\to0$, of the Schwinger functions of one composite field: the centred plaquette density, tested off the diagonals on $\mathcal D_n$. Every limit satisfies the torus forms of OS0--OS3. There is no measure, no Wilson loop, and no infinite volume, and the reconstructed state is thermal at inverse temperature $\ell$. The bound (H-U) is uniform in $\varepsilon$ at fixed $\ell$; its constant depends on $\ell$.
+
+\paragraph{Where $\ell$ enters.} The audit of the plan finds the $\ell$-dependence in three places.
+\begin{enumerate}
+\item \file{ASSEMBLY_N1.md} absorbs a factor $\ell^4$ into $C_S$. It comes from the extensive bound $e^{E_\pm|T_\eta|}$ of CMP 122 II (0.1).
+\item The fine-region estimate counts plaquettes over the whole torus, $(12\ell^4)^n$. This is bookkeeping: for supports in a ball $B$, $\ell^4$ becomes $|B|$.
+\item Step B of (FX), the cluster expansion at the unit scale on the whole $\ell^4$ lattice at the terminal coupling $g$. This is the infrared obstruction. An expansion uniform in $\ell$ would need further renormalization steps up to the scale $\ell$, where the coupling leaves $]0,\gamma]$.
+\end{enumerate}
+Every ultraviolet row has per-polymer constants that do not depend on the volume (\file{WC_FULL.md}, \file{A1_WALK_FULL.md}, \file{SOURCES_HHIST.md}, \file{SOURCES_A15_WHOLE.md}, \file{SOURCES_HHOL.md}, \file{SOURCES_QE_INV.md}), and Ba{\l}aban states that $E_\pm$ do not depend on $k$, $T_\eta$, or $U_k$ (CMP 122 II p.~356, page image). The bare coupling $g_0(K,g)$ comes from the whole-lattice $\beta_j$, so it is the same for every even $\ell>22M$ [I].
+
+\paragraph{The proposal (CG).} The plan does not expand the unit scale. It uses that the law $\nu$ of the averaged unit-scale field $V$ is a probability measure on a product of copies of the compact group SU(2). For a source $f$ let $\Gamma_f(V)$ be the conditional expectation of $e^{\phi(f)-W^{(2)}_\varepsilon[f]}$ given $V$, with $W^{(2)}_\varepsilon$ the nonlinear part of the contact functional. The new hypothesis is a conditional source bound, pointwise in $V$:
+\[
+\text{(CG)}\qquad|\Gamma_{\sum_iz_if_i}(V)|\le\exp\Bigl(C_0\sigma^{-a}\sum_i\frac{|z_i|N(f_i)}{r}\bigl(1+|\operatorname{supp}f_i|_1\bigr)\Bigr),
+\]
+for real $f_i$ with pairwise support distance $\ge\sigma\in[16\varepsilon,1]$, complex $|z_i|\le r/N(f_i)$, every $V$, and constants independent of $\ell$, $K$, and $V$; $|X|_1$ is the number of unit cubes that meet $X$. Given (CG), Lemma IV-M of the plan gives moment bounds uniform in $\varepsilon$ and $\ell$, polynomial in the support sizes, with no $n!$ and no infrared input: $|E_\nu\Gamma|\le\sup_V|\Gamma|$, and a Cauchy estimate on the polydisc gives the mixed derivative. The plan expects (CG) to follow from Steps A, C, D of (FX) at fixed $V$, without Step B [I]. The named risk is the last R operation near regions where $V$ is large. If (CG) holds, Theorem~\ref{thm:B} itself can drop Step B of (FX).
+
+\paragraph{The window length.} Lemma IV-$\xi$ of the plan continues the flow past the unit scale with the window bound (c$'$). The coupling leaves $]0,\gamma]$ at a length $\xi_g$ with $\log\xi_g\le\frac43(g^{-2}-\gamma^{-2}+D')/c$. So the present cumulant route has constants uniform in $\ell$ only for $\ell$ up to about $\xi_g/(22M)$, a finite range.
+
+\paragraph{Lemma list.}
+{\small
+\begin{longtable}{p{0.08\linewidth}p{0.42\linewidth}p{0.4\linewidth}}
+\hline
+item & content & tag in the plan \\ \hline \endhead
+IV-1 & the trajectory $g_0(K,g)$, $(g_k)$ is the same for all even $\ell>22M$ & within reach (one paragraph) \\
+IV-2 & every constant of the steps $k<K$ is independent of the torus side & within reach (an audit; it can fail visibly) \\
+IV-3 & (CG) & new mathematics, moderate \\
+IV-4 & moments from (CG) (Lemma IV-M) & short argument in the plan, unverified \\
+IV-5 & (H-U$_\infty$) for test functions supported in a ball & within reach (bookkeeping) \\
+IV-6 & compactness over an exhaustion of $\mathbb R^4$ & sketch in the plan \\
+IV-7 & E0$'$, linear growth & sketch in the plan; needs the linear form of (CG) \\
+IV-8--IV-10 & E1-T, E1-H, E2 (given X3), E3 & as in Section~\ref{sec:torus} \\
+IV-11 & nontriviality, uniform in $\ell$ & open, as (NT) for Theorem~\ref{thm:B} \\
+IV-12 & E1-R, full O(4) & new mathematics, not in reach \\
+IV-13 & uniqueness of the limit & blocked \\
+IV-14 & E4 clustering, mass gap & blocked \\ \hline
+\end{longtable}}
+
+\paragraph{Verdict of the plan.} A subsequential infinite-volume statement is a realistic conditional target of the same type as Theorem~\ref{thm:B}, and of the shape of the Gubinelli--Hofmanov\'a construction for $\Phi^4_3$. The conditional target, as the plan states it, is: ``subsequential infinite-volume continuum limit of SU(2) Yang--Mills composite Schwinger functions, with all OS axioms except rotation invariance and clustering.'' It is conditional on Ba{\l}aban's papers, on the ledger of Theorem~\ref{thm:B}, and on (CG). It is a target, not a result of this paper, and no step of it is started beyond the plan. It is weak existence, and footnote 2 of Jaffe and Witten \cite{jaffewitten} excludes it as a solution of the Clay problem.
+
+\paragraph{What stays blocked.} Uniqueness of the limit: in $\varepsilon$ it needs E13, open already at fixed $\ell$; in $\ell$ it needs independence of the boundary condition, and without a gap no mechanism is known. Clustering E4 and the mass gap: they concern distances much larger than $\xi_g$, where the coupling is strong, and the gap between $\gamma$ and the proved strong-coupling range is at least $10^{17}$ in $\beta_W$ (Section~\ref{sec:rem-gap}). Full rotation invariance needs new mathematics; it is open even for lattice $\Phi^4_3$.
+
+\paragraph{Next steps in the plan.} IV-2 and IV-1 first, because they are cheap and can refute the plan early; then a written attempt at (CG) with an independent verifier.

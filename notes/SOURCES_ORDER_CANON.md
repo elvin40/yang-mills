@@ -288,3 +288,4 @@ Change log: 2026-10-28 canon maintenance pass: section F (28 additions from A18,
 Change log: 2026-10-28 maintenance pass (F.5): A16 B92 marks lifted (verifier corrections at B14a); r_0^{exp} = r merged at B25; (K3) via C_1-free form at B18, C_1^{FX} at B18b, κ ≥ 1536 at B7; topological pass acyclic.
 
 - 2026-10-28 (coordinator, from lean/YmLean/ScaleChain.lean findings): add to B30 the unprinted side condition γ²β′ ≤ 1/L (needed for CMP 119 (2.9) line 2's last step L(1 + X)^{β_0} ≤ (L + 1)(n − m)^{β_0}; upper bound on γ after L and β′; admissible, no cycle); record the R_j hypotheses 1 + β_0 < L (holds at L ≥ 13 with β_0 ≤ ½); the (2.46) constant in telescoped form is 2^{⌊κ_0/2⌋}(1 + 1/β) (same order as before).
+- 2026-10-28 (coordinator, from TRUST_LEDGER round 9): add M ≥ c_T/22 (the Lemma T cut-off threshold of SOURCES_C_CONDITION, so that (Vol) ℓ > 22M implies side > c_T(d, L)) to M_req at B18; c_T depends on (d, L) only — no cycle.
