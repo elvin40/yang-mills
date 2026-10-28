@@ -43,3 +43,30 @@ Author: Claude (Opus), unverified. Firewall respected: /tmp/sa_repo and reports/
  (f) First-derivative half of (H-hist2). From real (H-hist) (uniform C_1, HHIST/GGAIN): |∂_{u_i}β_j| ≤ ½g_i³C_1λ^{j−1−i}, so ε′_j ≤ ½C_1(1−λ)^{−1}u_{j−1}^{−3/2}, summable. From (F1) alone: ε′_j ~ g_{j−1}², Σ_j ~ β^{−1}log K, NOT uniform. So ε′ needs the REAL uniform (H-hist); ε″ needs only (F1). [P]
  (g) Which function. Route 1 covers F whose only coupling dependence is via g|B| and u (§2.1 scope). That is F = B_j(·; ū), the frozen-threshold increment, PROVIDED the frozen cutoffs act on the physical fluctuation g·B (then they are g-free in B̃ units, as HHOL needs). [V] F4/F5 of HTHR2: (1.27) acts on V_jV_Z^{−1} − 1 and (1.82) on B′, both physical variables. So B_j(·; ū) is in scope [R: the large-field cutoffs are in HHOL §6, open]. F = β_j(w) = B_j(w; w) is NOT in scope: its thresholds run with w through log g. HTHR2_VERIFY Step 7 already flagged this.
 Conclusion of Route 1. For F = B_j(·; ū): (H-hist2) ⇐ (F1) + (H-hol domain fact (d)), with ε″_j = c_2u_{j−1}^{−2}; the ε′ half needs real (H-hist). For F = β_j: Route 1 gives the pure history part only; the threshold parts ∂_s²B_j and ∂_s∂_wB_j remain (§4).
+
+## 3. Route 2: the real chain, differentiated twice
+
+3.1 Setting [from HHIST §5–6, SM §2–3]. E^{(k+1)} = G_k(g_k; I_k), I_k = {V^{(m)}}_{m≤k}, G_k = Ĝ_k∘𝓛_k, 𝓛 linear with ‖𝓛W‖_* ≤ ε_1K_VΣ_mL^{−α_*(k−m)}‖W^{(m)}‖ (Fact A), Ĝ holomorphic on {‖V‖_* < R_V} with sup S_V = K_HR_V (Fact B). β_{k+1} = Π(E^{(k+1)}), V^{(k+1)} = E^{(k+1)} − β_{k+1}A: both linear in E. First-derivative chain s^i_m := ‖∂_{g_i}V^{(m)}‖ ≤ S_0λ^{m−1−i} (Lemma HH; λ = L^{−α_*} + θ, θ = 2C_VK_HK_Vε_1).
+ Second-derivative chain t^{il}_m := ‖∂_{g_i}∂_{g_l}V^{(m)}‖, i ≤ l. t^{il}_m = 0 for m ≤ l.
+
+3.2 The three kinds of term [P]. For k ≥ l+1 (both slots in the past of step k+1), chain rule at fixed real g_k:
+  ∂_i∂_lE^{(k+1)} = DG_k[∂_i∂_lI_k] + D²G_k[∂_iI_k, ∂_lI_k].
+ (T1) Linear term: ≤ θ_0Σ_mL^{−α_*(k−m)}t^{il}_m (Theorem SM, unchanged).
+ (T2) Quadratic term. Two-variable Cauchy for Ĝ at V_0 = 𝓛I_0 with ‖V_0‖_* ≤ R_V/2: z ↦ Ĝ(V_0 + z_1V_1 + z_2V_2) is holomorphic for |z_1|‖V_1‖ + |z_2|‖V_2‖ < R_V/2. Radii r_a = R_V/(4‖V_a‖) give |D²Ĝ(V_0)[V_1, V_2]| ≤ S_V/(r_1r_2) = 16K_H‖V_1‖_*‖V_2‖_*/R_V. Insert Fact A:
+  (T2) ≤ θ_2·σ^i_k·σ^l_k,  θ_2 := 16K_HK_V²ε_1²/R_V,  σ^i_k := Σ_mL^{−α_*(k−m)}s^i_m ≤ S_0λ^{k−i}/θ (HHIST §6 sum).
+  No g-derivative of any step map enters (T1) or (T2). Only Cauchy in the input variable at REAL g_k. So no G3 and no G-gain here.
+ (T3) Start terms at step l+1 (own slot l hit once or twice):
+  (T3a) i < l: ∂_{g_l}DG_l(g_l; I)[∂_iI]. Write DG_l[W] = (2πi)^{−1}∮G_l(g_l; I + zW)dz/z² on |z| = ρ_W := R_V/(4‖𝓛W‖_*). Then ∂_{g_l}DG_l[W] = (2πi)^{−1}∮∂_{g_l}G_l(g_l; I + zW)dz/z². If the own-slot bound |∂_{g_l}G_l(g_l; I′)| ≤ S_0e^{−κ′d} (Theorem B2-unif, GGAIN §4.4) holds for all complex inputs I′ with ‖𝓛I′‖_* ≤ 3R_V/4, then
+   (T3a) ≤ S_0/ρ_W = θ_1σ^i_l,  θ_1 := 4S_0ε_1K_V/R_V.
+   This uses the FIRST own-slot derivative only (GGAIN + first-order G3), plus Cauchy in the input. [P given B2-unif on the complex input ball; that extension is R: GGAIN's proof uses the inputs only through the sup v of (1.36), which is the same on the ball.]
+  (T3b) i = l: ∂²_{g_l}E^{(l+1)}, the own-slot SECOND derivative. This is the only term that needs a second derivative of one step map in its own coupling. §3.4 and §3.5 give two ways.
+
+3.3 The recursion and its solution [P given T1–T3; num]. With θ = C_Vθ_0 and the start t^{il}_{l+1} ≤ C_V·(T3):
+  t^{il}_{k+1} ≤ θΣ_{m≤k}L^{−α_*(k−m)}t^{il}_m + C_Vθ_2S_0²θ^{−2}λ^{(k−i)+(k−l)}.
+ Claim: t^{il}_m ≤ T·λ^{m−1−i} for m ≥ l+1, with T := max(C_Vθ_1S_0/θ, C_VS_{00}λ^{−0}) + C_Vθ_2S_0²θ^{−3}(1−λ)^{−1}·λ (S_{00} = bound of T3b). Proof: the linear part propagates λ per step (HHIST §6 sum); each source injection at step n has size ≤ cλ^{(n−1−i)+(n−1−l)} ≤ cλ^{n−1−i}·λ^{n−1−l} and propagates by λ^{k−n}; Σ_{n≥l+1}λ^{n−1−l} ≤ (1−λ)^{−1}. ∎
+ Then |∂_{g_i}∂_{g_l}β_j| ≤ C_Π·(linear + source at step j) ≤ C_2λ^{j−1−min(i,l)}, C_2 := (C_Π/C_V)·T + C_Πθ_2S_0²θ^{−2}.
+ Decay form. λ^{j−1−min(i,l)} ≤ λ^{(j−1−i)/2}λ^{(j−1−l)/2}. So the product form holds with a′_m = λ^{m/2}, the same exponent as HHOL §5.2. The product form with a_m = λ^m is FALSE in general: the mixed perturbation, once created, propagates at rate λ per step, not λ².
+ [num, python -I inline, no file kept] Scalar toy of the recursion (S_0 = S_{00} = 1, θ_1 = 0.3, θ_2 = 0.5, j = 60), (L, α_*, θ) = (13, .5, .1), (3, 1, .3), (13, 1, .05): t/λ^{j−1−min} = 0.78–2.7 for all (i, l) ∈ {(0,0), (0,10), (0,30), (5,40), (20,21)}; t/λ^{(j−1−i)+(j−1−l)} = 7·10³ to 10^{53} (product with a_m = λ^m fails); t/λ^{(sum)/2} ≤ 2.2 (works).
+
+3.4 Units and summability [P]. u-slots: ∂_{u_i}∂_{u_l} = ¼g_i³g_l³∂_{g_i}∂_{g_l} (i ≠ l); ∂²_{u_i} = ¼g_i⁶∂²_{g_i} + (3/4)g_i⁵∂_{g_i}. With uniform C_2, C_1 and g_i ≤ g_{j−1}:
+  ε″_j(B_j) ≤ [¼C_2(1−λ^{1/2})^{−2} + (3/4)C_1(1−λ)^{−1}]·g_{j−1}⁵ ≤ c_2′u_{j−1}^{−5/2}. Σ_j ε″_j ≤ c_2′Σ_m(γ^{−2}+βm)^{−5/2} ≤ c_2′γ³/β. Uniform in K. Route 2 gives more room than needed: g⁵ against the g⁴ of Route 1.
