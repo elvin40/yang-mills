@@ -101,12 +101,12 @@ lemma shoot_step {f : ℝ → ℝ} {a d p q : ℝ} (had : a ≤ d) (hf : Continu
     ⟨_, hS2.csSup_mem hS2ne hS2b, fun y hy => le_csSup hS2b hy⟩
   simp only [Set.mem_preimage, Set.mem_singleton_iff] at hfa'
   refine ⟨a', d', haa', ha'd', hd'd, hfa', hfd', fun x hx => ⟨?_, ?_⟩⟩
-  · by_contra h; push_neg at h
+  · by_contra h; push Not at h
     obtain ⟨y, hy, hfy⟩ := intermediate_value_Icc hx.2
       (hf'.mono (Set.Icc_subset_Icc (haa'.trans hx.1) le_rfl)) ⟨h.le, by rw [hfd']; exact hpq⟩
     have := hmax y ⟨⟨haa'.trans (hx.1.trans hy.1), hy.2⟩, hfy⟩
     rw [le_antisymm (hy.1.trans this) hx.1, hfa'] at h; exact lt_irrefl _ h
-  · by_contra h; push_neg at h
+  · by_contra h; push Not at h
     obtain ⟨y, hy, hfy⟩ := intermediate_value_Icc hx.1
       (hf'.mono (Set.Icc_subset_Icc haa' hx.2)) ⟨by rw [hfa']; exact hpq, h.le⟩
     have := hmin y ⟨⟨haa'.trans hy.1, hy.2.trans (hx.2.trans hd'd)⟩, hfy⟩
@@ -180,7 +180,7 @@ theorem nest_DDoublePrime (F : ℕ → ℝ → ℝ) (c : ℕ → ℝ) (t b R : �
   obtain ⟨x, hxK, hx⟩ := nest_shoot F c t (b / 4) K (by positivity) hF0 hcont hstep
   have hsx : ∀ i < K, |F (i + 1) x - (F i x - c (i + 1))| ≤ b / 4 :=
     fun i hi => hstep i hi x fun j hj => hx j (by omega)
-  refine ⟨x, hxK, hx, fun k hk => ?_, fun m n hmn hnK => cprimeDD hR hwin hsx hmn hnK⟩
+  refine ⟨x, hxK, hx, fun k hk => ?_, fun m n hmn hnK => cprimeDD (u := fun i => F i x) hR hwin hsx hmn hnK⟩
   refine le_trans ?_ (hx k hk).1
   rcases hk.lt_or_eq with hk' | rfl
   · obtain ⟨h3, -⟩ := abs_le.1 (hwin k K hk' le_rfl)
@@ -188,17 +188,19 @@ theorem nest_DDoublePrime (F : ℕ → ℝ → ℝ) (c : ℕ → ℝ) (t b R : �
     unfold pe; nlinarith
   · rw [pe_K]; linarith
 
-/-- D′ window bound: `Σ_{i=m+1}^n (c i − β∞/4) ≥ (β∞/4)(n − m) − J(B + β∞/2)`. -/
-lemma dp_sum_ge {B βinf : ℝ} {J : ℕ} (hβ : 0 < βinf) (hbound : ∀ j, |c j| ≤ B)
+/-- D′ window bound with `e` = number of early indices `i ≤ J` in `{m+1, …, n}`:
+`Σ_{i=m+1}^n (c i − β∞/4) ≥ (β∞/4)(n − m) − e(B + β∞/2)`, `0 ≤ e ≤ min(J, n − m)`. -/
+lemma dp_sum_ge {B βinf : ℝ} {J : ℕ} (hbound : ∀ j, |c j| ≤ B)
     (hconv : ∀ j, J < j → βinf / 2 ≤ c j) (m n : ℕ) :
-    βinf / 4 * (n - m : ℕ) - J * (B + βinf / 2) ≤ T0 c m n - βinf / 4 * (n - m : ℕ) := by
-  have hB : 0 ≤ B := (abs_nonneg _).trans (hbound 0)
+    ∃ e : ℝ, 0 ≤ e ∧ e ≤ J ∧ e ≤ (n - m : ℕ) ∧
+      βinf / 4 * (n - m : ℕ) - e * (B + βinf / 2) ≤ T0 c m n - βinf / 4 * (n - m : ℕ) := by
   have h := window_sum_ge (J := J) (k := m) (K := n) (a := βinf / 4) (b := B + βinf / 4)
     (fun i => c i - βinf / 4)
     (fun i _ => by linarith [neg_abs_le (c i), hbound i]) (fun i _ hi => by linarith [hconv i hi])
   rw [sum_sub_distrib, sum_const, Nat.card_Ioc, nsmul_eq_mul] at h
-  have h2 : (early J m n : ℝ) ≤ J := by exact_mod_cast early_le_J J m n
-  unfold T0; nlinarith
+  refine ⟨early J m n, Nat.cast_nonneg _, by exact_mod_cast early_le_J J m n,
+    by exact_mod_cast early_le J m n, ?_⟩
+  unfold T0; linarith
 
 /-- (c′) for D′ (§4.3 with the V1 constants): slope `β∞/4`, `D′ = J(B + β∞/2)`,
 `B′ = B + β∞/4`, on every trajectory with step bounds `β∞/4`. -/
@@ -209,7 +211,9 @@ theorem cprimeDP {B βinf : ℝ} {J : ℕ} (hβ : 0 < βinf) (hbound : ∀ j, |c
     u n + βinf / 4 * (n - m : ℕ) - J * (B + βinf / 2) ≤ u m ∧
       u m ≤ u n + (B + βinf / 4) * (n - m : ℕ) := by
   obtain ⟨h1, h2⟩ := abs_le.1 (incr_bracket hmn fun i _ hi => hstep i (by omega))
-  have h3 := dp_sum_ge hβ hbound hconv m n
+  obtain ⟨e, he0, heJ, -, h3⟩ := dp_sum_ge hbound hconv m n
+  have hB : 0 ≤ B := (abs_nonneg _).trans (hbound 0)
+  have h5 : e * (B + βinf / 2) ≤ J * (B + βinf / 2) := mul_le_mul_of_nonneg_right heJ (by linarith)
   have h4 : T0 c m n ≤ B * (n - m : ℕ) :=
     window_sum_le _ fun i _ => (le_abs_self _).trans (hbound i)
   constructor <;> linarith
@@ -233,10 +237,10 @@ theorem nest_DPrime (F : ℕ → ℝ → ℝ) (c : ℕ → ℝ) (t B βinf : ℝ
   have hsx : ∀ i < K, |F (i + 1) x - (F i x - c (i + 1))| ≤ βinf / 4 :=
     fun i hi => hstep i hi x fun j hj => hx j (by omega)
   refine ⟨x, hxK, hx, fun k hk => le_trans ?_ (hx k hk).1,
-    fun m n hmn hnK => cprimeDP hβ hbound hconv hsx hmn hnK⟩
-  have h := dp_sum_ge hβ hbound hconv k K
+    fun m n hmn hnK => cprimeDP (u := fun i => F i x) hβ hbound hconv hsx hmn hnK⟩
+  obtain ⟨e, he0, heJ, hek, h⟩ := dp_sum_ge hbound hconv k K
   have hB : 0 ≤ B := (abs_nonneg _).trans (hbound 0)
-  have : (0 : ℝ) ≤ (K - k : ℕ) := Nat.cast_nonneg _
+  have h5 : e * (B + βinf / 4) ≤ J * (B + βinf / 4) := mul_le_mul_of_nonneg_right heJ (by linarith)
   unfold pe; nlinarith
 
 end YmLean.Nest

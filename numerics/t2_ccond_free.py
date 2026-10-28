@@ -21,8 +21,6 @@ def K_at(p, N, d):
     TF = np.sum(np.abs(w)**2 / e2[:, None], axis=0)            # Feynman: diagonal
     eh = e / np.sqrt(e2)[:, None]
     Wt = w[:, :, None] * (np.eye(d)[None] - eh[:, :, None] * eh.conj()[:, None, :])   # W P_perp
-    Tp = np.einsum('lab,lb->ab', Wt, np.ones(1)[None].repeat(len(e2), 0)[:, :1].repeat(d, 1) * 0) if False else \
-        np.einsum('lab,lcb->ac', Wt * (1 / e2)[:, None, None], (w[:, :, None] * np.eye(d)[None]).conj()) if False else None
     Tp = np.zeros((d, d), complex)
     for l in range(len(e2)):                                   # T_perp = sum W P_perp W* / |e|^2
         Wl = np.diag(w[l]); P = np.eye(d) - np.outer(eh[l], eh[l].conj())
@@ -32,8 +30,8 @@ def K_at(p, N, d):
     if np.linalg.norm(E) > 1e-12:
         u = Ti @ E; Ti = Ti - np.outer(u, u.conj()) / np.real(E.conj() @ u)
     Kgi = np.max(np.linalg.eigvalsh(Ti))
-    # cross-check of the gauge direction: W_l e_l parallel to E for all l
-    par = max(np.linalg.norm(np.cross(w[l] * e[l], E)) if d == 3 else 0.0 for l in range(min(3, len(e2))))
+    par = np.max(np.abs(w * e - PD[:, None] * E[None]))         # W_l e_l = prod D * E(p): gauge part is rank one
+    assert par < 1e-9 * max(1, np.abs(PD).max())
     return 1 / TF.min(), Kgi, par
 
 def sweep(d, N, ng):

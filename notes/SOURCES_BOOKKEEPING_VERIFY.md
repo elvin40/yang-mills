@@ -38,3 +38,16 @@ Grade A12: CONFIRMED (the page correction itself is right).
 - One addition the source file omits: p. 383 also says "we have to include only the constant with the logarithms in the last line into the integration measure" for the A_j integrals. This is the same log g_j^{−2} normalization constant, already moved into R_j on p. 380. No new g-dependence.
 - C_c g-free is a reading of unvalued O(1)s, as the file says; no printed sentence contradicts it.
 Grade A20: CONFIRMED (a: proved; b: reading supported by the printed lines, with the stated caveat).
+
+## 5. A22 — CMP 109 pp. 251, 259, 291, 292 (pdf 3, 11, 43, 44); CMP 119 pp. 256, 258, 261 (pdf 14, 16, 19), images
+- Π: p. 291 (4.37) "Π_{μ,ν}(x, y) = Σ_{X∈D_j^0} E^{(2)}_{μ,ν}(X, x, y), and the irrelevant terms resummed over X ∈ D_j, X ⊂ □̃². The function Π is called the vacuum polarization tensor." p. 292 (5.1): "Π(b, b′) = lim_{T_1^{(j)}↗Z⁴} δ²/δB(b)δB(b′) E^{(j)}(U_j(exp iB))|_{B=0}", introduced by "From this it follows that it can be defined also as". Match; "(5.1) follows from (4.37)" is correct.
+- (2.42): CMP 119 p. 261 (2.41): "sum is over domains X ∈ D_j such, that X ∩ Ω_j ≠ ∅, and X ∩ Z̃_j ≠ ∅"; (ii) "analytic function on the space Ũ_j^c(X, α̃_0, α̃_1)"; (2.42) "|B^{(j)}(X, (U, J), A, {S_i ∩ X})| < B_0 exp(−κd_j(X))". Match; the correction to Z̃_j and Ũ_j^c is right. (Same page: β "e.g., we can take β = 1/4".)
+- (2.12)/(2.23): CMP 119 p. 256 (2.12) "U → A^η(U) on U: U regular and M_B(U) = V"; minimizer "U_B(V), or U_k(V), or simply U_k". p. 258 (2.23) "A_k(1/g_k², U_k) = −A(1/g_k², U_k) + E_k(U_k) + R_k(U_k) + B_k(U_k, A) − E_k". Both CMP 119; match.
+- p. 256 also shows (2.9) followed by "Similar inequalities hold for other constants, which will be introduced later." Match (A22-8a).
+- CMP 109 p. 251: "We take L_μ = L^m, where L is an odd, positive integer > 11"; (0.1) "with a lattice spacing ε = L^{−K}". p. 259 top: "For the effective action corresponding to the unit lattice, where k = K = log_L 1/ε, the above bound is uniform in the lattice spacing ε." Match.
+Grade A22 (the §6 line): CONFIRMED on every clause read. Not re-read here: (5.10), (5.44), p. 298, (3.54), CMP 122 I p. 186 (not in the §6 line; A14 text uses (3.54) and is a separate row).
+
+## 6. §4 (CMP 119 Sect. 3 T step) vs SOURCES_A23_TSTEP + VERIFY
+- BOOKKEEPING §4 says: Sect. 3 prints no loss constant; outputs keep the form (2.42) with the same κ; only prefactors change; rate bookkeeping deferred to CMP 109 Sects. 6–7 / CMP 116 (2.33)–(2.41).
+- A23_TSTEP + VERIFY (images, round 7): loss ≤ 13δ = 10δ printed (CMP 116 (2.41)) + ≤ 3δ unprinted for the Z_0-marked Mayer resummation CMP 119 (3.44)–(3.47) (verifier counts 2δ); CMP 109 "Sects. 6–7" identified with CMP 116 Sects. 1–2.
+- Consistency: no contradiction on what is printed. Both say Sect. 3 prints no rate loss. But BOOKKEEPING §4's sentence "the printed structure ... agrees with homogeneity" and "only prefactors change" is a reading of the printed claim; A23 shows the (3.44)–(3.47) step needs a real rate cost (≤ 3δ) that the print hides. So §4's "use CONSISTENT" (with 10δ) is superseded by A23's 13δ and (K1′). The A23 row already carries this; BOOKKEEPING §4 is history. Not re-read on images here (A23_VERIFY did pp. 277–278 and CMP 116 pp. 18–21).

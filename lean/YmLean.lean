@@ -32,3 +32,4 @@ import YmLean.CauchyPerturbation
 import YmLean.CanonOrder
 import YmLean.ElemBounds
 import YmLean.SchurMarginal
+import YmLean.NestEnvelope
