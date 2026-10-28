@@ -156,7 +156,7 @@ def solve_cert(B, sharp=False):
     n = len(B)
     Bmid = acb_mat([[x.mid() for x in row] for row in B])
     def crad(x): return (x.real.rad()**2 + x.imag.rad()**2).sqrt()
-    rblk = max((sum((crad(B[4 * l + a][4 * l + c])**2 for a in range(4) for c in range(4)), arb(0)).sqrt() for l in range(N)), key=lambda x: float(x.upper()))
+    rblk = arb(np.nextafter(max(float((sum((crad(B[4 * l + a][4 * l + c])**2 for a in range(4) for c in range(4)), arb(0)).sqrt()).upper()) for l in range(N)), np.inf))
     rrest = sum((crad(B[a][c])**2 for a in range(n) for c in range(n) if a >= nf or c >= nf or a // 4 != c // 4), arb(0)).sqrt()
     r = arb((rblk + rrest).upper())
     Bn = to_np(B); R = np.linalg.inv(Bn); E = np.vstack([np.zeros((nf, 4)), np.eye(4)]); Xt = R @ E
@@ -165,7 +165,7 @@ def solve_cert(B, sharp=False):
     eta = frob_upper(Ra * Bmid - acb_mat(n, n, [1 if i == j else 0 for i in range(n) for j in range(n)])) + nR * r
     assert eta < 1, eta
     binv = nR / (1 - eta)
-    res = frob_upper(Bmid * Xa - to_acb(E)) + r * hn(lam_max(gram([Xt], np.eye(4)))[1])
+    res = frob_upper(Bmid * Xa - to_acb(E)) + rblk * hn(lam_max(gram([Xt[:nf]], np.eye(4)))[1]) + rrest * frob_upper(Xa)  # block radius acts on the top rows only
     out = dict(H=Xt[:nf], e=binv * res, binv=binv, eta=eta, r=r)
     if sharp:  # lower bound: ||B^{-1}|| >= ||R v|| / (1 + eta), v = top right singular vector of R
         v = np.linalg.svd(R)[2][0].conj()
