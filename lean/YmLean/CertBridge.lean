@@ -16,6 +16,8 @@ open scoped Matrix.Norms.L2Operator
 
 namespace YmLean
 
+set_option linter.unusedSectionVars false
+
 variable {𝕜 : Type*} [RCLike 𝕜] {n : Type*} [Fintype n] [DecidableEq n]
 
 /-- `frob` is monotone in entrywise upper bounds. -/
@@ -34,7 +36,7 @@ theorem entrywise_to_opnorm (A B : Matrix n n 𝕜) (E : Matrix n n ℝ)
 theorem interval_to_opnorm (A A₀ Alo Ahi : Matrix n n ℝ) (hA : ∀ i j, Alo i j ≤ A i j ∧ A i j ≤ Ahi i j)
     (hA₀ : ∀ i j, Alo i j ≤ A₀ i j ∧ A₀ i j ≤ Ahi i j) : ‖A - A₀‖ ≤ frob (Ahi - Alo) :=
   entrywise_to_opnorm A A₀ _ fun i j => by
-    rw [Real.norm_eq_abs, sub_apply, abs_sub_le_iff]
+    rw [Real.norm_eq_abs, Matrix.sub_apply, abs_sub_le_iff]
     constructor <;> linarith [hA i j, hA₀ i j]
 
 /-- The Oishi–Rump `η` with upper bounds `f0 ≥ ‖R A₀ − 1‖_F`, `nR ≥ ‖R‖₂`, radius `‖E‖_F`. -/
@@ -65,9 +67,11 @@ theorem cell_invertible (A A₀ R : Matrix n n 𝕜) (E : Matrix n n ℝ)
   have hdet := (isUnit_iff_isUnit_det A).mp hu
   have hid : A⁻¹ - R = -((R * A - 1) * A⁻¹) := by
     rw [sub_mul, one_mul, mul_assoc, mul_nonsing_inv _ hdet, mul_one, neg_sub]
-  rw [hid, norm_neg, mul_div_assoc]
-  exact (norm_mul_le _ _).trans (mul_le_mul hRA hinv (norm_nonneg _) (by
-    have : 0 ≤ ‖R * A - 1‖ := norm_nonneg _; linarith))
+  rw [hid, norm_neg]
+  calc _ ≤ orEta f0 nR E * (nR / (1 - orEta f0 nR E)) :=
+        (norm_mul_le _ _).trans (mul_le_mul hRA hinv (norm_nonneg _)
+          ((norm_nonneg _).trans hRA))
+    _ = _ := by ring
 
 /-- A submatrix (injective row and column selections) has spectral norm at most that of the matrix. -/
 theorem norm_submatrix_le {m m' k : Type*} [Fintype m] [DecidableEq m] [Fintype m'] [DecidableEq m']
@@ -78,7 +82,8 @@ theorem norm_submatrix_le {m m' k : Type*} [Fintype m] [DecidableEq m] [Fintype 
     intro p _ _ e he
     set S := (1 : Matrix m m 𝕜).submatrix e id
     have hSS : S * Sᴴ = 1 := by
-      ext i j; simp [S, mul_apply, one_apply, he.eq_iff]
+      rw [conjTranspose_submatrix, conjTranspose_one, ← submatrix_mul _ _ _ _ _ Function.bijective_id,
+        Matrix.one_mul, submatrix_one _ he]
     have h1 : ‖(1 : Matrix p p 𝕜)‖ ≤ 1 := by
       rw [cstar_norm_def, map_one]; exact ContinuousLinearMap.norm_id_le
     have : ‖S‖ * ‖S‖ ≤ 1 := by
@@ -86,7 +91,10 @@ theorem norm_submatrix_le {m m' k : Type*} [Fintype m] [DecidableEq m] [Fintype 
         hSS]; exact h1
     nlinarith [norm_nonneg S]
   have hfac : M.submatrix f g = (1 : Matrix m m 𝕜).submatrix f id * M * ((1 : Matrix m m 𝕜).submatrix g id)ᴴ := by
-    ext i j; simp [mul_apply, one_apply]
+    have h1 := one_submatrix_mul f (Equiv.refl m) M
+    have h2 := mul_submatrix_one (Equiv.refl m) g (M.submatrix f id)
+    simp only [Equiv.coe_refl, Equiv.refl_symm, Function.id_comp] at h1 h2
+    rw [conjTranspose_submatrix, conjTranspose_one, h1, h2, submatrix_submatrix]; rfl
   rw [hfac]
   calc _ ≤ ‖(1 : Matrix m m 𝕜).submatrix f id‖ * ‖M‖ * ‖((1 : Matrix m m 𝕜).submatrix g id)ᴴ‖ :=
         (l2_opNorm_mul _ _).trans (mul_le_mul_of_nonneg_right (l2_opNorm_mul _ _) (norm_nonneg _))
@@ -106,11 +114,11 @@ theorem rq_add (G G' : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) : rq (G + G'
 
 theorem rq_smul (a : ℝ) (G : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq ((a : 𝕜) • G) x = a * rq G x := by
-  simp [rq, map_smul, inner_smul_right, RCLike.re_ofReal_mul]
+  rw [rq, rq, map_smul, ContinuousLinearMap.smul_apply, inner_smul_right, RCLike.re_ofReal_mul]
 
 theorem rq_sum {ι : Type*} (s : Finset ι) (G : ι → Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq (∑ i ∈ s, G i) x = ∑ i ∈ s, rq (G i) x := by
-  simp [rq, map_sum, ContinuousLinearMap.sum_apply, inner_sum]
+  simp [rq, map_sum, inner_sum]
 
 theorem rq_le_norm (G : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) : rq G x ≤ ‖G‖ * ‖x‖ ^ 2 := by
   refine (RCLike.re_le_norm _).trans ((norm_inner_le_norm _ _).trans ?_)
@@ -169,8 +177,9 @@ theorem pert_bound (Z XZ T2 T2h : Matrix n n 𝕜) (w xw : Matrix n Unit 𝕜) {
     refine (norm_add₃_le).trans (add_le_add (add_le_add ?_ ?_) ?_) <;>
       refine (l2_opNorm_mul _ _).trans ?_ <;> rw [l2_opNorm_conjTranspose] <;> gcongr
   rw [e]
-  refine (norm_add_le _ _).trans ?_
-  refine (add_le_add ((norm_add₃_le).trans ?_ |>.trans' (norm_add_le _ _)) b5).trans ?_
-  · exact add_le_add (add_le_add (add_le_add b1 b2) b3) b4 |>.trans' (by
-      gcongr; exact norm_add₃_le)
-  · nlinarith
+  have t1 := norm_add_le (Dᴴ * (T2h * XZ) + (T2h * XZ)ᴴ * D + Dᴴ * T2h * D + (XZ + D)ᴴ * Δ * (XZ + D))
+    ((γ : 𝕜) • (d * xwᴴ + xw * dᴴ + d * dᴴ))
+  have t2 := norm_add_le (Dᴴ * (T2h * XZ) + (T2h * XZ)ᴴ * D + Dᴴ * T2h * D) ((XZ + D)ᴴ * Δ * (XZ + D))
+  have t3 := norm_add₃_le (a := Dᴴ * (T2h * XZ)) (b := (T2h * XZ)ᴴ * D) (c := Dᴴ * T2h * D)
+  have b4' : (‖XZ‖ + ε) * r2 * (‖XZ‖ + ε) = (‖XZ‖ + ε) ^ 2 * r2 := by ring
+  nlinarith

@@ -32,5 +32,6 @@ Check: ‖P_⊥(E_q − E⁰)‖/‖E_q‖ ≤ 2·10^{−13} at L = 3, 5, 7, 9, 
 
 Consequences.
 - |S_L(k_{l,μ})| = |sin(K_μ/2)/sin(k_{l,μ}/2)| = L|a_{l,μ}| and |A(k_l)| = Π_ρ|a_{l,ρ}|, a_{l,ρ} := sin(K_ρ/2)/(L sin(k_{l,ρ}/2)): the task's averaging symbol. Per direction Σ_{l_ρ=0}^{L−1} a_{l,ρ}² = 1 (Fejér identity), hence Σ_l Π_ρ a_{l,ρ}² = 1.
-- P_⊥E_l = P_⊥E⁰_l. So P_⊥TP_⊥ = P_⊥ diag(L^{−2}Σ_l w_{l,μ} d^M_μ(k_l)) P_⊥ with w_{l,μ} := Π_ρ a_{l,ρ}² · a_{l,μ}² (the cross terms with P_l vanish only after P_⊥ … see below).
+- P_⊥E_l = P_⊥E⁰_l, and E⁰_lk̂_l = A(k_l)K̂ (S_L(k_μ)k̂_μ = K̂_μ), so P_⊥E⁰_lP_l = P_⊥E⁰_l. Hence P_⊥TP_⊥ = P_⊥ diag(s²Σ_l|E⁰_{l,μμ}|²d^M_μ(k_l)) P_⊥ = P_⊥ diag(L^{−2}Σ_l w_{l,μ}d^M_μ(k_l)) P_⊥, w_{l,μ} := Π_ρa_{l,ρ}²·a_{l,μ}².
 - Tower identity (exact, from the Prop. A sum with n = l + L m): σ^{ML}_{n,ρ}(K) = a_{l,ρ}·σ^M_{m,ρ}(k_l), q̃^{ML}_n = L q̃^M_m(k_l), so d^{ML}_μ(K) = L^{−2}Σ_l w_{l,μ} d^M_μ(k_l).   (2.2)
+- (2.2) with the previous line proves (I1): P_⊥TP_⊥ = P_⊥diag(d^{ML}(K))P_⊥, so Z = Δ_j(K) (Prop. A at level ML). [P]
