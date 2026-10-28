@@ -204,3 +204,33 @@ The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2}·… = L
 
 5.6 Order of constants. (d, L, a) → (T37): B′, c′, δ′, C_37, a_37 → minimal RM with θ_L ≤ δ′/(8(d + 4)) → γ_N, a_LB (§4; RM-free) → b_G, δ_G, C_𝒟^N, c_X^N → ε → K_F, K_W, C_W → M_1 ≥ M_W (and M_1 ≥ (2C_Wc_1K_W)², M_1 ≥ 3c_loc) → M with R_1M_1 ≤ M and (2.59) at every rate used, RM ≥ 4(d + 4)log L/ε → α_0 with Mα_0 ≤ min{a_37, a_LB}. No loop.
 
+## 6. The M_1 version (R36) [P given (T37) in its M_1 form]
+
+6.1 Setting. In CMP 116 the walk cubes have size M_1 and M is the regularity and layer parameter, with R_1M_1 ≤ M (CMP 116 p. 3 [V, via WG_FULL 0.3]). Theorem 3.9-W is already written in this form: 𝒟 is the M_1-cover, and every threshold of 5.2 is a threshold on M_1.
+
+6.2 What changes, step by step.
+ (a) Input. (T37) in the M_1 form (THM37_FULL §7): per-step factor ρ′ = c′/M_1; B′, δ′, C_37 do not depend on M_1. The hypothesis on U is (3.35) at scale M with O(1)Mα_0 ≤ a_37; that (3.35) at scale M gives the local hypotheses on the □̃^5 of M_1-cubes is THM37_FULL's item, not this file's.
+ (b) Step A (§3). b_G, δ_G, C_𝒟^N, c_X^N are M_1-free. ρ_G = c′/M_1. The band of (L1) needs M_1 ≥ 3c_loc.
+ (c) Step B (§4). Lemma LB uses only blocks Δ(y) and the class cube that contains a block. It does not see M_1. γ_N is M_1-free and M-free. So (H2) needs no [I/R] reading of CMP 116.
+ (d) Step C (§5). ε is M_1-free. The output step factor is ρ ≤ K_W/M_1, and the printed form O(M^{−1/2})^{|ω|}M^{−½|ω|} becomes O(M_1^{−1/2})^{|ω|}M_1^{−½|ω|} (5.3). This is the CMP 116 (1.7) form [V, via WG_FULL 0.3].
+ (e) Conditions. M_1 ≥ max{M_W, (2C_Wc_1K_W)², 3c_loc}; then M with R_1M_1 ≤ M and the RM conditions of 5.6; then α_0. In contrast to G (A1_WALK_FULL (H4), WG-1), no condition α_0 ≤ c′M^{−1}M_1^{−10} is needed for C′.
+ (f) Domains. The domains are enlarged M_1-cubes, enlarged unions of two intersecting M_1-cubes, and the □⁺ of A1-W. All are connected unions of M_1-cubes, so they are admissible for CMP 116 p. 13 [V, via A1_WALK_FULL 6.7]. Their X̃^5 have diameter ≤ c(d)M_1, which the s-rule needs (A1_WALK_FULL 9.3).
+
+## 7. The complex form on 𝒰(α) (R7) [P given (T37-c)]
+
+7.1 Domains [V CMP 99 pp. 396, 400; WC_FULL 6.0]. For b_1 > 0 let 𝒰(b_1) be the set of U′U with U real, (3.35), Mα_0 ≤ min{a_37, a_LB}, and U′ = e^{iηA′}, A′ ∈ 𝔤^c with |A′| < b_1(L^jη)^{−1}, |∇^η_UA′| < b_1(L^jη)^{−2} on Ω_j ((3.37)). The real point of U′U is U. The disc is U(t) := e^{itηA′}U. The A′-constraints are linear in t, so U(t) ∈ 𝒰(b_1) for |t| < b_1/a_1 when U′U ∈ 𝒰(a_1) (WC_FULL 6.0: at the level of Thm 3.4 only A′ is constrained). C′ does not depend on J, and (3.36), (3.38) are not used. At complex points "*" is the analytic continuation of the real adjoint (bilinear transpose); ⟨·,·⟩ stays sesquilinear.
+ Theorem 3.4 [V p. 400, verbatim]: "There exists a positive constant a_1 such that the operators G′(U), (Q′(U)G′²(U)Q′*(U))^{−1}, R(U), G(U) extend to configurations U′U for α_1 ≤ a_1 as analytic functions of A. The extended operators satisfy all the inequalities of Theorems 3.1–3.3 correspondingly." It states analyticity and bounds, not a walk form. Its proof is not used here.
+
+7.2 The one named input (T37-c) [THM37_FULL §8, R7; P pending its verification]. On 𝒰(b_1^{37}), G′(U′U) = Σ_ωG′_ω(U′U) with each term analytic in A′ and (T37a)–(T37d) with B′ replaced by B′^c = B′(1 + O(b_1^{37})) and the same ρ′, δ′.
+
+7.3 Step A at complex points [P]. Q′(U′U) is an entire function of A′: each R(U′U(Γ)) is a finite product of e^{iη ad A′(b)}R(U_b). On a block, |R(U′U(Γ))| ≤ e^{2c_Γb_1}, so |Q′f(y)| ≤ e^{2c_Γb_1}sup_{Δ(y)}|f| and the same for the transpose. §3 runs unchanged: N̂(U_c) = Σ_ωN̂_ω(U_c), each term analytic, with b_G^c := b_G(1 + O(b_1))·e^{4c_Γb_1}, the same ρ_G, δ_G, and C_𝒟^N. Put c_+^c := C_𝒟^Nb_G^c and Γ_c := 2c_+^cΣ(δ_G). Then ‖N̂_□(U_c)‖ ≤ Γ_c for every □ (Lemma LT(b) and (N3)).
+
+7.4 Lemma AW for N̂ [P given 7.2–7.3 and A1_WALK_FULL 8.2–8.3]. The proof of Lemma AW (A1_WALK_FULL 8.3) uses: (i) an analytic walk expansion with (B1)–(B3) on the larger domain; (ii) the real global bound; (iii) M_1 ≥ M_a. Here (i) is 7.3, (ii) is Lemma LB at the real point U, and (iii) is 5.2(b). The truncated local operators N̂_□(U(t)) are analytic in t, bounded by Γ_c, and Re ≥ ½γ_N at t = 0. Lemma CP (A1_WALK_FULL 8.2) gives Re⟨u, N̂_□(U_c)u⟩ ≥ ¼γ_N‖u‖² on 𝒰(a_1), provided
+ b_1/a_1 ≥ 1 + 4Γ_c/γ_N, i.e. a_1 ≤ k_{C′}b_1, k_{C′} := γ_N/(γ_N + 4Γ_c).
+Then Lemma CT with c = ¼γ_N gives ‖C_□(U_c)‖_{ε^c} ≤ 8/γ_N, ε^c := min{½δ_G, γ_N/(16c_+^cΣ(½δ_G))} ≥ ½ε. §5.2(d)–(h) are algebraic or use only kernel bounds, the local inverse bound, and counting. So on 𝒰(k_{C′}b_1^{37}):
+ C′(U_c) = Σ_ωS^{−1}T_ω(U_c)S^{−1}, |T_ω(U_c)| ≤ (8/γ_N)(c_1ρ^c)^{|ω|}m e^{−½ε^cd(ω)}, Σ_ω|T_ω| ≤ (16C_𝒟^N/γ_N)m e^{−½ε^cd},
+with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic (Cramer's rule), so each T_ω is analytic, the series converges uniformly, and C′ is analytic on 𝒰(k_{C′}b_1^{37}). The (3.99) form follows as in 5.3; S is real, so undoing the rescaling is unchanged. N is not Hermitian at complex points; Lemma LB is used only at the real point.
+
+7.5 Place in the chain [P for the mechanism; WC_FULL 6.0–6.4, A1_WALK_FULL 8.4]. In the four-level chain, level 4 takes "(W_G) at complex points [R]: Thm 3.4 … plus Thm 3.10" (A1_WALK_FULL 8.4). The walk forms of G′ and C′ at complex points enter G through Thm 3.10 and WG-G (the chain P = G′Q′*C′Q′G′, WG_FULL 2.3). This file turns the C′ part of that [R] into [P given (T37-c)], at the cost of the radius factor k_{C′}: level 4 is run on 𝒰(b⁗) with b_1⁗ ≤ k_{C′}b_1^{37}. k_{C′} is a constant of (d, L, a); it joins step 7 of the order of A1_WALK_FULL 9.1 before every α^{(n)}. The consumers' complex backgrounds lie in the (3.35) + (3.37) class by SOURCES_A18_REGULAR §5.1 [P there; corrected constants in SOURCES_A18_REGULAR_VERIFY V6]; the α_1-row of the chain then only has to be taken ≤ k_{C′}b_1^{37}.
+ Reduction. The complex form of Thm 3.9 is proved here given one named step: (T37-c), the analytic walk form of G′ on 𝒰(b_1^{37}) (THM37_FULL §8).
+

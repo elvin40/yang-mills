@@ -14,3 +14,11 @@ Units: α := 2|φ| (charge-2 holonomy, LLL §1.1). τ = per-site trace on ℓ²(
 - §5: Lemma C: c_A(t)/t → 11/(12π) (from the scaled limit, LLL Lemma V2). Theorem B: (3.1′) follows from Theorem A + Lemma C + (L-LL) with a Frullani argument. This route does not use STEPB Lemma 2 and so does not use Step C.
 - §6: Step C gauge-fixing symbols a_0, a_1, a_2 (bond fields, midpoint gauge), evenness. [P]; off the critical path after §5.
 - §7: numerics. §8: conclusion and ledger.
+
+## 1. Proper-time form of the massive bracket [P rel. LLL Lemma 2.1]
+
+Inputs [V]. LLL Lemma 2.1: for every m² ≥ 0, W(φ; m²) = −∫dF_⊥(κ)[τ log|A′_α + κ + m²| − τ log(A′_0 + κ + m²)], A′_0 = 𝔏_0⊗1 ((F1)). LLL Lemma V0(b): A′_α ≥ −3|α| for |α| ≤ 10^{−4}. LLL §3: ∫dF_⊥(κ)e^{−tκ} = p_t(0)², and p_t(0)² ≤ C_p(1 + t)^{−1}.
+Lemma 1.1. Let 0 < |α| ≤ 10^{−4} and m² ≥ 6|α|. Then
+  W(φ; m²) = ∫_0^∞ (dt/t) e^{−tm²} p_t(0)² D_α(t).   (1.1)
+Proof. X := A′_α + κ + m² ≥ m² − 3|α| ≥ m²/2 > 0 and X_0 := A′_0 + κ + m² ≥ m². For bounded X, X_0 ≥ c > 0, log X − log X_0 = −∫_0^∞(dt/t)(e^{−tX} − e^{−tX_0}) (Frullani, spectral theorem). Apply τ and Fubini: the integrand is bounded by e^{−tm²/2}·e^{−tκ}|D_α(t)|, and |D_α(t)| ≤ Cα²t for t ≤ 1/|α| (LLL Lemma V1) and ≤ 4 e^{3|α|t} always (τ1 = 2), so it is integrable in (t, κ). The κ-integral gives p_t(0)². Sign: W = −∫dF_⊥ τ(log X − log X_0) = +∫(dt/t)e^{−tm²}p_t(0)²D_α(t). ∎
+Remark. Positivity of A′_α + m² is the only place the mass is used. The threshold 6|α| = 12|φ| is μ ≥ 12 in STEPB's m² = μ|φ|. STEPB §2.1's constant C_0 is replaced by LLL V0(b) (C_0 = 6 in φ units).
