@@ -8,6 +8,7 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 |---|---|---|
 | INDEX.md | This table. | report |
 | PLAN.md | Dated status lines, rules, and decisions for the whole campaign. | report |
+| IDS.md | Registry of all project ids (R, K, X, N, Q, H, L, T; scheme of 2026-10-28) with old ids as aliases; frozen files use old ids, look them up here. | report |
 | THEOREM2.md | Balaban's unpublished Theorem 2 stated precisely, with the open sub-theorem H-171 (T2-a). | §3 reduction verified (LEMMAS_DE_VERIFY); rest unverified; assembly superseded by THEOREM2_PROOF.md |
 | THEOREM2_PROOF.md | Conditional proof of Theorem 2: reduction chain H-173 (T2-a1′) ⇒ Theorem 2 ⇒ Theorem 1, ledger §7. | corrected (THEOREM2_PROOF_VERIFY) |
 | THEOREM2_PROOF_v2.md | Theorem 2 proof chapter, version 2 (Route K and Route B). | superseded by THEOREM2_PROOF_v3.md (corrected by THEOREM2_PROOF_v2_VERIFY) |

@@ -36,7 +36,7 @@ Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an
 
 ## How the pieces fit
 
-The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 132 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
+The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 137 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
 
 ## Independence and prior work
 

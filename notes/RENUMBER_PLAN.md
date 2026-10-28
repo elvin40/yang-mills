@@ -1594,3 +1594,1222 @@ Option A: 1 script run (mechanical, minutes), then about 4 review agents (ledger
 6. Homonym lemmas: run a read pass to merge restatements before the apply pass, or apply one id per defining file now and merge later.
 7. Lean: rename id-named declarations to lemma_Lnnn with deprecated aliases, or keep names and add the id in the docstring only.
 8. Promotion threshold for local labels: promote only labels cited bare from another file (this plan), or give every numbered label an id.
+
+
+## Applied 2026-10-28
+
+Applied by Claude (Opus 5.5). Decisions taken by Elvin and the orchestrator: Option A (live files only); numbers assigned from scratch in logical order (no mnemonic blocks, so the "new" column of §3 above is provisional and superseded); file names unchanged; one R- prefix with the group (A/B) as a ledger column; canon step 10; Lean: CanonOrder constructors renamed, every other id-named declaration keeps its name and gains the id in its docstring (no deprecated aliases); homonym lemmas keep the provisional one-id-per-defining-file assignment and are listed in IDS.md under "To review"; only labels in the mapping got global ids. IDS.md is the authoritative registry; to map an id of §3 above to its final id, go through the old id (IDS.md column "old ids / aliases").
+
+### What was done
+
+1. IDS.md written: 1,058 ids (R 51, K 50, X 5, N 50, Q 62, H 338, L 350, T 152), one line each (new id | kind | short name | old ids / aliases | defining file §), grouped by family in numeric order; 10-line header with the scheme and the rule "frozen files use old ids; look them up here"; a "To review" section (232 rows: homonym lemma names, id-shaped labels) plus the occurrence policy. Order: R = ledger order (active group A rows with A1w after A1, then group B, then retired A9, A12, A20, A21, A22 as R-047–R-051); K = C1–C46 with C9′ after C9, then C-new-1, -3, -4 (C-new-2 = K-046); N = canon file order, step 10; Q = closure Table 1, then NEW-1–4, then theorem-file [R] tags, then FX O1–O4; H = Table 2 readings, (C), named labels, id-shaped labels, condition lists (A11_CONST S/X, A16 Q, (U-a)–(U-d), A1_WALK_FULL IN), theorem-file input tags; L = Theorem 2w, then the paper's results in paper order, then the rest; T = old B1–B34, then old B35–B135 and PLAN fix passes F7–F23 interleaved by first appearance in PLAN.md.
+2. Live set rewritten (48 files): TRUST_LEDGER.md, CLOSURE_PLAN.md, SOURCES_ORDER_CANON.md, INDEX.md, paper/*.tex (9), paper/README.md, lean/README.md, lean/LEAN_CATALOGUE.md, lean/YmLean/*.lean (32 with changes; Lean code changed only in CanonOrder.lean). History zones left as written: TRUST_LEDGER header paragraphs and every "Change note" section; CLOSURE_PLAN Date/Status lines and the Status addendum; SOURCES_ORDER_CANON sections E–G; all of INBOX.md (every entry is dated). No "(= new id)" annotations were added to history lines (IDS.md covers them). PLAN.md and INBOX.md each gained one closing line: "From here on … uses the IDS.md scheme; earlier entries use old ids."
+3. Method (scripts in /tmp/rn_apply/, not in the project): candidate finder with the inventory boundaries (extended so that LaTeX "--" ranges and LaTeX prime/subscript forms such as A10$'$, (H$_Q$), Lemma D$''$ match), longest match first, file-class scoping (canon file and CanonOrder: B = canon line; other live files: B1–B22 = ledger row; CLOSURE_PLAN: R1–R46 = closure item; elsewhere R-strings default to file-local), two-phase splice with sentinels so a new id is never re-matched, per-file inverse check (the original text is rebuilt exactly from each output by the inverse map; per-file diffs in /tmp/rn_apply/diffs/, inverse map /tmp/rn_apply/inverse_map.json). Replacement forms: short ids → the new id; parenthesized labels → "ID (label)"; named results → "ID (Lemma X)", or the id alone when the name itself is id-shaped (Theorem C1, Theorem A1-W, Prop. A15-N, …); bare T1/T2 → "Target 1"/"Target 2"; (T1)–(T4) of CMP 119 unchanged. TRUST_LEDGER tables gained the "group" column (A/B) and row R-002 moved under R-001; a row's own label after its id was not doubled ("| R-025 | B | (H2) …").
+4. Banners: the first line "IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping." was inserted into 423 frozen files (corpus now 564 files; 478 carry candidate tokens; minus the live set, PLAN.md, and INBOX.md). In the 51 numerics/*.py files the banner is a "#" comment (after a shebang where present); the three checked compile. This file carries a longer banner that marks §3's new ids as provisional. Firewall files were neither read nor edited.
+5. Lean: CanonOrder constructors renamed B1… → N010…N500 (440 code tokens); added `num`, `id_eq_rank : ∀ a : Line, num a = 10 * (rank a + 1)` (by cases + decide), and `edges_forward_num` (by decide). `counts` = 50 lines, 170 edges (docs said 135; updated in TRUST_LEDGER §7, lean/README.md, paper/remains.tex). Docstring ids added for the M19 declarations (most docstrings already carried the id after the comment pass; new tags on `lemma_DE`, `lemmaN_partial`, `P4_divergence`, `K1_numeric_13`); `ComplexGaussian.lemmaD_core`, `lemmaS_form` got no tag (their lemmas, A8_POS Lemma D and G3_N2 Lemma S, are not in the mapping). Whole project rebuilt under /tmp/ym_lake.lock: 8752 jobs, success, no sorry; CanonOrder.id_eq_rank, edges_forward_num, canon_acyclic depend on no axioms; every other #print axioms ⊆ {propext, Classical.choice, Quot.sound} (no proof was edited).
+6. Paper: 47 object labels renamed to the env:Lnnn form (thm:A → thm:L002, lem:Dprime → lem:L004, def:HU → def:H116, …; sec:/app:/rem:/corr: unchanged); 455 \label/\ref occurrences rewritten. latexmk -pdf: 137 pages, 0 undefined references, 0 multiply defined labels, 0 errors. The \ThmPW macro keeps the printed name "Theorem B_PW".
+
+### Counts
+
+- Automated replacements: 6,960 (incl. 16 set-brace ids such as "{A5}"); manual edits after the script: 20 string fixes (Target (T1)/(T2) definitions, three "–g/–c/–b" sub-line ranges, "Theorems L-011/B2" ×2, 10 ids after "/", two ids in LaTeX quotes), 55 removed doubled row ids, 45 group cells, 440 Lean constructor tokens, 455 paper label/ref keys, 4 docstrings, 3 count updates, one INDEX line.
+- Flagged for manual review: 2,809 occurrences (bare B/C/R/X/F/T strings, single-letter and id-shaped labels, homonym names, plural "Lemmas" lists). Each was read in context; 1,187 got an explicit decision (listed below: 504 → a specific id, 683 → keep as file-local/external); the rest kept the shown default after reading.
+- Self-check (§5.5 items 1–3): 1,058 registry ids, 0 duplicates; 7,195 id references in the live files and PLAN/INBOX, all resolve except two provisional plan ids (H-401, H-474) quoted in a dated PLAN.md entry; ledger keys R/K/X (45 + 46 + 5) and canon keys (50, ascending, equal to the Lean order) and closure keys (Q 46, H 56) are each unique and registered (R-011 = A10′ lives inside row R-010; R-047–R-051 are retired, §6). Old ids left in live files outside history zones: 0 unresolved; 790 tokens kept on purpose as file-local or external labels (R 184: WC_FULL R1–R4, A10′ R1–R4, canon resolutions R1–R7, A23 R1/R3; C 135: WC_FULL C1–C2, MA2 (C1)/(C2), HHOL (C1)–(C5), the class/condition C-lists, Route K (C1σ); L 104: THEOREM2_PROOF item L5, walk properties (L1)–(L2), L3 convention; B 101: the two-step bound (B2), Route B items B1–B8, HIGHER_M1 sections, CMP 116 §2 conditions B1–B23; S 70: S2 form bound, sourced chain S1, S1 fix pass, verify items; T 65: CMP 119 (T1)–(T4), Lemma T threshold (T2), Lean matrix T2; F 64: PAPER_FIX_LOG/A1_WALK/CubeCount F-items; O 38: A1_WALK O3/O4, U3 O5/O6; A 21: file shorthands "A11 §4", Route B item A6, T2_B7_CLAMP (A1)–(A4); Q 8: WC_RESIDUE Q5–Q7), plus id-shaped parenthesized labels used with a non-home meaning and plural "Lemmas …" lists.
+
+### Left for the verifier
+
+1. Sample check (§5.5 item 8) not done by me: 60 random replacements in context.
+2. "To review" in IDS.md: merge candidates (Theorem K L-009/L-204; Theorem B_PW L-103 = L-088; Lemma G3 L-174/L-175; Lemma D′ L-004/L-145; Lemma D″ L-005/L-147/L-148; Prop. A15-N L-024/L-064; Theorem A1-W L-017/L-063) and the id-shaped labels whose other meanings stayed local ((I3), (I1), (K1)–(K3), (N1)–(N4), (H1), (G1), …); a split needs new ids.
+3. The defining-file column for some L ids is the plan's guess (most-cited file); e.g. Lemma D′ is defined in LEMMA_DPRIME.md, registered under KAPPA_BOUNDED.
+4. Plural lists ("Lemmas D, E", "Lemmas D′/D″", "Lemmas S, G, T") keep names without ids.
+5. ~/git/yang_mills/README.md and the sync are the orchestrator's.
+6. Paper prose now shows ids beside names ("R-025 (H2)", "L-005 (Lemma D″)", section titles included); a readability pass on the abstract and section titles is a decision for Elvin.
+
+### Manual-review decisions (file:line in the pre-apply text, token → target)
+
+- TRUST_LEDGER.md:23 `T1` → keep (file-local / external)
+- TRUST_LEDGER.md:23 `(S)` → K-018
+- TRUST_LEDGER.md:24 `T2` → keep (file-local / external)
+- TRUST_LEDGER.md:24 `Theorem B` → L-003
+- TRUST_LEDGER.md:35 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:35 `Lemma H` → L-182
+- TRUST_LEDGER.md:35 `Lemma CT` → L-125
+- TRUST_LEDGER.md:35 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:35 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:35 `Lemma T` → L-284
+- TRUST_LEDGER.md:35 `Lemma T` → L-284
+- TRUST_LEDGER.md:35 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:36 `F11` → T-0060
+- TRUST_LEDGER.md:36 `F14` → T-0066
+- TRUST_LEDGER.md:36 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:36 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:36 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:36 `Theorem L` → L-207
+- TRUST_LEDGER.md:36 `Lemma S` → L-266
+- TRUST_LEDGER.md:36 `O2` → H-002
+- TRUST_LEDGER.md:37 `F13` → T-0062
+- TRUST_LEDGER.md:37 `F12` → T-0061
+- TRUST_LEDGER.md:37 `F14` → T-0066
+- TRUST_LEDGER.md:37 `O2` → H-002
+- TRUST_LEDGER.md:37 `O3` → keep (file-local / external)
+- TRUST_LEDGER.md:37 `O4` → keep (file-local / external)
+- TRUST_LEDGER.md:37 `F17` → T-0127
+- TRUST_LEDGER.md:37 `O2` → H-002
+- TRUST_LEDGER.md:37 `F18` → T-0128
+- TRUST_LEDGER.md:37 `F21` → T-0141
+- TRUST_LEDGER.md:37 `(H1)` → keep (file-local / external)
+- TRUST_LEDGER.md:37 `B22` → N-370
+- TRUST_LEDGER.md:37 `F22` → T-0144
+- TRUST_LEDGER.md:37 `F20` → T-0140
+- TRUST_LEDGER.md:37 `F20` → T-0140
+- TRUST_LEDGER.md:37 `F23` → T-0149
+- TRUST_LEDGER.md:37 `B15` → N-270
+- TRUST_LEDGER.md:37 `F19` → T-0130
+- TRUST_LEDGER.md:37 `F22` → T-0144
+- TRUST_LEDGER.md:37 `(I1)` → keep (file-local / external)
+- TRUST_LEDGER.md:39 `(H-hol)` → R-041
+- TRUST_LEDGER.md:40 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:40 `C3` → keep (file-local / external)
+- TRUST_LEDGER.md:40 `C15` → keep (file-local / external)
+- TRUST_LEDGER.md:41 `(H-hol)` → R-040/R-041
+- TRUST_LEDGER.md:42 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:43 `Lemma P` → L-242
+- TRUST_LEDGER.md:46 `(H-hol)` → R-040/R-041
+- TRUST_LEDGER.md:48 `S3` → keep (file-local / external)
+- TRUST_LEDGER.md:48 `S4` → keep (file-local / external)
+- TRUST_LEDGER.md:48 `(U)` → keep (file-local / external)
+- TRUST_LEDGER.md:49 `S6` → keep (file-local / external)
+- TRUST_LEDGER.md:49 `Thm WC` → L-019
+- TRUST_LEDGER.md:49 `Lemma C` → L-115
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:49 `B8` → keep (file-local / external)
+- TRUST_LEDGER.md:49 `(M1)` → H-035
+- TRUST_LEDGER.md:51 `Lemma C` → L-109
+- TRUST_LEDGER.md:51 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:54 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:54 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:55 `Lemma T` → L-286
+- TRUST_LEDGER.md:57 `(M1)` → H-035
+- TRUST_LEDGER.md:57 `(G3)` → keep (file-local / external)
+- TRUST_LEDGER.md:57 `O2` → H-002
+- TRUST_LEDGER.md:57 `O2` → H-002
+- TRUST_LEDGER.md:67 `(F)` → keep (file-local / external)
+- TRUST_LEDGER.md:75 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:75 `Theorem K` → L-009
+- TRUST_LEDGER.md:75 `(U)` → keep (file-local / external)
+- TRUST_LEDGER.md:76 `(I3)` → keep (file-local / external)
+- TRUST_LEDGER.md:76 `(I3)` → keep (file-local / external)
+- TRUST_LEDGER.md:77 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:77 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:77 `S3` → keep (file-local / external)
+- TRUST_LEDGER.md:78 `(I3)` → keep (file-local / external)
+- TRUST_LEDGER.md:78 `(N2)` → keep (file-local / external)
+- TRUST_LEDGER.md:81 `L5` → keep (file-local / external)
+- TRUST_LEDGER.md:81 `Lemma D″` → L-005
+- TRUST_LEDGER.md:81 `Lemma D′` → L-004
+- TRUST_LEDGER.md:87 `Lemma H` → L-182
+- TRUST_LEDGER.md:90 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:90 `C5` → keep (file-local / external)
+- TRUST_LEDGER.md:91 `(H-hol)` → R-041
+- TRUST_LEDGER.md:91 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:91 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:92 `(H-hol)` → R-040/R-041
+- TRUST_LEDGER.md:94 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:94 `C5` → keep (file-local / external)
+- TRUST_LEDGER.md:94 `L5` → keep (file-local / external)
+- TRUST_LEDGER.md:95 `Lemma C` → L-111
+- TRUST_LEDGER.md:95 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:95 `Lemma C` → L-111
+- TRUST_LEDGER.md:95 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:95 `F9` → T-0039
+- TRUST_LEDGER.md:95 `F9` → T-0039
+- TRUST_LEDGER.md:95 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:95 `Lemma C` → L-111
+- TRUST_LEDGER.md:96 `B7` → N-070
+- TRUST_LEDGER.md:96 `B5` → N-060
+- TRUST_LEDGER.md:98 `Theorem K` → L-009
+- TRUST_LEDGER.md:98 `Lemma D″` → L-005
+- TRUST_LEDGER.md:104 `Lemma T` → L-284
+- TRUST_LEDGER.md:108 `L0` → keep (file-local / external)
+- TRUST_LEDGER.md:108 `L3` → keep (file-local / external)
+- TRUST_LEDGER.md:108 `(H-hol)` → R-041
+- TRUST_LEDGER.md:112 `B1` → N-010
+- TRUST_LEDGER.md:112 `S4` → keep (file-local / external)
+- TRUST_LEDGER.md:113 `(H-hol)` → R-040/R-041
+- TRUST_LEDGER.md:123 `S8` → keep (file-local / external)
+- TRUST_LEDGER.md:124 `(S)` → K-018
+- TRUST_LEDGER.md:124 `(S)` → K-018
+- TRUST_LEDGER.md:131 `B18` → N-310
+- TRUST_LEDGER.md:131 `B3` → keep (file-local / external)
+- TRUST_LEDGER.md:131 `B15` → N-270
+- TRUST_LEDGER.md:131 `B22` → N-370
+- TRUST_LEDGER.md:134 `B1` → N-010
+- TRUST_LEDGER.md:134 `B2` → N-020
+- TRUST_LEDGER.md:135 `B3` → keep (file-local / external)
+- TRUST_LEDGER.md:143 `Lemma S` → L-265
+- TRUST_LEDGER.md:145 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:146 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:147 `B15` → N-270
+- TRUST_LEDGER.md:147 `B18` → N-310
+- TRUST_LEDGER.md:148 `B22` → N-370
+- TRUST_LEDGER.md:148 `B5` → N-060
+- TRUST_LEDGER.md:150 `O4` → keep (file-local / external)
+- TRUST_LEDGER.md:150 `Lemma T` → L-284
+- TRUST_LEDGER.md:150 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:151 `Lemma T` → L-284
+- TRUST_LEDGER.md:151 `Lemma T` → L-284
+- TRUST_LEDGER.md:151 `O2` → keep (file-local / external)
+- TRUST_LEDGER.md:152 `L1` → keep (file-local / external)
+- TRUST_LEDGER.md:152 `L2` → keep (file-local / external)
+- TRUST_LEDGER.md:152 `A8` → keep (file-local / external)
+- TRUST_LEDGER.md:162 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:162 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:163 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:163 `Theorem K` → L-009
+- TRUST_LEDGER.md:163 `Theorem K` → L-009
+- TRUST_LEDGER.md:164 `Theorem K` → L-009
+- TRUST_LEDGER.md:164 `L5` → keep (file-local / external)
+- TRUST_LEDGER.md:164 `Lemma D″` → L-005
+- TRUST_LEDGER.md:164 `(S)` → K-018
+- TRUST_LEDGER.md:164 `(K1)` → keep (file-local / external)
+- TRUST_LEDGER.md:164 `(K2)` → keep (file-local / external)
+- TRUST_LEDGER.md:164 `(K3)` → keep (file-local / external)
+- TRUST_LEDGER.md:164 `Theorem K` → L-009
+- TRUST_LEDGER.md:171 `X5` → X-005
+- TRUST_LEDGER.md:172 `(H-hol)` → R-040/R-041
+- TRUST_LEDGER.md:178 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:178 `C5` → keep (file-local / external)
+- TRUST_LEDGER.md:179 `Lemma C` → L-111
+- TRUST_LEDGER.md:179 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:181 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:181 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:181 `B1` → keep (file-local / external)
+- TRUST_LEDGER.md:181 `B23` → keep (file-local / external)
+- TRUST_LEDGER.md:182 `Lemma T` → L-285
+- TRUST_LEDGER.md:183 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:183 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:183 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:183 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:183 `C5` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `Lemma CT` → L-125
+- TRUST_LEDGER.md:184 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `Lemma T` → L-284
+- TRUST_LEDGER.md:184 `Lemma T` → L-284
+- TRUST_LEDGER.md:184 `Lemma T` → L-284
+- TRUST_LEDGER.md:184 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `(H1)` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `(I1)` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `C1` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:184 `O2` → H-002
+- TRUST_LEDGER.md:184 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:188 `X3` → X-003
+- TRUST_LEDGER.md:188 `X4` → X-004
+- TRUST_LEDGER.md:188 `X5` → X-005
+- TRUST_LEDGER.md:190 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:192 `(M1)` → H-035
+- TRUST_LEDGER.md:192 `C2` → keep (file-local / external)
+- TRUST_LEDGER.md:195 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:201 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:201 `(N3)` → keep (file-local / external)
+- TRUST_LEDGER.md:205 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:213 `X5` → X-005
+- TRUST_LEDGER.md:214 `X2` → X-002
+- TRUST_LEDGER.md:214 `X5` → X-005
+- TRUST_LEDGER.md:220 `X5` → X-005
+- TRUST_LEDGER.md:224 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:224 `X5` → X-005
+- TRUST_LEDGER.md:224 `X5` → X-005
+- TRUST_LEDGER.md:224 `X2` → X-002
+- TRUST_LEDGER.md:224 `X5` → X-005
+- TRUST_LEDGER.md:226 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:226 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:228 `X5` → X-005
+- TRUST_LEDGER.md:229 `X2` → X-002
+- TRUST_LEDGER.md:229 `X5` → X-005
+- TRUST_LEDGER.md:237 `X5` → X-005
+- TRUST_LEDGER.md:241 `Lemma T` → L-284
+- TRUST_LEDGER.md:247 `X5` → X-005
+- TRUST_LEDGER.md:251 `O2` → H-002
+- TRUST_LEDGER.md:251 `(M1)` → H-035
+- TRUST_LEDGER.md:256 `X5` → X-005
+- TRUST_LEDGER.md:257 `X2` → X-002
+- TRUST_LEDGER.md:260 `O2` → H-002
+- TRUST_LEDGER.md:260 `(H1)` → keep (file-local / external)
+- TRUST_LEDGER.md:260 `(I1)` → keep (file-local / external)
+- TRUST_LEDGER.md:260 `(M1)` → H-035
+- TRUST_LEDGER.md:269 `(S)` → keep (file-local / external)
+- TRUST_LEDGER.md:276 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:276 `S1` → keep (file-local / external)
+- TRUST_LEDGER.md:289 `S2` → keep (file-local / external)
+- TRUST_LEDGER.md:292 `(I3)` → keep (file-local / external)
+- TRUST_LEDGER.md:298 `Lemma CT` → L-125
+- TRUST_LEDGER.md:299 `Lemma CT` → L-124
+- TRUST_LEDGER.md:299 `(N4)` → keep (file-local / external)
+- TRUST_LEDGER.md:299 `Lemma N` → L-228
+- TRUST_LEDGER.md:300 `Lemma E` → L-153
+- TRUST_LEDGER.md:304 `Lemma P` → L-242
+- TRUST_LEDGER.md:307 `Lemma S` → keep (file-local / external)
+- TRUST_LEDGER.md:308 `Lemma T` → L-283
+- TRUST_LEDGER.md:309 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:309 `B2` → keep (file-local / external)
+- TRUST_LEDGER.md:311 `Theorem K` → L-009
+- TRUST_LEDGER.md:312 `(N3)` → keep (file-local / external)
+- TRUST_LEDGER.md:316 `Lemma C` → L-115
+- TRUST_LEDGER.md:316 `Lemma P` → L-242
+- TRUST_LEDGER.md:316 `Lemma D` → keep (file-local / external)
+- TRUST_LEDGER.md:316 `Lemma S` → keep (file-local / external)
+- CLOSURE_PLAN.md:9 `T2` → keep (file-local / external)
+- CLOSURE_PLAN.md:9 `X5` → X-005
+- CLOSURE_PLAN.md:9 `X2` → X-002
+- CLOSURE_PLAN.md:9 `X4` → X-004
+- CLOSURE_PLAN.md:14 `(C)` → keep (file-local / external)
+- CLOSURE_PLAN.md:28 `(I1)` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `C1` → keep (file-local / external)
+- CLOSURE_PLAN.md:29 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:40 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:46 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:47 `Lemma CT` → L-125
+- CLOSURE_PLAN.md:48 `(N1)` → keep (file-local / external)
+- CLOSURE_PLAN.md:49 `(N1)` → keep (file-local / external)
+- CLOSURE_PLAN.md:49 `Lemma CT` → L-125
+- CLOSURE_PLAN.md:52 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:52 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:53 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:54 `Lemma C` → L-109
+- CLOSURE_PLAN.md:58 `R5` → keep (file-local / external)
+- CLOSURE_PLAN.md:66 `(U)` → keep (file-local / external)
+- CLOSURE_PLAN.md:70 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:73 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:73 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:73 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:75 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:86 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:86 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:86 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:86 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:103 `O2` → H-002
+- CLOSURE_PLAN.md:103 `C3` → keep (file-local / external)
+- CLOSURE_PLAN.md:103 `O2` → H-002
+- CLOSURE_PLAN.md:103 `O2` → H-002
+- CLOSURE_PLAN.md:104 `Lemma C` → L-115
+- CLOSURE_PLAN.md:105 `B9` → N-090
+- CLOSURE_PLAN.md:112 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:113 `B22` → N-370
+- CLOSURE_PLAN.md:114 `A3` → keep (file-local / external)
+- CLOSURE_PLAN.md:116 `Lemma G` → keep (file-local / external)
+- CLOSURE_PLAN.md:118 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:120 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:128 `L1` → keep (file-local / external)
+- CLOSURE_PLAN.md:128 `L2` → keep (file-local / external)
+- CLOSURE_PLAN.md:128 `L1` → keep (file-local / external)
+- CLOSURE_PLAN.md:128 `L2` → keep (file-local / external)
+- CLOSURE_PLAN.md:129 `(G1)` → keep (file-local / external)
+- CLOSURE_PLAN.md:129 `(G3)` → keep (file-local / external)
+- CLOSURE_PLAN.md:133 `B17` → N-290
+- CLOSURE_PLAN.md:134 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:135 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:136 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:141 `(M1)` → H-035
+- CLOSURE_PLAN.md:143 `(G3)` → keep (file-local / external)
+- CLOSURE_PLAN.md:143 `O2` → H-002
+- CLOSURE_PLAN.md:144 `B5` → N-060
+- CLOSURE_PLAN.md:145 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:148 `C9` → keep (file-local / external)
+- CLOSURE_PLAN.md:161 `Lemma T` → L-285
+- CLOSURE_PLAN.md:176 `(S)` → keep (file-local / external)
+- CLOSURE_PLAN.md:188 `(S)` → K-018
+- CLOSURE_PLAN.md:217 `L1` → keep (file-local / external)
+- CLOSURE_PLAN.md:217 `L2` → keep (file-local / external)
+- CLOSURE_PLAN.md:228 `(H2)` → keep (file-local / external)
+- CLOSURE_PLAN.md:228 `C1` → keep (file-local / external)
+- CLOSURE_PLAN.md:232 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:240 `Lemma CT` → L-125
+- CLOSURE_PLAN.md:240 `C1` → keep (file-local / external)
+- CLOSURE_PLAN.md:240 `C2` → keep (file-local / external)
+- CLOSURE_PLAN.md:240 `Lemma N` → L-226
+- CLOSURE_PLAN.md:246 `Lemma CT` → L-125
+- CLOSURE_PLAN.md:251 `S2` → keep (file-local / external)
+- CLOSURE_PLAN.md:252 `S2` → keep (file-local / external)
+- CLOSURE_PLAN.md:253 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:253 `R3` → keep (file-local / external)
+- CLOSURE_PLAN.md:259 `B10` → N-180
+- CLOSURE_PLAN.md:273 `R1` → keep (file-local / external)
+- CLOSURE_PLAN.md:273 `R2` → keep (file-local / external)
+- CLOSURE_PLAN.md:273 `R4` → keep (file-local / external)
+- CLOSURE_PLAN.md:286 `(M1)` → H-035
+- CLOSURE_PLAN.md:291 `R1` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:3 `(I1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:5 `Q5` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:5 `Q7` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:5 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:15 `(H3)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:42 `(H2)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:88 `(H2)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:88 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:89 `(H3)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:93 `Theorem L` → L-208
+- SOURCES_ORDER_CANON.md:98 `(S3)` → H-257
+- SOURCES_ORDER_CANON.md:101 `B1` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:101 `B1` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:114 `(I1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:118 `B7` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:122 `(G1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:129 `(S4)` → H-258
+- SOURCES_ORDER_CANON.md:130 `(G4)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:132 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:132 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:132 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:139 `(H1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:151 `C3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:151 `C2` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:152 `C4` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:152 `C2` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:155 `L1` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:155 `L2` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:157 `Lemma P` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:157 `S4` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:169 `(N1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:170 `(N3)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:172 `(N5)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:172 `(N6)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:179 `(N1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:182 `(H4)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:183 `(N3)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:183 `(N1)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:184 `(N4)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:197 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:198 `(P13)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:204 `B3` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:208 `Q7` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:208 `(N3)` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:216 `Q5` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:216 `Q7` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:222 `A11` → keep (file-local / external)
+- SOURCES_ORDER_CANON.md:222 `B3` → keep (file-local / external)
+- INDEX.md:21 `Lemma D′` → L-004
+- INDEX.md:22 `Lemma D′` → L-004
+- INDEX.md:23 `Lemma D′` → L-004
+- INDEX.md:47 `Theorem K` → L-009
+- INDEX.md:49 `(U)` → keep (file-local / external)
+- INDEX.md:50 `B2` → keep (file-local / external)
+- INDEX.md:60 `Theorem K` → L-009
+- INDEX.md:60 `B2` → keep (file-local / external)
+- INDEX.md:60 `B2` → keep (file-local / external)
+- INDEX.md:80 `(H-hol)` → R-040/R-041
+- INDEX.md:86 `(H-hol)` → R-041
+- INDEX.md:88 `B2` → keep (file-local / external)
+- INDEX.md:110 `Lemma S` → L-267
+- INDEX.md:165 `S2` → keep (file-local / external)
+- INDEX.md:167 `S2` → keep (file-local / external)
+- INDEX.md:213 `Lemma D′` → L-004
+- INDEX.md:215 `Lemma H` → L-182
+- INDEX.md:216 `Lemma D″` → L-005
+- INDEX.md:220 `Theorem K` → L-009
+- INDEX.md:232 `Lemma CT` → L-125
+- INDEX.md:233 `(K3)` → keep (file-local / external)
+- INDEX.md:249 `B2` → keep (file-local / external)
+- paper/appendix.tex:3 `Theorem K` → L-009
+- paper/appendix.tex:7 `Lemma D$'$` → L-004
+- paper/appendix.tex:7 `Lemma D` → L-006
+- paper/appendix.tex:7 `Lemma E` → L-007
+- paper/appendix.tex:7 `Lemma D` → L-006
+- paper/appendix.tex:8 `Lemma D$''$` → L-005
+- paper/appendix.tex:8 `L5` → keep (file-local / external)
+- paper/appendix.tex:30 `Lemma CT` → L-125
+- paper/appendix.tex:31 `Theorem K` → L-009
+- paper/appendix.tex:46 `Lemma D$'$` → L-004
+- paper/appendix.tex:47 `Lemma D` → L-006
+- paper/appendix.tex:47 `Lemma E` → L-007
+- paper/appendix.tex:47 `Lemma D` → L-006
+- paper/appendix.tex:47 `Lemma E` → L-007
+- paper/appendix.tex:48 `Lemma D$''$` → L-005
+- paper/appendix.tex:52 `Theorem K` → L-009
+- paper/appendix.tex:54 `C1` → keep (file-local / external)
+- paper/appendix.tex:54 `B2` → keep (file-local / external)
+- paper/appendix.tex:56 `(U)` → keep (file-local / external)
+- paper/appendix.tex:57 `Theorem A3` → L-071
+- paper/appendix.tex:63 `S2` → keep (file-local / external)
+- paper/appendix.tex:63 `(I3)` → keep (file-local / external)
+- paper/appendix.tex:65 `(I3)` → keep (file-local / external)
+- paper/appendix.tex:66 `Theorem LOC` → L-026
+- paper/appendix.tex:67 `L5` → keep (file-local / external)
+- paper/appendix.tex:67 `C1` → keep (file-local / external)
+- paper/appendix.tex:69 `Lemma T` → L-284
+- paper/appendix.tex:75 `(M1)` → H-035
+- paper/appendix.tex:75 `F18` → T-0128
+- paper/appendix.tex:76 `(U)` → keep (file-local / external)
+- paper/appendix.tex:76 `C1` → keep (file-local / external)
+- paper/appendix.tex:77 `(S)` → K-018
+- paper/appendix.tex:78 `L5` → keep (file-local / external)
+- paper/appendix.tex:98 `(H-hol)` → R-040/R-041
+- paper/appendix.tex:102 `Lemma CT` → L-125
+- paper/appendix.tex:102 `S2` → keep (file-local / external)
+- paper/appendix.tex:102 `(I3)` → keep (file-local / external)
+- paper/appendix.tex:115 `B2` → keep (file-local / external)
+- paper/appendix.tex:120 `B2` → keep (file-local / external)
+- paper/appendix.tex:120 `O3` → keep (file-local / external)
+- paper/appendix.tex:120 `O4` → keep (file-local / external)
+- paper/appendix.tex:120 `(I3)` → keep (file-local / external)
+- paper/appendix.tex:120 `L5` → keep (file-local / external)
+- paper/appendix.tex:135 `Lemma D$'$` → L-004
+- paper/appendix.tex:162 `Lemma D$'$` → L-004
+- paper/appendix.tex:164 `Lemma D$''$` → L-005
+- paper/appendix.tex:168 `Theorem K` → L-009
+- paper/appendix.tex:177 `(G1)` → keep (file-local / external)
+- paper/appendix.tex:177 `(G3)` → keep (file-local / external)
+- paper/appendix.tex:179 `B1` → keep (file-local / external)
+- paper/appendix.tex:179 `B8` → keep (file-local / external)
+- paper/appendix.tex:186 `Theorem LOC` → L-026
+- paper/appendix.tex:202 `Theorem A` → L-060
+- paper/appendix.tex:202 `Lemma C` → L-112
+- paper/appendix.tex:202 `Theorem B` → L-090
+- paper/appendix.tex:221 `L5` → keep (file-local / external)
+- paper/appendix.tex:280 `L5` → keep (file-local / external)
+- paper/appendix.tex:280 `Lemma D$''$` → L-005
+- paper/appendix.tex:280 `B2` → keep (file-local / external)
+- paper/appendix.tex:280 `(U)` → keep (file-local / external)
+- paper/appendix.tex:281 `Lemma D$''$` → L-005
+- paper/appendix.tex:281 `B2` → keep (file-local / external)
+- paper/appendix.tex:281 `C1` → L-011
+- paper/appendix.tex:281 `B2` → L-012
+- paper/appendix.tex:281 `B2` → keep (file-local / external)
+- paper/appendix.tex:282 `(U)` → keep (file-local / external)
+- paper/appendix.tex:287 `Lemma D` → keep (file-local / external)
+- paper/appendix.tex:287 `(I3)` → keep (file-local / external)
+- paper/appendix.tex:287 `X5` → X-005
+- paper/appendix.tex:287 `X5` → X-005
+- paper/appendix.tex:288 `Theorem LOC` → L-026
+- paper/appendix.tex:289 `(N2)` → keep (file-local / external)
+- paper/appendix.tex:289 `L5` → keep (file-local / external)
+- paper/appendix.tex:290 `S1` → keep (file-local / external)
+- paper/appendix.tex:291 `Lemma T` → L-284
+- paper/appendix.tex:291 `(M1)` → H-035
+- paper/assembly.tex:40 `(U)` → keep (file-local / external)
+- paper/assembly.tex:57 `Theorem K` → L-009
+- paper/assembly.tex:57 `Lemma D$''$` → L-005
+- paper/assembly.tex:57 `L5` → keep (file-local / external)
+- paper/assembly.tex:57 `L5` → keep (file-local / external)
+- paper/assembly.tex:57 `(U)` → keep (file-local / external)
+- paper/assembly.tex:57 `Lemma D$'$` → L-004
+- paper/assembly.tex:57 `Lemma D$''$` → L-005
+- paper/assembly.tex:59 `L5` → keep (file-local / external)
+- paper/assembly.tex:62 `C1` → keep (file-local / external)
+- paper/assembly.tex:156 `(S)` → K-018
+- paper/assembly.tex:156 `Theorem K` → L-009
+- paper/assembly.tex:156 `Lemma D$''$` → L-005
+- paper/assembly.tex:156 `L5` → keep (file-local / external)
+- paper/assembly.tex:158 `(S)` → K-018
+- paper/assembly.tex:162 `Theorem K` → L-009
+- paper/assembly.tex:163 `Theorem K` → L-009
+- paper/assembly.tex:163 `B2` → keep (file-local / external)
+- paper/assembly.tex:163 `B2` → keep (file-local / external)
+- paper/assembly.tex:164 `Lemma G` → L-169
+- paper/assembly.tex:166 `B8` → keep (file-local / external)
+- paper/assembly.tex:166 `(U)` → keep (file-local / external)
+- paper/assembly.tex:167 `B2` → keep (file-local / external)
+- paper/assembly.tex:168 `C1` → keep (file-local / external)
+- paper/assembly.tex:168 `B2` → keep (file-local / external)
+- paper/assembly.tex:169 `C1` → keep (file-local / external)
+- paper/assembly.tex:169 `B2` → keep (file-local / external)
+- paper/assembly.tex:169 `C1` → keep (file-local / external)
+- paper/assembly.tex:170 `B2` → keep (file-local / external)
+- paper/assembly.tex:176 `(I3)` → keep (file-local / external)
+- paper/assembly.tex:176 `(I3)` → keep (file-local / external)
+- paper/assembly.tex:176 `(I3)` → keep (file-local / external)
+- paper/assembly.tex:177 `C4` → keep (file-local / external)
+- paper/assembly.tex:180 `L5` → keep (file-local / external)
+- paper/assembly.tex:181 `(K1)` → keep (file-local / external)
+- paper/assembly.tex:181 `(K2)` → keep (file-local / external)
+- paper/assembly.tex:181 `(K3)` → keep (file-local / external)
+- paper/assembly.tex:186 `B1` → keep (file-local / external)
+- paper/assembly.tex:186 `(U)` → keep (file-local / external)
+- paper/assembly.tex:187 `B1` → keep (file-local / external)
+- paper/assembly.tex:187 `(U)` → keep (file-local / external)
+- paper/assembly.tex:188 `B1` → keep (file-local / external)
+- paper/assembly.tex:189 `B3` → keep (file-local / external)
+- paper/assembly.tex:190 `B4` → keep (file-local / external)
+- paper/assembly.tex:191 `B5` → keep (file-local / external)
+- paper/assembly.tex:192 `B7` → keep (file-local / external)
+- paper/assembly.tex:202 `Lemma CT` → L-125
+- paper/assembly.tex:204 `(S)` → keep (file-local / external)
+- paper/assembly.tex:205 `Lemma T` → L-285
+- paper/assembly.tex:205 `L3` → keep (file-local / external)
+- paper/assembly.tex:208 `(H-hol)` → R-040/R-041
+- paper/assembly.tex:209 `(H-hol)` → R-040/R-041
+- paper/assembly.tex:209 `(H-hol)` → R-040/R-041
+- paper/assembly.tex:212 `(H-hol)` → R-041
+- paper/assembly.tex:213 `C1` → keep (file-local / external)
+- paper/assembly.tex:213 `C2` → keep (file-local / external)
+- paper/assembly.tex:215 `B1` → keep (file-local / external)
+- paper/assembly.tex:215 `B23` → keep (file-local / external)
+- paper/assembly.tex:217 `Lemma C` → L-111
+- paper/assembly.tex:217 `S1` → keep (file-local / external)
+- paper/assembly.tex:218 `S1` → keep (file-local / external)
+- paper/assembly.tex:218 `Lemma C` → L-111
+- paper/assembly.tex:229 `L5` → keep (file-local / external)
+- paper/assembly.tex:239 `C3` → keep (file-local / external)
+- paper/assembly.tex:239 `C2` → keep (file-local / external)
+- paper/intro.tex:24 `L5` → keep (file-local / external)
+- paper/intro.tex:24 `(S)` → K-018
+- paper/intro.tex:25 `L5` → keep (file-local / external)
+- paper/intro.tex:27 `B1` → keep (file-local / external)
+- paper/intro.tex:27 `B7` → keep (file-local / external)
+- paper/intro.tex:29 `L5` → keep (file-local / external)
+- paper/intro.tex:34 `(U)` → keep (file-local / external)
+- paper/intro.tex:36 `L5` → keep (file-local / external)
+- paper/intro.tex:78 `Lemma D$'$` → L-004
+- paper/intro.tex:78 `Lemma D$''$` → L-005
+- paper/intro.tex:79 `Theorem K` → L-009
+- paper/main.tex:2 `T1` → keep (file-local / external)
+- paper/main.tex:35 `Theorem B` → keep (file-local / external)
+- paper/main.tex:36 `Theorem~B` → keep (file-local / external)
+- paper/main.tex:46 `Theorem K` → L-009
+- paper/main.tex:46 `(H-hol)` → R-040/R-041
+- paper/numerics.tex:31 `(U)` → keep (file-local / external)
+- paper/numerics.tex:47 `Theorem W` → L-308
+- paper/numerics.tex:113 `Lemma T` → L-283
+- paper/numerics.tex:119 `Lemma T` → L-283
+- paper/numerics.tex:152 `(N1)` → keep (file-local / external)
+- paper/numerics.tex:152 `(N2)` → keep (file-local / external)
+- paper/numerics.tex:204 `Lemma T` → L-283
+- paper/remains.tex:3 `B1` → keep (file-local / external)
+- paper/remains.tex:3 `B8` → keep (file-local / external)
+- paper/remains.tex:9 `C1` → keep (file-local / external)
+- paper/remains.tex:9 `B2` → keep (file-local / external)
+- paper/remains.tex:9 `(U)` → keep (file-local / external)
+- paper/remains.tex:20 `B2` → keep (file-local / external)
+- paper/remains.tex:20 `C1` → keep (file-local / external)
+- paper/remains.tex:21 `(I3)` → keep (file-local / external)
+- paper/remains.tex:23 `(I3)` → keep (file-local / external)
+- paper/remains.tex:23 `(I3)` → keep (file-local / external)
+- paper/remains.tex:23 `(I3)` → keep (file-local / external)
+- paper/remains.tex:30 `Theorem A3` → L-071
+- paper/remains.tex:35 `Lemma D$''$` → L-005
+- paper/remains.tex:43 `L5` → keep (file-local / external)
+- paper/remains.tex:43 `(S)` → K-018
+- paper/remains.tex:43 `Lemma D$''$` → L-005
+- paper/remains.tex:43 `Lemma D` → L-006
+- paper/remains.tex:44 `(K1)` → keep (file-local / external)
+- paper/remains.tex:44 `(K2)` → keep (file-local / external)
+- paper/remains.tex:44 `(K3)` → keep (file-local / external)
+- paper/remains.tex:44 `Theorem K` → L-009
+- paper/remains.tex:57 `Lemma CT` → L-125
+- paper/remains.tex:57 `S2` → keep (file-local / external)
+- paper/remains.tex:57 `Lemma T` → L-284
+- paper/remains.tex:57 `S2` → keep (file-local / external)
+- paper/remains.tex:58 `O3` → keep (file-local / external)
+- paper/remains.tex:58 `O4` → keep (file-local / external)
+- paper/remains.tex:62 `Lemma N` → L-226
+- paper/remains.tex:62 `C2` → keep (file-local / external)
+- paper/remains.tex:62 `Lemma D` → keep (file-local / external)
+- paper/remains.tex:66 `(M1)` → H-035
+- paper/remains.tex:69 `L3` → keep (file-local / external)
+- paper/remains.tex:70 `(H-hol)` → R-040/R-041
+- paper/remains.tex:70 `(H-hol)` → R-040/R-041
+- paper/remains.tex:70 `B1` → keep (file-local / external)
+- paper/remains.tex:70 `B23` → keep (file-local / external)
+- paper/remains.tex:73 `Lemma C` → L-111
+- paper/remains.tex:73 `S1` → keep (file-local / external)
+- paper/remains.tex:81 `Theorem B` → L-088
+- paper/remains.tex:81 `(U)` → keep (file-local / external)
+- paper/remains.tex:82 `Lemma D$''$` → L-005
+- paper/remains.tex:97 `B1` → keep (file-local / external)
+- paper/remains.tex:97 `B7` → keep (file-local / external)
+- paper/remains.tex:97 `B8` → keep (file-local / external)
+- paper/remains.tex:103 `Lemma CT` → L-125
+- paper/remains.tex:103 `S2` → keep (file-local / external)
+- paper/remains.tex:103 `Lemma T` → L-284
+- paper/remains.tex:104 `O3` → keep (file-local / external)
+- paper/remains.tex:104 `O4` → keep (file-local / external)
+- paper/remains.tex:110 `C2` → keep (file-local / external)
+- paper/remains.tex:111 `Lemma D` → keep (file-local / external)
+- paper/remains.tex:117 `(M1)` → H-035
+- paper/remains.tex:119 `Lemma C` → L-109
+- paper/remains.tex:119 `C2` → keep (file-local / external)
+- paper/remains.tex:130 `(F)` → keep (file-local / external)
+- paper/remains.tex:137 `(I3)` → keep (file-local / external)
+- paper/remains.tex:139 `(N2)` → keep (file-local / external)
+- paper/remains.tex:142 `L5` → keep (file-local / external)
+- paper/remains.tex:142 `Lemma D$''$` → L-005
+- paper/remains.tex:151 `C1` → keep (file-local / external)
+- paper/remains.tex:151 `C5` → keep (file-local / external)
+- paper/remains.tex:152 `(H-hol)` → R-041
+- paper/remains.tex:152 `C1` → keep (file-local / external)
+- paper/remains.tex:152 `C2` → keep (file-local / external)
+- paper/remains.tex:156 `Lemma C` → L-111
+- paper/remains.tex:179 `(S)` → K-018
+- paper/remains.tex:184 `Lemma D` → L-006
+- paper/remains.tex:206 `Lemma T` → L-284
+- paper/remains.tex:217 `X5` → X-005
+- paper/remains.tex:219 `X2` → X-002
+- paper/remains.tex:219 `X5` → X-005
+- paper/remains.tex:220 `(M1)` → H-035
+- paper/remains.tex:220 `(M1)` → H-035
+- paper/remains.tex:229 `Lemma CT` → L-125
+- paper/remains.tex:230 `Lemma CT` → L-124
+- paper/remains.tex:230 `Lemma N` → L-228
+- paper/remains.tex:230 `Lemma C` → L-115
+- paper/remains.tex:231 `Lemma N` → L-225
+- paper/remains.tex:231 `Lemma E` → L-153
+- paper/remains.tex:231 `Lemma CP` → L-122
+- paper/remains.tex:231 `Theorem L` → L-207
+- paper/remains.tex:233 `Lemma N` → L-226
+- paper/remains.tex:233 `Lemma P` → L-242
+- paper/remains.tex:236 `Lemma S` → keep (file-local / external)
+- paper/remains.tex:237 `Lemma T` → L-283
+- paper/remains.tex:238 `B2` → keep (file-local / external)
+- paper/remains.tex:241 `Theorem K` → L-009
+- paper/remains.tex:242 `(N3)` → keep (file-local / external)
+- paper/remains.tex:242 `Lemma H` → L-182
+- paper/setup.tex:9 `Lemma D$''$` → L-005
+- paper/setup.tex:9 `Lemma D$''$` → L-005
+- paper/setup.tex:39 `C1` → keep (file-local / external)
+- paper/setup.tex:54 `(G1)` → keep (file-local / external)
+- paper/setup.tex:54 `(G3)` → keep (file-local / external)
+- paper/setup.tex:54 `(G1)` → keep (file-local / external)
+- paper/setup.tex:55 `(S)` → keep (file-local / external)
+- paper/setup.tex:55 `(S)` → K-018
+- paper/sources.tex:9 `(K1)` → keep (file-local / external)
+- paper/sources.tex:11 `L5` → keep (file-local / external)
+- paper/sources.tex:14 `(K1)` → keep (file-local / external)
+- paper/sources.tex:14 `(K2)` → keep (file-local / external)
+- paper/sources.tex:14 `(K3)` → keep (file-local / external)
+- paper/sources.tex:14 `Theorem K` → L-009
+- paper/sources.tex:15 `(K1)` → keep (file-local / external)
+- paper/sources.tex:16 `(K2)` → keep (file-local / external)
+- paper/sources.tex:17 `(K2)` → keep (file-local / external)
+- paper/sources.tex:17 `L5` → keep (file-local / external)
+- paper/sources.tex:17 `Theorem K` → L-009
+- paper/sources.tex:17 `(K3)` → keep (file-local / external)
+- paper/sources.tex:34 `(I3)` → keep (file-local / external)
+- paper/sources.tex:35 `(I3)` → keep (file-local / external)
+- paper/sources.tex:37 `(I3)` → keep (file-local / external)
+- paper/sources.tex:38 `(I3)` → keep (file-local / external)
+- paper/sources.tex:40 `(I3)` → keep (file-local / external)
+- paper/sources.tex:51 `(D1)` → keep (file-local / external)
+- paper/sources.tex:66 `Lemma A` → L-054
+- paper/sources.tex:71 `(P1)` → keep (file-local / external)
+- paper/sources.tex:71 `(P7)` → keep (file-local / external)
+- paper/sources.tex:85 `C1` → keep (file-local / external)
+- paper/sources.tex:85 `C5` → keep (file-local / external)
+- paper/sources.tex:89 `Lemma C` → L-111
+- paper/sources.tex:90 `Lemma C` → L-111
+- paper/sources.tex:90 `Lemma C` → L-111
+- paper/sources.tex:91 `S1` → keep (file-local / external)
+- paper/sources.tex:108 `Lemma H` → L-182
+- paper/sources.tex:114 `Lemma C` → L-111
+- paper/sources.tex:114 `S1` → keep (file-local / external)
+- paper/sources.tex:114 `Lemma C` → L-111
+- paper/sources.tex:128 `(H-hol)` → R-040/R-041
+- paper/sources.tex:131 `(H-hol)` → R-040/R-041
+- paper/sources.tex:134 `Lemma E` → L-007
+- paper/sources.tex:134 `Lemma E` → L-007
+- paper/sources.tex:137 `Lemma D` → keep (file-local / external)
+- paper/sources.tex:137 `C1` → keep (file-local / external)
+- paper/sources.tex:137 `C5` → keep (file-local / external)
+- paper/sources.tex:139 `(H-hol)` → R-041
+- paper/sources.tex:140 `(H-hol)` → R-041
+- paper/sources.tex:140 `(M1)` → K-025
+- paper/sources.tex:144 `Lemma S` → L-268
+- paper/sources.tex:146 `C1` → keep (file-local / external)
+- paper/sources.tex:146 `C2` → keep (file-local / external)
+- paper/sources.tex:152 `C1` → keep (file-local / external)
+- paper/sources.tex:152 `C2` → keep (file-local / external)
+- paper/sources.tex:152 `C3` → keep (file-local / external)
+- paper/sources.tex:156 `L1` → keep (file-local / external)
+- paper/sources.tex:156 `L24` → keep (file-local / external)
+- paper/sources.tex:161 `B1` → keep (file-local / external)
+- paper/sources.tex:161 `B23` → keep (file-local / external)
+- paper/sources.tex:162 `(M2)` → keep (file-local / external)
+- paper/sources.tex:163 `B1` → keep (file-local / external)
+- paper/sources.tex:163 `B23` → keep (file-local / external)
+- paper/sources.tex:174 `L1` → keep (file-local / external)
+- paper/sources.tex:179 `C3` → keep (file-local / external)
+- paper/sources.tex:190 `L3` → keep (file-local / external)
+- paper/sources.tex:191 `Lemma S` → L-267
+- paper/sources.tex:192 `Lemma S` → L-267
+- paper/sources.tex:192 `(M5)` → keep (file-local / external)
+- paper/sources.tex:193 `L3` → keep (file-local / external)
+- paper/sources.tex:196 `Lemma T` → L-285
+- paper/sources.tex:197 `Lemma T` → L-285
+- paper/sources.tex:198 `Lemma T` → L-285
+- paper/sources.tex:199 `L3` → keep (file-local / external)
+- paper/sources.tex:205 `Lemma D` → L-133
+- paper/sources.tex:209 `Fact A` → L-050
+- paper/sources.tex:209 `C1` → keep (file-local / external)
+- paper/sources.tex:209 `C5` → keep (file-local / external)
+- paper/sources.tex:209 `Fact B` → L-082
+- paper/sources.tex:211 `Fact A` → L-050
+- paper/sources.tex:211 `Fact B` → L-082
+- paper/sources.tex:211 `C1` → keep (file-local / external)
+- paper/sources.tex:211 `C5` → keep (file-local / external)
+- paper/sources.tex:246 `(S)` → keep (file-local / external)
+- paper/sources.tex:248 `(S)` → keep (file-local / external)
+- paper/sources.tex:254 `Lemma CT` → L-125
+- paper/sources.tex:254 `Lemma CT` → L-125
+- paper/sources.tex:254 `(S4)` → keep (file-local / external)
+- paper/sources.tex:259 `Lemma CT` → L-125
+- paper/sources.tex:260 `S2` → keep (file-local / external)
+- paper/sources.tex:260 `S2` → keep (file-local / external)
+- paper/sources.tex:262 `S2` → keep (file-local / external)
+- paper/sources.tex:265 `S2` → keep (file-local / external)
+- paper/sources.tex:269 `Theorem A1-W` → L-063
+- paper/sources.tex:269 `Lemma CT` → L-125
+- paper/sources.tex:269 `L1` → keep (file-local / external)
+- paper/sources.tex:269 `O2` → H-002
+- paper/sources.tex:269 `O3` → keep (file-local / external)
+- paper/sources.tex:269 `O4` → keep (file-local / external)
+- paper/sources.tex:269 `O4` → keep (file-local / external)
+- paper/sources.tex:275 `O3` → keep (file-local / external)
+- paper/sources.tex:275 `O4` → keep (file-local / external)
+- paper/sources.tex:280 `Lemma N` → L-228
+- paper/sources.tex:306 `L1` → keep (file-local / external)
+- paper/sources.tex:306 `L2` → keep (file-local / external)
+- paper/sources.tex:306 `B1` → keep (file-local / external)
+- paper/sources.tex:306 `B2` → keep (file-local / external)
+- paper/sources.tex:309 `L1` → keep (file-local / external)
+- paper/sources.tex:309 `L2` → keep (file-local / external)
+- paper/sources.tex:309 `(H2)` → keep (file-local / external)
+- paper/sources.tex:309 `(H3)` → keep (file-local / external)
+- paper/sources.tex:312 `O2` → H-002
+- paper/sources.tex:317 `(G1)` → keep (file-local / external)
+- paper/sources.tex:320 `Lemma N` → L-228
+- paper/sources.tex:320 `Lemma C` → L-115
+- paper/sources.tex:320 `L1` → keep (file-local / external)
+- paper/sources.tex:321 `(G1)` → keep (file-local / external)
+- paper/sources.tex:327 `L1` → keep (file-local / external)
+- paper/sources.tex:327 `L2` → keep (file-local / external)
+- paper/sources.tex:332 `Lemma E` → L-153
+- paper/sources.tex:348 `C2` → keep (file-local / external)
+- paper/sources.tex:349 `Theorem L` → L-208
+- paper/sources.tex:355 `Lemma D` → keep (file-local / external)
+- paper/sources.tex:356 `Lemma P` → L-242
+- paper/sources.tex:360 `Lemma D` → keep (file-local / external)
+- paper/sources.tex:385 `L2` → keep (file-local / external)
+- paper/sources.tex:396 `Theorem L` → L-207
+- paper/sources.tex:417 `(U)` → keep (file-local / external)
+- paper/sources.tex:418 `Lemma G` → L-167
+- paper/sources.tex:418 `(U)` → keep (file-local / external)
+- paper/sources.tex:426 `L2` → keep (file-local / external)
+- paper/sources.tex:448 `(I3)` → keep (file-local / external)
+- paper/sources.tex:452 `L5` → keep (file-local / external)
+- paper/sources.tex:460 `Lemma A` → L-056
+- paper/sources.tex:460 `(N2)` → keep (file-local / external)
+- paper/sources.tex:461 `(I3)` → keep (file-local / external)
+- paper/sources.tex:462 `Lemma A` → L-056
+- paper/sources.tex:462 `(N2)` → keep (file-local / external)
+- paper/sources.tex:466 `L5` → keep (file-local / external)
+- paper/sources.tex:487 `Lemma C` → L-109
+- paper/sources.tex:489 `Lemma C` → L-109
+- paper/sources.tex:490 `C2` → keep (file-local / external)
+- paper/sources.tex:505 `Lemma C` → L-115
+- paper/sources.tex:505 `(M1)` → H-035
+- paper/sources.tex:508 `C1` → keep (file-local / external)
+- paper/sources.tex:508 `C2` → keep (file-local / external)
+- paper/sources.tex:512 `B5` → N-060
+- paper/sources.tex:512 `B7` → N-070
+- paper/sources.tex:527 `(H-hol)` → R-041
+- paper/sources.tex:530 `C3` → keep (file-local / external)
+- paper/sources.tex:535 `C1` → keep (file-local / external)
+- paper/sources.tex:535 `C4` → keep (file-local / external)
+- paper/sources.tex:538 `L5` → keep (file-local / external)
+- paper/sources.tex:542 `Lemma C` → L-111
+- paper/sources.tex:542 `S1` → keep (file-local / external)
+- paper/sources.tex:542 `S1` → keep (file-local / external)
+- paper/sources.tex:545 `S1` → keep (file-local / external)
+- paper/sources.tex:562 `S2` → keep (file-local / external)
+- paper/sources.tex:562 `Lemma T` → L-284
+- paper/sources.tex:563 `Lemma T` → L-284
+- paper/sources.tex:573 `S1` → keep (file-local / external)
+- paper/sources.tex:585 `Theorem A` → L-060
+- paper/sources.tex:585 `Lemma C` → L-112
+- paper/sources.tex:597 `Lemma C$'$` → L-127
+- paper/sources.tex:597 `S1` → keep (file-local / external)
+- paper/sources.tex:598 `Lemma C` → L-111
+- paper/sources.tex:599 `S1` → keep (file-local / external)
+- paper/sources.tex:601 `L1` → keep (file-local / external)
+- paper/sources.tex:601 `L2` → keep (file-local / external)
+- paper/sources.tex:603 `(M1)` → H-035
+- paper/sources.tex:603 `(M1)` → H-035
+- paper/sources.tex:603 `(M1)` → H-035
+- paper/sources.tex:617 `F17` → T-0127
+- paper/sources.tex:622 `F18` → T-0128
+- paper/theorem2.tex:3 `(S)` → K-018
+- paper/theorem2.tex:24 `(S)` → K-018
+- paper/theorem2.tex:35 `(S)` → K-018
+- paper/theorem2.tex:40 `B2` → keep (file-local / external)
+- paper/theorem2.tex:40 `Theorem K` → L-009
+- paper/theorem2.tex:40 `Lemma D$''$` → L-005
+- paper/theorem2.tex:40 `B2` → keep (file-local / external)
+- paper/theorem2.tex:40 `Lemma D$''$` → L-005
+- paper/theorem2.tex:40 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:40 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:40 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:40 `L5` → keep (file-local / external)
+- paper/theorem2.tex:50 `L1` → keep (file-local / external)
+- paper/theorem2.tex:50 `Theorem K` → L-009
+- paper/theorem2.tex:51 `L2` → keep (file-local / external)
+- paper/theorem2.tex:51 `Lemma D$'$` → L-004
+- paper/theorem2.tex:52 `(S)` → K-018
+- paper/theorem2.tex:53 `L2` → keep (file-local / external)
+- paper/theorem2.tex:58 `L5` → keep (file-local / external)
+- paper/theorem2.tex:60 `Lemma D$'$` → L-004
+- paper/theorem2.tex:65 `Lemma D$'$` → L-004
+- paper/theorem2.tex:79 `L5` → keep (file-local / external)
+- paper/theorem2.tex:87 `Lemma D$''$` → L-005
+- paper/theorem2.tex:92 `Lemma D$''$` → L-005
+- paper/theorem2.tex:108 `Lemma D$'$` → L-004
+- paper/theorem2.tex:108 `L5` → keep (file-local / external)
+- paper/theorem2.tex:110 `L5` → keep (file-local / external)
+- paper/theorem2.tex:114 `Lemma D$''$` → L-005
+- paper/theorem2.tex:119 `(S)` → K-018
+- paper/theorem2.tex:141 `Lemma E` → L-007
+- paper/theorem2.tex:146 `L5` → keep (file-local / external)
+- paper/theorem2.tex:150 `Lemma D$'$` → L-004
+- paper/theorem2.tex:153 `(S)` → K-018
+- paper/theorem2.tex:155 `Lemma D$''$` → L-005
+- paper/theorem2.tex:155 `(S)` → K-018
+- paper/theorem2.tex:155 `Lemma D` → L-006
+- paper/theorem2.tex:155 `Lemma D$''$` → L-005
+- paper/theorem2.tex:161 `Theorem K` → L-009
+- paper/theorem2.tex:203 `Theorem K` → L-009
+- paper/theorem2.tex:211 `Theorem W` → L-308
+- paper/theorem2.tex:212 `Theorem A3` → L-071
+- paper/theorem2.tex:214 `Lemma M` → L-219
+- paper/theorem2.tex:221 `Lemma D$''$` → L-005
+- paper/theorem2.tex:221 `L5` → keep (file-local / external)
+- paper/theorem2.tex:223 `Theorem K` → L-009
+- paper/theorem2.tex:223 `B2` → keep (file-local / external)
+- paper/theorem2.tex:227 `Theorem K` → L-009
+- paper/theorem2.tex:228 `B2` → keep (file-local / external)
+- paper/theorem2.tex:228 `B2` → keep (file-local / external)
+- paper/theorem2.tex:228 `Theorem K` → L-009
+- paper/theorem2.tex:228 `Lemma D$''$` → L-005
+- paper/theorem2.tex:234 `Theorem A3` → L-071
+- paper/theorem2.tex:235 `Lemma M` → L-219
+- paper/theorem2.tex:235 `Theorem A3` → L-071
+- paper/theorem2.tex:235 `Theorem W` → L-308
+- paper/theorem2.tex:235 `B2` → keep (file-local / external)
+- paper/theorem2.tex:235 `B2` → keep (file-local / external)
+- paper/theorem2.tex:236 `Lemma M` → L-219
+- paper/theorem2.tex:236 `Theorem W` → L-308
+- paper/theorem2.tex:248 `L5` → keep (file-local / external)
+- paper/theorem2.tex:253 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:258 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:265 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:278 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:278 `C1` → keep (file-local / external)
+- paper/theorem2.tex:284 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:284 `Theorem A3` → L-071
+- paper/theorem2.tex:287 `Lemma D$''$` → L-005
+- paper/theorem2.tex:289 `L5` → keep (file-local / external)
+- paper/theorem2.tex:295 `B2` → keep (file-local / external)
+- paper/theorem2.tex:295 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:295 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:298 `Theorem A3` → L-071
+- paper/theorem2.tex:300 `L5` → keep (file-local / external)
+- paper/theorem2.tex:302 `L5` → keep (file-local / external)
+- paper/theorem2.tex:302 `B2` → keep (file-local / external)
+- paper/theorem2.tex:302 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:302 `C1` → keep (file-local / external)
+- paper/theorem2.tex:302 `B2` → keep (file-local / external)
+- paper/theorem2.tex:302 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:304 `B2` → keep (file-local / external)
+- paper/theorem2.tex:308 `B2` → keep (file-local / external)
+- paper/theorem2.tex:314 `Theorem A3` → L-071
+- paper/theorem2.tex:315 `B2` → keep (file-local / external)
+- paper/theorem2.tex:316 `C1` → keep (file-local / external)
+- paper/theorem2.tex:316 `B2` → keep (file-local / external)
+- paper/theorem2.tex:316 `Theorem A3` → L-071
+- paper/theorem2.tex:316 `C1` → keep (file-local / external)
+- paper/theorem2.tex:317 `Theorem A3` → L-071
+- paper/theorem2.tex:333 `C1` → keep (file-local / external)
+- paper/theorem2.tex:336 `B2` → keep (file-local / external)
+- paper/theorem2.tex:338 `C1` → keep (file-local / external)
+- paper/theorem2.tex:343 `B2` → keep (file-local / external)
+- paper/theorem2.tex:344 `(G3)` → keep (file-local / external)
+- paper/theorem2.tex:345 `B2` → keep (file-local / external)
+- paper/theorem2.tex:356 `C1` → keep (file-local / external)
+- paper/theorem2.tex:356 `B2` → keep (file-local / external)
+- paper/theorem2.tex:357 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:359 `C1` → keep (file-local / external)
+- paper/theorem2.tex:359 `B2` → keep (file-local / external)
+- paper/theorem2.tex:359 `B2` → keep (file-local / external)
+- paper/theorem2.tex:359 `B2` → keep (file-local / external)
+- paper/theorem2.tex:366 `B2` → keep (file-local / external)
+- paper/theorem2.tex:366 `L5` → keep (file-local / external)
+- paper/theorem2.tex:366 `Theorem K` → L-009
+- paper/theorem2.tex:366 `Lemma D$''$` → L-005
+- paper/theorem2.tex:368 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:368 `L5` → keep (file-local / external)
+- paper/theorem2.tex:368 `Lemma D$''$` → L-005
+- paper/theorem2.tex:368 `L5` → keep (file-local / external)
+- paper/theorem2.tex:370 `B2` → keep (file-local / external)
+- paper/theorem2.tex:370 `C1` → L-011
+- paper/theorem2.tex:370 `B2` → L-012
+- paper/theorem2.tex:370 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:372 `(S)` → K-018
+- paper/theorem2.tex:372 `L5` → keep (file-local / external)
+- paper/theorem2.tex:372 `L5` → keep (file-local / external)
+- paper/theorem2.tex:373 `X5` → X-005
+- paper/theorem2.tex:379 `L1` → keep (file-local / external)
+- paper/theorem2.tex:379 `L2` → keep (file-local / external)
+- paper/theorem2.tex:382 `(S)` → K-018
+- paper/theorem2.tex:388 `Lemma D$'$` → L-004
+- paper/theorem2.tex:388 `L2` → keep (file-local / external)
+- paper/theorem2.tex:388 `B2` → keep (file-local / external)
+- paper/theorem2.tex:404 `Theorem K` → L-009
+- paper/theorem2.tex:404 `(U)` → keep (file-local / external)
+- paper/theorem2.tex:409 `L2` → keep (file-local / external)
+- paper/README.md:14 `B2` → keep (file-local / external)
+- paper/README.md:18 `B1` → keep (file-local / external)
+- paper/README.md:18 `B8` → keep (file-local / external)
+- paper/README.md:22 `Theorem K` → L-009
+- paper/README.md:24 `Theorem B_PW` → L-088
+- paper/README.md:24 `Theorem B` → L-003
+- paper/README.md:24 `(G1)` → keep (file-local / external)
+- paper/README.md:24 `(G3)` → keep (file-local / external)
+- paper/README.md:24 `(S)` → keep (file-local / external)
+- paper/README.md:32 `L5` → keep (file-local / external)
+- lean/README.md:18 `C2` → keep (file-local / external)
+- lean/README.md:27 `(K3)` → keep (file-local / external)
+- lean/README.md:28 `(N1)` → keep (file-local / external)
+- lean/README.md:34 `(N1)` → keep (file-local / external)
+- lean/README.md:36 `Q5` → keep (file-local / external)
+- lean/README.md:36 `Q6` → keep (file-local / external)
+- lean/README.md:45 `Lemma E` → L-153
+- lean/README.md:92 `(P1)` → keep (file-local / external)
+- lean/README.md:92 `(P3)` → keep (file-local / external)
+- lean/README.md:103 `L5` → keep (file-local / external)
+- lean/README.md:111 `Lemma D′` → L-004
+- lean/README.md:150 `Lemma D″` → L-005
+- lean/README.md:152 `Lemma D′` → L-004
+- lean/README.md:156 `Lemma D′` → L-004
+- lean/README.md:169 `L5` → keep (file-local / external)
+- lean/README.md:179 `Theorem K` → L-009
+- lean/README.md:187 `C1` → L-011
+- lean/README.md:187 `B2` → L-012
+- lean/README.md:235 `C2` → keep (file-local / external)
+- lean/README.md:258 `(I1)` → keep (file-local / external)
+- lean/README.md:261 `(I1)` → keep (file-local / external)
+- lean/README.md:262 `Lemma T` → L-283
+- lean/README.md:263 `Lemma T` → L-283
+- lean/README.md:271 `(K3)` → keep (file-local / external)
+- lean/README.md:277 `(K1)` → keep (file-local / external)
+- lean/README.md:277 `(K2)` → keep (file-local / external)
+- lean/README.md:279 `(N1)` → keep (file-local / external)
+- lean/README.md:294 `A1` → keep (file-local / external)
+- lean/README.md:315 `(N1)` → keep (file-local / external)
+- lean/README.md:320 `(N2)` → keep (file-local / external)
+- lean/README.md:320 `(N4)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:10 `Lemma N` → L-225
+- lean/LEAN_CATALOGUE.md:10 `Lemma E` → L-153
+- lean/LEAN_CATALOGUE.md:10 `Lemma CP` → L-122
+- lean/LEAN_CATALOGUE.md:13 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:14 `L5` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:14 `Lemma H` → L-182
+- lean/LEAN_CATALOGUE.md:14 `Lemma N` → L-225
+- lean/LEAN_CATALOGUE.md:14 `(N2)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:14 `(N4)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:14 `A1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:14 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:22 `(N1)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:22 `(N2)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:22 `(N4)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:22 `(N2)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:26 `B2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:34 `O2` → H-002
+- lean/LEAN_CATALOGUE.md:39 `(H2)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:49 `Lemma C` → L-115
+- lean/LEAN_CATALOGUE.md:50 `A1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:53 `(I1)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:57 `Lemma E` → L-153
+- lean/LEAN_CATALOGUE.md:59 `Lemma E` → L-153
+- lean/LEAN_CATALOGUE.md:62 `Lemma G` → L-170
+- lean/LEAN_CATALOGUE.md:63 `Lemma G` → L-170
+- lean/LEAN_CATALOGUE.md:65 `Lemma E` → L-153
+- lean/LEAN_CATALOGUE.md:66 `Lemma P_exp` → L-248
+- lean/LEAN_CATALOGUE.md:66 `Theorem L` → L-208
+- lean/LEAN_CATALOGUE.md:66 `Theorem WC` → L-019
+- lean/LEAN_CATALOGUE.md:75 `Lemma G3` → L-175
+- lean/LEAN_CATALOGUE.md:86 `(N3)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:90 `L5` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:94 `Lemma D′` → L-004
+- lean/LEAN_CATALOGUE.md:94 `Lemma D″` → L-005
+- lean/LEAN_CATALOGUE.md:94 `L5` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A3` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A3` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:95 `A2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:96 `A1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:96 `A2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:121 `Lemma A` → L-056
+- lean/LEAN_CATALOGUE.md:125 `(K1)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:137 `L1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:141 `L1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:142 `L2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:142 `L1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:143 `L3` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:143 `Lemma A` → L-053
+- lean/LEAN_CATALOGUE.md:144 `L4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:144 `(U)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:146 `Theorem LOC` → L-026
+- lean/LEAN_CATALOGUE.md:146 `L1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:146 `L2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:146 `L3` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:146 `L4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:153 `Lemma D` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:154 `(G3)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:154 `(G3)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:155 `Lemma P` → L-242
+- lean/LEAN_CATALOGUE.md:156 `Lemma P` → L-242
+- lean/LEAN_CATALOGUE.md:157 `Lemma P` → L-242
+- lean/LEAN_CATALOGUE.md:161 `(H3)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:172 `B5` → N-060
+- lean/LEAN_CATALOGUE.md:185 `(I1)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:185 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:187 `C1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:187 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:188 `C2` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:189 `C3` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:190 `C4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:190 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:190 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:191 `C5` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:192 `C6` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:193 `C7` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:194 `C8` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:198 `O2` → H-002
+- lean/LEAN_CATALOGUE.md:200 `(N3)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:200 `(U)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:200 `Lemma P` → L-242
+- lean/LEAN_CATALOGUE.md:202 `C8` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:208 `Lemma N` → L-226
+- lean/LEAN_CATALOGUE.md:209 `(N4)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:210 `Lemma C` → L-115
+- lean/LEAN_CATALOGUE.md:211 `Lemma N` → L-228
+- lean/LEAN_CATALOGUE.md:212 `Lemma P` → L-242
+- lean/LEAN_CATALOGUE.md:212 `Lemma D` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:213 `Theorem L` → L-208
+- lean/LEAN_CATALOGUE.md:213 `Lemma E` → L-153
+- lean/LEAN_CATALOGUE.md:215 `(G4)` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:217 `C1` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:217 `C4` → keep (file-local / external)
+- lean/LEAN_CATALOGUE.md:217 `Lemma T` → L-283
+- lean/LEAN_CATALOGUE.md:221 `C8` → keep (file-local / external)
+- lean/YmLean/BlockInequalityE.lean:4 `Lemma E` → L-153
+- lean/YmLean/BlockInequalityE.lean:4 `L8` → keep (file-local / external)
+- lean/YmLean/BlockInequalityE.lean:39 `Lemma E` → L-153
+- lean/YmLean/BlockInequalityE.lean:133 `Lemma E` → L-153
+- lean/YmLean/BlockInequalityE.lean:167 `Lemma E` → L-153
+- lean/YmLean/BlockNorm.lean:5 `C4` → keep (file-local / external)
+- lean/YmLean/CanonOrder.lean:13 `B10a` → N-100–N-160
+- lean/YmLean/CanonOrder.lean:14 `B12a` → N-210–N-230
+- lean/YmLean/CanonOrder.lean:14 `B18a` → N-320–N-330
+- lean/YmLean/CauchyPerturbation.lean:9 `Q6` → keep (file-local / external)
+- lean/YmLean/CauchyPerturbation.lean:9 `L7` → keep (file-local / external)
+- lean/YmLean/CauchyPerturbation.lean:73 `Lemma CP` → L-122
+- lean/YmLean/CauchyPerturbation.lean:153 `Lemma CP` → L-122
+- lean/YmLean/CertBridge.lean:155 `T2` → keep (file-local / external)
+- lean/YmLean/CertBridge.lean:155 `T2` → keep (file-local / external)
+- lean/YmLean/CertBridge.lean:199 `T2` → keep (file-local / external)
+- lean/YmLean/CertBridge.lean:202 `T2` → keep (file-local / external)
+- lean/YmLean/CombesThomas.lean:70 `Lemma CT` → L-125
+- lean/YmLean/CombesThomas.lean:108 `Lemma CT` → L-125
+- lean/YmLean/CombesThomas.lean:120 `Lemma CT` → L-125
+- lean/YmLean/ComplexGaussian.lean:9 `Lemma D` → keep (file-local / external)
+- lean/YmLean/ComplexGaussian.lean:11 `Lemma D` → keep (file-local / external)
+- lean/YmLean/ComplexGaussian.lean:12 `Lemma D` → keep (file-local / external)
+- lean/YmLean/ComplexGaussian.lean:18 `Lemma D` → keep (file-local / external)
+- lean/YmLean/ComplexGaussian.lean:41 `Lemma P` → L-242
+- lean/YmLean/ComplexGaussian.lean:49 `Lemma P` → L-242
+- lean/YmLean/ComplexGaussian.lean:136 `Lemma P` → L-242
+- lean/YmLean/ComplexGaussian.lean:153 `Lemma S` → keep (file-local / external)
+- lean/YmLean/ComplexGaussian.lean:172 `Lemma D` → keep (file-local / external)
+- lean/YmLean/GaugeMin.lean:4 `L3` → keep (file-local / external)
+- lean/YmLean/Gronwall.lean:7 `C1` → L-011
+- lean/YmLean/Gronwall.lean:7 `B2` → L-012
+- lean/YmLean/Gronwall.lean:41 `C1` → L-011
+- lean/YmLean/H1Majorant.lean:8 `(P5)` → keep (file-local / external)
+- lean/YmLean/H1Majorant.lean:8 `C2` → keep (file-local / external)
+- lean/YmLean/H1Majorant.lean:8 `C6` → keep (file-local / external)
+- lean/YmLean/Interp.lean:14 `(K3)` → keep (file-local / external)
+- lean/YmLean/Interp.lean:115 `(K3)` → keep (file-local / external)
+- lean/YmLean/Interp.lean:135 `Theorem K` → L-009
+- lean/YmLean/KernelRow.lean:72 `Lemma CT` → L-125
+- lean/YmLean/KernelRow.lean:160 `Lemma CT` → L-125
+- lean/YmLean/LemmaDDoublePrime.lean:4 `Lemma D″` → L-005
+- lean/YmLean/LemmaDDoublePrime.lean:66 `Lemma D″` → L-005
+- lean/YmLean/LemmaDE.lean:4 `Lemma D′` → L-004
+- lean/YmLean/LemmaDE.lean:119 `Lemma D′` → L-004
+- lean/YmLean/LemmaDE.lean:123 `Lemma D′` → L-004
+- lean/YmLean/LemmaDE.lean:129 `Lemma D′` → L-004
+- lean/YmLean/LemmaDPrime.lean:5 `Lemma D′` → L-004
+- lean/YmLean/LemmaDPrime.lean:17 `Lemma D′` → L-004
+- lean/YmLean/LemmaDPrime.lean:59 `(P1)` → keep (file-local / external)
+- lean/YmLean/LemmaDPrime.lean:65 `(P2)` → keep (file-local / external)
+- lean/YmLean/LemmaDPrime.lean:71 `(P3)` → keep (file-local / external)
+- lean/YmLean/LemmaDPrime.lean:348 `Lemma D′` → L-004
+- lean/YmLean/LemmaH.lean:85 `Lemma H` → L-182
+- lean/YmLean/LemmaH.lean:114 `Lemma H` → L-182
+- lean/YmLean/MagneticShift.lean:34 `L2` → keep (file-local / external)
+- lean/YmLean/MagneticShift.lean:502 `L2` → keep (file-local / external)
+- lean/YmLean/OishiRump.lean:5 `C2` → keep (file-local / external)
+- lean/YmLean/OishiRump.lean:7 `C2` → keep (file-local / external)
+- lean/YmLean/OishiRump.lean:78 `C2` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:22 `L2` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:28 `(N4)` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:94 `(N2)` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:115 `(N2)` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:159 `(N1)` → keep (file-local / external)
+- lean/YmLean/ParametrixCore.lean:332 `(N2)` → keep (file-local / external)
+- lean/YmLean/QConstants.lean:7 `Lemma N` → L-226
+- lean/YmLean/QConstants.lean:221 `Lemma N` → L-226
+- lean/YmLean/QConstants.lean:242 `A7` → keep (file-local / external)
+- lean/YmLean/QConstants.lean:243 `(I1)` → keep (file-local / external)
+- lean/YmLean/Resolvent.lean:8 `(N1)` → keep (file-local / external)
+- lean/YmLean/Resolvent.lean:80 `(N1)` → keep (file-local / external)
+- lean/YmLean/Resolvent.lean:111 `(N1)` → keep (file-local / external)
+- lean/YmLean/Resolvent.lean:187 `(N1)` → keep (file-local / external)
+- lean/YmLean/ScaleChain.lean:13 `(S)` → K-018
+- lean/YmLean/ScaleChain.lean:27 `A11` → keep (file-local / external)
+- lean/YmLean/ScaleChain.lean:45 `(S)` → K-018
+- lean/YmLean/ScaleChain.lean:117 `(S1)` → H-255
+- lean/YmLean/ScaleChain.lean:416 `(S)` → K-018
+- lean/YmLean/ScaleChain.lean:536 `(S)` → K-018
+- lean/YmLean/ScaleChain.lean:537 `A11` → keep (file-local / external)
+- lean/YmLean/ScaleChain.lean:537 `S8` → keep (file-local / external)
+- lean/YmLean/TheoremC1.lean:29 `C1` → L-011
+- lean/YmLean/TheoremC1.lean:39 `Lemma D″` → L-005
+- lean/YmLean/TheoremK.lean:4 `Theorem K` → L-009
+- lean/YmLean/TheoremK.lean:6 `Theorem K` → L-009
+- lean/YmLean/TheoremK.lean:33 `Theorem K` → L-009
+- lean/YmLean/TheoremL.lean:4 `Lemma E` → L-153
+- lean/YmLean/TheoremL.lean:8 `Lemma E` → L-153
+- lean/YmLean/TheoremL.lean:9 `Lemma E` → L-153
+- lean/YmLean/TheoremL.lean:96 `Lemma E` → L-153
+- lean/YmLean/TheoremL.lean:195 `A3` → keep (file-local / external)
+- lean/YmLean/Tower.lean:6 `(I1)` → keep (file-local / external)
+- lean/YmLean/Tower.lean:71 `(I1)` → keep (file-local / external)
+- lean/YmLean/Tower.lean:138 `T2` → keep (file-local / external)
+- lean/YmLean/Tower.lean:145 `Lemma T` → L-283
+- lean/YmLean/Tower.lean:145 `T2` → keep (file-local / external)
+- lean/YmLean/Tower.lean:146 `T2` → keep (file-local / external)
+- lean/YmLean/WeightedNorm.lean:7 `(N1)` → keep (file-local / external)
+- lean/YmLean/WeightedNorm.lean:11 `Lemma N` → L-225
+- lean/YmLean/WeightedNorm.lean:11 `Lemma N` → L-225
+- lean/YmLean/WeightedNorm.lean:44 `(N1)` → keep (file-local / external)
+- lean/YmLean/WeightedNorm.lean:51 `(N1)` → keep (file-local / external)
+- lean/YmLean/WeightedNorm.lean:98 `(N1)` → keep (file-local / external)
+- lean/YmLean/WeightedNorm.lean:200 `Lemma N` → L-225
+- lean/YmLean/WeightedNorm.lean:231 `Lemma N` → L-225
