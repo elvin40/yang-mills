@@ -200,6 +200,15 @@ Binding sets (round 7; sizes unchanged):
 
 Binding sets (S1 fix pass, 2026-10-28; supersedes round 7 on this point). Grade correction: A9, A12, A20, A22 are page readings with no verifier (§6). By the §0 scope rule they bind until a SOURCES_BOOKKEEPING verifier confirms them. T1 (Route K) is unchanged: {A5} + B1–B7 + X5. T1 ⇒ Theorem 1 = 6 A (A5, A11, A12, A13, A15, A22) + 9 B + X5 (the TRUST_LEDGER_VERIFY Step 28 form). T2 = 20 A (the 17 + A12, A20, A22) + X2–X5 + 21 B. A9 stays out (the value of C′_1 is not used). Group B rows without a proof or verified reduction: B3 only (unchanged); B15 stays a verified reduction, now with the open input (R1′).
 
+Binding sets (round 8, 2026-10-28; supersedes the S1 fix-pass paragraph above). SOURCES_BOOKKEEPING_VERIFY confirms A9, A12, A20, A22 on page images, so the S1 downgrade is reverted (coordinator note at the end of this file) and the round-7 sets stand. Recomputed after the round-8 changes; sizes unchanged:
+- T1 (Theorem 2w alone, Route K): {A5} + B1–B7 + X5 (1 A, 7 B); Group C: C3, C4, C17, C22.
+- T1 ⇒ Theorem 1: 4 A (A5, A11, A13, A15) + 9 B (B1–B8, B10) + X5; Group C adds C28–C37 and C42.
+- T2: 17 A (A1, A1w, A2, A3, A4, A5, A7, A8, A10, A11, A13, A15, A16, A17, A18, A19, A23) + X2–X5 + 21 B (B1–B8, B10–B22); Group C adds C38–C42. C9 is in no set (unused; before round 8 it appeared only in A5's reduction residue).
+- Group A rows of T2 without a verified proof or reduction: none. Cited-but-unproved (11): A1w, A2, A3, A7, A8, A10′ proved relative to listed inputs; A11 a verified list; A1, A4, A5 (T1 use), A15 verified reductions. Implicit or unprinted (5): A16, A17 proved relative to listed inputs; A18, A19, A23 verified reductions. A13 is a published proof.
+- Group B rows of T2 without a proof or a verified reduction: B3 only. B3's reduction is verified, but its input (L-LL) is unsupported (no proof, no reduction). B11 is the assembly row of B12–B20 and B22 and is counted through them, as in rounds 6–7.
+- Open sub-items: (R1′)'s three [I] in B15 (C_2–C_4 free upward; R-ratio N/D telescoping or freezing; inter-step cut-nesting slack); W4-G [R] (with Ursell (7.13) [I]) in B20; (L-LL) in B3; the (C) condition under A1, A1w, A2, A7, A8, A16 (torus-side hypothesis, two unprinted conventions, one [I] G_1 Schur step; CLOSURE_PLAN Table 4). Carried from round 7: B15's large-field coarea Jacobian (G3_N2 2.6), the β_j part of B14, A16's four [I], A19's three readings.
+- Counts: Group A 19, Group B 22, Group C 42 (C9 stays a row, marked unused), externals 5.
+
 ## 6. Left the ledger during this campaign (now proved here and verified)
 
 - CMP 122 II p. 387 "improved bound (1.89) with −κ_1d_k(X)": proved as FX_O1 Lemma [P] with κ_1 = κ_fin, no additive constant (SOURCES_FX_O1_VERIFY).
@@ -231,6 +240,24 @@ Binding sets (S1 fix pass, 2026-10-28; supersedes round 7 on this point). Grade 
   - G3 (= N2 of A5's reduction): proved relative to listed inputs (SOURCES_G3_N2 + VERIFY); the small-field "(Q)/c_− open" of B13 is discharged; one-bond-fixed (Q) is a corollary.
   - (I3) of B2: [I] → [P] (SOURCES_T2_I3 + VERIFY: 15 CONFIRMED, 2 CORRECTED).
   - SOURCES_Q 4.3 corrected: the B-block of Q_0^{−1} is H_0^{−1} + H_0^{−1}ΓΓ*H_0^{−1}, so G_Γ enters Λ (row B13).
+
+## 7. Lean support (round 8)
+
+Lean support certifies finite or algebraic steps only. No row changes grade because of Lean. lean/YmLean has 36 files; `lake build` passes with no sorry; axioms are propext, Classical.choice, Quot.sound (CanonOrder uses none). Statement checks are the lean/VERIFY_*.md files; files without one are marked "no VERIFY".
+- A1 (Lemma CT, kernel form): CombesThomas, BlockSchur, Schur, KernelRow (Fin n case only; not the block-lattice sum).
+- A2 and the WC chain: WeightedNorm (A2_R2 weighted norm, Lemma N), Resolvent, BlockInequalityE (WC_EXPGAUGE Lemma E), CauchyPerturbation (WC_RESIDUE Lemma CP).
+- A3: SlabCounterexample (the CMP 96 slab step fails for L ≥ 10), GaugeMin (Lemma 5), Interp and WalkAffine (A3_SIGMA 3.2), Resolvent (A3_SIGMA §4).
+- A10 (A10′): ElemBounds (a10Sum_*: the raw j-sum diverges).
+- A5 / B13 (G3_N2, (Q)): SchurMarginal (block inverse, B-block H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹, Schur positive definiteness, one-bond compression, c_minus_ge). Not formalized: the Gaussian integrals of G3_N2 §2.4, Γ_bb ≥ H₀⁻¹.
+- B1: BlockNorm (rho2_le), OishiRump, CertBridge, Tower, Divergence (P4_divergence, identity (D) only).
+- B2 (two-step (B2)): TheoremC1.
+- B7: NestEnvelope (nest_DDoublePrime, nest_DPrime; the §4.2 induction needs the continuous family u_0 ↦ u_k plus the IVT, formalized with hypotheses on the Good-k set; env_of_terminal is the single-sequence form).
+- T1 Lemmas D′, D″ and Theorem K (proved items, not rows): LemmaDPrime, LemmaDE (no VERIFY), LemmaDDoublePrime (no VERIFY), TheoremK, Gronwall.
+- B18 (N3): StripBound; Lemma H (HBETA): LemmaH (no VERIFY).
+- B19 (FX_O1): CubeCount.
+- B22: K1Prime (K1_numeric_13; no VERIFY), Interp (K1_iff, K1_numeric).
+- C5, C24 (canon) and A11: CanonOrder (135 edges, canon_acyclic, canon_wf; certifies the acyclicity of the transcription, not the mathematics); ElemBounds (kMap_mono, epsMap_mono, expRange_mono, gLogPow_strictMonoOn).
+- Not on a ledger row: Telescoping (R2_TELESCOPING), DetIdentities (numerics), AbelianCount (U1), Envelope ((B-NT), not needed for the targets). NeutralSpectrum (B4 neutral sector): file present, no build report in PLAN.md and no VERIFY; not counted.
 
 ## Change note — 2026-10-28, round 4 consistency pass (Claude, Opus 5.5)
 
@@ -339,3 +366,20 @@ Open from S1 (need a derivation or a verifier; text only flagged or not changed)
 Not re-checked: the history paragraphs (header round 3, §4 round 3, round-6 bullets) still say "verified readings" for A9, A12, A20, A22; they are kept as history. Backup of the pre-pass file was made in /tmp only and deleted.
 
 - 2026-10-28 (coordinator): SOURCES_BOOKKEEPING_VERIFY confirms A9, A12, A20, A22 on page images; the S1 fix pass's downgrade and binding-set growth are reverted; the round-7 sets stand. S1 #48: WC_FULL's rate δ_A < ½δ_0 is a fixed rate, not the printed one; no consumer needs the printed rate (A2 row annotation).
+
+## Change note — 2026-10-28, round 8 consistency pass (Claude, Opus 5.5)
+
+Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md not read. Inputs: this file in full, the last 30 entries of PLAN.md, CLOSURE_PLAN.md (Table 3 row C9, Table 4), lean/README.md, the lean/YmLean listing, the coordinator's fact list, and greps of SOURCES_HHOL_LF_SPRIME_VERIFY and SOURCES_T2_F_STEPB_VERIFY.
+
+Rows changed: bracketed tags on A2 (rate note), B3, B15, B20 (two), B21 are now row text. A16 had no bracket; its text already cites SOURCES_A16_REPLACE2 + VERIFY; unchanged. B3 → REDUCED [R, verified], (L-LL) unsupported, tension stated as open [N]. B15 → (R1′) REDUCED [verified] relative to (M-A)–(M-C), (R2), Lemma T + three [I]; the "earlier tag" duplicate removed. B20 → Λ_j sub-item and (W4)-R PROVED relative to inputs [verified]; residue W4-G [R] + Ursell (7.13) [I]. B21 → (E14-c) REDUCED to (S) [verified]. A1 → (C) stated exactly per CLOSURE_PLAN Table 4 (G and G_1, torus-side hypothesis, two conventions; A3's γ_0 does not imply it). C9 → UNUSED (A17 at r = 1); classification line, A5, A17, §4.1, §4.2 step 7, and the §4.2 C9 bullet updated. A5's "C9 scale invariance" is SOURCES_T2_H0's C9, now labelled. §4.2 steps 2, 3, 6, 8 updated. §5 gained round-8 binding sets; new §7 (Lean support).
+
+Binding sets: the round-7 sets stand after the revert; sizes unchanged — T1 Route K = 1 A + 7 B + X5; T1 ⇒ Theorem 1 = 4 A + 9 B + X5; T2 = 17 A + X2–X5 + 21 B. Group A rows of T2 without a verified proof or reduction: none. Group B: B3 only. Counts: A 19, B 22, C 42, X 5.
+
+Pointer check: every file named in the changed rows exists (ls): SOURCES_HHOL_LF_SPRIME, SOURCES_B20_W4R, SOURCES_B20_LAMBDAJ, SOURCES_B21_E14C, SOURCES_T2_F_STEPB, SOURCES_B15_M245, SOURCES_A16_REPLACE2 (each with a _VERIFY file), SOURCES_W4.md, SOURCES_BOOKKEEPING_VERIFY.md, CLOSURE_PLAN.md, numerics/BETA1_BOX_RUN.md, and the Lean files of §7.
+
+Not placed in a row (recorded here only):
+- lean/README.md does not yet list the wave-1 files (CanonOrder, ElemBounds, NestEnvelope, SchurMarginal) or K1Prime; their VERIFY files exist except for K1Prime.
+- Rows A1w, A2, A7, A8, A16 still cite (C) as "[conditional: torus side + two conventions]"; the exact form is in A1 and §4.2 step 8 only.
+- CLOSURE_PLAN §4.3 item 1 (C31 ⇒ the torus side) would turn the torus-side hypothesis into a line of C31; not done.
+- B3's L = 9, 11 values (0.827, 0.844) are the earlier Ng values, not converged-grid values; the box run decides them.
+

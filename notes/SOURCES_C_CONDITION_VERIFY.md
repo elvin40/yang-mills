@@ -20,3 +20,15 @@ Independent check of SOURCES_C_CONDITION.md §1–§8. One section per tool call
 - Lemma T (d)–(e): D_0 = D_0(d, L) because c_tr depends on C_H, δ_H, c_q, L^{|d−2|/2} and on θ_S ≤ δ_H/8 (true for RM ≥ c(d, L)). c_T depends on d, L only. CONFIRMED.
 - (Vol) ⇒ (T2): at step k the coarsest blocks are unit blocks (L^kη = 1) and the side is N_k = ℓL^{K−k} ≥ ℓ > 22M (T2_VOL §2). So M ≥ c_T/22 gives (T2) at all k ≤ K. CONFIRMED. One extra "M large" condition, chosen after d, L.
 
+## 3. Task (b): Lemma R redone [P, verifier]
+- Factorization: WG_FULL l.199–202 and S2_G1 A2.1: Δ_π^{(2)} = Π*Δ^{(2)}Π, Π = I − DG′RD*, Π* = I − DRG′D* (G′, R self-adjoint). So ⟨A, Δ_π^{(2)}A⟩ = ⟨Ã, Δ^{(2)}Ã⟩, Ã = A − Dλ, λ = G′RD*A. Same Ã as (3.119). CONFIRMED.
+- (a) A3.1: |⟨B, Δ^{(2)}B⟩| ≤ c_2ε‖ℓ^{−1}B‖² from (3.137) row sums + symmetry (AM–GM puts each row sum on its own point). Correct.
+- (b) Π3 (S2_FORM §3) is an operator bound ‖ℓ^{−1}DG′f‖ ≤ B_0c_1‖f‖ for every f (sharp block cut on the input; (3.46) has no derivative on the input). Applied to f = RD*A: ‖ℓ^{−1}Dλ‖ ≤ B_0c_1‖RD*A‖. Correct; this is sharper than A3.2's ‖D*A‖ form and is what makes the absorption possible.
+- (c) G^{−1} = Δ_π + DRD* + Q*aQ (3.130); ⟨A, Δ_πA⟩ = ‖DÃ‖² + ⟨Ã, Δ′Ã⟩ ((3.119), (3.10)); ⟨A, DRD*A⟩ = ‖RD*A‖² (R orthogonal projection). Drop ‖DÃ‖², a‖QA‖² ≥ 0 and use Π2: ‖RD*A‖² ≤ g + κ′εX. Correct.
+- (d) X ≤ 2‖ℓ^{−1}A‖² + 2‖ℓ^{−1}Dλ‖² ≤ 2K_Gg + 2B_0²c_1²(g + κ′εX). Under 2B_0²c_1²κ′ε ≤ ½: X ≤ 4(K_G + B_0²c_1²)g. Then |⟨A, Δ_π^{(2)}A⟩| ≤ c_2εX ≤ 4c_2(K_G + B_0²c_1²)ε·g. δ_1 = 4c_2(K_G + B_0²c_1²)Mα_0 RECOMPUTED, same value.
+- R1(G) ⇒ g > 0: R1(G) is ‖𝔴^{1/2}G𝔴^{1/2}‖ ≤ K_G with G > 0 (Thm 3.11), so G ≤ K_G𝔴^{−1} and G^{−1} ≥ K_G^{−1}𝔴. Needs G > 0 as a separate input (Schur bounds only the norm, not the sign). Present in the draft (§3.3 header "given R1(G), G > 0").
+- Schur for R1(G): (3.46) for G, h = ℓ_y^{−1}1_{Δ(y)}, input weight ℓ_{y′}^{−1}: block norm ≤ B_0(ℓ_y/ℓ_{y′})e^{−δ_0d}. |j − j′| ≤ 1 + d/(RM) (each extra scale costs a full layer, width > RM), so ℓ_y/ℓ_{y′} ≤ Le^{θd}, θ = log L/(RM). For θ ≤ δ_0/2, rows and columns ≤ B_0Lc_1(½). K_G = B_0Lc_1 CORRECT (given (3.46) for G in the stated form; page check in §4).
+- Consequences: G_1^{−1} = G^{−1} − Δ_π^{(2)} ≥ (1 − δ_1)G^{−1} > 0 for δ_1 < 1, so G_1 = (G^{−1} − Δ_π^{(2)})^{−1} exists and is positive; it equals the Neumann sum (3.138) whenever that converges. (1 + δ_1)^{−1}G ≤ G_1 ≤ (1 − δ_1)^{−1}G. N_1 ≥ (1 + δ_1)^{−1}N ≥ c_−(1 + δ_1)^{−1}S. c_{−,1} = c_−/(1 + δ_1) ≥ c_−(1 − δ_1), which is WC C2's form. G_1 > 0: sign CONFIRMED.
+- Scope: real U only (Δ_π^{(2)} real symmetric needs real J; A2.5). Consumers need (C) only at real U (WC 6.2 (ii)). OK.
+- Claim (2) CONFIRMED.
+
