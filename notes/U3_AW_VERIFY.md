@@ -71,3 +71,13 @@ Midpoint odd parts fall by 100–300× with the box (finite-volume holonomy effe
 
 ## 10. nc = 16 (box R = 7), j = 1
 σ_1^{(1)}(0) J-part = 0.75015 (nc 8, 12, 16: 0.78184, 0.75230, 0.75015; errors 3.2·10^{−2}, 2.3·10^{−3}, 1.5·10^{−4}, geometric). σ^{(0)}(0) error −3·10^{−5}; 2c = 0.50176; translation error 8·10^{−10}. So σ_1^{(1)}(0) = σ_0^{(1)}(0) = 0.75 to 2·10^{−4}, and g_1^{(1)}(0) = 0 (with 𝒜(0) = id from §5). Checks (ii), (iii) at j = 1: CONFIRMED (d = 2).
+nc = 16, j = 2 (only q = 0, 1; 312 s per q, so the run was stopped to respect the 10-minute budget; J-part is odd in f, so q = 1 alone gives σ^{(1)} up to O(F²) = 6·10^{−4} relative): |σ_2^{(1)}(0)| J-part = 0.75051 (nc 8, 12, 16: 0.80667, 0.75572, 0.75051). σ^{(0)}(0) error −1.2·10^{−4}. Level-independence at j = 2 CONFIRMED to 7·10^{−4}, converging. j = 3 not run (n = 324, out of budget).
+
+## 11. Grades
+1. Evenness (Prop. E): CONFIRMED. Path-by-path rederivation correct. d = 2 numerics: midpoint odd parts → 0 with box (4·10^{−5}, 3·10^{−4} at nc 12); left trivialization O(1). d = 4 not tested.
+2. (W): CONFIRMED. W0 exact (KKT argument with μ = 0). (W-1), (W-2) correct. τ_c = (3ie/2)(E_{10} − E_{01}) times Maxwell c: in code units c = 1/4, e = 2 → 0.75; measured 0.750000 (j = 0), 0.75015 (j = 1), 0.75051 (j = 2). O3 (3/2 factor) closed. 𝒜_jc(0) = c checked in d = 4 (H_1(0) = L e_0 ⊗ 1). Side results (longitudinal L^{−2j}, σ^{(2)}(0) slaved) rederived; correct. The σ^{(2)} rate j L^{−2j} stays conditional on (A) in full, which now needs (H″), not (H′).
+3. (A) qualitative: CONFIRMED. The R5 "strong sketch" label is the U3_REPAIRS author's own; U3_REPAIRS_VERIFY §4 rederived its pieces and graded O5 CONFIRMED, including M-uniform strip near 0. A0 is a correct assembly. Lemma A1, Prop. A2, derivative budget correct.
+4. (A) quantitative: CONFIRMED. Eigenvalue 1 at K = 0 confirmed numerically. Lemma A4 exact. Theorem A3 Steps 1–5 rederived; constants existential.
+5. Reduction to (H′): reduction CONFIRMED, but (H′) is FALSE numerically at L = 3: max_K‖H_j‖/L = 1.652, 1.736, 1.757, 1.760 (j = 1, 2, 3, ∞) > 1.414. Max sits at (≈1.9, ≈1.9, π, π), not at the corner. Not fixable by gauge choice. Grade: CORRECTED — route (H′) is closed at L = 3; (H″) at n = 2 passes on a coarse grid (2.06 < 2.83). Untested: L ≥ 5 (threshold √(L − 1) ≥ 2).
+6. Four cheap checks: CORRECTED. They were not all cheap: no per-momentum f-code exists, so (ii)–(iv) were done as d = 2 real-space proxies. (i) refutes (H′); (ii), (iii), (iv) pass in d = 2.
+Files: numerics/aw_verify/{build_b0.py, hcheck.py, hscan.py, h2step.py, sigma0_d2.py, analyze_d2.py, even_d2.py} + cached B0_L3.pkl, hscan_*.json, h2step.json, s0d2_*.npz.
