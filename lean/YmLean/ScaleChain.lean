@@ -98,13 +98,13 @@ lemma gLogPow_le {q x y : ℝ} (hq : 0 < q) (hx : 0 < x) (hxy : x ≤ y) (hy : y
     (hmono hxI ⟨hx.trans hz.1, lt_of_lt_of_le hz.2 hy⟩ hz.1).le
   have hy0 : 0 < y := hx.trans hlt
   have hℓ : Real.log (y ^ 2)⁻¹ ≠ 0 := by
-    have : Real.log y ≤ -q := by rw [Real.le_exp_iff_log_le hy0] at hy; exact hy
+    have : Real.log y ≤ -q := (Real.log_le_iff_le_exp hy0).mpr hy
     rw [show Real.log (y ^ 2)⁻¹ = ell y from rfl, ell_eq]; intro h; linarith
   have hc : ContinuousAt F y := by
     have h2 : (y ^ 2)⁻¹ ≠ 0 := by positivity
-    exact continuousAt_id.mul (Real.continuous_exp.continuousAt.comp (continuousAt_const.mul
-      ((Real.continuousAt_log hℓ).comp ((Real.continuousAt_log h2).comp
-        ((continuousAt_id.pow 2).inv₀ (by positivity))))))
+    have c1 : ContinuousAt (fun g : ℝ => (g ^ 2)⁻¹) y :=
+      (continuousAt_id.pow 2).inv₀ (by positivity)
+    exact continuousAt_id.mul ((continuousAt_const.mul ((c1.log h2).log hℓ)).rexp)
   exact ContinuousWithinAt.closure_le (by rw [closure_Ioo hlt.ne]; exact ⟨hlt.le, le_rfl⟩)
     continuousWithinAt_const hc.continuousWithinAt hin
 
@@ -131,7 +131,7 @@ theorem eq26_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
   set N : ℝ := (n : ℝ) - m
   have ha : 0 ≤ g n ^ 2 * β' := by positivity
   have h1 : g n ^ 2 ≤ (1 + g n ^ 2 * β') * N * g m ^ 2 :=
-    (h26 m n hmn).trans (mul_le_mul_of_nonneg_right (by nlinarith) (by positivity))
+    (h26 m n hmn).trans (mul_le_mul_of_nonneg_right (by nlinarith) (sq_nonneg _))
   refine ⟨h1, ?_⟩
   have hT1 := T1 hg hγ hβ' hS1 n
   have h2 : g n ^ 2 ≤ ((1 + β0) * √N * g m) ^ 2 := by
@@ -228,8 +228,9 @@ theorem eq28_line1_naive (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 :
   have h2 := T2 hg hγ hβ0 hp0 h2p h26b hmn
   unfold eps
   calc g n * A0 * epow p0 (ell (g n))
-      ≤ ((1 + β0) * √(n - m) * g m) * A0 * ((1 + β0) * epow p0 (ell (g m))) := by
-        gcongr
+      ≤ ((1 + β0) * √(n - m) * g m) * A0 * ((1 + β0) * epow p0 (ell (g m))) :=
+        mul_le_mul (mul_le_mul_of_nonneg_right h1 hA0) h2 (epow_pos _ _).le
+          (mul_nonneg ((hg n).le.trans h1) hA0)
     _ = _ := by ring
 
 /-- (2.8) line 1 as printed: ε_n ≤ (1 + β₀)(n − m)^{1/2} ε_m, via the monotonicity of g ℓ^{p₀}
@@ -249,7 +250,7 @@ theorem eq28_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
   have hexp : ∀ j, g j ≤ Real.exp (-p0) := fun j => by
     have := ell_pos_of hγ hg (by linarith) h2p j
     rw [ell_eq] at this
-    rw [Real.le_exp_iff_log_le (hg j)]; linarith
+    exact (Real.log_le_iff_le_exp (hg j)).mp (by linarith)
   have hεm : 0 ≤ eps A0 p0 (g m) := by unfold eps; have := hg m; have := epow_pos p0 (ell (g m)); positivity
   rcases le_or_gt (g n) (g m) with hle | hlt
   · have := gLogPow_le hp0 (hg n) hle (hexp m)
@@ -262,7 +263,9 @@ theorem eq28_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
       epow_mono hp0.le (by linarith) (ell_anti (hg m) hlt.le)
     unfold eps
     calc g n * A0 * epow p0 (ell (g n))
-        ≤ ((1 + β0) * √(n - m) * g m) * A0 * epow p0 (ell (g m)) := by gcongr
+        ≤ ((1 + β0) * √(n - m) * g m) * A0 * epow p0 (ell (g m)) :=
+          mul_le_mul (mul_le_mul_of_nonneg_right h1 hA0) h2 (epow_pos _ _).le
+            (mul_nonneg ((hg n).le.trans h1) hA0)
       _ = _ := by ring
 
 /-- (2.8) line 2: ε_m ≤ (1 + β₀)(1 + X)^{β₀} ε_n ≤ (1 + β₀)²(n − m)^{β₀} ε_n. -/
