@@ -1,0 +1,81 @@
+# UMK_BETA1: β_1(0) for arbitrary L by umklapp sums (2026-10-27)
+
+Code: `numerics/umk_beta1.py`. Box launcher: `numerics/umk_launch.sh`. Quantity, background, and normalization are those of NUMERICS.md §1, §5, §6: SU(2), U = 1, background U_0(a) = exp(i a A σ_3/2) with A a plane wave of fine momentum p e_0, w(p) = per coarse cell d²/da² [log det G − ½ log |det Bord|] at a = 0, β_1(0) = 4w/(L⁴(1 − cos p)).
+
+## 1. Sectors and conventions
+
+Fine momenta of coarse sector K: k_l = K + 2πl/L, l ∈ (Z/L)⁴. Fine Bloch field B(x) = L^{−2} Σ_l e^{ik_l x} B̂_l, B̂_l ∈ C^{12} (direction-major, colour-minor; x = base site of the link). Coarse Bloch field V(y_m) = e^{iK y_m} v, y_m = h(1,1,1,1) + Lm, h = (L−1)/2 (anchors). Both maps are unitary per sector.
+
+Symbols (transfer q ∈ {0, +p e_0, −p e_0}):
+- fine → fine: M e^{ikx}ε = e^{i(k+q)x} m̂(k)ε.
+- fine → coarse, kernel q(x − y) e^{iq·y} on the bond anchored at y: q̂(k) := Σ_z q(z) e^{ikz}; then v = L^{−2} Σ_l ω_l q̂(k_l) B̂_l in sector K + q, ω_l := e^{2πi(Σ_ν l_ν)h/L}.
+- anchor constraint of the ghost domain (λ = 0 on anchors): in sector K it is u^†λ̂ = 0 with u_l = L^{−2} ω̄_l (unit vector, one per colour).
+
+The unitary B̂_l → ω_l B̂_l (same l in sectors K and K + p, since transfer p keeps l when K is not reduced mod 2π/L) removes every ω_l. All formulas below are after this removal.
+
+## 2. Exact bordered forms per sector
+
+Ghost: G_r = compression of G = D^†D to u^⊥. log det G_r = log |det 𝔊| with 𝔊 = [[G, U],[U^†, 0]], U_l = L^{−2} 1_3.
+
+Bord: D restricted to the ghost domain gives D_r D_r^† = D(1 − UU^†)D^† = DD^† − WW^†, W := DU. Introduce three auxiliary rows:
+
+  𝔅 = [[A, C^†, W],[C, 0, 0],[W^†, 0, 1]],  A := Δ + DD^† (fine-translation invariant, 12×12 per l).
+
+The Schur complement of the last block is Bord, so log |det 𝔅| = log |det Bord| for every a (exact, all orders). Write 𝔅 = [[A, E^†],[E, J]], E = [C; W^†] (r = 15 rows), J = diag(0_{12}, 1_3). Per sector: A = ⊕_l A_l, E_l = L^{−2}[q̂_0(k_l); d̂_0(k_l)^†] (15 × 12).
+
+Same form for 𝔊: A_l = ĝ_0(k_l) (3×3), E_l = L^{−2} 1_3, J = 0.
+
+Note: A − WW^† alone is singular (3 zero modes per K: B = D(D^†D)^{−1}u), so Woodbury on it fails; the auxiliary rows avoid that. A_l is invertible for k_l ≠ 0 (A = ¼|k̂|²P_T ⊕ |k̂|² on the longitudinal line at U = 1); the shifted grid never hits k = 0.
+
+## 3. Inverse
+
+S := J − Σ_l E_l A_l^{−1} E_l^† (r×r), Y_l := A_l^{−1} E_l^† (12×r). Then 𝔅^{−1} = diag(A^{−1}, 0) + Z S^{−1} Z^†, Z = [−Y; 1_r]. Cost per sector: L⁴ inversions of 12×12 and O(L⁴·12²·r) products.
+
+## 4. Second derivative
+
+d²/da² log det 𝔅 = tr(𝔅^{−1}𝔅'') − tr(𝔅^{−1}𝔅'𝔅^{−1}𝔅'). 𝔅' = T + T^† with T: sector K → K + p. Per cell:
+
+  w_𝔅 = ⟨ τ_1(K) − 2 τ_2(K) ⟩_K.
+
+τ_1 (only the zero-transfer part 𝔅''_0 = [[A'', E''^†],[E'', 0]] contributes):
+
+  τ_1 = Σ_l tr(A_l^{−1} A''_l) + tr(S^{−1} Σ_l Y_l^† A''_l Y_l) − 2 Re tr(S^{−1} Σ_l E''_l Y_l).
+
+τ_2 = tr(𝔅(K+p)^{−1} T 𝔅(K)^{−1} T^†), T = [[a, b],[c, 0]] with l-diagonal blocks (index 1 = sector K, 2 = sector K + p):
+
+  τ_2 = Σ_l tr(A_{2,l}^{−1} a_l A_{1,l}^{−1} a_l^†) + tr(S_1^{−1} Σ_l V_l^† A_{2,l}^{−1} V_l) + tr(S_2^{−1} Σ_l R_l^† A_{1,l}^{−1} R_l) + tr(S_2^{−1} X S_1^{−1} X^†),
+  V_l = b_l − a_l Y_{1,l},  R_l = c_l^† − a_l^† Y_{2,l},  X = Σ_l (Y_{2,l}^† a_l Y_{1,l} − Y_{2,l}^† b_l − c_l Y_{1,l}).
+
+Blocks (A_e(z, ν) = c_ν e^{ipz_0} the complex background profile, A_± = ½A_e, ½Ā_e; trans: c = e_pol; pure gauge: c = (1 − e^{ip}) e_0):
+- a_l = Δ̂'_+(k_l) + d̂'_+(k_l) d̂_0(k_l)^† + d̂_0(k_l+p) d̂'_−(k_l+p)^†.
+- c_l = L^{−2}[q̂'_+(k_l); d̂'_−(k_l+p)^†] (the +p part of E': C'_+ and (W'_−)^†).
+- b_l = L^{−2}[q̂'_−(k_l+p); d̂'_+(k_l)^†]^† (the adjoint of the −p part of E' from sector K + p).
+- A''_l = Δ̂''_0(k_l) + d̂''_0 d̂_0^† + d̂_0 d̂''_0^† + 2[d̂'_+(k_l−p) d̂'_+(k_l−p)^† + d̂'_−(k_l+p) d̂'_−(k_l+p)^†].
+- E''_l = L^{−2}[q̂''_0(k_l); d̂''_0(k_l)^†].
+Ghost: a_l = d̂'_−(k_l+p)^† d̂_0(k_l) + d̂_0(k_l+p)^† d̂'_+(k_l), b = c = 0, E'' = 0, A''_l = d̂''_0^†d̂_0 + d̂_0^†d̂''_0 + 2[d̂'_+(k_l)^†d̂'_+(k_l) + d̂'_−(k_l)^†d̂'_−(k_l)].
+
+w = w_𝔊 − ½ w_𝔅. ⟨·⟩_K = average over the shifted coarse grid K = (m + ½)2π/(L Ng), as in ym_momentum.
+
+## 5. Local symbols
+
+D: d̂_0(k)_μ = (1 − e^{ik_μ}) 1_3; d̂'_±(k)_μ = −½ c^±_μ e^{ik_μ} 𝒢; d̂''_0(k)_μ = −½|c_μ|² e^{ik_μ} 𝒢_2, with c^+ = c, c^− = c̄, 𝒢 = R'(0), 𝒢_2 = R''(0), R(θ) = Ad exp(iθσ_3/2).
+
+Wilson Hessian: plaquette (μ<ν) slots j = 1..4 with offsets o = (0, e_μ, e_ν, 0), directions (μ, ν, μ, ν), per-plaquette Taylor tensors H_0, H_1^{(j)}, T_{jj'} (from JAX on plaq_action, H(aA) = H_0 + a Σ_j A_j H_1^{(j)} + ½a² Σ_{jj'} A_jA_{j'} T_{jj'}):
+  m̂(k) = Σ_planes Σ_{jj'} e^{−i(k+q)·o_j} h_{jj'} e^{ik·o_{j'}},
+  h = H_0 (q = 0); h = Σ_j ½A_j H_1^{(j)} (q = +p, A_j = c_{dir j} e^{ip(o_j)_0}); h = ½ Σ_{jj'} Re(A_j Ā_{j'}) T_{jj'} (q = 0, second order).
+
+Averaging (Balaban (0.4) as coded in ym_oneloop: mean over contour pairs of log of the loop holonomy, then exp(abar)·U(c)). At an abelian background every loop holonomy is exp(iΦσ_3/2), and to first order in B
+
+  ∂f/∂B_t = E(Ψ) Σ_{loops ∋ t} w_loop s_t J(Φ_loop) R(θ_t) + R(Ψ + θ^c_t)·[t ∈ c],
+
+with θ_t the background angle before link t (including the link itself if s_t = −1), Φ_loop the loop flux, Ψ = Σ_loops w Φ_loop, J(Φ) = ∂_Y log(e^{iY}e^{iΦσ_3/2}), E(Ψ) = ∂_δ log(e^{i(Ψσ_3/2+δ)} e^{−iΨσ_3/2}). Every angle is linear in a, so the Taylor coefficients are polynomials in (Φ, θ, Ψ) with the constant 3×3 matrices J_1, J_2, E_1, E_2, 𝒢, 𝒢_2. Per link, with the six accumulators S_0 = Σ ws, S_Φ = Σ wsΦ_e, S_θ = Σ wsθ_e, S_ΦΦ = Σ ws|Φ_e|², S_Φθ = Σ ws Re(Φ_e θ̄_e), S_θθ = Σ ws|θ_e|² (Φ_e, θ_e, Ψ_e computed with A_e):
+- order 0: S_0 + [t ∈ c].
+- +p: ½[Ψ_e S_0 E_1 + S_Φ J_1 + S_θ 𝒢 + (Ψ_e + θ^c_e)[t∈c] 𝒢]; −p: the same with all of Ψ_e, S_Φ, S_θ, θ^c_e conjugated.
+- zero-transfer second order: ½[|Ψ_e|² S_0 E_2 + 2Re(Ψ_e S̄_Φ) E_1J_1 + 2Re(Ψ_e S̄_θ) E_1𝒢 + S_ΦΦ J_2 + 2S_Φθ J_1𝒢 + S_θθ 𝒢_2 + |Ψ_e + θ^c_e|²[t∈c] 𝒢_2].
+(For a real background the zero-transfer part of ½(F''[cos] + F''[sin]) replaces x·y by Re(x_e ȳ_e).) The profile is a sum over contour pairs; it costs O(Σ_d |G(d)|²·|loop|) once per p and coarse direction (≈ 2.5·10⁹ link visits per direction at L = 15). q̂(k_l) for all l: fold e^{iKz}q(z) mod L, then one L⁴ FFT per field.
+
+## 6. Status
+
+Formulas derived in this session; validated numerically against ym_momentum (§7). Not independently verified by a second derivation.
+
+## 7. Validation and results
