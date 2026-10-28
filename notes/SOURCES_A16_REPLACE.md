@@ -25,3 +25,22 @@ Scope limits (load-bearing for §3):
 - It says nothing about Gaussian measures, covariances, positivity, or determinants. A replaced operator need not be positive or symmetric. The s-interpolated H(s) at complex s is neither.
 - So a use of the license for "dμ_{C}" with C replaced is NOT covered by the printed text. That is the content of A16's [I] extension.
 
+## §2a What D2 uses about C_f (SOURCES_D2.md §3.2–§3.4, §6.2–§6.3)
+
+D2 cites CMP 116 p. 3 at three places. Only the third is the sentence of A16.
+- §3.2 (P): cites p. 3 for "(1.7) holds for all operator norms in … Theorem 3.1 [13]". That is the printed walk bound for Balaban's own C_0 = C^{(k)} = (C^*Δ^{(k)}C)^{−1}. It is A1/A1w, not A16.
+- §6.2: cites p. 3 for "each factor in (1.6) depends on U restricted to X_j". Locality of Balaban's walk factors. Printed. Not A16.
+- §6.3: cites the sentence "we can replace the propagators by arbitrary operators…" for the claim "the step is a holomorphic map of its inputs on the E_0 → 2E_0 ball". This is (W4) of B20. It is a use of A16 for INPUTS (activities), not for C_f. B20 now books (W4) as [R] to printed (C1)–(C5) via Theorem SM. Checked in §2c below.
+
+Properties of C_f that D2 itself states and proves (Lemma 3.1, [proved, given (P)], CONFIRMED in D2_VERIFY):
+- (L-i) existence and Neumann series C_f = Σ_n C_0(g_k²𝒲C_0)^n, for τ := g_k²w_0 r c_1 ≤ ½.
+- (L-ii) ‖C_f‖_δ ≤ 2c_1, ‖C_f − C_0‖_δ ≤ 2c_1τ; pointwise decay rate δ_0/2.
+- (L-iii) the same for ∂_L C_f ∂_R, ∂ ∈ {1, first-order, the special second-order operators of CMP 109 (1.8)}.
+- (L-iv) real f: C_f^{−1} ≥ (1 − τ)C_0^{−1} > 0 (positivity, Gaussian measure exists).
+- (L-v) holomorphy in (U, J) on Balaban's complex domain and in complex f|_X.
+- (L-vi) generalized walk expansion: Balaban's (1.6) for each C_0 factor, 𝒲 = extra local step of weight ≤ g_k²w_0 r.
+- (L-vii) normalization det(1 − g_k²C_0^{1/2}𝒲C_0^{1/2})^{−1/2} as a closed-walk series (§3.4).
+Input to all of these: (P) for C_0 only, i.e. A1/A1w (and A10 for complex U). No A16.
+
+Where the C_f object is then USED with "Balaban's machinery" (the point of A16): §3.4 says "every bound on the fluctuation propagator that Balaban's Sect. 3–4 and CMP 116 use holds for C_f". The claim that Balaban's cluster expansion then runs with C_f in place of C_0 is the analogy. D2's main route (2.b) does not need it ("Balaban's measure dμ_{C^{(k)}} is untouched", §3); C_f is used in route (b′), in §4 (frozen comparison), §7 (derivative bounds), and in D3R (P8) / D3W8.
+
