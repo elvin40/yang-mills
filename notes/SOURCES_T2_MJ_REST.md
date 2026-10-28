@@ -49,3 +49,25 @@ Proof. (i) Positivity bound. For h real and continuous on spec 𝒦_t: |τ(h(�
 (iv) f = 0. All operators are convolutions; 𝔨_t(K) ≥ c_*l(K) > 0 for K ≠ 0 (F3), and Φ_{ψ⁰}(0) = ∫dK/(2π)⁴ ∫_0^1 dt tr[ψ⁰′(𝔨_t(K))δ̂(K)] (pointwise in K ≠ 0). ψ⁰′ = N!s^N/∏(x + ks) is positive and decreasing, so ‖ψ⁰′(𝔨_t(K))‖ ≤ min(1/(c_*l), N!s^N(c_*l)^{−N−1}); ‖δ̂‖ ≤ Cl² (F2). The integrand is ≤ Cl·min(1, (s/l)^N), and ∫_{BZ} l·min(1, (s/l)^4) dK ≤ C(s³ + s⁴·s^{−1}) = O(s³) (l ≍ |K|², d = 4). ∎
 
 Why this works where the χ_W split did not. ψ′ is ≈ 1/x only on [2Rμ, s]; phase space there has τ-volume O(s²) (4D count (2.2)), and V costs O(s²) by (S3), so the total is O(s³) = o(f²) once a > 2/3. No f-expansion of ψ(𝒦_t) is needed. The piece F_s, which carries the f²-coefficient, has derivatives of size s^{−k} = |f|^{−ak}, and |f|·s^{−1} → 0. That is the small parameter that the χ_W split lacked.
+
+## 3. Task A, step 2: Lemma A, the gapped piece at shift σ ≫ |f|
+
+By Lemma 2.1 and d/dt τ log(X + tV) = τ((X + tV)^{−1}V) (gapped, cited as in S123): Φ_{F_s}(f) = Σ_k c_k T(f, ks), with
+  T(f, σ) := ∫_0^1 dt τ[(𝒦_t(f) + σ)^{−1}V(f)].
+
+### 3.1 Objects
+By S123 Prop. 2.1 and (F5): k_t(f) = k^{[2]} + ρ_k, k^{[2]} := Σ_{j≤2} f^j k^{(j)} (k^{(0)} := k_t(0)), and v_f = v^{[2]} + ρ_V, v^{[2]} := Σ_{n≤2} f^n v^{(n)} (v^{(0)} = δ). All k^{(j)}, v^{(n)} are admissible convolution kernels with symbols 𝔨_{t,j}, v̂^{(n)} = δσ_j^{(n)}; ‖ρ_k‖_{(0)}, ‖ρ_V‖_{(0)} ≤ C|f|³, uniformly in t.
+Moyal pieces. P_p(a, b)(x, y) := Σ_z a(x, z)b(z, y)(ie/2)^p((x − z)∧(z − y))^p/p!. Then a ⋆_f b = Σ_{p<P} f^pP_p(a, b) + Rem_P(a, b), ‖Rem_P(a, b)‖_{(0)} ≤ (|e||f|/2)^P(P!)^{−1}‖a‖_{(P)}‖b‖_{(P)} (|e^{iα} − Σ_{p<P}(iα)^p/p!| ≤ |α|^P/P!, |w∧u| ≤ |w||u|). For convolution kernels P̂_p(a, b) = Σ_{|α|=|β|=p} γ_{αβ}∂^αâ ∂^βb̂ with constants γ_{αβ} (a factor w becomes i∂_K, as in S123 Lemma 1.1(e)). P_p(σ1, b) = 0 for p ≥ 1.
+Formal inverse at shift σ. b̂_0 := (𝔨_{t,0} + σ)^{−1}; for 1 ≤ m ≤ M, b̂_m := −b̂_0 Σ_{j+q+p=m, q<m} P̂_p(𝔨_{t,j}, b̂_q). So Σ_{j+q+p=n} P̂_p(𝔨_{t,j} + σδ_{j0}, b̂_q) = δ_{n0} for n ≤ M. At σ = 0 these are the Moyal inverse coefficients b_{t,m} of KAPPA (1.1) [I: convention identification, U3_LEMMA51 (3.1) = S123 Lemma 1.1(e)].
+
+### 3.2 Symbol and kernel bounds
+(K1) [P given (F1)–(F3), admissibility]. For σ ∈ (0, 1], real K, all t, all multi-indices α: |∂^α b̂_m(K)| ≤ C_{m,α}(l(K) + σ)^{−1−m−|α|/2}.
+Proof. Give 𝔨_{t,j} the degree 2 − 2j and b̂_m the degree −2 − 2m; each ∂_K lowers the degree by 1. Envelopes: ‖(𝔨_{t,0} + σ)^{−1}‖ ≤ (c_*l + σ)^{−1} (F3); |𝔨_{t,0}| ≤ Cl, |∂𝔨_{t,0}| ≤ Cl^{1/2} (even, order 2 at 0, analytic), |∂^β𝔨_{t,j}| ≤ C for all other (j, β). Since l + σ ≤ 17, every bounded quantity is ≤ C(l + σ)^{(2−2j−|β|)/2} whenever that exponent is ≤ 0. So |∂^β𝔨_{t,j}| ≤ C(l + σ)^{(2−2j−|β|)/2} for all (j, β). Induction on m and |α|: ∂^αb̂_0 is a sum of products b̂_0(∂^{β_1}𝔨_{t,0})b̂_0⋯b̂_0, of total degree −2 − |α|. In the recursion each term b̂_0P̂_p(𝔨_{t,j}, b̂_q) has degree −2 + (2 − 2j − p) + (−2 − 2q − p) = −2 − 2m. Leibniz gives the derivatives. ∎
+(K2) [P from (K1)]. For each P ≥ 0: ‖b_m‖_{(P)} ≤ C σ^{−m−P/2−3/2}.
+Proof. On each offset lattice, (1 + |u|)^{P+5}|b_m(u)| ≤ C Σ_{|γ|≤P+5}‖∂^γb̃_m‖_{L¹(BZ)} (b̃ = e^{iK·s}b̂, periodic; integrate by parts). By (K1), ‖∂^γb̃_m‖_{L¹} ≤ C∫_{BZ}(l + σ)^{−1−m−|γ|/2}dK ≤ Cσ^{1−m−|γ|/2} when 1 + m + |γ|/2 > 2, and the largest |γ| = P + 5 dominates. Sum over u with Σ_u(1 + |u|)^{−5} < ∞ (d = 4). ∎
+
+### 3.3 Lemma A
+Lemma A [P given S123 Prop. 2.1, Thm 3.3, Lemma 4.2 (ER), Lemmas 1.1, 1.3, 1.4, (F1)–(F5)]. Fix a ∈ (0, 1) and an integer M > (1 + 3a)/(1 − a). For |f| small, t-uniformly, and every σ with |f|^a ≤ σ ≤ N|f|^a:
+  T(f, σ) = c_0(σ) + f c_1(σ) + f²c_2(σ) + O(|f|³ log(1/|f|) + |f|^{3−a} + |f|^{M+1−a(M+3)}),
+  c_p(σ) := Σ_{m+n=p} ∫_0^1 dt ∫_{BZ} dK/(2π)⁴ tr[b̂_m(K)v̂^{(n)}(K)],   c_0(σ) = T(0, σ).
+The error exponents exceed 2. For a = 3/4, M = 14: every error is O(|f|^{9/4}).

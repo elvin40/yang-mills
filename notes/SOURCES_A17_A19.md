@@ -4,7 +4,7 @@ Date: 2026-10-28. Ledger tags: [P] printed (page cited), [V] verified here by co
 Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 
 ## 0. Status
-In progress. Sections are appended one per step.
+Complete, unverified (Claude Opus). A17 PROVED with r = 1 by an exact identity (B′ = g_kB on every cut bond); r < 1 needs C9 or the new C9′ (domain enlargement, χ_k unchanged). A19 PROVED by tracing CMP 102 pp. 307–308: every input is printed on complex sets; (190) holds on the complex ball with the printed constants. Fallback (two-constants) and one Cauchy-radius correction to MA2 in §4.2, §5.2.
 
 ## 1. A17 — the printed objects (page images, 300 dpi)
 
@@ -99,3 +99,38 @@ Resulting constant: (190) at complex B with the printed O(1); no shrink of the b
   With m = c ε_1e^{−⅛δ_0d}, M = c′ε_1: |F| ≤ c^{0.59}c′^{0.41}ε_1·e^{−0.59·⅛δ_0d} on Ball_{R/4}.
   So route (i) gives (190)-type bounds on Ball_{R/4} with the decay rate multiplied by 0.59 and the constant c^{0.59}c′^{0.41}. It needs only the REAL (190) and the printed complex operator bound (187). It is a fallback if reading (e) is refused for (189) but the real (190) is granted. Then the K_1 kernel bound is not O(ε_1)·(real decay) but O(ε_1)·(decay at 0.59 of the rate) — enough for the Schur test, with K(δ_0, d) evaluated at 0.59·δ_0/16.
  (num check, python -I inline, no file kept: (4/π)·atan(1/3) = 0.40966.)
+
+## 5. What (H−) ⇒ (M-A) receives
+
+5.1 The input used by SOURCES_MA2 §4.4 is (4.2): |K_1(B)(x,y)| ≤ c_Nε_1e^{−⅛δ_0d(x,y)} on the complex ball |B| < 2C_1ε_1, with K_1(B) = δℋ/δB(B) − δℋ/δB(0). By 4.1, (190) and its ε-small part (187)+(189) hold on Ball_R with the printed constants. So (4.2) holds on Ball_R with c_N = O(1)(B_0C_4 + C_2)B_5 (MA2_VERIFY correction) [P given 4.1].
+5.2 A small correction to the MA2 Cauchy step [P]. MA2 §4.4 uses real |B| ≤ C_1ε_1 and a Cauchy circle of radius C_1ε_1 in B(y′). The circle then reaches |B(y′)| = 2C_1ε_1, the boundary of the OPEN ball (172). The Cauchy estimate needs the closed disc inside the domain. Use radius θC_1ε_1 with θ < 1; θ = ½ gives
+  |δ²ℋ(x)/δB(y)δB(y′)| ≤ (2c_N/C_1)e^{−⅛δ_0d(x,y)}  at real |B| ≤ C_1ε_1.
+So c_H gains a factor 2: c_H = O_{M,M_0}(1)·c_X·(c_1² + 2c_N/C_1)·K(δ_0,d)². The factor is absorbed in O(1). (C1) of MA2 is unchanged: M_0ε_k ≤ C_1ε_1.
+5.3 Under the fallback 4.2 only (real (190) granted, reading 4.1(e) refused): the kernel bound holds on Ball_{R/4} = {|B| < ½C_1ε_1} with decay rate 0.59·⅛δ_0. Then: real points |B| ≤ ¼C_1ε_1, Cauchy radius ¼C_1ε_1, constant 4c′_N/C_1 with c′_N := c_N^{0.59}(O(1)B_0C_4B_5)^{0.41}; decay rate in (H−) becomes 0.59·δ_0/16; and (C1) tightens to M_0ε_k ≤ ¼C_1ε_1. C_1 is free (p. 305), so this is still satisfiable if MA2 (C1) is satisfiable [I, same caveat as MA2_VERIFY on C_1 freedom].
+5.4 Chain after this file: B17 ⇐ (M-A) ⇐ (H−) ⇐ A4 (announced (189)) + A18 + (C1), (C2) of MA2. A19 is no longer an implicit input: it is PROVED rel. CMP 102 Prop. 4, Prop. 6, (55), (130), (182)–(188) [all printed on complex sets], plus the reading 4.1(e) of (189) [which only re-uses A4] and the B-independence 4.1(f) of the propagator lemmas [I].
+
+## 6. A17 consumers
+
+6.1 GGAIN (M_r), V-part: holds with r = 1 for Balaban's construction (Corollary 2.3), strict. Lemma G1(a) needs r < 1. Use C9′ (§2.4, domain constant ε̂_1 = 2ε_1, r = ½): same constant as GGAIN §4.1(a) with (1−r)^{−1} = 2, and χ_k unchanged. Or use C9 (cut at ε_1/2): same constant, changed χ_k.
+6.2 GGAIN (M_r), P^{(k)}-part: needs only supp ⊂ {3e^{16κ_1}C_1g_k|B|_Y ≤ a_1}; holds by 2.3 + (1.20) under 3e^{16κ_1}C_1ε_1 ≤ a_1 [I that this is among Balaban's conditions].
+6.3 Downstream: (M_r) ⇒ C_β, S_0 ⇒ (H-hist) as in GGAIN; no constant changes beyond (1−r)^{−1} = 2 already in GGAIN's formula.
+
+## 7. Ledger (authoritative)
+
+| item | claim | tag | basis |
+|---|---|---|---|
+| L1 | χ_k = Π over b ∈ T^{(k)} \ {b_0(c)} of χ(|B′(b)| < ε_1) | [P] | CMP 109 p. 266 (2.9), image |
+| L2 | h vanishes off {b_0(c)}; B = remaining variables after eliminating B′(b_0(c)); B′ = CB | [P] | CMP 109 pp. 267–268, images |
+| L3 | B′(b) = g_kB(b) on every cut bond (Lemma 2.2) | [P] given L1, L2 + reading "C = identity on remaining bonds" [I, confirmed by CMP 116 (2.3)] | §2.2 |
+| L4 | CMP 116 writes χ^c_{k,P} as |B(b)| ≥ ε_1/g_k on the same bond set | [P] | CMP 116 p. 12 (2.3), image |
+| L5 | A17: supp χ_k ⊂ {g_k|B|_Y < ε_1} for all Y; locally supp χ_{k,Y_0} gives it for all Y ∈ D | PROVED, r = 1, strict | L3 + reading R1 (sup norm per bond) [I] |
+| L6 | The brief's route (bound on B′ by g_kB, (1.20)) proves the converse inclusion only | [P] | §2.1 |
+| L7 | r < 1 for GGAIN by C9′ (domain ε_1/r, cut fixed, V_k unchanged) with the same G1 constant | [I] | §2.4; needs check that all ε_1-conditions of CMP 116–122 are upper bounds or γ ≪ ε_1 type |
+| L8 | r < 1 by C9 (cut rε_1) | [P] as an inclusion; A13 for the changed χ_k still [R] | §2.4 |
+| L9 | (172), (173), (182)–(190), Prop. 9 as quoted | [P] | CMP 102 pp. 305–309, images |
+| L10 | Prop. 4, Prop. 6, (55), (80) are stated on complexified configurations | [P] | CMP 102 pp. 287, 290, 292–296 text |
+| L11 | A19: (190) at complex B on |B| < 2C_1ε_1, printed constants, no shrink | PROVED rel. L10, (130), (182)–(188) [R CMP 102], reading 4.1(e) of (189) [I; adds nothing beyond A4], 4.1(f) B-independence [I] | §4.1 |
+| L12 | Fallback without 4.1(e): kernel bounds on |B| < ½C_1ε_1, decay ×0.59, from real (190) + complex (187) | [P] two-constants, num 0.4097 | §4.2 |
+| L13 | MA2 Cauchy radius must be < C_1ε_1 (open ball); θ = ½ gives c_N/C_1 → 2c_N/C_1 | [P] | §5.2 |
+
+Not done: the full ε_1-condition audit for L7 (CMP 116 §2, CMP 119, CMP 122); the (C1), (C2) items of MA2 (HMINUSC brief, still undelivered); (189) itself (A4).
