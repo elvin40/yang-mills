@@ -47,3 +47,22 @@ Sum: each site is the far corner of d(d−1)/2 positive plaquettes, so c_d = √
 - 4.1 redone with the corrected Δ′ (§2) and sign (3.120) [P]: ⟨A,Δ′_πA⟩ = ⟨A,ΔA⟩ − ⟨Ã,ΔÃ⟩ = (‖DA‖² − ‖DÃ‖²) + (q_R(A) − q_R(Ã)) + (q_I(A) − q_I(Ã)), q_R = Re-term, q_I = commutator term.
   First bracket ≤ κε(‖DA‖² + ‖D*A‖²) + κ²ε²‖D*A‖² (as author). q_I bracket ≤ κ′ε(1 + 2B_0²c_1²)(‖D*A‖² + ‖ℓ^{−1}A‖²) (as author; polarization valid for symmetric forms). NEW q_R bracket: |q_R(B)| ≤ c_Rε‖DB‖², and ‖DÃ‖ ≤ ‖DA‖ + κε‖D*A‖, so ≤ 2c_Rε(1 + κ²a_0²)(‖DA‖² + ‖D*A‖²).
   Result unchanged in form: |⟨A,Δ′_πA⟩| ≤ C′_Π ε(‖DA‖² + ‖D*A‖² + ‖ℓ^{−1}A‖²), C′_Π = C_Π + 2c_R(1 + κ²a_0²). CORRECTED (constant only).
+
+## 7. Other printed inputs [V]
+- (3.16) p. 393 image: ⟨A,Q*aQA⟩ = Σ_j a Σ_{b∈Λ_j}(L^jη)^{d−2}|(Q_j(U)A)(b)|². One constant a (the a_j recursion is only for Q′, (3.24)). So a‖QA‖² = a‖B‖²_S exactly. [I-a] RESOLVED; the (9/4)a term in K stands, no a_max needed.
+- (3.35) p. 396 text: local gauge on each regularity cube, |A| < O(1)Mα_0(L^jη)^{−1}, |∂A| < O(1)Mα_0(L^jη)^{−2}. This gives |U(∂p) − 1| ≤ O(1)Mα_0(η/ℓ)²(1 + O(Mα_0)). Consistent with S2_FORM §3.
+- CMP 96 Lemma 2.1 p. 234 image: (2.61) sup_{y∈𝔅}Σ_{y′∈𝔅}e^{−αδ_0d(y,y′)} ≤ c_1(α), c_1(α) = 12c_0^d(α/2), under (2.59). Sum over all layers. CONFIRMED.
+- Sign check from (3.138): G_1^{−1} = G_0^{−1} − Δ′_π − Δ^{(2)}_π, so G^{−1} = G_0^{−1} − Δ′_π (consistent with (3.120) minus sign) and G_1^{−1} = G^{−1} − Δ^{(2)}_π.
+
+## 8. 4.2–4.3, c_−, and the G_1 clause [P]
+- 4.2: G^{−1} = D*D + Δ′ − Δ′_π + DRD* + Q*aQ. With §2 (Δ′ ≤ c_Rε‖DA‖² + κ′ε‖ℓ^{−1}A‖²) and §6: ⟨A,G^{−1}A⟩ ≤ (1 + O(ε))(‖DA‖² + ‖D*A‖²) + O(ε)‖ℓ^{−1}A‖² + a‖QA‖²_S. CONFIRMED in form; constants as in §6.
+- Effect on c_−: (C) needs an UPPER bound on ⟨A,G^{−1}A⟩ for one feasible A. The extra O(ε)‖ℓ^{−1}A‖² adds O(ε)K_abs to K (QE_INV route) or O(ε)·ℓ^{d−2}|B|² per bump (A1_KERNEL §8 bump: ‖ℓ^{−1}ψ‖² ~ ℓ^{d−2}, same order as the bump energy). So K_ext → K_ext(1 + O(ε)) and c_− = 1/K_ext drops by a factor 1 − O(ε). No qualitative change. Lower bounds on G^{−1} are not used in (C).
+- 4.3 constants: curl ≤ 2‖∇A‖², div ≤ d‖∇A‖², so (2 + d)K_∇ suffices; (4 + d) is safe.
+- G_1 clause. (K) for G_1 does not need it: Theorem 3.12 (p. 423 image) gives Thm 3.3 for G_1 directly. (C) for G_1 DOES need it: G_1^{−1} = G^{−1} − Δ^{(2)}_π, so an upper bound needs |⟨A,Δ^{(2)}_πA⟩| small. Closure sketch: (3.135) ⇒ ⟨A,Δ^{(2)}_πA⟩ = ⟨Ã,Δ^{(2)}Ã⟩ (§6). (3.137) |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0ℓ^{−2} sup_{nearby j-blocks}|A|; Δ^{(2)} is linear and symmetric (defined by the quadratic form (3.134)). A local sup→pointwise bound gives row sums Σ_{b′}‖K(b,b′)‖ ≤ O(ε)ℓ(b)^{−2} (up to dim g); symmetry gives the same column sums; Schur ⇒ |⟨B,Δ^{(2)}B⟩| ≤ O(ε)‖ℓ^{−1}B‖² (interface factor L²). With ‖ℓ^{−1}Ã‖ ≤ ‖ℓ^{−1}A‖ + B_0c_1‖D*A‖: |⟨A,Δ^{(2)}_πA⟩| ≤ O(ε)(‖D*A‖² + ‖ℓ^{−1}A‖²). [P-sketch; I: kernel of Δ^{(2)} is local with the support stated after (3.137), and symmetric w.r.t. the η^d product.] So the gap is real but closes by the same route at the sketch level.
+
+## 9. Grades
+(1) (3.131) one-block form; sharp cut costs η^{−1} on the sup side only; planned route stalls: CONFIRMED.
+(2) Route Π: CORRECTED. (3.119) printed and rederived (Δ = D*D + Δ′ of (3.10), no gauge fixing; λ = G′RD*A = λ_0); curl of gradient = η^{−2}R(·)(Ad U(∂p) − 1)λ(z) exact; R orthogonal projection printed; (3.46) block L² bounds with no input derivative, a = 1; Schur constant B_0c_1(1/2) correct. Correction: (3.10) Δ′ has a second term η^d tr(DA)²(Re U(∂p) − 1), omitted in Π2; it is O(Mα_0)‖DA‖², not ℓ^{−2}-type. Also (3.120) has a minus sign.
+(3) Form bound for all A and the G^{−1} operator inequality: CORRECTED (constant only, C′_Π = C_Π + 2c_R(1 + κ²a_0²)). K(d, L, a) uniform; no circularity (uses Thm 3.1 for G′ only): CONFIRMED. The ℓ^{−2} term changes c_− by a factor 1 − O(Mα_0) only.
+(4) S2 closed given (KE′), printed statements, Lemma 2.1: CONFIRMED for G. [I-a] resolved by (3.16) (one constant a, ℓ^{d−2} weights). [I-a1] (a = 1 in Thms 3.1/3.3) stands. G_1 analogue: needed for (C) of G_1 (not for (K)); (3.135) has the same Ã structure, so it closes at P-sketch level from (3.137) + symmetry + Schur.
+Status: S2 CLOSED for G (conditional on (KE′), QE_INV 5.1/5.3, a = 1, [I-geom]). G_1 clause: P-sketch, one [I] on the kernel of Δ^{(2)}.
