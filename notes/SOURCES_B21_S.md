@@ -12,8 +12,11 @@ Status: complete (2026-10-28). Verdict: B21 (S)-uniformity CLOSED as a reduction
 
 Source: ASSEMBLY_N1 §1, with the norm corrected by SOURCES_UN1 §2.4 and UN1_VERIFY item 2 / item 4.
 
-(S). There are η > 0, a ∈ [0,1[, C_S < ∞, K_0 such that: for K ≥ K_0, n ≥ 2, σ ≥ 16ε, and REAL f_1,…,f_n with dist(supp f_i, supp f_j) ≥ σ (i ≠ j),
+(S) (superseded 2026-10-28 by (S′)). There are η > 0, a ∈ [0,1[, C_S < ∞, K_0 such that: for K ≥ K_0, n ≥ 2, σ ≥ 16ε, and REAL f_1,…,f_n with dist(supp f_i, supp f_j) ≥ σ (i ≠ j),
   |κ_n(f_1,…,f_n)| ≤ (C_S σ^{−a})^n (n!)^{G} Π_i N(f_i).
+(S′) [SOURCES_B21_S_PRIME §2.4, CONFIRMED in SOURCES_B21_S_PRIME_VERIFY §2, §5; PROVED relative to S1(b), (FX) with ℓ-free constants, and an ℓ-free trajectory g]. Same hypotheses, but σ ≥ 16ε with no upper limit on σ:
+  |κ_n(f_1, …, f_n)| ≤ (C_S′ max(1, σ^{−a}))^n (n!)^{1+η} Π_i N(f_i),
+  C_S′ = 16C_AC_1C_BC_2C_η, C_1 := sup_{σ>0}(1 + log_L⁺(2M/σ))/m(σ), C_2 := sup_{σ>0} max(1, Λ̃_1(σ)⁴)/m(σ), m(σ) := max(1, σ^{−a/2}); no ℓ, no K. Source: Lemma C′ (SOURCES_D4D5 §4.1). (S′) = (S) for σ ≤ 1.
 - Norm. ASSEMBLY_N1 writes N = C^5 norm. The corrected form (UN1, UN1_VERIFY item 4, D4D5 l. 103/144) is the C¹ norm N_U(f) = max(‖f‖_∞/r, ‖∇f‖_∞/ρ_1), with λ_i = 2N_U(f_i) for the ρ_1/2 gradient radius of (FX2).
 - Gevrey order G. ASSEMBLY_N1 as written: G = 2 + η (D3R branch), giving s = 11, D > 2. With the C¹ norm: s = 6 (HHIST_N1_VERIFY claim 6). With the FX branch, G = 1 + η and D > 1 (UN1 §2.4). The brief's "s = 6, D > 1" is the C¹ + FX combination. The question below does not depend on G.
 - Range of widths. The bridge feeds (S) only with bumps g = ψ_i cos/sin(2πq·y/4h) supported in a cube of side 3h, h = h_m = δ_m/64, δ_m ∈ [64ε, ℓ/8]. So h ∈ [ε, ℓ/512]. Separation σ_m = δ_m/4 = 16 h_m ≥ 16ε. Note: σ and h are tied, σ = 16h. (S) is never used with σ ≪ h or with h ≪ σ/16.
@@ -66,7 +69,7 @@ Candidate h-dependent steps, checked one by one.
 
 ## 3. Where each factor of the multilinear constant comes from [derived; sources in brackets]
 
-Bound: |κ_n| ≤ (C_Sσ^{−a})^n (n!)^{1+η} Π N_U(f_i), for σ ∈ [16ε, ℓ/8], D ≤ σ.
+Bound: |κ_n| ≤ (C_Sσ^{−a})^n (n!)^{1+η} Π N_U(f_i), for σ ∈ [16ε, ℓ/8], D ≤ σ. (superseded 2026-10-28 by (S′): max(1, σ^{−a}) in place of σ^{−a}, σ ≥ 16ε with no upper limit; §1.)
 
 | factor | origin | depends on h? | depends on σ? |
 |---|---|---|---|
@@ -75,8 +78,8 @@ Bound: |κ_n| ≤ (C_Sσ^{−a})^n (n!)^{1+η} Π N_U(f_i), for σ ∈ [16ε, �
 | polydisc stays in domain | disjoint supports ⇒ sup and lattice gradient of Σt_if_i are a max [D4D5 Step 0, UN1 §2.4] | no | needs σ > ε only |
 | Q_m ≤ (2 + D/(Mλ_m))⁴ | cubes meeting the smallest support [Step 4] | yes, but increasing in D = O(h); with D ≤ σ it becomes ≤ (2+2D/σ)⁴u⁴ ≤ 16·4⁴·u⁴ | through u = σ/(2Mλ_m), summed against e^{−3κu/8} |
 | n! | Σ_s s^n e^{−3κs/8} over polymer size [Step 4] | no | no |
-| Λ_1(σ)^{4n} | coupling at the scale σ, R̄_m⁴ growth [Steps 5–7] | no | (log log 1/σ)^{4p_Rn} ≤ (C_aσ^{−a})^n |
-| (1 + log_L(2M/σ)) | number of coarse scales [Step 6] | no | ~K at σ ~ ε; ≤ C_aσ^{−a} [D4D5_VERIFY §7] |
+| Λ_1(σ)^{4n} | coupling at the scale σ, R̄_m⁴ growth [Steps 5–7] | no | (log log 1/σ)^{4p_Rn} ≤ (C_aσ^{−a})^n (superseded 2026-10-28 by (S′): Lemma C′ uses Λ̃_1(σ) = Λ_1(min(σ, 2M)), and max(1, Λ̃_1(σ)⁴) ≤ C_2 max(1, σ^{−a/2}) for all σ > 0) |
+| (1 + log_L(2M/σ)) | number of coarse scales [Step 6] | no | ~K at σ ~ ε; ≤ C_aσ^{−a} [D4D5_VERIFY §7] (superseded 2026-10-28 by (S′): Lemma C′ uses 1 + log_L⁺(2M/σ) ≤ C_1 max(1, σ^{−a/2}) for all σ > 0) |
 | (n!)^η | ℓ_2(n)^{4p_Rn} from fine scales [Step 8] | no | no |
 | W-terms | same with radius ½, no Λ_1 [Step 9] | no | no |
 
@@ -99,3 +102,5 @@ Not covered by this file (other clauses of the B21 row): the C^∞ real-source f
 Suggested ledger text for B21 (not applied; this task writes only this file): "(S) uniformity in h ∈ [ε, ℓ/512] and σ ≥ 16ε: reduced to D4D5 Lemma C [verified] given S1 at all scales and (FX) in the main (1.98) form (SOURCES_B21_S). No h-dependent factor; the (h/ε)⁴ cube count is cancelled by tree decay over σ ≥ diam."
 
 Status: [derived here, unverified]. It needs an independent verifier before it is load-bearing. Main things to check: (a) Lemma C Step 7 with D ~ σ/16 (the (2+2D/σ)⁴u⁴ bound); (b) that no S1 block uses a second derivative of f (C¹ only, D2 §1.1); (c) the claim that the main (1.98) form suffices for (FX) at the last scale without (1.104).
+
+Change log 2026-10-28: §1 (S) marked superseded, (S′) added; §3 bound line and the Λ_1 and log_L table rows point to (S′) and Lemma C′ (SOURCES_B21_S_PRIME, VERIFY).

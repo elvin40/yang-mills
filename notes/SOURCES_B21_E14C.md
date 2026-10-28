@@ -40,7 +40,7 @@ P5. Steps 2, 4–9 of Lemma C [V] sum P3 over polymers that meet all n supports.
   |κ_n| ≤ C_A (1 + D/σ)⁴ (1 + log_L(2M/σ)) (C_B Λ_1(σ)⁴)^n C_η^n (n!)^{1+η} Π N(f_i).
 
 ### 2.3 Constants [derived from D4D5 §5.1]
-Use D ≤ σ ⇒ (1 + D/σ)⁴ ≤ 16. For σ ≤ ℓ/8 and a > 0: Λ_1(σ)⁴ ≤ C_{a,1} σ^{−a/2} and 1 + log_L(2M/σ) ≤ C_{a,2} σ^{−a/2} ≤ (C_{a,2} σ^{−a/2})^n (n ≥ 1, C_{a,2} ≥ 1). For n ≥ 2, 16 C_A ≤ (4 C_A^{1/2})^n (C_A ≥ 1). The rescaling λ_i = 2N_U(f_i) of ASSEMBLY_N1 §1 item 3 costs 2^n. So one admissible choice is
+Use D ≤ σ ⇒ (1 + D/σ)⁴ ≤ 16. For σ ≤ ℓ/8 and a > 0: Λ_1(σ)⁴ ≤ C_{a,1} σ^{−a/2} and 1 + log_L(2M/σ) ≤ C_{a,2} σ^{−a/2} ≤ (C_{a,2} σ^{−a/2})^n (n ≥ 1, C_{a,2} ≥ 1). (superseded 2026-10-28 by (S′): these constants are not ℓ-free on σ ≫ 2M. Use Lemma C′ (SOURCES_D4D5 §4.1) and define C_{a,1} := sup_{σ>0} max(1, Λ̃_1(σ)⁴)/max(1, σ^{−a/2}), Λ̃_1(σ) = Λ_1(min(σ, 2M)), and C_{a,2} := sup_{σ>0} (1 + log_L⁺(2M/σ))/max(1, σ^{−a/2}). Then the formula below gives an ℓ-free constant for (S′), with max(1, σ^{−a}) in place of σ^{−a}; SOURCES_B21_S_PRIME §3.4. The consumed content is unchanged.) For n ≥ 2, 16 C_A ≤ (4 C_A^{1/2})^n (C_A ≥ 1). The rescaling λ_i = 2N_U(f_i) of ASSEMBLY_N1 §1 item 3 costs 2^n. So one admissible choice is
   C_S(η, a) := 2 · 4C_A^{1/2} · C_B · C_{a,1} · C_{a,2} · C_η,
 with C_A, C_B depending on (E_0, κ, c_0, c_τ, M, C_R, p_R, L) and C_η on (η, p_R, C_β, L) only (Lemma C statement [V]). None depends on K, on the f_i, on h, or on the support positions.
 
@@ -84,3 +84,5 @@ Pointer correction. The brief points to "SOURCES_FX_R2.md §(C13)". SOURCES_FX_R
 Suggested TRUST_LEDGER B21 text (not applied): "(E14-c) clause: the consumed real-source form (mixed (1,…,1) derivatives at t = 0 for real separated sources, all n) is Lemma C read at the real point: Cauchy on each (FX2) polydisc, no global complexification (SOURCES_B21_E14C, [P], unverified). Same inputs as the (S) clauses. The general-multi-index / interpolation form is E13-only, not needed."
 
 Status: [derived here, unverified]. Verifier targets: (a) P2, the finiteness of the polymer sum at fixed K and the term-by-term real derivative; (b) the claim in §1.3 that no T2 step uses repeated source arguments or Lemma 7.1; (c) the §4.2 editorial string in ASSEMBLY_N1.
+
+Change log 2026-10-28: §2.3 C_{a,1}, C_{a,2} redefined as sups over σ > 0 of ratios to max(1, σ^{−a/2}) via Lemma C′ (SOURCES_B21_S_PRIME §3.4).

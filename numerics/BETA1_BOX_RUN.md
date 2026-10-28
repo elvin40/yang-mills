@@ -91,3 +91,63 @@ Inside WSL:
     sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu.sh
 
 The in-flight point (L = 9, Ng = 24, Lp = 1.0, started 14:08) resumes from its .partial.npz and loses at most 60 s of K loop plus the profile build. Never run the CPU and GPU launchers at the same time: they write the same files. Small risk: if the stop lands during `np.savez`, the .partial.npz can be truncated. In that case, delete that .partial.npz and the point restarts from zero.
+
+## jax port (2026-10-28)
+
+### Code
+
+- numerics/beta1_box/t2_fstepb_verify_umk_gpu.py (copy on the box: ~/ym/beta1/t2_fstepb_verify_umk_gpu.py, md5 e44a0289143067157c70bf84f043bf2e on both). It is t2_fstepb_verify_umk.py plus a jax port of `Umk.terms`: `d0`, `dsym`, `hess_sym`, `csym`, and the body of `terms` are jax.numpy, and one `jax.jit` covers them and both `taus` calls. Float64 everywhere (umk_beta1 sets jax_enable_x64 on import).
+- Switch: `--backend numpy|jax`, default numpy. With jax, the script replaces `umk_beta1.Umk.terms` before it calls `umk_beta1.run`. umk_beta1.py is not changed.
+- The K loop, the batch size (20000 // L^4), the weighted K sums `W @ g`, and the checkpoint code are the unchanged `umk_beta1.run`. So the JSON and the .partial.npz have the same names and fields as before, and each script resumes the other's checkpoint.
+- The arithmetic order inside one block follows the numpy code line by line. The FFT (cuFFT or ducc against pocketfft), exp, and einsum contraction order differ at the ulp level. The reduction over K points is the same numpy code as before.
+
+### Correctness (smoke case L = 5, Ng = 12, Lp = 1.0; reference β = 0.7681671498542636)
+
+| run | β | difference from reference |
+|---|---|---|
+| Mac, numpy backend (new script) | 0.7681671498542636 | 0 |
+| Mac, jax backend, CPU jax 0.12.0.1 | 0.7681671498542644 | 7.8e-16 |
+| box, jax backend, GPU (unit portA) | 0.7681671498542632 | 4.4e-16 |
+
+w, ghost, and bord agree to ≤ 5e-15 (Mac jax against Mac numpy). Limit was 1e-12.
+
+Per-K intermediate arrays: on 3 random K points of the grid (indices 962, 772, 1284; seed 0), the script recorded the 20 inputs to the two `taus` calls in the numpy path and compared them with the jax inputs. Largest absolute difference: 1.8e-15 on the Mac (CPU jax) and 3.6e-15 on the GPU. Limit was 1e-13; array scale is O(1–10). The per-K `taus` outputs (sums over the 625 blocks of one K, scale ~8) differ by ≤ 5.7e-14 (Mac) and ≤ 1.7e-13 (GPU). This is the conditioning of the 12×12 inverses on ~1e-15 input differences, not an arithmetic-order effect.
+
+### Timing on the box GPU (unit portA, 2026-10-28 14:34, load average ~45–50, the live beta1 unit active on the same GPU)
+
+Steady-state time per call after compilation, at the batch size of `run` (the profile does not change the cost, so timing.py used random rank-1 profiles with the real shapes):
+
+| L | K per call | blocks per call | jax port | old path (numpy + jax taus), same unit | speed-up |
+|---|---|---|---|---|---|
+| 5 | 32 | 20000 | 4.23 µs/block | 469 µs/block | 111× |
+| 9 | 3 | 19683 | 4.42 µs/block | 603 µs/block | 136× |
+| 11 | 1 | 14641 | 4.04 µs/block | 695 µs/block | 172× |
+
+Against the 238 µs/block of the earlier GPU smoke test, the port is ~55× faster. The old-path numbers in this table are higher than 238 µs because the box load was higher. Compilation takes 11–17 s once per point (plus one more for the last, shorter batch).
+Real-run check (unit portB, L = 9, below): 5511 K points in ≤ 4.5 min of K loop after the profile build, about 6–7 µs/block with the live beta1 unit sharing GPU and CPU.
+
+### Expected runtime with the port
+
+| point | blocks | at 4.0–4.4 µs | at 7 µs |
+|---|---|---|---|
+| L = 9, Ng = 24, one Lp | 1.47e8 | 11 min | 17 min |
+| L = 11, Ng = 28, one Lp | 6.03e8 | 41 min | 70 min |
+| all six points | 2.25e9 | 2.6 h | 4.4 h |
+
+Plus the profile build per point (numpy on the CPU): ~3 min at L = 9 in the live run, longer at L = 11 (not measured). Expected total: about 3–5 h. The K loop is no longer the main cost at L = 9; the profile build is ~25% of each L = 9 point.
+
+### Checkpoint compatibility (unit portB)
+
+Scratch directory ~/ym/beta1_port/resume/ (the live results/ was only read). The script copied the live t2_fstepb_verify_umk_L9_Ng24_Lp1.0.partial.npz (i = 450, written by the running unit at 14:38:34), then ran `timeout 480 python t2_fstepb_verify_umk_gpu.py 9 24 1.0 --backend jax`. The run loaded the checkpoint, built the profile, and wrote checkpoints every 60 s. At the kill (exit 124) the partial had i = 5961 of 22464, written 14:45:51. The file format is unchanged (keys i, g, b).
+
+### Restart command (NOT executed; for the coordinator)
+
+New launcher ~/ym/beta1/run_beta1_gpu2.sh (on the box only). It is a sed copy of run_beta1_gpu.sh; the only functional change is the python line:
+`python t2_fstepb_verify_umk_gpu.py $L $Ng $Lp --backend jax >> log 2>&1` (and the same change in the smoke branch). It uses .venv_gpu, `XLA_PYTHON_CLIENT_PREALLOCATE=false`, the same results/ directory, file names, and log. `bash -n` passes.
+Inside WSL:
+
+    sudo -n systemctl stop beta1
+    sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu2.sh
+
+The in-flight point resumes from its .partial.npz. A restart costs the profile build (~3 min at L = 9) plus at most 60 s of K loop. Never run two launchers at the same time: they write the same files. The truncated-.partial.npz risk from the GPU section applies here too.
+Note: with the port, 60 s of K loop at L = 9 is ~2000 K points. The checkpoint interval is unchanged.

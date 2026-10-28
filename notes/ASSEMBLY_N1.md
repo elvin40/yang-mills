@@ -19,14 +19,17 @@ Result in one line. Under hypothesis (S) below, |S_{n,ε}(F)| ≤ A_η (n!)^{1+2
 
 ## 1. The hypothesis (S), stated precisely
 
-(S) [hypothesis, owned by (B-S): D2/D3/D3R/D4]. There are constants η > 0, a ∈ [0, 1[, C_S < ∞ and K_0 such that the following holds. Let K ≥ K_0, n ≥ 2, σ ∈ [16ε, ℓ/8]. Let f_1, …, f_n ∈ C¹(T⁴) be REAL, with dist(supp f_i, supp f_j) ≥ σ for all i ≠ j and min_i diam(supp f_i) ≤ σ. Then
+(S) (superseded 2026-10-28 by (S′)) [hypothesis, owned by (B-S): D2/D3/D3R/D4]. There are constants η > 0, a ∈ [0, 1[, C_S < ∞ and K_0 such that the following holds. Let K ≥ K_0, n ≥ 2, σ ∈ [16ε, ℓ/8]. Let f_1, …, f_n ∈ C¹(T⁴) be REAL, with dist(supp f_i, supp f_j) ≥ σ for all i ≠ j and min_i diam(supp f_i) ≤ σ. Then
   |κ_n(f_1, …, f_n)| ≤ (C_S σ^{−a})^n (n!)^{1+η} Π_i N(f_i).
+(S′) [SOURCES_D4D5 §5.1, SOURCES_B21_S_PRIME §2.4; PROVED relative to S1(b), (FX) with ℓ-free constants, and an ℓ-free trajectory g]. Same hypotheses, σ ≥ 16ε with no upper limit:
+  |κ_n(f_1, …, f_n)| ≤ (C_S′ max(1, σ^{−a}))^n (n!)^{1+η} Π_i N(f_i),   C_S′ = 16C_AC_1C_BC_2C_η, ℓ-free.
+(S′) = (S) for σ ≤ 1. The bridge below uses rungs up to σ_3 = ℓ/32; see the note in §4.4.
 
 Where each part comes from.
 1. Gevrey order 1 + η, uniform in ε: SOURCES_D4D5 §5.1 (Lemma C given S1 and (FX)), not D3R §4.1. The order 1 + η needs (FX2) with the coarsest-scale radius; otherwise the order is ≤ 2 + η (FX §6.3(c)) and D > 2 below. The old order 2 + η is SOURCES_D3R §4.1 [V]: "|cumulant_n| ≤ C(g, δ, r)^n (n!)² e^{O(n log log log n)} ≤ C_ε(g, δ, r)^n (n!)^{2+ε} for every fixed ε > 0, uniformly in the lattice cutoff." (D3R's ε is the η here.)
-2. Dependence on the separation: SOURCES_D3R §4.3(d) [V]: "C(g, δ, r)^n ≤ C^n (log log(1/δ))^{O(n)}". This is ≤ (C_a δ^{−a})^n for every a > 0. So any a > 0 is allowed; a < 1 is all that §4 uses.
+2. Dependence on the separation: SOURCES_D3R §4.3(d) [V]: "C(g, δ, r)^n ≤ C^n (log log(1/δ))^{O(n)}". This is ≤ (C_a δ^{−a})^n for every a > 0 (superseded 2026-10-28 by (S′): ≤ (C max(1, δ^{−a}))^n; the pure power δ^{−a} is not ℓ-free for δ > 1, SOURCES_B21_S_PRIME §1). So any a > 0 is allowed; a < 1 is all that §4 uses.
 3. Dependence on f through N(f). Only C¹ enters (SOURCES_D2 l. 44; the C⁵ jet of W is not needed for separated supports, D2 §5.2). By n-linearity, κ_n(f_1,…,f_n) = Π_i λ_i · κ_n(f_1/λ_1, …) with λ_i = 2N(f_i): the gradient radius of (FX2) is ρ_1/2, so one factor 2 suffices (UN1_VERIFY item 2). Disjoint supports keep the polydisc in the (FX2) domain (SOURCES_UN1 §2.4). The cost is 2^n, inside C_S^n; it is K- and h-independent, and s and D do not change.
-4. Volume factor. The bound comes from |log Z − W| ≤ E_+|T_η| (SOURCES.md Corollary), with fixed torus volume ℓ⁴. It does not depend on the size of the supports. ℓ⁴ is absorbed in C_S.
+4. Volume factor. The bound comes from |log Z − W| ≤ E_+|T_η| (SOURCES.md Corollary), with fixed torus volume ℓ⁴. It does not depend on the size of the supports. ℓ⁴ is absorbed in C_S. (superseded 2026-10-28: no volume factor; Lemma C does not use |log Z − W| ≤ E_+|T_η| (INFINITE_VOLUME_IV12 §2.4, IV12_VERIFY §7). C_S′ is ℓ-free given (FX) and S1 with ℓ-free constants (Lemma C′, SOURCES_D4D5 §4.1).)
 5. Lower limit σ ≥ 16ε. D3 (iv)(G1) uses physical separation δ at scales Mλ_m ≳ δ. Below a few lattice spacings this is not claimed. The fine region ρ ≲ ε is handled without (S), in §4.4.
 
 What (S) does NOT say. It is lossy for small bumps: a unit-amplitude bump of side h has N ~ h^{−1}, while its true field is O(g²). This loss is polynomial in 1/h, and flatness of F pays for it (§4.3).
@@ -118,6 +121,7 @@ Exponent count: δ^{−4n} (cells) · δ^{−n} (bump derivative) · δ^{−an} 
 Choose N = 6n. Then N ≥ 6n (needed by §3.4 and §4.1) and p := N − (5+a)n = (1 − a)n > 0 for a < 1. With δ_m = ℓ2^{−m}:
   Σ_{m=4}^{m_1} δ_m^p ≤ (ℓ/16)^p Σ_{j≥0} 2^{−jp} ≤ (1 − 2^{−(1−a)})^{−1} max(1, ℓ)^n.
 This is uniform in m_1, i.e. in ε. Scale m = 3: (64·8)^{4n}(4C_LC_SC_ψ′ρ_1^{−1}Z)^n (ℓ/32)^{−an}(ℓ/512)^{−n}(n!)^{1+η}C_G^n‖F‖_{6n} = C^n (n!)^{1+η}‖F‖_{6n}.
+Note (2026-10-28, (S′); SOURCES_B21_S_PRIME §3.1, VERIFY §3). With (S′), σ_m^{−an} per tuple becomes max(1, σ_m^{−a})^n. Rungs δ_m ≤ 4 are unchanged. Rungs δ_m > 4 carry δ_m^{N−5n} = δ_m^n instead of δ_m^{(1−a)n}; their sum is ≤ 2(ℓ/16)^n ≤ 2max(1, ℓ)^n. At m = 3 the factor (ℓ/32)^{−an} becomes 1. The bound max(1, ℓ)^n is unchanged; the ℓ-dependence moves from C_S (∝ ℓ^a, hidden) to this explicit factor. Theorem N1 keeps its form on a fixed torus.
 
 ### 4.5 The lattice region R (ρ < 128ε), without (S)
 |⟨φ_{p_1}⋯φ_{p_n}⟩| ≤ 2^n. There are ≤ (6(ℓ/ε)⁴)^n plaquette tuples. On supp R, ρ < 128ε, and Lemma T with β = 0 gives |F R| ≤ (256ε)^N ‖F‖_N. So
@@ -161,3 +165,5 @@ Minor: for ℓ > 512 the top-scale cells have h > 1, so N(g) carries max(1, h^{�
 What N1 does not give. The bound is uniform but lossy (each bump costs h^{−5}, true size O(g²)). It gives no information on the limit beyond (OS0) via ASSEMBLY §2.4–2.5. It does not use the e^{−κd} decay directly; that decay is inside (S).
 
 Status change proposed for ASSEMBLY §2.3: (B-N1) from [open] to [derived, unverified, given (S)], with s = 6 (D > 1; D > 2 under the fallback) [aligned 2026-10-28], D any > 2. Needs an independent verifier before it is load-bearing.
+
+Change log 2026-10-28: §1 (S) marked superseded and (S′) added; item 2 → max(1, δ^{−a}); stale ℓ⁴ item 4 marked superseded; §4.4 note on rungs δ_m > 4 under (S′) (SOURCES_B21_S_PRIME, VERIFY).

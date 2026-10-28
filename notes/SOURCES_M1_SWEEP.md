@@ -157,3 +157,45 @@ Structure [V text layer p. 356]: Sect. 1 "The Conclusion of the Operation R — 
  Supply [P]. At real U, J = 0, real f, A_Ω^f is real symmetric with A_Ω^f ≥ ¾γ_exp (A16_REPLACE2 4.3, Q1). By CMP 119 (3.23) the large-field precision is the Schur complement S = A_{ΩΩ} − A_{ΩΛ}C(Λ)A_{ΛΩ} with C(Λ) = (A_{ΛΛ})^{−1}. For a real symmetric A ≥ cI, S^{−1} = (A^{−1})_{ΩΩ} and ‖A^{−1}‖ ≤ c^{−1}, so S ≥ cI. Hence S^f ≥ ¾γ_exp and the Gaussian integral is ≤ (8π/(3γ_exp))^{n/2}, n = dim of the A_j-space on Z_j ∩ Ω_j ≤ dim𝔤·d·|Z_j ∩ Ω_j|. So NEW-2 is SUPPLIED by Q1 + Q9 (the Schur form) in either volume convention: whether the source acts on the large-field A_j (C-new-3) changes S but not the lower bound. [P]
 - p. 383 (1.79): T′_k(X)1 ≤ sup exp{ΣO(1)M^dR_j^{d+1}d′_j(Z_j)}·ΠΠexp(−½γ_0A_1²p_0²(d′_j(Z_j^{(i)}) + 1) − 2p_0)·Π′exp(−p_0). No further covariance.
 - p. 384 (1.80): κ_j(Z) and the operation S(Z); combinatorics of large-field regions. No covariance.
+
+5.12 pp. 385–392 (PDF 31–38) [V image p. 390; text layer pp. 385–389, 391–392].
+- pp. 385–389 (1.81)–(1.97): induction on κ_j(Z) (1.80)–(1.88); T′_k(X)1 ≤ exp(−2(1+β_0)^{−1}p_0(g_k)) (1.89); polymer expansion (1.90)–(1.97) with activities bounded by (1.68), (1.73), (1.89). No Gaussian, covariance, or Δ on the text layer. No use.
+- p. 390 (1.98)–(1.102) [V image]: exponentiated cluster expansion exp R′^{(k)} = expΣR′^{(k)}(X) ((7.13) [I]); bounds (1.99)–(1.100); "By their construction it is also clear that they are Euclidean covariant, i.e., they have the property (2.32) [III]." Same NEW-1 (E) consumer as 5.10 (point-group averaging in (1.71)); joint covariance with the source (§3.3). New action (1.101), T_k(Y) (1.102).
+- pp. 391–392 (1.103)–(1.104), References: boundary-term polymer expansion, normalized T′-operations. No use.
+
+## 6. Verdict and ledger
+
+Note on numbering: §3 settles NEW-1; references to "§4" in 2.1 and 2.6 mean §3.
+
+6.1 Complete list of uses of the fluctuation covariance (C^{(k)}, C^{(k)}(Λ_{k+1}), (C^{(k)})^{1/2}, C*Δ^{(k)}C and its resolvents, log det, dμ_C) in CMP 119 Sect. 3 and CMP 122 II.
+| use | pages | class | supplied by |
+|---|---|---|---|
+| Schur-complement large-field precision; small-field Gaussian on Λ_{k+1} with linear coupling | 119: 270 (3.23), (3.25) | Q9, Q2, (U-a) | A16_REPLACE2 3.5, 4.3 |
+| derivative of ⟨A, C*ΔCA⟩ along localized shifts | 119: 269 (3.22) | Q4, (U-c) | A16_REPLACE2 §6 |
+| expectations under dμ_{C(Λ_{k+1})} with s,t-interpolated interaction | 119: 271–272 (3.26)–(3.29) | Q1, Q2, Q4, Q6–Q9, Q11 | A16_REPLACE2 §3 |
+| Gaussian integration by parts in the external A_k | 119: 272 (3.28) | Q1, Q2, Q4, Q9, (U-c) + symmetry at complex points by continuation | A16_REPLACE2 §3, 4.3 [I on the continuation] |
+| g-interpolation with fixed covariance | 119: 272 (3.30) | Q10 | D3W8 §1.1 via A16_REPLACE2 3.5 |
+| log ∫dμχ | 119: 273 (3.32) | Q1, Q2, Q6–Q8, Q11 | A16_REPLACE2 §3 |
+| log det via contour and λ ≥ 0 resolvents; local density E_0 | 119: 273–275 (3.33)–(3.42) | Q1, Q5, (U-a), WC(iv) at fixed x, (U-c), Q6 | A16_REPLACE2 3.2, 3.3, 4.3 [P: numerical-range step, 2.5] |
+| cluster expansion of (3.37) | 119: 277–278 (3.44)–(3.47) | Q2, Q6–Q8, Q11 | A16_REPLACE2 §3 |
+| Λ-independence of interior terms | 119: 278–279 | Q2 (L1)–(L2) + (S2) | [P-sketch, 2.9]; sub-clause to state explicitly |
+| Euclidean covariance (E) under G_{k+1} / partition-preserving maps / point group about a block point | 109: 269 (2.17)–(2.18); 119: 260 (2.29), (2.32), 270–271, 274 (3.39), 275, 282 (3.58)–(3.62), 283; 122 II: 379 (1.71), 390 | NEW-1 (E) | §3.3 [P given Balaban's own covariance of G_1, Q, C; source transforms] + D2 (H2)(vi) |
+| large-field A_j Gaussians bounded by positivity | 122 II: 383 | NEW-2 | 5.11 [P from Q1 + Schur] |
+| walk expansions in the multiscale Ω-geometry (scale ML^jη cubes on Ω_j∖Ω_{j+1}) | 119: 275–276 | Q2/Q7/WC(iv) in the Ω-setting | NOT supplied: WC is single-scale (WC_FULL 5.2); I-37 / C-new-3 |
+Objects that look similar but are not the fluctuation covariance: the R-operation Wilson Hessian H*_{1,k}Δ_1(ζ_0)H_{1,k} in the axial gauge and its inverse (122 II: 357–359, 361, 367, 369, 382–383 (1.7)–(1.13), (1.20)–(1.21), (1.40), (1.77)–(1.78)); background minimizers H″, H_{B_1}, G″_k (122 II: 360–374).
+
+6.2 New items (not in Q1–Q11, (U-a)–(U-d)).
+- NEW-1 Euclidean part: SETTLED in form. Used group: Euclidean maps of T that preserve the block lattice T^{(k+1)} (block translations + hypercubic point group about block points); for R-terms the partition-preserving subgroup; R-operation averages over the 2^d reflections and d! permutations. Never the full unit-lattice group. Used only for whole-space objects (Ω_j = T_η). The project's C_f satisfies O_rC_f(U; d_S)O_r^{−1} = C_f(rU; r·d_S) [P, §3.3, given Balaban's covariance of G_1, Q, C — reading I]. At constant source it is plain covariance. The form restriction (3.58)–(3.62) needs constant source; the project already routes this through D2's constant-source family (A) [V-project]. Not a covariance gap.
+- NEW-2: SETTLED. Only use is the positivity bound on p. 383 of CMP 122 II; supplied by Q1 + Schur complement at real points [P, 5.11], in either volume convention.
+- NEW-3 (setting): multiscale Ω-sequence walk expansion (CMP 119 pp. 275–276, "Theorems 3.7–3.10 [13] in their full generality", cubes of size ML^jη on Ω_j∖Ω_{j+1}). Theorem WC and A16_REPLACE2 are single-scale. This is not a new property of C_f; it is the Ω-setting of all of Q2/Q6/Q7/WC(iv). Owner: I-37 / C-new-3. [open]
+- NEW-4 (outside (M1) scope, flag for D3): the R-operation Hessian lower bound (CMP 122 II (1.7)–(1.9), (1.21), (1.77)) and its inverse (1.13), (1.40). If the source enters the R-operation Wilson term, each needs a g_k²r-smallness check (5.1) and the critical-point identity changes (5.4). Owner: D3 (SOURCES_D2 §8 items 3, 5, 6). [open]
+
+6.3 Verdict on (M1). CLOSED [V] as a list, with two reservations. Over the four swept ranges (CMP 109 Sect. 3, CMP 122 I Sect. 1, CMP 119 Sect. 3 = PDF pp. 22–43, CMP 122 II = PDF pp. 1–38), every use of the fluctuation covariance is in Q1–Q11, (U-a), (U-c), NEW-1 (E), or NEW-2 [V on page images at every true hit; text layer for triaged pages]. NEW-1 (E) and NEW-2 are now supplied [P, §3.3 and 5.11]. Reservations: (i) NEW-3, the multiscale Ω-geometry, is a setting gap for the whole Q-list, owned by I-37; (ii) NEW-4 is a D3 item, not a covariance property. (M1) itself does not stay open on either.
+
+6.4 Ledger.
+ [V] page images (300 dpi): CMP 119 pp. 260, 267–279, 282–283; CMP 122 II pp. 357–370, 372–374, 379–384, 390. Text layer: CMP 109 p. 269 (clean); CMP 119 pp. 264–266, 280–281, 284–285; CMP 122 II pp. 356, 371, 375–378, 385–389, 391–392.
+ [P] §3.3 joint covariance (given (1)–(2)); 2.5/2.6 numerical-range step for the contour; 5.11 NEW-2 Schur lower bound.
+ [P-sketch] 2.9 interior coincidence for the sourced Neumann chain; 5.1 sourced (1.9).
+ [I] §3.3 (2) covariance of G_1, Q, C under G_{k+1}; 2.4 symmetry of C_f at complex points by continuation; 2.2/2.1 volume convention C-new-3.
+ [open] NEW-3 (I-37), NEW-4 (D3).
+ Suggested CLOSURE_PLAN status (this file edits no other file): "I-35 / (M1): CLOSED [V] as a list (SOURCES_M1_SWEEP §6): all four ranges swept; NEW-1 Euclidean = joint covariance under the block-lattice group, supplied [P given I]; NEW-2 supplied by Q1 + Schur [P]; NEW-3 multiscale Ω-geometry → I-37; NEW-4 R-operation Hessian → D3."

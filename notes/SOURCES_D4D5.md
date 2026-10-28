@@ -124,6 +124,10 @@ The u-values form a geometric sequence u_0L^i. The term ℓ_2(u)^{4p_Rn} e^{−�
 Step 8 (the log-log factor). ℓ_2(n)^{4p_Rn} = exp(4p_Rn log log(1 + C_β log_L n)) ≤ C_η^n (n!)^η for every η > 0, since log log log n = o(log n) and n! ≥ (n/e)^n. This is the source of the η, as in D3R §4.1.
 Step 9 (W). Steps 2–7 with R̄_m replaced by 1 and radius ½ give a bound of the same form with no Λ_1 factor.
 Adding Steps 6–9 gives the statement. ∎
+Range note (added 2026-10-28, SOURCES_B21_S_PRIME_VERIFY §1). As printed, Lemma C is false for σ ≥ 2ML (the Step 6 factor 1 + log_L(2M/σ) is ≤ 0) and undefined for σ ≥ σ_0 := 2M·L^{(g^{−2}−1)/C_β} (Λ_1 not defined; Step 7's a ≥ 1 fails). For σ > 2M, Step 6 has 0 scales.
+Lemma C′ (added 2026-10-28; SOURCES_B21_S_PRIME §2.2–2.3, CONFIRMED in its VERIFY §2). Under the hypotheses of Lemma C, for every σ > ε with no upper limit:
+  |κ_n| ≤ C_A (1 + D/σ)⁴ (1 + log_L⁺(2M/σ)) (C_B Λ̃_1(σ)⁴)^n C_η^n (n!)^{1+η} Π_i N(f_i),   log_L⁺ := max(0, log_L),   Λ̃_1(σ) := Λ_1(min(σ, 2M)),
+with the same C_A, C_B, C_η. For σ ≤ 2M it is Lemma C verbatim. Proof for σ > 2M: Steps 6–7 redone at the true σ; every scale is fine, log_L(1/λ_m) ≤ log_L u, and g ≤ γ < 1 (S1) gives g^{−2} ≥ 1 for the split log(g^{−2} + b) ≤ log g^{−2} + log(1 + b).
 
 ### 4.2 Where the separation enters, in units of ε and of the block size [proved]
 - In units of ε: only Step 0, σ > ε, so that the lattice gradient of Σt_if_i is a maximum, not a sum. Any σ ≥ 2ε is safe. N1 uses σ ≥ 16ε.
@@ -135,14 +139,17 @@ Adding Steps 6–9 gives the statement. ∎
 ### 4.3 Comparison with D3 (iv)(G1) and D3R §4.1 [derived; needs a verifier]
 - D3 and D3R state Gevrey order 2 + η. Lemma C gives 1 + η for separated, distinct sources. The difference: D2 §8.5 counts a!(|X|/r)^{|a|} for general multi-indices; for κ_n(f_1, …, f_n) with distinct separated f_i the multi-index is (1, …, 1), a! = 1, and the polydisc radius is independent of n by Step 0 (disjoint supports give max, not sum). The only n! is the polymer-size sum of Step 4. Order 2 + η remains a valid weaker statement.
 - D3 (G1) and D3R §4.1 assume, without stating it, the locality of log I_K, i.e. (FX) (§3.2).
-- D3R §4.3(d) gives the σ-dependence C^n(log log 1/δ)^{O(n)}. Lemma C confirms it as Λ_1(σ)^{4n} and adds two prefactors: (1 + log_L(2M/σ)) (number of coarse scales) and (1 + D/σ)⁴ (cubes meeting the smallest support). For D ≤ σ both are ≤ C_aσ^{−a}.
+- D3R §4.3(d) gives the σ-dependence C^n(log log 1/δ)^{O(n)}. Lemma C confirms it as Λ_1(σ)^{4n} and adds two prefactors: (1 + log_L(2M/σ)) (number of coarse scales) and (1 + D/σ)⁴ (cubes meeting the smallest support). For D ≤ σ both are ≤ C_aσ^{−a} for σ ≤ 1; in general (via Lemma C′) they are ≤ C max(1, σ^{−a}) (added 2026-10-28).
 
 ## 5. D5, part C: the statement (S), its dependencies, and (H-U)
 
 ### 5.1 (S), final form [derived: Lemma C given S1 and (FX)]
-(S) For every η > 0 and a > 0 there is C_S = C_S(η, a) < ∞ (independent of K) such that for all K, n ≥ 2, σ ∈ [16ε, ℓ/8], and real f_1, …, f_n ∈ C¹(T⁴) with pairwise dist(supp f_i, supp f_j) ≥ σ and min_i diam(supp f_i) ≤ σ:
+(S) (superseded 2026-10-28 by (S′) below) For every η > 0 and a > 0 there is C_S = C_S(η, a) < ∞ (independent of K) such that for all K, n ≥ 2, σ ∈ [16ε, ℓ/8], and real f_1, …, f_n ∈ C¹(T⁴) with pairwise dist(supp f_i, supp f_j) ≥ σ and min_i diam(supp f_i) ≤ σ:
   |κ_n(f_1, …, f_n)| ≤ (C_S σ^{−a})^n (n!)^{1+η} Π_i N(f_i),   N(f) = max(‖f‖_∞/r, ‖∇f‖_∞/ρ_1).
-Derivation from Lemma C: (1 + D/σ)⁴ ≤ 16; (1 + log_L(2M/σ)) ≤ C_aσ^{−a} ≤ (C_a′σ^{−a})^n for n ≥ 2 and σ ≤ ℓ/8; Λ_1(σ)⁴ ≤ C_aσ^{−a}.
+Derivation from Lemma C: (1 + D/σ)⁴ ≤ 16; (1 + log_L(2M/σ)) ≤ C_aσ^{−a} ≤ (C_a′σ^{−a})^n for n ≥ 2 and σ ≤ ℓ/8; Λ_1(σ)⁴ ≤ C_aσ^{−a}. (superseded 2026-10-28 by (S′): on σ > 1 the step ≤ (C_a′σ^{−a})^n needs C_a′ ≥ (ℓ/8)^a, and the corrected left sides do not decay; SOURCES_B21_S_PRIME §1, VERIFY §1.)
+(S′) [SOURCES_B21_S_PRIME §2.4; PROVED relative to S1(b), (FX) with ℓ-free constants, and an ℓ-free trajectory g, VERIFY §5]. Same hypotheses as (S), with σ ≥ 16ε and no upper limit on σ:
+  |κ_n(f_1, …, f_n)| ≤ (C_S′ max(1, σ^{−a}))^n (n!)^{1+η} Π_i N(f_i).
+Derivation from Lemma C′: put m(σ) := max(1, σ^{−a/2}). (1 + D/σ)⁴ ≤ 16; 1 + log_L⁺(2M/σ) ≤ C_1 m, C_1 := sup_{σ>0}(1 + log_L⁺(2M/σ))/m; max(1, Λ̃_1(σ)⁴) ≤ C_2 m, C_2 := sup_{σ>0} max(1, Λ̃_1(σ)⁴)/m. So |κ_n| ≤ (16C_AC_1C_BC_2C_η)^n m^{n+1}(n!)^{1+η}ΠN, and m^{n+1} ≤ m^{2n} = max(1, σ^{−a})^n. C_S′ := 16C_AC_1C_BC_2C_η: no ℓ, no K. (S′) = (S) for σ ≤ 1.
 Differences from the (S) of ASSEMBLY_N1 §1: (i) Gevrey order 1 + η instead of 2 + η (the old form is implied); (ii) N is the C¹ norm, not C⁵ (D2 uses C¹ only; the C⁵ jet of W is not needed for separated supports, D2 §5.2 (P3)); (iii) one extra condition, min diameter ≤ σ. ASSEMBLY_N1 meets (iii): its sources live in cubes c″_i of side 3h_m = 3δ_m/64, diameter 6δ_m/64 < σ_m = δ_m/4 (N1 §3.3, §4.1). Without (iii) the factor (1 + D/σ)⁴ stays; it is harmless for N1 but must be carried elsewhere.
 
 ### 5.2 (S) ⇒ (H-U) through ASSEMBLY_N1 [reduced to ASSEMBLY_N1 + its VERIFY]
@@ -198,3 +205,5 @@ Corrections proposed to earlier files (those files are not edited):
 - ASSEMBLY_N1 (S): may be weakened to C¹ sources and order 1 + η, with the diameter condition; then s = 6, D > 1.
 
 Verifier targets (highest value first): (1) §3.2, the claim that S1 does not imply cumulant bounds without (FX), and the reading of the CMP 122 I intro quote; (2) Lemma C Steps 0, 3, 4, 7 (radius independent of n; single n!; log-log sup); (3) Lemma D4.1's list of operations against CMP 109 (0.15)–(0.19) and CMP 122 I (0.4) on the page images.
+
+Change log 2026-10-28: §4.1 range note and Lemma C′ added; §4.3 last bullet qualified (σ ≤ 1; max(1, σ^{−a}) in general); §5.1 (S) and its derivation marked superseded, (S′) and its derivation added (SOURCES_B21_S_PRIME, VERIFY).
