@@ -78,3 +78,47 @@ In fine units (p = θL^{−k}): the fine piece carries c_2 ln(1/p²); the coarse
 
 IR-cutoff reading (task item 3). Put Π_k(p) := S(pL^k; L^k) = Π̂(p) − Γ^{ex}(pL^k; L^k). This is the fine Wilson vacuum polarization with the composed block constraint acting as an infrared cutoff at μ_k = L^{−k}. Then S_k = Π_k(0) and β_{k+1}(0) = Π_{k+1}(0) − Π_k(0) exactly: a difference of two infinite-lattice vacuum-polarization coefficients with IR cutoffs L^{−k−1} and L^{−k}. If Γ^{ex}(P; L^k) → Γ^∞(P) as functions, then Π_k(p) ≈ Π̂(p) − Γ^∞(p/μ_k): one fixed IR profile, scaled by μ_k (scale covariance). Then Π_{k+1}(0) − Π_k(0) → lim_{P→0}[Γ^∞(P) − Γ^∞(LP)] = c_2 ln L² = c log L. This reading needs k → ∞ to commute with P → 0. That is the old (H) with IR weights (BETA_FP_LEMMA43 §4). §3 replaces it by fixed-θ statements.
 
+## 3. The doubling identity at fixed coarse momentum, and the theorems
+
+### 3.1 The identity
+Identity 3.0 [proved here; exact]. For k ≥ 1 and 0 < θ ≤ p_*,
+
+  β_{k+1}(0) = [Π̂(θL^{−k−1}) − Π̂(θL^{−k})] − [Γ^{ex}(θ; L^{k+1}) − Γ^{ex}(θ; L^k)] + r_k(θ),
+  r_k(θ) := [S_{k+1} − S(θ; L^{k+1})] − [S_k − S(θ; L^k)].   (3.1)
+
+Proof. Insert S(θ; L^m) = Π̂(θL^{−m}) − Γ^{ex}(θ; L^m) (definition) for m = k, k + 1 into β_{k+1}(0) = S_{k+1} − S_k. ∎
+By LW (5.7) the first bracket is c_2 ln L² + η(θL^{−k−1}) − η(θL^{−k}) = c log L + o(1) as k → ∞: κ_W^F and every other fine "bulk" constant cancel. By Lemma 1.3, |r_k(θ)| ≤ 2C_Uθ²/(L² − 1) for all k. So
+
+  |β_{k+1}(0) − c log L + [Γ^{ex}(θ; L^{k+1}) − Γ^{ex}(θ; L^k)]| ≤ |η(θL^{−k−1})| + |η(θL^{−k})| + 2C_Uθ²/(L² − 1).   (3.2)
+
+This is the gauge analogue of the O(3) doubling difference (o3_continuum Lemma 6.1, "All extracted bulk scalars cancel in the doubling difference"). There, two tori of sides n and 2n with the same terminal layer are compared. Here, two UV cutoffs (fine momenta θL^{−k−1} and θL^{−k}) with the same terminal coarse geometry (block lattice and coarse momentum θ) are compared. The fine piece gives c log L; the terminal (coarse) pieces cancel in the limit.
+
+### 3.2 Theorem A (limit form)
+(Cθ) [hypothesis]. There is a sequence θ_n ↓ 0, θ_n ≤ p_*, such that for each n the sequence k ↦ Γ^{ex}(θ_n; L^k) converges.
+
+Theorem 3.1 [proved here, given (U), (Cθ), LW (5.7)]. β_k(0) → c log L, c = 11N²/(12π²).
+
+Proof. Fix n. In (3.2), η(p) → 0 as p → 0, and the Γ^{ex}-difference → 0 by (Cθ). So lim sup_k |β_{k+1}(0) − c log L| ≤ 2C_Uθ_n²/(L² − 1). Let n → ∞. ∎
+
+Remarks. (a) Existence of β_∞ is part of the conclusion. BETA_FP Thm 4.1 Step 2 (continuity of Φ, convergence of 𝒟_j at p = 0) is not used. (b) No rate. A rate needs a rate in (Cθ) with explicit θ-dependence: if |Γ^{ex}(θ; L^{k+1}) − Γ^{ex}(θ; L^k)| ≤ ε_k(θ), then |β_{k+1}(0) − c log L| ≤ inf_θ[ε_k(θ) + Cθ² + 2 sup_{p≤θ}|η(p)|]. (c) The fine piece enters only through LW (5.7) at fine momenta tending to 0; no lattice-continuum comparison of the fine integrand is needed.
+
+### 3.3 Theorem B (O(3) Lemma 6.1 form)
+(Bθ) [hypothesis]. There is θ_* ∈ (0, p_*] with B_* := sup_k |Γ^{ex}(θ_*; L^k)| < ∞.
+
+Theorem 3.2 [proved here, given (U), (Bθ), LW (5.7)]. For all k ≥ 1, |S_k − c k log L| ≤ C_B with
+
+  C_B := B_* + c_2 ln(1/θ_*²) + |κ_W^F| + sup_{p≤θ_*}|η(p)| + C_Uθ_*²/(L² − 1).
+
+Hence (i) every window sum satisfies |Σ_{j=k+1}^{K}(β_j(0) − c log L)| ≤ 2C_B; (ii) S_k/k → c log L; (iii) if β_j(0) converges, its limit is c log L.
+
+Proof. Lemma 1.3 and the definition of Γ^{ex}: S_k = Π̂(θ_*L^{−k}) − Γ^{ex}(θ_*; L^k) + O(C_Uθ_*²/(L² − 1)), and Π̂(θ_*L^{−k}) = c k log L + c_2 ln(1/θ_*²) + κ_W^F + η(θ_*L^{−k}). (i) is the difference of two such bounds; (ii), (iii) follow from (i). ∎
+
+Remarks. (a) (Bθ) needs bounds only, at one coarse momentum. Existence of the limit for (iii) comes from BETA_FP Thm 4.1 Step 2 (U3 Thm 4.1 + Lemma 5.1 + Φ Lipschitz) or from Theorem 3.1. This is the split of the O(3) template: O(1) control of the partial sum by a doubling comparison, plus "exponential convergence of α_h" for the limit. (b) Window sums. ONLINE_SWEEP §1.2(a) [inference there, not verified] says Balaban's Theorem 1 needs only a band 1/g² − C + β_∞(K − k) ≤ 1/g_k² ≤ 1/g² + C + β′(K − k). The lower half of such a band needs bounded window sums of β_j − β_∞, which is (i) with β_∞ = c log L. It needs no rate and no Σ|β_j − β_∞| < ∞. The band argument itself is not checked here. (c) The abelian sector satisfies the theorem with c^{ab} = 0: S_k^{ab} = (1 − L^{−4k})/4 (U1 Prop. 9.1, measured to all digits, NUMERICS §6). (d) Data, L = 2: S_k − 0.2575k = 0.372 (k = 1), ≈ 0.43 (k = 2, β_2 ≈ 0.32), ≈ 0.46 (k = 3, β_3 ≈ 0.29, N = 12, not converged). Bounded-looking; not a test.
+
+### 3.4 Which property of the coarse piece is needed (task item 3(b))
+- Theorem A: convergence in k of Γ^{ex}(θ; L^k) at fixed θ > 0, along one sequence θ_n → 0. Pointwise in θ: no uniformity in θ, no θ-derivatives, no rate, no infrared weights.
+- Theorem B: boundedness in k at one θ_*.
+- Scale covariance is not an extra hypothesis. If (Cθ) holds for all θ ∈ (0, p_*], the level-k data at transfer θ are one block step of the level-(k − 1) data at transfer θ/L (BETA_FP (1.3)). So any limit 𝒟_∞(·; θ) of the plane-wave data obeys 𝒟_∞(·; θ) = T_L[𝒟_∞(·; θ/L)]: joint rescaling (K, θ) → (K/L, θ/L) plus one block step. This is the plane-wave form of T_L𝒟_∞ = 𝒟_∞ (U3 Lemma 3.1(i)). Theorem 3.1 does not use it; the scale-covariance reading of §2.2 does.
+- The old route needed more: uniformity in θ of the k-convergence of Γ^{ex}(θ; L^k) − c_2 ln(1/θ²), so that θ → 0 and k → ∞ commute (BETA_FP_LEMMA43 Prop. 4.2, (H) with IR weights (|K| + P)^{4−m−|α|}). Lemma 1.3 replaces that uniformity by the massive-side bound (U).
+- §4 states what (Cθ) and (Bθ) reduce to, and how they relate to U3 Thm 4.1, (W), and Lemma 5.1.
+

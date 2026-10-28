@@ -70,3 +70,7 @@ Update (evening): two composed steps at L = 2, p = 0.2: Ng=4 → 1.148, Ng=6 →
 L = 4 single step (box GPU, Ng=6, p = 0.2): β_1 = 0.757 [universal 0.515]. First-step increments 0.630 / 0.664 / 0.757 for L = 2 / 3 / 4; successive differences 0.034, 0.093 against universal 0.151, 0.107. L = 5 running (Ng=4 then 6).
 Label (from SOURCES_D1_VERIFY.md): the plane-wave expansion point is not a constrained stationary point; the resulting error is controlled by Lp. The p → 0 fits for L = 2, 3 are unaffected. The single-point values at p = 0.2 for L = 4 (0.757) and the two-level runs (1.148, 0.967) carry an O((Lp)²) bias, about 0.01 at L = 4; the two-level grid error (0.18 between Ng = 4 and 6) dominates there.
 Two composed steps at L = 2, p = 0.2, box GPU, Ng = 8: β_1 + β_2 = 0.953 (Ng = 4/6/8: 1.148 / 0.967 / 0.953), so β_2 ≈ 0.32 (Lp-bias label applies). Agrees with the per-level recursion (BETA_FP.md: β_2 ≈ 0.317–0.337).
+
+## 7. Large odd L by the umklapp code (box, 2026-10-28)
+
+β_1(0) single step, SU(2), fixed Lp where noted: L = 5: 0.749 (Ng=12, p=0.1), fit 0.743; L = 7: 0.803 (Ng=8, Lp=0.5). First-step constant β_1 − c log L: 0.372 (L=2), 0.256 (3), 0.242 (4), 0.145 (5), 0.080 (7): decreasing toward the universal slope. Queue continues to L = 15.
