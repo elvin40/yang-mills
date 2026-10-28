@@ -1,6 +1,6 @@
 \section*{Preamble}
 
-Written 2026-10-27/28 (Opus). v3 = v2 (\file{THEOREM2_PROOF_v2.md}) with the corrections of \file{THEOREM2_PROOF_v2_VERIFY.md} \S A--\S N applied. Nothing else is changed. It does not edit v1 or v2. It is not itself verified as a whole document. The change log is at the end (Appendix).
+Written 2026-10-28 (Opus). v4 = v3 (\file{THEOREM2_PROOF_v3.md}) updated with the verified material that appeared after v3: \file{B2_TWOSTEP.md} + \file{B2_TWOSTEP_VERIFY.md}, \file{H2_LARGE_L.md} + \file{H2_LARGE_L_VERIFY.md}, \file{lean/README.md} (Lemma D$''$ in Lean), \file{BETA_FP_U.md} (Route B inputs), \file{numerics/NUMERICS.md} \S7. Main changes: \S5 is rewritten around (H2); \S8, \S9, \S10 are updated; small consistency edits elsewhere. It does not edit v1, v2, or v3. It is not itself verified as a whole document. It adds no claim beyond the cited verifier verdicts. One deliberate tag change: the logic of Theorem B (Route B) is tagged \status{proved+verified, conditional} per \file{BETA_FP_PW_VERIFY} \S6 items 1--4; see the change log. The change log is at the end (Appendix).
 
 \paragraph{Tag legend.}
 \begin{itemize}
@@ -60,7 +60,7 @@ Let $G = SU(2)$, $d=4$, $L$ odd, $L>11$ (equivalently: $L$ odd $\ge 3$ with (H0)
 Consequence: Balaban's (0.31) holds up to the additive constant $D'$ on the lower side, with constants $\beta/\log L$ and $B'/\log L$. The two-sided bound fixes $1/g_k^2$ up to constants, as required.
 \end{theorem}
 
-Status: \status{proved+verified, conditional on (B2) and the fixed-level inputs of \S4} by Route K (Theorem K + Lemma D$''$). Second route: \status{proved, unverified, conditional on (U), ($B\theta$), and the plane-wave defects} by Route B (\file{BETA_FP_PW} Theorem 3.2 + Lemma D$''$). Both routes also need (H0) at this $L$ and L5 (\S2.4). See \S4.
+Status: \status{proved+verified, conditional on (B2) and the fixed-level inputs of \S4} by Route K (Theorem K + Lemma D$''$). (B2) is reduced to the single inequality (H2) of \S5 \status{proved+verified reduction: \file{B2_TWOSTEP_VERIFY} grade 3}. Second route: Route B (\file{BETA_FP_PW} Theorem 3.2 + Lemma D$''$). The logic of Theorem B is \status{proved+verified, conditional} (\file{BETA_FP_PW_VERIFY} \S6 items 1--4). Its inputs (U), (DF), (T1) from \file{BETA_FP_U} are \status{proved, unverified}; the route is conditional on (U), ($B\theta$), and the plane-wave defects. \file{BETA_FP_U} reduces (U) to (T1) + (H2) \status{proved, unverified}. Both routes also need (H0) at this $L$ and L5 (\S2.4). See \S4.
 
 \subsection{Literal (0.31)}
 
@@ -101,7 +101,7 @@ Sources: \file{LEMMA_DPRIME.md} \S1--\S2; \file{LEMMA_DPRIME_VERIFY.md} grades 1
 Without $g\le g_1$, (b) can fail at small $K$ ($\beta_1=\beta_2=\beta_3=-0.8$, $K=3$, $g=\gamma$). \status{proved+verified}
 \end{remark}
 
-\subsection{Lemma D$''$ (tail-sum form; no index $J$) \status{proved+verified}}
+\subsection{Lemma D$''$ (tail-sum form; no index $J$) \status{proved+verified; Lean}}
 
 Source: \file{KAPPA_BOUNDED.md} \S5.3; \file{KAPPA_BOUNDED_VERIFY} \S6 (CONFIRMED: ``No $J$ needed''); hand rederivation in \file{THEOREM2_PROOF_v2_VERIFY} \S A.
 
@@ -123,9 +123,9 @@ upper side without constant.
 
 \emph{Proof.} $|T-T_0|\le C_1\gamma(K-k)\le(b/4)(K-k)$. Add (5.1). Steps 2--5 of Lemma D$'$ use only continuity and the bracket $\tilde T\in[-D,B'(K-k)]$; this bracket now comes from (5.1). The pairwise form is the same window argument with $K\to n$. The proof is the clamped-flow proof of 2.1; for history-dependent $\beta$ the L5 caveat of \S2.4 applies.
 
-Not in Lean (the Lean lemma has hypothesis (iii$'$), not (5.1)). The reduction is short; formalizing it is a small task. \status{open as Lean work}
+Lean: \file{lean/YmLean/LemmaDDoublePrime.lean} (\texttt{YmLean.lemma\_DDoublePrime}, 146 lines, no \texttt{sorry}, axioms propext, Classical.choice, Quot.sound; \file{lean/README.md}). It proves (a$''$), (b) with the clamp inactive on the solution, (c$'$) with $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$, and (d) below. The Lean hypotheses are weaker than the note: continuity instead of $C^1$; any $\gamma$ with $0<\gamma\le\gamma_0$ and $C_1\gamma\le b/4$; $R\ge0$ derived; $K=0$ allowed; (c$'$) and (d) hold for every trajectory with couplings in $]0,\gamma]$. One-argument $\beta$ only (L5 not formalized).
 
-Literal (0.31) from (5.1) alone holds only for windows with $n-m\ge 8R/b$; short windows near $K$ are not controlled (see \S1.4).
+(d) \status{Lean}: for $n-m\ge8R/b$, $u_n+(b/2)(n-m)\le u_m\le u_n+B'(n-m)$. So literal (0.31) from (5.1) alone holds, with lower constant $b/2$, only for windows with $n-m\ge8R/b$; short windows near $K$ are not controlled (see \S1.4).
 
 \subsection{Lemma D$''$ meets Balaban's proof: the cross-scale sweep \status{proved, unverified (sweep); 4 of 19 table rows verified}}
 
@@ -211,14 +211,14 @@ Source: \file{U3_AW.md}, \file{U3_AW_VERIFY.md} (grades 1--4 CONFIRMED); \file{U
 
 \section{Bounded window sums: two formally distinct conditional routes}
 
-Both routes give the window bound (5.1) of \S2.2, $|S_K-S_k-b(K-k)|\le 2R$, with $b=c\log L$. Lemma D$''$ then gives Theorem 2w (at odd $L>11$, or with (H0) at this $L$ as a hypothesis, and with L5). Neither route uses convergence of $\beta_j(0)$, a rate, (N), or certified early steps. The two routes have formally distinct named hypotheses. Their mathematical content is not shown to be independent; both plausibly need a uniform first-order smoothness of the level-$j$ vertex (\file{BETA_FP_PW_VERIFY} \S3; \S4.3 below).
+Both routes give the window bound (5.1) of \S2.2, $|S_K-S_k-b(K-k)|\le 2R$, with $b=c\log L$. Lemma D$''$ then gives Theorem 2w (at odd $L>11$, or with (H0) at this $L$ as a hypothesis, and with L5). Neither route uses convergence of $\beta_j(0)$, a rate, (N), or certified early steps. The two routes have formally distinct named hypotheses. Their mathematical content is not independent: both reduce their uniform-in-level content to the same inequality (H2) on the two-step minimizer map (\S5), plus A3-type facts (\file{BETA_FP_U} \S3.5, \S4.3 \status{proved, unverified}; Route K side: \file{B2_TWOSTEP_VERIFY} grade 3 \status{proved+verified}).
 
 \subsection{Route K: Theorem K \status{proved+verified, conditional on (B2) and the fixed-level inputs}}
 
 Source: \file{KAPPA_BOUNDED.md}; \file{KAPPA_BOUNDED_VERIFY.md} (items (i)--(v) and (vii) CONFIRMED; (vi) CORRECTED in reasoning, conclusion unchanged).
 
 \begin{theorem}[Theorem K]
-$L$ odd $\ge3$. Assume (B2) (\S5) and the fixed-level inputs below. Then $\sup_k|d_k|\le\kappa_*<\infty$, so $\sup_k|\kappa_k|\le|\kappa_W^F|+\kappa_*$ and $|S_k-ck\log L|\le\kappa_*$ for all $k$. Window sums satisfy (5.1) with $R=\kappa_*$. (Theorem K is a statement about one-loop quantities. Its use in Lemma D$''$ for Balaban's $\beta_j(g)$ needs $L$ odd $>11$ or (H0) at this $L$.)
+$L$ odd $\ge3$. Assume (B2) (\S5; (B2) $\Leftarrow$ (H2) \status{proved+verified}) and the fixed-level inputs below. Then $\sup_k|d_k|\le\kappa_*<\infty$, so $\sup_k|\kappa_k|\le|\kappa_W^F|+\kappa_*$ and $|S_k-ck\log L|\le\kappa_*$ for all $k$. Window sums satisfy (5.1) with $R=\kappa_*$. (Theorem K is a statement about one-loop quantities. Its use in Lemma D$''$ for Balaban's $\beta_j(g)$ needs $L$ odd $>11$ or (H0) at this $L$.)
 \end{theorem}
 
 \emph{Proof structure.}
@@ -241,9 +241,9 @@ Fixed-level inputs of Route K (needed at each $j$ separately; no uniformity in $
 \item L5 history-dependent $\beta$, its domain, and its continuity (\S2.4) \status{open}.
 \end{itemize}
 
-\subsection{Route B: Theorem B of \texttt{BETA\_FP\_PW} \status{proved, unverified}}
+\subsection{Route B: Theorem B of \texttt{BETA\_FP\_PW} \status{proved+verified, conditional (logic of Theorem B)}}
 
-Source: \file{BETA_FP_PW.md} \S1--\S5 (Theorem 3.2 = Theorem B, Theorem 5.1). \file{BETA_FP_PW_VERIFY.md} (checked 2026-10-27) has \S1--\S5 and no final grade. It rederives the Lemma 1.3 arithmetic and the Lemma 2.3 / Prop.\ 2.2 algebra correctly, confirms the Prop.\ 2.2 determinant identity on a $4^4$ lattice ($4\mathrm{e}{-13}$), and notes that identity 3.0 is a tautology ($\Gamma^{ex}:=\hat\Pi-S$), so all content sits in ($B\theta$)/($C\theta$). The tag stays \status{proved, unverified}.
+Source: \file{BETA_FP_PW.md} \S1--\S5 (Theorem 3.2 = Theorem B, Theorem 5.1). \file{BETA_FP_PW_VERIFY.md} now has a \S6 with grades: items 1--4 CONFIRMED (doubling identity and Lemma 1.3; Prop.\ 2.2 / Lemma 2.3; Theorems A, B as conditional logic; Lemma 4.1, conditional), items 5 (comparison) and 6 (numerics) CORRECTED. v3 stated that the file had no grade; that is outdated. Tag decision (\file{PLAN.md}, 2026-10-28): the logic of Theorem B is \status{proved+verified, conditional} on its hypotheses, citing \file{BETA_FP_PW_VERIFY} \S6 items 1--4. Its inputs (U), (DF), (T1) from \file{BETA_FP_U} stay \status{proved, unverified}. The file rederives the Lemma 1.3 arithmetic and the Lemma 2.3 / Prop.\ 2.2 algebra correctly, confirms the Prop.\ 2.2 determinant identity on a $4^4$ lattice ($4\mathrm{e}{-13}$), and notes that identity 3.0 is a tautology ($\Gamma^{ex}:=\hat\Pi-S$), so all content sits in ($B\theta$)/($C\theta$).
 
 \begin{theorem}[Theorem B]
 $L$ odd $\ge3$. Assume
@@ -264,64 +264,129 @@ What ($B\theta$) reduces to (\file{BETA_FP_PW} \S4) \status{argued}: Lemma 4.1(i
 \end{itemize}
 \emph{Identification.} Route B's $\beta_j(0)$ is the per-level plane-wave increment (the quantity the code computes). It matches Balaban's second-moment $\beta$ up to the expansion point (fine wave vs constrained minimizer), argued to change $S$ by $O(\theta^2)$ relative (\file{SOURCES_D1_VERIFY} item 8) \status{argued}. This identification and the $\mathfrak d_{gf}$ bound need expansion-point bounds uniform in $k$. So the (PI)-type content of Route K is not removed in Route B; it moves into a uniform-in-$k$ input (\file{BETA_FP_PW_VERIFY} \S3).
 
-Three points from \file{BETA_FP_PW_VERIFY} \S3 (no grade yet):
+Three points from \file{BETA_FP_PW_VERIFY} \S3 (item 5 of its \S6 grades them CORRECTED):
 \begin{enumerate}
 \item $\theta_*<1$ is required (above).
 \item The $\beta$ identification (B4) is a uniform-in-$k$ input, not a fixed-level input.
 \item (U) is a uniform-in-$j$ analyticity of the level data. It plausibly needs the plane-wave analogue of a uniform $C^1$ bound on $\sigma^{(1)}$: uniform $p$-smoothness of the $a^1$ vertex. That is the same uniform first-order vertex smoothness as Route K's open core ($C1\sigma$).
 \end{enumerate}
 
+\subsection{Route B inputs after BETA\_FP\_U \status{proved, unverified; no verifier file}}
+Source: \file{BETA_FP_U.md} \S2--\S4. It reduces the two uniform hypotheses of Theorem B.
+\begin{itemize}
+\item (U) $\Leftarrow$ (T1) + (H2) (Theorem 2.4, odd $L\ge3$, with A0, A1, Lemma 2.2). (T1): $\sup_j\sup_q|c^{(1)}_{T,j}(q)|<\infty$, the plane-wave form of Theorem A3 \status{argued}. (H2) is the inequality of \S5 (\file{BETA_FP_U} writes it as $\tilde h_{(2)}<L$).
+\item ($B\theta$): $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$ exactly (Prop.\ 3.1). $\gamma_{rec}$ is bounded in $k$ given Theorem 2.4 (Prop.\ 3.2). $\mathfrak d_F$ is bounded under (DF) $\sup_k|\mathfrak d_F(\theta_*;L^k)|<\infty$ \status{hypothesis, argued}. \file{BETA_FP_U} corrects \file{BETA_FP_PW} \S4.3(b): $\mathfrak d_F$ is $O(1)$ relative at fixed $\theta$, not $O(\theta^2)$; only boundedness is used.
+\item Corollary 4.1: given (T1), (H2), (DF), LW (5.7), $|S_k-ck\log L|\le C_B$, so (5.1) holds with $R=C_B$.
+\item Theorem 2w by Route B then needs in addition A6 (plane-wave $\beta$ = Balaban's $\beta$ up to the expansion point, uniform in $k$) \status{argued} and (H0) (Lemma D$''$ (i)).
+\end{itemize}
+Route B hypothesis set in v4: (T1), (H2), (DF), LW (5.7), A6, (H0) (plus L5, (G2), odd $L$, as for Route K). The fixed-level inputs (PI), ($M_j$), V1 of Route K do not appear; (DF) and A6 replace them.
+
 \subsection{Comparison}
 \begin{longtable}{|p{3.2cm}|p{5.6cm}|p{6.2cm}|}
 \hline
  & Route K & Route B \\ \hline
-uniform-in-level input & (B2): $\sup_j\sup_{K}|\sigma_j^{(2)}|<\infty$ & (U), ($B\theta$), and the $\beta$ identification and $\mathfrak d_{gf}$ bound, both with $k$-uniform expansion-point bounds \\ \hline
+uniform-in-level input & (B2): $\sup_j\sup_{K}|\sigma_j^{(2)}|<\infty$, $\Leftarrow$ (H2) \status{proved+verified} & (U), ($B\theta$), and the $\beta$ identification and $\mathfrak d_{gf}$ bound, both with $k$-uniform expansion-point bounds; (U) $\Leftarrow$ (T1) + (H2), ($B\theta$) $\Leftarrow$ Theorem 2.4 + (DF) \status{proved, unverified} \\ \hline
+single uniform inequality & (H2) & (H2) \\ \hline
 fixed-level inputs & (PI), (F), ($M_j$), V1, (G2) & LW (5.7), $\mathfrak d_Y$, $\theta_*<1$ \\ \hline
-uses (W), Theorem A3 & yes & no \\ \hline
-verification & verified (conditional) & unverified (\file{BETA_FP_PW_VERIFY} has no grade) \\ \hline
+uses (W), Theorem A3 & yes & no; \file{BETA_FP_U} uses (T1), the plane-wave analogue of A3 \status{argued} \\ \hline
+verification & verified (conditional) & logic of Theorem B verified (conditional): \file{BETA_FP_PW_VERIFY} \S6 items 1--4 CONFIRMED \status{proved+verified, conditional}; inputs from \file{BETA_FP_U} \status{proved, unverified}, no verifier file \\ \hline
 common & \multicolumn{2}{p{11.8cm}|}{(H0) at odd $L>11$, L5, (G2), V1-type identification, Balaban's proofs, SU(2)} \\ \hline
 \end{longtable}
-Shared inputs: (H0), L5, (G2), odd $L$ ($>11$ for (H0)), and the identification of the computed $\beta_j(0)$ with Balaban's $\beta_j(0)$ (V1; in Route B also the expansion point). The uniform-in-level hypotheses ((B2) vs (U) + ($B\theta$)) are formally distinct as named hypotheses. Their content plausibly overlaps: both need a uniform first-order smoothness of the level-$j$ vertex (($C1\sigma$) for Route K, uniform $p$-smoothness of the $a^1$ vertex for (U)). One closed route suffices for Theorem 2w.
+Shared inputs: (H0), L5, (G2), odd $L$ ($>11$ for (H0)), and the identification of the computed $\beta_j(0)$ with Balaban's $\beta_j(0)$ (V1; in Route B also the expansion point). The uniform-in-level hypotheses ((B2) vs (U) + ($B\theta$)) are formally distinct as named hypotheses. Their content overlaps: both rest on (H2) (\S5). In Route K, (H2) gives ($C1\sigma$) (Theorem C1) and then (B2) (Theorem B2). In Route B, (H2) gives (U) with (T1), and the vertex bound behind ($B\theta$). So a proof of (H2) serves both routes. One closed route suffices for Theorem 2w.
 
-\section{The hypothesis (B2) of Route K}
+\section{The hypothesis (B2) of Route K, and the single uniform inequality (H2)}
 
 (B2): $\sup_{j\ge0}\sup_{K\in\BZ}|\sigma_j^{(2)}(K)|<\infty$. Weaker form that suffices, (B2w): $\sup_j\int_{\BZ}|K|^{-2}|\sigma_j^{(2)}(K)|\,d^4K<\infty$ ($\sigma^{(2)}$ enters $d_j$ only undifferentiated; \file{KAPPA_BOUNDED} Remark 2.3) \status{proved+verified: not graded by name; implied by \file{KAPPA_BOUNDED_VERIFY} \S9(iv)}.
 
-$\sigma^{(2)}$ obeys the one-step recursion (\file{U3_AW} (1.2)): $\sigma_j^{(2)}=L^{-2}\mathcal A_j\sigma_{j-1}^{(2)}+Q_j[\sigma_{j-1}^{(1)}]+g_j^{(2)}$, with $\mathcal A_js=L^{-2}H_j^\dagger(\oplus_l\,s(k_l))H_j$ and $H_j(K)$ the one-step gauge-fixed minimizer map.
+$\sigma^{(2)}$ obeys the one-step recursion (\file{U3_AW} (1.2)): $\sigma_j^{(2)}=L^{-2}\mathcal A_j\sigma_{j-1}^{(2)}+Q_j[\sigma_{j-1}^{(1)}]+g_j^{(2)}$, with $\mathcal A_js=L^{-2}H_j^\dagger(\oplus_l\,s(k_l))H_j$ and $H_j(K)$ the one-step gauge-fixed minimizer map. Notation: $\rho_1:=\sup_{j,K}\|H_j(K)\|/L$ (one step); $H_{(2),j}(K):=(\oplus_lH_{j-1}(k_l))H_j(K)$ (two steps), $\rho_2:=\sup_{j\ge2}\sup_{K\text{ real}}\|H_{(2),j}(K)\|/L^2$.
 
 \subsection{Proved}
 \begin{itemize}
 \item $K=0$ bound \status{proved+verified}: $\sup_j|\sigma_j^{(2)}(0)|\le C(|e|C_A+e^2)$. Theorem A3 + scaling give $|\partial^2\sigma_j^{(1)}(0)|\le2C_A$ (polarization; \file{KAPPA_BOUNDED_VERIFY} \S7), and the slaving identity (W-2) expresses $\sigma_j^{(2)}(0)$ through these second derivatives.
 \item Each fixed $j$ \status{proved+verified}: $\sigma_j^{(2)}$ is analytic on a fixed strip (Prop.\ A2), hence bounded. The content of (B2) is uniformity in $j$.
 \item Prop.\ 4.1 \status{proved+verified, conditional}: if (h) $h:=\sup_{j,K}\|H_j(K)\|<L^2$ and ($C1\sigma$) $\sup_j\sup_K|\partial_K\sigma_j^{(1)}(K)|<\infty$, then (B2) holds. Proof: in the form norm $\pm s\le N(\Delta+1)$, $N_j\le(h^2/L^4)N_{j-1}+Z_2$, and $Z_2$ is finite by Theorem A3, ($C1\sigma$), and fixed $f^0$ vertices.
-\end{itemize}
-
-\subsection{Refuted}
-\begin{itemize}
-\item (HS) $h<L\sqrt{L-1}$ (named (H$'$) in \file{U3_AW}; renamed to avoid the clash with v1's (H$'$)) \status{refuted at $L=3$}. Measured $\max_K\|H_j(K)\|/L=1.652,\,1.736,\,1.757,\,1.760$ for $j=1,2,3,\infty$ (\file{U3_AW_VERIFY} \S6); the threshold is $\sqrt2=1.414$. The maximum lies in a BZ face interior, $\approx(1.9,1.9,\pi,\pi)$. Gauge choice cannot help: $H_j$ is already minimal-norm in its gauge orbit. $L\ge5$ (threshold $\ge2$) is untested.
-\end{itemize}
-
-\subsection{Live routes and the precise remaining inequality}
-\begin{itemize}
 \item Why the Lemma A4 mechanism alone fails \status{proved+verified, reason corrected by \file{KAPPA_BOUNDED_VERIFY} \S7}: the obstruction is the missing uniform $C^1$ bound on $\sigma^{(1)}$, which enters twice: in $Q_j$ (term $L^{-3}\partial_K\sigma_{j-1}^{(1)}$) and in the longitudinal part of $\sigma^{(2)}$ given by (W-2). Theorem A3 is $C^0$ only.
-\item Condition (h) at $L=3$ \status{numerical, run by the verifier, \file{U3_AW_VERIFY} \S6}: $h/L\approx1.76$, so $h^2/L^4\approx0.34<1$ for $j\le3$ and $j=\infty$ (sup over all $j$ inferred from the observed convergence in $j$). A proof of (h) is \status{open}; $h\ge L$ is known ($H_j(0)=Le_{l=0}$).
-\item (H$''$) ($n$-step form): $\sup_{n,j,K}\|H_{(n),j}(K)\|/L^n<\infty$ with $L^n-1$ above its square \status{open}. At $n=2$ it passes on a coarse grid: $2.056<2.828$ (\file{U3_AW_VERIFY} \S9, one level pair) \status{numerical, run by the verifier}. (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) and ($C1\sigma$) \status{argued}: the implication is a sketch in \file{U3_AW} \S4.7; \file{U3_AW_VERIFY} grade 5 covers only the reduction to (H$'$); no verifier graded (H$''$) $\Rightarrow$ (B2).
-\item Two-step recursion route (\file{B2_TWOSTEP.md}): an unverified candidate proof of ($C1\sigma$). It claims (H2) (a two-step norm condition) $\Rightarrow$ uniform $C^1$ bound on $\sigma^{(1)}$ $\Rightarrow$ (B2), and that a plain sup-norm contraction needs only $\rho_1<L$, i.e.\ (h). No verifier file exists. Nothing from it is used here.
 \end{itemize}
 
-The precise remaining inequality for Route K, at a fixed odd $L\ge3$, is
+\subsection{Refuted, and the failed one-step bound}
+\begin{itemize}
+\item (HS) $h<L\sqrt{L-1}$ (named (H$'$) in \file{U3_AW}) \status{refuted at $L=3$}. Measured $\max_K\|H_j(K)\|/L=1.652,\,1.736,\,1.757,\,1.760$ for $j=1,2,3,\infty$ (\file{U3_AW_VERIFY} \S6); the threshold is $\sqrt2=1.414$. Gauge choice cannot help: $H_j$ is already minimal-norm in its gauge orbit.
+\item One-step sup-norm $C^1$ recursion at $L=3$ \status{numerical, reproduced; \file{B2_TWOSTEP_VERIFY} grade 2}. Its factor is $\rho_1^2/L=0.909,\,1.0046,\,1.0289,\,1.0325$ for $j=1,2,3,\infty$, so it exceeds 1 for $j\ge2$ ($\rho_1>\sqrt3=1.7321$). At $K=0$ the factor is $L^{-1}$; the bad region is the face $K_3=K_4=\pi$, $K_1=K_2\approx1.86$--$1.92$. This shows that the one-step sup-norm bound fails at $L=3$. It does not show that a $C^1$ bound fails; a weighted norm is not excluded.
+\end{itemize}
+
+\subsection{(H2) and the two-step theorems \status{proved+verified, conditional on (H2)}}
+Source: \file{B2_TWOSTEP.md} \S1--\S3; \file{B2_TWOSTEP_VERIFY.md} grades 1, 3, 4 (CONFIRMED).
 \[
-(C1\sigma)\ \sup_{j\ge0}\sup_{K\in\BZ}|\partial_K\sigma_j^{(1)}(K)|<\infty,\qquad\text{together with}\qquad (h)\ \sup_{j\ge0}\sup_{K\in\BZ}\|H_j(K)\|<L^2,
+\text{(H2)}\quad\rho_2=\sup_{j\ge2}\sup_{K\in\BZ\text{ real}}\|(\oplus_lH_{j-1}(k_l))H_j(K)\|/L^2<L.
 \]
-or, alternatively, (H$''$). ($C1\sigma$) + (h) $\Rightarrow$ (B2) is \status{proved+verified}; (H$''$) $\Rightarrow$ (B2) is \status{argued}. (B2w) directly is also enough. No per-momentum $d=4$ constant-field code exists, so (B2) itself has not been scanned numerically (\file{KAPPA_BOUNDED_VERIFY} \S8).
+(H2) is a plain operator-norm inequality on real $K$. It uses no strip, no $\Delta$-relative weight, and only $n=2$.
+\begin{itemize}
+\item Two-step map. $\mathcal A_j\mathcal A_{j-1}s=L^{-4}H_{(2)}^\dagger(\oplus s)H_{(2)}$, with $dk_{l,l'}/dK=L^{-2}$ [CONFIRMED, grade 1].
+\item Theorem C1: (H2) $\Rightarrow$ ($C1\sigma$), with contraction factor $q_1=\rho_2^2/L^2$ on the derivative. The chain-rule gain is exactly $L^{-2}$ per two steps on real $K$. So the threshold is $\rho_2<L$, not $\sqrt{L^2-1}$: no strip-Cauchy loss enters. The large constants ($b(L)$ of O6, $\eta_1$, $\eta_2$, $G_1$) enter only the source term, not the contraction factor [CONFIRMED, grade 3].
+\item Theorem B2: (H2) $\Rightarrow$ (B2), hence (B2w), in plain sup norm, with factor $q_2=\rho_2^2/L^4$. This contraction needs only $\rho_2<L^2$, which (H2) implies [CONFIRMED, grade 3]. In one step it is Prop.\ 4.1's (h).
+\item (H2) vs (H$''$). (H2) is the plain operator norm of the same matrix as \file{U3_AW} (H$''$) at $n=2$. It is weaker: threshold $L$ (3 at $L=3$) against $\sqrt{L^2-1}$ (2.828), real $K$ only, $n=2$ only [CONFIRMED, grade 4]. (H$''$) $\Rightarrow$ (B2) stays \status{argued} and is no longer needed.
+\item Form of $Q_j$ (G3) [CONFIRMED by read-off of \file{U3_AW} (1.2)/(3.3) and P10]: $\partial\sigma^{(1)}$ enters linearly. \file{U3_LEMMA51} (3.3) itself was not re-derived from the Moyal rule by either party.
+\item Not covered: $C^2$ and $C^3$ bounds on $\sigma^{(1)}$ under (H2) (\file{B2_TWOSTEP} \S5, ``look routine'', not written, not graded). They are not needed for (B2).
+\item Submultiplicativity: $\rho_2\le\rho_1^2$ always. At $L=3$ the gain of the two-step map is that this is strict by a factor 1.50 (2.064 vs 3.098) [CONFIRMED].
+\end{itemize}
+
+\subsection{Numerics for (H2) \status{numerical; none certified}}
+Code: \file{numerics/h2_scan.py} (umklapp Schur pieces, one colour, Gram form; \file{H2_LARGE_L} \S1). Code structure CONFIRMED (\file{H2_LARGE_L_VERIFY} grade 1): the one-colour reduction is exact at $U=1$, the $H$ and $\Delta_{out}$ blocks and the Gram identity are correct, the separable Prop.\ A form is exact. Sign slip in \file{H2_LARGE_L} \S4 ($H=+[\mathfrak B^{-1}]_{f,c}$); harmless.
+\begin{longtable}{|c|c|p{3.2cm}|c|p{5.4cm}|}
+\hline
+$L$ & $j$ & $\rho_2$ (scan max) & threshold $L$ & status \\ \hline
+3 & 2 & 2.00857 & 3 & \status{numerical, reproduced} (\file{B2_TWOSTEP_VERIFY} \S4; \file{H2_LARGE_L_VERIFY} \S1) \\ \hline
+3 & 3 & 2.05601 & 3 & \status{numerical, reproduced} (spot value 2.05599 at the argmax) \\ \hline
+3 & $\infty$ & 2.0634 (2.06332--2.06377 over $l_{max}$ 2--5) & 3 & \status{numerical, reproduced}; margin 31\%; $q_1\le0.473$, $q_2\le0.053$ \\ \hline
+5 & 2, 3, 4, $\infty$ & 2.098, 2.108, 2.108, 2.108 & 5 & \status{numerical, reproduced}: independent dense code gives 2.098283 at $j=2$; the verifier's own search gives 2.107921 at $j=\infty$, same argmax; margin 58\% \\ \hline
+7 & $\infty$ & $\ge2.1131$ (face diagonal only) & 7 & \status{numerical, run by the verifier} (spot 2.11309) \\ \hline
+9 & $\infty$ & $\ge2.1142$ (one point, $(2.6,2.6,\pi,\pi)$) & 9 & \status{numerical, run by the verifier}; the author's $j=2$ point gives $\ge2.1104$ \\ \hline
+\end{longtable}
+\begin{itemize}
+\item Shape. The argmax lies on the face $K_3=K_4=\pi$, on the diagonal $K_1=K_2$: $\approx2.22\to2.40$ ($L=3$, $j=2\to\infty$), $\approx2.54$ ($L=5$). Off-face points are lower: best off-face 1.995 ($L=3$, $j=2$), 2.004 ($L=3$, $j=\infty$), 2.088 ($L=5$, $j=\infty$). The corner $(\pi,\pi,\pi,\pi)$ stays below the face peak, but the gap shrinks: $0.0070$, $0.0028$, $\ge0.0025$, $\ge0.0023$ ($L=3,5,7,9$). The corner is the obvious place for a competing maximum at large $L$.
+\item Level dependence. At $L=5$, $\rho_2(\infty)-\rho_2(j)=9.64\cdot10^{-3},\,4.0\cdot10^{-4},\,1.6\cdot10^{-5}$ ($j=2,3,4$); ratios 24.1, 25.0, against $L^2=25$. At $L=3$ the ratios are 7.5, 8.7. Levels $j=4,\dots,\infty-1$ are not sampled at $L=3$.
+\item $L$-trend. $j=\infty$: $2.0633,\,2.1079,\,\ge2.1131,\,\ge2.1142$ ($L=3,5,7,9$). This is consistent with a bounded $\rho_2$ near 2.11--2.14. The rate claim ``at least as fast as $L^{-2}$'' is CORRECTED (\file{H2_LARGE_L_VERIFY} grade 5): it used a lower bound at $L=7$ as if it were the sup. ``(H2) gets easier with $L$'' is a measured trend for $L\le9$, not a result for $L>11$.
+\item All values are lower estimates of a sup (grid plus local search).
+\end{itemize}
+
+\subsection{One-step sufficiency at $L\ge5$ \status{arithmetic proved; inputs numerical}}
+$\|H_{(2),j}(K)\|\le\max_l\|H_{j-1}(k_l)\|\cdot\|H_j(K)\|\le L^2\rho_1^2$. So $\rho_1^2<L$ implies (H2), and then the one-step $C^1$ recursion of \file{B2_TWOSTEP} (2.2) contracts with factor $\rho_1^2/L$.
+\begin{itemize}
+\item $L=3$: $\rho_1^2=3.10>3$. The one-step route fails (\S5.2); the two-step map is needed.
+\item $L=5$: $\rho_1=1.860$ ($j=1$, Wilson fine kernel, dense, measured by the verifier), $1.9565$ ($j=2$), $1.963$ ($j=\infty$). So $\rho_1^2\le3.853<5$ and $\rho_1^2/L=0.771$ \status{numerical, CONFIRMED as a measurement, uncertified; \file{H2_LARGE_L_VERIFY} grade 4}.
+\item $L=7$: $\rho_1\ge2.032$ (diagonal only), $\rho_1^2/L\approx0.59$ \status{numerical}.
+\end{itemize}
+So at $L\ge5$ the one-step map suffices for Theorem C1, as far as measured. For certification this replaces $L^8$ blocks per $K$ (two-step map) by $L^4$ blocks per $K$ (625$\times$ fewer at $L=5$).
+
+\subsection{Certification plan and $j_0$ \status{designed, not done}}
+\file{B2_TWOSTEP_VERIFY} grade 6 (CORRECTED in size): certifying (H2) is a computer-assisted proof project, not a check. \file{H2_LARGE_L} \S4 gives the design; \file{H2_LARGE_L_VERIFY} grades 6--8 check it. Three parts.
+
+(a) Tail $j\ge j_0$. From the resolvent identity, $\rho_2(j)\le R_\infty+(\rho_1^2/a_*)(\delta_{j-2}+\delta_{j-1})$, where $R_\infty=\rho_2$ at $j=\infty$, $a_*=\inf_Ka_j(K)$ with $\|[\mathfrak B^{-1}]_{f,f}\|=1/a_j(K)$ exactly, and $\delta_m=\sup_K\|\Delta_{L^m}-\Delta_\infty\|$ (O5 decay) [derivation CONFIRMED]. Inputs CORRECTED by the verifier: the 2-norm sup of $\delta_m$ is at the corner, $\delta=179,\,92.0,\,18.7,\,2.39,\,0.317$ ($M=1,3,9,27,81$), 45--90$\times$ the assumed value at small $m$; $a_*(L=5)=0.0107$, not 0.05. With these inputs, $j_0\approx8$ ($L=3$) and $\approx6$ ($L=5$). With the O6 coercivity constant, $j_0=25$, which cannot be used in practice (\file{B2_TWOSTEP_VERIFY} \S5 estimated $j\gtrsim45$ with $\|\mathfrak B^{-1}\|\le b(L)\sim10^{19}$).
+
+(b) Levels $2\le j<j_0$ and $j=\infty$. A certified sup over the BZ of $\|H_{(2),j}(K)\|$ (at $L\ge5$: of $\|H_j(K)\|$, \S5.5). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the BZ), $4\times4$ and $5\times5$ verified inverses, one $4\times4$ $\lambda_{max}$ per $K$; about $2.5\cdot10^3$ boxes at half-width 0.05 at $L=3$; the analytic form of $\Delta$ near $K=0$, where $\rho_2(0)=1$. At $j=\infty$ also a certified tail bound for the Prop.\ A sum ($l_{max}$ truncation; observed effect $4\cdot10^{-4}$). There is no explicit global Lipschitz constant today: the A0/O5 strip width is existential, and the constant that can be made explicit is $\sim10^{40}$. Monotonicity in $j$ is not proved and is not used.
+
+(c) Inputs to certify first: $\|\mathfrak B_j(K)^{-1}\|\le B_{num}$ for all $j$, $K$ (the O6 constant $b(L)$ is unusable), the O5 constant $C_0$ explicitly (or certified $\delta_m$), certified $a_*$, $\rho_1$, $R_\infty$.
+
+Operational fixes for the Windows runs (\file{H2_LARGE_L_VERIFY} grade 8): atomic JSON writes, pre-copied profile caches, profile build time at $L\ge11$ not budgeted. Nothing is launched.
+
+\subsection{The precise remaining inequality}
+At a fixed odd $L\ge3$ the single uniform hypothesis is (H2).
+\begin{itemize}
+\item Route K: (H2) $\Rightarrow$ ($C1\sigma$) (Theorem C1) $\Rightarrow$ (B2) (Theorem B2) \status{proved+verified, conditional on (H2)}.
+\item Route B: (H2) + (T1) $\Rightarrow$ (U), and (H2) $\Rightarrow$ the vertex bound for $\gamma_{rec}$ in ($B\theta$) (\file{BETA_FP_U} Theorem 2.4, Prop.\ 3.2) \status{proved, unverified}.
+\item Status of (H2): \status{numerical at $L=3,5,9$; certification open}. At $L=9$ there is one point only. No value exists at $L>11$ (Balaban's range), so the numbers are supportive only.
+\item Kept as alternatives: ($C1\sigma$) + (h) $\Rightarrow$ (B2) \status{proved+verified}; (H$''$) $\Rightarrow$ (B2) \status{argued}; (B2w) directly. No per-momentum $d=4$ constant-field code exists, so (B2) itself has not been scanned numerically (\file{KAPPA_BOUNDED_VERIFY} \S8).
+\end{itemize}
 
 \section{Conclusion}
 
 Theorem 2w $\Leftarrow$ (Route K inputs) or (Route B inputs). Precisely:
 
-\emph{Route K.} (B2) \status{open; reduces to ($C1\sigma$) + (h) (verified reduction), or (H$''$) (argued reduction)} + (PI), (F), ($M_j$), V1, (G2) \status{fixed-level} + (H0) \status{Balaban, odd $L>11$} + L5 \status{open} $\Rightarrow$ Theorem K ($R=\kappa_*$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status of the implication: \status{proved+verified, conditional}.
+\emph{Route K.} (B2) \status{open; reduces to (H2) (verified reduction, \S5.3); (H2) numerical at $L=3,5,9$, certification open} + (PI), (F), ($M_j$), V1, (G2) \status{fixed-level} + (H0) \status{Balaban, odd $L>11$} + L5 \status{open} $\Rightarrow$ Theorem K ($R=\kappa_*$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status of the implication: \status{proved+verified, conditional}.
 
-\emph{Route B.} (U) + ($B\theta$) with $\theta_*<1$ + LW (5.7) + bounded $\mathfrak d_Y$, $\mathfrak d_{gf}$ + identification of $\beta$ (uniform in $k$) + (G2) + (H0) \status{odd $L>11$} + L5 $\Rightarrow$ Theorem B ($R=C_B$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status: \status{proved, unverified, conditional}.
+\emph{Route B.} (U) + ($B\theta$) with $\theta_*<1$ + LW (5.7) + bounded $\mathfrak d_Y$, $\mathfrak d_{gf}$ + identification of $\beta$ (uniform in $k$) + (G2) + (H0) \status{odd $L>11$} + L5 $\Rightarrow$ Theorem B ($R=C_B$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status: Theorem B logic \status{proved+verified, conditional}; inputs \status{proved, unverified}. With \file{BETA_FP_U} (\S4.2a): (T1) + (H2) + (DF) + LW (5.7) $\Rightarrow$ Corollary 4.1 ($R=C_B$); with A6 + (H0) + L5 + (G2) $\Rightarrow$ Theorem 2w. Status: \status{proved, unverified, conditional} (the inputs (T1), (DF), A6 and the \file{BETA_FP_U} reductions are unverified).
+
+\emph{Single uniform hypothesis.} Both routes need (H2). A certified (H2) at one odd $L>11$ would discharge (B2), the only uniform-in-level hypothesis of Route K (Theorems C1, B2). In Route B it would reduce (U) to (T1); (DF) and A6 would remain.
 
 \emph{Then Balaban's Theorem 1.} Theorem 2w gives (b) and (c$'$). With $\gamma$ shrunk so that (S) holds, every one of the 19 cross-scale uses in CMP 119 and CMP 122 I--II is covered (\S2.3), and the single-scale uses need only $g_k\le\gamma$. So Theorem 1 holds for the bare coupling $g_0(K,g)$, for every $K$ and every $g\in\,]0,g_1]$, without Balaban's coupling assumption. This needs L5 in the sharpened form of \S2.4: $\beta$ must exist on every history the shooting visits. Status: \status{proved, unverified (sweep), conditional on Route K or Route B inputs, on L5, and on Balaban's published proofs}.
 
@@ -374,17 +439,20 @@ $L$ & $\beta_1(0)$ & how & $b=c\log L$ & $\beta_1-b$ & status \\ \hline
 4 & 0.757 & $N_g=6$, single $p=0.2$; $O((Lp)^2)$ bias $\approx0.01$ & 0.5150 & $+0.242$ & \status{numerical} \\ \hline
 5 & 0.749 ($N_g=12$, $p=0.1$); fit 0.743 & umklapp code & 0.5979 & $+0.145$ & \status{numerical} \\ \hline
 7 & 0.803 & umklapp code, $N_g=8$, $Lp=0.5$ & 0.7229 & $+0.080$ & \status{numerical} \\ \hline
+9 & 0.833 ($Lp=0.5$); 0.846 ($Lp=0.9$), 0.851 ($Lp=1.0$) & umklapp code, Windows, $N_g=8$ & 0.8163 & $\approx+0.02$ & \status{numerical} \\ \hline
+11 & 0.850 ($Lp=0.5$); 0.868 ($Lp=1.0$) & umklapp code, Windows, $N_g=8$; $N_g=8$ grid adequacy at $L=11$ unchecked & 0.8908 & $\approx-0.04$ & \status{numerical} \\ \hline
 \end{longtable}
-The first-step scheme constant $\beta_1-b$ decreases with $L$. The umklapp code was validated against \texttt{ym\_momentum} to $10^{-12}$ per $K$ by its author; no independent verifier. Queue continues to $L=15$ on Windows. No value at $L>11$ exists yet.
+The first-step constant $\beta_1-c\log L$ is $+0.37,\,+0.26,\,+0.24,\,+0.15,\,+0.08,\,+0.02,\,-0.04$ for $L=2,3,4,5,7,9,11$. It decreases with $L$ and changes sign between $L=9$ and $L=11$. $\beta_1(0)$ itself stays positive at every $L$ computed. The umklapp code was validated against \texttt{ym\_momentum} to $10^{-12}$ per $K$ by its author; no independent verifier for the $\beta_1$ values at $L\ge5$. The queue continues to $L=15$ on Windows. No value at $L>11$ exists yet.
 
 \subsection{Later increments ($L=2$ only)}
 \begin{longtable}{|p{3.4cm}|p{7.2cm}|p{4.4cm}|}
 \hline
 quantity & value & status \\ \hline
 $\beta_1+\beta_2$ (composed, $N_g=4/6/8$) & 1.148 / 0.967 / 0.953 & \status{numerical}; single $p=0.2$, $Lp$ bias label \\ \hline
-$\beta_2(0)$ & $\approx0.32$ ($0.953-0.630$); per-level recursion 0.317--0.341 ($N=8$--12, single $p=0.2$); 0.333 (verifier, symmetric Nyquist, $N=8$) & \status{numerical}; per-level recursion reproduced in \file{BETA_FP_VERIFY} \S7 \\ \hline
+per-level $\beta_2(0)$ & $\approx0.32$ ($0.953-0.630$). Per-level recursion 0.317--0.341 ($N=8$--12, single $p=0.2$). Symmetric Nyquist: 0.33334 ($N=8$, $p_1=0.2$), 0.31679 ($N=12$, $p_1=0.2$), 0.32283 ($N=12$, $p_1=0.4$) (\file{BETA_FP_VERIFY} \S7; \file{BETA_FP_PW_VERIFY} \S5--\S6). Level-1 values carry $N$-aliasing of about $\pm5\%$. & \status{numerical}; per-level recursion reproduced in \file{BETA_FP_VERIFY} \S7 \\ \hline
 $\beta_3(0)$ & 0.40 ($N=8$), 0.286 ($N=12$), 0.261 (verifier, symmetric Nyquist, $N=8$) & unconverged; not usable \\ \hline
-abelian sector $S_k^{ab}$ & $(1-L^{-4k})/4$, matched to all digits & \status{proved+verified} \\ \hline
+abelian sector $S_k^{ab}$ & $(1-L^{-4k})/4$, matched to all digits & \status{proved+verified}; \status{Lean} counting part (\texttt{AbelianCount.lean}) \\ \hline
+(U) test & $|\beta_{j+1}(p)-\beta_{j+1}(0)|\le0.2p^2$ at every computed point ($L=2$ levels 0--1, $L=3$ level 0, $p\le0.8$); uniformity in $j$ not testable with two levels & \status{numerical, run by the verifier} (\file{BETA_FP_PW_VERIFY} \S6) \\ \hline
 \end{longtable}
 All computed increments are positive.
 
@@ -395,7 +463,10 @@ quantity & value & status \\ \hline
 $d_1=b-\beta_1$, $L=3$ & $-0.256\pm0.01$ (fits $-0.254\dots-0.258$) & \status{numerical, reproduced} \\ \hline
 $d_1$, $\kappa_1$, $L=2$ & $-0.372$, $1.114$ & \status{numerical, reproduced} \\ \hline
 $d_2$, $d_3$, $L=2$ & $\approx-0.44$, $\approx-0.45$ ($d_3$ uses unconverged $\beta_3$) & \status{numerical}; bounded-looking, not a test \\ \hline
-$\max_K\|H_j(K)\|/L$, $L=3$, $j=1,2,3,\infty$ & 1.652, 1.736, 1.757, 1.760 & \status{numerical, run by the verifier, \file{U3_AW_VERIFY} \S6}; refutes (HS); $h^2/L^4\approx0.34<1$ \\ \hline
+$\rho_1=\max_K\|H_j(K)\|/L$, $L=3$, $j=1,2,3,\infty$ & 1.652, 1.736, 1.757, 1.760 & \status{numerical, run by the verifier, \file{U3_AW_VERIFY} \S6}; refutes (HS); $h^2/L^4\approx0.34<1$; one-step $C^1$ factor $\rho_1^2/L>1$ for $j\ge2$ \\ \hline
+$\rho_1$, $L=5$, $j=1,2,\infty$ & 1.860, 1.9565, 1.963; $\rho_1^2/L=0.771$ & \status{numerical}; $j=1$ and the bound measured by the verifier (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
+$\rho_2$ ((H2)), $L=3,5,7,9$ & see \S5.4: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$ against thresholds 3, 5, 7, 9 & \status{numerical, reproduced} at $L=3,5$; \status{numerical, run by the verifier} at $L=7,9$ \\ \hline
+$a_*$, $L=5$ & 0.0107 (binding mode near $K=0$, gauge/ghost sector) & \status{numerical, run by the verifier} (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
 (H$''$), $n=2$, $L=3$ & $2.056<2.828$ & \status{numerical, run by the verifier}, coarse grid, one level pair \\ \hline
 $\sigma_j^{(1)}(0)$ $J$-part, $j=0,1,2$ ($d=2$ proxy) & 0.750000, 0.75015, 0.75051 vs 0.75 & \status{numerical, run by the verifier} supports Theorem W \\ \hline
 $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & --- \\ \hline
@@ -406,7 +477,8 @@ $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
 \item Lemma D$'$ (a)--(d) (\texttt{YmLean.lemma\_DPrime}), Step 8 (\texttt{lemma\_DPrime\_step8}), Lemma D, Lemma E ($Cg^2$ form), Lemma D+E (\file{lean/YmLean/LemmaDPrime.lean}, \file{LemmaDE.lean}). One-argument $\beta$ only.
-\item The Lean folder also has Telescoping, DetIdentities, AbelianCount, and LemmaH files (\file{THEOREM2_PROOF_v2_VERIFY} \S M item 8); this chapter does not use them.
+\item Lemma D$''$ (\texttt{YmLean.lemma\_DDoublePrime}, \file{lean/YmLean/LemmaDDoublePrime.lean}, 146 lines): (a$''$) bracket $(3b/4)(K-k)-2R\le T(k,K)\le(5b/4)(K-k)+2R$; (b) shooting for $g\in\,]0,g_1]$ with the clamp inactive; (c$'$) with $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$, for every trajectory with couplings in $]0,\gamma]$; (d) for $n-m\ge8R/b$, lower constant $b/2$. Hypotheses weaker than the note (continuity, any admissible $\gamma$, $R\ge0$ derived). One-argument $\beta$ only; L5 not formalized.
+\item The Lean folder also has Telescoping, DetIdentities, AbelianCount, and LemmaH files (\file{lean/README.md}); this chapter uses only the AbelianCount counting part, as a cross-check in \S8.2.
 \end{itemize}
 
 \paragraph{\status{proved+verified}}
@@ -418,7 +490,10 @@ $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & 
 \item Prop.\ 2.1 anchor-free identity; exact at the constant field (\file{BETA_FP_LEMMA43_VERIFY} item 1; \file{BETA_FP_H_VERIFY} item 1).
 \item $c=11N^2/(12\pi^2)$, normalization chain; (F) source (Savvidy eq.\ (1.4)) (\file{BETA_FP_LEMMA43_VERIFY} item 2; \file{BETA_FP_H_VERIFY} \S4).
 \item KAPPA Prop.\ 1.1 as an identity given its fixed-level inputs; Lemma 2.1 (integration by parts); Prop.\ 2.2; level-independence of the degree $-4$ part; Theorem K and Theorem 2w as conditional reductions (\file{KAPPA_BOUNDED_VERIFY} (i)--(v)).
-\item $\sup_j|\sigma_j^{(2)}(0)|<\infty$; Prop.\ 4.1 algebra (\file{KAPPA_BOUNDED_VERIFY} (vi), reason for A4 failure corrected).
+\item $\sup_j|\sigma_j^{(2)}(0)|<\infty$; Prop.\ 4.1 algebra (\file{KAPPA_BOUNDED_VERIFY} (vi), reason for A4 failure corrected: obstruction = $\partial\sigma^{(1)}$ in $Q_j$ and in (W-2), \S7 there).
+\item \file{B2_TWOSTEP} two-step recursion; Theorem C1 ((H2) $\Rightarrow$ ($C1\sigma$), factor $\rho_2^2/L^2$) and Theorem B2 ((H2) $\Rightarrow$ (B2), factor $\rho_2^2/L^4$), conditional on (H2); threshold $\rho_2<L$ (no strip loss); (H2) weaker than (H$''$) at $n=2$ (\file{B2_TWOSTEP_VERIFY} grades 1, 3, 4). Form of $Q_j$ by read-off (grade 8; \file{U3_LEMMA51} (3.3) not re-derived).
+\item \file{h2_scan} code structure, one-colour reduction, $H$ and $\Delta_{out}$ blocks, Gram identity, separable Prop.\ A form (\file{H2_LARGE_L_VERIFY} grade 1); tail-bound derivation (4.1)--(4.3) (grade 6, inputs corrected).
+\item Logic of Theorem B and Lemma 1.3 of \file{BETA_FP_PW}, as conditional implications (\file{BETA_FP_PW_VERIFY} \S6 items 1--4 CONFIRMED: doubling identity and Lemma 1.3; Prop.\ 2.2 / Lemma 2.3; Theorems A, B; Lemma 4.1, conditional). Its inputs (U), (DF), (T1) are listed under \status{proved, unverified} and \status{argued}.
 \item Prop.\ E evenness, Theorem W0/W, Theorem A3, Lemma A4, A0, Prop.\ A2 (\file{U3_AW_VERIFY} grades 1--4).
 \item U3 Theorem 4.1 + O5, Prop.\ A, Prop.\ B, O6, Theorem 6.1 (given V1; Taylor-data norm), Lemma 5.1 neutral value bound, single-block $m=2$ failure in $d=4$, one-step recursion, R2 midpoint identity (\file{U3_VERIFY}, \file{U3_REPAIRS_VERIFY}, \file{U3_LEMMA51_VERIFY}, \file{U3_LEMMA51_R23_VERIFY}).
 \item Ces\`aro: given convergence, $\kappa_k=o(k)\Leftrightarrow\beta_\infty=c\log L$ (equivalence, not a weaker form) (\file{THEOREM2_PROOF_VERIFY} Point 4).
@@ -426,28 +501,36 @@ $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & 
 
 \paragraph{\status{proved, unverified}}
 \begin{itemize}
-\item Theorem B and Lemma 1.3 of \file{BETA_FP_PW} (\file{BETA_FP_PW_VERIFY} has no grade; its checks of Lemma 1.3, Lemma 2.3, and Prop.\ 2.2 are correct; it adds $\theta_*<1$ and the uniform-in-$k$ $\beta$ identification).
+\item \file{BETA_FP_U}, no verifier file: Theorem 2.4 ((U) $\Leftarrow$ (T1) + (H2)), Prop.\ 3.1 ($\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$), Prop.\ 3.2 ($\gamma_{rec}$ bounded), Corollary 4.1, Theorem 2w by the plane-wave route given (T1), (H2), (DF), LW (5.7), A6, (H0); the argued step ``(H2) closes ($C1\sigma$)'' of \S3.5 there is superseded by \file{B2_TWOSTEP} Theorem C1 \status{proved+verified}.
 \item \file{LEMMA_DPRIME_SWEEP}: 19 cross-scale uses covered by (b) + (c$'$) + (S) (4 of 19 table rows, 11, 12, 16, 18, verified on page images by \file{LEMMA_DPRIME_VERIFY} comparisons A--E).
 \item Step ``Theorem 2w $\Rightarrow$ Balaban's Theorem 1'' (depends on the sweep and on L5 in the sharpened form of \S2.4).
 \item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$; neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
 \item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
 \item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given (S1)--(S3)); no verifier file.
-\item \file{B2_TWOSTEP} (H2) $\Rightarrow$ ($C1\sigma$) $\Rightarrow$ (B2) (candidate; no verifier file).
+\item One-step sufficiency $\rho_1^2<L\Rightarrow$ (H2) (submultiplicativity; arithmetic, \file{H2_LARGE_L} \S3).
 \end{itemize}
 
 \paragraph{\status{argued}}
 \begin{itemize}
-\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; plane-wave vs constrained-minimizer expansion point (uniform in $k$); (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
+\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) as a bare hypothesis (now reduced, see above); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
 \end{itemize}
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (B2), reduced here to ($C1\sigma$) + (h) \status{verified reduction}, or (H$''$) \status{argued reduction}. ($B\theta$) and (U) for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. Lemma D$''$ in Lean. See \S10.
+\item (H2) (certification; numerical at $L=3,5,9$). (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. See \S10.
+\end{itemize}
+
+\paragraph{\status{corrected by verifiers since v3}}
+\begin{itemize}
+\item \file{B2_TWOSTEP} G1: the certification of (H2) is a computer-assisted proof project, not a check (\file{B2_TWOSTEP_VERIFY} grade 6).
+\item \file{H2_LARGE_L}: $L$-trend rate claim (grade 5); $j_0$ inputs, $\delta_m$ 45--90$\times$ larger, $a_*(L=5)=0.0107$ (grade 6), giving $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$).
+\item \file{BETA_FP_PW}: comparison and numerics (\file{BETA_FP_PW_VERIFY} grades 5, 6).
 \end{itemize}
 
 \paragraph{\status{refuted}}
 \begin{itemize}
 \item (HS) $\sup\|H_j\|<L\sqrt{L-1}$ at $L=3$.
+\item Not a refuted statement, but a failed method: the one-step sup-norm $C^1$ recursion at $L=3$ (factor 1.005--1.033 for $j\ge2$; \S5.2).
 \item \file{U3_LEMMA51} Theorem 4.1 for $m=2$ with a single block-$M$ constraint in $d=4$.
 \item v1 claims withdrawn: ``every early step must be certified for Theorem 1'' (false: Lemma D$'$/D$''$); ``(H$'$) is weaker than $\beta_\infty=c\log L$'' (it is equivalent); ``the whole $\log\Lambda$ sits in the fine piece'' as a fact (it is equivalent to the open statement); ``one-loop parts hold for SU($N$)'' (Lemma 5.1's charged/neutral split is the SU(2) Cartan split); (3.2) with $Cj^2L^{-2j}$ (0 at $j=0$); the (M) resolvent bound $\|\mathcal K_t^{-1}\|\le C/|f|$ (Nielsen--Olesen zero); (H) with IR weights as stated (UNSUPPORTED).
 \end{itemize}
@@ -459,16 +542,21 @@ $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & 
 
 \paragraph{\status{verified quote}}
 \begin{itemize}
-\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images).
+\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images). \file{BALABAN_EXCERPTS_CHECK} items 10 (CMP 116 has no $C^m$-in-$g$ statement) and 11 (unchecked readings) are unchanged since v3.
 \end{itemize}
 
-\paragraph{\status{numerical}} see \S8.
+\paragraph{\status{numerical}} see \S5.4 and \S8.
 
 \section{Open list (complete for Theorem 2w $\Rightarrow$ Theorem 1)}
 
+Single uniform hypothesis (both routes):
+\begin{itemize}
+\item[H.] (H2) $\rho_2=\sup_{j\ge2}\sup_{K\text{ real}}\|(\oplus_lH_{j-1}(k_l))H_j(K)\|/L^2<L$ \status{numerical at $L=3,5,9$; certification open}. It replaces ($C1\sigma$) + (h) and (H$''$) of v3 as the one uniform-in-level inequality. Route K: (H2) $\Rightarrow$ ($C1\sigma$) $\Rightarrow$ (B2) \status{proved+verified, \file{B2_TWOSTEP_VERIFY} grade 3}. Route B: (H2) + (T1) $\Rightarrow$ (U) \status{proved, unverified, \file{BETA_FP_U} Theorem 2.4}. Values ($j=\infty$, uncertified lower estimates of the sup): 2.0634 ($L=3$, threshold 3, margin 31\%), 2.108 ($L=5$, threshold 5, margin 58\%), $\ge2.1131$ ($L=7$), $\ge2.1142$ ($L=9$, one point). At $L\ge5$ the one-step condition $\rho_1^2<L$ suffices ($\rho_1^2/L=0.771$ at $L=5$). Certification (\S5.6): a computer-assisted proof project with tail level $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$), certified $\|\mathfrak B^{-1}\|$, an explicit O5 constant, and interval arithmetic over the BZ; no explicit Lipschitz constant exists today. No value exists at $L>11$.
+\end{itemize}
+
 Route K hypothesis set (all must hold):
 \begin{enumerate}
-\item (B2) $\sup_j\sup_K|\sigma_j^{(2)}|<\infty$ (or (B2w)). Precise remaining form: ($C1\sigma$) $\sup_{j,K}|\partial_K\sigma_j^{(1)}|<\infty$ and (h) $\sup_{j,K}\|H_j(K)\|<L^2$ \status{reduction proved+verified}; or (H$''$) \status{reduction argued}. (h) holds numerically at $L=3$ ($h^2/L^4\approx0.34$); (HS) is refuted. \file{B2_TWOSTEP.md} is an unverified candidate proof of ($C1\sigma$) from a two-step norm condition (H2); it has no verifier file.
+\item (B2) $\sup_j\sup_K|\sigma_j^{(2)}|<\infty$ (or (B2w)). Reduced to H \status{verified reduction}. Older reductions kept: ($C1\sigma$) + (h) \status{proved+verified}; (H$''$) \status{argued}. (HS) is refuted.
 \item (PI) probe independence, at each fixed level \status{argued}.
 \item (F) lattice = continuum log coefficient at constant field \status{cited source checked; lattice transfer standard, not proved here}.
 \item ($M_j$) formal = true $f^2$ coefficient at each fixed level: (S1) $\mathcal K_t(f)\ge-C_1|f|$, (S2) density of states $\le C_2|f|$ near 0, (S3) relative bound of the level difference, all on the lattice \status{open}; Prop.\ 4.4 \status{argued}.
@@ -476,39 +564,46 @@ Route K hypothesis set (all must hold):
 \item (G2) per-cell infinite-volume densities \status{formal}.
 \end{enumerate}
 
-Route B hypothesis set (alternative to 1--4; still needs 5--6 and the common items):
+Route B hypothesis set (alternative to 1--5; per \file{BETA_FP_U} \S4; all \status{proved, unverified} as implications, no verifier file for \file{BETA_FP_U}):
 \begin{itemize}
-\item[B1.] (U) $|\beta_{j+1}(p)-\beta_{j+1}(0)|\le C_Up^2$, uniform in $j$, $0<p\le p_*$ \status{hypothesis; argued from uniform analyticity in $p$ of the one-step data; plausibly needs uniform $p$-smoothness of the $a^1$ vertex, the same kind of input as ($C1\sigma$)}.
-\item[B2$'$.] ($B\theta$) $\sup_k|\Gamma^{ex}(\theta_*;L^k)|<\infty$ at one $\theta_*>0$; it needs fixed-$\theta$ vertex bounds (($D\theta$) in bounded form) and bounded defects $\mathfrak d_Y$, $\mathfrak d_{gf}$ \status{hypothesis/argued}.
-\item[B3.] L\"uscher--Weisz (5.7) \status{cited}.
-\item[B4.] Identification of the plane-wave increment with Balaban's $\beta$ up to the expansion point \status{argued}. This is a uniform-in-$k$ input, not a fixed-level input.
-\item[B5.] $\theta_*<1$, so that $c_2\ln(1/\theta_*^2)\ge0$ in $C_B$ \status{trivial condition on the choice of $\theta_*$}.
-\item[B6.] Independent verification of \file{BETA_FP_PW} (\file{BETA_FP_PW_VERIFY} has \S1--\S5, no grade).
+\item[B1.] (T1) $\sup_j\sup_{q\text{ real}}|c^{(1)}_{T,j}(q)|<\infty$, the plane-wave form of Theorem A3 \status{argued; the Landau-to-symmetric gauge conversion and Steps 2--5 of A3 for (2.1) are not written}.
+\item[B2$'$.] (H2) = item H.
+\item[B3.] (DF) $\sup_k|\mathfrak d_F(\theta_*;L^k)|<\infty$, the gauge-fixing difference at the plane wave \status{hypothesis, argued}. With the exact split $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$ (\file{BETA_FP_U} Prop.\ 3.1) there is no $Y$-defect; all non-stationarity sits in $\mathfrak d_F$. This replaces v3's $\mathfrak d_Y$, $\mathfrak d_{gf}$ items for this route.
+\item[B4.] L\"uscher--Weisz (5.7) \status{cited}.
+\item[B5.] A6: the plane-wave increment equals Balaban's $\beta$ up to the expansion point, uniformly in $k$ \status{argued}. A uniform-in-$k$ input, of the same kind as (DF).
+\item[B6.] (H0) = item 7 (Lemma D$''$ (i)).
+\item[B7.] $\theta_*<1$, so that $c_2\ln(1/\theta_*^2)\ge0$ in $C_B$ \status{trivial condition on the choice of $\theta_*$}.
+\item[B8.] Verification: \file{BETA_FP_U} has no verifier file. \file{BETA_FP_PW_VERIFY} \S6 items 1--4 grade the logic of Theorem B \status{proved+verified, conditional} (tag decision, \file{PLAN.md}); the inputs (U), (DF), (T1) stay \status{proved, unverified}.
 \end{itemize}
+Route B also needs 6 ((G2)) and the common items 8--13. It does not need (PI), ($M_j$), V1; it needs (DF) and A6 instead.
 
 Common to both routes:
 \begin{enumerate}
 \setcounter{enumi}{6}
 \item (H0) Balaban's smoothness in $g$ with uniform bounds, $|\beta_j(g)-\beta_j(0)|\le C_1g$ uniform in $j$ and history \status{Balaban; CMP 109 inductive assumption at odd $L>11$; no explicit proof of the $g$-derivative bound located in CMP 116}.
-\item L5 history dependence \status{open}. (a) The clamp proof of Lemmas D$'$/D$''$ is valid only if $\beta_{k+1}(g_0,\dots,g_k)$ is defined and continuous on the whole cube $]0,\gamma]^{k+1}$; Balaban does not supply this. (b) Balaban's $\beta_{k+1}$ exists only on histories where his induction has run; that domain must carry (c$'$) + (S), not only $g_i\in\,]0,\gamma]$. Clamped histories can violate the growth side of (c$'$). (c) True trajectories with all $u_i\ge\gamma^{-2}$ inherit (c$'$) from (a$''$). A nested-interval variant of Lemma D$''$ on these trajectories would avoid the gap \status{not written}; the variant is written only for Lemma D (\file{LEMMAS_DE_VERIFY} \S1.5). Lean covers one-argument $\beta$ only.
+\item L5 history dependence \status{open}. (a) The clamp proof of Lemmas D$'$/D$''$ is valid only if $\beta_{k+1}(g_0,\dots,g_k)$ is defined and continuous on the whole cube $]0,\gamma]^{k+1}$; Balaban does not supply this. (b) Balaban's $\beta_{k+1}$ exists only on histories where his induction has run; that domain must carry (c$'$) + (S), not only $g_i\in\,]0,\gamma]$. Clamped histories can violate the growth side of (c$'$). (c) True trajectories with all $u_i\ge\gamma^{-2}$ inherit (c$'$) from (a$''$). A nested-interval variant of Lemma D$''$ on these trajectories would avoid the gap \status{not written}; the variant is written only for Lemma D (\file{LEMMAS_DE_VERIFY} \S1.5). Lean covers one-argument $\beta$ only (Lemmas D$'$, D$''$, D, E).
 \item $K$-independence of $\beta_j(g)$ \status{open}. The shooting needs $\beta_j(g)$, $\gamma$, and the constants independent of $K=-\log_L\varepsilon$. After rescaling, each step is the same unit-lattice block step, so $\beta_j$ is $K$-independent only in the infinite-volume limit; a finite volume brings $K$-dependence back. This infinite-volume identification is not proved (\file{LEMMAS_DE_VERIFY} \S2 item 2; \file{THEOREM2_PROOF_VERIFY} Point 7). It is used implicitly through (G2) and (H0).
 \item Balaban readings: the sweep (\S2.3) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; ``Similar inequalities hold for other constants, which will be introduced later'' (CMP 119 p.\ 256) not located; $\beta_0$ must be fixed before $\gamma$, while Balaban says $\beta_0$ ``can be chosen arbitrarily small, if $g$ is sufficiently small'' (not checked line by line); \file{BALABAN_EXCERPTS_CHECK} item 11 lists unchecked readings ($\Pi$ (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the ``$L$ odd'' page, Sect.\ 3 estimates, 1989 bound lists); Theorem 1 itself rests on Balaban's published proofs.
-\item Odd $L$. All one-loop proofs need odd $L\ge3$ (centered blocks: U3 Lemma 1.2, O5/Prop.\ A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes $L$ odd $>11$ throughout CMP 109, so (H0) and $\beta_j(g)$ at $g>0$ exist only there. Theorem 2w is stated for odd $L>11$, or with (H0) at this $L$ as a hypothesis. No numerics exist at $L>11$ (umklapp queue to $L=15$ running); (h) and (H$''$) are tested at $L=3$ only, outside the range of Theorem 2w, so they are supportive only.
+\item Odd $L$. All one-loop proofs need odd $L\ge3$ (centered blocks: U3 Lemma 1.2, O5/Prop.\ A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes $L$ odd $>11$ throughout CMP 109, so (H0) and $\beta_j(g)$ at $g>0$ exist only there. Theorem 2w is stated for odd $L>11$, or with (H0) at this $L$ as a hypothesis. Numerics: $\beta_1(0)$ up to $L=11$ (\S8.1); (H2) at $L=3,5$ (scans), 7 (face diagonal), 9 (one point). All are outside Balaban's range ($L>11$), so they are supportive only. The Windows queue continues to $L=15$.
 \item SU(2) only. The charged/neutral split of Lemma 5.1 and (W) are SU(2) statements; $c=11N^2/(12\pi^2)$ is general but the chain is not checked for $N>2$.
-\item Lean formalization of Lemma D$''$ and of the history form \status{open, small}.
+\item Lean formalization of the history form of Lemmas D$'$/D$''$ \status{open}. Lemma D$''$ in the one-argument form is done (\S2.2).
 \end{enumerate}
 
-Not needed for Theorem 1, open for the stronger statements: (A) in full and Lemma 5.1 for $m=2$ (convergence, rate); certified $\beta_1(0),\dots,\beta_{j_*}(0)>0$ at odd $L>11$ (literal (0.31) at every $K$); explicit $j_*$; (N).
+Not needed for Theorem 1, open for the stronger statements: (A) in full and Lemma 5.1 for $m=2$ (convergence, rate); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); certified $\beta_1(0),\dots,\beta_{j_*}(0)>0$ at odd $L>11$ (literal (0.31) at every $K$); explicit $j_*$; (N).
 
-\paragraph{Hypothesis table} (from \file{THEOREM2_PROOF_v2_VERIFY} \S K, with the v3 status).
+\paragraph{Hypothesis table} (v3 table from \file{THEOREM2_PROOF_v2_VERIFY} \S K, updated to v4 status).
 \begin{longtable}{|p{3.4cm}|p{3cm}|p{3.4cm}|p{3.6cm}|p{1.2cm}|}
 \hline
 hypothesis & introduced & verified / checked in & status & \S10 item \\ \hline
-(B2) / (B2w) & KAPPA \S2, Rem.\ 2.3 & KAPPA\_VERIFY \S7--\S9 & open & 1 \\ \hline
-($C1\sigma$) + (h) $\Rightarrow$ (B2) & KAPPA Prop.\ 4.1 & KAPPA\_VERIFY \S7 & implication verified; ($C1\sigma$) open; (h) numerical $L=3$ & 1 \\ \hline
-(H$''$) $\Rightarrow$ (A) $\Rightarrow$ (B2) & U3\_AW \S4.7 & none (U3\_AW\_VERIFY grade 5 covers (H$'$) only) & implication argued; (H$''$) numerical $n=2$ only & 1 \\ \hline
+(H2) & B2\_TWOSTEP \S2; BETA\_FP\_U \S2.3 & B2\_TWOSTEP\_VERIFY \S4; H2\_LARGE\_L\_VERIFY \S1--\S10 & numerical at $L=3,5,9$; certification open & H \\ \hline
+(H2) $\Rightarrow$ ($C1\sigma$) $\Rightarrow$ (B2) (Theorems C1, B2) & B2\_TWOSTEP \S2--\S3 & B2\_TWOSTEP\_VERIFY grades 1, 3, 4 & proved+verified, conditional on (H2) & 1, H \\ \hline
+(H2) + (T1) $\Rightarrow$ (U) (Theorem 2.4) & BETA\_FP\_U \S2.4 & none & proved, unverified & B1, B2$'$ \\ \hline
+$\rho_1^2<L\Rightarrow$ (H2) (one step, $L\ge5$) & H2\_LARGE\_L \S3 & H2\_LARGE\_L\_VERIFY grade 4 (measurement) & arithmetic; $\rho_1^2/L=0.771$ at $L=5$, numerical & H \\ \hline
+certification tail $j_0$ & H2\_LARGE\_L \S4.1 & H2\_LARGE\_L\_VERIFY grade 6 & derivation confirmed; $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$), corrected & H \\ \hline
+(B2) / (B2w) & KAPPA \S2, Rem.\ 2.3 & KAPPA\_VERIFY \S7--\S9 & open; reduced to (H2) & 1 \\ \hline
+($C1\sigma$) + (h) $\Rightarrow$ (B2) & KAPPA Prop.\ 4.1 & KAPPA\_VERIFY \S7 & implication verified; ($C1\sigma$) $\Leftarrow$ (H2); (h) numerical $L=3,5$ & 1 \\ \hline
+(H$''$) $\Rightarrow$ (A) $\Rightarrow$ (B2) & U3\_AW \S4.7 & none (U3\_AW\_VERIFY grade 5 covers (H$'$) only) & implication argued; not needed after (H2) & 1 \\ \hline
 (HS) & U3\_AW (H$'$) & U3\_AW\_VERIFY \S6 & refuted $L=3$ & \S5.2 \\ \hline
-B2\_TWOSTEP (H2) $\Rightarrow$ ($C1\sigma$) & B2\_TWOSTEP \S2--\S3 & none & proved, unverified (candidate) & 1 \\ \hline
 (PI) & BETA\_FP\_H \S3.1 & H\_VERIFY \S5 & argued & 2 \\ \hline
 (F) & BETA\_FP\_LEMMA43 & H\_VERIFY \S4 & cited, source checked & 3 \\ \hline
 ($M_j$): (S1)--(S3), Prop.\ 4.4 & BETA\_FP\_M \S4 & none for BETA\_FP\_M; H\_VERIFY \S5 refuted old step & open / argued & 4 \\ \hline
@@ -520,12 +615,15 @@ L5 history form and domain & LEMMA\_DPRIME Rem.\ 3; LEMMAS\_DE\_VERIFY \S2.1; v2
 sweep reading & SWEEP \S7 & LEMMA\_DPRIME\_VERIFY Steps 4--5 (rows 11, 12, 16, 18) & proved, unverified & 10 \\ \hline
 odd $L$; $L>11$ in Balaban & CMP 109 pp.\ 251--252 & v1 verifier Step 6 & input & 11 \\ \hline
 SU(2) & --- & --- & scope & 12 \\ \hline
-Lean D$''$, history & --- & --- & open & 13 \\ \hline
-Route B: (U) & BETA\_FP\_PW \S1.2 & PW\_VERIFY \S3 & hypothesis & B1 \\ \hline
-Route B: ($B\theta$), $\mathfrak d_Y$, $\mathfrak d_{gf}$ & BETA\_FP\_PW \S3.3, \S4.3 & PW\_VERIFY (no grade) & hypothesis / argued & B2$'$ \\ \hline
-Route B: $\beta$ identification, uniform in $k$ & SOURCES\_D1\_VERIFY 8; PW\_VERIFY \S3 & --- & argued & B4 \\ \hline
-Route B: $\theta_*<1$ & PW\_VERIFY \S3 & --- & trivial condition & B5 \\ \hline
-LW (5.7) & cited & PW\_VERIFY \S3 (regime correct) & cited & B3 \\ \hline
+Lean D$''$ (one-argument) & KAPPA \S5.3 & lean/README.md, \texttt{lemma\_DDoublePrime} & Lean & \S2.2 \\ \hline
+Lean history form & --- & --- & open & 13 \\ \hline
+Route B: Theorem B logic & BETA\_FP\_PW \S3 & PW\_VERIFY \S6 items 1--4 & proved+verified, conditional (tag decision, PLAN.md) & B8 \\ \hline
+Route B: (U) & BETA\_FP\_PW \S1.2 & PW\_VERIFY \S3 & hypothesis; $\Leftarrow$ (T1) + (H2) (BETA\_FP\_U); proved, unverified & B1, B2$'$ \\ \hline
+Route B: (T1) & BETA\_FP\_U \S2.3 & none & argued & B1 \\ \hline
+Route B: ($B\theta$) $=\gamma_{rec}+\mathfrak d_F$ & BETA\_FP\_PW \S3.3; BETA\_FP\_U \S3 & PW\_VERIFY \S6 (Theorem B logic); none for BETA\_FP\_U & $\gamma_{rec}$ bounded given Thm 2.4 (proved, unverified); (DF) argued & B3 \\ \hline
+Route B: A6 ($\beta$ identification, uniform in $k$) & SOURCES\_D1\_VERIFY 8; PW\_VERIFY \S3; BETA\_FP\_U \S4.2 & --- & argued & B5 \\ \hline
+Route B: $\theta_*<1$ & PW\_VERIFY \S3 & --- & trivial condition & B7 \\ \hline
+LW (5.7) & cited & PW\_VERIFY \S3 (regime correct) & cited & B4 \\ \hline
 BALABAN\_CHECK item 11 readings & BALABAN\_EXCERPTS & --- & unchecked & 10 \\ \hline
 \end{longtable}
 
@@ -561,6 +659,22 @@ Any write-up must cite SA26-T0, SA26-YM4, and OAI26-O3, and state these overlaps
 \item \S1.2: ``D-free'' replaced; $\gamma_*$ depends on $R$ through $B'$ (\file{v2_VERIFY} \S A).
 \item Status tags: \file{BETA_FP_PW_VERIFY.md} checked 2026-10-27; it has \S1--\S5 and no grade. Route B stays \status{proved, unverified}; ``verifier running'' replaced by ``no grade''. ``Theorem 2w $\Rightarrow$ Theorem 1'' stays \status{proved, unverified}, now also conditional on L5 (\file{v2_VERIFY} \S N).
 \item Smaller wording fixes (\file{v2_VERIFY} \S A, \S B, \S E, \S J, \S L(9)): title no longer says ``verified route''; \S2.1 cites \file{LEMMA_DPRIME_VERIFY} grades 1, 2, 5 and notes the CORRECTED grades 3, 4, 6 of Step 7; (B2w) tag cites \file{KAPPA_BOUNDED_VERIFY} \S9(iv); (h) and (H$''$) numerics tagged \status{numerical, run by the verifier}; B2\_TWOSTEP no longer described as nonexistent; \S9 notes the other Lean files.
+\end{enumerate}
+
+(v3 status line: complete 2026-10-28, not verified as a whole document.)
+
+\section{Change log (v3 $\to$ v4)}
+
+\begin{enumerate}
+\item \S5 rewritten around (H2): definition (\S5.3); Theorems C1 and B2 tagged \status{proved+verified, conditional on (H2)} (\file{B2_TWOSTEP_VERIFY} grades 1, 3, 4); threshold $\rho_2<L$ with no strip loss; (H2) weaker than (H$''$); one-step sup-norm $C^1$ recursion fails at $L=3$ (factor 1.005--1.033, \S5.2); numerics table for $L=3,5,7,9$ (\S5.4: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$; margin 31\% at $L=3$, 58\% at $L=5$; $L$-trend rate claim corrected); one-step sufficiency at $L\ge5$ (\S5.5: $\rho_1(j=1)=1.860$, $\rho_1^2/L=0.771$ at $L=5$); certification plan and $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$), with the verifier's corrected inputs (\S5.6); remaining inequality = (H2) (\S5.7). The v3 text ``B2\_TWOSTEP: no verifier file, nothing used'' is removed.
+\item \S1.3, \S4 intro, \S4.1, \S4.3, \S6: (B2) $\Leftarrow$ (H2) stated; both routes rest on (H2) (\file{BETA_FP_U} \S3.5, \S4.3). New \S4.2a: Route B inputs after \file{BETA_FP_U} ((U) $\Leftarrow$ (T1) + (H2); $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$; (DF); Corollary 4.1; A6), tagged \status{proved, unverified; no verifier file}.
+\item \S4.2, \S4.3, \S9, \S10 B8: \file{BETA_FP_PW_VERIFY} now has \S6 grades (items 1--4 CONFIRMED, 5--6 CORRECTED); v3's ``no grade'' is outdated.
+\item \S2.2 and \S9: Lemma D$''$ is formalized in Lean (\texttt{YmLean.lemma\_DDoublePrime}, no sorry), with (c$'$) constants $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$ and (d) lower constant $b/2$ for $n-m\ge8R/b$. \S2.2 title gains \status{Lean}; v3's ``\status{open as Lean work}'' removed; \S10 item 13 reduced to the history form.
+\item \S8.1 extended to $L=9$ ($\beta_1=0.833$ at $Lp=0.5$, constant $\approx+0.02$) and $L=11$ (0.850 at $Lp=0.5$, constant $\approx-0.04$; $N_g=8$ adequacy unchecked) from \file{NUMERICS} \S7. \S8.2: per-level $\beta_2(0)\approx0.32$ with the symmetric-Nyquist values 0.33334, 0.31679, 0.32283, and the (U) test row. \S8.3: $\rho_1$ at $L=5$, $\rho_2$ pointer to \S5.4, $a_*(L=5)=0.0107$.
+\item \S9 ledger: \status{Lean} D$''$ added; \status{proved+verified} Theorems C1, B2, \file{h2_scan} structure, tail-bound derivation added; \status{proved, unverified} \file{BETA_FP_U} items and one-step sufficiency added, the \file{B2_TWOSTEP} candidate line removed; \status{argued} (T1), (DF), A6, $C^2$/$C^3$ under (H2) added; new block ``corrected by verifiers since v3''; failed one-step method noted.
+\item \S10: new item H, (H2) as the single uniform hypothesis for both routes, status \status{numerical at $L=3,5,9$; certification open}; item 1 reduced to H; Route B set rewritten per \file{BETA_FP_U} as (T1), (H2), (DF), LW (5.7), A6, (H0), $\theta_*<1$; (DF) replaces $\mathfrak d_Y$, $\mathfrak d_{gf}$ for this route; item 11 numerics range updated; item 13 reduced; hypothesis table updated.
+\item Not changed: \S1.1, \S1.2, \S1.4, \S2.1, \S2.3, \S2.4, \S3, \S7, \S11, and all other tags. \file{KAPPA_BOUNDED_VERIFY}'s (B2) obstruction statement is in its \S7 and \S9(vi) (the task brief cited \S6; \S6 there is the Lemma D$''$ check). \file{BALABAN_EXCERPTS_CHECK} has no change since v3.
+\item \emph{Tag change (deliberate; differs from the v4 Markdown).} The v4 Markdown keeps Route B (Theorem B of \file{BETA_FP_PW}) at \status{proved, unverified}. This version tags the logic of Theorem B as \status{proved+verified, conditional}, citing \file{BETA_FP_PW_VERIFY} \S6 items 1--4. Source: the line ``TAG DECISION'' in \file{PLAN.md} (2026-10-28). The inputs (U), (DF), (T1) from \file{BETA_FP_U} stay \status{proved, unverified}. Applied in \S1.3, \S4.2, \S4.2a, \S4.3, \S6, \S9, \S10 (B8) and the hypothesis table; the Markdown sentences ``the tag is kept as in v3'' and ``a tag change is left to the next review'' are replaced accordingly.
 \end{enumerate}
 
 Status: complete (2026-10-28). Not verified as a whole document.
