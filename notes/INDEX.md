@@ -12,7 +12,8 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | THEOREM2_PROOF.md | Conditional proof of Theorem 2: reduction chain (T2-a1′) ⇒ Theorem 2 ⇒ Theorem 1, ledger §7. | corrected (THEOREM2_PROOF_VERIFY) |
 | THEOREM2_PROOF_v2.md | Theorem 2 proof chapter, version 2 (Route K and Route B). | superseded by THEOREM2_PROOF_v3.md (corrected by THEOREM2_PROOF_v2_VERIFY) |
 | THEOREM2_PROOF_v2_VERIFY.md | Verifier of v2: Lemma D'' confirmed; Route B "independent" weakened to "formally distinct". | report |
-| THEOREM2_PROOF_v3.md | Theorem 2 chapter, current version: weak form reduced to (H2) + (PI), (F), (M_j), V1, (G2), L5/(H0); section 10 hypothesis table. | reduced; Route K reduction verified, whole document not verified |
+| THEOREM2_PROOF_v3.md | Theorem 2 chapter, version 3 (weak form reduced to (H2) + fixed-level inputs). | superseded by THEOREM2_PROOF_v4.md |
+| THEOREM2_PROOF_v4.md | Theorem 2 chapter, current version: (H2) as the single uniform hypothesis for both routes; section 10 open list and hypothesis table; verified L = 3/5/7/9 values; Route B per BETA_FP_U. | reduced; Route K reduction verified, whole document not verified |
 | THEOREM2_PROOF_VERIFY.md | Verifier of THEOREM2_PROOF; finds that certified early steps are not needed for Theorem 1. | report |
 | LEMMAS.md | Generic lemmas A, B, C (rotations, inclined cells, observables) and Lemmas D, E (shooting, uniform bounds). | corrected (LEMMAS_VERIFY, LEMMAS_DE_VERIFY; fixes applied in file) |
 | LEMMAS_VERIFY.md | Verifier of Lemmas A, B, C; finds that rotation invariance needs the R⁴ limit. | report |
@@ -48,6 +49,10 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | BETA_FP_U.md | (U) proved given (T1) and (H2); Theorem B and Theorem 2w given (T1), (H2), (DF), LW (5.7), A6, (H0). | unverified |
 | B2_TWOSTEP.md | (B2) proved given the two-step inequality (H2); L = 3 margin 31%. | verified as a conditional reduction (B2_TWOSTEP_VERIFY; certification G1 sized up) |
 | B2_TWOSTEP_VERIFY.md | Verifier of B2_TWOSTEP. | report |
+| H2_LARGE_L.md | (H2) at L up to 15: umklapp scan (numerics/h2_scan.py), one-step sufficiency at L >= 5, certification tail bound. | corrected (H2_LARGE_L_VERIFY: L-trend and tail inputs) |
+| H2_LARGE_L_VERIFY.md | Verifier of H2_LARGE_L; L = 5 value rechecked with an independent code; j_0 about 8 (L = 3), 6 (L = 5). | report |
+| H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of (H2) at L = 3; rigorous point enclosure of rho_2 at K*. | unverified (H2_CERTIFY_VERIFY in progress of reconciliation) |
+| H2_CERTIFY_VERIFY.md | Independent check of H2_CERTIFY and numerics/h2cert_proto.py. | report |
 | KAPPA_BOUNDED.md | Theorem K (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
 | UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743 (L up to 9 in numerics/NUMERICS.md). | unverified (code validated against ym_momentum to 1e−12) |
@@ -70,6 +75,22 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_HBETA_VERIFY.md | Verifier of HBETA. | report |
 | SOURCES_HHIST.md | (H-hist) in column-sum form, reduced to (B2) and (SM). | corrected (SOURCES_HHIST_N1_VERIFY: per-hop θ unsupported; ratio claim false) |
 | SOURCES_HHIST_N1_VERIFY.md | Verifier of SOURCES_HHIST and ASSEMBLY_N1. | report |
+| SOURCES_SM.md | (SM): per-hop contraction of the history dependence, derived from (W4) and CMP 116 (1.24). | corrected (SOURCES_SM_VERIFY: (G-gain) needed in hop and own slot) |
+| SOURCES_SM_VERIFY.md | Verifier of SOURCES_SM (page images). | report |
+| SOURCES_GGAIN.md | (G-gain): g_k-uniform derivative bound for the small-field step by pointwise Cauchy in x = g_k B. | corrected (SOURCES_GGAIN_VERIFY: Lemma G4, chi_k surface term) |
+| SOURCES_GGAIN_VERIFY.md | Verifier of SOURCES_GGAIN. | report |
+| SOURCES_HTHR.md | (H-thr): threshold-shell contribution under model assumptions M1-M4. | corrected (SOURCES_HTHR_VERIFY: Lemma S; superseded by SOURCES_HTHR2.md) |
+| SOURCES_HTHR_VERIFY.md | Verifier of SOURCES_HTHR (page images); resolves M1. | report |
+| SOURCES_HTHR2.md | (H-thr) via Balaban's printed tail factor (Lemma T); M2' closed without a density. | verified, conditional on (H-hist2) (SOURCES_HTHR2_VERIFY) |
+| SOURCES_HTHR2_VERIFY.md | Verifier of SOURCES_HTHR2 (page images); (H-hist2) is a new hypothesis. | report |
+| SOURCES_D4D5.md | D4 (RP and lattice-symmetry transfer) and D5 (assembly of (S)); isolates the gap (FX). | verified (SOURCES_D4D5_VERIFY; (FX) confirmed as a new hypothesis) |
+| SOURCES_D4D5_VERIFY.md | Verifier of SOURCES_D4D5. | report |
+| SOURCES_FX.md | (FX): cluster-expanded form of the sourced output with epsilon-uniform radius; reduced to O1-O3. | corrected (SOURCES_FX_VERIFY: final step is not one more R step; O1 open) |
+| SOURCES_FX_VERIFY.md | Verifier of SOURCES_FX (page images CMP 122 I, II; Dimock III). | report |
+| SOURCES_FX_O1.md | O1(b): reverse-scaling lemma d'_{j+1}(S(Y)) >= c_* d'_j(Y), no additive constant. | verified (SOURCES_FX_O1_VERIFY; R2 open) |
+| SOURCES_FX_O1_VERIFY.md | Verifier of SOURCES_FX_O1. | report |
+| SOURCES_FX_O23.md | O2 and O3 closed by the real R-denominator (1.100) and upper-bound checks; new O4. | unverified |
+| SOURCES_FX_R2.md | Gap R2 (kappa_fin >= kappa_final); stub with inputs only. | open, not started |
 | ASSEMBLY.md | Finite-torus existence theorem (compactness form) modulo named blocks; dependency table §3. | corrected (ASSEMBLY_VERIFY: proofs confirmed; table stale, nontriviality wording) |
 | ASSEMBLY_VERIFY.md | Verifier of ASSEMBLY. | report |
 | ASSEMBLY_N1.md | The bridge (B-N1): sourced cumulant bounds ⇒ (H-U). | verified (SOURCES_HHIST_N1_VERIFY; given (S); one constant slip) |
@@ -112,5 +133,15 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 
 | File | Description | State |
 |---|---|---|
-| main.tex | LaTeX wrapper for the Theorem 2 chapter (version 3). | unverified |
+| main.tex | LaTeX wrapper for the Theorem 2 chapter (version 4). | unverified |
 | theorem2.tex | Statement, shooting lemmas, and exact one-loop sum structure of the Theorem 2 chapter. | unverified, partial |
+| refs.bib | Bibliography; entries written from memory except the Sussman-Alpoge block. | unverified (see refs_check.md) |
+| refs_check.md | Check list for the bibliography entries. | report |
+| README.md | Build instructions and notes for the LaTeX version. | report |
+| main.pdf | Compiled 32-page paper, version 4. | unverified |
+
+## numerics/
+
+| File | Description | State |
+|---|---|---|
+| NUMERICS.md | Log of the floating-point runs: beta_1(L) for L = 2..11, per-level beta_2, (H2) scans. Code and results are in the same folder. | unverified (floating point, not certified) |
