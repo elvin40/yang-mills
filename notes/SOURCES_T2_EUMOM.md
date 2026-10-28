@@ -1,6 +1,6 @@
 # SOURCES_T2_EUMOM — k-uniform decay and moments of the free minimal-extension kernel E_0 (2026-10-28)
-Item EUMOM, DERIVE. Status: in progress.
-Read: SOURCES_EU.md (full), SOURCES_EU_VERIFY.md (full), SOURCES_CDC.md §4, SOURCES_CDC_VERIFY.md, numerics/k0_d.py, numerics/kappa_d.py (read only), numerics/KAPPA_D.md, numerics/NUMERICS.md l. 79. Balaban pages: listed in §1.
+Item EUMOM, DERIVE. Status: complete.
+Read: SOURCES_EU.md (full), SOURCES_EU_VERIFY.md (full), SOURCES_CDC.md §4, SOURCES_CDC_VERIFY.md, numerics/k0_d.py, numerics/kappa_d.py (read only), numerics/KAPPA_D.md, numerics/NUMERICS.md l. 79, TRUST_LEDGER.md ll. 31, 43, 146 only. Balaban pages: listed in §1.
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). ONLINE_SWEEP §2 not read.
 Tags: [P] proved here; [R] reduced to a named input; [I] inference not checked line by line; [V] checked on a Balaban page (image or text layer, stated); [N] numerics.
 
@@ -104,3 +104,53 @@ Proof. Cauchy–Schwarz: ν_j ≤ (η^dΣ e^{2δ_*|y−x_0|}|E_0|²)^{1/2}(η^d�
 where γ̃_j := η^dΣ_y|∇E_0(y, 0)||y|^j ≤ γ_j. This replaces the [I] bound "Γ_j ≤ 2^jγ_0γ_j [I: lattice-sum factor]" of SOURCES_EU §4.5 by a proved one; numerically the two differ by a factor ≈ 1.3–1.5 (§6.4). Likewise the Schur steps of SOURCES_EU §4.3 (c-sum at fixed y) are controlled by σ_j.
 5.5 Explicit values, d = 4 [P arithmetic, script `consts`]. Best a = 3.98: m = 0.02175, s_0 = 2.767e−4, δ_* = 2.93e−9, W_0 = 6.65e5, W_1 = 9.80e4; H_0 = 1.26e6, H_1 = 1.39e7; C_E ≈ 5.3e6, δ_E = 9.8e−10; C_∇ ≈ 1.4e7, δ_∇ = 5.9e−10. Moment bounds: log10 ν_j ≤ 23.3, 32.2, 41.3 and log10 γ_j ≤ 22.5, 31.4, 40.4 for j = 0, 1, 2.
 Consistency with the brief's check. δ_E, δ_∇ ≤ 1.2 (observed) and all bounds exceed the numerical values (ν_0 ≈ 4–5, γ_2 ≈ 250) [P: arithmetic]. The bounds are qualitative: they prove k-uniformity. They are useless as numbers in SOURCES_EU §4.6 (c_{2/3} would be ~1e40). A realistic rigorous constant needs a sharper argument, e.g. a k-uniform zero-free strip for the analytic continuation of T (§6.3 locates the relevant zero numerically) [I, not done].
+
+## 6. Numerics (d = 4) [N]
+Scripts: numerics/t2_eumom_n7.py (constants of §5.5; kernel at (N, L_u) = (3, 10), (5, 8), (7, 6), (7, 7); 2 s) and numerics/t2_eumom_strip.py (L_u convergence at (3, 14), (3, 18), (5, 10), (7, 8); corner-line zeros; 10 s). The kernel code is a copy of k0_d.py `kernel_moments` (QA = B checked to 1e−9); k0_d.py was not modified.
+6.1 A finite-volume artifact in SOURCES_EU §4.4. k0_d.py uses B = δ_0 − L_u^{−d} (mean zero) and returns A = E_0^T(·, 0) − L_u^{−d}, because E_0^T maps the constant 1 to the constant 1. The constant shift adds about L_u^{−d}∫_{torus}|y|^j dy to the |A|-moments: ≈ 1 at j = 0 and ∝ L_u² at j = 2. Evidence: the SOURCES_EU-type j = 2 moment Σ η^d|A|r² at N = 3 is 41.90, 74.77, 117.77 for L_u = 10, 14, 18 (grows like L_u²), while the same moment of E_0^T = A + L_u^{−d} is 9.29, 9.93, 10.10 (converges). So the "j = 2 not converged in L_u" remark of SOURCES_EU §4.4 is this shift, not slow decay of E_0. The |∇E_0| moments are unaffected (the shift is constant) and reproduce SOURCES_EU exactly (N = 3, L_u = 10: 23.797, 32.616, 58.056; N = 5, L_u = 8: 28.281, 39.62, 70.613).
+6.2 Clean moments (E_0^T, i.e. infinite-volume E_0 up to periodization). η^dΣ_yE_0 = 1.000000 in all runs (= ê(0) = 1, §2.1).
+| N, L_u | Σ|E_0|r^j, j = 0,1,2 (r about corridor centre) | Σ|∇E_0|r^j | ν_j (brief def., about y = 0) | γ_j (brief def.) |
+| 3, 18 | 4.255, 5.471, 10.10 | 23.89, 33.13, 61.20 | 4.255, 10.93, 31.02 | 23.89, 61.64, 174.4 |
+| 5, 10 | 4.822, 6.415, 11.78 | 28.55, 40.80, 75.94 | 4.822, 13.05, 38.39 | 28.55, 77.89, 230.5 |
+| 7, 8 | 5.059, 6.650, 11.71 | 30.18, 42.83, 77.29 | 5.059, 13.83, 40.59 | 30.18, 83.54, 248.1 |
+L_u dependence at fixed N: N = 3: ν_2 = 29.84 / 30.79 / 31.02 at L_u = 10 / 14 / 18; N = 7: ν_0 = 4.857 / 5.100 / 5.059 at L_u = 6 / 7 / 8 (the odd L_u = 7 run is not monotone in the sequence; ~1% level). The moments grow slowly with N (N = 3 → 7: ν_0 +19%, γ_2 +42%) and look convergent; the N-dependence is not extrapolated here.
+Comparison with the values quoted in the brief: ν_2 ≈ 57 (SOURCES_EU, mean-shifted, (1 + r)² about the centre) becomes 29.4 (N = 5, L_u = 10, same centre) or 38.4 (about y = 0). γ_0 ≈ 28, γ_1 ≈ 68, γ_2 ≈ 178 (about the centre) are confirmed: 28.55, 69.35, 186.1 at L_u = 10.
+6.3 Decay rate. Shell maxima max{|E_0(y)| : R ≤ r < R + 1}, N = 3, L_u = 18: 2.035, 0.404, 0.126, 0.0397, 0.0126, 4.00e−3, 1.28e−3, 4.09e−4, 1.38e−4; successive ratios 5.04, 3.21, 3.18, 3.16, 3.14, 3.12, 3.13, 2.97 (last shell touches the torus boundary). |∇E_0|: ratios 2.17, 3.14, 3.19, 3.17, 3.15, 3.13, 3.11, 3.10. N = 5 (L_u = 10): 4.01, 2.98, 2.94, 2.95. N = 7 (L_u = 8): 3.86, 2.92, 2.81. So the observed rate is δ_obs ≈ ln 3 ≈ 1.05–1.15, slowly decreasing with N.
+Analytic continuation. The singularities of ê in complex p come from zeros of T(p′) (§2.1; ŵ and the l-sum are analytic near the real corner; poles of T at Δ_l = 0 cancel in ê). On the corner line p′ = (π, …, π) + iκe_ν, T is real (checked to 1e−12) and its first zero is at κ = 1.30, 1.21, 1.18, 1.16, 1.15, 1.15 (N = 3, 5, 7, 15, 31, 61) for ν = μ, and κ = 2.66, 2.47, 2.39, 2.30, 2.28, 2.27 for ν ≠ μ. A zero at Im p′_μ = κ caps the decay rate along e_μ at κ [I: standard Paley–Wiener reading, not proved here]. So the k-uniform rate cannot exceed ≈ 1.15 along the corridor axis, consistent with δ_obs. The theorem's δ ≈ 6e−10 is far below this; the gap is the price of the crude Combes–Thomas constants (§3.7).
+6.4 Coset sums and Γ_j. sup_y Σ_c|E_0(y, c)|(1 + |y − c|)^j (r about the corridor centre), j = 0, 1, 2: 4.61, 11.02, 30.14 (N = 3, L_u = 18); 5.54, 14.27, 40.17 (N = 5, L_u = 10); 6.03, 15.01, 41.79 (N = 7, L_u = 8). For |∇E_0|: 39.70, 93.44, 242.2; 50.12, 123.5, 332.3; 53.10, 132.3, 356.4. So σ_0^∇ ≈ 1.75γ_0: the fixed-y block sum is larger than the η^d y-sum by ≈ 1.75 (the sup over y picks the worst position in the cell). With 5.4 at N = 5: Γ_1 ≤ γ̃_1σ_0^∇ + γ̃_0σ_1^∇ ≈ 40.8·50.1 + 28.5·123.5 ≈ 5.6e3 and Γ_2 ≤ 2(75.9·50.1 + 28.5·332.3) ≈ 2.7e4 (moments about the corridor centre, used as a proxy for γ̃), versus 3.8e3 and 2.0e4 in SOURCES_EU §4.6. The [I] lattice-sum factor there is thus ≈ 1.4; it is now a proved inequality with numerically known inputs.
+
+## 7. What this closes, what stays open
+7.1 Closed [P]. TRUST_LEDGER row A21 ("Uniform-in-k moments and exponential decay of the free extension kernel E_0 (ν_j, γ_j bounded in N)", status "implicit; numerical at N = 3, 5 only") and SOURCES_EU_VERIFY §6 open item (i): there are δ > 0 and C depending on d only (not on k, η = L^{−k}, or L) with |E_0(y, c)| + |∇E_0(y, c)| ≤ Ce^{−δ|y−c|} (Theorem 5.2). Hence ν_j, γ_j (every j, in particular j = 0, 1, 2) are bounded uniformly in k (5.3), and so are the fixed-y block sums σ_j, σ_j^∇ and Γ_j (5.4). The proof is self-contained: Fourier symbols of Q(1) and Δ (§1.4), the identity E_0 = G_aQ*(QG_aQ*)^{−1} (§2.2, scalar CMP 95 (1.103)), a k-uniform Poincaré bound (§2.4), the k-uniform lower bound T ≥ t_0 (§2.3), Combes–Thomas (§3), and symbol L¹ regularity (§4). It uses no unprinted Balaban estimate.
+7.2 Consequences for SOURCES_EU / SOURCES_CDC.
+ (a) Every constant in SOURCES_EU §4.3–4.6 that depends on ν_j, γ_j, Γ_j is now k-uniform [P], with the proved but useless values of §5.5 and the numerical values of §6.2, §6.4.
+ (b) The two "[I] lattice-sum factor" steps of SOURCES_EU §4.5 (c-sum at fixed y; Γ_j ≤ 2^jγ_0γ_j) are replaced by the proved bound of 5.4 in terms of σ_j^∇ (numerically a factor ≈ 1.4 larger).
+ (c) SOURCES_EU's ν_2 ≈ 57 is inflated by the mean-shift artifact (§6.1); the clean value is ≈ 29 (centre) / 38–41 (about y = 0, N = 5–7). This lowers c_St·ν_2 in ε_Q by a factor ≈ 1.5–2 [N].
+ (d) The boundary-cutoff item of SOURCES_EU §5.1 needs exponential decay of E_0; Theorem 5.2 supplies it, but with the proved δ the cutoff cost e^{−δRM/2} is small only for RM ≳ 1e10. With the observed δ ≈ 1.1 [N] the cost is e^{−0.55RM}. So the boundary item is reduced to "R M large" in principle [P], not in practice.
+ (e) SOURCES_CDC §4 (E_U) uses E_0 only through SOURCES_EU; same status.
+7.3 Open.
+ [I] Realistic rigorous constants (δ ≈ 1, ν_2 ≈ 40): needs a k-uniform zero-free strip for the continued T(p′) (the first zero on the corner line sits at Im p′_μ ≈ 1.15, §6.3) or a sharper real-space argument. Not done.
+ [I] Scope: the proof is for the straight-line average Q_98(1) (cube * line, one component). For the corridor average Q_95 = Q_98 − L^{−1}(coarse gradient) of SOURCES_EU_VERIFY §3 the constraint couples components; the same method applies to the matrix symbol if the analogue of (S2) (a lower bound on the l = 0 symbol, now a matrix) holds. Not checked.
+ [I] Background field: E_0 is the free kernel; the covariant 𝓔_U of SOURCES_EU §4.1 is built from it, and the remaining open items there (linear Mα_0 form, gauge-fixing line by line, C′_1(d, L) of CMP 98 (139)/(143), multiscale constraint) are untouched.
+ [I] N-dependence of the numerical moments (slow growth N = 3 → 7) is not extrapolated to N = ∞; the proved bound covers all N.
+
+## 8. Ledger
+[V] CMP 95 p. 34 (1.99)–(1.103), incl. "H_kB = GQ*(QGQ*)^{−1}B" (1.103) and (1.100) "a^{−1}(φ − 1)φ^{−1} ≤ QGQ* ≤ a^{−1}I"; p. 35 Proposition 1.2 (1.110); p. 36 the Combes–Thomas remark ("e^{−⟨q,x⟩}Δ_a e^{⟨q,x⟩} − Δ_a is a small perturbation of Δ_a") — page images PDF pp. 18–20. CMP 95 text l. 468 ("independent of a … e.g. a = 1", about (1.44)) — text layer. Q_98(1) = straight-line cube * line average: [V] in SOURCES_EU §2 / SOURCES_EU_VERIFY §3 (CMP 98 (125)), not re-read here. CMP 96 (2.128), CMP 98 (139)/(141), CMP 99 pp. 392–396 not needed and not re-read.
+[P] 1.2 facts (a)–(d) on the weight; k-step composition = cube * line at scale L^k.
+[P] 1.4 Fourier representation; (S1)–(S4).
+[P] 2.1 symbol of E_0; η^dΣE_0 = 1.
+[P] 2.2 E_0 = G_aQ*(QG_aQ*)^{−1} for all a > 0 (scalar CMP 95 (1.103)).
+[P] 2.3 T ≥ t_0 = 1/(dπ²ω), S_a ≥ s_0; K_0 ≤ 3610 (d = 4).
+[P] 2.4 Poincaré ‖A‖² ≤ c_1‖∇A‖² + c_2‖QA‖², uniform in η.
+[P] 3.1–3.6 Combes–Thomas: weighted L² bounds (3.5) with W_0, W_1 depending on d, a, δ only.
+[P] 4.1–4.3 symbol bound, J(β) < ∞ for β < 2, uniform sup / Lipschitz / C^{1,1/2} bounds (R0)–(R3).
+[P] 5.1 L² + Hölder ⇒ pointwise lemma; 5.2 Theorem: |E_0| ≤ C_Ee^{−δ_E|y−c|}, |∇E_0| ≤ C_∇e^{−δ_∇|y−c|}, k-uniform.
+[P] 5.3 ν_j, γ_j ≤ W·M_j for all j; 5.4 coset sums σ_j, σ_j^∇ bounded; Γ_j ≤ 2^{j−1}(γ̃_jσ_0^∇ + γ̃_0σ_j^∇).
+[P arithmetic] 5.5 d = 4: δ_* = 2.93e−9, δ_E = 9.8e−10, δ_∇ = 5.9e−10; C_E ≈ 5.3e6, C_∇ ≈ 1.4e7; log10 of the bounds on ν_j: 23.3, 32.2, 41.3; on γ_j: 22.5, 31.4, 40.4. Qualitative only.
+[N] 6.1 SOURCES_EU's |A| moments include a mean-shift artifact (j = 2 grows ∝ L_u²); gradient moments reproduced exactly.
+[N] 6.2 clean moments, d = 4: ν_j = 4.26/10.9/31.0 (N = 3), 4.82/13.1/38.4 (N = 5), 5.06/13.8/40.6 (N = 7); γ_j = 23.9/61.6/174 (3), 28.5/77.9/230 (5), 30.2/83.5/248 (7); L_u-converged to ~1%.
+[N] 6.3 shell decay ratio ≈ 3.1 (N = 3) → 2.8–2.9 (N = 7), δ_obs ≈ 1.05–1.15; first corner-line zero of T at Im p′_μ = 1.30 (N = 3) → 1.15 (N ≥ 31), at Im p′_ν = 2.66 → 2.27 for ν ≠ μ.
+[I] 6.3 reading of the T-zero as a cap on the decay rate (Paley–Wiener, not proved here).
+[N] 6.4 coset sums; σ_0^∇ ≈ 1.75γ_0; Γ_1 ≲ 5.6e3, Γ_2 ≲ 2.7e4 at N = 5 (vs 3.8e3, 2.0e4 in SOURCES_EU).
+[I] 7.3 realistic constants; Q_95 corridor version; background-field items of SOURCES_EU; N → ∞ extrapolation of the numerical moments.
+Summary. Proved: k-uniform exponential decay of E_0 and ∇E_0 and k-uniform bounds on all moments and block sums (TRUST_LEDGER A21), with explicit but astronomically weak constants. Reduced: nothing to new inputs. Open: realistic constants (δ ≈ 1.1, ν_2 ≈ 40 numerically), the Q_95 variant.
+STATUS: COMPLETE
