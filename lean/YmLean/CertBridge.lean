@@ -114,7 +114,7 @@ theorem rq_add (G G' : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) : rq (G + G'
 
 theorem rq_smul (a : ℝ) (G : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq ((a : 𝕜) • G) x = a * rq G x := by
-  rw [rq, rq, map_smul, ContinuousLinearMap.smul_apply, inner_smul_right, RCLike.re_ofReal_mul]
+  rw [rq, rq, map_smul, _root_.smul_apply, inner_smul_right, RCLike.re_ofReal_mul]
 
 theorem rq_sum {ι : Type*} (s : Finset ι) (G : ι → Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq (∑ i ∈ s, G i) x = ∑ i ∈ s, rq (G i) x := by
@@ -133,6 +133,16 @@ theorem rq_conjTranspose (G : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) : rq 
 theorem rq_herm (G : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq (((1 / 2 : ℝ) : 𝕜) • (G + Gᴴ)) x = rq G x := by
   rw [rq_smul, rq_add, rq_conjTranspose]; ring
+
+/-- `w wᴴ` is positive semidefinite: `re⟪x, w wᴴ x⟫ = ‖wᴴ x‖² ≥ 0`. -/
+theorem rq_rank_nonneg (w : Matrix n Unit 𝕜) (x : EuclideanSpace 𝕜 n) : 0 ≤ rq (w * wᴴ) x := by
+  rw [rq, EuclideanSpace.inner_eq_star_dotProduct, ofLp_toEuclideanCLM, ← mulVec_mulVec,
+    dotProduct_comm, dotProduct_mulVec,
+    show star x.ofLp ᵥ* w = star (wᴴ *ᵥ x.ofLp) by rw [star_mulVec, conjTranspose_conjTranspose]]
+  simp only [dotProduct, Pi.star_apply, map_sum]
+  refine Finset.sum_nonneg fun i _ => ?_
+  rw [RCLike.star_def, RCLike.conj_mul]
+  norm_cast; positivity
 
 /-- Weyl, Rayleigh form: `λ_max(G) ≤ λ_max(G₀) + ‖G − G₀‖₂`. -/
 theorem rq_weyl (G G₀ : Matrix n n 𝕜) {c p : ℝ} (h₀ : ∀ x, rq G₀ x ≤ c * ‖x‖ ^ 2)
@@ -183,3 +193,76 @@ theorem pert_bound (Z XZ T2 T2h : Matrix n n 𝕜) (w xw : Matrix n Unit 𝕜) {
   have t3 := norm_add₃_le (a := Dᴴ * (T2h * XZ)) (b := (T2h * XZ)ᴴ * D) (c := Dᴴ * T2h * D)
   have b4' : (‖XZ‖ + ε) * r2 * (‖XZ‖ + ε) = (‖XZ‖ + ε) ^ 2 * r2 := by ring
   nlinarith
+
+/-- (3) The certified bound of `final_bound` (h1cert_cell.py), composed. Bordered matrix `B` on
+`n ⊕ Unit` (n = 4 coarse directions, one border row) with entrywise enclosure around `Bm`; float
+`X ≈ Bm⁻¹`; `Z, w` = blocks (1,1), (1,2) of `B⁻¹`; `XZ, xw` the same blocks of `X`; `T2` enclosed around
+the Hermitian `T2h`; the true rank-one coefficient `γ' = (σ/|β|²)τ²/|K̂|²` varies over the cell and
+`γ ≥ γ'` is the code's `gam` (`w wᴴ ⪰ 0`, so raising the coefficient raises `λ_max`); `core` an upper bound on `λ_max(XZᴴ T2h XZ + γ xw xwᴴ)` (`lam_max_upper`).
+Then `B` is invertible and `λ_max(Zᴴ T2 Z + γ w wᴴ) ≤ core + pert`, with
+`ε = nX η/(1 − η)` and `pert` as in the code. The code outputs `√(core + pert)/L ≥ ρ_1`. -/
+theorem cell_sup_bound (B Bm X : Matrix (n ⊕ Unit) (n ⊕ Unit) 𝕜) (EB : Matrix (n ⊕ Unit) (n ⊕ Unit) ℝ)
+    (hB : ∀ i j, ‖B i j - Bm i j‖ ≤ EB i j) {nX f0 : ℝ} (hX : ‖X‖ ≤ nX)
+    (hf0 : frob (X * Bm - 1) ≤ f0) (hη : orEta f0 nX EB < 1)
+    (T2 T2h : Matrix n n 𝕜) (E2 : Matrix n n ℝ) (hT : ∀ i j, ‖T2 i j - T2h i j‖ ≤ E2 i j)
+    (hH : T2hᴴ = T2h) {γ' γ core ε : ℝ} (hγ' : 0 ≤ γ') (hγγ : γ' ≤ γ)
+    (hε : ε = nX * orEta f0 nX EB / (1 - orEta f0 nX EB))
+    (hcore : ∀ x, rq (X.toBlocks₁₁ᴴ * T2h * X.toBlocks₁₁ +
+      (γ : 𝕜) • (X.toBlocks₁₂ * X.toBlocks₁₂ᴴ)) x ≤ core * ‖x‖ ^ 2) :
+    IsUnit B ∧ ∀ x, rq ((B⁻¹).toBlocks₁₁ᴴ * T2 * (B⁻¹).toBlocks₁₁ +
+      (γ' : 𝕜) • ((B⁻¹).toBlocks₁₂ * (B⁻¹).toBlocks₁₂ᴴ)) x ≤
+      (core + (2 * ‖T2h * X.toBlocks₁₁‖ * ε + ‖T2h‖ * ε ^ 2 + (‖X.toBlocks₁₁‖ + ε) ^ 2 * frob E2 +
+        γ * (2 * ‖X.toBlocks₁₂‖ * ε + ε ^ 2))) * ‖x‖ ^ 2 := by
+  obtain ⟨hu, -, hdiff⟩ := cell_invertible B Bm X EB hB hX hf0 hη
+  rw [← hε] at hdiff
+  have hZ : ‖(B⁻¹).toBlocks₁₁ - X.toBlocks₁₁‖ ≤ ε := by
+    have : (B⁻¹).toBlocks₁₁ - X.toBlocks₁₁ = (B⁻¹ - X).submatrix Sum.inl Sum.inl := by ext; rfl
+    rw [this]; exact (norm_submatrix_le _ _ _ Sum.inl_injective Sum.inl_injective).trans hdiff
+  have hw : ‖(B⁻¹).toBlocks₁₂ - X.toBlocks₁₂‖ ≤ ε := by
+    have : (B⁻¹).toBlocks₁₂ - X.toBlocks₁₂ = (B⁻¹ - X).submatrix Sum.inl Sum.inr := by ext; rfl
+    rw [this]; exact (norm_submatrix_le _ _ _ Sum.inl_injective Sum.inr_injective).trans hdiff
+  refine ⟨hu, fun x => ?_⟩
+  have hW := rq_weyl _ _ hcore (pert_bound _ _ _ _ _ _ hZ hw (entrywise_to_opnorm _ _ _ hT) hH
+    (hγ'.trans hγγ)) x
+  rw [rq_add, rq_smul] at hW ⊢
+  nlinarith [rq_rank_nonneg (B⁻¹).toBlocks₁₂ x]
+
+/-- The final step of `cell_bound2` (h1cert_cell2.py): `G(δ) = c + Σ_ν δ_ν g_ν + R_G` (Taylor-1 model,
+`|δ_ν| ≤ h`, `|R_G i j| ≤ r i j`). If `lam` bounds `λ_max` of the Hermitian part of `G` at every vertex
+`δ ∈ {±h}^ι` (no remainder), then `λ_max(G(δ)) ≤ lam + ‖r‖_F` on the whole box. For fixed `x` the
+Rayleigh quotient is affine in `δ`; the vertex `s_ν = h·sign(re⟪x, g_ν x⟫)` dominates it. -/
+theorem vertex_bound {ι : Type*} [Fintype ι] (c : Matrix n n 𝕜) (g : ι → Matrix n n 𝕜)
+    (RG : Matrix n n 𝕜) (r : Matrix n n ℝ) {h lam : ℝ} (hR : ∀ i j, ‖RG i j‖ ≤ r i j)
+    (hv : ∀ s : ι → ℝ, (∀ ν, s ν = h ∨ s ν = -h) → ∀ x,
+      rq (((1 / 2 : ℝ) : 𝕜) • ((c + ∑ ν, ((s ν : ℝ) : 𝕜) • g ν) + (c + ∑ ν, ((s ν : ℝ) : 𝕜) • g ν)ᴴ)) x
+        ≤ lam * ‖x‖ ^ 2)
+    (δ : ι → ℝ) (hδ : ∀ ν, |δ ν| ≤ h) (x : EuclideanSpace 𝕜 n) :
+    rq (c + ∑ ν, ((δ ν : ℝ) : 𝕜) • g ν + RG) x ≤ (lam + frob r) * ‖x‖ ^ 2 := by
+  set s : ι → ℝ := fun ν => if 0 ≤ rq (g ν) x then h else -h
+  have hs : ∀ ν, s ν = h ∨ s ν = -h := fun ν => by simp only [s]; split_ifs <;> simp
+  have key := hv s hs x
+  rw [rq_herm, rq_add, rq_sum] at key
+  rw [rq_add, rq_add, rq_sum]
+  have hle : ∑ ν, rq (((δ ν : ℝ) : 𝕜) • g ν) x ≤ ∑ ν, rq (((s ν : ℝ) : 𝕜) • g ν) x :=
+    Finset.sum_le_sum fun ν _ => by
+      rw [rq_smul, rq_smul]; simp only [s]; split_ifs with hp
+      · nlinarith [le_abs_self (δ ν), hδ ν]
+      · nlinarith [neg_abs_le (δ ν), hδ ν]
+  have hRn := (rq_le_norm RG x).trans (mul_le_mul_of_nonneg_right
+    ((l2_le_frob RG).trans (frob_mono RG r hR)) (sq_nonneg _))
+  nlinarith
+
+end YmLean
+
+#print axioms YmLean.frob_mono
+#print axioms YmLean.entrywise_to_opnorm
+#print axioms YmLean.interval_to_opnorm
+#print axioms YmLean.cell_invertible
+#print axioms YmLean.sel_norm_le
+#print axioms YmLean.norm_submatrix_le
+#print axioms YmLean.rq_herm
+#print axioms YmLean.rq_rank_nonneg
+#print axioms YmLean.rq_weyl
+#print axioms YmLean.pert_bound
+#print axioms YmLean.cell_sup_bound
+#print axioms YmLean.vertex_bound

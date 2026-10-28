@@ -99,7 +99,7 @@ def jets(L, Ki, h, M, N, M0=None):
     """Per axis, arrays (L, nb): centre f, f', f'', p, p' (derivatives wrt k), cell sup |f|, |f'|, |f''|, cell inf p, cell phi_min."""
     ns = list(range(-N, N + 1)) if M in ("inf", "M0") else list(range(-(M - 1) // 2, (M - 1) // 2 + 1))
     up = lambda a: np.nextafter(float(a.abs_upper()), np.inf)
-    out = {k: np.zeros((L, len(ns))) for k in ("f", "f1", "f2", "p", "p1", "fu", "f1u", "f2u", "plo", "phi")}
+    out = {k: np.zeros((L, len(ns))) for k in ("f", "f1", "f2", "p", "p1", "p2", "fu", "f1u", "f2u", "f3u", "plo", "phi")}
     hk = h / L; fac = [1, 1, 2, 6, 24]
     for l in range(L):
         lp = l if l <= (L - 1) // 2 else l - L
@@ -113,7 +113,8 @@ def jets(L, Ki, h, M, N, M0=None):
             f4 = co(fser(arb_series([kb, 1]), n, M)[0], 4) * 24           # crude ball enclosure of f^(4) (multiplies h_k^2 or more)
             # centred form over the cell: sup|f^(j)| <= sum_{i=j}^{3} |f^(i)(k_c)| h_k^(i-j)/(i-j)! + sup|f^(4)| h_k^(4-j)/(4-j)!
             sj = lambda jj: sum((D[i].abs_upper() * arb(hk)**(i - jj) / fac[i - jj] for i in range(jj, 4)), arb(0)) + f4.abs_upper() * arb(hk)**(4 - jj) / fac[4 - jj]
-            out["fu"][l, j], out["f1u"][l, j], out["f2u"][l, j] = up(sj(0)), up(sj(1)), up(sj(2))
+            out["fu"][l, j], out["f1u"][l, j], out["f2u"][l, j], out["f3u"][l, j] = up(sj(0)), up(sj(1)), up(sj(2)), up(sj(3))
+            out["p2"][l, j] = 2 * float(co(p, 2).mid())
             plo = co(p, 0) - co(p, 1).abs_upper() * hk - arb(hk)**2               # |p''| <= 2
             out["plo"][l, j] = max(np.nextafter(float(plo.lower()), -np.inf), 0.0)
             if M0:
@@ -172,6 +173,11 @@ def d_tm(L, M, Kc, h, N):
     KB = kern([(aB, [2 * x for x in aB])], plo, 1.5)[0]; KC = kern([(fu, fu)], plo, 2)[0]
     hk = h / L
     r = (0.5 * hk**2 * (2 * KA + 8 * KB + 40 * KC)) * (1 + 1e-12) + EPSS * (KA + 8 * KB)
+    H = np.zeros((4, 4) + c.shape, complex)
+    idx = np.argsort((r / c).max(1))[-NEXACT:]                          # blocks with the largest relative box remainder
+    for ch in np.array_split(idx, max(1, len(idx) // 10)):
+        bc, bg, bH, br = d_exact(L, J, ch)
+        c[ch], grad[:, ch], H[:, :, ch], r[ch] = bc.real, bg.real, bH, br
     ax = None
     if Mj == "inf":
         ax = [axis_data(L, Kc[i], h, "inf", N) for i in range(4)]
@@ -184,7 +190,33 @@ def d_tm(L, M, Kc, h, N):
         tail = (Em[0][:, None, None, None] + Em[1][None, :, None, None] + Em[2][None, None, :, None] + Em[3][None, None, None, :])
         thi = tail.reshape(-1)[:, None] * (1 + 16 * U) / float((qmin * qmin).lower()) + diff
         c = c + thi / 2; r = r + thi / 2 * (1 + 1e-12)
-    return TM(c + 0j, grad + 0j, np.zeros((4, 4) + c.shape, complex), r)
+    return TM(c + 0j, grad + 0j, H, r)
+
+
+NEXACT = 200
+
+
+def d_exact(L, J, blocks):
+    """Box part of d_mu at the given blocks as a TM-2, term by term: per axis f = c + g d + H d^2 + R with g = f'/L, H = f''/(2L^2),
+    |R| <= sup|f^(3)| h_k^3/6 (centred form of jets), p likewise with |p^(3)| <= 2/M (0 for M = inf; bound 2 used); then
+    w_mu = prod_rho F_rho f_mu / sum p_rho in TM-2 arithmetic (third order and up in r) and a sum over the box."""
+    hk = HH / L; nb = J[0]["f"].shape[1]; lb = np.array(np.unravel_index(blocks, (L,) * 4)).T   # (B, 4)
+    def ax(rho, key, dkey, d2key, rad):
+        sh = [len(blocks)] + [1] * 4; sh[1 + rho] = nb
+        c = J[rho][key][lb[:, rho]]; g = np.zeros((4,) + c.shape); H = np.zeros((4, 4) + c.shape)
+        g[rho] = J[rho][dkey][lb[:, rho]] / L; H[rho, rho] = J[rho][d2key][lb[:, rho]] / (2 * L * L)
+        return TM(c + 0j, g + 0j, H + 0j, np.broadcast_to(rad, c.shape) + 4 * U * np.abs(c)).rs(*sh)
+    F = [ax(rho, "f", "f1", "f2", J[rho]["f3u"][lb[:, rho]] * hk**3 / 6) for rho in range(4)]
+    Qs = ax(0, "p", "p1", "p2", 2 * hk**3 / 6)
+    for rho in range(1, 4): Qs = Qs + ax(rho, "p", "p1", "p2", 2 * hk**3 / 6)
+    iQ = Qs.recip(); S = F[0] * F[1] * F[2] * F[3] * iQ
+    out = []
+    for mu in range(4):
+        w = S * F[mu]
+        for a in (4, 3, 2, 1): w = w.sum(a)
+        out.append(w.rs(len(blocks)))
+    st = lambda key, ax: np.stack([getattr(o, key) for o in out], ax)
+    return st("c", -1), st("g", -1), st("H", -1), st("r", -1)
 
 
 # ---------------------------------------------------------------- V' = Q'^dag E and m' = |k^|^2 P E^dag Kh as truncated Taylor series

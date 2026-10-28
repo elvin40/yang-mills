@@ -35,3 +35,21 @@ Consequences.
 - P_⊥E_l = P_⊥E⁰_l, and E⁰_lk̂_l = A(k_l)K̂ (S_L(k_μ)k̂_μ = K̂_μ), so P_⊥E⁰_lP_l = P_⊥E⁰_l. Hence P_⊥TP_⊥ = P_⊥ diag(s²Σ_l|E⁰_{l,μμ}|²d^M_μ(k_l)) P_⊥ = P_⊥ diag(L^{−2}Σ_l w_{l,μ}d^M_μ(k_l)) P_⊥, w_{l,μ} := Π_ρa_{l,ρ}²·a_{l,μ}².
 - Tower identity (exact, from the Prop. A sum with n = l + L m): σ^{ML}_{n,ρ}(K) = a_{l,ρ}·σ^M_{m,ρ}(k_l), q̃^{ML}_n = L q̃^M_m(k_l), so d^{ML}_μ(K) = L^{−2}Σ_l w_{l,μ} d^M_μ(k_l).   (2.2)
 - (2.2) with the previous line proves (I1): P_⊥TP_⊥ = P_⊥diag(d^{ML}(K))P_⊥, so Z = Δ_j(K) (Prop. A at level ML). [P]
+
+## 3. The transverse part (proved)
+
+Lemma T. For all j ≥ 1 (M = L^{j−1}, including M = ∞), K ∈ BZ ∖ {0}, odd L ≥ 3:
+
+  ρ_t² := λ_max(Z T2 Z)/L² ≤ γ_L · F(K),   F(K) := 1/(|K|² d̲(K)),   d̲(K) := min_μ Σ_{n∈Z⁴, |n|_∞≤h} Π_ρ σ_{n,ρ}² · σ_{n,μ}² / |q_n|²,   (3.1)
+
+with q_n = K + 2πn, σ_{n,ρ} = sin(K_ρ/2)/(q_{n,ρ}/2) (the M = ∞ Prop. A terms, truncated to |n|_∞ ≤ h = (L−1)/2) and γ_L := sinc(π/(2L))^{−2} (γ_13 = 1.00487).
+
+Proof. (a) T2 = s²Σ_l E_l(P_lD_lP_l)²E_l^† ≤ max_l‖P_lD_lP_l‖·T, and ZTZ = Z (Z = (P_⊥TP_⊥)^+, Z = P_⊥ZP_⊥). So ZT2Z ≤ d_max Z, d_max := max_{l,μ} d^M_μ(k_l).
+(b) Upper bound on d^M. In (A.1) every weight c_m := Π_ρ(σ^M_{m,ρ})²(σ^M_{m,μ})² ≤ Π_ρ(σ^M_{m,ρ})², and Σ_mΠ_ρ(σ^M_{m,ρ})² = Π_ρΣ_{m_ρ}(σ^M_{m,ρ})² = 1 (Fejér, for finite M and for M = ∞). So d^M_μ(k) ≤ 1/min_m|q̃^M_m(k)|². Over all l and m the smallest |q̃| is at the representative K_ρ/L in each direction (|K_ρ| ≤ π; 2M sin(x/2M) increases on [0, Mπ]), so d_max ≤ 1/Σ_ρ(2M sin(K_ρ/(2ML)))² ≤ L²γ_L/|K|² (2M sin(x/2M) ≥ 2 sin(x/2) ≥ x·sinc(π/2L) for |x| ≤ π/L).
+(c) ‖Z‖ = 1/λ_min(P_⊥diag(d^{ML})P_⊥ on K̂^⊥) ≤ 1/min_μ d^{ML}_μ(K) (compression, (I1)).
+(d) Lower bound on d^{ML}, uniform in M. N := ML ≥ L. Each Prop. A term at level N dominates the M = ∞ term with the same n: N|sin(q/2N)| ≤ |q/2| gives σ^N ≥ σ^∞ termwise, and |q̃^N| ≤ |q|. The N-window contains |n|_∞ ≤ h. All terms are ≥ 0, so d^N_μ(K) ≥ the truncated M = ∞ sum. So min_μ d^{ML}_μ ≥ d̲(K).
+Combine: ρ_t² ≤ d_max‖Z‖/L² ≤ γ_L/(|K|²d̲(K)). ∎ [P]
+
+Remarks. F is L-independent except through the truncation h (larger h only increases d̲, so F with h = 6 bounds every L ≥ 13). F → 1 as K → 0 (n = 0 term, σ → 1). Nothing in (3.1) depends on j.
+Numerical values of F (h = 6 unless noted): K → 0: 1.0000; (π,0,0,0): 3.040; (π,π,0,0): 3.648; corner (π,π,π,π): 4.950 (exact ρ_t-bound input ‖Δ_∞‖ = 195.19 = 1/d); face argmax of ρ_1 (2.48,2.48,π,π): 5.453; coarse 12⁴ sorted grid (h = 3): max 5.83 near (2.30, 2.30, 2.30, 2.86). [N]
+Comparison at L = 5, j = ∞, K = (2.4,2.4,π,π): exact ρ_1² = 3.842; d_max‖Z‖/L² = 4.81; γ_5F = 5.47.
