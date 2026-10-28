@@ -307,3 +307,38 @@ Even with every row of Tables 1–4 closed, these remain, by design or by scope:
 6. Published-mathematics trust. Class-A items (Table 1: CMP 95, 96 propositions, CMP 96 Lemma 2.1, CMP 98 Prop. 2 and (124)–(146), CMP 99-reg Prop. 6, CMP 102 Thm 1 and Props. 3–4, 6, CMP 109 Sects. 3–5, CMP 116 sup induction, CMP 119 (2.6)–(2.9), CMP 122 I–II, and A13 itself) are accepted, not re-proved. Of these, only CMP 96 Lemma 2.4 was re-proved, and its printed proof was wrong for L ≥ 10. So the class-A trust is not zero-risk.
 7. External citations X2–X5 (OS II, Osterwalder–Seiler reflection positivity [text not fetched], Cammarota, Savvidy).
 8. Verification grade. "Verified" in this project means an independent Opus or Fable agent checked the write-out against page images. No human referee has read any of it. Lean covers only small lemmas (Combes–Thomas, Schur, slab counterexample, K1′ numerics, rho2_le, P4).
+
+## Status addendum (2026-10-28 night)
+
+Every line below is [per PLAN.md, not independently checked]. Quotes are PLAN.md wording. "Running" items are as stated in the launch brief; PLAN.md records them as "→ verifier Bxxx" or "→ ... pass".
+
+### Top-5 targets
+
+1. (C) as one theorem. [per PLAN.md, not independently checked]
+   - SOURCES_C_CONDITION_VERIFY: "ALL FIVE CLAIMS CONFIRMED. (C) PROVED for G and G_1 relative to: (KE′) [V] (torus-uniform constants [R]), CMP 99 Thm 3.1 (a = 1), Thm 3.3 (3.46) [R-sketch], Thm 3.11 (G > 0) [R], the (3.137) constant [R], CMP 96 Lemma 2.1 [V]; project steps (H_Q), Theorem QE, S2 [P]; readings [I-a1], [I-geom], d-path metric, the Δ^{(2)} symmetry reading; parameters θ ≤ δ_0/2, θ_S ≤ δ_H/8."
+   - "the (C) condition is no longer a bare hypothesis — it is a verified reduction to Balaban's printed theorems plus readings." Lemma T plus (Vol) discharge the torus side. A3's γ_0 does not imply (C).
+   - TRUST_LEDGER round 9 added A24 (printed CMP 99 inputs of the (C) proof), C43, C44.
+2. CMP 99 Thms 3.7, 3.9, 3.10 write-outs. [per PLAN.md, not independently checked]
+   - THM37_FULL: "NEEDS FIXES, all local." (X-PU) is "a Balaban ERROR, not a sharpening". Fix pass F18 is queued "after THM310 lands" (applied/pending per brief; PLAN does not record it as applied).
+   - THM39_FULL: "NEEDS FIXES (minor, local) → PAPER-GRADE after them." F17 APPLIED. "(AL) as written UNSUPPORTED; (AL′) PROVED rel. CMP 98 Prop. 2 [R] + one reading." F19 (three (AL′) edits plus the WG_FULL (I3) rate fix) is pending after the THM310 verifier.
+   - THM310_FULL: "(Opus, 337 lines, unverified)". "→ verifier B118" (running per brief). Grade proposal: "R1 (Thm 3.10) SKETCH → [P] given Cor. 3.6 [R-sketch], THM37_FULL, THM39_FULL, the [I] items".
+3. B3 and the beta_1 tension. [per PLAN.md, not independently checked]
+   - SOURCES_T2_LLL_VERIFY: "(L-LL) PROVED relative to three standard results ... and S123 Lemma 5.1's identification step [I]" (PROVED+VERIFIED).
+   - SOURCES_T2_MPT_STEPC: "B3's (F) PROVED relative to textbook facts ... + verified project lemmas". Proper-time route; "(3.1′) holds WITHOUT STEPB Lemma 2 and WITHOUT Step C". "→ verifier B115" (running per brief). "Remaining: verifier; the upstream S123 Lemma 5.1 identification [I]; the STEPB §2.0 neutral-sector sketch."
+   - "The β_1 slope tension unchanged" and "[N] ... open". The jax port (B105) restarted beta1 on the GPU: "projected 3–5 h for all six points". The GPU test is running per brief. Route B (B9) is not needed if B3 holds.
+4. s-rule convention and (M1). [per PLAN.md, not independently checked]
+   - SOURCES_SRULE_CONVENTION_VERIFY: "C-new-2 ADMISSIBLE rel. (FI) for tree factors [R], WG-G1 [R], I-a, C34". Three edits listed. "→ ledger: add convention row C45".
+   - SOURCES_M1_SWEEP: "(M1) CLOSED [V] as a list". "→ verifier B117 brief" (running per brief). NEW-1 Euclidean part and NEW-2 supplied.
+   - Open outside (M1): "NEW-3 — CMP 119 pp. 275–276 use the walk expansions in the multiscale Ω-sequence geometry ... (I-37 / C-new-3)". "NEW-4 — CMP 122 II (1.7)–(1.13), (1.21), (1.40), (1.77) use a lower bound on the R-operation Hessian ... (D3 / SOURCES_D2 §8)".
+5. CMP 109 p. 254 transfer. [per PLAN.md, not independently checked]
+   - SOURCES_P254_TRANSFER_VERIFY: "(1) CONFIRMED ... (2) CORRECTED ... Status: p. 254 transfer PROVED rel. CMP 98 [R], A18, the M axiom; p. 253 ASSERT separate and partial; p. 275 ASSERT needs a row."
+   - A25 (p. 253) and A26 (p. 275) added at ledger round 10. "a short write-out for the p. 253 'valid universally' and p. 275 assertions (B114)" (running per brief).
+   - "NEW GAP IN WC_FULL: §3.1(2) applies A3-4.3 in the exponential gauge where the axial condition fails, so WC_FULL's 'A3-4.3 uses no condition inside the blocks' is FALSE — fix = the same (d, L) constant change (γ_exp smaller)". The fix is listed as "WC_FULL §3.1(2) constant fix ... at ledger round 10" (running per brief).
+
+### Per-table lines [per PLAN.md, not independently checked]
+
+- Table 1 [R]: of the 18 entries that needed work, Thm 3.9 now has a paper-grade write-out ("PAPER-GRADE after" F17, which is applied). Thm 3.7 is "NEEDS FIXES" (F18 pending). Thm 3.10 is unverified. So 1 of 3 covariant write-outs is paper-grade. Also proved relative to a source: the p. 254 transfer (R26). R4 of A2 is "verified". (C) pieces R-sketches are tagged in A24. Other Table 1 rows (B20 W4-R, B21 (S′), A9, A12, A20, A22) were verified in other PLAN entries.
+- Table 2 [I]: 8 VERIFY entries with "images" grades plus the (AL) check (images) appear in PLAN since the CLOSURE_PLAN entry: B20_W4R, BOOKKEEPING, C_CONDITION, IV12, P254_TRANSFER, SRULE_CONVENTION, THM39, THM37 (9 with the (AL) check). Settled readings include the gauge-covariance reading of CMP 98 (64)–(108) (U3, U4, U6 [P]), block-diagonality of Q′_j (CMP 98 (77)–(80)), and the I-22 s-rule corrections. I-09 and I-10 are addressed in SOURCES_P254_TRANSFER (I-10 wording corrected in the verifier).
+- Table 3 conventions: added C43 ((Cv1), (Cv2)), C44 (Lemma T cut-off, (T2), parameters), C45 (s-rule convention C-new-2), C46 (γ²β′ ≤ 1/L). Dropped: C9 ("C9 UNUSED (A17 at r = 1; A5's 'C9' is H0's internal label)"). Ledger counts: "A 22 / B 22 / C 46 / X 5".
+- Table 4 (C): see Top-5 item 1. Torus-side hypothesis "DISCHARGED" by Lemma T with (Vol) and M ≥ c_T/22 (added to B18). Free-case constants c_−^free = 5.10e−3 (d = 4).
+- §8 residue: unchanged except these items, which PLAN lets me mark changed. Item 2 (torus size): the torus-side inequality of (C) is discharged by Lemma T and (Vol); C31 remains. Item 8 (verification grade): Lean now has 45 files (count reconciled), not the six small lemmas listed. Item 6 (published-mathematics trust): the p. 254 transfer and (C) now rest on printed CMP 98/99 inputs tracked as A24, A25, A26 (A24 to A26 are "Group A rows of T2 without verified proof/reduction"). Plans for infinite volume are in INFINITE_VOLUME_*.md; Elvin removed plans from the paper. All other residue items 1, 3, 4, 5, 7 unchanged.
