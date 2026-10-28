@@ -1,4 +1,4 @@
-# Lean 4 formalization (21 files)
+# Lean 4 formalization (22 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -25,13 +25,14 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `Schur.lean` | `schur_test_weighted`, `schur_test` (65) | SOURCES_LOC.md §3.3; SOURCES_S2_FORM.md §2 Π3; SOURCES_A3_SIGMA.md 2.6 | VERIFY_CombesThomas.md |
 | `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 Lemma CT (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
 | `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (212) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
+| `Resolvent.lean` | `resolvent_identity`, `resolvent_bound`, `lower_transfer`, `neumann_perturb`, `resolvent_chain`, `wnorm_mul_le`, `wnorm_neumann`, `pwnorm_mul_le`, `pwnorm_neumann` (210) | SOURCES_A3_SIGMA.md §4 (4.2, 4.5); SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N | VERIFY_Resolvent.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 21 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 22 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -249,3 +250,9 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - `rescale_exp` (L d_{k+1} ≤ 2d_k, θκ ≥ 0 ⇒ e^{−θκd_k} ≤ e^{−θκ(L/2)d_{k+1}}), `rescale_rate` (κ > 0: θκL/2 ≥ (1+4β)κ ⇔ θL/2 ≥ 1+4β), `K1_iff` (θ, L > 0: θ(1−10δ)L/2 ≥ 1+4β ⇔ δ ≤ (1/10)(1 − 2(1+4β)/(θL))), `K1_numeric` (L = 13, θ = 1/2, β = 1/4: δ_θ = 1/26 ≤ 0.0385; δ = 0.03 satisfies (K1)).
 - `xexp_le` (θ > 0: x e^{−θx} ≤ 1/(θe), from Real.add_one_le_exp), `xexp_absorb` (θ > 0: x e^{−x} ≤ e^{−(1−θ)x}/(θe)).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: multilinearity of C_s itself (infinite absolutely convergent walk sum of monomials), the eigenvalue consequences (a)–(b) of A3_SIGMA 3.2, (K1)/(K2) of KUNIF, (K2) of KAPPA2, the x^{−1}x^A absorption (trivial).
+
+## Resolvent.lean (SOURCES_A3_SIGMA.md §4 4.2, 4.5; SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N); statement check `VERIFY_Resolvent.md`
+
+- (a)–(c), spectral norm, 𝕜 = ℝ or ℂ, no symmetry assumed: `resolvent_identity` (C_1, C_s invertible ⇒ C_1⁻¹ − C_s⁻¹ = C_1⁻¹(C_s − C_1)C_s⁻¹), `resolvent_bound` (‖C_s − C_1‖ ≤ η ⇒ ‖C_1⁻¹ − C_s⁻¹‖ ≤ ‖C_1⁻¹‖η‖C_s⁻¹‖), `lower_transfer` (re⟪v, Av⟫ ≥ γ_0‖v‖², ‖A − B‖ ≤ ε ⇒ re⟪v, Bv⟫ ≥ (γ_0 − ε)‖v‖²), `neumann_perturb` (η‖C_1⁻¹‖ < 1 ⇒ C_s invertible, ‖C_s⁻¹‖ ≤ ‖C_1⁻¹‖/(1 − η‖C_1⁻¹‖), via `oishi_rump` with R = C_1⁻¹), `resolvent_chain` (‖C_1⁻¹‖ ≤ γ_1, 2γ_1η ≤ 1 ⇒ ‖C_s⁻¹‖ ≤ 2γ_1, ‖C_1⁻¹ − C_s⁻¹‖ ≤ 2γ_1²η, re⟪v, C_s⁻¹v⟫ ≥ (γ_0 − 2γ_1²η)‖v‖²).
+- (d), weighted row-sum norm `wnorm w K = sup_x Σ_y ‖K x y‖ w x y` for a two-point weight w > 0 with w(x,z) ≤ w(x,y)w(y,z) and w(x,x) ≤ 1: `wnorm_mul_le` (submultiplicative), `wnorm_neumann` (‖K‖_w < 1 ⇒ 1 − K invertible, ‖(1 − K)⁻¹‖_w ≤ 1/(1 − ‖K‖_w); proof by injectivity and X = 1 + KX, no series). `pw p x y = p y / p x` gives ‖K‖_p = sup_x Σ_y |K x y| p y/p x: `pw_props`, `pwnorm_mul_le`, `pwnorm_neumann`. The weight e^{ρ|x−y|} of A2_R2 §3 also satisfies the hypotheses.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; no lemma), the bound ‖T‖_ρ ≤ 2a²w of Lemma N, the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.

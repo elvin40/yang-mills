@@ -151,7 +151,7 @@ Proved here, given (S): Lemma T (flatness ⇒ ρ^{N−|β|}); Lemma P (packing �
 Refuted from the brief: "order-4 vanishing gives an integrable |x − y|^{−4}". It gives a log divergence in 4D (§2.1). Order ≥ 5 is needed even with the true |x − y|^{−8} singularity; the lossy proof here uses order 11n. D_n is flat, so the theorem is not affected.
 
 Hypothesis, not proved here: (S). Its parts and their status in the sources:
-1. Gevrey (n!)^{2+η}, uniform in ε: D3R §4.1, "proved, given the per-term bounds of D3 (iv)". Those bounds use the propagation of holomorphy through every RG operation, which D3 marks [reduced] (an assumption, SOURCES_D2_VERIFY V7). D3 Theorem itself (the sourced large-field step) is a target, not proved (D3 §1.3).
+1. Gevrey (n!)^{1+η} [aligned 2026-10-28; 1+η (2+η under the fallback) [aligned 2026-10-28] only under the fallback], uniform in ε: D3R §4.1, "proved, given the per-term bounds of D3 (iv)". Those bounds use the propagation of holomorphy through every RG operation, which D3 marks [reduced] (an assumption, SOURCES_D2_VERIFY V7). D3 Theorem itself (the sourced large-field step) is a target, not proved (D3 §1.3).
 2. Separation constant C(σ)^n ≤ C^n (log log 1/σ)^{O(n)}: D3R §4.3(d), "proved as a count". I use only the weaker σ^{−a}, a < 1.
 3. Validity down to σ = 16ε. Not checked in D3 (G1), which argues at scales Mλ_m ≳ δ. Fallback [derived here]: if (S) holds only for σ ≥ ε^θ (some θ ∈ ]0, 1]), stop the scales at δ ~ 4ε^θ and treat {ρ < 4ε^θ} as in §4.5: the bound is C^n ε^{θN − 4n}‖F‖_N, bounded for N ≥ 4n/θ. Then s = max(11, ⌈4/θ⌉ + 1). So any power-law threshold suffices; only a threshold independent of ε (σ ≥ σ_0 > 0) would not.
 4. Multilinear form in N(f) with five derivatives: follows from the F_r bound by scaling (§1 item 3). If the true dependence is only on ‖f‖_∞ and ‖∇f‖_∞ (D2 uses only C¹, SOURCES_D2 line 44), the exponent 5n drops to n and s drops to about 6.
@@ -160,4 +160,4 @@ Minor: for ℓ > 512 the top-scale cells have h > 1, so N(g) carries max(1, h^{�
 
 What N1 does not give. The bound is uniform but lossy (each bump costs h^{−5}, true size O(g²)). It gives no information on the limit beyond (OS0) via ASSEMBLY §2.4–2.5. It does not use the e^{−κd} decay directly; that decay is inside (S).
 
-Status change proposed for ASSEMBLY §2.3: (B-N1) from [open] to [derived, unverified, given (S)], with s = 11, D any > 2. Needs an independent verifier before it is load-bearing.
+Status change proposed for ASSEMBLY §2.3: (B-N1) from [open] to [derived, unverified, given (S)], with s = 6 (D > 1; D > 2 under the fallback) [aligned 2026-10-28], D any > 2. Needs an independent verifier before it is load-bearing.

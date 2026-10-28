@@ -70,9 +70,10 @@ theorem resolvent_chain (C₁ Cs : Matrix n n 𝕜) (h₁ : IsUnit C₁) {γ₀ 
   obtain ⟨hs, hb⟩ := neumann_perturb C₁ Cs h₁ hη (by linarith)
   have hs2 : ‖Cs⁻¹‖ ≤ 2 * γ₁ := hb.trans (by
     rw [div_le_iff₀ (by linarith)]; nlinarith)
+  have hγ0 : 0 ≤ γ₁ := hn0.trans hγ₁
   have hR : ‖C₁⁻¹ - Cs⁻¹‖ ≤ 2 * γ₁ ^ 2 * η := (resolvent_bound C₁ Cs h₁ hs hη).trans (by
-    have := norm_nonneg Cs⁻¹
-    calc ‖C₁⁻¹‖ * η * ‖Cs⁻¹‖ ≤ γ₁ * η * (2 * γ₁) := by gcongr; linarith
+    calc ‖C₁⁻¹‖ * η * ‖Cs⁻¹‖ ≤ γ₁ * η * (2 * γ₁) := mul_le_mul
+          (mul_le_mul_of_nonneg_right hγ₁ hη0) hs2 (norm_nonneg _) (mul_nonneg hγ0 hη0)
       _ = 2 * γ₁ ^ 2 * η := by ring)
   exact ⟨hs, hs2, hR, lower_transfer _ _ hγ₀ hR⟩
 
@@ -86,7 +87,7 @@ noncomputable def pw (p : n → ℝ) (x y : n) : ℝ := p y / p x
 
 theorem row_le_wnorm (w : n → n → ℝ) (K : Matrix n n 𝕜) (x : n) :
     ∑ y, ‖K x y‖ * w x y ≤ wnorm w K :=
-  le_ciSup (Set.finite_range _).bddAbove x
+  le_ciSup (f := fun x => ∑ y, ‖K x y‖ * w x y) (Set.finite_range _).bddAbove x
 
 theorem wnorm_nonneg {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y) (K : Matrix n n 𝕜) :
     0 ≤ wnorm w K :=
@@ -101,9 +102,11 @@ theorem wnorm_add_le {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y) (A B : Ma
     _ ≤ _ := by rw [sum_add_distrib]; exact add_le_add (row_le_wnorm _ _ x) (row_le_wnorm _ _ x))
     (add_nonneg (wnorm_nonneg hw _) (wnorm_nonneg hw _))
 
-theorem wnorm_one_le {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y) (hdiag : ∀ x, w x x ≤ 1) :
+theorem wnorm_one_le {w : n → n → ℝ} (hdiag : ∀ x, w x x ≤ 1) :
     wnorm w (1 : Matrix n n 𝕜) ≤ 1 :=
-  Real.iSup_le (fun x => by simp [one_apply, hdiag x]) zero_le_one
+  Real.iSup_le (fun x => by
+    rw [sum_eq_single x (fun y _ hy => by simp [one_apply, Ne.symm hy]) (by simp)]
+    simpa using hdiag x) zero_le_one
 
 /-- (N1) **Submultiplicativity**: `‖K L‖_w ≤ ‖K‖_w ‖L‖_w` if `w x z ≤ w x y · w y z`. -/
 theorem wnorm_mul_le {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y)
@@ -112,7 +115,7 @@ theorem wnorm_mul_le {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y)
   Real.iSup_le (fun x => calc
     ∑ z, ‖(K * L) x z‖ * w x z ≤ ∑ z, ∑ y, ‖K x y‖ * w x y * (‖L y z‖ * w y z) :=
         sum_le_sum fun z _ => by
-          rw [mul_apply, sum_mul]
+          rw [mul_apply]
           refine (mul_le_mul_of_nonneg_right (norm_sum_le _ _) (hw x z)).trans ?_
           rw [sum_mul]
           refine sum_le_sum fun y _ => ?_
@@ -148,7 +151,7 @@ theorem wnorm_neumann {w : n → n → ℝ} (hw : ∀ x y, 0 < w x y)
       rw [sub_mulVec, one_mulVec, sub_eq_zero] at this; exact this.symm
     set V : Matrix n n 𝕜 := Matrix.of fun x _ => v x
     have hKV : K * V = V := by
-      ext x y; rw [← hv]; simp [V, mul_apply, mulVec, dotProduct]
+      ext x y; simpa [V, mul_apply, mulVec, dotProduct] using congrFun hv x
     have hV0 : wnorm w V ≤ 0 := by
       have h1 := wnorm_mul_le hw0 htri K V
       rw [hKV] at h1
@@ -169,7 +172,7 @@ theorem wnorm_neumann {w : n → n → ℝ} (hw : ∀ x y, 0 < w x y)
   have hb : wnorm w X ≤ 1 + wnorm w K * wnorm w X := by
     calc wnorm w X = wnorm w (1 + K * X) := by rw [← hX]
       _ ≤ _ := (wnorm_add_le hw0 _ _).trans
-          (add_le_add (wnorm_one_le hw0 hdiag) (wnorm_mul_le hw0 htri _ _))
+          (add_le_add (wnorm_one_le hdiag) (wnorm_mul_le hw0 htri _ _))
   rw [le_div_iff₀ (by linarith)]
   nlinarith
 

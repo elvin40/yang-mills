@@ -19,3 +19,4 @@ import YmLean.Tower
 import YmLean.Schur
 import YmLean.CombesThomas
 import YmLean.Interp
+import YmLean.Resolvent

@@ -69,3 +69,11 @@
 - FLAG: SOURCES_GGAIN_NONMONO_VERIFY.md exists (01:09 local) and grades item 7 → 7′ YES as a [P] item; tags kept at "verifier running" as briefed.
 - README.md (~/git/yang_mills): Target 1 open line, (H-hist), new Balaban-level core line, (M-C)/B21/B22, Lean 21, 66 pages.
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 66 pages (was 63); 40 hyperref PDF-string warnings, 9 overfull boxes (unchanged); aux files deleted.
+
+## Pass 7 (F9)
+- ASSEMBLY_N1.md: aligned 2026-10-28 with the verified C¹ + Lemma C form (SOURCES_D4D5 §5.1–§5.2, HHIST_N1_VERIFY claim 6, SOURCES_B21_S_VERIFY §5). Dated line added; 24 exact replacements in header result line, §0, §1, §3.4, §4.1, §4.3–§5.3.
+- Form: N(f) = max(‖f‖_∞/r, ‖∇f‖_∞/ρ_1) (D4D5 form, single factor 2 in λ_i = 2N); order (n!)^{1+η}; s = 6; D > 1 (D > 2 fallback, order 2+η without coarsest-scale (FX2) radius); D/σ = 3/8; min diam ≤ σ added; C_L = (…)^3 ≈ 18 (old ≈ 11.2 was a slip).
+- NOT edited (outside brief): §2.1 l. 38–39, §3.1 (D) with |β_i| ≤ 10 (valid a fortiori), §3.2, §4.2 (still C⁵ powers (1+|q|)^5 h^{−5}), §6 ledger items 1, 3, 4 and last line (s = 11, 2+η). These now disagree with §4–§5.
+- paper/assembly.tex: 2 edits (B-N1 row: alignment done, open list trimmed; B-N1 sketch closing sentence: supersedes ∂^5, δ^{−5n}, s ≥ 20). Sketch items 2 and 5 left as the historical route.
+- Fix outside brief: bare SOURCES_GGAIN_NONMONO_VERIFY wrapped in \file{} (assembly.tex ×2, remains.tex, appendix.tex); it caused 12 "Missing $" errors.
+- Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs or citations; 66 pages; aux files deleted.
