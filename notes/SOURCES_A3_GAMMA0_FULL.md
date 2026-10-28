@@ -5,7 +5,7 @@ Inputs read: SOURCES_A3_GAMMA0.md §1–§7, SOURCES_A3_GAMMA0_VERIFY.md (all), 
 Firewall: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [V] read on a page image; [P] proved here; [R] cited published result, not re-proved; [I] open input.
 
-Headline. Theorem A3 holds with γ_0 = γ_L/4, γ_L = m_L/(12d²L^d), m_L = min(2(1 − cos(π/L)), 1/L). For 2 ≤ L ≤ 9, m_L = 1/L and γ_0 = (48d²)^{−1}L^{−d−1}. Two changes against the earlier files: (a) the κ_π gap is REMOVED, not bounded: the minimizer already satisfies RD*A_* = 0 (Lemma 5), so no oblique projection appears; (b) Balaban's corridor bound (2.127) is false as printed for L ≥ 10, so Lemma 2.4's printed constant is proved here only for L ≤ 9; for L ≥ 10 the proved constant is smaller by the factor 2L(1 − cos(π/L)) ≥ 4/L (§3.4).
+Headline. Theorem A3 holds with γ_0 = γ_L/4, γ_L = m_L/(12d²L^d), m_L = min(2(1 − cos(π/L)), 1/L). For 2 ≤ L ≤ 9, m_L = 1/L and γ_0 = (48d²)^{−1}L^{−d−1}. Two changes against the earlier files: (a) the κ_π gap is REMOVED, not bounded: the minimizer already satisfies RD*A_* = 0 (Lemma 5), so no oblique projection appears; (b) Balaban's slab bound inside (2.127) is false for L ≥ 10 (and (2.127) itself for L ≥ 30), so Lemma 2.4's printed constant is proved here only for L ≤ 9; for L ≥ 10 the proved constant is smaller by the factor 2L(1 − cos(π/L)) ≥ 4/L (§3.4).
 
 ## §0 Setting, notation, and statement
 
@@ -130,7 +130,7 @@ Proof. Write f(x) := B(x, x+e_μ) for x ∈ F(c).
  By Cauchy–Schwarz, |β_∓|² ≤ (Σw_b²)Σ|B|² ≤ L^{d−1}(L−1)L^{−2d}Σ|B|² ≤ L^{−d}Σ_{μ-bonds ⊂ B(c_∓)}|B|². By (3.3),
  |(Q_1B)(c)|² ≥ ⅓L^{−2d}|Σ_F f|² − L^{−d}Σ_{μ-bonds⊂B(c_−)}|B|² − L^{−d}Σ_{μ-bonds⊂B(c_+)}|B|².
  (c) Combine L^{−d}·(a) + (b). The ν-bonds of F_∓ and the μ-bonds of B(c_∓) are disjoint subsets of B(c_∓). So the subtracted terms are ≤ L^{−d}Σ_{b⊂B(c_∓)}|B|². The main term is ⅓L^{−d}[Σ|∇f|² + L^{−d}|Σf|²] ≥ ⅓L^{−d}m_LΣ_F|f|² by (3.1). ∎
-Remark (printed constant). Balaban asserts that the bracket is ≥ L^{−1}Σ|f|² (p. 245, "bounded from below by L^{−d−1}Σ|B_μ(x)|²" after the factor L^{−d}). Test f = the mean-zero mode cos(π(x_ν − c_ν + ½)/L): the bracket equals λ_1(L)Σ|f|². For L ≥ 10, λ_1(L) < 1/L. So the printed (2.127) is false for L ≥ 10. For L ≤ 9 it is true and (3.2) is exactly (2.127).
+Remark (printed constant). Balaban asserts that the bracket is ≥ L^{−1}Σ|f|² (p. 245, "bounded from below by L^{−d−1}Σ|B_μ(x)|²" after the factor L^{−d}). Test f = the mean-zero mode cos(π(x_ν − c_ν + ½)/L): the bracket equals λ_1(L)Σ|f|². For L ≥ 10, λ_1(L) < 1/L, so this intermediate claim is false for L ≥ 10. The printed (2.127) itself fails for the configuration B = f on 𝒦(c), B = 0 on all block bonds, once λ_1(L) < 1/(3L), i.e. for L ≥ 30 (left side L^{−d}λ_1Σ|f|², right side ⅓L^{−d−1}Σ|f|², Q_1B(c) = 0). For L ≤ 9 the claim is true and (3.2) is exactly (2.127).
 
 3.4 Assembly: Lemma 3 [P]. For B as in 3.0 with the axial condition,
  L^{d−2}Σ_c|(Q_1B)(c)|² + Σ_p|(∂_1B)(p)|² ≥ γ_L‖B‖², γ_L := m_L/(12d²L^d). (3.4)

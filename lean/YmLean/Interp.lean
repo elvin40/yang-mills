@@ -40,7 +40,7 @@ def AffineEach (F : (S → ℝ) → E) : Prop :=
 theorem convex_aux (F : (S → ℝ) → E) (hF : AffineEach F) (U : Finset S) (s : S → ℝ) :
     F s = ∑ T ∈ U.powerset, ((∏ c ∈ T, s c) * ∏ c ∈ U \ T, (1 - s c)) •
       F (fun c => if c ∈ U then (if c ∈ T then 1 else 0) else s c) := by
-  induction U generalizing s with
+  induction U using Finset.induction_on generalizing s with
   | empty => simp
   | insert a U ha ih =>
     have h0 := hF s a (s a)
@@ -61,10 +61,10 @@ theorem convex_aux (F : (S → ℝ) → E) (hF : AffineEach F) (U : Finset S) (s
       rw [p1, p2, e, prod_insert (fun h => ha (mem_sdiff.mp h).1)]
       congr 1
       · ring
-      · funext c
+      · congr 1; funext c
         by_cases hc : c = a
         · subst hc; simp [ha, haT]
-        · simp [mem_insert, hc, Function.update_of_ne hc]
+        · simp [mem_insert, hc]
     · have p1 : ∏ c ∈ T, Function.update s a 1 c = ∏ c ∈ T, s c :=
         prod_congr rfl fun c hc => Function.update_of_ne (by rintro rfl; exact haT hc) _ _
       have p2 : ∏ c ∈ U \ T, (1 - Function.update s a 1 c) = ∏ c ∈ U \ T, (1 - s c) :=
@@ -80,10 +80,10 @@ theorem convex_aux (F : (S → ℝ) → E) (hF : AffineEach F) (U : Finset S) (s
       rw [p1, p2, e, prod_insert haT]
       congr 1
       · ring
-      · funext c
+      · congr 1; funext c
         by_cases hc : c = a
-        · subst hc; simp
-        · simp [mem_insert, hc, Function.update_of_ne hc]
+        · subst hc; simp [ha]
+        · simp [mem_insert, hc]
 
 /-- A3_SIGMA §3.2: for F affine in each variable and s ∈ [0,1]^S,
 F(s) = Σ_T w_T(s) F(corner_T), with w_T(s) ≥ 0 and Σ_T w_T(s) = 1. -/
@@ -94,12 +94,13 @@ theorem multilinear_convex (F : (S → ℝ) → E) (hF : AffineEach F) (s : S �
   refine ⟨?_, fun T => mul_nonneg (prod_nonneg fun c _ => (hs c).1)
     (prod_nonneg fun c _ => by linarith [(hs c).2]), ?_⟩
   · rw [convex_aux F hF univ s, ← powerset_univ]
-    simp [cornerWeight, corner]
+    simp [cornerWeight]; rfl
   · rw [← powerset_univ]
     have := prod_add s (fun c => 1 - s c) univ
     simp only [add_sub_cancel, prod_const_one] at this
     simpa [cornerWeight] using this.symm
 
+omit [Fintype S] in
 /-- The walk weight s ↦ Π_{c∈T} s_c is affine in each coordinate (A3_SIGMA §3.2: "each
 σ_0 cube enters once, with degree ≤ 1"). -/
 theorem monomial_affine (T : Finset S) : AffineEach (fun s : S → ℝ => ∏ c ∈ T, s c) := by
@@ -146,7 +147,7 @@ theorem rescale_rate (θ L β κ : ℝ) (hκ : 0 < κ) :
 theorem K1_iff (θ L β δ : ℝ) (hθ : 0 < θ) (hL : 0 < L) :
     1 + 4 * β ≤ θ * (1 - 10 * δ) * L / 2 ↔ δ ≤ 1 / 10 * (1 - 2 * (1 + 4 * β) / (θ * L)) := by
   have hθL : 0 < θ * L := mul_pos hθ hL
-  rw [div_le_iff₀ (by norm_num : (0 : ℝ) < 2), ← sub_nonneg, ← sub_nonneg (a := δ)]
+  rw [le_div_iff₀ (by norm_num : (0 : ℝ) < 2), ← sub_nonneg, ← sub_nonneg (b := δ)]
   have e : 1 / 10 * (1 - 2 * (1 + 4 * β) / (θ * L)) - δ
       = (θ * (1 - 10 * δ) * L - (1 + 4 * β) * 2) / (10 * (θ * L)) := by
     field_simp; ring
