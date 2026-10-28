@@ -59,3 +59,65 @@ The dropped part of d_μ (|l|_∞ > N) lies in [Lo_μ, Hi_μ], from:
 - two or more large components: [0, Σ_{pairs} E_ρE_ρ′/(2q_min²)], E_ρ = 1 − Σ_{box}σ_ρ².
 Δ is then enclosed by the mean-value form Δ(d_lo + δ) ∈ Δ(d_lo) − Σ_μ [0, t_μ](Δ_ξe_μ)(Δ_ξe_μ)^†, from ∂Δ/∂d_μ = −(Δe_μ)(Δe_μ)^† (Δ is the inverse of P′diag(d)P′ on T′); the δ_μ are independent intervals. The width of the d-enclosure scales like N^{−4}. Checked: the enclosure contains a Richardson-extrapolated reference (1D closed-form sum over l_4, 3D box N = 60, 80) at k = (0.8, −0.4, 2.1, π) and at the worst block k = (2.896, 2.896, π, π) for N = 2–20.
 
+## 3. Prototype: numerics/h2cert_proto.py (Mac, one core, python-flint arb, 96-bit)
+
+Method at one K (j = ∞, both levels Prop. A at M = ∞).
+- Entries as exact expressions in arb: ghost and k̂ from e^{ik}; the (0.4) row from B0_L3.pkl with every coefficient rounded to k/648 (all 1836 entries are within 1.3·10^{−11} of such a rational); phases e^{i offs·k_l}.
+- Δ_∞(k_l): box sum |l|_∞ ≤ N in float64 with outward-rounded inputs and the a priori IEEE bound (term error ≤ γ_8, sum of M nonnegative terms ≤ γ_{M−1}), plus the two-sided tail of §2(iv), plus the mean-value Δ enclosure.
+- Each bordered solve: Oishi–Rump. R = float inverse of the midpoint. η ≥ ‖R𝔅_mid − 1‖_F + ‖R‖·r, r = max block radius + rest; ‖𝔅^{−1}‖ ≤ ‖R‖/(1 − η); ‖H − H̃‖ ≤ ‖𝔅^{−1}‖·(‖𝔅_midX̃ − E‖_F + r_blk‖H̃‖ + r_rest‖X̃‖_F). ‖R‖_2 is bounded by ‖(R^†R)^{2^m}‖_F^{1/2^{m+1}} (m = 7 outer, 4 inner). Lower bound ‖𝔅^{−1}‖ ≥ ‖Rv‖/(1 + η).
+- ρ_2: λ_max of the 4 × 4 Gram matrix of the exact float product X̃ = (⊕H̃_in,l)H̃_j (upper bound by Sylvester's criterion on tI − G, lower by a Rayleigh quotient), then ‖X − X̃‖ ≤ max_l e_in,l(‖H̃_j‖ + e_j) + max_l‖H̃_in,l‖e_j.
+
+Results at K = (2.4035, 2.4035, π, π), the j = ∞ argmax of B2_TWOSTEP §4:
+
+| run | enclosure of ρ_2 | width | float reference | time |
+|---|---|---|---|---|
+| truncated sum, |l|_∞ ≤ 2 (validation) | [2.063769, 2.063769] | 1.8·10^{−8} | 2.063769 (hscan, lmax 2) | 209 s |
+| true ρ_2(∞, K), N = 20 + tail | [1.999315, 2.127325] | 0.128 | 2.063361 (hscan, lmax 5) | 310 s |
+
+‖𝔅_∞(K)^{−1}‖ ∈ [42.744, 43.562] at this K (η = 9.5·10^{−3}). At the corner (π,π,π,π): ‖𝔅_∞^{−1}‖ ∈ [48.760, 50.024] (N = 20). Inner solves: max ‖𝔅_in^{−1}‖ ≤ 49.4, max ‖H_in‖ ≤ 5.191, ‖H_j‖ ≤ 5.231.
+So at this K: ρ_2(∞, K) ≤ 2.128 < 3, rigorously, given the stated inputs (ledger P1–P3).
+Width budget: the 0.128 comes from the tail radius of Δ (r_blk ≈ 2·10^{−4}) times ‖𝔅^{−1}‖ ≈ 49 times ‖H̃‖ ≈ 5 in the norm-wise bound. It scales as N^{−4}. N = 30 would give ≈ 0.025 but did not finish in 590 s on the Mac (13.8M terms per block, 6642 blocks); the box launcher uses N = 30.
+Validation of the Δ enclosure (§2(iv)): contains the extrapolated reference at two k, N = 2, 4, 6, 12, 20 (margins 10^{−6}–10^{−3}).
+
+## 4. Cost of the full certification
+
+Per-point cost now (Mac, one core): one-step point ≈ 5 s (81 Δ-blocks at N = 20 + one 328 solve with norm bounds); two-step point ≈ 310 s (6642 Δ-blocks dominate).
+
+Number of cells. A cell of half-width h is certifiable when Σ_ν h‖R∂_ν𝔅‖ ≲ 0.5 (§2 (i-a)). With g(K) := max_ν‖𝔅^{−1}∂_ν𝔅‖ (float, j = ∞, 60 random sorted K: quantiles min 1.6, median 4.0, 90% 8.3, max 12.5; 18.7 at the corner), the cell count on the sorted simplex is N_cells ≈ ∫(4g)⁴ dK = 256·vol·⟨g⁴⟩ ≈ 1.8·10⁶ per level. The corner region is undersampled; take 2–5·10⁶. The margin is not the binding constraint (true |∇ρ| ≤ 0.3).
+
+L = 3, per level j (needed: j = 1, …, 8 and [M_0, ∞], i.e. 9 one-step runs; two-step runs for j = 2, …, 8 and [M_0, ∞]).
+- One-step cells: 2·10⁶ cells × 3 point-costs (center + derivative enclosure) × 5 s ≈ 3·10⁷ core-s ≈ 8,000 core-h per level with the prototype. Too slow.
+- Two-step cells on S′ only (via (1.1)): S′ volume unknown; float sampling gives 0/50 points with the product ≥ 3 and 18% with ≥ 2.9. If certified overestimates push 5% of cells into S′: 10⁵ cells × 3 × 310 s ≈ 10⁸ core-s per level. Too slow.
+- Engineering that is clearly available: (a) sum one umklapp component in closed form (Σ_n 1/((k + 2πn)² + a²) = sinh a/(2a(cosh a − cos k))), so the box is 3D: 2.8·10⁶ → 6.9·10⁴ terms at N = 20 (40×); (b) solve the bordered system by its structure (block-diagonal A_l = k̂k̂^† + ¼Δ_l, rank-one ghost correction, 4-row border: an (L⁴ + 5)-unknown Schur scheme, O(L⁴) instead of (4L⁴)³; ~50× at L = 3); (c) vectorized float with a priori error bounds instead of Python-level arb loops. With (a)–(c), estimates: one-step cell ≈ 0.1–0.3 s, two-step cell ≈ 10–25 s. Then per level: one-step 2·10⁶ × 0.6 s ≈ 330 core-h; two-step 10⁵ × 50 s ≈ 1,400 core-h. Nine levels: ~1.5·10⁴ core-h. On a 16-core box: ~40 days. Order of magnitude only (factor ~3 either way).
+- Further reductions, not yet quantified: reuse one-step certificates for the inner factor (the k_l of a K-cell are cells of size h/L, covered by the one-step grid), adaptive cells (g is ≤ 4 on half the domain), and a sharper (componentwise) residual bound.
+
+L = 13. N = L⁴ = 28561 umklapps; the dense solve (114248 unknowns) is impossible, the structured solve is required. The threshold ρ_2 < 13 is wide. By (1.1), if sup_K ρ_1 < √13 = 3.606 at L = 13, the one-step certification alone proves (H2), with no two-step run. ρ_1 at L = 13 has never been measured (hcheck hardcodes L = 3; B0_L13 does not exist; the Step build at L = 13 is large). Per one-step point: 28561 Δ-blocks × ~1 ms (3D box) ≈ 30 s. Cell count unknown (g at L = 13 unknown; O6 suggests ‖𝔅^{−1}‖ may grow with L). If g is as at L = 3: 2·10⁶ cells × 90 s ≈ 5·10⁴ core-h per level. Not feasible as it stands; first step is a float measurement of ρ_1 and g at L = 13 at a few points.
+
+Box launcher: numerics/h2cert_launch.sh runs h2cert_proto.py at N = 30 at five points (j = ∞ argmax, one-step argmax on the face, corner, two off-face points), one file per point, skip-if-done. Not launched. It is a validation run, not the certification (the cell driver is not written).
+
+## 5. Ledger
+
+Proved / certified here.
+- C1. ρ_2(∞, K) ∈ [1.9993, 2.1273] at K = (2.4035, 2.4035, π, π), L = 3 (interval arithmetic, tail included, N = 20). Contains the float value 2.06336.
+- C2. ‖𝔅_∞(K)^{−1}‖ ∈ [42.744, 43.562] at that K; ‖𝔅_∞^{−1}‖ ∈ [48.760, 50.024] at the corner (Oishi–Rump with a certified ‖R‖_2).
+- C3. A two-sided enclosure of the Prop. A umklapp tail (§2(iv)) via three 1D closed forms, width ∝ N^{−4}; and the mean-value enclosure of Δ in d.
+- C4. The one-step factorization (1.1) ρ_2 ≤ ρ_1(j)·max_l ρ_1(j−1); and the j-tail replacement: one interval evaluation over M ∈ [M_0, ∞] via q̃ = qφ(q/M), φ ∈ [1 − z²/24, 1]. This removes the need for an explicit O5 constant. (Argued here, not implemented.)
+- C5. A uniform Λ_K from norm products (§2(i)) is ≥ 3·10³ and gives ~10^{13} cells. That route is not viable. The binding constraint for per-cell certificates is invertibility, ‖𝔅^{−1}∂𝔅‖ ≤ 19, not the margin.
+
+Inputs taken as given (P = premise).
+- P1. The (0.4) row coefficients are the rationals k/648 read from the float kernel (deviation ≤ 1.3·10^{−11}). An exact derivation from U3 (1.1) was not done. A safe alternative: treat each coefficient as an interval of radius 10^{−10} (cost: none).
+- P2. Float64 operations are IEEE with round-to-nearest (a priori bounds in dbox_float, the last-bit outward rounding of arb → float conversions).
+- P3. hcheck conventions (¼Δ, ghost DΠD^†, umklapp basis) are the ones that define ρ_2 (U3_AW_VERIFY §5).
+
+Measured, not certified.
+- M1. g = ‖𝔅^{−1}∂_ν𝔅‖: 1.6–12.5 on 60 random K, 18.7 at the corner; ‖∂_ν𝔅‖ ≤ 7.6; |∇ρ_1| ≤ 0.28; |∇ρ_2| ≤ 0.04 near the argmax.
+- M2. Product bound (1.1) at j = ∞: < 3 at 50/50 random K (max 2.995), ≥ 2.9 at 18%.
+- M3. ‖𝔅^{−1}‖ ≈ 49 at the corner in the hcheck normalization, not 195. The task's 195 and U3_REPAIRS' 177 use another normalization or Q̃ choice. Not reconciled.
+
+Open.
+- G1. The cell driver: per-cell invertibility (i-a) and mean-value enclosure (i-b), adaptive bisection on the sorted simplex, both one-step and two-step. Not written.
+- G2. Engineering (a)–(c) of §4. Without it the full run is ~10⁸–10⁹ core-s; with it ~1.5·10⁴ core-h (rough).
+- G3. Finite-j blocks (Prop. A at M = L^{j−1}, finite sums) and the [M_0, ∞] interval mode are not implemented; the prototype does j = ∞ only.
+- G4. k_ρ = 0 exactly (closed forms with 1/s²) needs the series form; the prototype asserts s ≠ 0. Cells touching K_ρ = 0 need it.
+- G5. L = 13: ρ_1 never measured; B0 for L = 13 not built; feasibility unknown. If sup ρ_1 < √13 there, (1.1) makes it one-step only.
+- G6. Not independently verified. A verifier should rerun h2cert_proto.py 20 (5 min), check §2(iv) (closed forms, the ≥ 2-large bound, the mean-value step), and check the Oishi–Rump residual bookkeeping in solve_cert.
