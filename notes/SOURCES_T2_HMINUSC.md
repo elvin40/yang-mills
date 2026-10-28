@@ -1,6 +1,6 @@
 # SOURCES_T2_HMINUSC — conditions (C1), (C2) of SOURCES_MA2 for (H−)
 
-Status: in progress (Claude Opus, 2026-10-28). Ledger at the end is authoritative.
+Status: complete, unverified (Claude Opus, 2026-10-28). Ledger §7 is authoritative.
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md §2 not read. No existing file edited.
 Tags: [P] proved here; [V] checked against a page image or text layer; [I] inference; [R] reduced to a named input; [R-A19] uses (190) on the complex ball as read in SOURCES_A17_A19.
 
@@ -75,3 +75,56 @@ If ε_1 ≤ a_*(C_1), then:
  Order: M_0 and the CMP 102 constants are fixed first; then γ. (C1*) is an upper bound on γ, the same type as Balaban's "γ sufficiently small" and as (A18-4) in slot B30 of SOURCES_ORDER_CANON. It adds no back edge [I: the slot of M_0 precedes B30; not re-read in the canon].
  Answer to the brief's question "M_0ε_k/ε_1 → 0 as g_k → 0?": with ε_1 chosen by (3.1) the ratio M_0ε_k/ε_1 is ≤ (1 − θ)κC_1 by construction, for every g_k. With a fixed ε_1 (e.g. ε_1 = a_*) it tends to 0 as g_k → 0. Both choices give the same (3.2).
 3.6 Verdict (C1): PROVED [P] given the kernel bound of the chosen case (K1–K4), under the one new smallness condition (C1*) on γ. MA2's form "M_0ε_k ≤ C_1ε_1" is (K1) at θ = ½.
+
+## 4. (C2): the localized map is an instance of CMP 102's map
+
+4.1 What U_{k,X} is [V images CMP 122 I pp. 180, 192].
+ - (1.74) p. 192: "U_{k,Z} = U_{k,Z}(V_k) = U(𝔹_k(Z), M^•(Q_k^{s*}V_k)). … It is defined in each component of Z separately."
+ - (1.19)–(1.20) p. 180: "We need also a sequence of determining sets, and the corresponding sequence of functions, localized in the region Z. The determining sets 𝔹_k^{(n)}(Z) are defined as above, by the equalities (1.14)–(1.17), but the set 𝔹_k ∩ (Ω_k ∪ Z^c) is replaced by 𝔹_k(Z) ∩ Ω_k. Thus, according to the definition (2.14) [III], they may be defined as 𝔹_k^{(n)}(Z) = 𝔹_k^{(n)} ∪ 𝔹_k(Z). The corresponding functions are defined by the gauge fields V restricted to Ω_k^c, and by M_{𝔹_k(Z)}(Q_k^{s*}V_k) restricted to Z ∩ Ω_k, thus U_{k,Z}^{(n)} = U(𝔹_k^{(n)}(Z), (M^•(Q_k^{s*}V_k)↾_{Z∩Ω_k}, V↾_{Z∩Ω_k^c}))."
+ - CMP 119 p. 256 (text): "A regular configuration V on B determines the minimal orbit … of the functional U → A^η(U) on U regular and M_B(U) = V. (2.12) For precise definitions and the theory of this variational problem see [15]. A minimal configuration … is denoted by U_B(V) … we will use all the results of [15]." [15] = CMP 102 "The variational problem and background fields …" (CMP 109 reference list l. 2535; CMP 119's list says "and references therein" to CMP 109).
+ - CMP 119 p. 256–257 (text): the localized determining sets B ∪ B_j(Ω) of (2.14)–(2.15) are built from "a sequence of maximal domains Ω = Ω_0 ⊃ Ω_1 ⊃ … ⊃ Ω_j such that Ω_n is a union of L^nξM_1-cubes, and dist(Ω_n, Ω_{n−1}^c) ≥ L^nξM_1", with "the distance between ∂Ω and this boundary of Ω_j, Ω_{j+1} … greater than, or equal to 2M_1".
+ Conclusion [P from the quotes]: U_{k,X_i} is CMP 102's map U(𝔹, ·) with the determining set 𝔹 = 𝔹_k^{(n)}(X_i) and external field (M^•(Q_k^{s*}V_k) on X_i ∩ Ω_k, V on X_i ∩ Ω_k^c). It is not a new map with boundary data on ∂X_i. The minimization is over all regular U on T_η with the averages M_𝔹(U) fixed; X_i enters only through which averages are fixed. So:
+ - there is no Dirichlet or other boundary condition at ∂X_i [P];
+ - MA2's premise "CMP 102 treats U_k on the full lattice" is incorrect: CMP 102 is stated for an arbitrary nested sequence Ω_0 ⊃ Ω_1 ⊃ … ⊃ Ω_k in T_η obeying (1) "(L^jη)^{−1}dist(Ω_j^c, Ω_{j+1}) > RM_1, R ≥ R_1" (p. 277, text), with one determining set per sequence. Theorem 1 and Sect. G (including Prop. 9 and (172)–(190)) are proved for every such sequence, with constants depending on d, L only (p. 279 [V]; CMP 99 p. 399 [V text, A18_REGULAR §1]: "the constants … do not depend on the sequence {Ω_j} if (2.1), (2.2) are satisfied").
+4.2 The ζ_i weights [P]. ζ_i ∈ C_0^∞(X_i) multiplies plaquettes in A(ζ_i, ·) = Σ_pζ_pP_p. It does not enter the map U_{k,X_i}. MA2 §4.1 already handles ζ_p ∈ [0, 1] in the chain rule (4.1) without using criticality (170), and the first term is ≥ 0 (MA2_VERIFY §3). So ζ_i adds nothing to (C2).
+4.3 Where V′ enters [I]. V′ lives on the scale-k bonds of Λ_i (CMP 122 I (1.77): "V_k↾Λ → A(U_{k,Z}(V_k))"). If Λ_i ⊂ Ω_k^c, V′ enters (1.20) directly as part of the external field V of CMP 102, and (172) applies verbatim with V_0 of 2.4. If Λ_i meets Ω_k, V′ enters there through the fixed local map m: V ↦ M^•(Q_k^{s*}V), which is analytic near 1 with local first and second derivatives bounded by a constant c_m(d, L) [I: the averaging maps of CMP 98 / CMP 119 (1.3), not re-read]. Then (a) the (172) condition becomes |m(V′V_0) − m(V_0)| < C_1ε_1, which holds if c_mM_0ε_k ≤ (1 − θ)κC_1ε_1: replace M_0 by c_mM_0 in (3.1) and (C1*); (b) the chain rule adds D𝓗·D²m to D²(𝓗∘m), a term bounded by (190) times c_m with the same decay, so c_Y gains O(1)c_1c_m. No ε is lost, because MA2's mechanism needs D²Y_p = O(η²) only; the ε of (H−) comes from |DP_p| ≤ c_Xε_kη². From Λ = (Ω̃^4_{k_0+1})^c ∩ Z (1.73) and Ω_k ⊂ Ω_{k_0+1}, which case occurs depends on the "~4" convention, not resolved here. Both cases are covered.
+4.4 What stays open in (C2) [R]. The determining set 𝔹_k^{(n)}(X_i) must satisfy CMP 102's hypothesis (1) and the cube class of Theorem 1. CMP 119 (2.13)–(2.14) print the distances "≥ L^nξM_1" and "≥ 2M_1", CMP 102 (1) asks "> RM_1, R ≥ R_1". These agree if CMP 119's M_1 is read as ≥ R_1M_1 of CMP 102 (a constant-naming reading [I]; CMP 102 p. 277 fixes R_1, M_1 "in such a way that all the results of [3, 5, 6] hold", and CMP 119 p. 256 says "we will use all the results of [15]"). This is exactly the item "[I] U_{k,Z} obeys CMP 102 Thm 1" already carried by row A18 (SOURCES_A18_REGULAR §9; A18_REGULAR_VERIFY V8). The external-field regularity at the base point is 2.4 [R-A18].
+4.5 Verdict (C2). (C2a)–(C2b) hold for U_{k,X_i} because U_{k,X_i} = U(𝔹_k^{(n)}(X_i), ·) is CMP 102's map at an admissible determining set [P from the printed definitions, given 4.4]. (C2c) is rows A4 + A19 at that determining set, with the same constants (Theorem 1, CMP 99 p. 399 uniformity). (C2d) is (1.80) [V] + row A18. Uniform in X_i and volume: CMP 102's constants depend on d, L only for every admissible sequence {Ω_j} [V]. Uniform in k: as for MA2 §4.6 (C_2, C_4, B_0 k-free is the A18 [I] item). So (C2) has NO content beyond A18 (item "U_{k,Z} obeys CMP 102 Thm 1", now with the precise reading 4.4) and the [I] of 4.3. REDUCED, and merged into A18.
+
+## 5. (H−) restated with updated hypotheses
+
+5.1 Statement [P given the listed inputs]. Hypotheses: A4 ((189), row A4, reduced to A1); A19 in one of the cases K1–K4 of 3.1 [R-A19 for K1, K2; fallback for K3, K4]; A18 including the item 4.4; (C1*) of 3.4 (with M_0 → c_mM_0 if 4.3's second case occurs); the [I] of 4.3. Then for every k, every component X_i, every X, Y in the closed cutoff ball (1.101), and h = Y − X:
+  D²F[h,h] ≥ −c_Hε_kΣ_b‖h_b‖²_2,
+  c_H = O_{M,M_0}(1)·c_X·(c_1² + O(1)c_1c_m + c_N^{(κ)}/(θκC_1))·K(ϑ_κ/2, d)²,
+ c_X = 2 + O(1)B_3B_5^{(122)}M^5 + O(1)M_0 (MA2 §4.3; (1.80) [V]), c_1 the (190) constant, c_N = O(1)(B_0C_4 + C_2)B_5 (MA2_VERIFY §3), c_N^{(κ)}, ϑ_κ as in 3.3, K(a, d) = sup_x Σ_y e^{−a d(x,y)}. At θ = ½: c_N^{(κ)}/(θκC_1) = c_N/C_1 (K1), 4c_N/C_1 (K2), 4c′_N/C_1 (K3), 16c′_N/C_1 (K4); all C_1-free. The c_1c_m term is absent if Λ_i ⊂ Ω_k^c (4.3). The first term of (4.1) is ≥ 0 (MA2_VERIFY §3), so no ε² term remains. c_H is uniform in k, X_i, volume, and the background in the class of 2.4.
+5.2 The (C1)-choice does not change c_H: ε_1 cancels in (3.2), and the ε of (H−) is ε_k from |DP_p| ≤ c_Xε_kη², not ε_1.
+5.3 What (H−) ⇒ (M-A) receives [P]. SOURCES_MA §5 uses (H−) along segments in the closed convex cutoff ball B̄ (Lemma S) with ε = ε_k and m = c_Hε_kΣ_b‖X_b − X*_b‖²_2 ≤ 4c_HNε_kr²L_i, r = M_0ε_k. 5.1 gives exactly this on B̄ (3.3(b) covers the boundary |X_b| = M_0ε_k through the margin θ). So (M-A) receives (H−) with the constant c_H of 5.1 and no change of form. In the fallback cases K3, K4 only the decay rate inside K(·, d) and the numeric factor change; (M-A) uses c_H as a number, so its proof is unchanged.
+
+## 6. Effect on TRUST_LEDGER chain item 5 and on B17
+
+6.1 Chain item 5 (l. 158) now reads "B17 ⇐ (M-A) ⇐ (H−) ⇐ A4 + A19 + A18 + (C1), (C2) of MA2". After this file:
+ - (C1) is removed as an open input. It is replaced by the condition (C1*) "M_0ε_k ≤ ½κC_1a_*(C_1) for all k", an upper bound on γ (slot of the final γ choice, with A18-4), plus the unprinted value a_* of CMP 102's smallness thresholds (same status as Balaban's a_0, a_1).
+ - (C2) is removed as a separate input. Its content is the A18 item "U_{k,Z} obeys CMP 102 Thm 1 / Sect. G", made precise in 4.4 (CMP 119 (2.14) determining sets satisfy CMP 102 (1); constant-name reading M_1^{(119)} ≥ R_1M_1^{(102)}), plus the [I] of 4.3 (the averaging map m is local and analytic with O(1) derivatives, if Λ_i meets Ω_k).
+ Proposed item 5: "B17 ⇐ (M-A) ⇐ (H−) ⇐ A4 + A19 (K1–K4) + A18 (incl. U_{k,X} ∈ CMP 102 class, 4.4) + (C1*) on γ [SOURCES_T2_HMINUSC]."
+6.2 B17's grade. B17 stays "reduced". The grade does not improve to "proved", because A4 (reduced to A1, which is not closed), A19 (readings), and A18 (reduced, with [I] items) remain. The input list shrinks by two named conditions and gains one γ-condition of a known, harmless type. Under the fallback K3/K4, the A19 readings of (189), (73) at complex B are not needed, but a complex kernel-entry sup from (187), (55) is (A17_A19_VERIFY V6 caveat (b)).
+6.3 Not done here. (a) The "~4" convention in (1.73), which decides the case in 4.3. (b) The numeric value of a_* (Balaban prints none). (c) The CMP 119 (2.14) vs CMP 102 (1) constant matching beyond the naming reading. (d) No page image of CMP 122 I p. 193 (text layer only for the ε < L²R_kε_k quotes) or of CMP 119 pp. 256–257 (text layer only).
+
+## 7. Ledger (authoritative)
+
+| item | claim | tag | basis |
+|---|---|---|---|
+| H1 | CMP 102 ε_1 = free regularity parameter of the external field ((7), ε_1 ≤ a_1); C_1 = the absolute constant of (14), reused in (172); all printed smallness conditions are upper bounds on ε_1 or C_1ε_1 | [V] pp. 278–281 text, p. 280 and p. 305 images; [P] reading of (172) as (14) | §2.1 |
+| H2 | U_k(V) does not depend on the admissible ε_1 (uniqueness of the critical orbit) | [P] from Thm 1 [V] | §2.1 |
+| H3 | CMP 116 ε_1 = fixed χ_k cut (A17), not CMP 102's ε_1; ε_k = g_kp_0(g_k) is the running cut of (1.80), (1.101) | [V] (via A17_A19, LEMMA_DPRIME_SWEEP for CMP 119 (2.4)) | §2.2–2.3 |
+| H4 | Base point V_0 satisfies (7) with ε_1^{(0)} ≤ max{B_5^{(122)}M^5, 1}L²R_kε_k on scale-k parts; elsewhere Balaban's own regularity | [V text p. 193–194] + [R-A18] | §2.4 |
+| H5 | Narrow reading of (172) contains |B| < ½C_1ε_1 (C_1ε_1 ≤ 1) | [P] num 0.8244 | §3.2 |
+| H6 | (C1) holds with ε_1 := max{ε_1^{(0)}, M_0ε_k/((1−θ)κC_1)}; Cauchy constant c_N^{(κ)}/(θκC_1), C_1-free and ε_1-free | [P] given case K1–K4 ([R-A19] or fallback) | §3.3 |
+| H7 | Only new condition: (C1*) M_0ε_k ≤ ½κC_1a_*; holds for all k iff g_k ≤ γ_{C1}; uniform in k, X_i, volume; raising C_1 is equivalent, not better | [P]; a_* unprinted [R] | §3.4–3.5 |
+| H8 | U_{k,X_i} = U(𝔹_k^{(n)}(X_i), ·), CMP 102's map at a localized determining set; no boundary data at ∂X_i; MA2's "full lattice" premise is wrong | [V] (1.74), (1.19)–(1.20) images; CMP 119 p. 256 text "we will use all the results of [15]" | §4.1 |
+| H9 | ζ_i does not enter the map; handled by MA2 (4.1) | [P] | §4.2 |
+| H10 | V′ enters directly, or through a local analytic averaging map m (cost: M_0 → c_mM_0, c_Y += O(c_1c_m)) | [I] | §4.3 |
+| H11 | (C2) reduces to the A18 item "U_{k,Z} obeys CMP 102 Thm 1/Sect. G", i.e. CMP 119 (2.14) sets satisfy CMP 102 (1) under the reading M_1^{(119)} ≥ R_1M_1^{(102)} | [R] + [I] naming | §4.4 |
+| H12 | (H−) with c_H = O_{M,M_0}(1)c_X(c_1² + O(1)c_1c_m + c_N^{(κ)}/(θκC_1))K(ϑ_κ/2,d)²; (M-A) receives it unchanged in form | [P] given A4, A19 case, A18, (C1*), H10 | §5 |
+| H13 | Chain item 5: (C1), (C2) removable; replaced by (C1*) on γ and the precise A18 item; B17 stays "reduced" | [P] bookkeeping | §6 |
+
+STATUS: COMPLETE
