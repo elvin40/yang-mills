@@ -1,0 +1,54 @@
+\section{Setup and notation}\label{sec:setup}
+
+This section fixes the notation for the whole paper. Sections~\ref{sec:lattice}--\ref{sec:oneloopnotation} serve the coupling flow of Section~\ref{sec:flow}. Section~\ref{sec:observables} serves the existence theorem of Section~\ref{sec:torus}. Section~\ref{sec:names} lists the names that would otherwise collide.
+
+\subsection{Lattice, measure, and scales}\label{sec:lattice}
+
+\emph{Notation.} $L$ is odd, $L>11$, fixed (Balaban, CMP 109 p.\ 256 \cite{balaban109}). $K\in\mathbb N$, $\varepsilon=L^{-K}$. The physical side $\ell\in\mathbb N$ is in units of the unit lattice. $T^4_\ell=(\mathbb R/\ell\mathbb Z)^4$ and $T_\varepsilon=(\varepsilon\mathbb Z/\ell\mathbb Z)^4$, so $N_\varepsilon=\ell L^K$ sites per direction. The Wilson action is $A(U)=\sum_p P_p(U)$, $P_p(U)=1-\tfrac12\operatorname{Re}\operatorname{tr}U(\partial p)\in[0,2]$, over unoriented plaquettes $p$. The measure is $\mu_\varepsilon=Z_\varepsilon^{-1}\exp(-g_0^{-2}A(U))\prod_b dU_b$ (Haar). $x_p$ is the centre of $p$.
+
+The bare coupling $g_0=g_0(\varepsilon,g)$ is any solution of the shooting problem of Lemma~\ref{lem:D} (Lemma D) with terminal coupling $g_K=g$. Lemma D gives existence, not uniqueness. Any choice works below.
+
+\subsection{Range of $L$}\label{sec:rangeL}
+
+Balaban assumes $L$ odd, $L>11$, as a standing assumption for the whole of CMP 109 (pp.\ 251--252; OCR line 124, verbatim confirmed in \file{THEOREM2_PROOF_VERIFY} Step 6) \cite{balaban109}. His construction of $\beta_j(g)$ for $g>0$ and his inductive assumption (H0) are therefore available only at odd $L>11$. Every statement below that uses (H0) or $\beta_j(g)$ at $g>0$ is stated for odd $L>11$, or carries ``(H0) and Balaban's construction at this $L$'' as an explicit hypothesis. Statements about the one-loop quantities $\beta_j(0)$, $S_k$, and the symbols $\sigma_j$ hold for odd $L\ge 3$.
+
+\subsection{The coupling sequence}\label{sec:couplings}
+
+$\varepsilon = L^{-K}$, so $\log(L^k\varepsilon)^{-1} = (K-k)\log L$. $u_k := 1/g_k^2$. Recursion (CMP 109 (0.18)/(0.20)): $u_{k+1} = u_k - \beta_{k+1}(g_k)$. The increment $\beta_{k+1}$ depends on the whole history $g_0,\dots,g_k$ (CMP 109 p.\ 298, \status{verified quote}). $\beta_j(0)$ is the one-loop (Gaussian) increment; it is history-independent by definition.
+
+Shooting notation: $u_k = 1/g_k^2$, $t = 1/g^2$, $T(k,K) := \sum_{i=k+1}^{K}\beta_i(g_{i-1})$. Clamp $\varphi(u) := \max(u, 1/\gamma^2)^{-1/2}$.
+
+Here $\gamma$ is the upper bound for the couplings in Ba{\l}aban's Theorem 1. Ba{\l}aban's small constant $\beta_0$ ($1/7$ in CMP 122 II p.\ 389) is not a coupling (Section~\ref{sec:needs}). In Lemma~\ref{lem:E} (Lemma E) the symbols $\beta_0$, $\beta_0'$ instead denote lower and upper bounds on $\beta_j(0)$, as in \file{LEMMAS.md}.
+
+\subsection{One-loop notation}\label{sec:oneloopnotation}
+
+The letter $K$ has two uses. As an integer it is the number of RG steps, $\varepsilon=L^{-K}$. As a vector $K\in\BZ=[-\pi,\pi]^4$ it is a momentum in the Brillouin zone of the coarse unit lattice; then $k_l=(K+2\pi l)/L$ are the fine momenta over $K$. The meaning is always clear from context. The other one-loop objects are defined where they are first used:
+\begin{itemize}
+\item $S_k$, the $p\to0$ $F^2$-coefficient of the composed $k$-step one-loop integral, and its telescoping into $\beta_j(0)$: Section~\ref{sec:telescope};
+\item $c=11N^2/(12\pi^2)$ and $b:=c\log L$: Section~\ref{sec:const};
+\item the $f^m$ Taylor symbols $\sigma_j^{(m)}(K)$ of the coarse kernel at level $j$, and $d_j$, $\kappa_j$, $\kappa_W^F$: Section~\ref{sec:decomp};
+\item $\Delta_M$ (Gaussian RG kernel at block size $M=L^j$), $\Delta_\infty$, and the bordered matrix $\mathfrak B_j(K)$: Sections~\ref{sec:symbols} and~\ref{sec:convergence};
+\item the one-step minimizer map $H_j(K)$, $\rho_1$, $\rho_2$, and the inequality (H2): Section~\ref{sec:H2};
+\item the plane-wave quantities $\beta_{j+1}(p)$, $\Gamma^{ex}$, $\theta_*$ of Route B: Section~\ref{sec:routeB}.
+\end{itemize}
+
+\subsection{Observables and Schwinger functions}\label{sec:observables}
+
+\emph{Observable} (class C1 of \file{SOURCES.md} \S1.2). $\varphi_p:=P_p-c_\varepsilon$, $c_\varepsilon:=\langle P_p\rangle_{\mu_\varepsilon}$. By hypercubic invariance (Section~\ref{sec:BTI}) $c_\varepsilon$ does not depend on $p$.
+
+\emph{Test space.} $\mathcal D_n:=\{F\in C^\infty(T^{4n}):$ every derivative of $F$ vanishes on every diagonal $\{x_i=x_j\}$, $i\ne j\}$. The norm is $\|F\|_m:=\max_{|\alpha|\le m}\sup|\partial^\alpha F|$. On the compact torus this is the Osterwalder--Schrader (OS) Schwartz seminorm without weights.
+
+\emph{Lattice Schwinger functions} (\file{SOURCES.md} \S1.3). $S_{n,\varepsilon}(F):=\sum_{p_1,\dots,p_n}F(x_{p_1},\dots,x_{p_n})\langle\varphi_{p_1}\cdots\varphi_{p_n}\rangle_{\mu_\varepsilon}$, $F\in\mathcal D_n$. These are moments, not cumulants (\file{SOURCES_VERIFY} item 5(a)). No field renormalization factor is inserted: \file{SOURCES_VERIFY} item 8 gives $B_K=\prod c_j$ bounded above and below ($c_j=1+O(g_{j-1}^3)$, $\sum g_j^3<\infty$), so a bounded factor $B_K^n$ changes only the normalization of the limit.
+
+\emph{Scaling check} (\file{SOURCES_VERIFY} item 4, derived there). $\langle\varphi_p\varphi_{p'}\rangle\sim\varepsilon^8g^4|x_p-x_{p'}|^{-8}$ at tree level. So $S_{2,\varepsilon}(F)=O(1)$ for $F\in\mathcal D_2$ with no rescaling, while $\sum_pf(x_p)\varphi_p$ has variance $\sim\varepsilon^{-4}$. The limit object is a family of distributions off the diagonals, not a random field.
+
+\emph{Extra hypothesis found while writing the source.} $\ell$ is even (sufficient for the reflection argument; see Section~\ref{sec:corrections}, item~\ref{corr:ell}). For a reflection of the periodic lattice to exchange two halves with both seams being link planes, $N_\varepsilon$ must be even. With $L$ odd, $N_\varepsilon=\ell L^K$ is even iff $\ell$ is even.
+
+\subsection{Names}\label{sec:names}
+
+Hypotheses are named by short labels in parentheses, such as (H2), (PI), or (FX); the dependency table (Section~\ref{sec:deptable}) lists each one with its status. Three names of the project files collide in one document and are changed here; Appendix~\ref{app:labels} records the old names.
+\begin{itemize}
+\item The plane-wave theorem of \file{BETA_FP_PW} (its Theorem 3.2, called ``Theorem B'' there) is called \ThmPW{} (Theorem~\ref{thm:PW}), so that ``Theorem~B'' means the main Theorem~\ref{thm:B}.
+\item The three global conditions of the dependency table, called (G1)--(G3) in \file{ASSEMBLY.md}, are called (GC1)--(GC3). The labels (G1) (constraint conditions of Proposition~\ref{prop:anchorfree}) and (G2) (per-cell infinite-volume densities) keep their meaning from the Theorem 2 files.
+\item The final sourced bound of \file{SOURCES_D4D5.md}, called (S) there, is called (S$_{\mathrm{src}}$). The label (S) means the smallness condition of Section~\ref{sec:needs}.
+\end{itemize}
