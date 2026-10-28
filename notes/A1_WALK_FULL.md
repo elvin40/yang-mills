@@ -36,7 +36,7 @@ No existing file is edited. Sections are appended one per step.
  Source: Theorem WG-G of SOURCES_WG §2.8 [P given CMP 99 Thms 3.7, 3.9, 3.10 printed sketches, VERIFIED in SOURCES_WG_VERIFY], then Q-normalization and S-rescaling (SOURCES_A1_WALK §4.0). The rate is δ_G := δ_W′ − (d/2 + 1)θ, where δ_W′ is the rate of the G-expansion before rescaling and θ := log L/(RM).
 (H2) Lower bound (C). Re⟨u, N̂u⟩ ≥ c_−‖u‖² for all u ∈ ℋ, with c_− = 1/K_ext > 0 uniform in regular U, j, k, η, {Ω_j}, and volume (SOURCES_A1_KERNEL §8 (C); conditional per SOURCES_A1_WALK_VERIFY (6)).
 (H3) Geometry (G) of §2.1: the cube cover, the partition of unity h_□, and the enlarged cubes □⁺.
-(H4) Constant order: (d, L, a, a_0) → θ at a minimal M → c_±, δ_G, Σ, b_G, c_G, C_𝒟, c_X → ε → M_1 → M → α_0 (§9). The last step includes WG-1: α_0 ≤ c′M^{−1}M_1^{−10} for G, and α_0 ≤ c″M^{−1}M_1^{−12} for G_1 (§6.6, §8.4). This is the M_1 form of WG_FULL 4.7, as WG_FULL_VERIFY restates it. In CMP 99 notation (walk cube size M) it reads α_0 ≤ c′M^{−11}; since M_1 ≤ M, that form implies the M_1 form. WG-1 is admissible because α_0 is fixed after M and M_1.
+(H4) Constant order: (d, L, a, a_0) → θ at a minimal M → c_±, δ_G, Σ, b_G, c_G, C_𝒟, c_X → ε → M_1 → M → α_0 (§9). The last step includes WG-1: α_0 ≤ c′M^{−1}M_1^{−10} for G, and α_0 ≤ c″M^{−1}M_1^{−12} for G_1 (§6.6, §8.4). This is the M_1 form of WG_FULL 4.7, as WG_FULL_VERIFY restates it. In CMP 99 notation (walk cube size M) the G row reads α_0 ≤ c′M^{−11} and the G_1 row α_0 ≤ c″M^{−13}; since M_1 ≤ M, each CMP 99 form implies its M_1 form. WG-1 is admissible because α_0 is fixed after M and M_1.
 
 ### 0.5 Statement
 Theorem A1-W. Assume (H1)–(H4). Put c_+ := C_𝒟b_G and
@@ -154,7 +154,7 @@ Proof. Fix □. Since supp h_□ ⊂ □⁻ ⊂ □, h_□ = 1_□h_□ = h_□1
 So N̂h_□ = E^sep_□ + E^tr_□ + N̂_□h_□. Next, N̂_□h_□ = h_□N̂_□ + E^com_□. By 3.4(a), h_□N̂_□C_□h_□ = h_□1_□h_□ = h_□². Hence
  N̂h_□C_□h_□ = h_□² + (E^sep_□ + E^tr_□ + E^com_□)C_□h_□ = h_□² + F_□.
 Sum over □ and use Σ_□ h_□² = 1. ∎
-Comparison [V]. CMP 96 (2.82) [image p. 237] is Q′G′²Q′*C = Σ h_□(□Q′G′(□̃)²Q′*□)C_□h_□ − Σ[h_□, □Q′G′(□̃)²Q′*□]C_□h_□ − Σ □Q′(G′(□̃)² − G′²)Q′*h_□C_□h_□ − Σ_{□,□′≠□}(□ − 1)h²_{□′}Q′G′²Q′*h_□C_□h_□ = I − ΣR_{□,□′}C_□h_□. It has one main sum and three error sums: commutator, domain change, and separation. CMP 99 (3.95) [V text p. 411] has the same three. Our F_□ is −Σ_{□′}R_{□,□′}, that is, −R after summing over □′ (Balaban splits the separation sum over □′ by h²_{□′}), with G′(□̃) replaced by the truncated sum. Balaban's sizes are e^{−⅛δ_0M} for the separation term ((2.84), image), e^{−δ_0M} for the domain change (p. 238, "follows from the random walk representations"), and O(M^{−1}) for the commutator.
+Comparison [V]. CMP 96 (2.82) [image p. 237] is Q′G′²Q′*C = Σ h_□(□Q′G′(□̃)²Q′*□)C_□h_□ − Σ[h_□, □Q′G′(□̃)²Q′*□]C_□h_□ − Σ □Q′(G′(□̃)² − G′²)Q′*h_□C_□h_□ − Σ_{□,□′≠□}(□ − 1)h²_{□′}Q′G′²Q′*h_□C_□h_□ = I − ΣR_{□,□′}C_□h_□. It has one main sum and three error sums: commutator, domain change, and separation. CMP 99 (3.95) [V text p. 411] has the same three. Our F_□ is −Σ_{□′}R_{□,□′}C_□h_□, that is, −RC_□h_□ after summing over □′ (Balaban splits the separation sum over □′ by h²_{□′}), with G′(□̃) replaced by the truncated sum. Balaban's sizes are e^{−⅛δ_0M} for the separation term ((2.84), image), e^{−δ_0M} for the domain change (p. 238, "follows from the random walk representations"), and O(M^{−1}) for the commutator.
 
 ### 4.2 Bounds in the conjugation norm [P]
 Assume C_𝒟ρ_G ≤ ½ and M_1 ≥ M_a. Let 0 ≤ κ ≤ ½δ_G. Then:
@@ -455,4 +455,6 @@ A verifier should check these first. None changes a conclusion of the sources.
 - F3 (§0.4). (H4) now states WG-1 in the M_1 form of WG_FULL 4.7 and WG_FULL_VERIFY: α_0 ≤ c′M^{−1}M_1^{−10} for G, α_0 ≤ c″M^{−1}M_1^{−12} for G_1. The CMP 99 form α_0 ≤ c′M^{−11} implies it. 6.6, the 8.4 J-row, 9.1 step 7, and ledger IN11 use the same form.
 - F4. Tagged [I]: Σφ_□² ≥ c(d) on Z_0 near ∂Z_0 (§7.3); monotonicity in θ of Σ and the θ-dependent constants (§9.1 step 3).
 - F5 (§7.4). The condition is q ≥ 3(7 + c_X). The margin M_1 absorbs the lattice-unit losses. It implies the strict q > 3(6 + c_X) of SOURCES_WC_RESIDUE_VERIFY Q4. The "Two conditions on q" paragraph and 9.1 step 6 use the new form.
-- F6 (§4.1). "term by term" is replaced: F_□ = −Σ_{□′}R_{□,□′}, that is, −R after summing over □′.
+- F6 (§4.1). "term by term" is replaced: F_□ = −Σ_{□′}R_{□,□′}C_□h_□, that is, −RC_□h_□ after summing over □′.
+
+- Regrade edits (A1_WALK_FULL_VERIFY regrade, 2026-10-28): (H4) now gives both CMP 99 forms (c′M^{−11} for G, c″M^{−13} for G_1); the F6 statement carries the factor C_□h_□. The §7.3 bound Σφ² ≥ c(d) is PROVED in A1_WALK_FULL_VERIFY (tent family on the grid aℤ^d, a = ½K_1M_1 = M_1L^k, K_1 ≥ 6L: c(d) = 1 at every point of Z_0, at most 2^d overlaps, c_h ≤ 2√d(1 + 2^{d+1})); the [I] tag in §7.3 is to be read as [P per VERIFY].
