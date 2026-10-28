@@ -64,3 +64,45 @@ Every absorption condition used above is POINTWISE in x = x*_k:
  (U3) x^{−1}polylog(x)e^{−cp_0(x)} ≤ 1 (6.2);
  (U4) Balaban's p. 389 inequality with κ → κ′ (3.1).
 Each holds for all x ∈ (0, γ] once A_0 is large and γ is small. Balaban's (0.31) gives x*_k ≤ γ for all k. So the constants are uniform in k and K. The unboundedness of sup_kR_k (HHOL_LF_VERIFY V2: R_k largest at k = 0, ~ (log K)^r) does not matter: R(x) is always compared with p_0(x) at the same x. The derivative point g satisfies |g − x| ≤ ρ_0x/2, so x/g ∈ [0.95, 1.05]: the thresholds frozen at x are within a fixed factor of those at g. The earlier-scale operations T_h (h < k) inside T′_k are history slots; the own-slot derivative does not act on them, and their factors carry p_0(x*_h) ≥ p_0(x*_k) (x*_h ≤ x*_k), which only helps.
+
+## 8. Combined statement: first-derivative (B2) for the FULL step (plan step 5)
+Theorem B2-full [R]. Frozen convention at x* (thresholds, R, N, partitions, R-ratio weight). For every k, every g_k ∈ (0, γ] with |g_k − x*_k| ≤ ρ_0x*_k/2, every volume, and (U,J) in the step's analyticity domains:
+ (a) E-class: |∂_{g_k}E^{(k+1)}(X)| ≤ (S_0 + S_0^{cut})e^{−(1−10δ)½Lκd_{k+1}(X)}; S_0 = GGAIN §4.4; S_0^{cut} = O(1)C_3·Σ_{cuts}(6.2 factor)/ε_1-type, ≤ O(1)C_3 for A_0 large.
+ (b) R′: |∂_{g_k}R′^{(k)}(X)| ≤ 20γ^{2A_0−1}e^{−κd_k(X)}.
+ (c) B′: |∂_{g_k}B′^{(k)}(X)| ≤ [20γ^{A_0−1}c_0 + O(1)S_0/(C_3ε_1)]·α^{1/3}e^{−(1+½β)κd_{k,∪Y_i}(X)} (c_1 = α^{1/3} case; the c_1 = e^{−p_0} case as (b)).
+ (d) Fixed components: |∂_{g_k}T_k(Y_i)1| ≤ 20γ^{A_0−1}e^{−½p_0(x*_k)}.
+ (e) Mismatch: inside (b)–(d), with the per-component cost of §5.
+ (f) β: |∂β_{k+1}/∂g_k| ≤ C_Π(S_0 + S_0^{cut}) =: C_β^{full}. If 2.2 [I] fails and R′/B′ terms reach Π, add C_Π·(20 + O(1)S_0/(C_3ε_1)): still uniform.
+All constants are free of 1/g, of k, K, and the volume. None of them contains ε_1 in the denominator beyond GGAIN's ε_1-cancelling form.
+Inputs it rests on (exact list):
+ I1 GGAIN Theorem B2-unif: Lemmas G1, G2 [P], G3 [R: (Q) with c_−, or smooth χ̂], (M_r) [R].
+ I2 HHOL_LF §4.3–4.5: finite-volume holomorphy and modulus domination on D, γ_0 → 0.826γ_0 [P per HHOL_LF_VERIFY V6].
+ I3 (M-B): Balaban's (1.80)–(1.99) bookkeeping holds with γ_0 → 0.826γ_0, O(1) → 2O(1), κ → κ′ [R].
+ I4 (M-A) with (M-A′): MA Theorem at real couplings, MA2 fix (2.1) [R to (H−) → (C1)–(C3), (C3) = CMP 102 (189)].
+ I5 The frozen convention (M-D) [HHOL_LF_VERIFY V4: consistent with D3 (L0); (B2-full) is a statement about the frozen map].
+ I6 The printed forms (1.73), (1.89), (1.91)–(1.102) of CMP 122 II, and CMP 119 (2.4) with p_0 a positive integer and A_0 large [V this file].
+ I7 For (f) only: 2.2 [I] (β from E-class terms only). Not load-bearing for uniformity (see (f)).
+ I8 Kotecký–Preiss derivative step at the exponentiated level [R, standard].
+Not covered: (1.103)–(1.104) normalized bracket at complex u (O4-type; off the main route, needed by neither (f) nor Lemma HH); the endpoint g = 0 (C¹ at 0); higher derivatives.
+
+## 9. Regrade of the real uniform (H-hist) (plan step 6)
+Chain: Lemma HH (SOURCES_HHIST §6) needs (B1) [V, (0.29)], (B2) [now Theorem B2-full, §8], (SM) [Theorem SM, SOURCES_SM, R], and θ < 1 − L^{−α} [Balaban-type smallness]. HHIST's open item "large-field contributions (CMP 122) … not covered" is now reduced: at the own-slot level by §3–§6, and for β by §2.2 + §6.
+History hops through R-terms. If R′^{(i)}-terms feed later E-class terms (fails 2.2), Lemma HH's (SM) must also be Lipschitz in R-inputs. Their sizes are (x*_j)^{κ_0} (HHOL_LF 5.3, F2′), and the counting fact holds with the e^{−p_0} per-cube factor; so the hop constant only improves. [I, not written out]
+On (H-thr). §8 is proved directly for the frozen map, with no threshold-motion term. HHOL_LF_VERIFY V4 wrote "frozen-map C¹ at x* = Balaban's (H-hist) + (H-thr)" because it planned to import Balaban's derivative. With §8 the frozen-map derivative is bounded without passing through Balaban's map. Whether (H-thr) can then be dropped from the whole chain depends on whether any later step needs Balaban's own β_j off the base point (e.g. (E) at real points ≠ x*). Not checked. [I]
+Regrade. Real uniform (H-hist): from "binding open" to "REDUCED [R]" to the named inputs I1–I8 + (SM). No obstruction found. The binding analytic inputs are now: (Q)/c_− for the sharp-cut surface terms (G3 and §6), (M_r), CMP 102 (189) via (M-A), and the (M-B) bookkeeping. Caveat: this file is unverified, and 2.2 is [I].
+
+## 10. Ledger (authoritative)
+[V this file] CMP 119 p. 244 (p_0 a positive integer), p. 255 (2.4)–(2.6); CMP 122 II pp. 380–381 (1.73)–(1.75) and large-field factors; pp. 384–390 (1.80)–(1.102), incl. the p. 385 base condition (p_0² ≳ R^{d+2}) and p. 389 inequality.
+[P] Cauchy step and 1/g absorption: x^{−1}e^{−θp_0(x)} ≤ x^{2θA_0−1} (3.3). Brief's "p_0 ≳ R^{d+2}" CORRECTED to p_0² ≳ R^{d+2} (p. 385) and NOT NEEDED for the 1/g step.
+[P given 3.1] R′, B′ (q ≥ 1), T_k(Y_i) own-slot derivatives uniform, S_0^{LF} ≤ 20γ^{A_0−1} (3.4).
+[R to GGAIN] B′ with q = 0 (pure V-terms): marked-vertex real derivative (3.4(iii)).
+[P] Real-derivative cross-check: brief's mechanism works, but the normalization term n/(2u) is extensive, giving a per-site g^{−1}; absorbed per MR-cube (3.5). CORRECTION to the brief.
+[P] Volume uniformity per activity; no large-field cluster expansion (§4).
+[P given (M-A)] Mismatch derivative ≤ 2.6n_i(1+η_x)g^{−1}×(average), absorbed by e^{−¼p_0} of the same T′ (§5); real couplings only.
+[R to G3 inputs] Surface terms of the running cutoffs ε_k, χ′_j (1.27), χ′ (1.82): g^{−1}polylog·e^{−cp_0}, uniform (§6).
+[P] k-uniformity: all conditions pointwise in x*_k ≤ γ (§7).
+[I] 2.2: β sees only E-class terms. Not load-bearing (§8(f)).
+[I] (H-thr) possibly removable for the frozen chain (§9).
+[R] I1–I8, (SM). Regrade: real uniform (H-hist) REDUCED [R]; unverified.
+[open] (1.103) at complex u; C¹ at g = 0; higher derivatives; numerical constants (O(1)'s of Balaban).
+Firewall kept.

@@ -39,3 +39,11 @@ Sum: each site is the far corner of d(d−1)/2 positive plaquettes, so c_d = √
 - Rederivation [P]: (3.118) e^{−½⟨A,Δ_πA⟩} = |det(Δ↾N(Q′))|∫dλ δ(Q′λ)δ_R(RD*A − Δλ)e^{−½⟨A−Dλ,Δ(A−Dλ)⟩}. The delta functions force λ ∈ N(Q′), Δ_Uλ = RD*A. Unique solution λ_0 = G′RD*A (§1: (Δ_U + Q′*aQ′)λ_0 = Δ_Uλ_0). The Jacobian of λ ↦ Δλ on N(Q′) cancels the det prefactor. So ⟨A,Δ_πA⟩ = ⟨Ã,ΔÃ⟩, Ã = A − Dλ_0. Check: RD*Ã = RD*A − RΔ_Uλ_0 = RD*A − Δ_Uλ_0 = 0 (Δ_Uλ_0 ∈ range R). So Ã is the gauge transform of A into {RD*A = 0}, as the text says. CONFIRMED.
 - (3.120) defines Δ′_π by ⟨A,Δ_πA⟩ = ⟨A,ΔA⟩ − ⟨A,Δ′_πA⟩ (printed sign: MINUS). SOURCES_S2_FORM §1 writes "+". Harmless for absolute-value bounds; note it for the series (3.130).
 - Second identity (3.117) is the expansion Balaban uses; route Π uses (3.119) directly. Both give the same Δ′_π (exact).
+
+## 6. (3.122), (3.131), (3.135): CMP 99 pp. 420, 422 images (pdf 32, 34) [V]
+- p. 420: "G^{−1} defined as G^{−1} = Δ_π + DRD* + Q*aQ". CONFIRMED. ⟨A,DRD*A⟩ = ‖RD*A‖² ≤ ‖D*A‖².
+- (3.131) as quoted in S2_FORM §1: CONFIRMED (L¹ on A_1, |·| on A_2, one block each, e^{−½δ_0d}).
+- (3.135) printed: Δ^{(2)}_π = Δ^{(2)} − DRG′D*Δ^{(2)} − Δ^{(2)}DG′RD* + DRG′D*Δ^{(2)}DG′RD*. This is (I − DG′RD*)*Δ^{(2)}(I − DG′RD*), so ⟨A,Δ^{(2)}_πA⟩ = ⟨Ã,Δ^{(2)}Ã⟩ with the SAME Ã as (3.119) [P, algebra]. So the route-Π structure applies to the G_1 clause verbatim. Only a form bound for Δ^{(2)} itself is needed (see §8).
+- 4.1 redone with the corrected Δ′ (§2) and sign (3.120) [P]: ⟨A,Δ′_πA⟩ = ⟨A,ΔA⟩ − ⟨Ã,ΔÃ⟩ = (‖DA‖² − ‖DÃ‖²) + (q_R(A) − q_R(Ã)) + (q_I(A) − q_I(Ã)), q_R = Re-term, q_I = commutator term.
+  First bracket ≤ κε(‖DA‖² + ‖D*A‖²) + κ²ε²‖D*A‖² (as author). q_I bracket ≤ κ′ε(1 + 2B_0²c_1²)(‖D*A‖² + ‖ℓ^{−1}A‖²) (as author; polarization valid for symmetric forms). NEW q_R bracket: |q_R(B)| ≤ c_Rε‖DB‖², and ‖DÃ‖ ≤ ‖DA‖ + κε‖D*A‖, so ≤ 2c_Rε(1 + κ²a_0²)(‖DA‖² + ‖D*A‖²).
+  Result unchanged in form: |⟨A,Δ′_πA⟩| ≤ C′_Π ε(‖DA‖² + ‖D*A‖² + ‖ℓ^{−1}A‖²), C′_Π = C_Π + 2c_R(1 + κ²a_0²). CORRECTED (constant only).
