@@ -96,14 +96,14 @@ theorem author_Bblock_norm_le {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH 
     ‖(fromBlocks (1 + Gᵀ * H⁻¹ * G) Gᵀ G H)⁻¹.toBlocks₂₂‖ ≤ h + h ^ 2 * g ^ 2 := by
   rw [author_Bblock G hH]
   have hGt : ‖Gᵀ‖ = ‖G‖ := by rw [← conjTranspose_eq_transpose_of_trivial, l2_opNorm_conjTranspose]
-  have h0 := norm_nonneg H⁻¹
-  have g0 := norm_nonneg G
-  have : ‖H⁻¹ * G * Gᵀ * H⁻¹‖ ≤ ‖H⁻¹‖ * ‖G‖ * ‖G‖ * ‖H⁻¹‖ := by
-    rw [← hGt]
-    exact (l2_opNorm_mul _ _).trans (mul_le_mul_of_nonneg_right ((l2_opNorm_mul _ _).trans
-      (mul_le_mul_of_nonneg_right (l2_opNorm_mul _ _) (norm_nonneg _))) (norm_nonneg _))
+  have h0 : 0 ≤ h := (norm_nonneg _).trans hHi
+  have g0 : 0 ≤ g := (norm_nonneg _).trans hg
+  have : ‖H⁻¹ * G * Gᵀ * H⁻¹‖ ≤ h * g * g * h :=
+    calc ‖H⁻¹ * G * Gᵀ * H⁻¹‖ ≤ ‖H⁻¹ * G * Gᵀ‖ * ‖H⁻¹‖ := l2_opNorm_mul _ _
+      _ ≤ (‖H⁻¹ * G‖ * ‖Gᵀ‖) * ‖H⁻¹‖ := by gcongr; exact l2_opNorm_mul _ _
+      _ ≤ (‖H⁻¹‖ * ‖G‖ * ‖Gᵀ‖) * ‖H⁻¹‖ := by gcongr; exact l2_opNorm_mul _ _
+      _ ≤ h * g * g * h := by rw [hGt]; gcongr
   refine (norm_add_le _ _).trans ?_
-  have hb : ‖H⁻¹‖ * ‖G‖ * ‖G‖ * ‖H⁻¹‖ ≤ h * g * g * h := by gcongr
   nlinarith
 
 /-- Completing the square in B (§3.2): `⟨v, Q₀′v⟩ = ‖X‖² + ⟨z, H₀z⟩`, `z = B + H₀⁻¹ΓX`. -/
@@ -121,10 +121,11 @@ theorem q0_split {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) (
     rw [dotProduct_mulVec, vecMul_transpose]
   have hxA : x ⬝ᵥ ((Gᵀ * H⁻¹ * G) *ᵥ x) = u ⬝ᵥ w := by
     rw [← mulVec_mulVec, ← mulVec_mulVec, dotProduct_mulVec, vecMul_transpose]
-  rw [fromBlocks_mulVec, sumElim_dotProduct_sumElim, add_mulVec, one_mulVec, mulVec_add,
-    dotProduct_add, dotProduct_add, dotProduct_add, hxA, hxG, hHw, add_dotProduct, add_dotProduct,
-    dotProduct_add, dotProduct_add, hwH, dotProduct_comm w u, dotProduct_comm y u]
-  ring
+  rw [fromBlocks_mulVec, sumElim_dotProduct_sumElim]
+  simp only [Sum.elim_comp_inl, Sum.elim_comp_inr, add_mulVec, one_mulVec, mulVec_add,
+    dotProduct_add, add_dotProduct]
+  rw [hxA, hxG, hHw, hwH]
+  linarith [dotProduct_comm w u, dotProduct_comm y u]
 
 /-- **`Q₀′ ≥ Λ₀⁻¹`** (§3.3, `‖Q₀′⁻¹‖ ≤ Λ₀ = 1 + h + h²G_Γ²`), in form:
 `‖X‖² + ‖B‖² ≤ Λ₀ ⟨v, Q₀′v⟩`. Inputs: `H₀ > 0`, `H₀ ≥ h⁻¹` (form), `‖Γ‖ ≤ G_Γ`. -/
@@ -151,8 +152,8 @@ theorem q0_lower {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) {
   have W0 := dot_self_nonneg w
   have hzH := hc z
   have hzH0 : 0 ≤ z ⬝ᵥ (H *ᵥ z) := by nlinarith
-  -- 2⟨z, w⟩ ≤ h G_Γ² ‖z‖² + h ‖X‖²  (AM–GM with (z·w)² ≤ ‖z‖² h²G_Γ² ‖X‖²)
-  have hzw : 2 * (z ⬝ᵥ w) ≤ h * g ^ 2 * (z ⬝ᵥ z) + h * (x ⬝ᵥ x) := by
+  -- −2⟨z, w⟩ ≤ h G_Γ² ‖z‖² + h ‖X‖²  (AM–GM with (z·w)² ≤ ‖z‖² h²G_Γ² ‖X‖²)
+  have hzw : -2 * (z ⬝ᵥ w) ≤ h * g ^ 2 * (z ⬝ᵥ z) + h * (x ⬝ᵥ x) := by
     have hprod : (z ⬝ᵥ w) ^ 2 ≤ (h * g ^ 2 * (z ⬝ᵥ z)) * (h * (x ⬝ᵥ x)) := by
       calc (z ⬝ᵥ w) ^ 2 ≤ (z ⬝ᵥ z) * (w ⬝ᵥ w) := hcs
         _ ≤ (z ⬝ᵥ z) * (h ^ 2 * g ^ 2 * (x ⬝ᵥ x)) := mul_le_mul_of_nonneg_left hW Z0
@@ -187,7 +188,7 @@ theorem Lambda_bound {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDe
     rw [← sumElim_dotProduct_sumElim, ← hv] at this
     rw [hrq, hn, inv_mul_le_iff₀ hL0]; exact this
   have hQ : ∀ v, Λ⁻¹ * ‖v‖ ^ 2 ≤ rq Q v := fun v => by
-    have hd : ‖Q0 - Q‖ ≤ pp := by simpa [Q] using hP
+    have hd : ‖Q0 - Q‖ ≤ pp := by rw [show Q0 - Q = P from sub_sub_cancel _ _]; exact hP
     have := lower_transfer Q0 Q h0 hd v
     have hk : Λ⁻¹ ≤ L0⁻¹ - pp := by
       have : L0⁻¹ - pp = (1 - pp * L0) / L0 := by field_simp
@@ -248,7 +249,8 @@ theorem lemmaN (C : Matrix m n ℝ) (P Δ : Matrix m m ℝ) (G : Matrix p m ℝ)
     ‖Cᵀ * (P - a • 1 - Δ + Gᵀ * G) * C‖ ≤ ‖C‖ ^ 2 * max (K - a + cJ + 2 * cG) (a + cJ) := by
   set X := P - a • 1 - Δ + Gᵀ * G
   have hX : X.IsHermitian :=
-    ((hP.1.sub ((isHermitian_one).smul_real a)).sub hΔ).add
+    ((hP.1.sub (by rw [IsHermitian, conjTranspose_smul, conjTranspose_one, star_trivial] :
+      (a • (1 : Matrix m m ℝ)).IsHermitian)).sub hΔ).add
       (by simpa [conjTranspose_eq_transpose_of_trivial] using isHermitian_conjTranspose_mul_self G)
   have hM : (Cᵀ * X * C).IsHermitian := by
     simpa [conjTranspose_eq_transpose_of_trivial] using isHermitian_conjTranspose_mul_mul C hX
@@ -256,14 +258,15 @@ theorem lemmaN (C : Matrix m n ℝ) (P Δ : Matrix m m ℝ) (G : Matrix p m ℝ)
   set mx := max (K - a + cJ + 2 * cG) (a + cJ)
   have hmx : a + cJ ≤ mx := le_max_right _ _
   refine norm_le_of_abs_dot hM (by positivity) fun x => ?_
-  set b := C *ᵥ x
-  have e : x ⬝ᵥ ((Cᵀ * X * C) *ᵥ x) =
-      b ⬝ᵥ (P *ᵥ b) - a * (b ⬝ᵥ b) - b ⬝ᵥ (Δ *ᵥ b) + (G *ᵥ b) ⬝ᵥ (G *ᵥ b) := by
+  have e1 : x ⬝ᵥ ((Cᵀ * X * C) *ᵥ x) = (C *ᵥ x) ⬝ᵥ (X *ᵥ (C *ᵥ x)) := by
     rw [← mulVec_mulVec, ← mulVec_mulVec, dotProduct_mulVec, vecMul_transpose]
-    simp only [X, add_mulVec, sub_mulVec, smul_mulVec, one_mulVec, ← mulVec_mulVec, dotProduct_add,
+  have e2 : ∀ b, b ⬝ᵥ (X *ᵥ b) =
+      b ⬝ᵥ (P *ᵥ b) - a * (b ⬝ᵥ b) - b ⬝ᵥ (Δ *ᵥ b) + (G *ᵥ b) ⬝ᵥ (G *ᵥ b) := fun b => by
+    simp only [X, add_mulVec, sub_mulVec, smul_mulVec, one_mulVec, dotProduct_add,
       dotProduct_sub, dotProduct_smul, smul_eq_mul]
-    rw [dotProduct_mulVec b Gᵀ, vecMul_transpose, dotProduct_comm b (G *ᵥ b)]
-  rw [e]
+    rw [← mulVec_mulVec, dotProduct_mulVec b Gᵀ, vecMul_transpose]
+  set b := C *ᵥ x
+  rw [e1, e2]
   have hB := dot_self_nonneg b
   have hBC := mulVec_sq_le C x
   have hP0 : 0 ≤ b ⬝ᵥ (P *ᵥ b) := by simpa using hP.dotProduct_mulVec_nonneg b

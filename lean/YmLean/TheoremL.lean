@@ -52,7 +52,7 @@ theorem blockExact_e_real {A d c S S0 P G Λ Dn : ℝ} (hd : 0 ≤ d) (hc : 0 < 
     (hS0 : S0 ≤ 4 * A * P + G / (2 * c)) (hΛ : Λ ≤ 4 * G + 16 * c * A * P) :
     S ≤ 8 * A * (1 + 16 * d * c) * P + (1 / c + 32 * d) * G := by
   have h := mul_le_mul_of_nonneg_left hΛ (by linarith : (0 : ℝ) ≤ 8 * d)
-  have e : (1 / c + 32 * d) * G = 2 * (G / (2 * c)) + 32 * d * G := by field_simp; ring
+  have e : (1 / c + 32 * d) * G = 2 * (G / (2 * c)) + 32 * d * G := by field_simp
   rw [e]
   nlinarith
 
@@ -148,7 +148,7 @@ theorem block_ineq_E_exact (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢
 `S_c ≤ (3/m_L)(2P + 2dS_b) + η_6‖B‖²`, and `‖B‖² = S_b + S_c`:
 `γ_e(1 − η_6)‖B‖² ≤ P + G`, `γ_e⁻¹ = K_b(1 + 6d/m_L) + 6/m_L`. -/
 theorem lemmaPexp_real {Kb d m η Sb Sc P G B2 : ℝ} (hKb : 0 ≤ Kb) (hd : 0 ≤ d) (hm : 0 < m)
-    (hP : 0 ≤ P) (hG : 0 ≤ G)
+    (hG : 0 ≤ G)
     (h1 : Sb ≤ Kb * (P + G)) (h2 : Sc ≤ 3 / m * (2 * P + 2 * d * Sb) + η * B2)
     (h3 : B2 = Sb + Sc) :
     (Kb * (1 + 6 * d / m) + 6 / m)⁻¹ * (1 - η) * B2 ≤ P + G := by
@@ -169,7 +169,7 @@ theorem gammaExp_eq {cG γe : ℝ} (hcG : 1 / 2 ≤ cG) : 1 / 2 * min (1 / 2) cG
 /-- Theorem L bracket (WC_FULL 3.2). `e0 = ⟨B, Δ^full B⟩ = E(B) − ⟨B, Δ_J B⟩`, bounded below by
 (A3-6.1) and (A3-R4) as `hE0`; `G = ‖𝒢B‖²`; `hPexp` = Lemma P_exp; (3.1) = `hε`, `hη`, `hJ`.
 Then `e0 + c_G G ≥ ½ min(½, c_G) γ_e ‖B‖²`. -/
-theorem theoremL_real {e0 P G B2 ε7 η6 ε7a cJ γe cG : ℝ} (hP : 0 ≤ P) (hG : 0 ≤ G)
+theorem theoremL_real {e0 P G B2 ε7 η6 ε7a cJ γe cG : ℝ} (hG : 0 ≤ G)
     (hB2 : 0 ≤ B2) (hγ : 0 ≤ γe) (hcG : 1 / 2 ≤ cG)
     (hε0 : 0 ≤ ε7) (hε : ε7 ≤ 1 / 8) (hη : η6 ≤ 1 / 4) (hJ : ε7a + cJ ≤ γe / 12)
     (hE0 : (1 + ε7)⁻¹ * (1 / 2 * P) - (ε7a + cJ) * B2 ≤ e0)
@@ -196,7 +196,7 @@ theorem theoremL_real {e0 P G B2 ε7 η6 ε7a cJ γe cG : ℝ} (hP : 0 ≤ P) (h
 theorem theoremL {E' : Type*} [NormedAddCommGroup E'] [InnerProductSpace ℝ E']
     [FiniteDimensional ℝ E']
     (A0 : E →ₗ[ℝ] E) (𝒢 : E →ₗ[ℝ] H) (C : E' →ₗ[ℝ] E)
-    {P ε7 η6 ε7a cJ γe cG : ℝ} (hP : 0 ≤ P) (hγ : 0 ≤ γe) (hcG : 1 / 2 ≤ cG)
+    {P ε7 η6 ε7a cJ γe cG : ℝ} (hγ : 0 ≤ γe) (hcG : 1 / 2 ≤ cG)
     (hε0 : 0 ≤ ε7) (hε : ε7 ≤ 1 / 8) (hη : η6 ≤ 1 / 4) (hJ : ε7a + cJ ≤ γe / 12) (Bt : E')
     (hE0 : (1 + ε7)⁻¹ * (1 / 2 * P) - (ε7a + cJ) * ‖C Bt‖ ^ 2 ≤ ⟪C Bt, A0 (C Bt)⟫_ℝ)
     (hPexp : γe * (1 - η6) * ‖C Bt‖ ^ 2 ≤ P + ‖𝒢 (C Bt)‖ ^ 2)
@@ -208,7 +208,7 @@ theorem theoremL {E' : Type*} [NormedAddCommGroup E'] [InnerProductSpace ℝ E']
     simp only [LinearMap.comp_apply, LinearMap.adjoint_inner_right, LinearMap.add_apply,
       LinearMap.smul_apply, inner_add_right, real_inner_smul_right, real_inner_self_eq_norm_sq]
   rw [hform]
-  have hL := theoremL_real hP (sq_nonneg _) (sq_nonneg _) hγ hcG hε0 hε hη hJ hE0 hPexp
+  have hL := theoremL_real (sq_nonneg _) (sq_nonneg _) hγ hcG hε0 hε hη hJ hE0 hPexp
   have hsq := pow_le_pow_left₀ (norm_nonneg _) hC 2
   have hc0 : 0 ≤ 1 / 2 * min (1 / 2) cG * γe := by rw [gammaExp_eq hcG]; positivity
   nlinarith [mul_le_mul_of_nonneg_left hsq hc0]
