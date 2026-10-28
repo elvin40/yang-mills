@@ -77,3 +77,17 @@ F5. "Both series converge" removed; 5.1 states (3.138) is not used ✓.
 F6. a_*′ defined in 5.9(iii). Check: with M_1 ≥ 4C″_𝒟c_0max{1, c_W} and the third entry, ρ_* ≤ (4C″_𝒟max{1, c_W})^{−1}, so C″_𝒟ρ_* ≤ ¼ and C″_𝒟c_Wρ_* ≤ ¼ ✓; a_{**} ≤ a_*′ ≤ a_* ✓; a_{**} ≤ a_0 keeps A1-W constants fixed ✓.
 Order check: K_2 contains Σ(½θδ_1), which needs RM; 6.4 places RM after a_{**}. Not a loop: the RM threshold depends only on (d, L, θ, ε), and Σ is monotone in RM (A1_WALK_VERIFY §6).
 Grade: PAPER-GRADE relative to its declared [R]/[I] inputs (CMP 99 Thms 3.7, 3.9, 3.10, CMP 96 Lemma 2.1 under (2.59), (3.36), A1-W, and the [I] items C0, (I7), ι-domains, C^{(2)}-locality, M_1-cover). Three wording edits remain, none mathematical: (a) RM factor 16 → 8 (or "8 log L/(θε) suffices"), (b) retag the scale-ratio inequality to A1_KERNEL [P from (2.60)], (c) RM ≥ C(d, L, θ, ε).
+
+## Regrade after the band fix (2026-10-28)
+Scope: the F7 band entry of the WG_FULL change log (0.4 "Band by enlargement", 0.5, 0.7, 4.5, 5.4, 6.2, 6.4, ledger). Details are in WC_FULL_VERIFY, same heading, items (1)–(4). Firewall kept.
+- Band. N(X) ⊂ X⁺, so d(X, 𝔅∖X⁺) > M_1. This is strict in finite volume; ≥ M_1 suffices in any case. So X ⊂ (X⁺)°, with X° exactly as in A1_WALK_FULL 1.2. CONFIRMED.
+- Counts. Branching ≤ 5^d c(d)C_𝒟^in, per point ≤ 3^d C_𝒟^in, diameter +2M_1. Rederived; CONFIRMED given the [I] cube geometry. k_2, N_V, N_2, 97, and T_2 do not change.
+- §3–§5. 3.2/3.3, 4.4–4.5, and 5.4–5.7 use only first/last supports and junction membership. (B1) passes to ω⁺ via d(ω⁺) ≤ d(ω). CONFIRMED.
+- c_loc and M_1 ≥ 3c_loc. The margin M_1 − c_loc ≥ ⅔M_1 is correct, and the constant order has no loop (c_loc is fixed by (d, L) before θ). Wording: define c_loc in (I7) or 6.2 as the sum of the local ranges merged on one side of a block. That sum is bounded by rule R-D and (I7).
+- 0.7 vs A1_WALK_FULL (H1), compared verbatim:
+  (L1) and (L2): CONFIRMED.
+  (B1): (H1) fixes ρ_G := c_G/M_1. WG-G gives ρ_*, which equals c_0/M_1 only under WG-1. A1-W (H4) imposes WG-1, so the two are consistent.
+  (B2): (H1) counts the domains that meet any set of diameter ≤ D_+M_1. This is a larger constant than WG's per-domain C_𝒟, and it depends on c_X through K_0 = 2c_X + 2. 0.7 says this ("D_+M_1-set form"). But 5.4's smallness C_𝒟c_1ρ_* ≤ ¼ should use the (H1) count. Wording fix only: the constant is still fixed by (d, L) before M_*, so there is no loop.
+  (B3): CONFIRMED.
+  Tree form (G1): A1_WALK_FULL 6.9 does not state a tree form of (H1) verbatim. It says only "§2–§5 hold with these changes". So WG's claim matches 6.9 as far as 6.9 goes; the missing statement is an A1_WALK_FULL gap that existed before this fix. Minor: if G_1 trees feed A1-W (6.9), their (B3) constant must also cover the □⁺ branch domains (diameter D_+M_1). That needs c_X(G_1) ≥ D_+ + O(1) and a second K_0. This is a finite second pass with no loop, and it is not stated.
+Grade: WG_FULL KEEPS PAPER-GRADE relative to its declared [R]/[I] inputs, now with the cube geometry of 0.4 added [I]. Three wording edits remain, none mathematical: (a) define c_loc; (b) 5.4 smallness uses the (H1) D_+M_1-set count; (c) state c_X for the G_1 tree as an A1-W input (second pass).

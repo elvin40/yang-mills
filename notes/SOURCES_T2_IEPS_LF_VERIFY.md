@@ -41,3 +41,19 @@ Started 2026-10-28. Firewall respected.
 ## 8. CMP 122 II p. 366 (image) [V]
 - "1/(g″_k)² − 1/g_k² = O(N) ≤ O(R_k)": confirms N ≤ R_k (g-dependent). Term ≤ O(1)N^{2+4β_0}(100MR_k)^4(O(1)B_3B_5M^5ε_k + O(1)B_3δ′_k)² ≤ O(1)B_3²B_5²M^9R_k^7ε_k², "small for g_k small enough". The step absorbs δ′_k into ε_k; this needs A_1p_1 ≲ A_0p_0, true since A_0 ≫ A_1 and p_1 < p_0. No C_i here. UPPER on g.
 - U ∈ U^c_k(Z, α_{0,k}, α_{1,k}): |∂U − 1| < α_{0,k}η², |A′|, |∇A′| < α_{1,k}, |B̃′| < O(1)α_{1,k}. CONFIRMED (same CMP 109 space with α_{i,k}).
+
+## 9. CMP 109 p. 263 (image) [V] — source of C3
+- Printed: spaces with α′_0 < α_0, α′_1 < α_1 lie in U^c_j(X, α_0, α_1) "for α′_0 sufficiently small" via (1.17) |∂U_n − 1| < 2B_3α′_0ξ²; "the minimal configurations U_j satisfying |∂U_j − 1| < ε_0ξ² with ε_0 sufficiently small satisfy the above conditions"; "A_k(U) defined on U_k(ε_0), which is contained in all the spaces U^c_j(X, α_0, α_1)".
+- So C3 is a printed INCLUSION (U_k(ε_0) ⊂ U^c_j) with a qualitative "ε_0 sufficiently small". The form ε ≤ c(B_3)α_0 is the author's quantitative reading; c is not printed. Grade of C3: CONFIRMED as a LOWER on α_0 relative to ε_0, constant [I].
+- LF transfer: by p. 262 inheritance and (2.27)(ii) "extension of this term", the real region |∂U − 1| < ε_jξ² must lie in U^c_j(α_{0,j}, α_{1,j}). With ε_j = g_jA_0(log g_j^{−2})^{p_0} (CMP 119 (2.4)) this is A_0(log g^{−2})^{p_0} ≤ c·C_0(log g^{−2})^{q_0} for all g ≤ γ. If q_0 < p_0 it fails as g → 0. So q_0 ≥ p_0 is forced. CONFIRMED [P].
+- Also p. 263: (1.18) E_0 bound "for M ≥ M(κ), γ sufficiently small"; α_0, α_1 "positive, absolute constants". In the LF layer the radii are not absolute; the inheritance sentence is the only bridge.
+
+## 10. CMP 109 p. 277 (image) [V] — source of C4
+- Printed: "Assume now that B_3²O(1)Mα_0 < 1/2α_1". Typeset "1/2α_1"; read as ½α_1 (the u_j-orbit argument needs |u_j − 1| below the α_1 scale). If it meant 1/(2α_1) it would be an UPPER (α_0α_1 small), absorbed by g. Either reading: no upper bound on C_i.
+- LF form under ½α_1: (C_0/C_1)(log g^{−2})^{q_0−q_1} < 1/(2B_3²O(1)M) for all g ≤ γ. Forces q_1 ≥ q_0 (else fails as g → 0); if q_0 = q_1, LOWER on C_1/C_0. Author's C4 CONFIRMED.
+- Same page (3.32): |A|, |∇A|, ‖A‖ < 2(α_2 + B_3O(1)Mα_0): α_2 enters the fixed-layer regularity. Note: CMP 119 (2.38) uses BCMα_{0,n} with no α_2 term. So in the LF space the α_2 slot is replaced by a multiple of α_{0,n}; this supports the author's R1 reading that α_2 ∝ α_{0,j} [P].
+
+## 11. CMP 122 I p. 198 (image) + OCR grep for α_2–α_6, γ_2 [V]
+- OCR grep of CMP 119, CMP 122 I, CMP 122 II for α/oc + digit 2–6 and γ2: only hits are CMP 122 I p. 198–199 (1.91), (1.95) "(α + 8α²ε_h)" with α "a small, absolute constant, which will be fixed later" (text), and a coordinate a′_2 (p. 1118 line). Neither is an α_2 radius. OCR drops Greek often (α_0 found only 4–6 times in each text although (2.28)-type uses are frequent), so the grep is weak evidence. On every page imaged this session (CMP 119 pp. 259, 261, 262; CMP 122 I pp. 182, 183, 198; CMP 122 II pp. 366, 368, 381) no α_2, α_3, α_4, γ_2 appears. R1 premise: CONFIRMED on images read, [I] beyond.
+- NEW printed condition (p. 198, (1.94)): "N ≤ O(1)(log g_k^{−2})^ν … with a positive integer ν satisfying (1/2)ν ≤ p_0 − p_1 − 1", and N "sufficiently large" so the L^{−N} term constant ≤ ½α; "satisfied by N to the positive power of log g_k^{−2}". The author's §7 writes "½ν ≥ p_0 − p_1 − 1": WRONG DIRECTION. Printed is ≤. It is a LOWER bound on p_0 − p_1 (p_0 ≥ p_1 + 1 + ν/2). No C_i or q_i in it; the order is unaffected (exponents before A_1).
+- (1.94) also uses δ′_k/ε_h ≈ (A_1p_1)/(A_0p_0)·N^{1/2}: smallness needs N^{1/2}(log)^{p_1−p_0} small, which the ν bound gives. Consistent with p_1 < p_0.
