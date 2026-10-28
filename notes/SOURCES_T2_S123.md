@@ -1,6 +1,6 @@
 # SOURCES_T2_S123 — spectral inputs (S1)–(S3) for (M_j) at fixed level j (DERIVE)
 
-Date: 2026-10-28. Status: in progress (sections appended one at a time).
+Date: 2026-10-28. Status: complete (sections appended one at a time). (M_j) reduced to the 2D gap (G_A′) [open] and BETA_FP_M Prop. 4.4 region 1 [argued].
 Author: headless Claude session, brief S123 (DERIVE).
 
 Read: THEOREM2_PROOF_v4.md l. 117–176, 420–488; KAPPA_BOUNDED.md l. 1–41, 105–174; BETA_FP_M.md (all); BETA_FP_H.md l. 13–90; BETA_FP_H_VERIFY.md §5 (l. 33–39); U3_LEMMA51.md l. 1–140; U3_AW.md §1, §3.3–§4.7; U3_AW_VERIFY.md grades; U3_REPAIRS_VERIFY.md grades (Prop. B, O5, O6) and U3_REPAIRS.md statements; B2_TWOSTEP.md l. 117–154; LEMMA_DPRIME.md l. 1–40; TRUST_LEDGER.md l. 62–70; numerics/NUMERICS.md l. 53–78. Balaban: CMP 99 (propagators in background field) pp. 395–397, page images (PDF pp. 7–9) and text layer l. 290–445.
@@ -179,3 +179,107 @@ Lemma 5.7 (scalar Landau lower bound) [P]. inf spec 𝔏^{01}_f ≥ |ef| − C f
 Proof. Put S_μ := (T_μ − T_μ^*)/(2i) (self-adjoint) and h_μ := 2 − T_μ − T_μ^* ≥ 0. Since T_μ is unitary, h_μ − S_μ² = h_μ²/4 ≥ 0, so 𝔏^{01} ≥ S_0² + S_1² ≥ ±i[S_0, S_1] (from (S_0 ± iS_1)^*(S_0 ± iS_1) ≥ 0). From T_0T_1 = qT_1T_0, q = e^{iα}, α := εef, one gets [T_0, T_1] = (q − 1)T_1T_0, [T_0, T_1^*] = (q̄ − 1)T_1^*T_0, [T_0^*, T_1] = (q̄ − 1)T_1T_0^*, [T_0^*, T_1^*] = (q − 1)T_1^*T_0^*, hence i[S_0, S_1] = (α/4)·½{T_0 + T_0^*, T_1 + T_1^*} + E′ with ‖E′‖ ≤ Cα². Write T_μ + T_μ^* = 2 − h_μ: ½{2 − h_0, 2 − h_1} = 4 − 2(h_0 + h_1) + ½{h_0, h_1}, and ⟨ψ, ½{h_0, h_1}ψ⟩ = Re⟨h_0ψ, h_1ψ⟩ ≥ −½(‖h_0ψ‖² + ‖h_1ψ‖²) ≥ −2⟨ψ, 𝔏^{01}ψ⟩ (h_μ ≤ 4). Choosing the sign in ±i[S_0, S_1] so that the coefficient is |α|: 𝔏^{01} ≥ (|α|/4)(4 − 2𝔏^{01} − 2𝔏^{01}) − Cα² = |α| − |α|𝔏^{01} − Cα², i.e. 𝔏^{01} ≥ (|α| − Cα²)/(1 + |α|) ≥ |α| − C′α². ∎
 Status of (G_A). The scalar bottom is Lemma 5.7. (G_A) also needs the Landau gap of 𝔏^{01}_f between its first two bands (near |ef| and 3|ef|), at a precision ≫ f², because the spin-aligned component of A′ is 𝔏^{01} − 2|ef| + O(f²)-type and must avoid 0. This is a Harper-type semiclassical statement. I recall that Helffer–Sjöstrand proved that the low spectrum of the small-flux Harper operator lies in thin bands near (2n + 1)|ef| [I: from memory, not checked; not used as proved]. Here (G_A) is [open], supported by the continuum value and by the 2D numerics of §6.
 
+
+Lemma 5.8 (gauge copy: half of (G_A)) [P given criticality of V_f, U3_LEMMA51 §1 "∇A(U_0^φ) = 0 … (U3 Lemma 5.0, U3_VERIFY §7)"]. Write A′(f) = H′ + D′D′^†, with H′ the charged (0,1)-plane Wilson Hessian (normalized as in (F1)) and D′ the charged background-covariant 2D gradient on sites, D′^†D′ = 𝔏^{01}_f. Then spec A′(f) = spec(𝔏^{01}_f) ∪ spec(H′|_{ker D′^†}), and the first set lies in [|ef| − Cf², 8] (Lemma 5.7).
+Proof. The Wilson action is gauge invariant and V_f is a critical point, so the Hessian annihilates the tangent space of the gauge orbit: H′D′ = 0 (differentiate S(U^{g_s}) = S(U) twice; the term with ∇S vanishes at a critical point). Hence A′D′ = D′(D′^†D′) = D′𝔏^{01}. By Lemma 5.7, 𝔏^{01} ≥ |ef| − Cf² > 0, so D′ is injective with closed range and U := D′(𝔏^{01})^{−1/2} is an isometry onto ran D′. Then A′U = U𝔏^{01}, so ran D′ reduces A′, U^*A′U = 𝔏^{01}, and on the orthogonal complement ker D′^† the operator A′ equals H′. ∎
+Consequence. (G_A) is equivalent to the sharper, purely "physical" statement
+  (G_A′)  spec(H′(f)|_{ker D′^†}) ∩ (−g_f, g_f) = ∅,  g_f ≥ c|f| (any g_f ≥ 4η_1 + 4C_M²|f|³ suffices),
+about the 2D SU(2) Wilson Hessian at constant flux, restricted to background-transverse charged fields. (G_A′) does not depend on j, L, or Balaban's averaging. It is [open] here. Continuum value: physical spectrum {−|ef|, 3|ef|, 5|ef|, …} (the union of the spin-aligned and spin-antialigned Landau ladders minus the gauge copy {|ef|, 3|ef|, …}), so 0 sits in a physical gap (−|ef|, 3|ef|) [I: continuum bookkeeping, not derived line by line].
+
+## 6. Numerical check (2D, t = 0)
+
+Scripts: numerics/t2_s123_gap2d.py (output numerics/t2_s123_gap2d.json) and numerics/t2_s123_phys2d.py (output numerics/t2_s123_phys2d.json). Both new; each run took about 5 s on the Mac.
+Model. N × N periodic torus, Landau gauge (θ_0(x) = −φx_1 on 0-links, θ_1 = 0, background links e^{iθσ_3}), plaquette angle φ = 2π/N, charge e = 2, so ef = 2φ. The plaquette Hessian of S_p = 1 − ½Re tr U_p is computed by central finite differences (h = 10^{−4}) in the left trivialization U = e^{iB·σ/2}U_0; the operator is 4·Hess + D_rD_r^T with D_rλ(ℓ) = λ(x) − Ad_{U_ℓ}λ(x + e_μ). The operator commutes with x_0-translations; it is Bloch-reduced in x_0 (N values of k_0) and diagonalized on the charged colours 1, 2.
+Checks of the model.
+- (F1) normalization at φ = 0: charged spectrum equals 4sin²(k_0/2) + 4sin²(k_1/2) (multiplicity 4) to 4.9·10^{−8} (N = 8).
+- Gauge annihilation H D_r = 0: residual ≤ 1.9·10^{−7} at all fluxes (finite-difference error). This checks criticality and the transport conventions together.
+- Neutral/charged decoupling: exact (leak 0).
+Results (all spectra in units of |ef|):
+
+| N | φ | ef | inf spec A′ | top of lowest band | gauge part min = inf 𝔏^{01} | first physical level > 0 |
+|---|---|---|---|---|---|---|
+| 24 | 0.2618 | 0.5236 | −1.0580 | −1.0580 | 0.9358 | 2.661 |
+| 48 | 0.1309 | 0.2618 | −1.0309 | −1.0309 | 0.9676 | 2.833 |
+| 96 | 0.0654 | 0.1309 | −1.0159 | −1.0159 | 0.9837 | 2.917 |
+
+Also inf 𝔏^{01}/|ef| = 0.9918 at N = 192 (ef = 0.0654). Block-orthogonality of the gauge/physical split: off-diagonal ≤ 3·10^{−8}.
+Reading [V: numerics, this session].
+- inf spec A′ ≈ −|ef|(1 + 0.12|ef|), matching the continuum −|ef| and inside the bound of Lemma 3.1 (−6|sin φ| = −3|ef| at small φ). The lowest physical band has width < 10^{−6}|ef| (exponentially thin, as expected for a Landau band).
+- The gauge part starts at inf 𝔏^{01} ≈ |ef|(1 − 0.12|ef|): consistent with Lemma 5.7 (|ef| − Cf²) and with Lemma 5.8 (the positive edge of A′ is exactly the scalar bottom: 0.128769 vs 0.128769 at N = 96).
+- The physical spectrum has nothing in (−1.0159|ef|, 2.917|ef|) at N = 96. So (G_A′), hence (G_A), holds at these three fluxes with g_f ≈ 0.98|ef| ≈ 1.97|f|, far above the needed O(f²).
+- Limits of the check: rational fluxes 1/N only, finite torus (Bloch in x_0 only, x_1 periodic with exact flux quantization), finite-difference Hessian. It is evidence for (G_A′), not a proof; it covers no f below 0.065.
+Not done: the brief's optional 4D check of inf spec 𝒦_t(f) at j = 1, L = 3. The t = 0 fibre at k_⊥ = 0 is the operator above; for t > 0 the bounds of §3–§5 are existential and no t > 0 number is used anywhere.
+
+## 7. Corollary (M_j), and where it enters
+
+### 7.1 Inputs collected
+At fixed j ≥ 1, L odd ≥ 3, |f| ≤ f_*(j, L):
+- (S1) Theorem 3.3 (and (S1+) Theorem 3.4) [P given Prop. 2.1 and (F1)–(F3); Prop. 2.1 rests on (I1)–(I4), with (I3) = (P_0)-type Peierls structure at each of the j steps, [I]].
+- (S3) Theorem 4.3, in the subdivided form KAPPA_BOUNDED §1.3 asks for, with ε = 1/n ≤ ε_0 for n ≥ C_3(K_* + 1)/c [P given Prop. 2.1, (F1)–(F4)]. This also meets the "Correction to the proof of Lemma 4.2 (upper side)" of BETA_FP_M §4.3: ε ≤ ε_0 holds per step at every j, so the window form (S3w) for j < j_1 is not needed.
+- (S2) at t = 0: Prop. 5.3 [P]. For t ∈ (0, 1]: only the coarse-scale form (S2c), Prop. 5.4 [P given the above and BETA_FP_M Lemmas 4.1–4.2]. Full (S2) for t > 0 is [open]; it is not needed.
+- The near-zero residue of (S2): (Z_j) [R: Prop. 5.6 reduces it to (G_A); Lemma 5.8 reduces (G_A) to (G_A′), §5; (G_A′) is open and numerically supported, §6].
+- Prop. 4.4 of BETA_FP_M [argued there]. Status update below (§7.3).
+
+### 7.2 Statement
+Corollary 7.1 ((M_j)) [R: (G_A′) (§5, after Lemma 5.8), BETA_FP_M Prop. 4.4 [argued], and the inputs (I1)–(I4), (F1)–(F4) of §2–§4]. Fix j ≥ 1 and L odd ≥ 3. Then, exactly as written in KAPPA_BOUNDED l. 32:
+  (M_j): [Γ_c(Λ_j; f) − Γ_c(1; f) − (f = 0 value)]/(n_2 f²) → d_j as f → 0, at this fixed j.
+Proof. δΓ_j(f) := Γ_c(Λ_j; f) − Γ_c(1; f) = −½[τ log|𝒦_1(f)| − τ log|𝒦_0(f)|] per cell (BETA_FP_M §4.3 with Δ_0 in place of Δ_∞; KAPPA_BOUNDED §1.2). Split δΓ_j = I + II as in BETA_FP_M §4.3, with μ = 2C_1|f| and C_1 from Theorem 3.3.
+(i) II. BETA_FP_M Prop. 4.3 is proved there given (S1)–(S3), and in its proof (S2) is used only in part (a) (|λ| ≤ η_*) and, through Lemma 4.2, in part (b). Prop. 5.5 of this file reruns that proof with (S2) at t = 0, (S2c) for t = 1, and (Z_j) in part (a). With (Z_j) ⇐ Prop. 5.6 ⇐ (G_A), and (G_A) ⇔ (G_A′) (Lemma 5.8): |II(f)| ≤ C|f|³ log(1/|f|) = o(f²).
+(ii) I. BETA_FP_M Prop. 4.4 gives I(f) − I(0) = n_2 d_j f² + O(|f|³ log(1/|f|)) [argued there]. At fixed j, ε_j is replaced by a j-dependent constant; this changes constants, not orders.
+(iii) Sum and divide by n_2 f²: this is BETA_FP_M Cor. 4.5 at fixed j, i.e. (M_j). Only the limit is used by KAPPA_BOUNDED Prop. 1.1; the rate is not. ∎
+Neutral sector [I]. In the neutral block every operator is a convolution, f enters only through cos(f/M²)-type factors (U3_LEMMA51 Prop. 2.2), and 𝒦^{neu}_t(f) ≥ cos(f)·(convolution ≥ c_*l) ≥ 0. So τ log is a per-momentum integral with an integrable log|K|² singularity, and its f² coefficient is obtained by differentiating under the integral. This is consistent with the exact abelian value S_k^{ab} = (1 − L^{−4k})/4 (NUMERICS l. 53–78), which is a neutral-sector statement. The analysis of §3–§6 is needed only for the charged block.
+
+### 7.3 Status update for BETA_FP_M Prop. 4.4
+Prop. 4.4 splits I into a "region 1" (|K|² ≥ R′|f|) and a "region 2" (|K|² < R′|f|) and notes that the magnetic phase-space localization is not written. Half of it can now be written as an operator statement.
+Lemma 7.2 (spectral region 2) [P given Theorems 3.3, 4.3, Props. 5.3, 5.4]. Let χ_W be smooth, 0 ≤ χ_W ≤ 1, χ_W = 1 on [−μ, Rμ], supp χ_W ⊂ [−2μ, 2Rμ] (scaled with μ). Then for t ∈ [0, 1]: |τ(ℓ′(𝒦_t)χ_W(𝒦_t)V)| ≤ C|f|³.
+Proof. Put P := 1_{[−2μ,2Rμ]}(𝒦_t) and F := ℓ′χ_W. F(𝒦_t) = F(𝒦_t)P = PF(𝒦_t)P, so by cyclicity τ(F(𝒦_t)V) = τ(F(𝒦_t)PVP), and |τ(XY)| ≤ ‖X‖τ(|Y|) with Y = PVP. ‖F‖ ≤ 2C_R/μ = C/|f| (BETA_FP_M §4.3; the spectrum is ≥ −μ/2 by (S1)). Theorem 4.3(a) gives ±PVP ≤ C_3P[(𝒦_t + μ)² + f²]P ≤ C_3[(2R + 1)²μ² + f²]P, so τ|PVP| ≤ C f² τ(P). τ(P) = N_t(2Rμ) − N_t(−2μ − 0) = N_t(2Rμ) ≤ N_0(2Rμ + η_1) ≤ C_2|f|((2R + 1)μ + η_1) = O(f²) by Props. 5.4 and 5.3 (λ = 2Rμ is inside the window of BETA_FP_M Lemma 4.2, and N_0 = 0 below −μ/2). Product: (C/|f|)·Cf²·Cf² = C|f|³. ∎
+So the region-2 contribution to I is O(|f|³) as an operator statement, with no phase-space localization. What remains of Prop. 4.4 is the region-1 statement: the f² coefficient of ∫_0^1 dt τ(G_f(𝒦_t)V), G_f(x) := ℓ′(x)(1 − χ_W(x)), equals the formal d_j of (1.1) up to o(f²). G_f is smooth on spec 𝒦_t but its derivatives grow like |f|^{−k}, so a Moyal expansion of G_f(𝒦_t) needs symbol bounds with these weights near K = 0. Lemmas 1.1–1.4 do not give that expansion. Prop. 4.4 stays [argued], with the region-2 half now [P].
+
+### 7.4 Where it enters
+- KAPPA_BOUNDED Prop. 1.1 (l. 26–41): (M_j) is one of five inputs ((PI), (F), (M_j), V1, (G2)); the others are untouched here. Prop. 1.1 gives S_j = c j log L − d_j; Theorem K (l. 112–120, needs (B2)) then gives the window bound (5.1), which Lemma D″ (KAPPA_BOUNDED §5.3) uses in place of LEMMA_DPRIME §1 (ii)–(iii).
+- THEOREM2_PROOF_v4 §4.1, (M_j) bullet, and §10 item 4; TRUST_LEDGER row B4. Suggested new status text (for the supervisor; not written into those files): "(S1), (S3) [proved at fixed j given Peierls structure (I3) and verified symbol facts; SOURCES_T2_S123 Thms 3.3, 4.3]; (S2) at t = 0 and coarse-scale (S2c) [proved]; near-zero residue reduced to the j-independent 2D gap (G_A′) [open; numerically confirmed with margin ≈ |ef|]; Prop. 4.4 region-1 Moyal step [argued]."
+- Numerics consistency (NUMERICS l. 53–78). All constants derived here (C_1, C_2, C_3, C_E, f_*, θ_j) are existential, j- and L-dependent, and enter only o(f²) error terms. None fixes a sign or size of d_j. So there is no conflict with d_1 = −0.372 (L = 2), −0.256 (L = 3), the first-step constants +0.37 … −0.04 for L = 2 … 11, or c = 0.371511. The one quantitative output, the 2D gap of §6 (inf spec A′ ≈ −|ef|, positive edge ≈ +|ef|), matches the continuum N–O value; the IDS slope at t = 0 reproduces |ef|/(8π²) per charged component in the continuum limit of Prop. 5.3 (consistency note after it).
+
+## 8. Ledger
+
+Numbered claims (for the verifier). Tags as in the header.
+1. Lemma 1.1 (twisted product, Moyal expansion with kernel-norm remainders) [P].
+2. Lemma 1.2 (Nenciu-type inverse, C^m in f) [P].
+3. Lemma 1.3 (division of admissible kernels by forward differences; Hermitian sandwich form) [P; the Hermitian regrouping step is written briefly].
+4. Lemma 1.4 (operator bounds ±W·c ≤ C(𝔏_f + |f|)^{p/2} from vanishing order p = 2, 4; 𝔏_f² vs W·l²) [P].
+5. Prop. 2.1 (fixed-j well-posedness: Δ_i(f) = W·a_i, admissible, C³ in f; ‖H_i(f)‖ ≤ h_i) [P given (I1)–(I4)]. (I1) [R: BETA_FP_H Fact 1.1(d), R23_VERIFY §5]; (I2) [R: U3_REPAIRS O6 and U3_AW Lemma A1, CONFIRMED in their VERIFY files]; (I3) [I: gauge covariance quoted from CMP 99 p. 395 (3.32) and p. 395–396 (3.34), V on page image; entrywise analyticity of the averaging in f read off CMP 109 (0.4), not written entry by entry; = (P_0) of BETA_FP_M at each of the j steps]; (I4) [R: U3_AW Prop. A2 base step].
+6. Stationary-value identity ⟨V, Δ_iV⟩ = ⟨x*, Δ_{i−1}x*⟩ + ‖Π^{1/2}D^*x*‖² [P].
+7. Lemma 3.1: Wilson Hessian at constant flux ≥ −(3/2)ν_W|sin φ| [P from U3_LEMMA51 (2.1)].
+8. Prop. 3.2: Δ_j(f) ≥ −C_j|f| [P given claims 5–7].
+9. Theorem 3.3 = (S1): 𝒦_t(f) ≥ −C_1|f| for all t ∈ [0, 1] [P given claim 5].
+10. (F1) Δ_0(K) + D_cD_c^†(K) = |K̂|²1 in midpoint coordinates [P; also V: numerics §6 at φ = 0, error 4.9·10^{−8}]. (F2) [R: Lemma M and O5/A0, U3_AW §3.3, §4.1]. (F3) [R: BETA_FP_H (2.3a) ⇐ LEMMA43 Lemma 4.1 + U3_REPAIRS Prop. B]. (F4) [R: U3_AW Theorem W (3.1) and Prop. E].
+11. Theorem 3.4 = (S1+): 𝒦_t(f) ≥ (c_*/2)𝔏_f − C_1′|f| [P given claims 1–5, 10].
+12. Lemma 4.1 = (MC): ±V ≤ C_V(𝔏_f + |f|)² [P given claims 4, 5, 10].
+13. Lemma 4.2 = (ER): 𝔏_f² ≤ C_E[(𝒦_t + μ)² + f²] [P given claims 1–5, 10].
+14. Theorem 4.3 = (S3): ±V ≤ C_3[(𝒦_t + μ)² + f²]; subdivided form with ε = 1/n ≤ ε_0 = c/(C_3(K_* + 1)) [P given claims 12–13].
+15. Fibre decomposition over k_⊥ and fibrewise validity of claims 9, 11, 13, 14 [P; uses (I3) for translation invariance of the averaging in directions 2, 3].
+16. Lemma 5.1: 𝒦_0(f; k_⊥) = A(f) + |k̂_⊥|², ‖A(f) − 𝔏^{01}_f⊗1‖ ≤ C_S|f| [P; identification of (2.1) with the covariant curl is I].
+17. Lemma 5.2: IDS of 𝔏_f bounded by C_dE (2D), C_dE² (4D), uniformly in f [P].
+18. Prop. 5.3 = (S2) at t = 0 on W [P given claims 9, 16, 17].
+19. Prop. 5.4 = (S2c): N_0(λ − η_1) ≤ N_t(λ) ≤ N_0(λ + η_1), η_1 = O(f²), all t, also fibrewise [P given claims 9, 14, 18 and BETA_FP_M Lemmas 4.1–4.2 with the upper-side correction].
+20. Prop. 5.5: BETA_FP_M Prop. 4.3 holds with (S2) replaced by (S2)|_{t=0}, (S2c) and (Z_j); (Z_j) is necessary (atom example) [P given claims 18–19].
+21. Prop. 5.6: (G_A) ⇒ N_1 Lipschitz on [−η_1, η_1] at scales ≤ η_1 ⇒ Z(f) ≤ C_Z|f|³ [P given (G_A) and claims 5, 11, 13, 14, 16, 17, 19; the derivative formula d/dr τ_2h(A(r)) = τ_2(h′(A)A′) is cited as standard].
+22. Lemma 5.7: inf spec 𝔏^{01}_f ≥ |ef| − Cf² [P].
+23. Lemma 5.8: spec A′ = spec 𝔏^{01}_f ∪ spec(H′|_{ker D′^†}); hence (G_A) ⇔ (G_A′) [P given criticality of V_f, cited from U3_LEMMA51 §1].
+24. Numerics §6: at φ = 2π/N, N = 24, 48, 96, the 2D charged A′ has inf spec ≈ −|ef|(1 + 0.12|ef|), positive edge = inf 𝔏^{01} ≈ |ef|(1 − 0.12|ef|), physical spectrum empty in (−1.016|ef|, 2.917|ef|) at N = 96 [V: numerics this session, scripts t2_s123_gap2d.py, t2_s123_phys2d.py].
+25. Corollary 7.1 = (M_j) as in KAPPA_BOUNDED l. 32 [R: (G_A′) (§5) and BETA_FP_M Prop. 4.4 [argued], plus the inputs of claim 5 and claim 10].
+26. Lemma 7.2: the spectral region-2 part of I is O(|f|³) [P given claims 9, 14, 18, 19]. Prop. 4.4 region 1 (Moyal expansion of G_f(𝒦_t) with |f|^{−k} derivative growth) stays [argued].
+27. Consistency: the continuum limit of Prop. 5.3 gives |ef|/(8π²) per charged component (BETA_FP_M l. 70); no derived constant contradicts NUMERICS l. 53–78 [I].
+
+Balaban quotes used. CMP 99 p. 395, (3.32): "(Q′_j(U^u)R(u)λ)(y) = R(u(y))(Q′_j(U)λ)(y)"; (3.34): "Δ_a(U^u) = R(u)Δ_a(U)R(u^{−1}), G(U^u) = R(u)G(U)R(u^{−1})" [V: page images, PDF pp. 7–8, read in the earlier part of this session]. These give gauge covariance only; the magnetic-translation form W·a follows by U3_LEMMA51 Lemma 3.1.
+
+Open (precise list).
+- O1. (G_A′): the transverse (ker D′^†) part of the charged 2D SU(2) Wilson Hessian at constant flux f has no spectrum in (−c|f|, c|f|) for small f. j- and L-independent. Numerically true with c ≈ 1.97 (§6). Likely route: Harper-type semiclassics (thin Landau bands at (2n + 1)|ef| + O(f²) for 𝔏^{01}, then the transverse reduction); not done. Without O1, (Z_j) and hence (M_j) are not proved: an atom of N_1 near 0 is not excluded.
+- O2. BETA_FP_M Prop. 4.4, region 1 (claim 26).
+- O3. (I3) entrywise: write the Peierls structure of Balaban's linearized averaging at flux f (CMP 109 (0.4)) for one step, with analyticity in f. Needed at each of the j steps, not uniformly.
+- O4. Full (S2) for t > 0 on all of W (Lipschitz at every scale). Not needed for (M_j) by Prop. 5.5; listed because the brief asks for it. Prop. 5.6 proves it near λ = 0 given O1; away from 0 only (S2c) is proved.
+Not claimed. No uniformity in j (f_*, θ_j, h_i, C_1, C_2, C_3 depend on j and L). No explicit constants. No statement about L even. No 4D numerics.
+
+Summary. Proved at fixed j (given the Peierls input (I3) and verified symbol facts): (S1) for all t; (S3) in the subdivided form KAPPA_BOUNDED §1.3 needs; (S2) at t = 0; coarse-scale (S2c) for all t; the exact weak form of (S2) that Prop. 4.3 uses, (Z_j); (Z_j) ⇐ (G_A) ⇔ (G_A′); the region-2 half of Prop. 4.4. Reduced: (M_j) to (G_A′), a single j-independent 2D spectral-gap statement (numerically confirmed with margin ≈ |ef|), plus the region-1 Moyal step of Prop. 4.4 [argued].
+
+STATUS: COMPLETE
