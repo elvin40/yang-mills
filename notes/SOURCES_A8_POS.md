@@ -63,3 +63,23 @@ The same bound holds for the kernel in the weighted form |D_σ(b,b′)| ≤ (16/
  Step 3 (walk bound). Theorem WC(iii): |T_ω(b,b′)| ≤ (8/γ_exp)(c_1ρ)^{|ω|}e^{−½ε″D} (at real points the better 4/γ_exp, ½ε holds; the complex constants dominate).
  Step 4. Multiply: |(Πσ − 1)T_ω(b,b′)| ≤ (16/γ_exp)e^{2·3^dκ_1}(c_1ρ)^{|ω|}e^{−(3/8)ε″D}. Split e^{−(3/8)ε″D} = e^{−(1/4)ε″D}e^{−(1/8)ε″D} ≤ e^{−ε″M/4}e^{−(ε″/8)D} by Step 1. Sum over ω, then Schur's test with (G4). ∎
 4.5 Remark. At σ ≡ 0 the weight is |0 − 1| = 1, so the bound holds without the e^{2·3^dκ_1} factor. Lemma D is the "backup route" of SOURCES_LOC §4 ("Needs the walk bound for the C(Z_0) expansion of [13], not read"); Theorem WC now supplies that walk bound.
+
+## 5. Task (3): the complex case — Lemma P (the "perturbative argument")
+5.0 What G3 needs. SOURCES_G3 2.2 input (Q): the modulus of the (2.14) integrand is bounded by a REAL Gaussian density p_Γ(B) times a B-free constant, with λ_min(Γ) ≥ c_− > 0 and ‖Γ‖ ≤ Λ, c_−, Λ depending on d, L, M only. So the perturbative argument must deliver: (i) the complex Gaussian integral exists; (ii) its modulus is bounded by a positive Gaussian with two-sided spectral bounds; (iii) the B-free factor is exp(O(small)|Z_0|), the (2.17) form; (iv) the comparison to the real reference measure costs only a small quadratic form (absorbed in α_5 of (2.23)).
+5.1 Hypothesis (H_η): η_M ≤ min{1/(2Γ_1″), γ_exp/(8Γ_1″²)}. By Lemma D this holds for M ≥ (4/ε″)[2·3^dκ_1 + log(128 W Γ_1″²/γ_exp²)] (also ≥ the 1/(2Γ_1″) branch; Γ_1″ ≥ γ_exp). Theorem WC's constants are uniform in M ≥ M_1, so M can be raised after κ_1 [P; this is Balaban's "M much bigger than κ_1", p. 16].
+5.2 Lemma P [P given Theorem WC (i), (iii), Lemma S, Lemma D, (H_η)]. For |σ(Δ)| ≤ e^{κ_1} and U_c in the α′-space, with real point U, put C_σ := C^{(k)}(Z_0,σ;U_c), A_c := A_Z(U_c), A := A_Z(U).
+ (a) C_σ is invertible; K_σ := C_σ^{−1} obeys ‖K_σ‖ ≤ 2Γ_1″ and ‖K_σ − A_c‖ ≤ 2Γ_1″²η_M ≤ ¼γ_exp.
+ (b) H_σ := H(K_σ) is real symmetric with ¼γ_exp ≤ H_σ ≤ 2Γ_1″. So Γ_σ := H_σ^{−1} is a covariance with 1/(2Γ_1″) ≤ Γ_σ ≤ 4/γ_exp, and dμ_{Γ_σ} is a positive normalized Gaussian.
+ (c) (modulus = (2.15)) For every measurable f with ∫dμ_{Γ_σ}|f| < ∞, ∫dμ_{C_σ}f converges absolutely and |∫dμ_{C_σ}f| ≤ r_σ∫dμ_{Γ_σ}|f|, r_σ := |det K_σ|^{1/2}(det H_σ)^{−1/2}. In particular ∫e^{−½⟨ψ,K_σψ⟩}dψ converges and |∫e^{−½⟨ψ,K_σψ⟩}dψ| ≤ (2π)^{n_Z/2}(det H_σ)^{−1/2}.
+ (d) (determinant ratio = (2.17)) With ε_σ := ‖K_σ − A‖ ≤ 2Γ_1″²η_M + δ_c, δ_c := ‖A_c − A‖ ≤ Γ_1″/(t(a,α″) − 1) (a = (|J|, |A′|)-size of U_c, Lemma CP proof):
+ r_σ ≤ exp((4nd/γ_exp)·ε_σ·|Z_0|).
+ (e) (ratio to the real measure) For real B,
+ |dμ_{C_σ}(B)| ≤ exp((nd/(2γ_exp))·ε_σ·|Z_0|)·e^{½ε_σ‖B‖²}·dμ_{A^{−1}}(B),
+ and dμ_{A^{−1}} = dμ_{C^{(k)}(Z_0)} at the real pair, positive by §3.
+5.3 Proof. (a) A_c is invertible with ‖A_c^{−1}‖ ≤ 2/γ_exp (Re ≥ ½γ_exp, WC(iii)), and ‖A_c‖ ≤ Γ_1″ (compression of A_exp, WC 6.6). C_σ = A_c^{−1} + D_σ = A_c^{−1}(I + A_cD_σ), ‖A_cD_σ‖ ≤ Γ_1″η_M ≤ ½. So K_σ = (I + A_cD_σ)^{−1}A_c, ‖K_σ‖ ≤ 2Γ_1″, and K_σ − A_c = −(I + A_cD_σ)^{−1}A_cD_σA_c has norm ≤ 2Γ_1″²η_M ≤ ¼γ_exp by (H_η).
+ (b) For real B, ⟨B, H_σB⟩ = Re⟨B, K_σB⟩ ≥ Re⟨B, A_cB⟩ − ¼γ_exp‖B‖² ≥ ¼γ_exp‖B‖². Upper: ‖H(Y)‖ ≤ ‖Y‖ (entrywise conjugation and transpose preserve the ℓ² norm), so ‖H_σ‖ ≤ 2Γ_1″.
+ (c) |det(K_σ/2π)^{1/2}| = |det K_σ|^{1/2}(2π)^{−n_Z/2} and |e^{−½⟨B,K_σB⟩}| = e^{−½⟨B,H_σB⟩} (2.3). So |dμ_{C_σ}(B)| = r_σ dμ_{Γ_σ}(B) pointwise. Integrate.
+ (d) H(A) = A, and H is real-linear, so E := K_σ − H_σ = (K_σ − A) − H(K_σ − A), ‖E‖ ≤ 2ε_σ. Then det K_σ/det H_σ = det(I + F), F := H_σ^{−1/2}EH_σ^{−1/2}, ‖F‖ ≤ 4‖E‖/γ_exp ≤ 8ε_σ/γ_exp. |det(I + F)| ≤ Π_j(1 + s_j(F)) ≤ exp(n_Z‖F‖), n_Z ≤ nd|Z_0|. Take the square root.
+ (e) |dμ_{C_σ}|/dμ_{A^{−1}} = (|det K_σ|/det A)^{1/2}exp(−½⟨B,(H_σ − A)B⟩). ‖H_σ − A‖ = ‖H(K_σ − A)‖ ≤ ε_σ. |det K_σ|/det A = |det(I + A^{−1/2}(K_σ − A)A^{−1/2})| ≤ exp(n_Zε_σ/γ_exp). ∎
+5.4 Refinement at σ ≡ 1 [P]. K = A_c is complex symmetric (WC 6.0), so H = Re A_c and E = i Im A_c with Im A_c real symmetric. F = iS, S real symmetric, so |det(I + F)| = Π(1 + λ_j²)^{1/2} ≤ exp(½n_Z‖S‖²): the determinant cost is second order in Im A_c, and r ≥ 1.
+5.5 Size of ε_σ. ε_σ = O(e^{−ε″M/4}e^{2·3^dκ_1}) + O(|J| + |A′|)/α″-scale. This is Balaban's (2.16) size "O(1)e^{−δ_0M/3} + O(α_0 + α_1)", with δ_0/3 replaced by ε″/4 [P up to the constant in the δ_c term, which depends on α″ through Lemma CP].
