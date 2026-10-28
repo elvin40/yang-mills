@@ -1,14 +1,14 @@
-# Lean 4 formalization of Lemma D′
+# Lean 4 formalization of Lemmas D′, D, E, H
 
-File: `YmLean/LemmaDPrime.lean` (405 lines, no `sorry`). Main theorem: `YmLean.lemma_DPrime`.
+Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (163 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`.
 Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRIME_VERIFY.md`.
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
-- Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB).
-- Build: `lake build YmLean.LemmaDPrime`. A clean build of the file takes about 5 s.
+- Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (445 files from the local cache, no download; build dir now 1.5 GB).
+- Build: `lake build` (all three files). Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -50,13 +50,38 @@ Conclusions of `lemma_DPrime` (one conjunction, in this order):
 
 ## Not formalized
 
-- Step 8 (all β_j(0) > 0, all K; this is Lemmas D + E).
+- Step 8 is now `lemma_DPrime_step8` (LemmaDE.lean).
 - Remark 3 / ledger L5 (history-dependent β_j).
 - Remarks 1, 2 and §5 (fit to Balaban's Theorem 1; not a mathematical statement in this abstract form).
+
+## LemmaDE.lean (LEMMAS.md Lemmas D, E, corrected; one-argument β_j as in LemmaDPrime)
+
+- `lemma_D β γ b b'`: `0 < γ`, `0 ≤ b ≤ b'`, `β j` continuous on `]0, γ]`, `b ≤ β j x ≤ b'` for `x ∈ ]0, γ]`. Conclusions: (1) every trajectory with couplings in `]0, γ]` for `k < K` and `u K = 1/g²` has `1/g² + b(K−k) ≤ u k ≤ 1/g² + b'(K−k)`; (2) for every `K` and `g ∈ ]0, γ]`, `∃ u, Shot β γ g K u` with these bounds. Hypotheses weaker than the note (0 ≤ b, continuity and bounds only on `]0, γ]`, K = 0 allowed). The history-dependent β_{k+1}(g_0, …, g_k) of LEMMAS.md is NOT formalized.
+- `γE γ₀ C β₀ = if C = 0 then γ₀ else min γ₀ √(β₀/(2C))`. `lemma_E β β1 γ₀ C β₀ β₀'`: `β₀ ≤ β1 j ≤ β₀'` (β1 = β_j^{(0)}), `|β j g − β1 j| ≤ C g²` on `[0, γ₀]` ⇒ `0 < γE ≤ γ₀` and `β₀/2 ≤ β j g ≤ β₀' + β₀/2` for `g ∈ ]0, γE]`.
+- `lemma_DE`: E + continuity on `[0, γ₀]` ⇒ shooting for every K and `g ∈ ]0, γE]` with bounds `β₀/2`, `β₀' + β₀/2`.
+- `lemma_DPrime_step8`: Lemma D′ (d), last sentence. `β0min β J βinf = min(min_{j ≤ J} β_j(0), β∞/2)` (min over j = 0, …, J), `γ″ = γdef γ₀ γBal C₁ (2·β0min)`.
+- `g₁_of_J_zero`: `g₁ γ 0 B βinf = γ`.
+
+## LemmaH.lean (SOURCES_HBETA.md Lemma H, Step 1, abstract form)
+
+- `Bp a v j = Σ_{i<j} a j i · v i` (B′_j, with `a j i` = ∂β_j/∂u_i), `εH a j = Σ_{i<j} |a j i|`, `PH a j = Π_{l=1}^{j} (1 + ε_l)`.
+- `gronwall_telescope`: `Π_{l=1}^{K}(1+e_l) − 1 = Σ_{j=1}^{K} e_j Π_{l=1}^{j−1}(1+e_l)`. `prod_le_exp`: `Π(1+e_l) ≤ exp Σ e_l` for `e_l ≥ 0`.
+- `lemma_H a v c x K`: `|v 0| ≤ 1`, `v (j+1) = v j − Bp a v (j+1)` for `j < K`, column sums `Σ_{j ∈ (i, K]} |a j i| ≤ c i` for `i < K`, `Σ_{i<K} c i ≤ x` ⇒ `Σ_{j=1}^{K} |B′_j| ≤ Π(1+ε_j) − 1 ≤ e^x − 1` and `|v k − v 0| ≤ e^x − 1` for `k ≤ K`.
+- `lemma_H_half`: with `v 0 = −1` and `x ≤ log(3/2)`: `Σ |B′_j| ≤ 1/2` and `1/2 ≤ |v k| ≤ 3/2`.
+- The hypothesis is the SUM of the column sums (Σ_j ε_j ≤ x, what the note's Step 2 produces). A bound on sup_i of the column sums alone is not enough: `a j (j−1) = −x`, other entries 0, gives Σ|B′_j| = (1+x)^K − 1.
+- Not formalized: Step 2 (S_3 ≤ 2γ/β, i.e. Σ c_i ≤ x for c_i = ½C₁A g_i³), Step 3 (bootstrap on |c| ≤ 2r), and the Yang–Mills identification (I).
 
 ## Axioms
 
 ```
 #print axioms YmLean.lemma_DPrime
 'YmLean.lemma_DPrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_D' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_E' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_DE' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_DPrime_step8' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.g₁_of_J_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.gronwall_telescope' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_H' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_H_half' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
