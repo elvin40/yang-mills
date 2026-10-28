@@ -25,6 +25,8 @@ Theorem 1 (CMP 122 II p. 355): "If the sequence of the effective coupling consta
 
 Setting. ε = L^{−K}, so log(L^kε)^{−1} = (K − k) log L. u_k := 1/g_k². Recursion (CMP 109 (0.18)/(0.20)): u_{k+1} = u_k − β_{k+1}(g_k). The increment β_{k+1} depends on the whole history g_0, …, g_k (CMP 109 p. 298, [verified quote]). β_j(0) is the one-loop (Gaussian) increment; it is history-independent by definition. Balaban assumes L odd, L > 11, for the whole paper (CMP 109 pp. 251–252, OCR line 124, verbatim confirmed in THEOREM2_PROOF_VERIFY Step 6).
 
+Volume hypothesis (Vol) [added 2026-10-28; convention C31]. The torus has side L^N in scale-0 cells, so N_K = L^{N−K} final-scale (unit-lattice) cells per side, with N ≥ K + m_M + 2, where M = L^{m_M} is the CMP 109 localization cube (p. 257); in the side-ℓ form of CMP 109 (ℓ = 2L^{m_T}) and ASSEMBLY (ℓ ∈ 2N), (Vol) reads ℓ > 22M, which m_T ≥ m_M + 1 gives. Justification: at every step k ≤ K the local set □̃^5 (side 11M) must lift to Z^4 for the whole-lattice β subtraction to leave only Balaban's irrelevant class, i.e. N_k > 22M, and N_k is smallest at k = K (SOURCES_A15_BDRY §3.4 + VERIFY item (4); TRUST_LEDGER C31). The proof of Theorem 2w does not use (Vol) (Lemmas D′/D″ use the whole-lattice β_j, SOURCES_T2_KUNIF §5.1); (Vol) is used where Theorem 2w is applied on the torus (Theorem 1, B8, Target 2). The torus exponent m_T of CMP 109 p. 251 and the cube exponent m_M of p. 257 are both printed as m; they must be fixed independently (m_T = m_M gives ℓ = 2M and fails (Vol)). Check: SOURCES_T2_VOL.md.
+
 ### 1.2 What Balaban's Theorem 1 actually needs (LEMMA_DPRIME_SWEEP §2, §7)
 
 The quoted hypothesis of Theorem 1 is only g_k ∈ ]0, γ]. The proof uses more. CMP 119 Theorem 1 (p. 262) assumes "(I.0.33)", a misnumbered reference to (0.31) of CMP 109. Its working form is CMP 119 p. 255–256 (2.6)–(2.9), for scales m < n:
@@ -530,3 +532,5 @@ Any write-up must cite SA26-T0, SA26-YM4, and OAI26-O3, and state these overlaps
 8. Not changed: §1.1, §1.2, §1.4, §2.1, §2.3, §2.4, §3, §7, §11, and all other tags. KAPPA_BOUNDED_VERIFY's (B2) obstruction statement is in its §7 and §9(vi) (the task brief cited §6; §6 there is the Lemma D″ check). BALABAN_EXCERPTS_CHECK has no change since v3.
 
 Status: complete (2026-10-28). Not verified as a whole document.
+
+Amendment 2026-10-28: §1.1 gains the volume hypothesis (Vol), N ≥ K + m_M + 2 (a sufficient form of ℓ > 22M final-scale cells per side), from SOURCES_A15_BDRY + VERIFY and TRUST_LEDGER C31; check in SOURCES_T2_VOL.md. No other text changed.
