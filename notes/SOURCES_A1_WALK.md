@@ -99,3 +99,30 @@ Sections are appended in order; ledger at the end.
  (d) Printed rates (½δ_0 in (2.16), δ_0 in (3.187)) are NOT reproduced on this route; only "some fixed rate δ_W(d, L, a, a_0) > 0". Same verdict as A2_VERIFY V7.
  (e) Not covered here: the CMP 116 p. 13 special construction for C^{(k)}(Z_0) (one large domain X_0 with X̃_0^5 = Z̃_0, Dirichlet data on Z_0^c). §4–§5 build expansions on the full lattice 𝔅 with a cube cover. For the Z_0-compressed operator one needs the same construction with one extra local piece on Z̃_0 (local inverse = Z̃_0-compression, positivity again by restriction of (C)). Plausible by the same argument [I]; B_W uniformity in Z_0 uses part of the exponential (A3_SIGMA_VERIFY V5) [R].
 
+## 8. Ledger
+[V] CMP 96 p. 237 (image): local positivity (2.76)–(2.78); local decay "Another way … e^{⟨a,·⟩}Q′G′²Q′*e^{−⟨a,·⟩} … O(|a|)" = Combes–Thomas = Lemma CT at the local level; parametrix identity (2.82) with the COMPRESSED local operator □Q′G′(□)²Q′*□ and four error sums; (2.83)–(2.84) final rate ½δ_1 (half the local CT rate).
+[V] CMP 96 pp. 248–249 (text; image via A1_KERNEL §4): (2.147) local positivity of QG_□Q* with B = 0 outside □; (2.148); "in exactly the same way as in (2.82)"; (2.149).
+[V] CMP 99 p. 413 (image): factor properties (localized in X × X, U on X̃^5, "bound of the type (3.89)"; single-factor bounds not printed), Thm 3.9 (3.98)–(3.99).
+[V] CMP 99 text pp. 408–416: Cor. 3.6 local operators (p. 409), (3.87), (3.95)–(3.97), localization of G′ via (3.90) for a modified partition (pp. 411–412), Thm 3.10 (3.107)–(3.108); p. 422 extension of Thm 3.10 to the final G; Thm 3.14 domain change = walk truncation (pp. 426–427); (3.185)–(3.187) and the sentence requiring walk expansions of (QGQ*)^{−1}-type operators (p. 431).
+[R] (W_G): walk expansion (3.107)–(3.108) of the final G (and tree form for G_1, Ğ_2) with locality, counting, and constants uniform in regular U — Thm 3.10 + p. 422 + p. 427 assertions. This is Balaban's printed claim; its proof for G_0 is printed in sketch (Sect. C), for G by one sentence.
+[R] CMP 96 Lemma 2.1 (2.61): c_1(κ) uniform (sums over intermediate points); Σ uniform.
+[P] §1.5 conjugation norm ‖·‖_κ: submultiplicative, monotone in κ, gives pointwise decay (N2).
+[P] §4.2: truncated local operator N̂_□, U-local on □⁺; truncation error e^{−2δ_GM_1}; local positivity ½c_− by RESTRICTION of the global (C).
+[P] §4.3: accretive Lemma CT (no symmetry needed); ‖C_□‖_ε ≤ 4/c_−, ε independent of M_1, □, U.
+[P] §5.1: parametrix identity N̂P = I + ΣF_□ (separation, truncation, commutator).
+[P] §5.2: ‖F_□‖_ε ≤ K_F/M_1.
+[P] §5.4–§5.5 + §6.2: walk series, locality (L1)–(L2), per-walk bound (4/c_−)(c_1ρ)^{|ω|}m e^{−½εd(ω)}, absolute convergence for M_1 ≥ M_W.
+[P] §7.4 (a)–(c): the s-rule, A2's α_5 Neumann step, and A3_SIGMA's η_M accept δ_W = ½ε with the order (d, L, a, a_0) → c_±, ε → M_1 → M → α_0.
+[I] Geometry of 𝒟, cores, h_□ with Lipschitz constant c_h/M_1 in the multiscale metric d (Balaban's (3.89) O(M^{−1}) is the printed analogue); Q, Q* block-local (A1_KERNEL S3); κ_1 independent of M; Ğ_2 inherits (C).
+[I] Inherited from (C) (A1_KERNEL §8, S1–S2): support of iterated contours of Q_j; form bound for Δ′_π.
+[I] §7.4(e): Z_0-compressed version for C^{(k)}(Z_0) (CMP 116 p. 13 large X_0).
+Status of A1 (walk level): "analyzed in the same way, not repeated" → "proved [P] modulo (W_G) [R, Balaban's printed walk expansion of G], (C) [P with I items], Lemma 2.1 [R], and the [I] geometry items". Rate δ_W = ½ε, not Balaban's ½δ_0. A3 is not an input.
+Correction to the brief: (i) step (2) local positivity is the restricted (C), not A3's γ_0 (§2.4); (ii) the domain-change error of Balaban's (3.95) is replaced by a truncation error (§3.2, §4.2(iii)), so CMP 99 Cor. 3.6 (local gauge to U ≈ 1) and CMP 89 [2] are not needed; (iii) single-factor bounds are not printed by Balaban, so G-sub-walks are bounded as whole blocks (§6.2); (iv) ‖K‖ ≤ ½ in a weighted norm is replaced by the per-walk bound with C_𝒟c_1ρ ≤ ¼, which implies it (Schur on the absolute walk sum).
+
+## 9. STALL / open points
+No stall in the construction. Open items for a verifier or a later session:
+O1. (W_G) is load-bearing and is Balaban's assertion for the final G (p. 422 one sentence) and for G_1, Ğ_2 (pp. 427, 431). If a verifier wants it [P], the same §4–§5 scheme applied to G_0 → G (Neumann in Δ′_π with factor α_0, p. 422) is the route; not done here.
+O2. Lipschitz bound for h_□ in the multiscale metric across scale boundaries inside one cube (§4.1 [I]).
+O3. §7.4(e): write the Z_0-compressed variant (one extra local piece on Z̃_0; its local inverse is the Z̃_0-compression, positivity by restriction of (C), U-locality on Z̃_0^5). Expected 1 page.
+O4. §6.4 complex α′-space: needs a written bound ‖N̂(U′U) − N̂(U)‖ ≤ O(α′) from (W_G) on the complex space + Cauchy.
+Status: COMPLETE for this session (Opus). Unverified.
