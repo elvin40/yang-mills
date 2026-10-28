@@ -41,7 +41,7 @@ Remark. Balaban does not print bounds for single factors R_α(X) (p. 413: "Inste
 0.6 Order of constants. (d, L) fix B_0, c_0, δ_0, C_𝒟, c_J. Then θ ∈ (0, 1) is fixed (θ = ½ is enough). Then M_* and a_* are fixed (§4). For G_1, the A1-W constants follow, then M_W and a_{**} (§5). Last, α_0 is chosen. The condition of WG-1 is α_0 ≤ c′M^{−11}; it is optional and is admissible in this order because α_0 comes last.
 
 0.7 Theorem WG. Let U satisfy (3.35)–(3.36). Fix θ ∈ (0, 1).
- (G) [Theorem WG-G] There are M_*(d, L, θ) and a_*(d, L, θ) > 0 such that for M ≥ M_* and Mα_0 ≤ a_*, G = Σ_λ T_λ is a walk expansion in the sense of 0.4 with constants (B_0, ρ_*, (1 − θ)½δ_0). Here ρ_* := max{ρ, ε_V^{1/10}} and ε_V := K_V Mα_0, K_V = K_V(d, L, θ). The bound (B1) holds also for kernels with one derivative on either side. If in addition α_0 ≤ c′M^{−11}, then ρ_* ≤ c_0M^{−1}, which is the literal (3.108) form.
+ (G) [Theorem WG-G] There are M_*(d, L, θ) and a_*(d, L, θ) > 0 such that for M ≥ M_* and Mα_0 ≤ a_*, G = Σ_λ T_λ is a walk expansion in the sense of 0.4 with constants (B_0′, ρ_*, (1 − θ)½δ_0), B_0′ := c_QB_0. Here ρ_* := max{ρ, ε_V^{1/10}} and ε_V := K_V Mα_0, K_V = K_V(d, L, θ). The bound (B1) holds also for kernels with one derivative on either side. If in addition α_0 ≤ c′M^{−11}, then ρ_* ≤ c_0M^{−1}, which is the literal (3.108) form.
  (G1) [Theorem WG-G1] Assume in addition (I6). There are M_W and a_{**} > 0 such that for M ≥ M_*, M_1 ≥ M_W, Mα_0 ≤ a_{**}, G_1 = Σ_τ T_τ is a tree expansion: (L1)–(L2) for every factor, (B1) with the tree distance d(τ, y, y′), (B2) in tree form, and rate (1 − θ)½ε.
  All constants are uniform in U with (3.35)–(3.36).
 
