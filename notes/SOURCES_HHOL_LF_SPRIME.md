@@ -1,6 +1,6 @@
 # SOURCES_HHOL_LF_SPRIME — holomorphy and small-difference bounds with thresholds frozen at s′ near ū
 
-Status: in progress (2026-10-28). Ledger tags: [P] proved here, [V] verified in a cited file, [I] imported from Balaban/literature, [R] reduced to a named open item.
+Status: complete, unverified (Claude Opus, 2026-10-28). §5 ledger is authoritative. Ledger tags: [P] proved here, [V] verified in a cited file, [I] imported from Balaban/literature, [R] reduced to a named open item.
 
 Target: the open item from SOURCES_B15_M245_VERIFY §(R1). B15's input (R1) needs (a) a sup bound on the holomorphic extension in the weights with thresholds frozen at an arbitrary real s′ near ū, and (b) a small-difference bound between the frozen-at-s′ and frozen-at-x* objects.
 
@@ -53,3 +53,51 @@ Result [P given (M-A), (M-B), (M-C) at the constants below]. Put
  γ_2^S = 0.895γ_2, γ_0^S = 0.73γ_0, c″ → 0.895c″, C_i → 1.06C_i, γ ≤ γ_S (one further lowering, (G5) included).
 Then for every s′ ∈ S, w ↦ B_j(w; s′) is holomorphic on P_{ρ_0}(x*) and |B_j(w; s′)| ≤ M on it, with the SAME M as at x* and all constants uniform in s′ ∈ S, j, k, K, volume. The output bound M does not move because each modified item enters Balaban's induction only through conditions of the form "constant · g-small quantity ≤ fixed" or "lower bound on C_i", and those are restored by γ_S and C_i → 1.06C_i; the output form (E_0, M) is set before γ.
 2.3 Mixed threshold assignments [P]. Nothing in 2.2 used that all cuts of step i share one s′_i. The bounds hold for any assignment of real thresholds s_c ∈ [ū_i − ρ_s, ū_i + ρ_s] to the individual cutoffs c of step i (even bond by bond). Needed in §3 (bond telescoping produces mixed products).
+
+## 3. (b) The small difference between the s′-frozen and x*-frozen objects (task 3)
+
+Object: D_j(w; s′) := B_j(w; s′) − B_j(w; ū), w ∈ 𝒫 complex, s′ ∈ S real.
+3.1 Shell representation [P]. Telescope over the steps i < j (change the cuts of one step at a time; intermediate assignments are in S). Inside step i telescope over the cutoffs and bonds (HTHR2 Lemma T):
+ Π_bχ_{s′}(b) − Π_bχ_{ū}(b) = Σ_b [Π_{b′<b}χ_{s′}(b′)]·(χ_{s′}(b) − χ_{ū}(b))·[Π_{b′>b}χ_{ū}(b′)].
+The outer products are a MIXED assignment (2.3), covered by §2. The middle factor is a shell indicator with |χ_{s′}(b) − χ_{ū}(b)| ≤ 1 − χ(|B̃(b)| < δ_lo), δ_lo := min(δ(s′_i), δ(ū_i)) = δ(max(s′_i, ū_i)) (δ non-increasing, 1.2). It vanishes unless s′_i ≠ ū_i, and it is supported where the two cuts disagree: δ_lo ≤ |B̃(b)| < δ_hi.
+3.2 Tail form (no density input) [P given §2, HTHR2 Lemma T (F3), (R2)]. After modulus domination (2.2(i)) each telescoped term is bounded by the positive majorant of the mixed-assignment object with bond b restricted to |B̃(b)| ≥ δ_lo. On that restriction Balaban's (1.77)–(1.78) positivity argument gives the factor of HTHR2 (F3) at the lower threshold, at Re-weight ≥ 0.826u*:
+ exp(−0.82·(E(s_hi)/E(ū_i))·κ_2(log ū_i)^q),  s_hi := max(s′_i, ū_i),  E(s_hi)/E(ū_i) ≥ e^{−|s′_i − ū_i|/(ū_i − ρ_s)}.
+(Here (log s_hi)^q ≥ (log ū_i)^q was used.) The bond sum costs |X| ≤ C(MR)^d ≤ C(log ū_i)^{dr_0} per localized activity (R frozen at x*, M3). Propagation from step i to step j at complex weights costs λ_C^{j−1−i} ((R2), HHOL 4.2(a)). Hence
+ sup_{w∈𝒫}|D_j(w; s′)| ≤ C_T Σ_{i<j, s′_i≠ū_i} λ_C^{j−1−i}(log ū_i)^{dr_0} exp(−κ_3(s′)(log ū_i)^q),     (3.1)
+ κ_3(s′) := 0.82·κ_2·min_i e^{−|s′_i−ū_i|/(ū_i−ρ_s)} ≥ 0.82e^{−1/9}κ_2 = 0.734κ_2 on S.
+On B15's set |s′_i − ū_i| ≤ 3r with ū_i ≥ γ^{−2} ≥ 150r: κ_3 ≥ 0.82e^{−3r/(0.9γ^{−2})}κ_2 ≥ 0.82e^{−1/45}κ_2 ≥ 0.80κ_2. The dependence on |s′ − ū| is explicit and monotone: through the support indicator and the factor e^{−|s′_i−ū_i|/(ū_i−ρ_s)} in the exponent.
+3.3 Linear form C|s′ − x*|·(…) [P given §2 + B15 M2′ density form + (R2)–(R4)]. If the shell measure is used instead of the tail alone: the shell width in B̃ units is |δ(s′_i) − δ(ū_i)| ≤ sup_{[ū−ρ_s, ū+ρ_s]}|δ′|·|s′_i − ū_i| ≤ e^{1/18}(δ(ū_i)/(2(ū_i − ρ_s)))|s′_i − ū_i| (1.1); B̃ = x*B gives θ-width ≤ 1.06·A(log ū_i)^p·ū_i^{−1}·|s′_i − ū_i|·(1 + O(1/log ū)), matching B15_VERIFY's corrected |θ′| ≤ A_1(log s)^{p_1}s^{−1}. Multiply by the M2′ marginal density on the shell (B15 (2.1)/(2.2)), apply the M4 cancellation and the history weight. Run on each point of the segment [ū, s′] ⊂ S, using §2 for the uniform majorant at every intermediate frozen threshold (this is the step B15 §4.3 lacked):
+ sup_{w∈𝒫}|D_j(w; s′)| ≤ Σ_{i<j} a^C_{j−1−i}·|s′_i − ū_i|·1.235C_D(log ū_i)^{P_D}·e^{−κ_3(s′)(log ū_i)^q}·(1 + O(ρ_s/ū)),     (3.2)
+ P_D = np_1 + dr_0 (B15_VERIFY correction), a^C_m = λ_C^m.
+This is B15 §4.3's Φ_3 bound with κ_3 made explicit and s′-uniform. It inherits M2′'s open item: the coarea Jacobian for non-round large-field level sets (G3_N2 2.6), plus (R3), (R4).
+3.4 Which form B15 needs [P]. B15 §4.3–§4.4 needs only sup_{|z|<ρ_z}|φ(z)| ≤ Σ_i a^C_{j−1−i}Φ̃(u_i) with Φ̃ of the form C(log s)^Pe^{−κ(log s)^q}. The factor 3r in §4.3 is |s′ − ū| ≤ 3r, an O(1) constant, not a small parameter. So the tail form (3.1) suffices for W_j: Φ̃(s) = C_T(log s)^{dr_0}e^{−0.80κ_2(log s)^q}, with dr_0 ≤ P_D. §5 of B15 then runs with C_Φ adjusted and κ_3 = 0.80κ_2 (not 0.82κ_2; B15's "absorbed" is now an explicit factor e^{−1/45}). Consequence: the W_j (weight) part of B15 no longer needs M2′. The T_j (threshold-derivative, real) part still needs M2′/M4 as in B15 §3.
+
+## 4. The neighbourhood ρ_s and B15 §4.2's use (task 4)
+
+4.1 Choice [P]. ρ_s := 0.1·min_i ū_i, componentwise, real s′ only. Since ū_i = x*_i^{−2} ≥ γ^{−2} (Balaban (0.31), B15 §4.2), ρ_s ≥ 0.1γ^{−2}. What limits ρ_s: only (1.1)–(1.2) (cut ratios e^{±1/18}, exponent ratios e^{±1/9}) and (G5). Any ρ_s = θū with θ < 1 works with factors e^{±θ/(2(1−θ))}, at the cost of larger C_i, γ_0, γ_2 adjustments; θ = 0.1 is a convenient value, not a limit.
+4.2 B15's uses [P].
+ (i) §4.1–§4.3: s′ = u(c), real, |u_i(c) − ū_i| ≤ 3r (§5.4 induction). 3r ≤ ρ_s iff γ^{−2} ≥ 30r; implied by (G4‴) γ^{−2} ≥ 150r. COVERED.
+ (ii) The radius 0.1γ^{−2} in B15 §4.2 is ρ_z, the radius of the z-disc in the WEIGHT direction (w = u(c) + zv). It is not a disc in s′: the thresholds stay frozen at the real values s′ and ū while z varies. The weight points lie in 𝒫 (B15 §4.2, confirmed by B15_VERIFY [num]). §2 gives the bound on all of P_{ρ_0}(x*) ⊃ 𝒫, so the whole z-disc is covered. Also ρ_s ≥ 0.1γ^{−2} ≥ ρ_z-scale, so even a reading of 0.1γ^{−2} as a real threshold radius is covered. COVERED.
+ (iii) §4.5 bidisc |z|, |z′| < ρ_z/2: same frozen s′; COVERED.
+ (iv) (3.2) segment [s′, ū] ⊂ S: COVERED.
+ Not covered and not needed: complex thresholds s′ (a cut at a complex radius is not defined; HTHR2_VERIFY's objection concerns exactly that, and B15 avoids it).
+
+## 5. Ledger and conclusion (task 5)
+
+[read, files] SOURCES_B15_M245 §4 + §5–§6, _VERIFY §4; SOURCES_HHOL §0–§3; SOURCES_HHOL_LF in full, _VERIFY V1–V7; SOURCES_T2_IEPS_LF §2–§7 + corrections; SOURCES_HTHR §0–§1; SOURCES_HTHR2 §0–§1.2; SOURCES_GGAIN_LF §2, §3 conv., §6.1, §7. No page image read this session; all [V] items are inherited from those files. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
+[P] here:
+ - §1 inventory: s′ enters only through the cut radii δ(s′) in B̃ units (D1) and hence the small/large split (D2). Integers, partitions, B̃ scaling, R-ratio weight, and the vertex-function domains α_{i,j} (frozen at x*) do not move. The only contact point with the domains is the inclusion C3.
+ - (1.1)–(1.2): δ(s) = s^{−1/2}A(log s)^p is non-increasing for log s ≥ 2p; cut ratios ∈ e^{±ρ/(2(ū−ρ))}, large-field exponent ratios ∈ e^{±ρ/(ū−ρ)}, monotone in s′. [num] checks inline.
+ - §2: holomorphy on P_{ρ_0}(x*) for every s′ ∈ S (by inspection, as B15_VERIFY); the sup bound |B_j(w; s′)| ≤ M, same M, constants uniform on S, with γ_2 → 0.895γ_2, γ_0 → 0.73γ_0 (> γ_0/4), c″ → 0.895c″, C_i → 1.06C_i (lower-bound-only constants, T2_IEPS_LF), γ ≤ γ_S, (G5). Mixed per-cutoff assignments covered (2.3).
+ - §3: tail form (3.1) with κ_3(s′) ≥ 0.734κ_2 on S and ≥ 0.80κ_2 on B15's 3r-set; linear form (3.2) C|s′ − ū|·(log ū)^{P_D}e^{−κ_3(log ū)^q} given M2′.
+ - §3.4: B15's W_j part needs only (3.1); B15 §5 runs with κ_3 = 0.80κ_2 instead of 0.82κ_2.
+ - §4: ρ_s = 0.1 min ū_i ≥ 0.1γ^{−2} ≥ 3r; B15 §4.1–§4.5 uses are inside S × P_{ρ_0}(x*).
+[R] inputs carried (unchanged in kind from the x* case):
+ (M-A) equipartition/mismatch average, now needed uniformly over ratio-cutoff radii in [0.946, 1.057]·M_0ε(ū) (its sketch does not see the radius beyond smallness);
+ (M-B) Balaban (1.80)–(1.98) with γ_0 → 0.73γ_0 (was 0.82γ_0) and O(1) → 2·O(1);
+ (M-C) small-field complex step (HHOL (C1′)–(C4″), (W4), (Eps)) with γ_2 → 0.895γ_2 in the large-field gain;
+ (R2) complex history propagation λ_C^{j−1−i} (Theorem SM / HHOL 4.2(a));
+ HTHR2 Lemma T [P given (F3) [V] and M3] for (3.1);
+ for (3.2) only: B15 M2′ density form with the open non-round coarea Jacobian (G3_N2 2.6), (R3), (R4).
+[I] (vi)'s reading that the R-ratio cutoff M_0ε_k moves with s′ (HTHR §1 moves "all continuous thresholds"); if it is instead frozen at x*, (vi) is trivially the x* case. Either reading works. Also [I]: Balaban's (C2′)–(C4′) items in the running-threshold version are of "g-small" type (T2_IEPS_LF §3 classifies the printed list; OCR caveat R4 there applies).
+CONCLUSION. (R1) of B15 — holomorphy in w with thresholds frozen at any real s′ near ū, sup ≤ M, and the small-difference bound — is PROVED relative to (M-A), (M-B), (M-C), (R2), and HTHR2 Lemma T, i.e. relative to the same inputs as (H-hol) itself (HHOL_LF) plus the Lemma T/(R2) pieces B15 already used. The difference bound in tail form (3.1) needs no density input; the linear form (3.2) additionally needs M2′ (open coarea Jacobian). So the new open item of B15_VERIFY is closed at the level "same status as (H-hol)": B15 adds no input beyond (H-hol) + (R2)–(R4) + M2′ (the last only for T_j). Correction to B15: κ_3 = 0.80κ_2, not 0.82κ_2, once the s′-motion of the large-field exponent is tracked. Unverified; needs an independent check, first of 2.2(iii) (is C3 the only ratio condition between a cut and a frozen domain?) and 3.2 (does Lemma T's mixed product stay inside §2's uniform majorant at complex w?).
