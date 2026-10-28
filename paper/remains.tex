@@ -135,8 +135,8 @@ B17 & (H-hol), large field & $\to$ A4, A18, A19 & verified reduction; (M-C) open
 B18 & N3 strip bound & none & proved+verified given B12--B17 \\
 B19 & (FX) final Mayer expansion & not in CMP 116--122 & reduced; remaining input B18 \\
 B20 & Sourced step bookkeeping: (W4), (P8), F2$'$, (D), $\Lambda_j$ & $\to$ A4, A10, A16 & reduced; $\Lambda_j$ bookkeeping open \\
-B21 & (B-N1) bridge and (S) & none & open; (S$_{\mathrm{src}}$) $\Rightarrow$ (H-U) proved+verified \\
-B22 & Scale condition (U) and recovery of $\kappa\to\kappa/2$ in the sourced step & none & open; (U) is a hypothesis in disguise \\ \hline
+B21 & (B-N1) bridge and (S) & none & open; (S$_{\mathrm{src}}$) $\Rightarrow$ (H-U) proved+verified; compatible with (U) (C23) \\
+B22 & Recovery of $\kappa\to\kappa/2$ in the sourced step (only; (U) moved to C23) & none & open [R] \\ \hline
 \end{longtable}
 
 \begin{longtable}{p{0.05\linewidth}p{0.38\linewidth}p{0.22\linewidth}p{0.25\linewidth}}
@@ -163,7 +163,8 @@ C18 & $\ell$ even; thermal state; plaquette observable; test space $D_n$; origin
 C19 & Coupling domain $\ioc{\gamma}$ & \file{SOURCES_GGAIN_VERIFY} & free \\
 C20 & Route K primary, Route B alternative & v4 \S1.3 & free \\
 C21 & $\theta_*<1$ in Route B & \file{BETA_FP_PW_VERIFY} & free; trivial \\
-C22 & $g_0(K,g)$: any shooting solution & Lemma D & loses generality \\ \hline
+C22 & $g_0(K,g)$: any shooting solution & Lemma D & loses generality \\
+C23 & (U): $\rho_1\le c_*r_0/M^a$ at $\lambda_K=1$ & \file{SOURCES_UN1} (+ VERIFY) & constant choice; compatible with B-N1, $C^n$ cost \\ \hline
 \end{longtable}}
 
 \paragraph{Binding sets.} \emph{Theorem 2w} (Theorem~\ref{thm:A}(i), Route K) rests on A5, A15, B1--B8, and X5. Route B replaces B2--B5 by B9 and X5 by X1.
@@ -172,4 +173,4 @@ C22 & $g_0(K,g)$: any shooting solution & Lemma D & loses generality \\ \hline
 
 \emph{Theorem~\ref{thm:B}} rests on 18 Group A items (A1--A5, A7, A8, A10--A13, A15--A20, A22), 4 externals (X2--X5), and 21 Group B items (B1--B8, B10--B22). C9 does not remove A17, because A13 uses A17. Beyond A13, Theorem~\ref{thm:B} adds only A16, A19, A20 to the Ba{\l}aban-level trust.
 
-Counts: Group A has 22 items, of which 13 are printed by Ba{\l}aban without a proof (11 of the 18 behind Theorem~\ref{thm:B}, 4 of the 6 behind Theorem~\ref{thm:A}). There are 5 externals, 22 Group B items, and 22 Group C items. Of Group C, C3, C4, C18, C22 (with (U) of B22) lose generality, and C9, C10, C16 change Ba{\l}aban's construction.
+Counts: Group A has 22 items, of which 13 are printed by Ba{\l}aban without a proof (11 of the 18 behind Theorem~\ref{thm:B}, 4 of the 6 behind Theorem~\ref{thm:A}). There are 5 externals, 22 Group B items (B22 narrowed to the $\kappa\to\kappa/2$ recovery), and 23 Group C items. Of Group C, C3, C4, C18, C22 lose generality, C23 ((U)) is a constant choice, and C9, C10, C16 change Ba{\l}aban's construction.

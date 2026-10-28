@@ -147,5 +147,6 @@ def compare(L, Ks, js):
 if __name__ == "__main__":
     Ls = [int(a) for a in sys.argv[1:]] or [3, 13]
     for L in Ls:
-        rng = np.random.default_rng(7); Ks = [rng.uniform(-np.pi, np.pi, 4) for _ in range(10 if L < 13 else 4)]
+        rng = np.random.default_rng(7); Ks = [rng.uniform(-np.pi, np.pi, 4) for _ in range(10)]
+        if L == 13: Ks += [np.array([a, a, np.pi, np.pi]) for a in (2.354493, 2.478694, 2.479644)]  # face argmax j = 1, 2, inf
         compare(L, Ks, [1, 2, "inf"])

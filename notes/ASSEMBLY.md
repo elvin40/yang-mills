@@ -201,7 +201,7 @@ Global conditions carried by every row: (G1) Balaban's published proofs CMP 95�
 | B-S.D2 | sourced small-field step (E14-a) | DRAFTED; (a),(b),(d),(f) confirmed; (c) rejected; (e) reduced | SOURCES_D2.md | partly (SOURCES_D2_VERIFY.md) | Balaban-step analyticity in input activities; κ → κ/2 recovery; convention (U) |
 | B-S.D2C | redo of D2 (c): frozen source per domain, Lemma A, h ≡ 0 | DRAFTED | SOURCES_D2C.md | no (verifier running) | domain hypothesis (D); (Hβ) in three places |
 | B-S.Hβ | two-loop bound sup Σ_j abs(B_j′) ≤ ½ | REDUCED | SOURCES_HBETA.md | yes, conditional (SOURCES_HBETA_VERIFY.md) | (I) B_j = Balaban's β_j on shifted trajectory; (H-hist) history-sensitivity column-sum bound (not in Balaban) |
-| B-S.D3 | sourced large-field step + R operation (E14-b) | IN PROGRESS (skeleton) | SOURCES_D3.md | no | eleven items listed there; (U) [R, B22] |
+| B-S.D3 | sourced large-field step + R operation (E14-b) | IN PROGRESS (skeleton) | SOURCES_D3.md | no | eleven items listed there; (U) [C23, constant choice] |
 | B-S.D4 | real-source derivative bounds, all orders (E14-c) | interpolation lemma confirmed; rest NOT STARTED | SOURCES_D2.md (f) | Lemma 7.1: yes | — |
 | B-N1 | source form ⇒ (H-U) for F flat on diagonals | OPEN; route sketched (§2.3) | this file | no | uniformity of source bounds in bump position and ε |
 | B-C | compactness, diagonal extraction | PROVED here | this file §2.4 | not independently | (H-U) |

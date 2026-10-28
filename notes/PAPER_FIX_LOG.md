@@ -31,3 +31,14 @@
 - Note: Theorem B as stated assumes (H-U) directly, so (U) is a hypothesis of the block chain that delivers (H-U), not of the compactness argument. The edit states this.
 - Edits: ASSEMBLY.md §1.3 (sentence after "Assume (H-U)"; D3 table row gets "(U) [R, B22]"; D2 row already lists convention (U)); paper/intro.tex Theorem B; paper/assembly.tex Theorem existence + B-S.D2 and B-S.D3 table rows. Each names (U) [R, B22], the κ → κ/2 recovery, and the clash with Route B's (U).
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined; 61 pages; aux files deleted.
+
+## Pass 4 (F8): (U) reclassified as a constant choice (SOURCES_UN1 + VERIFY)
+- F7's "(U) is a hypothesis in disguise" reversed per SOURCES_UN1 (verdict stands, UN1_VERIFY). (U) = ρ_1 ≤ c_* r_0/M^a at λ_K = 1, r_0 = Cauchy margin of family (A) (D2C (3.5)). κ → κ/2 recovery stays open [R, B22].
+- SOURCES_D2: l. 27 and l. 217 restated as the constant choice; scale-matched N_0 reading at l. 217 dropped (one-line note: unit lattice would depend on h; not used); l. 40 "torus side 1" → "last spacing 1, torus side ℓ".
+- ASSEMBLY §1.3: (U) → constant choice [C23], compatible with B-N1; κ → κ/2 kept as [R, B22]. §2.2: F_r = (FX2) domain {‖f‖_∞ ≤ r, ‖∇f‖_∞ ≤ ρ_1/2}. §2.3 step 2: "a ≤ c r δ⁵" → N_U(f) = max(‖f‖_∞/r, 2‖∇f‖_∞/ρ_1), λ_i = 2N_U(f_i), cites D4D5 l. 103/144; moment bound gains ρ_1^{−n}; δ^{−5n} kept as an upper bound so step 4 is unchanged.
+- ASSEMBLY_N1 §1 item 3, §4.2, §4.4: N_U rescaling with 1/ρ_1 weight; price C^n, no power of δ; s and D unchanged.
+- NOTE: with the factor 2 inside N_U and λ_i = 2N_U (both as briefed), the price is (4/ρ_1)^n = 2^nρ_1^{−n} (ρ_1/2 radius) × 2^n (margin; puts the sup at r/2, i.e. F_{r/2} base points). Files state it this way.
+- TRUST_LEDGER: B22 → "κ → κ/2 decay recovery only [R]"; new C23 = (U), "verified compatible with (B-N1): SOURCES_UN1 + VERIFY"; (U) removed from LOSES GENERALITY, C23 added to free choices; B21 "must be reconciled" → resolved. §5: kept B = 22 (B22 narrowed, not removed); C = 23.
+- Paper: Theorem B (intro.tex) and Theorem existence (assembly.tex): (U) removed from the hypotheses, one sentence after each theorem on the constant choice. Table cells B-S.D2/B-S.D3: "(U) [C23, constant choice]". remains.tex §6.7: B21, B22 rows, new C23 row, counts sentence (22 B, 23 C).
+- NOT edited (outside the allowed list, now stale): ASSEMBLY.md §3 table rows B-S.D2 ("convention (U)") and B-S.D3 ("(U) [R, B22]"); TRUST_LEDGER §4.2 step 2 ("B22 ((U), κ → κ/2 recovery)"); remains.tex l. 55 ("(U) must appear in the statement of Theorem B"); SOURCES_UN1 §2.2/§2.4 factor-2 slips (UN1_VERIFY items 1–2).
+- Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 61 pages; aux files deleted. Log shows 38 hyperref PDF-string warnings (math in section titles) and 9 overfull boxes (6 are 1.03 pt longtable width in remains.tex §6.7, 3 elsewhere); none at an edited line.
