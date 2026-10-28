@@ -47,3 +47,9 @@ Mac speed: L = 5 Ng = 8 14 s; L = 7 Ng = 8 41 s; L = 5 Ng = 12 44 s.
 - The Ng = 8 error has the sign that LOWERS β_1 further at larger L. So the grid does not explain the slope deficit; it slightly enlarges it (L = 5 → 7 slope at Ng = 12: (0.79674 − 0.74898)/0.336 = 0.142 vs 0.149 at Ng = 8, both at Lp = 0.5).
 - The ghost part moves by +0.019 at L = 7 (8 → 12), consistent with the 2.54/L ghost scale in §4; the bordered part compensates.
 Next: L = 9 Ng = 12; small-Lp runs (Lp = 0.25, 0.125) to test the quadratic Lp → 0 extrapolation, since the ghost/longitudinal scale 2.54/L falls below Lp = 0.5 for L > 5.
+
+## 7. Lp → 0 extrapolation check and corrected β_1 [N]
+- L = 5, Ng = 12: β(Lp) = 0.74439 (0.25), 0.74898 (0.5), 0.76817 (1.0). Quadratic from 0.5/1.0 predicts 0.74418 at 0.25; measured 0.74439. Quadratic extrapolation valid to 2e−4 at L = 5.
+- Converged-grid extrapolations (4β(0.5) − β(1))/3: L = 5 (Ng = 16): 0.74233 (author 0.7426); L = 7 (Ng = 12): 0.79024 (author, Ng = 8: 0.7968).
+- Local slope 5 → 7 at converged grid: 0.142 (author 0.161). The grid correction lowers the slope. c = 0.3715.
+- Box Ng = 8 split, ghost part grows with L: 0.015 (L=2), 0.035 (3), 0.046 (4), 0.070 (5), 0.088 (7, Ng 12): about 0.06 per unit log L ≈ 2·(c/11) = 0.068, i.e. the ghost runs over [L^{−2}, 1] as §4 predicts. The bordered part must cancel this extra share in the exact integral.
