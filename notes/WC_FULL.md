@@ -55,8 +55,6 @@ such that for every real regular U and every Z_0 as in 0.8:
  (iii) (complex points) at every U_c in the α′-space, Re⟨u, A_Z(U_c)u⟩ ≥ ½γ_exp‖u‖², C^{(k)}(Z_0; ·) is analytic there, and (ii) holds with 4/γ_exp → 8/γ_exp, ε → ε″;
  (iv) (resolvent) (i)–(iii) hold for (x + A_Z)^{−1}, x ≥ 0, uniformly in x, and the per-walk prefactor improves to 4/(γ_exp + x) (real) and 8/(γ_exp + x) (complex). Reason: the leading factor C_□(x) of each walk obeys ‖C_□(x)‖_ε ≤ 2/(c + x), c = ½γ_exp (real) or ¼γ_exp (complex), because x ≥ 0 raises the real part by x and does not change the Combes–Thomas error (5.5). So the x^{−1/2} integral for (C^{(k)})^{1/2} converges.
  The constants are uniform in k, η, Z_0, M ≥ M_1, and the background. The proof does not use CMP 99 Theorem 3.15 or any transfer from the axial gauge (§8).
-- (§0 done)
-
 ## §1 The exponential gauge term of CMP 109
 
 1.1 Contours [V CMP 109 p. 252]. For y ∈ T^{(1)} and x = y + n ∈ B(y), G(y, x) is the family of shortest staircase contours from y to x. There is one contour for each order of the coordinate directions μ with n_μ ≠ 0, and |n_μ| ≤ (L−1)/2.
@@ -110,8 +108,6 @@ where Γ_{<b} is the part of Γ before b. Proof of (1.2): a forward bond contrib
  So (𝒢B)(y, y + e_1 + e_2) = ½e ≠ 0. Hence the exponential-gauge covariance is not the axial covariance restricted to a subspace, and no transfer from the axial gauge applies. The proof below bounds A_exp directly.
 1.9 Shared operators [R via (p254)]. G_1, (QG_1Q*)^{−1}, H_1, Δ_J, and Q̃ are defined in CMP 99 §§C–E before the axial restriction, and CMP 109 uses them with its new averages (p254).
  So Δ^full contains no gauge fixing, and its expansions (WG), (A1W) serve the exponential gauge. The only gauge-fixing-dependent objects are the lower bound of A_exp and its inverse.
-- (§1 done)
-
 ## §2 Lemma E: the block inequality with the gauge term
 
 2.1 Statement [P given (A3-4.2), A3-R3, Lemma G]. Put τ_p := 16√N c_4Mα_0. Assume Lemma G(c) applies (κ ≤ √2) and
@@ -156,8 +152,6 @@ Insert (2.6) and (2.7) into (2.5):
  (iii) The root of T(y) must be the root y of 𝒢 (the block centre), because step (d) needs λ(y) = 0 at the point where every contour of G(y, x) starts. (A3-4.2) holds for this root (0.9).
  (iv) Without the gauge term the inequality fails: at V = 1, B = Dλ with λ(y) = 0 and λ ≠ 0 has P_y = 0 (the curl of a gradient vanishes) and S_y > 0 (on the connected block, Dλ = 0 forces λ constant, hence λ = 0).
  These are exact zero modes; the numerics of §7 show min(P | Q̃ = 0) = 0 to 10^{−14}.
-- (§2 done)
-
 ## §3 Theorem L: the global lower bound
 
 3.1 Lemma P_exp [P given Lemma E, (A3-4.4)]. Assume (H_E) and the inputs of (A3-4.3). For every unit field B with B = 0 off Λ and Q̃B = 0,
@@ -183,8 +177,6 @@ by Lemma P_exp. By (3.1), (1 + ε_7)^{−1} ≥ 8/9 and 1 − η_6 ≥ ¾, so th
 3.4 Uniformity [P]. γ_exp = ¼γ_e depends on d, L (through K_b, m_L) only. The smallness (3.1), (H_E) depends on d, L, N, a. Nothing depends on k, η, Z_0, M ≥ M_1, or the background beyond (H1)–(H3), as in A3 §6.6.
 3.5 Remark (value). For 2 ≤ L ≤ 9, m_L = 1/L, so γ_e^{−1} = K_b(1 + 6dL) + 6L ≤ 64d³L^{2d+1}(1 + 6dL) + 6L. The block constant 1/K_b is of order 10^{−5}–10^{−7} for d = 2–3, L = 3 (§7.3), and γ_exp is smaller. §7 shows that the true constant at U = 1 is of order 10^{−1}.
  The proof constants are crude, not sharp.
-- (§3 done)
-
 ## §4 The walk (tree) expansion of A_exp
 
 4.0 Inputs. All are free of gauge fixing (1.9).
@@ -212,8 +204,6 @@ Proof. Expand the bracket of 4.1 into its four pieces and multiply by C* on the 
 4.3 Upper bound [P]. By Schur's test with the absolute sum of 4.2, ‖A_exp‖ ≤ 2B_AS(δ_A) =: Γ_1, where S(δ) := sup_bΣ_{b′}e^{−δ|b−b′|} is finite and volume-independent.
 4.4 Compression [P]. A_Z = 1_{Z_0}A_exp1_{Z_0} = Σ_ω1_{Z_0}A_ω1_{Z_0}. Each term keeps its domains, its U-dependence, and its bound, because multiplication by 1_{Z_0} only restricts the kernel. So Proposition W_N holds for A_Z with the same constants, uniformly in Z_0.
 4.5 Corollary [P]. The real decay of A for the exponential gauge, ‖e^{ρf}A_expe^{−ρf}‖ ≤ 2B_AS(δ_A − ρ) for 1-Lipschitz f and ρ < δ_A, follows from 4.2 alone. It needs no input from the axial gauge.
-- (§4 done)
-
 ## §5 The Z_0-compressed walk expansion in the CMP 116 p. 13 form
 
 5.1 The tilde operation [V + P; SOURCES_WC_RESIDUE §3–§4, Q2–Q4]. CMP 116 p. 13 [V image] reads: "we take a domain X_0 such, that X̃_0^5 = Z̃_0 (let us notice the inconsistency in the notation, the tilde over X_0 means that M_1-cubes are adjoined, and the tilde over Z_0 concerns M-cubes).
@@ -262,8 +252,6 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
 5.5 Resolvent bonus [P]. CMP 116 p. 13 also needs (x + C*Δ^{(k)}C)^{−1}, x ≥ 0, to expand (C^{(k)})^{1/2}. Replace A_Z by A_Z + x·I_{Z_0}. Then (i) the lower bound becomes γ_exp + x; (ii) x·I commutes with e^{εf}, so it adds nothing to the Combes–Thomas error of 5.2(e), and ‖C_□‖_ε ≤ 4/(γ_exp + x) ≤ 4/γ_exp; (iii) in 5.3, (1 − 1_□)x h_□ = 0, x cancels in A_Z − A^{(□)}, and [x, h_□] = 0, so the factors E^sep_□, E^tr_□, E^com_□ are unchanged. F_□ = (E^sep + E^tr + E^com)C_□(x)h_□ does change through C_□(x), but the bound on F_□ is uniform in x ≥ 0: ‖F_□‖_ε ≤ K_F/M_1, because ‖C_□(x)‖_ε ≤ 4/γ_exp.
  (iv) Per-walk prefactor. Every walk term of 5.3 has the form h_□C_□(x)h_□·(product of F-factors), with the leading factor from P. By (ii), the leading factor gives 4/(γ_exp + x); the F-factors keep their x-uniform bounds. So |T_ω(x; b, b′)| ≤ (4/(γ_exp + x))(c_1ρ)^{|ω|}e^{−½εd(ω, b, b′)}. The walk set and the domains do not depend on x.
  Hence 5.2–5.4 hold for (x + A_Z)^{−1} uniformly in x ≥ 0, with the prefactor 4/(γ_exp + x). Since π^{−1}∫_0^∞x^{−1/2}(γ_exp + x)^{−1}dx = γ_exp^{−1/2}, the representation (C^{(k)})^{1/2} = π^{−1}∫_0^∞x^{−1/2}(x + A_Z)^{−1}dx of CMP 116 p. 13 converges walk by walk (Tonelli), with per-walk prefactor 4γ_exp^{−1/2}. This is Theorem WC(iv) at real U. (Balaban does this step through CMP 99 (3.185) with axial machinery; the direct route is valid and simpler, EXPGAUGE-VERIFY V7.)
-- (§5 done)
-
 ## §6 Complex points: Lemma CP, Lemma AW, and the four-level chain
 
 6.0 Domains and discs [V CMP 99 pp. 396–397 (3.37)–(3.38); CMP 116 p. 15; CMP 109 (1.13)–(1.14)]. For a pair a = (a_0, a_1) let 𝒰(a) be the set of (U′U, J) with U G-valued and regular, U′ = e^{iL^{−1}ηA′}, A′ ∈ 𝔤^c with |A′|, |∇A′| (and |D*DA′| where (3.38) is used) < a_1 in the scaled units of (3.37), the plaquette of U′U bounded as in CMP 109 (1.13)–(1.14), and J 𝔤^c-valued with |J| < a_0.
@@ -322,8 +310,6 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  Each arrow goes from fixed constants to a later smallness. No α^{(n)} is bounded below by a later constant. So the order is acyclic.
  Ledger check [checked, RESIDUE 7.4, Q7]. TRUST_LEDGER.md has no condition on α′, α″, α‴ other than the object built here (row A1w). The conditions C5 ("α's after M"), WG-1 (α_0 ≤ c′M^{−11}, imposed on the J-row above), A13 (O(α_0 + α_1) in R_2, the small α), and M4 (α_{1,j} ∝ g_j(log)^{q_1}, the small α) are compatible.
  The new lower bounds on M/M_1 fit under C5's "M ≥ M(κ)". No conflict found.
-- (§6 done)
-
 6.10 Proof of Theorem WC (assembly) [P].
  (i) is 3.3 (Theorem L with Λ = Z_0, then compression).
  (ii) is 5.3 (real walk series of A_Z^{−1}, per walk 4/γ_exp, rate ½ε) followed by 5.4 (regrouping into the p. 13 form, with M/M_1 > 10 and M/M_1 > 3(6 + c_X)).
@@ -349,8 +335,6 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  The true constants are larger by four to six orders; the proof is crude, not sharp. (d) A one-block non-flat test (so(3), d = 2, L = 3, V(b) = exp(εX_b)) gives block constants 0.2192, 0.2183, 0.1993, 0.0031 at ε = 0, 0.05, 0.2, 0.5 (EXPGAUGE-VERIFY V5).
  Positivity persists for small backgrounds and degrades for large ones, as the smallness hypothesis (H_E) predicts.
 7.4 Scope. These are checks, not inputs. Nothing in §1–§6 uses them. They cover U = 1 and one non-flat block; they do not test the Q-constrained non-flat problem.
-- (§7 done)
-
 ## §8 What is NOT used
 
 8.1 CMP 99 Theorem 3.15 and its transfer. Theorem 3.15 gives the walk expansion of the axial-gauge covariance C^{(k)} = (C*Δ_kC)^{−1} through (3.185)–(3.187): C^{(k)}(Λ) = (I + Dμ)QG_2Q*(I + μ*D*), G_2 = Ğ_2 − Ğ_2Q*(QĞ_2Q*)^{−1}QĞ_2.
@@ -363,8 +347,6 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  (d) The literal non-covariant curl formula CMP 99 (3.4) (2.4). (e) CMP 122 (1.73) as evidence for the tilde convention (withdrawn, RESIDUE 3.4). (f) The A3 lower bound γ_0 of the axial operator: A3 enters only through Lemmas 4.2, 4.3, 4.4 and step (6.1), each of which is gauge-fixing-free or used inside one block.
  (g) The numerics of §7.
 8.3 Where the axial gauge still appears. Only as a proof device: the axial tree T(y) inside one block in Lemma E step (a), and A3's Lemma 4.2 for that tree. Neither restricts the exponential-gauge field.
-- (§8 done)
-
 ## §9 Ledger
 
 Source-name note. The brief names A1_WALK_FULL and WG_FULL. Files with these names are not present in ~/claude_code/yang_mills/ on 2026-10-28. The statements cited under these names are Theorem A1-W and §4–§7 of SOURCES_A1_WALK.md (verified as a construction in SOURCES_A1_WALK_VERIFY.md), and Theorems WG-G, WG-G1 and Lemma 2.3 of SOURCES_WG.md (with SOURCES_WG_VERIFY.md).
@@ -420,8 +402,6 @@ Source-name note. The brief names A1_WALK_FULL and WG_FULL. Files with these nam
 
 Status. Theorem WC is proved [P] relative to R1–R4, C1–C2, and I1–I9. CMP 99 Theorem 3.15 is not used (§8). The constants differ from SOURCES_WC_EXPGAUGE only where the verify files corrected them: c_G = 1; ‖𝒢‖² ≤ 2c_𝒢; step (d) exact (τ_G removed), which lowers K_b to ≤ 64d³L^{2d+1}; τ_p with √N; near-domain margin M_1 and strict M/M_1 > 3(6 + c_X); Γ_b = 2c_+^bS(δ^b); four levels, not three.
 Checks for an independent verifier, in priority order: (1) Lemma G(b)–(c), the weight bound for non-flat V; (2) Lemma E step (f) arithmetic with the new constants; (3) the merged-run bound of 5.4(e); (4) the resolvent claim 5.5(iii) (now: the bound on F_□ is uniform in x ≥ 0, prefactor 4/(γ_exp + x)); (5) 6.0 radius at the Theorem 3.4 level.
-- (file complete)
-
 ## Fixes after verification (WC_FULL_VERIFY, 2026-10-28)
 
 1. Lemma G(b)–(c) (F3). 1.2 now states that CMP 109 fixes Federbush's mean (0.10) and that (0.10) is the Karcher-mean condition. (b) gives the exact weights ω_Γ = (Σψ)^{−1}ψ_Γ, ψ_Γ = φ(ad_{iA_Γ}), φ(x) = x/(e^x − 1), with proof, and c_M = 8√N/n ≤ 4√N for w ≤ 1/(4√N). (c) gives κ = 1 + 7.6√N w ≤ √2 for w ≤ 0.054/√N. "M̄ within the same order of 1 by (0.8)" is replaced by the Karcher centre-of-mass property (Karcher 1977), with c_w explicit. Header tag, P2, and I8 updated.
@@ -432,4 +412,4 @@ Checks for an independent verifier, in priority order: (1) Lemma G(b)–(c), the
 6. Band (F7). Theorem WC(ii) and 5.4(d) state that the ⅓M_1 band for factors other than X_0 is part of (L1) of A1_WALK_FULL §1, which the A1-W factors and WG_FULL's G_1-tree factors satisfy.
 7. Ledger (F8). Body "VERIFY V1–V10" renamed "EXPGAUGE-VERIFY V1–V10"; §9 page facts renamed PF1–PF10. A3 inputs renamed A3-R1, A3-R2, A3-R2′, A3-R3, A3-R4 (R1/R2 also collided with ledger rows). 4.1(d) "item I4" → I2. Body tag (I5) → (I9), with new ledger row I9 (J local, |J| = O(Mα_0)). P13's undefined "(D)" replaced by its content (complex Combes–Thomas decay by accretivity). Status line now cites I1–I9.
 8. §7.3 (F9). Script note added: poincare_exp.py prints a stale 1/K_b, 2× too small; 1.20·10^{−5} is correct.
-9. Recheck. Every "hence/so/it follows" was reread after the edits; each still has its justification. Open item, not changed here: the §9 source-name note says A1_WALK_FULL.md and WG_FULL.md do not exist; both files now exist in the folder.
+9. Recheck. Every "hence/so/it follows" was reread after the edits; each still has its justification. Open item, not changed here: the §9 source-name note says A1_WALK_FULL.md and WG_FULL.md now exist (written 2026-10-28); both files now exist in the folder.
