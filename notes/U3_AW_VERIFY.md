@@ -50,3 +50,18 @@ Method: u3_lemma51_check.schur (L = 3 composed, real (0.4), Dirichlet ghost), q 
 nc = 8 results (box R = 3):
 - j = 0 (Wilson): Maxwell 2c = 0.500000 (c = 1/4); σ^{(1)}(0) J-part (1,0) = +0.749999, (0,1) = −0.749999, all else 0. Prediction c·(3e/2) = (1/4)(3/2)(2) = 0.75. The 3/2 factor is CONFIRMED in the code's conventions at j = 0. Evenness |a(z) − a(−z)| = 10^{−16}.
 - j = 1: σ^{(0)}(0) = −0.0125 (should be 0), 2c = 0.666 (should be 0.5), σ^{(1)}(0) = ±0.7818. j = 2: −0.024, 0.815, ±0.8067. Evenness error 4·10^{−3}, 1·10^{−2}. These deviations are box-truncation errors (σ^{(0)}(0) = 0 and c = 1/4 are exact facts), so nc = 8 is too small at j ≥ 1. Rerun at nc = 12 (R = 5).
+nc = 12 results (box R = 5), same method:
+| j | σ^{(0)}(0) error | 2c (exact 0.5) | σ^{(1)}(0) J-part (exact claim 0.75) | evenness err (max|a| ~1.5–1.9) |
+|---|---|---|---|---|
+| 0 | 0 | 0.500000 | 0.750000 | 9·10^{−17} |
+| 1 | −6.1·10^{−4} (nc 8: −1.25·10^{−2}) | 0.5197 (0.666) | 0.75230 (0.78184) | 2.0·10^{−4} (4.1·10^{−3}) |
+| 2 | −1.7·10^{−3} (−2.4·10^{−2}) | 0.5536 (0.815) | 0.75572 (0.80667) | 6.8·10^{−4} (1.1·10^{−2}) |
+σ^{(1)}(0) − 0.75 falls by 14× (j = 1) and 10× (j = 2) from nc = 8 to 12, in step with the known-zero σ^{(0)}(0) error (ratio of the two errors ≈ 2.3–3.8 at both j). So the excess is box truncation. All other entries of σ^{(1)}(0) vanish to 10^{−6}. Structure E_{10} − E_{01} CONFIRMED; level-independence supported at the 0.3–0.8% level, converging. nc = 16 run for j = 1, 2 launched.
+
+## 8. Check (iv) evenness, d = 2 (aw_verify/even_d2.py): odd part a(z) − a(−z) over |z|_∞ ≤ 2, Taylor in f
+| j | midpoint f¹ / f² odd coef, nc = 8 | nc = 12 | left trivialization f¹ / f², nc = 8 | nc = 12 |
+|---|---|---|---|---|
+| 0 | 5·10^{−16} / 1·10^{−14} | 1·10^{−15} / 4·10^{−14} | 0.250 / 0.125 | 0.250 / 0.125 |
+| 1 | 1.2·10^{−2} / 1.6·10^{−2} | 4.4·10^{−5} / 1.1·10^{−4} | 0.912 / 0.309 | 0.915 / 0.307 |
+| 2 | 3.7·10^{−2} / 6.1·10^{−2} | 3.0·10^{−4} / 9.1·10^{−4} | 1.16 / 0.453 | 1.17 / 0.422 |
+Midpoint odd parts fall by 100–300× with the box (finite-volume holonomy effect: point reflection inverts Polyakov loops). Left-trivialization odd parts are O(1) and box-independent. So σ_j^{(1)}, σ_j^{(2)} are even in K in the midpoint trivialization, and not in the left one, as Prop. E and its Remark (ii) say. CONFIRMED in d = 2 (Prop. E is dimension-independent). Not tested in d = 4.
