@@ -2,7 +2,7 @@
 % Status: pending. Every statement below repeats FABLE_HARD.md, which has no verifier report yet
 % (FABLE_HARD_VERIFY.md does not exist on 2026-10-28). Do not cite as verified.
 %
-% IDS: this draft uses the OLD (pre-2026-10-29) ids as they appear in the sources:
+% IDS: this draft uses the OLD (pre-2026-10-28) ids as they appear in the sources:
 %   L3 (FX-V), L6 (S1-pt) with forms (L6-nu), (L6-P), L14 (Loc-f), B18 (N3), E13, (Q), Theorem IV,
 %   Theorem U1, U2, W1, Corollary W2, Theorem FD, Proposition RP1.
 %   After the renumbering lands, map every id and every \label below through IDS.md
@@ -87,7 +87,10 @@ At fixed $K$ the following are equivalent.
 \end{enumerate}
 \end{theorem}
 
-The proof in the source has three steps. First, centred moments and cumulants of order $\ge2$ determine each other by finite partition sums, and bump families are dense in $D_n$; this gives (U-IV)$\Leftrightarrow$(U-cum). Second, put $G_\ell(t):=\log\mathbb E_{\nu_\ell}[\exp(\Delta_\ell(t,\cdot)-t\cdot m_\ell)]$. By (L6-$\mathcal P$), $|\Delta_\ell-t\cdot m_\ell|\le C_{\mathcal P}$ uniformly in $V$ and $\ell$, so $(G_\ell)$ is a uniformly bounded family of holomorphic functions on $\mathcal P$. Its Taylor coefficients at $0$ of order $\ge2$ are the cumulants plus $\ell$-free $W_K$-terms. Vitali's theorem then gives (U-cum)$\Rightarrow$(U-Lap), after the replacement $\Delta_\ell\to\Delta_\infty$ at cost $e^{Ce^{-c\ell}}-1$. Third, Cauchy's formula gives (U-Lap)$\Rightarrow$(U-cum).
+The proof in the source has three steps. First, centred moments and cumulants of order $\ge2$ determine each other by finite partition sums, and bump families are dense in $D_n$; this gives (U-IV)$\Leftrightarrow$(U-cum). Second, put $G_\ell(t):=\log\mathbb E_{\nu_\ell}[\exp(\Delta_\ell(t,\cdot)-t\cdot m_\ell)]$. By (L6-$\mathcal P$), $|\Delta_\ell-t\cdot m_\ell|\le C_{\mathcal P}$ uniformly in $V$ and $\ell$, so $(G_\ell)$ is a uniformly bounded family of holomorphic functions on $\mathcal P$.
+% CHECK for the FABLE_HARD verifier: at complex t, |Delta^c| <= C_P bounds |E e^{Delta^c}| above by e^{C_P},
+% but a lower bound (needed for log to be holomorphic and bounded) needs e.g. C_P < pi/2 (then Re e^{Delta^c} >= e^{-C_P} cos C_P).
+% FABLE_HARD.md l.118 asserts the range [e^{-C_P}, e^{C_P}] without this condition. Its Taylor coefficients at $0$ of order $\ge2$ are the cumulants plus $\ell$-free $W_K$-terms. Vitali's theorem then gives (U-cum)$\Rightarrow$(U-Lap), after the replacement $\Delta_\ell\to\Delta_\infty$ at cost $e^{Ce^{-c\ell}}-1$. Third, Cauchy's formula gives (U-Lap)$\Rightarrow$(U-cum).
 
 So, if (U-Lap)$_K$ holds, the limit $\ell\to\infty$ of Theorem IV exists at that fixed $K$ along the full sequence of even $\ell$, not only along a subsequence. This is the ``Theorem IV-unique'' variant that \file{FABLE_HARD.md} \S3.5 proposes to record.
 
@@ -154,7 +157,7 @@ Corollary W2 also gives a necessity statement: OS4 for every limit implies decay
 \item Why the source quantifies over all states. Different Gibbs states of $\Phi_K$ can have different covariance decay. An argument that uses only $(W_\infty,\Delta_\infty)$ and bounds valid for every state cannot prove OS4 (\file{FABLE_HARD.md} \S4.4). A proof must either identify the specific $\nu_\infty$ or prove decay for all translation-invariant Gibbs states; (Gap$_K$) is the second option.
 \item A possibly weaker form. (Gap$_K$) asks for decay on $\mathfrak F$ only. Whether decay on $\mathfrak F$ is strictly easier than decay for all local functionals is not settled; $\mathfrak F$ is the family of sourced response functionals and need not separate Gibbs states (Remark~\ref{rem:open-ulap-forms}(3)).
 \item A stronger form. \file{PLAN.md} (entry for \file{ALT_ROUTES.md}) restates the common target of three routes as boundary-condition-uniform and volume-uniform exponential decay of the unit-scale measure at distance $\xi_g$, and calls it ``= (Gap$_K$)''. That statement is stronger than (Gap$_K$) as defined in \file{FABLE_HARD.md} \S4.4, which asks for decay on $\mathfrak F$ of translation-invariant Gibbs states only, with no rate in its plain form. \file{ALT_ROUTES.md} has no verifier report. This draft uses the \file{FABLE_HARD.md} definition.
-\item Relation to (U-Lap)$_K$. The sources give no implication between (Gap$_K$) and (U-Lap)$_K$. Both are infrared statements about the same family $\nu_\ell$ and the same interaction $\Phi_K$, and both are reached by Proposition RP1 in the form ``clustering is equivalent to vacuum uniqueness'' (\file{FABLE_HARD.md} \S4.3).
+\item Relation to (U-Lap)$_K$. The sources give no implication between (Gap$_K$) and (U-Lap)$_K$. Both are infrared statements about the same family $\nu_\ell$ and the same interaction $\Phi_K$, and \file{FABLE_HARD.md} \S4.3 links both to vacuum uniqueness: Proposition RP1 reduces clustering to vacuum uniqueness, which the source calls ``(U-Lap)/(Gap) again''.
 \end{enumerate}
 \end{remark}
 
