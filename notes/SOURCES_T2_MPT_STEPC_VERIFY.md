@@ -16,3 +16,10 @@ Date 2026-10-28. Independent verifier. Firewall respected.
 - S123 Lemma 5.1 [I] = identification of the plaquette forms of (2.1) with the covariant curl (midpoint transport). S123_VERIFY item 16 keeps it [I]. It enters (F) through LLL Lemma 2.1 (fibre separation, ghost cancellation), which Lemma 1.1 of the author uses. So it is on the (F) path.
 - Ledger B3: "T1 Route K"; T1 = Theorem 2w. So (F) and all its inputs are on the Theorem 2w path (Route K).
 - BETA_FP_H (3.1): [Fine(Λ) − Fine(Λ′)]/(n_2f²) → c_2 ln(Λ²/Λ′²). With Fine(Λ; f) = f²G(f/Λ²), φ := f/Λ′², λ := (Λ/Λ′)^{−2}: G(λφ) − G(φ) → n_2c_2 ln(1/λ). This is the author's form. STEPB §1 and §2.6 write G(φ) − G(λφ) → n_2c_2 ln(1/λ): sign slip in STEPB (both displays). Content unchanged: replace λ by 1/λ. CONFIRMED notational.
+
+## 4. Rerun of numerics/t2_mpt_heat4.py (Mac, 19.5 s)
+- Part B: max|ã − predicted| = 3.6e−16, 5.3e−16, 9.7e−16 (α = 0.3, 1, 2); antilinear residue ≤ 8.5e−16; |σ − (a_0 + αa_1 + α²a_2)|/α³ = 0.0013. All match §7.1.
+- Part A: c_A/t = 0.328177, 0.306485, 0.297734, 0.293907, 0.292811, 0.292288, 0.292019, 0.291654; d/(t(1+t)²) = 0.01177 … 0.05718. All match §7.2.
+- Flag (minor): the check "σ(K) = σ(−K) exactly" in symbol_check is vacuous (it compares cos(x) with cos(−x)). Evenness holds analytically anyway (6.3 formula is a function of cos and of s_0s_1).
+- t = 80 entry (−0.0104): α⁶ contamination checked by hand. Continuum x⁶ coefficient of x cosh 2x/sinh x = 0.01462; Richardson bias −4eα⁴, e = 0.01462t⁵/(2π); at t = 80, α = 0.005: t·shift = −0.019. Observed −0.0104 − 0.0095 = −0.0199. Author's explanation CONFIRMED.
+- d/t³ = d/(t(1+t)²)·((1+t)/t)²: 0.0600, 0.0582, 0.0576 at t = 10, 20, 40; distance to 0.05615 halves per doubling (O(1/t)). Consistent with the continuum limit 0.35278/(2π) = 0.05615. (x⁴ coefficient = 2/3 − 1/3 + 7/360 = 0.352778, checked by hand.)
