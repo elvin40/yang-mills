@@ -1,6 +1,6 @@
 # SOURCES_B21_S — uniformity of (S) at small widths and at separation 16ε
 
-Status: in progress (2026-10-28). Firewall respected: no read of /tmp/sa_repo, SUSSMAN_ALPOGE_MAP, ONLINE_SWEEP.
+Status: complete (2026-10-28). Verdict: B21 (S)-uniformity CLOSED as a reduction to D4D5 Lemma C + S1 + (FX) main form. Firewall respected: no read of /tmp/sa_repo, SUSSMAN_ALPOGE_MAP, ONLINE_SWEEP.
 
 ## Ledger
 
@@ -61,3 +61,41 @@ Candidate h-dependent steps, checked one by one.
 4. Freezing error and (Hβ) gradient |∇f_k| ≤ (3/2)ρ_1: pointwise chain rule (UN1_VERIFY §3). h-independent. [read]
 5. O4 fallback (FX_O23 §6): if (FX) used Balaban's optional (1.104) form, the Cauchy factor would be Π_i B_{Δ_i}, B_Δ ≤ 3N·#plaq(Δ). With fine-history plaquettes (FX_O23_VERIFY §5 gap (ii)) #plaq(Δ_i) ~ (h/ε)⁴. This IS an h-dependent factor; it grows with h (wide bumps), up to ε^{−4n} at h ~ ℓ/512. It is NOT on the main route: FX_O23_VERIFY §5 shows (1.103)–(1.104) is an optional "final remark", and the main form (1.98) needs only upper bounds (O3). So B21 requires (FX) in the main (1.98) form. [read; condition named]
 
+| §3 factor table for C^n(n!)^G | [derived] every factor h-independent; σ-dependence ≤ (C_aσ^{−a})^n |
+| §4 B21 verdict | CLOSED as a reduction (see §4) |
+
+## 3. Where each factor of the multilinear constant comes from [derived; sources in brackets]
+
+Bound: |κ_n| ≤ (C_Sσ^{−a})^n (n!)^{1+η} Π N_U(f_i), for σ ∈ [16ε, ℓ/8], D ≤ σ.
+
+| factor | origin | depends on h? | depends on σ? |
+|---|---|---|---|
+| 2^n | λ_i = 2N_U for the ρ_1/2 gradient radius of (FX2) [UN1_VERIFY item 2] | no | no |
+| ρ_Γ^{−n} = (C_4R̄_m⁴|Γ|_m)^n | Cauchy in t on the (FX2) polydisc, multi-index (1,…,1) [D4D5 Step 3] | no: radius set by Γ, not by supp f_i | no |
+| polydisc stays in domain | disjoint supports ⇒ sup and lattice gradient of Σt_if_i are a max [D4D5 Step 0, UN1 §2.4] | no | needs σ > ε only |
+| Q_m ≤ (2 + D/(Mλ_m))⁴ | cubes meeting the smallest support [Step 4] | yes, but increasing in D = O(h); with D ≤ σ it becomes ≤ (2+2D/σ)⁴u⁴ ≤ 16·4⁴·u⁴ | through u = σ/(2Mλ_m), summed against e^{−3κu/8} |
+| n! | Σ_s s^n e^{−3κs/8} over polymer size [Step 4] | no | no |
+| Λ_1(σ)^{4n} | coupling at the scale σ, R̄_m⁴ growth [Steps 5–7] | no | (log log 1/σ)^{4p_Rn} ≤ (C_aσ^{−a})^n |
+| (1 + log_L(2M/σ)) | number of coarse scales [Step 6] | no | ~K at σ ~ ε; ≤ C_aσ^{−a} [D4D5_VERIFY §7] |
+| (n!)^η | ℓ_2(n)^{4p_Rn} from fine scales [Step 8] | no | no |
+| W-terms | same with radius ½, no Λ_1 [Step 9] | no | no |
+
+Answer to brief item (3). The polydisc radius is h-independent: it is a property of the polymer, and the rescaled source has N_U ≤ ½ for every h. The separation σ ≥ 16ε gives Step 0 (supports never share a lattice bond), which makes the n-linear form decompose. Lemma C does NOT need the sources in distinct cubes at scale 0 (D4D5 §4.2, last bullet); it needs only that a polymer meeting all supports has diameter ≥ σ. No factor depends on h except Q_m, and Q_m is bounded through D/σ ≤ 1. The brief's suspected (h/ε)^d Jacobian is real but is cancelled by tree decay over σ ≥ D.
+
+Note on ranges. N1 uses (S) only on the diagonal family σ = 16h·(const) (N1 §3.3: σ_m = δ_m/4, cells of side 3h_m, h_m = δ_m/64). So (S) is never needed with h ≪ σ or h ≫ σ. Even if a residual h/σ factor existed, it would be a constant on this family.
+
+## 4. Verdict on B21 [derived]
+
+B21 (the (S)-uniformity part) is CLOSED as a reduction, not as an unconditional proof:
+- (S) for all h ∈ [ε, ℓ/512], σ = 16h ≥ 16ε, and every bump position follows from D4D5 Lemma C [proved there; Steps 0–9 CONFIRMED in D4D5_VERIFY §4 and §7 item (5)], given S1 (D3 target) at every scale m ≥ 0 including m = 0, and (FX) with (FX1)–(FX4).
+- (FX2) as needed: radius c·r for E-terms, R-terms, and large-field numerators [FX_O23 O2, O3, CONFIRMED in FX_O23_VERIFY with minor corrections, conditional on N3 = HBETA §3(c) strip]; gradient radius ρ_1/2 [D4D5 l. 95].
+- Condition named here: (FX) must be built in Balaban's main (1.98) form, not the optional (1.104) form. The (1.104) route carries the O4 Cauchy factor Π#plaq(Δ_i), which depends on the bump size (FX_O23 §6, FX_O23_VERIFY §5). This is the only h-dependent factor found, and it is avoidable.
+- Position uniformity: Lemma C's count holds "for every position of the support relative to the grid" (Step 4); D4D5_VERIFY §7 D4.4 confirms lattice-symmetry invariance of the admissible class.
+- σ = 16ε: D4D5 §4.2, CONFIRMED (D4D5_VERIFY §7). Uniformity is in the (C_Sσ^{−a})^n form, with Λ_1(16ε) ~ (log log 1/ε)^{p_R} and the scale count ~K absorbed into σ^{−a}. In addition, ASSEMBLY_N1's fallback (ledger item 3) would accept any power threshold σ ≥ ε^θ.
+- No new open item is created. The remaining load is the existing load of B19 (FX: O1, N3; B-terms only if (1.104) is used) and of S1 (D3 target; (Hβ), (W4), (B-T2)). The D4D5_VERIFY caveat "(FX2) radius at the coarsest scale is load-bearing for 1+η" affects the Gevrey order (1+η vs 1+η+2p_R/p_0), not h-uniformity.
+
+Not covered by this file (other clauses of the B21 row): the C^∞ real-source form of (E14-c) and the cutoff-derivative count. The cutoff count is ASSEMBLY_N1 §3.1 (D) with Lemma P, CONFIRMED in HHIST_N1_VERIFY Part 2. (E14-c) was not read.
+
+Suggested ledger text for B21 (not applied; this task writes only this file): "(S) uniformity in h ∈ [ε, ℓ/512] and σ ≥ 16ε: reduced to D4D5 Lemma C [verified] given S1 at all scales and (FX) in the main (1.98) form (SOURCES_B21_S). No h-dependent factor; the (h/ε)⁴ cube count is cancelled by tree decay over σ ≥ diam."
+
+Status: [derived here, unverified]. It needs an independent verifier before it is load-bearing. Main things to check: (a) Lemma C Step 7 with D ~ σ/16 (the (2+2D/σ)⁴u⁴ bound); (b) that no S1 block uses a second derivative of f (C¹ only, D2 §1.1); (c) the claim that the main (1.98) form suffices for (FX) at the last scale without (1.104).

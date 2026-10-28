@@ -48,3 +48,36 @@ Inputs. (N) γ_0 ≤ A ≤ γ_1 [γ_0: SOURCES_A3_GAMMA0 §7 + VERIFY, verified 
 4.2 The precision remainder. R(s) := C_1^{−1} − C_s^{−1} = C_s^{−1}D(s)C_1^{−1} (resolvent identity). So ‖R(s)‖ ≤ 2γ_1·η_M·γ_1 = 2γ_1²η_M, uniform in s; R(1) = 0; R(0) = the R of LOC (E) (C_0^{−1} = Z_0AZ_0 − R). So at REAL points LOC's input (E) follows from (W) alone, in operator norm, without (2.16). It does not give the (2.16) pointwise kernel decay of R(s); that needs decay of C_s^{−1} (Combes–Thomas type) and stays with A2. Lemma G3 and LOC use only the norm. [P]
 4.3 Non-symmetric fallback. If (S_s) failed: (i) the covariance bounds 3.1 hold as they are; (ii) the symmetric part Sym C_s = C_1 + Sym D(s), ‖Sym D(s)‖ ≤ η_M, satisfies 4.1 verbatim, and a real Gaussian with covariance operator C_s only sees Sym C_s; (iii) the precision of the unsymmetrized C_s obeys only the LOC_VERIFY §8 bound ⟨v, C_s^{−1}v⟩ ≥ (γ_1^{−1} − η_M)(γ_0^{−1} + η_M)^{−2}‖v‖² ≈ γ_0²/γ_1, positive but NOT γ_0 − ε. So the γ_0 − ε form needs (S_s) or symmetrization; c_− > 0 for Lemma G3 needs neither. [P]
 4.4 Symmetry is not proved here. A sufficient condition: the [13] expansion is reversal-symmetric (T_{ω^rev} = T_ω^T, loc(ω^rev) = loc(ω)). (1.6) starts every walk at R_0(X_0) with X̃_0^5 = Z̃_0, so reversal symmetry is not visible on the page. Status of (S_s): [R] to p. 15 "For the pair (U,0) the operators are symmetric" (it names (U,0), not s; LOC_VERIFY §4). [I/R]
+4.5 Note on 4.2 without (S_s): σ_min(C_s) ≥ γ_1^{−1} − η_M follows from 3.1 (‖C_sv‖‖v‖ ≥ ⟨v,C_sv⟩), so ‖C_s^{−1}‖ ≤ 2γ_1 and ‖R(s)‖ ≤ 2γ_1²η_M hold without symmetry. [P]
+
+## 5. Parameter order, complex σ, scope [P + I]
+5.1 Condition. Everything above needs only η_M = S_d·B_W·e^{−⅓δ_0M} ≤ (2γ_1)^{−1}. γ_0, γ_1 depend on d, L and regularity constants, not on M (GAMMA0 §7.5 for γ_0 [P-sketch, verified]; γ_1 M-free [I, as in LOC §5.4]). S_d depends on d, δ_0; B_W on M_1 and the [13] walk constants. So "M large after L, M_1" suffices. No condition on α_0, α_1 at the real point (contrast LOC_VERIFY §5, which needed α small because (2.16) carries the complex-point O(α_0+α_1)).
+5.2 Ordering inside Balaban's hierarchy [I]. M_1 ≤ M (R_1M_1M^{−1} ≤ 1, p. 3) and M is taken large after κ_1 (p. 16: e^{−⅓δ_0M}e^{16κ_1} < 1). The condition 5.1 is one more "M large" requirement of the same type. Whether B_W stays bounded as M grows with M_1 fixed is part of (W) [R].
+5.3 Complex σ (not the target, recorded) [I]. On the Cauchy polydisc |σ(Δ)| ≤ e^{κ_1} (p. 5, carried to Sect. 2 per LOC_VERIFY §6), |1 − σ^ω| ≤ 1 + e^{κ_1 m(ω)}, m(ω) = number of σ_0 cubes met. Termwise domination then needs the weighted majorant Σ_{W_σ} e^{κ_1 m(ω)}|T_ω|. Since m(ω) ≤ c·|ω| (each domain is a small connected union of M_1-cubes; a σ_0 cube has side LM ≥ M_1), the factor O(M_1^{−1/2})^{|ω|} absorbs e^{cκ_1|ω|} when M_1 ≫ e^{2cκ_1}; this is the role of e^{16κ_1} on p. 16. Not proved here; it matters only for the Cauchy estimates, not for the real-s lower bound. The complex (U′, J) part of (2.16) is not touched.
+5.4 Scope. Proved for real s ∈ [0,1]^{σ_0}, real regular U, J = 0, the point where Balaban uses dμ_{C^{(k)}(Z_0,s)} as a real Gaussian (p. 15 "the measure is positive"). Uniform in s, Z, Z_0, k, volume, regular U, given (W), (N), (S_s) or symmetrization.
+5.5 Brief's step (4) answer. Self-adjointness at s: C_1 symmetric [P, (2.5)]; C_s symmetric iff every corner C_τ is (3.2); not provable from the pages [R p. 15]. Positivity at s: PROVED without symmetry in the form sense (3.1). The γ_0 − ε precision bound uses (S_s) or Sym C_s (4.1, 4.3).
+
+## 6. Ledger and result
+Result (Lemma SIGMA). Assume (W), (N), η_M ≤ (2γ_1)^{−1}. For all real s ∈ [0,1]^{σ_0}, all Z, Z_0, k, volume, real regular U, J = 0:
+ (a) ⟨v, C_sv⟩ ≥ (γ_1^{−1} − η_M)‖v‖² ≥ (2γ_1)^{−1}‖v‖², ‖C_s‖ ≤ γ_0^{−1} + η_M (no symmetry);
+ (b) if (S_s) (or for Sym C_s): λ_min(C_s^{−1}) ≥ γ_0/(1 + γ_0η_M) ≥ γ_0 − γ_0²η_M ≥ (2/3)γ_0;
+ (c) ‖C^{(k)}(Z_0)^{−1} − C_s^{−1}‖ ≤ 2γ_1²η_M (no symmetry); this is LOC (E) at real points, in norm.
+ η_M = S_d·B_W·e^{−⅓δ_0M}; no α-dependence at the real point.
+| item | grade |
+| C^{(k)}(Z_0,s) = Σ_ω s^ω T_ω (p. 3 rule, p. 13 "as before") | [V] text; [I] that the [13] expansion of C^{(k)}(Z_0) is a plain walk sum with s-free factors |
+| 0 ≤ 1 − s^ω ≤ 1 on [0,1]; termwise domination by the s-free absolute majorant K over W_σ | [P] |
+| brief's "R(0)'s bound dominates R(s)'s" | CORRECTED: the absolute majorant dominates, not the signed (2.16) bound; and the walk sum is for the covariance, not the precision |
+| (W) absolute convergence and (1.7) bound for the C^{(k)}(Z_0) expansion; walk counting | [R] CMP 116 (1.7) = CMP 109 (3.108), Sect. C (not re-read) |
+| d(ω,b,b′) ≥ ⅔M on W_σ; e^{−⅓δ_0M}e^{−½δ_0|b−b′|} split | [P] given [I] meaning of d(ω,·,·); matches printed (2.16) [V p. 16] |
+| Schur norm η_M | [P] (S_d from LOC_VERIFY §5) |
+| convex-combination identity C_s = Σ_τ w_τ(s)C_τ | [P] (multilinearity of s^ω) |
+| covariance form bound (a), no symmetry | [P] given (W), (N) |
+| precision bound (b) γ_0 − ε, ε ≤ γ_0²η_M ≤ γ_0/3 | [P] given (S_s) or symmetrization |
+| precision remainder (c) in norm, from (W) instead of (2.16) | [P]; kernel decay of R(s) NOT covered → stays A2 [R to (2.16)] |
+| (S_s) symmetry at s | [R] p. 15 assertion (names (U,0) only); reduces to corners by 3.2; not proved |
+| γ_0 | [V]-verified sketch (SOURCES_A3_GAMMA0 + VERIFY), reduced to R1–R5 |
+| γ_1, M-independence of γ_0, γ_1 | [R]/(3.132)+(E_U); γ_0 M-free [P-sketch]; γ_1 M-free [I] |
+| complex σ on |σ| ≤ e^{κ_1} | not covered; sketch 5.3 [I] |
+Effect (proposal; TRUST_LEDGER not edited). GAMMA0_VERIFY item 6 "σ-localized version open [I]" → "reduced [P, unverified] to (W) (the [13] walk bound for C^{(k)}(Z_0), already used by Balaban) and (S_s); uniform in s with ε = γ_0²η_M, no α-condition at the real point." At real points this also removes LOC's dependence on (2.16) for norm purposes; A2 stays needed only for the kernel-decay form and the complex points.
+STALL: none. Weakest links: (W) is cited, not re-derived (CMP 109 Sect. C not read in this pass), and the [I] meaning of d(ω,·,·) in 2.3. Needs an independent verifier pass before any regrade.
+Scratch: /tmp/a3s (page images) deleted at end of run.

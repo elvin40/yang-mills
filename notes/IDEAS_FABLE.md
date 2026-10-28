@@ -28,7 +28,7 @@ Proposition: a loss of half the decay rate at the sourced step is recovered at t
 Mechanism: e^{−(κ/2)d_k(X)} = e^{−(κ/2)L d_{k+1}(X)} ≤ e^{−6κ d_{k+1}(X)} for L = 13; Balaban's own (1.93) decay-recovery charge (1+β)κ per step is the same mechanism with a smaller gain. The only case needing care is a loss at the LAST step (no further rescaling): there the final cluster expansion runs at rate κ/2, which is fine if κ_final ≤ κ/2 (SOURCES_FX_R2's M-condition with κ → κ/2).
 Kill test: read SOURCES_D2 to see at which step(s) the loss occurs; if the loss is per step (not once), the net rate per step is L/2 > 1 and still recovers.
 
-## I6. K-independence of β_j(g) (v4 §10 item 9) is the wrong statement  [credited loop]
+## I6. K-independence of β_j(g) (v4 §10 item 9) is the wrong statement  [DONE 2026-10-28: SOURCES_T2_KUNIF — item 9 is a volume statement; closed via C_β; I6 over-asked]
 Proposition: β_j is NOT a function of g_j alone (it depends on the history), so "K-independence" is false as an identity; what Theorem 2w uses is K-UNIFORM bounds, which real (H-hist) gives: two histories with the same g_j differ in β_j by ≤ Σ_i λ^{j−i}|Δg_i|.
 Task: reformulate item 9 as uniformity, check every use in THEOREM2_PROOF_v4 and KAPPA_BOUNDED, and close it from (H-hist) [verified reduction] — or show a use that needs the identity.
 
