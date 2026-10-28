@@ -86,3 +86,69 @@ Remarks.
 (b) No Δ-relative norm and no Ward splitting is used for σ^{(2)}. The issue of KAPPA_BOUNDED §4(b) (A4 needs s(0) = 0, sd = 0) does not arise, because the sup norm contracts directly when ρ_1 < L. The (W-2) longitudinal part of σ^{(2)} is bounded as part of the full sup bound; it needs no separate treatment.
 (c) Consistency check at K = 0. Theorem B2 implies sup_j|σ_j^{(2)}(0)| < ∞, which KAPPA_BOUNDED §4 already proved unconditionally from A3 + (W-2). No conflict.
 (d) Constants. b(L), η_1, C_2′ are astronomically large (O6 constant a ≥ 2.3·10^{−10}L^{−20}). They enter only the sources S_1, S_2. They never multiply D_{j−2} or Y_{j−2}^{(2)}. The contraction factors q_1, q_2 contain only ρ_2, a measured, order-one number. This is the same structure that makes Theorem A3 close.
+
+## 4. Numerics: ρ_2 at L = 3 (d = 4, Mac, reuse of aw_verify)
+
+Code. Reuses aw_verify/hscan.py (`blocks`, `solve`, `Umat`, cached B0_L3.pkl) through the numerics/.venv interpreter. The only new function (run from /tmp, not kept in the project folder):
+```
+def h2(K, j, lmax=6):  # ||(+)_l H_{j-1}(k_l) H_j(K)|| / L^2
+    jin = "inf" if j == "inf" else j - 1
+    Hj = solve(blocks(K, j, lmax), K)[0]; _, kl = Umat(K)
+    X = np.concatenate([solve(blocks(k, jin, lmax), k)[0] @ Hj[4*l:4*l+4] for l, k in enumerate(kl)])
+    return np.linalg.norm(X, 2) / L**2
+```
+For j = ∞ both levels use Prop. A at M = ∞ (inner and outer), the fixed point of the pair.
+Checks. Reproduces the verifier's value 2.055991 at (2.3557, 2.3557, π, π), j = 3, to 10^{−8}. Hypercubic invariance (permutation + sign flips) holds to 10^{−15}. j = ∞ truncation: lmax = 2, 3, 4, 5 give 2.06366, 2.06337, 2.06329, 2.06336, so lmax = 2 is accurate to 4·10^{−4}.
+Grid. j = 2, 3: the sorted 6-point grid on [0, π]⁴ (126 points) plus the face K_3 = K_4 = π on a sorted 13 × 13 grid (91 points), then Nelder–Mead from the two best points. j = ∞: the upper half of the face grid plus three extra points, then Nelder–Mead (lmax = 2), then re-evaluation at lmax = 5. Run times 2.1, 6.0, 2.6 min.
+
+| pair (j−1, j) | ρ_2 grid max | refined max | at K | q_1 = ρ_2²/L² | q_2 = ρ_2²/L⁴ |
+|---|---|---|---|---|---|
+| (1, 2) | 2.00763 | 2.00857 | (2.215, 2.215, π, π) | 0.448 | 0.050 |
+| (2, 3) | 2.05599 | 2.05601 | (2.374, 2.374, π, π) | 0.470 | 0.052 |
+| (∞, ∞) | 2.06366 | 2.06377 (lmax 2); 2.06336 (lmax 5) | (2.403, 2.403, π, π) | 0.473 | 0.053 |
+
+Thresholds at L = 3: (H2) needs ρ_2 < 3 (margin 31%, q_1 ≤ 0.473). The strip form U3_AW (H″) at n = 2 needs ρ_2 < √8 = 2.828 (margin 27%). The σ^{(2)} contraction needs ρ_2 < 9 (q_2 ≤ 0.053).
+For comparison, one-step (verifier §6): ρ_1 = 1.6516, 1.7360, 1.7569, 1.7600, so ρ_1²/L = 0.909, 1.005, 1.029, 1.033: the one-step C¹ recursion fails for j ≥ 2 by ≤ 3.3%, and the two-step one passes with q_1 ≤ 0.473.
+Pattern. ρ_2 increases with j and converges (2.009, 2.056, 2.063). The maximum sits on the face K_3 = K_4 = π, on the diagonal K_1 = K_2, and moves from 2.22 to 2.40 with j. The one-step maximum was at K_1 = K_2 ≈ 1.9. The full 4D sorted grid did not produce a larger value off the face at any j.
+
+Limits of this check. (i) Grid plus local optimization gives a lower estimate of the sup, not a certified upper bound. A certified bound needs a Lipschitz constant for K ↦ ‖H_{(2)}(K)‖ with realistic size (interval arithmetic or a measured derivative bound); the O6-based constant (U2) is astronomically large and useless for that. (ii) Levels j = 4, …, ∞ are represented only by j = ∞. The monotone convergence 2.009 → 2.056 → 2.063 makes a larger value at intermediate j unlikely; it is not excluded. Prop. A at M = 27 (j = 4) sums 27⁴ ≈ 5·10⁵ terms per block, ~850× the lmax = 2 cost of j = ∞; not run. (iii) L = 5 not run. hcheck.py hardcodes L = 3 (81 umklapps, LS ∈ {−1, 0, 1}⁴), B0_L5 does not exist (the L = 3 build took 76 s; the L = 5 build of ym_momentum.Step is much larger), and one two-step point at L = 5 needs 625 inner solves of size 2504. Not cheap; not attempted. At L = 5 the thresholds are wider (ρ_2 < 5 for (H2)), so L = 3 is the hardest odd case if ρ_2 stays O(2).
+(iv) No σ^{(2)} computation was needed or done. A direct d = 4 check of (B2) would need new code. Minimal spec: per coarse K, build the f¹ and f² Moyal coefficients 𝔨_1, 𝔨_2 of the bordered symbol (fine blocks L^{−2m}σ_{j−1}^{(m)}(k_l) plus the f^m parts of the constant-field linearized (0.4) row C_f and of the ghost D_r(f)D_r(f)^†), K-derivatives of 𝔨_0, b_0 by finite differences, then U3_LEMMA51 (3.2)–(3.3); recurse j = 1, 2, 3 on a K grid. ym_momentum builds plane-wave kernels only (KAPPA_BOUNDED_VERIFY §8), so C_f in the constant-field expansion is the missing piece.
+
+## 5. Conclusion: status of (B2), Theorem K, Theorem 2w
+
+The precise hypothesis. Everything reduces to one plain operator-norm inequality on the two-step gauge-fixed minimizer map, on real K:
+  (H2)  ρ_2 := sup_{j≥2} sup_{K∈BZ real} ‖(⊕_l H_{j−1}(k_l)) H_j(K)‖ / L² < L.
+No Δ-relative weighting, no strip, no n > 2. (H2) is weaker than U3_AW (H″) at n = 2 (ρ_2 < √(L² − 1)). The verifier's 2.056 is a grid value of exactly this quantity at (j−1, j) = (2, 3).
+
+Which route closes with the measured constants (L = 3).
+- Prop. 4.1, one step (h²/L⁴ < 1 plus a C¹ bound on σ^{(1)}): the first condition holds (ρ_1²/L² ≤ 0.344). The C¹ bound does not follow from the one-step recursion: its factor ρ_1²/L is 1.005–1.033 for j ≥ 2. So the pure one-step route does not close.
+- Two-step C¹ (Theorem C1) + one- or two-step σ^{(2)} contraction (Theorem B2): closes. q_1 = ρ_2²/L² ≤ 0.473, q_2 = ρ_2²/L⁴ ≤ 0.053 at the measured ρ_2 ≤ 2.0638. This is Prop. 4.1 with its C¹ hypothesis supplied by Theorem C1.
+- Strip route U3_AW R-A with (H″) n = 2: also closes numerically (2.064 < 2.828) and gives more (C³, the strip), at a smaller margin. Not needed for (B2).
+- Integration by parts (KAPPA_BOUNDED Lemma 2.1) for (B2w): does not apply, because the σ^{(2)} recursion is pointwise.
+
+Status.
+- (B2): proved given (H2) [Theorems C1 + B2, proved here]. (H2) at L = 3 holds numerically with 31% margin (ρ_2 = 2.009, 2.056, 2.063 for j = 2, 3, ∞), uncertified (§4 limits (i)–(ii)). (B2) is therefore reduced, not proved: it is proved modulo one numerically supported, uncertified inequality. L ≥ 5: (H2) untested.
+- Theorem K: proved given (H2) and its other inputs (PI), (F), (M_j), V1, (G2), with L = 3 the numerically supported case. Its hypothesis (B2) is replaced by (H2). Y_2 in κ_* (KAPPA_BOUNDED (2.2)) is now Y_2 of Theorem B2, with astronomically large but j-independent constants.
+- Theorem 2w: same status as Theorem K, plus (i)/L5 (history-dependent β, inherited from LEMMA_DPRIME).
+- Collateral: Theorem C1 also gives the j-uniform real-K C¹ bound on σ^{(1)} that U3_AW §4.7 listed as missing, under (H2) rather than (H′). C² and C³ (for Lemma 5.1 of U3) are not covered: differentiating (2.1) twice gives factor ρ_2²/L⁴ on the second derivative, which contracts, but the source then needs ∂²H and ∂H·∂s, which are uniform by the same (U2)-type argument. So C² and C³ under (H2) look routine; I did not write them out.
+
+## 6. Ledger
+
+Proved here.
+- T1. (1.3)–(1.5): the two-step recursions for σ^{(1)} and σ^{(2)}. Linear part = conjugation by the two-step minimizer map H_{(2),j} = (⊕_lH_{j−1}(k_l))H_j, with factors L^{−4} (σ^{(1)}) and L^{−8} (σ^{(2)}).
+- T2. Theorem C1: (H2) ⇒ sup_j sup_K|∂σ_j^{(1)}| < ∞, with factor q_1 = ρ_2²/L². Uses Theorem A3 (C⁰), O6 (‖b_0‖ ≤ b(L)), A0 + Cauchy for ∂𝔨_0, Prop. A2 for the base. Crude constants enter only the source.
+- T3. Theorem B2: (H2) ⇒ (B2) (hence (B2w)), plain sup norm, factor q_2 = ρ_2²/L⁴. No Δ-relative norm needed for σ^{(2)}, because ρ_1 < L already gives a sup-norm contraction.
+- T4. The one-step C¹ recursion has factor ρ_1²/L; the eigenvalue-1 direction at K = 0 is not the obstruction for C¹ (the chain rule gives L^{−1} there); the obstruction is the BZ face where ρ_1 ≈ 1.76 > √3.
+
+Measured (L = 3, d = 4, uncertified sup).
+- M1. ρ_2 = 2.0086 (j = 2), 2.0560 (j = 3), 2.0634 (j = ∞). Threshold 3. q_1 ≤ 0.473, q_2 ≤ 0.053. Argmax on the face K_3 = K_4 = π, diagonal K_1 = K_2 ∈ [2.2, 2.4].
+- M2. One-step C¹ factor ρ_1²/L = 0.909, 1.005, 1.029, 1.033 (j = 1, 2, 3, ∞): fails for j ≥ 2.
+
+Cited (verified in project files). Theorem A3, Lemma A1, Prop. A2, A0, O6, derivative budget, (1.1)–(1.2): U3_AW_VERIFY (CONFIRMED). ρ_1 values: U3_AW_VERIFY §6. Prop. 4.1 algebra and the ∂σ^{(1)} obstruction: KAPPA_BOUNDED_VERIFY §7–§8.
+
+Open.
+- G1. Certify (H2): a rigorous upper bound on sup_K ρ_2 (interval arithmetic or a realistic Lipschitz bound), for all j ≥ 2, not only j = 2, 3, ∞. Intermediate j (4, 5, …) untested; the trend is monotone convergent.
+- G2. L ≥ 5: untested (no B0_L5, hcheck hardcodes L = 3; ~10 min per two-step point). Threshold ρ_2 < L is wider there.
+- G3. The form of Q_j (degree ≤ 2 in L^{−2}σ^{(1)}, L^{−3}∂σ^{(1)}, coefficients from b_0, ∂^{≤2}b_0, and fixed vertices) is cited from U3_AW (1.2), read off U3_LEMMA51 (3.3). I did not re-derive (3.3).
+- G4. No direct d = 4 σ^{(2)} computation exists. Minimal spec in §4 (iv).
+- G5. Not independently verified. This file should get a verifier pass, in particular (2.1)–(2.2) (chain-rule factor L^{−2} per two steps) and the claim that (H2) is the correct threshold (ρ_2 < L, not √(L² − 1)).

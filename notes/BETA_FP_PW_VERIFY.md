@@ -19,3 +19,17 @@
 - (W), (PI), (M) not used anywhere in §3. Correct. But A6 (plane-wave β = Balaban β) and 𝔡_gf need k-uniform expansion-point bounds: the (PI)-type content is relocated into a uniform-in-k input, not removed.
 - Lemma 4.1: envelope |K̂|^{−2} + |K̂|^{−2}|(K+θ)^|^{−2}, two distinct order-2 singularities in d = 4, integrable; DCT correct. (i) at a = 0: Δ_T = E^TΔ_ΛE, two-sided bound from U3_REPAIRS Prop. B (uniform in M), longitudinal part D_cD_c^T = |K̂|² exact. Proved for odd L. Inputs (ii) + pointwise convergence are hypotheses; "proved" applies to the conditional lemma only.
 - Item 5: (U) is a uniform-in-j analyticity of the level data (Δ_j and its a¹, a² vertices at transfer p). The level data are outputs of the massless coarse recursion; "massive side" applies only to 𝔅_j^{−1}. KAPPA_BOUNDED_VERIFY §7–9 found the uniform C¹ bound on σ^(1) missing; (U) needs at least the plane-wave analogue (uniform p-smoothness of the a¹ vertex). The table also compares with BETA_FP_H/M, not with KAPPA Theorem K, whose (PI)/(M_j) are fixed-level only. So "open inputs of a weaker type" is not shown.
+
+## 4. (N3) on 4⁴, L = 2, θ = π (scratch /tmp/n3, real CMP-109 Q̃, raw H, sparse LU; 24 s)
+- Covariance Q̃D = D_cι_a^T exact at the wave: 5e−15.
+- Prop. 2.2 core (determinant lemma at R ≠ 0): log|det Bord_D| − log|det Bord_K| − log|det N| = 4e−13. CONFIRMED.
+- Control H^⊥ = P_⊥HP_⊥: ½ log det N − ½ log det N_0 = 1e−11 (N_0 := ww^T + s^+Y_0s^+, X^+ and w = anchor part of the σ_3-constant zero mode). Formula for the R = 0 form is right.
+- Raw H: Y-defect = −8.517, −7.131, −6.321 at a = 0.01, 0.02, 0.03, i.e. 2 ln a + const to 1e−3. Not analytic in a. Cause: the σ_{1,2}-constant gauge modes are near-zero modes (eigenvalue O(a²)) on a torus; the a-expansion of 𝔡_Y fails there. N3 "as designed" does not measure 𝔡_Y. The prompt's "remove zero modes the same way" covers only the exact σ_3 mode.
+- Heuristic fix: compress N and N_0 to the complement of the 3 coarse constant gauge directions (two choices, C and s^{−1}C, agree to 1e−6). Then analytic: a² coeff / tree = 0.0103 (β units; β_1 ≈ 0.63). Running 6⁴, L = 3 for the Λ-ratio.
+
+## 5. (N3) 6⁴, L = 3 (210 s) and (N1) results
+- N3 L = 3: identity err ≤ 1.2e−12, covariance 5e−14. Raw defect again 2 ln a + const (−7.10, −5.72, −4.91). Compressed defect a²/tree = 0.00337 (both projectors). Ratio L3/L2 = 0.00337/0.0103 = 0.33; author predicted Λ^{−2} ratio 4/9 = 0.44; Λ^{−4} would be 0.20. Decreasing, consistent with O(Λ^{−2}) or faster; two points, coarse torus 2⁴, heuristic compression.
+- N1 level 0, L = 2, Ng = 12: β_1(0.8) = 0.64732. Fit on 0.1–0.8: C = 0.02776, D = −1e−4. Pure p², C_U = 0.028. Prediction holds.
+- N1 level 0, L = 3, Ng = 6 (recomputed from w; old JSON β is ×1/4): 0.6839, 0.6930, 0.7681 at p = 0.2, 0.4, 0.8. 0.4→0.8 slope 0.156 vs 0.2→0.4 slope 0.076: p⁴ term is comparable to p² near p ≈ 0.6 (Lp = 1.8). Bound form |β − β(0)| ≤ 0.17p² still holds to p = 0.8 (β(0) ≈ 0.664). "No large p⁴ term" fails at L = 3.
+- N1 level 1, L = 2, v2 sym, N = 8, Ng = 8: β_2 = 0.33334, 0.32685, 0.35499 at p_1 = 0.2, 0.4, 0.8. Non-monotone: fit C = −0.092, D = +0.188. Bound C_U ≈ 0.06 holds. Author's C_1 = −0.10 used one-sided Nyquist data (0.3412 → sym 0.3333).
+- N2 with sym data: D_1(0.4) = 0.33251, D_1(0.8) = 0.32352, D_1(1.6) = 0.34171. Slope (0.4→0.8) −0.019, not −0.031. Inside 2C_U/(L²−1) = 0.13 (author's 0.07 is a factor-2 slip).

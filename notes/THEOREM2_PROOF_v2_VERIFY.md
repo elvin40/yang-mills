@@ -85,3 +85,91 @@ Verdict: all substantive v1 corrections are applied. One wording item is not.
 - Balaban quotes (Theorem 2, p. 355 sentence, (0.1) with 1/g_k² and χ_k, p. 298, (1.3)–(1.5) misprint, CMP 116 has no C^m bound): BALABAN_EXCERPTS_CHECK items 1, 3, 4, 6, 10. v2 §1.1, §4.1 (H0), §9 match. CONFIRMED.
 - (H0) tag [Balaban]: the (1.22) wording is quoted from OCR in the sweep §3, not from a page image in BALABAN_EXCERPTS_CHECK. v2 does not tag it [verified quote]. Correct.
 
+## §I Check (8): §11 independence statement
+
+Evidence (file birth times, PLAN.md, read lists; SUSSMAN_ALPOGE_MAP.md read only for its heading list, not its body):
+- THEOREM2_PROOF_VERIFY Point 5(b) (last write 20:05) and LEMMA_DPRIME.md (20:10) state the shooting-without-positivity lemma and the band with additive constant. LEMMA_DPRIME_SWEEP (20:16–20:23) reads only LEMMA_DPRIME + VERIFY.
+- reports/ONLINE_SWEEP.md (20:20) is the first project file with SA content: its §2 read the SA repo directly ("downloaded and read locally"). It reports that SA prove "the weak two-sided flow with an additive constant c_5 and never need per-step positivity", use a first-passage cutoff, and state that "only containment is invoked".
+- SUSSMAN_ALPOGE_MAP.md (20:28). PLAN.md l. 146: "KEY SHORTCUT (their Lemma 4.19 structure): Theorem 2 weak form needs only κ_k BOUNDED ... KAPPA_BOUNDED.md agent launched (firewalled)". PLAN l. 146 also says their Lemma 4.2(b) is |Σβ⁰_l − k c_0| ≤ c_2 (cited, not proved there).
+- KAPPA_BOUNDED.md (20:39) read list: no map, no ONLINE_SWEEP. BETA_FP_PW.md read list: ONLINE_SWEEP §1.2, §5, §8 and o3_continuum Lemma 6.1; "Firewall: /tmp/sa_repo, SUSSMAN_ALPOGE_MAP.md, and ONLINE_SWEEP §2 not read."
+
+Assessment:
+- "One structural idea entered through the mapping report": ACCURATE for the bounded-κ idea (PLAN l. 146).
+- INCOMPLETE in three ways. (1) ONLINE_SWEEP §2 is a second, earlier channel of SA content into the project (coordinator level). It is not named. (2) Theorem K's conclusion |S_k − c k log L| ≤ κ_* has the same form as SA Lemma 4.2(b); the statement should say the result form coincides, while the proof (Prop. 1.1, Lemma 2.1, Prop. 2.2) is ours. (3) Route B's doubling comparison is the O(3) template (OpenAI, o3_continuum Lemma 6.1; BETA_FP_PW "O(3) Lemma 6.1 form"), and the band idea also appears in ONLINE_SWEEP §1.2(a) from that paper. The O(3) paper needs a citation too.
+- "Lemma D′, Lemma D″, the sweep ... derived by firewalled agents": LEMMA_DPRIME and the sweep were written before any SA content existed in project files, not under the firewall (the policy note in PLAN l. 140 is later). Lemma D″ is in KAPPA_BOUNDED (after the map, idea via prompt). Rewording recommended: "Lemma D′ and the sweep predate the first SA content in project files (20:05–20:23 vs 20:20/20:28 for ONLINE_SWEEP/map; the sweep did not read ONLINE_SWEEP)". The 20:20 vs 20:23 overlap for the sweep is close; its read list excludes ONLINE_SWEEP, so the claim holds on the record.
+- Wording is otherwise appropriate: it names the overlap and requires citation. Grade: CORRECTED (incomplete, not misleading in direction).
+
+## §J Numerics (§8) and B2_TWOSTEP
+
+- §8.1 table vs NUMERICS §6–§7: β_1 = 0.630 (L=2), 0.664 (3), 0.757 (4, single p, (Lp)² bias ≈ 0.01), 0.749 / fit 0.743 (5), 0.803 (7); constants 0.372, 0.256, 0.242, 0.145, 0.080. All match. c = 11/(3π²) for SU(2) = 0.3715 matches. CONFIRMED.
+- §8.2: composed 1.148 / 0.967 / 0.953 single p = 0.2 with bias label; β_2 ≈ 0.32; verifier 0.333; β_3 entries incl. verifier 0.261. Match NUMERICS §6 and the v1 verifier. CONFIRMED.
+- §8.3: d_1 values and H-norm table match KAPPA_BOUNDED_VERIFY §4 and U3_AW_VERIFY §6, §9, §10. CONFIRMED.
+- Tag on umklapp values: [numerical], author-validated only. v2 says so. CONFIRMED.
+- B2_TWOSTEP.md: born 20:47:20, v2 born 20:46:03. "The file did not exist when this chapter was written" is true at the start only; "in progress, nothing used" is the accurate wording. It has §1–§3 now (claims (H2) ⇒ uniform C¹ bound on σ^(1) ⇒ (B2); plain sup-norm contraction needs only ρ_1 < L, i.e. (h)). No verifier. v2 correctly uses nothing from it. §10 item 1 should name it as an unverified candidate proof of (C1σ) from a two-step norm condition.
+
+## §K Check (6): open-hypothesis table
+
+| hypothesis | introduced | verified / checked in | status | in v2 §10? |
+|---|---|---|---|---|
+| (B2) / (B2w) | KAPPA §2, Rem. 2.3 | KAPPA_VERIFY §7–§9 | open | yes (1) |
+| (C1σ) + (h) ⇒ (B2) | KAPPA Prop. 4.1 | KAPPA_VERIFY §7 | implication verified; (C1σ) open; (h) numerical L = 3 | yes (1) |
+| (H″) ⇒ (A) ⇒ (B2) | U3_AW §4.7 | none (U3_AW_VERIFY grade 5 covers (H′) only) | implication argued; (H″) numerical n = 2 only | yes, but untagged (fix) |
+| (HS) | U3_AW (H′) | U3_AW_VERIFY §6 | refuted L = 3 | yes |
+| B2_TWOSTEP (H2) ⇒ (C1σ) | B2_TWOSTEP §2–§3 | none | proved, unverified | no (add as candidate) |
+| (PI) | BETA_FP_H §3.1 | H_VERIFY §5 | argued | yes (2) |
+| (F) | BETA_FP_LEMMA43 | H_VERIFY §4 | cited, source checked | yes (3) |
+| (M_j): (S1)–(S3), Prop. 4.4 | BETA_FP_M §4 | none for BETA_FP_M; H_VERIFY §5 refuted old step | open / argued | yes (4) |
+| V1 | R2 | U3_VERIFY C4 (order p²) | open | yes (5) |
+| (G2) | BETA_FP_LEMMA43 | — | formal | yes (6) |
+| β_j(g) independent of K (infinite-volume identification) | LEMMAS_DE_VERIFY §2 item 2 | v1 verifier Point 7 | open | only implicitly via (G2)/(H0); add explicitly |
+| (H0), uniform in j and history | CMP 109 (1.22) | BALABAN_CHECK item 10 (CMP 116 gives no C^m bound) | [Balaban], inference | yes (7) |
+| L5 history form; clamp needs cube, Balaban gives trajectories only | LEMMA_DPRIME Rem. 3; LEMMAS_DE_VERIFY §2.1 | — | open | yes (8), sharpen per §F |
+| sweep reading: grep + images, "other constants" not found, β_0 first | SWEEP §7 | LEMMA_DPRIME_VERIFY Steps 4–5 (rows 11, 12, 16, 18) | proved, unverified | yes (9) |
+| odd L; L > 11 in Balaban | CMP 109 pp. 251–252 | v1 verifier Step 6 | input | yes (10), see §L |
+| SU(2) | — | — | scope | yes (11) |
+| Lean D″, history | — | — | open | yes (12) |
+| Route B: (U) | BETA_FP_PW §1.2 | PW_VERIFY §3 (needs uniform p-smoothness of a¹ vertex) | hypothesis | yes (B1) |
+| Route B: (Bθ), 𝔡_Y, 𝔡_gf | BETA_FP_PW §3.3, §4.3 | PW_VERIFY in progress | hypothesis / argued | yes (B2′) |
+| Route B: θ_* < 1 | PW_VERIFY §3 | — | trivial condition | no (add) |
+| Route B: β identification (uniform in k) | SOURCES_D1_VERIFY 8; PW_VERIFY §3 | — | argued | yes (B4), but §4.3 calls it fixed-level (fix) |
+| LW (5.7) | cited | PW_VERIFY §3 (regime correct) | cited | yes (B3) |
+| BALABAN_CHECK item 11: (4.37)/(5.1), "L odd" page, Sect. 3 estimates not checked | BALABAN_EXCERPTS | — | unchecked readings | no (minor; add to item 9) |
+
+Result: §10 is complete except four additions (K-independence of β_j(g) stated explicitly; θ_* < 1; B2_TWOSTEP as unverified candidate; unchecked Balaban items) and two status fixes ((H″) ⇒ (B2) argued; B4 uniform in k).
+
+## §L Checks (3), (7), (9)
+
+(3) §1.4 (L1): Lemma D′ (d) needs (iii′) = eventual β_j(0) ≥ β_∞/2 plus sup bound. Windows bounded by ±2R allow single increments in [b − 2R, b + 2R], negative if 2R > b, at any index. So Theorems K and B do not give it. "8R/b" checked: (3b/4)(n−m) − 2R ≥ (b/2)(n−m) ⇔ n − m ≥ 8R/b. Necessity argument (g → 0 forces all g_k → 0 under literal (0.31), (H0) gives β_K(0) ≥ β log L) is correct. CONFIRMED.
+
+(7) Odd L and SU(2).
+- Theorem 2w is stated for "L odd ≥ 3". Its inputs (H0) and the very definition of β_j(g) for g > 0 come from Balaban, whose papers fix L odd > 11 as a standing assumption (CMP 109 pp. 251–252, verbatim). For 3 ≤ L ≤ 11 the [Balaban] tag on (H0) does not apply. CORRECTION: state Theorem 2w for odd L > 11, or keep L odd ≥ 3 and make "(H0) and Balaban's construction at this L" an explicit hypothesis. The (h), (H″) numerics at L = 3 are then supportive only, outside the theorem's range (v2 §10.10 says the numerics are L = 3 only; good).
+- "(L > 11 for his constants)": v1 verifier Point 6 said this gloss is an interpretation. The verbatim source says L is an odd integer > 11 for the whole paper. Use "Balaban assumes L odd > 11".
+- SU(2): stated as scope; the SU(N) claim of v1 is withdrawn; (W) and Lemma 5.1 split are SU(2). CONFIRMED.
+
+(9) Overclaims found.
+1. Title "shortest verified route": only the reduction Theorem 2w ⇐ hypotheses is verified; the step to Theorem 1 is not. Say "shortest route; reduction verified".
+2. §2.1 "Steps 2–3, 6–7 (all CONFIRMED)": Step 7 contains CORRECTED grades 3, 4, 6.
+3. §2.3 "5 of 19 items verified": 4 table rows (11, 12, 16, 18).
+4. §4 title and §4.3 "independent" / "disjoint": formally distinct, content overlap plausible (§G).
+5. §5.3 "Either one gives (B2)": the (H″) half is argued.
+6. §6 "without Balaban's coupling assumption": true only given L5 in the sharpened form of §F (β must exist on the histories the shooting visits).
+7. §1.3 "L odd ≥ 3" with (H0) tagged [Balaban]: see (7).
+8. §11 independence: incomplete (§I).
+None of these overstates a proved result as proved. Each is a scope or tag wording error.
+
+## §M Grades of the author's 8 summary items (PLAN.md l. 158)
+
+1. Route K: Theorem K + Lemma D″ ⇒ (b), (c′), (S) with 64/15: CONFIRMED (hand rederivation; KAPPA_BOUNDED_VERIFY §6, §9).
+2. ⇒ Theorem 1 via the 19-item sweep [proved, unverified]: CONFIRMED as tagged; CORRECTED details (4 of 19 rows verified; items 4, 6, 9, 14 missing from the v2 lists; L5 domain caveat §F).
+3. Route B independent: CORRECTED (formally distinct; B4 is uniform in k; (U) plausibly needs the same uniform first-order vertex smoothness as (C1σ); BETA_FP_PW_VERIFY has no grade yet).
+4. Literal (0.31) not obtained; needs eventual positivity: CONFIRMED.
+5. Open, Route K: CORRECTED ((H″) ⇒ (B2) is argued, not verified; add B2_TWOSTEP candidate).
+6. Open, Route B: CORRECTED (add θ_* < 1; B4 uniform in k).
+7. Common: CORRECTED (Theorem 2w at L ≤ 11 lacks Balaban's (H0); add K-independence of β_j(g); "for his constants" is an interpretation; L5 needs the domain sharpening).
+8. Lean D′, D, E in; D″ not: CONFIRMED (Lean also has Telescoping, DetIdentities, AbelianCount, LemmaH; v2 does not list them; understatement only).
+
+## §N Verdict
+
+The document can be published as "Theorem 2 (weak form) reduced to the listed hypotheses" for Route K, after these fixes: (a) restrict Theorem 2w to odd L > 11 or add "(H0) at this L" as a hypothesis; (b) sharpen L5 as in §F; (c) tag (H″) ⇒ (B2) as argued; (d) replace "independent routes" by "formally distinct routes"; (e) complete §11 (ONLINE_SWEEP §2 channel, SA Lemma 4.2(b) form, O(3) template citation); (f) the small count and wording fixes in §L(9). The Route K reduction (Lemma D″ + Theorem K) is correct and verified. "Theorem 2w ⇒ Balaban's Theorem 1" must stay [proved, unverified] until the sweep has a second reader. Route B must stay [proved, unverified] until BETA_FP_PW_VERIFY grades it.
+
+Status: complete (2026-10-27).
