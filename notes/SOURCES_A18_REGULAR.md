@@ -22,3 +22,45 @@ Page correction: the brief says pp. 398–399. The definition is on p. 396. Pp. 
  (a) The constants O(1) in (3.35)–(3.36) are unnamed; the only printed constraint is O(1) ≥ 10 for the cube size. The bound constant is free. So "U is regular with (M, α_0)" means: for some fixed c_reg(d, L), the bounds hold with O(1) = c_reg. Every theorem of CMP 99 then holds for Mα_0 ≤ a_0(d, L) with a_0 depending on c_reg [I: this is how "O(1)" is used throughout CMP 99].
  (b) The bounds are on the potential A in a local gauge, not on the plaquette field. On T_η, ∇^ηA bounds ∂^ηA, so the curvature in the gauge satisfies |∂A| ≤ O(1)Mα_0(L^jη)^{−2} and the plaquette angle ≤ η²·O(1)Mα_0(L^jη)^{−2}. The converse (plaquette bound ⇒ a gauge with (3.35)) needs an axial/tree gauge construction on □; that is the content of the CMP 99 "Regular gauge configurations" paper [to read, §3 below].
  (c) The bounds hold at the scale of the cube's own index j, in the scaled units of (L^jη). In units L^kη = 1 near Λ_k (index k), (3.35) reads |A| < O(1)Mα_0, |∇A| < O(1)Mα_0 (unit lattice, after the scaling A ↦ L^kηA).
+
+## 2. The bridge paper: CMP 99 "Spaces of regular gauge field configurations … gauge fixing" (pp. 75–108) [V images p. 77, p. 99; text pp. 76–99]
+2.1 Space 𝔘_k({Ω_j}, α_0) (p. 77 [V]). All U on T_η with, for j = 0, …, k:
+ (1.7) |U(∂p) − 1| < α_0 L^{−2j} for p ∈ Ω_j, equivalently (1.8) |U(∂p) − 1| < α_0 η²(L^jη)^{−2} (here η = L^{−k}; the two agree);
+ (1.9) |(D^{η*}_U ∂U)(b)| < α_0 L^{−2j}(L^jη)^{−1} for b ∈ Ω_j.
+ Gauge invariant. It suffices to impose (1.7), (1.9) on B^j(Λ_j). Domains (1.3)–(1.4): Ω_0 ⊃ … ⊃ Ω_k, Ω_j = B^j(Ω_j^{(j)}), unions of cubes of size M_1L^jη, (L^jη)^{−1}dist(∂Ω_j, Ω_{j+1}) > RM_1; R so large that the propagator theorems of CMP 96/99 hold for RM_1.
+ This is a PLAQUETTE-FIELD class (gauge invariant, no gauge chosen). (3.35)–(3.36) of the propagator paper is a POTENTIAL class (a local gauge exists).
+2.2 Section F, "Removal of the additional regularity assumption" (pp. 97–99 [V p. 99 image]). Claim: (3.35) of [4] (= CMP 99 propagators) follows from U_0 ∈ 𝔘_k({Ω_j}, α_0). Steps printed:
+ (1.128) |Ū_0^j(∂p) − 1| < 2α_0L²(L^jη)² for p ⊂ Ω^{(j)}, from (1.7)–(1.9) + CMP 98 Prop. 2 [R];
+ (1.129) axial gauge on □̃^{(k)}; |U′_0(x, x′) − 1| < |x − y|²L²α_0 ≤ (M + 4R_1M_1)dL²α_0; needs α_0 ≤ O(1)M^{−1}, O(1) small;
+ (1.130) |Ū″_0^j(x, x′) − 1| < 8d²L²(L^{−2(k−j−1)} + … + 1)α_0 + (M + 4R_1M_1)dL²α_0 < 11d²L²α_0 + 5dL²Mα_0 < 6dL²Mα_0;
+ (1.132)–(1.133) U″_0 ∈ 𝔘_k({□_j}, L³α_0) ∩ Ax_k(ℭ_k, 1), |Ū″_0^j − 1| < 6dL²Mα_0 on □_j^{(j)};
+ if 7dL²Mα_0 ≤ c_1, Theorem 4 (= the inductive form of Theorem 2) applies to (1, U″_0).
+2.3 Proposition 6 (p. 99 [V]). Let U_0, □ (size ML^jη, M a multiple of R_1M_1, □ ⊂ Ω_j, □ ⊄ Ω_{j+1}) be as above, and 7dL²Mα_0 ≤ c_1. There is a gauge transformation u on □̃ with U_0^{u^{−1}} = U_1 = e^{iηA} on □̃ and
+ (1.136) L^jη|A|, (L^jη)²|∇^ηA|, (L^jη)³|∂^{η*}∂^ηA|, (L^jη)³|Δ^ηA| < 7dL²B_1Mα_0 on □_j,
+ plus (1.137) a holonomy bound and (1.138) R∂^{η*}A = 0 (Landau gauge). B_1, c_1 are the constants of Theorem 2: "absolute constants depending on d and L only" (p. 83 [V text]).
+2.4 Reading [P given Prop. 6 [R]]. Prop. 6 delivers BOTH (3.35) and (3.36) of the propagator paper on every cube □ of 𝒦, with the explicit constant
+ O(1) in (3.35)–(3.36) := c_reg := 7dL²B_1(d, L),
+ under the smallness condition 7dL²Mα_0 ≤ c_1(d, L) (and α_0 ≤ O(1)M^{−1}, implied by it).
+ So: 𝔘_k({Ω_j}, α_0) ⊂ Reg_{99}(M, α_0; c_reg) whenever 7dL²Mα_0 ≤ c_1. Status of Prop. 6: printed with a proof that rests on Theorem 2/Theorem 4 of the same paper (inductive construction, pp. 83–97) [R]; we did not check Theorems 2/4 line by line.
+ Note on the cube-size mismatch: (3.35) needs cubes of size O(1)ML^jη with O(1) ≥ 10; Prop. 6 is stated for cubes of size ML^jη with M a multiple of R_1M_1. Apply Prop. 6 with M replaced by M_□ := O(1)M (≥ 10M, rounded up to a multiple of R_1M_1). Then the constant becomes 7dL²B_1M_□α_0 = c_reg·(O(1)M)α_0, i.e. still "O(1)Mα_0" [P]. Condition: 7dL²M_□α_0 ≤ c_1.
+
+## 3. The CMP 109 background domains, exactly [V: CMP 109 p. 260 image (1.2), p. 262 image (1.10)–(1.16); text pp. 263, 265–268]
+3.1 Real backgrounds, space 𝒰_k(ε_0) (p. 260 (1.2) [V]). All U with
+ |U(∂p) − 1| = |(∂U)(p) − 1| < ε_0η², η = L^{−k}, p ∈ T; |J| < ε_0 on T, J = D_U^{η*}η^{−2}π Im ∂U.
+ Text after (1.2) [P text]: by CMP 98 Prop. 2 this implies |V(∂p′) − 1| < 2ε_0 for p′ ∈ T^{(k)} (V = M^k(U)).
+ Minimal configurations U_k(V) (p. 260 (1.1)): the unique regular critical (minimal) orbit of A(U) under Ū^k = M^k(U) = V on T^{(k)} (CMP 102 Thm 1).
+3.2 Local complex space 𝒰^c_j(X, α_0, α_1, γ_0) (p. 262 [V]), X ∈ 𝐃_j, scale ξ (= L^{−j} in units where the j-lattice is unit): union of G^c-orbits [(𝐔, 𝐉)] of pairs with
+ (i) 𝐔 = U′U, U G-valued, |∂U − 1| < α_0ξ² on X (1.11); for each cube □ ⊂ X of size O(1)LM there is a G-valued u on □ with U^u = exp iξA, |A|, |∇^ξA| < O(1)LMBα_0 on □ (1.12), "with a sufficiently large constant B (it will be determined later)";
+ (ii) U′ = exp iξA′, A′ 𝔤^c-valued, |A′|, |∇^ξ_U A′| < α_1 on X (1.13);
+ (iii) |∂𝐔 − 1| < α_0ξ², |𝐉| < γ_0 on X (1.14);
+ (iv) with X = Ω_0 and the maximal sequences {Ω_n} of CMP 99-regular (1.3)–(1.6), the minimal configurations of the averaged fields satisfy |∂U_n(M′(𝐔)) − 1| < α_0ξ², |J_n(M′(𝐔))| < α_0(L^nξ)² on X̃^{−2} (1.16), and the same for U.
+ Usually γ_0 = α_0. P. 262 bottom [V]: "(i)–(iii) … appeared many times in the previous papers, e.g. see (3.35)–(3.38) [13]" ([13] = CMP 99 propagators). P. 261 [P text]: regularity "means that at least the conditions (3.35)–(3.38) [13], or (1.7)–(1.10) [14] are satisfied".
+3.3 Remark p. 263 [P text]: (i)–(iii) with α_0′ < α_0, α_1′ < α_1, plus CMP 102 Prop. 9, give (iv) with 2B_3α_0′ for α_0′ small. "In particular the minimal configurations U_j satisfying |∂U_j − 1| < ε_0ξ² with ε_0 sufficiently small, satisfy the above conditions." [P-claim; the (1.12) gauge bound for U_j is supplied by CMP 102 Thm 1 (9), see §4.]
+3.4 The k-th step background and the fluctuation domain (pp. 265–268 [P text]).
+ - The new block field W on T^{(k+1)} is "so regular that the minimal configurations U_{k+1}(W) exist and belong to 𝒰_{k+1}(ε_0)" (p. 265).
+ - Background of the step: V^{(k)} = V^{(k)}(W) = M^k(U_{k+1}) (2.3), U_{k+1} = U_{k+1}(W) in the axial gauge. The fine background for propagators: U_{k+1}, moved to the Landau gauge by u_k (CMP 99 regular, Thm 2).
+ - Fluctuation variable B′ = (1/i)log(V V^{(k)−1}) on T^{(k)}; cut χ_k = Π_b χ(|B′(b)| < ε_1) (2.9); after the linearization B′ = B − hD(B) and the scaling B′ = g_kB the cut reads |B(b)| < ε_1/g_k (row C7, closed).
+ - Gaussian part (2.11): ½⟨B′, Δ^{(k)}B′⟩, "see the definition (3.156) [13] with the δ-function gauge fixing term replaced by the exponential one".
+ - C-map (p. 268 [P text]): δ(QB′) eliminates B′(b_0(c)), c ∈ T^{(k+1)}; remaining variables B; B′ = CB, "C is the operator determined by the configuration V^{(k)}"; covariance C^{(k)}(U_{k+1}) = (C*Δ^{(k)}C)^{−1}.
+ - h (p. 267): (hB)(b_0(c)) = h(c)B(c), h(c) = L^{−1}·(coefficient of B′(b_0(c)) in (QB′)(c))^{−1}; LQh = I on T^{(k+1)}.
+3.5 Which inequalities define "the background" of CMP 109 step k [P, reading of 3.1–3.4]: U_{k+1} ∈ 𝒰_{k+1}(ε_0), i.e. on the unit lattice of step k+1 (ξ = L^{−(k+1)}): plaquette bound ε_0ξ² and |J| < ε_0. There are no separate bounds on B for the background: B is the integration variable, cut at ε_1/g_k; the background enters only through U_{k+1} (and V^{(k)} = M^kU_{k+1}).
