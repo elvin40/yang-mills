@@ -80,3 +80,31 @@ Grades.
 - A14 "the constant of (3.54) ('much bigger than E_0', value not given)": CORRECTED. The constant is printed: E_0α_3^{−5} (times |B|⁵ e^{−κd_j(X)}). What Balaban does not print is the constant after "further bounds and summations". The recovery mechanism (factor O(1)α_2^{−1}ε_1, ε_1 small) is CONFIRMED verbatim.
 - (3.34)–(3.50): no project file uses a reading of these lines (grep: the only "(3.34)" hits are CMP 99, a different paper). Nothing to grade; NOT CHECKED, not needed.
 
+### 3.6 Item 12: the 1989 bound lists (A_0, A_1, B_3, B_5, γ_0 = 1/2) used by the D′ sweep
+The item is a list, not one reading. LEMMA_DPRIME_SWEEP uses these constants only as fixed, scale-free numbers in comparisons of ε_j, δ_j, R_j at different scales. So the reading to check is: (a) each constant is defined without reference to a scale, and (b) γ_0 = 1/2.
+- A_0, CMP 119 p. 246 [V]: "ε_0 = g_0p_0(g_0), p_0(g_0) = A_0(log g_0^{−2})^{p_0}, p_0 ≥ 5r and A_0 is a sufficiently large constant." CONFIRMED.
+- A_1, CMP 119 p. 265 (pdf 23) [T]: "δ_k = g_kA_1/A_0 p_0(g_k)" (OCR "δk = gkAί/Aopo(gk)"); CMP 122 I p. 186 [V] uses "A_1p_1(g_j)/(A_0p_0(g_j))", so δ′_j carries A_1p_1. A_1 is a fixed constant with A_1/A_0 small. CONFIRMED as a role; the exact OCR form of δ_k on p. 265 is [T] only.
+- Scale independence, CMP 122 I p. 186 [V]: "The remaining numerical factors in front of the exponential can be estimated by 9B_3(A_1/A_0)(p_1(γ)/p_0(γ))(1 + β_0), and can be made arbitrarily small by choosing γ, or A_1/A_0 sufficiently small. Notice, that the conditions on M, γ, A_0, and A_1 introduced above do not depend on any scale, i.e., on i, j, k, and so on. This applies also to other conditions introduced before." CONFIRMED. This is the printed sentence the D′ sweep needs for uniformity in the scale. It also supports §2 (no scale or g enters the O(1) constants beyond the explicit factors).
+- γ_0, CMP 122 II p. 380 [V]: "γ_0 is an absolute positive constant (in this factor we may take γ_0 = 1/2)." CONFIRMED.
+- B_3: constant of CMP 102 Theorem 1 (variational problem), "positive constants a_0, a_1, B_3, B_4(β_0), M(ε_1)" (CMP 102 p. 279, quoted in LEMMA_B4 E5; not re-read here). B_5: SOURCES_MA2_VERIFY records B_5 = 6B_1B_3C_1 (CMP 98). Both are fixed before γ. Status: provenance located through earlier verified files; not re-read in this pass.
+Grade for item 12: CONFIRMED for the use made (scale-free constants, γ_0 = 1/2). Not done: a line-by-line read of every bound in CMP 119 Sect. 2 (pp. 254–263). No project row uses any other bound from that list, so this residue is not load-bearing.
+
+## 4. CMP 119 Sect. 3: homogeneity and loss constant of the large-field T step
+
+Read on images: CMP 119 pp. 264–278 (pdf 22, 28–36; pp. 271–278 in full). Sect. 3 is titled "The k + 1-st Renormalization Transformation and the Proof of Theorem 2".
+
+What Sect. 3 prints about decay rates [V]:
+- p. 264: "Almost all operations and bounds were studied in the previous papers [16, I], so we concentrate only on new issues."
+- p. 270: "Therefore we need the improved statements and bounds for these terms, discussed before the formulation of Theorem 1, but we obtain such improvements quite naturally."
+- p. 276: "for terms connected with such a cube □, we obtain all the formulas and bounds of Sects. 3, 4 [I] with η replaced by L^{−n}. In fact we have better bounds, because the fluctuation field is localized in Ω_{k+1}, and the exponential decay of propagators and minimizing functions yields additional small factors." And: "We repeat again the analysis of Sect. 6 [I] ... The remaining considerations and bounds are the same as in [I]."
+- p. 277: "The terms of the expansion can be estimated as in (2.42), but with the additional factor O(ε_k) arising from the bound of the fluctuation field."
+- p. 278, after (3.47): "The terms of the sum above satisfy the bounds (2.42), with the constant B_0 replaced by O(p_0³(g_k)). Of course the integration with respect to t preserves the form of the representation, and the multiplication by g_k yields small bounds."
+- p. 262 (before Theorem 1): new terms have "better decay properties, with the number κ replaced, for example, by (1 + 4β)κ" (quoted in §3.2).
+
+Findings.
+- Homogeneity statement: NOT FOUND. Sect. 3 never writes the T-step output rate as a function of the input rate. It states the output bounds in the form (2.42), B_0e^{−κd_j(X)}, with the same symbol κ, and changes only prefactors (B_0 → O(p_0³(g_k)), extra O(ε_k), extra g_k).
+- Loss constant (the analogue of CMP 116's 10δ): NOT FOUND. No fraction of κ is spent in print in Sect. 3. The large-field part is reduced to "Sects. 3, 4 [I]", "Sect. 6 [I]", "Sect. 7 [I]" (CMP 109) and Lemmas 5, 6 [I]. The rate bookkeeping lives in those sections and in CMP 116 Sect. 2, which SOURCES_T2_KAPPA2_VERIFY read on images ((2.33)–(2.41), loss 10δ).
+- The (1 + 4β)κ improvement is asserted (p. 262) and called natural (p. 270). Its derivation is not printed in CMP 119.
+
+Is KAPPA2's use consistent? Yes, as far as print goes [P from the quotes]. KAPPA2 needs: (i) the large-field T step changes the rate only by a δ-fraction of the input rate, and (ii) all other changes are prefactors absorbed by constants. Sect. 3 supports (ii) directly (only prefactors change, and they carry g_k or ε_k). It is silent on (i) and defers to CMP 109/116, where KAPPA2 read (i) as 10δ. So the CMP 119 Sect. 3 item adds no new constant and no contradiction. The residual is not "an unread page in CMP 119 Sect. 3"; it is "Balaban never prints the large-field T-step loss". KAPPA2_VERIFY's caveat "its loss constant may differ from 10δ" stays true in the sense that no printed number fixes it; but the printed structure (same κ, prefactor-only changes, reduction to CMP 109 Sect. 6–7) agrees with homogeneity. Grade: reading CHECKED; homogeneity NOT FOUND in print; use CONSISTENT, tag [R → CMP 116 (2.33)–(2.41) + CMP 109 Sects. 6–7].
+

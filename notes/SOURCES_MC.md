@@ -64,3 +64,70 @@ Z_0′-sum (p. 20): "Of course, we assume that ½(κ_1 − 1) ≥ 2Lκ." Sum ove
 Lemma 3 (2.38): "Under all the above restrictions on the constants M, κ, κ_1, α_0, α_1, α_4, α_6, γ_2, γ, ε_1": |H(Z)| ≤ C_3ε_1exp(−(1−8δ)½Lκd_{k+1}(Z)).
 Note on the p. 16 "C_3 ≤ E_0C_1": the p. 20 definition makes C_3 a multiple of E_0C_1 by 4(L+2)^4O(1)α_4^{−1}α_6^{−1}M^q e^{C_2κ_1}, which is ≥ 1 for the stated small α_4, α_6. So the p. 16 inequality reads as a misprint or uses another C_3; it is not used in the argument after p. 16. Not load-bearing below. [I]
 Note on the "absolute constant" step: the (LM)^4α_5 term enters exp O(1)(LM)^4α_5·(LM)^{−4}|Z|, and the factor exp(−δ½Lκd_{k+1}(Z)) ≤ exp(−δ½Lκ(3·2³)^{−1}(LM)^{−4}|Z| + …) by (2.30) at scale k+1 absorbs it when δLκ/48 ≥ absolute constant + O(1)(LM)^4α_5. So this is a "κ large" condition. [I: (2.30) at scale k+1 has unit LM; reading of "to bound the exponentials by 1"]
+
+## 5. CMP 116 pp. 10–11 and 21 read on page images (150 dpi) [V]
+p. 10, (1.37)–(1.40): the vertex is built term by term. Example (1/g_k²)V(H_1B′) from the Wilson action; each plaquette term is localized by (1.38); "(1.39) |(1.38)| ≤ C_3(e^{16κ_1}|B′|)³M⁴exp(−(κ_1−1)M^{−4}|Y\□|), where C_3 is an absolute constant." (1.40): second-order Taylor coefficients ≤ ½C_3 3³e^{7·8κ_1}|B′|exp(−⅛(κ_1−1)d_k(Y) − ½(κ_1−1)M^{−4}|Y|) if e^{16κ_1}|B′| ≤ ⅓a_1; "Taking B′ as in (1.19) we obtain the above bound with |B′| replaced by C_1ε_1."
+p. 11: "it can be done in the same way for all terms in P^{(k)}(g_k, U, J, B), and we obtain the same decompositions and bounds, possibly with other absolute constants … Our last step is to sum up all the expressions with the same localization domain."
+Lemma 2 (1.41)–(1.43): P^{(k)}(g_k,U_{k+1},B) + {…} = Σ_{Y∈D_k}V_k(Y,U_{k+1},B); V_k(Y,B) = ½⟨Q(Y,B)B,B⟩ + V″_k(Y,B); |Q(Y,B,b,b′)| ≤ C_3ε_1M⁴exp C_2κ_1 exp(−⅛(κ_1−1)d_k(Y) − ½(κ_1−1)M^{−4}|Y|) (1.43); V″_k obeys (1.36).
+Consequence: the C_3 in "C_3 ≤ E_0C_1" (p. 16) is the absolute constant of (1.39)/(1.43). It is NOT the C_3 defined on p. 20. Balaban reuses the symbol. So p. 16 is not a misprint, and §4's note is resolved. The p. 16 condition is what makes (1.43)×|τ(Y)| ≤ (2.19): ratio C_3ε_1M⁴e^{C_2κ_1}/(E_0ε_1C_1α_4^{−1}M^qe^{C_2κ_1}) ≤ α_4M^{−4} needs C_3 ≤ E_0C_1 and q ≥ 8; the d_k decay needs ⅛(κ_1−1) ≥ (1−3δ)κ. [P, arithmetic on the printed displays]
+p. 21: (2.39) Ursell series with |ρ^T|; "we can repeat all the considerations and bounds of the paper [26], for κ sufficiently large, and ε_1 sufficiently small"; (2.40); (2.41) |E^{(k+1)}(X)| ≤ O(1)C_3ε_1exp(−(1−10δ)½Lκd_{k+1}(X)).
+ "(1−10δ)½L = 1, or δ = (1/10)(1 − 2L^{−1})" (definition). "O(1)C_3ε_1 ≤ ½E_0. In fact this assumption is unessential, because the constant C_3ε_1 is small anyway." log Z^{(k)}(U_{k+1}) − log Z^{(k)}(1) part: bound with κ → δ_0M and an absolute constant ½E_0; "we take M sufficiently large, so that δ_0M ≥ κ."
+
+## 6. Task (1): every inequality CMP 116 §2 imposes, with type
+Type: S = strict "<" or "sufficiently small/large" (open); C = closed "≤/≥" on a fixed choice; D = definition; G = geometry (no free constant).
+| # | where | inequality | type |
+| B1 | p. 16 after (2.16) | e^{−δ_0M/3}e^{16κ_1} < 1 ("M much bigger than κ_1") | S |
+| B2 | p. 16 after (2.18) | ⅛(κ_1 − 1) ≥ (1−3δ)κ | C |
+| B3 | same | C_3 ≤ E_0C_1 (C_3 of (1.43)) | C |
+| B4 | same | q ≥ 8 | C |
+| B5 | p. 16 after (2.19) | resummed |τ|-form constant "small for κ_1 large … bound it by 1" | S |
+| B6 | (2.18), (2.22), (2.28) | α_4, γ_2, α_6 "small, positive" | S |
+| B7 | p. 17 after (2.24) | α_5‖C^{(k)}(Z_0,0)‖ < ½ ("e.g."), α_5 = O(1)e^{−δ_0M/3}+O(α_0+α_1)+O(1)α_4+γ_2 | S |
+| B8 | p. 18 before (2.28) | ε_2e^{5κ} ≤ 1, ε_2 := 2E_0ε_1C_1α_4^{−1}α_6^{−1}M^qe^{C_2κ_1} | C |
+| B9 | (2.29) | κ large, α_6 small: Σ_DΠα_6e^{−δκd_k(Y)} ≤ 1 | S |
+| B10 | (2.31) | "g_k², i.e. γ² sufficiently small, depending on M and κ" | S |
+| B11 | p. 18 foot | (1/20)γ_2ε_1²/γ² ≥ 4κ | C |
+| B12 | p. 19 | ε_2 ≤ 1 | C |
+| B13 | p. 19 | exp(−(1/20)γ_2ε_1²/γ²) ≤ ε_2 | C |
+| B14 | p. 19 after (2.34) | exp(−(1/20)γ_2ε_1²/γ²)M^{−4}|Z_0| − δκd_k(Z_0) ≤ 0; by (2.30) ⇐ e^{−γ_2ε_1²/(20γ²)} ≤ δκ/24 | C (γ small) |
+| B15 | p. 20 | (L+2)^4O(1)ε_2 ≤ ½ | C |
+| B16 | p. 20 | 2(L+2)^4O(1)ε_2e^{5κ} ≤ 1 | C |
+| B17 | p. 20 | ½(κ_1−1) ≥ 2Lκ | C |
+| B18 | p. 20 | (LM)^4α_0, (LM)^4α_1, (LM)^4α_4, (LM)^4γ_2 ≤ 1 ("for example by 1": the bound is a free choice) | C, free budget |
+| B19 | p. 20 | O(1)(LM)^4α_5 + e^{−½(κ_1−1)} ≤ K_abs, then exp(K_abs(LM)^{−4}|Z|)·exp(−δ½Lκd_{k+1}(Z)) ≤ 1 via (2.30): needs δLκ/48 ≥ K_abs [I: my reading of "to bound the exponentials by 1"] | C in κ |
+| B20 | p. 21 (2.39)–(2.40) | Ursell convergence "κ sufficiently large, ε_1 sufficiently small" | S |
+| B21 | p. 21 | (1−10δ)½L = 1 | D |
+| B22 | p. 21 | O(1)C_3ε_1 ≤ ½E_0 (C_3 of p. 20) | C ("unessential") |
+| B23 | p. 21 | δ_0M ≥ κ | C |
+Geometry (no free constant): (2.27), (2.30), (2.32), (2.36), |P| ≥ ½M^{−4}|Z_0\Y_0|.
+Order of choice [I, from the wording]: L, κ; then κ_1; then M; then α_0, α_1, α_4, α_6, γ_2 ≤ (LM)^{−4}·budget; then ε_1; then γ. Every C-type item is either free of the late constants (B2, B4, B17, B21, B23) or an upper bound on ε_1 or γ given the earlier ones (B8, B12, B15, B16, B22 on ε_1; B11, B13, B14 on γ). So the admissible ε_1 form a down-set (0, ε̄_1], and for fixed ε_1 the admissible γ form a down-set. These are the "open" structures used below.
+
+## 7. Task (2): where complex w enters, and the substitution per condition
+Notation. λ_V := max(c, |w|) ≤ max(c, 1.235) ≤ 1.235c (c ≥ 1 = input-ball factor, c = 2 in D3W8/W4). f := sup|w|·sup(1/Re w) ≤ 1.525 [num: 1.5243 at ρ = 0.1]. G := Gaussian per-site cost (§7.3).
+7.1 Entry points of w in one term (2.14) [P given SM §4.1 and HHOL 1.2; X-scaling is (I-X) below]:
+ (e1) the joint (X, B) Gaussian form is multiplied by w. Modulus: phase drops; comparison operator Re w·(form at (U,0)). Normalization quotient (|w|/Re w)^{N/2}, N = modes of X on Z plus modes of B on Z_0 (Lemma D).
+ (e2) error forms R_1, R_2, R_3 of (2.16) are differences of w-scaled forms: coefficients ×|w| ≤ 1.235.
+ (e3) vertex V^0 + wV^P: coefficients ×λ_V (§8).
+ (e4) cut χ_{k,Y_0}χ^c_{k,P}: real, w-free, evaluated at the real reference x. (2.22) holds verbatim with g_k → x.
+ (e5) covariance of the dominating Gaussian is C^{(k)}(Z_0,0)/Re w ≤ 1.235·C^{(k)}(Z_0,0).
+ (e6) the σ- and s-contours and the factor exp(−(κ_1−1)(LM)^{−4}|Z\Z_0′|): w-free. [I: this factor comes from the σ-Cauchy estimates and the decay of the localized operators; w only rescales them by a constant]
+7.2 Substitution, condition by condition.
+ B1, B2, B4, B17, B21, B23, geometry: no coupling, no α_5, no ε_1. Unchanged. [P]
+ B3: (e3) turns the left side into λ_VC_3. Not implied by B3 at equality (closed). Absorb in the τ-radius: use (2.18) with E_0 replaced by λ_VE_0. Then |τ|·|V^0 + wV^P| obeys (2.19)–(2.20) verbatim. [P, §8]
+ Price: ε_2 → λ_Vε_2 and the p. 20 constant C_3 → λ_VC_3 (both linear in E_0).
+ B8, B12, B15, B16, B22: closed upper bounds on ε_2 or C_3ε_1, both linear in ε_1. With ε_1′ := ε_1/λ_V: λ_Vε_2(ε_1′) = ε_2(ε_1), λ_VC_3ε_1′ = C_3ε_1. Each modified inequality is Balaban's at ε_1. [P]
+ B10, B11, B13, B14: depend on ε_1 and γ only through ε_1/γ, ε_2, M, κ. With γ′ := γ/λ_V the ratio ε_1′/γ′ = ε_1/γ. B13: left side unchanged, right side λ_Vε_2(ε_1′) = ε_2(ε_1). So each is Balaban's at (ε_1, γ). [P]
+ B5, B6, B9, B20: open; no w (B5 after the B3 absorption; B20 sees only (2.38), which is Balaban's at ε_1 by §8). [P]
+ B7 (α_5‖C‖ < ½): by (e2), (e5) the absorbed forms give α_5^c := 1.235[O(1)e^{−δ_0M/3} + O(α_0+α_1)] + O(1)α_4 + γ_2 against covariance ≤ 1.235C. Needed: α_5^c‖C/Re w‖ < ½ ⇐ 1.525·α_5‖C‖ < ½ ((2.24′) of HHOL, confirmed: 1.53 = 1.235²). Not implied by B7 at Balaban's α's. Absorbed in 7.3.
+ B18, B19: α_5 → α_5^c, and a new per-site factor exp(G|Z|) joins exp O(1)α_5|Z| of (2.26). Absorbed in 7.3.
+7.3 The Gaussian budget [P given (I-X); constants from Lemma D].
+ G: per real mode (|w|/Re w)^{1/2} ≤ (1−2ρ²)^{−1/2} ≤ e^{2ρ²} [num 1.01015 ≤ 1.0202 at ρ = 0.1]. Modes: ≤ 4n per site for B on Z_0 and ≤ 4n per site for X on Z (n = N²−1, (2.25) prints d(g) per bond). So G ≤ 2ρ²·4n·(|Z|+|Z_0|)/|Z| ≤ 16nρ² (HHOL_VERIFY's correction; HHOL's 8n is for B only).
+ Write Balaban's bound ᾱ_5 := e_M + θa(LM)^{−4}, with e_M := O(1)e^{−δ_0M/3}, a := the absolute constant from O(α_0+α_1)+O(1)α_4+γ_2 at budget θ = 1 (B18). Balaban's choice: θ = 1, ᾱ_5‖C‖ < ½, K_abs ≥ O(1)(LM)^4ᾱ_5.
+ Complex choice: θ = ¼ (i.e. (LM)^4α_i ≤ ¼ for α_0, α_1, α_4, γ_2: B18 is a free budget, B6 asks only "small"). Then
+  f·ᾱ_5(θ=¼) + G ≤ 1.525(e_M + ¼a(LM)^{−4}) + G ≤ e_M + a(LM)^{−4} = ᾱ_5(θ=1)
+ (α_5^c ≤ 1.235ᾱ_5 by (e2); the second 1.235 is 1/Re w from (e5). In B19 G is compared with α_5 inside O(1)(LM)^4α_5; if that O(1) is < 1, put it into a.)
+ if (M1) (LM)^4e_M ≤ 0.3a and (M2) G(LM)^4 ≤ 0.45a. [num: 1.3 − 1.525·0.55 = 0.461 ≥ 0.45]
+ Under (M1), (M2): B7 at complex w is Balaban's B7; B19's left side is ≤ Balaban's K_abs; B18 holds with room. So every α_5 item is implied by Balaban's. [P]
+ (M1) is an "M sufficiently large" condition in the class of B1 ((LM)^4e^{−δ_0M/3} → 0). (M2) is the corrected (C4″): ρ_0 ≤ (LM)^{−2}(0.45a/(16n))^{1/2}. a is Balaban's unprinted absolute constant, so ρ_0 is explicit up to that constant.
+ Alternative (not used): keep θ = 1 and enlarge K_abs to 1.525K_abs + G(LM)^4. Then B19 needs κ larger, which re-chooses κ_1, M, and enters the large-field p_0 condition (CMP 122, p. 389). The budget route keeps L, κ, κ_1 fixed and moves only M (via M1, if Balaban's M does not already satisfy it), the α's, ε_1, γ.
+Correction to HHOL §3.1 and (C4″): 8nρ_0²(LM)^4 ≤ 1 does NOT put the new factor "under the same rule". It adds an O(1) to K_abs, which costs κ (B19). It must sit inside the α-budget: (M2).
