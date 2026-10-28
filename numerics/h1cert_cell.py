@@ -165,6 +165,40 @@ def lam_max_upper(G):
     return arb(t) + e.sqrt()
 
 
+def _mat(X): return acb_mat([[acb(complex(z).real, complex(z).imag) for z in r] for r in np.atleast_2d(X)])
+def _mid(B): return np.array([[complex(float(B[i, j].real.mid()), float(B[i, j].imag.mid())) for j in range(B.ncols())] for i in range(B.nrows())])
+def _radF(B, C):  # sup ||B - C||_F over the ball matrix B (C exact): rigorous upper bound
+    e = arb(0)
+    for i in range(B.nrows()):
+        for j in range(B.ncols()): e += (B[i, j] - C[i, j]).abs_upper()**2
+    return arb(e.sqrt().upper())
+def _n2(X): return arb(lam_max_upper(_mat(X.conj().T @ X)).sqrt().upper())  # ||X||_2 upper bound, X exact float
+
+
+def final_bound(T, T2, Kh, Kn2, beta, sig):
+    """Upper bound on lambda_max(Z T2 Z + (sig / |beta|^2)(u/c)(u/c)^dag) over the balls (= rho_1^2 L^2, h1cert sec. 2).
+    Z, u/c from the bordered matrix B = [[T, tau n], [tau n^dag, 0]], n = Kh/|Kh|: B^-1 = [[Z, w], [w^dag, *]], u/c = w tau/|Kh|.
+    Oishi-Rump on B with X = float inv(B_mid): eta = ||I - X B_mid||_F + ||X|| r_B < 1, ||B^-1 - X|| <= eps = ||X|| eta / (1 - eta);
+    then the norm-wise perturbation of lambda_max (Weyl) for Z T2 Z and the rank-one term."""
+    n = acb_mat([[Kh[i, 0] / Kn2.sqrt()] for i in range(4)])
+    Tm = _mid(T); Tm = (Tm + Tm.conj().T) / 2; ev = np.linalg.eigvalsh(Tm); tau = float(np.sqrt(abs(ev[0]) * abs(ev[-1])))
+    B = acb_mat(5, 5)
+    for i in range(4):
+        for j in range(4): B[i, j] = T[i, j]
+        B[i, 4] = n[i, 0] * tau; B[4, i] = n[i, 0].conjugate() * tau
+    Bm = _mid(B); Bm = (Bm + Bm.conj().T) / 2; X = np.linalg.inv(Bm); Bma, Xa = _mat(Bm), _mat(X)
+    nX = _n2(X); I5 = acb_mat(5, 5, [1 if i == j else 0 for i in range(5) for j in range(5)])
+    eta = _radF(I5 - Xa * Bma, acb_mat(5, 5)) + nX * _radF(B, Bma)
+    assert eta < 1, f"eta {float(eta.mid()):.3f}"
+    eps = nX * eta / (1 - eta)
+    T2m = _mid(T2); T2h = (T2m + T2m.conj().T) / 2; r2 = _radF(T2, _mat(T2h))
+    XZ, xw = X[:4, :4], X[:4, 4:5]
+    gam = arb((sig * tau**2 / (beta.abs_lower()**2 * Kn2)).upper())   # (sig/|beta|^2) |u/c|^2 = gam |w|^2
+    core = lam_max_upper(_mat(XZ.conj().T) * _mat(T2h) * _mat(XZ) + _mat(xw) * _mat(xw.conj().T) * gam)
+    pert = 2 * _n2(T2h @ XZ) * eps + _n2(T2h) * eps**2 + (_n2(XZ) + eps)**2 * r2 + gam * (2 * _n2(xw) * eps + eps**2)
+    return core + pert
+
+
 def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
     """Certified upper bound on sup_{K in cell} rho_1(j, K) (arb), or None if the cell touches the K = 0 block."""
     t0 = time.time(); pf = pf if pf is not None else prof(L)
@@ -206,10 +240,7 @@ def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
         sig += 1 / a2
     s2 = arb(1) / L**4
     T, T2, beta, sig = T * s2, T2 * s2, bsum * s2 / Kn2, sig * s2
-    Ti = T.inv(); u = Ti * Kh; c = (Kh.conjugate().transpose() * u)[0, 0]
-    Z = Ti - u * u.conjugate().transpose() / c                          # (P T P)^+ on Kh-perp
-    G = Z * T2 * Z + u * u.conjugate().transpose() * (sig / (c.abs_lower()**2 * beta.abs_lower()**2))
-    ub = arb((lam_max_upper(G).sqrt() / L).upper())
+    ub = arb((final_bound(T, T2, Kh, Kn2, beta, sig).sqrt() / L).upper())
     if log: log(f"  d,E {t1-t0:.1f}s, blocks {time.time()-t1:.1f}s; max rel rad T {max(float(T[i,j].rad()) for i in range(4) for j in range(4)) / float(T[0,0].real.mid()):.2e}, |beta| {float(beta.abs_lower()):.4f}")
     return ub
 
