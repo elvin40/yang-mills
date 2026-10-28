@@ -8,7 +8,7 @@ from scipy.integrate import quad
 from scipy.interpolate import CubicSpline
 sys.path.insert(0, 'numerics'); from t2_gaprime2_check import ops
 
-rho = lambda k: ellipk(min(1 - (k - 4)**2/16, 1 - 1e-17))/(2*np.pi**2)          # transverse density of kappa = |k_perp hat|^2
+rho = lambda k: ellipk(min(1 - (k - 4)**2/16, 1 - 1e-15))/(2*np.pi**2)          # transverse density of kappa = |k_perp hat|^2
 Q = dict(limit=400, epsabs=1e-14, epsrel=1e-12)
 
 def U(l, m2):

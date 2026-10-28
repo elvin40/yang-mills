@@ -126,3 +126,22 @@ Note: section 3 (GAPRIME2) feeds this chain through S123 Prop. 5.6; it is groupe
 
 Not Mathlib-ready in MJ_REST: the per-cell trace τ on the twisted group algebra and its spectral calculus (von Neumann algebra trace; Mathlib has no traces on group von Neumann algebras); S123 Thms 3.3, 3.4, 4.3; Lemma 4.1 (gauge covariance of Balaban's averaging); twisted convolution algebras (magnetic translations) beyond the 2-generator abstract form of section 3.
 
+## 5. History chain (part 2): what β_j is (row A15)
+
+### 5a. SOURCES_A15_WHOLE.md (Proposition A15-N, counting)
+
+- W1. Orbit unfolding: for f summable on ℤ⁴ and the fundamental domain F_N of NℤN⁴, Σ_{x∈F_N}Σ_{γ∈Nℤ⁴}f(x̂+γ) = Σ_{y∈ℤ⁴}f(y); and |x̂ + γ|_∞ ≥ N/2 for x̂ ∈ F_N, γ ≠ 0. §6.2 proof of (i), (ii). `Equiv` ℤ⁴ ≃ F_N × ℤ⁴ (`Int.emod`/`Int.ediv` per coordinate), `tsum_sigma'`, `Summable`. Medium.
+- W2. Tail sums of (iii): with |Π^N(0,x) − ΣΠ^∞(0,x̂+γ)| ≤ Ce^{−mN} and |Π^∞(0,y)| ≤ Ce^{−m|y|}: the three moment errors are ≤ CN⁶e^{−mN}, CN⁶e^{−mN/2}, CN⁵e^{−mN/2}. §6.2 (iii). Finite sums over F_N (|F_N| = N⁴), `tsum` of e^{−m|y|}|y|² over |y| ≥ N/2 on ℤ⁴ (bound by a shell count Σ_{r≥R} c r³·r²e^{−mr}). Medium. Load-bearing: it is the coefficient-level bound |β_j^{(N)} − β_j| ≤ C_jN_j⁶e^{−m_jN_j/2}.
+- W3. (iv) second difference: for an even analytic (or C⁴) function F on ℝ², the centred second difference at step p = 2π/N misses −∂₁∂₂F(0) by O(p²); sampling errors divided by p₁p₂ cost N². §6.2 (iv). `taylor_mean_remainder_lagrange`, `iteratedDeriv`. Easy–medium.
+- W4. (Cnt) polymer counting Σ_{X∋b, d(X)≥n}e^{−κd(X)}|X|² ≤ C₀e^{−(κ−κ₀)n}, κ₀ = κ₀(d,L): number of connected trees of length n through b is ≤ e^{κ₀n}. §6.1. Lattice-animal / tree counting on ℤ^d. Hard (Mathlib has no lattice-animal bounds; a direct count of rooted trees by Prüfer/DFS code is medium–hard). Prose otherwise. Also used by Balaban everywhere ("standard tree counting").
+- W5. Wrapping fact: a connected set whose 5-enlargement is not liftable has tree length ≥ N_j − c₅. §6.1. Same toolkit as L1 below. Medium.
+
+### 5b. SOURCES_A15_LOC.md (Theorem LOC: Lemmas W, N, A, S; G)
+
+- L1. Liftable boxes: if B ⊂ ℤ⁴ is an ℓ^∞ box of side < N/2, then π: ℤ⁴ → (ℤ/Nℤ)⁴ is injective on B and d_{T_N}(πx,πy) = |x − y|_∞ there; hence π|_B preserves cubes of sides dividing N, shared walls, and connectedness of cube families. §6.0. `ZMod N`, `Int.emod_emod_of_dvd`, torus distance as min over γ. Easy–medium. This is the one geometric fact behind all four lemmas.
+- L2. Lemma W abstract form: given an injective, overlap-preserving lift on Y₀^♯, the walks whose domains all lie in Y₀ are in bijection with the lifted walks, with equal s-weights; if each factor kernel equals its lift (FI), the absolutely convergent walk sums agree pointwise. §6.2. `Equiv` on `List` of domains, `tsum` over an `Equiv` (`Equiv.tsum_eq`). Easy–medium given L1. Prose: (FI), the identification of Balaban's factors as intrinsic.
+- L3. Lemma A abstract form: the Ursell function ρ^T(Z₁,…,Z_n) = Σ_{connected G}Π_{edges}(ζ − 1) is invariant under any bijection that preserves ζ; tuples covering X biject with tuples covering X̂. §7.3. `SimpleGraph.Connected` on `Fin n`, `Finset.sum_bij`. Easy (abstract); medium if ρ^T is the real Mayer coefficient.
+- L4. Lemmas N and S abstract: a fixed-point equation that is the same on Y₀ in both volumes and has a unique solution there has the same solution; subtracting the same number (the ℤ^d coefficient β) keeps intrinsic families intrinsic. §7.1, §7.4. Trivial in Lean (`ExistsUnique` + rewriting). Low value. Prose: (U) uniqueness for Balaban's background equations (1.3)–(1.4) and the [16] determinant expansion (Det).
+
+Remark. Theorem LOC is "transport of structure". Lean adds value only at L1 (the metric fact) and L2 (the bijection with absolute convergence). L3–L4 are bookkeeping once the objects are defined, and the objects (Balaban's activities) are not Mathlib-ready.
+
