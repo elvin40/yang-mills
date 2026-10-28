@@ -288,7 +288,9 @@ lemma Vps_Vp : Vps α * Vp α = 1 := by
 
 /-- `V′ + V′^* = 2 − (1 − V′)^*(1 − V′)` (GAPRIME2 Lemma 3.1 proof). -/
 theorem Vp_add_Vps : Vp α + Vps α = 2 - (1 - Vps α) * (1 - Vp α) := by
-  rw [sub_mul, mul_sub, mul_sub, Vps_Vp, one_mul, mul_one, mul_one, ← one_add_one_eq_two]
+  rw [sub_mul, mul_sub, mul_sub, Vps_Vp]
+  simp only [one_mul, mul_one]
+  rw [← one_add_one_eq_two]
   abel
 
 /-- `1 − V′ = (1 − e^{iα/2}) + e^{iα/2}(∇₁ + T₁∇₀^*)` (GAPRIME2 Lemma 3.1 proof). -/

@@ -73,3 +73,25 @@ Proof. By (1.1), R = ∫_0^∞(dt/t)e^{−tm²}p_t(0)²[D_α(t) − α²c_A(t)].
 x e^{−x/2} ≤ 2/e. So |R_>| ≤ (8C_∞/e)α⁴m^{−4}. ∎
 What this proves of STEPB Lemma 1. Lemma 1 is the statement W = φ²w_2 + R, |R| ≤ Cφ⁴m^{−4} for |φ| ≤ m²/μ. Theorem A proves it for μ ≥ 12, with the explicit constant above, and with w_2 defined by proper time instead of by the Moyal symbol integral. The two definitions agree: both are ½∂_φ²W(0; m²), which exists by Theorem A (Taylor coefficients are unique). So (MPT) is no longer needed as an input [P].
 Hypotheses used, exactly: LLL Lemma 2.1 (ghost cancellation, rel. S123 Lemma 5.1), LLL V0(b),(d) (rel. GAPRIME2 Lemma 4.1, S123 Lemma 5.2), LLL V1(i)–(iii) (structure of E_α, Dyson bound), LLL V1(ii) (evenness), Lemma S1′, Bessel bounds on p_t. No symbol classes, no Combes–Thomas, no rational flux.
+
+## 5. The log coefficient without Lemma 2 or Step C
+
+5.1 Lemma C (large-t slope of c_A) [P rel. LLL Lemma V2, i.e. rel. (IP), Laplace continuity, counting monotonicity]. c_A(t)/t → c_∞ := 11/(12π) as t → ∞.
+Proof. (a) Scaled heat trace. LLL Lemma V2: the scaled spectral measure ν′_α(de) := α^{−1}dn_{A′}(αe) converges vaguely to ν′_c = (2π)^{−1}Σ_{n≥0}(δ_{2n−1} + δ_{2n+3}). Its support lies in [−3, ∞) (V0(b)), and α^{−1}n_{A′}(αe) ≤ 4C_d(e + 3) (V0(d)) gives a tail bound uniform in α. So for every τ > 0: α^{−1}τe^{−(τ/α)A′_α} → ∫e^{−τe}dν′_c = (2π)^{−1}(e^{τ} + e^{−3τ})/(1 − e^{−2τ}) = cosh 2τ/(2π sinh τ). With α^{−1}2T_0(τ/α) → 1/(2πτ) (LLL §5 (a)):
+  α^{−1}D_α(τ/α) → Δ(τ) := (2π)^{−1}[cosh 2τ/sinh τ − 1/τ] = (2π)^{−1}[(11/6)τ + O(τ³)].
+(b) Fix τ ∈ (0, 1], let t → ∞ and α := τ/t (so |α|t = τ ≤ 1 and α → 0). By (3.1), |α^{−1}D_α(t) − αc_A(t)| ≤ Cα³t(1 + t)² ≤ 4Cτ³ (t ≥ 1). Since αc_A(t) = τ·c_A(t)/t: limsup_{t→∞}|c_A(t)/t − Δ(τ)/τ| ≤ 4Cτ². Let τ → 0: Δ(τ)/τ → 11/(12π). ∎
+Remark. 11/6 = 2 (spin, from cosh 2τ) − 1/6 (orbital, from τ/sinh τ). The same 4 − 1/3 split as LLL §5.3.
+
+5.2 Lemma F (Frullani with a slowly varying weight) [P, elementary]. Let ψ: (0, ∞) → R be bounded with ψ(t) → ψ_∞ as t → ∞. For λ > 0, as m → 0: ∫_0^∞(dt/t)(e^{−tλm²} − e^{−tm²})ψ(t) → ψ_∞ ln(1/λ).
+Proof. Substitute t = s/m²: ∫(ds/s)(e^{−λs} − e^{−s})ψ(s/m²). (e^{−λs} − e^{−s})/s is integrable on (0, ∞); ψ(s/m²) → ψ_∞ for every s > 0; dominated convergence; ∫(ds/s)(e^{−λs} − e^{−s}) = ln(1/λ). ∎
+Apply with ψ(t) := p_t(0)²c_A(t): bounded (|c_A| ≤ Ct, p_t(0)² ≤ C_p/(1+t)), and ψ(t) → c_∞/(4π) (Lemma C, √(4πt)p_t(0) → 1). So
+  w̃_2(λm²) − w̃_2(m²) → (c_∞/4π) ln(1/λ),  i.e.  4[w̃_2(λm²) − w̃_2(m²)] → (11/(12π²)) ln(1/λ) = n_2c_2 ln(1/λ).
+
+5.3 Theorem B ((3.1′), hence (3.1)) [P rel. Theorem A, Lemma C, LLL Theorem 5.1, STEPB §2.0, Step A].
+Convention fix. With G(φ) := F_W(φ)/φ² ≈ n_2c_2 ln(1/|φ|) (BETA_FP_H (F)), the correct form is G(λφ) − G(φ) → n_2c_2 ln(1/λ) for each fixed λ > 0. STEPB §1 writes "G(φ) − G(λφ) → n_2c_2 ln(1/λ)" with λ = (Λ/Λ′)^{−2}; that has a sign/convention slip (λ ↔ 1/λ); BETA_FP_H (3.1) itself is consistent with the form here [I: notation only, no content change].
+Statement. For every fixed λ > 0: G(λφ) − G(φ) → n_2c_2 ln(1/λ) as φ → 0, n_2c_2 = 11/(12π²).
+Proof. Fix μ ≥ 12; m² := μ|φ| = μα/2 ≥ 6|α|. F_W(φ) = W(φ; 0) + N(φ), N the neutral part, analytic and even (STEPB §2.0), so N(φ)/φ² = b_n + O(φ²). Write W(φ; 0)/φ² = H_φ(μ) + W(φ; μ|φ|)/φ² and use Theorem A: W(φ; μ|φ|)/φ² = 4w̃_2(μ|φ|) + R/φ², |R/φ²| ≤ 16C_Aφ⁴/(μ²φ²·φ²) = 16C_A/μ². So
+  G(λφ) − G(φ) = 4[w̃_2(λμ|φ|) − w̃_2(μ|φ|)] + [H_{λφ}(μ) − H_φ(μ)] + O(C_A/μ²) + O(φ²).
+First bracket → n_2c_2 ln(1/λ) (5.2); second → 0 (LLL Theorem 5.1: both converge to h(μ)). So limsup|G(λφ) − G(φ) − n_2c_2 ln(1/λ)| ≤ 32C_A/μ². μ is arbitrary: the limsup is 0. ∎
+What is not used. STEPB Lemma 2 (Moyal symbol integral, degree −4 part I_{−4}), Step C (lattice symbols = continuum × (1 + even O(K²))), and (MPT) in its Weyl form. The proper-time route needs only the α² coefficient's large-t slope (Lemma C), which comes from the same scaled spectral limit (LLL V2) that proves (L-LL). So Step C is off the critical path of (F). It is still proved in §6, as asked, because STEPB Lemma 2 may be used elsewhere.
+Consistency [P]. The ln μ coefficient of h(μ) is 11/(12π²) (LLL §5.3); the ln(1/m²) coefficient of 4w̃_2 is 11/(12π²) (here). Their sum makes B μ-independent, as STEPB §2.6 requires. These are two independent computations of the same 11/3.

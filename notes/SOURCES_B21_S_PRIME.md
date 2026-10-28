@@ -11,6 +11,8 @@ This file edits no other file.
 |---|---|---|
 | 1 | the failing inequalities in D4D5 §5.1 | [V] + [P] |
 | 2 | Lemma C′ (Steps 6–7 redone for σ > 2M) and (S′) | [P] rel. Lemma C inputs; g ℓ-free [R] |
+| 3 | consumers: N1 (finite ℓ), σ = 16ε end, N1-B, E14C, IV12 §4.4 | [V] + [P]; one [I] |
+| 4 | verdict and list of files to change | [P] rel. inputs |
 
 ## 1. The exact inequalities that fail [V: SOURCES_D4D5 l. 103–106, 120–122, 142–145]
 
@@ -65,3 +67,30 @@ So C_S′ := 16 C_A C_1 C_B C_2 C_η. It contains no ℓ and no K.
 
 Relation to (S). On σ ≤ 1, (S′) is (S) with C_S′ in place of C_S. On σ > 1, (S′) is weaker than the printed (S) by the factor σ^{an}; the printed (S) on σ > 1 is not derivable with ℓ-free C_S (§1).
 The upper limit σ ≤ ℓ/8 is dropped; it is not needed by Lemma C′.
+
+## 3. Consumers: which σ each one uses, and what it receives
+
+Correction to the brief's premise [V, ASSEMBLY_N1 §3.3, §4.4; IV12 §3.1 step (2)]. The bridge does NOT use only σ = 16ε. It uses the whole ladder σ_m = δ_m/4. In N1 (finite torus) δ_m = ℓ2^{−m}, m ≥ 3, so σ_m ∈ [16ε, ℓ/32]. In N1-B δ_m = 2d_B2^{−m}, m ≥ 1, so σ_m ∈ [16ε, d_B/2]. σ = 16ε is only the bottom rung. The top rungs have σ ≫ 2M as soon as ℓ (resp. d_B) ≫ M. So (S′) matters inside the bridge itself, not only in the moment route.
+
+### 3.1 ASSEMBLY_N1 (finite ℓ) [P, bookkeeping on N1 §4.4]
+Receives: per tuple, σ_m^{−an} is replaced by max(1, σ_m^{−a})^n.
+Scale sum with N = 6n: rungs with σ_m ≤ 1 (δ_m ≤ 4) give δ_m^{(1−a)n}·4^{an}; rungs with δ_m > 4 give δ_m^{N−5n} = δ_m^{n} ≤ (ℓ/8)^n. Total ≤ C^n max(1, ℓ)^n. N1 already carries max(1, ℓ)^n here [V, l. 118]. Scale m = 3: the printed factor (ℓ/32)^{−an} becomes 1. That small factor was the place where the printed (S) hid C_S ∝ ℓ^a; with (S′) it is absent and C_S′ is ℓ-free. Net effect on Theorem N1: same form, A_η changes by a factor C^n·ℓ^{an} at most. s = 6 and D > 1 unchanged. Theorem N1 on a fixed torus is unaffected.
+
+### 3.2 The σ = 16ε end (bridge bottom rungs, E14C §3.2) [P]
+For σ ≤ 1, max(1, σ^{−a}) = σ^{−a}. So (S′) = (S) on [16ε, 1], with C_S′ in place of C_S. At σ = 16ε: Lemma C′ = Lemma C (σ ≤ 2M), Step 0 needs σ > ε only, D4D5 §4.2's bound C^nΛ_1(16ε)^{4n}(n!)^{1+η} is unchanged. Confirmed: nothing changes at the bottom of the ladder. The fallback σ ≥ ε^θ (B21_S §1) is unaffected.
+
+### 3.3 Lemma N1-B (IV12 §3.1) [P; agrees with IV12_VERIFY §8(4)]
+Hypothesis "(S) with constants that do not depend on ℓ" must read (S′): the printed (S) on σ ≤ d_B/2 ≤ ℓ/8 has no ℓ-free constant (§1). With (S′): rungs δ_m ≤ 4 give δ_m^{(1−a)n}; rungs δ_m > 4 give δ_m^{n} (crude count) instead of δ_m^{(1−a)n}. The scale sum is ≤ C^n(2d_B)^n in place of (2d_B)^{(1−a)n}. The crude exponent count already books "scale sum 1", so q ≤ 12 stands. The sharper q ≈ 6 of IV12_VERIFY §8(4) used (S′) already. Lemma C′ (not the σ′ = min(σ, 2M) substitution) is what keeps the crude count clean: in N1-B, D = 6h_m = (3/8)σ_m, so at top rungs D ≫ 2M, and the substitution would add (1 + D/2M)^{4} ≤ C(1 + d_B)^4 per cumulant block (§2.1). That would still be polynomial in d_B but is not needed.
+Receives: A_B ≤ C(1 + d_B)^q, q ≤ 12, C ℓ-free. This is the (H-U∞) input.
+
+### 3.4 SOURCES_B21_E14C §2.3 [V + P]
+Its C_S(η, a) formula uses "For σ ≤ ℓ/8 … Λ_1(σ)⁴ ≤ C_{a,1}σ^{−a/2} and 1 + log_L(2M/σ) ≤ C_{a,2}σ^{−a/2}" [V]. Same defect as §1 (i), (iii). Fix: define C_{a,1}, C_{a,2} as sups of the ratios to max(1, σ^{−a/2}) over σ > 0, using Lemma C′. The formula C_S = 2·4C_A^{1/2}·C_B·C_{a,1}·C_{a,2}·C_η then gives C_S′ (S′), ℓ-free. Its consumed content (multi-index (1, …, 1) at t = 0, real separated sources) is unchanged.
+
+### 3.5 (H-U) [P]
+(H-U) on a fixed torus = Theorem N1: unchanged (§3.1). (H-U∞) with ℓ-free constants = N1-B with (S′) (§3.3). The OS growth condition needs fixed s and A, D; both hold.
+
+### 3.6 Infinite-volume moment route, IV12 §4.4 [V + P; one I]
+(L1) is stated for σ ∈ [16ε, 1] [V]. It does not use Lemma C. (L3) uses Lemma C Step 9 with the factor (1 + log_L(2M/σ)) [V]. The route feeds N1-B, whose ladder reaches σ_m ~ d_B/2 ≫ 1 (§3 preamble). IV12 §4.4 says "Lemma N1-B is otherwise unchanged" and does not address rungs with σ_m > 1.
+Fix [P]: separation ≥ σ implies separation ≥ min(σ, 1). Apply (L1) and (L3) at σ″ := min(σ, 1). Then the bound is e^{Cn(1 + log_L(2M))}Π(cr)^{−1}N(f_i)(1 + |supp f_i|_1): a constant per factor, i.e. the (S′) shape max(1, σ^{−a′})^n. For (L3), Step 9 at σ″ carries the cube count (2 + 2D/σ″)⁴ of Step 4; with crude N1-B cells (D = 3σ/8 up to 3d_B/16) this is ≤ C(1 + d_B)⁴ per support, polynomial in d_B. With the sharper N1-B cells (side ≤ 1/64 at δ_m > 1) D ≤ 6/64 and the factor is ≤ C. Either way s stays ⌈5 + a′⌉ + 1 and A_B stays polynomial in d_B. [P given (L1); (L1) itself remains I as in IV12.]
+Where (S′) matters here: exactly at σ ~ diam B. What this route receives: (S′)-shaped moment bounds, constant in σ for σ ≥ 1.
+Caveat [I]: the (1 + |supp f_i|_1) factor of (L1) with crude cells of side h_m = δ_m/64 ≫ 1 is ≤ C(1 + d_B)^4 per factor. It adds ≤ 4 to q. Not checked beyond this count.
