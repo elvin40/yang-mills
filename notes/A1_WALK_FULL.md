@@ -275,6 +275,42 @@ as in SOURCES_A1_WALK §5.6 and §7.1. Balaban's split (L^jη)^{−2}(L^{j′}η
 ### 6.9 Trees [P given SOURCES_WG §3]
 If (H1) is a tree expansion, as for G_1 (CMP 99 p. 427 [V text]; Theorem WG-G1 of SOURCES_WG §3.7), then §2–§5 hold with these changes. d(ω, y, y′) is the length of a shortest tree that meets all domains. A G-block is a tree term, and its branches end inside the block. The concatenation lemma extends to trees by SOURCES_WG §3.5. The count uses the depth-first code of SOURCES_WG §3.6, with C_W replaced by 2C_W. The result is the tree expansion of (QG_1Q*)^{−1}. Its lower bound is c_{−,1} := c_−(G_1) ≥ c_−(1 − O(Mα_0)) (SOURCES_A1_KERNEL §9; conditional like (H2)). The a-term of (QG_1Q*)^{−1} = N_1^{−1} + a is a one-cube diagonal factor.
 
+### 6.9a The tree form (H1-T) of (H1) for P = G_1 [P given WG_FULL Theorem WG-G1 (5.10) and the [I] cube geometry of 2.1]
+Input. WG_FULL 5.10 gives G_1 = Σ_τ T_τ. Put N̂_1 := S^{−1/2}QG_1Q*S^{−1/2}. Q and S^{−1/2} are local or diagonal factors. They attach to the first and last main-line factor, as for G (6.8; WG_FULL (I7), 0.7). So N̂_1 = Σ_τ N̂_τ.
+(H1-T) This sum has the following properties.
+ (T0) Shape. τ has a main line (X_0, …, X_n), which is a walk, and branches. Each branch is a walk β that starts at a κ-domain of the main line. 𝒳(τ) is the set of all domains of τ, main line and branches. |τ| := #𝒳(τ) − 1. N̂_τ = R_{α_0}(X_0)···R_{α_n}(X_n) is an ordered product over the main line. A κ-factor contains the scalar w_β(b) of its branch, and w_β(b) is a product of factors on the domains of β (WG_FULL 5.5–5.6).
+ (L1-T) Every factor, on the main line and in a branch, satisfies (L1) for its domain, which is listed in enlarged form (WG_FULL 0.4, "Band by enlargement"). Consequence: the kernel of N̂_τ vanishes unless y ∈ X_0° and y′ ∈ X_n°.
+ (L2-T) Every factor satisfies (L2). So N̂_τ depends on U only through U on ∪_{X∈𝒳(τ)} X̃^5 (WG_FULL 5.6; J(b′) adds no domain).
+ (B1-T) |n̂_τ(y, y′)| ≤ b_{G_1} ρ_{G_1}^{|τ|} m(y, y′) e^{−δ_{G_1} d(τ, y, y′)}. Here d(τ, y, y′) is the tree distance of WG_FULL 5.7; b_{G_1} is the constant of (5.7.1) after Q-normalization and S-rescaling; ρ_{G_1} := ρ_{**} of WG_FULL 5.7, and ρ_{**} ≤ c_{G_1}/M_1 under the G_1 row of WG-1 in (H4); δ_{G_1} := (1 − θ_WG)½ε − (d/2 + 1)θ, with θ_WG the split parameter of WG_FULL and θ = log L/(RM) as in (H1).
+ (B2-T) Count over trees (WG_FULL 5.8–5.9). Encode τ by the depth-first code of WG_FULL 5.8. Given a prefix, the next pair (α, X) meets the previous domain in depth-first order (after "resume", the κ-domain). With its tag there are at most C″_𝒟 := T_2C_𝒟 choices. So at most C_𝒟(C″_𝒟)^s trees have y ∈ X_0 and |τ| = s, and C″_𝒟ρ_{G_1} ≤ ¼. Set form: for every Y ⊂ 𝔅 of diameter ≤ D_+^{(1)}M_1, at most C_𝒟^{(1)} pairs (α, X) that occur in some 𝒳(τ) have X ∩ Y ≠ ∅.
+ (B3-T) Every X ∈ 𝒳(τ), branch domains included, has diam X̃^5 ≤ c_X^{(1)}M_1, with c_X^{(1)} := D_+ + 10. The branch domains contain the □⁺ of the first pass (the pass for (QGQ*)^{−1}), and 5 layers of M_1-cubes add at most 10M_1 to a diameter (WG_FULL 0.4, "Domain size", and 0.7).
+ Second-pass constants: K_0^{(1)} := 2c_X^{(1)} + 4 (see the bridge below), D_+^{(1)} := K_1 + 2K_0^{(1)} + 2, and C_𝒟^{(1)} := C_𝒟(d, D_+^{(1)}). They depend only on first-pass constants. So they are fixed before M_1, and there is no loop.
+How the tree form supplies the walk form.
+ 1. (L1), (L2). Each tree term is an ordered product of local factors. The supports lie in enlarged domains. (L1-T) and (L2-T) are (L1) and (L2) per factor, with no change.
+ 2. Distance. §2–§6 use three properties of d(ω, y, y′): (D1), (D2), and subadditivity under concatenation (5.4(c)).
+  - (D1) holds for d(τ, y, y′): a connected graph that contains y and y′ contains a path from y to y′ (WG_FULL 5.7).
+  - Subadditivity holds: the union of a graph for (τ_1, y, z) and a graph for (τ_2, z, y′) is connected, contains y and y′, and meets every domain of τ_1 ∘ τ_2. So 5.4(a)–(c) hold with d(τ, ·, ·) in place of d(ω, ·, ·) (SOURCES_WG §3.5; the same argument as WG_FULL 5.7).
+  - (D2) does not hold in walk form. Example: y = y′ and one branch domain X far away. A tree can have length d(y, X), but (D2) asks for 2d(y, X). What holds is (D2-T): d(τ, y, y′) ≥ max{d(y, X), d(X, y′)} for every X ∈ 𝒳(τ), because the graph contains a path from y to a point of X and a path from that point to y′.
+  - Comparison. The tree distance and the path distance of the main line are not comparable in general. The direction that A1-W needs is this: a walk is a tree with no branches, and a path is a connected graph, so d(τ_ω, y, y′) ≤ d(ω, y, y′). Thus every walk block and every factor K_□, Γ_□ satisfies its bound also with the tree distance. For one domain the two distances are equal (5.3).
+ 3. Count. The count over trees replaces the count over walks. Per step the constant is C″_𝒟 = T_2C_𝒟 in place of C_𝒟. The constant k_2 = 12 of WG_FULL 5.7 is not a count. It is the number of steps per insertion with no own small factor, and it enters only through ρ_{G_1} ≥ ε_2^{1/12} in (B1-T).
+Every use of (H1) in §2.3–§6 for P = G_1.
+ - Corollary 1.2: (B1-T), (D1), and (B2-T) give Σ_τ |n̂_τ| ≤ (4/3)C_𝒟b_{G_1} m e^{−δ_{G_1}d(y, y′)} ≤ 2c_+, with c_+ := C_𝒟b_{G_1}. The smallness C_𝒟ρ_G ≤ ½ is replaced by C″_𝒟ρ_{G_1} ≤ ¼, which WG_FULL 5.9 supplies.
+ - Lemma LT(a): (L2-T). The kept family must use all domains: 𝒲_□ := {τ : X̃^5 ⊂ □⁺ for every X ∈ 𝒳(τ)}.
+ - Lemma LT(b): Corollary 1.2.
+ - Lemma LT(c): this is the one walk-only use. The proof uses (B3) and (D2). (B3-T) gives d(x, □) > (K_0^{(1)} − c_X^{(1)})M_1 for x in the excluded domain X. Bridge: with K_0^{(1)} = 2c_X^{(1)} + 4 this is > (c_X^{(1)} + 4)M_1 ≥ 4M_1, and (D2-T) then gives d(τ, y, y′) > 4M_1 for y, y′ ∈ □, which is the value the walk proof gets from (D2). The excluded domain can be a branch domain; (D2-T) covers it, because the tree distance meets all of 𝒳(τ). LT(c)–(e) then hold verbatim.
+ - 3.4: LT(a), (b), (e) only.
+ - 4.1: algebra only. 4.2: (sep) uses Corollary 1.2, (tr) uses LT(c), (com) uses LT(b).
+ - 5.1–5.2: kernel bounds only.
+ - 5.3: (S) uses (D1). (R) uses "d(τ′, y, z) > 4M_1", given by the bridge above. The indicators attach to the first or last main-line factor; (L1-T) gives the support statement.
+ - 5.4: (a) uses the support consequence of (L1-T) for the first and last main-line domains; (b) uses (L2-T); (c) uses (D1) and subadditivity.
+ - 5.5: the term bound reads (B1-T) per G_1-block, with |τ′| + 2 added domains for an S- or R-insertion; branch domains count in |τ′|. ρ := max{ρ_{G_1}, (4b_{G_1}/c_−)^{1/2}e^{−⅛δ_{G_1}M_1}, ρ_com}.
+ - 5.6: the next label is the next item of the current G_1-block in the depth-first code (≤ C″_𝒟 choices), or one of the four labels of the walk case, counted with the set form of (B2-T) and with (B3-T) for the □ count. So C_W is replaced by C_W^T := 4C_𝒟^{(1)} + C″_𝒟, and M_c by 2C_W^Tc_1K_W. The "2C_W" of 6.9 is correct only if the tags of WG_FULL 5.8 are counted inside the labels α; C_W^T is the explicit form. Both are fixed before M_1.
+ - 5.7: the first entry of M_W is replaced by the condition C″_𝒟ρ_{G_1} ≤ ¼ of WG_FULL 5.9.
+ - 6.2–6.3: per factor, from (L1-T) and (L2-T). Branch factors carry no indicator.
+ - 6.4: the main line and each branch are walks. Each branch meets its κ-domain X: the first point b of the branch satisfies d(b, X) ≤ c_b < M_1, so b ∈ X⁺ (WG_FULL 0.4). So every nonzero term is indexed by a tree.
+ - 6.5–6.6: (B1) and (B2) of the output in tree form, with C_W^T; the (3.108) form needs ρ_{G_1} ≤ c_{G_1}/M_1, that is, the G_1 row of WG-1.
+ Result: no use needs more than (H1-T), except LT(c) and 5.3(R), which need (D2). The bridge K_0^{(1)} = 2c_X^{(1)} + 4 supplies the walk value 4M_1 from (D2-T).
+
 ## 7. The Z_0-compressed variant
 
 CMP 116 p. 13 [V image] needs a walk expansion of C^{(k)}(Z_0) of a special form: "we take a domain X_0 such, that X̃_0^5 = Z̃_0 (... the tilde over X_0 means that M_1-cubes are adjoined, and the tilde over Z_0 concerns M-cubes). Other localization domains X ... unions of small, connected families of M_1-cubes, and we assume that dist(X, Z_0) > ⅔M." Balaban refers the construction to [13] = CMP 99 [V, SOURCES_WC_RESIDUE_VERIFY Q3]. This section gives it. It closes open point O3 of SOURCES_A1_WALK §9.
@@ -458,3 +494,4 @@ A verifier should check these first. None changes a conclusion of the sources.
 - F6 (§4.1). "term by term" is replaced: F_□ = −Σ_{□′}R_{□,□′}C_□h_□, that is, −RC_□h_□ after summing over □′.
 
 - Regrade edits (A1_WALK_FULL_VERIFY regrade, 2026-10-28): (H4) now gives both CMP 99 forms (c′M^{−11} for G, c″M^{−13} for G_1); the F6 statement carries the factor C_□h_□. The §7.3 bound Σφ² ≥ c(d) is PROVED in A1_WALK_FULL_VERIFY (tent family on the grid aℤ^d, a = ½K_1M_1 = M_1L^k, K_1 ≥ 6L: c(d) = 1 at every point of Z_0, at most 2^d overlaps, c_h ≤ 2√d(1 + 2^{d+1})); the [I] tag in §7.3 is to be read as [P per VERIFY].
+- Tree form of (H1) (WC/WG_FULL_VERIFY regrades, 2026-10-28): new 6.9a states (H1-T) for P = G_1 from WG_FULL 5.10 ((T0), (L1-T), (L2-T), (B1-T) with the tree distance, (B2-T) depth-first count C″_𝒟 = T_2C_𝒟 and set form C_𝒟^{(1)}, (B3-T) with c_X^{(1)} = D_+ + 10) and checks every use of (H1) in §2.3–§6. One walk-only use: (D2) in LT(c) and 5.3(R); trees give only d(τ) ≥ max{d(y, X), d(X, y′)}; bridge K_0^{(1)} := 2c_X^{(1)} + 4. Count constant C_W^T := 4C_𝒟^{(1)} + C″_𝒟 (6.9's "2C_W" holds only with tags inside α). k_2 = 12 enters ρ_{G_1}, not the count. Not yet re-verified.
