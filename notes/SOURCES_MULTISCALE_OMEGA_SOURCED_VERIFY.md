@@ -59,3 +59,70 @@ U2 ((2.59) only at internal junction rates; Lemma A from d ≥ d_∞).
  Consequence for the canon [P]. Canon B18 (G addition) lists ε″/32 = ρ_f in δ_min. By U2 that entry is not needed. Do NOT delete it: it is the entry that implies the branch rate (W5(a)). Deleting it would leave ¼ε_min, which covers ½θ_cδ_H″ only for θ_c ≥ 1/9, not for all θ_c ∈ [1/16, 1).
 Verdict (3): U1 CONFIRMED; U2 CONFIRMED as mathematics, with the canon caveat above.
 
+Note to W3: "only for θ_c ≥ 1/9" means: from the recorded inequalities ε_min ≤ ½ε″ and ε″ ≤ ½δ_A″ = ½(1 − θ_c)δ_H″, the bound ½θ_cδ_H″ ≥ ¼ε_min follows for θ_c ≥ 1/9; for smaller θ_c it needs more than is recorded.
+
+## W4 Item (4): the canon Ω-forms, recomputed
+
+ (a) F. F = 1 + 2d(L + 2)^{d−1}/(3^d − 1); d = 4, L = 13: 1 + 8·15³/80 = 1 + 337.5 = 338.5. CONFIRMED (python).
+ (b) Powers. A16_REPLACE2 2.3: K_W^T = 2C_𝒟(C′_𝒟)^{12}B_𝒲 (the 12 unweighted steps k_𝒲 = 12, each a next-domain choice). A16 2.5: q_W^T has (C′_𝒟)^{k_𝒲+2} = (C′_𝒟)^{14}. A16 6.2: K_V^T has (C′_𝒟)^{10}. Every next-domain choice takes F (M3), the first-domain choice does not (Lemma B). So K_W^{T,Ω} ∝ F^{12}, q_W^{T,Ω} ∝ F^{14}, K_V^{T,Ω} ∝ F^{10}. CONFIRMED.
+ (c) Values (python): F^{12} = 2.26·10^{30}; F^{14} = 2.59·10^{35} (log10 = 35.41). The target's "≈ 2.6·10^{35}" CONFIRMED. The B32 r-cap tightening is ≤ (5/2)F^{14}(B_𝒲^{Ω″}/B_𝒲″) for (A16-b^T) and ≤ (5/2)F^{12}(…) for (A16-a^T). These are (d, L)-numbers (plus L^{p_S} and the multiscale c_1 inside B_𝒲^Ω), fixed before B32; r_0 is last. No circularity. CONFIRMED.
+ (d) Lemma B (first domain unchanged). The first domain contains b ∈ Y ⊂ Ω_{k+1}, has d-diameter ≤ c_XM_1, and dist_∞(Ω_{k+1}, Ω_k^c) > RM ≥ 2LK_1M_1 > c_XM_1 (B18 G entry; V3). So it lies in the unit layer. CONFIRMED. The same holds after every composite junction (junctions in Z_0 or Λ), so C_𝒟 never takes F. CONFIRMED.
+ (e) (G3) placements. With m ≤ 2·3^d(1 + L^{d−1})(1 + d(Ω)/ℓ) and |s| ≤ e^{κ_1}: |π_Ω| ≤ e^{2·3^d(1+L^{d−1})κ_1}·e^{(2·3^d(1+L^{d−1})κ_1/ℓ)d(Ω)}, and the second exponent is ≤ (ε″/16)d(Ω) iff ℓ ≥ 32·3^d(1 + L^{d−1})κ_1/ε″. Prefactor in η_M^{f,Ω}: e^{2·3^d(1+L^{d−1})κ_1} — CONFIRMED. In (H_η)^{f,Ω}: κ-term 2·3^d(1 + L^{d−1})κ_1 — CONFIRMED. In (2.16)^{f,Ω}: e^{4·3^d(1+L^{d−1})κ_1} (two reweighted factors) — CONFIRMED.
+ CORRECTED: the side ℓ. The target writes (H_κ^{f,Ω}) "LM ≥ 32·3^d(1 + L^{d−1})κ_1/ε″", copying A16's ℓ = LM. In the Ω-geometry the σ_0-cubes on Ω_j∖Ω_{j+1} have side ML^jη (CMP 119 p. 275 [V, V2]), i.e. M in local units, and d counts local units (CMP 96 (2.48)). On the unit layer Ω_k∖Ω_{k+1} the side is M in d-units; only the Y-layer cubes (scale L^{k+1}η = L) have side LM. MULTISCALE_OMEGA 4.5 writes the condition with ℓ = "side M in local units". So the uniform condition is
+ (H_κ^{f,Ω}) M ≥ 32·3^d(1 + L^{d−1})κ_1/ε″,
+ a factor L stronger than the target's form. It is an M-threshold with κ_1, ε″, L fixed before M: admissible. The same correction applies to the unsourced (H_κ) in the Ω-setting (MULTISCALE_OMEGA 4.5 is written with ℓ and is right; the canon B18 line "(H_κ) LM ≥ 16·3^dκ_1/ε″" and "(H_κ^f) LM ≥ 32·3^dκ_1/ε″" are the single-scale forms).
+ (f) S → S_∞. Lemma A gives S_∞(δ) = Σ_ze^{−δ|z|_∞} ≤ (coth(δ/2))^d·… (finite, (d, δ)-number); S_∞ ≥ the A16 S if A16's S used a larger norm. Only constants change; every place is a sum over Y. CONFIRMED.
+ (g) B15 Ω-form FC′_𝒟^fc_1ρ ≤ ¼: also implies FC′_𝒟^fρ_A ≤ ¼ used in K_W^{T,Ω}'s geometric sum (ρ ≥ c_1ρ_A, c_1 ≥ 1, as in canon B14a's correction). CONFIRMED.
+Verdict (4): CONFIRMED except the ℓ in (H_κ^{f,Ω}) (CORRECTED: M, not LM).
+
+Fix to W4(f): the bound is S_∞(δ) ≤ Σ_ze^{−δ|z|_1/d} = (coth(δ/(2d)))^d, using |z|_∞ ≥ |z|_1/d. A (d, δ)-number; the conclusion stands.
+
+## W5 Item (5): the two conditional B18 entries — needed or implied?
+
+Read: canon B10, B18 (incl. G addition), E3, C24 references; WG_FULL l. 237–238, 6.4; WG_FULL_VERIFY F1.
+ (a) RM > M_*(½θ_cδ_H″) (branch junction). Canon B18 (G addition) already imposes (2.59) at δ_min = min{…, ¼ε_min, ε″/32}. The (2.59) condition RM > (4/δ)(2d log(8/δ) + 1) is decreasing in δ (δ < 8), so it covers every rate ≥ δ_min. Check ½θ_cδ_H″ ≥ ε″/32: ε″ ≤ ½δ_A″ (WC 6.7, A16 §3) and δ_A″ = (1 − θ_c)δ_H″, so ε″/32 ≤ (1 − θ_c)δ_H″/64 ≤ ½θ_cδ_H″ iff θ_c ≥ 1/33. E3 has θ_c ≥ 1/16. So the entry is IMPLIED by the existing canon line, through its ε″/32 member. Not needed as a new entry. Canon wording: add ½θ_cδ_H″ to the δ_min list as a named member (no new threshold), and keep ε″/32 in the list (W3).
+ (b) p_Sθ_S ≤ ¼θ_cδ_H″ ((S_H^Ω) scale moves). Existing entries: B10 θ_S ≤ δ_WG/(4(d + 2)); B18 (C24 round 4) RM ≥ 8 log L/(θε), which is WG's θ_S ≤ ¼θδ_1 with δ_1 = ½ε (WG_FULL l. 238, WG_FULL_VERIFY F1(a)), at the real rate and for the WG end move p = 2 (2θ_S ≤ ½θδ_1). The new need is at the complex rate δ_H″ = min{δ_1‴, δ_W″} ≤ δ_1 and with power p_S, which is not computed. So it is implied by C24's entry only if p_Sθ_S ≤ ¼θ_cδ_H″ follows from θ_S ≤ ¼θδ_1, i.e. if p_Sδ_1 ≤ δ_H″·(θ_c/θ); with δ_H″ < δ_1 this fails for p_S ≥ 1 at θ_c = θ. NOT implied in general. NEEDED as a B18 entry: RM ≥ 4p_S log L/(θ_cδ_H″). It is an M-threshold (R fixed at B10), with θ_c, δ_H″, L fixed before M: admissible. Note: A16_REPLACE2's single-scale (S_H) already wrote "θ_S ≤ ¼θδ_H" and the canon never booked it; the single-scale torus case does not need it (no layers), but the CMP 122 Ω-setting of A16 does. So this entry is owed by A16 already, not only by this file.
+ Optional removal of (b): W1 remark (ω route, p_S = 0) [I, not checked].
+Verdict (5): (a) IMPLIED (by B18's (2.59) line at δ_min ∋ ε″/32, since θ_c ≥ 1/16 > 1/33) — CORRECTED from "conditional NEW". (b) NEEDED — CONFIRMED as a new entry; its C24 implication claimed as possible in the target is REFUTED in general (complex rate, unknown p_S).
+
+Precision to W5(b): the target's sufficient condition "p_S ≤ 2 and θ_cδ_H″ ≥ θε" cannot hold: with θ = θ_c it needs δ_H″ ≥ ε, but δ_H″ ≤ δ_1‴ ≤ δ_1 = ½ε (complex rates are not above the real ones, WC §6 [I-strong]). So the C24 entry never implies the (S_H^Ω) entry.
+
+## W7 Item (7): the closure list (target 7.2 (a)–(e), 7.3 [I]) — complete?
+
+Named and correct: unsourced NEW-3 inputs (W_G1^Ω), (A1-W^Ω), O2 = I-02, (Sep), Theorem L Case A, WC^Ω; A16 inputs; (S_H^Ω); ε_S^Ω ≤ 5γ²r; the canon entries.
+Used but not named:
+ U-A. Background regularity on the whole joint region Y = Ω_{k+1} (and Ω_{j+1} at step j), including the large-field part Ω_{k+1} ∩ Λ^c_{k+1}, for Theorem L on Y (W1(i)). [I-strong from CMP 119 p. 269 text; not imaged.] In the R-operation this is the relaxed (1.24) regularity = (R7), which the target names only in 4.6.
+ U-B. The reference-weight proviso of W2(d): the "source" is w − w_B relative to the weight that the reference operator uses; for the step-j Δ^{(j)} in an R-operation that weight is not read [I].
+ U-C. C^{(j)}(Λ_{j+1}) = (A_{Λ_{j+1}Λ_{j+1}})^{−1} with the same (sourced or unsourced) operator, so that (2.21) is a true Schur complement (W3, U1) [I-strong, CMP 116 p. 12 conditioning convention]. M1_SWEEP calls this C-new-3; the target's §0 uses it without naming.
+ U-D. (H_κ^{f,Ω}) side ℓ = M, not LM (W4(e)).
+ U-E. The complex rate ordering δ_H″ ≤ δ_1 used in W5(b) (bookkeeping).
+Stale in the target: 0.5 and 7.2 "the [III] reading … does not settle" and "CMP 122 III (2.21)": settled by W6, [III] = CMP 119; U5's definition part is now [V image], with residue (R7) + the step-j identification (W6(c)).
+Not missing: the (2.59) rates (B18 G line covers them, W5(a)); RM > 2LK_1M_1 (B18 G); 5γ²r ≤ ½ (B32).
+Verdict (7): CORRECTED — complete after adding U-A, U-B, U-C (U-D is a correction of a stated condition).
+
+## W8 Verdict table, grade, ledger, canon lines
+
+| # | claim | verdict | reason |
+|---|---|---|---|
+| 1 | only outer-layer source blocks + scale moves are new (Q1^Ω traced) | CONFIRMED for the source; CORRECTED for Q1^Ω | source-specific: D_S blocks, J_S current, p_S moves; also new (not a source item): Theorem L on Y = Ω_{k+1}, with regularity on Ω_{k+1} ∩ Λ^c_{k+1} unnamed (U-A) |
+| 2 | ω/d_S identity; ε_S^Ω ≤ 5γ²r layer-uniform, both readings | CONFIRMED | Lemma P3 and D3R 2.2(c) are pointwise, no layer index; proviso: source is relative to the reference operator's weight (U-B) |
+| 3 | U1 (Q1 + Schur only); U2 ((2.59) at internal rates; Lemma A) | CONFIRMED | Schur + Gaussian re-derived; all ε″/16, ε″/32 sums are over Y ⊂ unit layer. Keep ε″/32 in canon δ_min anyway (it implies 5(a)) |
+| 4 | F^{12} in K_W^T, F^{14} in q_W^T, ≈ 2.6·10^{35}; (G3) placements; S → S_∞ | CONFIRMED; one CORRECTION | F = 338.5, F^{12} = 2.26e30, F^{14} = 2.59e35; (H_κ^{f,Ω}) needs ℓ = M: M ≥ 32·3^d(1 + L^{d−1})κ_1/ε″, not LM ≥ |
+| 5 | two conditional B18 entries | (a) IMPLIED; (b) NEEDED | (a) by B18 (2.59) at δ_min ∋ ε″/32 since θ_c ≥ 1/16 > 1/33; (b) C24 never implies it (δ_H″ ≤ ½ε) |
+| 6 | "(2.21) [III]" | SETTLED: CMP 119 (2.21) | reference lists of CMP 122 I p. 202 and II p. 392 on images; no CMP 122 III exists; V7's "CMP 122 III" REFUTED; (2.21) printed form is the explicit Schur form |
+| 7 | closure list complete | CORRECTED | add U-A, U-B, U-C; U-D correction |
+REFUTED claims of the target: none of its theorems. Refuted side remarks: the possible C24 implication of the (S_H^Ω) entry (5b); and, outside the target, MULTISCALE_OMEGA_VERIFY V7/V9(9)'s "CMP 122 III".
+Grade. PASS WITH CORRECTIONS. The four statements W_S^Ω, Q1^Ω, Q8^Ω, (U-b)^Ω are PROVED [P] relative to the named inputs plus U-A, U-B, U-C, with (H_κ^{f,Ω}) in the M-form. No step fails; the corrections change one threshold by a factor L and add three tagged inputs.
+
+Ledger status after this file.
+ NEW-2: PROVED [P, verified] relative to Q1^Ω (target §4) + Schur (W3) — for both the CMP 119 (2.21)/(3.23) form and the CMP 122 I (1.25) form, since (1.25)'s operator is the CMP 119 (2.21) form (W6). Residue: U-A/(R7) relaxed regularity in the R-operation [I], U-B [I], U-C [I-strong].
+ NEW-3 (row A27): REDUCED [verified] → sourced extension no longer OPEN: "sourced part PROVED rel. inputs [verified, SOURCES_MULTISCALE_OMEGA_SOURCED + VERIFY]". A27 stays a verified REDUCTION (not PROVED) because the unsourced inputs keep their status: (A1-W^Ω) [C on (C)], O2 = I-02 [P-sketch, straddling cover], (Sep) [R + I-strong], (S_H^Ω) [I], plus U-A, U-B, U-C. The "(1.25) operator, CMP 122 III (2.21) unread" item is replaced by "(1.25) operator = CMP 119 (2.21) [V]; (R7) [I]".
+
+Canon lines to add (SOURCES_ORDER_CANON; this file edits nothing):
+ 1. B14a, append: "Ω-forms: C′_𝒟^{f,Ω} := F·C′_𝒟^f, F := 1 + 2d(L + 2)^{d−1}/(3^d − 1) (= 338.5 at d = 4, L = 13); C_𝒟 unchanged (Lemma B); K_W^{T,Ω} = 2C_𝒟(FC′_𝒟^f)^{12}B_𝒲^Ω, K_V^{T,Ω} with (FC′_𝒟^f)^{10}; B_𝒲^Ω: c_1 at internal junctions = CMP 96 Lemma 2.1 c_1, L^{O(1)} → L^{O(1)+p_S}; δ_𝒲^Ω := δ_𝒲 − p_Sθ_S; S → S_∞ on unit-layer sums. — SOURCES_MULTISCALE_OMEGA_SOURCED §3, §7.1 + VERIFY W4."
+ 2. B15, append: "Ω-form: F·C′_𝒟^fc_1ρ ≤ ¼, real and complex."
+ 3. B17a, append: "Ω-form: W^{f,Ω} ≤ 2C_𝒟S_∞(ε″/16); Γ̄_1^{f,Ω} with B_A^{Ω″}, K_W^{T″,Ω}, S_∞."
+ 4. B18, replace "(H_κ^f) LM ≥ 32·3^dκ_1/ε″" by "(H_κ^{f,Ω}) M ≥ 32·3^d(1 + L^{d−1})κ_1/ε″ (σ_0 side M in local units; implies (H_κ^f))"; replace the κ-terms of (H_η)^f and of the (2.16)^f side condition by 2·3^d(1 + L^{d−1})κ_1 and e^{4·3^d(1+L^{d−1})κ_1}; in the (2.59) δ_min list add "½θ_cδ_H″ (W_S branch; implied by ε″/32 for θ_c ≥ 1/33)" and keep ε″/32.
+ 5. B18, new entry (+1): "(S_H^Ω) p_Sθ_S ≤ ¼θ_cδ_H″, i.e. RM ≥ 4p_S log L/(θ_cδ_H″); p_S = scale power of the source block [I]; not implied by RM ≥ 8 log L/(θε). — SOURCES_MULTISCALE_OMEGA_SOURCED 3.3(d) + VERIFY W5(b)."
+ 6. B32, append: "Ω-forms: (A16-a^{T,Ω}) (ε_S^Ω/2)K_W^{T″,Ω}S_∞(δ_𝒲^{Ω″}) ≤ γ_exp/4; (A16-b^{T,Ω}) q_W^{T,Ω} := 4(8/γ_exp)c_1(θ_c½ε″)²(ε_S^Ω/2)B_𝒲^{Ω″}(FC′_𝒟^f)^{14} ≤ ¼ (c_1 single-scale: junctions in Z_0); ε_S^Ω ≤ 5γ²r layer-uniform; r-cap tightens by ≤ (5/2)F^{14}B_𝒲^{Ω″}/B_𝒲″ (F^{14} ≈ 2.6·10^{35} at d = 4, L = 13), a (d, L)-number."
+Firewall kept. STATUS: COMPLETE.
