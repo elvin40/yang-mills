@@ -79,3 +79,112 @@ Page correction: the brief says pp. 398–399. The definition is on p. 396. Pp. 
  (iii) m = j+1, …, k: the same list with c·[…], c = 1 (m < k), 3 (m = k), no L_0 factor (1.68); (1.69) L^mη|A|, (L^mη)²|∇^ηA| < BCMα_{0,m}.
  "C ≤ 2 … B is a fixed absolute constant, for example B = B_3 from Theorem 1 [16]" ([16] = CMP 102 var.). For n = 0 the space equals U^c_k(X, α_0, α_1) (p. 191 [P text]). α_{0,m} = C_0g_mℓ_m^{q_0}, α_{1,m} = C_1g_mℓ_m^{q_1} (CMP 119 (2.x); SOURCES_A11_CONST_VERIFY l. 31 [V there]). Note: the J-entry α_{0,m}(L^mη)^{−3} is the gauge-invariant form of (3.36); there is no |∂*∂A| bound on U in this space.
 4.4 CMP 122 I background U_0 (pp. 194–195 [V image p. 195; text p. 194]). Prop. 1: for V_k with |∂V_k − 1| < ε on Z ∩ Λ^c, ε small, the minimal orbit V_Λ exists with (1.78) |V_Λ(∂p′) − 1| < B_5M^5ε on Λ; extend V_Λ = V_k on Z ∩ Λ^c; U_0 := U_{k,Z}(V_Λ) (1.79), "a fundamental background field"; (1.80) |U_0(∂p) − 1| < 2ε_kη² + O(1)B_3B_5M^5exp(−δ dist(p, Λ))ε_kη² for p ∈ Ω_k. "From (1.80) we can see easily that U_0 belongs to … the analyticity domains of terms in the effective action" [P-claim, not shown].
+
+## 5. The inclusion: backgrounds ⊂ CMP 99 regular class
+Notation. Reg_99(M, a; c_reg) := configurations with (3.35) and (3.36) with O(1)Mα_0 replaced by c_reg·M·a, cubes of 𝒦 (size ≥ 10ML^jη). Reg_99^{35} := (3.35) only. CMP 99 Thms 3.1–3.12 need c_reg M a ≤ a_0^{99}(d, L) and M ≥ M_99 (Thm 3.1 [V p. 397]); the complex class (3.37) needs α_1 ≤ a_1^{99} (Thm 3.4, B5).
+
+5.1 Proposition I-109 (complex CMP 109/116 domains) [P from the definitions]. Let (𝐔, 𝐉) ∈ U^c_j(X, α_0, α_1, γ_0) and take CMP 109's cube constant O(1) ≥ 10/L. Then on X:
+ (a) U ∈ Reg_99^{35}(M, α_0^{99}) with c_reg·α_0^{99} := O(1)LBα_0, i.e. α_0^{99} = LBα_0 when c_reg := O(1);
+ (b) A′ satisfies (3.37) with the same α_1;
+ (c) (3.36) and (3.38) are NOT part of the domain; their only role is replaced by the independent bound |𝐉| < γ_0 (§6.4).
+ Proof. (a) (1.12) is (3.35) at the top index (unit units of step j, L^jξ = 1), on cubes of size O(1)LM ≥ 10M. For a CMP 99 cube of lower index n < j (near ∂X in the maximal sequence of (iv)) the CMP 99 bound has the factors (L^nξ)^{−1}, (L^nξ)^{−2} ≥ 1; the CMP 109 bound is uniform, hence stronger; the CMP 99 cube is smaller, so the restricted gauge works. (b) (1.13) |A′|, |∇_UA′| < α_1 on X; (3.37) allows α_1(L^nξ)^{−1}, α_1(L^nξ)^{−2} ≥ α_1. ∎
+ For CMP 116: replace α_0, α_1 by (1 + 2β)α_0, (1 + 2β)α_1 ≤ 1.5α_0, 1.5α_1 (β = ¼).
+ Condition (A18-1): O(1)·L·B·1.5·Mα_0 ≤ a_0^{99}, 1.5α_1 ≤ a_1^{99}, M ≥ M_99.
+
+5.2 Proposition I-real (real minimal backgrounds of CMP 109 step k) [P given CMP 102 Thm 1 [R] and CMP 98 Prop. 2 [R]]. Let U = U_{k+1}(W) ∈ 𝒰_{k+1}(ε_0) (CMP 109 (1.2)), all Ω_j = T (small-field case). Then:
+ (a) |W(∂p′) − 1| < 2ε_0 (CMP 98 Prop. 2, quoted CMP 109 p. 260);
+ (b) if 2ε_0 ≤ a_1^{102}, CMP 102 Thm 1 applies with ε_1^{102} := 2ε_0 and gives (9)–(10): on every cube of size 2M′, M′ ≤ M(2ε_0) = R_1M_1a_1^{102}/(2ε_0): |A|, |∇A|, |∂*∂A| < 2B_3M′ε_0 (unit units);
+ (c) take 2M′ := O(1)M (≥ 10M, rounded to a multiple of 2R_1M_1). Then U ∈ Reg_99(M, ε_0; c_reg = O(1)B_3), both (3.35) and (3.36);
+ (d) U ∈ (i) of U^c_{k+1}(X, α_0, α_1) for every X: (1.11) needs ε_0 ≤ α_0; (1.12) needs O(1)B_3Mε_0 ≤ O(1)LMBα_0, true if B ≥ B_3 and ε_0 ≤ α_0; (iii) |J| < ε_0 ≤ γ_0 = α_0; (iv) needs 2B_3ε_0 ≤ α_0 (CMP 109 p. 263 via CMP 102 Prop. 9 [R]).
+ Proof. (a), (b) are the printed statements. Uniqueness of the minimal orbit (B_3·2ε_0 ≤ ε_0^{102} ≤ a_0^{102}) identifies U_{k+1}(W) with Thm 1's minimizer. (c) is the cube-size bookkeeping of 2.4. The M′ ≤ M(2ε_0) clause is O(1)Mε_0 ≤ R_1M_1a_1^{102}. ∎
+ Alternative route [P given CMP 99-regular Prop. 6 [R]]: 𝒰_{k+1}(ε_0) is 𝔘_{k+1}({Ω_j = T}, ε_0) up to the J form (|D*π Im ∂U| vs |D*∂U|: they differ by O(ε_0²) [P: ∂U − 1 − iπ Im ∂U = O(|∂U − 1|²)]). Prop. 6 gives Reg_99(M, ε_0; 7dL²B_1) under 7dL²·O(1)Mε_0 ≤ c_1. Route (b) is shorter for minimal configurations; Prop. 6 covers any (not only minimal) configuration of the plaquette class.
+ Condition (A18-2): ε_0 ≤ α_0/(2B_3) (this implies ε_0 ≤ α_0 and, with (A18-1), O(1)B_3Mε_0 ≤ a_0^{99} and O(1)Mε_0 ≤ R_1M_1a_1^{102}); 2ε_0 ≤ a_1^{102}; B ≥ B_3.
+
+5.3 Proposition I-122 (CMP 122 I) [P given 4.3–4.4 + CMP 102 Thm 1 for U_{k,Z} [R/I]].
+ (a) Complex space U^{(n)c}_k: (1.65), (1.67), (1.69) are (3.35) on cubes of size CML^mη with the per-index constant BCML_0^{2N_0}α_{0,m} (N_0 = k − k_0, the overlap depth; L_0^{2max{0,m−k_0}} ≤ L_0^{2N_0}). So U ∈ Reg_99^{35}(M, α_0^{99}) with α_0^{99} := BCL_0^{2N_0}sup_m α_{0,m}/c_reg on X. The A′ entries give (3.37) with α_1^{99} := 3L_0^{2N_0}sup_m α_{1,m}. The J-entries give the (3.36) role (§6.4).
+ Cube size: CMP 122's C ≤ 2, but CMP 99 needs ≥ 10. Fix [P]: a CMP 99 cube of size 10ML^mη is covered by a bounded number (≤ 5^d) of CMP 122 cubes; the gauges of overlapping cubes differ by a gauge transformation that is constant up to O(BCMα_{0,m}) on the overlap; gluing them gives a gauge on the big cube with constant c(d)·BCML_0^{2N_0}α_{0,m} [I: standard patching; Balaban does this without comment]. Alternative: choose C ≥ 10 in the definition (C is free, "usually small").
+ (b) Real background U_0 = U_{k,Z}(V_Λ): (1.80) gives the plaquette parameter ε_k′ := (2 + O(1)B_3B_5M^5)ε_k. If U_{k,Z} obeys CMP 102 Thm 1 [I: U_{k,Z} is the minimal configuration of the variational problem restricted to Z; Thm 1 is stated for general {Ω_j}], then (9)–(10) hold with B_3Mε_k′, and U_0 ∈ Reg_99(M, ε_k′; c_reg = O(1)B_3).
+ (c) U_0 lies in U^{(n)c}_k (the printed claim of p. 195) if B_3·O(1)·ε_k′ ≤ BCα_{0,m} on each region, i.e. with ε_k = A_0g_kℓ_k^{p_0}, α_{0,k} = C_0g_kℓ_k^{q_0}:
+ O(1)B_3B_5M^5A_0ℓ_k^{p_0} ≤ BC·C_0ℓ_k^{q_0}.
+ Condition (A18-3): if q_0 = p_0: C_0 ≥ O(1)B_3B_5M^5A_0/(BC) (a lower bound on C_0; C_0 sits in B28 after A_0 and after M, so the slot is legal). If q_0 > p_0: holds for γ small (B30). Also the M(ε_1) clause: B_5M^6ε_k ≤ c·R_1M_1a_1 — an upper bound on γ (B30). And c_reg Mα_0^{99} ≤ a_0^{99}: BCL_0^{2N_0}M sup_mC_0g_mℓ_m^{q_0} ≤ a_0^{99} — an upper bound on γ (B30) after L_0, N_0, C_0.
+
+## 6. The four identifications
+6.1 Lemma Q (k-step averaging vs free) [P given CMP 98 (124)–(125), (139)–(146), Prop. 2 [R]; text of CMP 98 pp. 35–40, image p. 37 [V]].
+ Setting. Units L^kη = 1. Let c be a unit bond and N(c) its 2-unit neighbourhood (it contains the supports of Q_k at c: the corridor blocks B^k(c_±)). Assume |U(∂p) − 1| < αη² on N(c) (plaquette class; CMP 109 (1.2)/(1.11), CMP 122 (1.65)–(1.69), CMP 99-reg (1.7)).
+ Claim. In the axial gauge u from the centre y of N(c), for all X:
+ |(Q_k(U^u)X)(c) − (Q_k(1)X)(c)| ≤ c_Q(d, L)·α·(Q̂|X|)(c), Q̂ := 4dQ′_k (positive, local (141)), uniform in k.
+ Proof. (1) Gauge. In the complete axial gauge from y, |U^u(b) − 1| is bounded by the sum of |U(∂p) − 1| over the plaquettes of a ruled surface spanned by b and its two axial paths; that surface has ≤ d|x − y|/η plaquettes, so |U^u(b) − 1| ≤ dα|x − y|η ≤ 2d²αη on N(c) [P]. (CMP 99-reg (1.129) prints the same type of bound, |x − y|²L²α_0.)
+ (2) Chain rule. Q_k(U, ·) is the composition (127) of the one-step maps Q(Ū^j, ·), j = 0, …, k−1. So its linear part is Q_k(U) = Q(Ū^{k−1})∘…∘Q(Ū^0), and the free one is Q_k(1) = Q^k (Q of CMP 96) [V p. 37 (127)].
+ (3) One step. Q(V_0) = Q_{V_0} + Q″(V_0) (124)–(125). Main term: (Q_{V_0}A)_c = Σ_{x∈B(c−)} L^{−(d+1)}(R_{0,c−}A)(Γ_{c,x}), the free contour sum with each fine bond term transported by Ad of V_0 along a path of length ≤ dL in the lattice spacing of that step. Remainder: |Q″(V_0)A| ≤ C_1′L²α^{(j)}Q″|A| (139), α^{(j)} := plaquette parameter of Ū^j on the L^jη-lattice ≤ 2αL^{2j}η² = 2αL^{2(j−k)} (Prop. 2, p. 37 [V]).
+ Transport error at step j: the path has length ≤ dL·L^jη = dL^{j+1−k} units; with (1), ‖Ad(Ū^j-path) − 1‖ ≤ 2·dL^{j+1−k}·2d²α. [The averaged fields Ū^j keep an axial-type gauge with the same bound up to a factor 2 (Prop. 2 / CMP 98 (52)) — I-Q1.]
+ So Q(Ū^j) = Q + E_j with |E_jA| ≤ ε_j·Q″_j|A|, ε_j := c(d, L)α(L^{j−k} + L^{2(j−k)}).
+ (4) Telescoping: Q_k(U) − Q^k = Σ_j Q(Ū^{k−1})⋯Q(Ū^{j+1})E_jQ^j. Each left factor is dominated by (1 + O(α))× positive averages (CMP 98 (143)–(146)); (142) turns Q″Q^j into ≤ 2dQ′_{j+1}. Summing, Σ_j ε_j ≤ c(d, L)α·2/(1 − L^{−1}). ∎
+ Corollaries. (a) "Q(U) = Q_free(1 + O(α_0))" holds in the axial gauge with α = the plaquette parameter: α = ε_0 (real CMP 109), α_0 (complex 109/116), O(1)L_0^{2N_0}α_{0,m} (CMP 122), O(1)B_3B_5M^5ε_k (CMP 122 U_0). No factor M. (b) In a (3.35) regular gauge (|A_bg| ≤ c_3Mα_0^{99}) the same proof with (1) replaced by (3.35) gives ε_Q ≤ c(d, L)Mα_0^{99}: this is A3-R2 exactly as stated in SOURCES_A3_GAMMA0_FULL §2.1 (R2). So A3-R2 is PROVED relative to CMP 98 [R] and I-Q1.
+ Complex U′U. For A′ with (3.37) the extra transport factors are Ad(e^{iηA′}) with |ηA′| ≤ α_1η; the same telescoping gives an extra O(α_1) (CMP 98 (128) handles exactly this, p. 37 [V]).
+
+6.2 Lemma C (norm of the constraint map) [P given I3 (free corridor form) and CMP 98 (124)–(125), (139) one step [R]].
+ Let Q̃ := Q(V) be the one-step linear average at the unit-lattice background V (= V^{(k)} of CMP 109 (2.3) = U_1 of CMP 99, by I3), with plaquette parameter α_V ≤ 2α (Prop. 2). Then ‖C(V)‖² ≤ c_C(1)(1 + c(d, L)α_V), c_C(1) = ‖C(1)‖² ≤ L^{d+1} (SOURCES_A7_CDC (c_C), given I3).
+ Proof. (Q̃B)(c) = Σ_{b}w_bT_bB(b) + (E B)(c), w_b ≥ 0 the free weights, T_b orthogonal (Ad of V-paths; no gauge needed), |(EB)(c)| ≤ C_1′L²α_V(Q″|B|)(c) (139). The bond b_0(c) has its endpoints in B(c_−) and B(c_+); no b_0(c′), c′ ≠ c, lies in B(c_−) ∪ B(c_+) [P: its endpoints would be in B(c′_±)]. So the equations (Q̃B)(c) = 0 decouple, one per c. Solve for B(b_0): (w_{b_0} − ε′)|B(b_0)| ≤ Σ_{b≠b_0}(w_b + ε′)|B(b)|, ε′ := C_1′L^{2−d}α_V. Cauchy–Schwarz gives |B(b_0)|² ≤ (1 + O(ε′/w_min))·w_{b_0}^{−2}Σ_{b≠b_0}w_b²·Σ_{b∈supp}|B(b)|². The support of E is B(c_−) ∪ B(c_+) (larger than the corridor), so the overlap count rises from 1 to ≤ 2·3^d, but only in the O(ε′) part. Hence ‖CB̃‖² ≤ (c_C(1) + c(d, L)α_V)‖B̃‖². ∎
+ With w_min = L^{−(d+1)}: the relative error is O(L³α_V) = O(α) at fixed L. This matches the A18 statement ‖C(U)‖² ≤ L^{d+1}(1 + O(α_0)). Complex V = U′U: add O(α_1).
+
+6.3 C-map identity (CMP 109 C = CMP 99 C) [P on the two texts + I3 + EXPGAUGE].
+ CMP 99 p. 428 [P text]: B̃ = B restricted to Λ̃ = Λ \ (∪_{y∈Λ′}A_x(y) ∪ ∪_c B(c) ∩ c); B = CB̃; C is the identity except on the bonds b_0 = B(c) ∩ c, where (CB̃)(b_0) solves (Q_1B)(c) = 0 for B(b_0). Domain: B = 0 on Λ^c and on the trees A_x(y) (δ-function axial gauge fixing).
+ CMP 109 p. 267–268 [P text]: after B′ = B − hD(B), δ(QB′) is linear; "using the δ-functions δ(QB′) we eliminate the variables B′(b_0(c)), c ∈ T^{(k+1)}. Denoting the remaining variables by B we have B′ = CB, C is the operator determined by the configuration V^{(k)}". Gauge fixing is the exponential term (2.5); no tree variables are removed.
+ Same rule: identity off b_0(c); on b_0(c), solve the linear block constraint at c. Differences: (i) the averaging: Q_1(U_1) (CMP 99) vs the linear part of Q(V^{(k)}, ·) (CMP 109). Equal if U_1 = V^{(k)} = M^k(U_{k+1}) — this is WC_FULL I3 [I]. Both are one-step averages on the unit lattice; with Lemma Q the two agree to O(α) even if the backgrounds differ by an O(α) gauge-regular amount. (ii) the domain: CMP 109's C acts also on the tree bonds A_x(y) as the identity: C_109 = C_99 ⊕ I_trees. This is the C_ax/exponential-gauge transfer already treated in SOURCES_WC_EXPGAUGE (+ VERIFY) and WC_FULL. (iii) Λ: CMP 99 has Dirichlet conditions off Λ; CMP 109 works on the whole torus T^{(k)} (or on Z_0 after the C̃^{(k)}(Z_0) localization of CMP 116 p. 13). The rule at each b_0(c) is local (depends on Q̃ at c only, 6.2), so it is the same map on every c inside Λ.
+ Conclusion: the identification reduces to I3 [I] and the EXPGAUGE transfer [verified elsewhere]. The ‖C‖ bound 6.2 holds for both.
+
+6.4 J-term [P given CMP 99 Thm 3.12/(3.133) [R], I2 (locality of D̃^{(2)}) [I], and the CMP 109 p. 261 statement [R]].
+ CMP 99: ⟨B, Δ_JB⟩ = 2⟨H_1D̃^{(2)}(B), J⟩ (3.156), J := D_U^{η*}η^{−2}π Im ∂U, |J| ≤ O(1)Mα_0(L^jη)^{−3} under (3.36) (pp. 419, 422 [V in SOURCES_WG 4.1]).
+ CMP 109 p. 261 [P text]: the second-order derivative of U "appears only in the functions (1.8)" = J_j = D^{η*}_{U_j}η^{−2}π Im ∂U_j; the action terms are extended to independent variables (𝐔, 𝐉).
+ Therefore in every CMP 109/116/122 domain the role of (3.36) is played by a direct bound on 𝐉:
+ CMP 109/116: |𝐉| < γ_0 = α_0 (1.14) (unit units, scale (L^jη)^{−3} = 1); real backgrounds: |J| < ε_0 (1.2).
+ CMP 122: |𝕁| < c·L_0^{2N_0}α_{0,m}(L^mη)^{−3} (1.65)–(1.69).
+ Bound. |⟨B, Δ_JB⟩| ≤ 2‖H_1‖_{loc}·c_{D2}·sup|𝐉|·‖B‖² with H_1 from (3.133) (Theorem 3.12; needs (3.35) only, plus the J bound for its own H*J term) and D̃^{(2)} local quadratic (I2). So c_J = c(d, L)·sup|𝐉| ≤ c(d, L)α_0 ≤ c(d, L)Mα_0 (M ≥ 1). The O(Mα_0) form of WG_FULL (I5), A3-R4, and WC_FULL I9 holds a fortiori. ∎
+ Reading flagged [I-J]: CMP 99's proofs use (3.36) only through J. Supported by SOURCES_WG 4.1 (p. 419: J "is small, if U satisfies (3.36)"; p. 422: "From (3.36) and (3.133) |(H*J)(b)| ≤ …"), by Δ^{(2)} being defined through J (3.134), and by CMP 109 p. 261. Not checked page by page through CMP 99 Sect. D.
+
+## 7. σ-localized operators (CMP 116 pp. 3–5) [P on the text]
+ CMP 116 introduces s on the cubes Δ ∈ σ_0 and multiplies the walk term of ω in (3.107) [13] by Π_{Δ∩loc(ω)≠∅}s(Δ). This defines H(s), G(s), H_0(s); s = 1 gives the original operators. U, J, Q, C, h are not changed. Each walk term depends on U restricted to its localization domains and obeys (3.108) at regular U (p. 3, (1.7)). Hence:
+ (a) The regular class is stable under the s-rule and under the truncation s(σ^c) = 0: the background is the same configuration; the conditions (3.35)–(3.37) are local (cube by cube) and impose nothing outside Ω_0 (CMP 99 p. 396 [V]), so restriction to a component Y_0 keeps them.
+ (b) The bound |H(s)X| ≤ B_0e^{16κ_1}|X| for |s| ≤ e^{κ_1} (1.11) needs only the per-walk bound (3.108), which is the CMP 99 walk theorem at regular U (A1w/WG_FULL inputs). No further regularity of U is used.
+ So "σ-localized operators covered" adds no A18 content beyond §5: it is inherited from the walk expansions (rows A1w, A2), which are themselves stated at regular U.
+
+## 8. Conditions on the constants and their slots in SOURCES_ORDER_CANON Part B
+ Size of L_0^{2N_0} [P text, CMP 122 I p. 191 bottom]: N_0 is fixed by L^{−N_0+1}R_{k−N_0+1} = 1, so L^{N_0−1} ≤ (L + 1)(N_0 + 1)^{β_0}R_k and L_0^{2N_0} ≤ (L(L + 1)(N_0 + 1)^{β_0}R_k)^{2a_0}, a_0 := log L_0/log L < 1. "The powers of L_0 make only unessential logarithmic contributions." So L_0^{2N_0}α_{0,m} = g_m·polylog(g_m) → 0 with γ.
+ New or sharpened conditions (no new cycle):
+ | id | condition | slot | type |
+ |---|---|---|---|
+ | (B) | B ≥ B_3 (CMP 109 (1.12) constant; CMP 122 takes B = B_3); cube constant O(1) ≥ 10/L (109), C ≥ 10 or the patching [I] (122) | B5 (d, L only) | fixed |
+ | (c_reg) | c_reg := O(1)·L·B for complex domains, O(1)·B_3 for minimal configurations; a_0^{102}, a_1^{102} (CMP 102 Thm 1) | B5 | fixed |
+ | (A18-1) | 1.5·O(1)·L·B·Mα_0 ≤ a_0^{99}; 1.5α_1 ≤ a_1^{99}; M ≥ M_99 | B22 (α_0 cap, α_1 cap); M_99 already in B18 | upper on α_0, α_1 |
+ | (A18-2) | ε_0 ≤ α_0/(2B_3); 2ε_0 ≤ a_1^{102} | new line after α_0 in B22 (ε_0 = CMP 109 real-background constant; not in the canon yet) | upper on ε_0 |
+ | (A18-3) | if q_0 = p_0: C_0 ≥ O(1)B_3B_5M^5A_0/(BC); if q_0 > p_0: γ small | B28 (lower on C_0, after A_0 and M) / B30 | lower / upper on γ |
+ | (A18-4) | BC·L_0^{2N_0}M·sup_m C_0g_mℓ_m^{q_0} ≤ a_0^{99}/c(d); 3L_0^{2N_0}sup_m C_1g_mℓ_m^{q_1} ≤ a_1^{99}; B_5M^6·O(1)ε_k ≤ R_1M_1a_1^{102} | B30 (γ) | upper on γ |
+ | (A18-Q) | c_Q(d, L)α ≤ ½ (Lemma Q domination), c(d, L)α_V ≤ 1 (Lemma C) | implied by (A18-1) at B22 | upper on α_0 |
+ Correction to B22 [P]: the printed cap "Mα_0 ≤ min{a_0, …}" uses a_0 = a_0^{99} without the conversion factor 1.5·O(1)·L·B between CMP 109's α_0 and CMP 99's α_0. Replace a_0 by a_0^{99}/(1.5·O(1)LB). It is a fixed (d, L) factor, so the slot and the acyclicity do not change.
+
+## 9. Ledger and conclusion
+| item | status |
+|---|---|
+| CMP 99 regular class (3.35)–(3.38), exact | [V] p. 396–397 images (not pp. 398–399) |
+| 𝔘_k({Ω_j}, α_0) (1.7)–(1.9), Prop. 6 (3.35)+(3.36) from the plaquette class | [V] CMP 99-reg p. 77, p. 99 images; proof via Thm 2/4 [R] |
+| CMP 102 Thm 1 (9)–(10) for minimal configurations; constants d, L only | [V] p. 279 image; proof [R] |
+| CMP 109 𝒰_k(ε_0) (1.2) and U^c_j (1.10)–(1.16) | [V] pp. 260, 262 images |
+| CMP 116 domain = U^c_{k+1} with (1 + 2β)α_0, (1 + 2β)α_1 | [P text] p. 2 |
+| CMP 122 I U^{(n)c}_k (1.65)–(1.69); U_0 (1.79)–(1.80) | [V] pp. 190–191, 195 images; p. 194 text |
+| Inclusion, complex 109/116 domains ⊂ (3.35) + (3.37) | [P] 5.1, from the definitions |
+| Inclusion, real minimal backgrounds ⊂ (3.35) + (3.36) | [P given CMP 102 Thm 1 [R], CMP 98 Prop. 2 [R]] 5.2 |
+| Inclusion, CMP 122 spaces and U_0 | [P given 4.3–4.4] + [I] U_{k,Z} obeys CMP 102 Thm 1; [I] cube patching (or C ≥ 10); p. 195 claim reduced to (A18-3) |
+| Q(U) = Q_free(1 + O(α)) (A3-R2) | [P given CMP 98 (124)–(146), Prop. 2 [R]] Lemma Q; [I-Q1] axial bound kept by Ū^j |
+| ‖C(U)‖² ≤ c_C(1)(1 + O(α)), c_C(1) ≤ L^{d+1} | [P given I3 + CMP 98 (139) [R]] Lemma C |
+| CMP 109 C = CMP 99 C | same rule [P]; reduces to I3 [I] + EXPGAUGE tree extension [verified elsewhere] |
+| J-term c_J = O(α_0) ≤ O(Mα_0) (A3-R4, WG (I5), WC I9) | [P given (3.133) [R], I2 [I]] + reading [I-J] (CMP 99 uses (3.36) only through J; CMP 109 p. 261) |
+| σ-localized operators | [P] §7: no new content; inherited from A1w/A2 |
+| Constants | (A18-1)–(A18-4) placed; B22 conversion-factor correction |
+
+Conclusion. A18 is REDUCED (not proved outright). It reduces to:
+ [R] CMP 102 Thm 1 (9)–(10) (or CMP 99-reg Prop. 6); CMP 98 (124)–(125), (139)–(146), Prop. 2; CMP 99 Thm 3.12 (3.133); CMP 109 p. 261 ("second derivative only through (1.8)"); CMP 122 I Prop. 1 (1.78), (1.80);
+ [I] I3 (U_1 = V^{(k)}, free corridor form of Q̃); I2 (D̃^{(2)} locality); I-J (CMP 99 Sect. D uses (3.36) only via J); I-Q1 (averaged fields keep the axial bound); U_{k,Z} obeys CMP 102 Thm 1; CMP 122 cube patching (or C ≥ 10);
+ constants (A18-1)–(A18-4), all placed in the canon without a cycle.
+ Pieces PROVED relative to these: the inclusions 5.1–5.3; Lemma Q (hence A3-R2); Lemma C; the J-term bound with constant O(α_0); σ-stability.
+ Two corrections to existing text: (1) the A18 page reference "CMP 99 pp. 398–399" should be p. 396 (definition) and p. 397 top (the (3.37)–(3.38) ⇒ (3.35)–(3.36) remark, unproved in CMP 99); "CMP 102 (3.35)–(3.38)" is CMP 99's numbering cited in CMP 102. (2) B22's Mα_0 cap needs the factor 1.5·O(1)·L·B (§8).
+ Status: author pass only, UNVERIFIED. An independent verifier should check Lemma Q step (3)–(4) against the CMP 98 page images and 5.2(d).

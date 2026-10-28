@@ -71,3 +71,40 @@ Lemma A [P given S123 Prop. 2.1, Thm 3.3, Lemma 4.2 (ER), Lemmas 1.1, 1.3, 1.4, 
   T(f, σ) = c_0(σ) + f c_1(σ) + f²c_2(σ) + O(|f|³ log(1/|f|) + |f|^{3−a} + |f|^{M+1−a(M+3)}),
   c_p(σ) := Σ_{m+n=p} ∫_0^1 dt ∫_{BZ} dK/(2π)⁴ tr[b̂_m(K)v̂^{(n)}(K)],   c_0(σ) = T(0, σ).
 The error exponents exceed 2. For a = 3/4, M = 14: every error is O(|f|^{9/4}).
+
+Proof. Fix t. Put R := (𝒦_t(f) + σ)^{−1}, R_0 := (W·k^{[2]} + σ)^{−1}, B := Σ_{m≤M} f^m b_m, R_app := W·B.
+Step 0 (gaps). 𝒦_t ≥ −C_1|f| (Thm 3.3) and ‖W·ρ_k‖ ≤ C|f|³. For small f, σ ≥ |f|^a ≥ 8μ, so 𝒦_t + σ ≥ σ/2 and W·k^{[2]} + σ ≥ σ/2; ‖R‖, ‖R_0‖ ≤ 2/σ.
+Step 1 (remainder of V). |τ(R·W·ρ_V)| ≤ τ(1)‖R‖‖ρ_V‖_{(0)} ≤ C|f|³/σ ≤ C|f|^{3−a}.
+Step 2 (remainder of 𝒦). First, ‖R_0·W·v^{[2]}‖ ≤ C. Lemma 1.3 (order 4, Hermitian) gives δ = Σ_{|β|=|γ|=2}(∂^β)^†h_{βγ}∂^γ, and by Lemma 1.1 (as in the proof of Lemma 1.4(c)) W·δ = Σ(∇^β)^*(W·h_{βγ})∇^γ − fW·c_1 − f²W·r with ‖c_1‖_{(0)}, ‖r‖_{(0)} ≤ C. Lemma 1.4(b) and (ER) applied to W·k^{[2]} (its proof uses only 𝒦 + μ = W·k_t(0) + B′ with ‖B′‖ ≤ C|f|, which still holds) give
+  ‖∇^βR_0‖² ≤ C‖R_0(𝔏_f + |f|)²R_0‖ ≤ C sup_{x ≥ −μ/2}[(x + μ)² + f²]/(x + σ)² ≤ C   (σ ≥ 8μ, σ ≥ |f|).
+So ‖R_0Σ(∇^β)^*(W·h)∇^γ‖ ≤ C. The other terms are crude: |f|‖R_0‖‖c_1‖ + f²‖R_0‖‖r‖ + |f|‖R_0‖‖v^{(1)}‖ + f²‖R_0‖‖v^{(2)}‖ ≤ C(|f| + f²)/σ ≤ C. Then R − R_0 = −R(W·ρ_k)R_0, and
+  |τ((R − R_0)W·v^{[2]})| ≤ τ(1)‖R‖‖ρ_k‖_{(0)}‖R_0W·v^{[2]}‖ ≤ C|f|³/σ ≤ C|f|^{3−a}.
+(The sharp bound on ‖R_0W·v^{[2]}‖ is needed: the crude ‖R_0‖‖V‖ ≤ C/σ would give |f|³/σ², which is o(f²) only for a < 1/2.)
+Step 3 (approximate inverse). Put E := (k^{[2]} + σ) ⋆_f B − 1, so (W·k^{[2]} + σ)R_app = 1 + W·E and R_0 = R_app − R_0(W·E). Expand each product f^{j+m}k^{(j)} ⋆_f b_m with j + m ≤ M to Moyal order M − j − m, with remainder Rem_{M+1−j−m}; keep the products with j + m > M whole. The expanded terms add up to Σ_{n≤M} f^n Σ_{j+q+p=n}P_p(k^{(j)} + σδ_{j0}, b_q) = 1 (§3.1). So
+  E = Σ_{j+m≤M} f^{j+m}Rem_{M+1−j−m}(k^{(j)}, b_m) + Σ_{j+m>M} f^{j+m} k^{(j)} ⋆_f b_m.
+With P := M + 1 − j − m ≥ 1 and (K2): the first sum is ≤ C|f|^{M+1}σ^{−m−P/2−3/2} ≤ C|f|^{M+1}σ^{−M−2} (m + P/2 ≤ (M + 1 + m)/2 ≤ M + 1/2). The second is ≤ C|f|^{j+m}σ^{−m−3/2} ≤ C|f|^{M+1}σ^{−M−3/2} (j + m ≥ M + 1, m ≤ M, |f|, σ ≤ 1). The k^{(j)} have all moments finite (admissible, rate θ_j fixed). So ‖E‖_{(0)} ≤ C|f|^{M+1}σ^{−M−2}, and
+  |τ((R_0 − R_app)W·v^{[2]})| ≤ τ(1)‖R_0‖‖E‖_{(0)}‖v^{[2]}‖_{(0)} ≤ C|f|^{M+1}σ^{−M−3} ≤ C|f|^{M+1−a(M+3)}.
+This crude Schur bound loses powers of σ. It costs nothing, because M is free and |f|/σ ≤ |f|^{1−a} → 0.
+Step 4 (exact 2-gon identity). For convolution kernels b, v: τ(W·(b ⋆_f v)) = Σ_{x∈cell}Σ_z tr[b(x − z)v(z − x)]e^{i(ef/2)(x−z)∧(z−x)} = ∫_{BZ} dK/(2π)⁴ tr[b̂(K)v̂(K)], because (x − z)∧(z − x) = 0. This is the observation of KAPPA §1.2 (BETA_FP_H_VERIFY §3), here used as an exact identity at finite f. Hence
+  τ(R_app·W·v^{[2]}) = Σ_{m≤M, n≤2} f^{m+n}∫dK/(2π)⁴ tr[b̂_m v̂^{(n)}].
+Terms with p := m + n ≥ 3: |v̂^{(n)}| ≤ Cl^{2−n} ((F2) for n = 0, (F4) for n = 1, admissible for n = 2), so by (K1) |tr[b̂_mv̂^{(n)}]| ≤ C(l + σ)^{−1−m}l^{2−n} ≤ C(l + σ)^{1−p}, and ∫_{BZ}(l + σ)^{1−p}dK ≤ C log(1/σ) for p = 3, ≤ Cσ^{3−p} for p ≥ 4. Their sum is ≤ C|f|³ log(1/|f|) + CΣ_{p≥4}|f|^{p−a(p−3)} = O(|f|³ log(1/|f|)).
+At f = 0, R = W·b_0 exactly and Step 4 gives T(0, σ) = c_0(σ). Sum Steps 1–4 and integrate over t. ∎
+
+Lemma 3.1 (the σ → 0 limit of the f² coefficient) [P given (K1) at σ ≥ 0, (F2), (F4)]. c_2(σ) → c_2(0) := ∫dt∫dK/(2π)⁴ tr[b̂_{t,2}δ̂ + b̂_{t,1}v̂^{(1)} + b̂_{t,0}v̂^{(2)}] as σ ↓ 0, and c_2(0) summed over the two charged sectors is the charged part of −2n_2d_j in KAPPA (1.1).
+Proof. (K1) holds uniformly for σ ∈ [0, 1] (the proof never used σ > 0), so each integrand is ≤ C(l + σ)^{−1}l^0 ≤ Cl^{−1}, integrable in d = 4. For K ≠ 0, b̂_m is a polynomial in (𝔨_{t,0} + σ)^{−1} and derivatives of 𝔨_{t,j}, continuous in σ ≥ 0. Dominated convergence. The identification with KAPPA (1.1) is by definition of d_j, up to the convention reading [I] of §3.1. ∎
+
+## 4. Task A, step 3: charged-sector (M_j), and what happens to Prop. 4.4
+
+Lemma 4.1 (evenness) [P given (I3) covariance]. δΓ_j(f) = δΓ_j(−f), sector by sector up to the swap e ↔ −e.
+Proof. The constant gauge transformation g = exp(iπσ_1/2) maps σ_3 to −σ_3, so it maps V_f to V_{−f} and the fine background at φ to the one at −φ. The Wilson action, Balaban's averaging (SOURCES_T2_I3 VERIFY verdict (4): covariance proved from the definition) and D_c are gauge covariant, so 𝒦_t(−f) = U𝒦_t(f)U^* with U = Ad_g applied at every link, a constant real orthogonal map on colour. U maps the charge e block onto the charge −e block and fixes the neutral block. τ is the per-cell sum of tr of diagonal blocks, so it is U-invariant. ∎
+
+Theorem 4.2 (charged-sector (M_j)) [P given: (G_A′) (GAPRIME2), (I3) (SOURCES_T2_I3), S123 Prop. 2.1, Thms 3.3, 3.4, 4.3, Lemma 4.2, Lemma 5.2, Props. 5.3–5.6, Lemma 5.8, Lemmas 1.1, 1.3, 1.4, (F1)–(F5); BETA_FP_M Lemma 4.1; the [I] convention reading of §3.1]. Fix j ≥ 1, L odd ≥ 3. Then
+  δΓ^{ch}_j(f) − δΓ^{ch}_j(0) = n_2 d_j^{ch} f² + O(|f|^{9/4}),   d_j^{ch} := −c_2^{ch}(0)/(2n_2),
+with c_2^{ch}(0) the charged-sector part of the integral in KAPPA (1.1).
+Proof. Take a = 3/4, s = |f|^{3/4}, N = 4, M = 14 in (2.1). The g̃ term is O(|f|³ log(1/|f|)) (S123 Prop. 5.5 with Prop. 5.6). The ψ terms are O(s³ + |f|³) = O(|f|^{9/4}) (Lemma 2.2). The F_s term is −½Σ_k c_k[T(f, ks) − T(0, ks)] = −½Σ_k c_k[f c_1(ks) + f²c_2(ks)] + O(|f|^{9/4}) (Lemma A; c_0 cancels against T(0, ·)). By Lemma 4.1 the left side of (2.1) is even in f, and s depends on |f| only; so averaging (2.1) at f and −f removes the c_1 terms: δΓ^{ch}(f) − δΓ^{ch}(0) = −½f²Σ_k c_k c_2(k|f|^{3/4}) + O(|f|^{9/4}). By Lemma 3.1 and Σc_k = 1, Σ_k c_k c_2(k|f|^{3/4}) = c_2(0) + o(1). ∎
+Rate. The proof gives o(f²) with error O(|f|^{9/4}) + f²·|c_2(k|f|^{3/4}) − c_2(0)|. The second term has no rate from Lemma 3.1 as written (dominated convergence). A power count of the region l ≲ σ suggests O(σ log(1/σ)) [I, not needed]. KAPPA_BOUNDED Prop. 1.1 uses only the limit.
+
+What this does to BETA_FP_M Prop. 4.4 and S123 §7.3.
+- Region 1, as a statement. With ℓ = F_s + ψ, I(f) − I(0) = −½[Φ_ℓ(f) − Φ_{log}(0)] = −½[Φ_{F_s}(f) − Φ_{F_s}(0)] − ½[Φ_ψ(f) − Φ_{ψ⁰}(0)]. So the proof above gives Prop. 4.4 in the form I(f) − I(0) = n_2 d_j^{ch} f² + o(f²) (charged sector), at fixed j [P]. It does not give the rate O(|f|³ log(1/|f|)) of the printed statement; that rate is not used anywhere (BETA_FP_M Cor. 4.5 note; KAPPA Prop. 1.1).
+- The "region 1/region 2" localization is no longer needed. S123 Lemma 7.2 (spectral region 2) is correct but not used. The "matching" step that S123_VERIFY claim 26 names (spectral cut vs per-momentum integral) is done by Step 4 of Lemma A: the per-cell trace of a product of two twisted convolution kernels has no phase, so the approximate-inverse part of τ(RV) equals a per-momentum integral exactly, at finite f.
+- Where the work went. The |f|^{−k} growth of G_f is replaced by s^{−k} = |f|^{−3k/4}, paid by |f|^k from the Moyal expansion. The phase-space region l ≲ s, where no expansion is possible, is bounded in absolute value by Lemma 2.2. The N–O window is the old II.
