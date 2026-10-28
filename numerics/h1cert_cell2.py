@@ -10,7 +10,7 @@ trigonometric structure), d^M (box sums for value and gradient at K_c; second-de
 by interval evaluation of the per-axis factors over the cell, see d_tm; tails as intervals). A^-1 by Oishi-Rump with X = A(K_c)^-1
 (eta = ||X A(K) - I|| < 1 over the whole cell). lambda_max: max over the 16 vertices of c + linear part (convex in delta) + ||quadratic part|| + ||r_G||_F.
 Float sums carry a priori rounding terms (premise P2); F carries P1'.
-Usage: python h1cert_cell2.py L M h N K1 K2 K3 K4   (M = inf, odd M < 2N+3 (full window), or M0:<M_0>; 'pi' = exact pi)
+Usage: python h1cert_cell2.py L M h N K1 K2 K3 K4   (M = inf, odd M (full window if M < 2N+3, else box N + tail), or M0:<M_0>)
 """
 import sys, os, time, itertools, math
 import numpy as np
@@ -97,7 +97,7 @@ def co(s, j):
 
 def jets(L, Ki, h, M, N, M0=None):
     """Per axis, arrays (L, nb): centre f, f', f'', p, p' (derivatives wrt k), cell sup |f|, |f'|, |f''|, cell inf p, cell phi_min."""
-    ns = list(range(-N, N + 1)) if M in ("inf", "M0") else list(range(-(M - 1) // 2, (M - 1) // 2 + 1))
+    ns = list(range(-N, N + 1)) if (M in ("inf", "M0") or M >= 2 * N + 3) else list(range(-(M - 1) // 2, (M - 1) // 2 + 1))
     up = lambda a: np.nextafter(float(a.abs_upper()), np.inf)
     out = {k: np.zeros((L, len(ns))) for k in ("f", "f1", "f2", "p", "p1", "p2", "fu", "f1u", "f2u", "f3u", "plo", "phi")}
     hk = h / L; fac = [1, 1, 2, 6, 24]
@@ -156,7 +156,6 @@ def d_tm(L, M, Kc, h, N):
     diff = sum prod(F phi^-4)... - sum prod F (phi^-2 extra on the mu factor), all over the cell."""
     Mj = "M0" if isinstance(M, str) and M.startswith("M0") else M
     M0 = int(M.split(":")[1]) if Mj == "M0" else None
-    if Mj not in ("inf", "M0"): assert M < 2 * N + 3, "finite M: use N with M < 2N+3 (full window, no tail)"
     J = [jets(L, Kc[i], h, Mj, N, M0) for i in range(4)]
     g = lambda key: [J[i][key] for i in range(4)]
     rep = lambda lst, nu, x: [x if i == nu else lst[i] for i in range(4)]
@@ -182,8 +181,8 @@ def d_tm(L, M, Kc, h, N):
     if Mj == "inf":
         ax = [axis_data(L, Kc[i], h, "inf", N) for i in range(4)]
         tlo, thi = tail_inf(L, ax, N, h); c = c + (tlo + thi) / 2; r = r + (thi - tlo) / 2 * (1 + 1e-12)
-    elif Mj == "M0":
-        diff = q1[1] - q1[2] + EPSS * (q1[1] + q1[2])
+    elif Mj == "M0" or M >= 2 * N + 3:                                  # box + [0, sum(1 - B)/qt_min^2] (+ M0 interval)
+        diff = q1[1] - q1[2] + EPSS * (q1[1] + q1[2]) if M0 else 0.0
         ax = [axis_data(L, Kc[i], h, M, N) for i in range(4)]
         qmin = (PI * (2 * N + 1) - arb(h) / L) * 2 / PI
         Em = np.array([[float((1 - ax[i][l][3]).upper()) for l in range(L)] for i in range(4)])

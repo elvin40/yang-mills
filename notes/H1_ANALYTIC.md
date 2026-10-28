@@ -65,3 +65,24 @@ Proof. A monotone axis-ordered path from 0 to d is a concatenation of straight s
 Check: (2.1) with (4.1) reproduces the code's E_q to ≤ 3·10^{−13} (relative) at L = 3, 5, 9, 13, two K each. So the averaging operator of h2_scan/h1cert is fully explicit; no profile file is needed for the bound. [P]
 
 Size. At l = 0 and small k_ν: α_ν − 1 ≈ −(L² − 1)k_ν²/24, so g_0 ≈ ((L²−1)/24)·(−i k_0) ∥ k̂_0, and P_0g_0 is of higher order. Measured |g_0| ≈ 0.135 L at K = (2.4, 2.4, π, π).
+
+## 5. The gauge part (bound proved; size measured)
+
+Write T = T_0 − K̂u^† − uK̂^† + α_TK̂K̂^† with T_0 = diag(d^{ML}(K)) (from (2.1): E_lP_l = E⁰_l − K̂h_l^†, h_l = Ā_lk̂_l/|k̂_l|² + P_lg_l), u = s²Σ_lE⁰_lD_lh_l = diag(ζ)K̂ + u_g, ζ_μ = L^{−4}Σ_lΠ_ρa_{l,ρ}²d^M_μ(k_l)/|k̂_l|², u_g = s²Σ_lE⁰_lD_lP_lg_l. Then n_K^†TP_⊥ = n_K^†diag(v)P_⊥ − |K̂|u_g^†P_⊥ with
+
+  v_μ := d^{ML}_μ − |K̂|²ζ_μ = L^{−4}Σ_l Π_ρa_{l,ρ}² d^M_μ(k_l) [ |K̂_μ|²/|k̂_{l,μ}|² − |K̂|²/|k̂_l|² ]   (5.1)
+
+(L²a_{l,μ}² = |K̂_μ|²/|k̂_{l,μ}|²; at l = 0 and small K the bracket cancels to O(K²)).
+
+Lemma Gauge. With d̲ from (3.1), S_L(K) := L^{−2}Σ_l|k̂_l|^{−2} (= σL²), and the explicit sums (fine d ≤ 1/|k̂|², §3 (b))
+  V := L^{−4}Σ_lΠ_ρa_{l,ρ}²|k̂_l|^{−2}·max_μ| |K̂_μ|²/|k̂_{l,μ}|² − |K̂|²/|k̂_l|² |,
+  U := L^{−3}Σ_lΠ_ρ|a_{l,ρ}|·max_μ|a_{l,μ}|·|k̂_l|^{−2}·|P_lg_l|,
+the gauge term of (1.1) satisfies
+
+  G := λ_max(cc^†)/(σ|K̂|⁴L²) ≤ (1 + τ)²/(|K̂|² S_L),   τ := (V + |K̂|U)/d̲.   (5.2)
+
+Proof. c^†b = K̂^†b − K̂^†TZb, Z = P_⊥ZP_⊥, so |K̂^†TZb| ≤ |K̂|·|n_K^†TP_⊥|·‖Z‖|b|; ‖Z‖ ≤ 1/d̲ (§3 (c), (d)); |n_K^†diag(v)P_⊥| ≤ max_μ|v_μ| ≤ V; |u_g| ≤ s²Σ_l‖E⁰_l‖d_max(k_l)|P_lg_l| ≤ U with ‖E⁰_l‖ = LΠ_ρ|a_{l,ρ}|max_μ|a_{l,μ}|. ∎ [P]
+
+Hence, for every j ≥ 1 and K ≠ 0:   ρ_1(j, K)² ≤ B_L(K) := γ_L F(K) + (1 + τ)²/(|K̂|²S_L).   (5.3) [P]
+
+Measured (L = 13, exact ρ_1² from (1.1) vs B_13, j = ∞ and j = 1, 13 points incl. corner, face argmax, near 0, random): B_13 ≥ ρ_1² at every point. Examples: (2.48,2.48,π,π): ρ_1² = 4.366 (j = ∞), 4.234 (j = 1); B = 5.507 (γF = 5.480, G = 0.028, τ = 2.3). Corner: 4.348 vs 4.997. (2.3,2.3,2.3,2.86): 3.969 vs 5.862. K → 0: 1.000 vs 2.005 (G → 1, γF → 1). G ≤ 0.035 at every sampled K with |K| ≥ 0.5. [N]
