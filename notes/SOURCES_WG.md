@@ -51,7 +51,7 @@ Author pass complete (see §7).
 2.9 Form caveat [P]. Literal (3.108) form needs a factor cM^{−1} per step. The two junction steps of each V carry ε_V^{1/2} = O((Mα_0)^{1/2}) instead. This is ≤ cM^{−1} iff Mα_0 ≤ c′M^{−2}, i.e. α_0 ≤ c′M^{−3}. Balaban's order (M fixed first, Thm 3.10; then "α_0 sufficiently small", Thm 3.12) allows this. The project convention Mα_0 ≤ a_0 with a_0 fixed (A1_KERNEL §2) does NOT give it. Consequence: under Mα_0 ≤ a_0 only, the step factor is ρ_* = max{c/M, O(a_0^{1/2})}; counting still converges, but the "free" M^{−½|ω|} of (3.108) is not available at V-junctions. A1-W (A1_WALK §5–§6) uses only C_𝒟c_1ρ ≤ ¼ for its G-blocks, so it is unaffected; consumers that use the free M^{−½|ω|} factor (CMP 116 p. 3 s-rule) must take α_0 ≤ c′M^{−3} or use the exponential instead [I, open point WG-1].
 
 ## 3. Correction to 2.5, and the G_1 step [P unless tagged]
-3.0 Correction to 2.5 (step count). Merge every local factor (Q, Q′, Q*, Q′*, D, D*) into an adjacent walk block [I Q-locality]. Then a V_ν is a product of at most N_V ≤ 6 blocks (two chains G′·[1 or Q′*R′Q′G′]·…, plus ι_b), so it has at most N_V − 1 internal junctions and 2 outer junctions; none of these N_V + 1 steps carries ρ. The correct step factor is ρ_* := max{ρ, ε_V^{1/(N_V+1)}}, with ε_V the full V-weight (one O(1)Mα_0 times B_0^{N_V}c_1^{N_V+1}·12). 2.6–2.8 hold verbatim with this ρ_*. In 2.9 the literal-form condition becomes Mα_0 ≤ c′M^{−(N_V+1)}, i.e. α_0 ≤ c′M^{−8} (N_V = 6). Still admissible in Balaban's order (α_0 after M); still not implied by Mα_0 ≤ a_0. Open point WG-1 unchanged in kind.
+3.0 Correction to 2.5 (step count). Merge every local factor (Q, Q′, Q*, Q′*, D, D*) into an adjacent walk block [I Q-locality]. Then a V_ν is a product of at most N_V ≤ 6 blocks (two chains G′·[1 or Q′*R′Q′G′]·…, plus ι_b), so it has at most N_V − 1 internal junctions and 2 outer junctions; none of these N_V + 1 steps carries ρ. The correct step factor is ρ_* := max{ρ, ε_V^{1/(N_V+1)}}, with ε_V the full V-weight (one O(1)Mα_0 times B_0^{N_V}c_1^{N_V+1}·12). 2.6–2.8 hold verbatim with this ρ_*. In 2.9 the literal-form condition becomes Mα_0 ≤ c′M^{−(N_V+1)}, i.e. α_0 ≤ c′M^{−11} [corrected per SOURCES_WG_VERIFY: N_V ≤ 9] (N_V = 6). Still admissible in Balaban's order (α_0 after M); still not implied by Mα_0 ≤ a_0. Open point WG-1 unchanged in kind.
 3.1 The G_1 identity [V 1.7]. G_1^{−1} = G_0^{−1} − Δ′_π − Δ_π^{(2)} = G^{−1} − Δ_π^{(2)}. Two equivalent Neumann series:
  (3.138) G_1 = Σ_n G_0((Δ′_π + Δ_π^{(2)})G_0)^n [printed route], or G_1 = Σ_n G(Δ_π^{(2)}G)^n [brief's route].
  Use the second: it reuses Theorem WG-G (2.8) as the input block for G. Both give the same sum (absolute convergence, rearrangement).
@@ -70,8 +70,8 @@ Author pass complete (see §7).
 ## 4. Uniformity in regular U [P given inputs]
 4.1 Correction to the brief: the smallness of V comes from (3.36), not (3.35). p. 419 [V]: J "is small, if U satisfies the condition (3.36)"; p. 422 [V]: "From the regularity condition (3.36) and the inequality (3.133) we have |(H*J)(b)| ≤ O(1)Mα_0(L^jη)^{−3}". (3.35) is the hypothesis of the G_0, G′ walk theorems (Thm 3.10 prints "(3.95)", a misprint for (3.35)).
 4.2 Every constant in §2–§3 is one of: B_0, c_0, δ_0 of Thms 3.7, 3.9, 3.10 ("O(1) depends on d and L only" [V p. 416], uniform over U with (3.35)); c_1(·) of Lemma 2.1 (depends on d, L and the rate); the J-bound O(1)Mα_0 (uniform over U with (3.36)); the A1-W constants c_±, ε, K_W (uniform in regular U, j, k, η, {Ω_j}, volume: A1_WALK §7.1–7.2); combinatorial counts (d only). None depends on U beyond (3.35)–(3.36).
-4.3 Rate loss. G: from ½δ_0 to (1 − θ)½δ_0, θ fixed (e.g. ½). G_1: (1 − θ)·min{½δ_0, ½ε} = (1 − θ)½ε. Each loss is a fixed factor, independent of U, n, and the walk. Balaban absorbs such losses into δ_0 ("after adjusting a definition of δ_0", p. 426 [V]; "common, best possible, decay rate", p. 423 [V]).
-4.4 Smallness thresholds: M ≥ M_*(d,L) and Mα_0 ≤ a_*(d,L) for G; additionally M_1 ≥ M_W and Mα_0 ≤ a_{**}(d,L,a,a_0) for G_1. Order: (d,L) → θ → M_* → a_* → [A1-W constants] → M_W → a_{**}. No loop. If the literal (3.108) per-step M^{−1} factor is wanted at V-junctions, add α_0 ≤ c′M^{−8} (3.0; WG-1).
+4.3 Rate loss. G: from ½δ_0 to (1 − θ)½δ_0, θ fixed (e.g. ½). G_1: (1 − θ)·min{½δ_0, ½ε} = (1 − θ)½ε. Each loss is a fixed factor, independent of U, n, and the walk. Balaban absorbs such losses into δ_0 ("after adjusting a definition of δ_0", p. 427 [corrected] [V]; "common, best possible, decay rate", p. 423 [V]).
+4.4 Smallness thresholds: M ≥ M_*(d,L) and Mα_0 ≤ a_*(d,L) for G; additionally M_1 ≥ M_W and Mα_0 ≤ a_{**}(d,L,a,a_0) for G_1. Order: (d,L) → θ → M_* → a_* → [A1-W constants] → M_W → a_{**}. No loop. If the literal (3.108) per-step M^{−1} factor is wanted at V-junctions, add α_0 ≤ c′M^{−11} [corrected per SOURCES_WG_VERIFY: N_V ≤ 9] (3.0; WG-1).
 
 ## 5. Which printed items remain as [R] inputs, and at what level
 5.1 For G (Theorem WG-G):
@@ -91,7 +91,7 @@ Author pass complete (see §7).
 | J smallness O(Mα_0) | [V] (3.131), from (3.36) (not (3.35)) |
 | Concatenation lemma 2.3 | [P] |
 | Theorem WG-G (G walk expansion, rate (1−θ)½δ_0, step ρ_*) | [P given Thms 3.7, 3.9, 3.10 (printed sketches), Lemma 2.1, (3.131), I-D, Q-locality] |
-| Literal (3.108) per-step M^{−1} at V-junctions | needs α_0 ≤ c′M^{−8}; not implied by Mα_0 ≤ a_0 — open point WG-1 [I] |
+| Literal (3.108) per-step M^{−1} at V-junctions | needs α_0 ≤ c′M^{−11} [corrected per SOURCES_WG_VERIFY: N_V ≤ 9]; not implied by Mα_0 ≤ a_0 — open point WG-1 [I] |
 | G_1^{−1} = G^{−1} − Δ_π^{(2)}, Δ_π^{(2)} = (I − DRG′D*)Δ^{(2)}(I − DG′RD*) | [V] (3.128), (3.134)–(3.135), (3.138) |
 | Theorem WG-G1 (tree expansion, rate (1−θ)½ε) | [P given WG-G + A1-W + C^{(2)} locality [I]] |
 | Uniformity in regular U | [P]: all constants from (3.35)–(3.36), (d, L, a, a_0) |
@@ -99,3 +99,6 @@ Proposed A1w row (subject to an independent verifier): "(W_G) for G REDUCED to p
 
 ## 7. Status
 Done (author pass). No STALL. Next: independent verifier of §2.3, §2.5/§3.0 step counting, §3.2 tree structure, §5.2 level claim.
+
+
+Corrections after verification (SOURCES_WG_VERIFY, 2026-10-28): WG-1's condition is α_0 ≤ c′M^{−11} (N_V ≤ 9 walk blocks per chain, not 6); 'after adjusting a definition of δ_0' is on p. 427; §2.5 and §2.9 are superseded by the verified §2.3 junction argument; R_b in (3.120) is the parallel transport, not the projection R.
