@@ -260,6 +260,107 @@ class TP:
         hm = h**np.arange(MMAX + 1).reshape((-1,) + (1,) * (s.mj.ndim - 1))
         r = r + (hm[ORD + 1:] * s.mj[ORD + 1:]).sum(0) + 2 * hm[-1] * s.mj[-1] + 1e-11 * (hm * s.mj).sum(0)
         return TM(c, g, H, np.broadcast_to(r, shape) * (1 + 1e-12))
+    def tk(s, shape):
+        """TK: exact coefficients |alpha| <= 3; remainder sum_{|a|=4} h^4 |c_a| + sum_{m>4} h^m mj[m] + tail + 1e-11 sum h^m mj[m]."""
+        h = HH; z = np.zeros(shape, complex)
+        co = {a: x + z for a, x in s.co.items() if sum(a) <= K3}
+        r = np.zeros(shape)
+        for a, x in s.co.items():
+            if sum(a) > K3: r = r + h**sum(a) * np.abs(x)
+        hm = h**np.arange(MMAX + 1).reshape((-1,) + (1,) * (s.mj.ndim - 1))
+        r = r + (hm[ORD + 1:] * s.mj[ORD + 1:]).sum(0) + 2 * hm[-1] * s.mj[-1] + 1e-11 * (hm * s.mj).sum(0)
+        return TK(co, np.broadcast_to(r, shape) * (1 + 1e-12))
+
+
+K3 = 3                         # order of the block-level Taylor models (exact through the block sums)
+
+
+class TK:
+    """Order-3 Taylor model for per-block quantities: exact coefficients co[alpha], |alpha| <= 3 (dict), remainder |R| <= r entrywise.
+    Products keep |alpha| <= 3 exactly; dropped orders are bounded by order-aggregated |.| (sum_{i+j>3} op(ag_i, ag_j))."""
+    def __init__(s, co, r): s.co, s.r = co, r
+    def ag(s, i):
+        out = np.zeros(s.r.shape)
+        for a, x in s.co.items():
+            if sum(a) == i: out = out + HH**i * np.abs(x)
+        return out
+    def sup(s): return sum(s.ag(i) for i in range(K3 + 1)) + s.r
+    def __add__(s, o):
+        o = tk(o); co = dict(s.co)
+        for b, y in o.co.items(): co[b] = co[b] + y if b in co else y
+        r = s.r + o.r + EPS * (s.sup() + o.sup())
+        return TK(co, r)
+    def __neg__(s): return TK({a: -x for a, x in s.co.items()}, s.r)
+    def __sub__(s, o): return s + (-tk(o))
+    def _prod(s, o, op):
+        o = tk(o); co = {}
+        for a, x in s.co.items():
+            for b, y in o.co.items():
+                c = tuple(i + j for i, j in zip(a, b))
+                if sum(c) <= K3: co[c] = co[c] + op(x, y) if c in co else op(x, y)
+        A = [s.ag(i) for i in range(K3 + 1)]; B = [o.ag(j) for j in range(K3 + 1)]
+        r = sum(op(A[i], B[j]) for i in range(K3 + 1) for j in range(K3 + 1) if i + j > K3)
+        r = r + op(s.r, o.sup()) + op(sum(A), o.r) + EPS * op(s.sup(), o.sup())
+        return TK(co, r)
+    def __mul__(s, o):
+        if np.isscalar(o): return TK({a: x * o for a, x in s.co.items()}, s.r * abs(o) + EPS * abs(o) * s.sup())
+        return s._prod(o, np.multiply)
+    def __matmul__(s, o): return s._prod(o, np.matmul)
+    def H_(s): return TK({a: np.swapaxes(x, -1, -2).conj() for a, x in s.co.items()}, np.swapaxes(s.r, -1, -2))
+    def rs(s, *sh): return TK({a: np.broadcast_to(x, s.r.shape).reshape(sh) for a, x in s.co.items()}, s.r.reshape(sh))
+    def sum(s, ax=0, eps=EPSS):
+        return TK({a: np.broadcast_to(x, s.r.shape).sum(ax, keepdims=True) for a, x in s.co.items()},
+                  s.r.sum(ax, keepdims=True) + eps * s.sup().sum(ax, keepdims=True))
+    def recip(s):
+        """Real positive scalars: 1/(c+e) = sum_{k<=3} (-e)^k/c^(k+1) + e^4/(c^4 (c+e)), |e| <= sup e, lo = c - sup e > 0."""
+        c = s.co[(0, 0, 0, 0)].real; e = TK({a: x for a, x in s.co.items() if sum(a) > 0}, s.r); se = e.sup(); lo = c - se
+        if not (lo > 0).all(): raise Near0
+        out = tk(1 / c + 0j); ek = tk(np.ones_like(c) + 0j)
+        for k in range(1, K3 + 1):
+            ek = ek * e; out = out + ek * tk((-1)**k / c**(k + 1) + 0j)
+        out.r = out.r + se**4 / (c**4 * lo) * (1 + EPS)
+        return out
+    def tm2(s):
+        """Taylor-2 model: order-3 coefficients go to the remainder (h^3 sum |c_alpha|, after the block sum: cancellation kept)."""
+        z = np.zeros(s.r.shape, complex); b = lambda x: np.broadcast_to(x, s.r.shape)
+        c = b(s.co.get((0, 0, 0, 0), z)) + z
+        e = lambda *ix: tuple(sum(int(i == j) for j in ix) for i in range(4))
+        g = np.stack([b(s.co.get(e(nu), z)) + z for nu in range(4)])
+        H = np.stack([np.stack([b(s.co.get(e(nu, la), z)) * (1.0 if nu == la else 0.5) + z for la in range(4)]) for nu in range(4)])
+        return TM(c, g, H, s.r + s.ag(3))
+
+
+def tk(x):
+    if isinstance(x, TK): return x
+    x = np.asarray(x, complex); return TK({(0, 0, 0, 0): x}, np.zeros(x.shape))
+
+
+def tk_from_tm2(T):
+    co = {(0, 0, 0, 0): T.c}
+    for nu in range(4):
+        co[tuple(int(i == nu) for i in range(4))] = T.g[nu]
+        for la in range(nu, 4):
+            co[tuple(int(i == nu) + int(i == la) for i in range(4))] = T.H[nu, la] + (T.H[la, nu] if la != nu else 0)
+    return TK(co, T.r)
+
+
+def tk_phase_vec(th, scale):
+    """Vector e^{i th} - 1, th (B, 4) = (K + const)/scale, as a TK (B, 4); remainder (h/scale)^4/24."""
+    e = np.exp(1j * th); co = {(0, 0, 0, 0): e - 1}
+    for rho in range(4):
+        for j in range(1, K3 + 1):
+            x = np.zeros(th.shape, complex); x[:, rho] = (1j / scale)**j * e[:, rho] / FACT[j]
+            co[tuple(j if i == rho else 0 for i in range(4))] = x
+    return TK(co, np.full(th.shape, (HH / scale)**4 / 24 + 4 * U))
+
+
+def tk_sq(th, scale):
+    """sum_rho (2 - 2 cos th_rho) as a TK (B, 1); remainder 4 * 2 (h/scale)^4/24."""
+    co = {(0, 0, 0, 0): (2 - 2 * np.cos(th)).sum(-1, keepdims=True)}
+    for rho in range(4):
+        for j in range(1, K3 + 1):
+            co[tuple(j if i == rho else 0 for i in range(4))] = -2 * ((1j / scale)**j * np.exp(1j * th[:, rho:rho + 1])).real / FACT[j] + 0j
+    return TK(co, np.full((th.shape[0], 1), 8 * (HH / scale)**4 / 24 + 64 * U))
 
 
 def seq(c0, c1):  # majorant sequence [c0, c1/1!, c1/2!, ...]
@@ -283,16 +384,16 @@ def tp_sq(th, scale):
     return TP(co, np.array([16.0] + [8.0 / (FACT[j] * scale**j) for j in range(1, MMAX + 1)])[:, None])
 
 
-def vm_tm(L, pf, Kc, h):
-    """TMs of V' = Q'^dag E (rows K^_4 E_mu - K^_mu E_4, mu < 4; (Nb, 3, 4)) and m' = |k^|^2 E^dag Kh - |Kh|^2 k^ (= |k^|^2 P E^dag Kh
-    by P4; (Nb, 4, 1)). E row coefficients: c_alpha = sum_y F(y) prod (i y_nu/L)^alpha_nu/alpha_nu! e^{ik.y}; majorant
-    sum|F| (|y|_1/L)^m/m! per (mu, r) entry (multinomial)."""
-    hh = (L - 1) // 2; Nb = L**4
-    kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]
+def vm_tk(L, pf, Kc, h, l0s):
+    """TKs of V' = Q'^dag E (rows K^_4 E_mu - K^_mu E_4, mu < 4; (B, 3, 4)) and m' = |k^|^2 E^dag Kh - |Kh|^2 k^ (= |k^|^2 P E^dag Kh
+    by P4; (B, 4, 1)) for the blocks with l_0 in l0s (B = len(l0s) L^3, ndindex order). E row coefficients:
+    c_alpha = sum_y F(y) prod (i y_nu/L)^alpha_nu/alpha_nu! e^{ik.y}; majorant sum|F| (|y|_1/L)^m/m! per (mu, r) entry (multinomial)."""
+    hh = (L - 1) // 2; B = len(l0s) * L**3
+    kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]; kp[0] = kp[0][l0s]
     def erow(mu):
         F = pf[mu]; y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
         W = [[(1j * y[a] / L)**j / FACT[j] * np.exp(1j * kp[a][:, None] * y[a][None]) for j in range(ORD + 1)] for a in range(4)]
-        co = {al: np.einsum("rabcd,ia,jb,kc,ld->ijklr", F, *[W[a][al[a]] for a in range(4)], optimize=True).reshape(Nb, 4) for al in AL}
+        co = {al: np.einsum("rabcd,ia,jb,kc,ld->ijklr", F, *[W[a][al[a]] for a in range(4)], optimize=True).reshape(B, 4) for al in AL}
         ay = sum(np.abs(y[a]).reshape([1] * (1 + a) + [-1] + [1] * (3 - a)) for a in range(4)) / L
         assert h * ay.max() < MMAX / 10
         aF = np.abs(F)
@@ -301,16 +402,17 @@ def vm_tm(L, pf, Kc, h):
     E3 = erow(3); V = []; mpp = Kh[3] * E3.conj()
     for mu in range(3):
         Emu = erow(mu)
-        V.append((Kh[3] * Emu - Kh[mu] * E3).tm((Nb, 4)))
+        V.append((Kh[3] * Emu - Kh[mu] * E3).tk((B, 4)))
         mpp = mpp + Kh[mu] * Emu.conj(); del Emu
-    lv = np.indices((L,) * 4).reshape(4, -1).T; th = (Kc[None] + 2 * np.pi * lv) / L
+    lv = np.stack(np.meshgrid(l0s, *[np.arange(L)] * 3, indexing="ij")).reshape(4, -1).T; th = (Kc[None] + 2 * np.pi * lv) / L
     kh = TP({}, np.zeros((MMAX + 1, 1)))
     for rho in range(4):
         t = tp_phase(th[:, rho], rho, L); er = np.zeros(4); er[rho] = 1
         kh = kh + TP({a: x[:, None] * er for a, x in t.co.items()}, t.mj)
-    mp = (tp_sq(th, L) * mpp - tp_sq(Kc, 1.0) * kh).tm((Nb, 4))
-    Vt = TM(np.stack([v.c for v in V], 1), np.stack([v.g for v in V], 2), np.stack([v.H for v in V], 3), np.stack([v.r for v in V], 1))
-    return Vt, mp.rs(Nb, 4, 1)
+    mp = (tp_sq(th, L) * mpp - tp_sq(Kc, 1.0) * kh).tk((B, 4))
+    keys = set().union(*[v.co for v in V]); z = np.zeros((B, 4), complex)
+    Vt = TK({a: np.stack([v.co.get(a, z) for v in V], 1) for a in keys}, np.stack([v.r for v in V], 1))
+    return Vt, mp.rs(B, 4, 1), th
 
 
 # ---------------------------------------------------------------- Oishi-Rump inverse and final bound
@@ -351,21 +453,23 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
     Kc = [x if isinstance(x, arb) else arb(x) for x in Kc]; Kf = np.array([float(x.mid()) for x in Kc])
     try:
         d = d_tm(L, M, Kc, h, N); t1 = time.time()
-        Vp, mp = vm_tm(L, pf, Kf, h); t2 = time.time()
-        Nb = L**4; lv = np.indices((L,) * 4).reshape(4, -1).T
+        Nb = L**4; t2 = time.time()
+        A = C = b = sig = None
+        for l0s in np.array_split(np.arange(L), max(1, L // 4)):      # blocks in l_0 chunks (memory)
+            Vp, mp, th = vm_tk(L, pf, Kf, h, l0s); B = len(th)
+            khc = tk_phase_vec(th, L).rs(B, 4, 1)
+            inva = tk_sq(th, L).recip()                                  # (B, 1) = 1/|k^_l|^2
+            P = tk(np.eye(4)[None]) - (khc @ khc.H_()) * inva.rs(B, 1, 1)
+            ib = np.ravel_multi_index(np.array(np.meshgrid(l0s, *[np.arange(L)] * 3, indexing="ij")).reshape(4, -1), (L,) * 4)
+            VD = Vp * tk_from_tm2(d[ib]).rs(B, 1, 4)                    # V' D, V' = Q'^dag E = Q'^dag E P (P4)
+            parts = [(VD @ Vp.H_()).sum(), (VD @ P @ VD.H_()).sum(), (VD @ (mp * inva.rs(B, 1, 1))).sum(), inva.sum()]
+            A, C, b, sig = parts if A is None else [x + y for x, y in zip((A, C, b, sig), parts)]
+        A, C, b, sig = (x.tm2() * s2 for x in (A, C, b, sig))           # Q'^dag T Q', Q'^dag T2 Q', Q'^dag T Kh, sigma
+        lv = None
         Kh = phase(Kf[None], 1.0)                                         # (1, 4)
-        kh = phase((Kf[None] + 2 * np.pi * lv) / L, L)                  # (Nb, 4); fine momenta (K + 2 pi l)/L
-        inva = (kh * kh.conj()).sum(1, EPS).recip()                      # (Nb, 1) = 1/|k^_l|^2
         e4 = np.zeros((1, 1, 4)); e4[0, 0, 3] = 1
         QH = Kh[:, 3:4].rs(1, 1, 1) * np.eye(3, 4)[None] - Kh[:, :3].rs(1, 3, 1) * e4   # Q'^dag, rows K^_4 e_mu - K^_mu e_4
-        khc = kh.rs(Nb, 4, 1)
-        P = tm(np.eye(4)[None]) - (khc @ khc.H_()) * inva.rs(Nb, 1, 1)
         Khc = Kh.rs(1, 4, 1)
-        VD = Vp * d.rs(Nb, 1, 4)                                         # V' D, V' = Q'^dag E = Q'^dag E P (P4)
-        A = (VD @ Vp.H_()).sum() * s2
-        C = (VD @ P @ VD.H_()).sum() * s2
-        b = (VD @ (mp * inva.rs(Nb, 1, 1))).sum() * s2                   # Q'^dag T Kh = s^2 sum V' D P E^dag Kh
-        sig = inva.sum() * s2
         lam0, U0 = np.linalg.eigh((A.c[0] + A.c[0].conj().T) / 2)
         S0 = U0 / np.sqrt(lam0); SH = tm(S0.conj().T[None]); S = tm(S0[None])  # whitened frame Q' S, S = U Lambda^-1/2: A(K_c) ~ I
         nRA = float(np.linalg.norm(A.r[0]) * np.linalg.norm(S0, 2)**2 * (1 + 1e-10))    # ||S^dag R_A S|| <= ||S||^2 ||R_A||_F

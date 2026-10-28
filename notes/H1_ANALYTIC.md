@@ -53,3 +53,15 @@ Combine: ρ_t² ≤ d_max‖Z‖/L² ≤ γ_L/(|K|²d̲(K)). ∎ [P]
 Remarks. F is L-independent except through the truncation h (larger h only increases d̲, so F with h = 6 bounds every L ≥ 13). F → 1 as K → 0 (n = 0 term, σ → 1). Nothing in (3.1) depends on j.
 Numerical values of F (h = 6 unless noted): K → 0: 1.0000; (π,0,0,0): 3.040; (π,π,0,0): 3.648; corner (π,π,π,π): 4.950 (exact ρ_t-bound input ‖Δ_∞‖ = 195.19 = 1/d); face argmax of ρ_1 (2.48,2.48,π,π): 5.453; coarse 12⁴ sorted grid (h = 3): max 5.83 near (2.30, 2.30, 2.30, 2.86). [N]
 Comparison at L = 5, j = ∞, K = (2.4,2.4,π,π): exact ρ_1² = 3.842; d_max‖Z‖/L² = 4.81; γ_5F = 5.47.
+
+## 4. Closed form of the gauge row g (proved; checked)
+
+Lemma G. Let α(κ) := L^{−1}Σ_{t=−h}^{h} e^{iκt} = sin(Lκ/2)/(L sin(κ/2)) (real, |α| ≤ 1), α_ρ := α(k_{l,ρ}) (so |α_ρ| = |a_{l,ρ}|, A(k_l) = Π_ρα_ρ). Then in (2.1)
+
+  g_l^† = γ̄(k_l)^T,   γ̄_ν(k) = Φ_ν · (α_ν − 1)/k̂_ν,   Φ_ν := ¼ Σ_{r=0}^{3} e_r({α_ρ}_{ρ≠ν}) / C(3, r),   (4.1)
+
+e_r = elementary symmetric polynomial. In particular |Φ_ν| ≤ 1 and |g_{l,ν}| ≤ |1 − α_ν|/|k̂_{l,ν}|.
+Proof. A monotone axis-ordered path from 0 to d is a concatenation of straight segments; the segment along ν from p to p + d_νe_ν has symbol e^{ik·p}(e^{ik_νd_ν} − 1)/k̂_ν (both signs of d_ν). The coordinates of d are independent and uniform on {−h..h}, so E_d e^{iκd_ρ} = α(κ). If ν is in position r+1 of the axis order, p has the r earlier coordinates of d, which gives the product of their α's and (α_ν − 1)/k̂_ν. The average over the 24 orders gives Φ_ν. ∎
+Check: (2.1) with (4.1) reproduces the code's E_q to ≤ 3·10^{−13} (relative) at L = 3, 5, 9, 13, two K each. So the averaging operator of h2_scan/h1cert is fully explicit; no profile file is needed for the bound. [P]
+
+Size. At l = 0 and small k_ν: α_ν − 1 ≈ −(L² − 1)k_ν²/24, so g_0 ≈ ((L²−1)/24)·(−i k_0) ∥ k̂_0, and P_0g_0 is of higher order. Measured |g_0| ≈ 0.135 L at K = (2.4, 2.4, π, π).

@@ -22,8 +22,6 @@ Label map (Appendix C): every numbered environment carries its project name in i
 
 Renamed labels (§2.6): Theorem B of BETA_FP_PW → Theorem B_PW (the main Theorem B is the existence theorem); (G1)–(G3) of the assembly table → (GC1)–(GC3); (S) of SOURCES_D4D5 → (S_src).
 
-Lean note: Appendix A lists only Lemmas D, D′, D″, E, the step-8 lemma, and a pointer to the Telescoping, DetIdentities, AbelianCount, and LemmaH files. The Lean folder now has 17 files. Files not named in Appendix A, with their notes: TheoremK and Gronwall (KAPPA_BOUNDED; Theorem C1), CubeCount (SOURCES_FX_O1), BlockNorm and OishiRump (H2_CERTIFY), Envelope (ASSEMBLY §2.9), Divergence (H2_CERTIFY_P4), TheoremC1 and StripBound (B2_TWOSTEP; SOURCES_HBETA_N3), CertBridge (numerics/h1cert_cell*.py). The full inventory is lean/README.md; Appendix A is not updated (the .tex is unchanged).
-
 Conventions:
 - `\status{...}` typesets status tags in small caps; the legend is §1.4.
 - `\file{...}` typesets project-file references in `\texttt`, with one footnote (notes/ of the repository). Inside the dependency table it breaks at underscores.
