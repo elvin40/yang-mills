@@ -16,7 +16,7 @@
 \newtheorem*{remark}{Remark}
 
 % status tags, e.g. \status{proved+verified}
-\newcommand{\status}[1]{\textsc{[#1]}}
+\newcommand{\status}[1]{\textsc{\upshape[#1]}}
 % project file references; footnote on first use only
 \newif\iffirstfile\firstfiletrue
 \newcommand{\file}[1]{\texttt{\detokenize{#1}}\iffirstfile\footnote{Project files named in this chapter live in the \texttt{notes/} directory of the \texttt{yang-mills} repository.}\global\firstfilefalse\fi}
