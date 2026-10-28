@@ -100,3 +100,43 @@ Caveat [I]: Lemma N1-B is a bookkeeping change on an UNVERIFIED file (ASSEMBLY_N
 
 ### 3.3 Ledger of §3
 [V] N1 §1, §2.2–§2.3, §3.1–§3.4, §4.1–§4.5, §6 "Minor". [P] Lemma N1-B and its six steps; the observation that N1 §3.4 assumes h ≤ 1 at m = 3. [I] the sharper exponent (q = 6) in step (4) is a sketch; q = 12 is the proved crude value. Any finite q suffices for E0′.
+
+## 4. Lemma IV-2, part 3: FX Step B — which statement needs the whole-lattice expansion
+
+Inputs: SOURCES_FX §6 (full, read this session); SOURCES_FX_O1, FX_O23, FX_R2 and their VERIFY files (grep for Step B, volume, unit scale; FX_O23 §2 read in part); TRUST_LEDGER row B19 (read); D4D5 §3.1–§4.1.
+
+### 4.1 The roles of Steps A–D [V, SOURCES_FX §6]
+- Step A: final R-operation with Z″ = ∅. Output exp Σ_X R_fin(X, V). Polymers = connected unions of final large-field components with their whole fine histories, Mayer links, boundary terms. Convergence by the Cammarota / CMP 116 (2.38) criterion with per-polymer activity ≤ e^{−p_0(γ)} e^{−κ′d_K(U)}, from (1.79)–(1.80) and FX_O1, FX_R2 (κ_final ≤ 6κ, "depends on (d, κ, β) only: no M, R, p_0, g" [V, FX_R2 l. 36]).
+- Step B: "After Step A, I_K[f] = ∫dV_K χ exp(A_K^f + Σ_X R_fin(X)). This is a small-field integral on the unit lattice. Its log is a sum of local terms by the 'final localization by a cluster expansion' of CMP 116 §2 … as Dimock III Thm 2 does for φ⁴₃" [V, FX §6.2].
+- Step C: holomorphy radius c·r (large-field parts by (1.73); R-denominators by FX_O23 O2) [V].
+- Step D: "All activity bounds are in units of cubes of the polymer's coarsest scale, with constants (p_0(γ), κ, c r) independent of K and ε. Fine histories are summed inside each polymer by (1.79)" [V, FX §6.4].
+- Ledger B19 [V]: "(FX): the final Mayer expansion of the sum over large-field geometries plus the unit-scale integral converges … uniform in K, ε". ℓ is not in the uniformity clause.
+
+### 4.2 Classification of A–D in ℓ [I, with reasons]
+- Steps A, C, D: per-polymer statements. Their constants are Balaban's per-polymer constants (κ, p_0(γ), E_0, c, r). For a non-wrapping polymer, Theorem LOC (A15_LOC §7.5, CONFIRMED with minor corrections) makes the torus activity EQUAL to its Z⁴ lift; for a wrapping polymer the activity is ≤ E_0 e^{−κd_j(X)} with d_j(X) ≳ N/c_k, which decreases as ℓ grows. A Mayer/cluster expansion whose activities satisfy a Kotecký–Preiss / Cammarota criterion per polymer converges with volume-uniform per-polymer output bounds [R, standard]. So Steps A, C, D are class (a), although Step A is formally an expansion "on the whole lattice". [I: LOC is proved for the small-field CMP 109/116 activities; for the large-field T′_K(Y) activities of Step A its extension is the reading "(1.79)–(1.80) are per-component bounds", not a LOC-type identity.]
+- Step B: NOT per-polymer. It is the claim that log of a full lattice-gauge integral on the ℓ⁴ unit lattice, at coupling g ∈ ]0, γ], with no block constraint left, is a convergent sum of local terms with ℓ-free constants. Two facts make this an infrared statement:
+  (B-i) CMP 116 §2 expands a Gaussian fluctuation integral ∫dμ_{C^{(k)}}(B) whose covariance C^{(k)} = (C*Δ^{(k)}C)^{−1} decays exponentially because of the block constraint (A15_LOC §2.1, CMP 109 p. 268 [V]). At the unit scale after the last step, the variable V_K has no further averaging constraint. Its Gaussian part is the massless lattice gauge propagator on T⁴_ℓ (in a gauge), which does not decay exponentially. FX_O23 [V, l. 46] makes the same observation for the (1.100) denominator: "CMP 116 §2 expands Gaussian fluctuation integrals ∫dμ_C(B) with exponentially decaying C, but … [the] integral over the scale-k variable V′ in axial gauge with a Wilson action [has] no decaying covariance at that scale."
+  (B-ii) INFINITE_VOLUME_PLAN §4.3 (Lemma IV-ξ): continuing the RG past the unit scale keeps g in ]0, γ] only up to ξ_g; beyond, no small parameter exists. A convergent ℓ-uniform expansion of the unit-scale integral would control all scales up to ℓ, so it cannot exist uniformly in ℓ > ξ_g with present tools.
+  So Step B is class (d). At FIXED ℓ its justification is also only [R] (B19 lists no separate check of Step B; FX §7 R2 "Unit-scale integral: CMP 116 §2 final localization (Lemma 3) applied at the unit scale, as Dimock III Thm 2"), and (B-i) says the CMP 116 §2 mechanism does not transfer verbatim even at fixed ℓ [I]. At fixed ℓ one can use the finite volume as the infrared cutoff (the whole torus as one polymer); the constants then depend on ℓ.
+
+### 4.3 Exactly which statement needs Step B [P, by inspection of D4D5 §4.1]
+Step B enters Target 2 at one place: D4D5 Lemma C, Step 1, "log Z_ε[f(t)] − log Z_ε[0] = −W_K[f(t)] + Σ_m Σ_{Γ∈P_m}[a_m(Γ; f(t)) − a_m(Γ; 0)]", and through it Step 2 ("only polymers meeting every support count"). Step 2 needs log I_K to be a sum of local terms. Steps A, C, D make the INTEGRAND of I_K local (exp of a sum of local unit-scale activities); only Step B makes the LOG of the integral local. Without Step B there is no connectedness, hence no CUMULANT bound (S). Nothing else in ASSEMBLY, ASSEMBLY_N1, or (S) uses Step B.
+
+### 4.4 Does a local version suffice for observables in a fixed ball? [P given (L1)–(L3); the inputs are I]
+Yes for MOMENTS, by positivity, without any unit-scale expansion. Statement:
+(L1) [Steps A, C, D, from FX §6] After Step A, for complex sources f = Σ_i z_i f_i with disjoint supports at distance ≥ σ ∈ [16ε, 1] and |z_i| ≤ c r/N(f_i):
+  I_K[f] = ∫dV_K χ(V) exp(A_K^0(V) + Σ_X R^0_fin(X, V)) · exp(Δ_f(V)),
+  Δ_f(V) := (A_K^f − A_K^0)(V) + Σ_{X ∩ supp f ≠ ∅}[R^f_fin(X, V) − R^0_fin(X, V)],
+  sup_V |Δ_f(V)| ≤ C_0 Σ_i (|z_i| N(f_i)/r)(1 + |supp f_i|_1),
+  with C_0 free of ℓ, K, V. [I: this is the (CG) bound of INFINITE_VOLUME_PLAN §4.2, read AFTER Step A instead of conditionally on V. After Step A all f-dependence of the unit-scale integrand is in unit-scale polymer activities with radius c·r and tree decay, so the sum over X meeting supp f is ≤ C r^{−1}|z|N(f)(1 + |supp f|_1) per support by Step D's count "#{polymers touching a fixed cube, weighted} < ∞". Needs the same checks as (CG): no f-dependent term of the integrand outside unit-scale polymers; the risk of PLAN §4.2 (V-large regions mixing with supp f in the last R-operation).]
+(L2) [positivity] For f = 0 the integrand χ exp(A_K^0 + ΣR^0_fin) is ≥ 0: χ ≥ 0, A_K^0 real, and exp ΣR_fin = Σ_{Z′}∫ρ(Z′, V)/∫ρ(∅, V) is a ratio of positive integrals (Balaban's ρ ≥ 0, CMP 122 I p. 176 via SOURCES_D3 (B7) [V in PLAN §4.2]). So ν_0 := (integrand at f = 0)/I_K[0] is a probability measure on SU(2)^{unit links}.
+(L3) [W] W_K[f] = Σ_i W_K[z_i f_i] + W_conn[f], with |W_conn| ≤ C Σ_i |z_i|N(f_i)/r·(1 + log_L(2M/σ)) by Lemma C Step 9 restricted to polymers that meet supp f_i and at least one other support (count per support, not per pair) [P sketch]. Each W_K[z_i f_i] is a function of z_i alone with zero linear term after centring, so it does not contribute to ∂_{z_1}⋯∂_{z_n} at 0.
+Then Lemma IV-M of INFINITE_VOLUME_PLAN §4.2 applies verbatim with Γ := e^{−W_conn}·E_{ν_0}[e^{Δ_f}]: G(z) := e^{−W_conn[f]} E_{ν_0}[e^{Δ_f}] is holomorphic on the polydisc, |G| ≤ exp(sup|W_conn| + sup|Δ_f|), and Cauchy on radii ρ_i = c r/(N(f_i)(1 + |supp f_i|_1)) gives
+  |⟨Π_i ϕ(f_i)⟩_{ε,ℓ}| ≤ e^{C n (1 + log_L(2M/σ))} Π_i (c r)^{−1} N(f_i)(1 + |supp f_i|_1),
+uniformly in ε AND ℓ. The factor (1 + log_L(2M/σ)) ≤ C_a σ^{−a}, as in D4D5 §5.1.
+Use in the bridge: ASSEMBLY_N1 §4.3 (Lah sum over cumulants) is replaced by this direct moment bound, with no n! at all; Lemma N1-B (§3.1) is otherwise unchanged. So the local version suffices for (H-U∞) of PLAN §3.1 step 1, conditionally on (L1).
+What the local version does NOT give: cumulant (connected) bounds with decay in the separation, hence no clustering; and no statement about log I_K. Neither is needed for the weak-sense target.
+Status: (L2), (L3), and the Cauchy step are [P] (short). (L1) is [I]; it is the plan's IV-3 (CG), in a slightly simpler form (no conditioning on V is needed once Step A has been done, because Step A already writes the large-field sum as exp of local unit-scale activities). It is the one new item.
+
+### 4.5 Ledger of §4
+[V] FX §6.1–§6.4, §7 R2; FX_R2 l. 36; FX_O23 l. 46; TRUST_LEDGER B19; D4D5 §4.1 Steps 1–2, 9. [P] §4.3 (Step B is used only in Lemma C Steps 1–2); the reduction in §4.4 from (L1) to ℓ-uniform moment bounds. [I] the (a) classification of Steps A, C, D (per-polymer + LOC + KP uniformity); (B-i), (B-ii) as reasons Step B is infrared; (L1).

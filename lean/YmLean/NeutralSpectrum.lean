@@ -616,3 +616,27 @@ theorem cocurl_pw_ne_zero {K : Site N} (hK : K ≠ 0) : cocurl (pw K) ≠ 0 := b
   · by_contra hk; exact ch_ne_one hk h0
 
 end YmLean.NeutralSpectrum
+
+#print axioms YmLean.NeutralSpectrum.neutral_form
+#print axioms YmLean.NeutralSpectrum.neutral_symm
+#print axioms YmLean.NeutralSpectrum.neutral_nonneg
+#print axioms YmLean.NeutralSpectrum.hodge_symm
+#print axioms YmLean.NeutralSpectrum.hodge_nonneg
+#print axioms YmLean.NeutralSpectrum.hodge_eq_lap
+#print axioms YmLean.NeutralSpectrum.hodge_ker
+#print axioms YmLean.NeutralSpectrum.finrank_ker_hodgeL
+#print axioms YmLean.NeutralSpectrum.neutral_ker
+#print axioms YmLean.NeutralSpectrum.lap1_eigen
+#print axioms YmLean.NeutralSpectrum.lam_eq_four_sin_sq
+#print axioms YmLean.NeutralSpectrum.gap_eq_four_sin_sq
+#print axioms YmLean.NeutralSpectrum.gap_le_lam
+#print axioms YmLean.NeutralSpectrum.parseval
+#print axioms YmLean.NeutralSpectrum.poincare1
+#print axioms YmLean.NeutralSpectrum.poincare2
+#print axioms YmLean.NeutralSpectrum.hodge_gap
+#print axioms YmLean.NeutralSpectrum.neutral_gap
+#print axioms YmLean.NeutralSpectrum.neutral_gap_cos
+#print axioms YmLean.NeutralSpectrum.neutral_grad_pw
+#print axioms YmLean.NeutralSpectrum.neutral_cocurl_pw
+#print axioms YmLean.NeutralSpectrum.grad_pw_ne_zero
+#print axioms YmLean.NeutralSpectrum.cocurl_pw_ne_zero
