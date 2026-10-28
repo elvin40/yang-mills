@@ -8,30 +8,34 @@ Every statement in the notes carries a tag (proved / verified / reduced / open).
 
 ## Status
 
-Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. The repository is private.
+Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. The repository is private.
 
 ### Target 1: Balaban's Theorem 2, weak form
 
-- Reduced: Theorem 2 (weak form) is reduced to the single inequality (H2) plus the fixed-level inputs (PI), (F), (M_j), V1, (G2) and (H0)/L5 (notes/THEOREM2_PROOF_v4.md section 10, item H). Both routes, K and B, rest on (H2). The reduction of (B2) to (H2) is verified (B2_TWOSTEP_VERIFY.md). Theorem 2 weak form implies Theorem 1: proved, unverified. Route B logic (Theorem B) is proved+verified as a conditional (BETA_FP_PW_VERIFY.md); its inputs (U), (DF), (T1) from BETA_FP_U.md are proved, unverified.
-- Numerical, certification open: (H2) holds numerically at L = 3, 5, 7, 9 (rho_2 = 2.063 at L = 3 against the threshold 3, margin 31%; 2.108 at L = 5; at least 2.113 at L = 7 on a face; at least 2.114 at L = 9 at one point; H2_LARGE_L_VERIFY.md). At L >= 5 the one-step condition rho_1^2 < L suffices (rho_1^2/L = 0.771 at L = 5). A point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 exists, but a full certificate is a computer-assisted project (about 1.5e4 core-hours at L = 3; H2_CERTIFY.md).
-- Open: (PI), (F), (M_j), V1, (G2), L5; (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. All numerics are at L <= 11, outside Balaban's range, so they are supportive only.
-- Chapter and paper: notes/THEOREM2_PROOF_v4.md is the current chapter; paper/main.pdf is its 32-page LaTeX version.
-- Verified: Theorem K and Theorem 2w as conditional reductions (KAPPA_BOUNDED_VERIFY.md); Lemma D'' (THEOREM2_PROOF_v2_VERIFY.md); the Gaussian RG fixed point, the Ward identity (W), and the exact abelian sector (U3, U3_AW, U1 verifiers).
-- Lean 4 (lean/, 7 files): Lemmas D', D, E, H, D'', and the determinant, telescoping and counting identities, with no sorry (standard axioms only). Lemma H needs column sums bounded by c_i with sum c_i finite.
-- Numerics (floating point, not certified): first-step beta_1(L) for L = 2..11 is 0.630, 0.664, 0.757, 0.743, 0.803 (L = 7), 0.851 (L = 9), 0.868 (L = 11); per-level beta_2 is about 0.32 at L = 2 (numerics/NUMERICS.md).
+- Reduced to the single inequality (H2) plus the fixed-level inputs (PI), (F), (M_j), V1, (G2) and (H0)/L5 (THEOREM2_PROOF_v4.md section 10). The reduction of (B2) to (H2) is verified (B2_TWOSTEP_VERIFY.md); Theorem K and Theorem 2w are verified as conditional reductions. Theorem 2 weak form implies Theorem 1: proved, unverified.
+- (H2) holds numerically for L = 3..13 (float; rho_2 = 2.063 at L = 3 against the threshold 3). At L >= 5 the one-step condition rho_1^2 < L suffices; at L = 13, sup rho_1^2 = 4.37 < 13.
+- Certified: a point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 (verified, H2_CERTIFY_VERIFY.md). Premise P4 is proved (H2_CERTIFY_P4.md). Not certified: the full cell certificate. The L = 13 one-step certification is sized at about 1,100 core-hours after fix G1 (H2_CERTIFY_L13_G1.md). Launch is approved and not yet launched.
+- Open: (PI), (F), (M_j), V1, (G2), L5. (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. The numerics at L <= 13 are supportive only.
 
 ### Target 2: finite-torus existence (compactness form)
 
-- Verified: ASSEMBLY.md (limit points satisfy the torus forms of OS0-OS3 given the uniform bound (H-U); ASSEMBLY_VERIFY.md; dependency table section 3). The bridge (B-N1) is derived given the Gevrey bound (S) (ASSEMBLY_N1.md; SOURCES_HHIST_N1_VERIFY.md).
-- Sources: D1 verified (Gaussian level). D2, D2C, D3, D3R and D3W8 are verified with corrections. D4/D5 (RP and symmetry transfer, assembly of (S)) are proved in part and verified, with (FX) as the new gap.
-- (H-hist) is reduced via (SM) and (G-gain): small-field step proved on (0, gamma], one reduced lemma, and the surface term of the sharp cutoff chi_k still open (SOURCES_SM_VERIFY.md, SOURCES_GGAIN_VERIFY.md). Large-field analogue and higher derivatives are open.
-- (H-thr) is proved conditional on (H-hist2), a new hypothesis of the (H-hist) kind (SOURCES_HTHR2_VERIFY.md).
-- (FX) is reduced to R2, O2 and O3 (the last two proposed closed in SOURCES_FX_O23.md, unverified; new O4 open). The reverse-scaling lemma (O1(b)) is verified (SOURCES_FX_O1_VERIFY.md); R2 (kappa_fin >= kappa_final) is the one point it leaves open (SOURCES_FX_R2.md is a stub).
-- Open: nontriviality (NT); (FX), (H-hist) and (H-hist2) as above. No O(4) invariance, infinite volume, mass gap, or uniqueness. This is not a solution of the Clay problem.
+- Verified: the assembly (ASSEMBLY_VERIFY.md); limit points satisfy the torus forms of OS0-OS3 given the uniform bound (H-U). The bridge (B-N1) is derived given the Gevrey bound (S).
+- The sources block is now a verified reduction with named open inputs. D1 is verified; D2, D2C, D3, D3R and D3W8 are verified with corrections; D4/D5 are verified with (FX) as the gap.
+- (H-hist): chain (SM) + (G-gain), both verified; G3 (the chi_k surface term) is proved given (Q); (Q) reduces to (3.132) + (E_U) + LOC (reduced; SOURCES_Q, CDC, EU, LOC).
+- (H-thr) follows from (H-hist2) (verified reduction; SOURCES_HTHR2, SOURCES_HHIST2).
+- (FX): O1, O2, O3 and R2 are verified. O3 depends on N3. N3 is reduced to (H-hol): the small-field part is a verified reduction (SOURCES_HHOL); the large-field part is reduced to (M-A), (M-B), (M-C). (M-B) is verified with p_0 >= 17/(gamma_0 A_1^2). (M-A') (normalized-ratio bookkeeping) is open (SOURCES_MA, MA2).
+- Open: nontriviality (NT); the inputs named above. No O(4) invariance, infinite volume, mass gap, or uniqueness. This is not a solution of the Clay problem.
+
+### Paper, Lean, numerics
+
+- paper/main.pdf is one 51-page article (Theorem 2 chapter + assembly), unverified as a whole.
+- lean/ holds 17 files, no sorry (standard axioms only); see lean/README.md.
+- Numerics (floating point unless marked): first-step beta_1(L) for L = 2..11 is 0.630, 0.664, 0.757, 0.743, 0.803, 0.851, 0.868 (numerics/NUMERICS.md).
+- Competing account: Sussman and Alpoge (citation below) reach the same route and were not read by any derivation here.
 
 ## How the pieces fit
 
-The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas and the exact identities. The paper (paper/main.pdf, 32 pages) is the LaTeX version of the v4 chapter. notes/INDEX.md lists every file with its state.
+The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 51 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
 
 ## Independence and prior work
 
