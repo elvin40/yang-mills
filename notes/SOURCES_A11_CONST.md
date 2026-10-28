@@ -161,15 +161,15 @@ No ratio bound is in class (d) (§8). The derivations in §1–§7 need the foll
 | S1 | (T1) γ²B′ ≤ (1 + β_0)² − 1 | implicit in (2.6) | upper bound on γ | after β_0, B′ (R) | in v4 §1.2 γ_* (c) |
 | S2 | (T2) log γ^{−2} ≥ 2p, (T3) log γ^{−2} ≥ p/β_0, for p ∈ {p_0, p_1, q_0, q_1, r, κ_0/2} | no | upper bound on γ | after β_0, the exponents | new, admissible [P] |
 | S3 | (T4) β_0 ≤ 1/2 | no | upper bound on β_0 | β_0 first | admissible; Balaban uses 1/7 [I, v4 §1.2] |
-| S4 | M_2 ≥ 1/δ (covers 2δM_2 ≥ 1 in (3.7) and δLM_2R_{k+1} ≥ R_k on p. 268) | no | lower bound on M_2 | after δ (decay rate of [15], depends on d, L), before γ | new; up-set; no upper bound on M_2 found on pp. 257–280 [P]; not in HIGHER_M1 §B (which covers M) |
-| S5 | A_1/A_0 ≤ 1/(80B_3) ((3.7)); A_1/A_0 small ((3.9)) | "A_1/A_0 sufficiently small" | upper bound on A_1 | after A_0, B_3; before γ | admissible; project reads A_0 ≫ A_1 [I, SOURCES_D3_VERIFY]; A_1 is not in HIGHER_M1 §B2.2's order line: insert "A_0, p_0 → A_1, p_1 → γ" |
+| S4 | M_2 ≥ 1/δ (covers 2δM_2 ≥ 1 in (3.7) and δLM_2R_{k+1} ≥ R_k on p. 268) | no | M_2 = L²M_1; S4 is the lower bound M_1 ≥ 1/(L²δ_[15]) | after δ (decay rate of [15], depends on d, L), before γ | new; up-set; no upper bound on M_2 found on pp. 257–280 [P]; not in HIGHER_M1 §B (which covers M) |
+| S5 | A_1/A_0 ≤ 1/(80B_3) ((3.7)); A_1/A_0 small ((3.9)) | "A_1/A_0 sufficiently small" | lower bound on A_0: A_0 ≥ 80B_3A_1; up-set in A_0 | A_0 after A_1 and B_3; before γ | admissible; project reads A_0 ≫ A_1 [I, SOURCES_D3_VERIFY]; A_1 is not in HIGHER_M1 §B2.2's order line: insert "A_1 → A_0 → γ" (R1) |
 | S6 | 30d²L²B_3²(1 + β_0)e^{−R_k} ≤ 1/20; O(1)44d²B_3²(1 + β_0)(A_0/A_1)e^{−R_k} < 1 | "γ sufficiently small" | upper bound on γ via R_k ≥ (log γ^{−2})^r | after A_1, B_3, β_0, r | admissible [P] |
 | S7 | e^{−R_k} ≤ g_k^N ("any positive power of g_k", p. 269) | asserted | upper bound on γ; needs r > 1 | after r, N | admissible if r > 1; r > 1 not on the pages read [I] |
 | S8 | C(β, κ_0)γ⁴ < 1 for (2.46); γ^{−2} ≥ 2D′ | "κ_0 ≥ 7 and g sufficiently small" | upper bound on γ | after β, D′, κ_0 | (S) of v4 §1.2 covers 2D′ (c_sw ≥ 2) [I] |
 | S9 | g_kO(p_0³(g_k)) ≤ B_0 (p. 278) | "multiplication by g_k yields small bounds" | upper bound on γ | after A_0, p_0, B_0 | admissible [P] |
 | S10 | 2(1 + β_0)L^{−2} + 4/10 < 1 ((3.8)) | implicit | condition on L | L odd > 11 | holds [P] |
 | S11 | (1 + β_0)^{κ_0} is a fixed factor in the g^{κ_0} ratio | no | none (fixed number) | κ_0, β_0 before γ, either order | no cycle: no printed step needs it below 1 + β_0 [P, on pp. 257–280] |
-Cycle check [P]: every new condition is an up-set in M_2 or a down-set in A_1 or γ. All arguments sit left of the constrained parameter in the order d, L → κ, κ_0, β (= 1/4), δ → … → M_1 → M → M_2 → α's (C_i, q_i) → ε_1 → ρ_0 → A_0, p_0 → A_1, p_1 → γ → g, with β_0 and B′ (through R) fixed before γ (v4 §1.2). M_2 enters no condition on an earlier constant on the pages read. So no cycle.
+Cycle check [P]: every new condition is an up-set in M_2 (that is, in M_1) or in A_0, or a down-set in γ. All arguments sit left of the constrained parameter in the order d, L → κ, κ_0, β (= 1/4), δ → … → κ_1 → walk, WC, level constants → M_1 → M_2 → M → α's → ε_1 → ρ_0 → exponents (p_0 → p_1 → q_0 → q_1) → A_1 → A_0 → C_0 → C_1 → γ → g (SOURCES_ORDER_CANON B, R1–R3), with β_0 and B′ (through R) fixed before γ (v4 §1.2). M_2 enters no condition on an earlier constant on the pages read. So no cycle.
 Limit: β_0 enters S1–S3, S6, S11 only as a fixed number. Balaban's "β_0 can be chosen arbitrarily small, if g is sufficiently small" is consistent with this order (β_0 fixed, then γ); no step on pp. 257–284 needs β_0 → 0 [P, reading].
 
 ## §10 Conclusion
@@ -178,7 +178,7 @@ Residue (not blocking A11):
 1. p_1(g) = (log g^{−2})^{p_1}, p_1 < p_0 is taken from CMP 122 I (1.27) [I]; CMP 119 (3.43) prints only "C_1p_1(g_k)".
 2. pp. 281–284 read in OCR only (Theorem 2 proof; no Theorem 1 inductive bound there).
 3. S7 needs r > 1 (exponent in (2.5)); not printed on pp. 255–284.
-4. Two order entries to add to HIGHER_M1 §B2.2 / Group C: M_2 ≥ 1/δ (S4) and A_1 between A_0 and γ (S5). Both admissible.
+4. Two order entries to add to HIGHER_M1 §B2.2 / Group C: M_2 ≥ 1/δ (S4) and A_1 before A_0 (S5). Both admissible.
 5. The restrictions "from the paper [I]" on κ, M, ε_j, α_{0,j}, α_{1,j} (p. 262) are CMP 109 conditions; the sweep found no cross-scale use in CMP 109 [I, v4 §2.3]; their threshold forms are outside this file.
 Suggested TRUST_LEDGER edit (not made): A11 status "the later inequalities not located" → "located and covered: SOURCES_A11_CONST §8 (all class (b)); side conditions S1–S11 admissible; residue items 1–3".
 
@@ -189,3 +189,5 @@ Suggested TRUST_LEDGER edit (not made): A11 status "the later inequalities not l
 Firewall kept. No existing file edited. Status: complete 2026-10-28, unverified.
 
 Corrections after verification (SOURCES_A11_CONST_VERIFY, 2026-10-28): list omissions p_0³(g_k) (p. 278), β_j(g_{j−1}) = β′_j (pp. 259, 282; no ratio bound needed), the multi-scale use of g_k^{−2}(·) − g_k^{−2} on p. 277 (needs (2.6) at general n − m); (2.6)×(2.7) gives (1 + β_0)², fixed by monotonicity of gℓ^q in g for ℓ > 2q (same fix for α_{i,j} and ε_{k+1} ≤ (1 + β_0)ε_k); u_j(x) = φ_ju_j + (1 − φ_j)u_{j−1} (φ swapped); order M_1 → M_2 → M (p. 245: M_2 = L²M_1, M ≫ M_2) — add M > M_2 to HIGHER_M1 §B; "r > 1" closed: p. 245 prints r ≥ 2; (3.7) halves need one strict; (2.46) keeps R_1, so R_1g^{κ_0−6} < 1 goes into S8; p. 283 sketch needs κ > 10 log L (outside A11). Inherited: p_1(g) form from CMP 122.
+
+Order-canon fixes (SOURCES_ORDER_CANON Task C, 2026-10-28): C-11a §9 cycle-check order replaced by canon B (κ_1 → walk, WC, level constants → M_1 → M_2 → M → α's → ε_1 → ρ_0 → exponents → A_1 → A_0 → C_0 → C_1 → γ → g); C-11b S5 is a lower bound on A_0 (A_0 ≥ 80B_3A_1), A_0 after A_1 (R1); C-11c residue item 4 "A_1 before A_0"; C-11d S4 row M_2 = L²M_1, S4 = M_1 ≥ 1/(L²δ_[15]).

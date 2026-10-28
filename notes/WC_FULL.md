@@ -12,7 +12,7 @@ Every corrected statement of the verify files is used in its corrected form. Whe
  Otherwise it is a corridor bond; it then joins two adjacent blocks B(c_−), B(c_+), and c = ⟨c_−, c_+⟩ is a corridor (A3 §3.0 [V CMP 96 pp. 244–245]). For each corridor c, b_0(c) is the corridor bond that CMP 109 p. 267 eliminates.
  The partition into blocks is the partition used by the averaging Q̃ = Q_1(U_1) (identification [I-strong], §9 item I3).
 0.2 Fields. Fields take values in the Lie algebra 𝔤 of G ⊂ U(N) with X·Y = tr X*Y and tr 1 = 1 (A3 §0.2 [V CMP 99 p. 392]). For g ∈ G, Ad(g) is orthogonal. ‖B‖² = Σ_b|B(b)|². For a block, S_y(B) := Σ_{b⊂B(y)}|B(b)|²; S_b := Σ_yS_y; S_c := the sum over corridor bonds. So ‖B‖² = S_b + S_c.
-0.3 Background. U obeys (H1)–(H3) of A3 §0.5: the regularity conditions (3.35)–(3.36) of CMP 99 with parameters M, α_0; M ≥ max(M_1(d, L), L); Mα_0 ≤ α_*(d, L). V := U_1 is the induced unit-lattice background.
+0.3 Background. U obeys (H1)–(H3) of A3 §0.5: the regularity conditions (3.35)–(3.36) of CMP 99 with parameters M, α_0; M ≥ max(M_99(d, L), L); Mα_0 ≤ a_L. V := U_1 is the induced unit-lattice background.
  By A3-R3 (input R3 of A3 §2.1) [R], on every set of unit ℓ^∞-diameter ≤ 8M there is a gauge with V(b) = e^{iA_1(b)}, |A_1(b)| ≤ c_4Mα_0, c_4 = c(d, L). Such a gauge is called regular for the set.
  A block has diameter L ≤ 8M by (H2).
 0.4 Curl. For a plaquette p with base corner p_0 (the lowest corner) the covariant curl is the linearized holonomy: if V_s(b) := e^{isB(b)}V(b), then V_s(∂p) = e^{is(∂^VB)(p) + O(s²)}V(∂p), V(∂p) the holonomy from p_0.
@@ -54,7 +54,7 @@ such that for every real regular U and every Z_0 as in 0.8:
  (ii) (real walk expansion) C^{(k)}(Z_0) = Σ_ωT_ω with (L1)–(L2), |T_ω(b, b′)| ≤ (4/γ_exp)(c_1ρ)^{|ω|}e^{−½ε d(ω, b, b′)}, absolutely convergent, and after regrouping it has the CMP 116 p. 13 form: one domain X_0 with X̃_0^5 = Z̃_0, every other domain X with dist(X, Z_0) > ⅔M, and every factor kernel vanishing within ⅓M_1 of the boundary of its domain (for X_0 by 5.4(d), with margin M_1; for every other factor by (L1) with the band, see 5.4(d) and WG_FULL 0.4);
  (iii) (complex points) at every U_c in the α′-space, Re⟨u, A_Z(U_c)u⟩ ≥ ½γ_exp‖u‖², C^{(k)}(Z_0; ·) is analytic there, and (ii) holds with 4/γ_exp → 8/γ_exp, ε → ε″;
  (iv) (resolvent) (i)–(iii) hold for (x + A_Z)^{−1}, x ≥ 0, uniformly in x, and the per-walk prefactor improves to 4/(γ_exp + x) (real) and 8/(γ_exp + x) (complex). Reason: the leading factor C_□(x) of each walk obeys ‖C_□(x)‖_ε ≤ 2/(c + x), c = ½γ_exp (real) or ¼γ_exp (complex), because x ≥ 0 raises the real part by x and does not change the Combes–Thomas error (5.5). So the x^{−1/2} integral for (C^{(k)})^{1/2} converges.
- The constants are uniform in k, η, Z_0, M ≥ M_1, and the background. The proof does not use CMP 99 Theorem 3.15 or any transfer from the axial gauge (§8).
+ The constants are uniform in k, η, Z_0, M ≥ M_99, and the background. The proof does not use CMP 99 Theorem 3.15 or any transfer from the axial gauge (§8).
 ## §1 The exponential gauge term of CMP 109
 
 1.1 Contours [V CMP 109 p. 252]. For y ∈ T^{(1)} and x = y + n ∈ B(y), G(y, x) is the family of shortest staircase contours from y to x. There is one contour for each order of the coordinate directions μ with n_μ ≠ 0, and |n_μ| ≤ (L−1)/2.
@@ -174,7 +174,7 @@ by Lemma P_exp. By (3.1), (1 + ε_7)^{−1} ≥ 8/9 and 1 − η_6 ≥ ¾, so th
  A block outside Z_0 carries B = 0 there, hence S_y = P_y = G_y = 0, and Lemma E holds trivially. So the concern "Dirichlet data break gauge invariance at ∂Z_0" does not apply.
  (c) Corridors that cross ∂Z_0 are handled by (A3-4.3) exactly as in the axial case: (A3-4.3) holds for every B with Q̃B = 0, and B = 0 on the outer block is one such case.
  Inherited: dist(Z_0, Λ_k^c) > RM (A3 §0.1; item I6).
-3.4 Uniformity [P]. γ_exp = ¼γ_e depends on d, L (through K_b, m_L) only. The smallness (3.1), (H_E) depends on d, L, N, a. Nothing depends on k, η, Z_0, M ≥ M_1, or the background beyond (H1)–(H3), as in A3 §6.6.
+3.4 Uniformity [P]. γ_exp = ¼γ_e depends on d, L (through K_b, m_L) only. The smallness (3.1), (H_E) depends on d, L, N, a. Nothing depends on k, η, Z_0, M ≥ M_99, or the background beyond (H1)–(H3), as in A3 §6.6.
 3.5 Remark (value). For 2 ≤ L ≤ 9, m_L = 1/L, so γ_e^{−1} = K_b(1 + 6dL) + 6L ≤ 64d³L^{2d+1}(1 + 6dL) + 6L. The block constant 1/K_b is of order 10^{−5}–10^{−7} for d = 2–3, L = 3 (§7.3), and γ_exp is smaller. §7 shows that the true constant at U = 1 is of order 10^{−1}.
  The proof constants are crude, not sharp.
 ## §4 The walk (tree) expansion of A_exp
@@ -271,7 +271,7 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  N̂_P^{−1}(U_c) = Σ_ωT_ω(U_c), |T_ω| ≤ (8/c_−)(c_1ρ^c)^{|ω|}e^{−½ε^ad(ω)}, ε^a := min{½δ^b, c_−/(16c_+^bΣ(½δ^b))} ≥ ½ε^{real}(c_+^b, δ^b),
  the series converges uniformly, and N̂_P^{−1} is analytic on 𝒰(a).
  Proof. Real truncated local operators obey Re ≥ ½c_− (A1_WALK_FULL 4.2(iv)). Lemma CP with c = ½c_− and Γ = Γ_b gives Re⟨u, N̂_{P,□}(U_c)u⟩ ≥ ¼c_−‖u‖² on 𝒰(a). Lemma CT (5.2(e)) with c = ¼c_− and kernel bound 2c_+^be^{−δ^bd} needs the Schur sum 2c_+^bεΣ(½δ^b) ≤ c_−/8 (Σ as in 5.2(e), which carries the factor from |e^x − 1| ≤ |x|e^{|x|}), which gives ε^a and ‖C_□‖ ≤ 2/(¼c_−) = 8/c_−.
- A1_WALK_FULL §4–§5 and 6.2–6.3 then run unchanged, because concatenation is algebraic and Lemma CT is accretive. The step factor ρ^c carries ‖C_□‖ ≤ 8/c_−, twice the real value; so K_F, K_W, and the threshold M_W double, and M_1 must obey M_1 ≥ M_W^c ≈ 2M_W (admissible: M_1 is chosen after d, L, c_±).
+ A1_WALK_FULL §4–§5 and 6.2–6.3 then run unchanged, because concatenation is algebraic and Lemma CT is accretive. The step factor ρ^c carries ‖C_□‖ ≤ 8/c_−, twice the real value; so K_F, K_W, and the threshold M_W double, and M_1 must obey M_1 ≥ M_W^c ≈ 2M_W (admissible: M_1 is chosen after d, L, c_±, and after the level constants of 6.4–6.7).
  Rate: min{½δ, x/2} ≥ ½min{½δ, x}, so the loss is at most a factor ½, in the Combes–Thomas branch only. Each T_ω(U_c) is a finite product of analytic factors; each C_□(U_c) is analytic because an analytic invertible matrix has an analytic inverse (Cramer's rule).
  The series converges uniformly, so its sum is analytic (Weierstrass), and multiplying by N̂_P(U_c) term by term gives I (A1_WALK_FULL §5). ∎
 6.3 Why four levels [V; RESIDUE 5.2–5.4, Q1, Q5]. Theorem 3.4 of CMP 99 continues only G′, (Q′G′²Q′*)^{−1}, R, G. Theorem 3.12 (p. 423) and the p. 427 tree expansion of G_1 are stated for G-valued U only; a scan of CMP 99 pp. 400–434 finds no complex statement for G_1, H, H_1, or (QGQ*)^{−1} (RESIDUE Q5).
@@ -279,36 +279,37 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  a_1 (G; printed) ⊃ α‴ ((QGQ*)^{−1}, H, G_1) ⊃ α″ ((QG_1Q*)^{−1}, A_exp) ⊃ α′ (A_Z, C^{(k)}(Z_0)).
 6.4 Level a_1 → α‴ [P given (Th3.4), the complex walk form of G [R], (C) for G]. On 𝒰(b⁗), b⁗ := (no J-constraint, a_1), Theorem 3.4 gives G analytic with the inequalities of Theorems 3.1–3.3.
  The walk form of G at complex points is [R]: Theorem 3.4's "quantitative statements … small perturbations" with Theorem 3.10 (each walk term is a finite product of operators that Theorem 3.4 continues).
- Its constants are c_+⁗ = c_+(1 + O(a_1)), because ‖Ad(e^{iA′})‖ ≤ e^{2|A′|}, and δ⁗ = δ_G. Put Γ_4 := 2c_+⁗S(δ_G) and choose α_1‴ ≤ c_3a_1, c_3 := c_Pc_−/(c_− + 4Γ_4). Then t(α‴, b⁗) ≥ 1 + 4Γ_4/c_−, and Lemma AW with P = G gives the walk expansion of (QGQ*)^{−1} on 𝒰(α‴), rate ε_3 ≥ ½ε (ε = the real A1-W rate).
+ Its constants are c_+⁗ = c_+(1 + O(a_1)), because ‖Ad(e^{iA′})‖ ≤ e^{2|A′|}, and δ⁗ = δ_G. Put Γ_4 := 2c_+⁗Σ(δ_G) and choose α_1‴ ≤ k_3a_1, k_3 := c_Pc_−/(c_− + 4Γ_4). Then t(α‴, b⁗) ≥ 1 + 4Γ_4/c_−, and Lemma AW with P = G gives the walk expansion of (QGQ*)^{−1} on 𝒰(α‴), rate ε_3 ≥ ½ε (ε = the real A1-W rate).
  Then H = GQ*(QGQ*)^{−1}, H*J, Δ_π^{(2)}, and the tree expansion G_1 = Σ_nG(Δ_π^{(2)}G)^n of WG_FULL §3.1–3.7 run unchanged on 𝒰(α‴): every step concatenates analytic kernels, and the Neumann condition (3.137) uses |J| < α_0‴ with the J-row
- α_0‴ ≤ min(a_{**}/M, c′M^{−11}) (WG §3.6 Neumann condition; WG open point WG-1 for the free M^{−½|ω|} factor).
+ α_0‴ ≤ min(a_{**}/M, c″M^{−1}M_1^{−12}) (G_1 row, A1_WALK_FULL F3; WG §3.6 Neumann condition; WG open point WG-1 for the free M^{−½|ω|} factor).
  Result: (W_G1) on 𝒰(α‴), constants B_1‴ = O(1)B_1, rate δ_1‴ = (1 − θ)·½ε_3 ≥ ½δ_1.
-6.5 Level α‴ → α″ [P given 6.4, (C) for G_1]. Put Γ_3 := 2B_1‴S(δ_1‴). The real lower bound for G_1 is c_{−,1} := c_−(G_1) ≥ c_−(1 − O(Mα_0)) [C, A1_KERNEL §9 order line]. Choose α″ ≤ c_2α‴ componentwise, c_2 := c_Pc_{−,1}/(c_{−,1} + 4Γ_3).
+6.5 Level α‴ → α″ [P given 6.4, (C) for G_1]. Put Γ_3 := 2C_𝒟^{(1)}B_1‴Σ(δ_1‴) (tree set-form count, A1_WALK_FULL 6.9a Fix A). The real lower bound for G_1 is c_{−,1} := c_−(G_1) ≥ c_−(1 − O(Mα_0)) [C, A1_KERNEL §9 order line]. Choose α″ ≤ k_2α‴ componentwise, k_2 := c_Pc_{−,1}/(c_{−,1} + 4Γ_3), and α_1″ ≤ min(a_𝒢, a_t) (the 𝒢-weight caps below).
  Lemma AW with P = G_1 gives the complex tree expansion of (QG_1Q*)^{−1} on 𝒰(α″), rate ε_2 ≥ ½ε_1^{real}(B_1‴, δ_1‴).
  The a-term of (QG_1Q*)^{−1} is diagonal. Proposition W_N (4.2) then holds on 𝒰(α″) with constants B_A″, ρ_A″, δ_A″ ≤ min(½ε_2, δ_1‴): concatenation is algebraic and works for complex kernels; the explicit pieces C and 𝒢*𝒢 are analytic in U_c (M is analytic near 1, Q̃ is explicit), with ‖Ad(e^{iA′})‖ ≤ e^{2|A′|} absorbed in B_A″.
  Bound for the complex 𝒢 weights. At real U the weights are n^{−1}(1 + O(c_wMα_0)) (Lemma G(b)–(c)). On 𝒰(α″) the mean (0.10) continues analytically by the implicit function theorem, and the formula ω_Γ = (Σψ)^{−1}ψ_Γ of Lemma G(b) continues with it (complex A_Γ, φ analytic on |z| < 2π). The power series of φ − 1 has absolute coefficient sum ≤ 0.6|z| for |z| ≤ 1, and ‖ad_{iA}‖ ≤ 2√N|A| also for complex A. So ā ≤ 1.2√N max_Γ|A_Γ| and ‖ω_Γ‖ ≤ (1 + 4ā)/n.
- At real points max|A_Γ| ≤ (π/2)w ≤ 0.085/√N; the complex shift adds O(d(L−1)α_1″). For α″ small (after d, L, N), max|A_Γ| ≤ 0.2/√N, so ā ≤ ¼ and ‖ω_Γ‖ ≤ 2/n. With transport factors ‖t_{Γ,b}‖² ≤ 2 for α_1″ small, the proof of Lemma G(c) gives ‖𝒢(U_c)*𝒢(U_c)‖ ≤ 4·2c_𝒢 = 8c_𝒢 on 𝒰(α″); this is the 𝒢 part of B_A″.
-6.6 Level α″ → α′: A_Z accretive [P given 6.5, Theorem L]. A_exp(U_c) is analytic on 𝒰(α″) with ‖A_exp‖ ≤ Γ_1″ := 2B_A″S(δ_A″) (Schur on W_N). At real points A_exp ≥ γ_exp (Theorem L), hence Re⟨u, A_exp(U_c^0)u⟩ ≥ γ_exp‖u‖² for complex u (6.1 Remark).
- Choose α′ ≤ c_1α″, c_1 := c_Pγ_exp/(γ_exp + 2Γ_1″). Then t(α′, α″) ≥ 1 + 2Γ_1″/γ_exp, and Lemma CP gives
+ At real points max|A_Γ| ≤ (π/2)w ≤ 0.085/√N; the complex shift adds O(d(L−1)α_1″). For α_1″ ≤ a_𝒢(d, L, N), max|A_Γ| ≤ 0.2/√N, so ā ≤ ¼ and ‖ω_Γ‖ ≤ 2/n. With transport factors ‖t_{Γ,b}‖² ≤ 2 for α_1″ ≤ a_t(d, L, N), the proof of Lemma G(c) gives ‖𝒢(U_c)*𝒢(U_c)‖ ≤ 4·2c_𝒢 = 8c_𝒢 on 𝒰(α″); this is the 𝒢 part of B_A″.
+6.6 Level α″ → α′: A_Z accretive [P given 6.5, Theorem L]. A_exp(U_c) is analytic on 𝒰(α″) with ‖A_exp‖ ≤ Γ_1″ := 2C_𝒟B_A″Σ(δ_A″) (Schur on W_N, with the count C_𝒟). At real points A_exp ≥ γ_exp (Theorem L), hence Re⟨u, A_exp(U_c^0)u⟩ ≥ γ_exp‖u‖² for complex u (6.1 Remark).
+ Choose α′ ≤ k_1α″, k_1 := c_Pγ_exp/(γ_exp + 2Γ_1″). Then t(α′, α″) ≥ 1 + 2Γ_1″/γ_exp, and Lemma CP gives
  Re⟨u, A_exp(U_c)u⟩ ≥ ½γ_exp‖u‖² on 𝒰(α′).
  Compression to Z_0 keeps this bound (3.3(a), now for the real part of the form). This proves the first claim of Theorem WC(iii). The explicit pieces 𝒢 and C need no separate estimate: they are inside Γ_1″.
 6.7 The walk expansion at complex points [P]. Run §5 at each U_c ∈ 𝒰(α′) with B_A → B_A″, δ_A → δ_A″. Local positivity: Re⟨u, A_□(U_c)u⟩ ≥ ½γ_exp − 2B_A″S(½δ_A″)e^{−2δ_A″M_1} ≥ ¼γ_exp for M_1 large (restriction of 6.6 minus the truncation error 5.2(c)).
- Lemma CT with c = ¼γ_exp gives ‖C_□‖_{ε″} ≤ 8/γ_exp with ε″ := min{½δ_A″, γ_exp/(16B_A″Σ(½δ_A″))}, Σ(½δ_A″) ≤ (1 + 4/(eδ_A″))S(¼δ_A″) (5.2(e)). Then 5.3–5.4 give
+ Lemma CT with c = ¼γ_exp gives ‖C_□‖_{ε″} ≤ 8/γ_exp with ε″ := min{½δ_A″, γ_exp/(16c_A″Σ(½δ_A″))}, c_A″ := C_𝒟B_A″, Σ(½δ_A″) ≤ (1 + 4/(eδ_A″))S(¼δ_A″) (5.2(e)). Then 5.3–5.4 give
  C^{(k)}(Z_0; U_c) = Σ_ωT_ω(U_c), |T_ω(b, b′)| ≤ (8/γ_exp)(c_1ρ″)^{|ω|}e^{−½ε″d(ω, b, b′)}, Σ_ω|T_ω| ≤ (16/γ_exp)e^{−½ε″|b−b′|},
  with the X_0 structure of 5.4 (the geometry does not depend on U_c). Each T_ω(U_c) is analytic (6.2 proof). The series converges uniformly on 𝒰(α′), so C^{(k)}(Z_0; ·) is analytic there and equals A_Z(U_c)^{−1}.
  The resolvent (x + A_Z(U_c))^{−1}, x ≥ 0, follows as in 5.5, since x ≥ 0 raises the real part by x: ‖C_□(x)‖_{ε″} ≤ 2/(¼γ_exp + x) ≤ 8/(γ_exp + x), and the per-walk prefactor is 8/(γ_exp + x). This is Theorem WC(iii)–(iv).
  Remark [P]. No two-constant (Hadamard) step is used. Accretivity at each complex point gives the Combes–Thomas decay directly, at the full rate ½ε″, and it keeps the walk-level (s-rule) structure. The two-constant route gives kernel decay only (SOURCES_WC_EXPGAUGE 6.4).
 6.8 The chain, with constants [P; RESIDUE 7.2, Q7]. With c_P from 6.0:
- α′ ≤ c_1α″, c_1 = c_Pγ_exp/(γ_exp + 2Γ_1″), Γ_1″ = 2B_A″S(δ_A″);
- α″ ≤ c_2α‴, c_2 = c_Pc_{−,1}/(c_{−,1} + 4Γ_3), Γ_3 = 2B_1‴S(δ_1‴);
- α_1‴ ≤ c_3a_1, c_3 = c_Pc_−/(c_− + 4Γ_4), Γ_4 = 2c_+⁗S(δ_G), a_1 from CMP 99 Theorem 3.4;
- J-row: α_0‴ ≤ min(a_{**}/M, c′M^{−11}), and the mixed row of 6.0 gives α_0^{(n)} + α_1^{(n)} ≤ c_nα_0^{(n+1)}.
- So α′ ≤ c_1c_2c_3a_1 in the α_1-row. The mixed α_0-row passes the J-row smallness (which depends on M) to the α_1-components of α″ and α′ (RESIDUE Q7 note). This is harmless, because M is fixed before every α^{(n)}.
+ α′ ≤ k_1α″, k_1 = c_Pγ_exp/(γ_exp + 2Γ_1″), Γ_1″ = 2C_𝒟B_A″Σ(δ_A″);
+ α″ ≤ k_2α‴, k_2 = c_Pc_{−,1}/(c_{−,1} + 4Γ_3), Γ_3 = 2C_𝒟^{(1)}B_1‴Σ(δ_1‴);
+ 𝒢-weight caps: α_1″ ≤ a_𝒢(d, L, N), α_1″ ≤ a_t(d, L, N) (6.5);
+ α_1‴ ≤ k_3a_1, k_3 = c_Pc_−/(c_− + 4Γ_4), Γ_4 = 2c_+⁗Σ(δ_G), a_1 from CMP 99 Theorem 3.4;
+ J-row: α_0‴ ≤ min(a_{**}/M, c″M^{−1}M_1^{−12}) (G_1 row), and the mixed row of 6.0 gives α_0^{(n)} + α_1^{(n)} ≤ k_nα_0^{(n+1)}.
+ So α′ ≤ k_1k_2k_3a_1 in the α_1-row. The mixed α_0-row passes the J-row smallness (which depends on M and M_1) to the α_1-components of α″ and α′ (RESIDUE Q7 note). This is harmless, because M_1 and M are fixed before every α^{(n)}.
  Rates. G: δ_G → (QGQ*)^{−1}: ε_3 ≥ ½ε → G_1: δ_1‴ ≥ ½δ_1 → (QG_1Q*)^{−1}: ε_2 ≥ ½ε_1^{real} → A_exp: δ_A″ → C^{(k)}(Z_0): ½ε″. At most a factor ½ is lost per accretive level, in the Combes–Thomas branch only.
- The final rate is a fixed positive constant of (d, L, N, a, a_0). It is not Balaban's ½δ_0. Consumers tolerate a fixed rate (A1_WALK_FULL §7.4; S2_G1_V7 B1.5).
-6.9 Order of constants [P; RESIDUE 7.3, Q7]. d, L, N → Balaban's real constants (δ_0, B_0, M_1, M, a_0, the real regularity α_0, and a_1 of Theorem 3.4), with M_1 ≥ M_W^c (6.2), M/M_1 > 10 and M/M_1 > 3(6 + c_X) (5.4) → c_±, ε (A1-W at real U, (C)) → Γ_4 → α‴ → B_1‴, δ_1‴, c_{−,1} → Γ_3 → α″ → B_A″, δ_A″; separately γ_exp (Theorem L; needs d, L, N only) → Γ_1″ → α′ → ε″, B_C = 16/γ_exp → α_* (S2_G1_V7 B1.4: α_0 + α_1 ≤ α_*, which needs α ≪ α′) → α (CMP 116 p. 15: α′ "much bigger than" α) → g (TRUST_LEDGER C5, M4).
- Each arrow goes from fixed constants to a later smallness. No α^{(n)} is bounded below by a later constant. So the order is acyclic.
- Ledger check [checked, RESIDUE 7.4, Q7]. TRUST_LEDGER.md has no condition on α′, α″, α‴ other than the object built here (row A1w). The conditions C5 ("α's after M"), WG-1 (α_0 ≤ c′M^{−11}, imposed on the J-row above), A13 (O(α_0 + α_1) in R_2, the small α), and M4 (α_{1,j} ∝ g_j(log)^{q_1}, the small α) are compatible.
+ The final rate is a fixed positive constant of (d, L, N, a, a_0, a_1) and the fixed caps a_**, c″, θ_c. It is not Balaban's ½δ_0. Consumers tolerate a fixed rate (A1_WALK_FULL §7.4; S2_G1_V7 B1.5).
+6.9 Order of constants [P; RESIDUE 7.3, Q7; SOURCES_ORDER_CANON B3–B22]. d, L, N → (d, L, N) constants and caps: δ_0, B_0, a_0, a_1 of Theorem 3.4, a_**, a_L, a_{−,1}, c″, a_𝒢, a_t, θ_c, M_99, and γ_exp (Theorem L; needs d, L, N only) (B5) → c_±, ε (A1-W at real U, (C)) (B11–B12) → B_A, δ_A, ε_WC (B13) → all level constants: c_+⁗, Γ_4, k_3, ε_3, B_1‴, δ_1‴, c_{−,1}, Γ_3, k_2, ε_2, B_A″, δ_A″, Γ_1″, k_1, ε″, B_C = 16/γ_exp (B14) → M_1, with M_1 ≥ M_W^c (6.2) (B15) → M_2 = L²M_1 (B16) → M, with M/M_1 > 10 and M/M_1 > 3(6 + c_X) (5.4) (B18) → α‴ → α″ → α′ (B20) → α_* (S2_G1_V7 B1.4: α_0 + α_1 ≤ α_*, which needs α ≪ α′) → α (CMP 116 p. 15: α′ "much bigger than" α), with the real regularity α_0 inside the α-chain (B22) → g (TRUST_LEDGER C5, M4).
+ Each arrow goes from fixed constants to a later smallness. The level constants are M-free and α-free (SOURCES_ORDER_CANON A.4); the domain sizes are fixed after M (A.6). No α^{(n)} is bounded below by a later constant. So the order is acyclic.
+ Ledger check [checked, RESIDUE 7.4, Q7]. TRUST_LEDGER.md has no condition on α′, α″, α‴ other than the object built here (row A1w). The conditions C5 ("α's after M"), WG-1 (α_0 ≤ c″M^{−1}M_1^{−12} for G_1, imposed on the J-row above), A13 (O(α_0 + α_1) in R_2, the small α), and M4 (α_{1,j} ∝ g_j(log)^{q_1}, the small α) are compatible.
  The new lower bounds on M/M_1 fit under C5's "M ≥ M(κ)". No conflict found.
 6.10 Proof of Theorem WC (assembly) [P].
  (i) is 3.3 (Theorem L with Λ = Z_0, then compression).
@@ -376,7 +377,7 @@ Source names. A1_WALK_FULL.md and WG_FULL.md are in ~/claude_code/yang_mills/; t
  P10 §5.5: resolvent (x + A_Z)^{−1}; bounds uniform in x ≥ 0, per-walk prefactor 4/(γ_exp + x), so the x^{−1/2} integral for (C^{(k)})^{1/2} converges.
  P11 Lemma CP (accretive hypothesis form). P12 Lemma AW (constant 8/c_−, rate loss ≤ ½, M_W doubles).
  P13 §6.4–6.7: four-level chain; A_Z accretive (½γ_exp) on α′; complex walk expansion and analyticity; the complex Combes–Thomas decay is proved directly by accretivity, with no two-constant step (6.7 Remark).
- P14 §6.8–6.9: chain constants c_1, c_2, c_3; order acyclic; no TRUST_LEDGER conflict.
+ P14 §6.8–6.9: chain constants k_1, k_2, k_3; order acyclic; no TRUST_LEDGER conflict.
 
 [R] reduced to printed statements.
  R1 (W_G1) Theorem WG-G1 rests on the printed sketches of CMP 99 Thms 3.7, 3.9, 3.10, p. 422, p. 427, and Lemma 2.1 of [4].
@@ -393,7 +394,7 @@ Source names. A1_WALK_FULL.md and WG_FULL.md are in ~/claude_code/yang_mills/; t
  I2 Locality of C̃^{(2)} (range ≤ L) and Q-locality of the A1-W/WG constructions.
  I3 Q̃ (CMP 109) = Q_1(U_1) (CMP 99), the blocks of (0.14) are the blocks of Q̃, and V^{(k)} of CMP 109 (2.5) is the background U_1 of A3.
  I4 A3-R2 (the A18 piece), inherited through (A3-6.1).
- I5 WG-1: the free M^{−½|ω|} factor at J-junctions needs α_0 ≤ c′M^{−11} (imposed on the J-row), or the exponential is used instead.
+ I5 WG-1: the free M^{−½|ω|} factor at J-junctions needs α_0 ≤ c″M^{−1}M_1^{−12} for G_1 (imposed on the J-row), or the exponential is used instead.
  I6 dist(Z_0, Λ_k^c) > RM (A3 §0.1; S2_G1_V7 B3.3(e)).
  I7 The tilde convention of CMP 99 is transferred to CMP 116 p. 13 by series usage; CMP 116 does not restate it. Not open in content (PF7 + P9 consistency), recorded for completeness.
  I8 Smoothness and analyticity of M near (1, …, 1) are read from (0.5)–(0.10). For Federbush's mean (0.10), which CMP 109 fixes, the constant is computed in Lemma G(b) (c_M ≤ 4√N); for a general admissible M only its existence is known. The Karcher-mean property used in Lemma G(c) is a standard fact (Karcher 1977), applied to (0.10).
@@ -413,3 +414,4 @@ Checks for an independent verifier, in priority order: (1) Lemma G(b)–(c), the
 8. §7.3 (F9). Script note added: poincare_exp.py prints a stale 1/K_b, 2× too small; 1.20·10^{−5} is correct.
 9. Recheck. Every "hence/so/it follows" was reread after the edits; each still has its justification. Open item, not changed here: the §9 source-name note says A1_WALK_FULL.md and WG_FULL.md now exist (written 2026-10-28); both files now exist in the folder.
 10. Regrade fixes (WC_FULL_VERIFY regrade, 2026-10-28). F7: 5.4(d) and Theorem WC(ii) now cite WG_FULL 0.4 as corrected (band by one-layer enlargement X → X⁺; c_X taken ≥ WG c_X + 2). Ledger: line-49 "R2′" → A3-R2′; I4 "R2 of A3" → A3-R2. Stale §9 source-name note replaced (both FULL files exist); the header source line updated to match. Item 9's open item is closed.
+11. Order-canon fixes (SOURCES_ORDER_CANON Task C, 2026-10-28): C-W1/W2 6.9 order replaced by canon B3–B22 (level constants before M_1; M_1 → M_2 → M; real α_0 inside the α-chain) plus the M-free sentence; C-W3/N2 J-row c′M^{−11} → c″M^{−1}M_1^{−12} at 6.4, 6.8, 6.9 ledger check, I5; C-W4/N1 caps α_1″ ≤ a_𝒢, a_t in 6.5 and the 6.8 chain list; C-W5/N3 rate list adds a_1 and caps; C-W6 chain constants k_1, k_2, k_3 (also P14), Γ_4, Γ_3 = 2C_𝒟^{(1)}B_1‴Σ, Γ_1″ = 2C_𝒟B_A″Σ, ε″ with c_A″ = C_𝒟B_A″; C-W7 M_99(d, L) in 0.3, 0.10, 3.4 and a_L in 0.3; C-W8 6.2 M_1 after the level constants.

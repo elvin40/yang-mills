@@ -67,7 +67,7 @@ It needs G_Γ to grow slower than e^{ε″M/8} in M. This file tries to show G_�
  (Hα-2) Ḡ²δ_SΛ̄_0 ≤ ¼. It holds if
  M ≥ M_Γ := (4/ε″)·log[16h³Γ_1⁴Ḡ²Λ̄_0(16W/γ_exp)²],  h = 4/(3γ_exp).
  Then (α_5 + G_Γ²δ_S)Λ_0 ≤ (α_5 + Ḡ²δ_S)Λ̄_0 ≤ ½, which is (Hα).
-4.4 Order of constants [P; no cycle]. d, L, N, a, a_0 → γ_exp, B_A, δ_A, ε, M_1 (WC) → Γ_1, K_½, Ḡ, Λ̄_0, W, ε″ → κ_1 → M ≥ max{WC conditions (M/M_1 > 10, > 3(6 + c_X)), A8 (H_κ), (H_M), (H_η), M_Γ, M_{α5}} → α_0, α_1, α_4, γ_2 → γ. M_Γ uses no κ_1 (σ ≡ 0). Nothing on the left of M depends on M. So "G_Γ grows slower than e^{ε″M/8}" holds in the strongest form: G_Γ is bounded.
+4.4 Order of constants [P; no cycle]. d, L, N, a, a_0 → κ_1 (R6) → γ_exp, B_A, δ_A, ε, Γ_1 → level constants incl. ε″ (R7; M-free by SOURCES_ORDER_CANON A.4) → M_1 → M_2 → K_½, Ḡ, Λ̄_0, W → M ≥ max{WC conditions (M/M_1 > 10, > 3(6 + c_X)), A8 (H_κ), (H_M), (H_η), M_Γ, M_{α5}, M > L²M_1} → α_0, α_1, α_4, γ_2 → γ. M_Γ uses no κ_1 (σ ≡ 0). Nothing on the left of M depends on M. So "G_Γ grows slower than e^{ε″M/8}" holds in the strongest form: G_Γ is bounded.
 4.5 Residue [I/R]. (a) The s-rule acts on walk terms of the (2.7) pieces and of A_exp (A8 I-b; CMP 116 p. 3 and p. 13 wording). If instead s entered before inversion, the resolvent of the truncated, non-compressed operator would need its own positivity bound; not treated. (b) WC(iv) on all of Λ rather than Z_0 (A7 4.4 Remark [P] there, unverified by a separate file). (c) W < ∞ of A8 (G4) [R to WC(ii)]. (d) Balaban's split point γ_1 is taken as A7's 4B_AS(θ′δ_A); any larger γ_1 only lowers the series bound, and the integral bound 8γ_exp^{−1/2}S(½ε) is γ_1-free. No numerical value of B_A, δ_A, ε, or W is known, so Ḡ and M_Γ are explicit formulas, not numbers.
 
 ## 5. Ledger
@@ -77,3 +77,5 @@ It needs G_Γ to grow slower than e^{ε″M/8} in M. This file tries to show G_�
  [P] 1.2 factorization Γ = E_0R(0); 1.3 coupling pieces and ranges; 2.1 0/1-truncation bound for any grouping; 2.3 ‖E_0‖ ≤ Γ_1; 3.4 ‖R(0)‖ ≤ K_½; 4.1 G_Γ ≤ Ḡ, M-free; 4.3 thresholds M_Γ, M_{α5}; 4.4 order.
  [I/R] 4.5 (a)–(d).
 Verdict: the [I] item of SOURCES_G3_N2 3.5 / VERIFY V5 is closed relative to the s-rule reading (a) and WC(iv) on Λ (b). G_Γ ≤ Ḡ uniform in M; (Hα) reduces to M ≥ max{M_Γ, M_{α5}} plus Balaban's small α_0, α_1, α_4, γ_2. Unverified.
+
+Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-G1 4.4 order replaced by canon B (κ_1 first, R6; level constants incl. ε″ before M_1, R7; M_1 → M_2 → K_½, Ḡ, Λ̄_0, W → M with M > L²M_1).

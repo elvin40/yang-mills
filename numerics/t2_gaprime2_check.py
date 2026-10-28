@@ -62,7 +62,7 @@ if __name__ == "__main__":
     for r in out['formula_vs_script']: print(r, flush=True)
     res = []
     # coprime p/q with large q (non-unit numerators); the proofs cover all real a
-    for p, q in [(1, 24), (1, 96), (1, 384), (13, 1218), (3, 1597), (1, 1536), (144, 1597)]:
+    for p, q in [(1, 24), (1, 96), (1, 384), (13, 1218), (7, 2213), (3, 1597), (21, 1597), (55, 1597), (144, 1597), (5, 1351), (1, 1536)]:
         r = harper(p, q, nk=3 if q < 1000 else 1); res.append(r); print(r, flush=True)
     out['harper'] = res
     json.dump(out, open(sys.argv[1] if len(sys.argv) > 1 else 'numerics/t2_gaprime2_check.json', 'w'), indent=1)

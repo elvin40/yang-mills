@@ -114,7 +114,7 @@ Check. For each constant, the conditions that bound it, and the constants they i
  - ρ_0: (M2) ρ_0 ≤ (LM)^{−2}(0.45a/16n)^{1/2}, ρ_0 ≤ 0.1. Needs L, M, N only. It may sit anywhere after M; HIGHER_M1 puts it after ε_1, which is consistent.
  - A_0, A_1, p_0 (and p_1, R_j rules): lower bounds only (CMP 119 p. 247–248; C2; C15; HIGHER_M1 B2.3 "(100MR)^d in p_0-conditions"). Need M, B_3, γ_0, R-rules, and (if a threshold is tied to ε_1, §9.2) ε_1. Never bound ε_1, α, M.
  - γ: B10 (M, κ), B11 (γ_2, ε_1, κ), (L1), (L2) (A_0, p_0, α_0, ε_1), CMP 122 (1.68) "a small", p. 379 σ small (A_1, p_1, M, R, C_0), N3 (d) (ρ). All earlier. γ is bounded only from above.
- Graph: every edge goes from an earlier to a later constant in d, L → δ → κ → κ_1 → walk constants → M_1 → M → β, α′ → α_1 → α_0 → α_3 → α_2 (and α_4, γ_2, α_6, a_1) → E_0 (absolute; may also be fixed first) → ε_1 → ρ_0 → A_1 → A_0, p_0, p_1 → γ → g. No condition bounds an earlier constant by a later one. No cycle [P, given the lists in §2–§8, MC §6, HIGHER_M1 B1].
+ Graph: every edge goes from an earlier to a later constant in d, L → δ → κ → κ_1 → walk constants → WC and level constants (incl. ε″) → M_1 → M_2 → M → β, α′ → α_1 → α_0 → α_3 → α_2 (and α_4, γ_2, α_6, a_1) → E_0 (absolute; may also be fixed first) → ε_1 → ρ_0 → exponents (p_0 → p_1 → q_0 → q_1) → A_1 → A_0 → C_0 → C_1 → γ → g (SOURCES_ORDER_CANON B, R1–R3). No condition bounds an earlier constant by a later one. No cycle [P, given the lists in §2–§8, MC §6, HIGHER_M1 B1].
  Shrink compatibility: Lemma MC shrinks α's (after M), then ε_1, then γ, then (if needed) raises A_0 — each change is at or after the position of the changed constant and alters only later constants' admissible sets. Raising M (C24) re-chooses α, ε_1, ρ_0, A_0, p_0, γ only (HIGHER_M1 B2.3). Raising A_0 re-chooses γ only.
  (I-ord): CLOSED [P]. Refinement of HIGHER_M1 §B2.2: (i) the α-chain internal order α_1 → α_0 → α_3 → α_2 (CMP 109 pp. 277–280); (ii) E_0 is absolute and ε_1-free (p. 21); (iii) A_1 before A_0 (A_0 ≫ A_1); (iv) ρ_0 needs only L, M, N.
 
@@ -137,3 +137,5 @@ Check. For each constant, the conditions that bound it, and the constants they i
 Effect on (M-C) (SOURCES_MC §10, MC_VERIFY §5, MC_IV0_VERIFY §5): open items were (I-ε), (I-ord), (M1), (I-V0) residual. (I-ε) and (I-ord) are now CLOSED [P] modulo the [I] items above. (M1) is the HIGHER_M1 B3 convention (TRUST_LEDGER C24). Unverified by an independent agent.
 
 STATUS: COMPLETE
+
+Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-O3 §10 graph order aligned to canon B (WC and level constants before M_1, M_2 after M_1, exponents before A_1 → A_0 → C_0 → C_1).

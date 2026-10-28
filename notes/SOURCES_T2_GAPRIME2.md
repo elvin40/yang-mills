@@ -84,3 +84,108 @@ Step 2 (X − |α| is close to 𝔏 − 2|α| on ψ). X − |α| = (𝔏 − 2|�
 Step 3. |α|(1 − 157|α|) ≤ |α|(1 − 157|α|)^{1/2} ≤ ‖(X − |α|)ψ‖ ≤ (1 − θ)|α| + 26|α|^{3/2}, i.e. θ ≤ 26|α|^{1/2} + 157|α|. This contradicts the hypothesis. So Q = 0. ∎
 Remarks. (1) No band-width statement and no rational flux is used; the proof works for every real α. It is the lattice form of the continuum argument "spec Π^†Π ⊂ {0} ∪ spec ΠΠ^† and ΠΠ^† = Π^†Π + 2|ef|". The lattice difficulty is that Π has a second zero (the symbol of ∇_0 + is∇_1 vanishes also at K = (−sπ/2, sπ/2) in the convention ∇_μ ↔ 1 − e^{iK_μ}, where the symbol of 𝔏 equals 4); the proof never uses the global identity spec X \ {0} = spec Y \ {0}, only the quadratic inequality of Step 1 on low-energy vectors, where that second zero is invisible. (2) The constants 26, 157 are crude. The numerics of §6 give the first band top at |α|(1 − 0.12|α|) and the second band bottom at |α|(3 − 0.6|α|) approximately, i.e. the true θ is O(|α|), not O(|α|^{1/2}).
 (3) Lemma 5.7 of S123 (inf spec 𝔏 ≥ |α| − Cα²) is not needed below.
+
+## 4. Reduction of A′ to 𝔏 ⊗ 1 − 2ασ_y
+
+Put A_c := 𝔏 ⊗ 1_2 − 2α σ_y (σ_y acts on the component index (b_0, b_1)) and R := A′ − A_c. For ψ = (ψ_0, ψ_1) write N_1(ψ) := ⟨ψ, (𝔏 ⊗ 1)ψ⟩ = Σ_{μ,ν}‖∇_μψ_ν‖² and a(ψ) := Σ_{μ,ν}‖∇_μψ_ν‖ ≤ 2N_1(ψ)^{1/2}.
+
+Where −2ασ_y comes from [P]. Replace every shift by 1 and every phase e^{±iα} by 1 in the O(α) parts of A′:
+- commutator block of (1.b): [T_0, T_1^*] → q̄ − 1 = e^{iα} − 1 ≈ iα, [T_1, T_0^*] → −iα, i.e. −ασ_y;
+- spin term: u_i → (e_0, e_1, −e_0, −e_1), so Σ_{i<j}u_i^†u_j → E_{01} − E_{10} − 1 and K → K̄ := (2E_{01} − 2E_{10})/(2i) = σ_y; −2 sin φ K → −α σ_y.
+The two contributions have the same sign and add. This is the lattice form of the continuum spin coupling 2efS (commutator half + Wilson spin half).
+
+Lemma 4.1 (remainder) [P; scaling also V]. For |α| ≤ 0.1 and every ψ:
+  ‖Rψ‖ ≤ 9.5|α|a(ψ) + 11α²‖ψ‖ ≤ 19|α|N_1(ψ)^{1/2} + 11α²‖ψ‖.
+Proof. By Lemma 1.1, (1.a), (1.b): A′ = 𝔏 ⊗ 1 + C + (cos φ − 1)c^†c − c_0^†δ − δ^†c_0 + δ^†δ − 2 sin φ K, with C the commutator block. So
+  R = (C + ασ_y) + (cos φ − 1)c^†c − c_0^†δ − δ^†c_0 + δ^†δ − 2 sin φ(K − K̄) − (2 sin(α/2) − α)σ_y.
+(i) C + ασ_y has entries (q̄ − 1)(T_1^*T_0 − 1) + (e^{iα} − 1 − iα) and its adjoint-type partner (1 − q̄)(T_1T_0^* − 1) + (…); Lemma 2.1 gives ‖(C + ασ_y)ψ‖ ≤ |α|a + α²‖ψ‖.
+(ii) ‖c‖ ≤ ‖c_0‖ + ‖δ‖ ≤ 2√2 + √2|α| ≤ 3.3, 1 − cos φ ≤ φ²/2 = α²/8: ‖(cos φ − 1)c^†c‖ ≤ 2α².
+(iii) ‖δ^†δ‖ ≤ 2α²; ‖δ^†c_0ψ‖ ≤ √2|α|(‖∇_1ψ_0‖ + ‖∇_0ψ_1‖) ≤ √2|α|a.
+(iv) δψ = (1 − e^{−iα})χ, χ := T_1ψ_0 + ψ_1, and c_0^† = (−∇_1^*, ∇_0^*)^T. So ‖c_0^†δψ‖ ≤ |α|(‖∇_1χ‖ + ‖∇_0χ‖); T_1^*∇_μT_1 = 1 − λ_μT_μ with |λ_μ − 1| ≤ |α| gives ‖∇_μT_1ψ_0‖ ≤ ‖∇_μψ_0‖ + |α|‖ψ_0‖. Total ≤ |α|a + 2α²‖ψ‖.
+(v) K − K̄: the six products u_i^†u_j are (phase)·(word)·E_{νν′} with words T_0, T_1, 1, T_0^*T_1, T_0^*, T_1^* (six letters in all) and phases in {1, −e^{∓iα}}. Each u_i^†u_j − ū_i^†ū_j and its adjoint is bounded on ψ by (letters)·max‖∇ψ_ν‖ + |α|‖ψ‖ (Lemma 2.1). Summing and dividing by 2: ‖(K − K̄)ψ‖ ≤ 6a + 4|α|‖ψ‖; 2|sin φ| ≤ |α|.
+(vi) |2 sin(α/2) − α| ≤ |α|³/24.
+Sum: (1 + √2 + 1 + 6)|α|a + (1 + 2 + 2 + 2 + 4 + 0.01)α² ≤ 9.5|α|a + 11α². ∎
+Numerics [V]: on eigenvectors of A′ with |eigenvalue| < 1.5|α| (Harper blocks q = 96, 384, 1597; both signs of α), ‖Rψ‖/|α|^{3/2} = 2.31, 2.34, 2.34. So R is of exact order |α|^{3/2} on low states, and the sign of −2ασ_y is right (with the opposite sign R would be of order |α|).
+
+Lemma 4.2 (a priori bound on the spectral subspace near 0) [P]. Let 0 ≤ c ≤ 1, |α| ≤ 10^{−3}, P := 1_{(−c|α|, c|α|)}(A′). For ψ ∈ ran P, ‖ψ‖ = 1: N_1(ψ) ≤ 6|α| and ‖A′ψ‖ ≤ c|α|.
+Proof. ‖A′ψ‖ ≤ c|α| and ⟨ψ, A′ψ⟩ ≤ c|α| by the spectral theorem. Lower form bound: ‖C‖ ≤ |α|; (cos φ − 1)c^†c ≥ −2α²; δ^†δ ≥ 0; |2Re⟨c_0ψ, δψ⟩| ≤ 2‖c_0ψ‖√2|α| ≤ 4|α|N_1^{1/2} (‖c_0ψ‖² ≤ 2N_1); |⟨ψ, Kψ⟩| ≤ 3 (Σ_{i<j}|z_i||z_j| ≤ (3/2)Σ_i|z_i|², and each link lies in two plaquettes), and 2|sin φ| ≤ |α|. So N_1 − 4|α|N_1^{1/2} ≤ (c + 4)|α| + 2α², which gives N_1^{1/2} ≤ 2|α| + (6α² + 5|α|)^{1/2} and N_1 ≤ 5.4|α| ≤ 6|α| for |α| ≤ 10^{−3}. ∎
+Corollary 4.3. For ψ ∈ ran P as in Lemma 4.2: ‖Rψ‖ ≤ 19·6^{1/2}|α|^{3/2} + 11α² ≤ 48|α|^{3/2}.
+Remark. Lemma 4.2 needs only first-order information, so §4 never meets the third-order term that forced the spectral subspace of 𝔏 in §3.
+
+## 5. Main theorem
+
+Theorem 5.1 ((G_A) for A′) [P]. Let 0 ≤ c < 1 and α_0(c) := ((1 − c)/100)². For every real α with 0 < |α| ≤ α_0(c):
+  spec A′ ∩ (−c|α|, c|α|) = ∅.
+Proof. Here |α| ≤ 10^{−4}, so Lemmas 4.2, 4.3 and Prop. 3.3 (with |α| ≤ 1/16) apply. Put θ := 1 − c − 48|α|^{1/2} − ε with ε > 0 so small that θ > 26|α|^{1/2} + 157|α|; this is possible because 74|α|^{1/2} + 157|α| ≤ 75.6|α|^{1/2} ≤ 0.756(1 − c) < 1 − c. Also θ < 1.
+(a) A_c has no spectrum in (−(1 − θ)|α|, (1 − θ)|α|). A constant unitary W on C² diagonalizes σ_y, so A_c ≅ (𝔏 − 2|α|) ⊕ (𝔏 + 2|α|). 𝔏 + 2|α| ≥ 2|α|. By Prop. 3.3, spec 𝔏 ∩ [(1 + θ)|α|, (3 − θ)|α|] = ∅, so |𝔏 − 2|α|| ≥ (1 − θ)|α| on its spectrum. Hence ‖A_cψ‖ ≥ (1 − θ)|α|‖ψ‖ for every ψ.
+(b) Suppose P = 1_{(−c|α|, c|α|)}(A′) ≠ 0 and take ψ ∈ ran P, ‖ψ‖ = 1. By Lemma 4.2 and Cor. 4.3, ‖A_cψ‖ ≤ ‖A′ψ‖ + ‖Rψ‖ ≤ c|α| + 48|α|^{3/2} = (1 − θ − ε)|α| < (1 − θ)|α|. This contradicts (a). So P = 0. ∎
+
+Corollary 5.2 ((G_A′)) [P]. Under the same hypotheses, spec(H′|_{ker D′^†}) ∩ (−c|α|, c|α|) = ∅.
+Proof. H′D′ = 0 (Lemma 1.1 check (b); in general S123 Lemma 5.8: criticality and gauge invariance) gives A′D′ = D′𝔏. So the closure of ran D′ is A′-invariant, hence (A′ is bounded self-adjoint) so is its orthogonal complement ker D′^†, and A′ = H′ there. So spec(H′|_{ker D′^†}) ⊂ spec A′. (This direction does not need S123 Lemma 5.7.) ∎
+
+In S123 units (|α| = |ef| = 2|f|). (G_A′) and (G_A) hold with g_f = 2c|f| for 0 < |f| ≤ f_0 = α_0(c)/2, every c < 1. Example: c = ½ gives g_f = |f| for 0 < |f| ≤ 1.25·10^{−5}. The constants are j-, L- and averaging-independent, as S123 requires. For S123 Prop. 5.6 one needs g_f ≥ 4η_1 + 4C_M²|f|³ with η_1 = O(f²) (j-dependent constants); this holds for |f| ≤ min(f_0, f_1(j)). So (G_A) is available in Prop. 5.6 at every fixed j.
+Sharpness. The continuum gap of A′ is (−|ef|, |ef|) (N–O level −|ef|, gauge copy +|ef|), so no c > 1 is possible for small α; Theorem 5.1 gives every c < 1. The physical operator H′|_{ker D′^†} has the larger continuum gap (−|ef|, 3|ef|); Theorem 5.1 does not prove the upper edge 3|ef| (not needed).
+
+## 6. Numerics
+
+Script numerics/t2_gaprime2_check.py (new; imports t2_s123_gap2d read-only), output numerics/t2_gaprime2_check.json, 55 s on the Mac. Interpreter numerics/.venv/bin/python.
+
+Reproduction of the S123 JSON [V]. numerics/t2_s123_gap2d.py was copied to /tmp/gp2/rep and rerun (6 s, output in /tmp only). Every number in numerics/t2_s123_gap2d.json is reproduced; maximum absolute difference 0.
+
+Formula of Lemma 1.1 versus the finite-difference Wilson Hessian [V]: see §1 (agreement 3–9·10^{−8} at (N, m) = (8,0), (24,1), (24,2), (48,1), (30,7); H′D′ = 0 to 3·10^{−14}).
+
+Harper-type Bloch reduction. For flux α = 2πp/q (p, q coprime) the formula commutes with x_0-translations and with x_1-translations by q, so it reduces to 2q × 2q blocks over (k_0, k_1). Grid 3 × 3 for q < 1000, one Bloch point for q ≥ 1000 (the low bands are exponentially thin, width < 10^{−6}|α| at q = 96 per S123 §6). Large q with p > 1 is the finite stand-in for irrational flux; the proofs above do not use it. Physical part (H′ on ker D′^† via SVD) computed for q ≤ 400. Units: |α| = |ef|.
+
+| p/q | α | min|spec A′|/|α| | top of N–O band /|α| | top band 1 of 𝔏 /|α| | bottom band 2 of 𝔏 /|α| | first physical level > 0 /|α| | (1 − min|spec A′|/|α|)/|α| | (3 − band 2)/|α| |
+|---|---|---|---|---|---|---|---|---|
+| 1/24 | 0.2618 | 0.96761 | −1.03089 | 0.96761 | 2.8394 | 2.8333 | 0.124 | 0.614 |
+| 1/96 | 0.06545 | 0.99184 | −1.00807 | 0.99184 | 2.9593 | 2.9589 | 0.125 | 0.622 |
+| 1/384 | 0.01636 | 0.99796 | −1.00204 | 0.99796 | 2.9898 | 2.9898 | 0.125 | 0.624 |
+| 1/1536 | 0.00409 | 0.99949 | −1.00051 | 0.99949 | 2.9974 | – | 0.125 | 0.625 |
+| 13/1218 | 0.06706 | 0.99164 | −1.00826 | 0.99164 | 2.9583 | – | 0.125 | 0.622 |
+| 7/2213 | 0.01987 | 0.99752 | −1.00247 | 0.99752 | 2.9876 | – | 0.125 | 0.624 |
+| 3/1597 | 0.01180 | 0.99853 | −1.00147 | 0.99853 | 2.9926 | – | 0.125 | 0.624 |
+| 21/1597 | 0.08262 | 0.98971 | −1.01015 | 0.98971 | 2.9487 | – | 0.125 | 0.621 |
+| 55/1597 | 0.2164 | 0.97318 | −1.02580 | 0.97318 | 2.8668 | – | 0.124 | 0.615 |
+| 144/1597 | 0.5666 | 0.93055 | −1.06202 | 0.93061 | 2.6578 | – | 0.123 | 0.604 |
+| 5/1351 | 0.02325 | 0.99710 | −1.00289 | 0.99710 | 2.9855 | – | 0.125 | 0.624 |
+
+Reading [V].
+- min|spec A′| = inf 𝔏 (the gauge copy) at every flux, = |α|(1 − 0.125|α| + …), and the N–O band sits at −|α|(1 + 0.12|α|). So the true constant in Theorem 5.1 is c = 1 − 0.125|α| + O(α²); the proof's c < 1 with α_0(c) = ((1 − c)/100)² is consistent and far from sharp.
+- The scalar gap of Prop. 3.3 holds with θ_true ≈ 0.62|α| (lower side 0.125|α|): band 1 ends at |α|(1 − 0.125|α|), band 2 starts at |α|(3 − 0.62|α|). Prop. 3.3 proves θ ≈ 26|α|^{1/2}; the |α|^{1/2} loss comes from bounding the third-order term of Lemma 3.2 in norm. That term is ≈ 2.8|α|^{3/2} on low states (measured), so a θ of order |α| needs a finer comparison than Step 2 (not done; not needed).
+- The coefficients 0.125 and 0.62 are the same for p = 1 and p > 1 at equal α (e.g. 1/96 versus 13/1218, 1/384 versus 7/2213). No dependence on the arithmetic of α/2π is visible, as the proof predicts.
+- Physical spectrum (q ≤ 384): empty in (−1.0309|α|, 2.833|α|) at α = 0.26 and in (−1.0020|α|, 2.9898|α|) at α = 0.016; this matches S123 §6 and S123_VERIFY §7 (e.g. 2.9589 at α = 0.0654 there and here).
+- Remainder of Lemma 4.1 on low eigenvectors: ‖Rψ‖ ≈ 2.34|α|^{3/2} (§4), against the proven 48|α|^{3/2}.
+
+## 7. Remarks: the Nielsen–Olesen mode, gauge zero modes, and what is not proved
+
+Nielsen–Olesen mode. In 2D at k_⊥ = 0 the N–O mode is not a zero mode. It is the lowest band of A′, at −|α|(1 + 0.12|α|) (numerics), i.e. the lowest Landau level of the spin-aligned block 𝔏 − 2|α| of A_c. It is a physical (non-gauge) negative mode, and Theorem 5.1 separates it from 0 by ≥ c|α|. The zero of the 4D N–O band, at |k̂_⊥|² ≈ |ef|, lies at k_⊥ ≠ 0; S123 Prop. 5.6 Step 2–3 handles it by spectral averaging, given (G_A). [P for the 2D statement; the 4D part is S123's.]
+Gauge zero modes. H′ vanishes exactly on ran D′ (H′D′ = 0). In A′ these directions are lifted to the scalar spectrum 𝔏 ≥ |α|(1 − 0.125|α|) (gauge copy, S123 Lemma 5.8), and in (G_A′) they are excluded by the restriction to ker D′^†. Corollary 5.2 needs only the invariance of ker D′^†.
+
+Not proved here.
+- [N] The upper physical edge: spec(H′|_{ker D′^†}) ∩ (0, (3 − θ)|α|) = ∅. Not needed by S123.
+- [N] Sharp constants. Proven: every c < 1 with α_0(c) = ((1 − c)/100)²; numerically c = 1 − 0.125|α|.
+- [I] Identification of S123's A′ (Lemma 5.1: charged block of (2.1) with midpoint transport, tagged [I] there) with the Landau-gauge operator of Lemma 1.1 = the operator of the S123 script. Different transport conventions differ by a gauge transformation (unitary equivalence), so the spectrum and Theorem 5.1 do not depend on them. This is inherited from S123 §5–6 and its VERIFY, not new here.
+
+## 8. Ledger
+
+- Lemma 1.1 (explicit A′ = cos φ c^†c + D′D′^† − 2 sin φ K) [P; V: matches the finite-difference Hessian to ≤ 9.6·10^{−8} at 5 fluxes; H′D′ = 0 to 3·10^{−14}].
+- (1.a), (1.b) curl form and curl–divergence identity [P].
+- Lemma 2.1 (words), Lemma 2.2 (N_2 ≤ 2‖𝔏ψ‖² + 2|α|N_1 + 2α²), Lemma 2.3 (N_3 bound), Cor. 2.4 [P].
+- Lemma 3.1 ([Π, Π^†] = 2|sin(α/2)|(V′ + V′^*) ≥ 2|α| − 3|α|𝔏 − |α|³) [P; identity V to 3.5·10^{−15}].
+- Lemma 3.2 (J + |α| = third-order + O(α)·first-order + O(α²)) [P; V: size 2.8|α|^{3/2} on low states].
+- Prop. 3.3 (scalar Landau gap: spec 𝔏 ∩ [(1+θ)|α|, (3−θ)|α|] = ∅ for θ > 26|α|^{1/2} + 157|α|, every real α) [P; V: θ_true ≈ 0.62|α| / 0.125|α|].
+- Lemma 4.1 (‖Rψ‖ ≤ 19|α|N_1^{1/2} + 11α², A_c = 𝔏⊗1 − 2ασ_y) [P; V: ≈ 2.34|α|^{3/2} on low states, sign of σ_y confirmed].
+- Lemma 4.2, Cor. 4.3 (a priori N_1 ≤ 6|α| and ‖Rψ‖ ≤ 48|α|^{3/2} on 1_{(−c|α|,c|α|)}(A′)) [P].
+- Theorem 5.1 = (G_A): spec A′ ∩ (−c|α|, c|α|) = ∅ for 0 < |α| ≤ ((1 − c)/100)², every c ∈ [0, 1) [P]. Numerically min|spec A′| = |α|(1 − 0.125|α|) at 11 fluxes, α from 0.004 to 0.57, p = 1 and p > 1 [V].
+- Corollary 5.2 = (G_A′): same gap for H′|_{ker D′^†}; in S123 units g_f = 2c|f| for |f| ≤ α_0(c)/2, e.g. g_f = |f| for |f| ≤ 1.25·10^{−5} [P].
+- Reproduction of numerics/t2_s123_gap2d.json: exact (max difference 0) [V].
+- Identification of S123's A′ with the Lemma 1.1 operator up to gauge [I, inherited from S123 Lemma 5.1/§6].
+- Upper physical edge 3|α| and sharp constants [N].
+- No literature result (Helffer–Sjöstrand, Harper semiclassics, Avron–van Mouche–Simon) is used [—].
+
+Consequences for the campaign (no other file edited). S123 open item O1 is closed: (G_A′) is [P], j-, L- and averaging-independent, for every real f with 0 < |f| ≤ f_0. Then S123 Prop. 5.6 (Lipschitz N_1 near 0) and (Z_j) become [P given S123's own inputs: (I3), Theorems 3.3–4.3]. (M_j) (S123 Cor. 7.1, BETA_FP_M Prop. 4.3) is then reduced to: (I3) [argued, entrywise analyticity of Balaban's linearized averaging at flux f]; BETA_FP_M Prop. 4.4 region 1 [argued]; the neutral-sector [I] of S123_VERIFY §6. (G_A′) is no longer on that list. TRUST_LEDGER row B4 and KAPPA_BOUNDED should be updated by the supervisor after a VERIFY pass.
+
+Conclusion: (G_A′) PROVED for small |f| with explicit constants: for every c < 1 (units |ef|), f_0 = ((1 − c)/100)²/2; e.g. gap ≥ |f| for 0 < |f| ≤ 1.25·10^{−5}.
+
+STATUS: COMPLETE

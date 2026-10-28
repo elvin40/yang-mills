@@ -122,7 +122,7 @@ B2.1 Each item is an up-set in M [P]. Three forms occur.
  (iii) h(M) ≤ c with h(M) = poly(L, M)·e^{−cM}: Ba3, Ba6, P1, P5 (e_M parts), P6 (M_*), P14. Such h is decreasing for M ≥ M_dec := (degree)/(rate). So each is an up-set once M ≥ M_dec is added. Explicit for P1: with y := δ_0M/3, (LM)⁴e^{−y} = L⁴(3/δ_0)⁴y⁴e^{−y} ≤ L⁴(24/(eδ_0))⁴e^{−y/2} (since y⁴e^{−y/2} ≤ (8/e)⁴). So
   M ≥ M_MC := (6/δ_0)·log[O(1)L⁴(24/(eδ_0))⁴/(0.3a)]
  implies P1 for every larger M. [P; O(1) and a are Balaban's unprinted absolute constants]
-B2.2 Order [V/I, TRUST_LEDGER C5, FX_R2 §1, A1_WALK_VERIFY l. 61, WC_RESIDUE_VERIFY l. 46]: d, L → κ (≥ κ_0), β, δ → κ_1 → walk/kernel constants (δ_0, δ_1, B_0, γ_0, γ_1, c_±, δ_G, Σ, ε, a_0, c_X) → M_1 (P13) → M → α′ → α's (α_0, α_1, α_4, γ_2, α_6) → ε_1 → ρ_0 → A_0, p_0 → γ → g. Every argument of every f in B1 is left of M. Two points checked:
+B2.2 Order [V/I, TRUST_LEDGER C5, FX_R2 §1, A1_WALK_VERIFY l. 61, WC_RESIDUE_VERIFY l. 46]: d, L → κ (≥ κ_0), β, δ → κ_1 → walk/kernel constants (δ_0, δ_1, B_0, γ_0, γ_1, c_±, δ_G, Σ, ε, a_0, c_X) → WC and level constants (incl. ε″) → M_1 (P13) → M_2 → M → α′ → α's (α_0, α_1, α_4, γ_2, α_6) → ε_1 → ρ_0 → exponents → A_1 → A_0 → C_0 → C_1 → γ → g (SOURCES_ORDER_CANON B, R1–R3). Every argument of every f in B1 is left of M. Two points checked:
  - ε (walk rate) is computed at a minimal M and Σ is decreasing in M, so ε stays valid for larger M (A1_WALK_VERIFY l. 47: "not circular").
  - C_1 = max(1, C_c) ≥ 1 whatever C_c does in M (FX_R2 route (b)); κ_1 is M-free [I, A1_WALK_VERIFY l. 61].
  So the intersection of the up-sets is the up-set M ≥ M_req (below), and M = L^m with m large lies in it. Compatible. [P given the order]
@@ -138,7 +138,7 @@ B2.3 Upper bounds involving M [P, by inspection of every hit of the grep]. None 
 ## B3. (M1) stated precisely
 
 (M1) [convention, Group C]. M = L^m with
- M ≥ M_req := max{ M(κ), M_99(d, L), M_dec, 96κ_1/δ_0, 2κ/δ_0, κ_1/δ_1, 2κ_1/δ_1, 12L(3κ_final/C_1)^{1/d}, 12cκ_1/δ_*, 48κ_1/ε, M_MC, M_*^{A2}, M_*^{WG}, M_e, R_1M_1, (3(6 + c_X) + 1)M_1, 11M_1, M_RM, L, 8 },
+ M ≥ M_req := max{ M(κ), M_99(d, L), M_dec, 96κ_1/δ_0, 2κ/δ_0, κ_1/δ_1, 2κ_1/δ_1, 12L(3κ_final/C_1)^{1/d}, 12cκ_1/δ_*, 48κ_1/ε_min (ε_min ∋ ½ε″), M_MC, M_*^{A2}, M_*^{WG}, M_e, R_1M_1, (3(6 + c_X) + 1)M_1, 11M_1, M_RM, L, 8, L²M_1 + 1 (M > M_2, R3), C24 round-4: 3(7 + c_X)M_1, 8 log L/(Rθε), M_*(¼ε_min)/R + 1; (H_κ) 16·3^dκ_1/(Lε″); (H_M) 2c′M_1; (H_η); M_Γ; M_{α5} },
 where:
  - 96κ_1/δ_0 covers Ba3 (48κ_1/δ_0) and Ba3 at halved rate; 2κ/δ_0 covers Ba5 and P4.
  - M_e := least M ≥ M_dec with the e^{−δ_0M/3} parts of Ba6, P5 (γ_1e_M ≤ ½, ε_M ≤ γ_0/2, (M2)_R2REM) all true.
@@ -164,3 +164,5 @@ Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP
 Status: complete (2026-10-28). Unverified.
 
 Corrections after verification (SOURCES_HIGHER_M1_VERIFY, 2026-10-28): scope of "order ≤ 2" = coupling, threshold, and MA2 field variables only (Balaban's CMP 109 §3–4 expands E^{(j)} in the field to order 4 with a fifth-order remainder; D2 §7/D3 use source derivatives of all orders — those are field/source expansions, not coupling derivatives); constants 0.17, (20/x)^n, 20^n in A3/A4 → the ρ_0 form of A5 (z_0 = 1 − (1+ρ_0)^{−2} ≥ ρ_0); the u-unit large-field bound drops a g² (loose, valid). (M1) list: ADD A3_SIGMA 5.1 η_M = S_dB_We^{−δ_0M/3} ≤ (2γ_1)^{−1} and A3_SIGMA 5.3 M_1 ≫ e^{2cκ_1} (both up-sets); the FX_R2 entry reads 12L(3κ_final)^{1/d} (C_1 may depend on M); the count is 26, not 24; CMP 99 Thm 3.1 settles T2_R2REM's B_0 [I] (d, L only); WC_RESIDUE_VERIFY Q7's order line misplaces c_± (Q6/A1_WALK_VERIFY: before M_1).
+
+Order-canon fixes (SOURCES_ORDER_CANON Task C, 2026-10-28): C-H1 B3 M_req adds L²M_1 + 1 (R3), the C24 round-4 entries, (H_κ), (H_M), (H_η), M_Γ, M_{α5}, and 48κ_1/ε_min with ε_min ∋ ½ε″ (M_99 already used); C-H2 B2.2 order inserts WC and level constants before M_1 and M_2 after M_1, and ends exponents → A_1 → A_0 → C_0 → C_1 → γ → g (R1, R2).

@@ -28,7 +28,7 @@ Tags: [P] checked here from the quoted conditions; [I] rests on a claim in a sou
 | ε (A1-W real rate) | = min{½δ_G, c_−/(8c_+Σ(½δ_G))} | step-3 constants | defined | A1_WALK 9.1 step 4 |
 | K_F, K_W, C_W, M_*, M_*′, M_a, M_e′, M_N, M_c, M_W | thresholds for M_1 | ε and step-3 constants | defined | A1_WALK 5.7; WG 6.4 |
 | B_A, δ_A, ε_WC, Γ_1, K_½, Ḡ, Λ̄_0, W | WC real constants; Ḡ M-free | d, L, a, a_0, θ, θ′ | defined | G3_GGAMMA §2–§4 |
-| complex-level constants c_+⁗, Γ_4, k_3; B_1‴, δ_1‴, c_{−,1}, Γ_3, k_2; B_A″, δ_A″, Γ_1″, k_1; ε″ | c_{−,1} ≥ c_−(1 − O(Mα_0)) uses only the cap Mα_0 ≤ a_0 | real constants, a_1, the caps | defined | A1_WALK 8.4; WC 6.4–6.7 |
+| complex-level constants c_+⁗, Γ_4, k_3; B_1‴, δ_1‴, c_{−,1}, Γ_3, k_2; B_A″, δ_A″, Γ_1″, k_1; ε″ | c_{−,1} ≥ c_−(1 − O(Mα_0)) uses only the cap Mα_0 ≤ a_0 | real constants, a_1, the caps | defined [P relative to the tags of SOURCES_ORDER_CANON A.4–A.7] | A1_WALK 8.4; WC 6.4–6.7 |
 | M_1 | ≥ M_W, ≥ M_W^c (complex levels), ≥ (2C_Wc_1K_W)², ≥ M_*, M_*′, ≥ 3c_loc, ≥ (2δ_A)^{−1}log(4B_AS(½δ_A)/γ_exp) (WC 5.2(d)), ≥ (2δ_A″)^{−1}log(8B_A″S(½δ_A″)/γ_exp) (WC 6.7), ≫ e^{2cκ_1} (A3_SIGMA 5.3), A7 complex-s; M_1 ≥ 1/(L²δ_[15]) via M_2 | walk, WC, complex-level constants, κ_1 | up | A1_WALK 9.1 step 5; WG 6.4; WC; HIGHER_M1 corr.; C24 |
 | M_2 | = L²M_1 (CMP 119 p. 245); ≥ 1/δ_[15] (S4, C29); M_1 < M_2 < M (C28) | M_1, δ_[15] | determined by M_1 | A11 corr.; C28; C29 |
 | M = L^m | ≥ M_req (26 entries: M(κ), M_99, M_dec, 96κ_1/δ_0, 2κ/δ_0, κ_1/δ_1, 2κ_1/δ_1, 12L(3κ_final)^{1/d}, 12cκ_1/δ_*, 48κ_1/ε_min (incl. ½ε″), M_MC, M_*^{A2}, M_*^{WG}, M_e, R_1M_1, (3(6+c_X)+1)M_1, 11M_1, M/M_1 ≥ 3(7+c_X), M_RM, L, 8, A3_SIGMA 5.1, …); M > M_2; M_Γ, M_{α5} ((Hα)); (H_κ) LM ≥ 16·3^dκ_1/ε″; (H_M) M ≥ 2c′M_1; (2.30) η = δκ/(24c_dM⁴) ≤ 1 | everything above | up only (HIGHER_M1 B2.3) | C24; HIGHER_M1 B3; G3_GGAMMA 4.3; A8 |
@@ -67,7 +67,7 @@ Cycle B (M side).
 - Condition 2: WC_FULL 6.9 "α″ → B_A″, δ_A″; … Γ_1″ → α′ → ε″", with α‴ after M through the J-row. A1_WALK_FULL 9.1 also defines ε″ in step 8, after M in step 6.
 - Literal loop: M → α‴ → α″ → α′ → ε″ → M.
 
-Why neither is real [I]. The edge from M (or from α^{(n)}) into B_A″, δ_A″, Γ_n, k_n, ε″ carries no quantitative dependence. These constants are bounds valid on domains capped by a_1, a_** and Mα_0 ≤ a_0. A1_WALK_FULL 8.4 states that the final rate depends on (d, L, N, a, a_0) only. c_{−,1} uses Mα_0 only through the cap a_0. So the fix is a split:
+Why neither is real [P relative to the tags of SOURCES_ORDER_CANON A.4–A.7]. The edge from M (or from α^{(n)}) into B_A″, δ_A″, Γ_n, k_n, ε″ carries no quantitative dependence. These constants are bounds valid on domains capped by a_1, a_** and Mα_0 ≤ a_0. A1_WALK_FULL 8.4 states that the final rate depends on (d, L, N, a, a_0) only. c_{−,1} uses Mα_0 only through the cap a_0. So the fix is a split:
 - (a) level constants (rates, prefactors, Γ_n, k_n, ε″) = functions of (d, L, N, a, a_0, a_1) and the caps. Place them before M_1.
 - (b) domain sizes α‴, α″, α′ = smallness choices. Place them after M.
 No file proves (a) as an explicit α-free and M-free cap. It is stated in A1_WALK_FULL 8.4 and used in G3_GGAMMA 4.4. This is the one load-bearing [I] of the order.
@@ -146,3 +146,5 @@ Safe = only upper bounds by earlier constants, no lower bound (smallness paramet
 - Dangerous: A_1 under C30's order; p_1 (two-sided, needs p_0 > (d+5)r_0 + ν + 4); A_0, p_0 under A11's C_i, q_i slot; M_2 under A11's body order; M_1, M conditional on the M-free cap of the complex-level constants and on G_Γ ≤ Ḡ.
 
 Suggested edits (not made): C24 order line → §3; C30 "A_1 after A_0" → "A_0 after A_1 (A_0 ≥ 80B_3A_1)"; HIGHER_M1 B3 add L²M_1 + 1; WC_FULL 6.9 and A1_WALK_FULL 9.1 move c_±, ε and the complex-level constants before M_1; G3_GGAMMA 4.4 move κ_1 before M_1.
+
+Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-O5 §1 complex-level row and §2 "Why neither is real" tag [I] → [P relative to the tags of SOURCES_ORDER_CANON A.4–A.7].
