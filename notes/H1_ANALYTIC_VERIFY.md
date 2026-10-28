@@ -18,3 +18,10 @@ Majorant, transverse (Lemma T). Inequalities used: (i) λ_max(A + B) ≤ λ_max 
 q̃_0 meaning. q̃^M_0 = the deformed momentum 2M sin(q/2M) of the nearest representative; for every M it is ≥ |k̂| per component, so "fine symbol ≤ 1/|k̂_l|²" (used in Lemma Gauge) and "≤ L²γ_L/|K|²" (used in Lemma T) both hold at finite j. CONFIRMED.
 Majorant, gauge (Lemma Gauge). Rederived T = T_0 − K̂u^† − uK̂^† + α_TK̂K̂^† from E_lP_l = E⁰_l − K̂h_l^†, h_l = Ā_lk̂_l/|k̂_l|² + P_lg_l; u = diag(ζ)K̂ + u_g uses S_L(k_μ)k̂_μ = K̂_μ. Then n_K^†TP_⊥ = n_K^†diag(d^{ML} − |K̂|²ζ)P_⊥ − |K̂|u_g^†P_⊥, which is (5.1). |c| ≤ |K̂|(1 + ‖n_K^†TP_⊥‖‖Z‖) and ‖Z‖ ≤ 1/d̲. |u_g| ≤ L^{−4}Σ_l‖E⁰_l‖‖D_l‖|P_lg_l| with ‖E⁰_l‖ = LΠ|a|max|a| and ‖D_l‖ ≤ 1/|k̂_l|². G = |c|²/(σ|K̂|⁴L²), σL² = S_L. Every step is an upper bound. CONFIRMED on paper.
 F_CS (6.1): see V0. CONFIRMED.
+
+## V2. Task A numerics (numerics/h1analytic/test_a.py, L = 13, 10 random K ∈ BZ with random signs, 64 s)
+Own implementation (verify_ab.py): E⁰ and γ̄ from (2.1)/(4.1); Prop. A symbols by direct summation (no quadrature).
+- Lemma S + Lemma G: max |E_prod − (diag E⁰ − K̂γ̄^T)| / max|E_prod| ≤ 2.7e−13 at all 10 K (E_prod = h2_scan.qsym).
+- (I1) with exact symbols: max rel. |P_⊥TP_⊥ − P_⊥diag(d^{ML})P_⊥| ≤ 5.3e−13 for j = 1 (all 10 K), j = 2 (3 K; fine window 13, coarse window 169), j = ∞ (10 K; truncated sums with matched sets n = l + Lm, |m| ≤ 1). This checks the tower identity exactly on finite sets.
+- (1.1) with the production d (quadrature, from h1cert_rho1.pieces) vs h1cert_rho1.rho1²: rel. diff ≤ 3.9e−13 for all 23 (K, j) cases.
+All below the 1e−10 tolerance. j = 2 was run at 3 K only (L⁸ direct-sum cost). Grade (1): CONFIRMED.
