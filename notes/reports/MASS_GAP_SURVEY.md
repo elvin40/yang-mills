@@ -120,3 +120,62 @@ Question: is there a published theorem that connects a small-coupling UV constru
 - No such theorem exists for gauge theory or for asymptotically free spin models, as far as I found. [INF from §5.2–5.3 and the MRS / Jaffe–Witten statements]
 - Fröhlich–Spencer-type multiscale arguments (KT transition 1981; 4D U(1) 1982) prove the **absence** of a gap / of confinement at small coupling for abelian models [sec for 4D U(1), 1803.01950 §4]. They do not produce a gap.
 - Finite-size criteria for spin systems (Dobrushin–Shlosman complete analyticity, 1985–87; Martinelli–Olivieri) turn a decay check on one finite box into infinite-volume decay [mem]. Durhuus–Fröhlich 1980 is the gauge-theory relative (σ-model decay ⇒ area law) [sec via 2509.04688]. All such criteria need a box larger than the correlation length. At effective coupling g_K ≤ γ, the expected correlation length in unit-scale blocks is of order exp(1/(2b₀ g_K²)) ≫ 1, so Balaban's unit-scale action does not by itself put one in the range where a finite-box criterion can be checked. [INF]
+
+---
+
+## 6. The Clay statement and competing definitions of "mass gap"
+
+### 6.1 What must be proved [sec, local clay_ym.txt; Jaffe–Witten, claymath.org yangmills.pdf]
+- "Prove that for any compact simple gauge group G, a non-trivial quantum Yang–Mills theory exists on R⁴ and has a mass gap Δ > 0. Existence includes establishing axiomatic properties at least as strong as those cited in [45, 35]" (Streater–Wightman; Osterwalder–Schrader).
+- Definition: "A quantum field theory has a mass gap Δ if H has no spectrum in the interval (0, Δ) for some Δ > 0. The supremum of such Δ is the mass m, and we require m < ∞."
+- Non-triviality is pinned by short-distance agreement with asymptotic freedom (stress tensor, OPE). Footnote 2 excludes weak existence (compactness) alone.
+- §5: "the existence of a uniform gap for finite-volume approximations may play a fundamental role in the proof of existence of the infinite-volume limit." Further extensions named but not required: an isolated one-particle state ("upper gap"), confinement.
+- Consequence stated in §5: the gap implies exponential clustering |⟨Ω, O(x)O(y)Ω⟩| ≤ exp(−C|x−y|) for C < Δ.
+
+### 6.2 Published definitions that differ
+| # | Definition | Where used | Relation to Clay |
+|---|---|---|---|
+| D1 | Spectrum of the physical Hamiltonian of a Wightman theory on R⁴ avoids (0, Δ); m < ∞ | Clay | the target |
+| D2 | Exponential clustering of truncated Euclidean Schwinger functions of gauge-invariant fields in the continuum | O(3) template Prop 11.4 [sec, O3_TEMPLATE.md §6]; standard | equivalent to D1 on the gauge-invariant sector, via OS reconstruction and the spectral theorem, once OS axioms hold |
+| D3 | Lattice transfer-matrix gap / exponential decay of local gauge-invariant correlations at fixed β, in lattice units | OS78; SZZ 2204.12737 ("strictly positive mass gap") | no continuum content; m_phys = m_lat/a may → 0 or ∞ |
+| D4 | Exponential decay of correlations of bounded local functions, uniform in the volume, at fixed β | Chatterjee 2006.16229 (hypothesis for confinement); DF80 σ-model version | a lattice hypothesis, not a theorem at weak coupling |
+| D5 | Gap of the finite-volume Hamiltonian on T³ × R, uniform in the volume | Jaffe–Witten §5 | a proposed route to R⁴, not the requirement itself |
+| D6 | Gap in physical units uniform in the cutoff: m_lat(β(a))/a ≥ Δ > 0 for all small a | what a lattice route needs (O3 template Cor 8.5 analogue) [INF] | implies D1 after the continuum limit and OS axioms |
+| D7 | Pole mass of the gauge-variant gluon propagator (e.g. Landau gauge) | Gribov–Zwanziger and Schwinger–Dyson literature | not gauge invariant; not the Clay notion; a decoupling (massive) propagator is neither necessary nor sufficient for D1 [mem] |
+| D8 | String tension / area law | Wilson; Chatterjee; CNS | confinement, a different property; DF80 and Chatterjee 2021 link it to D4 |
+
+Note on scope: SZZ prove D3 for "a large class of observables", not for every local observable [abs]; the Clay gap is on the full physical Hilbert space orthogonal to the vacuum.
+
+---
+
+## 7. The window
+
+### 7.1 Where a gap is proved (strong coupling, lattice units)
+- Best explicit published radius for a 4D YM lattice mass gap: Shen–Zhu–Zhu 2204.12737, β_SZZ < 1/(16(d−1)) = 1/48 in their normalization Nβ Σ Re Tr. [sec]
+- In Wilson normalization β_W = 2N/g²:
+  - **SU(2): β_W < 1/12 ≈ 0.083 (g² > 48).**
+  - **SU(3): β_W < 3/16 = 0.1875 (g² > 32).**
+- The classical OS78 radius (β ≲ c(d)/N in CNS normalization) is not stated as a number in any source I could access.
+
+### 7.2 Where Balaban's construction lands at the unit scale
+- Effective coupling g_K ∈ ]0, γ] with "a sufficiently small positive γ" (CMP 122 II, Theorem 1) [sec]. γ is never given as a number.
+- In Wilson-like units this is β_eff = 2N/g_K² ≥ 2N/γ². Even with γ = 1, far above any constructive smallness, β_eff ≥ 4 (SU(2)) and ≥ 6 (SU(3)). [INF; the unit-scale effective action is not the Wilson action, so this comparison is heuristic]
+- So the open window spans at least β_W ∈ (0.083, 4) for SU(2) and (0.1875, 6) for SU(3): a factor ≥ 48 and ≥ 32 in β. Lattice scaling studies place physical continuum behaviour at β_W ≈ 2.3–2.9 (SU(2)) and 5.7–6.5 (SU(3)) [mem], that is, inside the window.
+
+### 7.3 Does any published result narrow the window?
+- Peer-reviewed / accepted: **no**. SZZ (2023) is the explicit gap radius. Cao–Nissim–Sheffield 2509.04688 double the threshold (to 1/(8(d−1))) only for the σ-model gap that yields the area law, not for the YM gap. Cao–Nissim–Sheffield 2505.16585 enlarge the area-law region at large N with a non-explicit β₀(d). None reaches toward β_W = O(1).
+- Contested or unverified claims: Tomboulis 2007 (all-β confinement for SU(2); gaps identified by Ito–Seiler 0711.4930, 0803.3019 and Kanazawa 0805.2742). Faizal–Shabir 2606.19362 (claims the full bridge; abstract only read; no verification found).
+- 2D analogue: the OpenAI O(3) paper (machine-written, unrefereed) claims the bridge for an asymptotically free 2D model using a quantitative large-β decay input that has no 4D gauge counterpart.
+
+### 7.4 Counts
+- Mechanisms in §4 with a rigorous partial result bearing on confinement or a gap: **4 of 6** pure-YM pictures (center vortices — conditional inequalities; monopole condensation — abelian 3D only; large N / loop equations — strong coupling only; stochastic quantization — strong coupling only). Plus strong-coupling cluster expansions (§1) and the Higgs mechanism (BBIJ, not pure YM).
+- Zero mechanisms give a gap at weak coupling or in physical units for 4D non-abelian YM.
+
+---
+
+## Sources (fetched or read this session)
+- arXiv 2204.12737 (SZZ) HTML; arXiv 2505.16585 and 2509.04688 PDFs (text extraction, deleted after use); arXiv API abstracts for 2509.03513, 2606.19362, 2201.03487, Dimock author list.
+- mp_arc 92-38 TeX (MRS), deleted after use.
+- INSPIRE 164289 (Münster 1981); arXiv abs 0711.4930, 0803.3019 (ar5iv); search results for 0805.2742, BBIJ 1984, GK 1986, Pordt–Reisz 1991.
+- Local: balaban/*.txt, reports/clay_ym.txt, reports/chatterjee.txt, reports/YM_GAPS.md, reports/O3_TEMPLATE.md, reports/o3_continuum.txt, reports/ONLINE_SWEEP.md.
+- Web searches used: 15 of 40.

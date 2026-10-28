@@ -1,14 +1,13 @@
-"""G1 cell certificate: rigorous upper bound on sup rho_1(j, K) over a cell K_c + [-h, h]^4 (../H2_CERTIFY_L13_G1.md).
+"""G1 cell certificate: rigorous upper bound on sup rho_1(j, K) over a cell K_c + [-h, h]^4 (../H2_CERTIFY_L13_G1.md sec. 1).
 rho_1^2 L^2 = lambda_max(Z T2 Z + w w^dag / sigma)  ((2.1) of H2_CERTIFY_L13 with beta = sigma, Lemma P4 of H2_CERTIFY_P4).
-K^-adapted frame W = [Q, Kh], Q^dag = [I3 | -c], c_mu = Kh_mu / Kh_4, so Q^dag Kh = 0 exactly for every K. P4 (E k^ = Kh) gives
-Q^dag E P = Q^dag E =: V per block, hence
-  A = Q^dag T Q = s^2 sum V D V^dag,  C = Q^dag T2 Q = s^2 sum V D P D V^dag,  b = Q^dag T Kh = s^2 sum V D P E^dag Kh,
-  sigma = s^2 sum 1/|k^|^2,  Z = Q A^-1 Q^dag,  w = (Kh - Q A^-1 b)/|Kh|^2,  G = Q A^-1 C A^-1 Q^dag + w w^dag / sigma.
-The large Kh-direction eigenvalue of T never enters. Every quantity is a Taylor-2 model (TM) c + sum delta_nu g_nu + sum delta_nu delta_la H_nl + R,
-|delta_nu| <= h, |R| <= r entrywise (block sums keep the first and second order exactly). Primitives: e^{ik}-1 (exact remainder h_k^2/2), E_q (second derivative a priori from the
-trigonometric structure), d^M (box sums for value and gradient at K_c; second-derivative bound
-by interval evaluation of the per-axis factors over the cell, see d_tm; tails as intervals). A^-1 by Oishi-Rump with X = A(K_c)^-1
-(eta = ||X A(K) - I|| < 1 over the whole cell). lambda_max: max over the 16 vertices of c + linear part (convex in delta) + ||quadratic part|| + ||r_G||_F.
+K^-adapted frame W = [Q', Kh], Q'^dag rows K^_4 e_mu - K^_mu e_4, so Q'^dag Kh = 0 for every K. By P4 (E k^ = Kh) Q'^dag E P = Q'^dag E =: V'
+and |k^|^2 P E^dag Kh = |k^|^2 E^dag Kh - |Kh|^2 k^ =: m' (trigonometric polynomials per block), hence
+  A = s^2 sum V' D V'^dag,  C = s^2 sum V' D P D V'^dag,  b = s^2 sum V' D m'/|k^|^2,  sigma = s^2 sum 1/|k^|^2,
+  Z = Q' A^-1 Q'^dag,  w = (Kh - Q' A^-1 b)/|Kh|^2,  G = Q' A^-1 C A^-1 Q'^dag + w w^dag / sigma.
+The large Kh-direction eigenvalue of T never enters. V', m': exact Taylor coefficients to order 4 + majorant sequences (TP);
+d^M: box sums (value, gradient) + centred-form second-derivative bound, exact Taylor-2 on the worst blocks, tails as intervals;
+per-block products exact to order 3 through the block sums (TK); global stage in Taylor-2 models (TM); A^-1 by Oishi-Rump after
+whitening; lambda_max: max over the 16 vertices of c + linear part (convex in delta) + ||quadratic part|| + ||r_G||_F.
 Float sums carry a priori rounding terms (premise P2); F carries P1'.
 Usage: python h1cert_cell2.py L M h N K1 K2 K3 K4   (M = inf, odd M (full window if M < 2N+3, else box N + tail), or M0:<M_0>)
 """
@@ -16,7 +15,7 @@ import sys, os, time, itertools, math
 import numpy as np
 from flint import arb, arb_series, ctx
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
-from h1cert_cell import axis_data, tail_inf, lam_max_upper, _mat, _n2, _radF, PI, U
+from h1cert_cell import axis_data, tail_inf, _mat, _n2, _radF, PI, U
 from h1cert_rho1 import prof
 from flint import acb_mat
 ctx.cap = 6
@@ -478,7 +477,6 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
             parts = [(VD @ Vp.H_()).sum(), (VD @ P @ VD.H_()).sum(), (VD @ (mp * inva.rs(B, 1, 1))).sum(), inva.sum()]
             A, C, b, sig = parts if A is None else [x + y for x, y in zip((A, C, b, sig), parts)]
         A, C, b, sig = (x.tm2() * s2 for x in (A, C, b, sig))           # Q'^dag T Q', Q'^dag T2 Q', Q'^dag T Kh, sigma
-        lv = None
         Kh = phase(Kf[None], 1.0)                                         # (1, 4)
         e4 = np.zeros((1, 1, 4)); e4[0, 0, 3] = 1
         QH = Kh[:, 3:4].rs(1, 1, 1) * np.eye(3, 4)[None] - Kh[:, :3].rs(1, 3, 1) * e4   # Q'^dag, rows K^_4 e_mu - K^_mu e_4
