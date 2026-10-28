@@ -1,7 +1,7 @@
 # THM310_FULL — paper-grade write-out of CMP 99 Theorem 3.10 (walk expansion of the basic propagator G = G_0)
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (third of three); Table 1 row R1, with R36 (M_1 version) and R7 (complex form) for this operator. Companion files: THM37_FULL.md (G′, Thm 3.7 + Cor. 3.8) and THM39_FULL.md (C′ = (Q′G′²Q′*)^{−1}, Thm 3.9). They are cited by name and not repeated.
-Status: author write-out, written one section at a time; not yet verified.
+Status: author write-out, complete 2026-10-28 (§1–§12); not verified. Open items for a verifier: §12.4.
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [V] read on a page image in this session (CMP 99 pp. 407–416 at 300 dpi; CMP 96 pp. 237–239, 246–247 text); [R-full] printed with a full proof; [R-sketch] printed sketch or proof by reference; [P] proved in this file or in a named project file; [I] reading or construction not proved. Page rule: CMP 99 p. N = pdf page N − 388; CMP 96 p. N = pdf page N − 222.
 
@@ -298,3 +298,40 @@ Proof. (d) and absolute convergence: by (8.1.1), (D1), and Lemma Cnt, Σ_TN(T; y
  - Transposed expansion (9.1(b)): Δ_a(U_c) is complex symmetric (bilinear transpose), so 9.1(b) holds verbatim.
 11.4 Theorem T310^c. With b_1^{310} := min{a_1^{loc}, a_1^c(θ), k_{C′}b_1^{37}, ¼} and δ_*^c := (1 − θ)²min{(1 − θ)²δ_0, δ_39^c, ½ε^c} (δ_39^c := ½ε^c − |2 − d/2|θ_L ≥ ½δ_39 − O(θ_L)), Theorem T310 holds on 𝒰^c(b_1^{310}) with K_310^c, rate (1 − θ − λ)δ_*^c, and analytic terms. Since ε^c ≥ ½ε (THM39_FULL 7.4), δ_*^c ≥ ½δ_* − O(θ_L).
 11.5 Place in the chain (WC_FULL §6 mechanism). WC_FULL 6.4 and A1_WALK_FULL 8.4 level 4 take "(W_G) at complex points [R]: Thm 3.4 + Thm 3.10". Theorem T310^c turns the Thm 3.10 part into [P given 11.2]; WG_FULL's G (with Δ_π) at complex points then follows by the WG Neumann series run at U_c (WC_FULL 6.4: "every step concatenates analytic kernels"). The radius of level 4 becomes b_1⁗ ≤ b_1^{310}; b_1^{310} is a constant of (d, L, θ, a) and joins the chain order before every α^{(n)} (WC_FULL 6.9). The complex rates lose at most a factor ½ against the real rates, in the THM39 (Combes–Thomas) branch only.
+
+## 12. Ledger
+
+12.1 Inputs.
+| ID | Item | Tag | Source | Used in |
+|---|---|---|---|---|
+| T310-R1 | Local G_□, G′_□, C_□, P_□ obey Thms 3.1–3.3, (3.49) (Cor. 3.6) | R-sketch | CMP 99 p. 408 (Cor. 3.5, Thm 3.4 (3.84)–(3.86)); CMP 96 Props. 2.5–2.7 [R-full] | 4.3, 5.3, 6.1, 6.2a, 9.1 |
+| T310-R1^c | Same at U_c ∈ 𝒰^c(b_1) via (3.86) | R-sketch | CMP 99 (3.82)–(3.86), Thm 3.4 | 11 |
+| T310-P2 | Theorem T37 (+ M_1, + complex, + transposed) for G′ on any admissible sequence and cover | P (given its inputs) | THM37_FULL 5.4, 6.2, 7.3, 8.5 | 6.2a, 6.3, 6.4, 10, 11 |
+| T310-P3 | Theorem 3.9-W (+ M_1, + complex) for C′; A1-W local inverse C^W_□ | P (given its inputs) | THM39_FULL 2.4, §6, §7 | 6.2a, 6.3, 6.4, 10, 11 |
+| T310-R4 | CMP 96 Lemma 2.1 under (2.59) (¼αδ_0RM form) | R-full | CMP 96 (2.59)–(2.62) | 4.3, 6.2, 7.1 |
+| T310-P5 | Lemma AG′ (local parts agree on □) | P (given THM37 Lemma AG and the block form of Q_j) | 5.1 | 5.3 |
+| X-PU | Repaired partition of unity, Σh² = 1, factor L in |∂h| | P-sketch + I-geo | THM37_FULL 3.4 | 4.2, 5.3 (Lemma B needs Σh² = 1), K_A, K_P |
+| T310-I6 | Geometry: ζ_□ margins, 𝒟′_□ with plateau margin, Z_□, O(1) ≥ 20 | I-geo | 6.0 (printed p. 411, 414 without margins) | 6.3, 6.4 |
+| T310-I7 | Sequence-locality of local operators and of T37/3.9-W factors; T37 and 3.9-W hold on 𝒟′_□ (one merged cube) | I | 6.2a, 6.3 | 6.2a, 6.3 |
+| T310-I8 | C0: block norms ↔ μ-kernels of WG_FULL 0.2 | I | WG_FULL 0.2 | output to WG |
+| A-Lip | |h(x) − h(x′)| ≤ (c_hL/M_1)d | I | A1_WALK_FULL O2 | 4.2(b), 9.3 |
+| I-Ω0 | Dirichlet cut at Ω_0 for boundary cubes | I | THM37_FULL 3.2 | 5.1 |
+| G-M1, T37-I4 | Local input on M_1-cubes; M_th concerns R_0M_0 | I-geo, I | THM37_FULL 7.3 | 10 |
+| R-Δ′ | Δ′ small and local under (3.35) | R | CMP 99 (3.10), SOURCES_A3_GAMMA0_FULL 6.1 | 4.2(a) |
+| A18 | Complex domains of CMP 109/116 inside (3.37) | P there | SOURCES_A18_REGULAR 5.1 | 11.1 |
+Not used: A3's γ_0 (2.2), any global lower bound for Δ_a (except in the alternative 9.3), (3.36), the Hölder rows, Thm 3.11.
+
+12.2 Proved here [P]. Lemma A (4.2) and Corollary A (4.3); Lemma AG′ (5.1); Lemma B = (3.105) with signs (5.3); Lemma DI and its three applications (6.2, 6.2a); the P-insertion and the separation bound (6.3); the domain-change term, types (a)–(c0), and the exact p. 415 cancellation (6.4); Lemma C′ (7.1); the merged walk and its properties (L1), (L2), (B2), sizes (7.2); Proposition W10 = (3.108) (8.1); Lemma Cnt (8.2); Theorem T310 = Thm 3.10 + (3.106) + the first rows of Thm 3.3 (8.3); the order of constants (8.4); the derivative rows (9.1); Theorem 3.3 rows used by the chain (9.2); the M_1 version (10); the complex form (11). P-sketch: the Combes–Thomas route (9.3).
+
+12.3 Steps sharper than, or different from, Balaban.
+ 1. Rate. Printed (3.108): ½δ_0. Proved: (1 − θ − λ)δ_*, δ_* = (1 − θ)²min{(1 − θ)δ_0, δ_39, ½ε}, for any θ, λ ∈ (0, ¼]. With printed inputs the scheme gives (1 − θ − λ)(1 − θ)²·½δ_0, i.e. any rate below ½δ_0 — Balaban's ½δ_0 is the limit, not reached exactly. With THM39's proved C′ rate the output is below ½δ_0 by a fixed factor (ε ≤ ½δ_G). The bottleneck is C′ (Combes–Thomas branch of THM39), not the parametrix: the purely local part (R^K, R^P, F_0) runs at δ_0. Reconciliation with SOURCES_BOOKKEEPING_VERIFY #48: the mismatch with the printed ½δ_0 is real and not load-bearing; WG_FULL (I1) should read "rate δ_310 := (1 − θ − λ)δ_*" in place of "½δ_0", and WG's common δ := min{δ_310, rates of (I2), (I3)}; consumers need only a fixed rate set before M_1 (U5). δ_310 depends on (d, L, θ, λ, a) only and is fixed before M_1.
+ 2. One small factor per R-block suffices. Balaban attaches up to three non-small factors to a small one and uses e^{−¼δ_0M} ≥ 3!(¼δ_0M)^{−3}. We merge domains at unit junctions (7.2) and need one factor M_1^{−1} per block (e^{−t} ≤ 1/t). The merged domains are still bounded (≤ 10 unit domains).
+ 3. Domain change. Printed: "proved in [2]" for scalar fields, deferred and never formulated for regular U (p. 399, p. 412). Here: Lemma DI (resolvent identity + decay of both local inverses), with walks needed only for the truncation tail of the A1-W local inverse, at a fixed finer cube size M′ (two scales).
+ 4. The p. 415 cancellation. Printed: replace h′ by ζ, swap G′_{□_0} → G′_□, C_{□_0} → C_□, move ζ through with commutators. Here: remove (1 − h′) first (separation), then telescope the five factors; no commutator with G′ or C is needed. Balaban's partition 𝒟′ needs a plateau margin for his claim that only the all-□_0 term is not small (6.0 (G-𝒟′), type (b2)); we enlarge □_0 by one layer.
+ 5. Invertibility. Printed: G exists (Δ_a positive). Here: Δ_a↾Ω_0 is invertible as an output (right inverse in finite dimension), without positivity; positivity (Thm 3.11) is not used.
+ 6. Lower bound. Not A3's γ_0 (2.2). Only local: T310-R1, resting on CMP 96 (2.110), (2.128) at U = 1.
+ 7. Right derivatives in N_∞ need the transposed expansion (9.1(b)); Balaban's "corresponding inequalities for norms" hides this.
+ 8. Hypothesis "(3.95)" read as (3.35), plus O(1)Mα_0 ≤ a_1 (Cor. 3.6); the (3.35) constant O(1) must be ≥ 20, not 12 (merged cube).
+ 9. Partition of unity: Lemma B needs Σh² = 1 exactly; the literal CMP 95 (1.118) family fails it for L > 5 near interfaces; the X-PU repair costs the factor L in K_A, K_P, hence in K_310 and M_310.
+
+12.4 Status and open items. Author write-out, complete 2026-10-28, not verified. For a verifier: (a) Lemma DI's identity with two projections (6.2) and application (DI-2) (the A1-W local inverse versus Balaban's C_□; the M′-scale remedy for the tail); (b) the merging bound "≤ 10 unit domains" and the count C_𝒟^{310} (7.2(iii), (viii)); (c) the geometry items of 6.0 (s_ζ, s′, s_dc in d-units with the factor 1/L; O(1) ≥ 20); (d) whether T37 and 3.9-W hold on 𝒟′_□ with one merged cube (T310-I7); (e) Corollary A's scale conversions (θ_L ≤ ¼λδ_*); (f) 9.1(b) for the transposed r^dc blocks. Grade proposal for CLOSURE_PLAN R1: SKETCH → written out [P] given T310-R1 (Cor. 3.6, R-sketch, shared with THM37/THM39), THM37_FULL and THM39_FULL, and the [I] items I6–I8, A-Lip, I-Ω0, X-PU. R36 for G: [P] given G-M1, T37-I4. R7 for G: [P] given T310-R1^c and the complex forms of THM37/THM39.
