@@ -1,6 +1,6 @@
 \section{What remains}\label{sec:remains}
 
-This section lists every open item of the paper in one place. The items are grouped by the kind of work they need: certification, fixed-level and structural inputs of Theorem 2w, items of the sources block, and verification. The item labels H, 1--13, and B1--B8 are those of the dependency table (Section~\ref{sec:deptable}). For Theorem 2w $\Rightarrow$ Theorem 1 the list is complete in the sense of \S10 of \file{THEOREM2_PROOF_v4.md}.
+This section lists every open item of the paper in one place. The items are grouped by the kind of work they need: certification, fixed-level and structural inputs of Theorem 2w, items of the sources block, and verification. The item labels H, 1--13, and B1--B8 are those of the dependency table (Section~\ref{sec:deptable}). For Theorem 2w $\Rightarrow$ Theorem 1 the list covers \S10 of \file{THEOREM2_PROOF_v4.md}. The trust ledger (Section~\ref{sec:rem-ledger}, \file{TRUST_LEDGER.md}) supersedes this list as the complete record of what the two main theorems take on trust: Ba{\l}aban-level statements, external results, our open items, and conventions.
 
 \subsection{Certification}\label{sec:rem-cert}
 
@@ -16,7 +16,7 @@ Route K hypothesis set (all must hold):
 \begin{itemize}
 \item[1.] (B2) $\sup_j\sup_K|\sigma_j^{(2)}|<\infty$ (or (B2w)). Reduced to H \status{verified reduction}. Older reductions kept: ($C1\sigma$) + (h) \status{proved+verified}; (H$''$) \status{argued}. (HS) is refuted.
 \item[2.] (PI) probe independence, at each fixed level \status{argued}.
-\item[3.] (F) lattice = continuum log coefficient at constant field \status{cited source checked; lattice transfer standard, not proved here}.
+\item[3.] (F) lattice = continuum log coefficient at constant field \status{cited source checked (Savvidy \cite{savvidy1977}, ledger X5); lattice transfer standard, not proved here}.
 \item[4.] ($M_j$) formal = true $f^2$ coefficient at each fixed level: (S1) $\mathcal K_t(f)\ge-C_1|f|$, (S2) density of states $\le C_2|f|$ near 0, (S3) relative bound of the level difference, all on the lattice \status{open}; Prop.\ 4.4 \status{argued}.
 \item[5.] V1 order-$g^0$ completeness of CMP 109 (1.3)--(1.5): $\beta_{j+1}(0)$ is the Maxwell coefficient of the per-step Gaussian determinant \status{open; supported at order $p^2$}.
 \item[6.] (G2) per-cell infinite-volume densities \status{formal}.
@@ -28,7 +28,7 @@ Route B hypothesis set (alternative to 1--5; per \file{BETA_FP_U} \S4; all \stat
 \item[B2$'$.] (H2) = item H.
 \item[B3.] (DF) $\sup_k|\mathfrak d_F(\theta_*;L^k)|<\infty$, the gauge-fixing difference at the plane wave \status{hypothesis, argued}. With the exact split $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$ (\file{BETA_FP_U} Prop.\ 3.1) there is no $Y$-defect; all non-stationarity sits in $\mathfrak d_F$. This replaces the earlier $\mathfrak d_Y$, $\mathfrak d_{gf}$ items for this route (Section~\ref{sec:routeB}).
 \item[B4.] L\"uscher--Weisz (5.7) \status{cited}.
-\item[B5.] A6: the plane-wave increment equals Balaban's $\beta$ up to the expansion point, uniformly in $k$ \status{argued}. A uniform-in-$k$ input, of the same kind as (DF).
+\item[B5.] A6 (the label of v4; not ledger A6): the plane-wave increment equals Balaban's $\beta$ up to the expansion point, uniformly in $k$ \status{argued}. A uniform-in-$k$ input, of the same kind as (DF).
 \item[B6.] (H0) = item 7 (Lemma D$''$ (i)).
 \item[B7.] $\theta_*<1$, so that $c_2\ln(1/\theta_*^2)\ge0$ in $C_B$ \status{trivial condition on the choice of $\theta_*$}.
 \end{itemize}
@@ -36,9 +36,9 @@ Route B also needs 6 ((G2)) and the items 8--13. It does not need (PI), ($M_j$),
 
 Common to both routes:
 \begin{itemize}
-\item[7.] (H0) Balaban's smoothness in $g$ with uniform bounds, $|\beta_j(g)-\beta_j(0)|\le C_1g$ uniform in $j$ and history \status{Balaban; CMP 109 inductive assumption at odd $L>11$; no explicit proof of the $g$-derivative bound located in CMP 116}.
+\item[7.] (H0) Balaban's smoothness in $g$ with uniform bounds, $|\beta_j(g)-\beta_j(0)|\le C_1g$ uniform in $j$ and history \status{Balaban; CMP 109 inductive assumption at odd $L>11$, smoothness in $g$ only; ``uniform in $j$'' is our reading of p.\ 264, not printed (\file{R2_VERIFY} row 12); uniformity in the history is not printed; no explicit proof of the $g$-derivative bound located in CMP 116; ledger A5}. The proof uses the Lipschitz form on $\ioc{\gamma}$ only.
 \item[8.] L5 history dependence \status{open}. (a) The clamp proof of Lemmas D$'$/D$''$ is valid only if $\beta_{k+1}(g_0,\dots,g_k)$ is defined and continuous on the whole cube $]0,\gamma]^{k+1}$; Balaban does not supply this. (b) Balaban's $\beta_{k+1}$ exists only on histories where his induction has run; that domain must carry (c$'$) + (S), not only $g_i\in\,]0,\gamma]$. Clamped histories can violate the growth side of (c$'$). (c) True trajectories with all $u_i\ge\gamma^{-2}$ inherit (c$'$) from (a$''$). A nested-interval variant of Lemma D$''$ on these trajectories would avoid the gap \status{not written}; the variant is written only for Lemma D (\file{LEMMAS_DE_VERIFY} \S1.5). Lean covers one-argument $\beta$ only (Lemmas D$'$, D$''$, D, E).
-\item[9.] $K$-independence of $\beta_j(g)$ \status{open}. The shooting needs $\beta_j(g)$, $\gamma$, and the constants independent of $K=-\log_L\varepsilon$. After rescaling, each step is the same unit-lattice block step, so $\beta_j$ is $K$-independent only in the infinite-volume limit; a finite volume brings $K$-dependence back. This infinite-volume identification is not proved (\file{LEMMAS_DE_VERIFY} \S2 item 2; \file{THEOREM2_PROOF_VERIFY} Point 7). It is used implicitly through (G2) and (H0).
+\item[9.] $K$-independence of $\beta_j(g)$ \status{open}. The shooting needs $\beta_j(g)$, $\gamma$, and the constants independent of $K=-\log_L\varepsilon$. After rescaling, each step is the same unit-lattice block step, so $\beta_j$ is $K$-independent only in the infinite-volume limit; a finite volume brings $K$-dependence back. Ba{\l}aban prints this identification for the small-field terms, without proof (CMP 119 p.\ 278 and (2.24); ledger A15). The part for the R-terms built from merged inputs is not proved (\file{LEMMAS_DE_VERIFY} \S2 item 2; \file{THEOREM2_PROOF_VERIFY} Point 7; ledger B8). It is used implicitly through (G2) and (H0).
 \item[11.] Odd $L$. All one-loop proofs need odd $L\ge3$ (centered blocks: U3 Lemma 1.2, O5/Prop.\ A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes $L$ odd $>11$ throughout CMP 109, so (H0) and $\beta_j(g)$ at $g>0$ exist only there. Theorem 2w is stated for odd $L>11$, or with (H0) at this $L$ as a hypothesis. Numerics: $\beta_1(0)$ up to $L=11$ (Section~\ref{sec:beta1}); (H2) at $L=3,5$ (scans), 7 (face diagonal), 9 (one point); $\rho_1$ at $L=3,\dots,13$. Only $L=13$ is inside Ba{\l}aban's range, and it is floating point.
 \item[12.] SU(2) only. The charged/neutral split of Lemma 5.1 and (W) are SU(2) statements; $c=11N^2/(12\pi^2)$ is general but the chain is not checked for $N>2$.
 \end{itemize}
@@ -50,8 +50,9 @@ These items stand between the trajectory of Section~\ref{sec:flow} and the bound
 \item (B-S) The sourced version of Ba{\l}aban's Theorem 1, (E14-a, b, c), is \status{open} as a whole.
 \item (H-hist) via (G-gain). The small-field step is done: pointwise Cauchy and uniform $C_\beta$ on $]0,\gamma]$ \status{proved+verified}. Lemma G3 (the $\chi_k$ surface term) holds given (Q); (Q) is a verified reduction to CMP 99 (3.132), (E$_U$), and LOC. Second derivatives: (H-hist2). Open: the large-field case and the Ba{\l}aban-level inputs of (Q).
 \item (H-hist2), on which the threshold-shell bound (H-thr) depends: \status{verified reduction} to the real uniform (H-hist), no new input; with it the M3 history weights and the frozen-integer convention (L3).
-\item (FX). O1(b), O2, and R2 are \status{proved+verified}; O3 is \status{proved+verified, conditional on N3}; O4 is avoided by Ba{\l}aban's main form (1.98). N3, the HBETA strip bound $|\delta w|\le\tfrac32\tau$, is reduced to (H-hol) + real (H-hist) + (H2-hist) (condition (a) settled); (H-hol) is a verified reduction to (M-A) (via (H$-$) and CMP 102 (189)), (M-B) (verified), and (M-C) \status{open}. Also the two minor inputs of R2 ($R_{K+1}\ge1$, $C_c$ independent of $g$). (FX2) is conditional on O3, so also on N3.
+\item (FX). O1(b), O2, and R2 are \status{proved+verified}; O3 is \status{proved+verified, conditional on N3}; O4 is avoided by Ba{\l}aban's main form (1.98). N3, the HBETA strip bound $|\delta w|\le\tfrac32\tau$, is reduced to (H-hol) + real (H-hist) + (H2-hist) (condition (a) settled); (H-hol) is a verified reduction to (M-A) (via (H$-$) and CMP 102 (189)), (M-B) (verified), and (M-C) \status{open}. Also the two minor inputs of R2 ($R_{K+1}\ge1$, $C_c$ independent of $g$; ledger A20). (FX2) is conditional on O3, so also on N3.
 \item (B-S.D2C, B-S.H$\beta$) The domain hypothesis (D), and the conditions (I) and (H-hist) of the two-loop bound.
+\item (B-S.D2, B-S.D3) The scale condition (U) (last RG scale $\le c_*r/(M^a\rho_1)$ relative to the test-function scale) and the recovery of the decay loss $\kappa\to\kappa/2$ \status{open}. (U) must appear in the statement of Theorem~\ref{thm:B} (ledger B22).
 \item (B-N1) The bridge from the source form to (H-U) derived given (S) (\file{ASSEMBLY_N1.md}, confirmed); residual: uniformity of the D3R constants down to separation $16\varepsilon$. Given (FX), the step (S$_{\mathrm{src}}$) $\Rightarrow$ (H-U) with $s=6$, $D>1$ is confirmed.
 \item (NT) = (E14-f), for nontriviality (Theorem~\ref{thm:nontriv}); at every layer for part (ii). The constant $c>0$ must be computed in Ba{\l}aban's normalization.
 \item E13, full-sequence convergence: not needed for Theorem~\ref{thm:B}; \status{open}.
@@ -59,7 +60,7 @@ These items stand between the trajectory of Section~\ref{sec:flow} and the bound
 
 \subsection{Verification debt}\label{sec:rem-verif}
 \begin{itemize}
-\item[10.] Balaban readings: the sweep (Section~\ref{sec:sweep}) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; ``Similar inequalities hold for other constants, which will be introduced later'' (CMP 119 p.\ 256) not located; $\beta_0$ must be fixed before $\gamma$, while Balaban says $\beta_0$ ``can be chosen arbitrarily small, if $g$ is sufficiently small'' (not checked line by line); \file{BALABAN_EXCERPTS_CHECK} item 11 lists unchecked readings ($\Pi$ (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the ``$L$ odd'' page, Sect.\ 3 estimates, 1989 bound lists); Theorem 1 itself rests on Balaban's published proofs.
+\item[10.] Balaban readings: the sweep (Section~\ref{sec:sweep}) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; ``Similar inequalities hold for other constants, which will be introduced later'' (CMP 119 p.\ 256) not located; $\beta_0$ must be fixed before $\gamma$, while Balaban says $\beta_0$ ``can be chosen arbitrarily small, if $g$ is sufficiently small'' (CMP 122 II p.\ 389; not checked line by line; ledger A12); \file{BALABAN_EXCERPTS_CHECK} item 11 lists unchecked readings ($\Pi$ (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the ``$L$ odd'' page, Sect.\ 3 estimates, 1989 bound lists; ledger A22); Theorem 1 itself rests on Balaban's published proof, which uses the Group A items of Section~\ref{sec:rem-ledger}.
 \item[B8.] Verification: \file{BETA_FP_U} has no verifier file. \file{BETA_FP_PW_VERIFY} \S6 items 1--4 grade the logic of Theorem B \status{proved+verified, conditional} (tag decision, \file{PLAN.md}); the inputs (U), (DF), (T1) stay \status{proved, unverified}.
 \item[13.] Lean formalization of the history form of Lemmas D$'$/D$''$ \status{open}. Lemma D$''$ in the one-argument form is done (Section~\ref{sec:Ddprime}).
 \item Results tagged \status{proved, unverified} need a verifier pass; Appendix~\ref{app:ledger} lists them. They include the sweep, the step Theorem 2w $\Rightarrow$ Theorem 1, the \file{BETA_FP_U} reductions, \file{BETA_FP_M} Prop.\ 4.3, the Prop.\ 3.6 assembly, and the unverified files H2\_CERTIFY\_L13 and H2\_CERTIFY\_P4.
@@ -69,3 +70,102 @@ These items stand between the trajectory of Section~\ref{sec:flow} and the bound
 \subsection{Open for stronger statements}\label{sec:rem-stronger}
 
 Not needed for Theorem 1, open for the stronger statements: (A) in full and Lemma 5.1 for $m=2$ (convergence, rate); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); certified $\beta_1(0),\dots,\beta_{j_*}(0)>0$ at odd $L>11$ (literal (0.31) at every $K$); explicit $j_*$; (N).
+
+\subsection{Trust ledger}\label{sec:rem-ledger}
+
+The file \file{TRUST_LEDGER.md}, corrected by \file{TRUST_LEDGER_VERIFY.md} (Steps 1--28), lists every statement that the two main theorems use and that this project does not prove with a verifier's confirmation. The three tables below condense it to one row per item. Group A holds Ba{\l}aban-level statements and external results (X), Group B holds our own open items, and Group C holds conventions and choices. The IDs are those of the ledger. Ledger B1--B22 are not the Route B items B1--B7 or item B8 of this section, and ledger A6 is not the item ``A6'' of Route B (that label comes from v4 \S4.2a). Sources are cited by paper and page; ``[I]'' marks an inference step of ours that no verifier proved.
+
+{\small\tablefiles
+\begin{longtable}{p{0.05\linewidth}p{0.38\linewidth}p{0.22\linewidth}p{0.25\linewidth}}
+\multicolumn{4}{l}{\textbf{Group A}: Ba{\l}aban-level statements and external results}\\ \hline
+ID & statement & source & status \\ \hline \endhead
+A1 & Kernel bounds on $(QGQ^*)^{-1}$, $(QG_1Q^*)^{-1}$, uniform in $k$ and regular $U$ & CMP 99 p.\ 422 (3.132) & asserted, ``not repeated'' \\
+A2 & $R_2$ and $R_3$ obey (2.16) & CMP 116 p.\ 16 & asserted, ``similarly'' \\
+A3 & $C^*\Delta_kC\ge\gamma_0>0$, uniform in $k$ and $U$ & CMP 99 p.\ 428 & asserted, ``we can prove''; proved for $U=1$ (CMP 96 Lemma 2.4); $M$-independence [I] \\
+A4 & Kernel decay (189) of $\delta^2V/\delta A'^2$ and its consequence (190) & CMP 102 p.\ 308, Prop.\ 9 & announced; $k$-uniformity of $C_2,C_4,B_0$ [I] \\
+A5 & (H0): $E^{(j)}$, $\beta_{j+1}$ smooth in $g$ with bounded derivatives & CMP 109 pp.\ 263--264 & inductive assumption; ``uniform in $j$'' is our reading, uniformity in the history not printed; Theorem 2w uses the Lipschitz form on $\ioc{\gamma}$ \\
+A6 & $E^{(j)}$, $\beta_j$ analytic in the couplings & CMP 109 pp.\ 264, 266 & asserted; not used \\
+A7 & $\|C^*\Delta_kC\|\le\gamma_1$ and uniform decay of $C^*\Delta_kC$ & CMP 116 p.\ 13 (2.7); CMP 99 p.\ 428 & premise; reduced to A1 + A18 \\
+A8 & Positive Gaussian measure for the real pair $(U,0)$; complex case ``perturbative'' & CMP 116 p.\ 15 & asserted \\
+A9 & $k$-step averaging remainder with constant $C_1'(d,L)$ & CMP 98 (139), (143) & proved, constant not printed; alternative route only \\
+A10 & Lower-order bracket terms ``bounded similarly as in (1.24)'' & CMP 116 pp.\ 8--9 & asserted, ``similarly'' \\
+A11 & ``Similar inequalities hold for other constants'' & CMP 119 p.\ 256 & asserted; the later inequalities not located \\
+A12 & $\beta_0$ arbitrarily small for small $g$, fixed before $\gamma$ & CMP 122 II p.\ 389 & asserted; not checked line by line \\
+A13 & Theorem 1 & CMP 122 II p.\ 355; CMP 116, 119, 122 I--II & proved, conditional on $g_k\in\ioc{\gamma}$; uses A1--A4, A7, A8, A10, A14, A15, A17, A18 \\
+A14 & Induction closure recovers $E_0$ & CMP 109 p.\ 280 & asserted, constant unspecified; inside A13 only \\
+A15 & Small-field terms and $\beta_j$ are whole-lattice quantities, independent of $\Lambda_{k+1}$ & CMP 119 p.\ 278, (2.24), p.\ 249; CMP 109 (4.35)--(4.37) & asserted, small-field part only; R-term part is B8 \\
+A16 & Propagators may be replaced by operators with the same bounds & CMP 116 p.\ 3 & asserted for (1.3)--(1.4); our use for $C_f$ is an extension [I] \\
+A17 & $\operatorname{supp}\chi_k$ lies in the analyticity domain of (1.34) & used in CMP 116 Lemma 1 & implicit; inside A13; C9 changes it \\
+A18 & Backgrounds lie in the regular class of CMP 99/102; C-maps agree & used in CMP 109, 116, 122 I--II & implicit; pieces unsupported on the read pages \\
+A19 & (190) at complex $B$ & CMP 102 Prop.\ 9 (silent) & implicit \\
+A20 & $R_{K+1}\ge1$; cost constant $C_c$ independent of $g$ & CMP 122 I l.\ 909 & implicit; [I], graded safe \\
+A21 & Uniform-in-$k$ moments of the free extension kernel $E_0$ & not printed & implicit; numerical at $N=3,5$; alternative route only \\
+A22 & Readings listed as unchecked in v4 \S10 item 10 ($\Pi$ (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), ``$L$ odd'' page, Sect.\ 3 estimates, 1989 bound lists) & CMP 109, 119, 122 & not checked line by line \\
+X1 & L\"uscher--Weisz (5.7) one-loop coefficient & L\"uscher--Weisz \cite{luscherweisz1995} & cited; Route B only \\
+X2 & OS II growth condition and reconstruction from torus data & OS II \cite{os1975} & cited \\
+X3 & Reflection positivity of the Wilson action, link planes & Osterwalder--Seiler \cite{osterwalderseiler1978} & cited, text not fetched \\
+X4 & Convergence criterion of the final cluster expansion & Cammarota, CMP 85 (1982) & cited \\
+X5 & (F): continuum log coefficient at constant field & Savvidy \cite{savvidy1977} & cited, source checked \\ \hline
+\end{longtable}
+
+\begin{longtable}{p{0.05\linewidth}p{0.38\linewidth}p{0.22\linewidth}p{0.25\linewidth}}
+\multicolumn{4}{l}{\textbf{Group B}: our own open items}\\ \hline
+ID & statement & source & status \\ \hline \endhead
+B1 & (H2) $\rho_2<L$ & none & numerical; certificate open at every $L$ \\
+B2 & (PI) probe independence & none & argued \\
+B3 & (F) lattice coefficient = continuum coefficient & X5 & source checked; lattice transfer not proved \\
+B4 & ($M_j$) formal = true $f^2$ coefficient, (S1)--(S3) & none & open; Prop.\ 4.4 argued \\
+B5 & V1: $\beta_{j+1}(0)$ is the Maxwell coefficient & CMP 109 (1.3)--(1.5) & open; supported at order $p^2$ \\
+B6 & (G2) per-cell infinite-volume densities & $\to$ A15 & formal \\
+B7 & L5: $\beta_{k+1}$ on the clamped cube, or nested-interval Lemma D$''$ & CMP 109 p.\ 298 & open \\
+B8 & $K$-independence of $\beta_j(g)$, R-term part & $\to$ A15 & open \\
+B9 & Route B inputs (T1), (DF), v4 ``A6'', \file{BETA_FP_U} Theorem 2.4 & none & argued; Route B only \\
+B10 & Proved, unverified results in the chains (sweep, \file{BETA_FP_M} Prop.\ 4.3, Prop.\ 3.6, N3 in D$''$ form) & $\to$ A11, A12 & proved, unverified \\
+B11 & (B-S): sourced Theorem 1, (E14-a, b, c) & $\to$ A13 & open as a whole; parts B12--B20, B22 \\
+B12 & (I): $B_j(c)=\beta_j(u(c))$ & none & by construction (C1, C10); not written as a lemma \\
+B13 & Real uniform (H-hist) & $\to$ A1--A3, A7, A8, A10, A17, A18 & small field proved+verified modulo inputs; large field open \\
+B14 & (H-hist2) & none & verified reduction \\
+B15 & (H-thr) threshold mismatch & CMP 122 II p.\ 383 & reduced to M2$'$, M4, M5 \\
+B16 & (H-hol), small field & conditions (C1)--(C5) & verified reduction \\
+B17 & (H-hol), large field & $\to$ A4, A18, A19 & verified reduction; (M-C) open \\
+B18 & N3 strip bound & none & proved+verified given B12--B17 \\
+B19 & (FX) final Mayer expansion & not in CMP 116--122 & reduced; remaining input B18 \\
+B20 & Sourced step bookkeeping: (W4), (P8), F2$'$, (D), $\Lambda_j$ & $\to$ A4, A10, A16 & reduced; $\Lambda_j$ bookkeeping open \\
+B21 & (B-N1) bridge and (S) & none & open; (S$_{\mathrm{src}}$) $\Rightarrow$ (H-U) proved+verified \\
+B22 & Scale condition (U) and recovery of $\kappa\to\kappa/2$ in the sourced step & none & open; (U) is a hypothesis in disguise \\ \hline
+\end{longtable}
+
+\begin{longtable}{p{0.05\linewidth}p{0.38\linewidth}p{0.22\linewidth}p{0.25\linewidth}}
+\multicolumn{4}{l}{\textbf{Group C}: conventions and choices}\\ \hline
+ID & choice & source & status \\ \hline \endhead
+C1 & Freeze thresholds and partitions at Ba{\l}aban's trajectory $x^*$ & \file{SOURCES_D3}, \file{SOURCES_HTHR} & free; derivative needs B15 \\
+C2 & Option B margin, $\theta_W+\tau_C\le0.2$ & \file{SOURCES_MB_VERIFY} & free; costs a smaller $\gamma$ \\
+C3 & $L$ odd, $L>11$; target $L=13$ & v4 \S1.1 & loses generality \\
+C4 & $G=SU(2)$, $d=4$ & Theorem 2 & loses generality \\
+C5 & Order of constants & \file{SOURCES_N3A} & free; settled \\
+C6 & Holomorphy radius $\rho_0$ & \file{SOURCES_HHOL} & free \\
+C7 & Cut on $B$, not $B'$ & CMP 109 (2.9), (2.12) & reading; closed \\
+C8 & Sharp $\chi_k$; smooth fallback & \file{SOURCES_G3} & free \\
+C9 & Shrunk $\chi_k$ threshold & \file{SOURCES_GGAIN_VERIFY} & changes the construction; A13 must hold for it \\
+C10 & Gauge-fixing weight $1/u_k(c)$ & \file{SOURCES_D2C_VERIFY} & changes the construction; A13 must hold for it \\
+C11 & $h\equiv0$ booking; freezing set & \file{SOURCES_D2C} & free \\
+C12 & Additive source normalization & \file{SOURCES_HBETA_N3} & free \\
+C13 & Main R-step form (1.90)--(1.98) & \file{SOURCES_FX_O23_VERIFY} & free; removes O4 \\
+C14 & $\kappa_{\mathrm{final}}$ fixed before $M$ & \file{SOURCES_FX_R2} & free; not sharp \\
+C15 & $2p_1-(d+5)r_0>p_0$ & CMP 122 II p.\ 383 & condition (Ba{\l}aban's own) \\
+C16 & $32\varepsilon'\le1$, $S\ge1$, $\kappa_0>2$ & \file{SOURCES_D3W8_VERIFY} & changes the construction; A13 must hold for it \\
+C17 & (S): $\gamma^{-2}\ge c_{sw}D'$ & v4 \S1.2 & condition; needs A12 \\
+C18 & $\ell$ even; thermal state; plaquette observable; test space $D_n$; origin at a site; compactness form & \file{ASSEMBLY} \S0--\S1 & loses generality \\
+C19 & Coupling domain $\ioc{\gamma}$ & \file{SOURCES_GGAIN_VERIFY} & free \\
+C20 & Route K primary, Route B alternative & v4 \S1.3 & free \\
+C21 & $\theta_*<1$ in Route B & \file{BETA_FP_PW_VERIFY} & free; trivial \\
+C22 & $g_0(K,g)$: any shooting solution & Lemma D & loses generality \\ \hline
+\end{longtable}}
+
+\paragraph{Binding sets.} \emph{Theorem 2w} (Theorem~\ref{thm:A}(i), Route K) rests on A5, A15, B1--B8, and X5. Route B replaces B2--B5 by B9 and X5 by X1.
+
+\emph{Theorem 2w $\Rightarrow$ Theorem 1} (Theorem~\ref{thm:A}(ii)) rests on 6 Group A items (A5, A11, A12, A13, A15, A22), 9 Group B items (B1--B8, B10), and X5. Inside the proof of Theorem 1 (A13), Ba{\l}aban also uses A1--A4, A7, A8, A10, A14, and the items A15, A17, A18, which he uses without a separate proof.
+
+\emph{Theorem~\ref{thm:B}} rests on 18 Group A items (A1--A5, A7, A8, A10--A13, A15--A20, A22), 4 externals (X2--X5), and 21 Group B items (B1--B8, B10--B22). C9 does not remove A17, because A13 uses A17. Beyond A13, Theorem~\ref{thm:B} adds only A16, A19, A20 to the Ba{\l}aban-level trust.
+
+Counts: Group A has 22 items, of which 13 are printed by Ba{\l}aban without a proof (11 of the 18 behind Theorem~\ref{thm:B}, 4 of the 6 behind Theorem~\ref{thm:A}). There are 5 externals, 22 Group B items, and 22 Group C items. Of Group C, C3, C4, C18, C22 (with (U) of B22) lose generality, and C9, C10, C16 change Ba{\l}aban's construction.

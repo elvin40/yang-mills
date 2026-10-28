@@ -1,0 +1,96 @@
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}The problem}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}Ba{\l }aban's programme and the missing Theorem 2}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}The two targets and the main results}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}Status conventions}{5}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Relation to other work}{6}{subsection.1.5}%
+\contentsline {subsection}{\numberline {1.6}Organization}{7}{subsection.1.6}%
+\contentsline {section}{\numberline {2}Setup and notation}{7}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Lattice, measure, and scales}{7}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Range of $L$}{8}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The coupling sequence}{8}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}One-loop notation}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Observables and Schwinger functions}{8}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}Names}{9}{subsection.2.6}%
+\contentsline {section}{\numberline {3}The coupling flow and Theorem 2}{9}{section.3}%
+\contentsline {subsection}{\numberline {3.1}What Ba{\l }aban's Theorem 1 actually needs}{9}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}The weak form proved conditionally}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Literal (0.31)}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Shooting lemmas}{11}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Lemma D$'$ (shooting without early positivity) {\normalfont \scshape [proved+verified; Lean]}}{11}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}Lemma D$''$ (tail-sum form; no index $J$) {\normalfont \scshape [proved+verified; Lean]}}{12}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}Lemma D$''$ meets Balaban's proof: the cross-scale sweep {\normalfont \scshape [proved, unverified (sweep); 4 of 19 table rows verified]}}{12}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}Lemma D and Lemma E {\normalfont \scshape [proved+verified; Lean]}}{13}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}History dependence (L5) {\normalfont \scshape [open]}}{13}{subsubsection.3.4.5}%
+\contentsline {subsection}{\numberline {3.5}The exact structure of the one-loop sums}{14}{subsection.3.5}%
+\contentsline {subsubsection}{\numberline {3.5.1}Telescoping {\normalfont \scshape [proved+verified, corrected scope]}}{14}{subsubsection.3.5.1}%
+\contentsline {subsubsection}{\numberline {3.5.2}Anchor-free identity {\normalfont \scshape [proved+verified]}}{14}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.3}The constant $c$ {\normalfont \scshape [proved+verified]}}{15}{subsubsection.3.5.3}%
+\contentsline {subsubsection}{\numberline {3.5.4}The decomposition $S_k=ck\log L+\kappa _W^F-\kappa _k$}{15}{subsubsection.3.5.4}%
+\contentsline {subsubsection}{\numberline {3.5.5}Level-uniform symbol facts used below {\normalfont \scshape [proved+verified]}}{15}{subsubsection.3.5.5}%
+\contentsline {subsection}{\numberline {3.6}Bounded window sums: two formally distinct conditional routes}{16}{subsection.3.6}%
+\contentsline {subsubsection}{\numberline {3.6.1}Route K: Theorem K {\normalfont \scshape [proved+verified, conditional on (B2) and the fixed-level inputs]}}{16}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Route B: Theorem~B$_{\mathrm {PW}}${} {\normalfont \scshape [proved+verified, conditional (logic of Theorem~B$_{\mathrm {PW}}$)]}}{17}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Route B inputs after \texttt {BETA\_FP\_U} {\normalfont \scshape [proved, unverified; no verifier file]}}{18}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.4}Comparison}{19}{subsubsection.3.6.4}%
+\contentsline {subsection}{\numberline {3.7}The hypothesis (B2) of Route K, and the single uniform inequality (H2)}{19}{subsection.3.7}%
+\contentsline {subsubsection}{\numberline {3.7.1}Proved}{20}{subsubsection.3.7.1}%
+\contentsline {subsubsection}{\numberline {3.7.2}Refuted, and the failed one-step bound}{20}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}(H2) and the two-step theorems {\normalfont \scshape [proved+verified, conditional on (H2)]}}{20}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}One-step sufficiency {\normalfont \scshape [arithmetic proved; inputs numerical]}}{21}{subsubsection.3.7.4}%
+\contentsline {subsubsection}{\numberline {3.7.5}The precise remaining inequality}{21}{subsubsection.3.7.5}%
+\contentsline {subsection}{\numberline {3.8}Conclusion of the reduction}{21}{subsection.3.8}%
+\contentsline {subsection}{\numberline {3.9}The convergence route: what it adds, and its status}{22}{subsection.3.9}%
+\contentsline {subsubsection}{\numberline {3.9.1}Components and status}{22}{subsubsection.3.9.1}%
+\contentsline {subsubsection}{\numberline {3.9.2}Early steps and $j_*$}{23}{subsubsection.3.9.2}%
+\contentsline {section}{\numberline {4}The finite-torus existence theorem}{24}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What ``exists'' means here}{24}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Hypothesis delivered by the blocks}{24}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}Theorem (finite-torus existence, compactness form)}{24}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Theorem (nontriviality), conditional on (B-NT)}{25}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Proof modulo blocks}{25}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}(B-T2) Theorem 2: the running coupling}{26}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}(B-S) Sourced bounds E14-a..g}{26}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}(B-N1) Bridge: source-form bounds $\Rightarrow $ (H-U) {\normalfont \scshape [open]}}{26}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}(B-C) Compactness {\normalfont \scshape [proved here, given (H-U)]}}{27}{subsubsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.5}(B-REG) Regularity (OS0) {\normalfont \scshape [proved here, given (H-U)]}}{27}{subsubsection.4.5.5}%
+\contentsline {subsubsection}{\numberline {4.5.6}(B-TI) Translation and hypercubic invariance (OS1) {\normalfont \scshape [proved here, given (H-U)]}}{28}{subsubsection.4.5.6}%
+\contentsline {subsubsection}{\numberline {4.5.7}(B-RP) Reflection positivity (OS2)}{28}{subsubsection.4.5.7}%
+\contentsline {subsubsection}{\numberline {4.5.8}(OS3) Symmetry and reality {\normalfont \scshape [proved here]}}{29}{subsubsection.4.5.8}%
+\contentsline {subsubsection}{\numberline {4.5.9}(B-NT) Nontriviality: what is needed}{29}{subsubsection.4.5.9}%
+\contentsline {subsection}{\numberline {4.6}Dependency table}{30}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}What the theorem does not give}{39}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Corrections after verification}{40}{subsection.4.8}%
+\contentsline {section}{\numberline {5}Numerical results}{40}{section.5}%
+\contentsline {subsection}{\numberline {5.1}First increment $\beta _1(0)$}{41}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Later increments ($L=2$ only)}{41}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Quantities of the Route K proof}{42}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}Values of (H2) {\normalfont \scshape [numerical; none certified]}}{43}{subsection.5.4}%
+\contentsline {subsection}{\numberline {5.5}One-step values}{44}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}A rigorous point enclosure at $L=3$ {\normalfont \scshape [interval enclosure, verified]}}{44}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}Certification plan and $j_0$ {\normalfont \scshape [designed, not done]}}{45}{subsection.5.7}%
+\contentsline {section}{\numberline {6}What remains}{45}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Certification}{45}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Fixed-level and structural inputs of Theorem 2w}{46}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Items of the sources block}{47}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Verification debt}{48}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}Open for stronger statements}{48}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}Trust ledger}{49}{subsection.6.6}%
+\contentsline {paragraph}{Binding sets.}{52}{section*.2}%
+\contentsline {section}{\numberline {A}Lean formalization}{52}{appendix.A}%
+\contentsline {paragraph}{{\normalfont \scshape [Lean]}}{52}{section*.3}%
+\contentsline {section}{\numberline {B}Index of results by status}{53}{appendix.B}%
+\contentsline {paragraph}{{\normalfont \scshape [proved+verified]}}{53}{section*.4}%
+\contentsline {paragraph}{{\normalfont \scshape [proved, unverified]}}{54}{section*.5}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{55}{section*.6}%
+\contentsline {paragraph}{{\normalfont \scshape [verified reduction]}}{55}{section*.7}%
+\contentsline {paragraph}{{\normalfont \scshape [interval enclosure, verified]}}{55}{section*.8}%
+\contentsline {paragraph}{{\normalfont \scshape [argued]}}{55}{section*.9}%
+\contentsline {paragraph}{{\normalfont \scshape [open]}}{55}{section*.10}%
+\contentsline {paragraph}{{\normalfont \scshape [corrected by verifiers since v3]}}{56}{section*.11}%
+\contentsline {paragraph}{{\normalfont \scshape [refuted]}}{56}{section*.12}%
+\contentsline {paragraph}{{\normalfont \scshape [Balaban]}}{56}{section*.13}%
+\contentsline {paragraph}{{\normalfont \scshape [verified quote]}}{56}{section*.14}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{56}{section*.15}%
+\contentsline {section}{\numberline {C}Label map}{56}{appendix.C}%
+\contentsline {section}{\numberline {D}Revision history}{58}{appendix.D}%

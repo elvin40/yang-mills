@@ -31,7 +31,7 @@ Not formalized: interval arithmetic itself, the enclosure premises P1$'$--P4, th
 
 \section{Index of results by status}\label{app:ledger}
 
-This appendix indexes the results of the paper by status tag; the tags match the verifier files. Here v1--v4 denote the successive versions \texttt{THEOREM2\_PROOF.md}, \texttt{THEOREM2\_PROOF\_v2.md}, \file{THEOREM2_PROOF_v3.md}, and \file{THEOREM2_PROOF_v4.md} of the Theorem 2 notes.
+This appendix indexes the results of the paper by status tag; the tags match the verifier files. Here v1--v4 denote the successive versions \texttt{THEOREM2\_PROOF.md}, \texttt{THEOREM2\_PROOF\_v2.md}, \file{THEOREM2_PROOF_v3.md}, and \file{THEOREM2_PROOF_v4.md} of the Theorem 2 notes. The statements that the main theorems take on trust are listed by item in the trust ledger \file{TRUST_LEDGER.md}, condensed in Section~\ref{sec:rem-ledger}; ledger IDs are given below where an entry corresponds to a ledger item.
 
 \paragraph{\status{proved+verified}}
 \begin{itemize}
@@ -40,7 +40,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Lemma D$''$ (tail-sum form, no $J$) (\file{KAPPA_BOUNDED_VERIFY} \S6).
 \item Telescoping $S_k=\sum\beta_j(0)$ for the $p\to0$ coefficient (\file{BETA_FP_VERIFY} item 1, corrected scope).
 \item Prop.\ 2.1 anchor-free identity; exact at the constant field (\file{BETA_FP_LEMMA43_VERIFY} item 1; \file{BETA_FP_H_VERIFY} item 1).
-\item $c=11N^2/(12\pi^2)$, normalization chain; (F) source (Savvidy eq.\ (1.4)) (\file{BETA_FP_LEMMA43_VERIFY} item 2; \file{BETA_FP_H_VERIFY} \S4).
+\item $c=11N^2/(12\pi^2)$, normalization chain; (F) source (Savvidy eq.\ (1.4); ledger X5) (\file{BETA_FP_LEMMA43_VERIFY} item 2; \file{BETA_FP_H_VERIFY} \S4).
 \item KAPPA Prop.\ 1.1 as an identity given its fixed-level inputs; Lemma 2.1 (integration by parts); Prop.\ 2.2; level-independence of the degree $-4$ part; Theorem K and Theorem 2w as conditional reductions (\file{KAPPA_BOUNDED_VERIFY} (i)--(v)).
 \item $\sup_j|\sigma_j^{(2)}(0)|<\infty$; Prop.\ 4.1 algebra (\file{KAPPA_BOUNDED_VERIFY} (vi), reason for A4 failure corrected: obstruction = $\partial\sigma^{(1)}$ in $Q_j$ and in (W-2), \S7 there).
 \item \file{B2_TWOSTEP} two-step recursion; Theorem C1 ((H2) $\Rightarrow$ ($C1\sigma$), factor $\rho_2^2/L^2$) and Theorem B2 ((H2) $\Rightarrow$ (B2), factor $\rho_2^2/L^4$), conditional on (H2); threshold $\rho_2<L$ (no strip loss); (H2) weaker than (H$''$) at $n=2$ (\file{B2_TWOSTEP_VERIFY} grades 1, 3, 4). Form of $Q_j$ by read-off (grade 8; \file{U3_LEMMA51} (3.3) not re-derived).
@@ -85,12 +85,12 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{argued}}
 \begin{itemize}
-\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) as a bare hypothesis (now reduced, see above); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
+\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) as a bare hypothesis (now reduced, see above); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger A6) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
 \end{itemize}
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (H2) (certification; numerical at $L=3,5,9$; one-step at $L=13$). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. See Section~\ref{sec:remains}.
+\item (H2) (certification; numerical at $L=3,5,9$; one-step at $L=13$). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$, R-term part (ledger B8). The scale condition (U) and the $\kappa\to\kappa/2$ recovery of the sourced step (ledger B22). (A) in full. See Section~\ref{sec:remains}.
 \end{itemize}
 
 \paragraph{\status{corrected by verifiers since v3}}
@@ -110,7 +110,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{Balaban}}
 \begin{itemize}
-\item (H0) smoothness and uniform bounds of $\beta_{j+1}$ in $g$ (CMP 109 (1.22), pp.\ 263--264), at odd $L>11$ only; Theorem 1 and the inductive bounds of CMP 109, 116, 119, 122 and the propagator papers CMP 95, 96, 98, 99, 102. Uniform level bounds partly cited from CMP 95/96/99 (O6 replaced the main citation).
+\item (H0) smoothness of $\beta_{j+1}$ in $g$ (CMP 109 (1.22), pp.\ 263--264), at odd $L>11$ only; uniformity in $j$ is our reading and uniformity in the history is not printed (ledger A5); Theorem 1 and the inductive bounds of CMP 109, 116, 119, 122 and the propagator papers CMP 95, 96, 98, 99, 102. Uniform level bounds partly cited from CMP 95/96/99 (O6 replaced the main citation). Each Ba{\l}aban input that is printed without proof, or used without being printed, is a Group A row of the trust ledger.
 \end{itemize}
 
 \paragraph{\status{verified quote}}

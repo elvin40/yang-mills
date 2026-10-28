@@ -1,0 +1,160 @@
+\begin{thebibliography}{10}
+
+\bibitem{balaban95}
+Tadeusz Ba{\l}aban.
+\newblock Propagators and renormalization transformations for lattice gauge
+  theories. {I}.
+\newblock {\em Comm. Math. Phys.}, 95:17--40, 1984.
+
+\bibitem{balaban96}
+Tadeusz Ba{\l}aban.
+\newblock Propagators and renormalization transformations for lattice gauge
+  theories. {II}.
+\newblock {\em Comm. Math. Phys.}, 96:223--250, 1984.
+
+\bibitem{balaban98}
+Tadeusz Ba{\l}aban.
+\newblock Averaging operations for lattice gauge theories.
+\newblock {\em Comm. Math. Phys.}, 98:17--51, 1985.
+
+\bibitem{balaban99b}
+Tadeusz Ba{\l}aban.
+\newblock Propagators for lattice gauge theories in a background field.
+\newblock {\em Comm. Math. Phys.}, 99:389--434, 1985.
+
+\bibitem{balaban99a}
+Tadeusz Ba{\l}aban.
+\newblock Spaces of regular gauge field configurations on a lattice and gauge
+  fixing conditions.
+\newblock {\em Comm. Math. Phys.}, 99:75--102, 1985.
+
+\bibitem{balaban102a}
+Tadeusz Ba{\l}aban.
+\newblock Ultraviolet stability of three-dimensional lattice pure gauge field
+  theories.
+\newblock {\em Comm. Math. Phys.}, 102:255--275, 1985.
+
+\bibitem{balaban102b}
+Tadeusz Ba{\l}aban.
+\newblock The variational problem and background fields in renormalization
+  group method for lattice gauge theories.
+\newblock {\em Comm. Math. Phys.}, 102:277--309, 1985.
+
+\bibitem{balaban109}
+Tadeusz Ba{\l}aban.
+\newblock Renormalization group approach to lattice gauge field theories. {I}.
+  generation of effective actions in a small field approximation and a coupling
+  constant renormalization in four dimensions.
+\newblock {\em Comm. Math. Phys.}, 109:249--301, 1987.
+
+\bibitem{balaban119}
+Tadeusz Ba{\l}aban.
+\newblock Convergent renormalization expansions for lattice gauge theories.
+\newblock {\em Comm. Math. Phys.}, 119:243--285, 1988.
+
+\bibitem{balaban116}
+Tadeusz Ba{\l}aban.
+\newblock Renormalization group approach to lattice gauge field theories. {II}.
+  cluster expansions.
+\newblock {\em Comm. Math. Phys.}, 116:1--22, 1988.
+
+\bibitem{balaban122a}
+Tadeusz Ba{\l}aban.
+\newblock Large field renormalization. {I}. the basic step of the {$\mathcal
+  R$} operation.
+\newblock {\em Comm. Math. Phys.}, 122:175--202, 1989.
+
+\bibitem{balaban122b}
+Tadeusz Ba{\l}aban.
+\newblock Large field renormalization. {II}. localization, exponentiation, and
+  bounds for the {$\mathcal R$} operation.
+\newblock {\em Comm. Math. Phys.}, 122:355--392, 1989.
+
+\bibitem{dashengross1981}
+Roger Dashen and David~J. Gross.
+\newblock The relationship between lattice and continuum definitions of the
+  gauge theory coupling.
+\newblock {\em Phys. Rev. D}, 23:2340--2348, 1981.
+
+\bibitem{ymrepo}
+Elvin.
+\newblock yang-mills: project repository (notes/ directory holds the project
+  files cited as \texttt{FILE.md}), 2026.
+\newblock Local repository; no public remote.
+
+\bibitem{jaffewitten}
+Arthur Jaffe and Edward Witten.
+\newblock Quantum {Y}ang--{M}ills theory.
+\newblock In {\em The Millennium Prize Problems}, pages 129--152. Clay
+  Mathematics Institute, American Mathematical Society, 2006.
+\newblock Official problem statement, Clay Mathematics Institute.
+
+\bibitem{luscherweisz1995}
+Martin L{\"u}scher and Peter Weisz.
+\newblock Background field technique and renormalization in lattice gauge
+  theory.
+\newblock {\em Nucl. Phys. B}, 452:213--233, 1995.
+
+\bibitem{menottipelissetto1987}
+Paolo Menotti and Andrea Pelissetto.
+\newblock General proof of {O}sterwalder--{S}chrader positivity for the
+  {W}ilson action.
+\newblock {\em Comm. Math. Phys.}, 113:369--373, 1987.
+
+\bibitem{OAI26-O3}
+{OpenAI}.
+\newblock The canonical massive continuum limit of the two-dimensional {O(3)}
+  model.
+\newblock \url{https://github.com/openai/math}, family 215, preprints folder,
+  2026.
+\newblock October 4, 2026.
+
+\bibitem{os1973}
+Konrad Osterwalder and Robert Schrader.
+\newblock Axioms for {E}uclidean {G}reen's functions.
+\newblock {\em Comm. Math. Phys.}, 31:83--112, 1973.
+
+\bibitem{os1975}
+Konrad Osterwalder and Robert Schrader.
+\newblock Axioms for {E}uclidean {G}reen's functions. {II}.
+\newblock {\em Comm. Math. Phys.}, 42:281--305, 1975.
+
+\bibitem{osterwalderseiler1978}
+Konrad Osterwalder and Erhard Seiler.
+\newblock Gauge field theories on a lattice.
+\newblock {\em Ann. Phys.}, 110:440--471, 1978.
+
+\bibitem{savvidy1977}
+G.~K. Savvidy.
+\newblock Infrared instability of the vacuum state of gauge theories and
+  asymptotic freedom.
+\newblock {\em Phys. Lett. B}, 71:133--134, 1977.
+
+\bibitem{Savvidy2019}
+George Savvidy.
+\newblock From {H}eisenberg--{E}uler {L}agrangian to the discovery of
+  chromomagnetic gluon condensation.
+\newblock {\em Eur. Phys. J. C}, 80:165, 2020.
+\newblock arXiv:1910.00654.
+
+\bibitem{SA26-YM4}
+Ethan Sussman and Levent Alp{\"o}ge.
+\newblock {SU}(2) {Y}ang--{M}ills theory in four dimensions via {B}a{\l}aban's
+  renormalisation group: construction, axioms and non-triviality.
+\newblock ym4\_manuscript\_zeroth\_draft.pdf, repository
+  \url{https://github.com/ethanwsussman/Yang--Mills-LLM-experiment}, commit
+  1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310, 2026.
+\newblock Draft dated 6 October 2026. Accessed 2026-10-27.
+
+\bibitem{SA26-T0}
+Ethan Sussman and Levent Alp{\"o}ge.
+\newblock The {Y}ang--{M}ills continuum limit along {B}a{\l}aban's
+  renormalization group: a complete account of {T}heorem 0.
+\newblock LaTeX files
+  theorem\_0\_complete\_account\_raw\_\{master,I,II,III\}.tex, repository
+  \url{https://github.com/ethanwsussman/Yang--Mills-LLM-experiment}, commit
+  1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310 (2026-10-27), 2026.
+\newblock Written largely by LLM, with Claude; not vetted by the repository
+  authors. Accessed 2026-10-27.
+
+\end{thebibliography}

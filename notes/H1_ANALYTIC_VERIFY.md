@@ -25,3 +25,11 @@ Own implementation (verify_ab.py): E⁰ and γ̄ from (2.1)/(4.1); Prop. A symbo
 - (I1) with exact symbols: max rel. |P_⊥TP_⊥ − P_⊥diag(d^{ML})P_⊥| ≤ 5.3e−13 for j = 1 (all 10 K), j = 2 (3 K; fine window 13, coarse window 169), j = ∞ (10 K; truncated sums with matched sets n = l + Lm, |m| ≤ 1). This checks the tower identity exactly on finite sets.
 - (1.1) with the production d (quadrature, from h1cert_rho1.pieces) vs h1cert_rho1.rho1²: rel. diff ≤ 3.9e−13 for all 23 (K, j) cases.
 All below the 1e−10 tolerance. j = 2 was run at 3 K only (L⁸ direct-sum cost). Grade (1): CONFIRMED.
+
+## V3. Task B numerics (numerics/h1analytic/test_b.py, L = 13, 117 s)
+224 K (200 random in BZ with signs, 19 face-diagonal points (a, a, π, π) a ∈ [2.0, 2.9], corner, (2.42,2.42,2.42,2.98), 3 near-0/edge points) × j ∈ {1, 2, 5, ∞} = 896 cases. ρ_1² from production h1cert_rho1.rho1. B_sharp = (5.3) with F from the truncated sum (h = 6) and |P_lg_l|; B_crude = γF_CS + G with |g_l| (the function bb.py encloses), both written by me from the text.
+- min B_sharp/ρ_1² = 1.0347 (j = ∞, K = (−0.322, 1.291, −1.271, 0.762), ρ_1² = 1.550). No violation. The bound is tight (3.5%) at a generic interior K, not at the argmax.
+- B_crude ≥ B_sharp at every case (min ratio 1.0000).
+- max ρ_1² = 4.366 (face, a ≈ 2.5, j = ∞); max B_sharp = 5.960, max B_crude = 7.957 (both at (2.42,2.42,2.42,2.98)). These match H1_ANALYTIC §7 (5.86 h=6 sharp / 7.98 crude; small differences from point sets).
+- Near 0: ρ_1² = 1.000, B = 2.005. j-dependence of ρ_1² is ≤ 3% between j = 1 and ∞; B has no j.
+The tight 3.5% case needs a local search (V4).
