@@ -1,6 +1,6 @@
 # SOURCES_UN1 — does (U) conflict with (B-N1)?
 
-Status: in progress (2026-10-27).
+Status: complete (2026-10-27). Verdict: NO CONFLICT, given the norm identification of §4.
 
 ## 1. The two conditions in one set of variables
 
@@ -53,3 +53,42 @@ FX §6.3 and N3A §3 speak of a "sup-norm radius c·r". That phrase fixes the UN
 - The small-width loss is already paid: a bump of width h costs N_{C¹} ~ (1+|q|)/h, and flatness of F pays for h^{−1} (ASSEMBLY_N1 §4.4 exponent count, C¹ form). The extra ρ_1^{−1} is h-independent.
 
 2.5 OS side [read ASSEMBLY §2.4–2.5]. (H-U) is |S_{n,ε}(F)| ≤ A(n!)^D ‖F‖_{sn} with the C^{sn} norm on T^{4n}. That norm contains all derivatives up to order sn, so it dominates N_U up to the constant ρ_1^{−1}. OS regularity never asks for the generating functional at a large-gradient source. It asks only for the multilinear bound, which is what §2.4 gives.
+
+## 3. Repair options, and why neither is needed
+
+3.1 Scale-matched stopping (D2 l. 217's own reading) [derived: NOT recommended].
+D2 l. 217 proposes "put the unit scale at a fixed number N_0 of L-steps below the physical scale of the test functions". For bridge bumps of width h this means stopping at λ_last ~ h/L^{N_0}, which tends to ε as h → ε. The unit-scale integral is then over (ℓL^{N_0}/h)⁴ sites. D2 l. 290 and FX §6.2 get their Cauchy radius and n!-constant from a FIXED unit lattice of size N_u⁴; with N_u ~ 1/h they lose uniformity in h, and the bridge sums over h down to ε. So this reading would create a real conflict. It is also unnecessary: the gradient-to-radius form of §2.3 holds at λ_K = 1 for all test functions after rescaling.
+
+3.2 Norm restriction [derived: this is the resolution, and it is already the form of (FX2)].
+Use N_U of §2.2 for the source class and for the bridge rescaling. §2.4 shows (U) holds inside the whole polydisc, and §2.5 shows (H-U) only needs the multilinear bound in a C^{sn} norm, which dominates N_U.
+
+## 4. Conclusion
+
+NO CONFLICT, with this norm identification:
+- ρ_1 and r are both in physical units; the last RG scale is physical length 1 (λ_K = 1, D4D5 l. 75).
+- r in (U) is the fixed holomorphy margin r_0 (N3A §2c), not the amplitude of a test function.
+- (U) is the constant choice ρ_1 ≤ c_* r_0/M^a, made once, independent of K and of the test function.
+- The bridge evaluates the generating functional only on {N_U(f) ≤ 1} = {‖f‖_∞ ≤ r, ‖∇f‖_∞ ≤ ρ_1}, by n-linear rescaling. Small widths h ≥ ε are paid by the norm growth (1/h per bump, absorbed by flatness), not by (U). The price of (U) is ρ_1^{−n}, a C^n factor.
+
+The PAPER_FIX_LOG F7 decision "B-N1 uses bumps down to h ~ ε (B21), so (U) is a hypothesis in disguise" is REFUTED on this reading. (U) is a choice of constant, like ρ_1 ≤ r/(4C_hM) in D4D5. It must still be stated, because it fixes the order of constants.
+
+## 5. Honest ledger
+
+[P] = proved here from quoted lines; [I] = inference; [O] = open.
+- [P] Units: λ_K = 1 physical; ρ_1, r physical; no K-dependent conversion (D2 l. 40/44/290, D4D5 l. 75, N3A §3).
+- [P] r in (U) is the constant-source Cauchy margin (D2C (3.5)); (U) is a constant inequality ρ_1 ≤ c_* r_0/M^a.
+- [P] The bridge's Cauchy polydisc stays in the (U)-admissible domain (disjoint supports; separate rescaling of real and imaginary parts).
+- [P] Cost ρ_1^{−n} ≤ (M^a/(c_* r_0))^n; s, D unchanged.
+- [I] No block needs a LOWER bound on ρ_1. Checked by grep of D2, D2C, D3, D3R, D3W8, D4D5, FX for ρ_1; all uses are upper bounds on errors. Not a line-by-line reread of every block.
+- [I] c_* and a are K-independent Balaban/D2 constants. a = 7 (D2) or 3 (D2C) or larger by (M/κ)^4 (D2_VERIFY (5)): any fixed a works.
+- [O, unchanged, not this file's question] B21 residuals: (S) uniform in support size down to h ~ ε and valid at σ = 16ε. The rescaled sources now have amplitude ~ ρ_1 h ≪ r, which should help, but this is not checked.
+- [O, unchanged] κ → κ/2 decay recovery of D2 (SOURCES_D2_VERIFY (5)); the other half of B22.
+- [O, unchanged] (Hβ), needed for |∇f_k| ≤ (3/2)ρ_1 uniformly in k (D2C l. 148). Without it, the effective gradient could grow with k and (U) would fail at late steps even for admissible f. This is the only route by which (U) could fail inside the domain.
+
+Edits this implies (not made; this task writes only this file):
+- ASSEMBLY §2.2: F_r is stated as "|∂^m f| ≤ r for m ≤ 5". The gradient bound must be ρ_1 (≤ c_* r/M^a), not r. As written it violates (U) for M^a > c_*.
+- ASSEMBLY §2.3 step 2 and ASSEMBLY_N1 §1 item 3: λ_i := N_U(f_i) (gradient weighted by 1/ρ_1), not N(f_i)/min(r, C_m).
+- SOURCES_D2 l. 27 and l. 217: replace "relative to the test-function scale" and the N_0-steps convention by ρ_1 ≤ c_* r_0/M^a at λ_K = 1. D2 l. 40 "torus side 1" → "last spacing 1, torus side ℓ".
+- PAPER_FIX_LOG F7 / TRUST_LEDGER B21–B22 / ASSEMBLY §1.3 / paper Theorem B: reclassify (U) from "hypothesis in disguise" to "constant choice ρ_1 ≤ c_* r_0/M^a, compatible with (B-N1)", conditional on (Hβ).
+
+Status: [derived here, unverified]. Needs an independent verifier before it is load-bearing.
