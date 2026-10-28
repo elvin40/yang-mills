@@ -39,7 +39,7 @@ Balaban needs more than gain 1 in the full (large-field) construction. [V, CMP 1
 ## 3. Per-step recovery: the condition on δ
 
 Inputs of the T step k → k+1, sourced version, worst rates in their native units:
-- newest E-terms at scale k: (1 + 4β)κ (Balaban's improved bound, inherited);
+- newest E-terms at scale k: (1 + 4β)κ (Balaban's improved bound, CMP 119 p. 262, inherited);
 - R-terms of the R operation at scale k: κ ((1.100) [V]); R-induced terms: θκ (L3);
 - extraction remainders V^{(k)} at scale k: θκ (L2);
 - interpolated inputs in the proof of (vii): θκ (L1);
@@ -68,3 +68,71 @@ Cost of (K1). The δ-sums now run at δ_θθκ instead of δκ. Balaban's thresh
 
 The polynomial absorptions of §1 need (1 − θ)κ ≥ m, m ≤ 3 (D2C (3.3) has (1 + d)³): κ ≥ 6. Implied by κ ≥ κ_0 for any κ_0 ≥ 6. [P]
 
+## 4. The last scale K: no further rescaling
+
+At scale K the last extraction (L2) and the last R-induced terms (L3) give terms at rate θκ in d_K. No step follows, so §3 does not recover them. The final expansion of SOURCES_FX_R2 runs with these inputs.
+
+Which rate the final expansion sees. FX_R2 §3 uses Balaban's per-step chain (1.92)–(1.97) at the final scale. That chain starts from inputs at (1 + 4β)κ (CMP 122 II p. 376 [V]) and gives the small-field links (1 + 2β)κ ((1.68) [V], p. 377) and the output (1 + β)κ ((1.97) [V]). The chain is homogeneous in κ (every printed exponent is a multiple of κ). So inputs at rate θκ run the same chain with κ replaced by
+  κ_eff := θκ/(1 + 4β)   (θ = ½, β = ¼: κ_eff = κ/4; β = 1/7: κ_eff = 7κ/22 = 0.318κ).
+The task's "rate κ/2" is the cruder reading that ignores the (1 + 4β) input margin; κ_eff is the correct substitution. [P given homogeneity, which is read off the images pp. 376–390]
+
+New requirement. FX_R2 §3: κ_vol ≥ κ_final with κ_final := 2κ + √d(1 + 2β)κ + c_d. With κ → κ_eff:
+  κ_final^θ := 2κ_eff + √d(1 + 2β)κ_eff + c_d.
+d = 4, β ≤ ¼, θ = ½: κ_final^θ ≤ (2 + 3)κ/4 + c_d = 1.25κ + c_d ≤ 1.5κ if κ ≥ 4c_d.
+κ_vol = C_1M^dR_{K+1}/(3·4^d(L + 2r)^d) does not depend on κ (FX_R2 §3 [P]). So the M-condition becomes
+  M ≥ 12L(3κ_final^θ/C_1)^{1/d},  d = 4: M ≥ 12L(4.5κ/C_1)^{1/4},  C_1 := max(1, C_c) (FX_R2 §4 route (b)).   (K3)
+Since κ_final^θ ≤ κ_final, the old condition M ≥ 12L(18κ/C_1)^{1/4} implies (K3). The M-condition does not get worse. [P]
+
+What does get worse: the κ-thresholds of the final expansion. They now apply to κ_eff:
+- Cammarota entropy: κ_eff ≥ c_d (CMP 116 (1.26)) ⇒ κ ≥ 2(1 + 4β)c_d ≤ 4c_d.
+- (1.94): "O(1)α^{1/3} ≤ 1 ≤ 1/(6·2^d)βκ for κ large enough" [V] ⇒ κ_eff ≥ 6·2^d/β ⇒ κ ≥ 2(1 + 4β)·6·2^d/β.
+- (1.96)–(1.97): exp(−½p_0(g_K)) < βκ_eff/(6·2^d) [V shape] ⇒ g_K slightly smaller. γ is chosen last, so this is admissible.
+- Weaker, not stronger: α^{1/3} ≤ exp(−(1 + β)κ_eff·2d) and the p_0 condition −2(1 + β_0)^{−1}p_0 + 1 + 2κ_eff(100R_K)^d ≤ −(3/2)p_0 [V] both relax.
+All are lower bounds on κ (fixed first) or on p_0, 1/γ (fixed last). [P]
+
+Remark (optional, not used). One could skip the extraction at scale K: no coupling counterterm is needed after the last step. Then (L2) does not occur at K, and only (L3) at K remains. This is not checked against the unit-scale integral of D2 §7.1(ii) and is not load-bearing. [I]
+
+## 5. Balaban's own budget, (1.66)–(1.100): the inequality
+
+Balaban's R operation at scale k consumes 4βκ of tree-decay rate. The chain on the images [V]:
+- p. 376, (1.66): newest inputs (1 + 4β)κd_k; extract (1 + 3β)κd_{k,Z}(Y_4); β-part kept for sums.
+- p. 377, (1.68): resummed small-field terms V(Y) at (1 + 2β)κd_{k,Z}(Y).
+- p. 388, (1.93): Π_{Y∈D} α exp(−(1 + 2β)κd_{k,Z′}(Y)) ≤ exp(−(1 + β)κd_{k,∪Y_i}(X′)) exp(−(1/(3·2^d))βκM^{−d}|X′\∪Y_i|) · Π_h exp((1 + β + β/(3·2^d))κM^{−d}|X_{j_h}|) · Π_{Y∈D} α^{2/3} exp(−½βκd_{k,Z′}(Y)).
+- p. 389, (1.97): |F(X′)| ≤ c_1 exp(−(1 + β)κd_{k,∪Y_i}(X′)).
+- p. 390, (1.99): |R′^{(k)}(X)| ≤ O(1)c_1 exp(−(1 + ½β)κd_{k,∪Y_i}(X)); (1.100): exp(−p_0(g_k)) exp(−κd_k(X)).
+Drops: β + β + β + ½β + ½β = 4β. So the R step maps (1 + 4β)κ to κ, in the same units d_k. It has gain < 1. Only the T step's rescaling restores (1 + 4β)κ.
+
+Who pays the (1.93) volume charge. The factor Π_h exp((1 + β + β/(3·2^d))κM^{−d}|X_{j_h}|) is NOT paid from the rescaling gain. It is paid by the large-field factor exp(−2(1 + β_0)^{−1}p_0(g_k) + 1) of (1.92), through the condition before (1.95): "−2(1 + β_0)^{−1}p_0(g_k) + 1 + 2κ(100R_k)^d ≤ −(3/2)p_0(g_k)" [V, p. 389]. This corrects the task's reading. The rescaling gain pays only the rate drops (the 4βκ and the T step's 10δ fraction).
+
+The budget inequality per step, sourced (rates in units of κ, d_{k+1} units):
+  available after rescaling: θ·L/2 (newest inputs at θκ in d_k; (2.36));
+  spent in the T step: the fraction 10δ (CMP 116 (2.33)–(2.41));
+  needed by the R step at k+1: 1 + 4β (then the R step returns rate 1 by (1.100));
+  inequality: θ(1 − 10δ)L/2 ≥ 1 + 4β, which is (K1).
+At L = 13, θ = ½, β = ¼: 3.25(1 − 10δ) ≥ 2 ⇔ δ ≤ 0.0385. Take δ = 0.03: 3.25·0.7 = 2.275 ≥ 2, margin 0.275κ. At β = 1/7: 3.25(1 − 10δ) ≥ 1.571 ⇔ δ ≤ 0.0516.
+Unsourced (θ = 1) the same inequality reads (1 − 10δ)·6.5 ≥ 1 + 4β; Balaban's printed CMP 116 δ = 0.0846 gives 1.0 < 1 + 4β. Balaban states the improved T-step bound in CMP 119 p. 262 [V, text layer]: the new terms "have better decay properties, with the number κ replaced, for example, by (1 + 4β)κ. Such improved bounds are needed for the R-operation." He does not print the δ that gives it. So a smaller δ is already implicit in Balaban without a source; the sourced case only moves it from δ ≤ (1/10)(1 − 2(1 + 4β)/L) to (K1). [P from the quoted lines; the value of Balaban's implicit δ is not printed]
+
+A rate between θκ and κ at one step. If the worst input at some step has rate ρκ, θ ≤ ρ ≤ 1, the output is ≥ ρ(1 − 10δ)(L/2)κ ≥ (1 + 4β)κ under (K1), because ρ ≥ θ. So any rate in [θκ, κ] at one step is accommodated by the same δ. [P]
+
+## 6. Conclusion
+
+(1) Where and how often. The loss κ → κ/2 occurs at every step, in three places: D2 §6.3 (interpolated inputs of the freezing proof), D2C §3 (extraction remainders D_X, R_X), D3R F2 (R-induced terms, κ′). Each step creates a new generation at rate κ/2 at the newest scale. Old generations keep their native-unit bound and gain rate by rescaling. The loss does not compound under (K1).
+
+(2) Rescaling. Balaban's inequality is 2d_k(Z) ≥ Ld_{k+1}(Z′) (CMP 116 (2.36)), gain L/2 = 6.5, not L. The printed step spends all of it (δ = (1/10)(1 − 2/L), (2.41)). So I5's "free room" claim is wrong as stated. The recovery needs the choice
+  (K1) δ ≤ (1/10)(1 − 2(1 + 4β)/(θL)), θ = ½  (L = 13: δ ≤ 0.0385 at β = ¼, δ ≤ 0.0516 at β = 1/7),
+plus (K2) θ(1 − β)L/2 ≥ 1 + 3β for old terms (holds for β ≤ 0.36 at L = 13), plus κ ≥ κ_0δ_B/(δ_θθ) (factor ≈ 3.6 at L = 13, β = ¼). Balaban already needs a δ below his printed value for his own improved bound (1 + 4β)κ (CMP 119 p. 262).
+
+(3) Last step. The final expansion runs at κ_eff = θκ/(1 + 4β) (= κ/4 at β = ¼), not κ/2. The M-condition becomes M ≥ 12L(3κ_final^θ/C_1)^{1/d}, κ_final^θ = 2κ_eff + √d(1 + 2β)κ_eff + c_d ≤ 1.5κ (d = 4, κ ≥ 4c_d), i.e. M ≥ 12L(4.5κ/C_1)^{1/4}. It is implied by the old M ≥ 12L(18κ/C_1)^{1/4}. The final-scale κ-thresholds move: κ ≥ 2(1 + 4β)·max(c_d, 6·2^d/β).
+
+(4) Bookkeeping. Balaban's R step maps (1 + 4β)κ to κ (drops β, β, β, ½β, ½β on pp. 376–390). The (1.93) volume charge is paid by p_0 (condition before (1.95)), not by rescaling. The rescaling pays the rate drops: θ(1 − 10δ)L/2 ≥ 1 + 4β is (K1); at L = 13, θ = ½, β = ¼, δ = 0.03: 2.275 ≥ 2. Any one-step rate in [θκ, κ] is covered by the same δ.
+
+(5) Verdict. B22 CLOSED by rescaling [R], with the stated choices (K1), (K2), the κ-threshold increase, and the final-scale substitution κ → κ_eff with M-condition (K3) (implied by the existing one). No obstruction found.
+
+Ledger.
+- [V] CMP 116 (2.36), (2.41) and the δ equation (images p. 19, 21); CMP 122 II (1.66), (1.68), (1.92)–(1.100) and the p_0 condition (images pp. 376, 388–390); CMP 119 p. 262 "(1 + 4β)κ … improved bounds" (text layer only); D2 l. 272–274, D2C l. 72–85, D3R l. 114–116 (project files).
+- [P] §1 absorption lemma; (K1), (K2) arithmetic; κ_eff substitution and (K3); the R-step drop count 4β; the claim that any rate in [θκ, κ] is covered.
+- [R] Homogeneity of the T step (2.33)–(2.41) and of the R chain (1.66)–(1.100) in the input rate; δ free apart from the "κ sufficiently large" sum thresholds; iterated (2.36) with closures for (K2); localization X ⊂ Y for the dist(X, y) factor; FX_R2's κ_vol independent of κ (FX_R2 §3).
+- [I] Skipping the extraction at scale K (§4 remark), not used.
+- Suggested ledger row: B22 → "reduced [R]: rescaling gain L/2 (CMP 116 (2.36)) with δ re-chosen by (K1); last scale κ_eff = θκ/(1 + 4β), M-condition (K3) implied by FX_R2's; SOURCES_T2_KAPPA2". Needs an independent verifier before the ledger changes.
+
+STATUS: COMPLETE

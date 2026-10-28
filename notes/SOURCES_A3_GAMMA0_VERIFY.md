@@ -13,3 +13,12 @@ Check: (a) curl counterexample by hand; (b) (3.10) form; (c) step (i) constant c
 ## V2 (3.10) page image (CMP 99 p. 392, PDF p. 4) [V]
 ⟨A, ΔA⟩ = ⟨A, D*DA⟩ + ⟨A, Δ′A⟩; D = covariant derivative on bonds → plaquettes, D* its adjoint (3.9) = covariant curl form. Δ′ = Σ_p η^d tr((D_U^1A)(p))² η^{−2}(Re U(∂p) − 1) + tr Σ i[A′(b_1), A′(b_2)] η^{−2} Im U(∂p). Both terms carry the background curvature (η^{−2}(U(∂p) − 1) = O(F_bg)). CONFIRMED: M_1's leading form is the covariant curl², and Δ′ is O(|F_bg|)·‖A‖²-relative (homogeneous quadratic).
 R1 identification [V text]: Thm 3.1 = G′(U) kernel bounds (3.42)–(3.47), constants d, L only, M ≥ M_1, Mα_0 ≤ a_0. Thm 3.2 = (Q′G′²Q′*)^{−1} decay. Thm 3.3 = same bounds for G(U). G_1 is NOT in Thms 3.1–3.3: it is Thm 3.12 (p. 423, needs (3.35) AND (3.36), "with one exception" = covariant-Laplace part of (3.42)); positivity of G, G_1 = Thm 3.11/3.12. So R1 = CMP 99 Thms 3.1, 3.3, 3.11, 3.12 (G_1 via (3.138) series, argued in a few lines on pp. 422–423). Kernel decay ⇒ operator norm (Schur). R1 does not use A1 ((QG_1Q*)^{−1} kernel): the variational form needs only G_1 > 0 and ‖G_1‖.
+
+## V3 Curl counterexample by hand + with gauge fixing [P, N /tmp script, deleted]
+Hand: A = dδ_x, d = 2. Four plaquettes at x (lower-left corner; curl = bottom + right − top − left):
+ p(x−e_1): bottom (x−e_1,x) = +1, right (x,x+e_2) = −1 ⇒ curl A = 0; curl|A| = 1 + 1 = 2.
+ p(x): bottom (x,x+e_1) = −1, left (x,x+e_2) = −1 ⇒ curl A = −1 + 1 = 0; curl|A| = 1 − 1 = 0.
+ p(x−e_1−e_2): right (x−e_2,x) = +1, top (x−e_1,x) = +1 ⇒ curl A = 0; curl|A| = 0.
+ p(x−e_2): left (x−e_2,x) = +1, top (x,x+e_1) = −1 ⇒ curl A = 0; curl|A| = −(1) − 1 = −2.
+ So ‖∂A‖² = 0, ‖∂|A|‖² = 8. The author's single-plaquette value 2 is right. CONFIRMED for the curl part alone.
+BUT M includes ‖RD*A‖². With Balaban's R (L = 2, 4×4 blocks, P from (1.70)): ⟨A,MA⟩ = 19.01 ≥ ⟨|A|,M|A|⟩ = 10.72. So dδ_x does NOT refute the full Kato claim. Repaired counterexample: λ = Δ^{−2}Q′*ω (an UNFIXED mode, RΔλ = 0, see V1), A = dλ: ⟨A,MA⟩ = 2e−27, ⟨|A|,M|A|⟩ = 4.62. Kato refutation CONFIRMED with the corrected example.
