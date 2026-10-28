@@ -1,7 +1,7 @@
 # SOURCES_T2_V1: order-g⁰ completeness of CMP 109 (1.3) — β_{j+1}(0) is the Maxwell coefficient of the per-step Gaussian determinant
 
 Date: 2026-10-28. Item V1, DERIVE. Author: Claude (headless session).
-Status: in progress.
+Status: complete (all seven sections written; unverified).
 
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). ONLINE_SWEEP §2 not read.
 
@@ -196,3 +196,109 @@ Units [P to leading order in p]. Balaban's counterterm is β A(U), and (5.43) is
 ### 3.4 Expansion point
 
 The code expands around the fine plane wave, not around U_{k+1}(V_a), and drops the J-term. U3_VERIFY §6 shows w_true(p) − w_code(p) = O(p⁴) (tadpole zero, Ward identity on the umklapp displacement, J = O(ap²) paired with an O(p) vertex), with the scale Lp (SOURCES_D1_VERIFY V4). So β_{k+1}(0), the p → 0 limit, is unaffected. Reused, not redone [R to U3_VERIFY §6, CONFIRMED there as C4 at order p²].
+
+---
+
+## 4. A scheme caveat found here: averaging (0.4) versus (0.12)
+
+### 4.1 The issue
+
+Balaban defines two averagings. (0.4) averages the logs of the loop holonomies U(Γ ∪ [x,x′] ∪ (−Γ′) ∪ (−c)) over contour pairs. (0.12) first forms the group averages U(c_−,x) = M({U(Γ)}_{Γ∈G(c_−,x)}) (0.11), M the Federbush average (0.10), and then takes one log per x. CMP 109 p. 254 introduces (0.12) "to match a bit better the new axial gauge fixing to the definition of the averages", and says: "Let us stress that both definitions are equally good for our purposes, in fact we may use many other definitions." [text layer l. 260, 273–274; R2_VERIFY item checked the (0.12) passage]. The transformation (0.17)/(0.19) uses Ū; which of the two Ū denotes there is not stated on the read pages [I]; R2 §2.1 reads it as (0.12).
+
+The numerics use (0.4): numerics/ym_oneloop.py `loops_for_direction` ("Loops c- -> x -> x' -> c+ -> c-  … per CMP 109 (0.4)") and `make_avg_fn` (weighted sum of qlog over all contour pairs) [read, l. 138–200].
+
+β_{k+1}(0) is a finite one-loop number and depends on the blocking scheme. Theorem V1 identifies β_{k+1}(0) with the Maxwell coefficient of the per-step determinant built with the same averaging as the transformation. So the question is whether (0.4) and (0.12) give the same Maxwell coefficient.
+
+Both linearizations agree at the trivial background ((0.8); U3_VERIFY item on (0.4)/(0.12); measured below to 4·10⁻¹⁵). The values Ū(U) of the two averagings agree exactly at every abelian U (R2_VERIFY §2.3: the Federbush average of commuting elements is the exponential of the mean log); so the background V_F and the plane-wave coarse field are the same in both schemes. The linearizations Q̃(U_0) differ at second order in the background, also at abelian U_0 (measured below), because fluctuations in the charged directions do not commute with the background: the derivative of log at a non-identity holonomy, and the Federbush average of non-commuting elements, carry BCH terms that the two definitions arrange differently.
+
+### 4.2 Numerical test (new; Mac, each run < 5 min)
+
+Scripts: numerics/t2_v1_avg012.py (implements (0.12) with a Federbush average by fixed-point iteration, plugged into the unchanged ym_momentum Step; runs both schemes), numerics/t2_v1_avg012b.py (one scheme per run; Federbush convergence check), numerics/t2_v1_avgjac.py (compares the Jacobians Q̃(U_0)). Output: numerics/results/t2_v1_avg012_*.json, t2_v1_avg012b_*.json (new files).
+
+Checks of the implementation:
+- Jacobian at U = 1: max|Q̃_{(0.4)} − Q̃_{(0.12)}| = 3.9·10⁻¹⁵ (L = 2), 2.0·10⁻¹⁴ (L = 3).
+- Federbush iteration: 5 versus 12 iterations change the Jacobian by ≤ 3.3·10⁻⁸ at a random background of size 0.2 (L = 2). At the expansion point (all holonomies = 1) the Taylor data needed are exact after 2 iterations.
+- Abelian (σ_3) sector, L = 2, Ng = 4, p = 0.4: β = 0.234374999999999 (0.4) and 0.234375000000000 (0.12), both = 15/64.
+Jacobians at random backgrounds of size s (L = 2, one coarse bond, directions μ = 0, 1): max|Q̃_{(0.4)} − Q̃_{(0.12)}| = 3.3·10⁻⁴, 1.3·10⁻³, 1.3·10⁻² (abelian, μ = 0, s = 0.05, 0.1, 0.2) and 8.2·10⁻⁴, 3.2·10⁻³, 1.8·10⁻² (non-abelian), against max|Q̃| ≈ 0.30. The difference is O(s²), as expected.
+
+β(p) for SU(2), transverse plane wave, both schemes on the same grid:
+
+| L | Ng | p | β, (0.4) | β, (0.12) | Δβ = (0.12) − (0.4) |
+|---|---|---|---|---|---|
+| 2 | 4 | 0.4 | 0.6844412463330535 | 0.6844412463330404 | −1.3·10⁻¹⁴ |
+| 3 | 2 | 0.4 | 1.48392 | 1.48927 | +0.00535 |
+| 3 | 2 | 0.2 | 3.98620 | 3.99144 | +0.00524 |
+| 3 | 3 | 0.2 | −0.32514 | −0.31815 | +0.00699 |
+| 3 | 4 | 0.2 | 0.91886 | 0.92549 | +0.00664 |
+| 3 | 6 | 0.2 | 0.68392 (cached mom_L3_Ng6_p0.2_trans.json, same code, ghost term identical to 15 digits) | 0.69061 | +0.00669 |
+
+Reading.
+- The Ng ≤ 4 values of β itself are far from converged (the grid error in w is roughly Ng-dependent and p-independent, so β = 4w/(L⁴(1 − cos p)) carries it amplified by 1/p²). The difference Δβ is a difference of two integrands on the same grid. It is stable: 0.0052–0.0070 for Ng = 2–6, and 0.0067 at Ng = 6.
+- Δβ does not scale like p²: at Ng = 2, Δβ = 0.00535 (p = 0.4) and 0.00524 (p = 0.2); equivalently Δw scales like p² (ratio 4.04). So the difference sits in the p² coefficient of w, i.e. in β(0), not in the p⁴ (dimension-6) terms.
+- Estimate: β_1(0)_{(0.12)} − β_1(0)_{(0.4)} ≈ +0.007 at L = 3, about 1% of β_1(0) ≈ 0.664 [numerical, one p at Ng = 6; uncertainty from the Ng spread ≈ ±0.001].
+- At L = 2 the two schemes agree to 10⁻¹⁴ although their Jacobians differ at O(s²) at random backgrounds. I have no explanation. L = 2 has corner blocks and is outside the proofs; the agreement may come from the small contour families of the corner block [I, not analysed].
+
+### 4.3 Consequence for V1
+
+(a) Theorem V1 is scheme-internal: for either averaging, β_{k+1}(0) of the construction run with that averaging equals the Maxwell coefficient of the per-step determinant built with the same averaging [P, §2–§3 do not use the form of the averaging beyond covariance (0.6) and the first-order property (0.8)].
+(b) The NUMERICS values (L ≥ 3) are the β_j(0) of the construction run with (0.4). Balaban allows this ("both definitions are equally good for our purposes", p. 254). If the construction is read with (0.12), the computed L = 3 value shifts by ≈ +0.007; the other L have not been tested.
+(c) What depends on this. Prop. 1.1 of KAPPA_BOUNDED and Lemma D″ need an identity S_j = Σβ_i(0) for the β of the construction actually used, plus bounds. Neither needs the numbers. The bounded-window statements are scheme-independent in form (c log L is universal; the scheme enters κ). Positivity of computed increments is not affected at the 1% level. The project should fix the averaging once: either state that Balaban's construction is run with (0.4) (allowed by p. 254), or recompute with (0.12). [I: that every Balaban estimate used elsewhere holds for (0.4); Balaban says so on p. 253: "The considerations and results of this, and previous papers, do not depend on any particular averaging operation used; they are valid universally for all averages satisfying the above properties" (text layer l. 249–251; note (0.4) is not a contour-variable average of the form (0.11), so "the above properties" (0.5)–(0.10) apply to M, not directly to (0.4)).]
+
+---
+
+## 5. Consistency with the numerical facts
+
+V1 is an identification, not a computation. It predicts that every number below is a value, or a sum of values, of Balaban's β_j(0) (in the (0.4) scheme, §4.3(b)), and that relations between them hold exactly.
+
+5.1 Positivity. All computed increments are positive (THEOREM2_PROOF_v4 §8.1–§8.2: β_1(0) = 0.630, 0.664, 0.757, 0.749/0.743, 0.803, 0.833–0.851, 0.850–0.868 for L = 2, 3, 4, 5, 7, 9, 11; β_2 ≈ 0.32 at L = 2). With V1 these are Balaban's β_1(0), β_2(0) at those L (for L ≤ 11 Balaban's construction is not established, §6, so "Balaban's" means the g → 0 value of the formal step (2.13)). V1 says nothing about signs.
+
+5.2 Abelian sector. The σ_3-sector part of the per-step determinant gives 15/64 (L = 2) and 20/81 (L = 3), matched to all digits (NUMERICS §6). V1 acts on the full determinant; the sector values are partial traces of the same object. The new runs (§4.2) reproduce 15/64 to 10⁻¹⁵ in both averaging schemes, as they must: in the abelian sector the fluctuations commute with the background, and the two averagings coincide there. The exact formula S_k^{ab} = (1 − L^{−4k})/4 gives the abelian parts of β_1, β_2 at L = 2 as 240/1024 and 15/1024 [arithmetic].
+
+5.3 Pure-gauge background. w = −2·10⁻¹⁵ (L = 2), −4·10⁻¹⁵ (L = 3) (NUMERICS §5). This is the gauge invariance of B ↦ log Z^{(k)}(U_{k+1}(e^{iB})) used in §3.3. Consistent.
+
+5.4 c_1 = 1 (SOURCES_D1). The source f enters (2.12) only through the weights of the Wilson action, so the term-by-term counting of §2.2 applies unchanged with w_p = 1/g₀² − f_p: every term except the Gaussian is O(g_k) (D1 §1.3 counts the source terms (T1), (T2) as O(g₀²f), O(g₀f)). So the order-g⁰ sourced effective action is again the log of the Gaussian, and D1's exact identity (2.1) (field-independent change ½(9L⁴ − 9)log(1 − g₀²f₀) per cell) is the order-g⁰ statement for Balaban's step too. Consistent.
+
+5.5 β_1 + β_2: direct composition versus per-level recursion (L = 2). R2 Prop. 3.1 [proved+verified in R2_VERIFY] gives, for Gaussians around a common stationary background, log(composed constrained integral) = Σ_{j<k} log(one-step integral with the level-j Schur-complement form). The per-step forms are Balaban's Δ^{(j)}: ⟨H_{1,j}B, Δ_1H_{1,j}B⟩ is the second variation of the level-j tree action A(U_j(·)), i.e. the Schur complement of the fine Hessian under the j-fold constraint (minimizer map H_{1,j}) [I: identification of Balaban's H_{1,j} with the minimizer map, CMP 99 Sect. D not opened]. With Theorem V1 at each level, the F² coefficient of the composed determinant is β_1(0) + β_2(0), and the per-level recursion computes β_2(0) directly. Measured: composed 0.953 (Ng = 8, single p = 0.2, Lp bias ≈ 10⁻²), so β_2 ≈ 0.953 − 0.630 = 0.323; per-level recursion 0.317–0.341 (N = 8–12; symmetric Nyquist 0.333, 0.317, 0.323), level-1 aliasing ±5% (THEOREM2_PROOF_v4 §8.2). Agreement within the stated errors. Consistent. (The telescoping is exact for the p → 0 coefficient, not for w at fixed p: THEOREM2_PROOF_v4 §3.1.)
+
+5.6 What would have refuted V1. An order-g_k⁰ term in (2.12) outside the Gaussian, for example a term (1/g_k²)·(quadratic in g_kB) not included in (2.11), or a cut that does not tend to 1. §2.2 lists every term of (2.12) and finds none. The only order-g⁰ U-dependent contribution found anywhere is the alternative cut of p. 266 (§2.5(a)), which is not the construction.
+
+## 6. Scope in L
+
+6.1 Odd L > 11 (Balaban). CMP 109 p. 251: "We take L_μ = L^m, where L is an odd, positive integer > 11" [text layer l. 123–124]. Theorem V1 (i)–(v) holds inside Balaban's construction for every such L, at every level k along any history on which his induction has run. The value β_{k+1}(0) is then the value at 0 of his smooth function β_{k+1} (inductive assumption A5, asserted by his Theorem 3).
+
+6.2 Odd L ≥ 3. The proof of §2 is algebraic in (2.12)–(2.13) and uses no property of L. What it needs at a fixed finite torus: (a) the background U_{k+1}(W) exists and is regular (CMP 102 variational problem; R2 §2.3 for the constant field at any odd L, exact); (b) C*Δ^{(k)}C > 0 (finite dimension; uniform gap at the trivial background for the one-step constraint: THEOREM2_PROOF_v4 §7.1 O6, all odd L); (c) the formal expression (2.13) with the cut (2.9). Under (a)–(c), the g_k → 0 value of the formal one-step effective action is log Z^{(k)} (§2.2–§2.3), and its Maxwell coefficient is the computed per-step number (§3). What does not survive below L = 13: the existence of Balaban's localized E^{(k+1)}(X, g, ·), its smoothness in g, and hence a function β_{k+1}(g) on [0, γ] whose value at 0 this is. For L ≤ 11, V1 identifies the numerics with the g → 0 limit of a formal object, not with a constructed β-function.
+
+6.3 Even L (2, 4). The order counting of §2 and the gauge-fixing exchange of §3.2 do not use parity. The constant-field stationarity used in R2 §2.3 needs centered (odd) blocks. The numbers at L = 2, 4 are outside the proofs, as before.
+
+---
+
+## 7. Ledger
+
+Numbered claims (for the verifier).
+
+C1. [V, PDF 12–13, 16] Balaban's β_{j+1} is defined by (1.20)–(1.22) from E^{(j+1)} "in (1.6)", and the (1.6) function equals the (1.3) function plus [log Z^{(j)}(U) − log Z^{(j)}(1)] (identity (1.7′)). (1.7′) itself is [P] by subtraction; the reading of the shared symbol is supported verbatim by p. 261 and by CMP 119 p. 254 [V, CMP 119 PDF 12].
+C2. [V, PDF 20] E^{(k+1)} of (2.13) is the (1.3) function (log Z^{(k)} written separately in (2.12)); (2.15) gives 1/g_{k+1}² = 1/g_k² − β_{k+1}(g_k), settling R2's sign item V2 in favour of (0.18)/(0.23).
+C3. [P] Every term of the exponent of (2.13), listed in (2.12), is O(g_k) at fixed B; the cut (2.9) equals Π_b χ(|g_kB(b)| < ε_1) and is ≡ 1 at g_k = 0. Hence E^{(k+1)}_{(1.3)}(0, U) = 0 for all U. Inputs: the orders of D̃, D̃_3, G_3, V as stated by Balaban on pp. 266–267 [V, PDF 18–19]; log σ(0) = 0 [I: reading of "σ_0"].
+C4. [P, given (B-P) [V, PDF 21: coefficients O(ε_1)] and (B-E) [V, PDF 15]] At a fixed finite torus, E^{(k+1)}(g_k, U) → 0 as g_k → 0+, by dominated convergence; the localized terms' limits sum to 0.
+C5. [P] Theorem V1 (ii)–(iv): at g = 0 the vacuum polarization of (1.20)/(5.1) is that of log Z^{(k)} alone, on every torus and in the limit; β_{k+1}(0) is its Maxwell coefficient. The torus → Z⁴ limit of the Gaussian part is [I] (standard, needs the one-step gap; this is (G2) for the Gaussian part). The equality "value at 0 = limit g → 0+" of β is [R] to A5 and to the g-uniform constant in (1.18) [I: uniformity read from a single constant E_0].
+C6. [P] Theorem V1 (v): β_{k+1}(0) is independent of g_0, …, g_{k−1}. The history question L5 (B7) is therefore void at g = 0 and open for g > 0.
+C7. [P] Claim 3.1: the order-g_k⁰ quadratic form on ker Q̃ is the intrinsic Hessian of (A∘U_k + G)|_S at V^{(k)}, equal to Hess ℒ + G^{(2)}. Matching of Balaban's h-normalization in the J-term is [I]; the intrinsic statement does not use it.
+C8. [P] Fact K (Hess ℒ annihilates residual gauge directions at the constrained critical point) and Lemma 3.2 (linear Faddeev–Popov); ΓD = −I for Balaban's G^{(2)} in the axial gauge of V^{(k)}. Hence log Z^{(k)}_{Balaban} − log Z_{NUMERICS} is background-independent. This replaces R2 §2.5(c) (compact-group argument) by an exact identity.
+C9. [P] Transversality and hypercubic symmetry give Π̃^{Z}_{μν}(p) = a(δ_{μν}|p|² − p_μp_ν) + O(|p|⁴), so −∂_1∂_2Π̃_{12}(0) = lim Π̃_{22}(pe_1)/|p|²: the mixed-derivative definition (1.22) and the transverse plane-wave measurement agree.
+C10. [R] Normalization β = 4w/(L⁴(1 − cos p)) matches (1.22) as p → 0, given Maxwell coefficient 1 of the tree action at every level (CMP 109 (4.41) [text layer l. 2122]; THEOREM2_PROOF_v4 §3.5 Lemma M).
+C11. [R] The plane-wave expansion point and the dropped J-term change w(p) only at O(p⁴) (scale Lp): U3_VERIFY §6, SOURCES_D1_VERIFY V4. Reused, not redone.
+C12. [numerical, new] Averaging scheme: (0.4) and (0.12) give identical abelian-sector values (15/64) and identical β at L = 2 (10⁻¹⁴), but differ at L = 3: Δβ_1(0) = β_{(0.12)} − β_{(0.4)} ≈ +0.0067 (Ng = 6, p = 0.2; 0.0052–0.0070 for Ng = 2–6; p-independent at Ng = 2). NUMERICS uses (0.4). V1 is scheme-internal (C3–C11 hold for either averaging).
+C13. [I] Balaban permits (0.4) ("both definitions are equally good for our purposes", p. 254 [text layer]); which averaging Ū denotes in (0.17)/(0.19) is not stated on the pages read.
+C14. [P for the scope statement; I for the parse] With the alternative cut "g_k/γ_k ε_1" (p. 266 [V, PDF 18]) V1 fails by the U-dependent cut term log∫dμ_{C(U)}χ_k; the theorem is stated for the cut (2.9).
+C15. [V for the quotes; I for completeness] In CMP 119 the β-subtraction acts on E^{(k+1)} only, and β_1 is "the same counterterm as in [I]"; R-terms do not enter the definition of β. CMP 119's citation "(1.41)–(1.43)" of [I] does not exist in CMP 109; read as (5.41)–(5.43) [I].
+C16. [I] Consistency (§5): positivity, abelian values, pure-gauge zero, c_1 = 1, and β_1 + β_2 (composed 0.953 − 0.630 = 0.323) against the per-level recursion (0.317–0.341) all agree with V1. The identification of Balaban's H_{1,j} with the minimizer map (needed for "per-level recursion = Balaban's Δ^{(j)}") is from CMP 109 (1.5) and R2 Prop. 3.1, not from CMP 99 Sect. D, which I did not open.
+C17. [P/I] Scope: odd L > 11 inside Balaban's construction; for odd L ≥ 3 (and the even-L numerics) V1 holds for the g → 0 value of the formal one-step expression (2.13), not for a constructed β-function.
+
+What is proved. V1 at fixed level, inside Balaban's construction with the cut (2.9): β_{j+1}(0) is the Maxwell coefficient, per coarse cell, of the one-step Gaussian determinant (1.4)–(1.5), and this equals, up to a background-independent constant in log Z, the bordered-Hessian-plus-ghost determinant computed in NUMERICS, with the same p → 0 normalization. Equivalently β_{j+1}(0) = Φ(𝒟_j) of THEOREM2_PROOF_v4 §7.1, for the averaging used in Φ. The proof is order counting on Balaban's own formula (2.12): the integrand of (2.13) is identically 1 at g_k = 0.
+
+What is reduced. The infinite-volume limit of the Gaussian part ((G2)-type, standard); "β(0) = lim_{g→0+} β(g)" to A5 and (1.18); the normalization to Lemma M / (4.41); the expansion point to U3_VERIFY §6.
+
+What is open. (a) The averaging scheme: the project's numbers are β_j(0) of the (0.4) construction; with (0.12) the L = 3 value shifts by ≈ +0.007 (1%). The project must say which averaging the construction uses. (b) Nothing else of V1 at fixed level.
+
+Effect on the trust ledger (for the supervisor; no ledger file edited). Row B5 (V1) can move from "open; supported at order p²" to "proved at fixed level [this file], scheme-internal; numerics are in the (0.4) scheme". THEOREM2_PROOF_v4 §10 item 5 and the hypothesis-table row V1 likewise, pending verification.
+STATUS: COMPLETE

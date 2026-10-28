@@ -1,4 +1,4 @@
-# Lean 4 formalization (22 files)
+# Lean 4 formalization (23 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -26,13 +26,14 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 Lemma CT (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
 | `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (212) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
 | `Resolvent.lean` | `resolvent_identity`, `resolvent_bound`, `lower_transfer`, `neumann_perturb`, `resolvent_chain`, `wnorm_mul_le`, `wnorm_neumann`, `pwnorm_mul_le`, `pwnorm_neumann` (210) | SOURCES_A3_SIGMA.md §4 (4.2, 4.5); SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N | VERIFY_Resolvent.md |
+| `SlabCounterexample.lean` | `slab_fails_10`, `slab_fails_11`, `slab_fails_12`, `slab_fails_13`, `slab_fails`, `lambda1_lt` (116) | SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1 §1–§3 | VERIFY_SlabCounterexample.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 22 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 23 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -256,3 +257,9 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - (a)–(c), spectral norm, 𝕜 = ℝ or ℂ, no symmetry assumed: `resolvent_identity` (C_1, C_s invertible ⇒ C_1⁻¹ − C_s⁻¹ = C_1⁻¹(C_s − C_1)C_s⁻¹), `resolvent_bound` (‖C_s − C_1‖ ≤ η ⇒ ‖C_1⁻¹ − C_s⁻¹‖ ≤ ‖C_1⁻¹‖η‖C_s⁻¹‖), `lower_transfer` (re⟪v, Av⟫ ≥ γ_0‖v‖², ‖A − B‖ ≤ ε ⇒ re⟪v, Bv⟫ ≥ (γ_0 − ε)‖v‖²), `neumann_perturb` (η‖C_1⁻¹‖ < 1 ⇒ C_s invertible, ‖C_s⁻¹‖ ≤ ‖C_1⁻¹‖/(1 − η‖C_1⁻¹‖), via `oishi_rump` with R = C_1⁻¹), `resolvent_chain` (‖C_1⁻¹‖ ≤ γ_1, 2γ_1η ≤ 1 ⇒ ‖C_s⁻¹‖ ≤ 2γ_1, ‖C_1⁻¹ − C_s⁻¹‖ ≤ 2γ_1²η, re⟪v, C_s⁻¹v⟫ ≥ (γ_0 − 2γ_1²η)‖v‖²).
 - (d), weighted row-sum norm `wnorm w K = sup_x Σ_y ‖K x y‖ w x y` for a two-point weight w > 0 with w(x,z) ≤ w(x,y)w(y,z) and w(x,x) ≤ 1: `wnorm_mul_le` (submultiplicative), `wnorm_neumann` (‖K‖_w < 1 ⇒ 1 − K invertible, ‖(1 − K)⁻¹‖_w ≤ 1/(1 − ‖K‖_w); proof by injectivity and X = 1 + KX, no series). `pw p x y = p y / p x` gives ‖K‖_p = sup_x Σ_y |K x y| p y/p x: `pw_props`, `pwnorm_mul_le`, `pwnorm_neumann`. The weight e^{ρ|x−y|} of A2_R2 §3 also satisfies the hypotheses.
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; no lemma), the bound ‖T‖_ρ ≤ 2a²w of Lemma N, the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.
+
+## SlabCounterexample.lean (SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1); statement check `VERIFY_SlabCounterexample.md`
+
+- d = 2 slice, f : ℕ → ℝ on the path {0, …, L−1}: `slabForm L f` = q_L(f) = L^{−1}Σ_{i<L−1}(f_{i+1} − f_i)² + L^{−3}(Σf)² (= L·K(f) of VERIFY §1), `sqNorm L f` = Σf², `SlabFails L f` := Σf = 0 ∧ q_L(f) < L^{−2}‖f‖² (Balaban's p. 245 claim violated).
+- `slab_fails_10` … `slab_fails_13`: explicit witnesses f_i = round(1000·cos(π(i+½)/L))/1000 (`milli c10` …), checked by `norm_num`. `slab_fails` (L ≥ 10 ⇒ ∃ f, SlabFails L f): cosine witnesses for L = 10, 11, linear f_i = 2i − (L−1) for L ≥ 12 (Rayleigh 12/(L(L+1)) < 1/L). `lambda1_lt`: 2(1 − cos(π/L)) < 1/L for L ≥ 10 (cos x ≥ 1 − x²/2, π < 3.15).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all six. Not formalized: the exact spectrum L^{−1}min(λ_1, 1/L), the bound (3.1) for L ≤ 9, d ≥ 3, the failure of (2.127) and the corrected (3.2)/(3.4). The mean coefficient is L^{−3} (source), not the brief's L^{−2}; the witnesses have Σf = 0, so both give the same theorems. Oleans: closure of `Mathlib.Analysis.Real.Pi.Bounds` (112 files from the local cache, no download).

@@ -20,3 +20,4 @@ import YmLean.Schur
 import YmLean.CombesThomas
 import YmLean.Interp
 import YmLean.Resolvent
+import YmLean.SlabCounterexample
