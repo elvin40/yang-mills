@@ -1,0 +1,228 @@
+\clearpage
+\section*{Assembly chapter: the finite-torus existence theorem (compactness form)}
+\addcontentsline{toc}{section}{Assembly chapter: the finite-torus existence theorem}
+
+Source: \file{ASSEMBLY.md} (Opus, 2026-10-27), verified in \file{ASSEMBLY_VERIFY.md}. Section numbers below keep those of the source. Statements are as written in the source. The verifier's corrections are collected in the last subsection, and the dependency table (\S3) is refreshed to the state of \file{PLAN.md} and \S10 of \file{THEOREM2_PROOF_v4.md}. Status: the theorem is a reduction to named blocks. It is not unconditional.
+
+\subsection*{0. Conventions and sources}
+Tags: \status{verified quote} (checked verbatim against a file in the project); \status{cited} (standard result, text not re-read); \status{proved here} (short proof in this chapter); \status{hypothesis} (assumed, owned by a named block); \status{open} (not proved anywhere).
+
+\emph{Notation.} $L$ is odd, $L>11$, fixed (Balaban, CMP 109 p.\ 256 \cite{balaban109}). $K\in\mathbb N$, $\varepsilon=L^{-K}$. The physical side $\ell\in\mathbb N$ is in units of the unit lattice. $T^4_\ell=(\mathbb R/\ell\mathbb Z)^4$ and $T_\varepsilon=(\varepsilon\mathbb Z/\ell\mathbb Z)^4$, so $N_\varepsilon=\ell L^K$ sites per direction. The Wilson action is $A(U)=\sum_p P_p(U)$, $P_p(U)=1-\tfrac12\operatorname{Re}\operatorname{tr}U(\partial p)\in[0,2]$, over unoriented plaquettes $p$. The measure is $\mu_\varepsilon=Z_\varepsilon^{-1}\exp(-g_0^{-2}A(U))\prod_b dU_b$ (Haar). $x_p$ is the centre of $p$.
+
+The bare coupling $g_0=g_0(\varepsilon,g)$ is any solution of the shooting problem of Lemma D with terminal coupling $g_K=g$. Lemma D gives existence, not uniqueness. Any choice works below.
+
+\emph{Observable} (class C1 of \file{SOURCES.md} \S1.2). $\varphi_p:=P_p-c_\varepsilon$, $c_\varepsilon:=\langle P_p\rangle_{\mu_\varepsilon}$. By hypercubic invariance (\S2.6) $c_\varepsilon$ does not depend on $p$.
+
+\emph{Test space.} $\mathcal D_n:=\{F\in C^\infty(T^{4n}):$ every derivative of $F$ vanishes on every diagonal $\{x_i=x_j\}$, $i\ne j\}$. The norm is $\|F\|_m:=\max_{|\alpha|\le m}\sup|\partial^\alpha F|$. On the compact torus this is the Osterwalder--Schrader (OS) Schwartz seminorm without weights.
+
+\emph{Lattice Schwinger functions} (\file{SOURCES.md} \S1.3). $S_{n,\varepsilon}(F):=\sum_{p_1,\dots,p_n}F(x_{p_1},\dots,x_{p_n})\langle\varphi_{p_1}\cdots\varphi_{p_n}\rangle_{\mu_\varepsilon}$, $F\in\mathcal D_n$. These are moments, not cumulants (\file{SOURCES_VERIFY} item 5(a)). No field renormalization factor is inserted: \file{SOURCES_VERIFY} item 8 gives $B_K=\prod c_j$ bounded above and below ($c_j=1+O(g_{j-1}^3)$, $\sum g_j^3<\infty$), so a bounded factor $B_K^n$ changes only the normalization of the limit.
+
+\emph{Scaling check} (\file{SOURCES_VERIFY} item 4, derived there). $\langle\varphi_p\varphi_{p'}\rangle\sim\varepsilon^8g^4|x_p-x_{p'}|^{-8}$ at tree level. So $S_{2,\varepsilon}(F)=O(1)$ for $F\in\mathcal D_2$ with no rescaling, while $\sum_pf(x_p)\varphi_p$ has variance $\sim\varepsilon^{-4}$. The limit object is a family of distributions off the diagonals, not a random field.
+
+\emph{Extra hypothesis found while writing the source.} $\ell$ is even (sufficient for the reflection argument; see Corrections after verification, item 1). For a reflection of the periodic lattice to exchange two halves with both seams being link planes, $N_\varepsilon$ must be even. With $L$ odd, $N_\varepsilon=\ell L^K$ is even iff $\ell$ is even.
+
+\subsection*{1. Target theorem}
+\subsection*{1.1 What ``exists'' means here}
+Jaffe--Witten footnote 2 \cite{jaffewitten} \status{verified quote} (\file{reports/clay_ym.txt} line 619; anchor: the sentence ``Such a result presumably would enable the study of the limit as $T^4\to\mathbb R^4$'', line 582): ``We specifically exclude weak-existence (compactness) as the solution to the existence part of the Millennium problem, unless one also uses other techniques to establish properties of the limit (such as the existence of a mass gap and the axioms).''
+
+Reading used here. ``Exists'' means: (i) the family $\{S_{n,\varepsilon}\}$ is relatively compact (uniform bounds); (ii) at least one limit point exists along a sequence $\varepsilon_k\to0$; (iii) every limit point has the properties (OS0)--(OS3) below, proved on the limit, not assumed. No uniqueness is claimed. Full-sequence convergence needs E13 (comparison of two trajectories; \file{SOURCES.md} (E14-d), D6), which is not in this chapter.
+
+This reading is weaker than the footnote's parenthesis. The theorem below gives no gap and only the torus versions of four axioms. It is NOT an admissible Clay solution. It is the finite-torus step of Jaffe--Witten \S6.5 \status{verified quote}: ``One must then verify the existence of limits of appropriate expectations of gauge-invariant observables as the lattice spacing tends to zero and as the volume tends to infinity'' (only the first limit is done here).
+
+The OS axioms are not stated in \file{reports/clay_ym.txt}. It cites them as OS (CMP 31 (1973), CMP 42 (1975)) and requires ``axiomatic properties at least as strong as those cited'' (lines 279--280) \status{verified quote}. The forms used follow the template's application of OS II (\file{reports/o3_continuum.txt} lines 4987--5003) \status{verified quote}: ``The linear growth condition requires a bound $|S_n(F)|\le\sigma_n|F|_{s_n}$ with fixed $s$ and $\sigma_n\le A(n!)^D$ for fixed $A$, $D$'', and restriction to Schwartz tests flat on the coincidence diagonals gives the test class of that reference. OS II itself was not re-read \status{cited}.
+
+\subsection*{1.2 Hypothesis delivered by the blocks}
+\begin{definition}[(H-U) uniform bound]
+There are $s\in\mathbb N$ and $A,D<\infty$ such that for all $K\ge K_0$, all $n\ge1$, and all $F\in\mathcal D_n$:
+\[|S_{n,\varepsilon}(F)|\le\sigma_n\|F\|_{sn},\qquad\sigma_n:=A(n!)^D,\quad\varepsilon=L^{-K}.\]
+\end{definition}
+The derivative order $sn$ grows linearly in $n$. The OS linear growth condition admits this. (H-U) is the output of blocks (B-T2) + (B-S) + the bridge (B-N1) of \S2.
+
+\subsection*{1.3 Theorem (finite-torus existence, compactness form)}
+\begin{theorem}[finite-torus existence, compactness form \status{proved modulo named blocks}]
+Let $G=SU(2)$, $d=4$, $L$ odd and large, $\ell\in2\mathbb N$ fixed. Let $\gamma>0$ be Balaban's small constant and $g\in\,]0,\gamma]$ small. For $K\ge K_0$ let $\varepsilon=L^{-K}$ and $g_0=g_0(\varepsilon,g)$ be a shooting solution (Lemma D) whose effective couplings satisfy $g_k\in\,]0,\gamma]$ for $0\le k\le K$ and $g_K=g$. Assume (H-U). Then:
+
+(a) Compactness. Every sequence $K_m\to\infty$ has a subsequence $K_{m_i}$ such that, with $\varepsilon_i=L^{-K_{m_i}}$, the limit $S_n(F):=\lim_iS_{n,\varepsilon_i}(F)$ exists for every $n\ge1$ and every $F\in\mathcal D_n$.
+
+(b) For every limit family $(S_n)_{n\ge1}$ obtained in (a):
+\begin{itemize}
+\item (OS0) Regularity. $S_n$ is linear on $\mathcal D_n$, and $|S_n(F)|\le A(n!)^D\|F\|_{sn}$. In particular $S_n$ restricted to $C_c^\infty(T^{4n}\setminus\bigcup_{i<j}\{x_i=x_j\})$ is a distribution of order $\le sn$.
+\item (OS1) Invariance. $S_n(F\circ\tau_a^{\times n})=S_n(F)$ for every $a\in T^4_\ell$ (all continuous translations), and $S_n(F\circ R^{\times n})=S_n(F)$ for every $R$ in the hypercubic group $B_4$ (signed permutations of the axes, acting about a lattice site).
+\item (OS2) Reflection positivity. Let $\theta(x_0,\vec x)=(-x_0,\vec x)$ on $T^4_\ell$ and $T_+:=\{x:x_0\in\,]0,\ell/2[\}$. For every finite family $F_0\in\mathbb C$, $F_n\in\mathcal D_n$ with $\operatorname{supp}F_n\subset T_+^n$ ($1\le n\le N$):
+\[\sum_{n,m=0}^NS_{n+m}(\Theta F_n\otimes F_m)\ge0,\quad(\Theta F_n)(x_1,\dots,x_n):=\overline{F_n(\theta x_n,\dots,\theta x_1)},\quad S_0:=1.\]
+\item (OS3) Symmetry and reality. $S_n(F\circ\pi)=S_n(F)$ for every permutation $\pi$ of the $n$ arguments, and $S_n(F)\in\mathbb R$ for real $F$.
+\end{itemize}
+
+(c) Nontriviality is a separate statement, Theorem 1.4.
+\end{theorem}
+\emph{What is claimed about measures.} No probability measure is claimed. The limit is a family of Schwinger functions on $\mathcal D_n$. A measure on distributions would need finite moments of smeared fields, and $\operatorname{Var}\sum_pf(x_p)\varphi_p\sim\varepsilon^{-4}$ (\S0). (OS0)--(OS3) on $\mathcal D_n$ are the inputs of OS reconstruction.
+
+\subsection*{1.4 Theorem (nontriviality), conditional on (B-NT)}
+\begin{theorem}[nontriviality \status{conditional on (NT) of \S2.9}]
+Under the hypotheses of 1.3 and (NT), every limit family satisfies:
+(i) $S_2\ne0$: there are $f_1,f_2\in C^\infty(T^4)$ with disjoint supports and $S_2(f_1\otimes f_2)\ne0$.
+(ii) $S_2$ is not the two-point function of a scale-invariant (in particular free Maxwell) composite: $d^8S_2(x,y)$, $|x-y|=d$, is not asymptotically constant as $d\to0$.
+\end{theorem}
+Part (ii) is stated here in the form the proof supports (two-sided envelope only); see Corrections after verification, item 3. The source stated (ii) as ``behaves like $c\,g(d)^4$ with $g(d)^2\sim(\beta\log(1/d))^{-1}$'', which needs $\beta_j\to\beta_\infty$ and is not proved.
+
+\section*{2. Proof modulo blocks}
+Structure. (B-T2) gives the trajectory. (B-S) gives sourced bounds uniform in $\varepsilon$. (B-N1) turns them into (H-U). (B-C) gives (a). (B-REG), (B-TI), (B-RP), and (OS3) give (b). (B-NT) gives 1.4. Only (B-C), (B-REG), (B-TI), (B-RP), and (OS3) are proved in this chapter; they use nothing beyond (H-U) and exact lattice symmetries.
+
+\subsection*{2.1 (B-T2) Theorem 2: the running coupling}
+Needed. Balaban's Theorem 1 (CMP 122 II p.\ 355) \status{verified quote}: ``If the sequence of the effective coupling constants is contained in an interval $]0,\gamma]$ with a sufficiently small positive $\gamma$, then the effective densities $\rho_k$ have the form, and satisfy all the conditions and bounds, described in Sect.\ 2 [III].'' The assumption is discharged by Theorem 2 of CMP 109 p.\ 259 \cite{balaban109}: for small $g$ there is $g_0(\varepsilon,g)$ with all $g_k\in\,]0,\gamma]$, $g_K=g$, and (0.31): $1/g^2+\beta\log(L^k\varepsilon)^{-1}\le1/g_k^2\le1/g^2+\beta'\log(L^k\varepsilon)^{-1}$. Balaban: ``has not been published yet'' \status{verified quote}.
+
+Status after the v4 chapter (previous section; \S10 of \file{THEOREM2_PROOF_v4.md}). The weak form, Theorem 2w, is \status{proved+verified, conditional} by Route K (Theorem K + Lemma D$''$) on (H2) and the fixed-level inputs (PI), (F), $(M_j)$, V1, (G2), plus L5 and (H0) at odd $L>11$. It suffices for Theorem 1 by the cross-scale sweep \status{proved, unverified}. Literal (0.31) is not obtained (it needs eventual positivity of $\beta_j(0)$). Route B (Theorem B of \file{BETA_FP_PW}) is a formally distinct second route; its logic is \status{proved+verified, conditional}, its inputs (U), (DF), (T1) are \status{proved, unverified} and rest on (H2). The reduction pieces are Lemma D$'$, Lemma D$''$, and Lemmas D, E (the one-argument forms in Lean).
+
+Conclusion. (B-T2) is a \status{hypothesis} in the sense that (H2) is certified at no $L$ yet; see the dependency table.
+
+\subsection*{2.2 (B-S) Sourced bounds E14-a..g}
+Needed. A version of Balaban's Theorem 1 with the (C1) source, i.e. with the local bare coupling $w_p=1/g_0^2-f(x_p)$, $f$ real, $|\partial^mf|\le r$ for $m\le5$ (class $F_r$), uniformly in $\varepsilon$. Output form (\file{SOURCES.md} (N1)): $\log Z_\varepsilon[f]-W_\varepsilon[f]$ is $C^\infty$ in source amplitudes $z$ with $|\partial_z^\alpha(\log Z_\varepsilon[f]-W_\varepsilon[f])|\le C^{|\alpha|}\alpha!\,r^{-|\alpha|}$ for $f=\sum_iz_if_i$ with disjoint supports. $W_\varepsilon[f]$ is a local field-independent contact functional (allowed to diverge; it contributes zero to every mixed derivative of order $\ge2$ for disjoint supports, \file{SOURCES_VERIFY} item 5(a)).
+
+Estimates needed (\file{SOURCES.md} \S2.5): (E14-a) sourced small-field step; (E14-b) sourced large-field step and R operation; (E14-c) derivative bounds in $f$. Not needed: (E14-d) fixed-torus convergence (= E13); (E14-g) tensor sources. (E14-e) RP and symmetry transfer is done in this chapter (\S2.6, \S2.7). (E14-f) nontriviality at a fixed layer is needed only for Theorem 1.4. The current status of each sub-block is in the dependency table (\S3); (B-S) remains a \status{hypothesis}.
+
+\subsection*{2.3 (B-N1) Bridge: source-form bounds $\Rightarrow$ (H-U) \status{open}}
+\file{SOURCES_VERIFY} item 5(b) \status{verified quote}: the source form ``does not give $|S_n(F)|\le C^nn!\|F\|_{s,n}$ for $F$ flat on diagonals with a fixed $s$ \dots\ Mark N1 for general $F$ as a gap.'' This chapter does not close the gap. It gives a route \status{derived sketch}, which shows that the gap is removed by the OS index growth $sn$.
+
+\begin{enumerate}
+\item Moments from cumulants. $\langle\prod_i\phi(f_i)\rangle=\sum_{\text{partitions}}\prod_{\text{blocks}}\kappa(\cdot)$. Singleton cumulants vanish ($\varphi$ is centred). For disjoint supports the source form bounds every cumulant by $C^{|B|}|B|!\,r^{-|B|}$, so the moment by $C^nn!\,r^{-n}$.
+\item Scale-$\delta$ tests. A bump of side $\delta\le1$ and amplitude $a$ has $|\partial^5f|\sim a\delta^{-5}$; it lies in $F_r$ if $a\le cr\delta^5$. So $n$ disjoint unit-amplitude scale-$\delta$ bumps have $|\text{moment}|\le C^nn!\,\delta^{-5n}$. This is lossy but polynomial in $\delta^{-1}$.
+\item Whitney decomposition. Split $T^{4n}$ by a smooth dyadic partition in $\rho(x):=\min_{i<j}|x_i-x_j|\in[\delta,2\delta]$, $\delta=2^{-m}\ge\varepsilon$. On each piece cover by cubes of side $\delta/100$; cube tuples are pairwise disjoint. Expand $F\cdot$(cutoffs) in a Fourier series on each cube tuple; the coefficients decay faster than any power; each term is a product of disjointly supported scale-$\delta$ bumps. Flatness gives $|\partial^\beta F(x)|\le C_k\|F\|_{k+|\beta|}\rho(x)^k/k!$. The count is $\le C^n\delta^{-4n}$ cube tuples. Derivatives of the cutoffs cost at most $(Cn^2/\delta)^M$; with $M=O(n)$ this is $\le C^n(n!)^c\delta^{-M}$.
+\item Bound per dyadic scale: $\le C^n(n!)^{D'}\delta^{k-9n-M}\|F\|_{k+M}$. Choose $k=sn-M$ with $s$ large enough ($s\ge20$ suffices on this count) so the $\delta$-exponent is $\ge n$; the sum over dyadic $\delta\in[\varepsilon,1]$ converges uniformly in $\varepsilon$.
+\item Sub-lattice region $\rho(x)\lesssim\varepsilon$: $\le C^n\varepsilon^{-4n}$ plaquette tuples, each moment $\le2^n$, and $|F|\le\|F\|_k\varepsilon^k$; this is $\le C^n\|F\|_{sn}$ for $k=sn\ge4n$.
+\end{enumerate}
+Result (if the steps hold): (H-U) with some fixed $s$ and $D$. To check: uniformity of the source bound in the position of the bumps and in $\varepsilon$; the $C^\infty$ real-source form of (E14-c) with $n$-th derivatives for all $n$; the cutoff-derivative count in step 3. The verifier lists further gaps: complex Fourier modes against real sources (a factor $2^n$), the extra derivatives of Fourier summation (absorbed in $s$), and the smooth min-distance partition. Later work (\file{SOURCES_D4D5}, graded in \file{SOURCES_D4D5_VERIFY}) confirms ``(S) $\Rightarrow$ (H-U) with $s=6$, $D>1$'' given (FX) (see \S3).
+
+\subsection*{2.4 (B-C) Compactness \status{proved here, given (H-U)}}
+\begin{proposition}
+Under (H-U), every sequence $\varepsilon_m\to0$ has a subsequence along which $S_{n,\varepsilon}(F)$ converges for every $n$ and every $F\in\mathcal D_n$. The limit $S_n$ is linear and satisfies $|S_n(F)|\le\sigma_n\|F\|_{sn}$.
+\end{proposition}
+\begin{proof}
+1. Separability. $C^{sn}(T^{4n})$ with $\|\cdot\|_{sn}$ is separable (trigonometric polynomials with rational coefficients are dense; Fej\'er means converge in $C^k$). A subset of a separable metric space is separable. So $\mathcal D_n$ has a countable subset $Q_n$ dense for $\|\cdot\|_{sn}$.
+2. Diagonal extraction. $Q:=\bigcup_nQ_n\times\{n\}$ is countable; enumerate it as $(F^{(1)},n_1),(F^{(2)},n_2),\dots$. Each sequence $S_{n_t,\varepsilon_m}(F^{(t)})$ is bounded by $\sigma_{n_t}\|F^{(t)}\|_{sn_t}$ (H-U), so it has a convergent subsequence. Extract successively and take the diagonal subsequence $\varepsilon_i$.
+3. Extension. Let $F\in\mathcal D_n$, $\eta>0$, and $G\in Q_n$ with $\|F-G\|_{sn}\le\eta$. By (H-U) and linearity, $|S_{n,\varepsilon_i}(F)-S_{n,\varepsilon_j}(F)|\le2\sigma_n\eta+|S_{n,\varepsilon_i}(G)-S_{n,\varepsilon_j}(G)|$. The last term $\to0$. So the sequence is Cauchy; call the limit $S_n(F)$.
+4. Linearity passes to pointwise limits, and $|S_n(F)|=\lim|S_{n,\varepsilon_i}(F)|\le\sigma_n\|F\|_{sn}$.
+\end{proof}
+Remarks. (i) The same subsequence serves all $n$; this matters for (OS2). (ii) Nothing here needs E13. (iii) The bounded normalizations $B_K$ and $c_\varepsilon$ can be included in the extraction.
+
+\subsection*{2.5 (B-REG) Regularity (OS0) \status{proved here, given (H-U)}}
+By \S2.4 step 4 the limit satisfies $|S_n(F)|\le\sigma_n\|F\|_{sn}$, $\sigma_n=A(n!)^D$. On the compact torus the Schwartz seminorm is replaced by $\|F\|_p$ (the weights control decay at infinity on $\mathbb R^{dn}$; the torus has none). This is the quoted OS II form. Distribution property: for $F\in C_c^\infty$ of the off-diagonal open set, $F\in\mathcal D_n$ and the bound is continuity in the $C^{sn}$ topology, so $S_n$ is a distribution of order $\le sn$ there.
+
+Caveat. OS II is formulated on $\mathbb R^{dn}$. On $T^{4n}$ the axioms are used in their torus form (periodic test functions). This is a change of setting, not a consequence of OS II.
+
+\subsection*{2.6 (B-TI) Translation and hypercubic invariance (OS1) \status{proved here, given (H-U)}}
+\emph{Lattice, exact.} Put the origin at a lattice site.
+\begin{itemize}
+\item Translations $a\in\varepsilon\mathbb Z^4$. The map $U\mapsto U^a$, $U^a(b):=U(b-a)$, permutes the links, preserves the product Haar measure and the Wilson action, and $P_p(U^a)=P_{p-a}(U)$. So $\langle\prod_i\varphi_{p_i+a}\rangle_\varepsilon=\langle\prod_i\varphi_{p_i}\rangle_\varepsilon$ and $S_{n,\varepsilon}(F\circ\tau_a^{\times n})=S_{n,\varepsilon}(F)$. The coupling $g_0(\varepsilon)$ is one number, so nothing in $\mu_\varepsilon$ depends on position.
+\item Hypercubic $R\in B_4$ (signed permutation matrices, $|B_4|=384$). $R$ maps sites to sites, links to links (possibly reversed), plaquettes to plaquettes, and $x_{Rp}=Rx_p$. Define $(RU)(b):=U(R^{-1}b)$ with $U(-b)=U(b)^{-1}$. Haar measure is invariant under $U\mapsto U^{-1}$ and $\operatorname{Re}\operatorname{tr}W^{-1}=\operatorname{Re}\operatorname{tr}W$ for $W\in SU(2)$, so $A$ and the measure are invariant and $P_{Rp}(RU)=P_p(U)$. Hence $S_{n,\varepsilon}(F\circ R^{\times n})=S_{n,\varepsilon}(F)$.
+\item These identities hold at every $\varepsilon$. $F\circ\tau_a^{\times n}$ and $F\circ R^{\times n}$ are again in $\mathcal D_n$. They pass to the limit along the subsequence of \S2.4: $S_n(F\circ R^{\times n})=S_n(F)$, and $S_n(F\circ\tau_a^{\times n})=S_n(F)$ for $a\in\varepsilon_i\mathbb Z^4$ for all large $i$.
+\end{itemize}
+\emph{Continuous translations.} Let $a\in T^4_\ell$. Pick $a_i\in\varepsilon_i\mathbb Z^4$ with $|a-a_i|\le\varepsilon_i$ (componentwise rounding gives $\le\varepsilon_i\sqrt4/2=\varepsilon_i$). Write $F_a:=F\circ\tau_a^{\times n}$. The mean value theorem along the diagonal direction gives $\|F_a-F_{a_i}\|_{sn}\le4n|a-a_i|\,\|F\|_{sn+1}$. Then
+\[|S_n(F_a)-S_n(F)|\le|S_n(F_a)-S_{n,\varepsilon_i}(F_a)|+|S_{n,\varepsilon_i}(F_a)-S_{n,\varepsilon_i}(F_{a_i})|+|S_{n,\varepsilon_i}(F_{a_i})-S_{n,\varepsilon_i}(F)|+|S_{n,\varepsilon_i}(F)-S_n(F)|.\]
+The first and last terms $\to0$ by \S2.4. The third is $0$ by lattice invariance. The second is $\le\sigma_n\cdot4n\,\varepsilon_i\|F\|_{sn+1}$ by (H-U) and linearity. Let $i\to\infty$. $F$ is smooth, so $\|F\|_{sn+1}<\infty$. Rotations outside $B_4$ are not available (\S4).
+
+\subsection*{2.7 (B-RP) Reflection positivity (OS2)}
+\emph{Lattice theorem} \status{cited}: Osterwalder--Seiler \cite{osterwalderseiler1978}, Ann.\ Phys.\ 110 (1978) 440--471. The paper is not in the project folder; no verbatim quote. Content as usually stated: for the Wilson action with compact gauge group and any $\beta\ge0$, and $\theta$ the reflection in a lattice hyperplane that bisects the links orthogonal to it, $\langle\Theta(\Phi)\Phi\rangle\ge0$ for every function $\Phi$ of the link variables in the positive half-lattice, $(\Theta\Phi)(U):=\overline{\Phi(\theta U)}$. Jaffe--Witten \cite{jaffewitten} line 546 \status{verified quote}: ``Reflection positivity holds for the Wilson approximation [36], a major advantage''. The template uses the same input (\file{o3_continuum.txt} line 4902) \status{verified quote}: ``At every cutoff the nearest-neighbour measure is reflection positive across microscopic site and link seams.'' Proof idea (standard): fix the crossing links to $1$ by a gauge transformation; the action splits as $A_++\theta A_++\sum_{\text{crossing}}\operatorname{Re}\operatorname{tr}(X_p\theta(X_p)^*)$, and $\exp(\beta\operatorname{Re}\operatorname{tr}(XY^*))$ is a positive-type kernel (positive combination of characters), which gives a sum of squares. On the periodic lattice there are two fixed planes, $x_0=\varepsilon/2$ and $x_0=\varepsilon/2+\ell/2$; both are link planes because $N_\varepsilon$ is even ($\ell$ even, \S0). The periodic two-seam version is standard \status{cited}; its text was not checked. For site-plane reflections see Menotti--Pelissetto \cite{menottipelissetto1987} (Corrections, item 1).
+
+\emph{Passage to the limit} \status{proved here, given (H-U) and the lattice theorem}.
+Setup. $\theta_\varepsilon(x):=\theta(x)+\varepsilon e_0=\theta(x-\varepsilon e_0)$, fixed planes $x_0=\varepsilon/2,\ \varepsilon/2+\ell/2$. The positive half $\Lambda_+$ consists of links with both ends in $\{x_0\in\{\varepsilon,2\varepsilon,\dots,\ell/2\}\}$. Fix $F_0\in\mathbb C$ and $F_n\in\mathcal D_n$, $\operatorname{supp}F_n\subset T_+^n$, $1\le n\le N$. Supports are compact in the open set, so there is $\delta>0$ with $x_0\in[\delta,\ell/2-\delta]$ on all supports.
+
+Step 1 (lattice form). For $\varepsilon<\delta/2$ every plaquette with centre in a support has all four links in $\Lambda_+$. Define $\Phi:=F_0+\sum_{m=1}^N\sum_{p_1\dots p_m}F_m(x_{p_1},\dots,x_{p_m})\prod_i\varphi_{p_i}$. $\Phi$ depends only on $\Lambda_+$ links. Since $\varphi_p$ is real and $P_p(\theta_\varepsilon U)=P_{\theta_\varepsilon p}(U)$, re-indexing gives $\Theta\Phi=\bar F_0+\sum_n\sum_q\overline{F_n}(\theta_\varepsilon x_{q_1},\dots,\theta_\varepsilon x_{q_n})\prod\varphi_{q_i}$. Hence
+\[0\le\langle\Theta\Phi\,\Phi\rangle_\varepsilon=\sum_{n,m=0}^NS_{n+m,\varepsilon}(\Theta_\varepsilon F_n\otimes F_m),\quad\Theta_\varepsilon F_n:=(\Theta F_n)\circ\tau_{-\varepsilon e_0}^{\times n},\ S_{0,\varepsilon}:=1.\]
+(Argument order inside $\Theta F_n$ is immaterial by (OS3).) Each $\Theta_\varepsilon F_n\otimes F_m$ lies in $\mathcal D_{n+m}$: its two factors have supports at positive distance and each factor is flat on its own diagonals.
+
+Step 2 (seam shift). $\|\Theta_\varepsilon F_n\otimes F_m-\Theta F_n\otimes F_m\|_{s(n+m)}\le2^{s(n+m)}\cdot4n\,\varepsilon\,\|F_n\|_{s(n+m)+1}\|F_m\|_{s(n+m)}$. By (H-U) the difference of the $S_{n+m,\varepsilon}$ values is $\le\sigma_{n+m}$ times this, which $\to0$.
+
+Step 3 (limit). Along the subsequence of \S2.4, $S_{n+m,\varepsilon_i}(\Theta F_n\otimes F_m)\to S_{n+m}(\Theta F_n\otimes F_m)$ for each of the finitely many $(n,m)$. So $\sum_{n,m}S_{n+m}(\Theta F_n\otimes F_m)=\lim_i\sum_{n,m}S_{n+m,\varepsilon_i}(\Theta_{\varepsilon_i}F_n\otimes F_m)\ge0$.
+
+\begin{lemma}[positivity of a finite form survives pointwise limits \status{proved here}]
+Let $a^{(i)}\in\mathbb C^{(N+1)\times(N+1)}$ with $\sum_{n,m}\bar c_nc_ma^{(i)}_{nm}\ge0$ for all $c$ and all $i$, and $a^{(i)}_{nm}\to a_{nm}$ for every $(n,m)$. Then $\sum\bar c_nc_ma_{nm}\ge0$ for all $c$.
+\end{lemma}
+\begin{proof}
+For fixed $c$ the left side is a finite linear combination of the entries, so it converges to $\sum\bar c_nc_ma_{nm}$; $[0,\infty)$ is closed.
+\end{proof}
+Step 3 is this lemma with $a^{(i)}_{nm}:=S_{n+m,\varepsilon_i}(\Theta_{\varepsilon_i}F_n\otimes F_m)$ (replace $F_n$ by $c_nF_n$), plus Step 2.
+
+\subsection*{2.8 (OS3) Symmetry and reality \status{proved here}}
+$S_{n,\varepsilon}(F\circ\pi)=S_{n,\varepsilon}(F)$: the $\varphi_p$ are commuting real random variables; re-index the sum. For real $F$, $S_{n,\varepsilon}(F)\in\mathbb R$. Both identities are linear and pass to the limit. $S_0=1$ by definition.
+
+\subsection*{2.9 (B-NT) Nontriviality: what is needed}
+\begin{itemize}
+\item A two-point function alone never excludes a Gaussian: every positive-definite $S_2$ is the covariance of some Gaussian generalized field.
+\item The plaquette density is a composite ($\approx\tfrac14\operatorname{tr}F^2\times\varepsilon^4$). Even in the free theory its connected $n\ge3$ functions are nonzero (Wick squares). So $S_n^c\ne0$ for some $n\ge3$ does not prove interaction.
+\item The meaningful test excludes (a) the zero theory and (b) the free Maxwell composite. The free composite has, at short distance, the scale-invariant form $c_0d^{-8}$. Asymptotic freedom predicts $c\,g(d)^4d^{-8}$ with a running coupling.
+\end{itemize}
+\emph{Free-theory prediction along this sequence.} At tree level with the bare coupling, $\langle\varphi_p\varphi_{p'}\rangle\approx c\,\varepsilon^8g_0^4|x-y|^{-8}$. Since $g_0(\varepsilon)^2\le(1/g^2+\beta\log\varepsilon^{-1})^{-1}\to0$ by (0.31), the bare-coupling prediction for $S_2$ at fixed separation tends to $0$. The claim is that the true $S_2$ does not.
+
+\emph{Statement (NT) needed} \status{hypothesis}; owned by (E14-f), a corollary of (E14-a) at a fixed layer. There are $c>0$ and $C$ such that for all $K$, all $f_1,f_2\in C^\infty(T^4)$ with disjoint supports at distance $\ge d$, $d\ge L\varepsilon$, and $k(d)$ the layer with $L^k\varepsilon\le d<L^{k+1}\varepsilon$:
+\[S_{2,\varepsilon}(f_1\otimes f_2)=c\iint f_1(x)f_2(y)\,g_{k(|x-y|)}^4|x-y|^{-8}\,dx\,dy\,(1+R),\quad|R|\le C(g_{k(d)}^2+(d/\ell)^2).\]
+$c$ is the one-loop (tree-level in the composite) coefficient: $c\propto\sum(\text{free field-strength covariance})^2$, a sum of squares, so $c>0$ \status{derived, standard}; its value must be computed in Balaban's normalization.
+
+\emph{Derivation of Theorem 1.4 from (NT) and (B-T2)} \status{proved here, given (NT)}.
+(i) Take $f_1,f_2\ge0$, not identically $0$, with supports at distance $\ge d_0$. Corrected condition (Corrections, item 3): the support diameters are $\ll\ell$, so that $g^2+(|x-y|/\ell)^2$ is small on the whole support pair and $|R|\le\tfrac12$. By (0.31) at layer $k(d)$ with $d\in[d_0,\ell]$: $1/g_k^2\le1/g^2+\beta'\log(L^k\varepsilon)^{-1}\le1/g^2+\beta'\log(L/d_0)$, uniformly in $\varepsilon$. So $S_{2,\varepsilon}(f_1\otimes f_2)\ge\tfrac12c(1/g^2+\beta'\log(L/d_0))^{-2}\iint f_1f_2|x-y|^{-8}>0$ uniformly in $\varepsilon$, and the limit inherits the bound.
+(ii) For bumps concentrated at separation $d\to0$ (with $d$ a fixed multiple of their width), $d^8S_2\le(1+Cg_{k(d)}^2)\,c\,(1/g^2+\beta\log(1/d))^{-2}\to0$ as $d\to0$ by the lower bound in (0.31), while $d^8S_2>0$ by (i). A scale-invariant composite would give a nonzero constant limit. So the limit is neither zero nor the free composite. Only the two-sided bound (0.31) is used.
+Caveat. (ii) needs (NT) uniformly down to $d\ge L\varepsilon$ with the remainder controlled by $g_{k(d)}^2$, i.e. the fixed-layer expansion at every layer. If (E14-f) is proved only at a fixed layer $j$, (i) holds, and (ii) holds only in the weaker form ``$d^8S_2(d)$ is bounded between the two (0.31) envelopes for $d\in[L^{-j},1]$''.
+
+\subsection*{3. Dependency table (refreshed)}
+Refreshed from the newest lines of \file{PLAN.md} (through the Oct 28 entries: \file{SOURCES_FX_O23.md}, \file{SOURCES_FX_O1_VERIFY.md}, \file{SOURCES_GGAIN_VERIFY.md}, \file{H2_CERTIFY.md}) and \S10 of \file{THEOREM2_PROOF_v4.md}. Global conditions carried by every row: (G1) Balaban's published proofs CMP 95--122 (1984--89) are correct as published; nothing in this campaign re-checks them line by line. (G2) Balaban's inductive assumptions (CMP 109 pp.\ 263--264) hold with the stated uniformity. (G3) $L$ odd, $L>11$, $M$ large, $\gamma$ small as Balaban requires; $\ell$ even (sufficient, \S0).
+
+\begingroup\small
+\begin{longtable}{|p{1.3cm}|p{2.9cm}|p{4.1cm}|p{3.3cm}|p{2.2cm}|}
+\hline
+Block & Content & Current tag & Files & Hypotheses carried \\ \hline
+\endhead
+B-T2 & Theorem 2w: trajectory $g_0(\varepsilon,g)$, (b), (c$'$), (S) & \status{proved+verified, conditional} (Route K = Theorem K + Lemma D$''$). Literal (0.31) not obtained & \file{THEOREM2_PROOF_v4.md}, \file{KAPPA_BOUNDED.md} & (H2), (PI), (F), $(M_j)$, V1, (G2), L5, (H0), $K$-independence of $\beta_j(g)$ \\ \hline
+B-T2.a & Lemmas D, D$'$, D$''$, E (shooting) & \status{proved+verified; Lean} (D$'$, D, E, D$''$ one-argument form; history form open) & \file{LEMMA_DPRIME.md}, \file{lean/} & continuity of $\beta_{k+1}$ in history \\ \hline
+B-T2.b & Sweep: (c$'$)+(S) $\Rightarrow$ Balaban's Theorem 1 inputs & \status{proved, unverified}; 4 of 19 rows verified & \file{LEMMA_DPRIME_SWEEP.md} & Balaban readings (unchecked list) \\ \hline
+B-T2.1 & U3 Thm 4.1 (Gaussian RG, rate $L^{-2j}$) + O5 & \status{proved+verified} & \file{U3_GAUSSIAN_RG.md}, \file{U3_REPAIRS.md} & trivial background \\ \hline
+B-T2.2 & U3 Lemma 5.1; (A), (W) & neutral sector \status{proved+verified}. (W) numerically exact; (A) confirmed qualitatively and quantitatively (\file{U3_AW_VERIFY.md}); (HS) \status{refuted} at $L=3$. Not on the path of Theorem 2w after (H2); needed for the convergence route only & \file{U3_LEMMA51.md}, \file{U3_AW.md} & (A) in full, (N) (plausibly false) \\ \hline
+B-T2.3 & O6 bordered-matrix invertibility & one-step \status{proved+verified}; composed constraint reduced to one-step O6 + (A) & \file{U3_REPAIRS.md} & --- \\ \hline
+B-T2.4 & $c=11N^2/(12\pi^2)$, anchor-free identity Prop.\ 2.1, telescoping & \status{proved+verified}. $\beta_\infty=c\log L$ itself replaced by window sums (Theorem K, Route B) & \file{BETA_FP_LEMMA43.md}, \file{BETA_FP_LEMMA43_VERIFY.md} & (F) \status{cited, source checked} \\ \hline
+B-T2.5 & $\kappa_k$ bounded (Theorem K) & \status{proved+verified, conditional on (B2)}; (B2) \status{proved+verified, conditional on (H2)} & \file{KAPPA_BOUNDED.md}, \file{KAPPA_BOUNDED_VERIFY.md}, \file{B2_TWOSTEP.md}, \file{B2_TWOSTEP_VERIFY.md} & (H2), (PI), $(M_j)$ \\ \hline
+B-T2.H2 & (H2) uniform two-step inequality $\rho_2<L$ & \status{numerical}: $L=3,5,9$ confirmed by verifier, margin 31\% ($L=3$), 58\% ($L=5$); certification open (point enclosure $[1.9993,2.1273]<3$ at $L=3$; full certification about $1.5\times10^4$ core-hours) & \file{H2_LARGE_L.md}, \file{H2_LARGE_L_VERIFY.md}, \file{H2_CERTIFY.md} & interval arithmetic, tail bound $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$) \\ \hline
+B-T2.B & Route B (Theorem B) & logic \status{proved+verified, conditional}; inputs (U), (DF), (T1) \status{proved, unverified} & \file{BETA_FP_PW.md}, \file{BETA_FP_PW_VERIFY.md}, \file{BETA_FP_U.md} & (H2), ($B\theta$), A6, LW (5.7), (H0) \\ \hline
+B-T2.6 & certified early steps $\beta_j(0)>0$ & needed only for literal (0.31) at every $K$, not for Theorem 1; \status{numerical}, no certificate; $\beta_1(0)$ computed to $L=11$ & \file{numerics/NUMERICS.md}, \file{UMK_BETA1.md} & $L>11$ is Balaban's range \\ \hline
+B-S & sourced Theorem 1 (E14-a,b,c) & \status{open} & \file{SOURCES.md} \S2.5 & B-T2 for the sourced trajectory \\ \hline
+B-S.D1 & one sourced step, Gaussian level & \status{proved+verified} (with corrections) & \file{SOURCES_D1.md}, \file{SOURCES_D1_VERIFY.md} & --- \\ \hline
+B-S.D2 & sourced small-field step (E14-a) & (a), (b), (d), (f) confirmed; (c) rejected; (e) reduced & \file{SOURCES_D2.md}, \file{SOURCES_D2_VERIFY.md} & analyticity in input activities, $\kappa\to\kappa/2$ \\ \hline
+B-S.D2C & redo of (c): frozen source per domain, Lemma A, $h\equiv0$ & Lemma A and recursion confirmed; (I) corrected (exact only with adapted gauge-fixing weight) & \file{SOURCES_D2C.md}, \file{SOURCES_D2C_VERIFY.md} & domain hypothesis (D); (H$\beta$) \\ \hline
+B-S.H$\beta$ & two-loop bound $\sup\sum_j|B_j'|\le\tfrac12$ & \status{proved+verified, conditional} on (I), (H-hist) & \file{SOURCES_HBETA.md}, \file{SOURCES_HBETA_VERIFY.md} & (I), (H-hist) \\ \hline
+B-S.hist & (H-hist) history sensitivity & \status{proved, conditional} on (W4), Facts A/B, (I)/L3 and (G-gain) in both slots (\file{SOURCES_SM.md}; verifier: items 1--4 confirmed, 5--6 corrected) & \file{SOURCES_SM.md}, \file{SOURCES_SM_VERIFY.md} & (G-gain) \\ \hline
+B-S.Ggain & (G-gain): $g_k|B|$ gain in the small-field step & pointwise Cauchy and uniform $C_\beta$ on $]0,\gamma]$ \status{proved+verified} (small-field, incl.\ vacuum subtraction); Lemma G4 corrected; $\chi_k$ surface term narrow gap; large field, higher derivatives \status{open} & \file{SOURCES_GGAIN.md}, \file{SOURCES_GGAIN_VERIFY.md} & G3 unproved, not at $g=0$ \\ \hline
+B-S.thr & (H-thr) threshold shell sum & Lemma T and trajectory sum \status{proved+verified}, conditional on (H-hist2) (a new hypothesis of the (H-hist) kind) & \file{SOURCES_HTHR.md}, \file{SOURCES_HTHR2.md}, \file{SOURCES_HTHR2_VERIFY.md} & (H-hist2), M3 weights, frozen integers (L3) \\ \hline
+B-S.D3 & sourced large-field step + R operation (E14-b) & complete draft, \status{proved, unverified}. (FX) is a genuine new hypothesis (\file{SOURCES_D4D5_VERIFY.md}); reduced to O1(b), O2, O3 & \file{SOURCES_D3.md}, \file{SOURCES_FX.md}, \file{SOURCES_FX_VERIFY.md} & (FX), (FX2) \\ \hline
+B-S.FX & O1(b), O2, O3, O4 & O1(b) \status{proved+verified} (Lemma [P], no additive constant); R2 ($\kappa_{fin}\ge\kappa_{final}$) \status{open}; O2, O3 closed in \file{SOURCES_FX_O23.md} \status{proved, unverified}; O4 (unbounded components in (1.103)) \status{open}, fallback Gevrey $2+\eta$ & \file{SOURCES_FX_O1.md}, \file{SOURCES_FX_O1_VERIFY.md}, \file{SOURCES_FX_O23.md} & R1 constants, R2, O4 \\ \hline
+B-S.D4 & real-source derivative bounds (E14-c) & D4.1, D4.3, D4.4 and Lemma C (order $1+\eta$, given (FX)) \status{proved+verified}; (S) $\Rightarrow$ (H-U), $s=6$, $D>1$, confirmed given (FX) & \file{SOURCES_D4D5.md}, \file{SOURCES_D4D5_VERIFY.md} & (FX), (FX2), S1 at all scales \\ \hline
+B-N1 & source form $\Rightarrow$ (H-U) on $\mathcal D_n$ & route sketched (\S2.3); the (S) $\Rightarrow$ (H-U) step confirmed given (FX) & this chapter, \file{SOURCES_D4D5.md} & (FX), uniformity in bump position and $\varepsilon$ \\ \hline
+B-C & compactness (diagonal extraction) & \status{proved here}; verifier: correct & this chapter \S2.4 & (H-U) \\ \hline
+B-REG & (OS0) & \status{proved here}; verifier: correct & \S2.5 & (H-U); torus form of OS II \\ \hline
+B-TI & (OS1) all of $T^4$ and $B_4$ & \status{proved here}; verifier: correct & \S2.6 & (H-U); origin at a site \\ \hline
+B-RP & (OS2) & lattice: \status{cited}; passage: \status{proved here}; verifier: correct & \S2.7 & $\ell$ even (sufficient); (H-U) \\ \hline
+OS3 & permutation symmetry, reality & \status{proved here} & \S2.8 & --- \\ \hline
+B-NT & nontriviality (Thm 1.4) & \status{open}: needs (NT) = (E14-f); derivation from (NT) \status{proved here}, corrected statement & \S2.9 & (NT) at every layer for (ii); $c>0$ in Balaban's normalization \\ \hline
+E13 & full-sequence convergence & not needed here; \status{open} & \file{SOURCES.md} (E14-d), D6 & --- \\ \hline
+\end{longtable}
+\endgroup
+
+Critical path to an unconditional (modulo G1--G3) Theorem 1.3, after the refresh: (H2) certified at the actual $L$ (with (PI), (F), $(M_j)$, V1, (G2), L5, (H0)) for B-T2; then B-S: (H-hist) via (G-gain) in the large-field case, (H-hist2), (FX) with R2 and O4, and the B-N1 bridge. The blocks proved in this chapter are short and are not on the critical path.
+
+\section*{4. What the theorem does NOT give}
+Each item needs a separate argument that does not exist in this campaign.
+\begin{itemize}
+\item Rotation invariance. Only $B_4$ and the torus translations are proved. Full $O(4)$ is not a symmetry of $T^4_\ell$. \file{LEMMAS.md} ledger item 5 \status{verified quote}: on the torus the inclined comparison ``gives only the tilted-axis reflection symmetry $R_{2\theta}s$, never a rotation''; the template reaches rotations only after the torus $\to$ plane limit, which it controls with its mass gap.
+\item Infinite volume. $\ell$ is fixed. Jaffe--Witten tie the limit $T^4\to\mathbb R^4$ to a volume-uniform gap \status{verified quote}: ``New ideas are needed to prove the existence of a mass gap that is uniform in the volume of space-time. Such a result presumably would enable the study of the limit as $T^4\to\mathbb R^4$.'' No public mechanism without a gap is known to us (\file{LEMMAS.md} ledger item 8).
+\item Mass gap. Not addressed. On a finite torus a ``gap'' of the transfer matrix is not the Clay mass gap.
+\item Uniqueness. Different subsequences may give different Schwinger functions. Uniqueness needs E13, which Balaban does not have. Also not given: uniqueness of the vacuum after reconstruction (no clustering on a torus).
+\item Vacuum state. Time is periodic, so OS reconstruction from torus reflection positivity gives a transfer matrix on $T^3$ and a thermal state at inverse temperature $\ell$, not a vacuum state (Corrections, item 4).
+\item Also not given: clustering (OS4); a probability measure for the density field; Wilson-loop observables (class C3); the stress tensor and the operator product expansion (class C2 and beyond); independence of the limit from the block-averaging choices of Balaban's RG (only the lattice measure enters $S_{n,\varepsilon}$, but $g_0(\varepsilon)$ is chosen through Balaban's flow).
+\item Status of the whole statement. Even with every block closed, the theorem is conditional on Balaban's published 1984--89 proofs (G1). Under Jaffe--Witten footnote 2 it is a compactness (``weak-existence'') result on a torus with the torus forms of OS0--OS3; it is not a solution of the Millennium problem.
+\end{itemize}
+
+\subsection*{Corrections after verification (\file{ASSEMBLY_VERIFY.md})}
+The verifier confirmed the theorem statement, all in-chapter proofs (B-C, B-REG, B-TI, $B_4$, the RP passage, OS3, the finite-form lemma), the quotes of Jaffe--Witten, and the open status of B-N1. Four items were corrected. The statements above carry the corrected wording; the original claims are listed here.
+\begin{enumerate}
+\item \emph{$\ell$ even is sufficient, not necessary} (verifier \S5, grade 3). The parity count is right: $L$ odd gives $N_\varepsilon=\ell L^K$ even iff $\ell$ even; for odd $N_\varepsilon$ every time reflection has one site seam and one link seam. Osterwalder--Seiler (1978) \cite{osterwalderseiler1978} treat link-plane (between-site) reflections. Site-plane reflections were added by Menotti--Pelissetto, CMP 113 (1987) 369--373 \cite{menottipelissetto1987} \status{verified quote} (abstract, per the verifier): ``We extend the proof by Osterwalder and Seiler of reflection positivity of lattice gauge theories with fermions to the case in which the reflection is performed with respect to planes containing sites.'' and ``Our proof applies to all observables and relies on the particular structure of the Wilson action.'' The mixed case (one site seam, one link seam on a periodic lattice) is very likely routine, since each mechanism is local to its seam, but no citation states it. So odd $\ell$ is not excluded; the hypothesis $\ell$ even only avoids the mixed case. The source's phrase ``plausible but not cited'' stands. The periodic two-seam link version attributed to Osterwalder--Seiler is \status{cited}, not \status{verified quote}. Two minor points from the verifier: the support distance after the seam shift is $\ge2\delta-\varepsilon$ (the source's $2\delta-2\varepsilon$ is conservative); the factor $2^{s(n+m)}$ in Step 2 is unneeded but harmless.
+\item \emph{Reference title.} The Jaffe--Witten reference list gives the title ``Gauge theories on the lattice''; the bibliography entry follows the Annals of Physics title.
+\item \emph{Nontriviality needs the two-sided envelope only and support diameters $\ll\ell$} (verifier \S6, grade 6). In Theorem 1.4(i), $|R|\le\tfrac12$ needs $g^2+(|x-y|/\ell)^2$ small on the whole support pair, so the support diameters must be $\ll\ell$, not only the minimum distance $d_0$. In 1.4(ii) the source stated the asymptotic $d^8S_2\sim c\,g(d)^4$ with $g(d)^2\sim(\beta\log(1/d))^{-1}$. The proof uses only the two-sided bound (0.31); the asymptotic needs $\beta_j\to\beta_\infty$ and is not proved. The statement of 1.4(ii) above is the supported one. The overclaim was in the statement, not in the proof.
+\item \emph{Periodic time gives a thermal state} (verifier \S6, grade 8). OS reconstruction from torus reflection positivity gives a transfer matrix on $T^3$ and a thermal state at inverse temperature $\ell$, not a vacuum. This remark is added to the list of non-results (\S4).
+\item \emph{Dependency table stale in five rows} (verifier \S4, grade 7; no overclaim). Rows B-T2.2, B-T2.3, B-T2.4, B-S.D2C, B-S.D3 lagged \file{PLAN.md}. The table in \S3 above is rebuilt from \file{PLAN.md} and \S10 of \file{THEOREM2_PROOF_v4.md}, with a tag for every block, and the sub-blocks added after the source was written (Route K, Route B, (H2), (H-thr), (G-gain), (FX)). Minor items: \file{SOURCES.md} \S1.3 gives $c_j=1+O(g_j^4)$ while this chapter uses $O(g^3)$ per \file{SOURCES_VERIFY} item 8 (the corrected value); the variance estimate drops a harmless $g_0^4$ (logarithmic) factor.
+\end{enumerate}

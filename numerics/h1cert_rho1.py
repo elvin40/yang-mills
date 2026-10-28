@@ -78,14 +78,14 @@ def scan(L, j, nd=13, nr=8):
     rng = np.random.default_rng(2026)
     for _ in range(nr): ev(np.sort(rng.uniform(0, np.pi, 4)))                       # random sorted K
     ev([np.pi] * 4)
-    diag = {k: v for k, v in pts.items() if abs(eval(k)[2] - np.pi) < 1e-9 and abs(eval(k)[0] - eval(k)[1]) < 1e-9}
+    diag = {k: v for k, v in pts.items() if abs(eval(k)[2] - np.pi) < 1e-5 and abs(eval(k)[0] - eval(k)[1]) < 1e-5}
     a0 = eval(max(diag, key=diag.get))[0]
     r = minimize_scalar(lambda a: -ev([a, a, np.pi, np.pi]), bounds=(max(a0 - 0.3, 0.05), min(a0 + 0.3, np.pi)),
                         method="bounded", options=dict(xatol=1e-3))
     for dk in (0.1, 0.25): ev([r.x, r.x, np.pi - dk, np.pi]); ev([r.x - dk, r.x + dk, np.pi, np.pi])
     best = max(pts, key=pts.get)
     summ = dict(L=L, j=str(j), rho1=pts[best], K=eval(best), sqrtL=L**0.5, margin=L**0.5 - pts[best],
-                rho1_random_max=max(pts[k] for k in pts if abs(eval(k)[3] - np.pi) > 1e-9) if nr else None,
+                rho1_random_max=max(pts[k] for k in pts if abs(eval(k)[3] - np.pi) > 1e-5) if nr else None,
                 npts=len(pts), secs=time.time() - t0)
     res["summary"] = summ; json.dump(res, open(out + ".tmp", "w"), indent=0); os.replace(out + ".tmp", out)
     print("summary", summ, flush=True); return summ

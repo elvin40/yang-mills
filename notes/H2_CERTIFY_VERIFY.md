@@ -14,3 +14,41 @@ Verifier: Claude (Opus 5.5), 2026-10-27. Firewall kept: /tmp/sa_repo and reports
 - Multisets agree for all non-straight bonds (counts ×4). The three straight c−→c+ bonds differ by exactly 1: exact 23/27, 26/27 vs B0 −4/27, −1/27, i.e. B0 = (my sum) − 1 on those bonds. This is an integer offset of the coarse straight link (convention of which coarse link is subtracted); it keeps the entries rational.
 - Verdict P1: CONFIRMED (exact rationals, denominator 324). Not checked: position-by-position match (only multiset), and fidelity of the code's loop family to Balaban's paper (that is premise P3).
 - Correction to the task's hint: the plain block average alone gives 1/81 per site; the denominator 324 comes from the 1/(k!)² ordering average after cancellation, not from 8·81.
+
+## 3. Item (3): umklapp tail enclosure
+Closed forms (s = sin(k/2), q = k + 2πn, n ∈ Z): Σ 4s²/q² = 1; Σ 4s²/q⁴ = (1/s² − 2/3)/4; Σ 16s⁴/q⁶ = (1/s² − 1 + 2s²/15)/4.
+Brute force |n| ≤ 2·10⁶ at k = 0.3, 1.1, 2.9, π: errors ≤ 3.6·10^{−15} for the 2nd and 3rd; the 1st misses 10^{−7}·s², the expected truncated tail. CONFIRMED.
+Bookkeeping in tail_enclosure, rederived:
+- One large component r_0: 1/(q²+R) ≤ 1/q² gives Hi; 1/(q²+R) ≥ 1/q² − R/q⁴ ≥ 1/q² − R/(q²q_min²) gives Lo. R-weighted sums factor into 1D sums (B1, B2). Correct.
+- q_min = π(2N+1) is valid because the fine momenta k_l = (K + 2πl)/3 satisfy |k| ≤ π.
+- ≥ 2 large components: σ_μ² ≤ 1, |q|² ≥ 2q_min², union over pairs gives Σ_{a<b} E_aE_b/(2q_min²). Correct (upper bound; lower 0).
+- Mean-value step: ∂Δ/∂d_μ = −(Δe_μ)(Δe_μ)^† for Δ = Y − Yk̂k̂^†Y/(k̂^†Yk̂). Code takes Δ(d_lo) − Σ_u [0, w_u]·(Δ_ξ e_u)(Δ_ξ e_u)^†, Δ_ξ an interval evaluation on the full d-box. Entry-wise hulls are convex, so the integral form is enclosed. Correct.
+- dbox_float: a priori γ bound 2(M+8)u on nonnegative terms, outward-rounded inputs. Correct. Nit: nextafter(0, −inf) could make a lower input −5·10^{−324}; irrelevant here because s ≠ 0.
+Verdict (3): CONFIRMED. Limitation: valid for M = ∞ only (see §5 on finite M).
+
+## 4. Item (2): Oishi–Rump in solve_cert
+- ‖B^{−1}‖ ≤ ‖R‖/(1 − η), η ≥ ‖RB_mid − I‖_F + ‖R‖·r, r = max_l ‖rad(block_l)‖_F + ‖rad(rest)‖_F. Each term is a valid 2-norm bound (block-diagonal part: max of block norms; rest: Frobenius ≥ 2-norm). Correct.
+- ‖R‖_2 uses ‖(R^†R)^{2^m}‖_F^{1/2^{m+1}}, computed in arb (96 bits). This is a rigorous upper bound, not a heuristic. Overestimate ≤ n^{1/2^{m+2}}: 1.011 (m = 7, outer), 1.095 (m = 4, inner). The Frobenius norm is the certified quantity; it only inflates width.
+- Residual: ‖H − H̃‖ ≤ ‖B^{−1}‖(‖B_midX̃ − E‖_F + r_blk‖X̃_top‖ + r_rest‖X̃‖_F). Block radii act only on columns < 324, so the top-row norm is right. Correct.
+- Two-step error ‖X − X̃‖ ≤ max e_in(‖H̃_j‖ + e_j) + max‖H̃_in‖e_j: correct by the direct-sum bound. λ_max via Rayleigh (lower) and interval Sylvester minors of tI − G (upper): correct.
+- Lower bound ‖B^{−1}‖ ≥ ‖Rv‖/(1 + η): from R = B^{−1}(RB) ⇒ ‖Rv‖ ≤ ‖B^{−1}‖(1 + η). Correct.
+Verdict (2) bound part: CONFIRMED. Normalization part: see §6.
+
+## 5. Items (5) and (6)
+(5) X = (⊕_l A_l)B, B = column of blocks B_l: ‖Xv‖² = Σ_l‖A_lB_lv‖² ≤ max_l‖A_l‖² Σ_l‖B_lv‖². So ‖X‖ ≤ max_l‖A_l‖‖B‖, and ρ_2(j,K) ≤ ρ_1(j,K)·max_l ρ_1(j−1,k_l) with the L² = L·L split. Exact. CONFIRMED.
+(6) φ(z) = sin(z/2)/(z/2) ∈ [1 − z²/24, 1] for all real z (sin x ≥ x − x³/6 for x ≥ 0). Box terms: enclosure valid for all M ≥ M_0 at once. Two gaps:
+- (a) Finite M sums only over |q_ν| ≤ Mπ (U3_REPAIRS §1, §2.2). The tail Lo of §3 assumes the full infinite tail. For finite M the true tail is a subset, so Lo must be replaced by 0 (or by a bound of the truncated part). As written the lower side is not valid for finite M.
+- (b) The factor (π/2)⁶ ≈ 15 covers one-large-component terms (σ_{r0}², σ_μ² if μ = r0, 1/|q̃|²). For ≥ 2 large components, each extra large σ² adds (π/2)², up to (π/2)^{12} ≈ 225 in the crude bound. Those terms are O(q_min^{−2}) smaller, so N grows only mildly; the factor must be stated per class.
+Verdict (6): CORRECTED (idea sound; tail must use Lo = 0 for finite M and class-wise factors). Not implemented, as the author says.
+
+## 6. Normalization of ‖𝔅^{−1}‖ (42.7 vs 177/195): reconciled
+Script /tmp/h2v/norm.py: hcheck matrix with fine blocks ¼Δ (as coded) and with Δ (×4), lmax 5.
+| K | level | ‖𝔅^{−1}‖, ¼Δ | ‖𝔅^{−1}‖, Δ | ρ_1 (both) |
+|---|---|---|---|---|
+| (π−10^{−6})·1 | M = 3 | 44.70 | 176.67 | 1.6882 |
+| (π−10^{−6})·1 | M = 9 | 48.75 | 192.99 | 1.7098 |
+| (π−10^{−6})·1 | M = ∞ | 49.34 | 195.34 | 1.7132 |
+| (2.4035, 2.4035, π, π) | M = ∞ | 43.15 | 170.23 | 1.7436 |
+- U3_REPAIRS' 177 (M = 3, corner) and the task's 195 (M = ∞, corner) are the full-Δ normalization of O6 (A = ⊕Δ + DD^†). The factor ≈ 4 is the ¼. The Q̃ choice matters little here: σ_min(Q̃) = 0.213 for the (0.4) row vs 0.21 reported for the minimal-Λ row.
+- ρ_1 is identical to 4 digits in both normalizations. Reason: H minimizes ⟨x, Ax⟩ on {Q̃x = 1}; Q̃D = 0 and Δ ⊕ vanishes on im D, so the im D component is 0 and scaling Δ only rescales the objective. So ρ_2 does not depend on this choice; ‖𝔅^{−1}‖ does.
+- Verdict (2): CORRECTED. Bounds are right; "unreconciled" is wrong (factor 4 from ¼Δ). "The hcheck number enters ρ_2" is imprecise: no ‖𝔅^{−1}‖ enters ρ_2; it enters only the cell-size and O5-constant estimates, for the matrix actually solved.
