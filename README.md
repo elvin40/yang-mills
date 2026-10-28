@@ -62,4 +62,6 @@ Their public, timestamped account predates this one. Any writeup from this repos
 
 The Balaban papers (Communications in Mathematical Physics, 1984–1989) are not included.
 
+How to cite: use the metadata in CITATION.cff (GitHub shows it under "Cite this repository"), and give the commit hash you used.
+
 License: documents CC BY 4.0 (LICENSE); code in numerics/ MIT (numerics/LICENSE).
