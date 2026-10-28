@@ -256,17 +256,21 @@ lemma ω_pow_mod (n : ℕ) : ω N ^ (n % N) = ω N ^ n := by
 lemma ch_add (a b : ZMod N) : ch (a + b) = ch a * ch b := by
   rw [ch, ch, ch, ZMod.val_add, ω_pow_mod, pow_add]
 
+omit [NeZero N] in
 lemma ch_zero : ch (0 : ZMod N) = 1 := by simp [ch]
 
 lemma ch_neg_mul (a : ZMod N) : ch (-a) * ch a = 1 := by
   rw [← ch_add, neg_add_cancel, ch_zero]
 
+omit [NeZero N] in
 lemma ch_eq_exp (k : ZMod N) : ch k = Complex.exp (↑(2 * π * k.val / N) * Complex.I) := by
   rw [ch, ω, ← Complex.exp_nat_mul]; congr 1; push_cast; ring
 
+omit [NeZero N] in
 lemma ch_norm (k : ZMod N) : ‖ch k‖ = 1 := by
   rw [ch_eq_exp, Complex.norm_exp_ofReal_mul_I]
 
+omit [NeZero N] in
 lemma ch_re (k : ZMod N) : (ch k).re = Real.cos (2 * π * k.val / N) := by
   rw [ch_eq_exp, Complex.exp_ofReal_mul_I_re]
 
@@ -285,9 +289,11 @@ noncomputable def gap (N : ℕ) : ℝ := 2 - 2 * Real.cos (2 * π / N)
 lemma two_sub_two_cos (t : ℝ) : 2 - 2 * Real.cos (2 * t) = 4 * Real.sin t ^ 2 := by
   rw [Real.cos_two_mul, Real.cos_sq']; ring
 
+omit [NeZero N] in
 theorem lam_eq_four_sin_sq (k : ZMod N) : lam k = 4 * Real.sin (π * k.val / N) ^ 2 := by
   rw [lam, show 2 * π * k.val / N = 2 * (π * k.val / N) by ring, two_sub_two_cos]
 
+omit [NeZero N] in
 theorem gap_eq_four_sin_sq : gap N = 4 * Real.sin (π / N) ^ 2 := by
   rw [gap, show 2 * π / N = 2 * (π / N) by ring, two_sub_two_cos]
 
@@ -304,11 +310,11 @@ lemma cos_le_cos_gap {k : ZMod N} (hk : k ≠ 0) :
     Real.cos (2 * π * k.val / N) ≤ Real.cos (2 * π / N) := by
   have hv0 : k.val ≠ 0 := by rwa [Ne, ZMod.val_eq_zero]
   have hvN := ZMod.val_lt k
-  rcases le_or_lt (2 * k.val) N with h | h
+  rcases le_or_gt (2 * k.val) N with h | h
   · exact cos_le_of_le_half _ (Nat.one_le_iff_ne_zero.2 hv0) h
   · have hN : (N : ℝ) ≠ 0 := Nat.cast_ne_zero.2 (NeZero.ne N)
     have hc : Real.cos (2 * π * k.val / N) = Real.cos (2 * π * ↑(N - k.val) / N) := by
-      rw [Nat.cast_sub hvN.le, ← Real.cos_two_pi_sub]; congr 1; field_simp; ring
+      rw [Nat.cast_sub hvN.le, ← Real.cos_two_pi_sub]; congr 1; field_simp
     rw [hc]; exact cos_le_of_le_half _ (by omega) (by omega)
 
 /-- Every nonzero mode lies at or above the gap: `4 sin²(π/N) ≤ 4 sin²(πk/N)`. -/
@@ -334,7 +340,7 @@ lemma ch_ne_one {k : ZMod N} (hk : k ≠ 0) : ch k ≠ 1 := by
 
 lemma ch_add_ch_neg (k : ZMod N) :
     ch k + ch (-k) = ((2 * Real.cos (2 * π * k.val / N) : ℝ) : ℂ) := by
-  rw [← ch_conj, Complex.add_conj, ch_re]; push_cast; ring
+  rw [← ch_conj, Complex.add_conj, ch_re]
 
 lemma lam_cast (k : ZMod N) : (lam k : ℂ) = 2 - (ch k + ch (-k)) := by
   rw [ch_add_ch_neg, lam]; push_cast; ring
@@ -347,7 +353,7 @@ def lap1 (g : ZMod N → R) (x : ZMod N) : R := 2 * g x - g (x + 1) - g (x - 1)
 theorem lap1_eigen (k : ZMod N) :
     lap1 (fun x => ch (k * x)) = fun x => (lam k : ℂ) * ch (k * x) := by
   funext x
-  simp only [lap1, mul_add, mul_sub, mul_one, sub_eq_add_neg, mul_neg, ch_add, lam_cast]
+  simp only [lap1, mul_add, mul_one, sub_eq_add_neg, mul_neg, ch_add, lam_cast]
   ring
 
 /-- Discrete Fourier transform of a real function on `ZMod N`. -/
@@ -373,7 +379,8 @@ theorem parseval (g : ZMod N → ℝ) :
     have hm : ∀ k x y, ch (-(k * x)) * (g x : ℂ) * (ch (k * y) * g y) =
         ch (k * (y - x)) * (g x * g y) := by
       intro k x y; rw [mul_sub, sub_eq_add_neg, add_comm, ch_add]; ring
-    simp only [dft_conj, dft, sum_mul_sum, hm]
+    simp only [dft_conj]
+    simp only [dft, sum_mul_sum, hm]
     rw [sum_comm]
     rw [sum_congr rfl fun x _ => sum_comm]
     simp only [← sum_mul, sum_ch, sub_eq_zero, ite_mul, zero_mul, sum_ite_eq', mem_univ,
@@ -444,7 +451,9 @@ theorem poincare2 (g : Site N → ℝ) (h0 : ∑ x, g x = 0) :
       nlinarith [hcs]
     exact le_of_mul_le_mul_left this hN
   have hg : ∑ b, ∑ a, g (a, b) = ∑ x, g x := by rw [sum_comm, Fintype.sum_prod_type]
-  have hm0 : ∑ b, m b = 0 := by simp only [m]; rw [← sum_div, hg, h0, zero_div]
+  have hm0 : ∑ b, m b = 0 := by
+    have : (N : ℝ) * ∑ b, m b = 0 := by simp only [mul_sum, ← hsum_m]; rw [hg, h0]
+    exact (mul_eq_zero.1 this).resolve_left hN.ne'
   have hmP := poincare1 m hm0
   have hb : ∀ b, ∑ a, g (a, b) ^ 2 = ∑ a, (g (a, b) - m b) ^ 2 + N * m b ^ 2 := by
     intro b
@@ -538,11 +547,11 @@ lemma codiff_grad (g : Site N → R) : codiff (grad g) = lap g := by
 
 omit [NeZero N] in
 lemma curl_grad (g : Site N → R) : curl (grad g) = 0 := by
-  funext x; simp [curl, grad, add_right_comm _ (e 0) (e 1)]; ring
+  funext x; simp [curl, grad, add_right_comm _ (e 0) (e 1)]
 
 omit [NeZero N] in
 lemma codiff_cocurl (F : Site N → R) : codiff (cocurl F) = 0 := by
-  funext x; simp [codiff, cocurl, Fin.sum_univ_two, sub_right_comm _ (e 0) (e 1)]; ring
+  funext x; simp [codiff, cocurl, Fin.sum_univ_two, sub_right_comm _ (e 0) (e 1)]
 
 omit [NeZero N] in
 lemma curl_cocurl (F : Site N → R) : curl (cocurl F) = lap F := by

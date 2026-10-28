@@ -104,14 +104,15 @@ theorem concat_list (hμ : ∀ z, 0 ≤ μ z) (hm : ∀ x y, 0 ≤ m x y) (hd : 
   induction L generalizing K a x y with
   | nil =>
     obtain ⟨ha, hK⟩ := hK _ List.mem_cons_self
-    simpa using (hK x y).trans (mul_le_mul_of_nonneg_left (exp_rate_weaken (hd x y) hθ0 hδ)
+    simpa [kprod] using (hK x y).trans (mul_le_mul_of_nonneg_left (exp_rate_weaken (hd x y) hθ0 hδ)
       (mul_nonneg ha (hm x y)))
   | cons p L ih =>
     obtain ⟨ha, hKa⟩ := hK _ List.mem_cons_self
     have hP : ∀ q ∈ p :: L, 0 ≤ q.2 := fun q hq => (hK q (List.mem_cons_of_mem _ hq)).1
     have tail := ih p.1 p.2 (fun q hq => hK q (List.mem_cons_of_mem _ hq))
-    have hb : 0 ≤ (p.2 :: L.map Prod.snd).prod * c₁ ^ L.length :=
-      mul_nonneg (List.prod_nonneg (by simpa using hP)) (pow_nonneg hc₁ _)
+    have hb : 0 ≤ ((p :: L).map Prod.snd).prod * c₁ ^ L.length :=
+      mul_nonneg (List.prod_nonneg fun r hr => by
+        obtain ⟨q, hq, rfl⟩ := List.mem_map.1 hr; exact hP q hq) (pow_nonneg hc₁ _)
     have h := concat_two μ m d hμ hm htri hθ hδ hS ha hb hKa tail x y
     simp only [List.map_cons, kprod, List.prod_cons, List.length_cons] at h ⊢
     calc _ ≤ _ := h

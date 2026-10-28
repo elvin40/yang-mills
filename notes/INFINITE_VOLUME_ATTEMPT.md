@@ -5,8 +5,12 @@ Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP
 Tags: [P] proved here (short, unverified); [V] quoted from a project file or page image read this session; [I] inference, not printed anywhere; [R] standard literature result, text not re-read; [BLOCKED] the step fails with present tools.
 Relation to INFINITE_VOLUME_PLAN.md (parallel agent, route survey; §0–§3.3 read at start, §4 onward not yet written at start). This file does not repeat the plan's ℓ-audit table V1–V9. It cites rows as "PLAN V#" and tries the proof steps. Where this file disagrees with the plan, it says so.
 
-## 0. Running summary (updated at the end)
-(pending)
+## 0. Running summary (final)
+- Target W (§1): joint subsequential limit ε → 0, ℓ → ∞ of Target 2's off-diagonal plaquette-field moments, with OS0 (linear growth), translations, B_4, OS2, OS3. No O(4), no clustering, no uniqueness.
+- Everything after an ℓ-uniform moment bound (H-U∞) passes with short proofs (§3–§5): compactness, OS0, OS1-T, OS1-H, OS2, OS3 [P]. No measure exists or is needed; (n!)^D growth is enough for OS II, not for Minlos (§3.2).
+- Target 2's route to (H-U) is not ℓ-uniform at exactly one point: (FX) Step B, the unit-scale cluster expansion on the whole torus (§2.3, BP1, blocked). Z_ℓ cancels exactly (§2.2).
+- Attempt (§2.4): skip Step B; keep the unit-scale integral as a probability measure μ̃_ℓ; use the law of total cumulance. Mixed blocks reduce to Lemma C without Step B (within reach). Singleton blocks need a new background-regularity bound (CG-b4) for fine large-field R-terms (§2.5, BP4, new mathematics, moderate).
+- Full O(4) needs a rotation Ward identity for lattice artifacts (BP8, new mathematics). Uniqueness, clustering, gap: blocked (BP9).
 
 ## 1. Statement of the weak target W
 
@@ -138,3 +142,43 @@ Lemma RP-lim. Let S^{(i)} be families of functionals with Σ_{n,m} S^{(i)}_{n+m}
 Verdict: OS2 passes to the infinite-volume limit with no new input beyond (H-U∞). [P]
 
 Ledger §3–§4: [R] X3, Banach–Alaoglu; [P] the rest.
+
+## 5. OS1 (Euclidean covariance)
+
+### 5.1 Translations [P]
+On T⁴_ℓ with spacing ε, translation by a ∈ εZ⁴ preserves the Haar product measure and the Wilson action, and maps φ_p to φ_{p+a}. So S_{n,ε,ℓ}(F(· − a)) = S_{n,ε,ℓ}(F) exactly (ASSEMBLY §2.6 [V via D4D5 §2]). For a ∈ R⁴ round to a_i ∈ ε_iZ⁴, |a − a_i| ≤ 2ε_i. Then |S_{n,ε_i,ℓ_i}(F_a) − S_{n,ε_i,ℓ_i}(F_{a_i})| ≤ A_B^n (n!)^D · 2nε_i ‖F‖_{sn+1} by (H-U∞) applied to the difference quotient (B enlarged by 1). This → 0. So every limit is translation invariant. Uses (H-U∞) at order sn + 1; nothing else.
+
+### 5.2 Hypercubic group [P]
+The origin is a site of every lattice L^{j}εZ⁴, j = 0, …, K (nested lattices, L odd) [V, D4D5 §2]. B_4 about the origin is an exact symmetry at every (ε, ℓ). So S_n(F ∘ R^{−1}) = S_n(F) for R ∈ B_4 in every limit. The two reflection planes of ASSEMBLY §2.7 are reflections x_0 ↦ −x_0 (∈ B_4) used for OS2. They give no rotation outside B_4.
+
+### 5.3 Full O(4): what is missing, precisely
+Missing statement (ROT). For every R ∈ SO(4), n, and F ∈ D_n(B): lim_{i} [S_{n,ε_i,ℓ_i}(F ∘ R^{−1}) − S_{n,ε_i,ℓ_i}(F)] = 0.
+- Infinite volume removes one obstacle. On T⁴_ℓ, rotations outside B_4 are not symmetries of the torus at all (ASSEMBLY §4; LEMMAS ledger item 5 [V via ASSEMBLY l. 220]: on the torus the inclined comparison "gives only the tilted-axis reflection symmetry R_{2θ}s, never a rotation"). On R⁴ that geometric obstacle is gone.
+- The remaining obstacle is the lattice: no approximant has any symmetry outside B_4. (ROT) says the B_4-symmetric but O(4)-breaking lattice artifacts vanish in separated correlations as ε → 0.
+- Why it is expected [I]. Gauge-invariant, B_4-invariant, parity-even local densities of dimension ≤ 4: the B_4-invariant 4-tensors T_{μνρσ} are spanned by δ_{μρ}δ_{νσ}-type products and the all-indices-equal tensor δ_{μνρσ}; the latter contracts F_{μν}F_{ρσ} to Σ_μ tr F_{μμ}² = 0. So the only marginal term is Σ_{μν} tr F_{μν}², which is O(4) invariant. All O(4)-breaking terms have dimension ≥ 6, i.e. are irrelevant, and their coefficients carry λ_k² per scale. The observable φ_p summed over the six orientations has the same structure at leading order.
+- Why it is not proved here. Balaban's bounds show irrelevant terms are BOUNDED at each scale; (ROT) needs that their total effect on S_n tends to ZERO. That is a convergence statement for a specific difference, along every subsequence. It is open even for lattice φ⁴₃ (reports/EUCLID_INV_LIT §1a, via PLAN §0 [V there]); Gubinelli–Hofmanová state rotation invariance as not obtained (same source).
+- A possible route [I]: a rotation Ward identity, i.e. a bound |S_{n,ε}(F∘R^{−1}) − S_{n,ε}(F)| ≤ C(F) ε^θ or ≤ C(F) g_{k(ε)}^{2} with g_{k(ε)} → 0, obtained by tracking the dimension-6 part of every activity through Balaban's flow. This is a full new analysis of the irrelevant sector. Grade: NEEDS NEW MATHEMATICS.
+- Consequence for reconstruction. Without (ROT), OS II gives a Hilbert space, a positive Hamiltonian, unitary translations, and the B_4 action; no Lorentz boosts [R, via PLAN §2.2].
+
+## 6. Breaking points
+
+| # | step | exact missing statement | grade |
+|---|---|---|---|
+| BP1 | (H-U∞) via Target 2's own route | an ℓ-uniform version of (FX) Step B: a convergent unit-scale cluster expansion on T⁴_ℓ uniform in ℓ | BLOCKED (infrared: massless unit-scale field; needs RG beyond scale 1, where g_k leaves ]0, γ]) |
+| BP2 | conditional route, positivity (CG-pos) | each large-field piece ρ(Z, V) of CMP 122 I (0.2) is ≥ 0, so the Step A quotients are positive and μ̃_ℓ is a probability measure | within reach (a reading) |
+| BP3 | conditional route, mixed blocks (CG-a) | Lemma C (D4D5 §4) with P_K = Step A polymers + A(w_K, ·) only, as a sup bound over small-field V, with all constants per polymer | within reach (re-reading; inherits the FX open items (A1), (FX-D), and Target 2's own open items) |
+| BP4 | conditional route, singleton blocks (CG-b) | (CG-b4): V-regularity of fine (scale m < K) R-, B-, e-terms, ≲ (Mλ_m)⁴\|F_V\|² e^{−c p_0(g_m)} R̄_m⁴ e^{−κd} per term; plus u_K′(0) bounded (C¹ control of β_j) | NEEDS NEW MATHEMATICS (moderate; inside Balaban's framework; not a single page of Balaban states it) |
+| BP5 | bridge re-bookkeeping ℓ → diam B | ASSEMBLY_N1 §3.4–§4.5 with T⁴ replaced by B and top scale δ ~ diam B | within reach (bookkeeping) |
+| BP6 | nontriviality, ℓ-uniform | (NT) of ASSEMBLY §2.9 with constants uniform in ℓ. In the conditional route κ_2 = E_μ̃ w_{12} + Cov_μ̃(w_1, w_2); the first is the UV tree-level term ~ g(d)⁴ d^{−8} × (bump factors), the second is O(1) × bump factors by (CG-b). For d ≪ 1 the first dominates [I] | within reach given BP3, BP4 and the (NT) input of Target 2 |
+| BP7 | Target 2 itself | every open row of TRUST_LEDGER §4.2 (e.g. B3, B15 sub-items, (FX) items, (E14-c)) | inherited; W is conditional on all of them |
+| BP8 | full O(4) | (ROT) of §5.3 | NEEDS NEW MATHEMATICS (open in φ⁴₃ too) |
+| BP9 | uniqueness of the limit, clustering (OS4), mass gap | joint convergence along the full sequence; decay of μ̃_ℓ correlations at scales ≫ 1 | BLOCKED (infrared; same reason as BP1) |
+| BP10 | Wilson loops and other gauge-invariant observables | any bound for them | outside Target 2 (class C3); not attempted |
+
+Steps that pass with no new input once (H-U∞) holds: compactness (§3.1), OS0 with linear growth (§3.1), translations (§5.1), B_4 (§5.2), OS2 (§4), OS3 (linear identities pass to limits, ASSEMBLY §2.8).
+
+## 7. Verdict
+
+A subsequential infinite-volume theorem in the sense of W needs one thing beyond Target 2: the moment bound (H-U∞), uniform in the torus side ℓ for test functions supported in a fixed ball. Everything after that is short and is written above: compactness by Banach–Alaoglu on separable Banach spaces plus a diagonal extraction, OS0 with linear growth, translations, the hypercubic group, reflection positivity, and symmetry. None of these steps uses infrared control. Target 2's own route to (H-U) cannot give (H-U∞). Its only real ℓ-dependence is (FX) Step B, the unit-scale cluster expansion on the whole torus, and that is an infrared statement for a massless field (BP1, blocked). The other ℓ-dependences are bookkeeping (BP5) or an artifact of the global Cauchy estimate. The normalization Z_ℓ cancels exactly and never needs a bound. The attempt above removes Step B: keep the unit-scale integral as a probability measure μ̃_ℓ and apply the law of total cumulance (Lemma TC). Then mixed conditional cumulants are Lemma C without Step B (BP3, within reach). Positivity of μ̃_ℓ is a reading (BP2, within reach). The new requirement is the singleton blocks (BP4): the conditional one-point function of the plaquette field must have a V-oscillation bounded uniformly in ε. For the unit-scale terms this is immediate. For fine large-field R-terms it needs a background-regularity bound that Balaban does not state. A dimension count makes it plausible; the count rests on gauge invariance (tr F² is the only dimension-4 term) and on summability of e^{−c p_0(g_m)²} over scales. This is the one piece of new mathematics on the weak route. A side effect, if BP4 is proved: the same argument at fixed ℓ would remove Target 2's dependence on Step B.
+
+Deliverability at this project's pace. BP2, BP3, BP5 are of the size of one SOURCES_* item each (a reading or a re-run of a verified lemma with a changed input). BP4 is larger. It asks for a new estimate across the whole large-field R-operation (CMP 122 I–II), of the size of the (FX) reduction or larger. Its heuristic is solid, but the formal proof must track V-dependence through quotients of large-field integrals, where Balaban gives size bounds only. So a conditional statement "W holds, given Target 2's open rows and (CG-b4)" is deliverable at the current pace. An unconditional W is not, because it inherits every open row of Target 2 (BP7) plus BP4. Full O(4) (BP8) needs a new analysis of the irrelevant sector and is open even for φ⁴₃. Uniqueness, clustering, and the mass gap (BP9) are blocked by the same infrared problem as BP1. W is not a Clay solution: Jaffe–Witten footnote 2 excludes weak existence without the mass gap and the axioms (PLAN §2.3 [V there]).

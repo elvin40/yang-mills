@@ -33,3 +33,5 @@ import YmLean.CanonOrder
 import YmLean.ElemBounds
 import YmLean.SchurMarginal
 import YmLean.NestEnvelope
+import YmLean.Concatenation
+import YmLean.NeutralSpectrum
