@@ -152,3 +152,79 @@ Relation to U3 Thm 4.1, (W), and Lemma 5.1 (task item 3(b)). U3 Thm 4.1 / Lemma 
 
 Summary. (Cθ) ⟸ Lemma 4.1(i) [proved, odd L] + vertex bounds and pointwise convergence at fixed θ [(Dθ) via R1, or tree-level via R2 with open R3-type sums] + 𝔡 convergent [argued]. (Bθ) ⟸ the same with "bounded" in place of "convergent".
 
+## 5. The resulting theorem, and comparison with the (M) route
+
+### 5.1 Statement
+Theorem 5.1 [proved here, given the listed inputs]. Let L be odd ≥ 3 (centered blocks, composed Balaban averaging; L odd is used only through Lemma 4.1(i)). Let β_j(0) be the per-level plane-wave increments of Definition 1.1 (the quantity the code computes). Assume (U), LW (5.7), and the vertex bounds (ii) of Lemma 4.1 at one θ_*, and that the gauge defect 𝔡(θ_*; L^k) is bounded in k. Then S_k = c k log L + O(1). If moreover the vertex data converge pointwise at fixed θ along θ_n → 0 and 𝔡(θ_n; L^k) converges in k, then β_k(0) → c log L = (11N²/(12π²)) log L.
+
+### 5.2 Comparison
+| item | (M) route (BETA_FP_H Thm 3.1 + BETA_FP_M) | plane-wave route (this file) |
+|---|---|---|
+| background | constant field V_f, exactly stationary | plane wave, not stationary |
+| split | Prop. 2.1 exact (R = 0) | Prop. 2.2 exact; defect 𝔡 explicit, [argued] small |
+| fine log coefficient | (F) Savvidy (confirmed against source) | LW (5.7) (verified, U1_VERIFY item 2) |
+| probe identification | (PI) [argued], used inside the proof | not used; the theorem is about the plane-wave β |
+| coarse convergence | (H′): constant-field symbols σ^{(m)} in sup norm, |α| ≤ 2, with rate; plus (W) (proved) and evenness for IR weights | pointwise at fixed θ > 0, no rate, no derivatives, no (W) (§4.2); for Theorem B bounds only |
+| infrared control | IR weights (2.4) of BETA_FP_H; region |K| < |f|^{1/2} | none needed (θ > 0 fixed) |
+| exchange of limits | (M): f → 0 asymptotics of δΓ_j, repaired in BETA_FP_M only given (S1)–(S3) | Lemma 1.3 from (U) |
+| spectral inputs | (S1)–(S3) lattice Landau-level bounds [open]; (P_i) for i ≥ 1 [open, no route, BETA_FP_M §2.4] | none |
+| analyticity of the constrained side | in f at every level ((P_i), magnetic translations, no per-K fibers) | in p per level (U); per-K fibers exist, Neumann series in a per K |
+| lower bound | Lemma 4.1 (odd L) | the same |
+| per-cell densities | (G2) | (G2) |
+| output | 𝒞(Λ) = c log Λ + C_∞ + O(ε_j): value and rate | Thm A: value, existence, no rate; Thm B: S_k = ck log L + O(1) |
+
+Shared hypotheses: Lemma 4.1 (odd L), (G2), one composed family, the Balaban-type uniform bounds on the level data, and LW/Savvidy for c (equivalent sources for the same number).
+
+Which is shorter. The plane-wave route: one exact identity (Prop. 2.2), one bookkeeping lemma (Lemma 1.3), one dominated-convergence lemma (Lemma 4.1), two short theorems. It has no spectral theory and no Moyal calculus. Its open inputs are (U) (a uniform analyticity bound for a massive one-step quantity) and fixed-θ bounds or convergence of explicit coarse data plus the defect 𝔡. The (M) route has a rate, but its open inputs include (S1)–(S3) and (P_i) for i ≥ 1, for which BETA_FP_M §2.4 has no route. So for the value β_∞ = c log L the plane-wave route is shorter and its open inputs are of a weaker type. For the rate of β_j → β_∞, neither route is complete: the rate is U3 Thm 7.1 (Lemma 5.1 with rate), independent of the value. Theorem B suggests the rate may not be needed for the lower half of Balaban's band (ONLINE_SWEEP §1.2(a), unverified).
+
+Identification with Balaban's β. Balaban's β is the second moment of Π (U3 §5.2, CMP 109 (5.42)), i.e. a p² coefficient. So the plane-wave definition matches Balaban's definition up to the expansion point (fine wave U_0 vs constrained minimizer U_1). SOURCES_D1_VERIFY item 8 argues that this changes S(θ; Λ) by O(θ²) relative [argued, sketch level]. At fixed k this does not change S_k; for Theorems A/B it adds a term of the r_k type, which needs the same uniformity in k as 𝔡_gf. The (M) route needs (PI) for the same identification.
+
+## 6. Numerical check design (Mac only, each run ≤ 10 min; nothing on the box)
+
+(N1) Test of (U) and Lemma 1.3. Existing: §1.2 (|C_U| ≲ 0.2 at L = 2, 3, levels 0–1). New runs: one step at p = 0.8 (ym_momentum, L = 2, Ng = 12; L = 3, Ng = 8), and recursion j = 1 at p_1 = 0.8 (betafp_recursion_v2, L = 2, N = 8, Ng = 8). Same cost as the existing p = 0.4 points. Prediction: β(p) − β(0) ≈ Cp² with the same |C| ≲ 0.2 up to p = 0.8 (no large p⁴ term), so p_* ≈ 0.8 is usable in Lemma 1.3.
+
+(N2) θ-independence of D_k(θ) := S(θ; L^{k+1}) − S(θ; L^k). Identity 3.0 with Lemma 1.3 predicts D_k(θ) = β_{k+1}(0) + O(θ²), with |slope| ≤ 2C_U/(L² − 1) ≈ 0.07 at L = 2. Existing numbers, L = 2, k = 1 (level 0 at Ng = 12; level 1 at N = 8, Ng = 8):
+  D_1(0.4) = β_1(0.1) + β_2(0.2) − β_1(0.2) = 0.6299 + 0.3412 − 0.6307 = 0.3404,
+  D_1(0.8) = β_1(0.2) + β_2(0.4) − β_1(0.4) = 0.6307 + 0.3288 − 0.6340 = 0.3255.
+  Slope −0.031 per unit θ², inside the bound. The level-1 tabulation error (N = 8 → 12: −7% at p_1 = 0.2) is larger than the θ-dependence. New runs: recursion j = 1 at p_1 = 0.4 and 0.8 with N = 12, Ng = 8 (the existing N = 12 run at p_1 = 0.2 fits the Mac budget, BETA_FP §3). Prediction: D_1(0.4) and D_1(0.8) at N = 12 agree to within 0.07·0.48 ≈ 0.03. Reading: c log 2 − D_1(θ) ≈ −0.07 is the coarse-remainder difference at k = 1 (the step-2 scheme constant), up to η terms.
+
+(N3) Size of the gauge defect, finite torus (scratch script in /tmp, deleted after the run; harness of BETA_FP_LEMMA43_VERIFY §4: real CMP-109 averaging, ym_oneloop pieces, dense determinants). Lattices 4⁴ with L = 2 and 6⁴ with L = 3, both with coarse torus 2⁴; σ_3 transverse wave at p_0 = π/L, i.e. coarse θ = π. a²-coefficient by symmetric finite differences (a = ±0.01, ±0.02). Compute (α) the code value (left side of (2.1), raw H), (β) the exact right side of (2.1) with Y, (γ) the R = 0 form with Y_0. Predictions: (α) = (β) to rounding (a check of Prop. 2.2 at R ≠ 0); the Y-part of 𝔡 = (γ) − (β), relative to the tree, is small and decreases from L = 2 to L = 3 at fixed θ (argued O(Λ^{−2}): ratio ≈ 4/9). Control: with H^⊥ = P_⊥HP_⊥, (β) = (γ) to rounding. Zero modes: the σ_3-constant gauge functions are zero modes of D and D_c in the wave background on a torus; remove them the same way on both sides (restrict to the complement of the kernel). Cost: 4⁴ (3072 link variables) is seconds (the VERIFY run took 18 s); 6⁴ (15552) needs about 2 GB per dense LU; time one determinant first and stop if the total exceeds 10 min. Caveat: θ = π is not small; this measures the Λ-dependence of the defect at one fixed θ, which is what Theorems A/B need.
+
+(N4) Not minute-scale. The direct test of (Cθ) needs Γ^{ex}(θ; L^k) at k = 1, 2, 3 at fixed θ, i.e. β_3 at N ≥ 16 (box). A direct check of Π̂(p) at p = 0.1–0.4 against LW (5.7) needs a new massless fine Feynman-gauge BZ code with large grids.
+
+## 7. Ledger
+
+Proved here:
+- P1. Prop. 2.2: exact plane-wave form of Prop. 2.1 at every background, log Z^{dir} = Fine + ½ log det S_K − ½ log det Y. Lemma 2.3: explicit defect 𝔡_Y = Y − D_c^TS_KD_c, linear plus quadratic in R = HD; 𝔡_Y = 0 at stationary backgrounds. Cor. 2.4: split into Fine, the coarse Gaussian of Δ_T = (E^TQ̃K^{−1}Q̃^TE)^{−1}, and the defect. Uses only Jacobi, the determinant lemma, the bordered identity, and exact covariance Q̃D = D_cι_a^T.
+- P2. Prop. 2.5: at fixed k the two c_2 ln(1/p²) terms cancel; S_k = c k log L + κ_W^F − ρ_k with ρ_k a function of k only (given LW (5.7)).
+- P3. Lemma 1.3: |S(θ; L^k) − S_k| ≤ C_Uθ²/(L² − 1), given (U).
+- P4. Identity 3.0 (exact) and bound (3.2): the fixed-θ doubling difference; κ_W^F cancels; the fine piece gives c log L + o(1).
+- P5. Theorem 3.1: β_k(0) → c log L given (U), (Cθ), LW (5.7). Existence of the limit included.
+- P6. Theorem 3.2: S_k = c k log L + O(1) given (U), (Bθ), LW (5.7); bounded window sums; Cesàro limit c log L.
+- P7. Lemma 4.1: bounds and convergence of the fixed-θ coarse Gaussian piece by dominated convergence, given the vertex bounds and the two-sided bound on 𝒦_0 (proved, odd L).
+- P8. l-sum count for the fine-vertex terms of the explicit representation R2.
+
+Argued, not proved:
+- A1. (U) from uniform analyticity in p of the level data plus one-step O6 (§1.2).
+- A2. 𝔡_Y = O(aΛ^{−2}) relative at fixed θ (point-anchor zero capacity, §4.3(a)).
+- A3. 𝔡_gf = O(θ²) relative (SOURCES_D1_VERIFY item 8 type argument); uniformity in k not shown (§4.3(b)).
+- A4. Under R1, the Δ_T-versus-recursion-kernel difference converges at fixed θ (§4.2).
+- A5. Scale-covariance reading (§2.2, §3.4); not used in the proofs.
+- A6. Plane-wave β = Balaban's β up to the expansion point (§5.2).
+
+Hypotheses (named inputs of the theorems): (U); (Cθ) or (Bθ), reduced in §4 to (vertex bounds or pointwise convergence at fixed θ) + (𝔡 bounded or convergent).
+
+Cited, not rederived: LW (5.7) and its normalization (U1_VERIFY item 2); BETA_FP Prop. 1.1 (telescoping); BETA_FP_LEMMA43 Lemma 4.1 (verified, odd L); exact covariance Q̃D = D_cι_a^T (BETA_FP_LEMMA43_VERIFY §4); the anchor symbol s(K) = |K|^{−2} + G_0Λ² + O(1) (BETA_FP_LEMMA43 (6.1), verified); SOURCES_D1_VERIFY item 8; U1_VERIFY 2.5; U3_AW Lemma M and Theorem W (interpretation only).
+
+Open:
+- O1. A proof of (U) (uniform-in-j analyticity in the transfer p of the plane-wave level data).
+- O2. Fixed-θ vertex convergence: (Dθ) for the recursion data, or for R2 the R3-type contour sums of the composed averaging.
+- O3. The defect 𝔡: A2–A4 as proofs, including uniformity in k of 𝔡_gf.
+- O4. Even L (Lemma 4.1 for even L); the L = 2 numbers are a heuristic test only.
+- O5. A rate for β_j → c log L (needs a rate in (Cθ); not addressed).
+- O6. (G2) per-cell densities (inherited).
+
+Corrections and notes on earlier files:
+- BETA_FP_H §1 ("At the plane wave … Prop. 2.1 is only approximate") is correct, but the approximation is confined to the explicit term 𝔡_Y of (2.2) plus the gauge-fixing defect 𝔡_gf. Neither carries a log Λ by the counts of §4.3.
+- BETA_FP_LEMMA43's uniformity in P (Prop. 4.2, hypothesis (H) with IR weights) is not needed for the value: Lemma 1.3 moves the uniformity to the massive side.
+- For the value alone, convergence of the coarse data is not needed: Theorem 3.2 needs bounds at one θ_*, plus existence of the limit from elsewhere.
