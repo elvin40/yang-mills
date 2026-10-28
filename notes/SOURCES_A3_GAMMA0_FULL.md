@@ -200,4 +200,35 @@ Proof. Let A be any extension (QA = B) and A′ = A − Dλ_A, λ_A := G′RD*A.
  (a) The oblique projection I − DG′RD* never acts on A_*. The bound ‖A_*′‖² ≤ κ_π‖A_*‖² of SOURCES_A3_GAMMA0 §5.1 is replaced by the identity A_*′ = A_*. The gap "κ_π uniform in k" (VERIFY V5) is closed by removal. No bound on ‖DG′RD*‖ is used anywhere below.
  (b) Lemma 5 is the G_1-analogue of Balaban's (3.124) RD*GQ* = 0 (p. 420, proved there by a Gaussian-integral symmetry). Here the proof is variational and uses only (F1)–(F4).
  (c) The minimizer bound [P from R1]. By 5.1 and (R1): ‖A_*‖²_𝔴 ≤ K_1⟨A_*, G_1^{−1}A_*⟩ = K_1(E + a‖B‖²), E := ⟨B, (QG_1Q*)^{−1}B⟩ − a‖B‖². (5.2)
- (d) On κ_π, for the record. One has (DG′RD*)² = DG′RD*: by (F2)–(F3), Δλ_A = RD*A, and G′ applied to Δλ for λ ∈ N(Q′) returns λ (the unique solution in N(Q′)). So I − DG′RD* is a projection onto {RD*A = 0} along D·N(Q′). In a Hilbert space a projection P ≠ 0, I has ‖P‖ = ‖I − P‖ = 1/sin θ, θ the angle between range and kernel. A uniform bound needs a uniform lower bound on that angle. It is not proved here, and it is not needed.
+ (d) On κ_π, for the record [P-sketch; it assumes Δ is injective on N(Q′), which Theorem 3.1 implies but which is not used elsewhere]. One has (DG′RD*)² = DG′RD*: by (F2)–(F3), Δλ_A = RD*A, and G′ applied to Δλ for λ ∈ N(Q′) returns λ (the unique solution in N(Q′)). So I − DG′RD* is a projection onto {RD*A = 0} along D·N(Q′). In a Hilbert space a projection P ≠ 0, I has ‖P‖ = ‖I − P‖ = 1/sin θ, θ the angle between range and kernel. A uniform bound needs a uniform lower bound on that angle. It is not proved here, and it is not needed.
+
+## §6 Assembly of Theorem A3
+
+6.1 The remaining published inputs, stated precisely. All constants depend on d, L only; they are uniform in k, η, Λ, the domains Ω_j, M ≥ M_1, and U obeying (H1).
+ (R1) [CMP 99 Thms 3.11, 3.12; local L² bounds (3.46) for G_1; [4] Lemma 2.1]. G_1 > 0, and for all fine X, ‖X‖²_𝔴 ≤ K_1⟨X, G_1^{−1}X⟩. Equivalently ‖𝔴^{1/2}G_1𝔴^{1/2}‖ ≤ K_1. Derivation [P-sketch]: Theorem 3.12 gives (3.46) for G_1, i.e. block bounds ‖hG_1λ‖ ≤ B_0(L^jη)²|h|e^{−δ_0d(y,y′)}‖λ‖ for supp h ⊂ Δ(y), y ∈ Λ_j, supp λ ⊂ Δ(y′). Self-adjointness of G_1 lets one use the smaller of the two scales. The weights 𝔴^{1/2} then give block factors L^{−|j−j′|} ≤ 1, and the Schur test with the summability of e^{−δ_0d(y,y′)} ([4] Lemma 2.1, the step "(3.47) follows from (3.42) and Lemma 2.1", p. 398) gives the bound. Theorem 3.12 excludes only the covariant-Laplace inequality, which is not used.
+ (R-Δ′) [CMP 99 (3.10), (3.35); p. 392: "Δ′ will be a bounded, small operator"]. |⟨X, Δ′X⟩| ≤ ε_1‖X‖²_𝔴, ε_1 = c(d, L)Mα_0. Reason: both terms of (3.10) carry η^{−2}(U(∂p) − 1), which is O(Mα_0(L^jη)^{−2}) by (3.35); the first term carries in addition the small factor (Re U(∂p) − 1)/(Im U(∂p)) = O(η²Mα_0(L^jη)^{−2}).
+ (R-Δ2) [CMP 99 (3.134)–(3.137), p. 422: |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0(L^jη)^{−2}|A|, sup over a few j-blocks]. |⟨X, Δ^{(2)}X⟩| ≤ ε_1‖X‖²_𝔴. Reason: Δ^{(2)} is local on the j-block scale by (3.136); a local operator with this sup bound is bounded on the 𝔴-weighted ℓ² by Schur's test.
+ (R4) [CMP 99 (3.156); SOURCES_CDC §5.3; R/I]. |⟨B, Δ_JB⟩| ≤ c_J‖B‖², c_J = c(d, L)Mα_0. Reason: D̃^{(2)} is quadratic and local, H_1 obeys (3.133) (Theorem 3.12), and |J| = O(Mα_0) by (3.36). The form is homogeneous of degree 2 in B.
+ (R2), (R2′), (R3), (R5) as in §2.1 and §4.0.
+
+6.2 Step (i) with the minimizer [P]. Let B ∈ 𝒟. Let A_* be the minimizer of 5.1 and E as in (5.2). Let 𝒫_Λ be the unit plaquettes with a bond in Λ, and W as in §2.2 for 𝒫_Λ. Then W lies within unit distance 4 of Λ, inside the index-k region (RM ≥ 4), so ‖·‖_W ≤ ‖·‖_𝔴 there with weight 1.
+ (a) Unit plaquettes outside 𝒫_Λ have all four bonds off Λ, so (∂_1^{U_1}B)(p) = 0 there. On the bonds of plaquettes in 𝒫_Λ (all in Λ_k) B = Q_k(U)A_*. So ‖∂_1^{U_1}B‖² = Σ_{p∈𝒫_Λ}|(∂_1^{U_1}Q_k(U)A_*)(p)|².
+ (b) Lemma 2 with δ = 1: ‖∂_1^{U_1}B‖² ≤ 2‖D_UA_*‖² + 4ε_2²‖A_*‖²_W.
+ (c) Lemma 5, (R-Δ′), (R-Δ2): E = Φ(A_*) ≥ ‖D_UA_*‖² − 2ε_1‖A_*‖²_𝔴.
+ (d) Combine (b), (c), and (5.2):
+ E ≥ ½‖∂_1^{U_1}B‖² − (2ε_2² + 2ε_1)‖A_*‖²_𝔴 ≥ ½‖∂_1^{U_1}B‖² − ε_7(E + a‖B‖²), ε_7 := 2K_1(ε_1 + ε_2²).
+ So (1 + ε_7)E ≥ ½‖∂_1^{U_1}B‖² − ε_7a‖B‖². (6.1)
+
+6.3 Step (ii) [P]. B ∈ 𝒟, so Lemma 4 applies: ‖∂_1^{U_1}B‖² ≥ γ_L(1 − η_6)‖B‖². (6.2)
+
+6.4 The bound on Δ_k [P]. By (3.156), (6.1), (6.2), (R4):
+ ⟨B, Δ_kB⟩ = E − ⟨B, Δ_JB⟩ ≥ (1 + ε_7)^{−1}[½γ_L(1 − η_6) − ε_7a]‖B‖² − c_J‖B‖².
+Fix α_* in (H3) so small (after d, L; a = 1 in CMP 99) that η_6 ≤ ¼, ε_7 ≤ ⅛, and ε_7a + c_J ≤ γ_L/12. This is possible because η_6, ε_7, c_J are each c(d, L)·(Mα_0 + (Mα_0)²) by their definitions (§2.2, §4.1) and by 6.1. Then (1 + ε_7)^{−1} ≥ 8/9 and
+ ⟨B, Δ_kB⟩ ≥ (8/9)(3γ_L/8 − ε_7a)‖B‖² − c_J‖B‖² ≥ [γ_L/3 − (ε_7a + c_J)]‖B‖² ≥ (γ_L/4)‖B‖². (6.3)
+Arithmetic: (8/9)(3/8) = 1/3; 1/3 − 1/12 = 1/4.
+
+6.5 The C-step [P; V p. 428]. C is the identity on the bonds of Λ̃. It only fills the excluded bonds b_0 ∈ B(c) ∩ c with the solution of (Q_1B)(c) = 0, and sets B = 0 on the trees and off Λ. So CB̃ ∈ 𝒟 and ‖CB̃‖² = ‖B̃‖² + Σ_{b_0}|(CB̃)(b_0)|² ≥ ‖B̃‖². By (6.3) with B = CB̃:
+ ⟨B̃, C*Δ_kC B̃⟩ = ⟨CB̃, Δ_kCB̃⟩ ≥ (γ_L/4)‖CB̃‖² ≥ γ_0‖B̃‖², γ_0 = γ_L/4 = m_L/(48d²L^d). ∎
+Consequences [P]. ‖C̃^{(k)}(Λ)‖ = ‖(C*Δ_kC)^{−1}‖ ≤ γ_0^{−1}, and ‖C^{(k)}(Λ)‖ ≤ ‖C‖²γ_0^{−1}, with ‖C‖² ≤ 1 + L^{d+1} (SOURCES_CDC §3.3).
+
+6.6 Uniformity [P]. γ_0 contains only d and L. k and η enter nowhere: Lemma 1 is exact for every k, and every error is relative with k-uniform constants (6.1). Λ enters nowhere: all inequalities are local and summed with overlap ≤ 2d or 2(d−1). M enters only through (H2) and (H3). U enters only through (H1) and the inputs. δ = 1 is a choice: any γ_0 < γ_L can be reached with δ small and α_* smaller.
