@@ -188,7 +188,31 @@ $H_\varphi(5)$ & 0.183646 & 0.177929 & 0.174470 & 0.172467 & 0.169938 \\ \hline
 \end{longtable}
 Checks: the Mehler identity of Lemma S2 to relative error $9\cdot10^{-16}$; the evenness $A'_{-\alpha}=CA'_\alpha C$ exact; the Nielsen--Olesen count $\tau(P_-)/(\alpha/2\pi)=1.00000$ at every $q$; the $k$-grid stable to all printed digits. The error behaves as $H-h\approx\varphi(0.07+0.046\ln(1/\varphi))$ at $\mu=3$ and $\varphi(0.10+0.077\ln(1/\varphi))$ at $\mu=5$, so the observed rate is $O(\varphi\ln(1/\varphi))$; no rate is proved. In the continuum, $h(\mu)-\frac{11}{12\pi^2}\ln\mu\to0.023444$. The proof of (L-LL) does not use the gap theorem, so the (G$_A'$) values of Section~\ref{sec:numr7} stay supporting evidence for ($M_j$) only.
 
-\paragraph{The free constant of (C) \status{numerical}.} Source: \file{SOURCES_C_CONDITION.md} \S6 (\file{numerics/t2_ccond_free.py}). For $U=1$ and a single layer, $c_-^{\mathrm{free}}=1/(1+K_0)$ equals $5.10\cdot10^{-3}$ ($d=4$), $7.82\cdot10^{-3}$ ($d=3$), and $1.37\cdot10^{-2}$ ($d=2$), independent of $L$ as $N\to\infty$. The script reproduces $K_0(4,N=3)=103.248$, with a real-space check $48.198346$ against $48.198347$. This is part of the draft proof of (C) (Proposition~\ref{prop:Ccond}), whose verifier is running.
+\paragraph{The free constant of (C) \status{numerical}.} Source: \file{SOURCES_C_CONDITION.md} \S6 (\file{numerics/t2_ccond_free.py}). For $U=1$ and a single layer, $c_-^{\mathrm{free}}=1/(1+K_0)$ equals $5.10\cdot10^{-3}$ ($d=4$), $7.82\cdot10^{-3}$ ($d=3$), and $1.37\cdot10^{-2}$ ($d=2$), independent of $L$ as $N\to\infty$. The script reproduces $K_0(4,N=3)=103.248$, with a real-space check $48.198346$ against $48.198347$. This is part of the proof of (C) (Proposition~\ref{prop:Ccond}), now a verified reduction (Section~\ref{sec:numr9}).
+
+\subsection{Round 9: the seam test of (C), (L-LL) at smaller $\varphi$, and the $\beta_1$ run}\label{sec:numr9}
+
+\paragraph{The free constant and the seam test of (C) \status{numerical; verified}.} The verifier of (C) reproduces the free constant $c_-^{\mathrm{free}}=1/(1+K_0)=5.10\cdot10^{-3}$ at $d=4$ (Section~\ref{sec:numr8}). Its seam test (\file{SOURCES_C_CONDITION_VERIFY.md} \S7, \file{numerics/c_verify_seam.py}, 2\,s) uses $d=2$, a torus of $N_T=6$ unit blocks with $N$ fine steps per block, and flat SU(2) links $U_1=\exp(i\theta\sigma_3/N)$ in direction 1. Every plaquette is 1, and the Polyakov angle is $\theta$. The field is the dressed extension with model kernel $E=e^{-d_1}$ and the axial path rule in the fundamental domain.
+\begin{longtable}{|c|c|c|c|c|}
+\hline
+$N$ & $\theta=1$: total energy & seam row & cut-off $\chi(d/2.5)$: total & seam row \\ \hline
+3 & 2.075 & 0.032 & 2.500 & 0 \\ \hline
+27 & 2.187 & 0.196 & 2.483 & 0 \\ \hline
+81 & 2.565 & 0.574 & 2.485 & 0 \\ \hline
+243 & 3.699 & 1.709 & 2.486 & 0 \\ \hline
+\end{longtable}
+At $\theta=1$ the seam energy grows by a factor 2.98 per factor 3 in $N$, so it is linear in $N=L^k$. The predicted value at $N=243$ is $N|\mathrm{Ad}P-1|^2e^{-\delta N_T}\int e^{-2|t|}dt=1.70$; the measured value is 1.709. At $\theta=0$ the seam row tends to 0 like $1/N$. With the cut-off of Lemma T inside the fundamental domain ($D<N_T/2$) the energy is uniform in $N$. A cut-off with $D=4>N_T/2$ still meets the seam, and its energy still grows, so the threshold (T2) is needed.
+
+\paragraph{(L-LL) at smaller $\varphi$ \status{numerical; verified}.} The verifier reruns \file{numerics/t2_lll_window.py} and reproduces every value of Section~\ref{sec:numr8}. Its new script \file{numerics/t2_lll_verify_window.py} (41\,s) extends the lattice values to $\varphi=0.00125$; $k$-grids $n_k=1$ and $n_k=3$ agree to 6 digits at $q=628$.
+\begin{longtable}{|c|c|c|c|c|c|c|}
+\hline
+$\varphi$ & 0.03977 & 0.02001 & 0.01001 & 0.00500 & 0.002501 & 0.001251 \\ \hline
+$(H_\varphi(3)-h(3))/\varphi$ & 0.215 & 0.247 & 0.278 & 0.310 & 0.341 & 0.372 \\ \hline
+$(H_\varphi(5)-h(5))/\varphi$ & 0.345 & 0.399 & 0.453 & 0.506 & 0.558 & 0.609 \\ \hline
+\end{longtable}
+$H_\varphi(3)=0.117174$, $0.116787$ and $H_\varphi(5)=0.171333$, $0.170699$ at $\varphi=0.0025$, $0.00125$. The step per halving is constant, 0.031 at $\mu=3$ and 0.054 to 0.051 at $\mu=5$, so $H-h\approx\varphi(a+b\ln(1/\varphi))$ holds down to $\varphi=0.00125$, with $b\approx0.045$ ($\mu=3$) and $b\approx0.075$ ($\mu=5$). An independent continuum quadrature gives $h(3)=0.1163219$, $h(5)=0.1699377$, and $h(\mu)-\frac{11}{12\pi^2}\ln\mu=0.0142853$, $0.0204567$, $0.0234371$, $0.0234442$ at $\mu=3$, 5, $10^2$, $10^4$. A no-log test of the Nielsen--Olesen term shows that its limit is finite, with a correction of order $\alpha\ln(1/\alpha)$; this explains the observed rate $\varphi\ln(1/\varphi)$.
+
+\paragraph{The converged-grid $\beta_1$ run \status{running; results pending}.} The numpy part of the run of Section~\ref{sec:numr8} is ported to jax (a full jit, float64). The port agrees with the old path to $4.4\cdot10^{-16}$ on the GPU and $7.8\cdot10^{-16}$ on the Mac. It needs 4--7\,$\mu$s per $(K,l)$ block on the RTX 4090, against 238\,$\mu$s before (about $55\times$). The estimate for all six points is 3--5\,h. The run was restarted on the port and resumes from its per-point checkpoints. No result is in yet; the reading rule of Section~\ref{sec:numr8} applies.
 
 \subsection{Certification plan and $j_0$ \status{designed; superseded at $L=13$ by Section~\ref{sec:certH2}}}\label{sec:cert}
 At $L=13$ the analytic route of Section~\ref{sec:certH2} replaces this plan: it needs no tail level $j_0$, no $\|\mathfrak B^{-1}\|$ bound, and no Lipschitz constant. The cell certificate below is run at $L=13$ only as an independent cross-check (box sweep, in progress).
