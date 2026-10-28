@@ -109,14 +109,14 @@ Notation. Reg_99(M, a; c_reg) := configurations with (3.35) and (3.36) with O(1)
  Condition (A18-3): if q_0 = p_0: C_0 ≥ O(1)B_3B_5M^5A_0/(BC) (a lower bound on C_0; C_0 sits in B28 after A_0 and after M, so the slot is legal). If q_0 > p_0: holds for γ small (B30). Also the M(ε_1) clause: B_5M^6ε_k ≤ c·R_1M_1a_1 — an upper bound on γ (B30). And c_reg Mα_0^{99} ≤ a_0^{99}: BCL_0^{2N_0}M sup_mC_0g_mℓ_m^{q_0} ≤ a_0^{99} — an upper bound on γ (B30) after L_0, N_0, C_0.
 
 ## 6. The four identifications
-6.1 Lemma Q (k-step averaging vs free) [P given CMP 98 (124)–(125), (139)–(146), Prop. 2 [R]; text of CMP 98 pp. 35–40, image p. 37 [V]].
+6.1 Lemma Q (k-step averaging vs free) [P given CMP 98 (124)–(125), (139)–(146), Prop. 2 [V, SOURCES_F19_WGRATE_VERIFY]; text of CMP 98 pp. 35–40, image p. 37 [V]].
  Setting. Units L^kη = 1. Let c be a unit bond and N(c) its 2-unit neighbourhood (it contains the supports of Q_k at c: the corridor blocks B^k(c_±)). Assume |U(∂p) − 1| < αη² on N(c) (plaquette class; CMP 109 (1.2)/(1.11), CMP 122 (1.65)–(1.69), CMP 99-reg (1.7)).
  Claim. In the axial gauge u from the centre y of N(c), for all X:
  |(Q_k(U^u)X)(c) − (Q_k(1)X)(c)| ≤ c_Q(d, L)·α·(Q̂|X|)(c), Q̂ := 4dQ′_k (positive, local (141)), uniform in k.
  Proof. (1) Gauge. In the complete axial gauge from y, |U^u(b) − 1| is bounded by the sum of |U(∂p) − 1| over the plaquettes of a ruled surface spanned by b and its two axial paths; that surface has ≤ d|x − y|/η plaquettes, so |U^u(b) − 1| ≤ dα|x − y|η ≤ 2d²αη on N(c) [P]. (CMP 99-reg (1.129) prints the same type of bound, |x − y|²L²α_0.)
  (2) Chain rule. Q_k(U, ·) is the composition (127) of the one-step maps Q(Ū^j, ·), j = 0, …, k−1. So its linear part is Q_k(U) = Q(Ū^{k−1})∘…∘Q(Ū^0), and the free one is Q_k(1) = Q^k (Q of CMP 96) [V p. 37 (127)].
  (3) One step. Q(V_0) = Q_{V_0} + Q″(V_0) (124)–(125). Main term: (Q_{V_0}A)_c = Σ_{x∈B(c−)} L^{−(d+1)}(R_{0,c−}A)(Γ_{c,x}), the free contour sum with each fine bond term transported by Ad of V_0 along a path of length ≤ dL in the lattice spacing of that step. Remainder: |Q″(V_0)A| ≤ C_1′L²α^{(j)}Q″|A| (139), α^{(j)} := plaquette parameter of Ū^j on the L^jη-lattice ≤ 2αL^{2j}η² = 2αL^{2(j−k)} (Prop. 2, p. 37 [V]).
- Transport error at step j: the path has length ≤ dL·L^jη = dL^{j+1−k} units; with (1), ‖Ad(Ū^j-path) − 1‖ ≤ 2·dL^{j+1−k}·2d²α. [The averaged fields Ū^j keep the bound up to a factor c(d, L): K″/(2d²) in the axial gauge (THM39_FULL (AL′-ax), corollary (a)), K′/c_3 in the (3.35) gauge (THM39_FULL (AL′), corollary (b)); I-Q1 is [P rel. CMP 98 Prop. 2 [V]].]
+ Transport error at step j: the path has length ≤ dL·L^jη = dL^{j+1−k} units; with (1), ‖Ad(Ū^j-path) − 1‖ ≤ 2·dL^{j+1−k}·2d²α. [The averaged fields Ū^j keep the bound up to a factor c(d, L): K″/(2d²) in the axial gauge (THM39_FULL (AL′-ax), corollary (a), range α ≤ a_ax), (K′ + c_P)/c_3 in the (3.35) gauge (THM39_FULL (AL′), corollary (b), range Mα_0 ≤ a_AL; c_P absorbs the remainder term); I-Q1 is [P rel. CMP 98 Prop. 2 [V] + the (15) reading of U(c) [I]].]
  So Q(Ū^j) = Q + E_j with |E_jA| ≤ ε_j·Q″_j|A|, ε_j := c(d, L)α(L^{j−k} + L^{2(j−k)}).
  (4) Telescoping: Q_k(U) − Q^k = Σ_j Q(Ū^{k−1})⋯Q(Ū^{j+1})E_jQ^j. Each left factor is dominated by (1 + O(α))× positive averages (CMP 98 (143)–(146)); (142) turns Q″Q^j into ≤ 2dQ′_{j+1}. Summing, Σ_j ε_j ≤ c(d, L)α·2/(1 − L^{−1}). ∎
  Corollaries. (a) "Q(U) = Q_free(1 + O(α_0))" holds in the axial gauge with α = the plaquette parameter: α = ε_0 (real CMP 109), α_0 (complex 109/116), O(1)L_0^{2N_0}α_{0,m} (CMP 122), O(1)B_3B_5M^5ε_k (CMP 122 U_0). No factor M. (b) In a (3.35) regular gauge (|A_bg| ≤ c_3Mα_0^{99}) the same proof with (1) replaced by (3.35) gives ε_Q ≤ c(d, L)Mα_0^{99}: this is A3-R2 exactly as stated in SOURCES_A3_GAMMA0_FULL §2.1 (R2). So A3-R2 is PROVED relative to CMP 98 [R] and I-Q1.
@@ -174,7 +174,7 @@ Notation. Reg_99(M, a; c_reg) := configurations with (3.35) and (3.36) with O(1)
 | Inclusion, complex 109/116 domains ⊂ (3.35) + (3.37) | [P] 5.1, from the definitions |
 | Inclusion, real minimal backgrounds ⊂ (3.35) + (3.36) | [P given CMP 102 Thm 1 [R], CMP 98 Prop. 2 [R]] 5.2 |
 | Inclusion, CMP 122 spaces and U_0 | [P given 4.3–4.4] + [I] U_{k,Z} obeys CMP 102 Thm 1; [I] cube patching (or C ≥ 10); p. 195 claim reduced to (A18-3) |
-| Q(U) = Q_free(1 + O(α)) (A3-R2) | [P given CMP 98 (124)–(146), Prop. 2 [R]] Lemma Q; [I-Q1] axial bound kept by Ū^j |
+| Q(U) = Q_free(1 + O(α)) (A3-R2) | [P given CMP 98 (124)–(146), Prop. 2 [V]] Lemma Q; I-Q1 [P rel. Prop. 2 [V] + (15) reading [I]] via THM39 (AL′)/(AL′-ax), ranges α ≤ a_ax / Mα_0 ≤ a_AL |
 | ‖C(U)‖² ≤ c_C(1)(1 + O(α)), c_C(1) ≤ L^{d+1} | [P given I3 + CMP 98 (139) [R]] Lemma C |
 | CMP 109 C = CMP 99 C | same rule [P]; reduces to I3 [I] + EXPGAUGE tree extension [verified elsewhere] |
 | J-term c_J = O(α_0) ≤ O(Mα_0) (A3-R4, WG (I5), WC I9) | [P given (3.133) [R], I2 [I]] + reading [I-J] (CMP 99 uses (3.36) only through J; CMP 109 p. 261) |
@@ -183,7 +183,7 @@ Notation. Reg_99(M, a; c_reg) := configurations with (3.35) and (3.36) with O(1)
 
 Conclusion. A18 is REDUCED (not proved outright). It reduces to:
  [R] CMP 102 Thm 1 (9)–(10) (or CMP 99-reg Prop. 6); CMP 98 (124)–(125), (139)–(146), Prop. 2; CMP 99 Thm 3.12 (3.133); CMP 109 p. 261 ("second derivative only through (1.8)"); CMP 122 I Prop. 1 (1.78), (1.80);
- [I] I3 (U_1 = V^{(k)}, free corridor form of Q̃); I2 (D̃^{(2)} locality); I-J (CMP 99 Sect. D uses (3.36) only via J); I-Q1 (averaged fields keep the axial bound); U_{k,Z} obeys CMP 102 Thm 1; CMP 122 cube patching (or C ≥ 10);
+ [I] I3 (U_1 = V^{(k)}, free corridor form of Q̃); I2 (D̃^{(2)} locality); I-J (CMP 99 Sect. D uses (3.36) only via J); I-Q1 (averaged fields keep the bound up to c(d, L); now [P rel. Prop. 2 [V] + (15) reading [I], THM39 (AL′)/(AL′-ax)); U_{k,Z} obeys CMP 102 Thm 1; CMP 122 cube patching (or C ≥ 10);
  constants (A18-1)–(A18-4), all placed in the canon without a cycle.
  Pieces PROVED relative to these: the inclusions 5.1–5.3; Lemma Q (hence A3-R2); Lemma C; the J-term bound with constant O(α_0); σ-stability.
  Two corrections to existing text: (1) the A18 page reference "CMP 99 pp. 398–399" should be p. 396 (definition) and p. 397 top (the (3.37)–(3.38) ⇒ (3.35)–(3.36) remark, unproved in CMP 99); "CMP 102 (3.35)–(3.38)" is CMP 99's numbering cited in CMP 102. (2) B22's Mα_0 cap needs the factor 1.5·O(1)·L·B (§8).
@@ -192,3 +192,5 @@ Conclusion. A18 is REDUCED (not proved outright). It reduces to:
 Corrections after verification (SOURCES_A18_REGULAR_VERIFY, 2026-10-28, images): the O(1) in 1.5·O(1)·L·B is CMP 109's unnamed cube constant (factor 1.5·B if the CMP 99 cube constant is O(1)·L); 5.2(d) misses two factors of L (the CMP 109 cube has size O(1)LM); 5.3(a) CMP 122 cube patching UNSUPPORTED (naive bound O(M²α); "C ≥ 10" conflicts with the printed C ≤ 2) — fix: use CMP 99 with M_99 = CM/10, adding M ≥ 5M_1 at canon B18; Lemma Q: U enters via parallel transport in (125) and the (124)/(139) remainder; axial bound row by row only (operator-level use costs O(Mα_0)); the telescoping sum omits 2^{k−j−1} from QQ″_j ≤ 2Q″_{j+1} — correct sum cα·L/(L − 2), uniform in k for L ≥ 3; cite "Q″Q_j ≤ Q″_{j+1}" (after (144)), not (142); Lemma C exact per bond (weighted Cauchy–Schwarz); every explicit (3.36) use in CMP 99 goes through J (pp. 419, 422), the rest are later hypotheses and the p. 428 sketch; on a real background (3.35) + a J bound gives (3.36) up to O((Mα_0)²); [I] B and B_5 as fixed (d, L) numbers.
 
 Change (2026-10-28): Lemma Q step (3) bracket replaced per THM39_FULL F19 fixes — the factor 2 becomes c(d, L) from (AL′)/(AL′-ax); I-Q1 [P rel. CMP 98 Prop. 2 [V]].
+
+Change (2026-10-28, from SOURCES_F22_VERIFY §5): Lemma Q bracket, row (A18-Q), 6.1 header, and the conclusion's I-Q1 line made consistent — Prop. 2 [V]; I-Q1 [P rel. Prop. 2 [V] + (15) reading [I]]; ranges α ≤ a_ax (axial) / Mα_0 ≤ a_AL ((3.35)); c_P absorbed into corollary (b)'s factor.
