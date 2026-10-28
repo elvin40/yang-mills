@@ -1,7 +1,7 @@
 # SOURCES_T2_PI — probe independence (PI) at fixed level j: plane-wave p² coefficient = constant-field f² coefficient (DERIVE)
 
 Date: 2026-10-28. Item PI, DERIVE. Author: headless Claude session.
-Status: in progress (sections appended one at a time).
+Status: complete (sections appended one at a time; unverified). (PI) proved at fixed j given (I1)–(I3); d = 2 numerical test agrees to 4·10^{−5}; (1.1) at L = 3 not evaluated (no d = 4 f-symbol code).
 
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). reports/ONLINE_SWEEP.md not opened.
 No existing file edited. New script: numerics/t2_pi_d2check.py (if written), output numerics/results/t2_pi_*.json.
@@ -248,3 +248,44 @@ The odd-L slopes are 0.019–0.026 per (Lp)², roughly L-independent. That is wh
 
 ### 8.3 The constant-field value d_1 at L = 3
 Theorem PI gives β_1(0) (code, L = 3) = 𝒞(3), the constant-field coefficient. KAPPA_BOUNDED (1.2) then reads 𝒞(3) = c log 3 − d_1 with d_1 from the symbol integral (1.1), given (F), (M_1), V1. So d_1 = c log 3 − β_1 = 0.408 − 0.664 = −0.256 is a prediction for (1.1). An independent evaluation of (1.1) needs the d = 4 per-momentum f-symbols σ_1^{(1)}, σ_1^{(2)} at L = 3. No existing script computes them: KAPPA_BOUNDED l. 159 ("a direct test is a per-momentum σ_j^{(2)} scan …, which no existing code does"; U3_AW_VERIFY §7: no d = 4 per-momentum f-code). numerics/u3_lemma51_check.py is d = 2 only. A direct 4D real-space constant-field run is also out of reach (an L = 3 torus with nc ≥ 4 has ≥ 12⁴·… fine links and needs nc ≈ 12 for torus errors below 10^{−4}, by the d = 2 data above). So (1.1) at L = 3, j = 1 was not evaluated. KAPPA "cheap test (1)" stays open. No mismatch was found, because no comparison was possible. What §8.1 adds: in d = 2 the plane-wave and constant-field coefficients of the same functional agree to 4·10^{−5}. So once (1.1) is evaluated, a mismatch with −0.256 beyond the grid error would point at (F), (M_1) or the symbol code, not at (PI).
+
+## 9. Where it enters; ledger
+
+### 9.1 Where it enters (suggested status texts for the supervisor; not written into those files)
+- THEOREM2_PROOF_v4 §4.1, (PI) bullet, and §10 item 2: "(PI) [proved at fixed j given (I1) massiveness at U = 1 (U3_REPAIRS O6 + U3_AW Lemma A1; composed-matrix chaining for j ≥ 2 [I]), (I2) gauge covariance (CMP 109 (0.6), p. 265), (I3) one lattice axis permutation [I]; SOURCES_T2_PI Theorem PI. The per-cell limit for the linear potential is Lemmas 4.1–4.2 and 5.2. d = 2 test: the two probes agree to 4·10^{−5}]". The proof needs neither (G2) nor Prop. 2.1: it is a statement about the massive left side only.
+- §10 item 3 / (F): "Step A (scaling, (3.1)) [P]; Step C (lattice degree −4 integrand = continuum, via U3_LEMMA51 Lemma 3.4) [P]; Step B (log coefficient = angular integral of the degree −4 part, two-region control at level 0) [I]; continuum value Savvidy (1.4) [cited, source checked]".
+- KAPPA_BOUNDED Prop. 1.1 proof (l. 34) and BETA_FP_H Theorem 3.1: (PI) is used only for log Z_{Λ_j} and log Z_1 (obligation (d1)); this is exactly what Theorem PI proves. TRUST_LEDGER rows B2, B3, X5: same texts.
+- Expansion point: Theorem PI is about the code's functional Γ, so the code's S_j^{pw} equals 𝒞(Λ) with no expansion-point correction (§6.1). The identification with Balaban's kernel is a separate fixed-level statement (Corollary 6.1 [R] or U3_VERIFY §6 [I]); the uniform-in-k version A6 of Route B is not addressed.
+
+### 9.2 Ledger
+1. Setting and the identity log Z_Λ(V_f) = Γ(U_0^φ) + const (§1.1) — [R: BETA_FP_H Fact 1.1, Consequence 1.2; BETA_FP_H_VERIFY §2 CONFIRMED].
+2. Balaban's definitions (0.4), contour family, (0.6), p. 265 covariance, p. 254 gauge invariance of Tϱ — [V: page images CMP 109 PDF pp. 4, 5, 6, 17]; "both definitions are equally good" — [V: text layer; page image checked in SOURCES_T2_V1 §4].
+3. (I1) massiveness at U = 1 at level j — [R: U3_REPAIRS O6, U3_AW Lemma A1 (both CONFIRMED in their VERIFY files)]; equivalence of the composed fine matrix with the one-step matrix at j = 1 and chaining for j ≥ 2 — [I].
+4. (I2) gauge covariance — Δ, D_k: [P]; Q̃: [V] for (0.6) and the p. 265 sentence, [I] for the composed form.
+5. (I3) invariance under the axis permutation σ — [I].
+6. Lemma 3.1 (per-cell density = BZ formula of the code) — [P] (Floquet–Bloch); the code's transfer-kernel algebra — [I] (FD-checked in NUMERICS §5).
+7. Lemma 3.2 (gauge invariance of ρ_c) — [P given (I2)].
+8. Lemma 3.3 (exponential localization of R_0; vanishing first derivatives) — [P given (I1)].
+9. §3.4, obligation (a): Π̂ analytic on |Im p| < m′; diagonal entries real and even — [P given (I1)].
+10. Lemma 4.1 (resolvents at small flux, magnetic Neumann series) — [P given (I1), (I2) and analyticity of the averaging near the identity]; same argument as SOURCES_T2_S123 Lemma 1.2 (CONFIRMED there).
+11. Lemma 4.2 (C² along the linear potential; F″(0) = Σ ℓℓR_0) — [P given Lemmas 3.3, 4.1].
+12. (4.3): per-cell density at the constant field is ρ_0, its φ² coefficient is ½Σ x_0y_0R_0, with no contact or boundary term beyond R_0, gauge-independent — [P].
+13. Lemma 5.1 (one-sided gauge sums, polynomial extension) — [P given (I1), (I2)].
+14. Lemma 5.2 (moment identity [s²]Π̂_{11}(se_0) = F″(0)) — [P].
+15. Lemma 5.3 (w(p) = ½Π̂_{22}(pe_1), t(p) = Λ⁴(1 − cos p)) — [P given Lemma 3.3].
+16. Theorem PI (i)–(iii): S_j^{pw} = S_j^{cf} = 𝒞(Λ), β^{pw}(p) = S_j + O(p²) even analytic — [P given (I1)–(I3)].
+17. Lemma 5.4, obligation (b): one O(P²) structure, π_W = Λ⁴ — [P given full hypercubic invariance, whose reflection part is [I]]; agrees with BETA_FP_H_VERIFY §5.
+18. §6.1: Theorem PI involves no expansion-point correction for the code's functional — [P].
+19. Corollary 6.1: code limit = p² coefficient of Balaban's true kernel — [R: locality and analyticity of the minimizer map at fixed j (implicit function theorem from (I1), Lemma 4.1) [I]; gauge invariance of Tϱ [V]].
+20. §6.3: finite-p term O((Λp)²) with two sources — [I] (scale from Lemma 3.3; split of sources from SOURCES_D1_VERIFY V4).
+21. (d1) log Z_Λ = Fine − Γ_c jointly is the probe-independent object and the only one Route K uses — [P] (Theorem PI plus reading of KAPPA_BOUNDED l. 34 and BETA_FP_H Theorem 3.1).
+22. (d2) Λ-differences of Fine have coefficient c log(Λ/Λ′) for both probes — [R: LW (5.7); (F_lat)].
+23. (d3) Λ-differences of Γ_c — [I]; (d4) single brackets not probe-independent — [I] (they have no f² or p² coefficient: f² ln|f|, p² ln p).
+24. (F_lat) Step A (scaling, BETA_FP_H (3.1)) — [P]; Step B — [I]; Step C — [P given U3_LEMMA51 Lemma 3.4 (U3_LEMMA51_VERIFY item 4b)]; Step D (Savvidy (1.4), c = 0.371511) — [cited; source checked in BETA_FP_H_VERIFY §4; arithmetic rechecked here].
+25. §8.1 d = 2 test: L = 3, constant field −0.97301 (nc = 18), plane wave −0.97297/−0.97300; agreement 4·10^{−5}; pw10 = pw01 to all digits; L = 5 rough agreement 0.4% — [numerical, new scripts numerics/t2_pi_d2check.py, numerics/t2_pi_d2pw.py].
+26. §8.2 odd-L slopes 0.019–0.026 per (Lp)², consistent with the (Λp)² scale; p → 0 estimates β_1(0) ≈ 0.827 (L = 9), ≈ 0.844 (L = 11) — [numerical, from listed values; common slope assumed].
+27. §8.3 independent evaluation of KAPPA_BOUNDED (1.1) at L = 3, j = 1 — [open]: no d = 4 per-momentum f-symbol code exists; not evaluated; no mismatch found because no comparison was possible.
+
+Summary. Proved: (PI) at each fixed level j, for odd L ≥ 3, given (I1) massiveness at the trivial background, (I2) gauge covariance, (I3) one lattice axis permutation. This includes the per-cell limit for the linearly growing potential: its φ² coefficient is the second-order kernel on the linear potential, with no extra term. Reduced: (I1) for j ≥ 2 (chaining of O6), (I3) (read off (0.4)), Corollary 6.1 (locality of the minimizer map). The lattice transfer of (F) is now reduced to Step B, a two-region log statement of (M_j) type at level 0. Open: Step B of (F_lat); the evaluation of (1.1) at L = 3 (cheap test (1)); a 4D numerical test of (PI). Numerically, d = 2: the two probes agree to 4·10^{−5}.
+
+STATUS: COMPLETE
