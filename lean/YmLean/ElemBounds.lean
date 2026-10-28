@@ -1,4 +1,4 @@
-import Mathlib.Analysis.SpecialFunctions.Pow.Deriv
+import Mathlib.Analysis.SpecialFunctions.Log.Deriv
 import Mathlib.Analysis.Calculus.Deriv.MeanValue
 import Mathlib.Algebra.Field.GeomSum
 import Mathlib.Algebra.Order.Archimedean.Basic
@@ -62,37 +62,41 @@ theorem a10Sum_unbounded {L : ℝ} (hL : 1 ≤ L) (n : ℕ) : ¬ ∃ C, ∀ k, a
   obtain ⟨k, hk⟩ := exists_nat_gt C
   linarith [hC k, a10Sum_ge_succ hL n k]
 
-/-- SOURCES_A11_CONST_VERIFY (monotonicity step): g ↦ g (log g^{−2})^q is strictly increasing
-on (0, e^{−q}), i.e. where ℓ = log g^{−2} > 2q. -/
+/-- SOURCES_A11_CONST_VERIFY (monotonicity step): g ↦ g ℓ^q with ℓ = log g^{−2} is strictly
+increasing on (0, e^{−q}), i.e. where ℓ > 2q. Here ℓ^q is written exp(q log ℓ), which is
+ℓ^q for ℓ > 0 (the rpow files are not built in this .lake). F′ = ℓ^q (1 − 2q/ℓ). -/
 theorem gLogPow_strictMonoOn {q : ℝ} (hq : 0 < q) :
-    StrictMonoOn (fun g : ℝ => g * Real.log (g ^ 2)⁻¹ ^ q) (Set.Ioo 0 (Real.exp (-q))) := by
+    StrictMonoOn (fun g : ℝ => g * Real.exp (q * Real.log (Real.log (g ^ 2)⁻¹)))
+      (Set.Ioo 0 (Real.exp (-q))) := by
   have hℓ : ∀ g : ℝ, Real.log (g ^ 2)⁻¹ = -2 * Real.log g := fun g => by
     rw [Real.log_inv, Real.log_pow]; push_cast; ring
   simp_rw [hℓ]
   have hpos : ∀ g ∈ Set.Ioo 0 (Real.exp (-q)), 2 * q < -2 * Real.log g := fun g hg => by
     have := (Real.log_lt_iff_lt_exp hg.1).mpr hg.2
     linarith
-  have hd : ∀ g ∈ Set.Ioo 0 (Real.exp (-q)), HasDerivAt (fun g => g * (-2 * Real.log g) ^ q)
-      (1 * (-2 * Real.log g) ^ q + g * ((-2 * g⁻¹) * q * (-2 * Real.log g) ^ (q - 1))) g :=
+  have hd : ∀ g ∈ Set.Ioo 0 (Real.exp (-q)),
+      HasDerivAt (fun g => g * Real.exp (q * Real.log (-2 * Real.log g)))
+        (1 * Real.exp (q * Real.log (-2 * Real.log g)) + g * (Real.exp (q * Real.log
+          (-2 * Real.log g)) * (q * ((-2 * g⁻¹) / (-2 * Real.log g))))) g :=
     fun g hg => by
       have hL : 0 < -2 * Real.log g := by linarith [hpos g hg]
-      exact (hasDerivAt_id g).mul
-        (((Real.hasDerivAt_log hg.1.ne').const_mul (-2)).rpow_const (Or.inl hL.ne'))
+      exact (hasDerivAt_id g).mul ((((Real.hasDerivAt_log hg.1.ne').const_mul (-2)).log
+        hL.ne').const_mul q).exp
   apply strictMonoOn_of_deriv_pos (convex_Ioo _ _)
   · exact fun g hg => (hd g hg).continuousAt.continuousWithinAt
   · intro g hg
     rw [interior_Ioo] at hg
     rw [(hd g hg).deriv]
     have hg0 := hg.1
+    have hL : 2 * q < -2 * Real.log g := hpos g hg
     set ℓ := -2 * Real.log g
-    have hL : 2 * q < ℓ := hpos g hg
-    have hℓq : ℓ ^ q = ℓ ^ (q - 1) * ℓ := by
-      rw [← Real.rpow_add_one (by linarith)]; ring_nf
-    have hp : 0 < ℓ ^ (q - 1) := Real.rpow_pos_of_pos (by linarith) _
-    have : g * ((-2 * g⁻¹) * q * ℓ ^ (q - 1)) = -2 * q * ℓ ^ (q - 1) := by
-      field_simp
-    rw [this, hℓq]
-    nlinarith
+    set E := Real.exp (q * Real.log ℓ)
+    have hE : 0 < E := Real.exp_pos _
+    have hℓ0 : 0 < ℓ := by linarith
+    have : 1 * E + g * (E * (q * ((-2 * g⁻¹) / ℓ))) = E * ((ℓ - 2 * q) / ℓ) := by
+      field_simp; ring
+    rw [this]
+    exact mul_pos hE (div_pos (by linarith) hℓ0)
 
 /-- ORDER_CANON Lemma M2: S(δ) = Σ_x e^{−δ|x|} is decreasing in δ (any index type, |x| ≥ 0,
 summability at the smaller rate). -/
@@ -113,11 +117,11 @@ theorem kMap_mono {cP c₁ c₂ Γ₁ Γ₂ : ℝ} (hcP : 0 ≤ cP) (hc₁ : 0 <
 
 /-- ORDER_CANON Lemma M2: ε^a = min{½δ, c/(16 C b Σ(½δ))} is increasing in δ and c and
 decreasing in b, given Σ decreasing (Σ(½δ₂) ≤ Σ(½δ₁), `schurSum_antitone`). -/
-theorem epsMap_mono {C δ₁ δ₂ c₁ c₂ b₁ b₂ Σ₁ Σ₂ : ℝ} (hC : 0 < C) (hδ : δ₁ ≤ δ₂)
-    (hc₁ : 0 ≤ c₁) (hc : c₁ ≤ c₂) (hb₂ : 0 < b₂) (hb : b₂ ≤ b₁) (hΣ₂ : 0 < Σ₂) (hΣ : Σ₂ ≤ Σ₁) :
-    min (δ₁ / 2) (c₁ / (16 * C * b₁ * Σ₁)) ≤ min (δ₂ / 2) (c₂ / (16 * C * b₂ * Σ₂)) := by
+theorem epsMap_mono {C δ₁ δ₂ c₁ c₂ b₁ b₂ S₁ S₂ : ℝ} (hC : 0 < C) (hδ : δ₁ ≤ δ₂)
+    (hc₁ : 0 ≤ c₁) (hc : c₁ ≤ c₂) (hb₂ : 0 < b₂) (hb : b₂ ≤ b₁) (hS₂ : 0 < S₂) (hΣ : S₂ ≤ S₁) :
+    min (δ₁ / 2) (c₁ / (16 * C * b₁ * S₁)) ≤ min (δ₂ / 2) (c₂ / (16 * C * b₂ * S₂)) := by
   refine min_le_min (by linarith) ?_
-  have h1 : 16 * C * b₂ * Σ₂ ≤ 16 * C * b₁ * Σ₁ := by gcongr
+  have h1 : 16 * C * b₂ * S₂ ≤ 16 * C * b₁ * S₁ := by gcongr
   exact div_le_div₀ (by linarith) hc (by positivity) h1
 
 /-- ORDER_CANON Lemma M2 / amendment E4: e^{2Lδ} is increasing in δ (for L ≥ 0). -/

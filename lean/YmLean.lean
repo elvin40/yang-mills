@@ -29,3 +29,4 @@ import YmLean.KernelRow
 import YmLean.WeightedNorm
 import YmLean.BlockInequalityE
 import YmLean.CauchyPerturbation
+import YmLean.CanonOrder

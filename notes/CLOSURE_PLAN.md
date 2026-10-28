@@ -2,7 +2,7 @@
 
 Date: 2026-10-28. Planning only, no derivation. Sources read: TRUST_LEDGER.md (full), SOURCES_ORDER_CANON.md Part B, headers/ledgers of A1_WALK_FULL, WG_FULL, WC_FULL, and the SOURCES_* files named in the binding-set rows. Firewalled files not read.
 
-Status: IN PROGRESS. Sections are appended one at a time.
+Status: COMPLETE (2026-10-28). Planning only; nothing here is proved or verified. No other file was edited.
 
 ## 0. Scope and grading
 
@@ -265,3 +265,45 @@ Consumers: A1-W (H2) and Lemma LT(e) (local inverses by restriction); A1 kernel 
 7. Assemble one theorem "(C) for G and G_1", paper grade, with a verifier. Effort L, ≈ 6 h (items 1–6 feed it).
 
 Total for (C): ≈ 15 agent-hours, about 8 agents. Risk: low for items 1–3, 5; medium for item 4 (multiscale far-loop geometry across Ω_j interfaces is where earlier gaps sat, e.g. the Q_95/Q_98 misreading).
+
+## 5. Group B items outside the four tables (for completeness)
+
+"Close everything" also covers our own open Group B items. They are not Balaban inputs, so they are not in Tables 1–4.
+- B3 (F) lattice log coefficient = continuum. The only T1 input without a verified reduction of full strength: (L-LL) is UNSUPPORTED as a theorem, Lemma 1 (magnetic Weyl bound) is cited as standard and unchecked, Step C gauge-fixing part is [I] (I-49), and the β_1 vs c log L numerical tension is open. XL, 15–20 h, uncertain.
+- B15 (H-thr) residue: (R1) holomorphy at frozen s′ ≠ x*, (R2)–(R4); small-field analogue of (1.73) (I-55). M–L, ≈ 8 h. T2 only.
+- B13 large field: coarea Jacobian on non-round level sets (I-56). M–L, ≈ 6 h. T2 only.
+- A7 complex-s / complex-U clause at P-sketch level (I-20). M, 3 h.
+- B4: only the o(f²) form; the printed rate is unused. Closed for the chain.
+- B1: certified at L = 13, 15, 17, 21 only (C3). No work planned; this is residue.
+
+## 6. Prioritized closure list (load-bearing weight × tractability)
+
+| rank | target | weight (what rests on it) | tractability | effort |
+|---|---|---|---|---|
+| 1 | (C) for G and G_1 as one paper-grade theorem (Table 4 items 1–7) | A1, A1w, A2, A7, A8, A16 ⇒ G3, B13, LOC, and A13's propagator inputs | high: all pieces exist; items 1–3, 5 are S | ≈ 15 h, 8 agents |
+| 2 | CMP 99 Thms 3.7, 3.9, 3.10 covariant write-outs, with the M_1 version (R36) and the complex form (R7) | every walk expansion: WG-G, WG-G1, A1-W, WC, A16; also Thms 3.1, 3.3 | high: U = 1 templates CMP 95 Prop. 1.2, CMP 96 Prop. 2.2 are FULL; same format as the three FULL files | ≈ 20 h, 12 agents (three L write-outs + complex add-on) |
+| 3 | B3 (F) lattice transfer and the β_1 numerical tension | T1 directly (Route K); the only T1 Group B item without a full-strength reduction | low–medium: (L-LL) is the hard step; Route B (B9) is the alternative | ≈ 15–20 h, 10 agents, uncertain |
+| 4 | s-rule convention C-new-2 + consumer check (I-22), with A16 (M1) completeness (I-35) | A8, A16, G3 (C25), A13 Lemma 1 consumers | high: a scan plus a short lemma | ≈ 7 h, 4 agents |
+| 5 | CMP 109 p. 254 transfer (R26) with I-10 (Q̃ = Q_1(U_1)) and I-09 ((2.11) = (3.156)) | all of WC_FULL ⇒ A2, A7, A8 | medium: finite list of CMP 98/99 results to re-check under the symmetric average | ≈ 8 h, 5 agents |
+| 6 | Image-read batch: I-04, I-18, I-21, I-25, I-26, I-29, I-30, I-33, I-34, I-38, I-40, I-41, I-43, I-45, I-47, I-50–I-52, I-54, R7 (proof pages), R14, R15, R19, R20, R29, [I-a1] | many small [I] tags in A1w, A8, A10′, A17, A18, A19, N6, N8 | very high: one agent per paper, page images exist in balaban/ | ≈ 15 h, 10 agents |
+| 7 | Short proofs replacing readings: I-01/I-02/I-23 (own cover and partition), I-03 (locality), I-05/I-36 (C0 in general), I-08, I-17 + R13 (Schur for Δ^{(2)}), I-24, I-27 (re-verify G_Γ ≤ Ḡ), I-31/I-32 (complex (189)), I-42, I-44 (C32), C34, C35, the (C) conventions | propagator and A15 layers | high | ≈ 30 h, 15 agents |
+| 8 | C33 "in exactly the same way" (R37); A10′ R- and C-terms (R31); A14 closure constant (R30); A4 (90)–(97) bookkeeping (R23); C16 global ε_1 audit | A15 ⇒ B8 (Theorem 1 input), A10′ ⇒ SM, A13 internals | medium | ≈ 16 h, 9 agents |
+| 9 | T2-only items: A23 R1/R3 (R42), B15 residue, B13 coarea, A7 complex clause, C10 inside B11 | B22, B-S, (H-hist), (FX) | medium | ≈ 21 h, 12 agents |
+| 10 | Final consistency pass: TRUST_LEDGER round 8, canon F.2 items (C_1^{FX}, κ ≥ 1536), one independent end-to-end verifier per target | both targets | high | ≈ 6 h, 4 agents |
+
+## 7. Total estimate
+
+Sum of §6: about 155–160 agent-hours, about 90 agent runs (each run = write-out or verifier). Counting items: 18 (Table 1) + about 45 (Table 2, after merging duplicates) + 9 (Table 3) + 1 ((C)) + 5 (§5) ≈ 78 items.
+At today's pace (≈ 70 Opus agents, ≈ 25 items, ≈ 14 h wall), items alone give ≈ 44 h wall and ≈ 220 agents. The small image reads close faster than today's average item, so the honest range is 30–45 h wall and 120–220 agent runs, over three to four sessions like today. Rank 3 (B3) carries most of the uncertainty: it can fail, and then T1 needs Route B (B9), which has no verifier file.
+
+## 8. Residue that stays after all four tables close
+
+Even with every row of Tables 1–4 closed, these remain, by design or by scope:
+1. Finite torus. T2 is existence of subsequence limits on T⁴_ℓ with (OS0)–(OS3). No infinite-volume limit, no mass gap, no uniqueness of the limit (C18, C22). Not a Clay solution.
+2. Torus size. C31 (side ≥ 22M final-scale cells, even form ℓ = 2L^{m_T}) and the (C) torus-side inequality. Mild, stated, not removable inside Balaban's method.
+3. Fixed L and group. Theorem 2w holds at the certified L ∈ {13, 15, 17, 21} (C3), for SU(2), d = 4 (C4). Other L need new (H2) certificates; other groups need new SU(2)-specific steps.
+4. Weak form. Theorem 2w gives existence of a bare coupling g_0(K, g), not uniqueness or monotonicity; the window bound is two-sided only in the (c′) form; B4 holds only as o(f²).
+5. Thermal state and one observable (C18): periodic time, centred plaquette density, test space D_n.
+6. Published-mathematics trust. Class-A items (Table 1: CMP 95, 96 propositions, CMP 96 Lemma 2.1, CMP 98 Prop. 2 and (124)–(146), CMP 99-reg Prop. 6, CMP 102 Thm 1 and Props. 3–4, 6, CMP 109 Sects. 3–5, CMP 116 sup induction, CMP 119 (2.6)–(2.9), CMP 122 I–II, and A13 itself) are accepted, not re-proved. Of these, only CMP 96 Lemma 2.4 was re-proved, and its printed proof was wrong for L ≥ 10. So the class-A trust is not zero-risk.
+7. External citations X2–X5 (OS II, Osterwalder–Seiler reflection positivity [text not fetched], Cammarota, Savvidy).
+8. Verification grade. "Verified" in this project means an independent Opus or Fable agent checked the write-out against page images. No human referee has read any of it. Lean covers only small lemmas (Combes–Thomas, Schur, slab counterexample, K1′ numerics, rho2_le, P4).

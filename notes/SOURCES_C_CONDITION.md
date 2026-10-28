@@ -42,3 +42,26 @@ Residual [I]: [I-a1] Thm 3.1 is stated for a = 1 (the model's a; no gap if a = 1
 The true "analogue of A3 for G" is the bound R1(G): ‖ℓ^{−1}A‖² ≤ K_G⟨A, G^{−1}A⟩ for all fine A (G ≤ K_G𝔴^{−1}, a Poincaré-type lower bound on G^{−1}). It is [R]: CMP 99 Thm 3.3 [V p. 399: G satisfies (3.42)–(3.47) incl. the L² block bounds (3.46)] + Thm 3.11 (G > 0) + Schur with CMP 96 Lemma 2.1, as in A3_GAMMA0_FULL R1 for G_1. R1(G) is not (C) either, but it is the tool for the G_1 step (§3).
 
 2.3 What remains for (C) for G after 2.1. Only (i) the torus-side hypothesis and (ii) the two conventions. Both enter only Step 2 (and Step 3 through the same kernel). §4 treats (i), §5 treats (ii).
+
+## 3. (C) for G_1: the G_1 step as a relative form bound (Lemma R) [P given R1(G)]
+
+3.1 The brief's form "G^{−1} ≥ Δ_π^{(2)} + c_{−,1}" is not the right inequality. By §1.3, (C) for G_1 needs (a) G_1 > 0 (for the variational identity) and (b) an UPPER bound on G_1^{−1} on some extension. The clean statement is two-sided and relative to G^{−1}:
+ (1 − δ_1)G^{−1} ≤ G_1^{−1} ≤ (1 + δ_1)G^{−1},  δ_1 = O(Mα_0).   (R)
+Here G_1^{−1} = G^{−1} − Δ_π^{(2)} [P, S2_G1 A2.2 from printed (3.128), (3.134), (3.138)], and Δ_π^{(2)} is symmetric [P, S2_G1 A2.5].
+
+3.2 Lemma R. Put ε := Mα_0, g(A) := ⟨A, G^{−1}A⟩. Assume R1(G): ‖ℓ^{−1}A‖² ≤ K_Gg(A) for all A [R, §2.2]. If 2B_0²c_1²κ′ε ≤ ½, then for every fine A
+ |⟨A, Δ_π^{(2)}A⟩| ≤ δ_1g(A),  δ_1 := 4c_2ε(K_G + B_0²c_1²).
+Constants: c_2 = dim𝔤·C_{137} (S2_G1 A3.1); B_0, c_1 = c_1(½) from Π3; κ′ from Π2 (S2_FORM §3–§4, constants as corrected in S2_FORM_VERIFY).
+Proof. Let λ := G′RD*A, Ã := A − Dλ, X := ‖ℓ^{−1}Ã‖².
+ (a) ⟨A, Δ_π^{(2)}A⟩ = ⟨Ã, Δ^{(2)}Ã⟩ (S2_G1 A2.1, the sandwich (3.135)), and |⟨Ã, Δ^{(2)}Ã⟩| ≤ c_2εX (S2_G1 A3.1).
+ (b) Π3 applied to the input f = RD*A of G′: ‖ℓ^{−1}Dλ‖ ≤ B_0c_1‖RD*A‖.
+ (c) By (3.119) and (3.10): g(A) = ‖DÃ‖² + ⟨Ã, Δ′Ã⟩ + ‖RD*A‖² + a‖QA‖². With Π2, |⟨Ã, Δ′Ã⟩| ≤ κ′εX. So ‖RD*A‖² ≤ g(A) + κ′εX.
+ (d) X ≤ 2‖ℓ^{−1}A‖² + 2‖ℓ^{−1}Dλ‖² ≤ 2K_Gg + 2B_0²c_1²(g + κ′εX). The hypothesis gives 2B_0²c_1²κ′εX ≤ X/2, so X ≤ 4(K_G + B_0²c_1²)g.
+ Insert (d) in (a). ∎
+3.3 Consequences [P given R1(G), G > 0].
+ (i) For δ_1 < 1, (R) holds; so G_1^{−1} ≥ (1 − δ_1)G^{−1} > 0. Positivity of G_1 is PROVED here; Thm 3.12's "Thm 3.11 holds for G_1" is no longer needed.
+ (ii) Inverse monotonicity: (1 + δ_1)^{−1}G ≤ G_1 ≤ (1 − δ_1)^{−1}G. Then N_1 = QG_1Q* ≥ (1 + δ_1)^{−1}N ≥ (1 + δ_1)^{−1}c_−S. So
+ c_{−,1} = c_−/(1 + δ_1).
+ No extension for G_1 is built; S2_G1 A3.4 (the direct extension route, which needs G_1 > 0 as an [R] input) becomes a cross-check.
+ (iii) Side result: G_1 ≤ (1 − δ_1)^{−1}G ≤ (1 − δ_1)^{−1}K_G𝔴^{−1}. This is A3_GAMMA0_FULL's input R1 for G_1, with K_1 = K_G/(1 − δ_1). So A3's R1 reduces to R1(G); the G_1 clause of Thm 3.12 is not needed for it.
+3.4 Status. The "[I] G_1 step" of A1_KERNEL §9 / A7_CDC_VERIFY (b2) is CLOSED: (C) for G_1 ⇐ (C) for G + Lemma R. The only new input is R1(G) [R: CMP 99 Thm 3.3 (3.46) for G (printed statement p. 399; proof = Sect. C walk expansion, p. 416 "This implies Theorem 3.3") + Thm 3.11 + CMP 96 Lemma 2.1 Schur]. The Schur step from (3.46) to R1(G) is the one A3_GAMMA0_FULL 6.1 sketches for G_1; it is the same step for G. Writing it out: for X on Ω_0 split X = Σ_{y′}1_{Δ(y′)}X; by (3.46) with h = ℓ_y^{−1}·1_{Δ(y)}: ‖ℓ_y^{−1}1_{Δ(y)}G1_{Δ(y′)}ℓ_{y′}^{−1}‖ ≤ B_0(ℓ_y/ℓ_{y′})e^{−δ_0d(y,y′)} ≤ B_0Le^{−(δ_0 − θ)d(y,y′)} (θ = log L/(RM), A1_KERNEL §5 conversion); block Schur with (2.61) gives ‖𝔴^{1/2}G𝔴^{1/2}‖ ≤ B_0Lc_1 =: K_G [P given (3.46) as printed and [I-geom]].

@@ -1,0 +1,1 @@
+# VERIFY_CanonOrder — YmLean/CanonOrder.lean: 43 lines, 135 edges transcribed from SOURCES_ORDER_CANON Part B + E7/E8/F.3/F.5 (2026-10-28); every edge goes forward in file order (`decide`), so the transcription is acyclic (`canon_acyclic`, `canon_wf`); no axioms; certifies the transcription only, not the conditions.

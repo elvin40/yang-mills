@@ -1,4 +1,6 @@
 import Mathlib.Logic.Relation
+import Mathlib.Order.WellFounded
+import Mathlib.Data.Nat.Basic
 
 /-!
 # Acyclicity of the canonical constant order (SOURCES_ORDER_CANON.md Part B; E7, E8, F.3, F.5)
@@ -79,6 +81,8 @@ def canonEdges : List (Line × Line) :=
   , (B5, B32), (B14, B32), (B14a, B32), (B18, B32), (B30, B32), (B31, B32)
   ]
 -- B1, B3, B6, B33 have no predecessor in the source text.
+
+set_option maxRecDepth 20000
 
 def Edge (a b : Line) : Prop := (a, b) ∈ canonEdges
 
