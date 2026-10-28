@@ -333,7 +333,7 @@ The lower bound comes from Lemma E, $S_y\le K_b(P_y+G_y)$ on each block, with $K
 Inputs: [R] Theorem~\ref{thm:WG}(G1) (printed sketches), the complex walk form of $G$ (CMP 99 Thms 3.4 and 3.10), the inputs of ledger A3, and CMP 109 p.~254; conditional: (C) and $c_{-,1}\ge c_-(1-O(M\alpha_0))$; [I] items I1--I9 of \file{WC_FULL.md} \S9 (among them the term match of CMP 109 (2.11) with CMP 99 (3.156), the locality of $\tilde C^{(2)}$ and $Q$, the identification $\tilde Q=Q_1(U_1)$, $\operatorname{dist}(Z_0,\Lambda_k^c)>RM$, and the tilde convention).
 Verifier: \file{WC_FULL_VERIFY.md} (needs fixes, none structural), then two regrades: after the fixes and after the band fix, paper-grade relative to these inputs.
 
-\subsection{Step 8$''$: round 5, the remaining Group A rows and Lemma G3}\label{sec:src-r5}
+\subsection{\texorpdfstring{Step 8$''$}{Step 8 bis}: round 5, the remaining Group A rows and Lemma G3}\label{sec:src-r5}
 
 Round 5 treats the Group A rows that had neither a verified proof nor a verified reduction: A7, A8, A10, A11, and A15. It also proves Lemma G3, the residue N2 of the reduction of A5. Each result below has its own project file and an independent verifier file. Each holds relative to the inputs that it names. None of the rows leaves the ledger, because those inputs are not proved here. The tag of each item therefore stays \status{verified reduction} or \status{proved relative to listed inputs}; nothing in this step makes Theorem~\ref{thm:A} or Theorem~\ref{thm:B} unconditional.
 
