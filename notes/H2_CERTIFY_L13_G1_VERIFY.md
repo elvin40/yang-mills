@@ -48,3 +48,60 @@ Consequence: the sorted chamber 0 ≤ K_1 ≤ … ≤ K_4 ≤ π is a valid doma
 - The analytic route closes it: H1_ANALYTIC §6–§7 gives ρ_1² ≤ B_13(K) with box enclosures finite on boxes containing 0, sup over the chamber ≤ 9.9995 < 13, near 0 B ≈ 2. What remains for G3: (i) a verifier pass on H1_ANALYTIC Lemmas T, Gauge, (6.1), and the j-uniformity; (ii) an outward-rounded (arb) evaluation of B_13 on the residual box (bb.py uses plain float with a 10⁻⁹ inflation). The margin there is large (≈ 2 against 13).
 - Note: if (i) and (ii) hold on the whole chamber, H1_ANALYTIC alone gives (H1_13) with C_*² = 10 < 13, and the G1 run is not needed for (H1_13). The G1 run is then a second, independent certificate.
 - Cost risk near 0 (sorted): 35 top cells have i_4 ≤ 3; a cell whose children keep failing costs up to 1 + 16 + 256 + 4,096 = 4,369 evaluations (~12 core-h). Worst case ≈ 400 core-h per mode; realistic is much less because only children near 0 keep failing (measured: depth 1–2 suffices at |K|_∞ ≥ 0.26). Recommended: mark top cells with i_4 ≤ 2 as near0 without computing, and cover them by (ii).
+
+## 7. (E) kill-and-resume rerun (scratch numerics/h1cert_verify/kr, deleted at the end)
+- `h1cert_drive2.py 13 inf 0.08 3 --diag 5 --out kr`, SIGKILL at 28 s: t0, t1 on disk, no tmp file. Rerun computed only t2–t4 (log 2 has no t0/t1 line). All 5 JSON parse, status ok, DONE written once: {ok: 5}, max ub 2.3548. Matches the G1 note.
+- Leftover tmp files (kill between open and os.replace) are named *.json.tmp<pid>; they do not end in .json, so neither the skip test nor the DONE count reads them. Safe.
+- Bisection naming: a split JSON is written before the children, children X_k resume by name; resolved() recurses. Reviewed, correct.
+- DONE race: each shard checks after its own last write, so the last shard to finish sees every file and writes DONE. If that shard dies, no DONE: a restart is needed.
+
+## 8. (A) rigor audit, step by step (h1cert_cell2.py)
+| step | arithmetic | a priori bound | verdict |
+|---|---|---|---|
+| box → per-axis jets f, f′, f″, p, p′ at k_c | arb series (Si, sin), then float(mid); radius dropped | covered by EPSS·(KA + 8KB) per block (arb radii ~2⁻⁶⁰ rel.) | ok |
+| sup |f|,|f′|,|f″|,|f‴| over cell | arb centred form, upper + nextafter | Taylor with exact f⁽ⁱ⁾(k_c), i ≤ 3, plus sup|f⁽⁴⁾| | ok |
+| sup|f⁽⁴⁾| ≤ 1 for n = 0 | a priori | σ̃ = ∫₀¹cos(kt/2)dt (M = ∞) or (1/M)Σ_{|m|≤(M−1)/2}e^{ikm/M}: |σ̃⁽ⁱ⁾| ≤ 2⁻ⁱ, Leibniz Σ C(4,i)2⁻⁴ = 1. M = 1: f ≡ 1. Re-derived. | ok |
+| inf p over cell | arb, |p″| ≤ 2 (q² or 2M²(1 − cos(q/M))) | re-derived; |p′| ≤ 2√p also | ok |
+| d box value + gradient | float kern sums | EPSS = 1e-10 vs n·u ≤ 2401·1.1e-16 | ok |
+| d second-order remainder ½h_k²(2KA + 8KB + 40KC) | float sums of sup/inf arrays | re-derived: Σ|S_νλ| ≤ 2Π(G+|G′|+|G″|), Σ|Q_ν| ≤ 4√Q, Σ|Q_νν| ≤ 8, μ factor f² ≤ 2(f+|f′|+|f″|)² | ok |
+| d_exact (200 blocks) | TM-2 from jets, |R| ≤ sup|f‴|h_k³/6, |p‴| ≤ 2 | | ok |
+| tails, M0 interval | arb per axis (Hurwitz), float combination with outward factors (old code, H2_CERTIFY_VERIFY) | M0 diff = Σ t̄_∞(R_max − 1), R ≤ Πφ⁻⁴φ_μ⁻² checked | ok |
+| V′, m′ Taylor coefficients ≤ 4 | float einsum | 1e-11·Σh^m mj[m] (n·u ≈ 3e-12; also covers P1′ 1e-13‖F‖₁) | ok |
+| majorants for orders ≥ 5 | float Cauchy products | multinomial bound re-derived; tail m > 40 ≤ 2h⁴⁰mj[40]: rate h(|y|₁/L + 1 + 1/L)/41 ≈ 0.015 at h = 0.16 (assert guards h·|y|₁/L < 4) | ok |
+| TK (order 3) products, sums, recip | float + EPS/EPSS | dropped orders Σ_{i+j>3}A_iB_j; recip remainder se⁴/(c⁴ lo) re-derived | ok |
+| TM-2 products, recip | float + EPS | remainders re-derived term by term | ok |
+| whitening S | exact algebra (any invertible S) | nR = ‖S‖₂²‖R_A‖_F; ‖S‖₂ float SVD (1e-10 slack) | gap ~1e-16: EPS terms of SH@A@S are dropped |
+| Oishi–Rump | e0, norms in arb; X@M float + EPS·‖|X||M|‖ | expansion (I+F)⁻¹ = I − F + F² − F³(I+F)⁻¹ re-derived; e2 correct; vertex max of ‖XA_l‖ by convexity | ok |
+| ‖X‖₂ (_n2) | lam_max_upper of float X†X | X†X formed in float, rounding not padded | gap ~1e-16 |
+| λ_max | Sylvester in arb on fl(tI − G_v); float t is only a guess | fl rounding covered by + EPS·4‖G.mj‖ | ok |
+| larger shift (1e-9 rel.) | | Sylvester is valid for any multiplicity; if arb cannot decide, AssertionError → driver marks split (safe) | ok |
+| vertex/convexity | | λ_max(Herm(c + Σδg)) convex in δ; Herm part handles float asymmetry; quad ≤ h²Σ‖H‖_F, ‖R‖₂ ≤ ‖r‖_F | ok |
+No float quantity is used as rigorous except the two ~1e-16 relative gaps (whitening EPS drop, _n2). Both are far below the 1e-6 threshold margin and the (1+1e-12)/EPS paddings nearby. Fix (optional): nX·(1 + 1e-12) and nRA += EPS·‖S‖²‖A.mj‖_F.
+Not audited in depth: tail_inf / axis_data (old code, H2_CERTIFY_VERIFY items), and that the Python implements (2.1) beyond the centre agreement (point bounds match float ρ_1 to ≤ 2e-6 at 5 K; samplers §3).
+
+## 9. (E) launcher and (F) verdict
+Launcher h1cert_launch2.sh: OMP threads 1, 16 shards per mode via xargs -P 16, modes M = 1, 13, M0:169, skip a mode with DONE, smoke mode, MODE names match the driver (M0:169 → MM0169). Default DOMAIN=box (must be overridden). No restart loop: a shard killed by the cgroup OOM killer is lost until a manual rerun. Also, systemd expands $VAR in ExecStart, so a bash -c loop with $ must live in a file.
+Wrapper to use (create ~/ym/h1cert_loop2.sh):
+```
+#!/bin/bash
+# rerun the launcher until all three DONE markers exist (max 10 tries)
+cd ~/ym
+export DOMAIN=sorted DMAX=2 H=0.08
+for try in $(seq 1 10); do
+  bash h1cert_launch2.sh
+  ok=0
+  for m in M1 M13 MM0169; do [ -e "h1cert2_out_L13_${m}_h${H}_${DOMAIN}/DONE_L13_${m}_h${H}_${DOMAIN}" ] && ok=$((ok+1)); done
+  [ "$ok" = 3 ] && exit 0
+  echo "$(date) retry $try" >> h1cert2_retry.txt; sleep 60
+done
+exit 1
+```
+Run: `sudo -n systemd-run --unit=h1cert2 --collect -p User=elvin -p MemoryMax=16G bash ~/ym/h1cert_loop2.sh` (one attached root WSL session, as the memory note). Smoke first: `DOMAIN=sorted bash h1cert_launch2.sh smoke`.
+DMAX=2 caps a never-certifying near-0 cell at 273 evaluations (worst case ~35 cells × 273 × 10 s ≈ 27 core-h per mode instead of ~400). Away from 0 every tested cell certified at h ≥ 0.08 directly. A FAILED leaf away from 0 can be redone later by deleting its JSON and rerunning with a larger DMAX.
+After the run: DONE means "every leaf terminal", not "certified". Certification needs status_counts with FAILED/near0 leaves only inside the G3 ball; check the list.
+
+Verdict.
+- DOMAIN=box: NOT READY. Blocker: frame pivot on axis 4 (§3); the K_4 ∈ [0, 0.16] row (8,000 top cells per mode) cannot certify at any depth, and bisection cost explodes (~1,169+ evaluations per such cell).
+- DOMAIN=sorted, DMAX=2, with the wrapper loop: READY TO LAUNCH, conditional on Elvin accepting (a) the P5a/P5b proof of §5 (written here, not yet checked by an independent verifier) and (b) G3 handled by H1_ANALYTIC (verifier pass + arb evaluation on the residual ball), with the two 1e-16 rounding gaps of §8 as optional fixes. Cost: ~55 core-h (G1 note §3) + ≤ ~80 core-h near 0, about 4–9 h wall on 16 cores.
+
+Cleanup: scratch scripts and kr/ deleted; kept numerics/h1cert_verify/sym_check.py (P5 check). Pilot output untouched.

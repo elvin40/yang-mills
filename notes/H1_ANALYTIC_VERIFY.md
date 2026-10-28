@@ -49,3 +49,10 @@ Grade (2) majorant: CONFIRMED. Grade (3) j-uniformity and K → 0: CONFIRMED (V1
 - bound(): W = |K|²/|k̂_l|² (l = 0: ≤ L²γ_L, rederived); r = |K̂|²/|k̂_l|² range (l = 0: mediant of L²a_{0,ρ}²); br ≥ max_μ|y − r|; V_code = |K|²V, U_code = |K|²U, so τ = F_CS·(V_code + |K̂|U_code) = (V + |K̂|U)·F_CS|K|² ≥ (V + |K̂|U)/d̲. S ≤ |K̂|²S_L from below (l = 0 term via min L²a_{0,ρ}²). All directions correct.
 - Parent G inheritance: valid (bound on a superset). Leaf test: a leaf is accepted only if its upper bound (γF + G)(1 + 1e−9) ≤ target or depth = maxdepth; leaves above target are counted as failures and the reported sup is the max over all leaf upper bounds. Valid.
 - Only defects: no directed rounding (sin, sinc, divisions in float64 nearest), and the fl(π) strip. Grade (4) logic: CONFIRMED; rigor gap fixed in V6.
+
+## V6. bb_arb.py written (task D)
+numerics/h1analytic/bb_arb.py: same enclosures as bb.py. Changes: box coordinates K = π·u with u exact dyadic rationals (covers K_ρ = π exactly); every 1D value (sin², sinc, a_0², tails, t = u/(2−u), γ_L, Taylor g bound) evaluated in arb at exact endpoints; interior extremum of sin²(k_l/2) detected by exact rational test x = (u+2l)/L vs 1, with arb union of endpoint values for the min; arb → float by a loop that checks arb(x) ≥ a (resp. ≤); 4D combination in numpy with one-ulp outward rounding after every op and the Higham bound (1 ± 2n·2^−52) for every np.sum; lower bounds clamped at 0.
+Port check (cmp_boxes.py, 30 random boxes): bb_arb/bb − 1 ∈ [1.2e−14, 1.5e−14] for F_CS and [1.3e−11, 3.7e−11] for G. Always ≥ 0, as outward rounding should give.
+
+## V7. Rerun of the original bb.py (float, `python3 bb.py 13 10 16`)
+Reproduced: sup B_13 ≤ 9.99953, 25,169 boxes, 8,075 G evaluations, 0 failed leaves, 102 s. Note: the reported 9.9995 is not a 23% margin to 10; the branch-and-bound refines each box only until it is ≤ 10, so the result is "≤ 10" with 5·10^−5 to spare. The 23% margin in §6–§8 is the margin to 13, not to the target. Float rounding error (≤ 4e−11 relative, V6) is far below 5e−5.

@@ -37,7 +37,7 @@ The derivative order sn grows linearly in n. The OS linear growth condition admi
 
 ### 1.3 Theorem (finite-torus existence, compactness form)
 
-Let G = SU(2), d = 4, L odd and large, ℓ ∈ 2N fixed. Let γ > 0 be Balaban's small constant and g ∈ ]0, γ] small. For K ≥ K_0 let ε = L^{−K} and g_0 = g_0(ε, g) be a shooting solution (Lemma D″) whose effective couplings satisfy g_k ∈ ]0, γ] for 0 ≤ k ≤ K and g_K = g. Assume (H-U). Then:
+Let G = SU(2), d = 4, L odd and large, ℓ ∈ 2N fixed. Let γ > 0 be Balaban's small constant and g ∈ ]0, γ] small. For K ≥ K_0 let ε = L^{−K} and g_0 = g_0(ε, g) be a shooting solution (Lemma D″) whose effective couplings satisfy g_k ∈ ]0, γ] for 0 ≤ k ≤ K and g_K = g. Assume (H-U). When (H-U) is taken from the blocks of §2 rather than assumed, the chain also assumes the unit-scale condition (U) of the sourced step [R, B22]: the last RG scale is ≤ c_* r/(M^a ρ_1) relative to the test-function scale (SOURCES_D2 l. 27; hypothesis of Theorem D3, SOURCES_D3 l. 53), together with the κ → κ/2 decay recovery of D2 (not stated, SOURCES_D2_VERIFY (5)). Neither follows from the other hypotheses: (S_src), N3 and N3A bound the source amplitude r ≤ r_0 ≤ 1/8 and the coupling gap (condition (a)), while (U) bounds the source gradient ρ_1 against the last RG scale; B-N1 uses bumps of width down to h ~ ε, so (U) must be reconciled with B-N1 (B21). This (U) is not the Route B hypothesis (U) of BETA_FP_U. Then:
 
 (a) Compactness. Every sequence K_m → ∞ has a subsequence K_{m_i} such that, with ε_i = L^{−K_{m_i}}, the limit S_n(F) := lim_i S_{n,ε_i}(F) exists for every n ≥ 1 and every F ∈ D_n.
 
@@ -201,7 +201,7 @@ Global conditions carried by every row: (G1) Balaban's published proofs CMP 95�
 | B-S.D2 | sourced small-field step (E14-a) | DRAFTED; (a),(b),(d),(f) confirmed; (c) rejected; (e) reduced | SOURCES_D2.md | partly (SOURCES_D2_VERIFY.md) | Balaban-step analyticity in input activities; κ → κ/2 recovery; convention (U) |
 | B-S.D2C | redo of D2 (c): frozen source per domain, Lemma A, h ≡ 0 | DRAFTED | SOURCES_D2C.md | no (verifier running) | domain hypothesis (D); (Hβ) in three places |
 | B-S.Hβ | two-loop bound sup Σ_j abs(B_j′) ≤ ½ | REDUCED | SOURCES_HBETA.md | yes, conditional (SOURCES_HBETA_VERIFY.md) | (I) B_j = Balaban's β_j on shifted trajectory; (H-hist) history-sensitivity column-sum bound (not in Balaban) |
-| B-S.D3 | sourced large-field step + R operation (E14-b) | IN PROGRESS (skeleton) | SOURCES_D3.md | no | eleven items listed there |
+| B-S.D3 | sourced large-field step + R operation (E14-b) | IN PROGRESS (skeleton) | SOURCES_D3.md | no | eleven items listed there; (U) [R, B22] |
 | B-S.D4 | real-source derivative bounds, all orders (E14-c) | interpolation lemma confirmed; rest NOT STARTED | SOURCES_D2.md (f) | Lemma 7.1: yes | — |
 | B-N1 | source form ⇒ (H-U) for F flat on diagonals | OPEN; route sketched (§2.3) | this file | no | uniformity of source bounds in bump position and ε |
 | B-C | compactness, diagonal extraction | PROVED here | this file §2.4 | not independently | (H-U) |
