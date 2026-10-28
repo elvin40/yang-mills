@@ -46,3 +46,45 @@ For l = 0 write ê(p′) = ŵ(p′)/D(p′), D(p′) := Δ(p′)T(p′) = |w_0|�
  ‖A‖² ≤ c_1‖∇A‖² + c_2‖QA‖²,  c_1 := (1 + 2ω)/4, c_2 := 2ω.
 Proof, fibre by fibre. From the constraint form, conj(w_0)Â_0 = (QA)^ − Σ_{l≠0}conj(w_l)Â_l. With |w_0|^{−2} ≤ ω (S2) and Σ_{l≠0}|w_l|² ≤ 1 (S4): |Â_0|² ≤ 2ω|(QA)^|² + 2ωΣ_{l≠0}|Â_l|². Hence Σ_l|Â_l|² ≤ 2ω|(QA)^|² + (1 + 2ω)Σ_{l≠0}|Â_l|² ≤ 2ω|(QA)^|² + ((1 + 2ω)/4)Σ_{l≠0}Δ_l|Â_l|², by Δ_l ≥ 4 (S3). Integrate over p′. ∎
 Consequence: ⟨A, H_aA⟩ ≥ m‖A‖² with m = m_a := 1/max(c_1, c_2/a), and ⟨A, H_aA⟩ ≥ ‖∇A‖². For d = 4: c_1 = 45.94, c_2 = 182.77; a ≥ c_2/c_1 = 3.98 gives m = 1/45.94 = 0.02177.
+
+## 3. Weighted L² decay, uniform in η (Combes–Thomas) [P]
+Weights. Let 𝓕_δ be the set of bounded real f on R^d with |f(x) − f(x′)| ≤ δ|x − x′|. On the coarse lattice use f(c) := f(x_c). Write X_f := e^fXe^{−f} for any operator X (fine, coarse, or mixed). For f ∈ 𝓕_δ these are bounded operators. Put β := e^δ − 1, q := e^{δD/2} − 1, D = √(d + 3). Assume δ ≤ 1. Then for every bond, η^{−1}|e^{±(f(y)−f(y′))} − 1| ≤ η^{−1}(e^{δη} − 1) ≤ β, since (e^x − 1)/x increases and η ≤ 1.
+3.1 Conjugated Laplacian. e^f∇_be^{−f} = ∇_b + β_bS_b and e^{−f}∇_be^{f} = ∇_b + β̃_bS_b, with S_bA := A(y + ηe_ν) and |β_b|, |β̃_b| ≤ β. Since e^f∇_b*∇_be^{−f} = (e^{−f}∇_be^{f})*(e^f∇_be^{−f}), for all complex φ, ψ:
+ ⟨φ, (−Δ)_fψ⟩ − ⟨φ, −Δψ⟩ = Σ_b η^d[conj(∇_bφ)β_bψ(y′_b) + conj(β̃_bφ(y′_b))∇_bψ + conj(β̃_bφ(y′_b))β_bψ(y′_b)].
+Each site is the endpoint y′_b of d bonds, so Σ_bη^d|ψ(y′_b)|² = d‖ψ‖², and
+ |⟨φ, ((−Δ)_f + Δ)ψ⟩| ≤ β√d(‖∇φ‖‖ψ‖ + ‖φ‖‖∇ψ‖) + β²d‖φ‖‖ψ‖.  (3.1)
+3.2 Conjugated Q, Q*, Q*Q. The kernel of Q_f − Q is w(y − c)(e^{f(x_c)−f(y)} − 1), bounded by q·w(y − c) (fact (d)). The Schur test with facts (a)–(c) gives ‖Q_f − Q‖ ≤ q, ‖(Q*)_f − Q*‖ ≤ q. The kernel of Q*Q w.r.t. η^d is K(y, y′) = η^{−2d}Σ_c w(y − c)w(y′ − c) ≥ 0, supported on |y − y′| ≤ D, with Schur sums η^dΣ_{y′}K(y, y′) = 1. So ‖(Q*Q)_f − Q*Q‖ ≤ e^{δD} − 1.
+3.3 Accretivity. Let h(A) := ⟨A, H_aA⟩ ≥ max(m‖A‖², ‖∇A‖²) (§2.4). By (3.1) with φ = ψ = A and 3.2:
+ Re⟨A, (H_a)_fA⟩ ≥ h − 2β√d‖∇A‖‖A‖ − (β²d + a(e^{δD} − 1))‖A‖² ≥ h(1 − θ),
+ θ = θ(δ) := 2β√(d/m) + (β²d + a(e^{δD} − 1))/m,
+using ‖∇A‖‖A‖ ≤ h/√m and ‖A‖² ≤ h/m. Assume (C1): θ ≤ 1/2. Then Re⟨A, (H_a)_fA⟩ ≥ h/2 ≥ (m/2)‖A‖². The same holds for (H_a)_f* = (H_a)_{−f} (−f ∈ 𝓕_δ). By Lax–Milgram, (H_a)_f is invertible and (G_a)_f = ((H_a)_f)^{−1}. If φ = (G_a)_fu then h(φ)/2 ≤ |⟨φ, u⟩| ≤ ‖φ‖‖u‖, so
+ ‖(G_a)_f‖ ≤ 2/m,  ‖∇(G_a)_f‖ ≤ 2/√m.  (3.2)
+Unconjugated: ‖G_a‖ ≤ 1/m, ‖∇G_a‖ ≤ 1/√m.
+3.4 Difference. (G_a)_f − G_a = (G_a)_f(H_a − (H_a)_f)G_a. For u, v: ⟨u, ((G_a)_f − G_a)v⟩ = ⟨G_{a,−f}u, (H_a − (H_a)_f)G_av⟩. Apply (3.1), 3.2 and (3.2) to φ = G_{a,−f}u, ψ = G_av:
+ ‖(G_a)_f − G_a‖ ≤ β√d(2/√m·1/m + 2/m·1/√m) + (β²d + a(e^{δD} − 1))·2/m² = 2θ/m.  (3.3)
+3.5 The coarse operator. S_{a,f} − S_a = (Q_f − Q)(G_a)_f(Q*)_f + Q((G_a)_f − G_a)(Q*)_f + QG_a((Q*)_f − Q*), so
+ ‖S_{a,f} − S_a‖ ≤ ε_S := (2q(1 + q) + 2θ(1 + q) + q)/m.
+Assume (C2): ε_S ≤ s_0/2. Since S_a ≥ s_0 (§2.3), S_{a,f} = S_a(1 + S_a^{−1}(S_{a,f} − S_a)) is invertible and
+ ‖(S_a^{−1})_f‖ ≤ 2/s_0.  (3.4)
+3.6 The kernel. Fix c and take f ∈ 𝓕_δ with f(x_c) = 0, e.g. f_R(x) = δ min(|x − x_c|, R). By §2.2, e^{f}E_0(·, c) = (G_a)_f(Q*)_f(S_a^{−1})_fδ_c. Hence, with g := e^fE_0(·, c):
+ ‖g‖ ≤ W_0 := (2/m)(1 + q)(2/s_0),  ‖∇g‖ ≤ (2/√m)(1 + q)(2/s_0).
+Also e^{f(y)}∇_bE_0(y, c) = ∇_bg + η^{−1}(e^{f(y)−f(y′)} − 1)g(y′), so ‖e^f∇E_0(·, c)‖ ≤ W_1 := (2/√m + 2β√d/m)(1 + q)(2/s_0) (each component ν separately: replace √d by 1; the bound with √d covers the full gradient). Let R → ∞ (monotone convergence):
+ (η^dΣ_y e^{2δ|y−x_c|}|E_0(y, c)|²)^{1/2} ≤ W_0,  (η^dΣ_y e^{2δ|y−x_c|}|∇E_0(y, c)|²)^{1/2} ≤ W_1.  (3.5)
+All constants depend on d, a, δ only. They do not depend on η = L^{−k}, on L, or on k.
+3.7 Admissible δ, d = 4 [P arithmetic, computed in numerics/t2_eumom_n7.py §consts]. (C1) and (C2) hold for some δ_* > 0 for every d, since θ, q → 0 as δ → 0 while m, s_0 are fixed. The binding condition is (C2) through 2θ/m ≤ s_0/4 (about), i.e. θ ≲ s_0m/4 ≈ 1.5e−6 for d = 4. The values of δ_*, W_0, W_1 at the best a are listed in §5.4. They are tiny (δ_* of order 1e−9). The reason is twofold: (i) the crude lower bounds m ≥ 1/45.9 and s_0 ≈ t_0 = 2.8e−4 (true inf T is 18 times larger); (ii) Combes–Thomas loses the full condition number of S_a. The bounds prove k-uniformity; they are not realistic values (§6 gives δ ≈ 1.2 numerically).
+
+## 4. Uniform pointwise regularity from the symbol [P]
+4.1 Symbol bound. On B_η:
+ |ê(p)| ≤ C_e|ŵ(p)|/(1 + |p|²),  C_e := ω·dπ²(π² + 1)/4  (d = 4: C_e = 9.80e3).
+Proof. l = 0: |ê(p′)| = |w_0|/D(p′) ≤ 1/|w_0| ≤ ω|w_0| (D ≥ |w_0|², |w_0|² ≥ 1/ω), and 1 ≤ (1 + dπ²)/(1 + |p′|²). l ≠ 0: T(p′) ≥ |w_0|²/Δ(p′) ≥ 1/(ωdπ²), Δ_l ≥ (4/π²)|p|², |p| ≥ π, so |ê| ≤ |w_l|ωdπ²(π²/4)|p|^{−2} ≤ |w_l|ωdπ²(π²/4)(1 + π^{−2})/(1 + |p|²). The second constant dominates (1 + dπ² < dπ²(π² + 1)/4). ∎
+4.2 The integral J(β) := ∫_{R^d} Π_ν m(p_ν)·m(p_μ)·|p|^β(1 + |p|²)^{−1} dp is finite for 0 ≤ β < 2, and
+ J(β) ≤ I_2·I_1(γ)^{d−1},  γ := (2 − β)/(2d),  I_1(γ) := 2π(1 + π^{−2γ}/(2γ)),  I_2 := 4π.
+Proof. |p|^β(1 + |p|²)^{−1} ≤ (1 + |p|²)^{−(2−β)/2}. By AM–GM, Π_ν(1 + p_ν²)^{1/d} ≤ 1 + |p|²/d ≤ 1 + |p|², so the integrand is ≤ Π_ν m(p_ν)(1 + p_ν²)^{−γ}·m(p_μ). The integral factorizes. For ν ≠ μ: ∫_R m(q)(1 + q²)^{−γ}dq ≤ 2(π + ∫_π^∞ (π/q)q^{−2γ}dq) = I_1(γ). For ν = μ drop (1 + q²)^{−γ} ≤ 1: ∫_R m(q)²dq = 4π. ∎
+ d = 4 values: J(0) ≤ 3.00e4 (γ = 1/4), J(1) ≤ 2.00e5 (γ = 1/8), J(3/2) ≤ 1.54e6 (γ = 1/16) (script §consts).
+4.3 Regularity, uniform in η. Since B_η ⊂ R^d and |ŵ| ≤ Πm·m_μ (S1), with κ_d := (2π)^{−d}C_e:
+ (R0) |E_0(y, c)| ≤ κ_dJ(0);
+ (R1) |E_0(y, c) − E_0(y′, c)| ≤ κ_dJ(1)|y − y′| (|e^{ip·z} − 1| ≤ |p||z|);
+ (R2) |∇_νE_0(y, c)| ≤ κ_dJ(1) (the multiplier (e^{ip_νη} − 1)/η has modulus 2|sin(p_νη/2)|/η ≤ |p|);
+ (R3) |∇_νE_0(y, c) − ∇_νE_0(y′, c)| ≤ 2^{1−α}κ_dJ(1 + α)|y − y′|^α, 0 < α < 1 (|e^{ip·z} − 1| ≤ min(2, |p||z|) ≤ 2^{1−α}|p|^α|z|^α).
+Put H_0 := κ_dJ(1), H_1 := 2^{1/2}κ_dJ(3/2) (α = 1/2). For d = 4: κ_4 = 6.29, so sup|E_0| ≤ 1.9e5, H_0 ≤ 1.26e6, H_1 ≤ 1.37e7. These are crude (numerically max|E_0| ≈ 2.3, §6); only their k-independence matters.
+Remark. Second differences of E_0 are not uniformly bounded: the β = 2 integral diverges like (log N)^{d−1}. This matches the continuum picture: −ΔE_0 = Q*S^{−1}δ_c-type source with jumps across corridor faces, so E_0 ∈ C^{1,α}, not C^{1,1}. This is why α < 1 in (R3).

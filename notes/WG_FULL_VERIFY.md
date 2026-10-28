@@ -5,3 +5,4 @@ Grades: CONFIRMED / CORRECTED / UNSUPPORTED per priority item; whole proof PAPER
 
 ## Log
 - Read WG_FULL.md in full (335 lines).
+- Read SOURCES_WG, SOURCES_WG_VERIFY, SOURCES_A1_WALK (§1, §4–§9), SOURCES_A1_WALK_VERIFY, SOURCES_A1_KERNEL §1, §5, §8.

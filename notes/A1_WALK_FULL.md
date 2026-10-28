@@ -370,3 +370,79 @@ The mixed α_0-row forces α_0^{(n)} + α_1^{(n)} ≤ k_nα_0^{(n+1)}, where α^
 Rates: δ_G → ε_3 ≥ ½ε → δ_1‴ = (1 − θ)½ε_3 → ε_2 ≥ ½ε_1^{real} → δ_A″ → ½ε″. Each accretive level loses at most a factor ½ in the Combes–Thomas branch. Three levels give a fixed positive rate depending on (d, L, N, a, a_0). The consumers accept any fixed rate (SOURCES_A1_WALK §7.4).
 Inputs used only here: Thm 3.4 [V]; (W_G) at complex points [R]; (C) for G and c_{−,1} for G_1 [conditional]; Theorem L and (W_N) of SOURCES_WC_EXPGAUGE [P given its own inputs].
 
+## 9. The constant order and uniformity
+
+### 9.1 The order [P; checked against SOURCES_A1_WALK_VERIFY §8, SOURCES_WC_RESIDUE §7.3 and VERIFY Q7]
+ 1. d, L.
+ 2. Balaban's real constants: δ_0, B_0, the regularity constants, a, a_0, and a_1 of CMP 99 Thm 3.4. A minimal M_min(d, L) with θ = log L/(RM) ≤ δ_0/(4(d + 2)) for all M ≥ M_min (SOURCES_A1_KERNEL §10).
+ 3. At M = M_min: c_− (H2); b_G, c_G, δ_G, C_𝒟, c_X (H1); C_ov, c_h, K_0, K_1, D_+ (G); Σ(·). Σ and the θ-dependent constants are monotone in θ, so their values at M_min remain valid for all M ≥ M_min.
+ 4. ε := min{½δ_G, c_−/(8c_+Σ(½δ_G))}; then c_1(½ε), Σ(½ε), Σ(¼δ_G), K_F, K_W, C_W.
+ 5. M_1 ≥ M_W = max{2C_𝒟c_G, M_a, M_e′, M_N, M_c} (5.7). For the free factor of 6.6 also M_1 ≥ (2C_Wc_1K_W)². For §7 the same thresholds with (γ, c_A, δ_A). For §8 the thresholds M_W^c at each level.
+ 6. M, with all of:
+  - R_1M_1 ≤ M (σ_k cubes, CMP 116 p. 3);
+  - M/M_1 > 10 and M/M_1 > 3(6 + c_X) (§7.4);
+  - M > 48κ_1/ε_min, where ε_min is the smallest walk rate used (½ε at real points, ½ε″ on 𝒰(α′)). This is the s-rule side condition e^{−⅓ε_minM}e^{16κ_1} < 1 of SOURCES_A1_WALK §7.4(a), the walk-rate form of CMP 116 p. 5 "δ_1M ≥ κ_1" [V]. κ_1 must be M-free [I];
+  - CMP 96 (2.59) RM > M_*(¼ε_min), so that Lemma 2.1 holds at every rate used (SOURCES_A1_WALK_VERIFY §6 added this);
+  - M ≥ M_* of Theorem WG-G (SOURCES_WG §2.7).
+ 7. α_0: Mα_0 ≤ min{a_0, a_*, a_**}, and α_0 ≤ c′M^{−11} (WG-1, 6.6).
+ 8. Complex domains: α‴ ≤ k_3a_1, α″ ≤ k_2α‴, α′ ≤ k_1α″ (8.4), with the J-row.
+ 9. α with α′ ≫ α (CMP 116 p. 15 [V]); then g (TRUST_LEDGER C5 and M4).
+No loop. Every constant in step n is a function of constants in steps < n. ε does not depend on M_1 or M, except through θ at M_min (step 3). c_− depends on Mα_0 only through the bound Mα_0 ≤ a_0. No α^{(n)} is bounded from below by a later constant. This agrees with TRUST_LEDGER C5: Balaban's constants, κ, then M ≥ M(κ), then α's after M.
+
+### 9.2 Uniformity [P given the inputs]
+Each constant of Theorem A1-W is one of the following.
+ - c_−: uniform in regular U, j, k, η, {Ω_j}, and volume by (H2).
+ - b_G, c_G, δ_G, c_X: Balaban's constants, "O(1) depends on d and L only" (CMP 99 p. 416 [V]), uniform over U with (3.35)–(3.36); the J-bound O(Mα_0) is uniform over U with (3.36) (SOURCES_WG §4.2).
+ - C_𝒟, C_ov, c_h, K_0, K_1, D_+: geometric, depending on d and the cover only.
+ - c_1(·), Σ(·): uniform in k, η, {Ω_j}, and volume by CMP 96 Lemma 2.1 under (2.59).
+ - ε, K_F, K_W, M_W, and the bounds 4/c_−, 8/c_−: functions of the above.
+The volume enters only through finite dimension: invertibility from injectivity (3.2, 5.2) and free rearrangement of absolutely convergent sums (5.6). No bound depends on it. The scale j enters only through the explicit factors (L^jη) of 6.8. The step index k enters nowhere. The regular background U enters only through (H1) and (H2), and at complex points through a_1 of Thm 3.4.
+The local inverses are not obtained by gauging to U ≈ 1 on a cube (CMP 99 Cor. 3.6). They come from the global lower bound by restriction (Lemma 2.1(e)) and the accretive Lemma CT (§3). So the rate is set by (c_−, c_+, δ_G), not by the U = 1 rate δ_4 (SOURCES_A1_WALK §7.2).
+
+### 9.3 The rate, and what the consumers accept [P for the order; R and I as tagged]
+The walk rate is ½ε. It is smaller than Balaban's printed ½δ_0. Balaban's own U = 1 proof ends at half his local Combes–Thomas rate (CMP 96 (2.87), ½δ_1 [V]), so the loss is of the same kind.
+ - s-rule (CMP 116 pp. 3, 13): needs (L1), (L2), absolute convergence, and an M-factor for walks that reach σ_0 cubes at distance > ⅔M from Z_0. With (D2), d(ω) ≥ (4/3)M on such walks, so e^{−½εd(ω)} ≤ e^{−⅓εM}e^{−¼εd(ω)}. The side condition becomes M > 48κ_1/ε (step 6). Walk domains have diameter ≤ D_+M_1, and σ_0-cubes have side R_1M_1. So each domain meets at most (2 + D_+/R_1)^d σ_0-cubes, a constant.
+ - A2 Neumann step (2.21)/(2.23): the decay rate enters only through a Schur constant at a rate fixed before M (SOURCES_A2_R2_VERIFY V5). Accepted.
+ - A3_SIGMA §2: η_M = S(¼ε)B_We^{−⅓εM} → 0 as M → ∞. Accepted.
+ - The printed rates (½δ_0 in (2.16), δ_0 in (3.187)) are not reproduced. Only "some fixed rate δ_W(d, L, a, a_0) > 0" is.
+
+## 10. Ledger of inputs
+
+Each input has an ID used in this file and, where one exists, the TRUST_LEDGER row it falls under. "Used in" names the sections.
+
+| ID | input | grade | used in | TRUST_LEDGER row |
+|---|---|---|---|---|
+| IN1 | (W_G): walk expansion of G with (3.108)-form bounds and locality, as Theorem WG-G (SOURCES_WG §2.8) | [P] given CMP 99 Thms 3.7, 3.9, 3.10 (printed sketches [R]), CMP 96 Lemma 2.1, (3.131), I-D, Q-locality; VERIFIED (SOURCES_WG_VERIFY) | (H1), §2–§6 | A1w (reduction) |
+| IN2 | (W_G1): tree expansion of G_1, Theorem WG-G1 (SOURCES_WG §3.7) | [P] given IN1, A1-W for (QGQ*)^{−1}, C^{(2)}-locality [I] | 6.9, 8.4 | A1w |
+| IN3 | (C): Re⟨u, N̂u⟩ ≥ c_−‖u‖², c_− uniform | conditional: SOURCES_A1_KERNEL §8; torus-side hypothesis and two unprinted conventions | (H2), Lemma 2.1(e) | A1 (remaining items) |
+| IN4 | c_{−,1} = c_−(G_1) ≥ c_−(1 − O(Mα_0)) | conditional: SOURCES_A1_KERNEL §9 | 6.9, 8.4 | A1 (G_1 clause) |
+| IN5 | CMP 96 Lemma 2.1: c_1(κ) uniform under (2.59) | [R] printed with proof | §0.1, 5.5, 9.1 | inside A1 |
+| IN6 | Lean: `schur_test`, `coercive_inv`, `combes_thomas`, `combes_thomas_schur` | [L] no `sorry`; axioms propext, Classical.choice, Quot.sound | §1.5 (N3), §3 | none (proved) |
+| IN7 | Concatenation lemma (SOURCES_WG §2.3), statement in 5.4 | [P] VERIFIED (SOURCES_WG_VERIFY §4); proof is W2's | 5.5, 6.4, 6.9 | none (proved) |
+| IN8 | Geometry (G): cover 𝒟, cores □⁻, h_□, □⁺, C_ov, C_𝒟 for □⁺-domains | [I] constants c(d) | §2.1, 5.6 | A1w ([I] items) |
+| IN9 | O2: Lipschitz bound c_h/M_1 of h_□ across scale boundaries | [I] low risk; printed analogue CMP 99 (3.89) | 4.2 (com) | A1w ([I] O2) |
+| IN10 | Q-normalization and Q, Q* block-locality | [I] SOURCES_A1_KERNEL S3 | (H1) | A1w ([I] Q-locality) |
+| IN11 | WG-1: α_0 ≤ c′M^{−11} for the per-step factor c/M at V-junctions | condition, admissible in Balaban's order | (H1), 6.6, 9.1 | A1w (condition) |
+| IN12 | κ_1 independent of M | [I] | 9.1, 9.3 | A1w ([I] κ_1); C5 |
+| IN13 | Regular class (3.35)–(3.36); J-term O(Mα_0) | [V] CMP 99 pp. 405, 419, 422; identification of the backgrounds | (H1), 8.4 | A18 |
+| IN14 | CMP 116 pp. 3, 4, 5, 13, 15 page facts: s-rule, band, X_0 form, freedom of domains, α′ ≫ α | [V] text and images | §1.4, 6.7, §7, 9.1 | A1w, A8 |
+| IN15 | ℓ^∞ reading of the tilde (Z̃_0, X̃^5) | [V] CMP 99 pp. 411, 413, CMP 119 p. 245 + [P] SOURCES_WC_RESIDUE §4.5 | §7.4 | A1w (O3 closed) |
+| IN16 | Theorem L (γ_exp) and (W_N) for A_exp (SOURCES_WC_EXPGAUGE §3–§4) | [P] given its inputs (A3 R2 [I], R-Δ2, Balaban's p. 254 averages [R], C̃^{(2)}-locality [I-strong], term match of (2.11) and (3.156)) | 7.1, 8.4 | A3, A7 |
+| IN17 | CMP 99 Thm 3.4: G′, (Q′G′²Q′*)^{−1}, R, G analytic for α_1 ≤ a_1 | [V] image p. 400 | 8.4 level 4 | A1w (O4) |
+| IN18 | (W_G) at complex points | [R] Thm 3.4 "quantitative statements" + Thm 3.10 | 8.3, 8.4 | A1w (O4 closed relative to it) |
+| IN19 | Plaquette condition along the disc, CMP 109 (1.13)–(1.14) | [V] via SOURCES_A2_R2_VERIFY V6 | 8.1 radius | none |
+| IN20 | Order of constants | [P] 9.1 | §9 | C5 |
+| IN21 | CMP 96 pp. 237–238 (2.82)–(2.87), CMP 99 (3.95), Thm 3.14 | [V] images and text; templates only, not load-bearing | 2.2, 4.1, 5.2 | none |
+
+### 10.1 Status
+Theorem A1-W (§0.5) is [P] relative to IN1, IN3, IN5–IN11, and IN13. The Z_0-compressed variant (§7) adds IN14–IN16. The complex extension (§8) adds IN2, IN4, IN17–IN19. The constant order (§9) uses IN12 and IN20. This file is a write-out of verified constructions. It has not been verified as a whole. An independent verifier should check it before it carries weight.
+
+### 10.2 Points where this file is more precise than its sources
+A verifier should check these first. None changes a conclusion of the sources.
+ 1. §0.1: the Schur constant is the counting form sup_y Σ_{y′}(1 + d)e^{−δ′d}, which Lemma 2.1 bounds directly. SOURCES_A1_KERNEL §5 uses a μ-weighted variant.
+ 2. 1.3, 5.6: the absolute walk sum carries the first-domain count C_𝒟 (constant 8C_𝒟/c_−). The kernel bound (iv) does not.
+ 3. 5.1: ‖F‖_{½ε} is bounded through the kernel of Σ_□F_□. A bound by sup_□‖F_□‖ alone is not uniform in volume, because E^sep_□ has a global left support.
+ 4. 5.5: an S- or R-insertion adds two junction steps but only one separation or truncation factor. So ρ contains e^{−⅛δ_GM_1}, the square root of the separation factor, and the threshold M_e′ uses ⅛.
+ 5. 7.4: c_X in the near/far condition must bound all domains of the series, including the □⁺. So it is max{c_X, D_+}.
+ 6. 7.5: the merged-slot constant is bounded per walk, (8C_W/γ), with every far domain except at most one carrying c_1ρ.
+ 7. 8.4: the chain constants are named k_1, k_2, k_3 (the sources write c_1, c_2, c_3, which clashes with c_1 of Lemma 2.1), and Γ_3, Γ_4 carry the factor 2 of SOURCES_WC_RESIDUE_VERIFY Q6.
