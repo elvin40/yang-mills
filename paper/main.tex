@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{longtable,array}
+\usepackage[hidelinks]{hyperref}
+\sloppy
+
+\theoremstyle{plain}
+\newtheorem*{theorem}{Theorem}
+\newtheorem*{lemma}{Lemma}
+\newtheorem*{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+
+% status tags, e.g. \status{proved+verified}
+\newcommand{\status}[1]{\textsc{[#1]}}
+% project file references; footnote on first use only
+\newif\iffirstfile\firstfiletrue
+\newcommand{\file}[1]{\texttt{\detokenize{#1}}\iffirstfile\footnote{Project files named in this chapter live in the \texttt{notes/} directory of the \texttt{yang-mills} repository.}\global\firstfilefalse\fi}
+% interval ]0,x]
+\newcommand{\ioc}[1]{\mathopen{]}0,#1\mathclose{]}}
+\newcommand{\BZ}{\mathrm{BZ}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Theorem 2 for lattice Yang--Mills theory: proof chapter, version 3\\
+\large (shortest route; Route K reduction verified)}
+\author{}
+\date{Written 2026-10-27/28}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\input{theorem2}
+
+\appendix
+
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{refs}
+\end{document}

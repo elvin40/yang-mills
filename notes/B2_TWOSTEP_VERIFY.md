@@ -35,3 +35,30 @@ Uniform constants (U2), (U3): H = fine block of b_0[0;1]; ∂b_0 = −b_0(∂�
 - Item 4. (H2) is the plain operator norm of the same matrix as U3_AW (H″) at n = 2, on real K only. (H″) at n = 2 needs ρ_2² < L² − 1 because the strip-Cauchy gain is 1/(L^n − 1) (U3_AW §4.7, verifier §4 R-A). (H2) needs ρ_2² < L². So (H2) is weaker (threshold 3 vs 2.828 at L = 3). It also asks less: only real K, and a sup over j ≥ 2 of n = 2 only (not sup over n). CONFIRMED. Caveat: (H2) gives C¹ only; the C², C³ claim in §5 "looks routine" is not written out (not graded).
 - Remark (a) "ρ_2 < ρ_1² is the whole gain": ρ_2 ≤ ρ_1² always holds by submultiplicativity; the gain is that it is strict by a factor 1.50 (2.064 vs 3.098). CONFIRMED.
 
+## 4. Numerics rerun (item 5), Mac, numerics/.venv, aw_verify/hscan.py functions
+
+Own driver (in /tmp, deleted after): r2(K, j) = ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L², inner level "inf" for j = ∞. Index check: blocks(K, j) uses Δ_{j−1} (M = L^{j−1}; j = 1 Wilson), so j = 2 means inner H_1, outer H_2. Correct pairing.
+Search design differs from the author's: 500 (j = 2) / 120 (j = ∞) uniform random sorted 4D points (seed 7) + 45-point face grid K_3 = K_4 = π, then Nelder–Mead from the top 2.
+- Spot check: j = 3 at (2.3557, 2.3557, π, π) gives 2.0559915. Reproduces verifier §9.
+- j = 2: grid max 2.00750 at (2.356, 2.356, π, π); NM 2.008569 at (2.2151, 2.2151, π, π). Best point off the face (K_3 or K_4 < 3.0): 1.9946. Run 166 s.
+- j = ∞ (lmax 2): grid max 2.06366 at (2.356, 2.356, π, π); NM 2.063769 at (2.4035, 2.4035, π, π); lmax 3: 2.063482; lmax 5: 2.063361. Best off the face: 2.0036. Run 234 s.
+Author's table (2.00857 at 2.215; 2.06377 / 2.06336 at 2.403) reproduced to 10^{−5}. Argmax on the face K_3 = K_4 = π, diagonal K_1 = K_2, moving 2.22 → 2.40 with j. CONFIRMED. Margin to 3: 1 − 2.0638/3 = 31.2%. q_1 = 0.4733, q_2 = 0.0526. CONFIRMED.
+Still a lower estimate of the sup (grid + local search), and j = 4..∞−1 not sampled. Same caveats as the author.
+
+## 5. G1: what a rigorous (H2) needs
+
+(a) Large j. Theorem O5 gives ‖Δ_M − Δ_∞‖ ≤ C M^{−2} uniformly in K. Then ‖H_j − H_∞‖ ≤ ‖b_0^{(j)}‖‖b_0^{(∞)}‖‖𝔨_0^{(j)} − 𝔨_0^{(∞)}‖ ≤ B² C L^{−2(j−1)}, and ‖H_(2),j − H_(2),∞‖ ≤ L ρ_1 (‖H_{j−1} − H_∞‖ + ‖H_j − H_∞‖)-type bound. Margin in ‖H_(2)‖ is (3 − 2.064)L² ≈ 8.4. With the O6 constant B = b(L) (a ≥ 2.3·10^{−10}L^{−20}, so b ~ 10^{19} at L = 3) one needs j ≳ 45 before the tail closes, and finite M = 3^{44} cannot be evaluated directly. With a certified numerical ‖𝔅^{−1}‖ ≲ 2·10² (measured 195 at the corner) one needs only L^{−2j} ≲ 10^{−5}·C^{−1}, i.e. j ≳ 6–8. So the practical route is: certify ‖𝔅_j(K)^{−1}‖ ≤ B_num for all K and j (itself a G1-type task), then certify ρ_2 at j = 2, …, j_0 and at ∞, and use O5 for j > j_0.
+(b) Each finite j and j = ∞: a certified sup over K of a 4L⁸ × 4 matrix norm. Needs interval/Taylor-model evaluation of the bordered solve plus branch-and-bound in K (4D, reduced by hypercubic symmetry), with local Lipschitz constants from (U2) built on B_num, not on b(L). For j = ∞ also a certified tail bound for the Prop. A sum (lmax truncation; observed effect 4·10^{−4}).
+(c) The C(L) of O5 must be explicit. O5's numerical rate check (M^{−2}, U3_REPAIRS O5 numerics) is not a constant.
+Verdict: G1 is correctly stated by the author but understated in size. It is a computer-assisted proof project, not a check. The author's own text ("A certified bound needs a Lipschitz constant ... O6 constant useless") agrees.
+
+## 6. Grades
+
+1. Two-step map and recursions (1.3)–(1.5), L^{−8} factor ρ_2²/L⁴, source kinds: CONFIRMED. ∂σ^{(1)} enters linearly with no second σ^{(1)} factor ("at most one more" is a harmless overstatement).
+2. Obstruction = one-step C¹ factor ρ_1²/L = 1.005–1.033; L^{−1} at K = 0; bad region on the face: CONFIRMED (one-step argmax K_1 = K_2 = 1.86–1.92 over j = 2..∞; "≈ 1.9" fine).
+3. Theorems C1 and B2 conditional on (H2): CONFIRMED. Chain-rule factor L^{−2} per two steps is exact; threshold ρ_2 < L, not √(L²−1), because no strip-Cauchy loss enters on real K.
+4. (H2) plain operator norm, weaker than (H″) n = 2: CONFIRMED.
+5. Numerics: CONFIRMED. Independent random + face search reproduces 2.00857 (j = 2), 2.05599 (j = 3 spot), 2.06377/2.06336 (j = ∞, lmax 2/5); argmax on face diagonal; margin 31%; q_1 ≤ 0.473, q_2 ≤ 0.053. Off-face best 1.995 (j = 2), 2.004 (j = ∞).
+6. G1 (certification): CORRECTED in size. Needs certified ‖𝔅^{−1}‖ (O6 b(L) ~ 10^{19} is unusable), explicit O5 constant, certified sup over K at j = 2..j_0 ≈ 8 and ∞, and Prop. A tail bound.
+7. G2 (L ≥ 5 untested): CONFIRMED as open.
+8. G3 (form of Q_j): CONFIRMED by read-off of U3_AW (1.2)/(3.3) and P10; (3.3) itself not re-derived from the Moyal rule by either party.

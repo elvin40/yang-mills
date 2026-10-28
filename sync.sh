@@ -7,6 +7,7 @@ rsync -a $EX --include '*.md' --exclude '*' "$SRC/" notes/ 2>/dev/null
 rsync -a $EX "$SRC/reports/" notes/reports/
 rsync -a $EX "$SRC/numerics/" numerics/
 [ -d "$SRC/lean" ] && rsync -a $EX "$SRC/lean/" lean/
+[ -d "$SRC/paper" ] && rsync -a $EX "$SRC/paper/" paper/
 n=$(git status --porcelain | wc -l | tr -d ' ')
 [ "$n" = "0" ] && { echo "nothing new"; exit 0; }
 git add -A && git commit -q -m "${1:-Update $n files}" && git push -q origin main && git log --oneline | wc -l

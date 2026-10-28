@@ -1,6 +1,6 @@
 # Lean 4 formalization of Lemmas D′, D, E, H
 
-Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (162 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`. Added 2026-10-27: `YmLean/DetIdentities.lean` (143 lines), `YmLean/Telescoping.lean` (127 lines), `YmLean/AbelianCount.lean` (55 lines), all without `sorry`.
+Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (162 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`. Added 2026-10-27: `YmLean/DetIdentities.lean` (143 lines), `YmLean/Telescoping.lean` (127 lines), `YmLean/AbelianCount.lean` (55 lines), all without `sorry`. Added 2026-10-27: `YmLean/LemmaDDoublePrime.lean` (146 lines, `YmLean.lemma_DDoublePrime`), without `sorry`.
 Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRIME_VERIFY.md`.
 
 ## Toolchain
@@ -8,7 +8,7 @@ Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRI
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all six files). Each file builds in a few seconds.
+- Build: `lake build` (all seven files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -98,6 +98,27 @@ Notation: `Q₁ : ℝ^ι → ℝ^ρ₁`, `Q₂ : ℝ^ρ₁ → ℝ^ρ₂`, `Q = 
 - `Sab L k = (1 − L^{−4k})/4`; `Sab_values`: 15/64 (L=2, k=1), 20/81 (L=3, k=1), 255/1024 (L=2, k=2); `βab`: `Sab L (j+1) − Sab L j = (1 − L^{−4}) L^{−4j}/4`.
 - Not formalized: the physics inputs (Hessian `¼ cos(θ/2) (dB)_p²`, hypercubic symmetry of `E_p`, the rank statements behind the dimension count). They are hypotheses or arithmetic here.
 
+## LemmaDDoublePrime.lean (THEOREM2_PROOF_v3.md §2.2, KAPPA_BOUNDED.md §5.3; Lemma D″)
+
+Reuses `flow`, `φ`, `Shot`, `window_sum_le`, `tail_eq`, `flow_tail`, `t_ge_of_le_g₁`, `shot_of_flow` from LemmaDPrime.lean. `flow_contDD` repeats `flow_cont` without the structure `Hyp` (Hyp contains (ii), (iii) of Lemma D′, which D″ does not assume).
+
+| Note | Lean |
+|---|---|
+| (i) continuity on [0, γ_0], \|β_j(g) − β_j(0)\| ≤ C_1 g | `hcont`, `hlip` (as in Lemma D′; C¹ not assumed) |
+| (5.1) T_0(k, K) ∈ [b(K−k) − 2R, b(K−k) + 2R], 0 ≤ k < K | `hwin : ∀ k K, k < K → \|∑ i ∈ Ioc k K, β i 0 - b * (K - k)\| ≤ 2 * R`, `hb : 0 < b` |
+| γ = min(γ_0, γ_Bal, b/(4C_1)) | any `γ` with `0 < γ`, `γ ≤ γ₀`, `C₁ * γ ≤ b / 4` |
+| D = D′ = 2R, β = 3b/4, B′ = 5b/4 + 2R, g_1 = (1/γ² + 2R)^{−1/2} | written inline |
+
+Conclusions of `lemma_DDoublePrime` (in this order):
+
+1. `0 ≤ R` (from (5.1) at k = 0, K = 1) and `g₁ ≤ γ`.
+2. (a″): for couplings `c i ∈ [0, γ]`, `i < K`, and `k < K`: `(3b/4)(K−k) − 2R ≤ T(k,K) ≤ (5b/4)(K−k) + 2R`. `tail_wideDD` gives the bracket `[−2R, B′(K−k)]` for all `k ≤ K`.
+3. (b): for every `K` and `g ∈ ]0, g₁]`: `∃ u₀, Shot β γ g K (flow β γ u₀) ∧ ∀ k ≤ K, 1/γ² ≤ flow β γ u₀ k`. The solution is the clamped flow, and the clamp is inactive on it. K = 0 is allowed.
+4. (c′): for every `u` with the recursion for `k < K` and couplings in `]0, γ]` for `k < K`, and all `m ≤ n ≤ K`: `u n + (3b/4)(n−m) − 2R ≤ u m ≤ u n + (5b/4 + 2R)(n−m)`. The constants are those of the note and of KAPPA_BOUNDED_VERIFY §6: β = 3b/4, B′ = 5b/4 + 2R, D′ = 2R. The condition `u K = 1/g²` is not needed.
+5. (d): same trajectories, `m ≤ n ≤ K`, `8R/b ≤ n − m`: `u n + (b/2)(n−m) ≤ u m ≤ u n + B′(n−m)`. The lower constant is b/2, as in KAPPA_BOUNDED §5.4. This implies the b/8 form.
+
+Weaker than the note: continuity instead of C¹; γ is any admissible value (γ_Bal is not built in; with γ ≤ γ_Bal added by the caller, the note's γ is one instance); R ≥ 0 is derived, not assumed; K = 0 allowed in (b); (c′) and (d) hold for every trajectory with couplings in ]0, γ], not only those of (b). Same as the note: (5.1) is assumed for every pair k < K (all K), as in KAPPA_BOUNDED (5.1). Not formalized: history-dependent β (L5).
+
 ## Axioms
 
 ```
@@ -124,4 +145,5 @@ Notation: `Q₁ : ℝ^ι → ℝ^ρ₁`, `Q₂ : ℝ^ρ₁ → ℝ^ρ₂`, `Q = 
 'YmLean.abelian_share' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YmLean.Sab_values' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YmLean.βab' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.lemma_DDoublePrime' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
