@@ -108,18 +108,22 @@ theorem gauss_posDef {H : Matrix n n ℝ} (hH : H.PosDef) :
     exact Finset.sum_congr rfl fun i _ => by ring
   obtain ⟨hfi, hfv⟩ := gauss_prod hl
   have hint : ∫ ψ : n → ℝ, Real.exp (-(ψ ⬝ᵥ H *ᵥ ψ) / 2) = ∫ φ, f φ := by
-    rw [hfL, ← hmap.symm ▸ (integral_map hLm (hmap ▸ hf.aestronglyMeasurable)).symm, hmap]
-    rfl
+    have := integral_map hLm (f := f) (by rw [hmap]; exact hf.aestronglyMeasurable)
+    rw [hmap] at this
+    rw [hfL]
+    exact this.symm
   refine ⟨?_, ?_⟩
-  · rw [hfL, ← integrable_map_measure (hmap ▸ hf.aestronglyMeasurable) hLm, hmap]
-    exact hfi
+  · rw [hfL]
+    exact (integrable_map_measure (by rw [hmap]; exact hf.aestronglyMeasurable) hLm).1
+      (by rw [hmap]; exact hfi)
   · rw [hint, hfv, hH.1.det_eq_prod_eigenvalues, ← Finset.prod_pow, ← Finset.prod_mul_distrib,
-      ← Finset.prod_const, Finset.card_univ]
+      ← Finset.card_univ, ← Finset.prod_const]
     refine Finset.prod_congr rfl fun i _ => ?_
     have := hl i
     rw [Real.sq_sqrt (by positivity)]
     simp only [RCLike.ofReal_real_eq_id, id]
     field_simp
+    rfl
 
 /-- Same, unsquared: `∫ e^{−½⟨ψ,Hψ⟩} dψ = √((2π)^n / det H)`. -/
 theorem gauss_posDef_eq {H : Matrix n n ℝ} (hH : H.PosDef) :

@@ -66,3 +66,6 @@ Sum: each site is the far corner of d(d−1)/2 positive plaquettes, so c_d = √
 (3) Form bound for all A and the G^{−1} operator inequality: CORRECTED (constant only, C′_Π = C_Π + 2c_R(1 + κ²a_0²)). K(d, L, a) uniform; no circularity (uses Thm 3.1 for G′ only): CONFIRMED. The ℓ^{−2} term changes c_− by a factor 1 − O(Mα_0) only.
 (4) S2 closed given (KE′), printed statements, Lemma 2.1: CONFIRMED for G. [I-a] resolved by (3.16) (one constant a, ℓ^{d−2} weights). [I-a1] (a = 1 in Thms 3.1/3.3) stands. G_1 analogue: needed for (C) of G_1 (not for (K)); (3.135) has the same Ã structure, so it closes at P-sketch level from (3.137) + symmetry + Schur.
 Status: S2 CLOSED for G (conditional on (KE′), QE_INV 5.1/5.3, a = 1, [I-geom]). G_1 clause: P-sketch, one [I] on the kernel of Δ^{(2)}.
+
+
+Erratum (2026-10-28): [I-c] (QE_INV 5.3) is FALSE on the periodic lattice — every single-valued axial path rule has a seam carrying the Polyakov loop, with energy defect growing linearly in N (numerics/c_verify_seam.py). Lemma T of SOURCES_C_CONDITION (cut-off χ(d/D_0), D_0(d, L)) repairs it under side > c_T(d, L), implied by (Vol). Verified in SOURCES_C_CONDITION_VERIFY.

@@ -53,3 +53,6 @@ EU_VERIFY slope (item 5): their links were independent exp(εX), so per-plaquett
 (5) EU_VERIFY slope from non-regular links: CONFIRMED.
 (6) Open items: (KE) now [V] on the page incl. gradient, but for Q_95 (new gap). (H_Q): [R]; (139)/(143) are modulus bounds only; needs (124)–(125) + composition (144)/(150) + per-level holonomy comparison. S2: open (block cut-off vs sup norm).
 (C) regrade: NOT to "reduced to published (2.151) + (139)/(143) + S2". Accurate wording: "(C) PROVED CONDITIONALLY on (KE′) = (2.151) for the Q_98(1)-constrained free minimizer (or the dψ repair at all scales), (H_Q) (from CMP 98 (124)–(125), (144)/(150), ~1 page), S2, and torus side ≳ RM". Upgrade from UNSUPPORTED to CONDITIONAL is justified.
+
+
+Erratum (2026-10-28): [I-c] (QE_INV 5.3) is FALSE on the periodic lattice — every single-valued axial path rule has a seam carrying the Polyakov loop, with energy defect growing linearly in N (numerics/c_verify_seam.py). Lemma T of SOURCES_C_CONDITION (cut-off χ(d/D_0), D_0(d, L)) repairs it under side > c_T(d, L), implied by (Vol). Verified in SOURCES_C_CONDITION_VERIFY.

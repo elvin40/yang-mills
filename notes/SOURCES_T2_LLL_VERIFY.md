@@ -18,3 +18,7 @@ First flags to check: (i) Lemma V1 step (v) logic ("odd part = −tαS_1 + O_t(�
 Charged complex vector in field eB = α: 4D heat trace per volume (16π²t²)^{-1}(x/sinh x)(2 + 2cosh 2x), x = αt → 4 + (10/3)x² + O(x⁴). Complex scalar: 1 − x²/6.
 W = −τ log A_C4 + 2τ log 𝒢_C (Lemma 2.1 counting). x² coefficient of W per ∫dt/t: (16π²)^{-1}[10/3 + 2/6] = (11/3)/(16π²).
 H ≈ φ^{-2}·α²·(11/3)/(16π²)·ln(m²/α) = 4·(11/3)/(16π²) ln μ′ = (11/(12π²)) ln μ. n_2 = ½ (1 − cos φ ≈ φ²/2 per (0,1) plaquette), c_2 = 11·4/(24π²) = 11/(6π²): n_2c_2 = 11/(12π²). Matches the author's §5.3 by a separate route.
+
+## 4. Rerun of numerics/t2_lll_window.py (Mac, 15 s)
+All printed numbers reproduce §6 exactly: H_φ(3) = 0.124869, 0.121263, 0.119109, 0.117872; H_φ(5) = 0.183646, 0.177929, 0.174470, 0.172467; continuum h(3) = 0.116322, h(5) = 0.169938; h − (11/12π²) ln μ → 0.023444; τ(P_−)/(α/2π) = 1.00000; Mehler and evenness checks pass. Only quad roundoff warnings (U near the N–O eigenvalues).
+Closed form found by hand for the N–O constant: with F(x) = x log|x| − x, g(1, μ′) = (μ′ − 1)log|μ′ − 1| − (μ′ + 1)log(μ′ + 1). At μ′ = 1.5: −2.63730, /(8π²) = −0.033402 = script's NO_c. Large μ′: g = −2 ln μ′ − 2 + o(1).

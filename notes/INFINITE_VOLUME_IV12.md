@@ -6,7 +6,11 @@ Tags: [P] proved here (short, unverified); [V] quoted from a project file or pag
 Parent: INFINITE_VOLUME_PLAN.md §3.2 (rows V1–V9), §4.1, §5 (IV-1, IV-2).
 
 ## 0. Summary
-(pending; written at the end)
+- IV-1 [P]. The shooting set S(K, g) of Lemma D″ is the same for every torus. Reason: every β_j in Lemmas D′/D″ is Balaban's Z^d number (CMP 109 p. 264, (2.15); CMP 119 (2.24)), and every constant (C_β, b, R, γ_0, γ_Bal) is volume-free. (Vol) is not used in the proof; it gives the output its meaning on the ℓ-torus (B8). Theorem LOC is needed for consistency, not for the identity. Caveat: Lemma D″ gives a set, so the bare coupling must be chosen by an ℓ-free rule (e.g. max S(K, g)).
+- IV-2, (b). The normalizations 𝒩_K (Gaussian normalizations, U = 1 values, vacuum constants) cancel exactly in Z[f]/Z[0]. The two-sided bound (0.1) with e^{E_±|T_η|} does NOT cancel (upper and lower bounds are different functions; the log ratio is O(ℓ⁴)). But the current (S) does not use it: (S) comes from D4D5 Lemma C, whose constants contain no ℓ. ASSEMBLY_N1 §1 item 4 ("ℓ⁴ absorbed in C_S") is stale text.
+- IV-2, (c). The (12ℓ⁴)^n count and the whole-torus cell count of ASSEMBLY_N1 become support counts for supp F ⊂ B^n (Lemma N1-B): A_B ≤ C(1 + diam B)^q, q ≤ 12 proved (q ≈ 6 sketched).
+- IV-2, (d). FX Step B (the cluster expansion of the unit-scale integral on the ℓ⁴ lattice) is the only remaining ℓ-dependence. It enters Target 2 only through D4D5 Lemma C Steps 1–2 (locality of log I_K, needed for cumulants) and the constant in (NT). For moments of observables in a fixed ball, a local version suffices: after Step A, positivity of the unsourced unit-scale integrand plus a sup bound (L1) on the local source exponent gives ℓ-uniform moment bounds, with no Step B (§4.4). (L1) is the plan's IV-3 (CG) and is unproved.
+- Conditional statement (§6.2): under the Target 2 binding set and (FX-B∞), |S_{n,ε,ℓ}(F)| ≤ (C_*(1 + diam B)^q)^n (n!)^{1+η} ‖F‖_{6n} for supp F ⊂ B^n, uniformly in K ≥ K_0 and even ℓ > ℓ_0(B) = max(22M, ℓ_{A1}, ℓ_B, 16 max(diam B, 1)).
 
 Inputs read this session: INFINITE_VOLUME_PLAN.md (full); SOURCES_T2_KUNIF.md (full); SOURCES_T2_VOL.md (full); SOURCES_A15_LOC.md + _VERIFY (full); THEOREM2_PROOF_v4.md §1–§2.4; ASSEMBLY.md (full). Further inputs are listed at the head of each section.
 
@@ -133,7 +137,7 @@ Yes for MOMENTS, by positivity, without any unit-scale expansion. Statement:
 (L3) [W] W_K[f] = Σ_i W_K[z_i f_i] + W_conn[f], with |W_conn| ≤ C Σ_i |z_i|N(f_i)/r·(1 + log_L(2M/σ)) by Lemma C Step 9 restricted to polymers that meet supp f_i and at least one other support (count per support, not per pair) [P sketch]. Each W_K[z_i f_i] is a function of z_i alone. Split it as W^{(1)}_i z_i + W^{(2)}_i(z_i), W^{(2)}_i = O(z_i²). The factor e^{−W^{(2)}_i(z_i)} = 1 + O(z_i²) does not contribute to the multi-index (1, …, 1) derivative at 0. The linear part combines with the centring constant: for the centred field, a_i := −W^{(1)}_i − Σ_p f_i(x_p)c_ε + E_{ν_0}[∂_{z_i}Δ_f|_{z=0}] = ⟨ϕ(f_i)⟩ = 0. So the divergent linear constants (each O(ε^{−4}|supp f_i|)) sum to −E_{ν_0}[∂_{z_i}Δ_f|_0], which is bounded by sup|∂_{z_i}Δ_f| ≤ C_0 N(f_i)(1 + |supp f_i|_1)/r by (L1) and Cauchy. [P]
 Then Lemma IV-M of INFINITE_VOLUME_PLAN §4.2 applies with G(z) := exp(−W_conn[f] − Σ_i z_i E_{ν_0}[∂_{z_i}Δ_f|_0]) · E_{ν_0}[e^{Δ_f}]: ⟨e^{ϕ(f)}⟩ = Π_i e^{−W^{(2)}_i(z_i)} · G(z) on the polydisc (identity by Lemma D4.1 and holomorphic continuation), G is holomorphic, |G| ≤ exp(sup|W_conn| + 2 sup|Δ_f|), and Cauchy on radii ρ_i = c r/(N(f_i)(1 + |supp f_i|_1)) gives
   |⟨Π_i ϕ(f_i)⟩_{ε,ℓ}| ≤ e^{C n (1 + log_L(2M/σ))} Π_i (c r)^{−1} N(f_i)(1 + |supp f_i|_1),
-uniformly in ε AND ℓ. The factor (1 + log_L(2M/σ)) ≤ C_a σ^{−a}, as in D4D5 §5.1.
+uniformly in ε AND ℓ. The σ-factor is in the exponent: e^{Cn(1 + log_L(2M/σ))} = (e^{C}(2M/σ)^{a′})^n with a′ := C/ln L. So it is a power σ^{−a′n}, not σ^{−an} with a < 1. In the N1 exponent count this needs N > (5 + a′)n, i.e. s = ⌈5 + a′⌉ + 1 instead of 6. s stays fixed, which is all OS0/E0′ need. [P]
 Use in the bridge: ASSEMBLY_N1 §4.3 (Lah sum over cumulants) is replaced by this direct moment bound, with no n! at all; Lemma N1-B (§3.1) is otherwise unchanged. So the local version suffices for (H-U∞) of PLAN §3.1 step 1, conditionally on (L1).
 What the local version does NOT give: cumulant (connected) bounds with decay in the separation, hence no clustering; and no statement about log I_K. Neither is needed for the weak-sense target.
 Status: (L2), (L3), and the Cauchy step are [P] (short). (L1) is [I]; it is the plan's IV-3 (CG), in a slightly simpler form (no conditioning on V is needed once Step A has been done, because Step A already writes the large-field sum as exp of local unit-scale activities). It is the one new item.
@@ -196,7 +200,7 @@ The constant in (NT) is ℓ-uniform under the same hypothesis plus (E14-f); the 
 In words: Target 2's bounds for observables supported in a ball B are uniform in ℓ > ℓ_0(B), modulo Step B.
 
 ### 6.3 Without Step B
-Replace (FX-B∞) by (L1) of §4.4 (the post-Step-A form of the plan's (CG)). Then the same conclusion holds for moments, with (n!)^{1+η} replaced by 1 and C_* by e^{C(1 + log_L(2M/σ))}-type factors that N1 absorbs through σ^{−a} [P given (L1); §4.4]. In this route no row of the table is class (d), and the result also removes Step B from Target 2 at fixed ℓ (the plan's "side benefit") [I: (L1) is unproved; it is the plan's IV-3].
+Replace (FX-B∞) by (L1) of §4.4 (the post-Step-A form of the plan's (CG)). Then the same conclusion holds for moments, with (n!)^{1+η} replaced by 1 and with s = ⌈5 + a′⌉ + 1 in place of 6 (a′ = C/ln L from the factor e^{Cn log_L(2M/σ)}, §4.4) [P given (L1); §4.4]. In this route no row of the table is class (d), and the result also removes Step B from Target 2 at fixed ℓ (the plan's "side benefit") [I: (L1) is unproved; it is the plan's IV-3].
 
 ### 6.4 Corrections to existing files (not applied; this task writes only this file)
 1. ASSEMBLY_N1 §1 item 4 and §6 item 5: delete "ℓ⁴ is absorbed in C_S"; (S) comes from D4D5 Lemma C, whose constants contain no ℓ.
@@ -204,3 +208,13 @@ Replace (FX-B∞) by (L1) of §4.4 (the post-Step-A form of the plan's (CG)). Th
 3. INFINITE_VOLUME_PLAN §3.2 row V2: "not used by the current chain (stale N1 text)", not "NO as written". Row V3: confirmed; the fix is Lemma N1-B (§3.1), A_B polynomial with q ≤ 12. Row V4: confirmed as the only (d) row; Step B is used only in D4D5 Lemma C Steps 1–2.
 4. ASSEMBLY §0 "Lemma D″ gives existence, not uniqueness; any choice works below": for the infinite-volume route, "any ℓ-free choice" (§1.5).
 5. TRUST_LEDGER B19 uniformity clause "uniform in K, ε": Step B is uniform in K, ε at fixed ℓ only as a citation [R]; its transfer from CMP 116 §2 to the unit scale (no decaying covariance) is [I] even at fixed ℓ (§4.2 (B-i)).
+
+## 7. Ledger of this file
+[P] proved here (short, unverified): Lemma IV-1 and the closedness/selection of S(K, g) (§1); exact cancellation of 𝒩_K and O(ℓ⁴) non-cancellation of (0.1) (§2.2–§2.3); the finding that (S) ⇐ Lemma C does not use (0.1) (§2.4); Lemma N1-B with q ≤ 12 (§3.1); Step B enters only through Lemma C Steps 1–2 (§4.3); the reduction (L1)–(L3) ⇒ ℓ-uniform moments, including the cancellation of the divergent linear constants against the centring (§4.4); the table (§5) and Theorem IV-2 as an assembly (§6.2).
+[V] quoted from files or images read this session: CMP 122 II p. 356 (image: "E_−, E_+ independent of k, T_η, U_k"); KUNIF §2–§5; T2_VOL §1–§4; A15_LOC §5–§8 + VERIFY V4, V5, V7, V8; v4 §1.1–§2.4; ASSEMBLY (full); ASSEMBLY_N1 (full); D4D5 §3.1–§5.3; B21_S + VERIFY; FX §6–§7; FX_O23 l. 40–46, 78, 89; FX_R2 l. 36, 53–55; FX_R2_VERIFY l. 9–12; TRUST_LEDGER B19.
+[I] inferences: (H3) ℓ-freeness of γ_Bal beyond the quoted E_± sentence; the M ∣ ℓ form of (Conv); class (a) for FX Steps A, C, D (KP volume uniformity; LOC only for small-field activities); (B-i), (B-ii) as the reasons Step B is infrared and its transfer from CMP 116 §2 is unclear even at fixed ℓ; (L1); the sharper q ≈ 6.
+[R] standard: volume-uniform output bounds of a polymer expansion under a Kotecký–Preiss / Cammarota criterion.
+Not read (firewall): /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md. Not read (scope): SOURCES_FX_O1/O23/R2 in full (grep + parts only); Dimock III; CMP 116 §2 pages.
+No other file edited.
+
+STATUS: COMPLETE (unverified). Verifier focus: §1.4 (H3); §2.4 (does any live step still use (0.1)?); Lemma N1-B steps (2)–(4); §4.4 (L3) linear-term cancellation; whether Step A's per-component bounds are ℓ-free as claimed (row 13).
