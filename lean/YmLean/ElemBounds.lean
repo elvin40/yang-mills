@@ -118,10 +118,12 @@ theorem kMap_mono {cP c₁ c₂ Γ₁ Γ₂ : ℝ} (hcP : 0 ≤ cP) (hc₁ : 0 <
 /-- ORDER_CANON Lemma M2: ε^a = min{½δ, c/(16 C b Σ(½δ))} is increasing in δ and c and
 decreasing in b, given Σ decreasing (Σ(½δ₂) ≤ Σ(½δ₁), `schurSum_antitone`). -/
 theorem epsMap_mono {C δ₁ δ₂ c₁ c₂ b₁ b₂ S₁ S₂ : ℝ} (hC : 0 < C) (hδ : δ₁ ≤ δ₂)
-    (hc₁ : 0 ≤ c₁) (hc : c₁ ≤ c₂) (hb₂ : 0 < b₂) (hb : b₂ ≤ b₁) (hS₂ : 0 < S₂) (hΣ : S₂ ≤ S₁) :
+    (hc₁ : 0 ≤ c₁) (hc : c₁ ≤ c₂) (hb₂ : 0 < b₂) (hb : b₂ ≤ b₁) (hS₂ : 0 < S₂) (hS : S₂ ≤ S₁) :
     min (δ₁ / 2) (c₁ / (16 * C * b₁ * S₁)) ≤ min (δ₂ / 2) (c₂ / (16 * C * b₂ * S₂)) := by
   refine min_le_min (by linarith) ?_
-  have h1 : 16 * C * b₂ * S₂ ≤ 16 * C * b₁ * S₁ := by gcongr
+  have h1 : 16 * C * b₂ * S₂ ≤ 16 * C * b₁ * S₁ := by
+    have : 0 ≤ 16 * C * b₁ := by nlinarith
+    gcongr
   exact div_le_div₀ (by linarith) hc (by positivity) h1
 
 /-- ORDER_CANON Lemma M2 / amendment E4: e^{2Lδ} is increasing in δ (for L ≥ 0). -/

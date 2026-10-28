@@ -109,12 +109,12 @@ with W^{(2)} the nonlinear part of the contact functional W_ε (its linear part 
 Then, exactly, Z_ε[f] e^{−W^{(2)}[f]}/Z_ε[0] = E_ν[Γ_f] (tower property; this is the conditional form of the identity Z_ε[f] = 𝒩_K e^{−W_K[f]} I_K[f] of SOURCES_D4D5 §3 (a) [V]).
 
 (CG) [statement; status: needs new work, §4.2 end]. There are r > 0, a ∈ [0, 1[, C_0 < ∞, K_0, such that for all K ≥ K_0, all even ℓ > 22M, all n, all real f_1, …, f_n ∈ C¹ with pairwise distance of supports ≥ σ ∈ [16ε, 1], all complex z with |z_i| ≤ r/N(f_i), and ALL unit-scale fields V:
-  |Γ_{Σ z_i f_i}(V)| ≤ Π_i exp(C_0 σ^{−a}(1 + |supp f_i|_1)),
+  |Γ_{Σ z_i f_i}(V)| ≤ exp(C_0 σ^{−a} Σ_i (|z_i| N(f_i)/r)(1 + |supp f_i|_1)),
 where |X|_1 := number of unit cubes meeting X. The constants do not depend on ℓ, K, or V.
 
 Lemma IV-M (moments from (CG)) [P]. Assume (CG). Then for the same f_i:
-  |⟨ϕ(f_1) ⋯ ϕ(f_n)⟩_{μ_{ε,ℓ}}| ≤ Π_i r^{−1} N(f_i) exp(C_0 σ^{−a}(1 + |supp f_i|_1)), uniformly in ε and ℓ.
-Proof. z ↦ E_ν[Γ_{Σ z_i f_i}] is holomorphic on the polydisc (finite-dimensional integral at fixed ε, ℓ; W^{(2)} holomorphic on the (FX2) polydisc [I; ASSEMBLY_N1 §1 item 3 states that disjoint supports keep the polydisc in the (FX2) domain, citing SOURCES_UN1 §2.4, not re-read here]). Since ν is a probability measure, |E_ν Γ| ≤ sup_V |Γ| ≤ the (CG) bound. W^{(2)} is local and additive over disjoint supports, so it contributes nothing to the mixed derivative ∂_{z_1}⋯∂_{z_n} at 0 [V: SOURCES_VERIFY item 5(a), quoted in ASSEMBLY §2.2]. That mixed derivative is ⟨Π ϕ(f_i)⟩. Cauchy's estimate on the polydisc of radii r/N(f_i) gives the bound. ∎
+  |⟨ϕ(f_1) ⋯ ϕ(f_n)⟩_{μ_{ε,ℓ}}| ≤ e^{nC_0σ^{−a}} Π_i r^{−1} N(f_i)(1 + |supp f_i|_1), uniformly in ε and ℓ.
+Proof. z ↦ E_ν[Γ_{Σ z_i f_i}] is holomorphic on the polydisc (finite-dimensional integral at fixed ε, ℓ; W^{(2)} holomorphic on the (FX2) polydisc [I; ASSEMBLY_N1 §1 item 3 states that disjoint supports keep the polydisc in the (FX2) domain, citing SOURCES_UN1 §2.4, not re-read here]). Since ν is a probability measure, |E_ν Γ| ≤ sup_V |Γ| ≤ the (CG) bound. W^{(2)} is local and additive over disjoint supports, so it contributes nothing to the mixed derivative ∂_{z_1}⋯∂_{z_n} at 0 [V: SOURCES_VERIFY item 5(a), quoted in ASSEMBLY §2.2]. That mixed derivative is ⟨Π ϕ(f_i)⟩. Cauchy's estimate on the polydisc of radii ρ_i := r/(N(f_i)(1 + |supp f_i|_1)) ≤ r/N(f_i) gives Π_i ρ_i^{−1} · exp(C_0σ^{−a} Σ_i 1). ∎ The linear-in-|z| form of (CG) is what makes the bound polynomial in the support size, as E0′ needs. A bound of the form exp(C_0(1 + |supp f_i|_1)) without the factor |z_i| would give only exponential growth in the support volume, which is not enough for the Schwartz weights.
 Remarks. (i) No infrared input is used: the unit-scale theory enters only through "ν is a probability measure". This is where compactness of SU(2) does the work [I]. (ii) The bound is a MOMENT bound, polynomial in the support sizes, with no n! for separated products. Target 2's Gevrey factor came from cumulant combinatorics; moments avoid it. (iii) Lemma IV-M gives no decay in the separation. That is consistent: decay would be clustering (§4.3).
 
 Why (CG) is plausible, and what it needs [I].
@@ -123,4 +123,48 @@ Why (CG) is plausible, and what it needs [I].
 - The step that is NOT written: at FIXED V, the ratio (sourced gas)/(unsourced gas) is exp(local sum near supp f), with constants independent of ℓ and V. This is FX Steps A, C, D re-run conditionally on the unit-scale field, i.e. without the final integration over V. It does not need Step B. The divergence of the expected number of fine large-field cubes (SOURCES_D4D5 §3.2(ii) [V]) must be handled exactly as in FX §6.4 (fine large-field regions renormalized into R-terms at their own scale), now pointwise in V.
 - Risk. The unit-scale large-field set (where V itself is large) is fixed when V is fixed; its characteristic functions do not depend on f. If some R-operation at the last step mixes V-large regions with supp f nonlocally, (CG) can fail there [I; not checked against CMP 122 II §1].
 Status of (CG): needs new mathematics, but of the kind the project has done (a re-organization of verified FX/D3 material), not an infrared problem [I].
+
+### 4.3 (c) The window length ξ_g, and why uniqueness, clustering, and the gap are blocked
+Lemma IV-ξ [P, given Theorem 2w's window bound (c′) for the continued flow]. Continue the RG past the unit scale, steps K+1, …, K+m, with the same whole-lattice β_j. While all couplings stay in ]0, γ], (c′) gives
+  u_K − B′m ≤ u_{K+m} ≤ u_K − βm + D′,  u_K = g^{−2}.
+So the flow leaves ]0, γ] after m_* steps with (g^{−2} − γ^{−2})/B′ ≤ m_* ≤ (g^{−2} − γ^{−2} + D′)/β. In unit-cell lengths, ξ_g := L^{m_*} satisfies
+  (g^{−2} − γ^{−2}) log L / B′ ≤ log ξ_g ≤ (g^{−2} − γ^{−2} + D′) log L / β.
+With β = 3b/4, b = c log L, c = 0.3715 (v4 §3.3 [V]): log ξ_g ≤ (4/3)(g^{−2} − γ^{−2} + D′)/c. ∎
+[I: (c′) is proved for the windows of one shooting problem; its extension to steps beyond K uses the same window bound (5.1) on Σβ_i(0), which is stated for all levels, plus (H0) at those levels. Not checked line by line.]
+Reading.
+- By rescaling, the torus of side ℓ at terminal coupling g equals the torus of side ℓ/L^m at terminal coupling g_{K+m}, after m more steps. So the existing cumulant route (Target 2, including FX Step B) has constants uniform in ℓ for ℓ ≤ ξ_g/(22M) [I]. This is a finite, very large range. It is not infinite volume.
+- Above ξ_g the effective coupling exceeds γ. The side quest measured the gap between γ and the only proved strong-coupling radius: window ratio ≈ 4.8×10¹⁷ in β, and ≥ 10⁹ in g (PLAN.md, MASS_GAP_VERIFY and UNIT_SCALE_COUPLING lines, 2026-10-28 [V]; reports archived in archive/side_mass_gap/, not re-read). "Conclusion stands — not closable by constants." [V, PLAN].
+- E4 (clustering) and the mass gap are statements about distances ≫ ξ_g. They need control of the strongly coupled regime. Blocked. Jaffe–Witten [V, ASSEMBLY §4]: "New ideas are needed to prove the existence of a mass gap that is uniform in the volume of space-time."
+- Uniqueness of the infinite-volume limit has two parts. In ε it is E13 (comparison of two trajectories), open already at fixed ℓ [V, ASSEMBLY §4]. In ℓ it needs independence of the boundary condition, i.e. decay of boundary effects at distances ≫ ξ_g; without a gap no mechanism is known. Blocked.
+- What survives without E4 [I]: a limit state can be non-clustering. OS reconstruction then gives a vacuum space of dimension possibly > 1. The weak-sense statement says nothing about it.
+
+### 4.4 E1-R, full rotation invariance
+- Not a symmetry of any approximant (lattice + torus). ASSEMBLY §4 [V]: on the torus "the inclined comparison gives only the tilted-axis reflection symmetry … never a rotation".
+- In infinite volume the torus obstruction is gone; the lattice obstruction stays. A proof must show that the rotation-breaking lattice artifacts (gauge-invariant hypercubic operators of dimension ≥ 6) vanish in the limit. That is a quantitative convergence statement: compare the theory on a rotated lattice with the theory on the original lattice. It is of the same comparison type as E13, and it is stronger than compactness [I].
+- Literature [V, reports/EUCLID_INV_LIT §1a]: for lattice Φ⁴₃ subsequential limits "the rotational invariance remains unproven" (Gubinelli–Hofmanová on BFS). Watanabe (J. Stat. Phys. 54 (1989)) is cited there as an RG route for Φ⁴₃; the report did not read it.
+- Status: needs new mathematics; not within reach in this campaign.
+
+## 5. Lemma list for (IV-weak)
+
+Tags: WR = within reach (short proof or audit, existing material); NM = needs new mathematics; BL = blocked (needs infrared control or a comparison theorem not in sight). "T2 rows" = TRUST_LEDGER §4.2 rows the lemma inherits.
+
+| # | lemma | content | tag | depends on | T2 rows |
+|---|---|---|---|---|---|
+| IV-1 | trajectory is ℓ-free | g_0(K, g), (g_k) identical for all even ℓ > 22M | WR [I, §4.1]; one paragraph from KUNIF §3.2 + T2_VOL row 2 | Theorem 2w | A15, B6, B8 (replaced form), C31 |
+| IV-2 | UV per-polymer bounds are ℓ-uniform | every constant of steps k < K (small field, large field, R operation, FX Steps A, C, D) is independent of the torus side | WR as an audit [I]; most rows already say "uniform in volume" (§3.2 V7); Balaban states E_± independent of T_η [V] | Theorem 1 (A13) and its inputs | A1, A1w, A2, A3, A7, A8, A10, A13, B13, B16, B17, B19 (Steps A, C, D only) |
+| IV-3 | (CG) conditional source bound | §4.2, linear form, pointwise in the unit-scale field V | NM, moderate [I]: FX Steps A, C, D re-run at fixed V, no Step B | IV-2; sourced representation D2/D3; CMP 122 II (1.73) positivity; Balaban's positivity of ρ_K | B11, B18 (complex radius), B19 minus Step B, B21 structure, B22, C23 |
+| IV-4 | moments from (CG) | Lemma IV-M | proved here [P] | IV-3; ν a probability measure | — |
+| IV-5 | (H-U∞) for general F ∈ C_c^∞(B^n) ∩ ⁰S_n | ASSEMBLY_N1's Whitney decomposition and flatness lemma, with moments (IV-4) in place of the cumulant bound (S), and \|B\| in place of ℓ⁴ (V3) | WR [I]: the N1 machinery is support-local; the cumulant-to-moment step disappears. Must recheck the fine region σ < 16ε and the σ^{−a} bookkeeping | IV-4; ASSEMBLY_N1 Lemmas T, P | B21, X2 |
+| IV-6 | compactness | diagonal extraction over an exhaustion of R⁴ | proved here [P sketch, §3.1 step 2] | IV-5 | — |
+| IV-7 | E0′ | linear growth with Schwartz weights; polynomial growth of A_B | WR [P sketch, §3.3]; needs the linear form of (CG) | IV-5, IV-6 | X2 |
+| IV-8 | E1-T, E1-H | continuous translations; B_4 | proved [P, ASSEMBLY §2.6 unchanged] | IV-5 | — |
+| IV-9 | E2 | RP across x_0 = 0 for supports in x_0 > 0 | proved given X3 [P, ASSEMBLY §2.7; the second seam is at distance ~ℓ/2] | IV-5, lattice RP | X3, C18 (ℓ even) |
+| IV-10 | E3 | symmetry, reality | proved [P, ASSEMBLY §2.8] | — | — |
+| IV-11 | nontriviality, ℓ-uniform | ASSEMBLY §1.4 with (NT) constants independent of ℓ; the remainder (d/ℓ)² improves | same status as T2's B-NT (open: (E14-f)); its ℓ-uniformity needs a (CG)-type conditional version [I] | IV-3, (NT) | B-NT row of ASSEMBLY §3 |
+| IV-12 | E1-R, full O(4) | rotated-lattice comparison | NM; not in reach (§4.4) | comparison theorem of E13 type | — |
+| IV-13 | uniqueness of the limit | in ε (E13) and in ℓ (boundary independence) | BL (§4.3) | E13; infrared control | — |
+| IV-14 | E4 clustering, mass gap | decay beyond ξ_g | BL (§4.3); window ≥ 10¹⁷ in β | strong-coupling control | — |
+
+Net dependency [I]. (IV-weak) without E1-R = Target 2's whole binding set (17 A + X2–X5 + 21 B, TRUST_LEDGER §5), MINUS the unit-scale part of B19 (FX Step B), PLUS IV-2 (audit) and IV-3 ((CG)). Everything else is a short argument already written in ASSEMBLY, with ℓ⁴ replaced by support volumes.
+Order of work. IV-1 and IV-2 first (audits, cheap, and IV-2 can fail visibly: one row whose constant hides |T|). Then IV-3, the only NM item. Then IV-5 (bookkeeping). IV-4, IV-6–IV-10 are done above or in ASSEMBLY.
 
