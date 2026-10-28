@@ -183,3 +183,36 @@ URL: github.com/CaptainSude/Not-an-attempt-at-proving-existence-of-YM4/tree/main
 - Caveat: all LLM-written repositories above (Sussman–Alpöge, CaptainSude, MathePhysics, Aronow–Lopatto) are unverified by their own statements. Their claims are structural guidance, not citable proofs.
 
 Local copies used during the sweep were in /tmp/oai_sweep (deleted after writing); all sources are re-fetchable from the URLs above. Searches used: about 20 WebSearch calls, plus GitHub API and direct downloads.
+
+## Sweep 2026-10-28 (afternoon)
+
+Scope: changes since the 10-27 sweep. 8 searches (standard plus one extended), 2 fetches, GitHub and arXiv API checks via curl. The search tool is weak on this topic; API checks carry the main evidence. Tags: [public artifact] / [claim only] / [rumor]. Quotes are at most 15 words.
+
+### Q1. OpenAI (Yang–Mills Sept 9, QCD Sept 18, Lean Oct 16)
+- github.com/openai/math, commits API, 2026-10-28: newest commit still 2026-10-26T21:18Z. No new paper, Lean code, or YM family. [public artifact: no change]
+- scientificamerican.com/article/openai-just-scooped-human-researchers-on-a-million-dollar-quantum-math-problem/, 2026-10-27: "The company has yet to release the proof." [claim only]
+- Same article: only Michael Douglas is quoted ("a major advance"). No statement by Gross, Jaffe, Klebanov, or Nekrasov. No volume statement and no mention of Theorem 2. [claim only]
+- github.com/monocap-tech/yangmills, status review 2026-10-27: says OpenAI announced an existence result on Balaban's approach, with no positive mass gap claimed. Third-party summary, not primary. Silent on volume and Theorem 2. [claim only]
+- No referee statement, volume statement, or mass-gap statement by named holders found. [not found]
+
+### Q2. Sussman–Alpöge
+- github.com/ethanwsussman/Yang--Mills-LLM-experiment, API 2026-10-28: last push 2026-10-27T10:45Z (message "Add dated YMM1 revision and change list"). No push since the 10-27 sweep. Stars 67 to 70. [public artifact: no change]
+- Earlier 10-26/27 commits: culled YM3 half "establishing the axioms for field bilinears". Already covered in section 2. [public artifact]
+- No new preprint, post, or repository found. Woit's front page still ends at "Secret Unified Physics Slop" (?p=15948, 10-26). [not found]
+
+### Q3. Other new public work
+- arXiv API, YM with Balaban/constructive/RG terms, newest first: nothing constructive after 2026-10-15 (latest hit 10-26 is "Nonabelian Higgs fields from minimal submanifolds", unrelated). [public artifact: none]
+- GitHub repository search (balaban, yang-mills+lean, 4d RG; created after 10-26): zero results. [not found]
+- scottnarmstrong/balaban-lean: last commit 2026-10-22 (O(N) program, not gauge). No change. [public artifact: no change]
+- No X/Twitter or blog post by named physicists found. Search tool does not index X. [not found]
+
+### Q4. Has Balaban's Theorem 2 been proved or published by anyone?
+- Search "Bałaban Yang-Mills Theorem 2 proof completed" returned only old Balaban papers and unvetted Zenodo/aggregator claims. No credible source says so. [not found]
+- Sussman–Alpöge and OpenAI statements, as read in sections 2 and 7, do not claim Theorem 2 in its literal form. [claim only]
+
+### Delta since the 10-27 sweep
+1. OpenAI: no new release. openai/math is unchanged since 2026-10-26T21:18Z, and Scientific American still says the proof is unreleased.
+2. Named holders: only Douglas is quoted ("a major advance"). No statement from Gross, Jaffe, Klebanov, or Nekrasov. No volume or mass-gap statement.
+3. Sussman–Alpöge: no push since 2026-10-27T10:45Z. No new preprint or post. Stars 67 to 70.
+4. Other work: no new arXiv listing, GitHub repository, or Lean project on 4D YM or Theorem 2. One third-party status page (monocap-tech/yangmills) only relays OpenAI's announcement.
+5. Theorem 2: no source says anyone proved or published it. Search coverage is thin (no X, no email lists), so this is absence of evidence only.
