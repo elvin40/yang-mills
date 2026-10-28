@@ -75,3 +75,4 @@ Two composed steps at L = 2, p = 0.2, box GPU, Ng = 8: β_1 + β_2 = 0.953 (Ng =
 
 β_1(0) single step, SU(2), fixed Lp where noted: L = 5: 0.749 (Ng=12, p=0.1), fit 0.743; L = 7: 0.803 (Ng=8, Lp=0.5). First-step constant β_1 − c log L: 0.372 (L=2), 0.256 (3), 0.242 (4), 0.145 (5), 0.080 (7): decreasing toward the universal slope. Queue continues to L = 15.
 L = 9 (box, Ng=8): β_1 = 0.833 (Lp=0.5), 0.846 (Lp=0.9), 0.851 (Lp=1.0) [c log 9 = 0.816]: first-step constant ≈ +0.02, nearly zero.
+L = 11 (box, Ng=8): β_1 = 0.850 (Lp=0.5), 0.868 (Lp=1.0) [c log 11 = 0.891]: first-step constant −0.04 at Lp=0.5 (Ng=8 grid adequacy at L=11 unchecked). Sequence of constants β_1 − c log L for L = 2,3,4,5,7,9,11: +0.37, +0.26, +0.24, +0.15, +0.08, +0.02, −0.04.
