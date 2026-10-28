@@ -58,7 +58,7 @@ Repeated derivatives ∂_{t_i}^k, k ≥ 2, or general multi-indices α at one so
 ### 3.1 Cutoff-derivative count [read + derived]
 - The cutoff bound (D) (ASSEMBLY_N1 §3.1, CONFIRMED in HHIST_N1_VERIFY Part 2) is on spatial x-derivatives of Φ_m, Θ_m, χ_c, with |β_i| ≤ 10 (6 used: M(G) in §3.4, L_i³ in §4.1). These are derivatives of the test function F. They give the Fourier decay of γ_k. They are never derivatives in the source t.
 - The source side uses one t-derivative per bump (§1.3). So the two counts are independent: (D) does not change the multi-index (1,…,1), and (E14-c, R) does not need any F-derivative. No double counting.
-- Bump regularity: N_U is C¹, and ψ_i needs |∂^α ψ_i| ≤ C_ψ h^{−|α|} only for |α| ≤ 1 (§4.1). Then N_U(ψ_i cos/sin) ≤ C′(1 + |q|) h^{−1}/ρ_1-weighted, the value used in §4.4. Σ_k Π_i (1 + |k_i|)(1 + |k_i|²)^{−3} converges in Z⁴ (exponent 5 > 4), as §4.4 needs.
+- Bump regularity: N_U is C¹, and ψ_i needs |∂^α ψ_i| ≤ C_ψ h^{−|α|} only for |α| ≤ 1 (§4.1). Then N_U(ψ_i cos/sin) ≤ C′ ρ_1^{−1} (1 + |q|) h^{−1} (ρ_1 ≤ r, h ≤ 1), the value used in §4.4. Σ_k Π_i (1 + |k_i|)(1 + |k_i|²)^{−3} converges in Z⁴ (exponent 5 > 4), as §4.4 needs.
 - Editorial inconsistency found (not a gap). ASSEMBLY_N1 §4.2 still writes N(g^{R,I}) ≤ C_ψ′(1 + |q|)^5 h^{−5}, a C⁵-era string not caught by the F9 alignment. It is a true upper bound (h ≤ 1) but it is not the value §4.4 uses; with (1 + |q|)^5 the Fourier sum against (1 + |k|²)^{−3} would diverge in Z⁴ (5 − 6 = −1 > −4). §4.4 uses (1 + |k_i|) h^{−1}, which is the correct C¹ value. Suggested fix (not applied; this task edits no existing file): in §4.2 replace "(1 + |q|)^5 h^{−5}" by "(1 + |q|) h^{−1}".
 
 ### 3.2 σ = 16ε [read + derived]
@@ -67,3 +67,20 @@ Repeated derivatives ∂_{t_i}^k, k ≥ 2, or general multi-indices α at one so
 - min diam ≤ σ: D/σ_m = 3/8 (ASSEMBLY_N1 §4.1). Consistent with §2.3.
 - Fallback unchanged: if (S) held only for σ ≥ ε^θ, the bridge closes with s = max(s_0, ⌈4/θ⌉ + 1) (SOURCES_B21_S §1). The mapping adds no threshold.
 
+
+## 4. Verdict
+
+(E14-c), in the C^∞ real-source form that the (B-N1) bridge consumes, is PROVED from D4D5 Lemma C + (S) [P here, relative to verified inputs]:
+- The consumed object is κ_n = ∂_{t_1}⋯∂_{t_n} log Z_ε[Σ t_i f_i] at t = 0, real separated f_i, all n ≥ 2 (§1.3).
+- Real-analyticity at fixed ε is elementary (P1). The bound on the real derivative is the Cauchy estimate on each local activity's (FX2) polydisc, summed by Lemma C Steps 2–9 (P2–P5). No global complexification; R-denominators are covered by FX_O23 O2.
+- Inequality: |κ_n| ≤ (C_Sσ^{−a})^n (n!)^{1+η} Π N_U(f_i), C_S = 2·4C_A^{1/2}·C_B·C_{a,1}·C_{a,2}·C_η, uniform in K, position, and h, for σ ∈ [16ε, ℓ/8], min diam ≤ σ (§2.3–§2.4).
+- Cutoff-derivative count and σ = 16ε: consistent (§3).
+No new input and no new reading. The inputs are those of the (S) clauses: Lemma C [verified], S1 at all scales m ≥ 0, (FX) in the main (1.98) form (ledger C13), the coarsest-scale (FX2) radius (else order 2 + η, D > 2), the B19 residue, and D2 §4.3 [reduced].
+
+Not proved, and not needed for T2: the general-multi-index / C^{m+1}-on-an-interval form of the SOURCES.md wording (repeated source arguments; the Lemma 7.1 interpolation route). That form belongs to E13/(N2), which ASSEMBLY marks NOT NEEDED. If a later consumer needs it, D2 §8.5 + D3R §4.1 give Gevrey order 2 + η; that would need its own check. No page of Balaban needs reading for the consumed form.
+
+Pointer correction. The brief points to "SOURCES_FX_R2.md §(C13)". SOURCES_FX_R2.md has no C13. C13 is TRUST_LEDGER row C13 ("Use Balaban's main R-step form (1.90)–(1.98), not the optional (1.103)–(1.104)"), source SOURCES_FX_O23_VERIFY §5.
+
+Suggested TRUST_LEDGER B21 text (not applied): "(E14-c) clause: the consumed real-source form (mixed (1,…,1) derivatives at t = 0 for real separated sources, all n) is Lemma C read at the real point: Cauchy on each (FX2) polydisc, no global complexification (SOURCES_B21_E14C, [P], unverified). Same inputs as the (S) clauses. The general-multi-index / interpolation form is E13-only, not needed."
+
+Status: [derived here, unverified]. Verifier targets: (a) P2, the finiteness of the polymer sum at fixed K and the term-by-term real derivative; (b) the claim in §1.3 that no T2 step uses repeated source arguments or Lemma 7.1; (c) the §4.2 editorial string in ASSEMBLY_N1.

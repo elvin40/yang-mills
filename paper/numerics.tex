@@ -1,7 +1,7 @@
 \section{Numerical and certified results}\label{sec:numerics}
 
-This section collects the numerical results that support the hypotheses of Section~\ref{sec:flow}. Sections~\ref{sec:beta1}--\ref{sec:routeKnum} give the one-loop increments and the per-level quantities of the Route K proof. Sections~\ref{sec:numH2}--\ref{sec:enclosure} give the values of (H2), the one-step values, and one rigorous point enclosure. Section~\ref{sec:certH2} proves (H2) at $L=13$ (Theorem~\ref{thm:H2cert}, certified). Section~\ref{sec:cert} gives the original plan for a cell certificate, now an independent cross-check at $L=13$.
-SU(2), infinite volume, Balaban's normalized-trace units. Except for Sections~\ref{sec:enclosure} and~\ref{sec:certH2}, none of this is certified. Only odd $L$ is inside the proofs; $L=2,4$ use corner blocks and are outside them.
+This section collects the numerical results that support the hypotheses of Section~\ref{sec:flow}. Sections~\ref{sec:beta1}--\ref{sec:routeKnum} give the one-loop increments and the per-level quantities of the Route K proof. Sections~\ref{sec:numH2}--\ref{sec:enclosure} give the values of (H2), the one-step values, and one rigorous point enclosure. Section~\ref{sec:certH2} proves (H2) at $L=13$ (Theorem~\ref{thm:H2cert}, certified). Section~\ref{sec:numr7} adds the certification at $L=15,17,21$, the round-7 checks of the 2D gap and the neutral sector, and one open tension. Section~\ref{sec:cert} gives the original plan for a cell certificate, now an independent cross-check at $L=13$.
+SU(2), infinite volume, Balaban's normalized-trace units. Except for Sections~\ref{sec:enclosure}, \ref{sec:certH2}, and the first paragraph of Section~\ref{sec:numr7}, none of this is certified. Only odd $L$ is inside the proofs; $L=2,4$ use corner blocks and are outside them.
 
 \subsection{First increment $\beta_1(0)$}\label{sec:beta1}
 
@@ -17,7 +17,7 @@ $L$ & $\beta_1(0)$ & how & $b=c\log L$ & $\beta_1-b$ & status \\ \hline
 9 & 0.833 ($Lp=0.5$); 0.846 ($Lp=0.9$), 0.851 ($Lp=1.0$) & umklapp code, Windows, $N_g=8$ & 0.8163 & $\approx+0.02$ & \status{numerical} \\ \hline
 11 & 0.850 ($Lp=0.5$); 0.868 ($Lp=1.0$) & umklapp code, Windows, $N_g=8$; $N_g=8$ grid adequacy at $L=11$ unchecked & 0.8908 & $\approx-0.04$ & \status{numerical} \\ \hline
 \end{longtable}
-The first-step constant $\beta_1-c\log L$ is $+0.37,\,+0.26,\,+0.24,\,+0.15,\,+0.08,\,+0.02,\,-0.04$ for $L=2,3,4,5,7,9,11$. It decreases with $L$ and changes sign between $L=9$ and $L=11$. $\beta_1(0)$ itself stays positive at every $L$ computed. The umklapp code was validated against \texttt{ym\_momentum} to $10^{-12}$ per $K$ by its author; no independent verifier for the $\beta_1$ values at $L\ge5$. The queue continues to $L=15$ on Windows. No value at $L>11$ exists yet.
+The first-step constant $\beta_1-c\log L$ is $+0.37,\,+0.26,\,+0.24,\,+0.15,\,+0.08,\,+0.02,\,-0.04$ for $L=2,3,4,5,7,9,11$. It decreases with $L$ and changes sign between $L=9$ and $L=11$. $\beta_1(0)$ itself stays positive at every $L$ computed. The umklapp code was validated against \texttt{ym\_momentum} to $10^{-12}$ per $K$ by its author; no independent verifier for the $\beta_1$ values at $L\ge5$. The queue continues to $L=15$ on Windows. No value at $L>11$ exists yet. Round 7: the decrease does not level off, and the slope of $\beta_1$ in $\log L$ is well below $c$; this is an open tension (Section~\ref{sec:numr7}).
 
 \subsection{Later increments ($L=2$ only)}\label{sec:later}
 \begin{longtable}{|p{3.4cm}|p{7.2cm}|p{4.4cm}|}
@@ -125,6 +125,32 @@ Verification. \file{H1_ANALYTIC_VERIFY} rederives the split, Lemmas S, G, the to
 \item \texttt{bb\_arb.py}: audited line by line and checked against the float program on 30 boxes; not formally verified. It trusts python-flint arb and IEEE correctly rounded $+,-,\times,\div,\sqrt{\ }$.
 \item Independent cross-check: the box sweep of the cell certificate (Section~\ref{sec:cert}) is running; its result is not in yet.
 \end{itemize}
+
+\subsection{Round 7: more certified $L$, the gap and neutral-sector checks, and an open tension}\label{sec:numr7}
+
+\paragraph{(H2) at $L=15,17,21$ \status{certified (interval arithmetic, outward rounding; verified)}.} The program \file{numerics/h1analytic/bb_arb.py} of Theorem~\ref{thm:H2cert} was run with target $L-1$ on the initial grid $n_0=16$ of the sorted chamber (3{,}876 boxes, no refinement). The lemmas behind the majorant $B_L$ are stated for odd $L\ge3$, and $B_L$ does not depend on $j$. A full rerun on the Mac covered all boxes, with 0 failed leaves.
+\begin{longtable}{|c|c|c|c|c|c|}
+\hline
+$L$ & $\sup_{j,K}\rho_1^2\le$ & target & $F_{\max}$ & $G_{\max}$ & rerun time \\ \hline
+15 & 13.737723 & 14 & 10.020 & 4.005 & 33\,s \\ \hline
+17 & 12.826432 & 16 & 10.020 & 3.061 & 51\,s \\ \hline
+21 & 11.776985 & 20 & 10.020 & 1.951 & 113\,s \\ \hline
+\end{longtable}
+So $\rho_2\le\sup\rho_1^2<L$ by \texttt{rho2\_le}, and (H2) holds at $L=15,17,21$, with the same standing and the same residue as at $L=13$ (Section~\ref{sec:certH2}). Sources: \file{numerics/H1_OTHER_L.md}; verifier \file{H2_CERTIFY_L15_17_21_VERIFY.md}. The verifier reproduced the worst cell, $F_{\max}$, and $G_{\max}$ at each $L$ to the printed digits, checked 9 spot cells, and found $B_L\ge\rho_1^2$ at 5 points of an independent $H_j$ (ratio $\ge1.63$). The full sweep of 896 cases $B_L\ge\rho_1^2$ and the production cross-checks were done at $L=13$ only; neither affects the proof logic. These values of $L$ are not used by the targets (ledger C3).
+
+\paragraph{The 2D gap (G$_A'$) \status{numerical}.} The proof of Theorem~\ref{thm:GAprime} covers only $|ef|\le10^{-4}$. Numerics (\file{numerics/t2_gaprime2_check.py}; reproduced by the verifier, 141 values) show the gap on all of $\alpha=ef\in(0,3.02]$: at 11 rational fluxes with denominators up to 2213, the smallest $|\text{eigenvalue}|$ of $A'$ is $|\alpha|(1-0.125|\alpha|)$, so the ratio to $|\alpha|$ is $\ge0.95$; a sparse shift-invert run at $\alpha=10^{-4}$ gives the ratio $1.0000125$. Round 7 (\file{SOURCES_T2_FRANGE.md}) shows that ($M_j$) needs the gap only on a punctured neighbourhood of $f=0$. So these values are supporting evidence, not proof inputs.
+
+\paragraph{The neutral sector of ($M_j$) \status{numerical, reproduced}.} Model: the 2D $N\times N$ torus of \file{SOURCES_T2_S123.md} \S6, Landau gauge, flux $\varphi=2\pi m/N$ per plaquette, the operator $4\,\mathrm{Hess}+D_rD_r^T$ restricted to the neutral (colour-3) block. Prediction: the spectrum is $\bigcup_K\{l(K),\cos\varphi\,l(K)\}$, with exactly $d=2$ zero modes (the constant 1-forms). Author's run (\file{numerics/t2_mjrest_neutral.py}): $N=12$--48, $m=0$--2, maximal deviation from the prediction $\le4.9\cdot10^{-8}$ (the finite-difference floor), two zero modes at every flux, gap $\cos\varphi\cdot4\sin^2(\pi/N)$ to relative error $\le8\cdot10^{-8}$. Verifier's run (\file{numerics/t2_mjrest_verify_neutral.py}): the author's JSON is reproduced bit for bit, and at new sizes
+\begin{longtable}{|c|c|c|c|c|c|}
+\hline
+$N$ & $m$ & $\varphi$ & zero modes & first positive & $\cos\varphi\cdot4\sin^2(\pi/N)$ \\ \hline
+36 & 3 & 0.5236 & 2 & 0.02631374 & 0.02631374 \\ \hline
+20 & 3 & 0.9425 & 2 & 0.05753652 & 0.05753652 \\ \hline
+64 & 2 & 0.1963 & 2 & 0.00944548 & 0.00944550 \\ \hline
+\end{longtable}
+The zero modes span the two constant 1-forms (residual $\le5.6\cdot10^{-7}$), and the charged--neutral leak is 0. Limits: 2D, Wilson level ($t=0$, no Ba{\l}aban averaging), rational fluxes. The level-$j$ neutral symbol is not checked numerically; Theorem~\ref{thm:Mj} uses only the bounds (N1), (N2).
+
+\paragraph{Open: the single-step $\beta_1$ against $c\log L$.} \file{SOURCES_T2_F_STEPB.md} \S3.3 takes the extrapolated single-step values $\beta_1(Lp\to0)=0.743,\,0.797,\,0.827,\,0.844$ at $L=5,7,9,11$. The constants $\beta_1-c\log L$ are $0.145,\,0.074,\,0.010,\,-0.047$. The local slopes $d\beta_1/d\log L$ are $0.161$ ($5\to7$), $0.119$ ($7\to9$), and $0.084$ ($9\to11$), and they decrease with $L$. Fits give slopes $0.129$ ($a+s\log L$), $0.052$ ($a+s\log L+d/L^2$), and $-0.18$ ($a+s\log L+d(\log L)^2/L^2$). None is near $c=0.3715$. The first-step constant falls by about $0.06$ per step and does not level off at $L\le11$. So the reading of \file{NUMERICS} \S7, ``decreasing toward the universal slope'', is not supported by these data, and that claim is under verification. Open: whether $0.3715$ is compared with the right quantity (a single-step $\beta_1$ at each $L$ is a different family from the fixed-$L$ sequence $\Lambda=L^j$ of Theorem 3.1 of \file{BETA_FP_H.md}), or whether the gap sits in the coarse bracket, in the dependence on the family, or in the $N_g=8$ grid at $L\ge9$ (unchecked). This tension is \status{open}. It bears on ledger B3 and possibly on B4 through Theorem 3.1 of \file{BETA_FP_H.md}.
 
 
 \subsection{Certification plan and $j_0$ \status{designed; superseded at $L=13$ by Section~\ref{sec:certH2}}}\label{sec:cert}
