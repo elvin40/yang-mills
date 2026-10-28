@@ -63,3 +63,9 @@ First observations, to check:
 10 ghost level independence: CONFIRMED (ghost depends only on one-step kernels; identical across N in the JSONs).
 11 β_1 + β_2 vs composed 0.967: UNSUPPORTED as a check (composed code unconverged by 16% at Ng 4 -> 6).
 12 interpolation caveat: CORRECTED (nested grid not exact: agreed; add the Nyquist fix; level-1 data can be evaluated exactly at the needed momenta, so β_2 need not depend on N at all).
+
+## 9. Follow-up: numerics/betafp_recursion_v2.py (original untouched)
+- Changes: Nyquist shell split half/half in Data.eval and Level.grid; grid streamed over (m_0, m_1) (explicit DFT on axes 0,1, FFT on 2,3); next_data writes one file per m_0 slice to a cache dir (skip-if-done), frees the old data before assembly; increment writes per-m_0 partial sums (skip-if-done); level0_data built in place; schur returns copies; output tag betafp_v2_* (avoids collision with v1 JSONs); cache removed after each JSON.
+- Root cause of the box OOM (also in v1): schur returns S2 = (...)[:, nK:, nK:], a view that pins the full (64, 204, 204) complex array (42 MB) per batch; next_data keeps all of them. N = 16: 1024 batches -> ~43 GB. Fixed by .copy().
+- Validation (Mac): j = 0 w diff 2.5e-16; off-grid Hermiticity 3e-14 (D0), 7e-14 (D2) at level 1, N = 6; grid vs eval 8e-15; β_2 N = 8: 0.333337118 (v1 0.341190), N = 12: 0.316792849 (v1 0.316810). Abelian changes at the tabulation-error level: N = 4 j = 1,2: -5.1e-3, -2.4e-2 (v1 -2.4e-3, +5.1e-3); N = 6: +1.6e-4, +8.2e-4 (v1 +2.4e-4, +2.0e-3); N = 8 j = 1,2,3: -1.7e-5, -1.3e-4, -3.8e-4 (v1 ~-5e-5 at j = 2, ~1e-5 at j = 3).
+- Peak RSS (/usr/bin/time -l): N = 8, Ng = 8: 2.35 GB; N = 12, Ng = 8: 3.88 GB (before the copy fix); abelian N = 8: 1.66 GB; N = 16 tabulation plateau 3.0 GB (after the fix, first two slices). Expected N = 24: ~6 GB (level data 4 x 0.76 GB + ~2.2 GB base/batch + assembly transient 1.5 GB).
