@@ -297,7 +297,7 @@ Shared inputs: (H0), L5, (G2), odd $L$ ($>11$ for (H0)), and the identification 
 
 \subsection{The hypothesis (B2) of Route K, and the single uniform inequality (H2)}\label{sec:H2}\label{sec:B2}
 
-Both routes need a bound on the coarse symbols that is uniform in the level. This section states that bound for Route K, records what is proved and what is refuted, and reduces it to the inequality (H2). The numerical values of (H2) and its certification status are in Sections~\ref{sec:numH2}--\ref{sec:cert}.
+Both routes need a bound on the coarse symbols that is uniform in the level. This section states that bound for Route K, records what is proved and what is refuted, and reduces it to the inequality (H2). The numerical values of (H2) are in Sections~\ref{sec:numH2}--\ref{sec:cert}. At $L=13$, (H2) is a certified theorem (Theorem~\ref{thm:H2cert}, Section~\ref{sec:certH2}).
 
 (B2): $\sup_{j\ge0}\sup_{K\in\BZ}|\sigma_j^{(2)}(K)|<\infty$. Weaker form that suffices, (B2w): $\sup_j\int_{\BZ}|K|^{-2}|\sigma_j^{(2)}(K)|\,d^4K<\infty$ ($\sigma^{(2)}$ enters $d_j$ only undifferentiated; \file{KAPPA_BOUNDED} Remark 2.3) \status{proved+verified: not graded by name; implied by \file{KAPPA_BOUNDED_VERIFY} \S9(iv)}.
 
@@ -340,16 +340,16 @@ Here ($C1\sigma$) is $\sup_j\sup_K|\partial_K\sigma_j^{(1)}(K)|<\infty$ (Section
 \item Submultiplicativity: $\rho_2\le\rho_1^2$ always. At $L=3$ the gain of the two-step map is that this is strict by a factor 1.50 (2.064 vs 3.098) [CONFIRMED].
 \end{itemize}
 
-\subsubsection{One-step sufficiency \status{arithmetic proved; inputs numerical}}\label{sec:onestep}
+\subsubsection{One-step sufficiency \status{arithmetic proved; input certified at $L=13$}}\label{sec:onestep}
 $\|H_{(2),j}(K)\|\le\max_l\|H_{j-1}(k_l)\|\cdot\|H_j(K)\|\le L^2\rho_1^2$. So $\rho_1^2<L$ implies (H2), and then the one-step $C^1$ recursion of \file{B2_TWOSTEP} (2.2) contracts with factor $\rho_1^2/L$.
-At $L=3$ the measured $\rho_1^2$ exceeds $L$, so the one-step route fails and the two-step map is needed; at $L=5$ and $L=7$ the measured $\rho_1^2/L$ is below 1. The values are in Section~\ref{sec:numonestep}.
+At $L=3$ the measured $\rho_1^2$ exceeds $L$, so the one-step route fails and the two-step map is needed; at $L=5$ and $L=7$ the measured $\rho_1^2/L$ is below 1. The values are in Section~\ref{sec:numonestep}. At $L=13$ the input is certified: $\sup_{j,K}\rho_1^2\le10<13$ (Theorem~\ref{thm:H2cert}), so (H2) holds there with $\rho_2\le10$.
 
 \subsubsection{The precise remaining inequality}\label{sec:remainingineq}
 At a fixed odd $L\ge3$ the single uniform hypothesis is (H2).
 \begin{itemize}
 \item Route K: (H2) $\Rightarrow$ ($C1\sigma$) (Theorem C1) $\Rightarrow$ (B2) (Theorem B2) \status{proved+verified, conditional on (H2)}.
 \item Route B: (H2) + (T1) $\Rightarrow$ (U), and (H2) $\Rightarrow$ the vertex bound for $\gamma_{rec}$ in ($B\theta$) (\file{BETA_FP_U} Theorem 2.4, Prop.\ 3.2) \status{proved, unverified}.
-\item Status of (H2): \status{numerical at $L=3,5,9$; certification open}. At $L=9$ there is one point only. No value exists at $L>11$ (Balaban's range), so the numbers are supportive only.
+\item Status of (H2): at $L=13$, inside Ba{\l}aban's range $L>11$, \status{certified (interval arithmetic, outward rounding; verified)}: $\rho_1(j,K)^2\le10<13$ for all $j\ge1$ (including $\infty$) and all $K$, hence $\rho_2\le10<13$ (Theorem~\ref{thm:H2cert}; residue in Section~\ref{sec:certH2}). At $L=3,5,9$: \status{numerical} only (at $L=9$ one point).
 \item Kept as alternatives: ($C1\sigma$) + (h) $\Rightarrow$ (B2) \status{proved+verified}; (H$''$) $\Rightarrow$ (B2) \status{argued}; (B2w) directly. No per-momentum $d=4$ constant-field code exists, so (B2) itself has not been scanned numerically (\file{KAPPA_BOUNDED_VERIFY} \S8).
 \end{itemize}
 
@@ -357,11 +357,11 @@ At a fixed odd $L\ge3$ the single uniform hypothesis is (H2).
 
 Theorem 2w $\Leftarrow$ (Route K inputs) or (Route B inputs). Precisely:
 
-\emph{Route K.} (B2) \status{open; reduces to (H2) (verified reduction, Section~\ref{sec:twostep}); (H2) numerical at $L=3,5,9$, certification open} + (PI), (F), ($M_j$), V1, (G2) \status{fixed-level} + (H0) \status{Balaban, odd $L>11$} + L5 \status{open} $\Rightarrow$ Theorem K ($R=\kappa_*$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status of the implication: \status{proved+verified, conditional}.
+\emph{Route K.} (B2) \status{open; reduces to (H2) (verified reduction, Section~\ref{sec:twostep}); (H2) certified at $L=13$ (Theorem~\ref{thm:H2cert})} + (PI), (F), ($M_j$), V1, (G2) \status{fixed-level} + (H0) \status{Balaban, odd $L>11$} + L5 \status{open} $\Rightarrow$ Theorem K ($R=\kappa_*$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status of the implication: \status{proved+verified, conditional}.
 
 \emph{Route B.} (U) + ($B\theta$) with $\theta_*<1$ + LW (5.7) + bounded $\mathfrak d_Y$, $\mathfrak d_{gf}$ + identification of $\beta$ (uniform in $k$) + (G2) + (H0) \status{odd $L>11$} + L5 $\Rightarrow$ \ThmPW{} ($R=C_B$) $\Rightarrow$ (5.1) $\Rightarrow$ Lemma D$''$ $\Rightarrow$ Theorem 2w. Status: \ThmPW{} logic \status{proved+verified, conditional}; inputs \status{proved, unverified}. With \file{BETA_FP_U} (Section~\ref{sec:routeBinputs}): (T1) + (H2) + (DF) + LW (5.7) $\Rightarrow$ Corollary 4.1 ($R=C_B$); with A6 + (H0) + L5 + (G2) $\Rightarrow$ Theorem 2w. Status: \status{proved, unverified, conditional} (the inputs (T1), (DF), A6 and the \file{BETA_FP_U} reductions are unverified).
 
-\emph{Single uniform hypothesis.} Both routes need (H2). A certified (H2) at one odd $L>11$ would discharge (B2), the only uniform-in-level hypothesis of Route K (Theorems C1, B2). In Route B it would reduce (U) to (T1); (DF) and A6 would remain.
+\emph{Single uniform hypothesis.} Both routes need (H2). Theorem~\ref{thm:H2cert} certifies (H2) at $L=13$, an odd $L>11$. This discharges (B2), the only uniform-in-level hypothesis of Route K (Theorems C1, B2). In Route B it reduces (U) to (T1); (DF) and A6 remain.
 
 \emph{Then Balaban's Theorem 1.} Theorem 2w gives (b) and (c$'$). With $\gamma$ shrunk so that (S) holds, every one of the 19 cross-scale uses in CMP 119 and CMP 122 I--II is covered (Section~\ref{sec:sweep}), and the single-scale uses need only $g_k\le\gamma$. So Theorem 1 holds for the bare coupling $g_0(K,g)$, for every $K$ and every $g\in\,]0,g_1]$, without Balaban's coupling assumption. This needs L5 in the sharpened form of Section~\ref{sec:L5}: $\beta$ must exist on every history the shooting visits. Status: \status{proved, unverified (sweep), conditional on Route K or Route B inputs, on L5, and on Balaban's published proofs}.
 

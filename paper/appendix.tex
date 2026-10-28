@@ -1,6 +1,6 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (17 files in \file{lean/YmLean/}). The inventory is as follows.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (18 files in \file{lean/YmLean/}). The inventory is as follows.
 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
@@ -25,6 +25,7 @@ The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K a
 \item \texttt{TheoremC1}: \texttt{c1\_two\_step}, \texttt{c1\_kappa\_bound}, \texttt{c1\_window}; \file{B2_TWOSTEP.md} \S2.
 \item \texttt{StripBound}: \texttt{strip\_bound\_linear}, \texttt{strip\_bound\_quadratic} (the $\tfrac32\tau$ bootstrap); \file{SOURCES_HBETA_N3.md} \S4.
 \item \texttt{CertBridge}: \texttt{cell\_invertible}, \texttt{cell\_sup\_bound}, \texttt{vertex\_bound} (interval-to-norm bridge of the cell certifier); \file{numerics/h1cert_cell.py}, \file{h1cert_cell2.py}.
+\item \texttt{Tower}: \texttt{tower\_bounds}, \texttt{I1\_compress}, \texttt{majorant\_core}, \texttt{lemmaT\_core} (algebraic core of the one-step majorant, Theorem~\ref{thm:H2cert}); \file{H1_ANALYTIC.md}.
 \end{enumerate}
 Not formalized: interval arithmetic itself, the enclosure premises P1$'$--P4, the identity $\rho_1^2L^2=\lambda_{\max}(G)$, and the history form of the shooting lemmas.
 \end{itemize}
@@ -66,7 +67,12 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{numerical}}
 \begin{itemize}
-\item $\rho_1(\infty)=1.760,\dots,2.0895$ at $L=3,\dots,13$; at $L=13$, $\sup\rho_1^2=4.37<13$, so (H2) holds in floating point by \texttt{rho2\_le}; no verifier (\file{H2_CERTIFY_L13}).
+\item $\rho_1(\infty)=1.760,\dots,2.0895$ at $L=3,\dots,13$; at $L=13$ the measured $\sup\rho_1^2=4.37$ (\file{H2_CERTIFY_L13}); the certified bound is below.
+\end{itemize}
+
+\paragraph{\status{certified (interval arithmetic, outward rounding; verified)}}
+\begin{itemize}
+\item (H2) at $L=13$ (Theorem~\ref{thm:H2cert}; ledger B1): $\rho_1(j,K)^2\le10<13$ for all $j\ge1$ (including $\infty$) and all $K$, hence $\rho_2\le10<13$ by \texttt{rho2\_le} (\file{H1_ANALYTIC}; \file{H1_ANALYTIC_VERIFY} V0--V9, \file{H1_ANALYTIC_VERIFY2}, \file{H2_CERTIFY_P5_VERIFY}). Residue as in Section~\ref{sec:certH2}.
 \end{itemize}
 
 \paragraph{\status{verified reduction}}
@@ -90,7 +96,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (H2) (certification; numerical at $L=3,5,9$; one-step at $L=13$). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$, R-term part (ledger B8). The scale condition (U) and the $\kappa\to\kappa/2$ recovery of the sourced step (ledger B22). (A) in full. See Section~\ref{sec:remains}.
+\item (H2) at $L\ne13$ (numerical at $L=3,5,9$; certified at $L=13$, see above). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$, R-term part (ledger B8). The scale condition (U) and the $\kappa\to\kappa/2$ recovery of the sourced step (ledger B22). (A) in full. See Section~\ref{sec:remains}.
 \end{itemize}
 
 \paragraph{\status{corrected by verifiers since v3}}

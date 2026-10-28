@@ -13,9 +13,9 @@ Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an
 ### Target 1: Balaban's Theorem 2, weak form
 
 - Reduced to the single inequality (H2) plus the fixed-level inputs (PI), (F), (M_j), V1, (G2) and (H0)/L5 (THEOREM2_PROOF_v4.md section 10). The reduction of (B2) to (H2) is verified (B2_TWOSTEP_VERIFY.md); Theorem K and Theorem 2w are verified as conditional reductions. Theorem 2 weak form implies Theorem 1: proved, unverified.
-- (H2) holds numerically for L = 3..13 (float; rho_2 = 2.063 at L = 3 against the threshold 3). At L >= 5 the one-step condition rho_1^2 < L suffices; at L = 13, sup rho_1^2 = 4.37 < 13.
-- Certified: a point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 (verified, H2_CERTIFY_VERIFY.md). Premise P4 is proved (H2_CERTIFY_P4.md). Not certified: the full cell certificate. The L = 13 one-step certification is sized at about 1,100 core-hours after fix G1 (H2_CERTIFY_L13_G1.md). Launch is approved with conditions and not yet launched.
-- Open: (PI), (F), (M_j), V1, (G2), L5. (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. The numerics at L <= 13 are supportive only.
+- (H2) is certified at L = 13 (2026-10-28): rho_1(j, K)^2 <= 10 < 13 for every level j >= 1 (incl. infinity) and every K, by an explicit majorant and an outward-rounded arb branch-and-bound (25,169 boxes, 58 s), so rho_2 <= 10 < 13 by rho2_le (Lean). Verified: H1_ANALYTIC_VERIFY, H1_ANALYTIC_VERIFY2 (H_j rebuilt from the definitions, agreement 5.8e-9), H2_CERTIFY_P5_VERIFY. Residue: the reading of Balaban's (0.4), the gauge choice, Prop. A at M >= 27 (second implementation only), bb_arb.py audited but not formally verified. At L = 3, 5, 9 (H2) is numerical only.
+- Also: a point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 (verified, H2_CERTIFY_VERIFY.md). The L = 13 cell certificate (box sweep) runs as an independent cross-check; its result is not in yet.
+- Open: (PI), (F), (M_j), V1, (G2), L5. (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. At L = 13, (H2) is certified (above).
 
 ### Target 2: finite-torus existence (compactness form)
 
@@ -28,14 +28,14 @@ Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an
 
 ### Paper, Lean, numerics
 
-- paper/main.pdf is one 56-page article (Theorem 2 chapter + assembly), unverified as a whole.
-- lean/ holds 17 files, no sorry (standard axioms only); see lean/README.md.
+- paper/main.pdf is one 63-page article (Theorem 2 chapter + assembly), unverified as a whole.
+- lean/ holds 18 files, no sorry (standard axioms only); see lean/README.md.
 - Numerics (floating point unless marked): first-step beta_1(L) for L = 2..11 is 0.630, 0.664, 0.757, 0.743, 0.803, 0.851, 0.868 (numerics/NUMERICS.md).
 - Competing account: Sussman and Alpoge (citation below) follow the same route. Only a web-sweep agent and a mapping agent read it; derivation agents were firewalled, but one idea (the bounded-kappa route) reached the derivations through the mapping report (see Independence).
 
 ## How the pieces fit
 
-The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 61 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
+The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 63 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
 
 ## Independence and prior work
 

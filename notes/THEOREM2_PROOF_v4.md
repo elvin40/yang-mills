@@ -275,6 +275,7 @@ At a fixed odd L ≥ 3 the single uniform hypothesis is (H2).
 - Route B: (H2) + (T1) ⇒ (U), and (H2) ⇒ the vertex bound for γ_rec in (Bθ) (BETA_FP_U Theorem 2.4, Prop. 3.2) [proved, unverified].
 - Status of (H2): [numerical at L = 3, 5, 9; certification open]. At L = 9 there is one point only. No value exists at L > 11 (Balaban's range), so the numbers are supportive only.
 - Kept as alternatives: (C1σ) + (h) ⇒ (B2) [proved+verified]; (H″) ⇒ (B2) [argued]; (B2w) directly. No per-momentum d = 4 constant-field code exists, so (B2) itself has not been scanned numerically (KAPPA_BOUNDED_VERIFY §8).
+- 2026-10-28: (H2) certified at L = 13 (H1_ANALYTIC + VERIFY, VERIFY2, P5_VERIFY).
 
 ## §6 Conclusion
 
@@ -420,6 +421,7 @@ All computed increments are positive.
 
 Single uniform hypothesis (both routes):
 H. (H2) ρ_2 = sup_{j≥2} sup_{K real} ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L [numerical at L = 3, 5, 9; certification open]. It replaces (C1σ) + (h) and (H″) of v3 as the one uniform-in-level inequality. Route K: (H2) ⇒ (C1σ) ⇒ (B2) [proved+verified, B2_TWOSTEP_VERIFY grade 3]. Route B: (H2) + (T1) ⇒ (U) [proved, unverified, BETA_FP_U Theorem 2.4]. Values (j = ∞, uncertified lower estimates of the sup): 2.0634 (L = 3, threshold 3, margin 31%), 2.108 (L = 5, threshold 5, margin 58%), ≥ 2.1131 (L = 7), ≥ 2.1142 (L = 9, one point). At L ≥ 5 the one-step condition ρ_1² < L suffices (ρ_1²/L = 0.771 at L = 5). Certification (§5.6): a computer-assisted proof project with tail level j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), certified ‖𝔅^{−1}‖, an explicit O5 constant, and interval arithmetic over the BZ; no explicit Lipschitz constant exists today. No value exists at L > 11.
+  2026-10-28: (H2) certified at L = 13 (H1_ANALYTIC + VERIFY, VERIFY2, P5_VERIFY).
 
 Route K hypothesis set (all must hold):
 1. (B2) sup_j sup_K |σ_j^{(2)}| < ∞ (or (B2w)). Reduced to H [verified reduction]. Older reductions kept: (C1σ) + (h) [proved+verified]; (H″) [argued]. (HS) is refuted.

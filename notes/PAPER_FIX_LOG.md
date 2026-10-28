@@ -42,3 +42,16 @@
 - Paper: Theorem B (intro.tex) and Theorem existence (assembly.tex): (U) removed from the hypotheses, one sentence after each theorem on the constant choice. Table cells B-S.D2/B-S.D3: "(U) [C23, constant choice]". remains.tex §6.7: B21, B22 rows, new C23 row, counts sentence (22 B, 23 C).
 - NOT edited (outside the allowed list, now stale): ASSEMBLY.md §3 table rows B-S.D2 ("convention (U)") and B-S.D3 ("(U) [R, B22]"); TRUST_LEDGER §4.2 step 2 ("B22 ((U), κ → κ/2 recovery)"); remains.tex l. 55 ("(U) must appear in the statement of Theorem B"); SOURCES_UN1 §2.2/§2.4 factor-2 slips (UN1_VERIFY items 1–2).
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 61 pages; aux files deleted. Log shows 38 hyperref PDF-string warnings (math in section titles) and 9 overfull boxes (6 are 1.03 pt longtable width in remains.tex §6.7, 3 elsewhere); none at an edited line.
+
+## Pass 5 (H2 certified)
+- Ground truth: PLAN.md last 12 lines; H1_ANALYTIC.md §0–§8; H1_ANALYTIC_VERIFY.md V0–V9 (VERIFY2, P5_VERIFY via PLAN.md). Firewall kept.
+- intro.tex: new tag "certified (interval arithmetic, outward rounding; verified)" in §1.4, distinct from point enclosure and numerical; Theorem A(i) (H2) → certified at L = 13 (Thm 5.1); one consequence sentence after Theorem A; Organization line.
+- numerics.tex: §5 renamed "Numerical and certified results"; new §5.7 "(H2) at L = 13" = Theorem 5.1 (thm:H2cert) + proof sketch (split, Lemmas S/tower/G, Lemma T + Gauge ⇒ B_L, j-uniformity, arb branch-and-bound) + margins + verification + residue list; §5.4 header, §5.5 L = 13 line, §5.8 cert plan marked superseded at L = 13 (box sweep = cross-check, running).
+- theorem2.tex: §3.7 intro, one-step heading, "Status of (H2)" item → certified at L = 13; also §3.8 Route K status and "Single uniform hypothesis" paragraph (outside the (H2) subsection; needed for task 2).
+- remains.tex: item H → DONE at L = 13, residue as sub-item H′; L = 3 point-enclosure line; item 11 last sentence; ledger B1 row → certified at L = 13. Counts unchanged (B1 kept as an item).
+- appendix.tex App. B: new paragraph for the certified tag; numerical L = 13 item reworded; open list (H2) → L ≠ 13.
+- DEVIATION: assembly.tex edited (not on the allowed list) because the dependency table and two "certified at no L" sentences live there: l. 59 Conclusion, rows B-T2.H2 and B-T2.H1, l. 229 critical path.
+- DEVIATION: the consequence sentence names L5 and the K-independence of β_j(g) in addition to "fixed-level inputs and Balaban-level items", because Theorem A(i) lists both as hypotheses.
+- NOT edited (stale, outside the list): Appendix A Lean count "17 files" (now 18, Tower.lean not listed); remains.tex item on "unverified files H2_CERTIFY_L13 and H2_CERTIFY_P4"; TRUST_LEDGER.md B1 status; assembly.tex "item H" sub-rows (old plan).
+- THEOREM2_PROOF_v4.md: dated line at end of §5 and under §10 item H. README.md: (H2) line → certified at L = 13, L = 13 cell-certificate line → cross-check, page count 63, Lean 18 files.
+- Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 63 pages (was 61); 40 hyperref PDF-string warnings, 9 overfull boxes (same 9 as Pass 4); aux files deleted.

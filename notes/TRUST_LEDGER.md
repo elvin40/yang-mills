@@ -59,7 +59,7 @@ Rows marked "→ A…" also use Group A items; the open part listed is ours.
 
 | ID | statement (one line) | Balaban location (if any) | our blocks that depend on it | status |
 |---|---|---|---|---|
-| B1 | (H2) ρ_2 = sup_{j≥2} sup_K ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L; at L = 13 via (H1_13) sup_K ρ_1² < 13 ⇒ ρ_2 ≤ 4.37 (rho2_le, Lean) | none (our one-loop object) | (B2) ⇒ Theorem K ⇒ T1 Route K; (U) ⇒ T1 Route B | numerical: ρ_1(∞) = 2.0895 at L = 13 (float), point enclosures ≤ 2.0901 and small cells ≤ 3.172 certified; no sup over the zone certified at any L. Open: G1 Taylor-model cell code (Taylor-2 fails at h = 0.09, order-3 in progress), verifier pass on h1cert_cell2/drive2, the run, G3 ball at K = 0, premises P1′ (float profile = exact operator to 10^{−13}, not derived), P2 (float64 a priori sums), P3 (conventions), CertBridge residue (Python implements the formulas). P4 proved (H2_CERTIFY_P4). L = 3 needs the two-step route (ρ_1² = 3.10 > 3) |
+| B1 | (H2) ρ_2 = sup_{j≥2} sup_K ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L; at L = 13 via (H1_13) sup_K ρ_1² < 13 ⇒ ρ_2 ≤ 4.37 (rho2_le, Lean) | none (our one-loop object) | (B2) ⇒ Theorem K ⇒ T1 Route K; (U) ⇒ T1 Route B | CERTIFIED at L = 13 (H1_ANALYTIC + VERIFY, VERIFY2, P5_VERIFY, 2026-10-28); hypothesis at other L |
 | B2 | (PI) probe independence at each fixed level | none | T1 Route K | argued |
 | B3 | (F) lattice log coefficient = continuum log coefficient at constant field | none | T1 Route K | cited source checked (X5); lattice transfer not proved |
 | B4 | (M_j): formal = true f² coefficient: (S1) 𝒦_t(f) ≥ −C_1\|f\|, (S2) density of states ≤ C_2\|f\| near 0, (S3) relative bound of the level difference; Prop. 4.4 of BETA_FP_M | none | T1 Route K | open; Prop. 4.4 argued |
