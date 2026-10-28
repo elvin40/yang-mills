@@ -80,3 +80,197 @@ For an operator A on ℋ and κ ≥ 0, put ‖A‖_κ := sup_f ‖e^{κf}Ae^{−
  (N3) If |a(y, y′)| ≤ c m(y, y′)(1 + d(y, y′))e^{−κ′d(y, y′)} and κ′ > κ, then ‖A‖_κ ≤ cΣ(κ′ − κ). Proof: the kernel of e^{κf}Ae^{−κf} is bounded by c m (1 + d)e^{κd}e^{−κ′d}. Apply V of §0.1 and the Schur test on ℓ²(𝔅) with the symmetric majorant (1 + d)e^{−(κ′−κ)d}. Row and column sums are ≤ Σ(κ′ − κ). The Schur test is `schur_test` [L, Schur.lean]. ∎
  (N4) Let {B_□} be operators and {h_□} multiplications with Σ_□ h_□² = 1. Then ‖Σ_□ h_□B_□h_□‖_κ ≤ sup_□ ‖B_□‖_κ. Proof: conjugation commutes with h_□. For u, v ∈ ℋ, |⟨v, Σ h_□B_□h_□u⟩| ≤ Σ_□ ‖B_□‖ ‖h_□v‖ ‖h_□u‖ ≤ sup‖B_□‖ (Σ‖h_□v‖²)^{1/2}(Σ‖h_□u‖²)^{1/2} = sup‖B_□‖ ‖v‖‖u‖. ∎
 
+## 2. The local operators N̂_□
+
+### 2.1 Geometry (G) [I: Balaban's 𝒟 and h_□ of CMP 99 p. 408; constants c(d)]
+- 𝒟 is a cover of 𝔅 by cubes □ of side K_1M_1. Each point lies in at most C_ov(d) cubes.
+- Each □ has a core □⁻ ⊂ □ with d(□⁻, 𝔅∖□) ≥ M_1.
+- h_□: 𝔅 → [0, 1], supp h_□ ⊂ □⁻, Σ_□ h_□² = 1, and |h_□(y) − h_□(y′)| ≤ (c_h/M_1)d(y, y′). The Lipschitz bound across scale boundaries inside one cube is open item O2 [I, low risk; printed analogue CMP 99 (3.89) O(M^{−1}), see SOURCES_A1_WALK_VERIFY §8].
+- K_0 := 2c_X + 2, with c_X of (B3). The enlarged cube □⁺ is the union of all M_1-cubes that meet {y : d(y, □) ≤ K_0M_1}. So □⁺ ⊇ {y : d(y, □) ≤ K_0M_1}, □⁺ is a connected union of M_1-cubes, and diam □⁺ ≤ D_+M_1 with D_+ := K_1 + 2K_0 + 2.
+- Consequence for (L1): d(□⁻, 𝔅∖□⁺) ≥ d(□, 𝔅∖□⁺) > K_0M_1 ≥ 2M_1 > ⅓M_1. So a kernel supported in □ × □ satisfies the band condition of (L1) for the domain □⁺.
+
+### 2.2 Definition
+- Kept walks: 𝒲_□ := {ω ∈ 𝒲 : X̃_i^5 ⊂ □⁺ for every domain X_i of ω}.
+- Truncated sum: N̂^{(□)} := Σ_{ω∈𝒲_□} N̂_ω.
+- Local operator: N̂_□ := 1_□N̂^{(□)}1_□, an operator on ℋ_□ := ℓ²(□, μ). We extend operators on ℋ_□ by 0 to ℋ when needed.
+This is the analogue of Balaban's compressed local operator □Q′G′(□̃)²Q′*□ of CMP 96 (2.82) [V image]. Balaban uses the propagator of a local domain. We use the truncated walk sum. The reason is CMP 99 Thm 3.14 [V text p. 426–427]: Balaban proves his domain-change estimates by cancelling the walks with all localizations inside the domain. So the domain-change error is a walk-truncation error. With the truncated sum we bound that error directly by (B1), and CMP 99 Cor. 3.6 (local gauge to U ≈ 1) is not needed.
+
+### 2.3 Lemma 2.1 (locality and truncation) [P]
+Assume (H1), (H3), and C_𝒟ρ_G ≤ ½. Then:
+ (a) N̂^{(□)} and N̂_□ depend on U only through U restricted to □⁺. The kernel of N̂_□ vanishes outside □ × □.
+ (b) |n̂_□(y, y′)| ≤ 2c_+ m(y, y′) e^{−δ_G d(y, y′)}.
+ (c) For y, y′ ∈ □: |(n̂ − n̂^{(□)})(y, y′)| ≤ 2c_+ e^{−2δ_GM_1} m(y, y′) e^{−½δ_G d(y, y′)}, and also ≤ 2c_+ e^{−δ_GM_1} m(y, y′) e^{−¾δ_G d(y, y′)}.
+ (d) ‖1_□(N̂ − N̂^{(□)})1_□‖ ≤ 2c_+Σ(½δ_G)e^{−2δ_GM_1}.
+ (e) If M_1 ≥ M_a := (2δ_G)^{−1}log(4c_+Σ(½δ_G)/c_−), then Re⟨u, N̂_□u⟩ ≥ ½c_−‖u‖² for every u ∈ ℋ_□.
+Proof.
+ (a) By (L2), N̂_ω depends on U only on ∪_i X̃_i^5. For ω ∈ 𝒲_□ this union lies in □⁺. A sum of such terms has the same property. The factors 1_□ do not depend on U. The kernel statement holds by the definition of N̂_□.
+ (b) 𝒲_□ ⊂ 𝒲. Apply Corollary 1.2 with 𝒲′ = 𝒲_□. The factors 1_□ only restrict the kernel.
+ (c) Let ω ∈ 𝒲∖𝒲_□. Then some domain has X̃_i^5 ⊄ □⁺. Choose p ∈ X̃_i^5 with p ∉ □⁺. Then d(p, □) > K_0M_1, by the first property of □⁺ in 2.1. Every x ∈ X_i lies in X̃_i^5, so d(x, p) ≤ c_XM_1 by (B3). Hence d(x, □) ≥ d(p, □) − d(p, x) > (K_0 − c_X)M_1 = (c_X + 2)M_1 ≥ 2M_1. For y, y′ ∈ □, (D2) gives d(ω, y, y′) ≥ d(y, X_i) + d(X_i, y′) > 4M_1. With (D1), for every λ ∈ [0, 1]: δ_G d(ω, y, y′) ≥ 4λδ_GM_1 + (1 − λ)δ_G d(y, y′). Take λ = ½ for the first bound and λ = ¼ for the second. Then sum over ω ∈ 𝒲∖𝒲_□ with the count of Lemma 1.1: Σ_n C_𝒟^{n+1}b_Gρ_G^n ≤ 2c_+.
+ (d) The kernel of 1_□(N̂ − N̂^{(□)})1_□ obeys the first bound of (c) and vanishes outside □ × □. Apply (N3) with κ = 0, κ′ = ½δ_G, and c = 2c_+e^{−2δ_GM_1}.
+ (e) Let u ∈ ℋ_□, extended by 0. Then ⟨u, N̂_□u⟩ = ⟨u, N̂^{(□)}u⟩ = ⟨u, N̂u⟩ − ⟨u, 1_□(N̂ − N̂^{(□)})1_□u⟩. By (H2) and (d), Re⟨u, N̂_□u⟩ ≥ (c_− − 2c_+Σ(½δ_G)e^{−2δ_GM_1})‖u‖². The bracket is ≥ ½c_− iff e^{−2δ_GM_1} ≤ c_−/(4c_+Σ(½δ_G)), i.e. iff M_1 ≥ M_a. ∎
+Remark. The local lower bound comes from the global bound (H2) by restriction. It is not A3's γ_0, which bounds C*Δ_kC from below. CMP 96 (2.147) uses the symbol γ_0 for the local constant of a different operator (SOURCES_A1_WALK §2.4).
+
+## 3. Lemma CT in accretive form and the local inverses
+
+### 3.1 Statement
+Lemma CT (accretive Combes–Thomas). Let Y ⊂ 𝔅 and let A be an operator on ℓ²(Y, μ). Assume
+ (i) |a(y, y′)| ≤ b m(y, y′) e^{−δ d(y, y′)} for y, y′ ∈ Y;
+ (ii) Re⟨u, Au⟩ ≥ c‖u‖² for all u, with c > 0.
+No symmetry of A is assumed. Let 0 < ε ≤ min{½δ, c/(2bΣ(½δ))}. Then A is invertible and ‖A^{−1}‖_ε ≤ 2/c. Here ‖·‖_ε is the norm of §1.5 on ℓ²(Y, μ), with f ranging over 1-Lipschitz functions on Y. By (N2), |A^{−1}(y, y′)| ≤ (2/c) m(y, y′) e^{−ε d(y, y′)}.
+
+### 3.2 Proof [P]
+Fix a 1-Lipschitz f on Y. Put A_f := e^{εf}Ae^{−εf} and E := A_f − A. The kernel of E is a(y, y′)(e^{ε(f(y)−f(y′))} − 1). Use |e^x − 1| ≤ |x|e^{|x|} and |f(y) − f(y′)| ≤ d(y, y′). Then |E(y, y′)| ≤ b m ε d e^{εd}e^{−δd} ≤ bε m d e^{−½δd}, because ε ≤ ½δ. By (N3) with κ = 0 and κ′ = ½δ, ‖E‖ ≤ bεΣ(½δ) ≤ ½c. Hence Re⟨u, A_fu⟩ ≥ Re⟨u, Au⟩ − ‖E‖‖u‖² ≥ ½c‖u‖². So ‖A_fu‖‖u‖ ≥ |⟨u, A_fu⟩| ≥ ½c‖u‖². Thus A_f is injective. Y is finite, so A_f is invertible and ‖A_f^{−1}‖ ≤ 2/c. A is conjugate to A_f, so A is invertible and A_f^{−1} = e^{εf}A^{−1}e^{−εf}. Take the supremum over f. ∎
+
+### 3.3 The formal part [L]
+lean/YmLean/CombesThomas.lean, built with no `sorry`; axioms [propext, Classical.choice, Quot.sound] (lean/VERIFY_CombesThomas.md):
+- `coercive_inv`: ∀ v, c‖v‖² ≤ re⟪v, Av⟫ ⇒ IsUnit A ∧ ‖A⁻¹‖ ≤ 1/c. No Hermitian hypothesis.
+- `combes_thomas`: for a positive weight w and W := diag(w), the hypotheses hN (as above) and ‖WNW⁻¹ − N‖ ≤ c/2 give IsUnit N, ‖(WNW⁻¹)⁻¹‖ ≤ 2/c, and |N⁻¹(x, y)| ≤ (2/c)w(y)/w(x).
+- `combes_thomas_schur`: if for every centre x₀ the row and column sums of ‖N x y‖·|exp(ε(d x x₀ − d y x₀)) − 1| are ≤ c/2, then IsUnit N and ‖N⁻¹ x y‖ ≤ (2/c)exp(−ε d x y). Here d is any function with d x x = 0.
+Match with 3.1. Apply V of §0.1. VAV^{−1} is a matrix on ℓ²(Y) with counting measure. V is unitary and commutes with diagonal weights, so (ii) transfers to hN. `combes_thomas` with w := e^{εf} gives the bound ‖A_f^{−1}‖ ≤ 2/c for each f, which is the statement of 3.1. `combes_thomas_schur` is the special case f = d(·, x₀), with the entry bound. Not formalized: the change of variables V and the factor m (VERIFY_CombesThomas "Not formalized" item 1), and the step from (i) to ‖E‖ ≤ c/2 (item 2). Both are written in 3.2.
+
+### 3.4 Application to N̂_□ [P]
+Assume M_1 ≥ M_a and C_𝒟ρ_G ≤ ½. Apply Lemma CT on Y = □ to A = N̂_□ with:
+ c = ½c_− (Lemma 2.1(e)); b = 2c_+ (Lemma 2.1(b)); δ = δ_G.
+The condition on ε reads ε ≤ min{½δ_G, (½c_−)/(2·2c_+Σ(½δ_G))} = min{½δ_G, c_−/(8c_+Σ(½δ_G))}. This is the ε of Theorem A1-W. Define C_□ := N̂_□^{−1} on ℋ_□, extended by 0. Then:
+ (a) N̂_□C_□ = 1_□ exactly (as operators on ℋ).
+ (b) ‖C_□‖_ε ≤ 2/(½c_−) = 4/c_−. The extension by 0 keeps this: a 1-Lipschitz f on 𝔅 restricts to a 1-Lipschitz f on □, and e^{εf}(C_□ ⊕ 0)e^{−εf} = (e^{εf}C_□e^{−εf}) ⊕ 0.
+ (c) ‖h_□C_□h_□‖_ε ≤ 4/c_−, by (N1), since h_□ commutes with e^{εf} and ‖h_□‖ ≤ 1.
+ (d) C_□ depends on U only on □⁺, because N̂_□ does (Lemma 2.1(a)).
+ (e) ε, c_±, and the bound 4/c_− do not depend on M_1, □, U, j, k, η, or volume. c_− is uniform by (H2). c_+ and δ_G are uniform by (H1). Σ is monotone in θ and bounded for M at least a minimal M(d, L) [R, Lemma 2.1].
+Remark. Smallness never comes from the decay of C_□ inside □. Supports lie in □. Only the M_1-free bound ‖C_□‖_ε is used. This is CMP 96 p. 237's "another way" [V image]: conjugate by e^{⟨a,·⟩}, show the difference is O(|a|), and conclude decay. There it is applied at U = 1 on one cube. Here uniformity in U comes from (H1)–(H2), not from U ≈ 1.
+
+## 4. The parametrix identity and the three error terms
+
+### 4.1 Identity [P]
+Put P := Σ_□ h_□C_□h_□. Define for each □:
+ E^sep_□ := (1 − 1_□)N̂h_□ (separation);
+ E^tr_□ := 1_□(N̂ − N̂^{(□)})1_□h_□ (truncation; Balaban's domain change);
+ E^com_□ := [N̂_□, h_□] = N̂_□h_□ − h_□N̂_□ (commutator);
+ F_□ := (E^sep_□ + E^tr_□ + E^com_□)C_□h_□.
+Claim: N̂P = I + Σ_□ F_□.
+Proof. Fix □. Since supp h_□ ⊂ □⁻ ⊂ □, h_□ = 1_□h_□ = h_□1_□. Split N̂ = (1 − 1_□)N̂ + 1_□N̂. Then
+ 1_□N̂h_□ = 1_□N̂1_□h_□ = 1_□(N̂ − N̂^{(□)})1_□h_□ + 1_□N̂^{(□)}1_□h_□ = E^tr_□ + N̂_□h_□.
+So N̂h_□ = E^sep_□ + E^tr_□ + N̂_□h_□. Next, N̂_□h_□ = h_□N̂_□ + E^com_□. By 3.4(a), h_□N̂_□C_□h_□ = h_□1_□h_□ = h_□². Hence
+ N̂h_□C_□h_□ = h_□² + (E^sep_□ + E^tr_□ + E^com_□)C_□h_□ = h_□² + F_□.
+Sum over □ and use Σ_□ h_□² = 1. ∎
+Comparison [V]. CMP 96 (2.82) [image p. 237] is Q′G′²Q′*C = Σ h_□(□Q′G′(□̃)²Q′*□)C_□h_□ − Σ[h_□, □Q′G′(□̃)²Q′*□]C_□h_□ − Σ □Q′(G′(□̃)² − G′²)Q′*h_□C_□h_□ − Σ_{□,□′≠□}(□ − 1)h²_{□′}Q′G′²Q′*h_□C_□h_□ = I − ΣR_{□,□′}C_□h_□. It has one main sum and three error sums: commutator, domain change, and separation. CMP 99 (3.95) [V text p. 411] has the same three. Our F_□ is −R term by term, with G′(□̃) replaced by the truncated sum. Balaban's sizes are e^{−⅛δ_0M} for the separation term ((2.84), image), e^{−δ_0M} for the domain change (p. 238, "follows from the random walk representations"), and O(M^{−1}) for the commutator.
+
+### 4.2 Bounds in the conjugation norm [P]
+Assume C_𝒟ρ_G ≤ ½ and M_1 ≥ M_a. Let 0 ≤ κ ≤ ½δ_G. Then:
+ (sep) ‖E^sep_□‖_κ ≤ 2c_+Σ(¼δ_G)e^{−¼δ_GM_1};
+ (tr) ‖E^tr_□‖_κ ≤ 2c_+Σ(¼δ_G)e^{−δ_GM_1};
+ (com) ‖E^com_□‖_κ ≤ 2c_+c_hΣ(¼δ_G)/M_1.
+Σ is decreasing in its argument, so Σ(κ′) ≤ Σ(¼δ_G) for κ′ ≥ ¼δ_G. This is used in each step below.
+
+Proof of (sep). The kernel is (1 − 1_□(y))n̂(y, z)h_□(z). It vanishes unless y ∉ □ and z ∈ □⁻. Then d(y, z) ≥ d(□⁻, 𝔅∖□) ≥ M_1. By Corollary 1.2 with 𝒲′ = 𝒲, |n̂(y, z)| ≤ 2c_+ m e^{−δ_Gd(y, z)}. Split δ_Gd = ¼δ_Gd + ¾δ_Gd ≥ ¼δ_GM_1 + ¾δ_Gd. So the kernel is ≤ 2c_+e^{−¼δ_GM_1} m e^{−¾δ_Gd}. Apply (N3) with κ′ = ¾δ_G. Then κ′ − κ ≥ ¼δ_G. ∎
+Proof of (tr). The kernel is (n̂ − n̂^{(□)})(y, z)h_□(z) for y, z ∈ □, and 0 otherwise. By Lemma 2.1(c), second bound, it is ≤ 2c_+e^{−δ_GM_1} m e^{−¾δ_Gd}. Apply (N3) with κ′ = ¾δ_G. ∎
+Proof of (com). The kernel is n̂_□(y, z)(h_□(z) − h_□(y)) for y, z ∈ □. By Lemma 2.1(b) and the Lipschitz bound of 2.1, it is ≤ 2c_+(c_h/M_1) m d(y, z) e^{−δ_Gd} ≤ 2c_+(c_h/M_1) m (1 + d)e^{−δ_Gd}. Apply (N3) with κ′ = δ_G. Then κ′ − κ ≥ ½δ_G ≥ ¼δ_G. ∎
+Note. The (1 + d) weight is already inside Σ. So no separate constant Σ′ is needed (SOURCES_A1_WALK_VERIFY §8).
+
+### 4.3 The error per cube [P]
+Take κ = ε ≤ ½δ_G. By (N1), 3.4(b), and ‖h_□‖_ε ≤ 1:
+ ‖F_□‖_ε ≤ (4/c_−)(‖E^sep_□‖_ε + ‖E^tr_□‖_ε + ‖E^com_□‖_ε) ≤ ρ_1,
+ ρ_1 := (8c_+Σ(¼δ_G)/c_−)·(e^{−¼δ_GM_1} + e^{−δ_GM_1} + c_h/M_1).
+Let M_e be the least M_1 with e^{−¼δ_GM_1} ≤ 1/M_1 for all larger M_1 (M_e ≈ (4/δ_G)log(4/δ_G) up to a factor 2). For M_1 ≥ M_e, ρ_1 ≤ K_F/M_1 with K_F := (8c_+Σ(¼δ_G)/c_−)(2 + c_h).
+Every constant in K_F is fixed before M_1. So K_F/M_1 is small for M_1 large.
+
+## 5. The Neumann series
+
+### 5.1 The weighted norm of F [P]
+Put F := Σ_□ F_□. The kernel f_□(y, y′) vanishes unless y′ ∈ □⁻, because F_□ ends with h_□. By (N2) and 4.3, |f_□(y, y′)| ≤ ρ_1 m(y, y′) e^{−εd(y, y′)}. A point y′ lies in at most C_ov cores. So Σ_□ |f_□(y, y′)| ≤ C_ovρ_1 m e^{−εd}. Apply (N3) with κ′ = ε and κ = ½ε (the factor (1 + d) only enlarges the majorant):
+ ‖F‖_{½ε} ≤ C_ovΣ(½ε)ρ_1 ≤ C_ovΣ(½ε)K_F/M_1.
+The bound is uniform in the volume. A bound by sup_□ ‖F_□‖ alone would not be, because E^sep_□ has a global left support. The kernel route avoids this.
+
+### 5.2 Convergence and identification [P]
+Let M_N := 2C_ovΣ(½ε)K_F. For M_1 ≥ max{M_a, M_e, M_N} we have ‖F‖_{½ε} ≤ ½. Then:
+ (a) Σ_{n≥0}(−F)^n converges in ‖·‖_{½ε} to (I + F)^{−1}, with ‖(I + F)^{−1}‖_{½ε} ≤ 2. Reason: ‖·‖_{½ε} is submultiplicative (N1) and dominates ‖·‖ (N0); the geometric series converges.
+ (b) By 4.1, N̂P(I + F)^{−1} = (I + F)(I + F)^{−1} = I. ℋ is finite-dimensional, so a right inverse is a two-sided inverse. Hence N̂^{−1} = P(I + F)^{−1} = Σ_{n≥0}P(−F)^n.
+ (c) ‖P‖_{½ε} ≤ sup_□ ‖C_□‖_{½ε} ≤ 4/c_−, by (N4), (N0), and 3.4(b). Hence ‖N̂^{−1}‖_{½ε} ≤ 8/c_−. By (N2), |N̂^{−1}(y, y′)| ≤ (8/c_−) m(y, y′) e^{−½εd(y, y′)}. This is claim (iv).
+This is Balaban's (2.86) (Q′G′²Q′*)^{−1} = C(I − R)^{−1} [V image p. 238] in our notation. Balaban's final rate (2.87) is ½δ_1, half his local Combes–Thomas rate [V]. Ours is ½ε, half our local rate.
+
+### 5.3 The blocks [P]
+Every F_□ is now written as a sum of products of "blocks". A block is an operator Φ with a domain list ω_Φ whose factors satisfy (L1)–(L2), and a kernel bound |φ(z, z′)| ≤ β_Φ m(z, z′) e^{−εd(ω_Φ, z, z′)}. For a single domain X and z, z′ ∈ X, d((X), z, z′) = d(z, z′) (take x_0 = z).
+ (K) K_□ := h_□C_□h_□. Domain list (□⁺). Kernel in □⁻ × □⁻. β = 4/c_−, by (N2) and 3.4(c).
+ (Γ) Γ_□ := E^com_□C_□h_□. Domain list (□⁺). Kernel in □ × □⁻. β = ρ_com := (4/c_−)·2c_+c_hΣ(¼δ_G)/M_1, by (N1), (N2), 3.4(b), and 4.2(com).
+ (S) For ω′ ∈ 𝒲: S_{□,ω′} := (1 − 1_□)N̂_{ω′}1_{□⁻}. Domain list ω′. The kernel vanishes unless y ∉ □ and z ∈ □⁻. Then d(ω′, y, z) ≥ d(y, z) ≥ M_1 by (D1). So δ_Gd(ω′, y, z) ≥ ¼δ_GM_1 + ¾δ_Gd(ω′, y, z), and with ε ≤ ¾δ_G, β = b_Ge^{−¼δ_GM_1}ρ_G^{|ω′|}.
+ (R) For ω′ ∈ 𝒲∖𝒲_□: R_{□,ω′} := 1_□N̂_{ω′}1_{□⁻}. Domain list ω′. For y, z ∈ □, d(ω′, y, z) > 4M_1 (proof of Lemma 2.1(c)). So β = b_Ge^{−δ_GM_1}ρ_G^{|ω′|}.
+The multiplications 1_□, 1 − 1_□, 1_{□⁻} are attached to the first or last factor of N̂_{ω′}. They shrink kernel supports and do not depend on U. So (L1)–(L2) of the (H1) factors survive. K_□ and Γ_□ satisfy (L1) for □⁺ by 2.1 (kernels in □ × □), and (L2) by 3.4(d) and Lemma 2.1(a).
+Decomposition. Since h_□ = 1_{□⁻}h_□ and 1_□h_□ = h_□:
+ E^sep_□C_□h_□ = Σ_{ω′∈𝒲} S_{□,ω′}K_□, E^tr_□C_□h_□ = Σ_{ω′∈𝒲∖𝒲_□} R_{□,ω′}K_□, E^com_□C_□h_□ = Γ_□.
+Both sums converge absolutely, by (B1) and Lemma 1.1.
+
+### 5.4 Concatenation lemma (cited; proof is W2's, SOURCES_WG §2.3, VERIFIED in SOURCES_WG_VERIFY §4)
+Lemma (concatenation). Let T = Φ_1Φ_2···Φ_N be an ordered product of blocks with domain lists ω_k and bounds |φ_k(z, z′)| ≤ β_k m(z, z′) e^{−δd(ω_k, z, z′)}. Then:
+ (a) T = 0 unless, for each k, the last domain of ω_k meets the first domain of ω_{k+1}. So the concatenated list ω := ω_1 ∘ ··· ∘ ω_N is a walk.
+ (b) T depends on U only through U restricted to the union of the X̃^5 over all domains of ω.
+ (c) For θ ∈ (0, 1): |T(y, y′)| ≤ (Π_k β_k)c_1(θδ)^{N−1} m(y, y′) e^{−(1−θ)δ d(ω, y, y′)}.
+The proof sums over the junction points with the weights μ. The weights telescope: μ(z)m(x, z)m(z, x′) = m(x, x′). The exponent is split as (1 − θ) on the concatenated path length and θ on d(z_{k−1}, z_k). The junction sums are bounded by Lemma 2.1 of CMP 96. We do not repeat the proof.
+
+### 5.5 The walk terms and the term bound [P]
+Expand N̂^{−1} = Σ_n P(−F)^n with P = Σ_{□_0}K_{□_0} and the decomposition of 5.3. A term is labelled by n, □_0, and a sequence of insertions Ψ_1, …, Ψ_n. Each Ψ_i is one of S_{□_i,ω′_i}K_{□_i}, R_{□_i,ω′_i}K_{□_i}, or Γ_{□_i}. The term is
+ T_ω := (−1)^n K_{□_0}Ψ_1···Ψ_n,
+and ω is the concatenation of the domain lists of all its blocks. An insertion of type S or R adds |ω′_i| + 2 domains (the domains of ω′_i, then □_i⁺). An insertion of type Γ adds 1 domain. So |ω| is the sum of the added domains.
+Define
+ ρ := max{ρ_G, (4b_G/c_−)^{1/2}e^{−⅛δ_GM_1}, ρ_com}.
+Claim (term bound). |T_ω(y, y′)| ≤ (4/c_−)(c_1ρ)^{|ω|} m(y, y′) e^{−½ε d(ω, y, y′)}, with c_1 := c_1(½ε).
+Proof. Apply the concatenation lemma with δ = ε and θ = ½. The rate becomes ½ε and each junction costs c_1(½ε). The product of the β's is (4/c_−)Π_iβ(Ψ_i), with
+ β(S K) = (4/c_−)b_Ge^{−¼δ_GM_1}ρ_G^{|ω′_i|}, β(R K) = (4/c_−)b_Ge^{−δ_GM_1}ρ_G^{|ω′_i|}, β(Γ) = ρ_com.
+By the definition of ρ: (4b_G/c_−)e^{−¼δ_GM_1} ≤ ρ², ρ_G ≤ ρ, and ρ_com ≤ ρ. So β(S K) and β(R K) are ≤ ρ^{|ω′_i|+2}, and β(Γ) ≤ ρ. In each case the exponent equals the number of added domains. Hence Π_iβ(Ψ_i) ≤ ρ^{|ω|}. Every block has at least one domain, so the number of junctions is N − 1 ≤ |ω|. Also c_1 ≥ 1, because the sum defining c_1 contains the term y′ = y. So c_1^{N−1} ≤ c_1^{|ω|}. ∎
+Size of ρ. ρ_G = c_G/M_1. ρ_com = 8c_+c_hΣ(¼δ_G)/(c_−M_1). Let M_e′ be the least M_1 with e^{−⅛δ_GM_1} ≤ 1/M_1 for all larger M_1; M_e′ ≥ M_e. For M_1 ≥ M_e′,
+ ρ ≤ K_W/M_1, K_W := max{c_G, (4b_G/c_−)^{1/2}, 8c_+c_hΣ(¼δ_G)/c_−}.
+Each insertion supplies its own small factors. The S- and R-insertions supply ρ_G per G-step and the separation or truncation exponential for the two junction steps, split as a square root over them. The Γ-insertion supplies c_h/M_1. This is the content of SOURCES_A1_WALK_VERIFY §8: every non-initial factor carries one of c_G/M_1, e^{−¼δ_GM_1}, e^{−δ_GM_1}, or c_h/M_1.
+Why whole G-blocks. Balaban prints no single-factor bounds (CMP 99 p. 413, §1.1). So each N̂_{ω′} enters as one block with its whole-term bound (B1). Its path length enters the path length of ω through the concatenation lemma. This is the correction SOURCES_A1_WALK §6.2 made to §5.5 there.
+
+### 5.6 Counting and absolute convergence [P]
+All domains of the series have diameter ≤ D_+M_1: the □⁺ by 2.1, the (H1) domains by (B3), since c_X ≤ D_+. By (B2), at most C_𝒟 pairs (α, X′) of (H1) meet a given domain. By 2.1 and bounded overlap, at most C_𝒟 cubes □ have □⁺ meeting a given domain [I, geometry constant c(d, K_0, K_1); we enlarge C_𝒟 to cover it]. Encode a term by its labelled domain list. Given the prefix, the next label is one of: the next factor of the current G-block; the first factor of a new S-block; the first factor of a new R-block; a closing K_□; or a Γ_□. So there are at most C_W := 5C_𝒟 choices per step. The first domain is □_0⁺ with y ∈ □_0⁻: at most C_ov ≤ C_𝒟 choices. A label sequence may describe a product that vanishes, or the same product twice. Both only enlarge the count.
+Let M_c := 2C_Wc_1K_W. For M_1 ≥ M_c, C_Wc_1ρ ≤ ½, and with (D1)
+ Σ_ω |T_ω(y, y′)| ≤ (4/c_−) m e^{−½εd(y, y′)} Σ_{n≥0} C_𝒟(C_Wc_1ρ)^n ≤ (8C_𝒟/c_−) m(y, y′) e^{−½εd(y, y′)}.
+This is claim (iii). SOURCES_A1_WALK §5.5 states 8/c_− and omits the first-domain count C_𝒟; the difference is a constant. The kernel bound (iv) of 5.2 does not contain C_𝒟.
+Identification. For each n, P(−F)^n is a finite sum over (□_0, …, □_n) and types of products of absolutely convergent series. The expanded multiple series converges absolutely entrywise, by the bound above. ℋ is finite-dimensional, so the multiple series may be summed in any order. Hence Σ_ω T_ω = Σ_n P(−F)^n = N̂^{−1}. This is claim (i) together with 5.2.
+
+### 5.7 The thresholds on M_1
+M_W := max{2C_𝒟c_G, M_a, M_e′, M_N, M_c}. The first entry gives C_𝒟ρ_G ≤ ½ (Corollary 1.2). Every entry depends only on constants fixed before M_1 (§9). With these constants, Σ_ωT_ω is a walk expansion in the sense of §1.2 with B = 4/c_−, step factor c_1ρ, rate ½ε, and branching C = C_W.
+
+## 6. The walk structure of the terms
+
+This section checks (L1)–(L2) and (B1)–(B2) of §1.2 for the series Σ_ωT_ω of §5. Each item names the step that proves it.
+
+### 6.1 The factors
+A term T_ω is a product of factors of three kinds:
+ (f1) factors R_α(X) of (H1), possibly with a multiplication 1_□, 1 − 1_□, or 1_{□⁻} attached on the left of the first factor or on the right of the last factor of a G-block (5.3);
+ (f2) K_□ = h_□C_□h_□, with domain □⁺;
+ (f3) Γ_□ = [N̂_□, h_□]C_□h_□, with domain □⁺.
+Each factor of kind (f2) or (f3) is one factor, not a product of smaller factors. Its domain is □⁺.
+
+### 6.2 (L1) [P]
+ (f1) Multiplication by an indicator function can only shrink the support of a kernel. So the kernel of an (f1) factor still vanishes unless both arguments lie in X°, by (L1) of (H1).
+ (f2) The kernel of K_□ vanishes outside □⁻ × □⁻.
+ (f3) The kernel of Γ_□ vanishes outside □ × □⁻, because E^com_□ has kernel in □ × □ and C_□h_□ in □ × □⁻.
+ By 2.1, d(□, 𝔅∖□⁺) > K_0M_1 > ⅓M_1. So □ ⊂ (□⁺)°, and (f2), (f3) satisfy (L1) for the domain □⁺. The margin is K_0M_1, larger than the ⅓M_1 band of CMP 116 p. 3.
+
+### 6.3 (L2) [P]
+ (f1) A multiplication by an indicator does not depend on U. So the U-dependence of an (f1) factor is that of R_α(X): only U on X̃^5.
+ (f2), (f3) By Lemma 2.1(a) and 3.4(d), N̂_□ and C_□ depend on U only on □⁺. The function h_□ does not depend on U. Since □⁺ ⊂ (□⁺)~^5, the factor depends on U only through U on (□⁺)~^5.
+ Hence T_ω depends on U only through U restricted to ∪_iX̃_i^5. This is also part (b) of the concatenation lemma.
+
+### 6.4 Walk property [P]
+Inside a G-block, consecutive domains intersect, because ω′ ∈ 𝒲 is a walk. At a junction between blocks, part (a) of the concatenation lemma gives a nonempty intersection whenever the term is nonzero. Zero terms may be dropped. So every nonzero T_ω is indexed by a walk.
+
+### 6.5 (B1) and (B2) [P]
+(B1) is the term bound of 5.5, with B = 4/c_−, step factor c_1ρ ≤ c_1K_W/M_1, and rate ½ε. (B2) is the count of 5.6, with C = C_W = 5C_𝒟 and C_Wc_1ρ ≤ ½ for M_1 ≥ M_W.
+
+### 6.6 The (3.108) form [P, with the caveat WG-1]
+Write (c_1K_W/M_1)^{|ω|} = (c_1K_WM_1^{−1/2})^{|ω|}·M_1^{−½|ω|}. For M_1 ≥ (2C_Wc_1K_W)², the first factor alone controls the count: C_Wc_1K_WM_1^{−1/2} ≤ ½. The second factor M_1^{−½|ω|} is then free. This is the form of CMP 99 (3.108) [V], O(1)O(M^{−1/2})^{|ω|}M^{−½|ω|}, and CMP 116 p. 3 states that the first two factors "control the sum over ω" [V].
+Caveat WG-1 [I, open point of SOURCES_WG, exponent corrected in SOURCES_WG_VERIFY §5]. (H1) assumes the step factor ρ_G = c_G/M_1 for G. Theorem WG-G gives this per step only if α_0 ≤ c′M^{−11}. Under only Mα_0 ≤ a_0, the V-junction steps inside G carry O(a_0^{1/10}) instead of c/M. The condition α_0 ≤ c′M^{−11} is admissible in Balaban's order (M is fixed first, then α_0 is made small; CMP 99 Thm 3.12, p. 422). It is not implied by Mα_0 ≤ a_0. We assume it in (H4).
+
+### 6.7 Admissibility of the domains [V]
+CMP 116 p. 13 [V text and image]: "the localization domains in expansions can be chosen to a large extent arbitrarily, they have to be only unions of connected families of M_1-cubes". The domains □⁺ are connected unions of M_1-cubes (2.1). The (H1) domains are Balaban's own. So the walk expansion of §5 has admissible domains.
+
+### 6.8 Undoing the rescaling [P given SOURCES_A1_KERNEL §8]
+(QGQ*)^{−1} = S^{−1/2}N̂^{−1}S^{−1/2} = Σ_ω S^{−1/2}T_ωS^{−1/2}. S^{−1/2} is diagonal and does not depend on U. Attach it to the first and last factor. (L1)–(L2) and the count are unchanged. The kernel bound becomes the symmetric form
+ |(S^{−1/2}T_ωS^{−1/2})(y, y′)| ≤ (4/c_−)L^{d/2+1}(L^jη)^{−1−d/2}(L^{j′}η)^{−1−d/2}(c_1ρ)^{|ω|}e^{−½εd(ω, y, y′)}, y ∈ Λ_j, y′ ∈ Λ_{j′},
+as in SOURCES_A1_WALK §5.6 and §7.1. Balaban's split (L^jη)^{−2}(L^{j′}η)^{−d} holds at rate ½ε − (d/2 + 1)θ and needs RM ≥ (d + 2)log L/ε (SOURCES_A1_KERNEL §10 correction).
+
+### 6.9 Trees [P given SOURCES_WG §3]
+If (H1) is a tree expansion, as for G_1 (CMP 99 p. 427 [V text]; Theorem WG-G1 of SOURCES_WG §3.7), then §2–§5 hold with these changes. d(ω, y, y′) is the length of a shortest tree that meets all domains. A G-block is a tree term, and its branches end inside the block. The concatenation lemma extends to trees by SOURCES_WG §3.5. The count uses the depth-first code of SOURCES_WG §3.6, with C_W replaced by 2C_W. The result is the tree expansion of (QG_1Q*)^{−1}. Its lower bound is c_{−,1} := c_−(G_1) ≥ c_−(1 − O(Mα_0)) (SOURCES_A1_KERNEL §9; conditional like (H2)). The a-term of (QG_1Q*)^{−1} = N_1^{−1} + a is a one-cube diagonal factor.
+
