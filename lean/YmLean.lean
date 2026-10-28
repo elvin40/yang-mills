@@ -19,6 +19,7 @@ import YmLean.Tower
 import YmLean.Schur
 import YmLean.CombesThomas
 import YmLean.Interp
+import YmLean.K1Prime
 import YmLean.Resolvent
 import YmLean.SlabCounterexample
 import YmLean.BlockSchur

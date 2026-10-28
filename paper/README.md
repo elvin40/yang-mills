@@ -29,4 +29,4 @@ Conventions:
 - A section sign after a file name refers to a section of that file, not of the paper.
 - `\nocite{*}` lists every entry, cited or not.
 
-State: the dependency table and §6 follow PLAN.md through SOURCES_FX_R2_VERIFY.md ((FX) reduced to N3; (H2) point enclosure verified). No theorem, lemma, or proof text changed in the merge.
+State: the dependency table, §5 Steps 8′–8‴, and §7.7 follow PLAN.md through round 6 (2026-10-28): the three propagator theorems, the Group A derivations, Theorem LOC, Prop. BDRY, (Vol), Theorem (G_A′), and the canonical constant order. Headline unchanged: verified reduction, not a proof.
