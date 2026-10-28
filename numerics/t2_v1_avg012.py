@@ -28,7 +28,7 @@ def paths(start, d):
         out.append(steps)
     return out
 
-def make_avg012(lat, lp, mu, n_iter=40):
+def make_avg012(lat, lp, mu, n_iter=int(os.environ.get("FED_ITER", 5))):
     """Same local link list as lp (from loops_for_direction), averaging (0.12)."""
     L, h = lat.L, lat.h
     keys = [(tuple(int(v) for v in s), int(k)) for s, k in zip(lp["rel"], lp["rdir"])]
