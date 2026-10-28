@@ -105,7 +105,9 @@ def level0_data(step, p, v, N):
         for a in range(nc):
             K[zi, :, nc * ymu[near] + a] = M[:, :, a].T
         return K
-    D0 = kernel(Hc[0]); Tp = 0.5 * np.exp(-1j * p * xa[0]) * (kernel(Hc[1]) + 1j * kernel(Hs[1])); D2 = 0.5 * (kernel(Hc[2]) + kernel(Hs[2]))
+    D0 = kernel(Hc[0])                                                   # in-place builds: <= 5 N^4 arrays live
+    Tp = kernel(Hs[1]); Tp *= 1j; Tp += kernel(Hc[1]); Tp *= 0.5 * np.exp(-1j * p * xa[0])
+    D2 = kernel(Hc[2]); D2 += kernel(Hs[2]); D2 *= 0.5
     data.ker = {"D0": D0, "Tp": Tp, "Tm": Tp.conj(), "D2": D2}
     return data
 
