@@ -76,3 +76,26 @@ uniform in k, η, Λ, Z_0, volume, and real regular U. Schur constant: S(δ) := 
 4.4 The resolvent and WC(iv) (the brief's residue check) [P, reading]. The x-integral over [0, γ_1] in (2.7) needs (xI + C*Δ_kC)^{−1}, not C*Δ_kC. Theorem WC(iv) gives it with per-walk prefactor 4/(γ_exp + x) and rate ½ε uniform in x ≥ 0 (WC_FULL 5.5: x·I commutes with e^{εf}, so the Combes–Thomas error is x-free). So ∫_0^{γ_1}x^{−1/2}·4/(γ_exp + x)dx ≤ 4π/√γ_exp, uniform in γ_1. The rate needed by A7 is not affected by x: A7 concerns C*Δ_kC, whose decay rate δ_A does not involve x at all. So there is no uniform-in-x residue for A7.
  Remark (one point WC(iv) does not state). The resolvent in (2.7) is that of the full C*Δ_kC (CMP 116 p. 12, B′ = (C^{(k)})^{1/2}X), while WC(iv) is stated for A_Z = 1_{Z_0}A_exp1_{Z_0}. WC_FULL's proof uses only the lower bound γ_exp and the walk expansion (W_N), both of which hold for A_exp on all of V_red(Λ) (Theorem L with Λ in place of Z_0; 4.2). So WC(iv) holds for (x + A_exp)^{−1} with the same constants, without the p. 13 regrouping of 5.4 [P, by the same proof with Z_0 := Λ].
  Balaban's own route for the resolvent (G_3(x) in (3.185) of CMP 99, CMP 116 p. 13 [V]) is not used.
+
+## §5 Verdict and ledger
+
+5.1 Verdict. A7 is PROVED relative to inputs that WC_FULL already carries. No new input is added.
+ Norm (Lemma N, §2): ‖C*Δ_kC‖ ≤ γ_1^N = ‖C‖²[(K_{ext,1} − a)_+ + c_J + 2c_𝒢], uniform in k, η, volume, Λ, Z_0, and real regular U. Inputs: C2 ((C) for G_1, conditional on the torus-side hypothesis and two unprinted conventions), A3-R4 (c_J), I1 (term identification (1.1)), I3 (form of Q̃, for ‖C‖). No walk expansion, no W_G1, no A1-W, and no axial transfer is used.
+ Decay (Theorem D, §3): |(C*Δ_kC)(b, b′)| ≤ 2B_Ae^{−δ_A|b−b′|}, δ_A = (1 − θ)min{½ε, δ_1}, Schur constant S(δ_A), Γ_1 = 2B_AS(δ_A). This is WC_FULL Proposition W_N + 4.3, restated as A7. Inputs: W_G1 [R], A1-W [C on (C)], I2, I9, Concatenation Lemma [P].
+ Series (2.7) in walk form (§3.3): converges kernel-wise for γ_1 := 4B_AS(θ′δ_A), ratio ½, kernel ≤ 4γ_1^{−1/2}e^{−(1−θ′)δ_A|b−b′|}. This is "if γ_1 is sufficiently large", made explicit.
+ s-versions (§4.1–4.2): same bounds for s ∈ [0, 1]; at |s| ≤ e^{κ_1} with B_A → e^{2^dκ_1}B_A, δ_A → ½δ_A, M ≥ κ_1/(c_dδ_A) [P-sketch following CMP 116 (1.11)].
+ Complex U (§4.3): on 𝒰(α″) with (B_A″, δ_A″) from WC_FULL 6.6, given WC_FULL's complex inputs (Th3.4, R2, C1–C2).
+5.2 Corrections to the brief.
+ (i) C is the constraint parametrization I − hLQ̃, not (C^{(k)})^{1/2}; C*Δ_kC is the precision, (C^{(k)})^{−1}. Theorem WC(i) (A_Z ≥ ¼γ_e) is a lower bound on it and cannot yield γ_1. "A_Z ≥ c·Δ_k ⇒ ‖C*Δ_kC‖ ≤ 1/c" is not a valid route; the upper bound comes from (C) (§2) or from Schur on W_N (§3).
+ (ii) Δ_k is not local (range one block). Its leading term (QG_1Q*)^{−1} is an inverse with decay rate ½ε (A1-W). Only C, C*, a·I, and 𝒢*𝒢 are local.
+ (iii) The x-integral of resolvents expands (C*Δ_kC)^{−1/2}, not C*Δ_kC. A7's decay needs no x-integral. WC(iv) has no uniform-in-x residue for A7 (§4.4); it also extends from A_Z to A_exp on Λ by the same proof.
+5.3 Ledger.
+ [V] CMP 116 p. 13 (2.7) (300 dpi image) and the "γ_1 sufficiently large" sentence; p. 12 (2.5) B′ = (C^{(k)})^{1/2}X; p. 5 (1.11) complex-s bound with e^{mκ_1} and m > 2^4 (text layer); p. 3 s-rule and p. 15 "symmetric" sentence (via SOURCES_LOC, SOURCES_A2_R2); CMP 99 p. 428 (3.156)–(3.158) and the C sentence (via SOURCES_Q, SOURCES_CDC_VERIFY); CMP 109 p. 268 (via WC_FULL PF5).
+ [P] §1.2 identification of C and of C*Δ_kC as the precision; Lemma N (§2.2), its axial form (§2.3), and c_− ≥ 1/γ_1^N (§2.4); c_C ≤ 1 + max w_{b_0}^{−2}Σw_b² given the Q̃ form; Theorem D (§3.2, restating WC_FULL 4.2–4.5); the n-th power bound K^nS(θ′δ)^{n−1}e^{−(1−θ′)δd} and the series bound (§3.3); real-s transfer (§4.1); WC(iv) for A_exp on Λ (§4.4 Remark).
+ [P-sketch] complex-s transfer (§4.2), following CMP 116 (1.11).
+ [C] C2 = (C) for G_1 (norm and decay); C1 = (C) for G (decay, through A1-W and the complex chain).
+ [R] W_G1 (CMP 99 Thms 3.7, 3.9, 3.10 sketches), A3-R4, Th3.4 + complex walk form of G (complex points only).
+ [I] I1 (term identification); I2 (C̃^{(2)} locality); I3 (Q̃ = Q_1(U_1) and its weight form, for ‖C‖); I9 (J local, O(Mα_0)); the 2^d cube count and κ_1 before M (§4.2); K_E(4) numeric (§2.5).
+5.4 Proposed TRUST_LEDGER row A7 status (not written into TRUST_LEDGER; this file edits no existing file):
+ "PROVED relative to listed inputs [2026-10-28, SOURCES_A7_CDC]: norm ‖C*Δ_kC‖ ≤ γ_1^N = ‖C‖²[(K_{ext,1} − a)_+ + c_J + 2c_𝒢] from (C) for G_1 alone (Lemma N; inputs C2, A3-R4, I1, I3; no walks); decay 2B_Ae^{−δ_A|b−b′|} = WC_FULL Prop. W_N (inputs W_G1 [R], A1-W [C], I2, I9); (2.7) series in walk form converges for γ_1 = 4B_AS(θ′δ_A); s- and complex versions via the s-rule and WC_FULL 6.6. Old reduction 'A7 ⇐ A1 + A18' superseded; A18 enters only through A3-R4 and I3. Needs an independent verifier pass."
+ Checks for a verifier, in priority order: (1) Lemma N step (b): S = I and μ = 1 on Λ ⊂ Λ_k, so that (C) on ℋ gives the unit-lattice bound; (2) the claim that WC_FULL C2 is (C) for G_1 in exactly the N̂_1 ≥ c_{−,1} form used in step (c); (3) §3.3 power bound arithmetic; (4) §4.4 Remark (WC(iv) for A_exp on Λ).
