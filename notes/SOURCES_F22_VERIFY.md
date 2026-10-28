@@ -30,3 +30,12 @@ Grade (2): CONFIRMED for the −θ_L and the (7/16)δ_* bound; CORRECTED for the
 - Name clash (not a loop, but a hazard): THM310 8.4 and THM37 use "B_0" for Balaban's (d, L) local constant, and THM310's W_P = c_sB_0³(8/γ_N)c_1³ contains it. WG's B_0 is a different, larger constant with the same name. A reader who substitutes WG's B_0 into THM310's W_P creates a false loop (B_0 ∋ K_310 ∋ W_P ∋ B_0). Recommend the name B_WG (or B_0^{WG}) in WG_FULL.
 - Minor: THM310 9.1(c)'s mixed-L² prefactor is stated only as "factor 2L" over 9.1(a)'s 4B_0, and the scale shift adds L. So the entry is ≤ 8L²B_0 (by analogy with THM37's 4L²B_0 = 4LB_0·L). WG should state it as a number.
 Grade (3): CONFIRMED (no ordering circularity); recommend a distinct name and the explicit 8L²B_0 entry.
+
+## 4. (AL′-ax) re-derived (THM39_FULL 4.4)
+Setting: units L^kη = 1, |U(∂p) − 1| < αη² on N(c), U^u axial from the centre of N(c).
+- (a) Hypothesis is CMP 98 (52) with α̃ = α, η̃ = η; gauge invariant. CONFIRMED.
+- (b) Prop. 2 at α ≤ c_2 gives ε_i = 2α(L^iη)² for every level-i plaquette, i ≤ k; covariance moves it to Ū^i(U^u). CONFIRMED (image check in §4b below).
+- (c) |g_x − 1| ≤ A_Lε_i. ε_i ≤ 2α (L^iη ≤ 1). A_Lε_i ≤ ½ ⇔ α ≤ 1/(4A_L). |log g| ≤ (π/2)|g − 1|, weights L^{−d} sum to 1, |Y_c| ≤ (π/2)A_Lε_i. |e^{iY}Ū^i(c) − 1| ≤ |Y| + LW_i. So W_{i+1} ≤ LW_i + (π/2)A_Lε_i. CONFIRMED.
+- (d) w_i := W_i/(L^iη): w_{i+1} ≤ w_i + (π/2)A_L·2α(L^iη)²/(L^{i+1}η) = w_i + πA_LαL^{i−1}η. Σ_{i<k}L^{i−1}η = (1/L)·η(L^k − 1)/(L − 1) ≤ 1/(L(L − 1)). w_0 = W_0/η ≤ 2d²α from A18 Lemma Q step (1) (read: |U^u(b) − 1| ≤ dα|x − y|η ≤ 2d²αη on N(c)). So w_i ≤ (2d² + πA_L/(L(L − 1)))α. K″ = 2d² + πA_L/(L(L − 1)) CONFIRMED. a_ax = min{c_2, 1/(4A_L)} CONFIRMED (c_2 for (b), 1/(4A_L) for (c); c_2 already contains C_0α ≤ 1/3 for the Prop. 2 bracket).
+- Note: a_ax is a new smallness condition for A18. A18's canon row (A18-Q) (l.162) lists only c_Q(d, L)α ≤ ½; it should also list α ≤ a_ax (axial) and Mα_0 ≤ a_AL ((3.35) gauge).
+Grade (4): CONFIRMED (image check below).
