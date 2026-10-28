@@ -48,8 +48,8 @@ theorem schur_test_weighted (K : Matrix n n 𝕜) (p : n → ℝ) (hp : ∀ i, 0
         (sum_le_sum fun y _ => mul_le_mul_of_nonneg_right (hcol y)
           (by have := hp y; positivity)) ha
     _ = a * b * ∑ y, ‖u y‖ ^ 2 := by
-      rw [mul_assoc, mul_sum, mul_sum]
-      exact congrArg _ (sum_congr rfl fun y _ => by have := (hp y).ne'; field_simp)
+      simp only [mul_sum]
+      exact sum_congr rfl fun y _ => by have := (hp y).ne'; field_simp
   rw [EuclideanSpace.norm_eq, EuclideanSpace.norm_eq, ← Real.sqrt_mul (by positivity)]
   simpa [u] using Real.sqrt_le_sqrt hsum
 
