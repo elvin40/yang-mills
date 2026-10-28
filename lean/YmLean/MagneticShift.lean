@@ -186,7 +186,7 @@ noncomputable def Lap : E := h0 α + h1
 /-- Normal form for words of length ≤ 2 in the shifts. -/
 local macro "shift_nf" : tactic => `(tactic| (
   simp only [nab0, nab0s, nab1, nab1s, h0, h1, Lap, sub_mul, mul_sub, add_mul, mul_add, one_mul,
-    mul_one, smul_mul_assoc, mul_smul_comm, smul_sub, smul_add, smul_smul, T0_T0s, T0s_T0, T1_T1s,
+    mul_one, neg_mul, mul_neg, neg_neg, smul_mul_assoc, mul_smul_comm, smul_sub, smul_add, smul_smul, T0_T0s, T0s_T0, T1_T1s,
     T1s_T1, T0_T1, T0_T1s, T0s_T1, T0s_T1s]))
 
 /-- `[∇₀,∇₁] = [T₀,T₁] = (q − 1)T₁T₀` (GAPRIME2 §2, Lemma 3.2 proof). -/
@@ -432,11 +432,13 @@ noncomputable def sigmaYM : M2 := !![0, (-I) • (1 : E); I • (1 : E), 0]
 `−2ασ_y`). -/
 theorem Kbar_eq : KG 1 1 1 1 1 1 = sigmaYM := by
   refine Matrix.ext fun a b => ?_
-  fin_cases a <;> fin_cases b <;> simp [KG, uG, op, sigmaYM] <;> module
+  fin_cases a <;> fin_cases b <;>
+    simp only [KG, Matrix.smul_apply, Matrix.add_apply, Matrix.sub_apply, op_apply] <;>
+    simp [uG, sigmaYM] <;> module
 
 theorem sigmaYM_sq : sigmaYM * sigmaYM = 1 := by
   refine Matrix.ext fun a b => ?_
-  fin_cases a <;> fin_cases b <;> simp [sigmaYM, Matrix.mul_apply, Fin.sum_univ_two] <;> module
+  fin_cases a <;> fin_cases b <;> simp [sigmaYM, Matrix.mul_apply, Fin.sum_univ_two, smul_smul]
 
 /-- `A′ = cos φ·c^†c + D′D′^† − 2 sin φ·K`, `φ = α/2` (GAPRIME2 Lemma 1.1). -/
 noncomputable def Aprime : M2 :=

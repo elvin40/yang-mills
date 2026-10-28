@@ -94,3 +94,22 @@ Its C_S(η, a) formula uses "For σ ≤ ℓ/8 … Λ_1(σ)⁴ ≤ C_{a,1}σ^{−
 Fix [P]: separation ≥ σ implies separation ≥ min(σ, 1). Apply (L1) and (L3) at σ″ := min(σ, 1). Then the bound is e^{Cn(1 + log_L(2M))}Π(cr)^{−1}N(f_i)(1 + |supp f_i|_1): a constant per factor, i.e. the (S′) shape max(1, σ^{−a′})^n. For (L3), Step 9 at σ″ carries the cube count (2 + 2D/σ″)⁴ of Step 4; with crude N1-B cells (D = 3σ/8 up to 3d_B/16) this is ≤ C(1 + d_B)⁴ per support, polynomial in d_B. With the sharper N1-B cells (side ≤ 1/64 at δ_m > 1) D ≤ 6/64 and the factor is ≤ C. Either way s stays ⌈5 + a′⌉ + 1 and A_B stays polynomial in d_B. [P given (L1); (L1) itself remains I as in IV12.]
 Where (S′) matters here: exactly at σ ~ diam B. What this route receives: (S′)-shaped moment bounds, constant in σ for σ ≥ 1.
 Caveat [I]: the (1 + |supp f_i|_1) factor of (L1) with crude cells of side h_m = δ_m/64 ≫ 1 is ≤ C(1 + d_B)^4 per factor. It adds ≤ 4 to q. Not checked beyond this count.
+
+## 4. Verdict and files to change
+
+### 4.1 Verdict [P relative to Lemma C's inputs]
+- The ℓ-dependence is in D4D5 §5.1 l. 145, inequalities (i)–(iii) of §1 above, on σ > 1 (ii) and σ ≫ 2M ((i), (iii)). The left sides are O(1) there and never grow; they do not grow like log(σ/M). So no (1 + log_L(σ/M))^{bn} factor is needed. Λ_1(σ) is undefined for σ ≥ 2M·L^{(g^{−2}−1)/C_β}, and Step 6's scale count is 0 for σ > 2M.
+- Lemma C′ (§2.3): Lemma C with log_L⁺ and Λ̃_1(σ) = Λ_1(min(σ, 2M)), valid for every σ > ε. Proof: Steps 6–7 redone at the true σ; same constants.
+- (S′) (§2.4): |κ_n| ≤ (C_S′ max(1, σ^{−a}))^n (n!)^{1+η} Π N(f_i) for σ ≥ 16ε, D ≤ σ, no upper limit on σ. C_S′ = 16C_AC_1C_BC_2C_η with C_1 = C_1(a, M, L), C_2 = C_2(a, g, p_R, C_β, M, L). PROVED relative to Lemma C's inputs: S1(b) and (FX) with ℓ-free constants [R, IV12_VERIFY §13 (i)], and the ℓ-free trajectory g [R, IV12 Lemma IV-1].
+- The σ′ = min(σ, 2M) fix of IV12_VERIFY §7 is correct only when D ≤ 2M; otherwise it brings (1 + D/2M)⁴ (§2.1). Lemma C′ avoids this.
+- Consumers: σ = 16ε end unchanged ((S′) = (S) on σ ≤ 1). N1 on a fixed torus unchanged in form. N1-B needs (S′) at its top rungs σ_m ~ d_B/2; q ≤ 12 stands. E14C §2.3's C_S becomes C_S′ with sups over σ > 0. IV12 §4.4 needs the min(σ, 1) step for rungs σ_m > 1 (§3.6).
+
+### 4.2 Files whose text should change (not applied)
+1. SOURCES_B21_S §1 (statement of (S): range σ ∈ [16ε, ℓ/8], σ^{−a}) and §3 table rows "Λ_1(σ)^{4n}" and "(1 + log_L(2M/σ))": replace σ^{−a} by max(1, σ^{−a}), drop the upper limit ℓ/8, cite Lemma C′. Also §4 bullet "σ = 16ε … absorbed into σ^{−a}": fine as is (σ ≤ 1).
+2. SOURCES_D4D5 §5.1: statement → (S′); derivation line l. 145 → the §2.4 derivation here (a′ = a/2, sups over σ > 0). §4.1: add Lemma C′ (log⁺, Λ_1(min(σ, 2M))) or restrict Lemma C to σ ≤ 2M. §4.3 last bullet "For D ≤ σ both are ≤ C_aσ^{−a}": add "for σ ≤ 1; max(1, σ^{−a}) in general".
+3. ASSEMBLY_N1 §1: statement → (S′); item 2 (C_aδ^{−a}) → max(1, δ^{−a}); item 4 (stale ℓ⁴ volume factor, already flagged in IV12_VERIFY §8) → "no volume factor; C_S′ ℓ-free given (FX), S1 ℓ-free (Lemma C′)". §4.4: note that rungs δ_m > 4 carry δ_m^{n} instead of δ_m^{(1−a)n}; the bound max(1, ℓ)^n is unchanged.
+4. SOURCES_B21_E14C §2.3: C_{a,1}, C_{a,2} as sups of ratios to max(1, σ^{−a/2}) over σ > 0.
+5. INFINITE_VOLUME_IV12 §3.1: hypothesis "(S) with ℓ-free constants" → "(S′)"; §4.4: add the min(σ, 1) step for rungs σ_m > 1 (§3.6 here).
+6. INFINITE_VOLUME_IV12_VERIFY §7: the σ′ = min(σ, 2M) fix needs D ≤ 2M; point to Lemma C′.
+
+Status: [derived here, unverified]. Verifier targets: (a) §2.2 Step 7 at σ > 2M (the bound log_L(1/λ_m) ≤ log_L u and the use of a = g^{−2} ≥ 1, i.e. g ≤ 1); (b) §2.4 the m^{n+1} ≤ m^{2n} absorption; (c) §3 premise that N1 and N1-B use σ_m up to ℓ/32 resp. d_B/2.

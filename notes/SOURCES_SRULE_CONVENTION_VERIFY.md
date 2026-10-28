@@ -10,3 +10,13 @@ Patterns "s-rule|s(Δ)|σ(|s ≡|s = 0|s(Y" over *.md: 89 files (firewall files 
 Second grep "C(Z_0,σ|0|s)|Γ_k(Z_0|H(s|G̃(s|(s(Y_0))|dμ_{C(Z_0": new files A17_A19_VERIFY (quotes p. 5 norm bound; = K3 class), SOURCES_MC (writes (2.23) with C(Z_0,0); feeds K7), SOURCES_Q.
 Candidate omission: SOURCES_Q 1.1 completes the square with C_0 := C^{(k)}(Z_0,0): −½⟨B,C_0^{−1}B⟩ − ⟨B,ΓX⟩ = −½⟨B+C_0ΓX, C_0^{−1}(B+C_0ΓX)⟩ + ½⟨ΓX,C_0ΓX⟩. This identity holds only if C_0^T = C_0. So Q uses symmetry of the s ≡ 0 object (K8 class). Checking next.
 
+## 2. Task (a) result
+Q's §1.1 is superseded: SOURCES_LOC 5.3 already refutes Q's value step ("C_0 is the s-truncated walk sum, not the compression"), and A8 §5 replaces input (Q). But two symmetry uses of C_0 = C(Z_0,0) are missing from the K8 row: (i) SOURCES_Q 1.1 (completing the square needs C_0^T = C_0); (ii) SOURCES_LOC §4 Lemma LOC input "(S) C_0 is real symmetric [R: p. 15]". K5 lists LOC only for (S5),(S3),(S4). Both are covered by the A8 §6 route (H_0 := H(C_0^{−1}), cost exp(O(η_M²)|Z_0|), ‖C_0‖ ≤ 4/(3γ_exp) by 6.4(c)) or by the symmetrized variant. So the omission is in bookkeeping, not in substance: K8 should list Q 1.1 (superseded) and LOC §4 (S).
+SOURCES_Q 1.1 also reads a VALUE identity at σ ≡ 0 (B-block of Q_0^{−1} = Z_0-block of C^{(k)}). This is the only value reading found; it is false under both definitions and was already corrected by LOC 5.3. It does not contradict claim (3) for live consumers.
+No other omissions found.
+
+## 3. Task (b1): A8 Lemma D (A8 §4)
+D_σ := C(Z_0,σ) − A_Z^{−1} = Σ_{ω meets σ_0}(Πσ − 1)T_ω, on the WC walks (1.1). This is literally C-new-2 (c) with S1 normalization. Uses: per-walk bound WC(iii), cube count (G3) m ≤ 2·3^d(1 + D/ℓ), (G1) dist(σ_0-cube, Z_0) ≥ M, (G2) domain diameter ≤ c′M_1. Supplied by (S3), (S5).
+Check of the domain size: C-new-2 1.1 sets loc(λ) = ∪X_i^5 (5 layers of M_1-cubes added). A8 (G2)–(G3) use domain diameter c′M_1 and its c′M_1-neighbourhood. X^5 has diameter ≤ (c′ + 10)M_1, still O(M_1). So (G3) holds with c′ → c′ + 10 and (H_M) M ≥ 2(c′+10)M_1. Constants change in form only. CONFIRMED with this constant note.
+Lemma D needs only bounds; it never reads which walks exist. A different expansion with the same per-walk bound gives the same Lemma.
+
