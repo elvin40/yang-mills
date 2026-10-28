@@ -1,6 +1,6 @@
 # SOURCES_C_CONDITION — the (C) condition (lower bound on the compressed operator)
 
-Date: 2026-10-28. Status: in progress. Ledger: [P] proved here, [V] verified from source/numerics, [I] interpretation, [R] relies on printed claim, [N] numerics only.
+Date: 2026-10-28. Status: complete (Opus draft, unverified). Pages checked this session by pdftotext only (CMP 99 pp. 398–399, 416–417, 423; CMP 98 pp. 19–20; CMP 95 p. 19); page-image facts are taken from the verified files cited. Ledger: [P] proved here, [V] verified from source/numerics, [I] interpretation, [R] relies on printed claim, [N] numerics only.
 Firewall: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 
 Inputs read: TRUST_LEDGER rows A1, A1w, A2, A7, A16 and §4.2 lines naming (C); SOURCES_A1_KERNEL (all); SOURCES_QE_INV + VERIFY §7–§8; SOURCES_QE_KE_HQ + VERIFY (all); SOURCES_S2_FORM (all); SOURCES_S2_G1_V7 Part A; SOURCES_A3_GAMMA0_FULL §0, §4–§7; SOURCES_EU §3; SOURCES_T2_VOL §1–§2; CMP 99 pp. 398–399, 416–417, 423 (pdftotext); CMP 98 pp. 19–20, CMP 95 p. 19 (pdftotext).
@@ -116,3 +116,23 @@ Findings. (i) K_gi = K_F to 10^{−6} at the maximum, for every (d, N) tested. R
 
 7.1 G → G_1 at the same U: relative, linear in Mα_0 [P, Lemma R]: c_{−,1} = c_−(U)/(1 + δ_1), δ_1 = 4c_2(K_G + B_0²c_1²)Mα_0. This is the brief's "(I5)/(3.36) smallness" made rigorous: Δ_π^{(2)} is O(Mα_0) RELATIVE TO G^{−1} (not relative to the free operator).
 7.2 U → 1: there is no global comparison [P]. The form "c_−(U) = c_−^{free}(1 − O(Mα_0))" would need G(U)^{−1} ≈ G(1)^{−1} in a common frame. §4.1's example (flat links with arbitrary Polyakov loop, α_F = 0) is regular for every M, α_0, and is not gauge equivalent to U = 1 on the torus; A1_KERNEL §3 gives the same obstruction for non-flat regular U (close to a pure gauge only on cubes of O(M) blocks). So the perturbation from U = 1 is LOCAL: Theorem QE + Lemma T dress the free kernel with local transports and pay O(Mα_0) per loop (cone lemma) plus e^{−δ_HD/4} for the cut-off. The constant obtained is c_−(U) ≥ 1/(4K^D), uniform but crude: K^D uses absolute-value Schur bounds and is 40–75× the true slope in the QE numerics. The linear form c_−^{free}(1 − O(Mα_0)) is NOT proved; SOURCES_EU §4 has the weaker K ≤ K_0(1 + c(Mα_0)^{2/3} + c′Mα_0) [P-sketch]. No consumer needs the sharp form: Lemma CT, IN3, C2, and A7's γ_1^N use only c_− > 0 uniform.
+
+## 8. Conclusion and ledger
+
+8.1 Verdict. (C) is PROVED relative to the inputs listed in 8.2, for G and for G_1, with no torus-side hypothesis beyond (Vol) and no dependence on the two conventions. Grade: unverified (Opus draft); it needs an independent verifier before any ledger row changes.
+ (C) for G: c_− = 1/(4K^D) [P, §2.1 + Lemma T].
+ (C) for G_1: c_{−,1} = c_−/(1 + δ_1), δ_1 = 4c_2(K_G + B_0²c_1²)Mα_0 [P, Lemma R].
+ Hypotheses on parameters: Mα_0 ≤ a_0(d, L) (c_QMα_0 ≤ ¼, 2B_0²c_1²κ′Mα_0 ≤ ½, δ_1 ≤ ½); RM ≥ 4L²D_0(d, L); M ≥ M_T(d, L) = c_T/22; (Vol) ℓ > 22M. All inside Balaban's order (d, L; then R, M; then α_0).
+8.2 Inputs.
+ [V] (KE′): CMP 96 Cor. 2.8 (2.150)–(2.151), straight-line Q (QE_KE_HQ_VERIFY §1–§4); constants uniform in the torus side (part of the citation).
+ [V] (3.35) regularity; CMP 96 Lemma 2.1 (2.60)–(2.61); CMP 99 (3.10), (3.20)–(3.21), (3.119), (3.128), (3.134)–(3.138).
+ [R] CMP 99 Thm 3.1 (3.46) for G′ (used in S2 route Π and Lemma R (b)); Thm 3.3 (3.46) for G (used only for R1(G), §3.4); Thm 3.11 (G > 0) (p. 416 proof printed). Thm 3.12 is no longer needed for G_1 > 0 or for A3's R1 (§3.3).
+ [P, verified elsewhere] (H_Q) (QE_KE_HQ + VERIFY); Theorem QE steps 2.3–2.6, 4.3(a), 4.4, 5.1–5.2 (QE_INV + VERIFY); S2 route Π (S2_FORM + VERIFY); S2_G1 A2–A3.
+ [P, here] Lemma R (§3.2), consequences §3.3; Lemma T (§4.3) and the (Vol) discharge (§4.4); convention independence (§5.2); free exact constant formula (§6.1).
+ [I] [I-a1] Thm 3.1 at the model's a (a = 1 in CMP 99); [I-geom] blocks Δ(y), y ∈ 𝔅, partition Ω_0; d of (2.46) is a path metric with one fine step = η/ℓ(b) (A1_KERNEL §5; used in Lemma T (c)).
+ [R-convention] (Cv1), (Cv2) — reading of CMP 98/95 symbols; the conclusion does not depend on them (§5.2).
+ [N] §6: K_gi = K_0 at the maximum; c_−^{free} = 5.10·10^{−3} (d = 4), 7.82·10^{−3} (d = 3), 1.37·10^{−2} (d = 2); L-independent in the N → ∞ limit.
+8.3 New finding (affects verified files) [P]. QE_INV 5.3 [I-c] is false on the periodic lattice: every single-valued axial path rule has a seam, and the thin loop across the seam winds the torus. The energy defect there is ≈ 4C_H²N_T^{d−1}e^{−δ_HN_T}·L^k, not uniform in k for any fixed torus side; "side ≥ c·RM" does not fix it. S2_FORM 4.3 inherits it through K_∇. Lemma T (cut-off χ(d/D_0)) repairs both. QE_INV_VERIFY and S2_FORM_VERIFY did not see this (they checked Q𝓔 − I on the torus, not the energy at the seam).
+8.4 Ledger consequences (not edited here; for the coordinator). Rows A1 (remaining items), A1w (IN3), A2 (C1, C2), A7 (C2 and its [I] G_1 step, A7_CDC_VERIFY (b2)), A16 (A1-W for G_1 "conditional on (C)"), and the round-6 residue list: "(C) [conditional: torus side + two conventions]" → "(C) [P relative to 8.2; SOURCES_C_CONDITION, unverified]". The torus hypothesis is replaced by (Vol) + M ≥ M_T; the two conventions move to "constants only"; the [I] G_1 step is closed by Lemma R, with R1(G) [R] as the new citation.
+8.5 Verifier asks. (1) §4.2 seam: is there a path rule on the torus without a winding thin loop (I claim no, for nontrivial Polyakov loops), and the size estimate. (2) Lemma T (a)–(c): the embedding under (T2), the cut-off defect via Q(1)E = I, and the gradient of χ(d/D) in the d-metric. (3) Lemma R (b)–(d): Π3 in the ‖RD*A‖ form and the absorption. (4) §3.4 Schur from (3.46) to R1(G): the power ℓ_y² belongs to the output block (p. 398). (5) Rerun numerics/t2_ccond_free.py; check the §6.2 reason for K_gi = K_F.
+Status: COMPLETE for this session.
