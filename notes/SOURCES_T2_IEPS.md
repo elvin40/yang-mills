@@ -72,3 +72,12 @@ Structure [P from the list]. Every Part I condition among (ε_1, α_0, α_1, α_
 - B10 ("γ² small depending on M and κ") and the other B-items with ε_1/γ: UPPER on γ; helped by γ′ < γ.
 - Conclusion for CMP 116 §2: the ε_1² factor gives a LOWER bound on ε_1/γ, not on ε_1. It is restored by γ′ = γ/(8λ_V). γ is chosen after ε_1 (§9). [P]
 
+## 8. CMP 122 II pp. 377–381 (PDF pp. 23–27; images 200 dpi for pp. 379–381) [V]
+- p. 377 (1.68): |V(Y, (U, J))| ≤ a·exp(−(1+2η)κd_{k,Z}(Y)), "a constant a, which can be chosen arbitrarily small for γ small enough". UPPER on γ.
+- p. 378: χ_k gives |∂V_k − 1| < 2ε_k on small-field components; then |V′_k − 1| < O(1)B_5M^6ε_k; "M_0 … we choose it as equal to the above bound". No ε_1, α_0, α_1. ε_k is the CMP 119 (2.4) threshold.
+- p. 379 (image): the first-order term σ of the quadratic form in A′, J is bounded by O(1)B_3²A_1²p_1²(g_k)|B_0|(α_{0,k} + α_{1,k}) < O(1)B_3²A_1²C_0M^dR_k^{d+2}p_1²(g_k)q_0(g_k)g_k, "and this bound is small". In the large-field papers the analyticity radii are k-dependent, α_{i,k}, bounded by C_0q_0(g_k)g_k-type quantities. σ is linear in α_{0,k} + α_{1,k}: shrinking α_0, α_1 (hence α_{i,k} where the fixed α_i is the cap) only lowers σ. "Small" is an UPPER bound on g_k (γ).
+- p. 380 (1.73)–(1.75): |T′_k(X,(U,J))F| ≤ (T′_k(X,(U,0))1)·sup e^{|σ|}|F|; |T′_k(X,(U,J))1| ≥ (T′_k(X,(U,0))1)e^{−2sup|σ|}; ratio ≤ e^{3sup|σ|}sup|F|. The cost per large-field component is e^{3sup|σ|}, with σ as above. Shrinking α_0, α_1 lowers it; ε_1 does not appear.
+- p. 380 large-field factors (image): χ^c_j(P_j): exp(−γ_0(2g_j²)^{−1}(B_3^{−1}ε_j)²(LM_2R_j)^{−d}|P_j|); χ′^c_j(Q_j): exp(−½γ_0g_j^{−2}(2δ_j)²(LM_2R_j)^{−2}|Q_j|); χ^{(j−1)c}(R_j): exp(−γ_0g_j^{−2}δ_j²(LM_2R_j)^{−d}|R_j|).
+- p. 381 (image): per component Z_j^{(i)} of the MR_j-cube cover: exp(−γ_0 min{½B_3^{−2}A_0², 2A_1², A_1²}p_0²(g_j)(d′_j(Z_j^{(i)}) + 1)) ≤ exp(−½γ_0A_1²p_0²(g_j)(d′_j + 1) − 2p_0(g_j)). (1.76): Z_j ⊂ Z′_{j−1}^{~10} ∪ ∪_i(Z_j^{(i)})^{~2}. Preparatory factor exp(−⅛B_3^{−2}(1+β_0)^{−2}A_0²p_0²(g_j)) ≤ exp(−A_1²p_0²(g_j)).
+- Reading [P]: ε_j, δ_j enter the split only through A_0, A_1, p_0, g_j. The CMP 116 constants ε_1, α_0, α_1 enter CMP 122 only via (L1), (L2) of §6 (small field ⊂ analyticity domain) and via σ (helped by the shrink).
+

@@ -26,7 +26,7 @@ Adjoint: (Q*B)(y) = η^{−d} Σ_c w(y − c)B(c).
 So at fixed p′ the fine operators act on the vector (Â(p′ + l))_l: −Δ is D = diag(Δ_l), Q*Q is the rank-one matrix w w^† with w_l := ŵ(p′ + l). These are the symbols of KAPPA_D (CMP 95 (1.31), (1.61), (1.101)); T_μ(p′) := Σ_l |w_l|²/Δ_l = w^†D^{−1}w is the KAPPA_D function T.
 Bounds on the symbols [P]. For |q| ≤ πN: N|sin(q/2N)| ≤ |q|/2, and |sin(q/2N)| ≥ |q|/(πN), so
  (S1) s(q) ≤ 1 always (|average of unimodular numbers| ≤ 1), s(q) ≤ π²/q² ⇒ |ŵ(p)| ≤ Π_ν m(p_ν)·m(p_μ), m(q) := min(1, π/|q|);
- (S2) s(q) ≥ sin²(q/2)/(q/2)² ≥ 4/π² for |q| ≤ π ⇒ |ŵ(p′)|² ≥ ω^{−1} on B_1, ω := (π/2)^{2(d+1)} (d = 4: ω = 91.38);
+ (S2) s(q) ≥ sin²(q/2)/(q/2)² ≥ 4/π² for |q| ≤ π ⇒ |ŵ(p′)|² ≥ ω^{−1} on B_1, ω := (π/2)^{2(d+1)} (d = 4: ω = 91.45);
  (S3) Δ(p) ≤ |p|², Δ(p) ≥ (4/π²)|p|² on B_η; Δ(p′) ≤ dπ² on B_1; Δ(p′ + l) ≥ 4 for l ≠ 0 (some |p_ν| ≥ π);
  (S4) Σ_l |w_l|² ≤ 1: Σ_l|w_l|² = Σ_c e^{ip′·c}η^{−d}Σ_z w(z)w(z + c) ≤ Σ_z w(z)η^{−d}Σ_c w(z + c) = 1 by (c).
 1.5 Balaban sources used (all [V] on page images, CMP 95 PDF pp. 18–20 = journal pp. 34–36, read this session).
@@ -41,11 +41,11 @@ Notation: for a > 0, H_a := −Δ + aQ*Q, G_a := H_a^{−1}, S_a := QG_aQ* (coar
  E_0(y, c) = ∫_{B_η} ê(p)e^{ip·(y−c)} dp/(2π)^d,  ê(p′ + l) = ŵ(p′ + l)/(Δ(p′ + l)T(p′)).
 For l = 0 write ê(p′) = ŵ(p′)/D(p′), D(p′) := Δ(p′)T(p′) = |w_0|² + Δ(p′)Σ_{l≠0}|w_l|²/Δ_l ≥ |w_0|². At p′ = 0: T = ∞, ê(l) = 0 for l ≠ 0, ê(0) = 1 (so η^dΣ_y E_0(y, c) = 1).
 2.2 E_0 = G_aQ*S_a^{−1} for every a > 0 [P]. At fixed p′ ≠ 0, D_diag := diag(Δ_l) is invertible and Sherman–Morrison gives (D_diag + aww^†)^{−1}w = D_diag^{−1}w/(1 + aT). Hence S_a(p′) = T/(1 + aT) and G_aQ*S_a^{−1} has symbol D_diag^{−1}w/(1 + aT)·(1 + aT)/T = D_diag^{−1}w/T = ê. The set p′ = 0 has measure zero. This is the scalar form of CMP 95 (1.103) "H_kB = GQ*(QGQ*)^{−1}B" [V p. 34]. The left side does not depend on a. (Balaban makes the same remark for a different operator, the one of his (1.44): "independent of a and we can take arbitrary a in the representation, e.g. a = 1", CMP 95 text layer l. 468 [V text]; it is not used here.)
-2.3 Lower bound on T and S_a [P]. By (S2), (S3): T(p′) ≥ |w_0|²/Δ(p′) ≥ t_0 := 1/(dπ²ω). Since x ↦ x/(1 + ax) is increasing, s_0 := t_0/(1 + at_0) ≤ S_a ≤ 1/a. For d = 4: t_0 = 2.772e−4, i.e. K_0 = 1/inf T ≤ 1/t_0 = 3607 (the true value is 195.19 [N], SOURCES_EU §3; 1/t_0 is the l = 0 term at the corner, as in SOURCES_CDC_VERIFY §4). This is the k-uniform positivity of (1.100)–(1.101) of CMP 95 [V p. 34], proved here directly.
+2.3 Lower bound on T and S_a [P]. By (S2), (S3): T(p′) ≥ |w_0|²/Δ(p′) ≥ t_0 := 1/(dπ²ω). Since x ↦ x/(1 + ax) is increasing, s_0 := t_0/(1 + at_0) ≤ S_a ≤ 1/a. For d = 4: t_0 = 2.770e−4, i.e. K_0 = 1/inf T ≤ 1/t_0 = 3610 (the true value is 195.19 [N], SOURCES_EU §3; 1/t_0 is the l = 0 term at the corner, as in SOURCES_CDC_VERIFY §4). This is the k-uniform positivity of (1.100)–(1.101) of CMP 95 [V p. 34], proved here directly.
 2.4 Poincaré bound, uniform in η [P]. For all A ∈ ℓ²(Λ_η):
  ‖A‖² ≤ c_1‖∇A‖² + c_2‖QA‖²,  c_1 := (1 + 2ω)/4, c_2 := 2ω.
 Proof, fibre by fibre. From the constraint form, conj(w_0)Â_0 = (QA)^ − Σ_{l≠0}conj(w_l)Â_l. With |w_0|^{−2} ≤ ω (S2) and Σ_{l≠0}|w_l|² ≤ 1 (S4): |Â_0|² ≤ 2ω|(QA)^|² + 2ωΣ_{l≠0}|Â_l|². Hence Σ_l|Â_l|² ≤ 2ω|(QA)^|² + (1 + 2ω)Σ_{l≠0}|Â_l|² ≤ 2ω|(QA)^|² + ((1 + 2ω)/4)Σ_{l≠0}Δ_l|Â_l|², by Δ_l ≥ 4 (S3). Integrate over p′. ∎
-Consequence: ⟨A, H_aA⟩ ≥ m‖A‖² with m = m_a := 1/max(c_1, c_2/a), and ⟨A, H_aA⟩ ≥ ‖∇A‖². For d = 4: c_1 = 45.94, c_2 = 182.77; a ≥ c_2/c_1 = 3.98 gives m = 1/45.94 = 0.02177.
+Consequence: ⟨A, H_aA⟩ ≥ m‖A‖² with m = m_a := 1/max(c_1, c_2/a), and ⟨A, H_aA⟩ ≥ ‖∇A‖². For d = 4: c_1 = 45.98, c_2 = 182.91; a ≥ c_2/c_1 = 3.98 gives m = 1/45.98 = 0.02175.
 
 ## 3. Weighted L² decay, uniform in η (Combes–Thomas) [P]
 Weights. Let 𝓕_δ be the set of bounded real f on R^d with |f(x) − f(x′)| ≤ δ|x − x′|. On the coarse lattice use f(c) := f(x_c). Write X_f := e^fXe^{−f} for any operator X (fine, coarse, or mixed). For f ∈ 𝓕_δ these are bounded operators. Put β := e^δ − 1, q := e^{δD/2} − 1, D = √(d + 3). Assume δ ≤ 1. Then for every bond, η^{−1}|e^{±(f(y)−f(y′))} − 1| ≤ η^{−1}(e^{δη} − 1) ≤ β, since (e^x − 1)/x increases and η ≤ 1.
@@ -75,16 +75,32 @@ All constants depend on d, a, δ only. They do not depend on η = L^{−k}, on L
 
 ## 4. Uniform pointwise regularity from the symbol [P]
 4.1 Symbol bound. On B_η:
- |ê(p)| ≤ C_e|ŵ(p)|/(1 + |p|²),  C_e := ω·dπ²(π² + 1)/4  (d = 4: C_e = 9.80e3).
+ |ê(p)| ≤ C_e|ŵ(p)|/(1 + |p|²),  C_e := ω·dπ²(π² + 1)/4  (d = 4: C_e = 9.81e3).
 Proof. l = 0: |ê(p′)| = |w_0|/D(p′) ≤ 1/|w_0| ≤ ω|w_0| (D ≥ |w_0|², |w_0|² ≥ 1/ω), and 1 ≤ (1 + dπ²)/(1 + |p′|²). l ≠ 0: T(p′) ≥ |w_0|²/Δ(p′) ≥ 1/(ωdπ²), Δ_l ≥ (4/π²)|p|², |p| ≥ π, so |ê| ≤ |w_l|ωdπ²(π²/4)|p|^{−2} ≤ |w_l|ωdπ²(π²/4)(1 + π^{−2})/(1 + |p|²). The second constant dominates (1 + dπ² < dπ²(π² + 1)/4). ∎
 4.2 The integral J(β) := ∫_{R^d} Π_ν m(p_ν)·m(p_μ)·|p|^β(1 + |p|²)^{−1} dp is finite for 0 ≤ β < 2, and
  J(β) ≤ I_2·I_1(γ)^{d−1},  γ := (2 − β)/(2d),  I_1(γ) := 2π(1 + π^{−2γ}/(2γ)),  I_2 := 4π.
 Proof. |p|^β(1 + |p|²)^{−1} ≤ (1 + |p|²)^{−(2−β)/2}. By AM–GM, Π_ν(1 + p_ν²)^{1/d} ≤ 1 + |p|²/d ≤ 1 + |p|², so the integrand is ≤ Π_ν m(p_ν)(1 + p_ν²)^{−γ}·m(p_μ). The integral factorizes. For ν ≠ μ: ∫_R m(q)(1 + q²)^{−γ}dq ≤ 2(π + ∫_π^∞ (π/q)q^{−2γ}dq) = I_1(γ). For ν = μ drop (1 + q²)^{−γ} ≤ 1: ∫_R m(q)²dq = 4π. ∎
- d = 4 values: J(0) ≤ 3.00e4 (γ = 1/4), J(1) ≤ 2.00e5 (γ = 1/8), J(3/2) ≤ 1.54e6 (γ = 1/16) (script §consts).
+ d = 4 values: J(0) ≤ 3.00e4 (γ = 1/4), J(1) ≤ 2.00e5 (γ = 1/8), J(3/2) ≤ 1.56e6 (γ = 1/16) (script §consts).
 4.3 Regularity, uniform in η. Since B_η ⊂ R^d and |ŵ| ≤ Πm·m_μ (S1), with κ_d := (2π)^{−d}C_e:
  (R0) |E_0(y, c)| ≤ κ_dJ(0);
  (R1) |E_0(y, c) − E_0(y′, c)| ≤ κ_dJ(1)|y − y′| (|e^{ip·z} − 1| ≤ |p||z|);
  (R2) |∇_νE_0(y, c)| ≤ κ_dJ(1) (the multiplier (e^{ip_νη} − 1)/η has modulus 2|sin(p_νη/2)|/η ≤ |p|);
  (R3) |∇_νE_0(y, c) − ∇_νE_0(y′, c)| ≤ 2^{1−α}κ_dJ(1 + α)|y − y′|^α, 0 < α < 1 (|e^{ip·z} − 1| ≤ min(2, |p||z|) ≤ 2^{1−α}|p|^α|z|^α).
-Put H_0 := κ_dJ(1), H_1 := 2^{1/2}κ_dJ(3/2) (α = 1/2). For d = 4: κ_4 = 6.29, so sup|E_0| ≤ 1.9e5, H_0 ≤ 1.26e6, H_1 ≤ 1.37e7. These are crude (numerically max|E_0| ≈ 2.3, §6); only their k-independence matters.
+Put H_0 := κ_dJ(1), H_1 := 2^{1/2}κ_dJ(3/2) (α = 1/2). For d = 4: κ_4 = 6.29, so sup|E_0| ≤ 1.9e5, H_0 ≤ 1.26e6, H_1 ≤ 1.39e7. These are crude (numerically max|E_0| ≈ 2.3, §6); only their k-independence matters.
 Remark. Second differences of E_0 are not uniformly bounded: the β = 2 integral diverges like (log N)^{d−1}. This matches the continuum picture: −ΔE_0 = Q*S^{−1}δ_c-type source with jumps across corridor faces, so E_0 ∈ C^{1,α}, not C^{1,1}. This is why α < 1 in (R3).
+
+## 5. Pointwise exponential decay, moments, coset sums [P]
+5.1 From L² decay plus Hölder to pointwise decay. Lemma. Let g be a function on Λ_η, x_* ∈ R^d, with (i) η^dΣ_y e^{2δ|y−x_*|}|g(y)|² ≤ W², (ii) |g(y) − g(y′)| ≤ H|y − y′|^α (0 < α ≤ 1). Then for all y
+ |g(y)| ≤ C_pt e^{−δ′|y−x_*|},  δ′ := 2αδ/(d + 2α),  C_pt := max(2Wd^{d/4}e^δ, [4W²d^{d/2}(2H)^{d/α}e^{2δ}]^{α/(2α+d)}).
+Proof. Put t := |g(y)|, r := min(1, (t/2H)^{1/α}). By (ii), |g| ≥ t/2 on the Euclidean ball B(y, r). That ball contains the lattice points of the cube y + [−ρ, ρ]^d, ρ = r/√d; their number is (2⌊ρ/η⌋ + 1)^d ≥ (ρ/η)^d (because 2⌊x⌋ + 1 ≥ x for x ≥ 0), so their η^d-volume is ≥ ρ^d (also when ρ < η). On B(y, r), e^{2δ|z−x_*|} ≥ e^{2δ(|y−x_*|−1)}. So (t/2)²(r/√d)^d e^{2δ(|y−x_*|−1)} ≤ W². If r = 1: t ≤ 2Wd^{d/4}e^δe^{−δ|y−x_*|}. If r = (t/2H)^{1/α}: t^{2+d/α} ≤ 4W²d^{d/2}(2H)^{d/α}e^{2δ}e^{−2δ|y−x_*|}. Since δ ≥ δ′ both cases give the claim. ∎
+5.2 Theorem (k-uniform decay of E_0) [P]. Let δ_* > 0 satisfy (C1), (C2) of §3 (it depends on d only, after fixing a). Then for all k (all odd N), all y ∈ Λ_η, c ∈ Z^d, ν = 1, …, d:
+ |E_0(y, c)| ≤ C_E e^{−δ_E|y−c|},  |∇_νE_0(y, c)| ≤ C_∇ e^{−δ_∇|y−c|},
+with δ_E = 2δ_*/(d + 2), δ_∇ = δ_*/(d + 1), C_E = C_pt(W_0, H_0, α = 1)e^{δ_ED/2}, C_∇ = C_pt(W_1, H_1, α = 1/2)e^{δ_∇D/2}. Proof: Lemma 5.1 with x_* = x_c, the weighted bounds (3.5), and (R1) resp. (R3); |y − x_c| ≥ |y − c| − D/2. One common rate is δ := δ_* /(d + 1) (= δ_*/5 for d = 4). None of the constants depends on k, η, or L.
+5.3 Moments [P]. With ν_j := η^dΣ_y|E_0(y, 0)|(1 + |y|)^j and γ_j := η^dΣ_y|∇E_0(y, 0)|(1 + |y|)^j (|∇E_0| the Euclidean norm of the d differences):
+ ν_j ≤ W_0M_j,  γ_j ≤ W_1M_j,  M_j² := e^{2δ_*√d}|S^{d−1}|∫_0^∞ r^{d−1}(b + r)^{2j}e^{−2δ_*r}dr,  b := 1 + √d + D/2.
+Proof. Cauchy–Schwarz: ν_j ≤ (η^dΣ e^{2δ_*|y−x_0|}|E_0|²)^{1/2}(η^dΣ e^{−2δ_*|y−x_0|}(1 + |y|)^{2j})^{1/2}. For z in the cell y + [0, η)^d: |z − x_0| ≤ |y − x_0| + √d, so e^{−2δ_*|y−x_0|} ≤ e^{2δ_*√d}e^{−2δ_*|z−x_0|}; and 1 + |y| ≤ 1 + √d + |z| ≤ 1 + √d + D/2 + |z − x_0| = b + |z − x_0| (|x_0| ≤ D/2). So the lattice sum is ≤ the integral. Same for γ_j with W_1. ∎ This holds for every j ≥ 0, not only j ≤ 2.
+5.4 Coset sums and the Γ_j of SOURCES_EU §4.5 [P]. Define σ_j := sup_y Σ_{c∈Z^d}|E_0(y, c)|(1 + |y − c|)^j and σ_j^∇ likewise with |∇E_0|. By 5.2, σ_j ≤ C_E Σ_{c}e^{−δ_E|y−c|}(1 + |y − c|)^j ≤ C_E e^{δ_E√d}|S^{d−1}|∫_0^∞ r^{d−1}(1 + √d + r)^je^{−δ_Er}dr, uniform in y and k (same cell argument on the unit lattice); same for σ_j^∇ with C_∇, δ_∇. These are the sums at fixed fine point y over blocks c that SOURCES_EU §4.5 replaced by η^d y-sums "[I] up to lattice-sum versus integral factors". With them, for j ≥ 1, using (u + v)^j ≤ 2^{j−1}(u^j + v^j) and translation invariance:
+ Γ_j := sup_c Σ_{c′}Σ_yη^d|∇E_0(y, c)||∇E_0(y, c′)|(|y − c| + |y − c′|)^j ≤ 2^{j−1}(γ̃_jσ_0^∇ + γ̃_0σ_j^∇),  Γ_0 ≤ γ̃_0σ_0^∇,
+where γ̃_j := η^dΣ_y|∇E_0(y, 0)||y|^j ≤ γ_j. This replaces the [I] bound "Γ_j ≤ 2^jγ_0γ_j [I: lattice-sum factor]" of SOURCES_EU §4.5 by a proved one; numerically the two differ by a factor ≈ 1.3–1.5 (§6.4). Likewise the Schur steps of SOURCES_EU §4.3 (c-sum at fixed y) are controlled by σ_j.
+5.5 Explicit values, d = 4 [P arithmetic, script `consts`]. Best a = 3.98: m = 0.02175, s_0 = 2.767e−4, δ_* = 2.93e−9, W_0 = 6.65e5, W_1 = 9.80e4; H_0 = 1.26e6, H_1 = 1.39e7; C_E ≈ 5.3e6, δ_E = 9.8e−10; C_∇ ≈ 1.4e7, δ_∇ = 5.9e−10. Moment bounds: log10 ν_j ≤ 23.3, 32.2, 41.3 and log10 γ_j ≤ 22.5, 31.4, 40.4 for j = 0, 1, 2.
+Consistency with the brief's check. δ_E, δ_∇ ≤ 1.2 (observed) and all bounds exceed the numerical values (ν_0 ≈ 4–5, γ_2 ≈ 250) [P: arithmetic]. The bounds are qualitative: they prove k-uniformity. They are useless as numbers in SOURCES_EU §4.6 (c_{2/3} would be ~1e40). A realistic rigorous constant needs a sharper argument, e.g. a k-uniform zero-free strip for the analytic continuation of T (§6.3 locates the relevant zero numerically) [I, not done].
