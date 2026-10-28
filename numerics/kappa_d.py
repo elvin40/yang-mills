@@ -43,3 +43,11 @@ if __name__ == "__main__":
         for N in Ns:
             t, p, tc = infT(d, N, ng)
             print(f"d={d} N={N:3d}  inf T={t:.6f}  T(pi,..,pi)={tc:.6f}  grid argmin={np.round(p, 3)}  kappa={1 + 1 / (a * t):.6f}", flush=True)
+    # k -> inf (eta -> 0) at the minimizing corner: s -> 4/q^2 at q = pi(2m+1), Delta -> |q|^2; truncate |m| <= M, M -> inf
+    for d in (3, 4):
+        for N in (41, 81):
+            print(f"d={d} N={N:3d}  T(pi,..,pi)={T(np.full(d, np.pi), N):.6f}", flush=True)
+        for M in (40, 80, 160) if d == 3 else (20, 40, 60):
+            q = np.pi * (2 * np.arange(-M, M + 1) + 1); s = 4 / q**2; W = s**2; Dl = q**2
+            for n in range(1, d): W = np.multiply.outer(W, s); Dl = np.add.outer(Dl, q**2)
+            t = np.sum(W / Dl); print(f"d={d} continuum M={M}  T={t:.6f}  kappa={1 + 1 / (a * t):.4f}", flush=True)

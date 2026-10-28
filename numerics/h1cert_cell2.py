@@ -171,26 +171,30 @@ def d_tm(L, M, Kc, h, N):
 
 # ---------------------------------------------------------------- E_q as a Taylor model
 def e_tm(L, pf, Kc, h):
-    """TM of the q_0 rows E_l (L^4, 4 coarse, 4 fine): centre and K-gradient by einsum; remainder (1/2) h_k^2 sum|F||y|_1^2
-    (|d^2 e^{iky}/dK dK| = |y_nu y_la|/L^2), + float/P1' error err (as h1cert_cell.qrows) and 2 err L per gradient component."""
+    """TM of the q_0 rows E_l (L^4, 4 coarse, 4 fine): centre and K-gradient by contraction. Remainder from the exact per-block
+    Hessian at K_c: (1/2) h^2 sum_{nu,la} |H_l[nu,la]| + (1/6) h^3 sum|F| (|y|_1/L)^3 (third derivative a priori from the
+    trigonometric structure), + float/P1' error err (as h1cert_cell.qrows), with factor (1 + 8hL + 32 h^2 L^2) for gradient/Hessian."""
     hk = h / L; hh = (L - 1) // 2
     kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]
-    C = np.zeros((L,) * 4 + (4, 4), complex); dC = np.zeros((4,) + (L,) * 4 + (4, 4), complex); Rd = np.zeros((4, 4)); err = np.zeros((4, 4))
+    C = np.zeros((L,) * 4 + (4, 4), complex); dC = np.zeros((4,) + (L,) * 4 + (4, 4), complex)
+    Hs = np.zeros((L,) * 4 + (4, 4)); m3 = np.zeros((4, 4)); err = np.zeros((4, 4))
     for mu, F in enumerate(pf):
         y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
         W = [np.exp(1j * kp[a][:, None] * y[a][None]) for a in range(4)]
         con = lambda T: np.einsum("rabcd,ia,jb,kc,ld->ijklr", T, *W, optimize=True)
+        yr = lambda nu: y[nu].reshape([1] * (1 + nu) + [-1] + [1] * (3 - nu))
         C[..., mu, :] = con(F)
         for nu in range(4):
-            sh = [1] * 5; sh[1 + nu] = -1
-            dC[nu][..., mu, :] = 1j * con(F * y[nu].reshape(sh)) / L
-        ay = sum(np.abs(y[a]).reshape([1] * (1 + a) + [-1] + [1] * (3 - a)) for a in range(4))
+            dC[nu][..., mu, :] = 1j * con(F * yr(nu)) / L
+            for la in range(4):
+                if la >= nu: Hs[..., mu, :] += (2 - (la == nu)) * np.abs(con(F * yr(nu) * yr(la))) / L**2
+        ay = sum(np.abs(yr(a)) for a in range(4))
         aF = np.abs(F); n1 = aF.sum((1, 2, 3, 4))
-        Rd[mu] = 0.5 * (aF * ay**2).sum((1, 2, 3, 4))
+        m3[mu] = (aF * (ay / L)**3).sum((1, 2, 3, 4))
         th = (np.pi + h / L) * 2 * L + 2
         err[mu] = (2 * (4 * sum(F.shape[1:]) + 40) * U * 1.1 + 8 * U * th * 4 + 1e-13) * n1
-    r = (Rd * hk**2 + err * (1 + 8 * h * L)) * (1 + 1e-12)
-    return TM(C.reshape(-1, 4, 4), dC.reshape(4, -1, 4, 4), np.broadcast_to(r, (L**4, 4, 4)).copy())
+    r = (0.5 * h**2 * Hs + (m3 * h**3 / 6 + err * (1 + 8 * h * L + 32 * h * h * L * L))[None, None, None, None]) * (1 + 1e-12)
+    return TM(C.reshape(-1, 4, 4), dC.reshape(4, -1, 4, 4), r.reshape(-1, 4, 4))
 
 
 # ---------------------------------------------------------------- Oishi-Rump inverse and final bound
@@ -230,15 +234,18 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         cv = (Kh[:, :3] * (Kh[:, 3:4].conj() * (Kh[:, 3:4] * Kh[:, 3:4].conj()).recip())).rs(1, 3, 1)
         e4 = np.zeros((1, 1, 4)); e4[0, 0, 3] = 1
         QH = tm(np.eye(3, 4)[None]) - cv * e4                            # (1, 3, 4), Q^dag Kh = 0
-        V = QH @ E                                                       # (Nb, 3, 4)
-        VD = V * d.rs(Nb, 1, 4)
         khc = kh.rs(Nb, 4, 1)
         P = tm(np.eye(4)[None]) - (khc @ khc.H()) * inva.rs(Nb, 1, 1)
+        Et = E @ P                                                       # E P; Q^dag E P = Q^dag E (P4)
+        V0 = QH.c @ Et.c; A0 = s2 * np.einsum("bin,bn,bjn->ij", V0, d.c, V0.conj())
+        lam0, U0 = np.linalg.eigh((A0 + A0.conj().T) / 2)
+        QH = tm((U0 / np.sqrt(lam0)).conj().T[None]) @ QH                 # whitened frame Q S, S = U Lambda^-1/2: A(K_c) ~ I
+        V = QH @ Et                                                      # (Nb, 3, 4)
+        VD = V * d.rs(Nb, 1, 4)
         A = (VD @ V.H()).sum() * s2
-        VDP = VD @ P
-        C = (VDP @ VD.H()).sum() * s2
+        C = (VD @ P @ VD.H()).sum() * s2
         Khc = Kh.rs(1, 4, 1)
-        b = (VDP @ (E.H() @ Khc)).sum() * s2
+        b = (VD @ (Et.H() @ Khc)).sum() * s2                             # Q^dag T Kh = s^2 sum V D (E P)^dag Kh
         sig = inva.sum() * s2
         t3 = time.time()
         Y, eta = inv_or(A)
