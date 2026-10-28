@@ -119,3 +119,88 @@ The last inequality uses θ_L ≤ δ′/(8(d + 4)). The constants b_G and δ_G d
 
 3.6 Conclusion. N̂ satisfies (H1) of A1_WALK_FULL 0.4 with (b_G, ρ_G = c′/M_1, δ_G, C_𝒟^N, c_X^N). N̂ is real symmetric (T37e). Remark: no V-junctions occur, so caveat WG-1 of A1_WALK_FULL 6.6 (α_0 ≤ c′M^{−1}M_1^{−10}) is not needed here; the per-step factor is c′/M_1 under Mα_0 ≤ a_37 alone.
 
+## 4. Step B: the global lower bound (hypothesis (H2) of A1-W) [P given (I-Q), (I-B), (3.35), (3.50)–(3.51)]
+
+Lemma LB. Let U be real with (3.35) and Mα_0 ≤ a_LB(d, L). Then for every ω ∈ ℋ,
+ ⟨ω, Nω⟩_ℋ ≥ γ_N⟨ω, S²ω⟩_ℋ, equivalently N̂ = S^{−1}NS^{−1} ≥ γ_N,
+with γ_N := c_φ²/(4K_N) > 0 depending only on d, L, a, and the fixed O(1) = 12 of (3.35). The constants c_φ, K_N, a_LB are defined in the proof.
+
+4.1 Variational step [P]. G′ is the inverse of the real symmetric positive operator Δ′_a on 𝒦 (T37e). So ⟨ω, Nω⟩ = ⟨Q′*ω, G′²Q′*ω⟩ = ‖G′Q′*ω‖². Let λ ∈ 𝒦 with g := Δ′_aλ ≠ 0. Then ⟨g, G′Q′*ω⟩ = ⟨G′g, Q′*ω⟩ = ⟨λ, Q′*ω⟩ = ⟨Q′λ, ω⟩_ℋ. By Cauchy–Schwarz,
+ ⟨ω, Nω⟩ ≥ |⟨Q′λ, ω⟩_ℋ|² / ‖Δ′_aλ‖²_𝒦. (4.1)
+So it suffices to build, for each ω, one trial λ with ⟨Q′λ, ω⟩ ≥ ½c_φ⟨ω, S²ω⟩ and ‖Δ′_aλ‖² ≤ K_N⟨ω, S²ω⟩. Then (4.1) gives ⟨ω, Nω⟩ ≥ (¼c_φ²/K_N)⟨ω, S²ω⟩.
+
+4.2 The bump [P]. Fix ψ ∈ C^∞(ℝ^d), 0 ≤ ψ ≤ 1, ψ = 1 on [¼, ¾]^d, supp ψ ⊂ (⅛, ⅞)^d. For y ∈ Λ_j put ℓ := L^jη and ξ(x) := (x − x_y)/ℓ, x_y the lower corner of Δ(y). Define φ_y on the fine lattice by:
+ - if L^j ≥ 8: φ_y(x) := ψ(ξ(x)). Then φ_y vanishes within ℓ/8 ≥ η of ∂Δ(y). By Taylor's formula, |∂^ηφ_y| ≤ ‖∇ψ‖_∞ℓ^{−1} and |Δ^ηφ_y| ≤ d‖∇²ψ‖_∞ℓ^{−2}. At least (L^j/4)^d points of Δ(y) lie in the region ψ = 1, so L^{−jd}Σ_xφ_y(x) ≥ 4^{−d};
+ - if L^j < 8: φ_y := 1_{Δ(y)}. Then |∂^ηφ_y| ≤ η^{−1} < 8ℓ^{−1}, |Δ^ηφ_y| ≤ 2dη^{−2} < 128dℓ^{−2}, and the average is 1.
+Put c_φ := 4^{−d} and K_φ := max{‖∇ψ‖_∞, d‖∇²ψ‖_∞, 128d}. Both depend on d only. Every bound holds at every fine point, including the points next to Δ(y).
+
+4.3 The covariant trial function [P]. By (I-B) fix the cube □(y) ⊃ N(Δ(y)) (block plus one η-layer) and u_y on □(y) with U^{u_y} = e^{iηA}, A as in (3.35). Since the index of □(y) is j or j − 1, on □(y): |A| ≤ c_3Mα_0ℓ^{−1} and |∇^ηA| ≤ c_3Mα_0ℓ^{−2}, c_3 := 12L². Define, for x ∈ Δ(y),
+ λ_y(x) := R(u_y(x))^{−1}φ_y(x)v_y, v_y := s(y)²R(u_y(y))ω(y),
+and λ_y := 0 off Δ(y). Put λ := Σ_yλ_y. It is supported in ∪Δ(y) ⊂ Ω_0 (I-B), so Δ′_aλ = Ω_0(Δ_U + Q′*aQ′)λ.
+ Covariance [V (3.33), (3.32) p. 396; I for the form of (3.31)]: Δ_{U^u} = R(u)Δ_UR(u^{−1}) and U^u(Γ) = u(start)U(Γ)u(end)^{−1}. Δ_U is nearest-neighbour, so on N(Δ(y)) only u_y on □(y) enters: (Δ_Uλ_y)(x) = R(u_y(x))^{−1}(Δ_{e^{iηA}}(φ_yv_y))(x).
+
+4.4 The term ⟨Q′λ, ω⟩ [P]. Blocks are disjoint and Q′(y′) sees only Δ(y′) (I-Q), so (Q′λ)(y) = (Q′λ_y)(y). By covariance, R(U(Γ_{y,x}))R(u_y(x))^{−1} = R(u_y(y))^{−1}R(U^{u_y}(Γ_{y,x})). Hence
+ (Q′λ)(y) = R(u_y(y))^{−1}M_yR(u_y(y))s(y)²ω(y), M_y := L^{−jd}Σ_{x∈Δ(y)}φ_y(x)R(e^{iηA}(Γ_{y,x})).
+Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. Also |R(e^{iηA}(Γ)) − I| ≤ Σ_{b∈Γ}|e^{iη ad A(b)} − I| ≤ (c_Γℓ/η)·η·2|A|e^{2η|A|} ≤ K_ΓMα_0, K_Γ := 2e·c_Γc_3 (for η|A| ≤ ½). So ‖M_y − c_yI‖ ≤ K_ΓMα_0 with c_y := L^{−jd}Σφ_y ≥ c_φ. If K_ΓMα_0 ≤ ½c_φ, then
+ ⟨(Q′λ)(y), ω(y)⟩ ≥ s(y)²(c_y − K_ΓMα_0)|ω(y)|² ≥ ½c_φs(y)²|ω(y)|², and ⟨Q′λ, ω⟩_ℋ ≥ ½c_φ⟨ω, S²ω⟩_ℋ.
+
+4.5 The term ‖Δ′_aλ‖² [P].
+ (a) Laplacian part. By (3.50)–(3.51) at U = 1, A′ = A [V p. 400]:
+ Δ_{e^{iηA}}f = Δ^ηf − Σ_{b∈st(x)}i ad_{A(b)}(D f)(b) − i[(D*A)(x), f(x)] − Σ_{b∈st(x)}F′(i ad_{A(b)})f(b_+), F′(z) = z²∫_0^1(1 − t)e^{ηtz}dt.
+ With f = φ_yv_y, |ad_A| ≤ 2|A|, |D*A| ≤ d|∇^ηA|, |F′(i ad_A)| ≤ 2|A|²e (η|A| ≤ ½), and 4.2:
+ |(Δ_Uλ_y)(x)| ≤ (K_φ + K_AMα_0)ℓ^{−2}|v_y| =: K_Δℓ^{−2}|v_y| on N(Δ(y)), and 0 elsewhere, with K_A := 2d(2K_φc_3 + c_3 + 4ec_3²) for Mα_0 ≤ 1.
+ #N(Δ(y)) ≤ 3^d(ℓ/η)^d, and each fine point lies in N(Δ(y)) for at most 2d + 1 blocks y. So
+ ‖Δ_Uλ‖²_𝒦 ≤ (2d + 1)η^dΣ_yΣ_x|Δ_Uλ_y(x)|² ≤ (2d + 1)3^dK_Δ²Σ_yμ(y)s(y)^{−2}|v_y|².
+ (b) Averaging part. Q′*aQ′ = Q′*(aS^{−1})Q′ (2.2). |(aS^{−1}Q′λ)(y)| ≤ aℓ^{−2}|v_y|, since a_j ≤ a and ‖M_y‖ ≤ 1. By 2.2, Q′* of it has sup norm ≤ aℓ^{−2}|v_y| on Δ(y) and vanishes elsewhere. So ‖Q′*aQ′λ‖²_𝒦 ≤ Σ_y η^d(ℓ/η)^da²ℓ^{−4}|v_y|² = a²Σ_yμ(y)s(y)^{−2}|v_y|².
+ (c) Sum. |v_y| = s(y)²|ω(y)|, so Σ_yμs^{−2}|v_y|² = ⟨ω, S²ω⟩. With ‖Ω_0f‖ ≤ ‖f‖ and (p + q)² ≤ 2p² + 2q²:
+ ‖Δ′_aλ‖²_𝒦 ≤ K_N⟨ω, S²ω⟩, K_N := 2((2d + 1)3^dK_Δ² + a²).
+
+4.6 Conclusion. Put a_LB := min{1, c_φ/(2K_Γ), 1/(2c_3)} (the last term gives η|A| ≤ ½). For Mα_0 ≤ a_LB, 4.1, 4.4, and 4.5 give ⟨ω, Nω⟩ ≥ γ_N⟨ω, S²ω⟩ with γ_N = c_φ²/(4K_N). Write u = Sω: ⟨u, N̂u⟩ = ⟨ω, Nω⟩ ≥ γ_N‖u‖². N̂ is real symmetric, so the bound holds for complex u as well (A1_WALK_FULL 8.2 remark). ∎
+
+4.7 Remarks.
+ (a) Only (3.35) on single blocks is used, and only through |A| and |∇^ηA|. The bound does not use Cor. 3.5/3.6, the U = 1 Fourier formula CMP 96 (2.75)–(2.76), or the walk expansion. It does not depend on M_1 or on M except through Mα_0 ≤ a_LB.
+ (b) It is the scalar analogue of SOURCES_A1_KERNEL §8 (E^ms) for QGQ*. For scalars, Q′ is exactly block-diagonal (I-Q), so the bond-corridor items [I] of (E^ms) do not arise. Unlike (C) for G, (H2) for C′ is not conditional; it rests only on the readings (I-Q), (I-B).
+ (c) The constant is not optimal. A1-W needs only uniformity.
+
+## 5. Step C: the parametrix and the walk expansion of C′ [P given §3, §4, and Theorem A1-W]
+
+5.1 Hypotheses of A1-W are met. Theorem A1-W (A1_WALK_FULL 0.5) is stated for N̂ = S^{−1/2}QGQ*S^{−1/2}, but its proof (A1_WALK_FULL §1–§6) uses the operator only through (H1)–(H4). We check them for N̂ = S^{−1}Q′G′²Q′*S^{−1}:
+ (H1) §3.6: constants (b_G, ρ_G = c′/M_1, δ_G, C_𝒟^N, c_X^N);
+ (H2) §4: Re⟨u, N̂u⟩ ≥ γ_N‖u‖², c_− := γ_N;
+ (H3) the geometry (G) of A1_WALK_FULL 2.1 on the M_1-cover [I, same items as there: cube cover, cores, h_□ Lipschitz with c_h/M_1 (open item O2)];
+ (H4) the order of constants of 5.6 below. WG-1 is not part of it (3.6).
+ Put c_+ := C_𝒟^Nb_G and ε := min{½δ_G, γ_N/(8c_+Σ(½δ_G))}.
+
+5.2 The steps, with the objects of this file. We list each step of A1_WALK_FULL §2–§5, so the proof is complete with that file.
+ (a) Truncation (A1_WALK_FULL 2.2). 𝒲_□ := merged walks ω with X̃_i^5 ⊂ □⁺ for all i. N̂^{(□)} := Σ_{ω∈𝒲_□}N̂_ω. N̂_□ := 1_□N̂^{(□)}1_□ on ℓ²(□, μ).
+ (b) Lemma LT (A1_WALK_FULL 2.3). N̂_□ depends on U only on □⁺; |n̂_□| ≤ 2c_+me^{−δ_Gd}; |(n̂ − n̂^{(□)})(y, y′)| ≤ 2c_+e^{−δ_GM_1}me^{−¾δ_Gd} for y, y′ ∈ □; for M_1 ≥ M_a := (2δ_G)^{−1}log(4c_+Σ(½δ_G)/γ_N), Re⟨u, N̂_□u⟩ ≥ ½γ_N‖u‖² on ℓ²(□, μ). The last step restricts the global bound to vectors supported in □ and subtracts the truncation error; the restriction is `compression_lower` of lean/YmLean/SchurMarginal.lean [L] (stated for real block matrices; here N̂ is real symmetric).
+ (c) Local inverses (A1_WALK_FULL 3.4). Lemma CT with c = ½γ_N, b = 2c_+, δ = δ_G gives C_□ := N̂_□^{−1}, ‖C_□‖_ε ≤ 4/γ_N, N̂_□C_□ = 1_□, C_□ depends on U only on □⁺. Formal part: `coercive_inv`, `combes_thomas` of lean/YmLean/CombesThomas.lean [L].
+ (d) Parametrix (A1_WALK_FULL 4.1). P := Σ_□h_□C_□h_□. N̂P = I + Σ_□F_□, F_□ := (E^sep_□ + E^tr_□ + E^com_□)C_□h_□, with E^sep_□ := (1 − 1_□)N̂h_□, E^tr_□ := 1_□(N̂ − N̂^{(□)})1_□h_□, E^com_□ := [N̂_□, h_□]. The identity is algebraic.
+ (e) Error bounds (A1_WALK_FULL 4.2–4.3). ‖E^sep_□‖_κ ≤ 2c_+Σ(¼δ_G)e^{−¼δ_GM_1}, ‖E^tr_□‖_κ ≤ 2c_+Σ(¼δ_G)e^{−δ_GM_1}, ‖E^com_□‖_κ ≤ 2c_+c_hΣ(¼δ_G)/M_1, for κ ≤ ½δ_G; ‖F_□‖_ε ≤ K_F/M_1 for M_1 ≥ M_e, K_F := (8c_+Σ(¼δ_G)/γ_N)(2 + c_h).
+ (f) Neumann series (A1_WALK_FULL 5.1–5.2). ‖Σ_□F_□‖_{½ε} ≤ C_ovΣ(½ε)K_F/M_1 ≤ ½ for M_1 ≥ M_N. Then N̂^{−1} = P(I + F)^{−1} = Σ_nP(−F)^n (finite dimension: right inverse = inverse), ‖N̂^{−1}‖_{½ε} ≤ 8/γ_N. In particular N is invertible, which is the first claim of Thm 3.9.
+ (g) Blocks and walk terms (A1_WALK_FULL 5.3–5.5). Blocks K_□ = h_□C_□h_□, Γ_□ = E^com_□C_□h_□, S_{□,ω′} = (1 − 1_□)N̂_{ω′}1_{□⁻}, R_{□,ω′} = 1_□N̂_{ω′}1_{□⁻} (ω′ ∉ 𝒲_□). T_ω := (−1)^nK_{□_0}Ψ_1···Ψ_n, Ψ_i ∈ {S K, R K, Γ}. The concatenation lemma (A1_WALK_FULL 5.4; `concat_list` of Concatenation.lean [L]) gives |T_ω| ≤ (4/γ_N)(c_1ρ)^{|ω|}me^{−½εd(ω)}, ρ := max{ρ_G, (4b_G/γ_N)^{1/2}e^{−⅛δ_GM_1}, ρ_com} ≤ K_W/M_1.
+ (h) Counting and identification (A1_WALK_FULL 5.6–5.7). Branching ≤ C_W := 5C_𝒟^N. For M_1 ≥ M_W := max{2C_𝒟^Nc′, M_a, M_e′, M_N, M_c}: absolute convergence with Σ_ω|T_ω| ≤ (8C_𝒟^N/γ_N)me^{−½εd}, and Σ_ωT_ω = N̂^{−1}.
+ This proves (i)–(iv) of Theorem 3.9-W, with C_𝒟 = C_𝒟^N.
+
+5.3 Undoing the rescaling: (v) and (vi) [P]. C′ = N^{−1} = S^{−1}N̂^{−1}S^{−1} = Σ_ωS^{−1}T_ωS^{−1}. S^{−1} is a multiplication independent of U; attach it to the first and last factor. (L1), (L2), and the count do not change. The kernel bound becomes
+ |(S^{−1}T_ωS^{−1})(y, y′)| ≤ (4/γ_N)(L^jη)^{−2−d/2}(L^{j′}η)^{−2−d/2}(c_1ρ)^{|ω|}e^{−½εd(ω,y,y′)}.
+The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2}·… = L^{(2−d/2)(j−j′)} ≤ L^{|2−d/2|}e^{|2−d/2|θ_Ld(y,y′)}, and d(y, y′) ≤ d(ω, y, y′). This gives (v). Summing with (iv) gives (vi), i.e. (3.48) with rate ½ε − |2 − d/2|θ_L > 0 (since θ_L ≤ δ′/(8(d + 4)) and ε ≤ ½δ_G, one may need RM ≥ 4(d + 4)log L/ε to keep half the rate; this is a condition on RM after ε, admissible as in A1_WALK_FULL 6.8).
+ (3.99) factor form. As in A1_WALK_FULL 6.6: (c_1K_W/M_1)^{|ω|} = (c_1K_WM_1^{−1/2})^{|ω|}·M_1^{−½|ω|}, and for M_1 ≥ (2C_Wc_1K_W)² the first factor controls the sum over ω. This is O(M^{−1/2})^{|ω|}M^{−½|ω|} of (3.99) with M_1 in place of M.
+ Kernel convention [I, as A1_WALK_FULL 6.8 and WG_FULL 0.2]: Balaban's kernel C′(y, y′) is read as the μ-kernel. Under the counting-measure reading the factor (L^{j′}η)^{−d} moves; the total power and the proof are unchanged.
+
+5.4 Correspondence with the printed sketch.
+ | Balaban (3.95)–(3.97) | here |
+ |---|---|
+ | C_□ = (Q′G′_□²Q′*)^{−1}, local domain sequence, via Cor. 3.6 | C_□ = N̂_□^{−1}, N̂_□ = truncated walk sum on □, via Lemma LB + Lemma LT(e) + Lemma CT |
+ | (1 − □̃)Q′G′²Q′*h_□C_□h_□ (separation) | E^sep_□C_□h_□, size e^{−¼δ_GM_1} |
+ | □̃Q′(G′² − G′_□²)Q′*h_□C_□h_□ (domain change; CMP 89, Cor. 3.5) | E^tr_□C_□h_□, walk truncation, size e^{−δ_GM_1}, from (B1) directly |
+ | [□̃Q′G′_□²Q′*, h_□]C_□h_□ (commutator, O(M^{−1})) | E^com_□C_□h_□ = Γ_□, size c_h/M_1 |
+ | re-expansion of G′ for a modified partition 𝒟′; grouping (a)–(d) of 1.5 | not needed: N̂_{ω′} enters as one block with its whole-term bound; each insertion carries its own small factor (A1_WALK_FULL 5.5) |
+ | e^{−¼δ_0M} split as (8δ_0^{−1}M^{−1})³ over three operators | e^{−¼δ_GM_1} split as a square root over the two junction steps of an S-insertion (ρ of 5.2(g)) |
+ | (3.96) series in the weighted sup norm | ‖·‖_{½ε} conjugation norm (A1_WALK_FULL 1.5), dominating the ℓ² norm and giving kernel decay by (N2) |
+ The sketch's factor classes R′_α(X) are the blocks K_□, Γ_□, and the plain/junction factors of N̂_{ω′}. R′_0(□) = h_□C_□h_□ is our K_□ (the first block of every term is K_{□_0}), as printed.
+
+5.5 Uniformity. Every constant is one of: (T37) constants B′, c′, δ′, C_37; γ_N (§4); geometric constants; c_1(·), Σ(·) (CMP 96 Lemma 2.1, [R-full]). None depends on U (within the hypothesis), j, k, η, {Ω_j}, or the volume. The volume enters only through finite dimension (5.2(f), (h)).
+
+5.6 Order of constants. (d, L, a) → (T37): B′, c′, δ′, C_37, a_37 → minimal RM with θ_L ≤ δ′/(8(d + 4)) → γ_N, a_LB (§4; RM-free) → b_G, δ_G, C_𝒟^N, c_X^N → ε → K_F, K_W, C_W → M_1 ≥ M_W (and M_1 ≥ (2C_Wc_1K_W)², M_1 ≥ 3c_loc) → M with R_1M_1 ≤ M and (2.59) at every rate used, RM ≥ 4(d + 4)log L/ε → α_0 with Mα_0 ≤ min{a_37, a_LB}. No loop.
+

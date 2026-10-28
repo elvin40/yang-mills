@@ -1,7 +1,7 @@
 # THM37_FULL — paper-grade write-out of CMP 99 Theorem 3.7 and Corollary 3.8 (walk expansion of G′)
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (first of three); Table 1 row R3, with R36 (M_1 version) and R7 (complex form) for this operator.
-Status: IN PROGRESS. Written one section at a time.
+Status: author write-out COMPLETE, not verified (see 9.3).
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [R-full] printed with full proof; [R-sketch] printed sketch or proof by reference; [V] read on the page image in this session; [P] proved in this file or in a project file named; [I] reading not proved.
 
@@ -234,3 +234,92 @@ Balaban gives one sentence. We separate three cases, because they are not all tr
  (G-M1) [I-geo]. For □ ∈ 𝒟^{(1)}_j, the cube □̃^5 (side 12M_1ξ_j ≤ Mξ_j) lies in one cube of the (3.35) class at scale M: a union of M-big blocks of side ≥ 10Mξ_j inside B^j(Λ_j) ∪ B^{j+1}(Λ_{j+1}) and meeting B^j(Λ_j). Reason: □̃^5 meets at most 2^d M-big blocks; B^j ∪ B^{j+1} has thickness ≥ RMξ_j ≥ 24Mξ_j in the normal direction of every interface (CMP 96 (2.2), R ≥ 24), so a 10M-cube containing these 2^d blocks fits inside, except next to Σ_j, where the gluing of 3.3 applies with α_0 → c(d)Lα_0. This is the same geometric reading as Balaban's p. 409 claim for M itself.
 
 7.4 What this closes. The WG_FULL 0.3 input "M_1-cover [I/R: CMP 116 p. 3 asserts the M_1 version]" is reduced, for G′, to (G-M1) [I-geo] and the reading 7.2 of M_th. The CLOSURE_PLAN R36 task "show (3.35)–(3.36) at scale M give Thms 3.7–3.10 hypotheses on M_1-cubes" is done for Thm 3.7: (3.35) at scale M gives the local input on M_1-cubes by restriction, with no change of α_0.
+
+## 8. The complex form (CLOSURE_PLAN R7 for G′)
+
+8.1 The domain [V CMP 99 p. 396 (3.37); A18]. 𝒰^c(α_1) := {U_c = U′U : U G-valued with (H1); U′ = e^{iηA′}, A′ g^c-valued, |A′| < α_1ξ_j^{−1}, |∇^η_UA′| < α_1ξ_j^{−2} on Ω_j, j = 0, …, k} (3.37). By SOURCES_A18_REGULAR 5.1 (Prop. I-109), the complex domains U^c_j(X, α_0, α_1) of CMP 109/116 lie in 𝒰^c(α_1) on X, with the real part in (3.35) at α_0^{99} = LBα_0, under condition (A18-1); for CMP 116 the parameters are 1.5α_0, 1.5α_1. So every statement below on 𝒰^c(α_1) applies to the regular class with α_1 → 1.5α_1.
+ At complex points, "*" is the analytic continuation of the real adjoint (bilinear transpose), as in WC_FULL 6.0 and CMP 99 p. 402 ("F′*_{2,j}(A) is not an adjoint of F′_{2,j}(A)").
+
+8.2 Printed inputs [V CMP 99 pp. 400–403].
+ (V1) Δ^η_{U′U} + Q′*(U′U)aQ′(U′U) = Δ^η_U + Q′*(U)aQ′(U) − V′(A) (3.60), and "(I − V′(A)G′(U))(Δ_U + Q′*(U)aQ′(U))" (3.62): the identity Δ′_a(U_c) = (I − V′(A)G′(U))Δ′_a(U).
+ (V2) "|(V′(A)λ)(x)| ≤ O(1)α_1((L^jη)^{−1}|∇_Uλ| + (L^jη)^{−2}|λ|) (3.61) for x ∈ B^j(Λ_j), the norms on the right-hand side restricted to the block B^j(y) containing the point x. It is an analytic function of A on the domain (3.37), for α_1 sufficiently small." We write c_V for this O(1) and a_V for "α_1 sufficiently small".
+ (V3) Transports: |(U′U)(Γ^{(j)}_{y,x})(U(Γ^{(j)}_{y,x}))^{−1} − 1| < O(1)α_1 (p. 401), and |F′_{2,j}| ≤ O(1)α_1 (3.58).
+ (V2) is printed with a derivation (3.50)–(3.59) that uses CMP 98 ([5]) (97), (102), (103), (160)–(162) and Prop. 4 [R, not re-read]. It is the one named step on which the complex form rests (8.6).
+ The same identities hold with the localized sequence {Ω_n(□)} in place of {Ω_j}: V′(A) is local (block of x and nearest neighbours), so the localized V′_□(A) is the restriction of V′(A) to Ω_0(□) ∩ Ω_0 [P from (V2)'s locality].
+
+8.3 Lemma LC (complex local operators) [P given (3.3.1), (V1)–(V2), and Lemma 2.1]. Fix θ ∈ (0, 1). Let α_1 ≤ a_1^c(θ) := min{a_1, a_V, 1/(4c_VLB_0c_1(θ)), 1/4}. For every □ ∈ 𝒟 and U_c ∈ 𝒰^c(α_1), Δ′_{a,□}(U_c) is invertible, G′_□(U_c) := Δ′_{a,□}(U_c)^{−1} is analytic in A′, and for N ∈ {N_∞, N_2}:
+ N(G′_□(U_c); y, y′), N(∇G′_□(U_c); y, y′), N(G′_□(U_c)∇*; y, y′), N(ΔG′_□(U_c); y, y′) ≤ 2B_0^c[ξ_j², ξ_j, ξ_j, 1]e^{−(1−θ)δ_0d(y,y′)}, (8.3.1)
+ with B_0^c := 2B_0, ∇ = ∇_U (or ∇_{U_c}; they differ by O(α_1)ξ^{−1} per (3.37), absorbed in B_0^c).
+ Proof. Put W := V′_□(A)G′_□(U). By (V2) and (3.3.1), for x ∈ Δ(z) of level n: N(W; z, z′) ≤ c_Vα_1(ξ_n^{−1}·B_0Lξ_n + ξ_n^{−2}·B_0Lξ_n²)e^{−δ_0d(z,z′)} = 2c_VLB_0α_1e^{−δ_0d(z,z′)} (the factor L covers neighbours of level n ± 1). This is (3.63) with the constant written out. By Lemma N and (2.63) at α = θ, N(W^m; z, z′) ≤ (2c_VLB_0α_1)^m c_1(θ)^{m−1}e^{−(1−θ)δ_0d(z,z′)}. With q := 2c_VLB_0α_1c_1(θ) ≤ ½, Σ_m W^m converges, (I − W)^{−1} exists, and by (V1) G′_□(U_c) = G′_□(U)(I − W)^{−1} (this is (3.64)). Lemma N and (2.63) once more: N(G′_□(U_c); y, y′) ≤ B_0ξ_j²Σ_{m≥0}q^m e^{−(1−θ)δ_0d(y,y′)} ≤ 2B_0ξ_j²e^{−(1−θ)δ_0d(y,y′)}. The derivative entries are the same with (3.3.1)'s other entries on the left factor G′_□(U); the right-derivative entries use the transposed identity G′_□(U_c) = (I − W′)^{−1}G′_□(U), W′ := G′_□(U)V′*_□(A) (the "similar expansion for the adjoint operator", p. 402 [V]). The factor 2 in B_0^c covers ∇_{U_c} − ∇_U. Analyticity: each W^m is analytic in A′ by (V2), the series converges uniformly on 𝒰^c(α_1), so the sum is analytic (Weierstrass). ∎
+
+8.4 Lemma K^c (complex commutator) [P given Lemma K0's proof, (V3), and (8.3.1)]. The identities of 4.1–4.3 are algebraic in the link variables. They hold at U_c with K(h; U_c) := [h, Ω_0Δ′_a(U_c)Ω_0], and Lemma AG holds at U_c (its proof uses only the level and block structure, which do not depend on U). In Lemma K0, the transports T_{x,x′}(U_c) and R((U′U)_b) have norm ≤ (1 + O(1)α_1)² ≤ 2 by (V3) and |A′| < α_1ξ^{−1} (‖Ad e^{iηA′(b)}‖ ≤ e^{2α_1} ≤ 2 for α_1 ≤ ¼). So (4.2.1) holds with an extra factor 2, and Lemma K holds with
+ N(F_□(U_c); z, z′) ≤ (K_1^c/M)e^{−(1−θ)δ_0d(z,z′)}, K_1^c := 4K_1. (8.4.1)
+
+8.5 Theorem T37^c (complex form of Theorem 3.7 and Cor. 3.8) [P given (V1)–(V3), (3.3.1), and the inputs of T37]. Fix θ ∈ (0, 1). Put θ′ := θ(1 − θ). Assume (H1), (H2) at rate θ′ (i.e. (2.59) at α = θ′), (H-PU), (I-Ω0), α_1 ≤ a_1^c(θ), and
+ M ≥ M_37^c(θ) := max{M_th, 3L + 1, 2C_𝒟^inK_1^cc_1(θ′)}.
+ Then for every U_c ∈ 𝒰^c(α_1):
+ (a) Δ′_a(U_c)↾Ω_0 is invertible and G′(U_c) = Σ_ω T_ω(U_c), with T_ω(U_c) := h_{□_0}G′_{□_0}(U_c)h_{□_0}F_{□_1}(U_c)···F_{□_n}(U_c), over the same walks as (3.90).
+ (b) Each T_ω(U_c) is analytic in A′, depends on U_c only in □̃_0^5 ∪ … ∪ □̃_n^5, has kernel supported in □_0 × □_n (Lemma S, unchanged), and
+ N(T_ω(U_c); y, y′) ≤ 2B_0^cξ_j²(K_1^cc_1(θ′)/M)^{|ω|}e^{−(1−θ)²δ_0d(ω,y,y′)}, N ∈ {N_∞, N_2}, (8.5.1)
+ with the derivative forms of §6 (constants ×2).
+ (c) The series converges uniformly on 𝒰^c(α_1); G′(U_c) is analytic in A′, and Σ_ωN(T_ω(U_c); y, y′) ≤ 4C_ptB_0^cξ_j²e^{−(1−θ)²δ_0d(y,y′)}.
+ Rate. The real walk rate of T37 at split θ is (1 − θ)δ_0; the complex rate is (1 − θ)·(1 − θ)δ_0, i.e. the real rate times (1 − θ). The one extra factor (1 − θ) comes from the Neumann series (3.64) of Lemma LC.
+ Radius. The domain shrinks from Balaban's α_1 ≤ a_1 (Thm 3.4) to α_1 ≤ a_1^c(θ) = min{a_1, a_V, 1/(4c_VLB_0c_1(θ)), ¼}. The shrinking depends on d, L, θ only; it does not depend on M, on α_0, or on the volume.
+ Proof. Run §4–§5 at U_c, with (8.3.1) in place of (3.3.1) (local rate (1 − θ)δ_0) and (8.4.1) in place of Lemma K. In Proposition W split the local rate δ′ := (1 − θ)δ_0 as e^{−δ′S} ≤ e^{−(1−θ)δ′d(ω)}e^{−θδ′S} and sum with (2.62) at α = θ(1 − θ) = θ′: this gives c_1(θ′)^n and the rate (1 − θ)δ′ = (1 − θ)²δ_0. The Neumann bound becomes ‖R′(U_c)‖_{∞→∞} ≤ C_ptK_1^cc_1(θ′)/M ≤ ½. Lemma P holds at U_c (8.4), so Ω_0Δ′_a(U_c)Ω_0·G′_0(U_c)(I − R′(U_c))^{−1} = I, and in finite dimension the right inverse is the inverse. Analyticity: every factor is analytic (Lemma LC; K(h; U_c) is polynomial in the transports, which are entire in A′), each T_ω(U_c) is a finite product, and the series converges uniformly by (c), so the sum is analytic. ∎
+ Identification with Balaban's continuation. Thm 3.4 continues G′ analytically to α_1 ≤ a_1. On 𝒰^c(a_1^c(θ)) both operators are the inverse of Δ′_a(U_c)↾Ω_0, so they are equal; no uniqueness argument for analytic continuation is needed.
+
+8.6 What remains, and the comparison with WC_FULL §6.
+ (i) The one named step. T37^c rests on the printed bound (3.61) with its analyticity statement (V2), and on (V3). Their derivation is printed (CMP 99 pp. 400–402) but uses CMP 98 (97), (102)–(103), (160)–(162), and Prop. 4, which this file does not re-read. Grade of (V2)–(V3): [R-sketch, printed derivation with external citations].
+ (ii) Not needed here: the accretive mechanism of WC_FULL §6 (Lemma CP, Lemma AW). That mechanism is required for inverses that come from a lower bound (C) (A1-W for (QGQ*)^{−1}). For G′ the complex operator is a small perturbation W = V′G′(U) of norm O(α_1) in a block norm with decay (3.63), so a Neumann series suffices, as in CMP 99 (3.64). This is why the radius loss is a single explicit factor 1/(4c_VLB_0c_1(θ)) and the rate loss a single (1 − θ).
+ (iii) For the chain: WG_FULL (I2) at complex points (A1_WALK_FULL IN18, WC_FULL 6.4 "walk form of G at complex points is [R]") needs this statement for G′ and the analogous statements for C′ (Thm 3.9) and G_0 (Thm 3.10). T37^c supplies the G′ part at grade [P given (V1)–(V3)].
+
+## 9. Ledger
+
+9.1 Inputs. Grades: [R-full] printed with full proof; [R-sketch] printed sketch, proof by reference, or printed derivation that cites unread sources; [R-assert] printed statement only; [P] proved here or in a named project file; [I] reading, not proved; [V] = read on the page image in this session.
+
+| ID | input | where printed / proved | grade | used in |
+|---|---|---|---|---|
+| T37-R1 | CMP 96 Lemma 2.1, (2.60)–(2.63), under (2.59) "¼αδ_0RM > 2d log c_0(½α) + 1" | CMP 96 pp. 233–234 [V] | R-full | 5.2, 5.4, 6.3, 8.3, 8.5 |
+| T37-R2 | CMP 96 Prop. 2.2 and its proof (2.37)–(2.67) (U = 1 template) | CMP 96 pp. 229–234 [V] | R-full (one-step bound (2.44) rests on (2.43), which cites CMP 95 Lemmas 2.2, 2.4, Prop. 2.3) | mechanism of §4–§5; behind T37-R4 |
+| T37-R3 | CMP 95 Prop. 1.2 and its proof (1.118)–(1.135) (U = 1 template; transposed expansion for G∇*) | CMP 95 pp. 35–39 [V] | R-full in print, but self-described "very sketchy … almost the same as in [2]" (p. 37) | mechanism; 6.2 |
+| T37-R4 | Local input (3.3.1): CMP 99 Cor. 3.6 ⇐ Cor. 3.5 ⇐ (3.60)–(3.64) + CMP 96 (U = 1) | CMP 99 pp. 402–409 [V] | R-sketch (Cor. 3.6 two-line proof; Cor. 3.5 by "applying the results of that paper together with the above") | 3.3, all of §4–§8 |
+| T37-R5 | (3.24) form of Q′*aQ′ and averaging form of Q′_n with block transports | CMP 99 (3.19), (3.24), (3.88) last term [V] | R-full (definition) | 4.2 |
+| T37-R6 | Local-sequence construction {Ω_n(□)}, Ω_0(□) ⊂ □̃^5, R_0, M_0 | CMP 99 p. 408 [V] | R-full (definition) | 3.5, 7.3 |
+| T37-R7 | (V1) identity (3.60)/(3.62) | CMP 99 p. 402 [V] | R-full (algebra) | 8.3 |
+| T37-R8 | (V2) bound (3.61) on V′(A), local, analytic for α_1 ≤ a_V | CMP 99 pp. 400–402 [V]; derivation cites CMP 98 (97), (102)–(103), (160)–(162), Prop. 4 | R-sketch — the one named step of the complex form | 8.3 |
+| T37-R9 | (V3) transport bounds (U′U)(Γ)U(Γ)^{−1} = 1 + O(α_1), (3.58) | CMP 99 pp. 401–402 [V] | R-sketch (same citations as T37-R8) | 8.4 |
+| T37-R10 | (H-PU) cover 𝒟 and partition of unity Σh_□² = 1 | CMP 96 (2.36), CMP 99 p. 408 [V] | R-assert; literal version fails for L > 5 (3.4) | 3.2, all |
+| T37-P1 | Lemma N (composition of block norms) | 3.1 | P | 5.2, 8.3 |
+| T37-P2 | Lemma AG (agreement of global and local operators on □) | 3.5 | P given T37-R5/R6, (H-PU)(a); I for "Q′_n blockwise, independent of the sequence" | 4.3 |
+| T37-P3 | Lemma K0 (commutator bound), K(h) := [h, Δ′_a] | 4.2 | P given T37-R5 | 4.5, 8.4 |
+| T37-P4 | Lemma P (parametrix (3.88)–(3.89) identity Δ′_aG′_0 = I − R′) | 4.3 | P given T37-P2, (H-PU)(c), (I-Ω0) | 5.4 |
+| T37-P5 | Lemma S (supports, walk constraint, locality in □̃^5, band) | 4.4 | P given (H-PU)(a)–(b) | 5.2, 5.4, 7.3 |
+| T37-P6 | Lemma K (one-step (3.89)), K_1 = 2(3d + 1)c_hL²B_0 | 4.5 | P given (3.3.1), (H-PU)(d) | 5.2 |
+| T37-P7 | Proposition W (per walk (3.94)), rate (1 − θ)δ_0, step K_1c_1(θ)/M | 5.2 | P given T37-R1, P1, P5, P6 | 5.4 |
+| T37-P8 | Lemma C (counting), C_𝒟^in ≤ 3(2L + 2)^d, C_pt ≤ 2^{d+1} | 5.3 | P; cube geometry I | 5.4 |
+| T37-P9 | Theorem T37 (Thm 3.7 + Cor. 3.8, sup and L² block norms), M_37 = max{M_th, 3L + 1, 2C_𝒟^inK_1c_1(θ)} | 5.4 | P given the rows above | WG (I2) |
+| T37-P10 | Derivative forms: left (6.1), right via transposed expansion (6.2), all in N_2 (6.3) with scale shift θ_S = log L/(RM) | §6 | P given (3.42), (3.46) for G′_□ | WG 0.2 norms |
+| T37-P11 | Hölder forms (3.43)–(3.45) | 6.4 | P-sketch (not used by the chain) | — |
+| T37-P12 | Theorem T37-M1 (M_1 cubes; per step K_1c_1(θ)/M_1; CMP 116 (1.7)) | 7.3 | P given T37 inputs + (G-M1) | WG 0.3, R36 |
+| T37-P13 | Lemma LC (complex local operators, rate (1 − θ)δ_0, radius a_1^c(θ)) | 8.3 | P given T37-R4, R7, R8 | 8.5 |
+| T37-P14 | Theorem T37^c (complex walk form, rate (1 − θ)²δ_0, analytic terms) | 8.5 | P given T37-R7–R9 + T37 inputs | WC 6.4, A1w IN18 |
+| T37-I1 | (I-Ω0) outer Dirichlet convention for cubes meeting ∂Ω_0 | 3.2 | I | 4.3 |
+| T37-I2 | Cube geometry: □̃^5 inside a (3.35) class cube (p. 409, O(1) = 12); gauge gluing next to interfaces (α_0 → c(d)Lα_0) | 3.3 | I-geo (as SOURCES_A18_REGULAR 5.3(a)) | 3.3 |
+| T37-I3 | (G-M1): □̃^5 of an M_1-cube inside an M-scale class cube | 7.3 | I-geo | 7.3 |
+| T37-I4 | M_th of Thm 3.1 concerns R_0M_0, not the walk-cube size (reading of p. 408) | 7.2 | I | 7.3 |
+| T37-I5 | Block-norm → μ-kernel conversion (WG convention C0) | 3.1 | I (WG_FULL C0) | consumers |
+
+9.2 Steps where this write-out is sharper than Balaban.
+ 1. Explicit constants: K_1 = 2(3d + 1)c_hL²B_0, M_37(θ) = max{M_th, 3L + 1, 2C_𝒟^inK_1c_1(θ)}, C_𝒟^in ≤ 3(2L + 2)^d, sum constant 2C_ptB_0. Balaban writes O(M^{−1}), O(M^{−1/2}), O(1).
+ 2. The rate remark of p. 410 ("arbitrarily close to the decay rate of the localized propagators") is proved: rate (1 − θ)δ_0 for every θ, with M_37 = O(θ^{−d}).
+ 3. Existence of G′ comes out of the Neumann series in finite dimension (right inverse ⇒ inverse); no positivity of Δ′_a and no a priori bound on G′ is used. CMP 95 needs a priori bounds on G (1.115)–(1.117).
+ 4. K(h) is defined as a commutator, and its bound (Lemma K0) is derived from the commutator, so the sign and coefficient details of the printed three-term formula (3.88) are not load-bearing.
+ 5. Lemma AG states and proves the agreement step h_□Δ′_aG′_□h_□ = h_□², which Balaban uses silently; it needs (H-PU)(a).
+ 6. A gap in the literal partition of unity is found (3.4): with class-respecting cubes and the product h of CMP 95 (1.118), Σh² = 1 fails near level interfaces for L > 5. A repair costs a factor L in the one-step constant. This affects Thms 3.7, 3.9, 3.10 equally (ledger X-PU).
+ 7. "Similar estimates hold for the other norms" is split into three correct statements (§6): left derivatives for (3.90) in sup and L²; right derivatives in sup only for the transposed expansion; all forms in L² for (3.90), with the scale-shift rate cost θ_S = log L/(RM) written out.
+ 8. The printed (2.59) is ¼αδ_0RM > 2d log c_0(½α) + 1 [V CMP 96 p. 233]; WG_FULL (I4) quotes "½αδ_0RM". The ¼ form is used here. This is a quotation error in WG_FULL, not a change of logic (RM is taken large anyway).
+ 9. M_1 version: proved for G′ with no rescaling of α_0, because the local operators see the walk-cube size only through □̃^5 (7.2). The per-step factor of CMP 116 (1.7) is K_1c_1(½)/M_1.
+ 10. Complex form: a direct Neumann proof with explicit radius a_1^c(θ) = min{a_1, a_V, 1/(4c_VLB_0c_1(θ)), ¼} and rate (1 − θ)²δ_0; identification with Thm 3.4's continuation is immediate (both are the inverse of Δ′_a(U_c)).
+ 11. Name clash recorded: Balaban's "M_1" in Thm 3.1 is a threshold on M; CMP 116's M_1 is the walk-cube size.
+
+9.3 Status. Author write-out complete (2026-10-28). Not verified. Open items for a verifier: (a) Lemma AG step (iii)–(v) against the definitions of CMP 99 p. 408 and CMP 96 (2.1)–(2.2); (b) the repair of 3.4 (a full multiscale construction of (H-PU) with all margins); (c) the right-end L² bound of 6.3 (the factor 2L); (d) Lemma LC's use of (3.61) with neighbour levels (the factor L); (e) whether T37-I4 (M_th concerns R_0M_0) is the right reading of p. 408. Grade proposal for CLOSURE_PLAN R3: SKETCH → written out [P] given T37-R4 (Cor. 3.6, R-sketch) and the [I] items T37-I1–I5 and T37-R10 (X-PU). R36 for G′: [P] given T37-I3, I4. R7 for G′: [P] given T37-R8, R9.

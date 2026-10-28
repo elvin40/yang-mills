@@ -160,3 +160,74 @@ Literature check (via reports/EUCLID_INV_LIT §1a, as read by PLAN §2.4 [V ther
 Consequence for reconstruction [R]: from OS0, OS1-T, OS1-H, OS2, OS3 one gets a Hilbert space, a positive Hamiltonian, unitary space translations, and a unitary B_4 action; no Lorentz boosts (they come from O(4) by analytic continuation).
 
 Ledger §5: [V] quotes; [P] §5.1–§5.2; [I] the power-counting reading and the content of (R2); [BLOCKED] (ROT).
+
+## 6. OS0: temperedness with Schwartz weights [P given (H-U∞)]
+
+(H-U∞) as delivered by §2.4(d): for F ∈ D_n(B), B = B(0, ρ_B), |S_{n,ε,ℓ}(F)| ≤ C^n (1 + ρ_B)^{qn} (n!)^{1+2η} ‖F‖_{6n}, q ≤ 5, uniformly in K ≥ K_0 and admissible ℓ > 2ρ_B + 2. Origin of the (1 + ρ_B)^{qn}: the bridge's cell count (64 ρ_B/δ)^{4n} paired with δ^N, the scale sum (ρ_B/16)^{(1−a)n}, the fine region (12|B|)^n ≤ (C ρ_B⁴)^n, and max(1, h^{−1}) in N(g) for the top cells. All polynomial in ρ_B, per point.
+Weighted form. Let |F|_p := max_{|α| ≤ p} sup_{x ∈ R^{4n}} (1 + |x|²)^{p/2} |∂^α F(x)|. Fix a smooth partition of unity on R⁴ by translates χ_c of one bump, c ∈ Z⁴, supp χ_c ⊂ c + [−1, 1]⁴, |∂^α χ_c| ≤ C_χ^{|α|}. For F ∈ ⁰S_n write F = Σ_{c ∈ (Z⁴)^n} F_c, F_c := F · Π_i χ_{c_i}(x_i). Each F_c is flat on the diagonals (flatness survives multiplication by smooth functions) and is supported in B(0, ρ_c)^n with ρ_c := max_i |c_i| + 2. Then
+  |S_{n,ε,ℓ}(F_c)| ≤ C^n (1 + ρ_c)^{qn} (n!)^{1+2η} ‖F_c‖_{6n} ≤ C′^n (n!)^{1+2η} (1 + ρ_c)^{qn} sup_{|α| ≤ 6n} sup_{supp F_c} |∂^αF|.
+On supp F_c, |x| ≥ max_i |c_i| − 2 ≥ ρ_c − 4, so (1 + ρ_c)^{qn} ≤ C^n (1 + |x|²)^{qn/2} there, and (1 + |x|²)^{(qn + 4n + 1)/2}|∂^αF| ≤ |F|_{6n + qn + 4n + 1}. Summing over c with Σ_{c ∈ (Z⁴)^n} (1 + |c|)^{−4n−1} ≤ C^n:
+  |S_{n,ε,ℓ}(F)| ≤ A^n (n!)^{1+2η} |F|_{sn+1},  s := 6 + q + 4 ≤ 15.
+Linear growth of the derivative order (sn + 1) and (n!)^D with D = 1 + 2η: the OS II linear growth condition in the form quoted by the project (X2; ASSEMBLY §1.1 [V]). The bound is uniform in (K, ℓ) for F ∈ ⁰S_n with compact support; limits inherit it; S_n extends by continuity to ⁰S_n. [P, sketch; constants not optimized]
+What the growth does and does not give. (n!)^{1+2η} is enough for OS II reconstruction and is not enough for a measure (Carleman fails for D > 1, and the field has no measure anyway: Var ϕ_ε(f) ~ ε^{−4}, ASSEMBLY §1.3 [V]). W claims Schwinger functions on ⁰S_n, not a measure. Agrees with ATTEMPT §3.2.
+
+Ledger §6: [P] the weighting argument; [V] the quoted forms; [R] OS II.
+
+## 7. Theorem modulo named lemmas; grades; disagreements
+
+### 7.1 Theorem IV (infinite-volume existence, compactness form; conditional)
+Let G = SU(2), d = 4, L odd > 11 fixed, g ∈ ]0, γ] with γ as in Theorem 2w, g_0(K, g) the Lemma D″ bare coupling. Assume the hypotheses of Target 2 (ASSEMBLY §1.3: Theorem 2w, Balaban's Theorem 1, the sourced chain S1, (FX) Steps A, C, D) for every even torus side ℓ > 22M, and in addition the two ℓ-uniformity lemmas L3 (FX-V) and L6 (S1-pt) below. Then:
+(a) Existence. There is a sequence (K_i, ℓ_i) → (∞, ∞) along which S_{n,ε_i,ℓ_i}(F) converges for every n ≥ 1 and every F ∈ ⁰S_n(R^{4n}) (Schwartz, flat on all diagonals) with compact support, and the limit S_n extends to ⁰S_n.
+(b) Every limit family satisfies: OS0 with linear growth, |S_n(F)| ≤ A^n (n!)^{1+2η} |F|_{15n+1}; OS1-T (all translations of R⁴); OS1-H (the hypercubic group B_4 about every point); OS2 (half-space reflection positivity in x_0 > 0); OS3 (symmetry, reality).
+(c) Given also L14 (Loc-f), every limit is of the form (3.2): Balaban's Z⁴ activities together with a limit point ν_∞ of the unit-scale measures.
+(d) Not asserted: convergence along the full sequence (uniqueness), OS1-R (full O(4)), OS4 (clustering), a mass gap, any observable other than the centred plaquette density, nontriviality (it needs (NT) uniform in ℓ; same status as Target 2's B-NT).
+Scope. Target 2 as stated covers the thermal state and one observable (CLOSURE_PLAN §8 items 1, 5 [V]). W shrinks to that observable. Theorem IV upgrades "thermal at inverse temperature ℓ" to "half-space RP, positive Hamiltonian, vacuum vector not shown unique", and "torus translations + B_4" to "R⁴ ⋊ B_4". It is weak existence; Jaffe–Witten footnote 2 excludes it as a Clay solution (ASSEMBLY §1.1 [V]).
+
+### 7.2 Named lemmas and grades
+| # | lemma | content | grade |
+|---|---|---|---|
+| L1 | ℓ-free trajectory | g_0(K, g), (g_k) are the same for every admissible ℓ (whole-lattice β_j; KUNIF §5.1, T2_VOL rows 2–3) | [P, one paragraph from verified files] |
+| L2 | UV constants ℓ-free | every per-polymer constant of scales k < K (small field, large field, R-operation, FX Steps A, C, D) is independent of ℓ; Balaban's E_± "independent of k, T_η, U_k" | [V for the rows that say so; I as a complete audit — one row hiding a factor \|T\| would refute it] |
+| L3 | (FX-V) | polymer representation of Δ(f, V) = log(ρ̂_K^f/ρ̂_K^0)(V) with (FX1)–(FX4) uniform in V, K, ℓ; = (FX) minus Step B | [R to B19 Steps A, C, D; residue O1, O3, (FX-D) or Gevrey fallback; unverified] |
+| L4 | Lemma ν-cum | cumulants of log E_ν e^{w} = sums of joint ν-cumulants of the ∂^S w; bound 2^k k! Π osc | [P here, elementary] |
+| L5 | Lemma C pointwise | sup_V \|∂^S Δ(0, V)\| ≤ (C_Sσ^{−a})^{\|S\|}(\|S\|!)^{1+η}ΠN(f_i) for \|S\| ≥ 2 | [P given L3: Lemma C (verified) with V as a parameter] |
+| L6 | (S1-pt) | osc_V ∂_{t}Δ(0, V) ≤ C N(f)(1 + \|supp f\|_1): unit-scale terms by count; fine-origin R-terms by the sourced form of D3W8 Lemma F2′(ii) ((L^mη)⁴ g_m^{κ_0} on regular configurations), summed with Σ_m g_m^{κ_0} R̄_m⁴ < ∞ | [R to D3W8 F2′(ii) (verified given (W4), (Eps), (D)) + D2C Lemma A + (Reg); sourced extension unverified] |
+| L7 | (S∞) | (S) with ℓ-free constant, same Gevrey order 1 + η | [P given L3–L6] |
+| L8 | (H-U∞) | N1 bridge with ℓ⁴ → \|B\|, (1 + ρ_B)^{qn}, q ≤ 5 | [P, bookkeeping] |
+| L9 | compactness | diagonal extraction (functional route) and Tychonoff on unit-scale marginals (measure route) | [P] |
+| L10 | OS2 | lattice RP (X3) + seam shift + limit; half space | [P given X3 and L8] |
+| L11 | OS1-T, OS1-H | exact lattice symmetries + continuity | [P given L8] |
+| L12 | OS0 weighted | partition of unity, s ≤ 15 | [P, sketch] |
+| L13 | OS3 | linear identities pass to limits | [P] |
+| L14 | (Loc-f) | sourced and large-field constituents are intrinsic (torus = Z⁴ lift) for non-wrapping Γ; wrapping ≤ e^{−cℓ} | [R to Theorem LOC + BDRY mechanism; unverified; needed only for identifying the limit (3.2), not for Theorem IV(a)–(b)] |
+| L15 | full convergence in ℓ | uniqueness of the infinite-volume state of the unit-scale theory on the functionals ∂^SΔ_∞ | [BLOCKED: infrared] |
+| L16 | (ROT) | O(4) covariance of the limit | [BLOCKED; routes (R1) comparison across lattice orientations, (R2) rotation Ward identity with tensor sources + irrelevance of an integrated dimension-6 insertion; both new mathematics] |
+| L17 | OS4, mass gap | decay of ν_∞-correlations | [BLOCKED: infrared, same as L15] |
+
+### 7.3 The two biggest breaking points
+1. L3 + L6, the ℓ-uniform pointwise representation. The route needs the sourced chain to hold at FIXED unit-scale field V with ε-uniform holomorphy radii, and the fine-origin singleton sum needs the marginal (L^mη)⁴ g_m^{κ_0} form in its sourced version. Both are reductions to existing, partly verified material (B19 minus Step B; D3W8 F2′(ii)), not proofs. They inherit every open row of Target 2 (B3, B15 sub-items, (W4), (Eps), (D), (FX-D) or fallback).
+2. L15: the limit in ℓ exists only along subsequences. All ℓ-dependence beyond e^{−cℓ} sits in the unit-scale measure ν_{K,ℓ}; its convergence is the infinite-volume problem of a weakly coupled 4D lattice gauge theory with ξ_g ~ e^{c/g²}. No mechanism is available; this also blocks OS4, uniqueness, and the gap. Separately, L16 (O(4)) is blocked for a different reason (lattice artifacts; open even for lattice Φ⁴₃).
+
+### 7.4 Where this file disagrees with the Opus files
+PLAN (INFINITE_VOLUME_PLAN.md), read in full:
+- Agree: the ℓ-audit (V1–V9), V4 (Step B) as the single real obstruction, the ℓ-free trajectory, the use of positivity of the unit-scale marginal, the ξ_g window, O(4) open.
+- Disagree 1 (§4.2, (CG) and Lemma IV-M). Γ_f is normalized by subtracting "W^{(2)}, the nonlinear part of the contact functional". The linear part of W is the ε^{−4}-divergent one-point term (one-loop vacuum response, SOURCES.md l. 129 [V]). With it left in, the mixed derivative of E_ν Γ_{Σz_if_i} is the UNCENTRED moment, which contains Π⟨ϕ(f_i)⟩ ~ ε^{−4n}; so the claimed ε-uniform bound of Lemma IV-M cannot hold as written. Fix: subtract the full W_K (or centre), as §2.4 does.
+- Disagree 2 (Lemma IV-M, "no n! for separated products"). The no-factorial bound needs a COMMON polydisc for all constituents, i.e. (FX-D) without the Gevrey fallback, and the linear-in-|z| form needs the fine-origin constituents to be summable, which needs the (L^mη)⁴ g_m^{κ_0} factor, not stated in (CG). With the fallback allowed, the honest outcome is (S∞) with (n!)^{1+η}, §2.4.
+- Disagree 3 (§3.3 E2 and the claim that W is "the same shape as Gubinelli–Hofmanová"): agree on the shape; add that the limit is identified as (3.2), which locates non-uniqueness and clustering in ν_∞ precisely.
+ATTEMPT (INFINITE_VOLUME_ATTEMPT.md), read after it was completed:
+- Agree: Lemma TC = Lemma ν-cum (same identity, same use); Step A kept and Step B dropped; mixed blocks = Lemma C; singleton blocks are the new point; the rejected alternatives (§2.6); OS0–OS3 transfer; no measure; O(4) and clustering blocked.
+- Disagree 1 (BP4, "(CG-b4) needs new mathematics"). The V-regularity bound it asks for — per fine-origin term ≲ (Mλ_m)⁴|F_V|² × size — is Lemma A of D2C applied as in SOURCES_D3W8 Lemma F2′(ii), which is proved given (W4), (Eps), (D) and verified (D3W8_VERIFY item 4), and it is what CMP 119 (2.31) text calls "marginal terms … (L^jη)⁴ g_j^{κ_0}". The D4D5 §3.2(ii) divergence that the ATTEMPT cites counts fine large-field CUBES weighted by e^{−cp_0²}; after Balaban's R-operation those are either R-terms with the (L^mη)⁴ factor or histories summed inside unit-scale Step-A polymers (FX §6.4). So (CG-b4) is [R, unverified for the sourced form], not new mathematics. The ATTEMPT's own dimension count is exactly Lemma A's (τ_X/α_2)² factor.
+- Disagree 2 (Gevrey order 3 + η in ATTEMPT §2.4). The exact identity Σ_{π⊢[n]} |π|! Π_{S∈π}|S|! = 2^{n−1} n! gives 1 + η. Cosmetic for OS II.
+- Disagree 3 (BP2, positivity "a reading"). ρ̂_K^0 ≥ 0 is Balaban's printed positivity of ρ_K (CMP 122 I p. 176 via SOURCES_D3 (B7)); Step A's exponentiation is an identity for a positive sum, so no new reading is needed.
+- Disagree 4 (§2.5 item 1, u_K′(0) bounded as an open C¹ statement on β_j). B_K = Π c_j, c_j = 1 + O(g_{j−1}³), is already recorded as bounded in SOURCES_VERIFY item 8 and used in ASSEMBLY §0 [V]; it is the same linear response.
+- Addition not in either file: (3.1)–(3.2), the exact location of the ℓ-dependence (ν_{K,ℓ} only, rate e^{−cℓ} for everything else), and the rescaling remark §3.4.
+
+### 7.5 Running summary (6 lines)
+1. Theorem IV: given Target 2 at every even ℓ > 22M plus L3 (FX-V) and L6 (S1-pt), the Schwinger functions of the centred plaquette density have a joint subsequential limit (ε → 0, ℓ → ∞) on ⁰S_n with OS0 (linear growth, (n!)^{1+2η}), all translations, B_4, half-space RP, and OS3.
+2. Mechanism: Z[f]/Z[0] = e^{−W}E_ν e^{Δ(f,·)} with ν the unit-scale probability measure; Lemma ν-cum turns cumulants into ν-cumulants of local functionals; sup bounds (Lemma C pointwise) make (S) ℓ-free; volume factors cancel identically.
+3. Grades: L4, L5, L7–L13 [P]; L3, L6, L14 [R, unverified reductions to B19 minus Step B, D3W8 F2′(ii), Theorem LOC]; L2 [audit, I]; L15–L17 [BLOCKED].
+4. Breaking point A: the pointwise sourced chain (L3 + L6), which inherits every open row of Target 2.
+5. Breaking point B: ℓ-convergence; all ℓ-dependence beyond e^{−cℓ} sits in ν_{K,ℓ} (3.2), and its infinite-volume uniqueness is the infrared problem; O(4) is blocked separately (lattice artifacts).
+6. Disagreements: PLAN's (CG)/Lemma IV-M is not ε-uniform as normalized (W^{(2)} vs full W) and its no-factorial claim needs (FX-D) without fallback; ATTEMPT's BP4 is a verified reduction (D3W8 F2′(ii)), not new mathematics, and its Gevrey order 3 + η is 1 + η.
+
+STATUS: COMPLETE (unverified). No file other than INFINITE_VOLUME_FABLE.md written. Firewall kept.

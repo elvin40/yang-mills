@@ -4,7 +4,7 @@ Date: 2026-10-28. CLOSURE_PLAN top-5 item 4 (I-22, I-35). Ledger: [P] proved her
 Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 
 ## 0. Status
-In progress. Sections are appended one per step.
+Complete. Task A: C-new-2 ADMISSIBLE [P, unverified] (§4.4), with (FI) added to the property list and value disagreement at s(Y_0) recorded (§4.2). Task B: (M1) NOT CLOSED (§6.2): NEW-1 gauge/Euclidean covariance, NEW-2 large-field Δ^{(j)}_{Λ^c} Gaussian; CMP 119 Sect. 3 and CMP 122 II unswept. Needs an independent verifier.
 
 ## 1. Task A(1): the convention C-new-2, stated
 
@@ -76,3 +76,46 @@ Method. grep over SOURCES_*.md, *_FULL.md (non-VERIFY) for "s-rule", "s(Δ)", "�
  No consumer needs Balaban's specific (3.185)/G̃_3(x) form. The only consumer that needs a property neither definition supplies is K8 (symmetry of C(Z_0, 0) at the real pair); it is handled by the verified A8 §6 route, or by the symmetrized variant of 3.2 [P, unverified].
  Corrections this file makes to the I-22 wording: (i) add (FI) to the list "(L1)–(L2), bounds, analyticity" (3.1); (ii) the two definitions agree at s ≡ 1 exactly, and at s = s(Y_0) only in class, not in value (4.2); (iii) the loc set is ∪X̃_i^5 (tilde on the p. 3 image, 2.2).
  Residues [I]/[R], unchanged in kind: (FI) for A1-W/WG-G1 tree factors [R]; WG-G1 printed-sketch input [R]; (C) for G_1 [C]; I-a (symmetric representative) for Lemma S; connectedness of the α′-space for the complex-symmetric variant only.
+
+## 5. Task B: (M1) scan of CMP 109 Sect. 3 and CMP 122 I Sect. 1
+
+Method. Text layer of every page, grep for C^{(k)} (and OCR variants C(fc), C<fc), C{k)), "covarian", "Gaussian", "dμ", "C*Δ", "measure", "propagat", "determinant"; 300 dpi images at every hit. Page offsets: CMP 109 journal p = PDF p + 248; Sect. 3 runs pp. 269–281 (it starts on p. 269, not p. 276; p. 281 starts Sect. 4). CMP 122 I journal p = PDF p + 174; Sect. 1 starts on p. 177; all pages through p. 202 were grepped. Reference [III] in CMP 122 I is CMP 119 (reference list, l. 1401 of the text layer); [II] is CMP 116.
+Q-list (A16_REPLACE2 §1): Q1 real positivity; Q2 walk expansion + s-rule + p. 13 form; Q3 ∂_LC∂_R; Q4 analyticity in (U, J, f); Q5 norm + α_5 bound; Q6 determinant ratio as closed trees; Q7 square root; Q8 perturbative argument pp. 15–17; Q9 conditioning on Z_0^c; Q10 t-independence; Q11 large-field domination; (U-a) whole-volume C and C^{1/2}; (U-b) σ-differences; (U-c) tree form of Δ_k(σ); (U-d) symmetry at the real pair.
+
+5.1 CMP 109 Sect. 3 (pp. 269–281).
+| place | use of the fluctuation covariance | class |
+|---|---|---|
+| p. 269 [V image] | "It is bounded by a second order polynomial in B, with coefficients of the order O(ε_1), hence it can be treated as a small perturbation of the basic quadratic form in the Gaussian measure dμ_{C^{(k)}}" | Q1 + Q11 (a lower bound of C*Δ_kC absorbs an O(ε_1)|B|² form) |
+| p. 270 [V image] | "replacing the function J_{k+1} in all propagators and operators by the variable J … P^{(k)}(g_k, U, J, B) is defined and analytic on the space of all configurations U, J satisfying (i)–(iii) … for some α′_0, α′_1 … much bigger than α_0, α_1" | Q4 (analyticity on the α′-space; WC(iii)) |
+| pp. 270–281 [V text layer] | no further use. The operators used are the background propagators H_j, H_k(B′), δH/δB (decay rate δ_0, "Proposition 9, (190) [15]"), the gauge maps v, u_{k+1}, and E^{(j)}. The bound |B| < O(1)L^jη (p. 280) comes from the small-field cut χ_k, not from the covariance. | none |
+ Adjacent use (end of Sect. 2, p. 269 top [V image], and (2.16) p. 268 [V text]): "all the expressions in (2.12), together with the measure, are invariant with respect to the gauge transformations"; "(2.18) generates an orthogonal transformation of the fluctuation field B′ … Thus the effective action is invariant with respect to the Euclidean transformations". This uses gauge covariance and Euclidean covariance of C^{(k)}: C^{(k)}(U^u) = R(u)C^{(k)}(U)R(u)^{−1}, and the same for lattice symmetries. Neither is in Q1–Q11 or (U-a)–(U-d). → NEW-1.
+
+5.2 CMP 122 I Sect. 1 (pp. 177–196).
+| place | use | class |
+|---|---|---|
+| p. 182 (1.25) [V image] | ∫dA_j|_{Z_{j+1}∩Ω_{j+1}} χ(…) exp[−½⟨A_j, C*Δ^{(j)}_{Λ^c_{j+1}}CA_j⟩] — a Gaussian in the large-field variables A_j with the precision of a DIFFERENT operator Δ^{(j)}_{Λ^c_{j+1}} (defined in (2.21) [III] = CMP 119) | NEW-2 (object not in the Q-list); Sect. 1 uses no property of it — it is carried into (1.60) unevaluated |
+| p. 182 (1.25), p. 188 (1.60) [V images] | z^{(j)}∫dB_j|_{Ω^c_{j+1}∖Z″_{j+1}} χ′^{(j)} exp[−½⟨B_j, C*Δ^{(j)}CB_j⟩ + P^{(j)}(g_j, A_j, B_j) + …] — the step-j fluctuation Gaussian on the region Ω^c_{j+1}∖Z″_{j+1} | (U-a)/Q9: a compression of A_exp^{(j)} to a region; the region hypothesis (WC 0.8 distance condition there) is the open [I] already recorded in A16_REPLACE2_VERIFY |
+| p. 189 [V image] | "The integral in (1.60) is of the same type as the integral studied in Sect. 3 [III] … The fundamental difference … is, that now the integration in (1.60) is localized in the large field region Z, therefore the integral contributes to the boundary terms only." | defers every further use to CMP 119 Sect. 3 |
+| p. 189 (1.61)–(1.63) [V image, text] | C_k^{(n+1)} = log(the ∫ in (1.60)) + …; localized sum with "an exponential decay bound" | Q2 + Q6 (log of a Gaussian integral = determinant + localized expansion) |
+| pp. 190–191 (1.65)–(1.69) [V text] | new complex spaces U_k^{(n)c}(X, α_0, α_1); "the expressions in the exponential in this integral can be uniformly bounded in the usual way" | Q4, with the inclusion of these spaces in WC's α′-space as a check [I] |
+| p. 188 (1.59) | change of variables (1.22) [III] with H_Z^{(j)} | background map, not the covariance |
+
+5.3 Spot check of CMP 119 Sect. 3 (the target of the p. 189 deferral; not part of the brief, so only the hits on pp. 273–274 were read on images). (3.33)–(3.37) [V images, pp. 273–274]: −½log det(C*Δ^{(k)}C) = −½log λ_0|Λ^{(k)*}_{k+1}| + ½∫_0^∞dλ(λ_0 + λ)^{−1}Tr(C*Δ^{(k)}C − λ_0I)(C*Δ^{(k)}C + λI)^{−1}, then a local density E_0^{(k+1)}(Λ_{k+1}, U_{k+1}, b) with the diagonal kernel and with expectations under dμ_{C^{(k)}(Λ_{k+1})}. This needs the resolvent for λ ≥ 0 on the whole volume — WC(iv) + (U-a) — and Q6. Not NEW. The text layer of CMP 119 also shows "Euclidean covariance" used for these terms (p. 18 of the PDF, and (3.39) on PDF p. 32 "The Euclidean covariance (3.39) follows from …") — the same NEW-1.
+ Rest of CMP 122 I: the only other "measure" hit (p. 195, after (1.76)) is the large-field integral over V with the Wilson action, made gauge invariant and then axially gauge fixed. It contains no fluctuation covariance. [V text layer]
+
+## 6. Task B verdict, and the ledger
+
+6.1 New properties (not in Q1–Q11, (U-a)–(U-d)).
+ NEW-1 Gauge and Euclidean covariance of the covariance: C^{(k)}(U^u) = R(u)C^{(k)}(U)R(u)^{−1}, and the same for the lattice symmetries (2.17)–(2.18). Used by CMP 109 (2.16)–(2.18) to make the effective action invariant, and by CMP 119 (3.39) for E_0^{(k+1)}. Status:
+ (a) For C^{(k)} itself at s ≡ 1: Balaban's own property; the project identifies A_exp with his C*Δ^{(k)}C (WC 0.7 [V]), so it is inherited [I].
+ (b) For the sourced C_f: gauge covariance holds if 𝒲_S is covariant. 𝒱_S = H_1*(D_S)H_1 + 𝒱_S^{(2)}, D_S = Σ_pd_S(p)H_p(U_{k+1}) with scalar d_S, is built from covariant pieces, so C_f is gauge covariant [P-sketch, unverified]. Euclidean covariance holds only jointly with the transformation of d_S. Any consumer that uses Euclidean covariance to restrict the form of relevant terms (CMP 109 Sect. 4, CMP 119 (3.39)) must be re-checked in the sourced setting. This is a D2/D3W8 question, not a covariance bound. [open]
+ (c) For the s-versions and the localized terms: Euclidean covariance of the activities needs translation-covariant partitions — this is C34, and it applies to Balaban's expansion and to C-new-2 alike.
+ NEW-2 The large-field Gaussian of CMP 122 I (1.25), exp[−½⟨A_j, C*Δ^{(j)}_{Λ^c_{j+1}}CA_j⟩] on Z_{j+1} ∩ Ω_{j+1}. It is a covariance of a different operator (CMP 119 (2.21)). CMP 122 I Sect. 1 uses no property of it. Its properties are used in CMP 122 II and CMP 119; whether the source term acts on it is the Ω-setting volume convention (C-new-3) [I]. [open]
+6.2 Verdict on (M1) (I-35): NOT CLOSED. Inside the two swept ranges, every use of the step-k fluctuation covariance is Q1, Q2, Q4, Q6, Q9, Q11, or (U-a) [V on page images at every hit]. Two new properties appear (NEW-1, NEW-2). The sweep also shows that CMP 122 I defers its covariance work to CMP 119 Sect. 3 (p. 189 [V]). CMP 119 pp. 273–274 (log det via λ ≥ 0 resolvents) need only WC(iv) + (U-a) + Q6 [V]; the rest of CMP 119 Sect. 3 and CMP 122 II are not swept. Next action: sweep CMP 119 Sect. 3 (PDF pp. 26–41) and CMP 122 II for uses of C^{(k)} and of Δ^{(j)}_{Λ^c}; settle NEW-1(b) with the D2/D3W8 owner.
+6.3 Ledger.
+ [V] CMP 116 p. 3 (replacement license; s-rule with X̃^5; "coincide … for s = 1") and p. 13 (σ_0; "chosen to a large extent arbitrarily"; (2.7); G̃_3(x) route; "Using these expansions we introduce the parameters s") on 300 dpi images. CMP 116 pp. 4–5 and 15–17 on the text layer. CMP 109 pp. 269–270 on images, pp. 270–281 on the text layer. CMP 122 I pp. 182, 188, 189 on images, the rest on the text layer. CMP 119 pp. 273–274 on images.
+ [P] §1.2 definition; 1.3(ii) regrouping commutes with the weight; (S1)–(S6); 3.1 (FI) for WC walks given (FI) for tree factors and C34; 4.1 agreement at s ≡ 1; 4.2 disagreement in value at s(Y_0) and agreement in class; 4.3 choice-independence of the total; 4.4 verdict. 3.2 symmetrized variant [P, unverified].
+ [I] I-a (Lemma S); connectedness of the α′-space (3.2 only); NEW-1(a); region hypothesis of the CMP 122 compression; inclusion of the U_k^{(n)c} spaces in the α′-space.
+ [R] (FI) for A1-W/WG-G1 tree factors; WG-G1 printed sketches; the 2.6 reading that p. 13 licenses any expansion in the M_1-cube class.
+ [C] (C) for G_1 (A1-W).
+ Suggested CLOSURE_PLAN status (for the caller; this file edits no other file): "I-22 / C-new-2: ADMISSIBLE [P, unverified]: SOURCES_SRULE_CONVENTION §1–§4; consumers K1–K12 use (S1)–(S7) only; add (FI) to the I-22 property list; values at s(Y_0) differ from Balaban's, class agrees; K8 via A8 §6 or the symmetrized variant. I-35 / (M1): NOT CLOSED: CMP 109 Sect. 3 and CMP 122 I Sect. 1 swept [V]; NEW-1 (gauge/Euclidean covariance; sourced Euclidean part open), NEW-2 (Δ^{(j)}_{Λ^c} large-field Gaussian); CMP 119 Sect. 3 and CMP 122 II unswept."

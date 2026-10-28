@@ -14,11 +14,11 @@
 \contentsline {subsection}{\numberline {2.6}Names}{10}{subsection.2.6}%
 \contentsline {section}{\numberline {3}The coupling flow and Theorem 2}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}What Ba{\l }aban's Theorem 1 actually needs}{11}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}The weak form proved conditionally}{12}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}The weak form proved conditionally}{11}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Literal (0.31)}{12}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Shooting lemmas}{13}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Lemma D$'$ (shooting without early positivity) {\normalfont \scshape [proved+verified; Lean]}}{13}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Lemma D$''$ (tail-sum form; no index $J$) {\normalfont \scshape [proved+verified; Lean]}}{14}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.2}Lemma D$''$ (tail-sum form; no index $J$) {\normalfont \scshape [proved+verified; Lean]}}{13}{subsubsection.3.4.2}%
 \contentsline {subsubsection}{\numberline {3.4.3}Lemma D$''$ meets Balaban's proof: the cross-scale sweep {\normalfont \scshape [proved, unverified (sweep); 4 of 19 table rows verified]}}{14}{subsubsection.3.4.3}%
 \contentsline {subsubsection}{\numberline {3.4.4}Lemma D and Lemma E {\normalfont \scshape [proved+verified; Lean]}}{15}{subsubsection.3.4.4}%
 \contentsline {subsubsection}{\numberline {3.4.5}History dependence (L5) {\normalfont \scshape [proved relative to listed inputs; verified (round 7)]}}{15}{subsubsection.3.4.5}%
@@ -52,11 +52,11 @@
 \contentsline {subsubsection}{\numberline {4.5.1}(B-T2) Theorem 2: the running coupling}{28}{subsubsection.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}(B-S) Sourced bounds E14-a..g}{28}{subsubsection.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}(B-N1) Bridge: source-form bounds $\Rightarrow $ (H-U) {\normalfont \scshape [open]}}{29}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}(B-C) Compactness {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.4}(B-C) Compactness {\normalfont \scshape [proved here, given (H-U)]}}{29}{subsubsection.4.5.4}%
 \contentsline {subsubsection}{\numberline {4.5.5}(B-REG) Regularity (OS0) {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.5}%
 \contentsline {subsubsection}{\numberline {4.5.6}(B-TI) Translation and hypercubic invariance (OS1) {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.6}%
 \contentsline {subsubsection}{\numberline {4.5.7}(B-RP) Reflection positivity (OS2)}{31}{subsubsection.4.5.7}%
-\contentsline {subsubsection}{\numberline {4.5.8}(OS3) Symmetry and reality {\normalfont \scshape [proved here]}}{32}{subsubsection.4.5.8}%
+\contentsline {subsubsection}{\numberline {4.5.8}(OS3) Symmetry and reality {\normalfont \scshape [proved here]}}{31}{subsubsection.4.5.8}%
 \contentsline {subsubsection}{\numberline {4.5.9}(B-NT) Nontriviality: what is needed}{32}{subsubsection.4.5.9}%
 \contentsline {subsection}{\numberline {4.6}Dependency table}{32}{subsection.4.6}%
 \contentsline {subsection}{\numberline {4.7}What the theorem does not give}{44}{subsection.4.7}%
@@ -195,35 +195,21 @@
 \contentsline {paragraph}{The free parameter $\beta _H$.}{109}{section*.100}%
 \contentsline {paragraph}{Binding sets (round 8; sizes unchanged since round 7).}{110}{section*.101}%
 \contentsline {paragraph}{Lean support (round 8).}{110}{section*.102}%
-\contentsline {section}{\numberline {8}Closure plan}{111}{section.8}%
-\contentsline {paragraph}{The four tables.}{112}{section*.103}%
-\contentsline {paragraph}{The top five targets.}{112}{section*.104}%
-\contentsline {paragraph}{Effort.}{112}{section*.105}%
-\contentsline {paragraph}{Residue after closure.}{112}{section*.106}%
-\contentsline {section}{\numberline {9}Beyond the finite torus}{113}{section.9}%
-\contentsline {paragraph}{What Theorem~\ref {thm:B} gives.}{113}{section*.107}%
-\contentsline {paragraph}{Where $\ell $ enters.}{113}{section*.108}%
-\contentsline {paragraph}{The proposal (CG).}{114}{section*.109}%
-\contentsline {paragraph}{The window length.}{114}{section*.110}%
-\contentsline {paragraph}{Lemma list.}{114}{section*.111}%
-\contentsline {paragraph}{Verdict of the plan.}{114}{section*.112}%
-\contentsline {paragraph}{What stays blocked.}{115}{section*.113}%
-\contentsline {paragraph}{Next steps in the plan.}{115}{section*.114}%
-\contentsline {section}{\numberline {A}Lean formalization}{115}{appendix.A}%
-\contentsline {paragraph}{{\normalfont \scshape [Lean]}}{115}{section*.115}%
-\contentsline {section}{\numberline {B}Index of results by status}{116}{appendix.B}%
-\contentsline {paragraph}{{\normalfont \scshape [proved+verified]}}{117}{section*.116}%
-\contentsline {paragraph}{{\normalfont \scshape [proved, unverified]}}{118}{section*.117}%
-\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{119}{section*.118}%
-\contentsline {paragraph}{{\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{119}{section*.119}%
-\contentsline {paragraph}{{\normalfont \scshape [verified reduction]}}{119}{section*.120}%
-\contentsline {paragraph}{{\normalfont \scshape [interval enclosure, verified]}}{120}{section*.121}%
-\contentsline {paragraph}{{\normalfont \scshape [argued]}}{120}{section*.122}%
-\contentsline {paragraph}{{\normalfont \scshape [open]}}{120}{section*.123}%
-\contentsline {paragraph}{{\normalfont \scshape [corrected by verifiers since v3]}}{120}{section*.124}%
-\contentsline {paragraph}{{\normalfont \scshape [refuted]}}{121}{section*.125}%
-\contentsline {paragraph}{{\normalfont \scshape [Balaban]}}{121}{section*.126}%
-\contentsline {paragraph}{{\normalfont \scshape [verified quote]}}{121}{section*.127}%
-\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{121}{section*.128}%
-\contentsline {section}{\numberline {C}Label map}{121}{appendix.C}%
-\contentsline {section}{\numberline {D}Revision history}{124}{appendix.D}%
+\contentsline {section}{\numberline {A}Lean formalization}{111}{appendix.A}%
+\contentsline {paragraph}{{\normalfont \scshape [Lean]}}{112}{section*.103}%
+\contentsline {section}{\numberline {B}Index of results by status}{113}{appendix.B}%
+\contentsline {paragraph}{{\normalfont \scshape [proved+verified]}}{113}{section*.104}%
+\contentsline {paragraph}{{\normalfont \scshape [proved, unverified]}}{115}{section*.105}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{116}{section*.106}%
+\contentsline {paragraph}{{\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{116}{section*.107}%
+\contentsline {paragraph}{{\normalfont \scshape [verified reduction]}}{116}{section*.108}%
+\contentsline {paragraph}{{\normalfont \scshape [interval enclosure, verified]}}{117}{section*.109}%
+\contentsline {paragraph}{{\normalfont \scshape [argued]}}{117}{section*.110}%
+\contentsline {paragraph}{{\normalfont \scshape [open]}}{117}{section*.111}%
+\contentsline {paragraph}{{\normalfont \scshape [corrected by verifiers since v3]}}{117}{section*.112}%
+\contentsline {paragraph}{{\normalfont \scshape [refuted]}}{117}{section*.113}%
+\contentsline {paragraph}{{\normalfont \scshape [Balaban]}}{118}{section*.114}%
+\contentsline {paragraph}{{\normalfont \scshape [verified quote]}}{118}{section*.115}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{118}{section*.116}%
+\contentsline {section}{\numberline {C}Label map}{118}{appendix.C}%
+\contentsline {section}{\numberline {D}Revision history}{120}{appendix.D}%

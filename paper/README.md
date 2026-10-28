@@ -1,6 +1,6 @@
 # paper/
 
-One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (128 pages).
+One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (125 pages).
 
 Build:
 
@@ -16,7 +16,6 @@ Files, in reading order:
 - `sources.tex`: §5. The sources block: one paragraph (statement, method, verifier grade, open inputs) per SOURCES_*.md with a verifier file, grouped as in TRUST_LEDGER §4.
 - `numerics.tex`: §6. All numerical results: β_1(0), later increments, Route K quantities, (H2) values, one-step values, the verified point enclosure at L = 3, certification plan.
 - `remains.tex`: §7. Open items grouped as certification, fixed-level and structural inputs, sources block, verification debt, stronger statements. Item labels H, 1–13, B1–B8 are those of v4 §10.
-- `outlook.tex`: §8 closure plan (CLOSURE_PLAN.md: the four tables, top five, effort, residue) and §9 beyond the finite torus (INFINITE_VOLUME_PLAN.md: where ℓ enters, (CG), lemma list, conditional target). Both are plans, not results.
 - `appendix.tex`: A Lean inventory; B index of results by status (the v4 ledger); C label map; D revision history (v2→v3, v3→v4, the Route B tag decision, assembly correction 5, and this merge).
 - `refs.bib`, `refs_check.md`, `refs_check_cloud.md`: bibliography and its check records.
 
