@@ -28,3 +28,15 @@
 - Printed: "We assume that g_k is so small that −2(1+β_0)^{−1}p_0(g_k) + 1 + 2κ(100R_k)^d ≤ −(3/2)p_0(g_k) (for example, take β_0 = 1/7, then this means that −(1/4)p_0(g_k) + 1 + 2κ(100R_k)^d ≤ 0, and before we had stronger restrictions on p_0(g_k))". RHS −(3/2)p_0 is legible at 130 dpi.
 - Algebra: 2·(7/8) − 3/2 = ¼, so p_0 ≥ 4 + 8κ(100R_k)^d. MATCHES MB L22. No γ_0, no C_c, no A_1. Unchanged under the perturbation once p_0 is evaluated at x*_k. CONFIRMED.
 - (1.95)–(1.97) on the image use p_0 only through exp(−q(3/2)p_0)c_0, exp(−½p_0)100^dR_k^{−d} ≤ βκ/(6·2^d). Unchanged. CONFIRMED.
+
+## V5. p. 387 (PDF 33), p. 380 (PDF 26) images; per-mode constants [V; num]
+- p. 387: (1.87) κ_{j+1}(Z) ≥ κ(X) + κ(Y) + 2(1+β_0)^{−1}p_0(g_{j+1}) − O(1)2dM^dR^{d+1}_{j+1}; (1.88) "for p_0 large and γ small enough"; (1.89) T′_k(X)1 ≤ exp(−2(1+β_0)^{−1}p_0(g_k)). MATCH MB L17–L19. The (1+β_0) step is CMP 119 (2.6) g_m ≤ (1+β_0)g_n (HHOL_LF_VERIFY V2, image); with p_0 at x*, it is used only on the real trajectory. CONFIRMED.
+- p. 380: P/Q/R factors and the budget "O(1)log g_j^{−2}|Z_j| ≤ O(1)M^dR_j^{d+1}d′_j(Z_j)" MATCH MB L2–L4 and FX_O23_VERIFY §3. Q and R factors use "the positivity bound for the quadratic form", so (1 − τ_C) enters them; the additive form of V2 applies to quadratic forms too (Re(uC_0^{−1} − 𝒲_S)).
+- Gaussian factor: |arg w| ≤ 2 arcsin ρ, cos(2 arcsin ρ) = 1 − 2ρ² exactly, so (|u|/Re u)^{1/2} = (1 − 2ρ²)^{−1/2} = 1.010153 at ρ = 0.1. MB's "≤ 1.0101" is a rounding down; use 1.0102 (C_G = −½log 0.98 = 0.01010 per mode). Log shift: ½|log|w|| = |log|1+s|| ≤ −log 0.9 = 0.10536; "0.105" is a rounding down; use 0.1054. Both O(1) per mode, inside the O(1)log g_j^{−2} budget. Pairing note: C_G already includes the |u|^{n/2} normalization, so counting both is conservative, not wrong.
+
+## V6. Grades
+1. CORRECTED. Formulas c = 2/(g* − ½) (B) and 4/g* (A) are right; all printed numbers right. But g* = (1−θ_g)(1−θ_W)(1−τ_C) assumes multiplicative composition; the weight is additive (D3W8 §1.1), safe g* = 0.82645 − θ_W − τ_C. Then c = 17 (B) needs θ_W + τ_C ≤ 0.2088 (not ¼; at ¼, c = 26.2). Option A's 20 under the crude ½/½ margin fails additively (c = 24.5). Endorsed: p_0 ≥ 17/(γ_0A_1²), option B, with θ_W + τ_C ≤ 0.2 (g* ≥ 0.6264, c ≤ 15.8).
+2. CONFIRMED with minor correction: p. 383 coefficient is ½γ_0 (not ¼), N^{β_0}; any fixed g* > 0 is tolerated (stronger than "≥ 0.21"). p. 389 condition p_0 ≥ 8κ(100R_k)^d + 4 confirmed on image. (1.87) step confirmed.
+3. CONFIRMED with rounding corrections: C_G ≤ log 1.0102, shift ≤ 0.1054 per mode. Route (b) as in FX_R2 §4.
+4. CONFIRMED as [I]: pp. 377–390 do not mention ε′; the link is through α (L20–L21) only.
+5. CONFIRMED: pp. 380–381 re-imaged here; transcriptions match. Pages 382–390 claims checked on 383, 387, 389.
