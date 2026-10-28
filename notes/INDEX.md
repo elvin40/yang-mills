@@ -51,7 +51,7 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | B2_TWOSTEP_VERIFY.md | Verifier of B2_TWOSTEP. | report |
 | H2_LARGE_L.md | (H2) at L up to 15: umklapp scan (numerics/h2_scan.py), one-step sufficiency at L >= 5, certification tail bound. | corrected (H2_LARGE_L_VERIFY: L-trend and tail inputs) |
 | H2_LARGE_L_VERIFY.md | Verifier of H2_LARGE_L; L = 5 value rechecked with an independent code; j_0 about 8 (L = 3), 6 (L = 5). | report |
-| H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of (H2) at L = 3; rigorous point enclosure of rho_2 at K*. | unverified (H2_CERTIFY_VERIFY in progress of reconciliation) |
+| H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of (H2) at L = 3; rigorous point enclosure of rho_2 at K*. | unverified (H2_CERTIFY_VERIFY) |
 | H2_CERTIFY_VERIFY.md | Independent check of H2_CERTIFY and numerics/h2cert_proto.py. | report |
 | KAPPA_BOUNDED.md | Theorem K (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
