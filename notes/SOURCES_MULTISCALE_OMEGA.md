@@ -100,3 +100,18 @@ Standing condition (Sep) [I]. Every point at unit ℓ^∞ distance ≤ R′M fro
  - Lemma AW is A1_WALK_FULL at complex points; it is already on 𝔅 (6.2). Lemma G(complex weights, 6.5) is per block. Lemma CT is per cube. So 6.4–6.8 run unchanged, with the constant changes of 4.6.
  - (3.43): terms with Y ⊄ Λ_{k+1} need analyticity on Ũ^c_{k+1}(Y, (1 + β)α̃_0, (1 + β)α̃_1). This asks the chain to reach (1 + β)α̃ with β ≤ ½. WC 6.9 (B22) chooses Balaban's α after α′ with α ≪ α′; so (1 + β)α̃ ≤ α′ holds [I: the identification α̃ ≤ α of CMP 119's tilde-α not checked].
 5.4 Summary. Lemma E and Lemma G need no fixed block size; they are per block. In Case A they are used only on one layer. The lower bound and the chain carry over with the same γ_exp and the constant changes of 4.6.
+
+## §6 Per-layer block sizes: what a genuinely multiscale variable space would need
+
+6.1 Case B (variables on several layers) [P for the listed items; not used by Balaban]. Suppose A_Z acted on a variable space with L-blocks of size L^{j}η on layer j. Then:
+ (a) Lemma E, Lemma G: per block, any size (5.1). OK.
+ (b) Parametrix: local inverses per cube of any size (Lemma CT is size-free). E^sep, E^tr: per cube, in d, with the local M_1 (4.3(c)–(d)). E^com: needs h_□ Lipschitz c/M_1 in d across a layer interface; replacement Lc_h/M_1 (4.4 (U1)). OK at the cost of the factor L.
+ (c) Lower bound: FAILS as written. The corridor step (A3-4.3) is stated for a corridor between two adjacent L-blocks of the same lattice. At a layer interface a block of layer j borders L^{d−1} blocks of layer j − 1 on one face. Neither A3 nor WC has a corridor inequality for this junction, and the symmetric average Q̃ of CMP 109 (0.4) is not defined across it. A new "interface corridor lemma" would be needed, plus a rescaled norm (S-rescaling of CMP 96: N̂ = S^{−1/2}NS^{−1/2}) so that the per-layer γ_exp in local units gives one bound.
+ (d) Schur sums: Lemma 2.1 covers mixed scales, under (2.59).
+6.2 The per-adjacent-layer conditions (needed in Case A inside the inputs (W_G1^Ω), (A1-W^Ω); needed in Case B at the WC level too):
+ (C1) layer width: each Λ_j = Ω_j∖Ω_{j+1} has width ≥ RM in its own units (CMP 96 (2.1)–(2.4), "with M and R", P10 [V text; conditions not re-read]); with RM > 2K_1M_1 no cube of the cover meets three layers [P].
+ (C2) Lemma 2.1 condition (2.59): δ_0RM > 16d log c_0 + 1 at the smallest rate used [V CMP 96 p. 234 via A1_KERNEL §5]. It gives (2.60): coupling between layers j, j′ costs e^{−αδ_0RM(|j−j′|−1)_+}, so only adjacent pairs interact at O(1).
+ (C3) O2 replacement: |h_□(y) − h_□(y′)| ≤ (Lc_h/M_1)d(y, y′) for y, y′ in adjacent layers [P-sketch: tent functions in local coordinates; the local unit jumps by L across the interface]. M_1 ≥ L·M_W.
+ (C4) count: a layer-j cube face meets ≤ L^{d−1} layer-(j−1) cubes; C′_𝒟 → L^{d−1}C′_𝒟, (G3) × (1 + L^{d−1}).
+ (C5) q = M/M_1 is the same on all layers (both scale with L^{j−k}), so "M/M_1 > 10" and "q > 3(6 + c_X)" are one condition each, not one per layer.
+ The ⅔M separation and the ℓ^∞ band were the feared places. Neither needs a uniform size: 4.4a (d ≥ d_∞ at step k) and P4 (local-unit bands) settle both.
