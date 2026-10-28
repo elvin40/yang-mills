@@ -1,6 +1,6 @@
 # H2_CERTIFY prototype: interval (arb) enclosure of rho_2(inf, K) = ||(+)_l H_inf(k_l) H_inf(K)|| / L^2 at one K, L = 3,
 # plus an Oishi-Rump enclosure of ||B_inf(K)^{-1}||. Symbols as exact trig expressions; the (0.4) row is rational (k/648).
-# Usage: numerics/.venv/bin/python -I numerics/h2cert_proto.py [lmax] [K1 K2 K3 K4]   (a component "pi" means exact pi)
+# Usage: numerics/.venv/bin/python -I numerics/h2cert_proto.py [lmax] [K1 K2 K3 K4]   (lmax 2: truncated check; lmax >= 4: rigorous)   (a component "pi" means exact pi)
 import sys, os, time, itertools, pickle, numpy as np
 from flint import arb, acb, acb_mat, ctx
 ctx.prec = 96
@@ -218,7 +218,7 @@ if __name__ == "__main__":
     Kf = np.array([np.pi if s == "pi" else float(s) for s in Ks])
     t = time.time(); print(f"K = {Ks}, lmax = {lmax}, prec {ctx.prec}", flush=True)
     print(f"float rho_2 (hscan, lmax {lmax}) = {float_ref(Kf, lmax):.6f}  ({time.time()-t:.0f}s)", flush=True)
-    for tail in (False, True):
+    for tail in ((False,) if lmax <= 2 else (True,)):  # lmax <= 2: validation of the truncated sum vs float; else the rigorous enclosure
         lo, hi, out = rho2(K, lmax, tail, log=lambda s: print(s, flush=True))
         what = "true rho_2(inf,K) (tail included)" if tail else f"truncated (|l|<={lmax}) rho_2"
         print(f"{what}: [{float(lo):.6f}, {float(hi):.6f}]  width {float(hi - lo):.2e}  ({time.time()-t:.0f}s)", flush=True)
