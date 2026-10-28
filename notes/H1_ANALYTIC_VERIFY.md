@@ -33,3 +33,19 @@ All below the 1e−10 tolerance. j = 2 was run at 3 K only (L⁸ direct-sum cost
 - max ρ_1² = 4.366 (face, a ≈ 2.5, j = ∞); max B_sharp = 5.960, max B_crude = 7.957 (both at (2.42,2.42,2.42,2.98)). These match H1_ANALYTIC §7 (5.86 h=6 sharp / 7.98 crude; small differences from point sets).
 - Near 0: ρ_1² = 1.000, B = 2.005. j-dependence of ρ_1² is ≤ 3% between j = 1 and ∞; B has no j.
 The tight 3.5% case needs a local search (V4).
+
+## V4. Local search for the tightest point (test_b2.py, Nelder–Mead on B_sharp/ρ_1², 6 starts × j ∈ {∞, 1})
+- Local minima of the ratio: 1.026–1.028 at |K| ≈ 1.4–1.6, e.g. (−0.463, 1.023, −1.023, 0.463), ρ_1² = 1.331 (j = ∞), ratio 1.0264. No violation. j = 1 gives ratios ≥ 1.0266.
+- So B_sharp is within ~3% of ρ_1² in a mid-|K| region; the majorant holds there, consistent with the paper proof (V1). It does not hold "with room": any error in the derivation of size > 3% would show up here, and none does.
+- The sup of B (≈ 6–8) is far from the sup of ρ_1² (4.37) only near the argmax region; the losses quoted in §7 are confirmed.
+Grade (2) majorant: CONFIRMED. Grade (3) j-uniformity and K → 0: CONFIRMED (V1 inequalities (iv)–(vii); numerics j ∈ {1,2,5,∞}, K → 0 gives B ≈ 2.0 ≥ 1).
+
+## V5. Audit of bb.py (task C), by reading the code line by line
+- Chamber cover: initial boxes keep index-sorted cells; children are kept iff lo_r ≤ hi_{r+1} for adjacent r. Any box that contains a sorted point passes this test, so no chamber region is dropped. Valid.
+- Symmetry: B_L (F_CS, G) is invariant under permutations and sign flips of K (all terms depend on |K_ρ|, sin², and l → −l mod L). So the sup over the BZ equals the sup over the sorted chamber in [0, π]⁴. Valid. No symmetry of ρ_1 is used.
+- Boundary defect (float): the grid top is np.pi = fl(π) < π by 1.2e−16. The strip K_ρ ∈ (fl(π), π] is not covered. Harmless in value (continuity), but formally a gap; fixed in bb_arb.py (exact π·u endpoints).
+- F_CS box bound: monotone pieces correct (V0). Zero vertex at K = 0 boxes: the ratio Σxr/Σx is homogeneous of degree 0, so the sup over box∖{0} is the max over the nonzero vertices; the 1e−300 guard gives 0 at the zero vertex, which is harmless. Valid.
+- G tables: |k̂|² range via sin² with interior extremum detection (k/2 ∈ [0, π), so only the max at π/2 or the min at 0 can be interior). a² = sin²(K/2)/(L²sin²(k/2)) enclosed with numerator and denominator separately (valid, loose). l = 0: a_0 decreasing on [0, π] (valid). |a| ≤ 1 clamp (valid). |1 − α| = 1 ∓ |a| by the sign rule (valid). |g_ν|² ≤ |1−α_ν|²/|k̂_ν|²; at l_ν = 0 the Taylor bound (L²−1)K/(24L sinc(π/2L)) (rederived: 1 − α ≤ κ²(L²−1)/24, |k̂| ≥ κ sinc(π/2L)) — valid; used when lo = 0, so no 0/0.
+- bound(): W = |K|²/|k̂_l|² (l = 0: ≤ L²γ_L, rederived); r = |K̂|²/|k̂_l|² range (l = 0: mediant of L²a_{0,ρ}²); br ≥ max_μ|y − r|; V_code = |K|²V, U_code = |K|²U, so τ = F_CS·(V_code + |K̂|U_code) = (V + |K̂|U)·F_CS|K|² ≥ (V + |K̂|U)/d̲. S ≤ |K̂|²S_L from below (l = 0 term via min L²a_{0,ρ}²). All directions correct.
+- Parent G inheritance: valid (bound on a superset). Leaf test: a leaf is accepted only if its upper bound (γF + G)(1 + 1e−9) ≤ target or depth = maxdepth; leaves above target are counted as failures and the reported sup is the max over all leaf upper bounds. Valid.
+- Only defects: no directed rounding (sin, sinc, divisions in float64 nearest), and the fl(π) strip. Grade (4) logic: CONFIRMED; rigor gap fixed in V6.
