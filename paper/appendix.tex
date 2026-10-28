@@ -1,6 +1,6 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (18 files in \file{lean/YmLean/}). The inventory is as follows.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (21 files in \file{lean/YmLean/}); three files formalize lemmas of the sources block (Schur test, Combes--Thomas, interpolation and rescaling). The inventory is as follows.
 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
@@ -26,6 +26,9 @@ The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K a
 \item \texttt{StripBound}: \texttt{strip\_bound\_linear}, \texttt{strip\_bound\_quadratic} (the $\tfrac32\tau$ bootstrap); \file{SOURCES_HBETA_N3.md} \S4.
 \item \texttt{CertBridge}: \texttt{cell\_invertible}, \texttt{cell\_sup\_bound}, \texttt{vertex\_bound} (interval-to-norm bridge of the cell certifier); \file{numerics/h1cert_cell.py}, \file{h1cert_cell2.py}.
 \item \texttt{Tower}: \texttt{tower\_bounds}, \texttt{I1\_compress}, \texttt{majorant\_core}, \texttt{lemmaT\_core} (algebraic core of the one-step majorant, Theorem~\ref{thm:H2cert}); \file{H1_ANALYTIC.md}.
+\item \texttt{Schur}: \texttt{schur\_test\_weighted}, \texttt{schur\_test} (weighted Schur test for the spectral norm); \file{SOURCES_LOC.md} \S3.3, \file{SOURCES_S2_FORM.md} \S2, \file{SOURCES_A3_SIGMA.md} 2.6.
+\item \texttt{CombesThomas}: \texttt{norm\_entry\_le}, \texttt{coercive\_inv}, \texttt{combes\_thomas}, \texttt{combes\_thomas\_exp}, \texttt{combes\_thomas\_decay}, \texttt{combes\_thomas\_schur} (the proof structure of Lemma CT, the kernel-decay reduction of ledger A1); \file{SOURCES_A1_KERNEL.md} \S7. The identification with the block operators, the kernel-to-row-sum step, (K)/(C), the rescaling, and the block-valued Schur test are not formalized (\file{lean/VERIFY_CombesThomas.md}).
+\item \texttt{Interp}: \texttt{multilinear\_convex}, \texttt{monomial\_affine} (\file{SOURCES_A3_SIGMA.md} 3.2); \texttt{window\_perturb}, \texttt{window\_perturb\_partial} (\file{SOURCES_T2_KUNIF.md} 5.2, chained to Theorem K); \texttt{rescale\_exp}, \texttt{rescale\_rate}, \texttt{K1\_iff}, \texttt{K1\_numeric} (\file{SOURCES_T2_KAPPA2.md}); \texttt{xexp\_le}, \texttt{xexp\_absorb} (\file{SOURCES_GGAIN_LF.md} \S2).
 \end{enumerate}
 Not formalized: interval arithmetic itself, the enclosure premises P1$'$--P4, the identity $\rho_1^2L^2=\lambda_{\max}(G)$, and the history form of the shooting lemmas.
 \end{itemize}
@@ -62,6 +65,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$; neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
 \item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
 \item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given (S1)--(S3)); no verifier file.
+\item Item 7$'$: the running-maximum lift of $C_\beta$ to non-monotone pasts (\file{SOURCES_GGAIN_NONMONO.md}); verified (SOURCES_GGAIN_NONMONO_VERIFY).
 \item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
 \end{itemize}
 
@@ -82,6 +86,8 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item (H-hol), small field, to Ba{\l}aban's conditions with modified constants (\file{SOURCES_HHOL_VERIFY}); large field to (M-A), (M-B), (M-C), (H-hist2) (\file{SOURCES_HHOL_LF_VERIFY}); (M-D) to (H-hist) + (H-thr).
 \item (H$-$) to CMP 102 (189), an existing trust item (\file{SOURCES_MA2_VERIFY}).
 \item (H-hist2) to the real uniform (H-hist), no new input (\file{SOURCES_HHIST2_VERIFY}).
+\item Round 3 (ledger A1--A4, B13, B17, B21, B22): A1 kernel-decay form via Lemma CT to CMP 99 Thms 3.1, 3.3, 3.12 + (KE$'$) + (H$_Q$) + S2 (\file{SOURCES_QE_KE_HQ_VERIFY}, \file{SOURCES_S2_FORM_VERIFY}); A2 to (W) + A1w + A7 + (An) (\file{SOURCES_A2_R2_VERIFY}); A3 and its $\sigma$-localized clause (\file{SOURCES_A3_GAMMA0_VERIFY}, \file{SOURCES_A3_SIGMA_VERIFY}); A4 to A1 + CMP 102 (\file{SOURCES_A1_A4_VERIFY}); large-field (H-hist) (\file{SOURCES_GGAIN_LF_VERIFY}); (M-C) to the printed CMP 116 \S2 conditions (\file{SOURCES_MC_VERIFY}); the (S) clauses of B21 (\file{SOURCES_B21_S_VERIFY}); the $\kappa\to\kappa/2$ recovery B22 (\file{SOURCES_T2_KAPPA2_VERIFY}).
+\item Item 9 ($K$-independence in the shooting) closed: $\beta_j$ is the whole-lattice coefficient by definition, Lemmas D$'$/D$''$ run at fixed $K$ (\file{SOURCES_T2_KUNIF_VERIFY}).
 \end{itemize}
 
 \paragraph{\status{interval enclosure, verified}}
@@ -91,12 +97,12 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{argued}}
 \begin{itemize}
-\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) (now a constant choice, ledger C23; the $\kappa\to\kappa/2$ recovery stays open as B22); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger A6) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
+\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) (now a constant choice, ledger C23; the $\kappa\to\kappa/2$ recovery B22 is a verified reduction); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger A6) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
 \end{itemize}
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (H2) at $L\ne13$ (numerical at $L=3,5,9$; certified at $L=13$, see above). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$, R-term part (ledger B8). The scale condition (U) and the $\kappa\to\kappa/2$ recovery of the sourced step (ledger B22). (A) in full. See Section~\ref{sec:remains}.
+\item (H2) at $L\ne13$ (numerical at $L=3,5,9$; certified at $L=13$, see above); (B2) is reduced to it \status{verified reduction}. A1w, the walk-expansion form of A1 (CMP 99 Thm 3.15). The residual inputs of (M-C): (I-$\varepsilon$), (I-V0), (M1). (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). The finite-volume identification of the step, R-term part (ledger B8; an input of Theorem 1). The (E14-c) clause of B21. (A) in full. See Section~\ref{sec:remains}.
 \end{itemize}
 
 \paragraph{\status{corrected by verifiers since v3}}

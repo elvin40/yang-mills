@@ -55,3 +55,17 @@
 - NOT edited (stale, outside the list): Appendix A Lean count "17 files" (now 18, Tower.lean not listed); remains.tex item on "unverified files H2_CERTIFY_L13 and H2_CERTIFY_P4"; TRUST_LEDGER.md B1 status; assembly.tex "item H" sub-rows (old plan).
 - THEOREM2_PROOF_v4.md: dated line at end of §5 and under §10 item H. README.md: (H2) line → certified at L = 13, L = 13 cell-certificate line → cross-check, page count 63, Lean 18 files.
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 63 pages (was 61); 40 hyperref PDF-string warnings, 9 overfull boxes (same 9 as Pass 4); aux files deleted.
+
+## Pass 6 (round 3)
+- Ground truth: PLAN.md from "2026-10-28 ~01:10 UTC Elvin: set Opus subscription subagents" to the end; TRUST_LEDGER rows; lean/README.md (21 files). Firewall kept.
+- TRUST_LEDGER: † markers removed; new row A1w (walk-expansion form of A1, CMP 99 Thm 3.15); A1, A2, A3, A4, A5 (7′), A13, A15 rows; B8 (moved to Theorem 1 input), B10, B13, B19, B21 ((S) clauses reduced), B22, C17 rows; §4 rewritten (round-3 DAG, item 9 closed, 7′ verifier running, G4 off-chain); §5 counts; two §6 bullets (item 9, G4).
+- New counts: Group A 20 (14 printed, 13 cited-but-unproved, A1–A4 of these now verified reductions; 6 unprinted); X 5; B 22; C 23. T1 alone: {A5, A15} + B1–B7 + X5. T1 ⇒ Thm 1: 4 A (A5, A11, A13, A15) + 9 B + X5. T2: 17 A + X2–X5 + 21 B; 11 of the 17 cited-but-unproved.
+- intro.tex: Theorem A(i) drops K-independence, adds 7′ [verifier running]; consequence sentence; trust-boundary paragraph (4/17/20, 3/11/13, A1–A4 collapse).
+- remains.tex: items 7 → 7′, 9 closed, B6, Route B line; §6.3 (H-hist) large field, new "Balaban-level core" bullet (A1, A1w, A2, A3, A4), (FX)/(M-C), B22, B-N1 (S); item 10 readings; §6.7 tables (A1–A5, A1w new, A13, A23 new, A9/A12/A20/A22 removed to a "Verified readings" paragraph; B8, B10, B13, B17, B21, B22; C17, C23); binding sets and counts.
+- appendix.tex: App. A 18 → 21 files (Schur, CombesThomas, Interp); App. B round-3 verified reductions, item 9, 7′ lift, open/argued lists.
+- assembly.tex table rows: B-T2, item 7′, item 9, B-S.D2, B-S.hist, B-S.Ggain, B-S.Q, B-S.LOC, B-S.FX, B-S.holLF, M-C, B-N1.
+- DEVIATION: assembly.tex l. 57, l. 59, l. 229 (outside the table) still listed K-independence as open; edited as in Pass 5.
+- NOT edited: abstract (has no counts); theorem2.tex (no K-independence claim found); THEOREM2_PROOF_v4.md, ASSEMBLY.md, ASSEMBLY_N1 (F9 alignment).
+- FLAG: SOURCES_GGAIN_NONMONO_VERIFY.md exists (01:09 local) and grades item 7 → 7′ YES as a [P] item; tags kept at "verifier running" as briefed.
+- README.md (~/git/yang_mills): Target 1 open line, (H-hist), new Balaban-level core line, (M-C)/B21/B22, Lean 21, 66 pages.
+- Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 66 pages (was 63); 40 hyperref PDF-string warnings, 9 overfull boxes (unchanged); aux files deleted.
