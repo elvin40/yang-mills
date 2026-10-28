@@ -19,7 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
 from h1cert_cell import axis_data, tail_inf, lam_max_upper, _mat, _n2, _radF, PI, U
 from h1cert_rho1 import prof
 from flint import acb_mat
-ctx.cap = 4
+ctx.cap = 6
 EPS, EPSS = 1e-12, 1e-10      # per small product / per block sum: a priori rounding (n u with n <= 4, resp. <= 3e4 terms)
 HH = 0.0                      # cell half-width of the current cell (one cell at a time per process)
 
@@ -87,17 +87,22 @@ def jets(L, Ki, h, M, N, M0=None):
     ns = list(range(-N, N + 1)) if M in ("inf", "M0") else list(range(-(M - 1) // 2, (M - 1) // 2 + 1))
     up = lambda a: np.nextafter(float(a.abs_upper()), np.inf)
     out = {k: np.zeros((L, len(ns))) for k in ("f", "f1", "f2", "p", "p1", "fu", "f1u", "f2u", "plo", "phi")}
+    hk = h / L; fac = [1, 1, 2, 6, 24]
     for l in range(L):
         lp = l if l <= (L - 1) // 2 else l - L
         k0 = (Ki + 2 * PI * lp) / L
+        kb = k0 + arb(0, h) / L
         for j, n in enumerate(ns):
             f, p = fser(arb_series([k0, 1]), n, M)
-            out["f"][l, j], out["f1"][l, j], out["f2"][l, j] = float(co(f, 0).mid()), float(co(f, 1).mid()), 2 * float(co(f, 2).mid())
+            D = [co(f, i) * fac[i] for i in range(5)]                    # f^(i)(k_c), i <= 4
+            out["f"][l, j], out["f1"][l, j], out["f2"][l, j] = (float(D[i].mid()) for i in range(3))
             out["p"][l, j], out["p1"][l, j] = float(co(p, 0).mid()), float(co(p, 1).mid())
-            kb = k0 + arb(0, h) / L
-            f, p = fser(arb_series([kb, 1]), n, M)
-            out["fu"][l, j], out["f1u"][l, j], out["f2u"][l, j] = up(co(f, 0)), up(co(f, 1)), up(2 * co(f, 2))
-            out["plo"][l, j] = max(np.nextafter(float(co(p, 0).lower()), -np.inf), 0.0)
+            f4 = co(fser(arb_series([kb, 1]), n, M)[0], 4) * 24           # crude ball enclosure of f^(4) (multiplies h_k^2 or more)
+            # centred form over the cell: sup|f^(j)| <= sum_{i=j}^{3} |f^(i)(k_c)| h_k^(i-j)/(i-j)! + sup|f^(4)| h_k^(4-j)/(4-j)!
+            sj = lambda jj: sum((D[i].abs_upper() * arb(hk)**(i - jj) / fac[i - jj] for i in range(jj, 4)), arb(0)) + f4.abs_upper() * arb(hk)**(4 - jj) / fac[4 - jj]
+            out["fu"][l, j], out["f1u"][l, j], out["f2u"][l, j] = up(sj(0)), up(sj(1)), up(sj(2))
+            plo = co(p, 0) - co(p, 1).abs_upper() * hk - arb(hk)**2               # |p''| <= 2
+            out["plo"][l, j] = max(np.nextafter(float(plo.lower()), -np.inf), 0.0)
             if M0:
                 z = (kb + 2 * PI * n)**2 / (24 * M0 * M0); assert z < arb(0.5)
                 out["phi"][l, j] = np.nextafter(float((1 - z).lower()), -np.inf)  # phi = sinc(q/2M) >= 1 - q^2/(24 M^2)
@@ -172,12 +177,12 @@ def d_tm(L, M, Kc, h, N):
 # ---------------------------------------------------------------- E_q as a Taylor model
 def e_tm(L, pf, Kc, h):
     """TM of the q_0 rows E_l (L^4, 4 coarse, 4 fine): centre and K-gradient by contraction. Remainder from the exact per-block
-    Hessian at K_c: (1/2) h^2 sum_{nu,la} |H_l[nu,la]| + (1/6) h^3 sum|F| (|y|_1/L)^3 (third derivative a priori from the
-    trigonometric structure), + float/P1' error err (as h1cert_cell.qrows), with factor (1 + 8hL + 32 h^2 L^2) for gradient/Hessian."""
+    Hessian and third derivatives at K_c: (1/2) h^2 sum_{nu,la} |H_l[nu,la]| + (1/6) h^3 sum_{nu,la,ka} |T_l[nu,la,ka]|
+    + (1/24) h^4 sum|F| (|y|_1/L)^4 (fourth derivative a priori from the trigonometric structure), + float/P1' error err (as h1cert_cell.qrows), with factor (1 + 8hL + 32 h^2 L^2) for gradient/Hessian."""
     hk = h / L; hh = (L - 1) // 2
     kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]
     C = np.zeros((L,) * 4 + (4, 4), complex); dC = np.zeros((4,) + (L,) * 4 + (4, 4), complex)
-    Hs = np.zeros((L,) * 4 + (4, 4)); m3 = np.zeros((4, 4)); err = np.zeros((4, 4))
+    Hs = np.zeros((L,) * 4 + (4, 4)); T3 = np.zeros((L,) * 4 + (4, 4)); m3 = np.zeros((4, 4)); err = np.zeros((4, 4))
     for mu, F in enumerate(pf):
         y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
         W = [np.exp(1j * kp[a][:, None] * y[a][None]) for a in range(4)]
@@ -186,14 +191,17 @@ def e_tm(L, pf, Kc, h):
         C[..., mu, :] = con(F)
         for nu in range(4):
             dC[nu][..., mu, :] = 1j * con(F * yr(nu)) / L
-            for la in range(4):
-                if la >= nu: Hs[..., mu, :] += (2 - (la == nu)) * np.abs(con(F * yr(nu) * yr(la))) / L**2
+            for la in range(nu, 4):
+                Hs[..., mu, :] += (2 - (la == nu)) * np.abs(con(F * yr(nu) * yr(la))) / L**2
+                for ka in range(la, 4):
+                    mult = len(set(itertools.permutations((nu, la, ka))))
+                    T3[..., mu, :] += mult * np.abs(con(F * yr(nu) * yr(la) * yr(ka))) / L**3
         ay = sum(np.abs(yr(a)) for a in range(4))
         aF = np.abs(F); n1 = aF.sum((1, 2, 3, 4))
-        m3[mu] = (aF * (ay / L)**3).sum((1, 2, 3, 4))
+        m3[mu] = (aF * (ay / L)**4).sum((1, 2, 3, 4))   # 4th-order a priori moment
         th = (np.pi + h / L) * 2 * L + 2
         err[mu] = (2 * (4 * sum(F.shape[1:]) + 40) * U * 1.1 + 8 * U * th * 4 + 1e-13) * n1
-    r = (0.5 * h**2 * Hs + (m3 * h**3 / 6 + err * (1 + 8 * h * L + 32 * h * h * L * L))[None, None, None, None]) * (1 + 1e-12)
+    r = (0.5 * h**2 * Hs + h**3 / 6 * T3 + (m3 * h**4 / 24 + err * (1 + 8 * h * L + 32 * h * h * L * L))[None, None, None, None]) * (1 + 1e-12)
     return TM(C.reshape(-1, 4, 4), dC.reshape(4, -1, 4, 4), r.reshape(-1, 4, 4))
 
 
@@ -238,15 +246,15 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         P = tm(np.eye(4)[None]) - (khc @ khc.H()) * inva.rs(Nb, 1, 1)
         Khc = Kh.rs(1, 4, 1)
         Et = E - Khc @ (khc.H() * inva.rs(Nb, 1, 1))                     # E P = E - Kh k^dag/|k^|^2 (P4: E k^ = Kh)
-        V0 = QH.c @ Et.c; A0 = s2 * np.einsum("bin,bn,bjn->ij", V0, d.c, V0.conj())
-        lam0, U0 = np.linalg.eigh((A0 + A0.conj().T) / 2)
-        QH = tm((U0 / np.sqrt(lam0)).conj().T[None]) @ QH                 # whitened frame Q S, S = U Lambda^-1/2: A(K_c) ~ I
         V = QH @ Et                                                      # (Nb, 3, 4)
         VD = V * d.rs(Nb, 1, 4)
         A = (VD @ V.H()).sum() * s2
         C = (VD @ P @ VD.H()).sum() * s2
         b = (VD @ (Et.H() @ Khc)).sum() * s2                             # Q^dag T Kh = s^2 sum V D (E P)^dag Kh
         sig = inva.sum() * s2
+        lam0, U0 = np.linalg.eigh((A.c[0] + A.c[0].conj().T) / 2)
+        S = U0 / np.sqrt(lam0); SH = tm(S.conj().T[None]); S = tm(S[None])  # whitened frame Q S, S = U Lambda^-1/2: A(K_c) ~ I
+        A, C, b, QH = SH @ A @ S, SH @ C @ S, SH @ b, SH @ QH
         t3 = time.time()
         Y, eta = inv_or(A)
         Q = QH.H()
