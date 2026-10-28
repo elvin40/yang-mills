@@ -29,3 +29,12 @@ The −a⟨B, B⟩ in (3.156) cancels the a exactly. So a does not enter γ_1 ex
   ‖(QM^{−1}Q*)^{−1}‖ ≤ K ⟺ every unit-lattice B has a fine field A with QA = B and ⟨A, MA⟩ ≤ K‖B‖².
 This is an EXTENSION statement: block data B must have a fine-lattice extension with energy O(‖B‖²), uniformly in η = L^{−k}.
 2.3 Free value [P from CMP 95 (1.100), V in SOURCES_Q §3]. (1.100) a^{−1}(φ − 1)φ^{−1} ≤ QGQ* gives (QGQ*)^{−1} ≤ aφ/(φ − 1); subtract a: ‖N_0^{−1}‖ ≤ a·sup 1/(φ − 1) =: K_0(d). This sharpens SOURCES_Q §3.1 (aκ_d) by exactly a. K_0 depends on d (and on a only through the a in (1.99) definitions — a·(φ−1)^{−1} is a-free if φ − 1 ∝ a^{−1}; [check] not read).
+
+## 3. Free case U = 1: the a-free constant [V CMP 95 p. 34 image, P]
+
+[V] CMP 95 p. 34 (1.101): a^{−1}(φ_μ(p′) − 1)/φ_μ(p′) = S_μ(p′)/(Δ_0(p′) + aS_μ(p′)), S_μ(p′) := Δ_0(p′)·Σ_{l′}|u(p′ + l′)|²|v_μ(p′ + l′)|²/Δ(p′ + l′). "(1.100) a^{−1}(φ − 1)φ^{−1} ≤ QGQ* ≤ a^{−1}I." The sum is over the dual-lattice shifts l′ (aliasing of the fine lattice onto the unit lattice).
+3.1 [P, given (1.100)–(1.101)]. (QGQ*)^{−1} ≤ aφ/(φ − 1) = a + Δ_0/S_μ. With §2.1, N_0^{−1} = (QGQ*)^{−1} − a ≤ Δ_0(p′)/S_μ(p′) = [Σ_{l′}|u(p′+l′)|²|v_μ(p′+l′)|²/Δ(p′+l′)]^{−1}. So
+  K_0 := ‖N_0^{−1}‖ ≤ sup_{p′} [Σ_{l′} |u|²|v_μ|²/Δ (p′ + l′)]^{−1} ≤ sup_{p′∈[−π,π]^d} Δ(p′)/(|u(p′)|²|v_μ(p′)|²),
+keeping only l′ = 0. K_0 is independent of a and of k (the l′ = 0 term already suffices).
+3.2 Explicit number [I]. If u, v_μ are products of averaging symbols sin(p_ν/2)/(p_ν/2)-type (block averages), then |u|²|v_μ|² ≥ (2/π)^{2m} on [−π,π]^d (m = number of sinc factors, m ≤ 2d), and Δ(p′) ≤ |p′|² ≤ dπ². So K_0 ≤ dπ²(π/2)^{4d}. [I] The forms of u, v_μ and Δ are defined on CMP 95 pp. 30–33 (not read on images here); the k → ∞ limit of the symbols is assumed to be the sinc type. This bound is crude; it is only to show K_0 = K_0(d), with no L and no a.
+3.3 The C*·C step [P]. ‖C*Δ_kC‖ ≤ ‖C‖²‖Δ_k‖. SOURCES_Q §4.4(b): ‖C‖² ≤ L^{d+1} in the free equal-weight Q_1. [Better, P]: C*Δ_kC is the compression of Δ_k to the subspace Ran C, and ⟨CB̃, Δ_kCB̃⟩ ≤ ‖Δ_k‖·‖CB̃‖²; ‖CB̃‖² = ‖B̃‖² + Σ_c|B(b_0(c))|² ≤ (1 + L^{d+1})‖B̃‖² only for the solved bonds; so γ_1 ≤ (1 + L^{d+1})‖Δ_k‖ is the honest free bound with the brief's C. Free case: γ_1 ≤ (1 + L^{d+1})·K_0(d).

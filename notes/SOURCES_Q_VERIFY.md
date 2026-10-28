@@ -31,3 +31,16 @@ p. 245 Lemma 2.4 (2.128): "L^{d−2}Σ_{c∈Λ′}|(Q_1B)(c)|² + Σ_p|(∂_1B)(
 (1.100) verbatim: "a^{−1}(φ − 1)φ^{−1} ≤ QGQ* ≤ a^{−1}I". After (1.101): "bounded from below and above by positive constants dependent on d only (for a = 1). The same property holds for QGQ*." CONFIRMED.
 (1.101): a^{−1}(φ_μ − 1)/φ_μ = S/(Δ_0 + aS), S := Σ_l |u|²|v_μ|²Δ_0/Δ. So ‖(QGQ*)^{−1}‖ ≤ sup (Δ_0 + aS)/S = a + sup Δ_0/S. The author's a·κ_d, κ_d := sup φ/(φ − 1), equals this, so the bound is right. Caveat: κ_d depends on a (and on L through u), and is "d only" only at a = 1. Sharper: Δ_k = (QG_1Q*)^{−1} − a ≤ sup Δ_0/S, so the −a term cancels the +a; ‖Δ_k‖ ≤ a·κ_d − a.
 Free-case algebra: ‖C*Δ_kC‖ ≤ ‖C‖²‖Δ_k‖ ≤ L^{d+1}aκ_d, so c_− ≥ (aκ_dL^{d+1})^{−1}. CONFIRMED, with κ = κ(d, a, L) unless a = 1. CMP 95 G ↔ CMP 99 G_1 identification stays [I].
+
+## 6. CMP 109 pp. 266-268, images [V]
+p. 266 (2.9): χ_k = Π_{b∈T^(k)\{b_0(c)}} χ({|B′(b)| < ε_1}). CONFIRMED.
+p. 267: (2.10) has explicit 1/g_k² factors, so B′ is unscaled. "The function hB is equal to 0 everywhere, except the set {b_0(c)}"; "(hB)(b_0(c)) = h(c)B(c)"; "the transformation B′ = B − hD̃(B) linearizes the function Q̃(B′)"; "Next we make the scaling transformation B = g_kB′". CONFIRMED.
+p. 268: "using the δ-functions δ(Q̃B′) we eliminate the variables B′(b_0(c)) ... Denoting the remaining variables by B we have B′ = CB, C is the operator determined by the configuration V^(k), and ... covariance C^(k) = C^(k)(U_{k+1}) = (C*Δ^(k)C)^{−1}". (2.12) contains log σ(g_kCB − hD̃(g_kCB)). CONFIRMED.
+Decision: off b_0, (hD̃)(b) = 0 [V]. (CB)(b) = B(b) is quoted from CMP 99 p. 428 for CMP 99's C; CMP 109's C is the same construction (solve Q̃B = 0 for B(b_0), same (C*ΔC)^{−1} covariance) [I, strong]. So B′_orig(b) = g_kB(b) and the cut is |B(b)| < ε_1/g_k. CONFIRMED.
+
+## 7. Grades
+1 CONFIRMED with two corrections: Q_0 is coupled, so the step is (Q_0^{−1})_BB = C_0 + C_0ΓΓ*C_0 ≥ C_0, not "=" C^(k)(b,b); the operator is the σ = 0 localized Z_0C*Δ_k(0)CZ_0. Sign of α_5 verified; Λ algebra right (Λ_0 uses (Q_0^{−1})_BB ≤ γ_0^{−1}, which needs the §1.1 identity for the localized operator [I]).
+2 CORRECTED: CMP 99 p. 422 (3.132) prints a U-uniform exponential kernel bound on (QG_1Q*)^{−1} (proof "not repeated"). Input (2) reduces to (3.132) + J-term O(Mα_0) + ‖C(U)‖ + σ-localized versions; it is not bare assertion.
+3 CONFIRMED with caveats: κ depends on a (and L via u) unless a = 1; L^{d+1} set is the path set of (2.125), not B(c); sharper ‖Δ_k‖ ≤ a(κ − 1).
+4 CONFIRMED (C = 1 off b_0 transferred CMP 99 → CMP 109 by construction [I]).
+5 [I] items: G_1 ↔ G now supported by "the same for the operator with G_1" (3.132). Q(U) = free Q·(1 + O(α_0)) and ‖C(U)‖² ≤ L^{d+1}(1 + O(α_0)) remain UNSUPPORTED on the read pages (plausible: h(c) = inverse of a near-identity coefficient).

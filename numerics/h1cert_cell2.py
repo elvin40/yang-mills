@@ -236,7 +236,8 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         QH = tm(np.eye(3, 4)[None]) - cv * e4                            # (1, 3, 4), Q^dag Kh = 0
         khc = kh.rs(Nb, 4, 1)
         P = tm(np.eye(4)[None]) - (khc @ khc.H()) * inva.rs(Nb, 1, 1)
-        Et = E @ P                                                       # E P; Q^dag E P = Q^dag E (P4)
+        Khc = Kh.rs(1, 4, 1)
+        Et = E - Khc @ (khc.H() * inva.rs(Nb, 1, 1))                     # E P = E - Kh k^dag/|k^|^2 (P4: E k^ = Kh)
         V0 = QH.c @ Et.c; A0 = s2 * np.einsum("bin,bn,bjn->ij", V0, d.c, V0.conj())
         lam0, U0 = np.linalg.eigh((A0 + A0.conj().T) / 2)
         QH = tm((U0 / np.sqrt(lam0)).conj().T[None]) @ QH                 # whitened frame Q S, S = U Lambda^-1/2: A(K_c) ~ I
@@ -244,7 +245,6 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         VD = V * d.rs(Nb, 1, 4)
         A = (VD @ V.H()).sum() * s2
         C = (VD @ P @ VD.H()).sum() * s2
-        Khc = Kh.rs(1, 4, 1)
         b = (VD @ (Et.H() @ Khc)).sum() * s2                             # Q^dag T Kh = s^2 sum V D (E P)^dag Kh
         sig = inva.sum() * s2
         t3 = time.time()
