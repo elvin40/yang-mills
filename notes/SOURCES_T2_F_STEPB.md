@@ -34,7 +34,7 @@ so F_W(φ) = W(φ; 0) + (neutral part). Signs follow Fine = log det X − ½ log
 
 2.2 Lemma 1 (massive regime, remainder in φ) [P modulo the magnetic-perturbation bound (MPT) below]. For 0 < m ≤ 1 and |φ| ≤ m²/μ:
   W(φ; m²) = φ² w_2(m²) + R(φ, m),  |R| ≤ C φ⁴ m^{−4},  C independent of φ, m.
-Proof. W(φ;m²) = −∫_{m²}^∞ ds per-cell tr[(−½)((A_φ+s)^{−1} − (A_0+s)^{−1}) + ((𝒢_φ+s)^{−1} − (𝒢_0+s)^{−1})] (all operators positive for s ≥ m²). W is even in φ (charge conjugation, U3_LEMMA51 §2.1), so the φ³ term is 0. Taylor in φ to order 4 with integral remainder. (MPT): for a covariant operator W_φ·a_φ with a_0 elliptic of degree 2 (a_0(K) ≥ c|K̂|²), the per-cell trace of the resolvent at s satisfies |∂_φ⁴ tr_cell(A_φ + s)^{−1}| ≤ C s^{−3}, uniformly for |φ| ≤ s/μ. Reason: (W a)(W b) = W(a ⋆_φ b) with the kernel product weighted by e^{iφ·area(0,w,z)}, area ≤ |w||z − w|; each φ-derivative brings one area factor; the resolvent kernel at s decays on the scale s^{−1/2}; so four derivatives cost (s^{−1/2})⁴·s^{−2}... per dimension count f-weight 2, K-weight 1: the φ⁴ coefficient of a degree −2 symbol integrated over d⁴K has scaling s^{2−1−4} = s^{−3}. Spin/artifact terms of a_φ − a_0 = O(φ) are bounded local insertions with the same count. Then ∫_{m²}^∞ s^{−3} ds = m^{−4}/2. ∎
+Proof. W(φ;m²) = −∫_{m²}^∞ ds per-cell tr[(−½)((A_φ+s)^{−1} − (A_0+s)^{−1}) + ((𝒢_φ+s)^{−1} − (𝒢_0+s)^{−1})] (all operators positive for s ≥ m²). W is even in φ (charge conjugation, U3_LEMMA51 §2.1), so the φ³ term is 0. Taylor in φ to order 4 with integral remainder. (MPT): for a covariant operator W_φ·a_φ with a_0 elliptic of degree 2 (a_0(K) ≥ c|K̂|²), the per-cell trace of the resolvent at s satisfies |∂_φ⁴ tr_cell(A_φ + s)^{−1}| ≤ C s^{−3}, uniformly for |φ| ≤ s/μ. Reason: (W a)(W b) = W(a ⋆_φ b) with the kernel product weighted by e^{iφ·area(0,w,z)}, area ≤ |w||z − w|; each φ-derivative brings one area factor; the resolvent kernel at s decays on the scale s^{−1/2}; so by the dimension count (f-weight 2, K-weight 1) the φ⁴ coefficient of a degree −2 symbol integrated over d⁴K has scaling s^{2−1−4} = s^{−3}. Spin/artifact terms of a_φ − a_0 = O(φ) are bounded local insertions with the same count. Then ∫_{m²}^∞ s^{−3} ds = m^{−4}/2. ∎
 (MPT) is standard gauge-covariant magnetic perturbation theory (Nenciu; Cornean–Nenciu type kernel bounds; lattice versions exist) [I-cite, not checked here]. The scalar ghost case is checked numerically in §3.2.
 
 2.3 Lemma 2 (the log in m² is the continuum log) [P given Step C].
@@ -63,3 +63,48 @@ By (L-LL) the bracket → 0. So limsup_{φ→0}|G(φ) − G(λφ) − n_2c_2 ln(
 Explicit remainder. The quantitative form is |G(φ) − G(λφ) − n_2c_2 ln(1/λ)| ≤ Cμ^{−2} + Cμ|φ| ln(1/|φ|) + |H_φ(μ) − H_{λφ}(μ)|; with μ = |φ|^{−1/3} the first two give O(|φ|^{2/3} ln). A rate for (L-LL) would give a rate for (3.1); none is claimed.
 
 2.7 What the argument does not touch. (F) is a one-loop statement (the fine bracket is the g⁰ term of log Z). There is no higher-loop residue inside (F). Higher loops enter Theorem 2w through Balaban's β_j(g) − β_j(0) (row A5, 7′), not through B3.
+
+## 3. Numerics [N] (numerics/t2_fstepb_logcoef.py, Mac, 10 s)
+
+3.1 What 0.3715 is. In NUMERICS.md and BETA_FP.md, 0.371511 = c = 11N²/(12π²) for SU(2) is the theoretical value, not a measured fit. No project number measures the level-0 coefficient c_2 of F_W directly (no d = 4 constant-field code exists; SOURCES_T2_PI_VERIFY item 27). The plane-wave codes measure the total 𝒞 = β_1(0), i.e. Fine − Γ_c, not Fine alone.
+
+3.2 Mechanism check on the ghost factor [N]. The 4D charged ghost heat trace is exactly (2D Harper per-site trace) × (free 1D trace)². For the 2D lattice magnetic Laplacian (Landau gauge, N = 3000 torus, φ = 2πq/N, q = 1, 2, Richardson in φ²), the φ² coefficient c(t) of the per-site heat trace vs the continuum −t/(24π):
+| t | 2 | 5 | 10 | 20 | 40 | 80 |
+| c(t)/c_cont(t) − 1 | −0.197 | −0.0761 | −0.0378 | −0.0188 | −0.0094 | −0.0047 |
+| t·(ratio − 1) | −0.394 | −0.380 | −0.378 | −0.376 | −0.376 | −0.378 |
+So the lattice correction is relative O(1/t) with coefficient ≈ −0.376 (≈ −3/8). In the 4D proper-time integral ∫dt/t e^{−tm²}c(t) this correction is ∫dt/t²: finite, no logarithm. This is Lemma 2 (iv) in proper-time form, checked numerically for the ghost.
+(L-LL)(a) for the scalar, heat-trace form: 4π sinh(τ)·T(φ, τ/φ)/φ − 1 = 6·10^{−4}, 1.2·10^{−3}, 2.5·10^{−3}, 5.0·10^{−3} at φ = 0.0021, 0.0042, 0.0084, 0.0168 (τ = 0.5; similar at τ = 1, 2). Linear in φ ⇒ the scaled lattice Landau heat trace converges to Mehler's formula at rate O(φ). This supports (L-LL) for the ghost; it does not test the vector operator or the N–O zero.
+
+3.3 Several-L data for the log coefficient [N]. Available: first-step β_1(L) at odd L = 3…11 (umk results, Ng = 8 except L = 5 Ng = 12), and two composed steps at L = 2 only. Fixed coarse momentum Lp = 0.5 and 1.0, extrapolated β(0) ≈ (4β(0.5) − β(1))/3:
+| L | 5 | 7 | 9 | 11 |
+| β_1(0) | 0.7426 | 0.7968 | 0.8267 | 0.8436 |
+| β_1 − c log L | 0.145 | 0.074 | 0.010 | −0.047 |
+Local slopes dβ_1/d log L: 0.161 (5→7), 0.119 (7→9), 0.084 (9→11). Fits: a + s log L: s = 0.129; a + s log L + d/L²: s = 0.052; a + s log L + d(log L)²/L²: s = −0.18. None is near c = 0.3715, and the local slope decreases with L.
+Reading.
+- These data do not test Step B. By Step A the Fine part of β_1(L) is c log L + const exactly, given (F_lat). A slope deficit must therefore sit in Γ_c (the coarse bracket of the single step at block L, through d_1^{(L)} and the family dependence of C_∞), in the numerics (Ng = 8 adequacy at L ≥ 9 is unchecked, NUMERICS §7), or in (F_lat) itself. Lemma 2 + §3.2 make the last option unlikely: the lattice log coefficient of the massive level-0 functional is the continuum one.
+- Theorem 3.1 of BETA_FP_H is about one fixed-L family, Λ = L^j, j → ∞. The single-step L-scan is a different family at each L. Its expected form, if the single-step coarse kernel converges as L → ∞ (U3 Theorem 4.1 type) at rate L^{−2}, is c log L + C + O(L^{−2}·logs). The data do not show this at L ≤ 11: β_1 − c log L falls by about 0.06 per step and does not level off. NUMERICS §7 calls this "decreasing toward the universal slope"; that reading is not supported. I flag this as an open [N] tension for β_∞ = c log L (row B4/Theorem K inputs, not B3).
+- Fixed-family data (the right test): L = 2, β_2 ≈ 0.32 (Ng = 8, Lp-bias label) vs c log 2 = 0.2575; one point, consistent with approach from above, cannot fit a log coefficient.
+
+## 4. Conclusion and ledger
+
+Verdict on Step B: REDUCED (narrower than before). Not PROVED.
+- The log coefficient itself is settled at one loop: with an infrared mass m² ≥ μ|φ|, the lattice φ² coefficient is n_2c_2 ln(1/m²) + β_lat + O(m² ln(1/m)), with c_2 the continuum value (Lemma 2 [P given Step C], Lemma 1 remainder O(φ⁴/m⁴) [P modulo the (MPT) kernel bound], §2.4 continuum ln m² = ln φ coefficient [P, standard]). The Nielsen–Olesen zero does not enter this part.
+- The only open piece is (L-LL): the scaled low-energy part H_φ(μ) = φ^{−2}[W(φ;0) − W(φ;μ|φ|)] has a limit as φ → 0. It carries the Nielsen–Olesen zero. Its value is not needed. For the scalar ghost it is a lattice-walk local limit statement (cited candidate, not checked; numerically confirmed at rate O(φ), §3.2); for the vector operator it is [I].
+- Given (L-LL): (3.1) holds with c = 11N²/(12π²), with remainder ≤ Cμ^{−2} + Cμ|φ| ln(1/|φ|) + |H_φ(μ) − H_{λφ}(μ)| (§2.6).
+- No higher-loop residue: (F) is a one-loop statement.
+
+Proposed text for row B3 (for the ledger owner; this file edits no ledger):
+"(F) [continuum value X5, source checked]. Lattice transfer (SOURCES_T2_F_STEPB): Step B split into (i) the massive log coefficient = continuum [P given Step C; gauge-fixing symbol (D_φD_φ^T) [I]; (MPT) remainder bound [I-cite]] and (ii) (L-LL), existence of the scaled low-energy limit H_φ(μ), carrying the Nielsen–Olesen zero [open; ghost: numerically confirmed, LLT on the discrete Heisenberg group cited, not checked]. (F) ⇐ (i) + (L-LL) [P, §2.6]. Unverified."
+Status change: B3 goes from "lattice transfer not proved; reduced to Step B [I]" to "reduced [R, unverified] to (L-LL) + (MPT) + the gauge-fixing part of Step C". It stays in the list of Route K items without a proof or a verified reduction until a verifier checks this file.
+
+Ledger of this file.
+- [V] §0, §1: rows B2, B3, X5; Steps A–D as stated in SOURCES_T2_PI §7.2 and VERIFY §7.
+- [P] §1 remark: (3.1) ⇔ (3.1′); (F_lat) is stronger than needed.
+- [P] 2.0 neutral sector analytic; 2.1 A_φ ≥ −C_0|φ| (sketch: cos φ·square + sin φ·bounded).
+- [P mod (MPT)] Lemma 1. [P given Step C] Lemma 2. [P, continuum] 2.4. [P given Lemmas 1–3] 2.6.
+- [P] ghost part of Step C: Peierls-substituted Laplacian has exact magnetic symbol |K̂|² (upgrade of VERIFY's [I] for the ghost; the gauge-fixing term stays [I]).
+- [I] (MPT) citation; (L-LL) for the vector operator; Alexopoulos/Breuillard LLT as the ghost source (not checked).
+- [R] Step B ⇐ Lemma 1 + Lemma 2 + (L-LL).
+- [N] §3.2: Harper φ² heat-trace coefficient ratio − 1 = −0.376/t (t = 5…80); scaled heat trace → Mehler at rate ≈ 0.29φ.
+- [N] §3.3: single-step β_1(L), L = 5…11: slope 0.08–0.16, not c = 0.3715; open tension, located outside B3 (coarse bracket / family dependence / grid), to be raised against BETA_FP_H Theorem 3.1 and NUMERICS §7.
+- Not done: no d = 4 constant-field computation; (1.1) at L = 3 still unevaluated; no verifier.

@@ -37,7 +37,6 @@ free1 = np.exp(-np.outer(ts, 2-2*np.cos(2*np.pi*np.arange(N)/N))).mean(1)
 T0 = free1**2
 (T1, p1), (T2, p2) = trace(1, ts), trace(2, ts)
 # T-T0 = a phi^2 + b phi^4 from q=1,2
-a = (16*(T1-T0)/p1**2 - (T2-T0)/p1**2)/12 * 1  # Richardson: p2=2p1
 a = ((T1-T0)*p2**4 - (T2-T0)*p1**4)/(p1**2*p2**2*(p2**2-p1**2))
 cont = -ts/(24*np.pi)
 print('t, lattice phi^2 coef, continuum -t/(24pi), ratio-1, t*(ratio-1)')
