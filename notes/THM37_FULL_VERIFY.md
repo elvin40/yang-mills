@@ -42,3 +42,23 @@ Model: interface Σ_{j+1} at x = 0, fine region x < 0. Fine cubes: centres c ∈
 5.4 T37-M1. 2R_0M_0 ≤ M_1 suffices for Ω_0(□) ⊂ □̃^5 (p. 408: dist(Ω_0(□)^c, □̃^4) = 2R_0M_0η(L^j − 1)/(L − 1) < 2R_0M_0ξ_j; even 2R_0M_0/(L − 1) ≤ M_1 would do) and for the □̃^4/□̃^3 layer. 12M_1 ≤ M makes □̃^5 (side 12M_1ξ_j) fit in 2^d M-blocks. Per-step factor K_1c_1(θ)/M_1: CONFIRMED. (G-M1) stays I-geo; near Σ_j it inherits the gluing problem of 5.5 below.
 5.5 T37-I2 cites "gauge gluing [I, as SOURCES_A18_REGULAR 5.3(a)]". SOURCES_A18_REGULAR's own verification (its l. 192) graded 5.3(a) cube patching UNSUPPORTED. So T37-I2 leans on a refuted analogy; it needs its own argument (e.g. use the class cube at index j − 1 with the factor L, which (3.35) gives directly if □̃^5 ⊂ B^{j−1} ∪ B^j).
 5.6 T37^c. Neumann in Lemma LC: N(W^m) ≤ (2c_VLB_0α_1)^m c_1(θ)^{m−1}e^{−(1−θ)δ_0d} is valid (m − 1 sums, drop one factor; sharper than the printed c_1^m). q ≤ ½ ⇔ α_1 ≤ 1/(4c_VLB_0c_1(θ)): formula CONFIRMED. Rate (1 − θ)²δ_0 with c_1(θ′), θ′ = θ(1 − θ): CONFIRMED. Slip: (8.3.1) bounds by 2B_0^c = 4B_0, and the transport factor is 2, so K_1^c = 8K_1, not 4K_1. Missing factor in the radius: see V4(d), α_1 → L²α_1 from □-levels vs global levels. Corrected radius a_1^c(θ) = min{a_1, a_V, 1/(4c_VL³B_0c_1(θ)), ¼} (also with a_1, a_V read at L²α_1). Still independent of M, α_0, and volume.
+
+## V6. The 11 "sharper than Balaban" items (task f)
+
+Sharpenings (Balaban not wrong, only less explicit): 1 (explicit constants; with V5.1 and V5.6 slips), 2 (rate remark p. 410 proved), 3 (existence from finite-dimensional Neumann), 4 (K(h) as commutator), 9 (M_1 version for G′), 10 (complex form, explicit radius; radius needs V4(d) fix), 11 (name clash, bookkeeping).
+Corrections of errors, not sharpenings:
+- 6 (X-PU): the printed partition of unity does not satisfy Σh² = 1 near level interfaces. Stronger than claimed: fails for all L ≥ 2 under THM37's cover, and gives Σh² = 2 under the printed CMP 96 cover (V3).
+- 5 (Lemma AG): an error-fix in disguise. It holds only for a cover whose cubes do not cross level interfaces; the printed cover (CMP 96 p. 229, CMP 99 p. 408) allows crossing, and then the agreement step that Balaban uses silently is false at crossing points.
+- 7 (other norms): partly a correction. The scale-shift rate cost log L/(RM) is omitted in print; the left/right split is a restriction of the proof method (no counterexample to the printed sentence is given), so it is a clarification, not a refutation.
+- 8 ((2.59) ¼ vs ½): corrects a project file (WG_FULL (I4)), not Balaban.
+Also corrections not listed by THM37: p. 409 "□̃^5 is contained in one of the cubes" fails as stated next to an interface (THM37 3.3 notes the factor L, but cites a refuted gluing argument, V5.5); p. 408 "partition" means cover.
+
+## V7. Grades
+
+(1) Verbatim quotes and T37 with K_1, M_37, C_𝒟^in: CORRECTED (quotes exact; constants right up to a neighbour-block factor e^{cδ_0} in K_1 and one unstated step d_□ ≥ d − O(1)).
+(2) X-PU: CORRECTED (true and understated: all L ≥ 2, and the printed cover gives Σh² = 2; factor-L repair works on flat faces).
+(3) Cor. 3.8 three forms, rate cost log L/(RM): CONFIRMED.
+(4) (2.59) = ¼αδ_0RM: CONFIRMED.
+(5) T37-M1, factor K_1c_1(θ)/M_1, 2R_0M_0 ≤ M_1, 12M_1 ≤ M: CONFIRMED (G-M1 stays I-geo).
+(6) T37^c: CORRECTED (K_1^c = 8K_1; radius needs an extra 1/L² from □-level vs global-level transfer of (3.37); rate (1 − θ)²δ_0 and the one named step (3.61) confirmed).
+Whole proof: NEEDS FIXES rel. its tagged inputs. All fixes are local (constants, one geometric lemma, one radius factor, re-sourcing T37-I2); none changes the structure or the rates.
