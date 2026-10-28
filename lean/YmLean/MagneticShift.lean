@@ -72,7 +72,7 @@ lemma ph_neg_mul (n : ℤ) : ph α (-n) * ph α n = 1 := by
   rw [ph, ph, ← exp_add]; push_cast; ring_nf; simp
 
 lemma conj_ph (n : ℤ) : conj (ph α n) = ph α (-n) := by
-  rw [ph, ph, ← exp_conj]; congr 1; simp [map_mul, conj_ofReal]; push_cast; ring
+  rw [ph, ph, ← exp_conj]; congr 1; simp [map_mul, conj_ofReal]
 
 /-- `T₀ψ(x) = e^{iαx₁} ψ(x + e₀)` (GAPRIME2 §1, Landau gauge). -/
 noncomputable def T0 : E where
@@ -142,7 +142,7 @@ lemma T0s_T1 : T0s α * T1 = qb α • (T1 * T0s α) := by
   simp only [Module.End.mul_apply, T0s_apply, T1_apply, LinearMap.smul_apply, Pi.smul_apply,
     smul_eq_mul]
   rw [show -(x.2 + 1) = -x.2 - 1 by ring, ph_pred]
-  linear_combination (ph α (-x.2) * ψ (x.1 - 1, x.2 + 1)) * q_mul_qb α
+  linear_combination (-(ph α (-x.2) * ψ (x.1 - 1, x.2 + 1))) * q_mul_qb α
 
 lemma T0s_T1s : T0s α * T1s = q α • (T1s * T0s α) := by
   refine LinearMap.ext fun ψ => funext fun x => ?_
@@ -155,18 +155,16 @@ lemma T0s_T1s : T0s α * T1s = q α • (T1s * T0s α) := by
 (unconditional: a reindexing of `tsum` along `x ↦ x + e₀`). -/
 theorem T0_adjoint (φ ψ : F) :
     ∑' x, conj (φ x) * T0 α ψ x = ∑' x, conj (T0s α φ x) * ψ x := by
-  rw [← (Equiv.addRight ((1, 0) : ℤ × ℤ)).tsum_eq]
-  congr 1; funext x
-  simp only [Equiv.coe_addRight, T0_apply, T0s_apply, Prod.fst_add, Prod.snd_add, add_zero,
-    add_sub_cancel_right, map_mul, conj_ph, neg_neg, Prod.mk.eta]
+  conv_rhs => rw [← (Equiv.addRight ((1, 0) : ℤ × ℤ)).tsum_eq]
+  congr 1; funext ⟨a, b⟩
+  simp [conj_ph]
   ring
 
 theorem T1_adjoint (φ ψ : F) :
     ∑' x, conj (φ x) * T1 ψ x = ∑' x, conj (T1s φ x) * ψ x := by
-  rw [← (Equiv.addRight ((0, 1) : ℤ × ℤ)).tsum_eq]
-  congr 1; funext x
-  simp only [Equiv.coe_addRight, T1_apply, T1s_apply, Prod.fst_add, Prod.snd_add, add_zero,
-    add_sub_cancel_right, Prod.mk.eta]
+  conv_rhs => rw [← (Equiv.addRight ((0, 1) : ℤ × ℤ)).tsum_eq]
+  congr 1; funext ⟨a, b⟩
+  simp
 
 /-! ### Covariant differences and commutators -/
 
@@ -251,7 +249,7 @@ theorem Y_eq : Pi α s * Pis α s = Pis α s * Pi α s +
 /-- `J = is(h₀∇₁ − h₁∇₀ − (q − 1)T₁T₀)` (GAPRIME2 Lemma 3.2, first display). -/
 theorem J_eq : J α s = (I * s) • (h0 α * nab1 - h1 * nab0 α - (q α - 1) • (T1 * T0 α)) := by
   rw [J, ← comm_nab, nab0s_eq, nab1s_eq]
-  congr 1; noncomm_ring
+  congr 1; simp only [sub_mul]; abel
 
 /-! ### Exact-sine bookkeeping -/
 
@@ -260,14 +258,10 @@ theorem I_mul_one_sub_exp :
     I * (1 - qb α) = 2 * Real.sin (α / 2) * exp ((α / 2 : ℝ) * I) := by
   have h1 : qb α = exp ((α / 2 : ℝ) * I) * exp ((α / 2 : ℝ) * I) := by
     rw [qb, ← exp_add]; congr 1; push_cast; ring
-  have h2 : (Real.sin (α / 2) : ℂ) =
-      (exp ((α / 2 : ℝ) * I) - exp (-((α / 2 : ℝ) * I))) / (2 * I) := by
-    rw [ofReal_sin, sin]; field_simp; ring_nf; simp [I_sq]; ring
-  have h3 : exp (-((α / 2 : ℝ) * I)) * exp ((α / 2 : ℝ) * I) = 1 := by
+  have h3 : exp (-((α / 2 : ℝ) : ℂ) * I) * exp ((α / 2 : ℝ) * I) = 1 := by
     rw [← exp_add]; simp
-  rw [h1, h2]
-  field_simp
-  linear_combination (-2 * exp ((α / 2 : ℝ) * I)) * h3
+  rw [h1, ofReal_sin, Complex.sin]
+  linear_combination (-I) * h3
 
 /-- `V′ = e^{iα/2} T₁T₀^*` (GAPRIME2 §3). -/
 noncomputable def Vp : E := exp ((α / 2 : ℝ) * I) • (T1 * T0s α)
@@ -282,10 +276,10 @@ factor `2 sin(α/2)` (= `2|sin(α/2)|` for `s = sgn α`, `|α| ≤ 2π`: `sin_ha
 theorem ladder_comm_sin :
     Pi α s * Pis α s - Pis α s * Pi α s =
       (2 * s * Real.sin (α / 2) : ℂ) • (Vp α + Vps α) := by
-  rw [ladder_comm, Vp, Vps, T0_T1s, smul_smul, ← mul_assoc, exp_half_mul_qb, smul_add, smul_add,
-    smul_smul, smul_smul]
-  have h := I_mul_one_sub_exp α
-  congr 2 <;> linear_combination (s : ℂ) * h
+  rw [ladder_comm, Vp, Vps, T0_T1s, smul_smul, exp_half_mul_qb]
+  have h : I * s * (1 - qb α) = 2 * s * Real.sin (α / 2) * exp ((α / 2 : ℝ) * I) := by
+    linear_combination (s : ℂ) * I_mul_one_sub_exp α
+  rw [h]; module
 
 /-- `V′^*V′ = 1`. -/
 lemma Vps_Vp : Vps α * Vp α = 1 := by
@@ -294,7 +288,8 @@ lemma Vps_Vp : Vps α * Vp α = 1 := by
 
 /-- `V′ + V′^* = 2 − (1 − V′)^*(1 − V′)` (GAPRIME2 Lemma 3.1 proof). -/
 theorem Vp_add_Vps : Vp α + Vps α = 2 - (1 - Vps α) * (1 - Vp α) := by
-  rw [sub_mul, mul_sub, mul_sub, Vps_Vp]; noncomm_ring
+  rw [sub_mul, mul_sub, mul_sub, Vps_Vp, one_mul, mul_one, mul_one, ← one_add_one_eq_two]
+  abel
 
 /-- `1 − V′ = (1 − e^{iα/2}) + e^{iα/2}(∇₁ + T₁∇₀^*)` (GAPRIME2 Lemma 3.1 proof). -/
 theorem one_sub_Vp : 1 - Vp α = (1 - exp ((α / 2 : ℝ) * I)) • (1 : E) +
@@ -309,8 +304,8 @@ theorem norm_qb_sub_one : ‖qb α - 1‖ = 2 * |Real.sin (α / 2)| := by
 /-- `|e^{−iα} − 1| = 2|sin(α/2)|` (the Weyl-commutator size). -/
 theorem norm_q_sub_one : ‖q α - 1‖ = 2 * |Real.sin (α / 2)| := by
   have := norm_exp_I_mul_ofReal_sub_one (-α)
-  rw [q, show -((α : ℂ) * I) = I * ((-α : ℝ) : ℂ) by push_cast; ring, this, norm_mul,
-    Real.norm_eq_abs, neg_div, Real.sin_neg, abs_neg]; norm_num
+  rw [q, show -((α : ℂ) * I) = I * ((-α : ℝ) : ℂ) by push_cast; ring, this, neg_div,
+    Real.sin_neg, mul_neg, norm_neg, norm_mul, Real.norm_eq_abs, Real.norm_eq_abs, abs_two]
 
 /-- `2|sin(α/2)| ≤ |α|`. -/
 theorem two_abs_sin_half_le : 2 * |Real.sin (α / 2)| ≤ |α| := by
@@ -405,7 +400,7 @@ noncomputable def LapM : M2 := Matrix.diagonal fun _ => Lap α
 
 /-- (1.b) curl–divergence identity: `c₀^†c₀ + D′D′^† = 𝔏 ⊗ 1 + C` (GAPRIME2 §1). -/
 theorem curl_div : op (c0s α) (c0 α) + op (D α) (Ds α) = LapM α + Cm α := by
-  ext a b : 2
+  refine Matrix.ext fun a b => ?_
   fin_cases a <;> fin_cases b <;>
     simp [op, c0s, c0, D, Ds, LapM, Cm] <;> shift_nf <;> module
 
@@ -434,11 +429,11 @@ noncomputable def sigmaYM : M2 := !![0, (-I) • (1 : E); I • (1 : E), 0]
 /-- GAPRIME2 §4: with every shift and phase set to 1, `K̄ = σ_y` (the Wilson-spin half of
 `−2ασ_y`). -/
 theorem Kbar_eq : KG 1 1 1 1 1 1 = sigmaYM := by
-  ext a b : 2
+  refine Matrix.ext fun a b => ?_
   fin_cases a <;> fin_cases b <;> simp [KG, uG, op, sigmaYM] <;> module
 
 theorem sigmaYM_sq : sigmaYM * sigmaYM = 1 := by
-  ext a b : 2
+  refine Matrix.ext fun a b => ?_
   fin_cases a <;> fin_cases b <;> simp [sigmaYM, Matrix.mul_apply, Fin.sum_univ_two] <;> module
 
 /-- `A′ = cos φ·c^†c + D′D′^† − 2 sin φ·K`, `φ = α/2` (GAPRIME2 Lemma 1.1). -/

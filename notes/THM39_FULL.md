@@ -1,7 +1,7 @@
 # THM39_FULL — paper-grade write-out of CMP 99 Theorem 3.9 (walk expansion of C′ = (Q′G′²Q′*)^{−1})
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (second of three); Table 1 row R2, with R36 (M_1 version) and R7 (complex form) for this operator.
-Status: IN PROGRESS. Written one section at a time.
+Status: author write-out complete 2026-10-28; not verified.
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [R-full] printed with full proof; [R-sketch] printed sketch or proof by reference; [V] read on the page image in this session; [P] proved in this file or in a named project file; [I] reading or geometric fact not proved here.
 No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8) is cited from THM37_FULL (parallel write-out) as input (T37); it is not re-proved here.
@@ -63,13 +63,13 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
 
 ## 2. Setting, hypotheses, and the statement proved here
 
-2.1 Spaces and kernels [as A1_WALK_FULL 0.1; SOURCES_A1_KERNEL §5]. 𝔅 = ∪_jΛ_j (finite). For y ∈ Λ_j: Δ(y) = B^j(y), μ(y) := (L^jη)^d, s(y) := (L^jη)². ℋ := ℓ²(𝔅, μ) (CMP 96 (2.69) [V]). Kernels are taken with respect to μ: (Tf)(y) = Σ_{y′}μ(y′)t(y, y′)f(y′). m(y, y′) := (μ(y)μ(y′))^{−1/2}. The fine space is 𝒦 := ℓ²(Ω_0, η^d; 𝔤). Q′: 𝒦 → ℋ and Q′* is its adjoint. S := multiplication by s on ℋ. d is the metric of CMP 96 (2.46). θ_L := log L/(RM). Scale conversion [P, SOURCES_A1_KERNEL §5]: for y ∈ Λ_j, y′ ∈ Λ_{j′} and real p, L^{p(j−j′)} ≤ L^{|p|}e^{|p|θ_Ld(y,y′)}. c_1(κ) := sup_ySΣ_{y′}e^{−κd(y,y′)} and Σ(κ) are as in A1_WALK_FULL 0.1; both are finite and volume-uniform by CMP 96 Lemma 2.1 under (2.59) [R-full].
+2.1 Spaces and kernels [as A1_WALK_FULL 0.1; SOURCES_A1_KERNEL §5]. 𝔅 = ∪_jΛ_j (finite). For y ∈ Λ_j: Δ(y) = B^j(y), μ(y) := (L^jη)^d, s(y) := (L^jη)². ℋ := ℓ²(𝔅, μ) (CMP 96 (2.69) [V]). Kernels are taken with respect to μ: (Tf)(y) = Σ_{y′}μ(y′)t(y, y′)f(y′). m(y, y′) := (μ(y)μ(y′))^{−1/2}. The fine space is 𝒦 := ℓ²(Ω_0, η^d; 𝔤). Q′: 𝒦 → ℋ and Q′* is its adjoint. S := multiplication by s on ℋ. d is the metric of CMP 96 (2.46). θ_L := log L/(RM). Scale conversion [P, SOURCES_A1_KERNEL §5]: for y ∈ Λ_j, y′ ∈ Λ_{j′} and real p, L^{p(j−j′)} ≤ L^{|p|}e^{|p|θ_Ld(y,y′)}. c_1(κ) := sup_yΣ_{y′}e^{−κd(y,y′)} and Σ(κ) are as in A1_WALK_FULL 0.1; both are finite and volume-uniform by CMP 96 Lemma 2.1 under (2.59) [R-full].
  Walks of domains, |ω|, the path length d(ω, y, y′) (inf over x_i ∈ X_i ∩ 𝔅, with x_0 ∈ X_0), (D1), (D2), and the walk-expansion conditions (L1), (L2), (B1), (B2) are as in A1_WALK_FULL 0.2 and 1.2. A domain X is a subset of the fine lattice that is a connected union of cubes of 𝒟; X ∩ 𝔅 := {y : Δ(y) ⊂ X}. Remark: Balaban's (3.93) takes no x_0 and requires y ∈ □_0. For y ∈ X_0 the two infima agree (take x_0 = y; the reverse inequality is the triangle inequality).
  Domains are listed in the enlarged form X → X⁺ of WG_FULL 0.4. This gives the ⅓M_1 band of (L1) for kernels supported in X × X, with the local margin c_loc of WG_FULL (I7). We use this convention without further mention.
 
 2.2 Structural readings [I]. These are the readings of the earlier write-outs, restated for Q′.
  (I-Q) For y ∈ Λ_j, (Q′λ)(y) = (Q′_jλ)(y) = L^{−jd}Σ_{x∈Δ(y)}R(U(Γ_{y,x}))λ(x), with contours Γ_{y,x} ⊂ Δ(y) of η-length ≤ c_Γ(d)L^jη. Evidence: the a-term of (3.88) [V p. 409] is exactly a_j(L^jη)^{−2}Q′_j*Q′_j in this form; CMP 96 (2.39) [V, THM37_FULL 2.2] has the same form at U = 1. Uniform weights L^{−jd} are the reading; §4 uses only "nonnegative weights on Δ(y) with sum 1 and the bump average ≥ c_φ".
- (I-B) The blocks Δ(y), y ∈ 𝔅, are pairwise disjoint and contained in Ω_0. Each block Δ(y), y ∈ Λ_j, together with its one-step η-neighbourhood, lies in a cube □(y) of the (3.35) class whose index is j or j − 1 [I, cube geometry of CMP 99 p. 396].
+ (I-B) The blocks Δ(y), y ∈ 𝔅, partition Ω_0 (they are pairwise disjoint and their union is Ω_0). Each block Δ(y), y ∈ Λ_j, together with its one-step η-neighbourhood, lies in a cube □(y) of the (3.35) class whose index is j or j − 1 [I, cube geometry of CMP 99 p. 396].
  Consequence of (I-Q) [P]. For ω ∈ ℋ and x ∈ Δ(y): (Q′*ω)(x) = R(U(Γ_{y,x}))^{−1}ω(y). Proof: ⟨Q′λ, ω⟩_ℋ = Σ_yμ(y)L^{−jd}Σ_{x∈Δ(y)}⟨R(U(Γ_{y,x}))λ(x), ω(y)⟩ = η^dΣ_x⟨λ(x), R(U(Γ_{y,x}))^{−1}ω(y)⟩, since μ(y)L^{−jd} = η^d and R(·) is orthogonal on 𝔤. ∎ Hence |Q′*ω|_∞ on Δ(y) equals |ω(y)|, and |Q′λ(y)| ≤ sup_{Δ(y)}|λ|. Also Q′*aQ′ = Q′*(aS^{−1})Q′ with a := a_j on Λ_j, by (3.24); and a_j ≤ a for all j, since a_{j+1} = a·a_j/(aL^{−2} + a_j) < a.
 
 2.3 Input (T37) [cite THM37_FULL §1.6–§1.8, §5, §7; R-sketch at the source]. For real U with (3.35) and O(1)Mα_0 ≤ a_37(d, L): G′ = Σ_{ω∈𝒲′}G′_ω, ω = (□_0, …, □_n), □_i ∈ 𝒟, □_{i−1} ∩ □_i ≠ ∅, G′_ω := h_{□_0}G′_{□_0}h_{□_0}Π_{i=1}^nK(h_{□_i})G′_{□_i}h_{□_i}, with:
@@ -184,7 +184,7 @@ Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. Also |R(e^{iηA}(Γ)) − I| ≤ �
 
 5.3 Undoing the rescaling: (v) and (vi) [P]. C′ = N^{−1} = S^{−1}N̂^{−1}S^{−1} = Σ_ωS^{−1}T_ωS^{−1}. S^{−1} is a multiplication independent of U; attach it to the first and last factor. (L1), (L2), and the count do not change. The kernel bound becomes
  |(S^{−1}T_ωS^{−1})(y, y′)| ≤ (4/γ_N)(L^jη)^{−2−d/2}(L^{j′}η)^{−2−d/2}(c_1ρ)^{|ω|}e^{−½εd(ω,y,y′)}.
-The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2}·… = L^{(2−d/2)(j−j′)} ≤ L^{|2−d/2|}e^{|2−d/2|θ_Ld(y,y′)}, and d(y, y′) ≤ d(ω, y, y′). This gives (v). Summing with (iv) gives (vi), i.e. (3.48) with rate ½ε − |2 − d/2|θ_L > 0 (since θ_L ≤ δ′/(8(d + 4)) and ε ≤ ½δ_G, one may need RM ≥ 4(d + 4)log L/ε to keep half the rate; this is a condition on RM after ε, admissible as in A1_WALK_FULL 6.8).
+The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2} = L^{(2−d/2)(j−j′)} ≤ L^{|2−d/2|}e^{|2−d/2|θ_Ld(y,y′)}, and d(y, y′) ≤ d(ω, y, y′). This gives (v). Summing with (iv) gives (vi), i.e. (3.48) with rate ½ε − |2 − d/2|θ_L > 0 (since θ_L ≤ δ′/(8(d + 4)) and ε ≤ ½δ_G, one may need RM ≥ 4(d + 4)log L/ε to keep half the rate; this is a condition on RM after ε, admissible as in A1_WALK_FULL 6.8).
  (3.99) factor form. As in A1_WALK_FULL 6.6: (c_1K_W/M_1)^{|ω|} = (c_1K_WM_1^{−1/2})^{|ω|}·M_1^{−½|ω|}, and for M_1 ≥ (2C_Wc_1K_W)² the first factor controls the sum over ω. This is O(M^{−1/2})^{|ω|}M^{−½|ω|} of (3.99) with M_1 in place of M.
  Kernel convention [I, as A1_WALK_FULL 6.8 and WG_FULL 0.2]: Balaban's kernel C′(y, y′) is read as the μ-kernel. Under the counting-measure reading the factor (L^{j′}η)^{−d} moves; the total power and the proof are unchanged.
 
@@ -234,3 +234,54 @@ with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic
 7.5 Place in the chain [P for the mechanism; WC_FULL 6.0–6.4, A1_WALK_FULL 8.4]. In the four-level chain, level 4 takes "(W_G) at complex points [R]: Thm 3.4 … plus Thm 3.10" (A1_WALK_FULL 8.4). The walk forms of G′ and C′ at complex points enter G through Thm 3.10 and WG-G (the chain P = G′Q′*C′Q′G′, WG_FULL 2.3). This file turns the C′ part of that [R] into [P given (T37-c)], at the cost of the radius factor k_{C′}: level 4 is run on 𝒰(b⁗) with b_1⁗ ≤ k_{C′}b_1^{37}. k_{C′} is a constant of (d, L, a); it joins step 7 of the order of A1_WALK_FULL 9.1 before every α^{(n)}. The consumers' complex backgrounds lie in the (3.35) + (3.37) class by SOURCES_A18_REGULAR §5.1 [P there; corrected constants in SOURCES_A18_REGULAR_VERIFY V6]; the α_1-row of the chain then only has to be taken ≤ k_{C′}b_1^{37}.
  Reduction. The complex form of Thm 3.9 is proved here given one named step: (T37-c), the analytic walk form of G′ on 𝒰(b_1^{37}) (THM37_FULL §8).
 
+## 8. Ledger, sharper steps, and open items
+
+8.0 Two cross-file notes (coordinator, 2026-10-28).
+ (X-PU) THM37_FULL 3.4 finds that the printed partition of unity (CMP 96 (2.36) with the product h of CMP 95 (1.118)) fails Σh² = 1 near level interfaces when L > 5; its repair (normalized fine-scale profiles) costs a factor L in the Lipschitz constant of h. This file uses Σ_□h_□² = 1 in two places: (a) inside (T37), through THM37_FULL's own parametrix (inherited, already repaired there); (b) in the A1-W parametrix 5.2(d), N̂P = I + ΣF_□, whose partition {h_□} is the geometry (G) of A1_WALK_FULL 2.1 on the M_1-cover of 𝔅. For (b) we carry the repaired version: h_□ := φ_□(Σ_{□′}φ_{□′}²)^{−1/2} as in THM37_FULL 3.4, so Σh_□² = 1 holds exactly, and the Lipschitz constant c_h of (G) is replaced by Lc_h at level interfaces. This is the same point as A1_WALK_FULL open item O2. Effect: c_h → Lc_h in E^com_□ (5.2(e)), hence in ρ_com, K_F, K_W, and the thresholds M_e, M_N, M_c, M_W. All are constants fixed before M_1, so no conclusion changes. The band of (L1): THM37_FULL 4.4(v) reduces the end band to ⅓M_1/L at interface faces; this file lists domains in the enlarged form (2.1, WG_FULL 0.4), which gives a band > M_1 from the enlargement alone, so the reduction does not reach (L1) here.
+ (2.59) The image of CMP 96 p. 233 shows ¼αδ_0RM > 2d log c_0(½α) + 1 (THM37_FULL 2.2); WG_FULL (I4) quotes ½. Every use of "(2.59)" in this file (2.1, 2.4, 5.6) means the printed ¼ form, which is the stronger requirement on RM.
+
+8.1 Inputs [IDs; tags].
+ T39-V1 CMP 99 p. 413 Thm 3.9 statement; pp. 411–413 sketch [V; R-sketch]. The target.
+ T39-V2 CMP 99 p. 394 (3.21)–(3.25) definitions of Δ′_a, G′, Q′*aQ′, R [V].
+ T39-V3 CMP 99 p. 396 (3.35) regularity; (3.32)–(3.33) gauge covariance [V].
+ T39-V4 CMP 99 p. 398 Thm 3.2 (3.48) [V].
+ T39-V5 CMP 99 p. 400 Thm 3.4 and (3.50)–(3.51) [V]. Only the formula (3.51) is used (4.5); Thm 3.4's proof is not used.
+ T39-V6 CMP 99 p. 409 (3.87)–(3.88) [V]; the a-term of (3.88) is the evidence for (I-Q).
+ T39-V7 CMP 96 pp. 236–238 (2.72)–(2.87) [V; R-full at U = 1]. Used only for comparison (1.7, 5.4); not an input of the proof.
+ T39-R1 CMP 96 Lemma 2.1 (2.60)–(2.63) under (2.59) in the ¼ form [R-full]: c_1(·), Σ(·) finite and volume-uniform.
+ T39-P1 (T37), (T37-c): THM37_FULL (CMP 99 Thm 3.7, Cor. 3.8, M_1 version §7, complex form §8) [P in THM37_FULL, not yet verified; R-sketch at the source]. Includes the X-PU repair.
+ T39-P2 Theorem A1-W, Lemmas LT, CT, CP, AW, the concatenation lemma: A1_WALK_FULL §1–§6, §8.2–§8.3 [P, verified per A1_WALK_FULL_VERIFY with fixes F1–F6].
+ T39-P3 Enlarged-domain convention and local range c_loc: WG_FULL 0.4, (I7) [P given I items there].
+ T39-P4 Disc radius at the Thm 3.4 level: WC_FULL 6.0 [P].
+ T39-P5 Inclusions of complex consumer backgrounds into (3.35) + (3.37): SOURCES_A18_REGULAR §5.1 [P there; constants corrected in its VERIFY V6].
+ T39-L1 lean/YmLean/Concatenation.lean `concat_two`, `concat_list` (junction sums, 3.4, 5.2(g)) [L].
+ T39-L2 lean/YmLean/CombesThomas.lean `coercive_inv`, `combes_thomas` (local inverses, 5.2(c)) [L].
+ T39-L3 lean/YmLean/SchurMarginal.lean `compression_lower` (restriction of a lower bound to a block, 5.2(b)) [L]. Not formalized: the merged-walk inequality (F1), Lemma LB, the change of variables V and the factor m.
+ T39-I1 (I-Q): Q′_j is the transported average over Δ(y) with contours inside Δ(y), length ≤ c_ΓL^jη, nonnegative weights (uniform L^{−jd} read) [I; evidence T39-V6, CMP 96 (2.39)].
+ T39-I2 (I-B): the blocks Δ(y), y ∈ 𝔅, partition Ω_0; each block with its one-step neighbourhood lies in a class cube of index j or j − 1 [I, cube geometry of p. 396].
+ T39-I3 Form of (3.31): Δ_{U^u} = R(u)Δ_UR(u^{−1}), U^u(Γ) = u(start)U(Γ)u(end)^{−1} [I; (3.32)–(3.33) read].
+ T39-I4 Geometry (G) of A1_WALK_FULL 2.1 on the M_1-cover, with the X-PU repair (c_h → Lc_h) [I; same item as A1_WALK_FULL O2 and THM37_FULL X-PU].
+ T39-I5 Kernel convention: Balaban's C′(y, y′) is the μ-kernel [I, as A1_WALK_FULL 6.8].
+ T39-I6 Count of M_1-cubes meeting a set of diameter D_+M_1 [I, geometry c(d), as A1_WALK_FULL 5.6].
+ Not used: CMP 99 Cor. 3.5, Cor. 3.6; CMP 96 (2.75)–(2.76) (U = 1 Fourier); the CMP 89 domain-change estimate; the printed proof of Thm 3.4; (3.36), (3.38); WG-1.
+
+8.2 Steps where this file is sharper than the printed text.
+ S1 Global lower bound (Lemma LB). Q′G′²Q′* ≥ γ_NS² for every real U with (3.35) and Mα_0 ≤ a_LB, by a covariant trial function and Cauchy–Schwarz. Balaban's route goes through Cor. 3.6 (gauge to U ≈ 1 on a cube), Cor. 3.5, and the U = 1 Fourier bound (2.76); none is written for this operator. Lemma LB uses only |A|, |∇A| on single blocks, and it is not conditional (unlike (C) for QGQ*, SOURCES_A1_KERNEL §8).
+ S2 Local inverses from truncated walk sums (A1-W). The domain-change term (3.97), which Balaban cites to CMP 89 and "an argument similar to Cor. 3.5", becomes the walk-truncation error, bounded by (B1) directly: e^{−δ_GM_1}.
+ S3 No modified partition 𝒟′ and no ad hoc grouping of factors (1.5 (a)–(c)). Whole walk terms of N̂ enter as blocks with their whole-term bound; each insertion carries its own small factor.
+ S4 The whole-term bound (3.99) is proved with explicit constants (5.2(g), 5.3), including the scale-power conversion and its rate cost |2 − d/2|θ_L.
+ S5 Explicit treatment of G′² (§3): the junction of two G′-walks is one merged domain, so the per-step factor is c′/M_1 per step with no lost step; the junction sum costs only c_1(¼δ′)L².
+ S6 No WG-1-type condition on α_0 (3.6, 6.2(e)).
+ S7 Misprints identified: (M1) (3.96) missing square; (M2) reversed inequality p. 411; (M3) Q′ for Q′* p. 412.
+ S8 The complex form is reduced to the complex walk form of G′ alone (7.5), with an explicit radius factor k_{C′}.
+ Where this file is weaker. The rate is ½ε (ε from (b_G, δ_G, γ_N)), not ½δ_0; the split (L^jη)^{−4}(L^{j′}η)^{−d} costs the rate |2 − d/2|θ_L. The consumers need only a fixed positive rate (A1_WALK_FULL 9.3). Consumer note (no edit made): WG_FULL (I3) takes δ := ½δ_0 as the common rate of (I1)–(I3). With this file the C′ rate is ½ε; WG_FULL must take its common rate ≤ ½ε and compute M_*, a_* at that rate. This is a monotone weakening; ε depends only on (T37) and γ_N, not on G, so the order has no loop.
+
+8.3 Open items for a verifier.
+ (a) (T37) and (T37-c) as delivered by THM37_FULL (not verified at the time of writing); in particular that its per-walk bound is in the block sup norm used in 3.4.
+ (b) T39-I1: an image read of CMP 98 (78)–(80) (the averaging of gauge transformations) to confirm the block-diagonal form of Q′_j and contours inside Δ(y).
+ (c) T39-I2: the class cube containing a block and its η-layer, with index j or j − 1 (the constant c_3 = 12L²).
+ (d) The constant bookkeeping of Lemma LB 4.5(a) (K_A) and the case split of the bump 4.2 (L^j < 8).
+ (e) The use of A1-W "verbatim" for N̂ = S^{−1}NS^{−1} (5.1): check that no step of A1_WALK_FULL §2–§6 uses the specific form S^{−1/2}QGQ*S^{−1/2}.
+ (f) X-PU repair as carried in 8.0(b).
+
+8.4 Status. Author write-out complete (2026-10-28). Not verified. Grade proposal for CLOSURE_PLAN R2: SKETCH → written out [P] given T39-P1 (THM37_FULL), T39-P2 (A1-W), and the [I] items T39-I1–I6. R36 for C′: [P] given the same and THM37_FULL §7. R7 for C′: [P] given (T37-c).
