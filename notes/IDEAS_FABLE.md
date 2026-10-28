@@ -2,7 +2,7 @@
 
 Rule: each idea is a precise proposition, a mechanism, and a kill test. Opus agents attempt; verifiers grade. Nothing here is a claim.
 
-## I1. A3 (γ_0 for general U) via a lattice Kato inequality  [agent running]
+## I1. A3 (γ_0 for general U) via a lattice Kato inequality  [REFUTED 2026-10-28: M_1's leading form is the covariant curl, not a gradient; Kato fails for the curl (SOURCES_A3_GAMMA0 §1). Replaced by the covariant two-step mechanism of SOURCES_A3_GAMMA0, reduced to R1–R5.]
 Proposition: λ_min(C*Δ_k(U)C) ≥ γ_0^{free} for every unitary background U, no regularity needed.
 Mechanism: adjoint transports are orthogonal ⇒ |U_b A(x+e) − A(x)| ≥ ||A(x+e)| − |A(x)|| (Kato/diamagnetic, pointwise) ⇒ ⟨A, M_1(U)A⟩ ≥ ⟨|A|, M_1(1)|A|⟩; the gauge-fixing term D R D* ≥ 0 only adds; Balaban's averaging has equal positive weights (CMP 98 (124)–(125)) ⇒ |Q(U)A| ≤ Q(1)|A| pointwise; the min-energy extension cost min{⟨A, M_1(U)A⟩ : Q(U)A = B} ≥ min{⟨|A|, M_1(1)|A|⟩ : Q(1)|A| ≥ |B|} ≥ γ_0^{free}‖B‖² (free Poincaré, monotone under enlarging the average). By Woodbury (SOURCES_CDC) the leading term of Δ_k is N_1^{−1} = (QM_1^{−1}Q*)^{−1}, whose quadratic form IS that min-energy cost.
 Kill test (cheap, L = 3, Mac): compute λ_min(C*Δ_k(U)C) for 50 random regular U (and 50 random arbitrary U) and compare with U = 1. If any U gives a smaller λ_min than the free value, I1 is dead as stated. If none does, I1 is supported.

@@ -1,6 +1,6 @@
 # SOURCES_A3_GAMMA0 — attempt on trust-ledger item A3 (lower bound γ_0 > 0 on C*Δ_k(U)C)
 
-Status: IN PROGRESS (Opus, 2026-10-28). Sections are appended as the work proceeds.
+Status: done 2026-10-28 (Opus). Verdict §8: Kato route REFUTED; A3 REDUCED to Balaban's two-step route made covariant [P-sketch], free constant corrected, M-independence obtained; five named [R] inputs remain. Not yet independently verified.
 Firewall: /tmp/sa_repo and reports/SUSSMAN_ALPOGE_MAP.md were not read.
 
 ## §0 Target
@@ -29,7 +29,7 @@ Proposed route: lattice Kato (diamagnetic) inequality reduces the covariant mini
 Each fine point z lies in S_x for x in a set of (x, s)-measure ≤ 1 per plaquette, and z lies in the supports B(y) + S of at most 2² unit plaquettes of a given orientation. Summing over p: ‖∂_1QA‖² ≤ c_*‖∂A‖², c_* ≤ 4. Taking the minimum over A with QA = B: ⟨B, Δ_kB⟩ ≥ c_*^{−1}‖∂_1B‖². The constant is uniform in k (it is a continuum statement sampled on the η-lattice). [N check in §4.]
 2.3 Monotonicity under extra constraints [P]. A minimum over a smaller set is larger. CMP 99's multiscale Q_𝔅 adds constraints (zero averages on finer regions, Dirichlet outside Λ). So every LOWER bound proved for the single-scale problem holds for the multiscale problem without change. The multiscale caveat of SOURCES_CDC_VERIFY §4 (e^{−δRM} correction) concerns only the UPPER bound.
 
-## §3 Numerical check of c_* [N, /tmp/a3num/cstar.py, d = 2, one step, periodic, < 5 s on Mac]
+## §3 Numerical check of c_* [N, script in the appendix, d = 2, one step, periodic, < 5 s on Mac]
 Quantity: sup_A ‖∂_1Q(1)A‖²/‖∂A‖², Balaban's equal-weight corridor Q (weight L^{−(d+1)}), physical normalization (‖F‖² = η^{d−2}Σ curl² = Σ curl² in d = 2). Computed as ‖∂_1Q·pinv(∂)‖² (∂_1Q kills ker ∂: gradients map to gradients, constants to constants).
 | L | blocks | c_* |
 | 2 | 3×3 | 0.625 |
@@ -58,3 +58,75 @@ Notation. Unit units on Λ (L^kη = 1). B in the domain of (3.156). U_1 := the k
  (1 + δ)c_*·[E + ε_3K_A(E + a‖B‖²)] ≥ ‖∂_1^{U_1}B‖² − C_δε_Q²K_A(E + a‖B‖²).
  So E(1 + ε_7) ≥ [(1 + δ)c_*]^{−1}‖∂_1^{U_1}B‖² − ε_7a‖B‖², ε_7 := (ε_3 + C_δε_Q²)K_A = O(Mα_0)c(d, L).
  At U = 1 (all ε = 0, δ = 0) this is exactly the lower half of CMP 95 (1.67) with γ_0′ = c_*^{−1} ≥ ¼.
+
+## §6 Step (ii), covariant Lemma 2.4 [P-sketch]
+Claim. For B on Λ = B(Λ′) with the axial condition (B = 0 on the trees A_x(y)), B = 0 off Λ, and Q_1(U_1)B = 0:
+ ‖∂_1^{U_1}B‖² ≥ (γ_L − ε_6)‖B‖², γ_L := (12d²)^{−1}L^{−d−1}, ε_6 = O(Mα_0 + L²α_0)c(d, L).
+Proof sketch. Balaban's proof of (2.128) [V §1] is a sum of LOCAL inequalities: (2.123) on one block B(y) and (2.127) on one corridor B(c), each involving only bonds and plaquettes in a region of diameter ≤ 2L + 2. In each such inequality the left side and the subtracted terms are sums of |B(b)|², which are gauge invariant (Ad orthogonal). The axial condition B(b) = 0 and the constraint Q_1B = 0 are gauge covariant. So each local inequality may be proved in its own gauge. Take the regular gauge of the averaged background on an O(M)-cube containing the region (M ≥ cL). There |∂_1^{U_1}B − ∂_1B| ≤ O(Mα_0)·(sum of |B| on the 4 bonds) and |Q_1(U_1)B − Q_1(1)B| ≤ O(Mα_0 + L²α_0)Q″|B| [R: CMP 98 (139)]. Apply the free local inequality to the gauge-transformed B, then replace free curls and free averages by covariant ones; the errors are ε·(local Σ|B|²). Sum the local inequalities exactly as on p. 245, with finite overlap c(d, L). The Q_1(U_1)B-term is 0 on the domain of (3.156).
+Remark [P]. The telescoping (2.123) is even exact covariantly: B(x, x+e_j) equals an Ad-transported sum of covariant plaquette curls along the axial path, because each step's two transverse bonds lie on the tree and vanish. Only the corridor step (2.125) (it uses Q_1) needs the perturbation.
+
+## §7 Assembly, constant, uniformity [P given §5, §6 and the tagged inputs]
+7.1 ⟨B, Δ_kB⟩ = E − (J-term of (3.156)) ≥ (1 + ε_7)^{−1}[((1+δ)c_*)^{−1}(γ_L − ε_6) − ε_7a]‖B‖² − c_J‖B‖², c_J = O(Mα_0)c(d, L) [R/I, CDC §5.3].
+7.2 Take δ = 1 and α_0 so small (after d, L, M) that ε_6 ≤ γ_L/4, ε_7 ≤ 1/8, ε_7a + c_J ≤ γ_L/(12c_*). Then (with ε_7 ≤ 1/8: (8/9)[(3γ_L)/(8c_*) − ε_7a] − c_J ≥ γ_L/(3c_*) − γ_L/(12c_*))
+ ⟨B, Δ_kB⟩ ≥ (4c_*)^{−1}γ_L‖B‖² ≥ γ_L/16·‖B‖², i.e. γ_0 ≥ (192d²)^{−1}L^{−d−1} (c_* ≤ 4 proved; with the observed c_* ≈ 0.7 in d = 2, γ_0 ≈ γ_L/2.8).
+7.3 C-step [P, §1.1]: ⟨B̃, C*Δ_kC B̃⟩ ≥ γ_0‖CB̃‖² ≥ γ_0‖B̃‖². So ‖C̃^{(k)}‖ = ‖(C*Δ_kC)^{−1}‖ ≤ γ_0^{−1}, and ‖C^{(k)}‖ = ‖C(C*Δ_kC)^{−1}C*‖ ≤ ‖C‖²γ_0^{−1} ≤ L^{d+1}γ_0^{−1}.
+7.4 Free value check [P]. U = 1: γ_0 ≥ c_*^{−1}γ_L, with c_*^{−1} the explicit lower constant of CMP 95 (1.67). The KAPPA_D/SOURCES_Q value "(12d²)^{−1}L^{−d−1}" is γ_L alone and silently sets γ_0′ = 1; the correct free value is γ_0′γ_L with γ_0′ ≥ ¼ (proved) [correction].
+7.5 Uniformity [P]. k: c_* is a continuum (Stokes + Cauchy–Schwarz) constant; γ_L has no k; K_A, ε's are uniform in k by the cited CMP 99 bounds [R]. Volume/Λ: every inequality is local, and extra Dirichlet or multiscale constraints only raise the minimum (§2.3). M: M enters only through the hypotheses M ≥ cL and Mα_0·c(d, L) ≤ small; the constant γ_0 = (4c_*)^{−1}γ_L contains no M. This removes the [I] "independence of γ_0 from M" of SOURCES_LOC_VERIFY l. 36 (c), at the cost of the ordering α_0 ≪ 1/(M·c(d, L)), which Balaban already imposes.
+7.6 What regularity does [P]. Regularity enters only through the perturbative errors ε_Δ′, ε_3, ε_Q, ε_6, c_J. The argument proves nothing for rough U. Whether A3 holds for all U is not decided here; it is not needed.
+
+## §8 Ledger and STALL record
+8.1 Grades.
+| item | grade |
+| Kato route (brief items 1–5) | REFUTED: Kato fails for the curl even at U = 1 (§4.2 counterexample); M_1's partial gauge fixing makes the Feynman-form substitute invalid for a lower bound (§4.3) |
+| "lower bound a‖B‖² on (QG_1Q*)^{−1}" | TRUE but EMPTY: cancelled by −a‖B‖² in (3.156) (§4.4) |
+| U = 1 mechanism | [V] two steps: CMP 95 (1.67) lower half + CMP 96 Lemma 2.4 (§1, §2) |
+| lower half of (1.67), elementary | [P] c_* ≤ 4 by Stokes + Cauchy–Schwarz; [N] c_* ≤ 0.71 (d = 2, L = 2–5) |
+| multiscale / Dirichlet constraints | [P] harmless for LOWER bounds (monotone) |
+| gauge-fixing removal | [P] exact via (3.115): A′ = A − DG′RD*A is still an extension of B |
+| covariant step (i), step (ii) | [P-sketch] local-gauge perturbation of the free inequalities, errors O(Mα_0 + L²α_0)c(d, L) |
+| γ_0 value | γ_0 ≥ (4c_*)^{−1}(12d²)^{−1}L^{−d−1} ≥ (192d²)^{−1}L^{−d−1} for Mα_0 ≤ small(d, L) |
+| free value in KAPPA_D/SOURCES_Q | CORRECTED: missing factor γ_0′ = c_*^{−1} ∈ [¼, ~1.4] |
+| M-independence (LOC_VERIFY (c)) | [P-sketch] γ_0 has no M; M only in M ≥ cL and smallness of Mα_0 |
+| C-step | [P] free for the lower bound: ‖CB̃‖ ≥ ‖B̃‖ |
+8.2 Remaining inputs (the STALL points, each named precisely).
+ R1. Uniform bounds on ‖G_1‖ and on G′ (κ_π) for regular U, uniform in k: CMP 99 Theorems 3.1–3.3 [R, not re-read here].
+ R2. k-step averaging in the local regular gauge: Q_k(U) = Q_k(1) + O(Mα_0 + L²α_0)·(positive local average). This is the A18 piece "Q(U) = Q_free(1 + O(α_0))" [I, already on the ledger]; CMP 98 (139) gives it per step only.
+ R3. The averaged unit background U_1 is regular with |A_bg^{(1)}| = O(Mα_0) in a local gauge on O(M)-cubes [R].
+ R4. c_J = O(Mα_0)c(d, L) for the J-term of (3.156) (SOURCES_CDC §5.3) [R/I].
+ R5. Domain identification: the trees A_x(y) of CMP 99 (3.156) are the axial trees Γ_{y,x} of CMP 96 (2.121), and the constraint Q_1B = 0 uses Q_1(U_1) [R; CMP 99 p. 427–428 text garbled].
+ Not covered: the σ-/s-localized operators C*Δ_k(s)C (A18, SOURCES_CDC_VERIFY §5). Step (i) uses only positivity of the dropped terms and the same local errors, so it should extend [I].
+8.3 Effect on the trust ledger (proposal, not applied; TRUST_LEDGER.md not edited). A3: "asserted (Balaban), we can prove" → "reduced (Opus, unverified) to R1–R5; R2 = A18 piece; γ_0 = (4c_*)^{−1}(12d²)^{−1}L^{−d−1}, no M". Needs an independent verifier pass (Fable or Opus) on §5.2 and §6 before any regrade.
+8.4 Scratch files deleted after the run; the §3 script is reproduced in the appendix (the brief allowed only this one file).
+
+## Appendix: §3 script (d = 2, numpy)
+```python
+import numpy as np
+def run(L, nb):
+    n=L*nb; N=n*n
+    idx=lambda x,y,m: m*N+(x%n)*n+(y%n)
+    C=np.zeros((N,2*N))
+    for x in range(n):
+        for y in range(n):
+            r=x*n+y
+            C[r,idx(x,y,0)]+=1; C[r,idx(x+1,y,1)]+=1; C[r,idx(x,y+1,0)]-=1; C[r,idx(x,y,1)]-=1
+    M=nb*nb; cid=lambda a,b,m: m*M+(a%nb)*nb+(b%nb)
+    Q=np.zeros((2*M,2*N))
+    for a in range(nb):
+        for b in range(nb):
+            for m in range(2):
+                for i in range(L):
+                    for j in range(L):
+                        x,y=a*L+i,b*L+j
+                        for s in range(L):
+                            Q[cid(a,b,m), idx(x+s*(m==0), y+s*(m==1), m)] += L**-3
+    C1=np.zeros((M,2*M))
+    for a in range(nb):
+        for b in range(nb):
+            r=a*nb+b
+            C1[r,cid(a,b,0)]+=1; C1[r,cid(a+1,b,1)]+=1; C1[r,cid(a,b+1,0)]-=1; C1[r,cid(a,b,1)]-=1
+    # fine norm ||F||^2 = sum curl^2 in d=2 physical units; QA is in physical units
+    T=C1@Q@np.linalg.pinv(C)
+    return np.linalg.norm(T,2)**2
+for L,nb in [(2,3),(3,3),(3,4),(4,3),(5,3)]:
+    print(L,nb,run(L,nb))
+```
