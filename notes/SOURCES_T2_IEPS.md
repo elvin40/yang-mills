@@ -138,4 +138,4 @@ Effect on (M-C) (SOURCES_MC §10, MC_VERIFY §5, MC_IV0_VERIFY §5): open items 
 
 STATUS: COMPLETE
 
-Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-O3 §10 graph order aligned to canon B (WC and level constants before M_1, M_2 after M_1, exponents before A_1 → A_0 → C_0 → C_1).
+Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-O3 §10 graph order aligned to canon B (WC and level constants before M_1, M_2 after M_1, exponents before A_1 → A_0 → C_0 → C_1). Notation: C_0, C_1 in the §10 order are the α_{i,j} prefactors; C_1, C_2, C_3 in §2–§9 are the CMP 116 constants, C_i^{116} in the canon (not renamed here, to avoid a mass rename).
