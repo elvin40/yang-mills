@@ -6,13 +6,13 @@ Q^dag E P = Q^dag E =: V per block, hence
   sigma = s^2 sum 1/|k^|^2,  Z = Q A^-1 Q^dag,  w = (Kh - Q A^-1 b)/|Kh|^2,  G = Q A^-1 C A^-1 Q^dag + w w^dag / sigma.
 The large Kh-direction eigenvalue of T never enters. Every quantity is a Taylor-1 model (TM) c + sum_nu delta_nu g_nu + R,
 |delta_nu| <= h, |R| <= r entrywise. Primitives: e^{ik}-1 (exact remainder h_k^2/2), E_q (second derivative a priori from the
-trigonometric structure: (1/2) h_k^2 sum |F| |y|_1^2), d^M (box sums for value and gradient at K_c; second-derivative bound
+trigonometric structure), d^M (box sums for value and gradient at K_c; second-derivative bound
 by interval evaluation of the per-axis factors over the cell, see d_tm; tails as intervals). A^-1 by Oishi-Rump with X = A(K_c)^-1
 (eta = ||X A(K) - I|| < 1 over the whole cell). lambda_max by convexity in delta: max over the 16 vertices + ||r_G||_F.
 Float sums carry a priori rounding terms (premise P2); F carries P1'.
 Usage: python h1cert_cell2.py L M h N K1 K2 K3 K4   (M = inf, odd M < 2N+3 (full window), or M0:<M_0>; 'pi' = exact pi)
 """
-import sys, os, time, itertools
+import sys, os, time, itertools, math
 import numpy as np
 from flint import arb, arb_series, ctx
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE)
@@ -174,35 +174,93 @@ def d_tm(L, M, Kc, h, N):
     return TM(c + 0j, grad + 0j, r)
 
 
-# ---------------------------------------------------------------- E_q as a Taylor model
-def e_tm(L, pf, Kc, h):
-    """TM of the q_0 rows E_l (L^4, 4 coarse, 4 fine): centre and K-gradient by contraction. Remainder from the exact per-block
-    Hessian and third derivatives at K_c: (1/2) h^2 sum_{nu,la} |H_l[nu,la]| + (1/6) h^3 sum_{nu,la,ka} |T_l[nu,la,ka]|
-    + (1/24) h^4 sum|F| (|y|_1/L)^4 (fourth derivative a priori from the trigonometric structure), + float/P1' error err (as h1cert_cell.qrows), with factor (1 + 8hL + 32 h^2 L^2) for gradient/Hessian."""
-    hk = h / L; hh = (L - 1) // 2
+# ---------------------------------------------------------------- V' = Q'^dag E and m' = |k^|^2 P E^dag Kh as truncated Taylor series
+ORD, MMAX = 4, 40
+AL = [a for m in range(ORD + 1) for a in itertools.product(range(m + 1), repeat=4) if sum(a) == m]
+FACT = [float(math.factorial(j)) for j in range(MMAX + 1)]
+
+
+class TP:
+    """Taylor polynomial in delta = K - K_c: exact coefficients co[alpha] for |alpha| <= ORD (dict, sparse) and a majorant sequence
+    mj[m] >= sum_{|alpha| = m} |c_alpha| for every m <= MMAX (all functions here are entire; the series converges on the cell)."""
+    def __init__(s, co, mj): s.co, s.mj = co, mj
+    def __mul__(s, o):
+        co = {}
+        for a, x in s.co.items():
+            for b, y in o.co.items():
+                c = tuple(i + j for i, j in zip(a, b))
+                if sum(c) <= ORD: co[c] = co[c] + x * y if c in co else x * y
+        return TP(co, np.stack([sum(s.mj[i] * o.mj[m - i] for i in range(m + 1)) for m in range(MMAX + 1)]))
+    def __add__(s, o):
+        co = dict(s.co)
+        for b, y in o.co.items(): co[b] = co[b] + y if b in co else y
+        return TP(co, s.mj + o.mj)
+    def __neg__(s): return TP({a: -x for a, x in s.co.items()}, s.mj)
+    def __sub__(s, o): return s + (-o)
+    def conj(s): return TP({a: np.conj(x) for a, x in s.co.items()}, s.mj)
+    def tm(s, shape):
+        """Taylor-1 model: value, gradient; remainder sum_{2<=|a|<=ORD} h^|a| |c_a| + sum_{m>ORD} h^m mj[m] (+ 2 h^MMAX mj[MMAX] for
+        m > MMAX: successive majorant ratios are < 0.1 there) + 1e-11 sum_m h^m mj[m] (float rounding of the coefficients, P1')."""
+        z = np.zeros(shape, complex); h = HH
+        c = s.co.get((0, 0, 0, 0), z) + z
+        g = np.stack([s.co.get(tuple(int(i == nu) for i in range(4)), z) + z for nu in range(4)])
+        r = np.zeros(shape)
+        for a, x in s.co.items():
+            if sum(a) >= 2: r = r + h**sum(a) * np.abs(x)
+        hm = h**np.arange(MMAX + 1).reshape((-1,) + (1,) * (s.mj.ndim - 1))
+        r = r + (hm[ORD + 1:] * s.mj[ORD + 1:]).sum(0) + 2 * hm[-1] * s.mj[-1] + 1e-11 * (hm * s.mj).sum(0)
+        return TM(c, g, np.broadcast_to(r, shape) * (1 + 1e-12))
+
+
+def seq(c0, c1):  # majorant sequence [c0, c1/1!, c1/2!, ...]
+    return np.array([c0] + [c1 / FACT[j] for j in range(1, MMAX + 1)])[:, None]
+
+
+def tp_phase(th, ax, scale, shape=()):
+    """e^{i th} - 1 as a TP, th = (K_ax + const)/scale (array), depends on axis ax only."""
+    e = np.exp(1j * th)
+    co = {(0, 0, 0, 0): e - 1}
+    for j in range(1, ORD + 1): co[tuple(j if i == ax else 0 for i in range(4))] = (1j / scale)**j * e / FACT[j]
+    return TP(co, seq(2.0, 1.0) / np.array([1.0] + [scale**j for j in range(1, MMAX + 1)])[:, None])
+
+
+def tp_sq(th, scale):
+    """sum_rho (2 - 2 cos th_rho) = |e^{i th} - 1|^2 as a TP, th (..., 4)."""
+    co = {(0, 0, 0, 0): (2 - 2 * np.cos(th)).sum(-1, keepdims=True)}
+    for rho in range(4):
+        for j in range(1, ORD + 1):
+            co[tuple(j if i == rho else 0 for i in range(4))] = -2 * ((1j / scale)**j * np.exp(1j * th[..., rho:rho + 1])).real / FACT[j]
+    return TP(co, np.array([16.0] + [8.0 / (FACT[j] * scale**j) for j in range(1, MMAX + 1)])[:, None])
+
+
+def vm_tm(L, pf, Kc, h):
+    """TMs of V' = Q'^dag E (rows K^_4 E_mu - K^_mu E_4, mu < 4; (Nb, 3, 4)) and m' = |k^|^2 E^dag Kh - |Kh|^2 k^ (= |k^|^2 P E^dag Kh
+    by P4; (Nb, 4, 1)). E row coefficients: c_alpha = sum_y F(y) prod (i y_nu/L)^alpha_nu/alpha_nu! e^{ik.y}; majorant
+    sum|F| (|y|_1/L)^m/m! per (mu, r) entry (multinomial)."""
+    hh = (L - 1) // 2; Nb = L**4
     kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]
-    C = np.zeros((L,) * 4 + (4, 4), complex); dC = np.zeros((4,) + (L,) * 4 + (4, 4), complex)
-    Hs = np.zeros((L,) * 4 + (4, 4)); T3 = np.zeros((L,) * 4 + (4, 4)); m3 = np.zeros((4, 4)); err = np.zeros((4, 4))
-    for mu, F in enumerate(pf):
-        y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
-        W = [np.exp(1j * kp[a][:, None] * y[a][None]) for a in range(4)]
-        con = lambda T: np.einsum("rabcd,ia,jb,kc,ld->ijklr", T, *W, optimize=True)
-        yr = lambda nu: y[nu].reshape([1] * (1 + nu) + [-1] + [1] * (3 - nu))
-        C[..., mu, :] = con(F)
-        for nu in range(4):
-            dC[nu][..., mu, :] = 1j * con(F * yr(nu)) / L
-            for la in range(nu, 4):
-                Hs[..., mu, :] += (2 - (la == nu)) * np.abs(con(F * yr(nu) * yr(la))) / L**2
-                for ka in range(la, 4):
-                    mult = len(set(itertools.permutations((nu, la, ka))))
-                    T3[..., mu, :] += mult * np.abs(con(F * yr(nu) * yr(la) * yr(ka))) / L**3
-        ay = sum(np.abs(yr(a)) for a in range(4))
-        aF = np.abs(F); n1 = aF.sum((1, 2, 3, 4))
-        m3[mu] = (aF * (ay / L)**4).sum((1, 2, 3, 4))   # 4th-order a priori moment
-        th = (np.pi + h / L) * 2 * L + 2
-        err[mu] = (2 * (4 * sum(F.shape[1:]) + 40) * U * 1.1 + 8 * U * th * 4 + 1e-13) * n1
-    r = (0.5 * h**2 * Hs + h**3 / 6 * T3 + (m3 * h**4 / 24 + err * (1 + 8 * h * L + 32 * h * h * L * L))[None, None, None, None]) * (1 + 1e-12)
-    return TM(C.reshape(-1, 4, 4), dC.reshape(4, -1, 4, 4), r.reshape(-1, 4, 4))
+    def erow(mu):
+        F = pf[mu]; y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
+        W = [[(1j * y[a] / L)**j / FACT[j] * np.exp(1j * kp[a][:, None] * y[a][None]) for j in range(ORD + 1)] for a in range(4)]
+        co = {al: np.einsum("rabcd,ia,jb,kc,ld->ijklr", F, *[W[a][al[a]] for a in range(4)], optimize=True).reshape(Nb, 4) for al in AL}
+        ay = sum(np.abs(y[a]).reshape([1] * (1 + a) + [-1] + [1] * (3 - a)) for a in range(4)) / L
+        assert h * ay.max() < MMAX / 10
+        aF = np.abs(F)
+        return TP(co, np.stack([(aF * ay**m).sum((1, 2, 3, 4)) / FACT[m] for m in range(MMAX + 1)]))
+    Kh = [tp_phase(Kc[i], i, 1.0) for i in range(4)]
+    E3 = erow(3); V = []; mpp = Kh[3] * E3.conj()
+    for mu in range(3):
+        Emu = erow(mu)
+        V.append((Kh[3] * Emu - Kh[mu] * E3).tm((Nb, 4)))
+        mpp = mpp + Kh[mu] * Emu.conj(); del Emu
+    lv = np.indices((L,) * 4).reshape(4, -1).T; th = (Kc[None] + 2 * np.pi * lv) / L
+    kh = TP({}, np.zeros((MMAX + 1, 1)))
+    for rho in range(4):
+        t = tp_phase(th[:, rho], rho, L); er = np.zeros(4); er[rho] = 1
+        kh = kh + TP({a: x[:, None] * er for a, x in t.co.items()}, t.mj)
+    mp = (tp_sq(th, L) * mpp - tp_sq(Kc, 1.0) * kh).tm((Nb, 4))
+    Vt = TM(np.stack([v.c for v in V], 1), np.stack([v.g for v in V], 2), np.stack([v.r for v in V], 1))
+    return Vt, mp.rs(Nb, 4, 1)
 
 
 # ---------------------------------------------------------------- Oishi-Rump inverse and final bound
@@ -210,14 +268,14 @@ def verts(T):
     return [T.c[0] + sum(s * HH * T.g[nu, 0] for nu, s in enumerate(sg)) for sg in itertools.product((-1, 1), repeat=4)]
 
 
-def inv_or(A):
+def inv_or(A, nR=None):
     """TM of A(K)^-1 over the cell. X = A(K_c)^-1 (float); F = X A(K) - I, ||F|| <= eta = ||X A_c - I||_F + max_vertices ||X A_lin||
     + ||X|| ||R_A||_F; A^-1 = X - X A_lin X + rem, ||rem|| <= ||X A_c - I|| ||X|| + ||X||^2 ||R_A|| + eta^2/(1 - eta) ||X||."""
     A0 = A.c[0]; X = np.linalg.inv(A0); n = len(A0)
     I = acb_mat(n, n, [1 if i == j else 0 for i in range(n) for j in range(n)])
     e0 = _radF(_mat(X) * _mat(A0) - I, acb_mat(n, n)); nX = _n2(X)
     lin = max(float(_n2(X @ (Av - A0)).upper()) + EPS * np.linalg.norm(np.abs(X) @ np.abs(Av - A0)) for Av in verts(A))
-    nR = np.linalg.norm(A.r[0]) * (1 + 1e-12)
+    nR = np.linalg.norm(A.r[0]) * (1 + 1e-12) if nR is None else nR
     eta = e0 + arb(lin) + nX * arb(nR)
     if not eta < 1: raise ValueError(f"eta {float(eta.mid()):.3f}")
     e2 = float((e0 * nX + nX * nX * arb(nR) + eta**2 / (1 - eta) * nX).upper())
@@ -234,29 +292,27 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
     Kc = [x if isinstance(x, arb) else arb(x) for x in Kc]; Kf = np.array([float(x.mid()) for x in Kc])
     try:
         d = d_tm(L, M, Kc, h, N); t1 = time.time()
-        E = e_tm(L, pf, Kf, h); t2 = time.time()
+        Vp, mp = vm_tm(L, pf, Kf, h); t2 = time.time()
         Nb = L**4; lv = np.indices((L,) * 4).reshape(4, -1).T
         Kh = phase(Kf[None], 1.0)                                         # (1, 4)
         kh = phase((Kf[None] + 2 * np.pi * lv) / L, L)                  # (Nb, 4); fine momenta (K + 2 pi l)/L
         inva = (kh * kh.conj()).sum(1, EPS).recip()                      # (Nb, 1) = 1/|k^_l|^2
-        cv = (Kh[:, :3] * (Kh[:, 3:4].conj() * (Kh[:, 3:4] * Kh[:, 3:4].conj()).recip())).rs(1, 3, 1)
         e4 = np.zeros((1, 1, 4)); e4[0, 0, 3] = 1
-        QH = tm(np.eye(3, 4)[None]) - cv * e4                            # (1, 3, 4), Q^dag Kh = 0
+        QH = Kh[:, 3:4].rs(1, 1, 1) * np.eye(3, 4)[None] - Kh[:, :3].rs(1, 3, 1) * e4   # Q'^dag, rows K^_4 e_mu - K^_mu e_4
         khc = kh.rs(Nb, 4, 1)
         P = tm(np.eye(4)[None]) - (khc @ khc.H()) * inva.rs(Nb, 1, 1)
         Khc = Kh.rs(1, 4, 1)
-        Et = E - Khc @ (khc.H() * inva.rs(Nb, 1, 1))                     # E P = E - Kh k^dag/|k^|^2 (P4: E k^ = Kh)
-        V = QH @ Et                                                      # (Nb, 3, 4)
-        VD = V * d.rs(Nb, 1, 4)
-        A = (VD @ V.H()).sum() * s2
+        VD = Vp * d.rs(Nb, 1, 4)                                         # V' D, V' = Q'^dag E = Q'^dag E P (P4)
+        A = (VD @ Vp.H()).sum() * s2
         C = (VD @ P @ VD.H()).sum() * s2
-        b = (VD @ (Et.H() @ Khc)).sum() * s2                             # Q^dag T Kh = s^2 sum V D (E P)^dag Kh
+        b = (VD @ (mp * inva.rs(Nb, 1, 1))).sum() * s2                   # Q'^dag T Kh = s^2 sum V' D P E^dag Kh
         sig = inva.sum() * s2
         lam0, U0 = np.linalg.eigh((A.c[0] + A.c[0].conj().T) / 2)
-        S = U0 / np.sqrt(lam0); SH = tm(S.conj().T[None]); S = tm(S[None])  # whitened frame Q S, S = U Lambda^-1/2: A(K_c) ~ I
+        S0 = U0 / np.sqrt(lam0); SH = tm(S0.conj().T[None]); S = tm(S0[None])  # whitened frame Q' S, S = U Lambda^-1/2: A(K_c) ~ I
+        nRA = float(np.linalg.norm(A.r[0]) * np.linalg.norm(S0, 2)**2 * (1 + 1e-10))    # ||S^dag R_A S|| <= ||S||^2 ||R_A||_F
         A, C, b, QH = SH @ A @ S, SH @ C @ S, SH @ b, SH @ QH
         t3 = time.time()
-        Y, eta = inv_or(A)
+        Y, eta = inv_or(A, nRA)
         Q = QH.H()
         w = (Khc - Q @ (Y @ b)) * (Kh * Kh.conj()).sum(1, EPS).recip().rs(1, 1, 1)
         G = Q @ (Y @ C @ Y) @ QH + (w @ w.H()) * sig.recip().rs(1, 1, 1)
@@ -266,7 +322,7 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
     lam = lam + arb(np.linalg.norm(G.r[0]) * (1 + 1e-12) + EPS * 4 * np.linalg.norm(G.mj()[0]))
     ub = float((lam.sqrt() / L).upper())
     if log:
-        relA = np.linalg.norm(A.r[0]) / np.linalg.norm(A.c[0])
+        relA = nRA / np.linalg.norm(A.c[0])
         log(f"  d {t1-t0:.1f}s, E {t2-t1:.1f}s, blocks {t3-t2:.1f}s; eta {eta:.3f}, |R_A|/|A| {relA:.2e}, "
             f"centre rho_1 {np.sqrt(max(np.linalg.eigvalsh((G.c[0] + G.c[0].conj().T) / 2))) / L:.6f}, "
             f"|r_G|/lam {np.linalg.norm(G.r[0]) / float(lam.mid()):.2e}")
