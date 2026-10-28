@@ -65,3 +65,38 @@ Inputs taken as readings, not on images: ‖H_{1,k}‖ ≤ O(1)B_3 (Schur test o
 G^c extension: for complex X = X_R + iX_I with |X_I| = O(α_{0,k} + α_{1,k})|B′| locally, Re|D X|²-type terms lose ≤ O(α)|X|²_p, which joins c_p; this is Balaban's "ε_k → O(α_{0,k} + α_{1,k})". [reading, as NEW4 says] 
 Grade item 4: CONFIRMED; (4.1) is a correct reading of p. 357 and is in fact exact by [13] (3.10).
 
+## H. Items 5–7
+
+Item 5 — constant. (1.8) on the image: d(100M)^{d+1} = d(100M)^5 at d = 4, so ‖∂B′‖² ≥ ‖B′‖²/(d(100M)^5). Sourced (1.7) gives ≥ (1 − θ)γ_0/(d(100M)^5)‖B′‖² − err ≥ γ_0/(2d(100M)^5)‖B′‖² − err for θ ≤ ½, and ≥ γ_0/(4d(100M)^5)‖B′‖² when err := O(1)((1 + B_3²)M^6R_kε_k + e^{−R_k}) ≤ γ_0/(4d(100M)^5). Recomputed: CONFIRMED. The condition is on g_k only (through ε_k, R_k), of Balaban's "g_k sufficiently small" type. G^c extension: CONFIRMED as a reading (§G).
+Minor correction to NEW4 §5: "(1.10)–(1.11) need only an UPPER bound of the form". Balaban says this for the lower bound on the integral; the two-sided |I(U_0)| < O(1) log M|Λ| also uses the lower bound of the form (log of the Gaussian determinant). The sourced (1.9) supplies it with γ_0/(4d(100M)^5) in place of γ_0/(2d(100M)^5): a change of O(1)|Λ| in |I(U_0)|, inside O(1)M^5. Conclusion unchanged.
+Minor correction to NEW4 §3 alternative route: with θ ≤ ½ the (1.77) exponent loses the factor (1 − θ) ≥ ½, so the condition is R_j^3 ≥ 4·6(d + 3)(100M(L + 1)N^{β_0})^{d+2}/(γ_0A_1²); NEW4's 2·6(d + 3)(…)^{d+2}/γ_0 is right only if A_1² ≥ 2. Either way it is Balaban's own "g_j small" condition with a larger O(1). The route is not needed (main route closes (1.77)).
+Grade item 5: CONFIRMED.
+
+Item 6 — canon. SOURCES_ORDER_CANON B32: "r_0^{rad} = τ_0 = min(1/8, r_0^{D2}, r_0^{D3}, r_0^{FX}, γ^{−2}/10, 1/(6γ²c_1c_H)); ρ_1 ≤ r/(4C_hM); 5γ²r ≤ ½". So 5γ²r ≤ ½ (equivalently r ≤ γ^{−2}/10) is in the canon, and so is the ρ_1 condition that D3R_VERIFY needs for θ = γ²δ_r ≤ 5γ²r. Together they give θ ≤ ½. NEW4's remark "r_0 ≤ 1/10 for a γ-free statement" is harmless (γ ≤ 1) and not needed: γ^{−2}/10 is already in the min.
+New conditions from NEW-4: only enlarged O(1)'s inside "g_k small" (factor 1 + B_3² in (1.7); factor 2 in (1.11); factor 2 in the p. 382 first-case factor, see below). These are r-independent and are absorbed by γ small, as Balaban's own "may result only in stronger restrictions on g_k, or γ" (p. 358).
+Grade item 6: CONFIRMED.
+
+Item 7 — closure list. NEW4's list is NOT complete. Additions and corrections:
+ (a) ρ_1 ≤ r/(4C_hM) (canon B32; D3R_VERIFY item 1): needed for θ ≤ 5γ²r. NEW4 says "ρ_1λ_k small" only.
+ (b) D3 (P6) + D3R §1.4 for the WEIGHTED third term −A((g″)^{−2}ζ_1, U″) of (1.37): (1.48) positivity (needs ω > 0, true for θ < 1) and the p. 382 first-case factor exp(−¼g_j^{−2}(24R_j^4)^{−2}δ′_j²), which becomes exp(−(1 − θ)A_1²48^{−2}R_j^{−8}p_1²) ≤ exp(−½R_j^{−8}p_1²) (θ ≤ ½, A_1 ≥ 48 as Balaban); it is later used only through exp(−p_0(g_j)) with 2p_1 − (d + 5)r_0 > p_0, so the ½ is absorbed by g_j small. D3R §1.4 covers this term by name ("the third term of (1.37)") but books only γ_0 → (1 − θ)γ_0; the A_1-factor loss should be named. NEW4 §3 points to "the second term of (3.1) and its analogues: D3R §1.4 / D3 (P6)": the target is right, the description is not (it is the recombined third term, p. 365).
+ (c) Complex f: NEW4 says "FX §6.3 (O2 open there)". Stale: SOURCES_FX_D §2 records O2 = (FX-D) CLOSED and verified by SOURCES_FX_O23 §4 (+ VERIFY §6), conditional on N3 = B18 (HBETA strip, choice B) or on the unchecked moved d_Sζ_iP_p term (choice A). Replace by "FX_O23 §4 (O2 closed; N3/B18 or choice-A bookkeeping)".
+ (d) (4.1): replace "my plaquette-local reading of p. 357" by "[13] = CMP 99 (3.10), image p. 392": exact split ⟨A, ΔA⟩ = Σ|D_UA|² + Δ′, Δ′ plaquette-local and curvature-small. [R](a) discharged.
+ (e) p. 382 now read on the image: [R](b) discharged.
+ (f) Remaining readings: ‖H_{1,k}‖ ≤ O(1)B_3; 0 ≤ ζ_0 ≤ 1; G^c extension of Step 2; (P5) linear vertex [reduced] in D3 (NEW4 [R](c), unchanged).
+Grade item 7: CORRECTED.
+
+## I. Grades summary
+
+1 (ω only, |ω − 1| ≤ θ ≤ 5γ²r): CONFIRMED (needs ρ_1 ≤ r/(4C_hM)).
+2 (variational problems unweighted, on images: (1.3), (1.12)/(1.13), (1.39)/(1.40)): CONFIRMED.
+3 ((1.14) keeps (1.21), (1.77) source-free, on images pp. 359–361, 382–383): CONFIRMED; NEW4's description of where the source touches large-field factors CORRECTED ((1.37) third term, weighted).
+4 (Hessian split + (4.2)): CONFIRMED by recomputation; (4.1) is a correct reading of p. 357 and is exact by [13] (3.10).
+5 (γ_0/(4d(100M)^5), θ ≤ ½, G^c): CONFIRMED; two minor constant notes (§H).
+6 (no new canon condition): CONFIRMED (B32 has 5γ²r ≤ ½ and the ρ_1 condition).
+7 (closure list): CORRECTED (add (a)–(d)).
+Page corrections ((1.21) p. 361, (1.40) p. 367, (1.77) p. 383): CONFIRMED.
+
+Line for SOURCES_D3 under the weight route ((i)(P4)–(P6)):
+ - NEW-4 (SOURCES_D3_NEW4 + _VERIFY): the source enters R only as the plaquette factor ω, |ω − 1| ≤ θ ≤ 5γ²r; U_0, (1.12), (1.40) unweighted; (1.21), (1.77) source-free by (1.14); denominator (1.9) → γ_0/(4d(100M)^5) by the split CMP 99 (3.10); (1.37)'s weighted ζ_1-term via D3R §1.4; no condition beyond canon B32 (5γ²r ≤ ½, ρ_1 ≤ r/(4C_hM)).
+
+NEW-4 final status: CLOSED relative to D3 (B8)/(P4)/(P5)/(P6), D3R Lemma P3 + §1.3–1.4, canon B32, FX_O23 §4 (O2 closed; N3/B18), with (P5)'s Gaussian booking still [reduced] in D3 and three readings (‖H‖ ≤ O(1)B_3, 0 ≤ ζ_0 ≤ 1, G^c extension).
