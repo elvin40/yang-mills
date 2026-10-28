@@ -1,6 +1,46 @@
 SUPERSEDED, see PLAN.md
 STATUS: COMPLETE
 
+[Note by the R2REM session, 2026-10-28. The two lines above were written into this file by the supervisor while this session was running (PLAN.md l. 326: "Superseded markers written for R2REM and D189 so the loop skips them"). They overwrote this session's header and §1. I keep the marker lines unchanged and restore the header and §1 below them. Everything from "## 2." on was written by this session after the marker appeared.]
+
+# SOURCES_T2_R2REM — the remainder R_2 of CMP 116 (2.16), and input (E) of SOURCES_LOC
+
+Date: 2026-10-28. Item R2REM, DERIVE.
+Status: complete (2026-10-28), but marked SUPERSEDED by the supervisor (above).
+Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). reports/ONLINE_SWEEP.md not opened.
+
+Read list.
+- SOURCES_LOC.md (full), SOURCES_LOC_VERIFY.md (full).
+- SOURCES_HHOL.md l. 40–70, l. 150–163; SOURCES_HHOL_VERIFY.md (full).
+- SOURCES_GGAIN.md l. 110–135; SOURCES_GGAIN_VERIFY.md (full).
+- SOURCES_Q.md header and §1; SOURCES_CDC.md ledger lines (grep).
+- TRUST_LEDGER.md l. 62–83; numerics/NUMERICS.md l. 75–85; PLAN.md (grep R2REM only, after the marker appeared).
+- Balaban page images: CMP 116 pp. 3–6, 12–13, 15–17 (PDF = journal page); CMP 99 p. 428 (PDF 40). Text layers: CMP 116 l. 600–800; CMP 99 l. 1615–1660, 1920–1950.
+
+Plan.
+1. The target as printed (with one correction to the brief: the printed decay rate is ½δ_0).
+2. Objects and named inputs.
+3. Two operator lemmas: weighted Schur algebra; Combes–Thomas for C_1^{−1}.
+4. The two perturbation lemmas: σ-change (walk sum) and (U, J)-change (Cauchy).
+5. Theorem R2 and its proof.
+6. Corollary (E) at σ ≡ 1, and positivity side results.
+7. Constants, scope, and what is not claimed.
+8. Ledger.
+
+## 1. The target as printed
+
+1.1 [V image, CMP 116 p. 16] The R_1 bound, verbatim: "½⟨X, R_1X⟩, with matrix elements satisfying the bound |R_1(b,b′)| ≤ (O(1)e^{−1/3δ_0M} + O(α_0 + α_1)) exp(−½δ_0|b_− − b′_−|). (2.16) We have assumed, as in Sect. 1, that M is much bigger than κ_1, especially that e^{−1/3δ_0M}e^{16κ_1} < 1."
+1.2 [V image, p. 16] The R_2 sentence, verbatim: "Similarly, the next Gaussian measure is replaced by the measure with the new covariance, multiplied by a quotient of determinants, which can be estimated by (2.17), and by the function exp ½⟨B, R_2B⟩ with R_2 satisfying (2.16)." No derivation is printed for R_1 either. "The difference is a quadratic form ... satisfying the bound" is the whole argument on the page.
+1.3 [V image, p. 15] The replacement point, verbatim: "In the expression on the right-hand side we replace the operators by the corresponding operators with σ(Z) = 0, **U** = U, J = 0, and we estimate the error." The B-measure in (2.15) is dμ_{(Re C^{(k)}(Z_0,σ(Z))^{−1})^{−1}}(B).
+1.4 Definition of R_2 [P]. For real B, dμ_{(Re C(σ)^{−1})^{−1}}(B) ∝ exp(−½⟨B, Re C(σ)^{−1}B⟩) = exp(−½⟨B, C_0^{−1}B⟩)·exp(½⟨B, (C_0^{−1} − Re C(σ)^{−1})B⟩). So
+  R_2 = C_0^{−1} − Re C(σ)^{−1},  C(σ) := C^{(k)}(Z_0, σ(Z)) at (**U**, **J**),  C_0 := C^{(k)}(Z_0, 0) at (U, 0).
+This is the sign of SOURCES_LOC_VERIFY §5. The brief's "Re C(σ)^{−1} − C_0^{−1}" is −R_2. Signs do not affect any bound below.
+1.5 "Re" [P]. In a real basis of g, Re K is the entrywise real part, Re K = (K + K̄)/2. For each block, ‖(Re K)(b,b′)‖ ≤ ‖K(b,b′)‖ because ‖K̄(b,b′)‖ = ‖K(b,b′)‖. Re C_0^{−1} = C_0^{−1} since C_0 is real. So
+  |R_2(b,b′)| ≤ ‖(C(σ)^{−1} − C_0^{−1})(b,b′)‖.  (1.5)
+All bounds below are proved for the right side. They hold for R_2 by (1.5). If "Re" is read as the Hermitian part (K + K*)/2, the same holds with b, b′ exchanged in one term; the bounds below are symmetric in (b, b′).
+1.6 Correction to the brief [V]. The brief asks for decay exp(−δ_0|b − b′|). The printed (2.16) has exp(−½δ_0|b_− − b′_−|). The rate ½δ_0 is what the geometry gives (§4.1: half of the walk decay pays for the factor e^{−(1/3)δ_0M}, the other half gives the decay). I do not claim rate δ_0. I prove: for each fixed a below an explicit rate (§5), |R_2(b,b′)| ≤ K_a(e^{c_1κ_1}e^{−δ_0M/3} + α_0 + α_1)e^{−a|b_− − b′_−|}. With input (A-dec) of §2, a can be any number below ½δ_0. Without it, a is a small Combes–Thomas rate a_CT. Downstream uses ((2.21), Schur norm, input (E)) need only a > 0.
+1.7 The σ-domain [V image p. 5, I for Sect. 2]. p. 5, verbatim: "the parameters s(Y_0) are complex valued and satisfy the bound |s(Δ)| ≤ e^{κ_1} for Δ ⊂ Y_0\□̃^4, κ_1 is a sufficiently big positive number." Sect. 2 refers to Sect. 1 ("as in Sect. 1", p. 16). I take |σ(Δ)| ≤ e^{κ_1} for all Δ ∈ σ_0 ∩ Z (SOURCES_LOC_VERIFY §6). The polydisc contains σ ≡ 0 and σ ≡ 1. The proof below works on the whole closed polydisc, so no maximum-principle step is needed.
+
 ## 2. Objects and named inputs
 
 2.1 Objects.

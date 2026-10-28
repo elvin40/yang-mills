@@ -65,3 +65,93 @@ where Γ_{<b} is the part of Γ before b. Proof of (1.2): a forward bond contrib
  M({V_s(Γ)}_Γ)·M({V(Γ)}_Γ)^{−1} = e^{is(𝒢B)(y, x) + O(s²)}, i.e. (𝒢B)(y, x) := (d/ds)|_{s=0}(1/i)log[M({V_s(Γ)})M({V(Γ)})^{−1}]. (1.3)
  Then B̃′(y, x) of 1.4 is i(𝒢B)(y, x), and |B̃′|² = |𝒢B|² (VERIFY V9 F: exact linearization). So G^{(2)}(B) = ‖𝒢B‖² := Σ_yΣ_{x≠y}|(𝒢B)(y, x)|², and c_G = 1. With 1.4: Δ^{(k)} = Δ^full + 𝒢*𝒢, and A_exp = C*Δ^{(k)}C. G_y(B) := Σ_{x∈B(y)∖{y}}|(𝒢B)(y, x)|².
 - (§1.1–1.5 done)
+1.6 Lemma G (properties of 𝒢) [P, with the smoothness of M from 1.2]. Let V be real and regular on B(y). Put w := max_{x,Γ}|W_Γ − 1|, where W_Γ := V(Γ)U(y, x)^{−1}, Γ ∈ G(y, x).
+ (a) Block locality. (𝒢B)(y, ·) depends only on the values of B and V on bonds of B(y). So 𝒢*𝒢 = ⊕_y𝒢_y*𝒢_y, and its kernel vanishes unless both bonds lie in one block.
+ (b) Weights. There are linear maps ω_Γ on 𝔤 with (𝒢B)(y, x) = Σ_{Γ∈G(y,x)}ω_Γ B_Γ, and ‖ω_Γ − n^{−1}·1‖ ≤ c_Mw, n := |G(y, x)| ≤ d!, c_M = c_M(G, d).
+ (c) w ≤ c_w Mα_0, c_w = c(d, L, N). Hence for Mα_0 small (after d, L, N) the weights are n^{−1}(1 + O(Lα_0M)) and
+ G_y(B) ≤ 2c_𝒢S_y(B), c_𝒢 := d(L−1)L^d/2; ‖𝒢*𝒢‖ ≤ 2c_𝒢.
+ (d) Gauge directions. For every λ, (𝒢D^Vλ)(y, x) = λ(y) − Ad(U(y, x))λ(x). If λ(y) = 0, then |(𝒢D^Vλ)(y, x)| = |λ(x)| exactly.
+ Proof. (a) Every Γ ∈ G(y, x) lies in B(y) (1.1). So B_Γ and t_{Γ,b} use only B and V on bonds of B(y), and so does U(y, x). Block bond sets of distinct blocks are disjoint, which gives the direct sum.
+ (b) Put M̄ := U(y, x). By (0.6), M({W_Γ}) = M({V(Γ)})M̄^{−1} = 1. By (1.2), V_s(Γ) = e^{isB_Γ}W_ΓM̄ + O(s²). By (0.6) again, M({V_s(Γ)})M̄^{−1} = M({e^{isB_Γ}W_Γ}) + O(s²); the O(s²) passes through M because M is smooth. So (𝒢B)(y, x) is the derivative at s = 0 of (1/i)log M({e^{isB_Γ}W_Γ}). This is linear in the tuple (B_Γ)_Γ; ω_Γ is its Γ-component. At W_Γ = 1 for all Γ, (0.8) gives ω_Γ = n^{−1}·1. Smoothness of M near (1, …, 1) gives the Lipschitz bound.
+ (c) w is gauge invariant: under V ↦ V^u, V(Γ) ↦ u(y)V(Γ)u(x)^{−1}, and by (0.6) M̄ ↦ u(y)M̄u(x)^{−1}, so W_Γ ↦ u(y)W_Γu(y)^{−1}, and |·| is conjugation invariant. In a regular gauge on B(y) (0.3), |V(b) − 1| ≤ c(N)c_4Mα_0, so |V(Γ) − 1| ≤ ℓ_Γc(N)c_4Mα_0 (telescoping with unitary factors), and M̄ is within the same order of 1 by (0.8). So w ≤ c_wMα_0. Now choose Mα_0 so small that κ := 1 + d!·c_Mw ≤ √2. Then ‖ω_Γ‖ ≤ κ/n. By Cauchy–Schwarz in Γ, |(𝒢B)(y, x)|² ≤ (Σ_Γ‖ω_Γ‖)(Σ_Γ‖ω_Γ‖|B_Γ|²) ≤ κ²·max_Γ|B_Γ|². Each t_{Γ,b} is ± orthogonal and Γ uses each bond once, so by Cauchy–Schwarz along Γ, |B_Γ|² ≤ ℓ_ΓΣ_{b∈Γ}|B(b)|² ≤ (d(L−1)/2)S_y(B). Sum over the < L^d points x: G_y ≤ κ²c_𝒢S_y ≤ 2c_𝒢S_y. The norm bound follows from (a).
+ (d) Put u_s := e^{isλ}. By 0.5, e^{isD^Vλ(b)}V(b) = V^{u_s}(b) + O(s²), with V^u(b) = u(b_−)V(b)u(b_+)^{−1}. Telescoping along Γ gives V^{u}(Γ) = u(y)V(Γ)u(x)^{−1}. By (0.6), M({u(y)V(Γ)u(x)^{−1}}) = u(y)M̄u(x)^{−1}. So M({V_s(Γ)})M̄^{−1} = u_s(y)·M̄u_s(x)^{−1}M̄^{−1} + O(s²) = e^{is[λ(y) − Ad(M̄)λ(x)] + O(s²)}. By (1.3), (𝒢D^Vλ)(y, x) = λ(y) − Ad(M̄)λ(x). M̄ ∈ G, so Ad(M̄) is orthogonal, and for λ(y) = 0 the norm is |λ(x)|. ∎
+ Remarks. (i) Part (d) is exact; no smallness enters (VERIFY V2: this replaces the source's step with τ_G). (ii) For a flat V on B(y) all V(Γ) coincide, W_Γ = 1, and 𝒢 is the plain contour average (VERIFY V2); numerically checked on a non-flat so(3) block to 5·10^{−16} (VERIFY V5).
+1.7 Scaling [P]. Before B′ → g_kB′ the gauge term is (1/g_k²)·½G^{(2)} + O(B′³); after it, ½G^{(2)}(B′) with coefficient c_G = 1, of the same order as the other terms of (2.11). G_3 is cubic and higher; it does not enter the covariance.
+1.8 Remark (why a direct proof is needed) [P, VERIFY V10(1)]. 𝒢*𝒢 does not vanish on the axial slice {B = 0 on the trees}. Example: U = 1, d = 2, L = 3, B = e on the bond ⟨y + e_1, y + e_1 + e_2⟩. This bond is not a tree bond, and it lies on one of the two contours from y to y + e_1 + e_2. So (𝒢B)(y, y + e_1 + e_2) = ½e ≠ 0. Hence the exponential-gauge covariance is not the axial covariance restricted to a subspace, and no transfer from the axial gauge applies. The proof below bounds A_exp directly.
+1.9 Shared operators [R via (p254)]. G_1, (QG_1Q*)^{−1}, H_1, Δ_J, and Q̃ are defined in CMP 99 §§C–E before the axial restriction, and CMP 109 uses them with its new averages (p254). So Δ^full contains no gauge fixing, and its expansions (WG), (A1W) serve the exponential gauge. The only gauge-fixing-dependent objects are the lower bound of A_exp and its inverse.
+- (§1 done)
+
+## §2 Lemma E: the block inequality with the gauge term
+
+2.1 Statement [P given (A3-4.2), (R3), Lemma G]. Put τ_p := 16√N c_4Mα_0. Assume Lemma G(c) applies (κ ≤ √2) and
+ 16d³L^dc_𝒢τ_p² ≤ 1. (H_E)
+Then for every real regular V and every field B on the bonds of B(y),
+ S_y(B) ≤ K_b(P_y(B) + G_y(B)), K_b := 8dL^d(1 + 16dc_𝒢) ≤ 64d³L^{2d+1}.
+(H_E) is a smallness condition on Mα_0 after d, L, N. The source bound K_b ≤ 136d³L^{2d+1} (SOURCES_WC_EXPGAUGE 3.2) also holds; the smaller value comes from the exact step (d).
+2.2 Proof, step (a): the split of B on one block into a gauge part and a transverse part. Let T(y) be the axial tree of B(y) with root y: for x ∈ B(y), Γ^ax_{y,x} goes from y to x first along e_d, then e_{d−1}, …, then e_1 (A3 §3.0, with root y). Each x ≠ y has a unique parent (the site before x on Γ^ax_{y,x}). So T(y) is a spanning tree with L^d − 1 bonds. Define λ on B(y) by λ(y) := 0 and, along each tree bond b with ends z (the parent) and z′ (the child):
+ if b_− = z, b_+ = z′: λ(z′) := Ad(V(b))^{−1}(B(b) + λ(z));
+ if b_− = z′, b_+ = z: λ(z′) := Ad(V(b))λ(z) − B(b).
+The recursion runs from the root outward, so λ is well defined and unique. Put B_ax := B + D^Vλ. In the first case (D^Vλ)(b) = λ(z) − Ad(V(b))λ(z′) = −B(b). In the second case (D^Vλ)(b) = λ(z′) − Ad(V(b))λ(z) = −B(b). So B_ax = 0 on T(y). Also λ(y) = 0, so the gauge part D^Vλ lies in the tangent space of the residual group N of 1.3. We call B_ax the transverse part. Put Λ_y := Σ_{x∈B(y)}|λ(x)|².
+2.3 Step (b): the axial block inequality. B_ax vanishes on T(y). By (A3-4.2) with root y,
+ S_y(B_ax) ≤ dL^dP_y(B_ax). (2.1)
+2.4 Step (c): the covariant curl of a gauge direction. Claim: for every plaquette p ⊂ B(y) with base corner p_0,
+ (∂^VD^Vλ)(p) = (1 − Ad(V(∂p)))λ(p_0). (2.2)
+Proof. By 0.5, e^{isD^Vλ}V = V^{u_s} + O(s²), u_s = e^{isλ}. Telescoping around ∂p from p_0 gives V^{u}(∂p) = u(p_0)V(∂p)u(p_0)^{−1}. So, by the definition 0.4 of the curl, e^{is(∂^VD^Vλ)(p)}V(∂p) = (1 + isλ(p_0))V(∂p)(1 − isλ(p_0)) + O(s²) = (1 + is[λ(p_0) − Ad(V(∂p))λ(p_0)])V(∂p) + O(s²). Compare first-order terms. ∎ (Checked numerically to 8·10^{−16} on a non-flat so(3) block, VERIFY V5. The literal formula (3.4) of CMP 99 is not covariant and is not used, VERIFY V3.)
+ Bound. ‖Ad(V(∂p)) − 1‖ is invariant under V ↦ V^u, because V(∂p) ↦ u(p_0)V(∂p)u(p_0)^{−1} and Ad of it is conjugated by the orthogonal Ad(u(p_0)). In a regular gauge on B(y), V(∂p) is a product of four factors e^{±iA_1(b)} with |A_1(b)| ≤ c_4Mα_0 (R3). The elementary fact (E) of A3 §2.1 with the √N of A3_VERIFY item 6 reads ‖Ad(e^{iY}) − 1‖ ≤ e^{2√N|Y|} − 1 ≤ 4√N|Y| for 2√N|Y| ≤ 1, because ‖ad_Y‖ ≤ 2‖Y‖_op ≤ 2√N|Y| when tr 1 = 1. Telescoping over the four orthogonal factors gives ‖Ad(V(∂p)) − 1‖ ≤ 4·4√N c_4Mα_0 = τ_p.
+ By linearity of the curl, (∂^VB_ax)(p) = (∂^VB)(p) + (∂^VD^Vλ)(p). So |(∂^VB_ax)(p)| ≤ |(∂^VB)(p)| + τ_p|λ(p_0)|, and |(∂^VB_ax)(p)|² ≤ 2|(∂^VB)(p)|² + 2τ_p²|λ(p_0)|². Each site is the base corner of at most d(d−1)/2 ≤ d² plaquettes of B(y). Summing over p ⊂ B(y):
+ P_y(B_ax) ≤ 2P_y(B) + 2d²τ_p²Λ_y. (2.3)
+2.5 Step (d): 𝒢 controls λ. By linearity, 𝒢B = 𝒢B_ax − 𝒢D^Vλ. By Lemma G(d) with λ(y) = 0, |(𝒢D^Vλ)(y, x)| = |λ(x)| for x ≠ y. So |λ(x)| ≤ |(𝒢B)(y, x)| + |(𝒢B_ax)(y, x)|, and |λ(x)|² ≤ 2|(𝒢B)(y, x)|² + 2|(𝒢B_ax)(y, x)|². Sum over x ∈ B(y)∖{y} (λ(y) = 0) and use Lemma G(c) for B_ax:
+ Λ_y ≤ 2G_y(B) + 2G_y(B_ax) ≤ 2G_y(B) + 4c_𝒢S_y(B_ax). (2.4)
+This step is exact by (0.6); no smallness is used (VERIFY V2).
+2.6 Step (e): back from B_ax to B. B = B_ax − D^Vλ, so |B(b)|² ≤ 2|B_ax(b)|² + 2|(D^Vλ)(b)|². Since Ad is orthogonal, |(D^Vλ)(b)|² ≤ 2|λ(b_−)|² + 2|λ(b_+)|². Each site of B(y) is an endpoint of at most 2d bonds of B(y). So Σ_{b⊂B(y)}|(D^Vλ)(b)|² ≤ 4dΛ_y, and
+ S_y(B) ≤ 2S_y(B_ax) + 8dΛ_y. (2.5)
+2.7 Step (f): the Poincaré-type assembly. Insert (2.3) into (2.1), then (2.4):
+ S_y(B_ax) ≤ dL^d[2P_y + 2d²τ_p²Λ_y] ≤ 2dL^dP_y + 2d³L^dτ_p²[2G_y + 4c_𝒢S_y(B_ax)]
+ = 2dL^dP_y + 4d³L^dτ_p²G_y + 8d³L^dc_𝒢τ_p²S_y(B_ax).
+By (H_E), 8d³L^dc_𝒢τ_p² ≤ ½. Move the last term to the left and multiply by 2:
+ S_y(B_ax) ≤ 4dL^dP_y + 8d³L^dτ_p²G_y ≤ 4dL^dP_y + G_y/(2c_𝒢), (2.6)
+where the last step uses 8d³L^dτ_p² ≤ 1/(2c_𝒢), again (H_E). Insert (2.6) into (2.4):
+ Λ_y ≤ 2G_y + 4c_𝒢[4dL^dP_y + G_y/(2c_𝒢)] = 4G_y + 16c_𝒢dL^dP_y. (2.7)
+Insert (2.6) and (2.7) into (2.5):
+ S_y ≤ 8dL^dP_y + G_y/c_𝒢 + 32dG_y + 128c_𝒢d²L^dP_y = 8dL^d(1 + 16dc_𝒢)P_y + (1/c_𝒢 + 32d)G_y.
+2.8 The constant. c_𝒢 = d(L−1)L^d/2 ≥ 2·2·9/2 = 18 ≥ 1 for d ≥ 2, L ≥ 3. So 1/c_𝒢 + 32d ≤ 1 + 32d ≤ 8dL^d·16dc_𝒢 ≤ K_b. Hence S_y ≤ K_b(P_y + G_y). For the bound on K_b: 1 + 16dc_𝒢 = 1 + 8d²(L−1)L^d = 8d²L^{d+1} − (8d²L^d − 1) ≤ 8d²L^{d+1}. So K_b ≤ 64d³L^{2d+1}. ∎
+2.9 Remarks [P]. (i) Lemma E is block-local: it involves only bonds and plaquettes of B(y). It needs no Dirichlet condition and no Q̃-constraint. (ii) The tree T(y) and the split B = B_ax − D^Vλ are a device inside the proof. The exponential-gauge field B is not constrained. (iii) The root of T(y) must be the root y of 𝒢 (the block centre), because step (d) needs λ(y) = 0 at the point where every contour of G(y, x) starts. (A3-4.2) holds for this root (0.9). (iv) Without the gauge term the inequality fails: at V = 1, B = Dλ with λ(y) = 0 and λ ≠ 0 has P_y = 0 (the curl of a gradient vanishes) and S_y > 0 (on the connected block, Dλ = 0 forces λ constant, hence λ = 0). These are exact zero modes; the numerics of §7 show min(P | Q̃ = 0) = 0 to 10^{−14}.
+- (§2 done)
+
+## §3 Theorem L: the global lower bound
+
+3.1 Lemma P_exp [P given Lemma E, (A3-4.4)]. Assume (H_E) and the inputs of (A3-4.3). For every unit field B with B = 0 off Λ and Q̃B = 0,
+ P^U(B) + G(B) ≥ γ_e(1 − η_6)‖B‖², γ_e^{−1} := K_b(1 + 6d/m_L) + 6/m_L, G := Σ_yG_y = ‖𝒢B‖².
+Proof. (1) Block bonds. Plaquettes inside distinct blocks are distinct, so Σ_yP_y ≤ P^U. Sum Lemma E over the blocks: S_b = Σ_yS_y ≤ K_bΣ_y(P_y + G_y) ≤ K_b(P^U + G).
+(2) Corridor bonds. Q̃B = 0 is the hypothesis of (A3-4.3), so (A3-4.4) applies: S_c ≤ (3/m_L)(2P^U + 2dS_b) + η_6‖B‖². (A3-4.3) uses neither the trees nor any condition inside the blocks (0.9). So it is unchanged in the exponential gauge.
+(3) Assembly. ‖B‖² = S_b + S_c ≤ (1 + 6d/m_L)S_b + (6/m_L)P^U + η_6‖B‖² ≤ [K_b(1 + 6d/m_L) + 6/m_L](P^U + G) + η_6‖B‖². The first step inserts (2); the second inserts (1) and uses G ≥ 0. Rearranging gives the claim. ∎ (Assembly recomputed in VERIFY V4.)
+3.2 Theorem L [P given (A3-6.1), (R4), Lemma P_exp]. Assume (H1)–(H3), with α_* so small that (H_E) holds, Lemma G(c) applies, and
+ η_6 ≤ ¼, ε_7 ≤ ⅛, ε_7a + c_J ≤ γ_e/12. (3.1)
+This is possible because η_6, ε_7, c_J are c(d, L, N)(Mα_0 + (Mα_0)²) by their definitions (A3 §4.1, §6.1, §6.4). Then for all B̃ ∈ V_red with B̃ = 0 off Λ,
+ ⟨B̃, A_expB̃⟩ ≥ γ_exp‖B̃‖², γ_exp := ½c̄γ_e = ¼γ_e, c̄ := min(½, c_G) = ½.
+Proof. Put B := CB̃. By 0.6, Q̃B = 0, and B = 0 off Λ (A3 §6.5 [V CMP 99 p. 428], with Q̃ = Q_1(U_1), item I3). By (1.1),
+ ⟨B̃, A_expB̃⟩ = ⟨B, Δ^{(k)}B⟩ = E(B) − ⟨B, Δ_JB⟩ + G(B).
+By (A3-6.1), E(B) ≥ (1 + ε_7)^{−1}[½P^U − ε_7a‖B‖²] ≥ (1 + ε_7)^{−1}·½P^U − ε_7a‖B‖². By (R4), −⟨B, Δ_JB⟩ ≥ −c_J‖B‖². Since G ≥ 0 and (1 + ε_7)^{−1} ≤ 1, G ≥ (1 + ε_7)^{−1}c̄G. Also ½P^U ≥ c̄P^U. So
+ ⟨B̃, A_expB̃⟩ ≥ (1 + ε_7)^{−1}c̄(P^U + G) − (ε_7a + c_J)‖B‖² ≥ [(1 + ε_7)^{−1}c̄γ_e(1 − η_6) − (ε_7a + c_J)]‖B‖²,
+by Lemma P_exp. By (3.1), (1 + ε_7)^{−1} ≥ 8/9 and 1 − η_6 ≥ ¾, so the bracket is ≥ (8/9)(3/4)·½γ_e − γ_e/12 = γ_e/3 − γ_e/12 = ¼γ_e = γ_exp. Finally ‖CB̃‖² ≥ ‖B̃‖², because C is the identity on the kept bonds and only adds the values on the bonds b_0(c) (A3 §6.5). ∎ (Arithmetic recomputed in VERIFY V1, V4.)
+3.3 Compression to Z_0 [P]. Let Λ = Z_0 in Theorem L. The form ⟨B̃, A_ZB̃⟩ on V_red(Z_0) equals ⟨B̃, A_expB̃⟩ for B̃ = 0 off Z_0, because 1_{Z_0}B̃ = B̃. So Theorem L gives A_Z ≥ γ_exp on V_red(Z_0). This is Theorem WC(i). Three checks:
+ (a) Compression cannot lower a form bound: the infimum of the quadratic form over a subspace is at least its infimum over the larger space.
+ (b) The proof never uses gauge invariance of A_exp. The gauge term enters only through Lemma E, which is block-local. Z_0 is a union of M-cubes, and M is a power of L, so Z_0 is a union of whole L-blocks. A block outside Z_0 carries B = 0 there, hence S_y = P_y = G_y = 0, and Lemma E holds trivially. So the concern "Dirichlet data break gauge invariance at ∂Z_0" does not apply.
+ (c) Corridors that cross ∂Z_0 are handled by (A3-4.3) exactly as in the axial case: B = 0 on the outer block enters (A3-4.3) only through smaller right-hand sides.
+ Inherited: dist(Z_0, Λ_k^c) > RM (A3 §0.1; item I6).
+3.4 Uniformity [P]. γ_exp = ¼γ_e depends on d, L (through K_b, m_L) only. The smallness (3.1), (H_E) depends on d, L, N, a. Nothing depends on k, η, Z_0, M ≥ M_1, or the background beyond (H1)–(H3), as in A3 §6.6.
+3.5 Remark (value). For 2 ≤ L ≤ 9, m_L = 1/L, so γ_e^{−1} = K_b(1 + 6dL) + 6L ≤ 64d³L^{2d+1}(1 + 6dL) + 6L. The proof constant is of order 10^{−6}–10^{−7} for d = 2–3, L = 3. §7 shows that the true constant at U = 1 is of order 10^{−1}. The proof constants are crude, not sharp.
+- (§3 done)
+
+## §4 The walk (tree) expansion of A_exp
+
+4.0 Inputs. All are free of gauge fixing (1.9).
+ (W_G1) Theorem WG-G1 of WG_FULL: G_1 = Σ_τT_τ with (L1) kernel support in the domains, (L2) U-dependence on ∪X̃_i^5, and |T_τ(b, b′)| ≤ B_1ρ_*^{|τ|}m(b, b′)e^{−δ_1d(τ, b, b′)} [P given the printed sketches, R].
+ (A1-W) Theorem A1-W of A1_WALK_FULL for P = G_1: (QG_1Q*)^{−1} = Σ_τT′_τ with (L1)–(L2), rate δ_W, step ρ_W ≤ K_W/M_1 [C on (C) for G_1].
+ (I5) J is local and |J| = O(Mα_0) (CMP 99 (3.36); WG §2.0).
+ (Conc) Concatenation Lemma WG 2.3: an ordered product of blocks Φ_1···Φ_N with bounds b_kρ^{|ω_k|}m e^{−δd(ω_k)} vanishes unless consecutive domain lists meet; it depends on U only on ∪X̃^5 of its domains; and |T(y, y′)| ≤ (Π_kb_k)c_1(θδ)^{N−1}ρ^{Σ|ω_k|}m(y, y′)e^{−(1−θ)δd(ω, y, y′)} for any θ ∈ (0, 1). Its proof splits the exponent with weights (1 − θ), θ and sums the junction points with c_1(θδ) [P].
+4.1 The pieces of A_exp = C*[(QG_1Q*)^{−1} − a − Δ_J + 𝒢*𝒢]C.
+ (a) C = I − hLQ̃. Its kernel vanishes beyond unit distance 2L. It depends on U only on the two blocks of a corridor and the corridor (Q̃ is block-local, item I3). It is one local factor whose domain is one M_1-cube neighbourhood (L ≪ M_1).
+ (b) 𝒢*𝒢 and a·I. By Lemma G(a), 𝒢*𝒢 is block-diagonal with kernel bound ≤ 2c_𝒢 (Lemma G(c)). a·I is diagonal. Each is one local factor (|ω| = 0).
+ (c) (QG_1Q*)^{−1}: the (A1-W) tree sum.
+ (d) Δ_J. By 0.6, ⟨B, Δ_JB⟩ = 2⟨hC̃^{(2)}(B), H_1*J⟩. C̃^{(2)} is quadratic and local with range ≤ L (the second-order part of the one-step average; item I4). So Δ_J(b, b′) = Σ_{b_0}K_{b_0}(b, b′)(H_1*J)(b_0), where K_{b_0} vanishes unless b, b′ lie within 2L of b_0. The branch H_1*J = (QG_1Q*)^{−1}QG_1J is a product of tree-expanded blocks and the local J. By (Conc), Δ_J = Σ_ωΔ_{J,ω}: each term has its kernel in the root domain near b_0, a dangling branch ω that ends at one J-insertion, U-dependence on all domains of ω, and one factor O(Mα_0) from J. This is the CMP 99 p. 427 tree shape with two of its three chains trivial (VERIFY V8: "three chains … meet in a localization domain determined by C^{(2)}(A) … estimates are the same as in (3.108)" [V text]).
