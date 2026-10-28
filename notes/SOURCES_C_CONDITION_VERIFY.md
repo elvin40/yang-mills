@@ -32,3 +32,12 @@ Independent check of SOURCES_C_CONDITION.md §1–§8. One section per tool call
 - Scope: real U only (Δ_π^{(2)} real symmetric needs real J; A2.5). Consumers need (C) only at real U (WC 6.2 (ii)). OK.
 - Claim (2) CONFIRMED.
 
+## 4. Page images (300 dpi, /tmp/ccv)
+- CMP 99 p. 398: (3.46) printed: ‖hG′λ‖ ≤ B_0(L^jη)²|h|e^{−δ_0d(y,y′)}‖λ‖ etc., supp h ⊂ Δ(y), y ∈ Λ_j, supp λ ⊂ Δ(y′). Power on the OUTPUT block, L² on the input, sup on h. Remark below (3.47): powers (L^jη)^α may be redistributed as (L^jη)^β(L^{j′}η)^γ via Lemma 2.1 — consistent with the ℓ_y/ℓ_{y′} ≤ Le^{θd} conversion. [V]
+- CMP 99 p. 399: Thm 3.3: "G(U) (a = 1) satisfies (3.42)–(3.47), with G′ replaced by G and λ replaced by J". So (3.46) for G is printed; a = 1 explicitly. [V]
+- CMP 99 p. 416: "(3.108) … This implies Theorem 3.3"; Thm 3.11: Δ′_a, G′, (Q′G′²Q′*)^{−1}, Δ_a, G positive definite; proof via G = G_0(I − R)^{−1} and positivity of G_□(1) from [4]. [V]
+- CMP 99 p. 417: (3.110) L^jηQ_j(U)A = B, abbreviated Q(U)A = B; factor "unessential because it may be included into B". Supports draft §5.3. [V]
+- CMP 99 p. 423: (3.137), (3.138), Thm 3.12 as quoted in S2_G1 A1. [V]
+- CMP 98 p. 19: (14) linear average with contours Γ_{c,x} = Γ_{c_−,x} ∪ [x, x(c)] ∪ Γ_{x(c),c_+}; (15) Ū_c with undefined U(c); "We refer the reader to paper [2] for explanations of symbols". p. 20: no definition of U(c). p. 23: (42) = one-step average, same form as (15), U(c) still undefined. NOTE: (42) is on p. 23, not pp. 19–20; the draft's "pp. 19–20, 23" is right, the brief's "pp. 19–20 ((42))" is not. [V]
+- CMP 95 p. 19: (1.8) abelian average with Γ_{c_−,x}, x(c) = x + Le_μ (translation of x by c, printed); axial gauge A(Γ_{y,x}) = 0 (1.10). No U(c) (abelian); no explicit translation rule Γ_{c_+,x(c)} = Γ_{c_−,x} + Le_μ on this page. So (Cv1), (Cv2) are indeed unprinted on the pages read. [V]
+

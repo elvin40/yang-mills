@@ -102,3 +102,39 @@ w_i(V) = ∂_t w(t f_i, V)|_{t=0} splits by the terms of ρ̃^f (D4D5 S1; SOURCE
 - Using Target 2's ℓ-dependent constants with ℓ_i → ∞ slowly. Fails: compactness needs a bound uniform along the sequence; A(ℓ_i) → ∞ gives none [P].
 
 Ledger §2.4–2.6: [P] Lemma TC algebra, the oscillation bound, the Gevrey count, the rejections' logic; [V] the D4D5 §3.2(ii) obstruction and the S1/FX statements quoted; [I] (CG-pos) positivity of pieces, (CG-a) transfer of Lemma C, items 1–3 of 2.5, the dimension-count heuristic; [new math] (CG-b4).
+
+## 3. Tightness (compactness) given (H-U∞)
+
+(H-U∞), the exact bound needed. For every ball B there are A_B, s, D such that for all K ≥ K_0, all even ℓ ≥ ℓ_0(B), all n, all F ∈ D_n(B): |S_{n,ε,ℓ}(F)| ≤ A_B^n (n!)^D ‖F‖_{sn}, with A_B ≤ C(1 + diam B)^q. Section 2.4 delivers this with s = 6, D = 3 + 2η, q = 4 [conditional on (CG-pos), (CG-a), (CG-b)].
+
+### 3.1 Topology and extraction [P]
+- For fixed (n, B) let E_{n,B} be the closure of D_n(B) in the norm ‖·‖_{sn}. It is a closed subspace of C^{sn}(closure of B^n), hence a separable Banach space.
+- The functionals S_{n,ε,ℓ} restricted to D_n(B) extend to E_{n,B} with norm ≤ A_B^n (n!)^D (by (H-U∞)). The closed ball of radius A_B^n (n!)^D in E′_{n,B} is weak-* compact (Banach–Alaoglu) and weak-* metrizable (E separable). So every sequence has a weak-* convergent subsequence.
+- Take B_j = ball of radius j. The pairs (n, j) are countable. A diagonal extraction gives one sequence (K_i, ℓ_i) along which S_{n,ε_i,ℓ_i}(F) converges for every n, j and every F ∈ D_n(B_j). Restriction is compatible (D_n(B_j) ⊂ D_n(B_{j+1})), so the limits define one linear functional S_n on D_n(R⁴) := ∪_j D_n(B_j).
+- Temperedness. Cover R⁴ by unit cubes c with a smooth partition of unity. For F ∈ ⁰S_n, F = Σ_{c_1…c_n} χ_{c_1}⋯χ_{c_n} F (flatness is preserved by multiplication). Each term lies in D_n(B) with diam B ≤ C(1 + max|c_i|), so |S_n(term)| ≤ C^n (1 + max|c_i|)^{qn} (n!)^D ‖χF‖_{sn}. The weight (1 + |x|²)^{p/2} in |F|_p with p = sn + qn + 5n pays for the polynomial factor and makes the sum over cubes converge. So |S_n(F)| ≤ C′^n (n!)^D |F|_{(s+q+5)n}: OS0 with linear growth (X2) [P, sketch].
+- What the extraction needs: only a bound C(n, B)‖F‖_{s(n,B)} uniform in (K, ℓ). The factorial growth and the polynomial growth in diam B are not needed for compactness. They are needed for OS0 (linear growth, OS II reconstruction) and for the extension to Schwartz functions.
+
+### 3.2 Is (n!)^{1+η} (or (n!)^{3+η}) enough for a measure? [P]
+No, and the growth is not the reason.
+- No measure exists for this field even at fixed ε → 0 in the usual sense. ϕ_ε(f) = Σ_p f(x_p)φ_p has variance ~ ε^{−4} (the contact term; ASSEMBLY §1.3 "What is claimed about measures" [V via PLAN §1.2]). No ε-independent rescaling makes both the contact part and the off-diagonal part finite. So the laws of ϕ_ε are not tight on S′(R⁴), and Bochner–Minlos has no input. The OS I/II objects are distributions on ⁰S_n (off-diagonal), not a measure.
+- Even if a measure existed, moments with growth (n!)^D, D > 1, do not determine it. Carleman's condition Σ_n m_{2n}^{−1/(2n)} = ∞ fails: m_{2n}^{1/(2n)} ~ n^D, and Σ n^{−D} < ∞. The formal generating functional Σ_n S_n t^n / n! has radius zero for D > 1 (Gevrey class D − 1). So "Gevrey generating functional ⇒ measure" is false in general.
+- What the growth IS enough for: OS II reconstruction (linear growth condition, X2). OS II needs σ_n ≤ A (n!)^D for some finite D and no measure. So the weak target W needs exactly (H-U∞) with any finite D.
+
+Ledger §3: [P] all items; [R] Banach–Alaoglu, OS II (X2), Carleman.
+
+## 4. OS2 (reflection positivity)
+
+### 4.1 Lattice [R + P]
+X3 (Osterwalder–Seiler 1978) [R]: on the periodic lattice with an even number of sites per side, for the reflection θ in a link plane (a plane bisecting links) and every Φ in the algebra A_+ of functions of the links of the half Λ_+ between the two seams, ⟨Θ(Φ) Φ⟩ ≥ 0 (Θ antilinear). ℓL^K even holds for ℓ even, L odd (D4D5 §2 [V]).
+Embedding [P]. Let F_n ∈ D_n(B) with supp F_n ⊂ {δ < x_0 < T}^n, T < ℓ/2 − δ. For ε < δ/2 every plaquette with centre in supp F_n has all its links in Λ_+. So Φ := Σ_n ϕ^{⊗n}(F_n) ∈ A_+. The reflection maps plaquette p to θp, and c_ε = ⟨P_p⟩ is the same for p and θp (B_4 and translation invariance, ASSEMBLY §2.6 [V via D4D5 §2]). So Θ(ϕ^{⊗n}(F_n)) = ϕ^{⊗n}(conj(F_n) ∘ θ). Hence
+  Σ_{n,m} S_{n+m,ε,ℓ}( (conj F_n ∘ θ) ⊗ F_m ) ≥ 0.
+The argument (conj F_n ∘ θ) ⊗ F_m is flat on all diagonals: within each factor by assumption, and across factors because the supports are disjoint (x_0 < −δ vs x_0 > δ). So it lies in D_{n+m}.
+
+### 4.2 Limits [P]
+Lemma RP-lim. Let S^{(i)} be families of functionals with Σ_{n,m} S^{(i)}_{n+m}((conj F_n ∘ θ) ⊗ F_m) ≥ 0 for every finite sequence (F_n) in a fixed class 𝒞. If S^{(i)}_k(G) → S_k(G) for every G of the form above, the limit satisfies the same inequality on 𝒞. Proof: a finite sum of convergent real numbers, each ≥ 0, has limit ≥ 0. ∎
+- Fixed ℓ, ε → 0 (Target 2): holds for supports in 0 < x_0 < ℓ/2 [ASSEMBLY §2.7, as PLAN §3.3 says].
+- ε → 0 and ℓ → ∞ jointly: fix (F_n), all supported in a compact set inside {x_0 > 0}. For i large, ℓ_i/2 exceeds the support and ε_i < δ/2. So every approximant satisfies the inequality for this (F_n), and the limit does. The second seam at x_0 = ℓ/2 leaves to infinity and plays no role. Then extend to F_n ∈ ⁰S_n(R^{4n}_+) by continuity (OS0).
+- Detail. The reflection plane of the lattice is at x_0 = 0 or x_0 = ε/2 depending on the convention (site plane vs link plane). The shift by ε/2 vanishes in the limit by the translation modulus of continuity (§5.1).
+Verdict: OS2 passes to the infinite-volume limit with no new input beyond (H-U∞). [P]
+
+Ledger §3–§4: [R] X3, Banach–Alaoglu; [P] the rest.
