@@ -42,3 +42,49 @@ Two structural facts follow [V]:
 (F1) Every variational problem in this part (U_0, (1.12), (1.40)) is the UNWEIGHTED Wilson action. The weight enters only the integrands.
 (F2) In the numerator Balaban splits the weighted Wilson term as (1.14): a constant-coupling part g_k^{−2}A(U″) plus a remainder A(1/(g″)² − g_k^{−2}, U″) kept as is. The forms (1.20)–(1.21) and (1.77) come from the constant-coupling part only.
 
+## 3. Where the source sits in each NEW-4 item (settles task part (1))
+
+Sourced splits. Sourced numerator weight w″ (D3 (1.a), D3R (B10′)). Sourced (1.14):
+  A(w″, U″) = g_k^{−2}A(U″) + A(w″ − g_k^{−2}, U″).   (3.1)
+The first term is Balaban's, unchanged. The source sits only in the second term, whose coefficient is Balaban's (1/(g″)² − g_k^{−2}) plus an additive δ_r-piece (D3R Lemma P3: |difference| ≤ δ_r = 4r + 2C_hMρ_1λ_k). D3R §1.3 (sup bound, factor ≤ 2) and §1.4 (positivity split, γ_0 → (1 − θ)γ_0) already treat this term [I, D3R; verified with corrections per its VERIFY].
+Sourced denominator. D3 (P4) gives the R-denominator the small-field weight w_k = ω g_k^{−2} on Λ (ω as in §1). So the denominator's Wilson term IS sourced: −g_k^{−2}A(ζ_0ω, U_{k,Z}(V′V_Λ)).
+
+Hence, item by item:
+- (1.7)–(1.9): the denominator Hessian is Δ_1(ζ_0ω). SOURCED. Needs §4.
+- (1.12)–(1.13), (1.40)–(1.41): unweighted variational problem (F1). NOT sourced. The inverse and its norm γ_0^{−1}2d(100M)^5 (resp. 4d(100M)^5γ_0^{−1}B_3²) are Balaban's verbatim. [V page + I (B8)/(P5)]. Note: the bound "by (1.9)" refers to the UNSOURCED (1.9); the sourced (1.9) of §4 is never needed here.
+- (1.20)–(1.21): from g_k^{−2}A(ζ, U″_{k,Z}), the first term of (3.1). NOT sourced. [P from (3.1) + (F2)]
+- (1.77): the form ⟨DH″B, ζDH″B⟩ is the (1.21) form at step j. NOT sourced, for the same reason. The large-field factors that the source does touch come from the second term of (3.1) and its analogues: D3R §1.4 / D3 (P6). [P from (F2); reading: p. 382 "the quadratic form in the expansion (1.20)" = this form; p. 382 not re-imaged this session]
+- Critical-point identity (1.4)–(1.5): J_0 = 0 on Λ is a property of the unweighted minimizer U_0, so it is UNCHANGED. The sourced denominator's linear term is Balaban's (1.5) term plus
+  L_f(B′) := g_k^{−1}⟨DHB′, ζ_0(ω − 1)η^{−2}Im ∂U_0⟩,   (3.2)
+  which has no J_0-cancellation. This is D3 (P5)'s linear vertex. Improvement over D3 (P5)'s sup estimate [P given p. 357]: on Z, |Im ∂U_0(p)| ≤ O(1)M^6R_kε_k (curvature of exp(iξA_0) is ∂A_0 + O(A_0²)), and |ω − 1| ≤ θ ≤ 5γ²r. So |L_f| ≤ g_k^{−1}·θ·O(M^6R_kε_k)·Σ_{p∈supp ζ_0}|DHB′(p)| — each coefficient carries ε_k, unlike D3's "O(rg_k) per plaquette". It is absorbed exactly as (P5) says (one linear vertex in the expansion of (1.2)); no new identity is needed.
+
+Alternative route (if a later file prefers to extract the WEIGHTED term A(ζ_0w″, U″) in the numerator, to cancel the weighted denominator exactly): then (1.21) and (1.77) become Σζω|DH″B|². For real f, ω ≥ 1 − θ > 0 per plaquette and each summand is ≥ 0, so
+  Σ_p η^dζω|(DH″B)(p)|² ≥ (1 − θ)·(1.21),  and (1.77) holds with γ_0 → (1 − θ)γ_0 and the error ×(1 − θ). [P]
+"Bounded by 0" still holds (ω > 0). The (1.77) large-field factor becomes exp(−½(1 − θ)γ_0[6(d+3)(…)^{d+2}]^{−1}A_1²p_1); for θ ≤ ½ it is still < exp(−R_j^{−d−5}p_1²) once R_j^3 ≥ 2·6(d+3)(100M(L+1)N^{β_0})^{d+2}/γ_0 (with Balaban's N ≤ R_k), i.e. for g_j small. [P] So both routes close (1.21), (1.77).
+
+## 4. Sourced (1.7)–(1.9) (task part (2))
+
+Setting. Real f, ‖f‖_∞ ≤ r. ω(p) := g_k²w_k(p) on supp ζ_0, real, |ω(p) − 1| ≤ θ := γ²δ_r ≤ 5γ²r (D3R 1.2/1.4; on Λ ⊂ Z the reference coupling is g_k after the reset (B10)). 0 ≤ ζ_0 ≤ 1 [I: cutoff function, reading]. X := H_{1,k}B′, B′ real, P_0B′ = B′ (axial gauge on G_0). Q_χ(X) := ⟨X, Δ_1(χ)X⟩ = Σ_p χ(p)h_p(X), h_p the second variation of the plaquette term P_p at U_0.
+
+Step 1 (plaquette split) [P given p. 357]. In the gauge of p. 357, U_0 = exp(iξA_0) on Z with |A_0|, |∇A_0| ≤ a := O(1)M^6R_kε_k. At background 1, the second variation of 1 − (1/N)Re tr exp(i(∂X)(p) + commutators) is c_N|(∂X)(p)|² ≥ 0 (the commutator terms are traceless and drop out of Re tr at second order). h_p is a smooth function of A_0 on the bonds of p, so
+  h_p(X) = c_N|(∂X)(p)|² + c_p(X),  |c_p(X)| ≤ C_1 a Σ_{b∈p}|X(b)|²,   (4.1)
+with C_1 absolute (compact group, |A_0| bounded). This is Balaban's own first-order expansion, written plaquette by plaquette.
+
+Step 2 (multiplicative comparison) [P]. Since ω − (1 − θ) ∈ [0, 2θ] and h_p ≥ −|c_p|,
+  Q_{ζ_0ω}(X) − (1 − θ)Q_{ζ_0}(X) = Σ_p ζ_0(p)(ω(p) − 1 + θ)h_p(X) ≥ −2θΣ_pζ_0|c_p(X)| ≥ −2θ·C_1a·2(d−1)‖X‖².
+With ‖X‖ ≤ O(1)B_3‖B′‖ (B_3 = Balaban's exponentially decaying kernel bound of H_{1,k}; Schur test) [I, reading of B_3]:
+  Q_{ζ_0ω}(H_{1,k}B′) ≥ (1 − θ)Q_{ζ_0}(H_{1,k}B′) − θ·O(1)B_3²M^6R_kε_k‖B′‖².   (4.2)
+
+Sourced (1.7) [P from (4.2) + (1.7)]:
+  ⟨H_{1,k}B′, Δ_1(ζ_0ω)H_{1,k}B′⟩ ≥ (1 − θ)γ_0‖∂B′‖² − O(1)((1 + θB_3²)M^6R_kε_k + exp(−R_k))‖B′‖².
+Sourced (1.8): unchanged (no weight). 
+Sourced (1.9) [P]: (1.8) gives ‖∂B′‖² ≥ ‖B′‖²/(d(100M)^5) (d = 4). For θ ≤ ½,
+  ⟨H_{1,k}B′, Δ_1(ζ_0ω)H_{1,k}B′⟩ ≥ γ_0/(4d(100M)^5)‖B′‖²
+whenever O(1)((1 + B_3²)M^6R_kε_k + e^{−R_k}) ≤ γ_0/(4d(100M)^5). This is Balaban's own "g_k sufficiently small" condition with the O(1) enlarged by the factor 1 + B_3² (θ ≤ ½); it involves g_k only, not r. Even simpler: (1 − θ)×(Balaban's (1.9)) − (4.2)'s error, which is the same estimate.
+
+G^c extension of U (p. 358) [P given Balaban's sentence]. For U ∈ U_k^c(Z, α_{0,k}, α_{1,k}), ω stays real (f real, ω does not depend on U). Step 2 uses only Re h_p ≥ −|c_p| per plaquette with |c_p| ≤ C_1(a + O(α_{0,k} + α_{1,k}))|X|²_p, which is Balaban's "ε_k replaced by O(α_{0,k} + α_{1,k})" applied to (4.1) [reading: the complex part of X = H(U)B′ is pointwise O(α)·local B′, the same input his own extension uses]. So the sourced (1.9) holds for Re of the form on the extended domain, under the same enlarged g_k-condition.
+
+Complex f. Not done through the Hessian, and not needed: D3 Lemma D3.1 (iv) compares the complex-f denominator with the real-f one directly (|σ| ≤ ½ for τ ≤ τ(Y)), and FX §6.3(b)/(c) (O2 = FX-D, or the fallback radius) carries the radius. The sourced (1.9) is used only at real f. [I]
+
+Smallness condition, exact. θ ≤ ½, i.e. γ²δ_r ≤ ½, sufficient: 5γ²r ≤ ½ (for ρ_1λ_k small, D3R). No γ_0-, M-, or R_k-dependent condition on r arises: the source multiplies a nonnegative leading form plaquette by plaquette, and the non-positive remainder c_p is already ε_k-small. This refutes the M1_SWEEP §5.1 sketch condition "2c_Hg_k²r‖H_{1,k}‖² ≤ γ_0/(4d(100M)^5)" as NECESSARY: that sketch bounded the shift additively by the full plaquette Hessian norm; the multiplicative split (Step 2) avoids it. The task's proposed form "g_k²r ≤ c·γ_0" is also not needed; the condition is γ_0-free.
+
