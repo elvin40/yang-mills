@@ -97,3 +97,65 @@ C15. The term log Z^{(k)}(U_{k+1}) − log Z^{(k)}(1). In the B variables the Ga
 
 4.5 Conclusion of (b) [P given 4.1–4.4]. C_β depends on the past only through the input sup E_0. E_0 holds on every past h ∈ ]0, γ]^k under (i) B7's slot definition of the off-trajectory chain, (ii) the CMP 116 induction step, which uses only the own coupling [R; grep I], and (iii) A15 (β from the [I] chain only), or alternatively the running-max F2′ of NONMONO on the literal reading. No constant depends on the past. No negative result.
  One residual subtlety, not a gap for 7′: CMP 116's closure needs g_k ≤ γ with γ small "depending on M and κ" ((2.31), GGAIN §1). On an arbitrary past every slot is ≤ γ by hypothesis, so this holds slot by slot [P].
+
+## 5. The large-field papers: do they reach β, and are they j-uniform?
+
+5.1 CMP 119 (2.24)–(2.28), p. 259 [V, page image PDF 17]. (2.24): "1/g_{j−1}²(x) = 1/g_j²(x) + β_j(g_{j−1})φ_j(x). Here the coupling constants g_{j−1} are defined as in (I.0.20)". (2.25): "E_k(U_k) = Σ_{j=1}^{k}[E^{(j)}(Λ_j, g_{j−1}, U_k) − E^{(j)}(Λ_j, g_{j−1}, 1) − β_j(g_{j−1})A(φ_j, U_k)]". After (2.27), the terms E^{(j)}(X, U_k, z) have an analytic extension "of the variables (U, J) ∈ U^c_j(X, α_{0,j}, α_{1,j})", which "(iv) … satisfies the inequality (I.1.18). These properties are the same as in [I.1]". (2.28): "α_{0,j} = g_jC_0(log g_j^{−2})^{q_0}, α_{1,j} = g_jC_1(log g_j^{−2})^{q_1}, where q_0, q_1 are integers greater than 1, C_0, C_1 are sufficiently large positive numbers."
+ Reading. (i) The β_j in the finite-volume recursion is CMP 109's β_j (the couplings "are defined as in (I.0.20)") [V]. (ii) The sup bound (I.1.18), with the same E_0, is re-asserted in CMP 119 for every j [V]. (iii) The analyticity radii α_{0,j}, α_{1,j} of (2.28) DEPEND ON j through g_j and tend to 0 as g_j → 0 [V].
+ Consequence for C_Π [P, elementary, given the definition of C_Π in C9]. If β_{j+1} were bounded by a Cauchy estimate in B on the CMP 119 domain (2.28), the second derivative would cost a factor ≍ α_{0,j+1}^{−2} = (g_{j+1}C_0(log g_{j+1}^{−2})^{q_0})^{−2}. This is not bounded on ]0, γ]: it grows as the coupling decreases. Along a trajectory g_j increases with j (g_0 is the smallest), so this factor is largest at the early steps and grows with K there; on arbitrary pasts it is unbounded. So a j- and history-uniform C_Π must NOT be taken from the CMP 119 domain. It must be taken from the CMP 109 domain U^c_{j+1}(X, α_0, α_1) with absolute α_0, α_1 (CMP 109 p. 263 [V]). That is legitimate exactly when the β-relevant E-terms are the [I] terms, which is CMP 119 p. 278 (A15). So A15 is load-bearing for (a), not only for (b). [P for the dichotomy; R to A15 for the choice.]
+ Why CMP 119 uses smaller radii [I, not checked]: in CMP 119 the small-field regions are defined by thresholds ε_j = g_jp_0(g_j) (2.4), which shrink with g_j; (2.28) has the same form. This does not affect the [I] terms.
+
+5.2 CMP 119 p. 279 [V, page image PDF 37]. Quoted in 4.4. The β-subtraction acts on E^{(k+1)} − E^{(k+1)}(1) only. R″^{(k+1)} and B^{(k+1)} receive the vacuum subtraction only ("subtracting the values of E^{(k+1)} and R″^{(k+1)} at the configuration U_{k+1} = 1" [V]). So β does not see R- or B-terms [V].
+
+5.3 CMP 122 II (1.100)–(1.102), p. 390 [V, page image PDF 36]. (1.100): "|R′^{(k)}(X, (U, J))| ≤ exp(−p_0(g_k))exp(−κd_k(X))". (1.101): "A_k(1/(g_k(·))², U_k) = A′_k(1/(g_k(·))², U_k) + Σ_X R′^{(k)}(X, U_k) + Σ_X B′^{(k)}(X, U_k)". (1.102): "T_k(Y) = χ^c_k(Y^{~−6})χ_{k,Λ}δ_G(V_kV_Λ^{−1})T′_k(Y)". "This new action satisfies the induction hypothesis" [V].
+ Reading. R′ and B′ appear as separate sums next to A′_k; they are not E-terms [V]. Their bounds depend on j only through the current coupling g_k (via p_0(g_k)) [V]. GGAIN_LF §7 shows that the own-slot derivatives of R′, B′, T(Y) obey conditions that are pointwise in x*_k ≤ γ (U1–U4), so they are uniform in k [P there, VERIFY grade 5]. The scale R_k (∝ (log g_k^{−2})^r, unbounded as g_k → 0) is always compared with p_0(g_k) at the same coupling (GGAIN_LF §7). None of this enters β (5.2). So GGAIN_LF is not needed for 7′; it is needed for TRUST_LEDGER B13 (real (H-hist), Lemma H chain), outside T1.
+
+5.4 CMP 122 II (1.101) and the history [I]. The large-field action after step k depends on the full past through the large-field regions and the R-operations. Since β does not see these terms (5.2) and the [I] chain is defined on the whole lattice without large-field regions (5.1 (i), A15), the history of the large-field regions does not enter β. This is a reading of p. 278–279 and is A15's content.
+
+5.5 Summary of the Balaban inputs asked about in the brief.
+- CMP 116 Lemma 1 (1.34)–(1.36): printed with "absolute constants C_1, C_2, q" and E_0 [V]; j-uniform by the CMP 109 p. 263 gloss [V + I].
+- CMP 116 (2.38)–(2.41) and the closure O(1)C_3ε_1 ≤ ½E_0: step-free [V]; "(2.29) is valid for all k" [V].
+- CMP 119 (2.24)–(2.26): β_j and g_j are CMP 109's [V]; (I.1.18) re-asserted with E_0 [V]; but the analyticity radii (2.28) are g_j-dependent and shrink as g_j → 0 [V]. Not j-uniform; harmless only via A15 (5.1).
+- CMP 122 II (1.101)–(1.102): j enters only via g_k; uniform after the pointwise absorption of GGAIN_LF §3.3/§7; does not reach β [V + P there].
+
+## 6. Assembly: Proposition H0-red
+
+Proposition H0-red. Let G = SU(2), d = 4, L odd, L > 11 (Balaban's standing assumption in CMP 109). Assume the inputs N1–N9 of §7. Then there are γ > 0 and C_β := C_ΠS_0 (S_0 of GGAIN §4.4, route (b)), both free of k, K, and the past, such that for every k ≥ 0, every past h ∈ ]0, γ]^k, and every g ∈ ]0, γ]:
+  |β_{k+1}(h, g) − β_{k+1}(0)| ≤ C_β g.   (7′)
+Tag: [R] to N1–N9; the deduction below is [P].
+
+Proof.
+Step 1 (inputs on every past). Fix k and h ∈ ]0, γ]^k. Define the chain of steps 1, …, k with the slots h by B7's slot definition (N7; §4.3). Each step uses only its own coupling and the sup bound of its inputs (§4.2, N6). The CMP 116 induction step maps "inputs obey (1.18) with E_0" to "outputs obey (1.18) with E_0" under step-free conditions (CMP 116 p. 21 [V]; §2.4). The base case is the Wilson action (no E-terms). By induction every input of step k+1 obeys (1.18) with the same E_0, for this h. [P given N6, N7]
+Step 2 (own-slot derivative). At the point (h, g) apply GGAIN Theorem B2-unif and §4.5 (N1–N3): |∂_gβ_{k+1}(h, g)| ≤ C_ΠS_0 for g ∈ (0, γ]. The inputs do not depend on g (they are built from h; NONMONO Lemma C_β-NM Step 2). The constant uses the inputs only through E_0 (§4.1). By §3 every ingredient of C_ΠS_0 is free of j (C1–C15), using N4 (A3, A7, A1) and N8 (C9, C10 readings). By §4 it is free of the past. By KUNIF (β_j is the whole-lattice coefficient) it is free of K. [P given N1–N4, N8]
+Step 3 (Lipschitz on (0, γ]). β_{k+1}(h, ·) is C¹ on (0, γ] by dominated differentiation under ∫dμ (GGAIN §4.4 (ii), N3). For 0 < s < g ≤ γ the mean-value theorem gives |β_{k+1}(h, g) − β_{k+1}(h, s)| ≤ C_β(g − s). [P given N3]
+Step 4 (endpoint). By Step 3 the limit β_{k+1}(h, 0+) exists (Cauchy criterion) and |β_{k+1}(h, g) − β_{k+1}(h, 0+)| ≤ C_βg [P]. The limit equals the one-loop value β_{k+1}(0): at g = 0 the exponent P^{(k)} + {…} vanishes (CMP 109 p. 268, "the expression under the exponential above vanishes at g_k = 0" [V, KUNIF_VERIFY S8]), and the activities converge as g → 0 under GGAIN's majorants (NONMONO Lemma C_β-NM Step 3, dominated convergence) (N5). The limit is free of h ((K1); NONMONO §4). [R to N5]
+Step 5 (γ). The smallness conditions on γ are: g_k ≤ γ with γ small "depending on M and κ" (CMP 116 (2.31), GGAIN §1); the GGAIN margin conditions; and, on the literal reading only, 4γ^{κ_0} ≤ E_0 (NONMONO Lemma C_β-NM). All are step-free and history-free (they bound each slot by γ). So one γ serves all k, K, h. [P]
+Combining Steps 2–4 gives (7′). ∎
+
+Remarks.
+R1. What (7′) does not assert: C^∞ in g; bounds on higher derivatives; C¹ at g = 0; analyticity. T1 needs none of these (TRUST_LEDGER C19; KAPPA_BOUNDED "(i) needs only a Lipschitz bound in g").
+R2. Identification of the endpoint value. Step 4 identifies β_{k+1}(h, 0+) with Balaban's one-loop Gaussian coefficient. That this coefficient equals the β_{j}(0) that Theorem K bounds is V1/B5 (TRUST_LEDGER A5 note "its extension to g = 0 must equal the one-loop value (B5)"). That is a separate T1 input, not part of A5.
+R3. Continuity of β_{k+1} in the past (needed for the IVT in Lemma D″ Step 2) is B7/L5, not part of (7′).
+R4. Comparison with Balaban's A5. A5 asserts more (C^∞, all derivatives, closed interval) and says less about uniformity (none in j or the past). Proposition H0-red proves less smoothness and more uniformity. For T1 the replacement is: A5 ⇒ (H0) is no longer needed; (7′) ⇐ N1–N9.
+
+## 7. Residue: the exact list of named inputs for (7′)
+
+N1. GGAIN Lemmas G1, G2 and Theorem B2-unif minus G3 [P in SOURCES_GGAIN; CONFIRMED in GGAIN_VERIFY grades 1, 2]. Their Balaban inputs, CMP 116 (1.19)–(1.24), (1.34)–(1.36), (1.39)–(1.43), (2.16)–(2.26), are [V] there; (1.34)–(1.36) and (2.38)–(2.41) re-checked on page images here (§2.3–§2.4).
+N2. GGAIN Lemma G3: the g-derivative of the sharp cut χ_k (CMP 109 (2.9)) [R]. Closure by a smooth χ̂ (changes Balaban's small-field construction; compatibility with CMP 119/122 not checked) or by a coarea surface estimate (not run; needs the one-bond marginal of the α_5-perturbed complex integrand). Size uniform: O(γ_2^{−(n_b+1)/2})ε_1^{−1} per marked bond, times e^{−cε_1²/g²} (GGAIN_VERIFY grade 6). Open as a rigor item; j- and history-free by C6, C12.
+N3. The margin (M_r) (supp χ_k ⊂ {g_k|B|_Y ≤ rε_1}, r < 1; a fixed shrink of the χ_k threshold) [R]; the Kotecký–Preiss derivative step and dominated differentiation of H(Z) in g (GGAIN §4.4 (ii)) [R, standard, not written out].
+N4. Uniform-in-k covariance bounds behind (2.24) and δ_0 (C7, C8): TRUST_LEDGER A3 [FULL PROOF, verified], A7 [reduced by us to A1 + A18], A1 [verified reduction]. [R]
+N5. Endpoint: continuity of β_{k+1}(h, ·) at g = 0 by dominated convergence with GGAIN's majorants (NONMONO Lemma C_β-NM Step 3) [R]; (K1) from CMP 109 p. 268 [V, KUNIF_VERIFY S8].
+N6. Off-trajectory sup induction: the CMP 116 step uses only the own coupling g_k and the input sup E_0, so (1.18) with one E_0 holds on every past [R: CMP 116 §1–§2 (grep of the text layer finds no other coupling, [I]); SOURCES_SM §5.1, reduced there]. The sup induction itself is Balaban's published proof (CMP 116 pp. 1–22), which rests on its own inputs A1, A1w, A2, A3, A7, A8, A10 (TRUST_LEDGER l. 136).
+N7. B7 (L5): the definition of the step chain and of β_{k+1}(h, g) for pasts that do not satisfy (0.20) [open; definitional]. Already in T1.
+N8. Two readings [I]: (i) Balaban's "absolute" means "independent of X and j" (gloss on CMP 109 p. 263 [V]); applied to C_1, C_2, q of (1.36) [V that the word is printed], to the (1.39) constant (text layer l. 486, "an absolute constant", OCR only), and to the unindexed O(1)'s of (2.18)–(2.41) (C10, C11). (ii) C_Π is j-free because the localization geometry D_{j+1} and the U^c_{j+1} radius are the same at every j after rescaling to Z^d (C9).
+N9. TRUST_LEDGER A15: β_{k+1} is the coefficient of the whole-lattice [I] chain; finite-volume E-terms with X ⊂ Λ_{k+1} coincide with [I] terms (CMP 119 p. 278 [V, KUNIF_VERIFY S7]; p. 259, p. 279 [V here]). Printed by Balaban without proof. Already in T1. Load-bearing twice here: it lets C_Π use the absolute CMP 109 radii instead of the g_j-dependent radii of CMP 119 (2.28) (§5.1), and it keeps R-terms and large-field history out of β (§4.4, §5.4).
+
+What is NOT in the residue.
+- Uniformity in j as a separate hypothesis: reduced to N1–N4, N8 (§3). No constant found that grows with j.
+- Uniformity in the history as a separate hypothesis: reduced to N6, N7, N9 (§4). The order of the couplings plays no role (NONMONO; and for β, F2′ is not used under N9).
+- GGAIN_LF (large-field derivatives): not needed for (7′) (§5.3).
+- Balaban's C^∞ and "all derivatives": not needed.
+
+Effect on T1 [I, accounting]. Replacing A5 by Proposition H0-red removes one Balaban assertion (A5) and adds N2, N3, N5, N6, N8, and CMP 116's own inputs (A1, A1w, A2, A3, A7, A8, A10) explicitly to the trust base of T1; B7 and A15 are already in T1. Under A5, those CMP 116 inputs were implicit, because A5 is asserted by CMP 109 Theorem 3, whose proof CMP 116 completes. So the trust base becomes visible, not larger in substance. The supervisor may prefer to keep A5 as an alternative source (as NONMONO §5 and NONMONO_VERIFY V7 recommend).
+
+If a negative result had been found. KUNIF §1 notes that Route K needs only a window-size bound; a C_β growing slowly with j would then have to be replaced by Σ_{i=m+1}^{n} C_β(i)g_{i−1} ≤ (b/4)(n − m) on every window. No such growth was found, so this fallback is not needed. [P for the fallback statement as arithmetic; not used.]
