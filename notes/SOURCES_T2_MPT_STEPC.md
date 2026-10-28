@@ -95,3 +95,23 @@ Proof. Fix μ ≥ 12; m² := μ|φ| = μα/2 ≥ 6|α|. F_W(φ) = W(φ; 0) + N(�
 First bracket → n_2c_2 ln(1/λ) (5.2); second → 0 (LLL Theorem 5.1: both converge to h(μ)). So limsup|G(λφ) − G(φ) − n_2c_2 ln(1/λ)| ≤ 32C_A/μ². μ is arbitrary: the limsup is 0. ∎
 What is not used. STEPB Lemma 2 (Moyal symbol integral, degree −4 part I_{−4}), Step C (lattice symbols = continuum × (1 + even O(K²))), and (MPT) in its Weyl form. The proper-time route needs only the α² coefficient's large-t slope (Lemma C), which comes from the same scaled spectral limit (LLL V2) that proves (L-LL). So Step C is off the critical path of (F). It is still proved in §6, as asked, because STEPB Lemma 2 may be used elsewhere.
 Consistency [P]. The ln μ coefficient of h(μ) is 11/(12π²) (LLL §5.3); the ln(1/m²) coefficient of 4w̃_2 is 11/(12π²) (here). Their sum makes B μ-independent, as STEPB §2.6 requires. These are two independent computations of the same 11/3.
+
+## 6. Step C, gauge-fixing part: explicit bond-field symbols [P; numerically exact, §7]
+
+6.1 The block [V: GAPRIME2 Lemma 1.1; S123 Lemma 5.1]. In Feynman gauge the gauge-fixing (longitudinal) block on charged bond fields is G = D_φD_φ^† with entries G_{μν} = ∇_μ∇_ν^*, ∇_μ = 1 − T_μ. In the k_⊥ fibre, ∇_2, ∇_3 are the scalars 1 − e^{iK_2}, 1 − e^{iK_3} (no flux in those planes); the only magnetic entries are μ, ν ∈ {0, 1}.
+6.2 Midpoint gauge [P]. b_μ(x) sits on the link midpoint X = x + e_μ/2. Put Γ(X→Y) := straight-line integral of x_1dx_0 (Landau gauge; T_μ has phase e^{iαΓ} on its own straight hop, so T_μ is already a pure Peierls translation). Gauge: b̃_μ(X) := e^{iαΓ(X→x)}b_μ(x) (a diagonal unitary; traces and spectra unchanged). Reduced kernel: ã_{μν}(Y − X) := e^{−iαΓ(X→Y)}G̃_{μν}(X, Y). For each word in G_{μν} the phase of ã is e^{iα∮}, ∮ = Σx_1Δx_0 around the closed polygon X → x → (lattice word) → y → Y → X, which is translation invariant; so ã depends on Y − X only.
+6.3 Result [P, by enumerating the four words of ∇_μ∇_ν^*; each polygon is a right triangle of area 1/8].
+  ã_{μμ}: 2 at d = 0, −1 at d = ±e_μ (no phase).
+  ã_{01}: e^{iα/8} at d = ±(e_0 − e_1)/2, −e^{−iα/8} at d = ±(e_0 + e_1)/2.  ã_{10} = conj(ã_{01}) (reflected d).
+Symbol σ(K) := Σ_dã(d)e^{iK·d}, K̂_μ := 2 sin(K_μ/2):
+  σ_{μμ} = K̂_μ² exactly (a_1 = a_2 = 0, like the ghost);
+  σ_{01}(K; α) = 2e^{iα/8}cos((K_0 − K_1)/2) − 2e^{−iα/8}cos((K_0 + K_1)/2)   (exact, all orders in α).
+Expansion σ_{01} = a_0 + αa_1 + α²a_2 + O(α³):
+  a_0 = K̂_0K̂_1,  a_1 = (i/2)cos(K_0/2)cos(K_1/2),  a_2 = −K̂_0K̂_1/128,  σ_{10} = conj(σ_{01}).
+This is the exact twisted product K̂_μ ⋆_α K̂_ν of the midpoint difference symbols (e^{iK·u} ⋆ e^{iK·v} = e^{iα(u∧v)/2}e^{iK·(u+v)}, u∧v = ±1/4 for half-steps).
+6.4 Comparison with the continuum [P]. Continuum (D_μD_ν^*) Weyl symbols: a_0^c = K_μK_ν, a_1^c = (i/2)ε_{μν} (the Moyal bracket of two linear symbols), a_2^c = 0 (Moyal products of linear symbols stop at first order). Lattice:
+  a_0 = K_0K_1[1 − (K_0² + K_1²)/24 + O(K⁴)],  a_1 = (i/2)[1 − (K_0² + K_1²)/8 + O(K⁴)],  a_2 = −K_0K_1/128·[1 + O(K²)].
+So a_0, a_1 equal the continuum symbols times (1 + O(K²)), and a_2 is a degree-2 term where the continuum has 0 (it has 4 more powers of K than the scale-invariant degree −2 of an f²-coefficient, so it is summable in Lemma 2's dyadic count, like any O(K²)-relative correction). The diagonal entries are exact.
+6.5 Evenness [P]. Every a_m(K) is a function of cos(K_μ/2) and of the product sin(K_0/2)sin(K_1/2); all are invariant under K → −K. So all O(K²) corrections are even in K. Symmetry reason: point reflection X → −X maps each midpoint polygon to its reflection with the same orientation (area is invariant under x → −x in 2D), so ã(−d) = ã(d); and charge conjugation (α → −α with complex conjugation, LLL V1(ii)) gives σ(K; −α) = conj σ(−K; α)^T, so a_1 is odd under C and a_0, a_2 even, as in the continuum.
+6.6 Convention caveat [I]. STEPB Lemma 2 uses one magnetic Weyl convention for the whole operator A_φ. The midpoint gauge of 6.2 must also be the one used for the Wilson-Hessian symbols (U3 Lemma 3.4, not reread here). If Lemma 3.4 uses site-based positions for bond fields, its a_1 has odd O(K) corrections (factor e^{i(K_μ − K_ν)/2}); the diagonal unitary of 6.2 removes them, and traces do not change. I did not check which convention Lemma 3.4 uses.
+Verdict on Step C, gauge-fixing part: [P] (explicit symbols, exact in α; corrections even). After §5, Step C is no longer needed for (F).

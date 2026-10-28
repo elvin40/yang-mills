@@ -42,3 +42,4 @@ import YmLean.ScaleChain
 import YmLean.ParametrixCore
 import YmLean.WGAlgebra
 import YmLean.MagneticShift
+import YmLean.H1Majorant
