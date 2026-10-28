@@ -153,3 +153,38 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
  term 3 ≤ aξ_n^{−2}·(dc_hL/M)·B_0ξ_n² e^{−δ_0d}|λ| ≤ dc_hLB_0M^{−1}e^{−δ_0d}|λ| (a = 1, as in Thm 3.1).
  The sum is ≤ (3d + 1)c_hL²B_0M^{−1}e^{−δ_0d(z,z′)}|λ|. The L² form of 4.2 doubles the averaging term; the factor 2 in K_1 covers both norms. ∎
  Comparison. Balaban prints (3.89) as O(M^{−1})e^{−δ_0(L^jη)^{−1}|y−y′|}, "y, y′ ∈ □", and says "It is exactly the bound (2.44) of [4], rescaled". Inside one cube the Euclidean form and d agree up to constants. We use d(z, z′) directly, so no conversion is needed, and the constant is explicit.
+
+## 5. Step 2: per-walk bound, counting, convergence, and identification
+
+5.1 Lemma B0 (first factor) [P given (3.3.1)]. For y ∈ Λ_j and N ∈ {N_∞, N_2}: N(h_□G′_□h_□; y, y′) ≤ B_0ξ_j²e^{−δ_0d(y,y′)}, since |h_□| ≤ 1.
+
+5.2 Proposition W (per-walk bound; this is (3.92)–(3.94)) [P given Lemmas N, S, K, B0 and CMP 96 Lemma 2.1 (2.62) under (H2)]. Let ω = (□_0, …, □_n) be a walk, y ∈ Λ_j, y′ ∈ 𝔅, θ ∈ (0, 1). Then for N ∈ {N_∞, N_2}:
+ N(T_ω; y, y′) ≤ B_0ξ_j²·(K_1c_1(θ)/M)^{|ω|}·e^{−(1−θ)δ_0d(ω,y,y′)}, (5.2.1)
+ with d(ω, y, y′) the walk distance (3.93), the infimum over block points y_i with Δ(y_i) ⊂ □_i.
+ Proof. Write T_ω = F_0F_1···F_n with F_0 := h_{□_0}G′_{□_0}h_{□_0}, F_i := F_{□_i}. By Lemma N,
+ N(T_ω; y, y′) ≤ Σ_{z_1,…,z_n∈𝔅} N(F_0; y, z_1)N(F_1; z_1, z_2)···N(F_n; z_n, y′).
+ By Lemma S(ii), a nonzero term has Δ(z_i) meeting supp⁺h_{□_i} ⊂ □_i. A block of level ≥ j_i is a union of cells of a lattice that refines the big-block lattice of □_i (M/L is a power of L), so Δ(z_i) meets □_i only if Δ(z_i) ⊂ □_i. So every nonzero term has z_i ∈ □_i in the sense of (3.93). Insert Lemmas B0 and K: the term is ≤ B_0ξ_j²(K_1/M)^n e^{−δ_0S}, S := d(y, z_1) + d(z_1, z_2) + … + d(z_n, y′). Since z_i ∈ □_i, S ≥ d(ω, y, y′). Split e^{−δ_0S} = e^{−(1−θ)δ_0S}e^{−θδ_0S} ≤ e^{−(1−θ)δ_0d(ω,y,y′)}e^{−θδ_0S}. Drop the last factor e^{−θδ_0d(z_n,y′)} ≤ 1 and sum over z_1, …, z_n ∈ 𝔅 by (2.62) at α = θ: Σ Π_{i=0}^{n−1}e^{−θδ_0d(z_i,z_{i+1})} ≤ c_1(θ)^n (z_0 := y). ∎
+ Balaban's form. At θ = ½ put K_37 := K_1c_1(½). Then (K_1c_1(½)/M)^{|ω|} = (K_37M^{−1/2})^{|ω|}M^{−½|ω|}, and (5.2.1) is (3.94) with O(1) = B_0 and O(M^{−1/2}) = K_37M^{−1/2}. The exponential is e^{−½δ_0d(ω,y,y′)}, as printed.
+
+5.3 Lemma C (counting) [P given (H-PU)(e)]. For a block y, the number of walks of length n with Δ(y) meeting □_0 is ≤ C_pt(C_𝒟^in)^n. For a cube □′, the number of pairs (i, □) with □ ∈ 𝒟 meeting □′ is ≤ C_𝒟^in, which is (B2) of WG_FULL 0.4 with C_𝒟 = C_𝒟^in.
+ Proof. □_0 is one of ≤ C_pt cubes; each next cube meets the previous one: ≤ C_𝒟^in choices. ∎
+ Bound on C_𝒟^in [P, cube geometry]. A cube of 𝒟_j meets ≤ 3^d cubes of 𝒟_j (centres on Mξ_jZ^d, side 2Mξ_j, half-open cubes), ≤ 3^d cubes of 𝒟_{j+1} (larger), ≤ (2L + 2)^d cubes of 𝒟_{j−1} (side 2Mξ_j/L), and no other level (by (H-PU)(a) a cube of 𝒟_i lies in B^i ∪ B^{i+1}). So C_𝒟^in ≤ 2·3^d + (2L + 2)^d ≤ 3(2L + 2)^d. Similarly C_pt ≤ 2^{d+1}: 2^d cubes of one level contain a given point, and by (H-PU)(a) only cubes of 𝒟_n and 𝒟_{n−1} can contain a block of level n [I: cube geometry, as WG_FULL 0.4].
+
+5.4 Theorem T37 (Theorem 3.7 + Corollary 3.8, written out). Assume (H1), (H2) at rate θ, (H-PU), (I-Ω0), and
+ M ≥ M_37(d, L, θ) := max{M_th, 3L + 1, 2C_𝒟^inK_1c_1(θ)}, (5.4.1)
+ with M_th the threshold of Thm 3.1/Cor. 3.6 (Balaban's "M_1" of p. 397). Then:
+ (a) [Neumann] ‖R′‖_{∞→∞} ≤ ½, Δ′_a↾Ω_0 is invertible, and G′ = G′_0(I − R′)^{−1} = G′_0Σ_{n≥0}R′^n.
+ (b) [Walk form (3.90)] G′ = Σ_ω T_ω over walks ω = (□_0, …, □_n), □_i ∈ 𝒟, □_{i−1} ∩ □_i ≠ ∅; the sum converges absolutely in N_∞ and N_2 block norms.
+ (c) [Per walk (3.94)] Each T_ω obeys (5.2.1); it depends on U only in □̃_0^5 ∪ … ∪ □̃_n^5; its kernel is supported in □_0 × □_n with the band of Lemma S(v).
+ (d) [Sum] For y ∈ Λ_j, y′ ∈ 𝔅: Σ_ω N(T_ω; y, y′) ≤ 2C_ptB_0ξ_j²e^{−(1−θ)δ_0d(y,y′)}. So G′ obeys the first entry of (3.42)/(3.46) with constants (2C_ptB_0, (1−θ)δ_0).
+ All constants depend on d, L, θ only (c_h = c_h(d), a = 1). They are uniform in U with (H1), in j, k, η, the sequence {Ω_j} with CMP 96 (2.1)–(2.2), and the volume.
+ Proof. (a) For x ∈ Δ(z): |(R′λ)(x)| ≤ Σ_□Σ_{z′}N_∞(F_□; z, z′)|λ|. At most C_pt cubes give F_□ ≠ 0 at x (Lemma S(ii)). By Lemma K and e^{−δ_0d} ≤ e^{−θδ_0d}, (2.61) gives Σ_{z′}N_∞(F_□; z, z′) ≤ K_1c_1(θ)/M. So ‖R′‖_{∞→∞} ≤ C_ptK_1c_1(θ)/M ≤ ½ by (5.4.1) (C_pt ≤ C_𝒟^in). Hence Σ_nR′^n converges and equals (I − R′)^{−1}. By Lemma P, Ω_0Δ′_aΩ_0·G′_0(I − R′)^{−1} = I. The space of functions on Ω_0 is finite-dimensional, so a right inverse is a two-sided inverse; hence Δ′_a↾Ω_0 is invertible and G′ = G′_0(I − R′)^{−1}. No positivity of Δ′_a and no a priori existence of G′ is used.
+ (b) G′_0R′^n = Σ_{□_0,…,□_n} F_0F_{□_1}···F_{□_n}. By Lemma S(iii) only walks contribute. Absolute convergence follows from (d); in finite volume each G′_0R′^n is a finite sum, so the rearrangement into Σ_ω is exact.
+ (c) Proposition W and Lemma S(iv)–(v).
+ (d) By Proposition W, d(ω, y, y′) ≥ d(y, y′) (triangle inequality, CMP 96 (2.54)), and Lemma C: Σ_ω N(T_ω; y, y′) ≤ B_0ξ_j²C_ptΣ_n(C_𝒟^inK_1c_1(θ)/M)^n e^{−(1−θ)δ_0d(y,y′)} ≤ 2C_ptB_0ξ_j²e^{−(1−θ)δ_0d(y,y′)}. ∎
+
+5.5 Remarks.
+ (i) Rate. Balaban states (3.94) at ½δ_0 and remarks (p. 410) that "We can get a decay rate arbitrarily close to the decay rate of the localized propagators". Theorem T37 proves this remark: rate (1 − θ)δ_0 for any fixed θ, at the cost M ≥ M_37(θ) and (2.59) at α = θ. Since c_1(θ) = 12c_0^d(½θ) < 12(8/(θδ_0))^d, M_37(θ) = O(θ^{−d}).
+ (ii) No loop. The local constants (B_0, δ_0) of (3.3.1) come from Cor. 3.6, which rests on CMP 96 (U = 1) and the perturbation (3.64) (3.3). The global constants of (d) are new names: (2C_ptB_0, (1−θ)δ_0). Balaban reuses the letters B_0, δ_0 for both ("we define new constants", p. 403; "after adjusting a definition of δ_0", p. 427). With distinct names the order is: (d, L) → B_0, δ_0, M_th (local) → θ → c_1(θ) → M_37 → RM with (2.59) → α_0.
+ (iii) The global inequality (3.47) follows from (d) and Lemma 2.1, as Balaban says on p. 398 ("the global inequalities (3.47) are consequences of the local ones (3.42) and Lemma 2.1").
+ (iv) What is not used: CMP 96 (2.82)–(2.85) (the regrouping for operators without a small factor in every step) is not needed for G′, because every factor F_□ carries K_1/M (Lemma K). It is the template for Thm 3.9, not for Thm 3.7.

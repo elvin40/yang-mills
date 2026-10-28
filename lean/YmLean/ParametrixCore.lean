@@ -1,5 +1,6 @@
 import YmLean.CombesThomas
 import YmLean.Resolvent
+import YmLean.KernelRow
 import Mathlib.Analysis.SpecificLimits.Normed
 
 /-!
@@ -278,25 +279,6 @@ theorem vconj_inv (μ : n → ℝ) (hμ : ∀ x, 0 < μ x) (a : Matrix n n 𝕜)
       mw, mul_inv]
     ring
 
-/-- `|e^t − 1| ≤ s e^s` for `|t| ≤ s`. -/
-theorem abs_exp_sub_one_le_mul_exp {t s : ℝ} (ht : |t| ≤ s) :
-    |Real.exp t - 1| ≤ s * Real.exp s := by
-  have h1 : |Real.exp t - 1| ≤ Real.exp |t| - 1 := by
-    rcases le_or_gt 0 t with h | h
-    · rw [abs_of_nonneg h, abs_of_nonneg (by linarith [Real.one_le_exp h])]
-    · rw [abs_of_neg h, abs_of_neg (by linarith [Real.exp_lt_exp.mpr h, Real.exp_zero] : Real.exp t - 1 < 0)]
-      nlinarith [Real.add_one_le_exp t, Real.add_one_le_exp (-t)]
-  have h2 : Real.exp |t| - 1 ≤ |t| * Real.exp |t| := by
-    have := Real.add_one_le_exp (-|t|)
-    rw [Real.exp_neg] at this
-    have hp := Real.exp_pos |t|
-    have h := mul_le_mul_of_nonneg_right this hp.le
-    rw [inv_mul_cancel₀ hp.ne'] at h
-    nlinarith [h]
-  calc _ ≤ |t| * Real.exp |t| := h1.trans h2
-    _ ≤ s * Real.exp s := mul_le_mul ht (Real.exp_le_exp.mpr ht) (Real.exp_pos _).le
-        ((abs_nonneg t).trans ht)
-
 /-- Kernel step of §3.2 (VERIFY_CombesThomas item 2): `|B x y| ≤ b e^{−δ d}`, `0 ≤ ε ≤ δ/2`,
 `|f x − f y| ≤ d(x, y)`, `Σ_y (1 + d) e^{−½δ d} ≤ Σ` (rows; columns by symmetry of d) ⇒
 `‖e^{εf} B e^{−εf} − B‖₂ ≤ bεΣ`. -/
@@ -319,7 +301,8 @@ theorem ct_conj_sub_le (B : Matrix n n 𝕜) (hd : ∀ x y, 0 ≤ d x y)
     have hD := hd x y
     have ht : |ε * (f x - f y)| ≤ ε * d x y := by
       rw [abs_mul, abs_of_nonneg hε]; exact mul_le_mul_of_nonneg_left (hf x y) hε
-    have h1 := abs_exp_sub_one_le_mul_exp ht
+    have h1 := (abs_exp_sub_one_le_mul_exp _).trans (mul_le_mul ht (Real.exp_le_exp.2 ht)
+      (Real.exp_pos _).le (mul_nonneg hε hD))
     have h2 : Real.exp (-(δ * d x y)) * Real.exp (ε * d x y) ≤ Real.exp (-(δ / 2 * d x y)) := by
       rw [← Real.exp_add]; exact Real.exp_le_exp.mpr (by nlinarith)
     calc ‖B x y‖ * |Real.exp (ε * (f x - f y)) - 1|
