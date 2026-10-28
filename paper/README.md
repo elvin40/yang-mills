@@ -1,6 +1,6 @@
 # paper/
 
-LaTeX conversion of `../THEOREM2_PROOF_v3.md`. Sources: `main.tex` (wrapper), `theorem2.tex` (chapter, appendix change log), `refs.bib`.
+LaTeX conversion of `../THEOREM2_PROOF_v4.md`. Sources: `main.tex` (wrapper), `theorem2.tex` (chapter, appendix change log), `refs.bib`.
 
 Build:
 
