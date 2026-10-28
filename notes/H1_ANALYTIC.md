@@ -86,3 +86,17 @@ Proof. c^†b = K̂^†b − K̂^†TZb, Z = P_⊥ZP_⊥, so |K̂^†TZb| ≤ |K
 Hence, for every j ≥ 1 and K ≠ 0:   ρ_1(j, K)² ≤ B_L(K) := γ_L F(K) + (1 + τ)²/(|K̂|²S_L).   (5.3) [P]
 
 Measured (L = 13, exact ρ_1² from (1.1) vs B_13, j = ∞ and j = 1, 13 points incl. corner, face argmax, near 0, random): B_13 ≥ ρ_1² at every point. Examples: (2.48,2.48,π,π): ρ_1² = 4.366 (j = ∞), 4.234 (j = 1); B = 5.507 (γF = 5.480, G = 0.028, τ = 2.3). Corner: 4.348 vs 4.997. (2.3,2.3,2.3,2.86): 3.969 vs 5.862. K → 0: 1.000 vs 2.005 (G → 1, γF → 1). G ≤ 0.035 at every sampled K with |K| ≥ 0.5. [N]
+
+## 6. A closed-form majorant of F and the K-sup by interval branch-and-bound
+
+F_CS (proved). Keep in (3.1) only the 16 terms n ∈ {0, −1}⁴ (K ∈ [0, π]⁴ by the sign symmetry of every sum; −1 is the second-nearest representative), and optionally drop the n_ρ = −1 term per direction (choice c ∈ {0,1}⁴). By Cauchy–Schwarz, Σ_εW_ε/|q_ε|² ≥ (Σ_εW_ε)²/Σ_εW_ε|q_ε|², and both sums factorize over ρ because σ_{ε,ρ}²q_{ε,ρ}² = 4 sin²(K_ρ/2) for every ε. Result, with t_ρ := K_ρ/(2π − K_ρ) ∈ [0, 1]:
+
+  F(K) ≤ F_CS(K) := min_{c∈{0,1}⁴} max_μ [ Σ_ρ K_ρ² r_ρ / Σ_ρ K_ρ² ] / Π_ρ S_ρ,   (6.1)
+  ρ ≠ μ:  S_ρ = sinc²(K_ρ/2) + c_ρ·4 sin²(K_ρ/2)/(2π − K_ρ)²,   r_ρ = (1 + c_ρ)/(1 + c_ρt_ρ²);
+  ρ = μ:  S_μ = sinc⁴(K_μ/2) + c_μ·16 sin⁴(K_μ/2)/(2π − K_μ)⁴,   r_μ = (1 + c_μt_μ²)/(1 + c_μt_μ⁴).
+
+Every factor is a 1D elementary function of one K_ρ. No singularity at K = 0 (c = 0 gives F_CS = 1/(Π_ρ sinc²(K_ρ/2)·sinc²(K_μ/2)) → 1). Point values: sup on a 40⁴ sorted grid 6.875 at (2.42, 2.42, 2.42, 2.98); corner 5.716; (2.48,2.48,π,π) 6.309. It loses ≤ 18% against F.
+
+G on boxes (proved enclosure). In (5.2) every l-term is a product/ratio of 1D functions of K_ρ through k_{l,ρ} = (K_ρ + 2πl_ρ)/L. Enclosures used: sin² on an interval (endpoints + interior extrema); a_{0,ρ} decreasing on [0, π]; α_l = (−1)^{l}|a_l|, so |1 − α| = 1 ∓ |a|; |g_{l,ν}|² ≤ |1 − α_ν|²/|k̂_{l,ν}|², and at l_ν = 0 also ≤ ((L²−1)K_ν/(24L sinc(π/2L)))² (cos x ≥ 1 − x²/2); |P_lg_l| ≤ |g_l| (the projection is dropped; this is the main loss in G); ‖Z‖ ≤ F_CS|K|²; at l = 0, |K|²/|k̂_0|² ≤ L²γ_L and |K̂|²/|k̂_0|² ∈ [min_ρL²a_{0,ρ}², L²] (a ratio of sums), so no 0/0 appears at K = 0. Hence B_L ≤ γ_L F_CS + Ḡ_L is enclosed on any box, including boxes that contain K = 0.
+
+Script (scratch): /tmp/h1a/bb.py. Sorted chamber 0 ≤ K_1 ≤ … ≤ K_4 ≤ π (B_L is invariant under permutations and sign flips of K, so no symmetry of ρ_1 itself is assumed), initial 16⁴ grid, 16-way bisection while the box bound exceeds the target, G inherited from the parent box when that already suffices. Floating point: no directed rounding; the final bound is inflated by 10^{−9} relative. The margins below are > 20%, far above float64 error (≤ 10^{−12} relative on these sums).

@@ -110,7 +110,10 @@ def jets(L, Ki, h, M, N, M0=None):
             D = [co(f, i) * fac[i] for i in range(5)]                    # f^(i)(k_c), i <= 4
             out["f"][l, j], out["f1"][l, j], out["f2"][l, j] = (float(D[i].mid()) for i in range(3))
             out["p"][l, j], out["p1"][l, j] = float(co(p, 0).mid()), float(co(p, 1).mid())
-            f4 = co(fser(arb_series([kb, 1]), n, M)[0], 4) * 24           # crude ball enclosure of f^(4) (multiplies h_k^2 or more)
+            # sup |f^(4)| over the cell: n = 0: f = sigma~^2, sigma~ = (1/M) sum_|m|<=(M-1)/2 e^{ikm/M} (Dirichlet; M = inf: sinc(k/2)
+            # = int_0^1 cos(kt/2) dt), so |sigma~^(i)| <= 2^-i and |f^(4)| <= 1 (Leibniz); n != 0: crude ball enclosure (no division
+            # by a ball near 0). Only multiplies h_k^(>=1).
+            f4 = arb(1) if n == 0 else co(fser(arb_series([kb, 1]), n, M)[0], 4) * 24
             # centred form over the cell: sup|f^(j)| <= sum_{i=j}^{3} |f^(i)(k_c)| h_k^(i-j)/(i-j)! + sup|f^(4)| h_k^(4-j)/(4-j)!
             sj = lambda jj: sum((D[i].abs_upper() * arb(hk)**(i - jj) / fac[i - jj] for i in range(jj, 4)), arb(0)) + f4.abs_upper() * arb(hk)**(4 - jj) / fac[4 - jj]
             out["fu"][l, j], out["f1u"][l, j], out["f2u"][l, j], out["f3u"][l, j] = up(sj(0)), up(sj(1)), up(sj(2)), up(sj(3))

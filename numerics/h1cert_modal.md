@@ -15,3 +15,11 @@ Cost, per §4 of H2_CERTIFY_L13.md (L = 13, three level runs):
 | Taylor-1 in the K̂-adapted frame (G1, not written) | ~1.3·10⁵ (ideal 1.6·10³, ×81 for a 3× overestimate of the cell radius) | ~30 (estimate: 5× a point) | ~1,100 | ~$75 | ~17 h | ~4 h |
 
 Recommendation: do not run the present code on Modal. Write G1, pilot one level on the Mac (measured cell rate and cell count on a 1% sample of top cubes), then decide. Launch only with Elvin's explicit word.
+
+## Update 2026-10-27: G1 cell code (h1cert_cell2.py, h1cert_drive2.py, h1cert_launch2.sh)
+Measured on the Mac (one core): 8.2 s per cell at j = ∞ and M0:169, 8.1 s at M = 13, 3.3 s at M = 1; peak 0.6 GB per process. Top-cell half-width h = 0.08 certifies at the L = 13 argmax (bound 2.355 < √13); failed cells bisect.
+| domain | top cells per mode (h = 0.08) | core-h, M = 1 / 13 / M0:169 | total core-h | $ at $0.07/core-h | wall on the 16-core box |
+|---|---|---|---|---|---|
+| [0, π]⁴ (16 sign flips, P5a) | 160,000 | 147 / 360 / 378 | ~885 (+ bisections) | ~$62 | ~2.3 days |
+| sorted chamber (also 24 permutations, P5b) | 8,855 | 8 / 20 / 21 | ~49 (+ bisections) | ~$3.5 | ~3 h |
+The box run is cheaper than Modal and needs no image; Modal is not needed at this size. Launch only with Elvin's explicit word.
