@@ -182,3 +182,9 @@ Window-to-pointwise (increments in [b/2, B′] ⇒ pointwise bounds) is not repe
 | O1-R′: + (F3) n_f ≤ (ρ+2)^d N_Y, N_Y ≤ N ⇒ ℓ ≥ N/(3·4^d) and ℓ ≥ n_f/(3·4^d(ρ+2)^d) | `cube_count_lower d hd ρ nf N NY ℓ hρ` |
 
 Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence. Axioms: `[propext, Classical.choice, Quot.sound]` for both.
+
+## BlockNorm.lean, OishiRump.lean (H2_CERTIFY.md §1 R2, §2 (i-a), §5 C2/C4; H2_CERTIFY_VERIFY.md §4, §5 item (5)); statement check: `VERIFY_BlockNorm.md`
+
+- `BlockNorm.lean` (94 lines): `blockDiag T` on `PiLp 2` (ℓ² direct sum). `blockDiag_opNorm_le`, `blockDiag_opNorm_eq` (‖⊕T_l‖ = ⨆‖T_l‖), `blockDiag_comp_opNorm_le` (T_l = A_l∘B_l), `blockCol_opNorm_le` (‖(⊕A_l)B‖ ≤ max‖A_l‖·‖B‖, the R2 form), `rho2_le` ((1.1): ρ_2 ≤ ρ_1(j,K)·max_l ρ_1(j−1,k_l)).
+- `OishiRump.lean` (115 lines): spectral norm (`Matrix.Norms.L2Operator`), 𝕜 = ℝ or ℂ. `oishi_rump_ring` (complete normed ring), `oishi_rump` (‖RA−1‖ < 1 ⇒ IsUnit A, ‖A⁻¹‖ ≤ ‖R‖/(1−‖RA−1‖)), `oishi_rump_eta` (the η of `solve_cert`), `frob` (Frobenius, written out), `l2_le_frob`, `frobenius_power_bound` (‖M‖₂ ≤ frob((MᴴM)^{2^m})^{1/2^{m+1}}, the bound of `norm2_upper`).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten theorems. Not formalized: interval arithmetic, the identification of H_j with blocks of 𝔅_j⁻¹. Oleans: closure of `Mathlib.Analysis.CStarAlgebra.Matrix` (315 files from the local cache, no download).

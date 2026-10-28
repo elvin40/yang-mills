@@ -93,9 +93,23 @@ theorem frobenius_power_bound (M : Matrix n n 𝕜) (m : ℕ) :
           Real.pow_rpow_inv_natCast (norm_nonneg _) hN]
     _ ≤ _ := Real.rpow_le_rpow (by positivity) key (by positivity)
 
+/-- The form computed in `solve_cert` (numerics/h2cert_proto.py): `A = A₀ + dA` with `‖dA‖₂ ≤ r`,
+`η = ‖R A₀ − 1‖_F + ‖R‖₂ r < 1` ⇒ `A` invertible and `‖A⁻¹‖₂ ≤ ‖R‖₂ / (1 − η)`. -/
+theorem oishi_rump_eta (A₀ dA R : Matrix n n 𝕜) {r : ℝ} (hr : ‖dA‖ ≤ r)
+    (hη : frob (R * A₀ - 1) + ‖R‖ * r < 1) :
+    IsUnit (A₀ + dA) ∧ ‖(A₀ + dA)⁻¹‖ ≤ ‖R‖ / (1 - (frob (R * A₀ - 1) + ‖R‖ * r)) := by
+  have hle : ‖R * (A₀ + dA) - 1‖ ≤ frob (R * A₀ - 1) + ‖R‖ * r := by
+    rw [mul_add, add_sub_right_comm]
+    exact (norm_add_le _ _).trans (add_le_add (l2_le_frob _)
+      ((norm_mul_le _ _).trans (mul_le_mul_of_nonneg_left hr (norm_nonneg _))))
+  obtain ⟨hu, hb⟩ := oishi_rump (A₀ + dA) R (hle.trans_lt hη)
+  exact ⟨hu, hb.trans (div_le_div_of_nonneg_left (norm_nonneg _) (by linarith)
+    (by linarith))⟩
+
 end YmLean
 
 #print axioms YmLean.oishi_rump_ring
 #print axioms YmLean.oishi_rump
 #print axioms YmLean.l2_le_frob
 #print axioms YmLean.frobenius_power_bound
+#print axioms YmLean.oishi_rump_eta
