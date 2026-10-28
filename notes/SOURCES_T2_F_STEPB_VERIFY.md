@@ -37,3 +37,13 @@ Mac speed: L = 5 Ng = 8 14 s; L = 7 Ng = 8 41 s; L = 5 Ng = 12 44 s.
 5.3 Step C. Ghost: Peierls substitution is W·a_0 with a_0 the free kernel, so a_1 = a_2 = 0 by definition; continuum −D² also has Weyl symbol K². Ghost [P] CONFIRMED (trivial). Gauge-fixing D_φD_φ^T on bond fields: products of covariant differences produce Moyal φ-terms; lattice = continuum × (1 + O(K²)) is the Lemma 3.4 argument applied to a second finite-range kernel. Missing: the explicit symbol computation of a_1, a_2 for D_φD_φ^T on bonds (half-integer positions) and the check that its O(K²) corrections are even. Not done; [I] stays. Expect it to be routine.
 5.4 (L-LL). Scaling: low-energy window E ≤ μ|φ|; Landau degeneracy |φ|/2π per unit 2-area × free k_⊥ with k_⊥² = |φ|ε (d²k_⊥ = π|φ|dε) ⇒ per-cell measure ∝ φ²dε. So H_φ(μ) = O(1) is the right order and a limit is plausible. N–O zero: n = 0 spin-down level e = −1 + k_⊥²/|φ| crosses 0 linearly in k_⊥² ⇒ flat density in e ⇒ log|e| integrable; lattice needs ∂_{k_⊥²}E_0 ≥ c > 0 (lattice transverse |k̂_⊥|² = k_⊥²(1 + O(φ)) at k_⊥ ~ φ^{1/2}, so holds). Its contribution to H is O(1) (φ² per cell), not log-enhanced. What would prove (L-LL): semiclassical Harper analysis (Helffer–Sjöstrand: low Hofstadter bands at flux φ are Landau levels (2n+1)|φ| + O(φ²), width e^{−c/φ}) for (a); for the vector, the same for the 4×4 matrix Harper operator with spin term. Ghost numerics (STEPB §3.2, rate O(φ)) consistent. Grade: (L-LL) correctly isolated as the open piece; statement plausible; not proved.
 5.5 Assembly §2.6 [checked]. With μ → ∞ after φ → 0, limsup ≤ Cμ^{−2}. Correct. The neutral sector (2.0) analytic: correct (bounded degree-0 symbol).
+
+## 6. Task (iii) part 2: grid convergence [N]
+| L | Lp | Ng = 8 | Ng = 12 | Ng = 16 | ghost part (8/12/16) |
+|---|---|---|---|---|---|
+| 5 | 0.5 | 0.75318 | 0.74898 | 0.74874 | 0.0598 / 0.0698 / 0.0707 |
+| 7 | 0.5 | 0.80268 | 0.79674 | (running) | 0.0694 / 0.0885 |
+- Grid error of β_1 at Ng = 8: −0.0044 (L = 5), ≈ −0.006 (L = 7); convergence fast after Ng = 12 (L = 5: 12 → 16 shift −0.0002).
+- The Ng = 8 error has the sign that LOWERS β_1 further at larger L. So the grid does not explain the slope deficit; it slightly enlarges it (L = 5 → 7 slope at Ng = 12: (0.79674 − 0.74898)/0.336 = 0.142 vs 0.149 at Ng = 8, both at Lp = 0.5).
+- The ghost part moves by +0.019 at L = 7 (8 → 12), consistent with the 2.54/L ghost scale in §4; the bordered part compensates.
+Next: L = 9 Ng = 12; small-Lp runs (Lp = 0.25, 0.125) to test the quadratic Lp → 0 extrapolation, since the ghost/longitudinal scale 2.54/L falls below Lp = 0.5 for L > 5.
