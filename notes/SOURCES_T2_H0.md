@@ -1,6 +1,6 @@
 # SOURCES_T2_H0 — item H0 (DERIVE): reducing TRUST_LEDGER A5 to the first-derivative form 7′, uniform in j and in the history
 
-Date: 2026-10-28. Author: Claude (headless session). Status: in progress.
+Date: 2026-10-28. Author: Claude (headless session). Status: complete (unverified).
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). reports/ONLINE_SWEEP.md not read.
 
 Read list.
@@ -158,4 +158,48 @@ What is NOT in the residue.
 
 Effect on T1 [I, accounting]. Replacing A5 by Proposition H0-red removes one Balaban assertion (A5) and adds N2, N3, N5, N6, N8, and CMP 116's own inputs (A1, A1w, A2, A3, A7, A8, A10) explicitly to the trust base of T1; B7 and A15 are already in T1. Under A5, those CMP 116 inputs were implicit, because A5 is asserted by CMP 109 Theorem 3, whose proof CMP 116 completes. So the trust base becomes visible, not larger in substance. The supervisor may prefer to keep A5 as an alternative source (as NONMONO §5 and NONMONO_VERIFY V7 recommend).
 
-If a negative result had been found. KUNIF §1 notes that Route K needs only a window-size bound; a C_β growing slowly with j would then have to be replaced by Σ_{i=m+1}^{n} C_β(i)g_{i−1} ≤ (b/4)(n − m) on every window. No such growth was found, so this fallback is not needed. [P for the fallback statement as arithmetic; not used.]
+If a negative result had been found. Per the brief, KUNIF §1 says Route K needs only a window-size bound (KUNIF §1 not read in this session; KUNIF_VERIFY S4 confirms that only C_1 enters the window arithmetic); a C_β growing slowly with j would then have to be replaced by Σ_{i=m+1}^{n} C_β(i)g_{i−1} ≤ (b/4)(n − m) on every window. No such growth was found, so this fallback is not needed. [P for the fallback statement as arithmetic; not used.]
+
+## 8. Ledger (authoritative)
+
+Verified on page images in this session [V]:
+- CMP 109 p. 263: "absolute constants α_0, α_1 (i.e., constants independent of X and j)"; "a positive, absolute γ"; "There exists a constant E_0 such that … (1.18)".
+- CMP 109 p. 264: β_{j+1} "smooth … on the interval [0, γ], (or analytic), uniformly bounded on this interval together with all derivatives. We will investigate other properties in a separate paper." No uniformity in j is printed (R2_VERIFY row 12 confirmed). Theorem 3 quantifies κ_0, M(κ), γ, ε_0, ε_1, α_0, α_1 before K; E_0 and the β-derivative bounds are not in that list; hypothesis 0 < g_k ≤ γ.
+- CMP 116 p. 9: Lemma 1, (1.34)–(1.36), "There exist absolute constants C_1, C_2, q"; the earlier scales are summed by the factor L^jη ("controls the sum over j").
+- CMP 116 pp. 20–21: "(2.29) is valid for all k"; C_3 = 2(L+2)^4O(1)2E_0C_1α_4^{−1}α_6^{−1}M^q exp C_2κ_1; (2.41); closure "O(1)C_3ε_1 ≤ ½E_0"; log Z^{(k)} term with "an absolute constant … We define ½E_0 as equal to this constant".
+- CMP 119 p. 259: (2.24) with couplings "defined as in (I.0.20)"; (2.25); (iv) "satisfies the inequality (I.1.18)"; (2.28) α_{0,j} = g_jC_0(log g_j^{−2})^{q_0}, α_{1,j} = g_jC_1(log g_j^{−2})^{q_1}; "E_k … has the same properties as the effective action constructed in [I]".
+- CMP 119 p. 279: β subtracted from E^{(k+1)} − E^{(k+1)}(1) only; R″ and B get the vacuum subtraction only.
+- CMP 122 II p. 390: (1.100)–(1.102) as quoted in §5.3.
+
+Proved here [P] (given the cited files):
+- §2.4: the sup induction (1.18) closes with one E_0 under step-free conditions (from the printed closure).
+- §2.5: sup_g|β_{k+1}| ≤ C_ΠE_0, free of k (given C9).
+- §3.16: every ingredient of C_β = C_ΠS_0 is j-free (given C1–C15; inputs N1–N4, N8). No constant grows with j. Part (a) REDUCED.
+- §4.5: C_β depends on the past only through the input sup E_0; E_0 holds on every past under N6, N7, N9. Part (b) REDUCED.
+- §5.1: a C_Π computed on the CMP 119 (2.28) domain would carry α_{0,j+1}^{−2}, unbounded as g → 0 (largest at early steps; unbounded on arbitrary pasts). So the j- and history-uniform C_Π needs the absolute CMP 109 domain, i.e. A15. New observation.
+- §6: Proposition H0-red, (7′) with C_β = C_ΠS_0, free of k, K, and the past, from N1–N9 (deduction [P]; inputs [R]).
+- §5.3: GGAIN_LF is not needed for (7′).
+
+Reduced [R] (named inputs, §7): N2 (G3, χ_k surface term), N3 ((M_r); KP derivative step; dominated differentiation), N4 (A3 verified, A7 → A1 + A18, A1), N5 (continuity at g = 0), N6 (off-trajectory sup induction via CMP 116 §1–§2 and SM §5.1; CMP 116's own inputs A1, A1w, A2, A3, A7, A8, A10), N9 (A15, Balaban, printed without proof).
+
+Inference [I] (not checked line by line):
+- N8 (i): "absolute" ⇒ j-free, applied to C_1, C_2, q, the (1.39) constant (OCR only), and the unindexed O(1)'s.
+- N8 (ii) = C9: C_Π j-free by scale invariance after rescaling.
+- C15: ∂_g log Z^{(k)} = 0 in B variables (from SM §4.1).
+- §4.2: CMP 116 §1–§2 compares no couplings (text-layer grep).
+- §4.4, §5.4: the [I] chain has no R-operations, so F2′ and large-field history do not reach β (reading of CMP 119 pp. 259, 278–279).
+- §7: the T1 accounting.
+
+Open:
+- N7 = B7 (L5): off-trajectory definition and continuity of β as a slot function.
+- N2 = G3 as a rigor item.
+- Higher g-derivatives, C¹ at g = 0, analyticity (Balaban's A5/A6 extras): not proved, not needed by T1.
+- V1/B5: identification of the endpoint value with Theorem K's β_j(0) (outside A5).
+
+Corrections and notes for the supervisor.
+- TRUST_LEDGER A5 "Uniform in j is our reading": now REDUCED [R] to N1–N4, N8; the reading N8 is [I], resting on the p. 263 gloss [V].
+- A15 should list "C_Π uses CMP 109's absolute radii, not CMP 119 (2.28)" among its uses (§5.1).
+- v4 contains no "7′"; the 7′ text lives in SOURCES_GGAIN_NONMONO §5 and TRUST_LEDGER A5.
+- No numerical value of γ or C_β is claimed; all constants are existential.
+
+STATUS: COMPLETE
