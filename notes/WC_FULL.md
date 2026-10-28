@@ -1,7 +1,7 @@
 # WC_FULL — Theorem WC: the exponential-gauge covariance C^{(k)}(Z_0), complete proof
 
 Date 2026-10-28. Author: Opus write-out session. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md were not read.
-Sources: SOURCES_WC_EXPGAUGE.md §1–§7 with its appended corrections; SOURCES_WC_EXPGAUGE_VERIFY.md V1–V10 (cited as EXPGAUGE-VERIFY V1–V10; the page facts of §9 are PF1–PF10); SOURCES_WC_RESIDUE.md §1–§7 with its verification Q1–Q8; SOURCES_A3_GAMMA0_FULL.md (Lemmas 4.2, 4.3, 4.4 and step (6.1)); SOURCES_A1_WALK.md and SOURCES_WG.md (cited below under the names A1_WALK_FULL and WG_FULL, see §9); numerics/wc_exp/poincare_exp.py.
+Sources: SOURCES_WC_EXPGAUGE.md §1–§7 with its appended corrections; SOURCES_WC_EXPGAUGE_VERIFY.md V1–V10 (cited as EXPGAUGE-VERIFY V1–V10; the page facts of §9 are PF1–PF10); SOURCES_WC_RESIDUE.md §1–§7 with its verification Q1–Q8; SOURCES_A3_GAMMA0_FULL.md (Lemmas 4.2, 4.3, 4.4 and step (6.1)); A1_WALK_FULL.md and WG_FULL.md (write-outs of SOURCES_A1_WALK.md and SOURCES_WG.md); numerics/wc_exp/poincare_exp.py.
 Tags. [V] page-verified in CMP 96/99/109/116/119 (image or text, per the cited verify file). [P] proved in this file. [R] reduced to a named printed statement. [C] conditional on a named unproved input. [I] inferred, open.
 Every corrected statement of the verify files is used in its corrected form. Where a source constant changed, the new value is derived here.
 
@@ -46,12 +46,12 @@ V_red is the space of unit fields B̃ with the bonds b_0(c) removed. C := I − 
  (Th3.4) [V CMP 99 p. 400]. "There exists a positive constant a_1 such that the operators G′(U), (Q′(U)G′²(U)Q′*(U))^{−1}, R(U), G(U) extend to configurations U′U for α_1 ≤ a_1 as analytic functions of A.
  The extended operators satisfy all the inequalities of Theorems 3.1–3.3 correspondingly." The complex walk form of G built on it is [R] (Thm 3.4 + Thm 3.10).
  (p254) [V CMP 109 p. 254; R]. CMP 109 replaces the averages of CMP 98 by the symmetric averages (0.4), (0.12) and states: "all results of the paper [12] are valid for it. The proofs are in most cases unchanged".
- The shared operators G_1, H_1, (QG_1Q*)^{−1}, Q̃ are therefore the same construction with the new average. Their expansions and R2′ carry over by this sentence [R].
+ The shared operators G_1, H_1, (QG_1Q*)^{−1}, Q̃ are therefore the same construction with the new average. Their expansions and A3-R2′ carry over by this sentence [R].
 0.10 Theorem WC. Fix d ≥ 2 and odd L ≥ 3. There are M_1, M with M/M_1 > 3(6 + c_X) and M/M_1 > 10, a smallness α_*, a four-level chain of complex domains α′ ⊂ α″ ⊂ α‴ ⊂ a_1-domain, and constants
  γ_exp = ½min(½, c_G)γ_e(d, L) = ¼γ_e(d, L) > 0, ε″ > 0, ρ > 0,
 such that for every real regular U and every Z_0 as in 0.8:
  (i) (real lower bound) ⟨B̃, A_ZB̃⟩ ≥ γ_exp‖B̃‖² for all B̃ ∈ V_red(Z_0);
- (ii) (real walk expansion) C^{(k)}(Z_0) = Σ_ωT_ω with (L1)–(L2), |T_ω(b, b′)| ≤ (4/γ_exp)(c_1ρ)^{|ω|}e^{−½ε d(ω, b, b′)}, absolutely convergent, and after regrouping it has the CMP 116 p. 13 form: one domain X_0 with X̃_0^5 = Z̃_0, every other domain X with dist(X, Z_0) > ⅔M, and every factor kernel vanishing within ⅓M_1 of the boundary of its domain (for X_0 by 5.4(d), with margin M_1; for every other factor by (L1), see 5.4(d));
+ (ii) (real walk expansion) C^{(k)}(Z_0) = Σ_ωT_ω with (L1)–(L2), |T_ω(b, b′)| ≤ (4/γ_exp)(c_1ρ)^{|ω|}e^{−½ε d(ω, b, b′)}, absolutely convergent, and after regrouping it has the CMP 116 p. 13 form: one domain X_0 with X̃_0^5 = Z̃_0, every other domain X with dist(X, Z_0) > ⅔M, and every factor kernel vanishing within ⅓M_1 of the boundary of its domain (for X_0 by 5.4(d), with margin M_1; for every other factor by (L1) with the band, see 5.4(d) and WG_FULL 0.4);
  (iii) (complex points) at every U_c in the α′-space, Re⟨u, A_Z(U_c)u⟩ ≥ ½γ_exp‖u‖², C^{(k)}(Z_0; ·) is analytic there, and (ii) holds with 4/γ_exp → 8/γ_exp, ε → ε″;
  (iv) (resolvent) (i)–(iii) hold for (x + A_Z)^{−1}, x ≥ 0, uniformly in x, and the per-walk prefactor improves to 4/(γ_exp + x) (real) and 8/(γ_exp + x) (complex). Reason: the leading factor C_□(x) of each walk obeys ‖C_□(x)‖_ε ≤ 2/(c + x), c = ½γ_exp (real) or ¼γ_exp (complex), because x ≥ 0 raises the real part by x and does not change the Combes–Thomas error (5.5). So the x^{−1/2} integral for (C^{(k)})^{1/2} converges.
  The constants are uniform in k, η, Z_0, M ≥ M_1, and the background. The proof does not use CMP 99 Theorem 3.15 or any transfer from the axial gauge (§8).
@@ -242,7 +242,7 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  (c) d_∞(x, Z_0) ≥ M − 5M_1 for x ∉ X_0. Proof: x lies in an M_1-cube whose 11^d block meets an M_1-cube Δ′ outside Z̃_0. Then d_∞(x, Δ′) ≤ 5M_1, and Δ′ lies in an M-cube outside Z̃_0, which is at d_∞ ≥ M from Z_0 by (a).
  (d) Near/far split with the p. 3 margin. Call a domain X near if X ⊂ X_0 and d_∞(X, X_0^c) ≥ M_1; otherwise far. A far X contains a point x with d_∞(x, X_0^c) < M_1 (either x ∉ X_0, or the distance is attained below M_1). By (c), d_∞(x, Z_0) > M − 6M_1.
  X has ℓ^∞ diameter ≤ c_XM_1, so d_∞(X, Z_0) > M − (6 + c_X)M_1 ≥ ⅔M, provided q ≥ 3(6 + c_X). We impose the strict q > 3(6 + c_X) as in RESIDUE Q4, which leaves a margin. CMP 116 p. 3 [V image] asks that each factor kernel vanish "in a sufficiently thick neighborhood of ∂X_j, e.g. … width ⅓M_1".
- A near domain is at d_∞ ≥ M_1 from X_0^c, and its kernel lies in it by (L1); so the merged factor (e) has kernel vanishing within M_1 ≥ ⅓M_1 of ∂X_0 (EXPGAUGE-VERIFY V7 correction). For every factor other than X_0, the ⅓M_1 band is part of (L1): the (L1) used in this file is that of A1_WALK_FULL §1 (kernel supported in X° × X°, X° := {x ∈ X : d(x, X^c) > ⅓M_1}), which includes the CMP 116 p. 3 band. The A1-W factors satisfy it (A1_WALK_FULL 2.1, 3.4), and the G_1-tree factors of WG_FULL are walk expansions in the same sense (WG_FULL 0.4).
+ A near domain is at d_∞ ≥ M_1 from X_0^c, and its kernel lies in it by (L1); so the merged factor (e) has kernel vanishing within M_1 ≥ ⅓M_1 of ∂X_0 (EXPGAUGE-VERIFY V7 correction). For every factor other than X_0, the ⅓M_1 band is part of (L1): the (L1) used in this file is that of A1_WALK_FULL §1 (kernel supported in X° × X°, X° := {x ∈ X : d(x, X^c) > ⅓M_1}), which includes the CMP 116 p. 3 band. The A1-W factors satisfy it (A1_WALK_FULL 2.1, 3.4), and the G_1-tree factors of WG_FULL satisfy it on their enlarged domains X⁺ (WG_FULL 0.4 "Band by enlargement", 0.7; one M_1-layer, so c_X here is taken ≥ the WG value c_X + 2).
  (e) Merging. In each walk ω of 5.3, merge every maximal run of consecutive near domains into one factor with domain X_0, and sum over all walks that give the same merged sequence ω̄. Every near X obeys X̃^5 ⊂ X̃_0^5 = Z̃_0 (dilation is monotone), so the merged factor depends on U only on Z̃_0.
  Bound: every near domain lies in X_0, so a path through all domains of ω visits every domain of ω̄; hence d(ω, b, b′) ≥ d(ω̄, b, b′). Replace e^{−½εd(ω)} by e^{−½εd(ω̄)}. A run of n near domains between two fixed far domains is chosen in at most (C′_𝒟)^n ways and carries (c_1ρ)^n, so the sum over runs is ≤ Σ_n(C′_𝒟c_1ρ)^n ≤ 2, because C′_𝒟c_1ρ ≤ ¼ ≤ ½ (5.3). The merged sequence ω̄ may contain X_0 more than once (one entry per run); the p. 13 form allows this.
  A walk with m far domains has at most m + 1 runs. So
@@ -349,8 +349,7 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
 8.3 Where the axial gauge still appears. Only as a proof device: the axial tree T(y) inside one block in Lemma E step (a), and A3's Lemma 4.2 for that tree. Neither restricts the exponential-gauge field.
 ## §9 Ledger
 
-Source-name note. The brief names A1_WALK_FULL and WG_FULL. Files with these names are not present in ~/claude_code/yang_mills/ on 2026-10-28. The statements cited under these names are Theorem A1-W and §4–§7 of SOURCES_A1_WALK.md (verified as a construction in SOURCES_A1_WALK_VERIFY.md), and Theorems WG-G, WG-G1 and Lemma 2.3 of SOURCES_WG.md (with SOURCES_WG_VERIFY.md).
- If the FULL write-outs change a numbered item, the citations here follow the item, not the number.
+Source names. A1_WALK_FULL.md and WG_FULL.md are in ~/claude_code/yang_mills/; the body cites their section numbers.
 
 [V] page facts.
  PF1 CMP 109 p. 252: G(y, x) = shortest staircase contours inside B(y), one per order of directions; L odd.
@@ -393,7 +392,7 @@ Source-name note. The brief names A1_WALK_FULL and WG_FULL. Files with these nam
  I1 (2.11) = (3.156) + G^{(2)} term by term: consistent, no conflict found (EXPGAUGE-VERIFY V3, V9 F); rests on D̃^{(2)} = hC̃^{(2)}.
  I2 Locality of C̃^{(2)} (range ≤ L) and Q-locality of the A1-W/WG constructions.
  I3 Q̃ (CMP 109) = Q_1(U_1) (CMP 99), the blocks of (0.14) are the blocks of Q̃, and V^{(k)} of CMP 109 (2.5) is the background U_1 of A3.
- I4 R2 of A3 (the A18 piece), inherited through (A3-6.1).
+ I4 A3-R2 (the A18 piece), inherited through (A3-6.1).
  I5 WG-1: the free M^{−½|ω|} factor at J-junctions needs α_0 ≤ c′M^{−11} (imposed on the J-row), or the exponential is used instead.
  I6 dist(Z_0, Λ_k^c) > RM (A3 §0.1; S2_G1_V7 B3.3(e)).
  I7 The tilde convention of CMP 99 is transferred to CMP 116 p. 13 by series usage; CMP 116 does not restate it. Not open in content (PF7 + P9 consistency), recorded for completeness.
@@ -413,3 +412,4 @@ Checks for an independent verifier, in priority order: (1) Lemma G(b)–(c), the
 7. Ledger (F8). Body "VERIFY V1–V10" renamed "EXPGAUGE-VERIFY V1–V10"; §9 page facts renamed PF1–PF10. A3 inputs renamed A3-R1, A3-R2, A3-R2′, A3-R3, A3-R4 (R1/R2 also collided with ledger rows). 4.1(d) "item I4" → I2. Body tag (I5) → (I9), with new ledger row I9 (J local, |J| = O(Mα_0)). P13's undefined "(D)" replaced by its content (complex Combes–Thomas decay by accretivity). Status line now cites I1–I9.
 8. §7.3 (F9). Script note added: poincare_exp.py prints a stale 1/K_b, 2× too small; 1.20·10^{−5} is correct.
 9. Recheck. Every "hence/so/it follows" was reread after the edits; each still has its justification. Open item, not changed here: the §9 source-name note says A1_WALK_FULL.md and WG_FULL.md now exist (written 2026-10-28); both files now exist in the folder.
+10. Regrade fixes (WC_FULL_VERIFY regrade, 2026-10-28). F7: 5.4(d) and Theorem WC(ii) now cite WG_FULL 0.4 as corrected (band by one-layer enlargement X → X⁺; c_X taken ≥ WG c_X + 2). Ledger: line-49 "R2′" → A3-R2′; I4 "R2 of A3" → A3-R2. Stale §9 source-name note replaced (both FULL files exist); the header source line updated to match. Item 9's open item is closed.
