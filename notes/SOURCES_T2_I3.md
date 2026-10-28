@@ -76,3 +76,86 @@ The three one-step objects.
 Why Λ_gh is the right residual group. By Lemma 4.1(ii) below, 𝔄(U^u) = 𝔄(U)^{u|coarse}, so gauge transformations with u = 1 at the coarse sites leave the constraint 𝔄(U) = V unchanged. This is the residual gauge group of the one-step problem.
 
 The bordered matrix. 𝔅_f = [[A_f, Q̃_f^†], [Q̃_f, 0]], A_f = Δ_{i−1}(fL^{−2}) + D_fΠD_f^* (S123 §2 (I1); U3_AW §1). The input block Δ_{i−1} is not part of (I3); it is covered by the induction of S123 Prop. 2.1.
+
+## 4. Magnetic covariance and finite range
+
+Magnetic translations. For a ∈ Z⁴ let τ_a be the translation (τ_aU)(b) := U(b − a), and u_a(x) := exp(−i(φ/2)(a∧x)σ_3). Put 𝔐_aU := (τ_aU)^{u_a}, with U^u(b) = u(b_−)U(b)u(b_+)^{−1}.
+
+Lemma 4.0 [P]. 𝔐_aU_0 = U_0 for every a ∈ Z⁴. On midpoint fluctuations, 𝔐_a(U_0^{1/2}e^{iB}U_0^{1/2}) = U_0^{1/2}e^{i𝔪_aB}U_0^{1/2} with (𝔪_aB)(b) = Ad(e^{iα_a(m_b)σ_3})B(b − a), α_a(x) := −(φ/2)(a∧x). So 𝔪_a multiplies the charged component by exp(−ie(φ/2)(a∧m_b)) and fixes the neutral one.
+Proof. The angle of (τ_aU_0)(b) is θ_{b−a} = θ_b − δ, δ := (φ/2)(a∧e_μ). The gauge transformation adds α_a(b_−) − α_a(b_+) = (φ/2)(a∧e_μ) = δ. So the angle returns to θ_b. For the fluctuation: u_a(b_−)U_0(b − a)^{1/2}e^{iB′}U_0(b − a)^{1/2}u_a(b_+)^{−1}, B′ = B(b − a). All background factors lie in the torus. Collecting the torus angles on the left of e^{iB′}: α_a(b_−) + (θ_b − δ)/2 = θ_b/2 + β; on the right: (θ_b − δ)/2 − α_a(b_+) = θ_b/2 − β, with β = (α_a(b_−) + α_a(b_+))/2 = α_a(m_b) (α_a is linear). So the result is U_0(b)^{1/2}e^{iβσ_3}e^{iB′}e^{−iβσ_3}U_0(b)^{1/2}. ∎
+
+On the coarse lattice define 𝔐^c_a (a ∈ LZ⁴) by the same formulas with u_a restricted to LZ⁴. In coarse units (Y = LY′, a = La′) u_a(Y) = exp(−i(f/2)(a′∧Y′)σ_3): this is the symmetric-gauge magnetic translation for flux f per coarse plaquette.
+
+Lemma 4.1 (covariance of the nonlinear averaging) [P from (0.4), (0.6), (0.12)]. For configurations U near U_0 (so that every log below is the principal branch near its background value), and for 𝔄 = (0.4), (0.12) or (42):
+(i) translation: 𝔄(τ_aU) = τ_a𝔄(U) for a ∈ LZ⁴;
+(ii) gauge: 𝔄(U^u) = 𝔄(U)^{u|_{LZ⁴}} for every gauge function u near the identity, in particular for u in the torus;
+(iii) hence 𝔄(𝔐_aU) = 𝔐^c_a𝔄(U), a ∈ LZ⁴, and Ū_0 := 𝔄(U_0) satisfies 𝔐^c_aŪ_0 = Ū_0.
+Proof. (i) The blocks B(y), the contour families G(y,x) and the transported segments [x,x′] are defined by relative positions (CMP 109 p. 252, quoted in §2 (B1)); a coarse translation maps the loop set 𝓛(c) onto 𝓛(c + a) with the same weights. (ii) Every loop ℓ ∈ 𝓛(c) starts and ends at c_−, so U^u(ℓ) = u(c_−)U(ℓ)u(c_−)^{−1}. The principal log commutes with conjugation, so Z_c(U^u) = Ad(u(c_−))Z_c(U), and exp(iAd(u(c_−))Z)·u(c_−)U(c)u(c_+)^{−1} = u(c_−)e^{iZ}U(c)u(c_+)^{−1}. For (0.12) the averaged contour variables satisfy U^u(y,x) = u(y)U(y,x)u(x)^{−1} by (0.6) ("M({uU_jv}) = uM({U_j})v"), and the same computation applies. (iii) Combine (i), (ii) with Lemma 4.0. ∎
+Remark. This is the nonlinear form of Balaban's covariance (3.32)/(3.34) of CMP 99 ("inspecting the definitions of the averaging operators Q_j(U) for gauge fields we can see that the equalities (3.32) hold again", p. 396). For torus-valued u the "near the identity" proviso is not needed, because conjugation by a torus element maps the principal branch to itself.
+
+Corollary 4.2 (covariance of the linearized objects) [P]. With 𝔪_a of Lemma 4.0 and its coarse analogue 𝔪^c_a:
+ Q̃_f 𝔪_a = 𝔪^c_a Q̃_f (a ∈ LZ⁴);  D_f 𝔫_a = 𝔪_a D_f and Π𝔫_a = 𝔫_aΠ (a ∈ LZ⁴),
+where (𝔫_aν)(x) := Ad(e^{iα_a(x)σ_3})ν(x − a) is the action on gauge parameters. D_f and 𝔫_a commute for every a ∈ Z⁴ (fine magnetic translations), Π only for a ∈ LZ⁴.
+Proof. Q̃_f: differentiate 𝔄(𝔐_aU_t) = 𝔐^c_a𝔄(U_t) at t = 0, using 𝔐_aU_0 = U_0, 𝔐^c_aŪ_0 = Ū_0 and Lemma 4.0 on both lattices. D_f: 𝔐_a(U_0^{u}) = (𝔐_aU_0)^{𝔫_au} = U_0^{𝔫_au} (abelian torus factors commute), then differentiate. Π: multiplication by 1 − 1_{LZ⁴} commutes with τ_a for a ∈ LZ⁴ and with any multiplication operator. ∎
+
+Canonical form. By U3_LEMMA51 Lemma 3.1, an operator A that commutes with these magnetic translations has kernel A(x,y) = W(x,y)a(x,y), W(x,y) := exp(i(eφ/2) x∧y) in the charged sector (W ≡ 1 in the neutral sector), x, y the midpoints (bonds) or sites (gauge parameters), and a(x + a, y + a) = a(x,y) for all a ∈ LZ⁴ [R: U3_LEMMA51 Lemma 3.1; I rechecked the one identity it uses, W(x + a, y + a) = W(x,y)exp(i(eφ/2)(x − y)∧a), and that the phases of 𝔪_a, 𝔪^c_a are exp(−i(eφ/2)a∧x) at the output point and its inverse at the input point, which is what makes the phase cancel; P]. For a fine-to-coarse operator, a depends on x − y and on the position of y in its coarse cell (a finite label). This is the "reduced kernel" of (I3). In midpoint coordinates the phase W is the symmetric-gauge Wilson line, as U3_LEMMA51 §1 states.
+
+Finite range [P].
+- Q̃_f(c, b) ≠ 0 only if b lies on some loop of 𝓛(c) or on c. All of these lie in B(c_−) ∪ B(c_+) ∪ c. So the row of a coarse bond c is supported in the two blocks of its endpoints. (S123 §2 (I3) says "one block". Correction: two adjacent blocks; still finite and fixed. Nothing downstream uses "one".) For (0.12) the support is the same, since the contour families G(c_−,x), G(c_+,x′) are inside the same blocks.
+- D_f(b, x) ≠ 0 only if x ∈ {b_−, b_+} (3.3).
+- Π is diagonal.
+
+## 5. Analyticity of Q̃_f in f, entry by entry
+
+Notation for a path. A lattice path ℓ is a sequence (b_1^{s_1}, …, b_n^{s_n}) of fine bonds with orientations s_k = ±1. Put
+
+  β_{ℓ,k} := s_kθ_{b_k}/2 + Σ_{k′>k} s_{k′}θ_{b_{k′}}  (linear in φ),   X_ℓ(B) := Σ_k s_k Ad(e^{−iβ_{ℓ,k}σ_3}) B(b_k).
+
+Lemma 5.1 (first order of a path holonomy) [P]. U_t(ℓ) = U_0(ℓ)exp(itX_ℓ(B) + O(t²)).
+Proof. U_t(b)^{s} = U_0(b)^{s/2}e^{itsB(b)}U_0(b)^{s/2} (for s = −1 invert the midpoint form). In the ordered product move each factor e^{its_kB(b_k)} to the right end, using e^{iY}T = Te^{iAd(T^{−1})Y}; the torus element passed is T = U_0(b_k)^{s_k/2}Π_{k′>k}U_0(b_{k′})^{s_{k′}} = e^{iβ_{ℓ,k}σ_3}. The torus elements left over multiply to U_0(ℓ). Expand to first order in t. ∎
+
+Lemma 5.2 (first order of the principal log at a torus element) [P from CMP 98 (36), (34)]. For Θ ∈ C with |eΘ| < 2π: (1/i)log(e^{iΘσ_3}e^{itX}) = Θσ_3 + t·g^{−1}(i ad_{Θσ_3})X + O(t²). On the charged component g^{−1}(i ad_{Θσ_3}) acts as the scalar g^{−1}(ieΘ) = ieΘ/(1 − e^{−ieΘ}); on the conjugate component as g^{−1}(−ieΘ); on the neutral component as 1.
+Proof. CMP 98 p. 23 (36) [V: page image]: "∂Z(u,v)/∂v = g^{−1}(ad_{Z(u,v)})Y" for Z(u,v) = log e^{uX}e^{vY} (28). At v = 0, Z = uX. Take uX = iΘσ_3, vY = itX. ad_{σ_3}σ_± = ±2σ_±, so ad_{iΘσ_3} acts on the charged component as ieΘ, e = 2. g^{−1}(z) = −z/(e^{−z} − 1) (34) is analytic for z ∉ 2πiZ∖{0} (p. 23, quoted in §2 (B4)); |z| = |eΘ| < 2π stays inside. The principal log of e^{iΘσ_3} is Θσ_3 for |Re Θ| < π. Cross-check with (38): writing e^{iΘσ_3}e^{itX} = e^{itAd(e^{iΘσ_3})X}e^{iΘσ_3}, (38) gives the factor g^{−1}(−ieΘ)e^{ieΘ}, which equals g^{−1}(ieΘ) by the identity "g^{−1}(−z)e^z = g^{−1}(z)" (CMP 98 p. 35, text layer l. 937; also checked by hand from (34)). ∎
+
+Proposition 5.3 (explicit linearization of (0.4) at flux f) [P]. Let Θ_ℓ := φA(ℓ) (§3), Θ̄_c := Σ_{ℓ∈𝓛(c)} w_ℓΘ_ℓ, θ^{tot}_c := Σ_{b⊂c} θ_b (the L fine links of c), Φ_c := Θ̄_c + θ^{tot}_c, so Ū_0(c) = e^{iΦ_cσ_3}. Then in the charged sector
+
+  (Q̃_fb)(c) = e^{−ieΦ_c/2} [ g(−ieΘ̄_c) Σ_{ℓ∈𝓛(c)} w_ℓ g^{−1}(ieΘ_ℓ) Σ_k s_{ℓ,k} e^{−ieβ_{ℓ,k}} b(b_{ℓ,k}) + e^{ieΦ_c} Σ_{k=1}^{L} e^{−ieβ_{c,k}} b(b_{c,k}) ],   (5.1)
+
+with g(z) = (e^{−z} − 1)/(−z) entire (CMP 98 (33)). In the neutral sector
+
+  (Q̃_fB³)(c) = Σ_ℓ w_ℓ Σ_k s_{ℓ,k}B³(b_{ℓ,k}) + Σ_{b⊂c} B³(b),  independent of f.   (5.2)
+
+The conjugate sector b̄ is the complex conjugate of (5.1) (e → −e). There are no sector-mixing terms.
+Proof. Step 1. Lemma 5.1: U_t(ℓ) = e^{iΘ_ℓσ_3}e^{itX_ℓ + O(t²)}. Step 2. Lemma 5.2 and (3.2): Z_c(U_t) = Θ̄_cσ_3 + tY_c + O(t²), Y_c := Σ_ℓ w_ℓ g^{−1}(i ad_{Θ_ℓσ_3})X_ℓ. Step 3. CMP 98 (41) [V: page image] "(1/i) log e^{iX+iY}e^{−iY} = g(−i ad_Y)X + O(|X|²)" gives exp(i(Θ̄_cσ_3 + tY_c)) = exp(it g(−i ad_{Θ̄_cσ_3})Y_c + O(t²)) e^{iΘ̄_cσ_3}. Step 4. Lemma 5.1 for the straight path c: U_t(c) = U_0(c)e^{itX_c + O(t²)}. Step 5. Ū_t(c) = e^{itg(…)Y_c}e^{iΦ_cσ_3}e^{itX_c} = exp(it[g(−i ad_{Θ̄_cσ_3})Y_c + Ad(e^{iΦ_cσ_3})X_c] + O(t²)) e^{iΦ_cσ_3}. Step 6. In the midpoint form Ū_t = Ū_0^{1/2}e^{itV}Ū_0^{1/2}, V = Ad(e^{−iΦ_cσ_3/2})[…]. Read off the components: every operator involved (Ad and analytic functions of ad of torus elements) is diagonal in (σ_+, σ_−, σ_3), so sectors do not mix; on the neutral component all factors are 1. ∎
+
+Checks [P]. (a) f = 0: all phases and g, g^{−1} factors are 1 and (5.1) = (5.2) = Σ_x L^{−4} mean_{Γ,Γ′}[B(Γ) + B([x,x′]) − B(Γ′) − B(c)] + B(c) = (Q_LB)(c) + λ(c_−) − λ(c_+), which is U3 (1.1) (U3_GAUSSIAN_RG Lemma 1.1) exactly, with λ(y) = L^{−4}Σ_{x∈B(y)} mean_{Γ∈G(y,x)} B(Γ), using that x ↦ x′ = x + Le_μ maps B(c_−) onto B(c_+). (b) (5.2) is U3_LEMMA51 Prop. 2.2(a) ("the neutral part of C_f is f-independent"). (c) To first order in f, g^{−1}(ieΘ) = 1 + ieΘ/2 + O(Θ²) and g(−ieΘ̄) = 1 + ieΘ̄/2 + O(Θ̄²): these are the "charged factors 1 ± iθ/2 + O(θ²)" of U3_LEMMA51 §2.3 and BETA_FP_M §2.4. (d) For the single-loop average (42) of CMP 98 the same steps give the operator factors g(−i ad_Y)g^{−1}(…) of CMP 98 (124) [I: structure matches; not compared term by term, (124) uses a different trivialization].
+
+Proposition 5.4 (analyticity of the reduced kernel of Q̃_f) [P]. Let f_0 := π/8 for (0.4) and (42). For every coarse bond c and fine bond b, the charged entry Q̃_f(c,b) given by (5.1) extends to an analytic function of complex f on |f| < f_0, and so does a_f(c,b) := Q̃_f(c,b)/W(m_c,m_b). Up to coarse translations there are at most 4·(8L⁴ + L) distinct pairs (c,b) with a_f(c,b) ≠ 0 per sector. Hence, for every θ ≥ 0 and k ≥ 0, f ↦ a_f is analytic from {|f| < f_0} into the weighted ℓ¹ space ℓ¹_{θ,k} of S123 §1, and ‖∂_f^m a_f‖_{θ,k} ≤ C_m(L,θ,k) for |f| ≤ f_0/2, m ≤ 3. In particular ‖a_f − a_0‖_{θ,k} ≤ C_1(L,θ,k)|f|.
+Proof. In (5.1), f enters through φ = fL^{−2} in: the phases e^{−ieβ}, e^{±ieΦ_c/2} (β, Φ_c linear in φ: entire); g(−ieΘ̄_c) (g entire); g^{−1}(ieΘ_ℓ), analytic where |eΘ_ℓ| < 2π. By (3.1), |eΘ_ℓ| ≤ 16|f| < 2π for |f| < π/8. W(x,y) = exp(i(eφ/2)x∧y) is entire and never 0. Each entry is a finite sum (the loops through b are finitely many), so it is analytic. The pair count: c has 4 directions per coarse site; b lies in B(c_−) ∪ B(c_+) ∪ c, which has at most 2·4L⁴ + L bonds. By Corollary 4.2 and the canonical form, a_f is invariant under joint coarse translations, so these are all the distinct entries. A kernel with finitely many distinct entries and finite range has finite ℓ¹_{θ,k} norm for every θ, k, and the norm of ∂_f^m a_f is a finite sum of |∂_f^m a_f(c,b)| times fixed weights; Cauchy's estimate on |f| ≤ 3f_0/4 bounds these for |f| ≤ f_0/2. ∎
+Remark (the adjoint). The reduced kernel of Q̃_f^† is (x,y) ↦ conj a_f(y,x) (because W(y,x) = conj W(x,y) for real f). For real f this is the restriction of the analytic function conj a_{f̄}(y,x) (Schwarz reflection), so Q̃_f^† has the same properties.
+
+Proposition 5.5 (the variant (0.12)) [P for Federbush's average (0.10); R for a general axiomatic average]. For 𝔄 = (0.12), Prop. 5.4 holds with f_0 replaced by f_0′ := min(π/8, 1/8).
+Proof. On a torus set {e^{iθ_jσ_3}}, (0.10) has the solution e^{iθ̄σ_3}, θ̄ the mean, because Σ_j(θ_j − θ̄) = 0. Linearize (0.10) at it: with U_j(t) = U_je^{itX_j}, U(t) = e^{itY}e^{iθ̄σ_3}, and δ_j := θ_j − θ̄, Lemma 5.2 (applied on both sides via (36)) gives Σ_j[g^{−1}(−i ad_{δ_jσ_3})Ad(U_j)X_j − g^{−1}(i ad_{δ_jσ_3})Y] = 0. In the charged sector Y = [Σ_j g^{−1}(ieδ_j)]^{−1} Σ_j g^{−1}(−ieδ_j)e^{ieθ_j}X_j. The contours of G(y,x) are monotone, so two of them form a loop with |winding| ≤ 2 inside one block, |A| ≤ 2L², |δ_j| ≤ 2|f|, |eδ_j| ≤ 4|f|. For |z| ≤ 1, |g^{−1}(z) − 1| ≤ |z|/2 + 0.09|z|² ≤ |z| (from (35): g^{−1}(z) = 1 + z/2 + Σ_{p≥1}k_{2p}z^{2p}; here g^{−1}(z) − z/2 = (z/2)coth(z/2), so k_{2p} = B_{2p}/(2p)!, |k_{2p}| = 2ζ(2p)(2π)^{−2p} ≤ 3.3(2π)^{−2p}, and Σ_{p≥1}|k_{2p}| ≤ 3.3/(4π² − 1) < 0.09). So Re Σ_j g^{−1}(ieδ_j) ≥ n(1 − 4|f|) > 0 for |f| < 1/4, the holomorphic implicit function theorem applies to (0.10) near the torus set, M is analytic there, and its first derivative is the displayed ratio, analytic in f for |f| < 1/4. The averaged loop angle is the mean of the Θ_ℓ over contour pairs, so (3.1) still holds, and Steps 2–6 of Prop. 5.3 go through with X_ℓ replaced by the transported averaged contour fluctuations. All factors are analytic for |f| < min(π/8, 1/4); f_0′ = min(π/8, 1/8) leaves room for Cauchy estimates. For a general average with Balaban's axioms, analyticity of M near the identity is an axiom ("we assume that it is an analytic function", CMP 109 p. 253), and (0.6) moves the base point to any group element; this gives analyticity in f on a disc whose radius depends on the domain of M [R: CMP 109 (0.5)–(0.9)]. ∎
+
+## 6. D_f, Π and the ghost term D_fΠD_f^*
+
+Proposition 6.1 [P]. (a) D_f commutes with the fine magnetic translations (Corollary 4.2), has range one fine bond, and its reduced kernel a_D(b, x) := D_f(b,x)/W(m_b, x) has, in the charged sector, the entries
+
+  a_D(b, b_−) = e^{−ieθ_b/2}·e^{−i(eφ/2) m_b∧b_−},  a_D(b, b_+) = −e^{ieθ_b/2}·e^{−i(eφ/2) m_b∧b_+},
+
+and 0 otherwise. With m_b = b_− + e_μ/2: m_b∧b_− = (e_μ/2)∧b_− = −(1/2)(b_−∧e_μ) and m_b∧b_+ = m_b∧(m_b + e_μ/2) = (1/2)(m_b∧e_μ) = (1/2)(b_−∧e_μ). Since θ_b = (φ/2)(b_−∧e_μ), the phases cancel:
+
+  a_D(b, b_−) = 1,  a_D(b, b_+) = −1,   (6.1)
+
+for every φ. So the reduced kernel of D_f is f-independent: it is the plain lattice gradient. Neutral sector: the same, trivially. (This is the statement of U3_AW §1 that in midpoint coordinates "the coarse covariant gradient has an f-independent symbol"; here it is checked for the fine gradient of one step.)
+(b) Π is multiplication by 1 − 1_{LZ⁴}; W(x,x) = 1, so its reduced kernel is Π itself, f-independent, with two distinct entries (0 at coarse sites, 1 elsewhere), periodic under LZ⁴.
+(c) D_fΠD_f^* commutes with the coarse magnetic translations, has range two fine bonds (b, b′ share an endpoint), and its reduced kernel is the twisted product a_D ⋆ a_Π ⋆ a_D^* (U3_LEMMA51 Lemma 3.2). Entry by entry:
+
+  (D_fΠD_f^*)(b, b′) = Σ_{x ∈ {b_±}∩{b′_±}, x ∉ LZ⁴} D_f(b,x) conj D_f(b′,x),
+
+so the reduced entry is Σ_x a_D(b,x) conj a_D(b′,x)·W(m_b,x)W(x,m_{b′})/W(m_b,m_{b′}) = Σ_x a_D(b,x) conj a_D(b′,x)·exp(i(eφ/2)(m_b − x)∧(x − m_{b′})). These are finite sums of entire functions of f, with finitely many distinct values up to coarse translations (x ranges over a fundamental domain of LZ⁴ and its neighbours). So the reduced kernel of D_fΠD_f^* is entire in f with values in ℓ¹_{θ,k} for every θ, k, and ‖·_f − ·_0‖_{θ,k} ≤ C(L,θ,k)|f| for |f| ≤ 1.
+Proof. (a) (3.3) and the definition of W; the phase computation is displayed. (b) Immediate. (c) The kernel formula is the matrix product; the phase identity W(x,y)W(y,z) = W(x,z)exp(i(eφ/2)(x − y)∧(y − z)) is the one used in U3_LEMMA51 Lemma 3.2 (checked: the three wedge products sum to (x − y)∧(y − z)). For two bonds sharing the endpoint x, |(m_b − x)∧(x − m_{b′})| ≤ 1/4, so the phase is exp(iO(φ)), entire. ∎
+
+Remark (the phase in (c) is real content). For b in direction 0 and b′ in direction 1 sharing x, (m_b − x)∧(x − m_{b′}) = ±1/4, so the reduced kernel of D_fΠD_f^* carries the factor e^{±ieφ/8}: the ghost term is f-dependent at the reduced level although D_f is not. This is the lattice form of [D_0, D_1] ∝ f. It is entire in f, so it does not affect (I3).
+
+Remark (Balaban's own gauge-fixing operator). CMP 99 uses instead D R(U) D^* in (3.26), with R(U) the projection (3.25) built from Q′(U) of (3.19), "(Q′(V)λ)(y) = Σ_{x∈B(y)} L^{−d}R(V(Γ_{y,x}))λ(x)". At the constant-flux background R(V(Γ_{y,x})) is a torus transport, so the reduced kernel of Q′ is entire in f by the argument of (a). R(U) contains G′ = (Δ′_a)^{−1} and (Q′G′²Q′*)^{−1}; Balaban states: "Assuming some regularity of the configuration U it can be easily shown that the operator Δ′_a is positive. This implies positivity of the operators G′, Q′G′²Q′*, hence the existence of the operator R" (CMP 99 p. 395 [V: page image]). Given a uniform lower bound at f = 0, Lemma 1.2 of S123 (Nenciu-type inverse) gives reduced kernels C³ in f for small |f| [I: the f = 0 lower bound on the infinite lattice is not written here]. This variant is not the project's gauge fixing (U3_LEMMA51 §2.3 uses D_rD_r^† = D_fΠD_f^*, and the constrained minimum does not depend on the choice, U3 Lemma 1.4), so nothing below depends on it.

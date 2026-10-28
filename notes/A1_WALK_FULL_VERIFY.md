@@ -99,3 +99,34 @@ Result. The 7.3 bound holds with c(d) = 1 (or 2^{−d} for any partition of unit
 ### Regrade
 PAPER-GRADE relative to its tagged inputs (IN1, IN3 conditional, IN8–IN12 [I], IN18 [R]). F1–F6 are correct. Three cosmetic edits remain, none load-bearing: F3′ (state the G_1 row in CMP 99 notation as α_0 ≤ c″M^{−13}, or drop the "implies" remark for G_1); F6′ (F_□ = −Σ_{□′}R_{□,□′}C_□h_□); 7.3 (define φ_□ as the tent family above and retag [P]).
 Correction to condition (ii) above. The divisors of the side are powers of L, so the interval [¼K_1M_1, ½K_1M_1] can contain none when L > 2. Use instead a := M_1L^k with L^k the largest power of L ≤ ½K_1. Steps 1–4 hold with a/M_1 in place of ½K_1 if a ≥ 3M_1, which K_1 ≥ 6L guarantees. The cube side is then 2a ≤ K_1M_1, so D_+ does not grow.
+
+## Regrade of §6.9a and the G_1 second pass (2026-10-28)
+Read: change logs of A1_WALK_FULL and WG_FULL; A1_WALK_FULL §0.2, §0.4, §2.1, §2.3, §5.3–§5.7, §6.9, §6.9a; WG_FULL 0.4, (I6), (I7), 0.7, §3, 5.4–5.10, 6.4.
+
+(1) (H1-T) against WG_FULL 5.10. 5.10 gives: (L1)–(L2) per factor, (B1) as (5.7.1) with the tree distance, (B2) as C″_𝒟ρ_{**} ≤ ¼, rate (1 − θ)½ε. (T0) is 5.6, (L2-T) is 5.6, the point count C_𝒟(C″_𝒟)^s is 5.8. These are in WG_FULL, so they are acceptable inputs. Not given by 5.10 or anywhere in WG_FULL:
+ - the set form of (B2-T) (count C_𝒟^{(1)} over sets of diameter ≤ D_+^{(1)}M_1). It is a cube-geometry consequence, the same kind as the [I] count of A1_WALK_FULL 5.6. The heading tag "[I] cube geometry" covers it only implicitly. Fix A: tag the set form [I] in (B2-T).
+ - (B3-T) c_X^{(1)} = D_+ + 10. It comes from WG_FULL 0.7 (second pass) and 0.4 "Domain size", not from 5.10. Correct as stated: branch domains are first-pass □⁺ (diam ≤ D_+M_1), WG-G domains (c_X ≤ D_+), and κ-domains (c_X); 5 layers add ≤ 10M_1 in the convention of WG 0.4.
+ - δ_{G_1} subtracts (d/2 + 1)θ. WG 0.2 already measures kernels after S-rescaling, so this may count the rescaling cost twice. That is conservative and harmless.
+ - Inherited defect (WG_FULL 5.8, see WG_FULL_VERIFY regrade): C″_𝒟 = T_2C_𝒟 uses the per-domain count C_𝒟. A branch step that follows a first-pass □⁺ domain needs the count over sets of diameter D_+M_1. So C″_𝒟 must be T_2C_𝒟^{H1} (C_𝒟^{H1} enlarged to include the □ count, as 5.6 does). (B2-T) and C_W^T change only through this constant.
+
+(2) What the tree form gives. Checked against the definitions (0.2; WG 5.7).
+ - (L1), (L2): per factor, no change. CONFIRMED.
+ - (D1): a connected graph with y, y′ contains a y–y′ path. CONFIRMED.
+ - Subadditivity: the union of graphs for (τ_1, y, z) and (τ_2, z, y′) shares z, so it is connected, contains y, y′, and meets every domain of τ_1 ∘ τ_2. This replaces Step 2 of WG 3.4; Step 3 is (D1). CONFIRMED.
+ - (D2) fails: y = y′ and one branch domain X far away gives tree length d(y, X) < 2d(y, X). CONFIRMED.
+ - (D2-T) d(τ, y, y′) ≥ max{d(y, X), d(X, y′)}: the graph contains a path from y to a point x ∈ X and from x to y′. CONFIRMED. (The Steiner bound ½[d(y, X) + d(X, y′) + d(y, y′)] also holds; not needed.)
+
+(3) Bridge. In LT(c): p ∈ X̃^5 ∖ □⁺ gives d(p, □) > K_0^{(1)}M_1; d(x, p) ≤ c_X^{(1)}M_1 for x ∈ X by (B3-T). So d(X, □) > (K_0^{(1)} − c_X^{(1)})M_1 = (c_X^{(1)} + 4)M_1 ≥ 4M_1. For y, y′ ∈ □, (D2-T) gives d(τ, y, y′) > 4M_1, the walk value. Then δd(τ) ≥ 4λδM_1 + (1 − λ)δd(y, y′) by (D1), so LT(c) holds verbatim (λ = ½, ¼). The tree sum over excluded τ is ≤ (4/3)C_𝒟b ≤ 2c_+. LT(d) is (N3) on (c); LT(e) is algebra on (H2) and (d). 5.3(R): y, z ∈ □ (z ∈ □⁻ ⊂ □), same bound, and ¼δd ≥ δM_1 gives β = b e^{−δM_1}ρ^{|τ′|} with ε ≤ ¾δ. 5.3(S) uses only (D1). CONFIRMED.
+ Note: the "+4" is not needed. With K_0^{(1)} = 2c_X^{(1)} + 2 one gets d(X, □) > (c_X^{(1)} + 2)M_1 ≥ 12M_1 > 4M_1, because c_X^{(1)} ≥ 10. The +4 only enlarges D_+^{(1)}. Harmless; no fix required.
+
+(4) Direction. A walk with points x_i ∈ X_i in order gives a path graph through y, all X_i, and y′; the tree distance is an infimum over a larger class, so d(τ_ω, y, y′) ≤ d(ω, y, y′). A bound e^{−δd(ω)} then implies e^{−δd(τ_ω)}. This is the direction A1-W needs: every walk block and every K_□, Γ_□ bound converts to the tree distance. For one domain the two distances are equal (graph {z, z′}). The reverse direction is never used. CONFIRMED.
+
+(5) C_W^T. Walk case: 5 label types, each ≤ C_𝒟. Tree case: "next item of the current G_1-block" ≤ C″_𝒟 (tags included); first factor of a new S-block, of a new R-block, closing K_□, Γ_□: each counted by the set form, ≤ C_𝒟^{(1)}. So C_W^T = 4C_𝒟^{(1)} + C″_𝒟, CONFIRMED, provided the first factor of a new G_1-block has its tag inside α (a new G_1-block starts with a WG-G factor that carries one of the 97 tags). 6.9a says that "2C_W" of 6.9 needs exactly this convention, so the remark is inconsistent with C_W^T. Fix B: either state "α includes the tag" for C_𝒟^{(1)}, or write C_W^T := 2T_2C_𝒟^{(1)} + 2C_𝒟^{(1)} + C″_𝒟. Both are fixed before M_1.
+
+(6) Second pass finite. c_X^{(1)} depends on D_+; D_+ = K_1 + 2K_0 + 2 with K_0 = 2c_X + 2, c_X = c(d), K_1 = K_1(d, L). None of these uses C_𝒟^{(1)}, C_𝒟^{H1}, or any count. So C_𝒟^{(1)} does not feed back into D_+. The pass ends after one step. CONFIRMED.
+
+Grade: NEEDS FIXES, all constant-level or tagging, none structural.
+ - Fix A: tag the set form of (B2-T) [I] (cube geometry).
+ - Fix B: make C_W^T and the 6.9 remark use one tag convention.
+ - Fix C (inherited from WG_FULL 5.8): C″_𝒟 := T_2C_𝒟^{H1} in (B2-T), Corollary 1.2, and C_W^T.
+With A–C, 6.9a is PAPER-GRADE relative to WG_FULL 5.10 and the [I] cube geometry of 2.1.
