@@ -324,3 +324,49 @@ Bound. Fix ω̄. A run of r ≥ 1 near domains admits at most C_W^r label choice
  Σ_{ω↦ω̄} |T_ω(b, b′)| ≤ (4/γ)(c_1ρ)^{n_f−1}Π_{j=1}^{n_0}(Σ_{r≥1}(C_Wc_1ρ)^r) e^{−½ε_Z d(ω̄, b, b′)} ≤ (4/γ)(c_1ρ)^{n_f−1}(2C_Wc_1ρ)^{n_0} e^{−½ε_Z d(ω̄, b, b′)}.
 If n_0 ≥ 1, use 2C_Wc_1ρ ≤ 1 for all but one slot. In all cases the bound is ≤ (8C_W/γ)(c_1ρ)^{max(n_f−1, 0)}e^{−½ε_Z d(ω̄, b, b′)}. So every far domain except at most one carries the step factor c_1ρ. The constant of the merged slots is O(1)/γ per walk, not per slot (SOURCES_WC_EXPGAUGE_VERIFY V7 asked for this). Sums over ω̄ are taken through the absolutely convergent sum over ω (Lemma 1.1). This is the structure that the s-rule (CMP 116 pp. 3, 13) and SOURCES_A2_R2 §3 consume.
 
+## 8. Complex configurations
+
+### 8.1 Domains, discs, and conventions [P, with the radius from SOURCES_WC_RESIDUE §7.0]
+- For a = (a_0, a_1) let 𝒰(a) be the set of pairs U_c = (U′U, J) with: U G-valued and regular ((3.35)–(3.36), Mα_0 ≤ a_0^{reg}); U′ = e^{iL^{−1}ηA′}, with |A′|, |∇A′| (and |D*DA′| where (3.38) is used) < a_1 in the scaled units of CMP 99 (3.37) [V p. 396–397]; J 𝔤^c-valued with |J| < a_0. J is a free complex variable as in CMP 116 p. 15 [V text].
+- Real point: U_c^0 := (U, 0). Disc: U(t) := (e^{itL^{−1}ηA′}U, tJ), t ∈ ℂ.
+- Radius. If U_c ∈ 𝒰(a) and b ≥ a componentwise, then U(t) ∈ 𝒰(b) for |t| < t(a, b) := c_P·min{b_0/(a_0 + a_1), b_1/a_1}, c_P = c_P(d) > 0. The mixed first entry comes from the plaquette condition of CMP 109 (1.13)–(1.14) along the disc (SOURCES_WC_RESIDUE §7.0, confirmed sufficient in VERIFY Q7).
+- Conventions. At a complex point, "*" is the analytic continuation of the real adjoint (the bilinear transpose). ⟨·, ·⟩ stays sesquilinear. Norms are ℓ²-operator norms, bounded by the Schur test, uniform in volume.
+
+### 8.2 Lemma CP (Cauchy perturbation) [P]
+Let F(U_c) be an operator family, analytic on 𝒰(b), with ‖F‖ ≤ Γ there. Assume Re⟨u, F(U_c^0)u⟩ ≥ c‖u‖² for all complex u, with c > 0. Assume t := t(a, b) ≥ 1 + 2Γ/c. Then Re⟨u, F(U_c)u⟩ ≥ ½c‖u‖² for every U_c ∈ 𝒰(a) and every complex u.
+Proof. f(s) := F(U(s)) is analytic for |s| < t, with ‖f‖ ≤ Γ. For |s| < 1, the closed disc of radius r < t − |s| about s lies in the domain. The Cauchy estimate on that disc gives ‖f′(s)‖ ≤ Γ/r. Let r → t − |s|: ‖f′(s)‖ ≤ Γ/(t − |s|). Integrate along [0, 1]: ‖f(1) − f(0)‖ ≤ ∫_0^1 Γ/(t − s)ds = Γlog(t/(t − 1)) ≤ Γ/(t − 1) ≤ ½c. The middle inequality is log(1 + x) ≤ x with x = 1/(t − 1). Hence Re⟨u, f(1)u⟩ ≥ Re⟨u, f(0)u⟩ − ‖f(1) − f(0)‖‖u‖² ≥ ½c‖u‖². ∎
+Remark on the hypothesis. SOURCES_WC_RESIDUE §6.1 assumed F(U_c^0) real symmetric. The proof uses only the accretive bound. SOURCES_WC_RESIDUE_VERIFY Q6 restated the hypothesis this way, because a truncated local operator need not be symmetric. For a real matrix A, the real-vector bound implies the complex one: with u = a + ib, Re⟨u, Au⟩ = ⟨a, Aa⟩ + ⟨b, Ab⟩.
+
+### 8.3 Lemma AW (A1-W at complex points) [P given its inputs]
+Hypotheses on 𝒰(b):
+ (i) the propagator P (P = G or G_1) has a walk or tree expansion with (B1)–(B3) of (H1), constants b^b, ρ^b ≤ c^b/M_1, δ^b, and every term analytic in U_c. Put c_+^b := C_𝒟b^b;
+ (ii) at every real point, N̂_P := S^{−1/2}QPQ*S^{−1/2} satisfies Re⟨u, N̂_Pu⟩ ≥ c_−‖u‖² (input (C) for P);
+ (iii) M_1 ≥ M_a, so that every real truncated local operator N̂_{P,□} has Re ≥ ½c_− (Lemma 2.1(e) at the real point).
+Put Γ_b := 2c_+^bΣ(δ^b). Assume t(a, b) ≥ 1 + 4Γ_b/c_−.
+Conclusion on 𝒰(a):
+ (a) Re⟨u, N̂_{P,□}(U_c)u⟩ ≥ ¼c_−‖u‖² for every □;
+ (b) ‖C_□‖_{ε^a} ≤ 8/c_−, with ε^a := min{½δ^b, c_−/(16c_+^bΣ(½δ^b))} ≥ ½min{½δ^b, c_−/(8c_+^bΣ(½δ^b))};
+ (c) N̂_P(U_c)^{−1} = Σ_ωT_ω(U_c), with |T_ω| ≤ (8/c_−)(c_1ρ^a)^{|ω|}m e^{−½ε^a d(ω)} and absolute sum ≤ (16C_𝒟/c_−)m e^{−½ε^a d}, for M_1 ≥ M_W^c;
+ (d) every T_ω and the sum are analytic on 𝒰(a).
+Proof.
+ (a) F := N̂_{P,□} is a truncated walk sum. Each term is analytic on 𝒰(b) by (i). The sum converges uniformly on 𝒰(b), by (B1)–(B2) and Lemma 1.1. ℋ_□ is finite-dimensional, so F is analytic. By Lemma 2.1(b) and (N3) with κ = 0 and κ′ = δ^b, ‖F‖ ≤ 2c_+^bΣ(δ^b) = Γ_b. At U_c^0, Re ≥ ½c_− by (iii). Apply Lemma CP with c = ½c_−. Its condition is t ≥ 1 + 2Γ_b/(½c_−) = 1 + 4Γ_b/c_−.
+ (b) Apply Lemma CT with c = ¼c_−, b = 2c_+^b, δ = δ^b. The condition is ε ≤ (¼c_−)/(2·2c_+^bΣ(½δ^b)) = c_−/(16c_+^bΣ(½δ^b)). The bound is 2/(¼c_−) = 8/c_−. Compared with 3.4, the Combes–Thomas branch of the minimum is halved and the δ-branch is unchanged. Since min{x, y/2} ≥ ½min{x, y}, ε^a ≥ ½ε^{real}(c_+^b, δ^b).
+ (c) §4 and §5 are algebraic or use only kernel bounds, the local inverse bound, and counting. Replace 4/c_− by 8/c_−, c_+ by c_+^b, δ_G by δ^b, and ε by ε^a. The identity of 4.1 holds because C_□ = N̂_{P,□}^{−1} exists by (a). The right-inverse step 5.2(b) holds in finite dimension. The constants ρ_1, K_F, and K_W at most double. M_N and M_c grow by bounded factors, and c_1 is taken at ½ε^a. So the threshold becomes M_W^c ≥ M_W (SOURCES_WC_RESIDUE_VERIFY Q6 (ii)). M_W^c is fixed before every α^{(n)}.
+ (d) C_□(U_c) is analytic, since N̂_{P,□} is analytic and invertible on 𝒰(a) (Cramer's rule). Each T_ω is a finite product of analytic factors and of absolutely convergent analytic sums. The sum over ω converges uniformly on 𝒰(a) by (c). So the limit is analytic, and it equals N̂_P(U_c)^{−1} by 5.2(b). ∎
+Constant corrections from SOURCES_WC_RESIDUE_VERIFY Q6. Γ_b carries the factor 2 of Lemma 2.1(b): Γ_b = 2c_+^bΣ(δ^b), not c_+^bΣ(δ^b). The per-walk constant is 8/c_−, and the absolute sum constant is 16C_𝒟/c_−.
+
+### 8.4 The four-level chain [P given the tagged inputs; constants from SOURCES_WC_RESIDUE §6.3–§7.2 with VERIFY Q6–Q7]
+Why four levels [V]. CMP 99 Thm 3.4 (p. 400, image) extends only G′, (Q′G′²Q′*)^{−1}, R, and G to complex U′U, for α_1 ≤ a_1. Thm 3.12 (p. 423) and the G_1 tree paragraph (p. 427) are stated at G-valued U only. A scan of CMP 99 finds no complex statement for G_1, H, H_1, or (QGQ*)^{−1} (SOURCES_WC_RESIDUE_VERIFY Q5). A complex G_1 needs H = GQ*(QGQ*)^{−1} at complex points. So the chain starts at G.
+Chain constants are named k_1, k_2, k_3 to avoid a clash with c_1 of Lemma 2.1.
+ Level 4, domain 𝒰(b⁗), b⁗ := (∞ in J, a_1). Input: CMP 99 Thm 3.4 [V]. The walk form (W_G) at complex points is [R]: Thm 3.4's "quantitative statements ... small perturbations" plus Thm 3.10 for the same G; each walk term is a finite product of operators that Thm 3.4 continues. Constants c_+⁗ = c_+(1 + O(a_1)) (the factors ‖Ad e^{iA′}‖ ≤ e^{2|A′|}) and δ⁗ = δ_G.
+ Level 3, domain 𝒰(α‴). Put Γ_4 := 2c_+⁗Σ(δ_G) and k_3 := c_Pc_−/(c_− + 4Γ_4). Take α_1‴ ≤ k_3a_1. Then t(α‴, b⁗) ≥ 1 + 4Γ_4/c_−, and Lemma AW with P = G gives the walk expansion of (QGQ*)^{−1} on 𝒰(α‴), at rate ε_3 ≥ ½ε (ε = the real rate of Theorem A1-W). Then H = GQ*(QGQ*)^{−1}, H*J, Δ_π^{(2)}, and the tree expansion of G_1 = Σ_nG(Δ_π^{(2)}G)^n are built on 𝒰(α‴) by the steps of SOURCES_WG §3.1–§3.7. Each step concatenates analytic kernels. The Neumann condition for Δ_π^{(2)}G uses |J| < α_0‴ with Mα_0‴ ≤ a_** (CMP 99 (3.137): |Δ^{(2)}| ≤ O(1)Mα_0, linear in J by (3.134)). Result: (W_G1) on 𝒰(α‴) with B_1‴ = O(1)B_1 and δ_1‴ = (1 − θ)·½ε_3. J-row: α_0‴ ≤ min(a_**/M, c′M^{−11}) (SOURCES_WG §3.6 and WG-1).
+ Level 2, domain 𝒰(α″). Put Γ_3 := 2B_1‴Σ(δ_1‴) and k_2 := c_Pc_{−,1}/(c_{−,1} + 4Γ_3), with c_{−,1} = c_−(G_1) ≥ c_−(1 − O(Mα_0)) (conditional, 6.9). Take α″ ≤ k_2α‴ componentwise, with the mixed α_0-row of 8.1. Lemma AW with P = G_1 (tree form, 6.9) gives the tree expansion of (QG_1Q*)^{−1} on 𝒰(α″): |T_τ| ≤ (8/c_{−,1})(c_1ρ)^{|τ|}e^{−½ε_2d(τ)}, ε_2 ≥ ½ε_1^{real}(B_1‴, δ_1‴). This is the input of (W_N) on 𝒰(α″). SOURCES_WC_EXPGAUGE §6.0 then gives (W_N) for A_exp on 𝒰(α″), with constants B_A″ and δ_A″ ≤ min(½ε_2, rates of the explicit pieces).
+ Level 1, domain 𝒰(α′). A_exp is analytic on 𝒰(α″) with ‖A_exp‖ ≤ Γ_1″ := 2B_A″Σ(δ_A″) (Schur on (W_N)). At U_c^0, A_exp ≥ γ_exp by Theorem L of SOURCES_WC_EXPGAUGE §3; it is real symmetric there. Put k_1 := c_Pγ_exp/(γ_exp + 2Γ_1″) and take α′ ≤ k_1α″. Lemma CP with F = A_exp and c = γ_exp gives Re⟨u, A_exp(U_c)u⟩ ≥ ½γ_exp‖u‖² on 𝒰(α′). Compression to Z_0 keeps it (7.2(a)). Then §7 runs at every point of 𝒰(α′) with γ → ½γ_exp. Lemma 2.1(e) at the complex point gives the local bound ¼γ_exp. Lemma CT gives ‖C_□‖ ≤ 8/γ_exp and the rate
+ ε″ := min{½δ_A″, γ_exp/(16c_A″Σ(½δ_A″))}, c_A″ := C_𝒟b_A″.
+ Result: C^{(k)}(Z_0; U_c) = Σ_ωT_ω(U_c) with |T_ω| ≤ (8/γ_exp)(c_1ρ″)^{|ω|}e^{−½ε″d(ω)}, in the p. 13 form of 7.5, analytic on 𝒰(α′). This is (W^c) of SOURCES_WC_EXPGAUGE §6.3.
+Summary of the chain:
+ α′ ≤ k_1α″ ≤ k_1k_2α‴ ≤ k_1k_2k_3a_1 (α_1-row), plus the J-row α_0‴ ≤ min(a_**/M, c′M^{−11}).
+The mixed α_0-row forces α_0^{(n)} + α_1^{(n)} ≤ k_nα_0^{(n+1)}, where α^{(n+1)} is the next larger domain and k_n = c_P/t_n. So α_1″ and α_1′ inherit the J-row smallness c′M^{−11} (SOURCES_WC_RESIDUE_VERIFY Q7 note). This is harmless, because M is fixed before every α^{(n)}.
+Rates: δ_G → ε_3 ≥ ½ε → δ_1‴ = (1 − θ)½ε_3 → ε_2 ≥ ½ε_1^{real} → δ_A″ → ½ε″. Each accretive level loses at most a factor ½ in the Combes–Thomas branch. Three levels give a fixed positive rate depending on (d, L, N, a, a_0). The consumers accept any fixed rate (SOURCES_A1_WALK §7.4).
+Inputs used only here: Thm 3.4 [V]; (W_G) at complex points [R]; (C) for G and c_{−,1} for G_1 [conditional]; Theorem L and (W_N) of SOURCES_WC_EXPGAUGE [P given its own inputs].
+
