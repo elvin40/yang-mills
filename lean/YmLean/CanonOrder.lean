@@ -6,7 +6,8 @@ import Mathlib.Data.Nat.Basic
 # Acyclicity of the canonical constant order (SOURCES_ORDER_CANON.md Part B; E7, E8, F.3, F.5)
 
 `canonEdges` is a hand transcription of SOURCES_ORDER_CANON Part B as of 2026-10-28
-(round B90 + the lift pass of F.5 + canon pass G: B10a–B10g, B5a and B10 moved). An edge `(a, b)` means "a condition of line `b` uses a
+(round B90 + the lift pass of F.5 + canon pass G: B10a–B10g, B5a and B10 moved;
+VERIFY2 fix pass: edges (B10, B18) and (B10g, B15) added). An edge `(a, b)` means "a condition of line `b` uses a
 constant fixed on line `a`". Sources of the edges: the "uses" lists of the topological
 passes E7, E8, F.3, F.5, plus the dependencies that the Part B line text names explicitly.
 Line `B0` does not exist in the source; the lines are B1–B33 plus the sub-lines B5a, B10a–g,
@@ -65,12 +66,14 @@ def canonEdges : List (Line × Line) :=
   , (B5, B14a), (B12c, B14a), (B14, B14a)
   , (B5, B15), (B5a, B15), (B9, B15), (B11, B15), (B12, B15), (B13, B15), (B14, B15), (B14a, B15)
   , (B10e, B15)                                   -- M_1 ≥ M_310 (G)
+  , (B10g, B15)                                   -- M_1 ≥ M_W^{39,c} (VERIFY2)
   , (B15, B16)
   , (B15, B17)
   , (B5, B17a), (B14, B17a), (B14a, B17a), (B15, B17a)
   , (B3, B18), (B4, B18), (B5, B18), (B5a, B18), (B7, B18), (B9, B18), (B12, B18), (B14, B18)
   , (B15, B18), (B16, B18), (B17a, B18)
   , (B10e, B18), (B10f, B18)                      -- (2.59) at the smallest walk rate (G)
+  , (B10, B18)                                    -- R fixed at B10: RM bounds are bounds on M (VERIFY2)
   , (B5, B18a), (B15, B18a), (B18, B18a)
   , (B4, B18b), (B18, B18b)                       -- C_1^{FX} after M
   , (B4, B19), (B18, B19)
@@ -102,7 +105,7 @@ def Edge (a b : Line) : Prop := (a, b) ∈ canonEdges
 
 theorem canonOrder_nodup : canonOrder.Nodup := by decide
 
-theorem counts : canonOrder.length = 50 ∧ canonEdges.length = 167 := by decide
+theorem counts : canonOrder.length = 50 ∧ canonEdges.length = 169 := by decide
 
 /-- Every transcribed edge goes forward in the file order. -/
 theorem edges_forward : ∀ e ∈ canonEdges, rank e.1 < rank e.2 := by decide
