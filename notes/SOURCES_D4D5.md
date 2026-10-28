@@ -1,6 +1,6 @@
 # SOURCES_D4D5 — D4 (RP and lattice symmetry transfer) and D5 (assembly of (S))
 
-Status: in progress (2026-10-27). Sections are appended one per step.
+Status: complete draft (2026-10-27), Claude (Opus 5.5), unverified. Ledger §6.
 Inputs: SOURCES.md (D4, D5 work plan), SOURCES_D2/D2C/D3/D3R/D3W8 and VERIFY files, ASSEMBLY.md, ASSEMBLY_VERIFY.md, ASSEMBLY_N1.md, SOURCES_HHIST_N1_VERIFY.md.
 Tags: [V] checked against a file in this folder this session; [cited] standard, text not here; [proved] full argument here; [reduced] reduced to a named earlier result; [open] not done.
 Naming. SOURCES.md §4 numbers the work items differently (its D4 = derivative bounds, its D5 = RP/symmetry). This file uses the caller's numbering: D4 = (E14-e) RP and symmetry transfer; D5 = assembly of (S).
@@ -167,3 +167,34 @@ Differences from the (S) of ASSEMBLY_N1 §1: (i) Gevrey order 1 + η instead of 
  2. (FX) (§3.3) [open; new in this file]. Without (FX), S1 gives no ε-uniform cumulant bound (§3.2).
  3. Constants κ ≥ max(8c_0 + 8, κ_1(p_R, C_β, L)) (Lemma C Steps 4, 7). Balaban takes κ large; the decay constant after his expansions is a degraded κ′. That κ′ must still meet this condition [reduced, not checked].
  4. Growth R_m ≤ C_R(log g_m^{−2})^{p_R} (Balaban's R-growth, as used in D3 (iv), D3R §4.3(d)) [reduced, not re-read here].
+
+## 6. Ledger
+
+Proved here:
+- Lemma D4.1: the sourced RG output equals Z_ε[f] (each operation is an identity; complex f by the identity theorem).
+- Lemma D4.2/D4.3: RP and the εZ⁴ ⋊ B_4 symmetries are properties of μ_ε at every ε; the RG enters them only through (H-U) in the limit (seam shift, rounding of translations, compactness).
+- §2.1: Z_ε[f ∘ γ^{−1}] = Z_ε[f] and κ_n invariance for γ ∈ G_ε.
+- Lemma D4.4: (S) for transported sources with the same constants, by measure invariance (no re-anchoring needed), and by re-anchoring.
+- §3.2: Theorem S1 alone gives no ε-uniform cumulant bound. Reason: fine-scale radii τ(X) → 0, and the density of fine large-field cubes is not controlled by Balaban's per-cube bound (CMP 122 I intro quote: no positive power of ε).
+- Lemma C: given S1(b), (FX), and the coupling bound, |κ_n| ≤ C_A(1 + D/σ)⁴(1 + log_L(2M/σ))(C_BΛ_1(σ)⁴)^n C_η^n (n!)^{1+η} Π N(f_i), uniform in ε, for all σ > ε and any position of the supports.
+- §4.2: the separation enters only as σ > ε (lattice gradient) and through the decay at scales with 2Mλ_m < σ. At σ = 16ε no scale needs decay. No threshold σ ≥ σ_0 or σ ≥ ε^θ arises.
+- §5.1: (S) with order 1 + η, C¹ norm, and min diameter ≤ σ; ASSEMBLY_N1's cells satisfy the diameter condition.
+
+Reduced to quoted or earlier results:
+- Lemma D4.1 (b) on the text layer of CMP 109 (0.17) (OCR garbled), (f) on CMP 122 I (0.4) via SOURCES.md.
+- Lattice RP: Osterwalder–Seiler [cited, not re-read].
+- (S) ⇒ (H-U): ASSEMBLY_N1 with HHIST_N1_VERIFY Claim (6): s = 6 and any D > 1 (or s = 11, D > 2 with the old form).
+- κ large enough after Balaban's degradations; R_m growth law (§5.3 items 3–4).
+
+Open:
+- (FX) [new]: polymer representation of log I_K with local, locally holomorphic activities, including the large-field region sums and nested T_k operations. Not in Balaban. D3 (iv)(G1) and D3R §4.1 use it implicitly.
+- Everything Theorem S1 depends on (§5.3 item 1): (H-thr), (SM) for (H-hist), (B-T2) Theorem 2 with (B2)/(H2) and C_β, (W4) for R, (Eps) condition, thin-strip holomorphy of u_k, the covariance-change cluster expansion, the CMP 122 rerun (W6).
+- S1 at the first steps (j small) is claimed with K-independent constants but is not separately checked; Lemma C needs it.
+
+Corrections proposed to earlier files (those files are not edited):
+- D3 (iv)(G1), D3R §4.1: add (FX) as a hypothesis. Gevrey order for distinct separated sources is 1 + η given (FX), not 2 + η; the 2 + η statement stays true.
+- D2 §7.3: "each localized term gives (2/r)^n … plus the unit-scale integral" treats localized terms as summands of log Z. They are summands of the exponent of I_K. The statement needs (FX); without it the unit-scale Cauchy fails for fine R-, B-, e-terms and for fine large-field Wilson weights (§3.2(i)).
+- ASSEMBLY_N1 §1 item 5 and residual risk: "validity down to σ = 16ε" is resolved by §4.2, given (FX) and S1 at all scales.
+- ASSEMBLY_N1 (S): may be weakened to C¹ sources and order 1 + η, with the diameter condition; then s = 6, D > 1.
+
+Verifier targets (highest value first): (1) §3.2, the claim that S1 does not imply cumulant bounds without (FX), and the reading of the CMP 122 I intro quote; (2) Lemma C Steps 0, 3, 4, 7 (radius independent of n; single n!; log-log sup); (3) Lemma D4.1's list of operations against CMP 109 (0.15)–(0.19) and CMP 122 I (0.4) on the page images.

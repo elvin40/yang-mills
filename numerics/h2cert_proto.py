@@ -72,6 +72,26 @@ def tail_enclosure(k, N, s2, q2):
         Lo.append(lo); Hi.append(hi + T2)
     return Lo, Hi
 
+U53 = 2.0**-53
+def dbox_float(s2, q2):
+    """Box sum d_mu = sum_{|l|_inf<=N} prod_r s2_r / sum_r q2_r * s2_mu in float64 with outward-rounded inputs and the a priori
+    bound: each term has <= 8 IEEE ops (rel. err <= gamma_8), a sum of M >= 0 terms in any order has rel. err <= gamma_{M-1}."""
+    lo = [np.array([np.nextafter(float(x.lower()), -np.inf) for x in v]) for v in s2]
+    hi = [np.array([np.nextafter(float(x.upper()), np.inf) for x in v]) for v in s2]
+    qlo = [np.array([np.nextafter(float(x.lower()), -np.inf) for x in v]) for v in q2]
+    qhi = [np.array([np.nextafter(float(x.upper()), np.inf) for x in v]) for v in q2]
+    n = len(lo[0]); M = n**4; g = 2 * (M + 8) * U53
+    out = []
+    for S, Q, f in ((lo, qhi, 1 - g), (hi, qlo, 1 + g)):
+        P3 = S[1][:, None, None] * S[2][None, :, None] * S[3][None, None, :]
+        Q3 = Q[1][:, None, None] + Q[2][None, :, None] + Q[3][None, None, :]
+        acc = np.zeros(4)
+        for a in range(n):  # ponytail: loop over first index keeps memory at n^3 doubles
+            W = S[0][a] * P3 / (Q[0][a] + Q3)
+            acc += [S[0][a] * W.sum(), (W * S[1][:, None, None]).sum(), (W * S[2][None, :, None]).sum(), (W * S[3][None, None, :]).sum()]
+        out.append(acc * f)
+    return [arb(float(out[0][m])).union(arb(float(out[1][m]))) for m in range(4)]
+
 def delta_inf(k, lmax, tail):  # Delta_inf(k) by Prop. A + (2.9): Y - Y kh kh^+ Y / (kh^+ Y kh), Y = diag(1/d)
     ns = range(-lmax, lmax + 1)
     s2, q2 = [], []
@@ -81,16 +101,7 @@ def delta_inf(k, lmax, tail):  # Delta_inf(k) by Prop. A + (2.9): Y - Y kh kh^+ 
             q = k[n] + 2 * PI * m
             a.append((k[n] / 2).sinc()**2 if m == 0 else (2 * sk / q)**2); b.append(q * q)
         s2.append(a); q2.append(b)
-    d = [arb(0)] * 4
-    R = range(len(ns))
-    for a in R:
-        for b in R:
-            pab, qab = s2[0][a] * s2[1][b], q2[0][a] + q2[1][b]
-            for c in R:
-                pabc, qabc = pab * s2[2][c], qab + q2[2][c]
-                for e in R:
-                    w = pabc * s2[3][e] / (qabc + q2[3][e])
-                    d[0] += w * s2[0][a]; d[1] += w * s2[1][b]; d[2] += w * s2[2][c]; d[3] += w * s2[3][e]
+    d = dbox_float(s2, q2)
     kh = [eix(x) - 1 for x in k]
     if not tail: return _delta_of_d(d, kh)
     # true d = d_box + Lo + delta, 0 <= delta_mu <= t_mu. dDelta/dd_mu = -(Delta e_mu)(Delta e_mu)^+ (inverse on T'), so
@@ -150,11 +161,11 @@ def solve_cert(B, sharp=False):
     r = arb((rblk + rrest).upper())
     Bn = to_np(B); R = np.linalg.inv(Bn); E = np.vstack([np.zeros((nf, 4)), np.eye(4)]); Xt = R @ E
     Ra = to_acb(R); Xa = to_acb(Xt)
-    nR = norm2_upper(Ra) if sharp else norm1inf_upper(R)
+    nR = norm2_upper(Ra, 7 if sharp else 4)
     eta = frob_upper(Ra * Bmid - acb_mat(n, n, [1 if i == j else 0 for i in range(n) for j in range(n)])) + nR * r
     assert eta < 1, eta
     binv = nR / (1 - eta)
-    res = frob_upper(Bmid * Xa - to_acb(E)) + r * frob_upper(Xa)
+    res = frob_upper(Bmid * Xa - to_acb(E)) + r * hn(lam_max(gram([Xt], np.eye(4)))[1])
     out = dict(H=Xt[:nf], e=binv * res, binv=binv, eta=eta, r=r)
     if sharp:  # lower bound: ||B^{-1}|| >= ||R v|| / (1 + eta), v = top right singular vector of R
         v = np.linalg.svd(R)[2][0].conj()
@@ -217,7 +228,8 @@ if __name__ == "__main__":
     K = [PI if s == "pi" else arb(float(s)) for s in Ks]
     Kf = np.array([np.pi if s == "pi" else float(s) for s in Ks])
     t = time.time(); print(f"K = {Ks}, lmax = {lmax}, prec {ctx.prec}", flush=True)
-    print(f"float rho_2 (hscan, lmax {lmax}) = {float_ref(Kf, lmax):.6f}  ({time.time()-t:.0f}s)", flush=True)
+    lf = min(lmax, 5)  # float reference: hscan Prop. A truncated at |l| <= 5 (B2_TWOSTEP §4 value 2.06336)
+    print(f"float rho_2 (hscan, lmax {lf}) = {float_ref(Kf, lf):.6f}  ({time.time()-t:.0f}s)", flush=True)
     for tail in ((False,) if lmax <= 2 else (True,)):  # lmax <= 2: validation of the truncated sum vs float; else the rigorous enclosure
         lo, hi, out = rho2(K, lmax, tail, log=lambda s: print(s, flush=True))
         what = "true rho_2(inf,K) (tail included)" if tail else f"truncated (|l|<={lmax}) rho_2"
