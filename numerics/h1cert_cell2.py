@@ -193,6 +193,7 @@ def d_tm(L, M, Kc, h, N):
 
 
 NEXACT = 200
+NCHUNK = 13                    # l_0 chunks per cell (peak memory ~ 1/NCHUNK of the block arrays)
 
 
 def d_exact(L, J, blocks):
@@ -415,6 +416,16 @@ def vm_tk(L, pf, Kc, h, l0s):
 
 
 # ---------------------------------------------------------------- Oishi-Rump inverse and final bound
+def lam_up(Gm):
+    """Rigorous upper bound on lambda_max of the exact float Hermitian matrix Gm: t = float lambda_max (1 + 1e-9) + 1e-12, certified by
+    Sylvester (all leading minors of t I - Gm > 0 in arb). As h1cert_cell.lam_max_upper, with a shift that also works for the
+    multiple top eigenvalues at symmetric K (corner)."""
+    n = len(Gm); t = float(np.linalg.eigvalsh(Gm)[-1]); t = t + 1e-9 * abs(t) + 1e-12
+    S = _mat(t * np.eye(n) - Gm)
+    assert all(acb_mat([[S[i, j] for j in range(r)] for i in range(r)]).det().real > 0 for r in range(1, n + 1))
+    return arb(t)
+
+
 def verts(T):  # c + linear part at the 16 vertices (sup of a convex function of delta)
     return [T.c[0] + sum(s * HH * T.g[nu, 0] for nu, s in enumerate(sg)) for sg in itertools.product((-1, 1), repeat=4)]
 
@@ -454,7 +465,7 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         d = d_tm(L, M, Kc, h, N); t1 = time.time()
         Nb = L**4; t2 = time.time()
         A = C = b = sig = None
-        for l0s in np.array_split(np.arange(L), max(1, L // 4)):      # blocks in l_0 chunks (memory)
+        for l0s in np.array_split(np.arange(L), min(L, NCHUNK)):       # blocks in l_0 chunks (memory)
             Vp, mp, th = vm_tk(L, pf, Kf, h, l0s); B = len(th)
             khc = tk_phase_vec(th, L).rs(B, 4, 1)
             inva = tk_sq(th, L).recip()                                  # (B, 1) = 1/|k^_l|^2
@@ -480,7 +491,7 @@ def cell_bound2(L, M, Kc, h, N=5, pf=None, log=None):
         G = Q @ (Y @ C @ Y) @ QH + (w @ w.H_()) * sig.recip().rs(1, 1, 1)
     except Near0:
         return None
-    lam = max(lam_max_upper(_mat((Gv + Gv.conj().T) / 2)) for Gv in verts(G))
+    lam = max(lam_up((Gv + Gv.conj().T) / 2) for Gv in verts(G))
     qG = HH**2 * sum(np.linalg.norm(G.H[nu, la, 0]) for nu in range(4) for la in range(4))   # ||quadratic part|| (Frobenius)
     lam = lam + arb((np.linalg.norm(G.r[0]) + qG) * (1 + 1e-12) + EPS * 4 * np.linalg.norm(G.mj()[0]))
     ub = float((lam.sqrt() / L).upper())

@@ -47,9 +47,9 @@ def run_cell(out, name, c, h, d, a):
             ub = cell_bound2(a.L, a.M, [arb(x) for x in c], h, a.N, a.pf)
             st = "near0" if ub is None else ("ok" if ub < a.thr else "fail")
         except Exception as ex: ub, st = None, f"fail ({type(ex).__name__}: {ex})"
-        if st.startswith("fail") and d < a.dmax: st = "split"
-        elif st.startswith("fail"): st = "FAILED"
-        rec = dict(name=name, c=list(map(float, c)), h=h, depth=d, status=st, ub=ub, secs=round(time.time() - t, 2))
+        err = st if st.startswith("fail (") else None
+        if st.startswith("fail"): st = "split" if d < a.dmax else "FAILED"
+        rec = dict(name=name, c=list(map(float, c)), h=h, depth=d, status=st, ub=ub, err=err, secs=round(time.time() - t, 2))
         wjson(f, rec)
         print(f"{name} c={np.round(c, 4).tolist()} h={h} {st} ub={ub} {rec['secs']}s", flush=True)
     if rec["status"] != "split": return True
