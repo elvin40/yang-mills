@@ -47,3 +47,36 @@ None of these, alone, forces γ below ~1e−5. The p_0 conditions are lower boun
 - γ_max (printed constants only, rigorous given the reading): γ ≤ 5×10⁻⁹/κ ≤ 5×10⁻⁹. In Wilson units: β_W ≥ 4×10¹⁶.
 - γ_max (full chain, most favourable unprinted constants): γ ≲ 10⁻⁶⁰ (κ = 1) to 10⁻⁷⁷ (κ = 4); 10⁻¹¹⁶¹ if κ = 196.
 - Order of magnitude to carry: γ_max ≲ 5×10⁻⁹ certain; ~10⁻⁷⁰ realistic.
+
+## 2. Part 2 — convergence radius of the strong-coupling expansion, d = 4 SU(2) Wilson action
+- Search budget: one web search, run 2026-10-27. It did NOT return Münster 1981 or a quote of its constant. So no printed value of β_c is verified in this file. [V: search failed]
+- What is known without the printed constant [I, training memory, not checked against the papers]:
+  - Osterwalder–Seiler (Ann. Phys. 110 (1978) 440) prove convergence of the cluster (character) expansion, area law and mass gap for β small enough, with non-sharp constants. Münster (Nucl. Phys. B180 (1981) 23) and Seiler (LNP 159, 1982) give explicit but conservative domains.
+  - The expansion variable is u(β) = I_2(β)/I_1(β) ≈ β/4 for SU(2) (β = 4/g_std²). Polymer convergence needs u times a 4D plaquette-animal entropy constant (order 10–30) below 1. That gives β_c of order 10⁻² (≈ 0.01–0.05). I can not certify a sharper printed value.
+- Working value: β_c ≈ 0.04 (upper end of the range; a lower β_c only widens the window).
+- Conversion, β = 4/g_std² = 1/g_B²: g_B,c = β_c^{−1/2} ≈ 5 (range 4.5–10); g_std,c = 2g_B,c ≈ 10.
+- Context: Monte Carlo shows the SU(2) crossover at β ≈ 2.2 (g_B ≈ 0.67, g_std ≈ 1.35). Strong-coupling series for the string tension stop matching numerics near there (roughening, β_R ≈ 1.9, also [I]).
+
+## 3. Part 3 — the window, same normalization (g_B = β_W^{−1/2})
+| quantity | g_B | β_W = 1/g_B² |
+| strong-coupling radius g_c [I] | ≈ 5 | ≈ 0.04 |
+| physical crossover | ≈ 0.67 | ≈ 2.2 |
+| Balaban γ_max, printed constants only (§1.3) | ≤ 5×10⁻⁹ | ≥ 4×10¹⁶ |
+| Balaban γ_max, full chain, κ = 4 | ≲ 10⁻⁷⁷ | ≳ 10¹⁵⁴ |
+- Ratio g_c/γ_max ≥ 10⁹ (printed constants only); ≈ 10⁷⁷ (full chain, κ = 4); in β_W the gap is the square: ≥ 10¹⁸, ≈ 10¹⁵⁴.
+- Even the crossover alone is ≥ 1.3×10⁸ above γ_max in g_B. The window [γ_max, g_c] is not small: it spans every physically relevant coupling.
+
+## 4. Part 4 — L-dependence, and conclusion
+- Bound (A)+(B) (γ ≤ 5×10⁻⁹/κ) does not depend on L: the 100 and the 2κ(100R)^d term are printed, and R ≥ 1.
+- γ_0 = (12d²)^{−1}L^{−d−1} gets smaller as L grows, but γ_0 enters only lower bounds on p_0 (MB §4, (1.82)). These are not binding (§1.1), so γ_0 does not move γ_max.
+- M carries the L-dependence of (C) and (D). M = L^m is the least power with M ≥ 12L(18κ)^{1/4}. log₁₀ of (C) (LM)^{−4}/(4κ·10⁸) and of the M-part of (D) (LM)^{−6}M^{−8}/(2√2), κ = 4 [P, script inline]:
+  | L | m | (C) | (D) M-part |
+  | 13 | 3 | −27.0 | −53.9 |
+  | 15 | 3 | −28.0 | −56.9 |
+  | 25 | 3 | −31.6 | −67.6 |
+  | 35 | 2 | −27.7 | −52.9 |
+  | 37 | 2 | −28.0 | −53.8 |
+  | 61 | 2 | −30.6 | −61.2 |
+  At κ = 196, m = 3 for every L ≤ 79 and both columns get worse monotonically in L (L = 79: −41.3, −91.5).
+- So larger L makes the bound worse at fixed m. The only gain is at the step where m drops by one (L ≈ 35 for κ = 4), and it is one order of magnitude in (D), none in (C). L = 13 is optimal or within one decade of optimal. The e^{−5κ−C_2κ_1} factor, which dominates (D), does not depend on L.
+- Conclusion. No admissible L closes or narrows the window in a useful way. Balaban's construction controls only g_B ≤ 5×10⁻⁹ at best (printed constants), realistically ~10⁻⁷⁰. The proved strong-coupling region starts at g_B of order 5. The gap is ≥ 9 orders of magnitude in g and ≥ 18 in β. A bridge between the two expansions is not a constants problem: improving Balaban's constants by any fixed factor leaves the gap open. The crossover at β ≈ 2.2 lies inside the gap, far from both ends. Caveat: the Part 2 number is from memory (search failed); a smaller printed β_c only widens the gap.

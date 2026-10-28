@@ -1,12 +1,32 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting} are formalized in Lean 4 with Mathlib. The inventory is as follows.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (17 files in \file{lean/YmLean/}). The inventory is as follows.
 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
 \item Lemma D$'$ (a)--(d) (\texttt{YmLean.lemma\_DPrime}), Step 8 (\texttt{lemma\_DPrime\_step8}), Lemma D, Lemma E ($Cg^2$ form), Lemma D+E (\file{lean/YmLean/LemmaDPrime.lean}, \file{LemmaDE.lean}). One-argument $\beta$ only.
 \item Lemma D$''$ (\texttt{YmLean.lemma\_DDoublePrime}, \file{lean/YmLean/LemmaDDoublePrime.lean}, 146 lines): (a$''$) bracket $(3b/4)(K-k)-2R\le T(k,K)\le(5b/4)(K-k)+2R$; (b) shooting for $g\in\,]0,g_1]$ with the clamp inactive; (c$'$) with $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$, for every trajectory with couplings in $]0,\gamma]$; (d) for $n-m\ge8R/b$, lower constant $b/2$. Hypotheses weaker than the note (continuity, any admissible $\gamma$, $R\ge0$ derived). One-argument $\beta$ only; L5 not formalized.
-\item The Lean folder also has Telescoping, DetIdentities, AbelianCount, and LemmaH files (\file{lean/README.md}); this paper uses only the AbelianCount counting part, as a cross-check in Section~\ref{sec:later}.
+\item Full inventory (\file{lean/README.md}; file, main theorems, source note):
+\begin{enumerate}\small
+\item \texttt{LemmaDPrime}: \texttt{lemma\_DPrime}; \file{LEMMA_DPRIME.md} \S1--\S2.
+\item \texttt{LemmaDE}: \texttt{lemma\_D}, \texttt{lemma\_E}, \texttt{lemma\_DE}, \texttt{lemma\_DPrime\_step8}; \file{LEMMAS.md}.
+\item \texttt{LemmaH}: \texttt{gronwall\_telescope}, \texttt{lemma\_H}; \file{SOURCES_HBETA.md} Lemma H.
+\item \texttt{DetIdentities}: \texttt{det\_bordered}, \texttt{det\_restrict\_add\_gauge}; \file{numerics/NUMERICS.md} \S1.
+\item \texttt{Telescoping}: \texttt{telescoping\_det}, \texttt{telescoping\_log}; \file{R2_TELESCOPING.md} Prop.\ 3.1.
+\item \texttt{AbelianCount}: \texttt{su2\_count}, \texttt{abelian\_share}; \file{U1_INFINITE_LATTICE.md} Prop.\ 9.1 (used here only as a cross-check, Section~\ref{sec:later}).
+\item \texttt{LemmaDDoublePrime}: \texttt{lemma\_DDoublePrime}; \file{KAPPA_BOUNDED.md} \S5.3.
+\item \texttt{TheoremK}: \texttt{telescoping\_bound}, \texttt{window\_of\_partial} (the window bound (5.1) from partial sums); \file{KAPPA_BOUNDED.md} \S5.
+\item \texttt{Gronwall}: \texttt{discrete\_gronwall}, \texttt{contraction\_bound} ($N_{j+1}\le qN_j+Z$); \file{KAPPA_BOUNDED.md} Prop.\ 4.1.
+\item \texttt{CubeCount}: \texttt{cube\_count\_sharp}, \texttt{cube\_count\_lower} (Lemma O1-R$'$ arithmetic); \file{SOURCES_FX_O1.md}.
+\item \texttt{BlockNorm}: \texttt{rho2\_le}, the exact factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$; \file{H2_CERTIFY.md}.
+\item \texttt{OishiRump}: \texttt{oishi\_rump}, \texttt{oishi\_rump\_eta}, \texttt{frobenius\_power\_bound}; \file{H2_CERTIFY.md} \S5.
+\item \texttt{Envelope}: \texttt{envelope\_nontrivial}, \texttt{envelope\_not\_scale\_invariant} ((B-NT) in log form); \file{ASSEMBLY.md} \S2.9.
+\item \texttt{Divergence}: \texttt{profile\_divergence}, \texttt{P4\_divergence} (identity (D) of premise P4); \file{H2_CERTIFY_P4.md}.
+\item \texttt{TheoremC1}: \texttt{c1\_two\_step}, \texttt{c1\_kappa\_bound}, \texttt{c1\_window}; \file{B2_TWOSTEP.md} \S2.
+\item \texttt{StripBound}: \texttt{strip\_bound\_linear}, \texttt{strip\_bound\_quadratic} (the $\tfrac32\tau$ bootstrap); \file{SOURCES_HBETA_N3.md} \S4.
+\item \texttt{CertBridge}: \texttt{cell\_invertible}, \texttt{cell\_sup\_bound}, \texttt{vertex\_bound} (interval-to-norm bridge of the cell certifier); \file{numerics/h1cert_cell.py}, \file{h1cert_cell2.py}.
+\end{enumerate}
+Not formalized: interval arithmetic itself, the enclosure premises P1$'$--P4, the identity $\rho_1^2L^2=\lambda_{\max}(G)$, and the history form of the shooting lemmas.
 \end{itemize}
 
 \section{Index of results by status}\label{app:ledger}
@@ -28,6 +48,8 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Logic of Theorem B and Lemma 1.3 of \file{BETA_FP_PW}, as conditional implications (\file{BETA_FP_PW_VERIFY} \S6 items 1--4 CONFIRMED: doubling identity and Lemma 1.3; Prop.\ 2.2 / Lemma 2.3; Theorems A, B; Lemma 4.1, conditional). Its inputs (U), (DF), (T1) are listed under \status{proved, unverified} and \status{argued}.
 \item Prop.\ E evenness, Theorem W0/W, Theorem A3, Lemma A4, A0, Prop.\ A2 (\file{U3_AW_VERIFY} grades 1--4).
 \item U3 Theorem 4.1 + O5, Prop.\ A, Prop.\ B, O6, Theorem 6.1 (given V1; Taylor-data norm), Lemma 5.1 neutral value bound, single-block $m=2$ failure in $d=4$, one-step recursion, R2 midpoint identity (\file{U3_VERIFY}, \file{U3_REPAIRS_VERIFY}, \file{U3_LEMMA51_VERIFY}, \file{U3_LEMMA51_R23_VERIFY}).
+\item Exact one-step factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$ (\file{H2_CERTIFY_VERIFY}; Lean \texttt{rho2\_le}).
+\item Sources block: Lemma G3 given (Q) (\file{SOURCES_G3_VERIFY}); LOC (\file{SOURCES_LOC_VERIFY}); (M-A) given (H$-$) and (M-A$'$) (\file{SOURCES_MA_VERIFY}, \file{SOURCES_MA2_VERIFY}); (M-B) with $p_0\ge17/(\gamma_0A_1^2)$ (\file{SOURCES_MB_VERIFY}); condition (a) of Lemma N3 (\file{SOURCES_N3A_VERIFY}); the sourced large-field draft B-S.D3, with corrections (\file{SOURCES_D3_VERIFY}, \file{SOURCES_D3R_VERIFY}, \file{SOURCES_D3W8_VERIFY}); (B-N1) given (S) (\file{SOURCES_HHIST_N1_VERIFY}).
 \item Ces\`aro: given convergence, $\kappa_k=o(k)\Leftrightarrow\beta_\infty=c\log L$ (equivalence, not a weaker form) (\file{THEOREM2_PROOF_VERIFY} Point 4).
 \end{itemize}
 
@@ -39,7 +61,26 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$; neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
 \item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
 \item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given (S1)--(S3)); no verifier file.
-\item One-step sufficiency $\rho_1^2<L\Rightarrow$ (H2) (submultiplicativity; arithmetic, \file{H2_LARGE_L} \S3).
+\item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
+\end{itemize}
+
+\paragraph{\status{numerical}}
+\begin{itemize}
+\item $\rho_1(\infty)=1.760,\dots,2.0895$ at $L=3,\dots,13$; at $L=13$, $\sup\rho_1^2=4.37<13$, so (H2) holds in floating point by \texttt{rho2\_le}; no verifier (\file{H2_CERTIFY_L13}).
+\end{itemize}
+
+\paragraph{\status{verified reduction}}
+\begin{itemize}
+\item (Q) to CMP 99 (3.132), (E$_U$), and LOC (\file{SOURCES_Q_VERIFY}, \file{SOURCES_CDC_VERIFY}); (E$_U$) to kernel-moment bounds Ba{\l}aban does not print (\file{SOURCES_EU_VERIFY}; the bound $K\le K_0(1+\dots)$ is a \status{derived sketch}).
+\item N3 to (H-hol) + real (H-hist) + (H2-hist) (\file{SOURCES_HBETA_N3_VERIFY}).
+\item (H-hol), small field, to Ba{\l}aban's conditions with modified constants (\file{SOURCES_HHOL_VERIFY}); large field to (M-A), (M-B), (M-C), (H-hist2) (\file{SOURCES_HHOL_LF_VERIFY}); (M-D) to (H-hist) + (H-thr).
+\item (H$-$) to CMP 102 (189), an existing trust item (\file{SOURCES_MA2_VERIFY}).
+\item (H-hist2) to the real uniform (H-hist), no new input (\file{SOURCES_HHIST2_VERIFY}).
+\end{itemize}
+
+\paragraph{\status{interval enclosure, verified}}
+\begin{itemize}
+\item Point enclosure $\rho_2(\infty,K^*)\in[1.9993,2.1273]<3$ at $L=3$; P1 (loop-family coefficients exact rationals); Oishi--Rump bound on $\|\mathfrak B^{-1}\|$ (\file{H2_CERTIFY_VERIFY}).
 \end{itemize}
 
 \paragraph{\status{argued}}
@@ -49,7 +90,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (H2) (certification; numerical at $L=3,5,9$). (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. See Section~\ref{sec:remains}.
+\item (H2) (certification; numerical at $L=3,5,9$; one-step at $L=13$). (M-C), the complex small-field step. (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. See Section~\ref{sec:remains}.
 \end{itemize}
 
 \paragraph{\status{corrected by verifiers since v3}}

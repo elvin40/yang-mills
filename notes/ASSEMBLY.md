@@ -10,7 +10,7 @@ Inputs read: PLAN.md (Campaign section and dated lines, 2026-10-27), SOURCES.md 
 Notation.
 - L odd, L > 11, fixed (Balaban, CMP 109 p. 256). K ∈ N. ε = L^{−K}. Physical side ℓ ∈ N, in units of the unit lattice. T⁴_ℓ = (R/ℓZ)⁴. Lattice T_ε = (εZ/ℓZ)⁴, N_ε := ℓ/ε = ℓL^K sites per direction.
 - Wilson action A(U) = Σ_p P_p(U), P_p(U) := 1 − ½ Re tr U(∂p), p over unoriented plaquettes. 0 ≤ P_p ≤ 2. Measure μ_ε = Z_ε^{−1} exp(−g_0^{−2} A(U)) Π_b dU_b (Haar). x_p := centre of p.
-- Bare coupling g_0 = g_0(ε, g): any solution of the shooting problem of Lemma D (LEMMAS.md) with terminal coupling g_K = g. Lemma D gives existence, not uniqueness; any choice works below.
+- Bare coupling g_0 = g_0(ε, g): any solution of the shooting problem of Lemma D″ (KAPPA_BOUNDED.md §5.3; Lemma D needs all increments positive) with terminal coupling g_K = g. Lemma D″ gives existence, not uniqueness; any choice works below.
 - Observable (class C1 of SOURCES.md §1.2): the centred plaquette density φ_p := P_p − c_ε, c_ε := ⟨P_p⟩_{μ_ε}. By hypercubic invariance (§2.4) c_ε does not depend on p.
 - Test space. D_n := {F ∈ C^∞(T^{4n}) : every derivative of F vanishes on every diagonal {x_i = x_j}, i ≠ j}. Norm ‖F‖_m := max_{|α| ≤ m} sup_{T^{4n}} |∂^α F|. On the compact torus this is the OS Schwartz seminorm without weights.
 - Lattice Schwinger functions (SOURCES.md §1.3): S_{n,ε}(F) := Σ_{p_1,…,p_n} F(x_{p_1}, …, x_{p_n}) ⟨φ_{p_1} ⋯ φ_{p_n}⟩_{μ_ε}, F ∈ D_n. These are moments, not cumulants (SOURCES_VERIFY item 5(a)). No field renormalization factor is inserted: SOURCES_VERIFY item 8 gives B_K = Π c_j uniformly bounded above and below (c_j = 1 + O(g_{j−1}³), Σ g_j³ < ∞), so a bounded factor B_K^n changes no statement below except the normalization of the limit.
@@ -37,7 +37,7 @@ The derivative order sn grows linearly in n. The OS linear growth condition admi
 
 ### 1.3 Theorem (finite-torus existence, compactness form)
 
-Let G = SU(2), d = 4, L odd and large, ℓ ∈ 2N fixed. Let γ > 0 be Balaban's small constant and g ∈ ]0, γ] small. For K ≥ K_0 let ε = L^{−K} and g_0 = g_0(ε, g) be a shooting solution (Lemma D) whose effective couplings satisfy g_k ∈ ]0, γ] for 0 ≤ k ≤ K and g_K = g. Assume (H-U). Then:
+Let G = SU(2), d = 4, L odd and large, ℓ ∈ 2N fixed. Let γ > 0 be Balaban's small constant and g ∈ ]0, γ] small. For K ≥ K_0 let ε = L^{−K} and g_0 = g_0(ε, g) be a shooting solution (Lemma D″) whose effective couplings satisfy g_k ∈ ]0, γ] for 0 ≤ k ≤ K and g_K = g. Assume (H-U). Then:
 
 (a) Compactness. Every sequence K_m → ∞ has a subsequence K_{m_i} such that, with ε_i = L^{−K_{m_i}}, the limit S_n(F) := lim_i S_{n,ε_i}(F) exists for every n ≥ 1 and every F ∈ D_n.
 
