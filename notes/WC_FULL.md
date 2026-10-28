@@ -38,7 +38,7 @@ V_red is the space of unit fields B̃ with the bonds b_0(c) removed. C := I − 
  (A3-6.1) [P in A3 given A3-R1, R-Δ′, R-Δ2 (needs the (3.136) form), A3-R2]. For every unit field B with B = 0 off Λ, E(B) := ⟨B, (QG_1Q*)^{−1}B⟩ − a‖B‖² obeys
  (1 + ε_7)E(B) ≥ ½P^U(B) − ε_7a‖B‖², ε_7 = c(d, L)(Mα_0 + (Mα_0)²).
  The proof (A3 §6.2) uses B = 0 off Λ, the minimizer A_* of A3 Lemma 5, Lemma 2, R-Δ′, R-Δ2, A3-R1. It uses neither the trees nor Q_1B = 0 (EXPGAUGE-VERIFY V4).
- (A3-R4) [R/I, A3 §6.1]. |⟨B, Δ_JB⟩| ≤ c_J‖B‖² for all B, c_J = c(d, L)Mα_0.
+ (A3-R4) [R/I, A3 §6.1]. |⟨B, Δ_JB⟩| ≤ c_J′‖B‖² for all B, c_J′ = c(d, L)Mα_0.
  (WG) [P in WG_FULL given printed sketches]. Theorem WG-G1: G_1 = Σ_τT_τ, a tree expansion with locality (L1)–(L2) and (3.108)-form bounds, rate δ_1 = (1 − θ)·½ε. Its proof prints only a sketch in CMP 99 (Thm 3.10, p. 422, p. 427 "estimates are the same as in (3.108)") [R].
  Concatenation Lemma WG 2.3 [P].
  (A1W) [P in A1_WALK_FULL, conditional on (C)]. Theorem A1-W: (QPQ*)^{−1} has a walk/tree expansion with (L1)–(L2) and per-walk bounds, rate δ_W = ½ε, step K_W/M_1, for P = G or G_1, given a (3.108)-form expansion of P and the global accretive bound (C): Re⟨u, N̂_Pu⟩ ≥ c_−‖u‖².
@@ -160,13 +160,13 @@ Proof. (1) Block bonds. Plaquettes inside distinct blocks are distinct, so Σ_yP
 (2) Corridor bonds. Q̃B = 0 is the hypothesis of (A3-4.3), so (A3-4.4) applies: S_c ≤ (3/m_L)(2P^U + 2dS_b) + η_6‖B‖². (A3-4.3) uses neither the trees nor any condition inside the blocks (0.9). So it is unchanged in the exponential gauge.
 (3) Assembly. ‖B‖² = S_b + S_c ≤ (1 + 6d/m_L)S_b + (6/m_L)P^U + η_6‖B‖² ≤ [K_b(1 + 6d/m_L) + 6/m_L](P^U + G) + η_6‖B‖². The first step inserts (2); the second inserts (1) and uses G ≥ 0. Rearranging gives the claim. ∎ (Assembly recomputed in EXPGAUGE-VERIFY V4.)
 3.2 Theorem L [P given (A3-6.1), (A3-R4), Lemma P_exp]. Assume (H1)–(H3), with α_* so small that (H_E) holds, Lemma G(c) applies, and
- η_6 ≤ ¼, ε_7 ≤ ⅛, ε_7a + c_J ≤ γ_e/12. (3.1)
-This is possible because η_6, ε_7, c_J are c(d, L, N)(Mα_0 + (Mα_0)²) by their definitions (A3 §4.1, §6.1, §6.4). Then for all B̃ ∈ V_red with B̃ = 0 off Λ,
+ η_6 ≤ ¼, ε_7 ≤ ⅛, ε_7a + c_J′ ≤ γ_e/12. (3.1)
+This is possible because η_6, ε_7, c_J′ are c(d, L, N)(Mα_0 + (Mα_0)²) by their definitions (A3 §4.1, §6.1, §6.4). Then for all B̃ ∈ V_red with B̃ = 0 off Λ,
  ⟨B̃, A_expB̃⟩ ≥ γ_exp‖B̃‖², γ_exp := ½c̄γ_e = ¼γ_e, c̄ := min(½, c_G) = ½.
 Proof. Put B := CB̃. By 0.6, Q̃B = 0, and B = 0 off Λ (A3 §6.5 [V CMP 99 p. 428], with Q̃ = Q_1(U_1), item I3). By (1.1),
  ⟨B̃, A_expB̃⟩ = ⟨B, Δ^{(k)}B⟩ = E(B) − ⟨B, Δ_JB⟩ + G(B).
-By (A3-6.1), E(B) ≥ (1 + ε_7)^{−1}[½P^U − ε_7a‖B‖²] ≥ (1 + ε_7)^{−1}·½P^U − ε_7a‖B‖². By (A3-R4), −⟨B, Δ_JB⟩ ≥ −c_J‖B‖². Since G ≥ 0 and (1 + ε_7)^{−1} ≤ 1, G ≥ (1 + ε_7)^{−1}c̄G. Also ½P^U ≥ c̄P^U. So
- ⟨B̃, A_expB̃⟩ ≥ (1 + ε_7)^{−1}c̄(P^U + G) − (ε_7a + c_J)‖B‖² ≥ [(1 + ε_7)^{−1}c̄γ_e(1 − η_6) − (ε_7a + c_J)]‖B‖²,
+By (A3-6.1), E(B) ≥ (1 + ε_7)^{−1}[½P^U − ε_7a‖B‖²] ≥ (1 + ε_7)^{−1}·½P^U − ε_7a‖B‖². By (A3-R4), −⟨B, Δ_JB⟩ ≥ −c_J′‖B‖². Since G ≥ 0 and (1 + ε_7)^{−1} ≤ 1, G ≥ (1 + ε_7)^{−1}c̄G. Also ½P^U ≥ c̄P^U. So
+ ⟨B̃, A_expB̃⟩ ≥ (1 + ε_7)^{−1}c̄(P^U + G) − (ε_7a + c_J′)‖B‖² ≥ [(1 + ε_7)^{−1}c̄γ_e(1 − η_6) − (ε_7a + c_J′)]‖B‖²,
 by Lemma P_exp. By (3.1), (1 + ε_7)^{−1} ≥ 8/9 and 1 − η_6 ≥ ¾, so the bracket is ≥ (8/9)(3/4)·½γ_e − γ_e/12 = γ_e/3 − γ_e/12 = ¼γ_e = γ_exp. Finally ‖CB̃‖² ≥ ‖B̃‖², because C is the identity on the kept bonds and only adds the values on the bonds b_0(c) (A3 §6.5). ∎ (Arithmetic recomputed in EXPGAUGE-VERIFY V1, V4.)
 3.3 Compression to Z_0 [P]. Let Λ = Z_0 in Theorem L. The form ⟨B̃, A_ZB̃⟩ on V_red(Z_0) equals ⟨B̃, A_expB̃⟩ for B̃ = 0 off Z_0, because 1_{Z_0}B̃ = B̃. So Theorem L gives A_Z ≥ γ_exp on V_red(Z_0). This is Theorem WC(i). Three checks:
  (a) Compression cannot lower a form bound: the infimum of the quadratic form over a subspace is at least its infimum over the larger space.
@@ -307,7 +307,7 @@ Summing with Σh_□² = I_{Z_0}: A_ZP = I_{Z_0} + Σ_□F_□, F_□ := (E^sep_
  So α′ ≤ k_1k_2k_3a_1 in the α_1-row. The mixed α_0-row passes the J-row smallness (which depends on M and M_1) to the α_1-components of α″ and α′ (RESIDUE Q7 note). This is harmless, because M_1 and M are fixed before every α^{(n)}.
  Rates. G: δ_G → (QGQ*)^{−1}: ε_3 ≥ ½ε → G_1: δ_1‴ ≥ ½δ_1 → (QG_1Q*)^{−1}: ε_2 ≥ ½ε_1^{real} → A_exp: δ_A″ → C^{(k)}(Z_0): ½ε″. At most a factor ½ is lost per accretive level, in the Combes–Thomas branch only.
  The final rate is a fixed positive constant of (d, L, N, a, a_0, a_1) and the fixed caps a_**, c″, θ_c. It is not Balaban's ½δ_0. Consumers tolerate a fixed rate (A1_WALK_FULL §7.4; S2_G1_V7 B1.5).
-6.9 Order of constants [P; RESIDUE 7.3, Q7; SOURCES_ORDER_CANON B3–B22]. d, L, N → (d, L, N) constants and caps: δ_0, B_0, a_0, a_1 of Theorem 3.4, c_J, a_L, a_{−,1}, a_𝒢, a_t, θ_c ∈ [1/16, 1), M_99, and γ_exp (Theorem L; needs d, L, N only); θ_WG = ½ → K_V, M_*, a_* (B5–B5a) → c_±, ε, B_W, c_W (A1-W at real U, (C)) (B11–B12) → δ_1 = ½ε, a_*′, K_2, a_**, c″ (WG_FULL 5.9, 6.4) (B12a) → B_1 (WG-G1), c_{−,1}, δ_W (B12b–B12c) → B_A, δ_A, ε_WC (B13) → all level constants: c_+⁗, Γ_4, k_3, ε_3, B_1‴, δ_1‴, Γ_3, k_2, ε_2, B_A″, δ_A″, Γ_1″, k_1, ε″, B_C = 16/γ_exp (B14) → M_1, with M_1 ≥ M_W^c (6.2) (B15) → M_2 = L²M_1 (B16) → M, with M/M_1 > 10 and M/M_1 > 3(6 + c_X) (5.4) (B18) → α‴ → α″ → α′ (B20) → α_* (S2_G1_V7 B1.4: α_0 + α_1 ≤ α_*, which needs α ≪ α′) → α (CMP 116 p. 15: α′ "much bigger than" α), with the real regularity α_0 inside the α-chain and real α_0 ≤ α_0′/(CM), C > c_J, so that real J ∈ 𝒰(α′) (B22) → g (TRUST_LEDGER C5, M4).
+6.9 Order of constants [P; RESIDUE 7.3, Q7; SOURCES_ORDER_CANON B3–B22]. d, L, N → (d, L, N) constants and caps: δ_0, B_0, a_0, a_1 of Theorem 3.4, c_J, a_L, a_𝒢, a_t, θ_c ∈ [1/16, 1), M_99, and γ_exp (Theorem L; needs d, L, N only); θ_WG = ½ → K_V, M_*, a_* (B5–B5a) → c_±, ε, B_W, c_W (A1-W at real U, (C)) (B11–B12) → δ_1 = ½ε, a_*′, K_2, a_**, c″ (WG_FULL 5.9, 6.4) (B12a) → B_1 (WG-G1), a_{−,1} := 1/(2C_{G1}), c_{−,1}, δ_W (B12b–B12c) → B_A, δ_A, ε_WC (B13) → all level constants: c_+⁗, Γ_4, k_3, ε_3, B_1‴, δ_1‴, Γ_3, k_2, ε_2, B_A″, δ_A″, Γ_1″, k_1, ε″, B_C = 16/γ_exp (B14) → M_1, with M_1 ≥ M_W^c (6.2) (B15) → M_2 = L²M_1 (B16) → M, with M/M_1 > 10 and M/M_1 > 3(6 + c_X) (5.4), and M ≥ 1/c_J (6.4 J-row; canon E5) (B18) → α‴ → α″ → α′ (B20) → α_* (S2_G1_V7 B1.4: α_0 + α_1 ≤ α_*, which needs α ≪ α′) → α (CMP 116 p. 15: α′ "much bigger than" α), with the real regularity α_0 inside the α-chain and real α_0 ≤ α_0′/(CM), C > c_J, so that real J ∈ 𝒰(α′) (B22) → g (TRUST_LEDGER C5, M4).
  Each arrow goes from fixed constants to a later smallness. The level constants are M-free and α-free (SOURCES_ORDER_CANON A.4); the domain sizes are fixed after M (A.6). No α^{(n)} is bounded below by a later constant. So the order is acyclic.
  Ledger check [checked, RESIDUE 7.4, Q7]. TRUST_LEDGER.md has no condition on α′, α″, α‴ other than the object built here (row A1w). The conditions C5 ("α's after M"), WG-1 (α_0 ≤ c″M^{−1}M_1^{−12} for G_1, imposed on the J-row above), A13 (O(α_0 + α_1) in R_2, the small α), and M4 (α_{1,j} ∝ g_j(log)^{q_1}, the small α) are compatible.
  The new lower bounds on M/M_1 fit under C5's "M ≥ M(κ)". No conflict found.
@@ -382,7 +382,7 @@ Source names. A1_WALK_FULL.md and WG_FULL.md are in ~/claude_code/yang_mills/; t
 [R] reduced to printed statements.
  R1 (W_G1) Theorem WG-G1 rests on the printed sketches of CMP 99 Thms 3.7, 3.9, 3.10, p. 422, p. 427, and Lemma 2.1 of [4].
  R2 The complex walk form of G: Theorem 3.4 + Theorem 3.10 (no printed complex walk statement).
- R3 A3 inputs: A3-R1 (Thms 3.11–3.12, Schur step sketched), R-Δ′, R-Δ2 (needs the (3.136) form), A3-R2′ (CMP 98 (139)), A3-R3 (regular U_1), A3-R4 (c_J = c(d, L)Mα_0). The prefix "A3-" separates these from the ledger rows R1–R4.
+ R3 A3 inputs: A3-R1 (Thms 3.11–3.12, Schur step sketched), R-Δ′, R-Δ2 (needs the (3.136) form), A3-R2′ (CMP 98 (139)), A3-R3 (regular U_1), A3-R4 (c_J′ = c(d, L)Mα_0). The prefix "A3-" separates these from the ledger rows R1–R4.
  R4 (p254): the shared operators with CMP 109's symmetric averages carry the results of CMP 98/99.
 
 [C] conditional.
@@ -416,3 +416,4 @@ Checks for an independent verifier, in priority order: (1) Lemma G(b)–(c), the
 10. Regrade fixes (WC_FULL_VERIFY regrade, 2026-10-28). F7: 5.4(d) and Theorem WC(ii) now cite WG_FULL 0.4 as corrected (band by one-layer enlargement X → X⁺; c_X taken ≥ WG c_X + 2). Ledger: line-49 "R2′" → A3-R2′; I4 "R2 of A3" → A3-R2. Stale §9 source-name note replaced (both FULL files exist); the header source line updated to match. Item 9's open item is closed.
 11. Order-canon fixes (SOURCES_ORDER_CANON Task C, 2026-10-28): C-W1/W2 6.9 order replaced by canon B3–B22 (level constants before M_1; M_1 → M_2 → M; real α_0 inside the α-chain) plus the M-free sentence; C-W3/N2 J-row c′M^{−11} → c″M^{−1}M_1^{−12} at 6.4, 6.8, 6.9 ledger check, I5; C-W4/N1 caps α_1″ ≤ a_𝒢, a_t in 6.5 and the 6.8 chain list; C-W5/N3 rate list adds a_1 and caps; C-W6 chain constants k_1, k_2, k_3 (also P14), Γ_4, Γ_3 = 2C_𝒟^{(1)}B_1‴Σ, Γ_1″ = 2C_𝒟B_A″Σ, ε″ with c_A″ = C_𝒟B_A″; C-W7 M_99(d, L) in 0.3, 0.10, 3.4 and a_L in 0.3; C-W8 6.2 M_1 after the level constants.
 12. Order-canon amendments (SOURCES_ORDER_CANON E1–E5, 2026-10-28): 6.9 a_** moved from the (d, L, N) group to after the A1-W constants (canon B12a, with a_*′, K_2, c″); θ_WG, a_* placed first (B5–B5a); B_1, c_{−,1}, δ_W before B_A, δ_A (B12b–c); θ_c ∈ [1/16, 1); real α_0 ≤ α_0′/(CM). 6.0 J-scale: Δ^{(2)} = O(1)|J|, not O(1)M|J|; (I9) |J| = O(Mα_0) is the right convention (WG_FULL (I5), 5.5).
+13. Regrade fixes (SOURCES_ORDER_CANON_VERIFY regrade, 2026-10-28): 6.9 adds M ≥ 1/c_J and moves a_{−,1} to B12c; the A3 constant c(d, L, N)(Mα_0 + (Mα_0)²) of (A3-R4), (3.1), and R3 is renamed c_J′, so c_J means only the (d, L) constant of WG_FULL (I5).
