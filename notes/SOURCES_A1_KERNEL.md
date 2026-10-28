@@ -1,6 +1,6 @@
 # SOURCES_A1_KERNEL — attempt on trust-ledger item A1 (CMP 99 (3.132))
 
-Date 2026-10-28. Author: Opus session. Status: IN PROGRESS (sections appended per step).
+Date 2026-10-28. Author: Opus session. Status: complete for this session; see §12 ledger, §13 STALL.
 Firewall: /tmp/sa_repo and reports/SUSSMAN_ALPOGE_MAP.md not read.
 Tags: [P] proved here, [R] reduced to a named Balaban statement, [I] inferred, [V] page-verified.
 
@@ -66,3 +66,46 @@ Construction (E^ms). For each y ∈ Λ_j take a smooth bump ψ_y supported stric
  because ‖∇ψ‖² over a block of side ℓ is O(ℓ^{d−2}) (scale covariance) and the a-term is a‖QA‖²_ℋ = aΣμ|B|² ≤ aΣℓ^{d−2}|B|² (ℓ ≤ 1).
  Here G^{−1} = Δ_π + DRD* + Q*aQ ≤ (1 + O(Mα_0))(D*D + DD*) + Q*aQ, using R ≤ I (orthogonal projection [I], SOURCES_CDC §4.1) and |⟨A, Δ′_πA⟩| ≤ O(Mα_0)(‖DA‖² + ‖D*A‖² + scale-weighted ‖A‖²) from (3.131) [I: (3.131) is a kernel bound; the form bound follows by Schur with Lemma 2.1]. K_ext = K_E(d)(1 + O(Mα_0)) + a, K_E(d) = energy of one unit-block bump; c_− = 1/K_ext.
 This is the multiscale version of SOURCES_EU §4 with one simplification: bumps inside their own blocks make QE block-diagonal, so no inversion of an off-diagonal T is needed. The bump extension is not optimal (it misses K_0 = 195.19 by a constant factor), but it is uniform; A1 needs only uniformity.
+Correction to (E^ms) [I]. B lives on block BONDS, not block sites. Q(b) for a block bond b in direction μ averages A_μ along contours that run from the centre of one block to the centre of the next (corridor of b spans halves of two blocks; for Q_j these are iterated one-step corridors). So place ψ_b as a μ-directed field supported near the midpoint of the shared face of the two blocks of b, away from the corridor ends. Then: corridors of other μ-bonds do not reach it (centre-to-centre corridors meet only at block centres); bonds in direction ν ≠ μ average A_ν only and do not see a μ-directed field. So QE is diagonal up to the O(Mα_0) holonomy term [I: needs the exact support of the iterated contours of CMP 98 (14)–(15); if fringes of lower-scale corridors reach the face, QE = c_QI + finite-range part and one falls back on SOURCES_EU §4.2(a)–(d), which needs ‖(QE)^{−1}‖ ≤ 2]. Energy unchanged: ℓ^{d−2} per bump.
+
+## 9. The G_1 clause, the order of the argument, and j-uniformity
+Order (no circularity) [P, given CMP 99 text]: Thm 3.3 for G_0 [V proved, CMP 99 Sect. C] → Thm 3.3 for G via (3.130)–(3.131) [V p. 422] → (K) for QGQ* → (3.132) for G by §7–§8 → (3.133) for H [V: "(3.132) together with Theorem 3.3 for G give (3.133)"] → (3.137) |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0(L^jη)^{−2}|A| [V p. 423] → G_1 via (3.138), Thm 3.3 for G_1 [V p. 423–424] → (K) for QG_1Q* → (3.132) for G_1 by §7–§8 with G_1^{−1} = G^{−1} − Δ^{(2)}_π and |⟨A, Δ^{(2)}_πA⟩| ≤ O(Mα_0)·(form of (C)) [I, from (3.137) via Schur]. So c_−(G_1) ≥ c_−(G)(1 − O(Mα_0)) and c_+(G_1) = c_+(G)(1 + O(Mα_0)).
+The a-term: (QG_1Q*)^{−1} = N_1^{−1} + a (SOURCES_CDC §2.1), so the bound for (QG_1Q*)^{−1} is the bound for N_1^{−1} plus a diagonal term a·δ_{yy′}μ(y)^{−1}, which is of the same form.
+j-uniformity [P + R]. Every quantity is measured in block units: d (2.46) counts length in units L^jη; s, μ carry the powers; (3.35) gives |A| < O(1)Mα_0(L^jη)^{−1} [V p. 396 via SOURCES_CDC §4], i.e. O(Mα_0) in block units, so the holonomy error in M_y is O(Mα_0) at every scale with no L^j factor; the bump energy ℓ^{d−2} is exactly scale covariant; Σ, c_1(α) are uniform (Lemma 2.1 [R]); B_0, δ_0 depend on d, L only and not on {Ω_j} (CMP 99 p. 399 [V]). Hence c_±, ε are independent of j, k, η, U (regular), Λ.
+
+## 10. Theorem A1′ (what is proved here) [P given (K) and (C)]
+Assume U satisfies (3.35)–(3.36) with Mα_0 ≤ a_0 small, M ≥ M_1, RM large enough that θ = log L/(RM) ≤ δ_0/(4(d + 2)). Let c_+ = O(1)B_0L^{d/2+1}, K_ext = K_E(d)(1 + O(Mα_0)) + a, δ = δ_0 − (d/2 + 1)θ, ε = min{δ/2, 1/(2K_ext c_+ Σ(δ/2))}. Then for y ∈ Λ_j, y′ ∈ Λ_{j′}:
+ |(QGQ*)^{−1}(y,y′)| ≤ 2K_ext (L^jη)^{−1−d/2}(L^{j′}η)^{−1−d/2} e^{−εd(y,y′)}   (symmetric form)
+ ≤ 2K_ext L^{d/2+1}(L^jη)^{−2}(L^{j′}η)^{−d} e^{−δ_1d(y,y′)},  δ_1 := ε − (d/2 + 1)θ > 0   (Balaban's form (3.132)),
+and the same for G_1 with K_ext, c_+ multiplied by 1 + O(Mα_0), plus the diagonal a-term.
+Size of δ_1 [P]: δ_1 ≈ 1/(2K_extc_+Σ) is much smaller than Balaban's δ_0-type rate (K_ext ≥ K_0 ~ 10², c_+ ≥ B_0). Uniformity is what the consumers need: γ_1 (A7 via Schur over e^{−δ_1d}) and the cluster-expansion decay. A small δ_1 changes only constants downstream, but every downstream "δ_0 fixed, then M large" ordering must accept δ_1 in place of ½δ_0 [I: not checked against each consumer].
+Correction to §10 [P]: θ ≤ δ_0/(4(d+2)) makes Σ(δ/2) finite, which is all the symmetric form needs. Balaban's asymmetric form needs in addition θ < ε/(d/2 + 1), i.e. RM ≥ (d/2 + 1)log L/ε, a larger RM. This is admissible in Balaban's ordering (R, M fixed first, then α_0 ≤ a_0/M) [I], but the symmetric form is preferable: Schur-type consumers (A7) use it directly.
+
+## 11. Comparison of the routes
+Route W (Balaban's own, §3–§4: "analyzed in the same way as (Q′G′²Q′*)^{−1}"). Local: on each cube, gauge to U^u = e^{iηA}, expand QG_□Q*(U) around U = 1 as in (3.65)–(3.67), with the free local input CMP 96 (2.147)–(2.148) and Prop. 2.7. Global: parametrix C_0 = Σh_□C_□h_□, (3.95)-type R = O(M^{−1}) + O(e^{−δ_0M}) + propagator-difference terms, Neumann/walk series (3.96)–(3.99). Output: δ_1 ≈ ½δ_4-type rate (sharp, comparable to Balaban's). Cost: replicate (3.95)–(3.99) with (Q′, G′², ±4) → (Q, G, ±2), the local analytic step (3.65)–(3.67) for (Q, G), and the propagator-difference estimate of CMP 89 [2] for G (asserted on CMP 99 p. 412 for "all propagators we have considered"). Rests on the CMP 96 one-sentence assertion (U2) "Of course … bound from above and exponential decay" for the local unit-lattice form.
+Route P (the brief's global perturbation (QGQ*)^{−1}(U) = (QGQ*)^{−1}(1)[1 + R(U)]^{−1}): NOT valid as stated (§3): U is close to a pure gauge only on cubes. A global perturbation IS valid for G versus G_0 at the same U (Δ′_π carries α_0 everywhere, (3.131)), so Route P can carry (QG_0Q*)^{−1} → (QGQ*)^{−1} → (QG_1Q*)^{−1}, but not U → 1.
+Route DMS (§6): fails as stated (not banded; κ ~ η^{−2} on the fine lattice; indefinite). Its correct form is Route CT.
+Route CT (§7–§10): inputs = (K), already a consequence of CMP 99 Thm 3.3/3.12 for G (proved by Balaban's walk expansion for G, not for the inverse), and (C), a direct bump construction. No local analytic continuation of (QGQ*)^{−1}, no parametrix for the inverse, no CMP 96 Prop. 2.7, no γ_0 (A3). Output: uniform but small δ_1 (§10). Recommended for the trust ledger; Route W stays the sharp-constant alternative.
+
+## 12. Ledger
+[V] CMP 99 p. 422 (3.131)–(3.132) and the "not repeated" sentence; it refers to (Q′G′²Q′*)^{−1} (CMP 99 Thm 3.2, Thm 3.9), not to CMP 95. (3.132) is multiscale: (L^jη)^{−2}(L^{j′}η)^{−d}. TRUST_LEDGER row A1 should be corrected from (L^jη)^{−2−d}.
+[V] CMP 99 Thm 3.1–3.2 (pp. 397–398), Cor. 3.5–3.6 (pp. 407–408), Sect. C parametrix (3.87), (3.95)–(3.99) (pp. 408–413), Thm 3.11 positivity (p. 414), Thm 3.12 (p. 423) [text layer; images for pp. 397, 398, 422].
+[V] CMP 96 Prop. 2.7 (2.149) = A1 at U = 1, and its local input (2.147)–(2.148) with the one-sentence "Of course" assertion (p. 248–249 image); Lemma 2.1 (2.60)–(2.63) (p. 234 image); ℓ²(𝔅) (2.69) (p. 235 image).
+[P] §3: no global U → 1 comparison exists; Route P only valid for G_0 → G → G_1.
+[P] §6: DMS as proposed does not give uniform decay (κ ~ η^{−2}, indefinite, not banded); Schur block (T^{−1})_{22} = −N^{−1}.
+[P] Lemma CT (§7), with explicit ε.
+[P] Theorem A1′ (§10) GIVEN (K) and (C).
+[R] (K) ⇐ CMP 99 Thm 3.3 for G_0 (proved in CMP 99 Sect. C) + Thm 3.12 for G, G_1 (short argument (3.130)–(3.131), (3.138)).
+[R] Lemma 2.1 of CMP 96 for Σ uniform in k.
+[I] Q*1_{y′} normalization (sup norm O(1) on Δ(y′)); R an orthogonal projection (R ≤ I); form bounds for Δ′_π, Δ^{(2)}_π from the kernel bounds (3.131), (3.137); d of (2.46) is a path metric (formula garbled in the text layer); (2.60) usable with α close to 1.
+[I] (C) diagonal structure of QE: support of iterated contours of Q_j (CMP 98 (14)–(15)); fallback is SOURCES_EU §4.2(a)–(d).
+[I] Downstream consumers accept a small δ_1 (only constants change).
+Status of A1 after this file: "asserted, proof not repeated" → "proved [P] modulo (K) [R to CMP 99 printed theorems] and the [I] items of (C)". A3 is not an input.
+
+## 13. STALL / open points for a later session
+S1 (main). Support of the multiscale averaging Q_j(U) on block bonds: do the iterated corridors of CMP 98 (14)–(15) leave a face-midpoint region seen by one block bond only? If yes, (C) is a 10-line proof. If no, prove ‖(Q(U)E^U)^{−1}‖ ≤ 2 for the bump family (SOURCES_EU §4.2(a)); the free part T = Q(1)E is a translation-invariant finite-range matrix per scale, so its invertibility is a symbol computation (numerics/k0_d.py style), and the U-part is O(Mα_0).
+S2. The form bound |⟨A, Δ′_πA⟩| ≤ O(Mα_0)(‖DA‖² + ‖D*A‖² + Σ(L^jη)^{−2}‖A‖²_{Λ_j}) from (3.131): (3.131) is a bilinear bound with L¹ norms on blocks; the Schur step with Lemma 2.1 is routine but not written.
+S3. Q*1_{y′} normalization and the bond/site bookkeeping in (K) (one page of CMP 98 definitions).
+S4. Downstream: check that A7, A18, and the cluster-expansion users accept δ_1 from §10 in place of Balaban's rate, with R, M chosen after δ_1 (RM ≥ (d/2 + 1)log L/ε only for the asymmetric form).
+S5. Lit: DMS read only via arXiv math/0010243's restatement; Jaffard 1990 cited from memory. Neither is load-bearing for Route CT (Lemma CT is proved in §7).
+Status: COMPLETE for this session (Opus). Fable starting point: S1 then S2.

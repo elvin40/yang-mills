@@ -16,7 +16,7 @@ def curl_matrix(lat, U0):
     dof = (3 * pl[:, :, None] + np.arange(3)).reshape(len(pl), 12)
     rows = np.repeat(np.arange(3 * len(pl)), 12); cols = np.repeat(dof, 3, axis=0).ravel()
     Jm = sp.csr_matrix((J.ravel(), (rows, cols)), shape=(3 * len(pl), 3 * lat.nlinks))
-    return (Jm.T @ Jm / 8).tocsr()
+    return (Jm.T @ Jm / 4).tocsr()  # matches Hessian of 1 - cos(|theta|/2) at U=1
 
 def full_gauge(lat, U0):  # D on all sites (anchors included)
     l2 = copy.copy(lat); l2.is_anchor = np.zeros(lat.nsites, bool); l2.nc_index = np.arange(lat.nsites); l2.ncs = 0
