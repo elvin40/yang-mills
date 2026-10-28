@@ -130,8 +130,8 @@ Yes for MOMENTS, by positivity, without any unit-scale expansion. Statement:
   sup_V |Δ_f(V)| ≤ C_0 Σ_i (|z_i| N(f_i)/r)(1 + |supp f_i|_1),
   with C_0 free of ℓ, K, V. [I: this is the (CG) bound of INFINITE_VOLUME_PLAN §4.2, read AFTER Step A instead of conditionally on V. After Step A all f-dependence of the unit-scale integrand is in unit-scale polymer activities with radius c·r and tree decay, so the sum over X meeting supp f is ≤ C r^{−1}|z|N(f)(1 + |supp f|_1) per support by Step D's count "#{polymers touching a fixed cube, weighted} < ∞". Needs the same checks as (CG): no f-dependent term of the integrand outside unit-scale polymers; the risk of PLAN §4.2 (V-large regions mixing with supp f in the last R-operation).]
 (L2) [positivity] For f = 0 the integrand χ exp(A_K^0 + ΣR^0_fin) is ≥ 0: χ ≥ 0, A_K^0 real, and exp ΣR_fin = Σ_{Z′}∫ρ(Z′, V)/∫ρ(∅, V) is a ratio of positive integrals (Balaban's ρ ≥ 0, CMP 122 I p. 176 via SOURCES_D3 (B7) [V in PLAN §4.2]). So ν_0 := (integrand at f = 0)/I_K[0] is a probability measure on SU(2)^{unit links}.
-(L3) [W] W_K[f] = Σ_i W_K[z_i f_i] + W_conn[f], with |W_conn| ≤ C Σ_i |z_i|N(f_i)/r·(1 + log_L(2M/σ)) by Lemma C Step 9 restricted to polymers that meet supp f_i and at least one other support (count per support, not per pair) [P sketch]. Each W_K[z_i f_i] is a function of z_i alone with zero linear term after centring, so it does not contribute to ∂_{z_1}⋯∂_{z_n} at 0.
-Then Lemma IV-M of INFINITE_VOLUME_PLAN §4.2 applies verbatim with Γ := e^{−W_conn}·E_{ν_0}[e^{Δ_f}]: G(z) := e^{−W_conn[f]} E_{ν_0}[e^{Δ_f}] is holomorphic on the polydisc, |G| ≤ exp(sup|W_conn| + sup|Δ_f|), and Cauchy on radii ρ_i = c r/(N(f_i)(1 + |supp f_i|_1)) gives
+(L3) [W] W_K[f] = Σ_i W_K[z_i f_i] + W_conn[f], with |W_conn| ≤ C Σ_i |z_i|N(f_i)/r·(1 + log_L(2M/σ)) by Lemma C Step 9 restricted to polymers that meet supp f_i and at least one other support (count per support, not per pair) [P sketch]. Each W_K[z_i f_i] is a function of z_i alone. Split it as W^{(1)}_i z_i + W^{(2)}_i(z_i), W^{(2)}_i = O(z_i²). The factor e^{−W^{(2)}_i(z_i)} = 1 + O(z_i²) does not contribute to the multi-index (1, …, 1) derivative at 0. The linear part combines with the centring constant: for the centred field, a_i := −W^{(1)}_i − Σ_p f_i(x_p)c_ε + E_{ν_0}[∂_{z_i}Δ_f|_{z=0}] = ⟨ϕ(f_i)⟩ = 0. So the divergent linear constants (each O(ε^{−4}|supp f_i|)) sum to −E_{ν_0}[∂_{z_i}Δ_f|_0], which is bounded by sup|∂_{z_i}Δ_f| ≤ C_0 N(f_i)(1 + |supp f_i|_1)/r by (L1) and Cauchy. [P]
+Then Lemma IV-M of INFINITE_VOLUME_PLAN §4.2 applies with G(z) := exp(−W_conn[f] − Σ_i z_i E_{ν_0}[∂_{z_i}Δ_f|_0]) · E_{ν_0}[e^{Δ_f}]: ⟨e^{ϕ(f)}⟩ = Π_i e^{−W^{(2)}_i(z_i)} · G(z) on the polydisc (identity by Lemma D4.1 and holomorphic continuation), G is holomorphic, |G| ≤ exp(sup|W_conn| + 2 sup|Δ_f|), and Cauchy on radii ρ_i = c r/(N(f_i)(1 + |supp f_i|_1)) gives
   |⟨Π_i ϕ(f_i)⟩_{ε,ℓ}| ≤ e^{C n (1 + log_L(2M/σ))} Π_i (c r)^{−1} N(f_i)(1 + |supp f_i|_1),
 uniformly in ε AND ℓ. The factor (1 + log_L(2M/σ)) ≤ C_a σ^{−a}, as in D4D5 §5.1.
 Use in the bridge: ASSEMBLY_N1 §4.3 (Lah sum over cumulants) is replaced by this direct moment bound, with no n! at all; Lemma N1-B (§3.1) is otherwise unchanged. So the local version suffices for (H-U∞) of PLAN §3.1 step 1, conditionally on (L1).
@@ -140,3 +140,67 @@ Status: (L2), (L3), and the Cauchy step are [P] (short). (L1) is [I]; it is the 
 
 ### 4.5 Ledger of §4
 [V] FX §6.1–§6.4, §7 R2; FX_R2 l. 36; FX_O23 l. 46; TRUST_LEDGER B19; D4D5 §4.1 Steps 1–2, 9. [P] §4.3 (Step B is used only in Lemma C Steps 1–2); the reduction in §4.4 from (L1) to ℓ-uniform moment bounds. [I] the (a) classification of Steps A, C, D (per-polymer + LOC + KP uniformity); (B-i), (B-ii) as reasons Step B is infrared; (L1).
+
+## 5. Lemma IV-2: the classification table
+
+Classes. (a) ℓ-free (or only a lower bound on ℓ, or improves as ℓ grows). (b) ℓ-dependent, cancels exactly in normalized expectations. (c) ℓ-dependent, does not cancel; fix shown. (d) ℓ-dependent through FX Step B. "Used by T2" = on the chain (S) ⇒ N1 ⇒ (H-U) ⇒ ASSEMBLY 1.3, or in 1.4.
+
+| # | bound / constant | file, place | how ℓ enters | class | fix / note |
+|---|---|---|---|---|---|
+| 1 | β_j, C_β, b, R, γ_0, γ_Bal, clamp; g_0(K, g) | v4 §2.2; KUNIF §3.2, §5.2 | does not | (a) | Lemma IV-1 (§1); needs an ℓ-free selection from S(K, g) |
+| 2 | (Vol) ℓ > 22M; A1/(C) torus side; M ∣ ℓ (Conv) | T2_VOL §2–§4; A15_LOC §6.0 | lower bounds, divisibility | (a) | take ℓ = 2L^{m_T}, m_T large |
+| 3 | per-polymer UV activities E^{(k)}(X), k ≤ K, non-wrapping X | A15_LOC Thm LOC; HHIST Lemma HH; A1_WALK "uniform in the volume" | torus activity = Z⁴ activity exactly | (a) | LOC [P, CONFIRMED w. minor corr.] relative to (FI), (U), (Det′), (Cube), (Cases), (Conv) |
+| 4 | wrapping activities; wrapped loops | A15_LOC §8.5; QE_INV §3.4 | ≤ E_0e^{−κd_j(X)}, d_j ≳ N/c_k; ≤ C_He^{−δ_H·size/2} | (a) | decay improves with ℓ |
+| 5 | 𝒩_K (N_k, U = 1 values, vacuum constants E_k) | D4D5 S1(a); CMP 109 (2.14) | e^{e_Kℓ⁴ + b_K}, f-independent | (b) | cancels exactly in Z[f]/Z[0] (§2.2) |
+| 6 | sourced (0.1): χe^{−A − E_−\|T\|} ≤ ρ̂_K^f ≤ e^{E_+\|T\|} | D4D5 S1(d); CMP 122 II p. 356 | (E_+ + E_−)ℓ⁴ in log ratio | (c) as a bound | NOT USED by (S) ⇐ Lemma C (§2.4); E_± themselves ℓ-free [V, image] |
+| 7 | "ℓ⁴ is absorbed in C_S" | ASSEMBLY_N1 §1 item 4 | from row 6 | stale | delete in the next N1 revision; Lemma C constants have no ℓ (D4D5 l. 106) |
+| 8 | W_K local contact polymers, \|w^{(j)}(X)\| ≤ E_0e^{−κd_j(X)} | D4D5 S1(b) | per polymer | (a) | single-support part: W^{(2)}_i drops from (1, …, 1) derivatives; W^{(1)}_i + centring = −E_ν∂Δ (§4.4 (L3)) — (b)-type exact cancellation of the ε^{−4}-divergent linear constants |
+| 9 | centring constant c_ε = ⟨P_p⟩_{ε,ℓ} | ASSEMBLY §0 | number depends on ℓ | (b) | enters only through exact identities; ⟨ϕ(f)⟩ = 0 |
+| 10 | S1 activities: radius, E_0e^{−κd}; S1 hypotheses r_0, ρ_1, κ, M, γ, (U) | D4D5 §3.1; D3, D3R, D3W8 | per polymer; Balaban constants | (a) | via row 3 for small-field terms; large-field per component (row 13) |
+| 11 | Lemma C constants C_A, C_B, C_η | D4D5 §4.1 | none listed | (a) | given ℓ-free (FX) constants |
+| 12 | Lemma C Steps 1–2: log I_K = Σ local terms | D4D5 §4.1 | through (FX) Step B | (d) | §4.3; replaceable for moments by §4.4 (L1)–(L3) |
+| 13 | FX Step A: final R with Z″ = ∅; κ_final ≤ 6κ; (1.79)–(1.80) per component; budget O(1)log g_j^{−2}\|Z_j\| per domain | FX §6.1; FX_O1; FX_R2; FX_O23 | per component / per domain; KP criterion | (a) [I] | volume-uniform as any small-activity polymer expansion [R, standard]; not checked against II (1.90)–(1.97) line by line |
+| 14 | FX Step B: unit-scale small-field integral → Σ_X H(X) | FX §6.2 | expansion of a massless lattice gauge integral on ℓ⁴ | (d) | infrared (§4.2 (B-i), (B-ii)); at fixed ℓ itself only [R]/[I] |
+| 15 | FX Step C radius c·r | FX §6.3; FX_O23 O2, O3 | "independent of \|X\|, k, ε"; "of \|Λ_i\|, k, ε" | (a) | O3 conditional on B18 (unchanged) |
+| 16 | FX Step D count Σ_s e^{c_0s}e^{−κ′(s−1)} | FX §6.4 | per cube | (a) | — |
+| 17 | (S) range σ ∈ [16ε, ℓ/8], min diam ≤ σ | D4D5 §5.1 | upper limit | (a) | needs ℓ ≥ 16 d_B |
+| 18 | N1 Lemmas T, P | N1 §2.2–§2.3 | ρ < ℓ/4, δ ≤ ℓ/8 | (a) | ℓ ≥ 16 max(d_B, 1) |
+| 19 | N1 ladder δ_m = ℓ2^{−m} | N1 §3.1 | top scale = torus | (c) | start at δ_0 = 2d_B (§3.1 (1)) |
+| 20 | N1 cell count (64ℓ/δ)^{4n}; C_1 ∋ max(1, ℓ)⁴; Σδ^p ≤ max(1, ℓ)^n | N1 §3.2, §4.4 | whole-torus cells | (c) | (70d_B/δ)^{4n}; Σδ^p ≤ C(2d_B)^{(1−a)n} (§3.1 (2), (4)) |
+| 21 | N1 scale m = 3, h_3 = ℓ/512 > 1 | N1 §4.4, §6 "Minor" | h-weights in M(G), N(g) | (c) | large-cell handling (§3.1 (3)); polynomial in d_B |
+| 22 | N1 region R: (12ℓ⁴)^n | N1 §4.5 | all plaquette tuples of T_ε | (c) | (6(d_B + 2)⁴·256⁶)^n (§3.1 (5)) |
+| 23 | N1 Fourier C_L, Z, real/imag 2^n, Lah 2^{n−1}, cutoff (D) with Lemma P | N1 §3.1, §4.1–§4.3 | none | (a) | — |
+| 24 | (H-U) constant A; B-C, OS0 | ASSEMBLY §1.2, §2.4–§2.5 | via rows 19–22 and (S) | (c) + (d) | after fixes: A_B ≤ C(1 + d_B)^q, q ≤ 12 [P] |
+| 25 | translations, B_4, OS3 | ASSEMBLY §2.6, §2.8 | exact lattice symmetries; modulus σ_n·4nε | (a) | inherits row 24 |
+| 26 | RP two-seam, ℓ even, T_+ = ]0, ℓ/2[ | ASSEMBLY §2.7 | seam at ℓ/2 | (a) | second seam moves away |
+| 27 | B_K = Πc_j bounded | ASSEMBLY §0 | none | (a) | — |
+| 28 | (NT): remainder C(g_{k(d)}² + (d/ℓ)²) | ASSEMBLY §2.9 | explicit (d/ℓ)²; C from (E14-f) | (a) for the explicit term; (d) for C | (E14-f) is a fixed-layer expansion; its proof runs through S1 + (FX) |
+
+## 6. Conclusion of IV-2, and the conditional statement
+
+### 6.1 What remains ℓ-dependent after the (b) and (c) fixes [P from the table, given its [I] rows]
+- Class (b) rows 5, 8 (single-support part), 9 cancel identically.
+- Class (c) row 6 is not used; row 7 is stale text; rows 19–22 are removed by Lemma N1-B (§3.1), at the price A_B ≤ C(1 + diam B)^q.
+- Class (a) rows need only lower bounds on ℓ: ℓ even, M ∣ ℓ, ℓ > 22M (Vol), the A1/(C) torus-side bound ℓ_{A1}, and ℓ ≥ 16 max(diam B, 1).
+- What remains: row 14 (FX Step B) and the two rows that consume it, row 12 (Lemma C Steps 1–2, hence (S), hence (H-U) through rows 24–25) and row 28 (the constant in (NT)). So: yes, only Step B.
+- Two qualifications. (i) Row 13 (Step A) is placed in (a) by the standard volume-uniformity of a small-activity polymer expansion, not by a line-by-line check of CMP 122 II (1.90)–(1.97) [I]. (ii) Row 3 rests on Theorem LOC, which covers the small-field CMP 109/116 activities; the large-field per-component bounds are taken from Balaban's statements, which are "independent of k, T_η, U_k" [V, p. 356] but are not LOC-type identities [I].
+
+### 6.2 The conditional statement
+Hypothesis (FX-B∞). The polymer representation of FX Step B (log of the unit-scale small-field integral after Step A as Σ_X [H(X; f) − H(X; 0)]) holds with (FX1)–(FX4) and with constants E_0, κ, c_0, c_τ that do not depend on ℓ, for all even ℓ ≥ ℓ_B.
+
+Theorem IV-2 (ℓ-uniform Target 2 bounds modulo Step B) [P, as an assembly of §1, §3, the table, and the cited files; not independently verified]. Assume the binding set of Target 2 (TRUST_LEDGER §5: Balaban's papers, the A-rows, X2–X5, the B-rows) and (FX-B∞). Fix a ball B ⊂ R⁴ of diameter d_B, identified with its image in one fundamental domain of T⁴_ℓ. Put
+  ℓ_0(B) := max(22M, ℓ_{A1}, ℓ_B, 16 max(d_B, 1)),
+and let ℓ run over even multiples of every last-level cube side with ℓ > ℓ_0(B). Let g_0(K, g) be the ℓ-free shooting solution of Lemma IV-1 (fixed selection rule). Then there are η > 0, a ∈ [0, 1[, K_0, C_* < ∞ and q ≤ 12, none depending on ℓ, K, n, or F, such that for all K ≥ K_0, all such ℓ, all n ≥ 1, and all F ∈ D_n with supp F ⊂ B^n:
+  |S_{n,ε,ℓ}(F)| ≤ (C_*(1 + d_B)^q)^n (n!)^{1+η} ‖F‖_{6n},   ε = L^{−K}.
+The constant in (NT) is ℓ-uniform under the same hypothesis plus (E14-f); the explicit (d/ℓ)² term only improves.
+In words: Target 2's bounds for observables supported in a ball B are uniform in ℓ > ℓ_0(B), modulo Step B.
+
+### 6.3 Without Step B
+Replace (FX-B∞) by (L1) of §4.4 (the post-Step-A form of the plan's (CG)). Then the same conclusion holds for moments, with (n!)^{1+η} replaced by 1 and C_* by e^{C(1 + log_L(2M/σ))}-type factors that N1 absorbs through σ^{−a} [P given (L1); §4.4]. In this route no row of the table is class (d), and the result also removes Step B from Target 2 at fixed ℓ (the plan's "side benefit") [I: (L1) is unproved; it is the plan's IV-3].
+
+### 6.4 Corrections to existing files (not applied; this task writes only this file)
+1. ASSEMBLY_N1 §1 item 4 and §6 item 5: delete "ℓ⁴ is absorbed in C_S"; (S) comes from D4D5 Lemma C, whose constants contain no ℓ.
+2. ASSEMBLY_N1 §3.4: "M(G_{3,c}) ≤ C_G^n ‖F‖_{6n}" holds only for h_3 = ℓ/512 ≤ 1; for ℓ > 512 add max(1, h_3)^{6n} (a constant at fixed ℓ).
+3. INFINITE_VOLUME_PLAN §3.2 row V2: "not used by the current chain (stale N1 text)", not "NO as written". Row V3: confirmed; the fix is Lemma N1-B (§3.1), A_B polynomial with q ≤ 12. Row V4: confirmed as the only (d) row; Step B is used only in D4D5 Lemma C Steps 1–2.
+4. ASSEMBLY §0 "Lemma D″ gives existence, not uniqueness; any choice works below": for the infinite-volume route, "any ℓ-free choice" (§1.5).
+5. TRUST_LEDGER B19 uniformity clause "uniform in K, ε": Step B is uniform in K, ε at fixed ℓ only as a citation [R]; its transfer from CMP 116 §2 to the unit scale (no decaying covariance) is [I] even at fixed ℓ (§4.2 (B-i)).
