@@ -24,6 +24,10 @@ Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an
 - Sources: D1 verified with corrections (Gaussian level). D2 and D3 are reduced to Balaban's estimates, with verifier corrections. W4 is proved for the regular step, unverified. D4 is open.
 - Open: (H-hist) via (B2) and (SM); nontriviality (NT). No O(4) invariance, infinite volume, mass gap, or uniqueness. This is not a solution of the Clay problem.
 
+## How the pieces fit
+
+The Theorem 2 chapter (notes/THEOREM2_PROOF_v3.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas and the exact identities. The paper (paper/) is the LaTeX version of the Theorem 2 chapter. notes/INDEX.md lists every file with its state.
+
 ## Independence and prior work
 
 Independence note: these notes were written on 2026-10-27 and 2026-10-28 (see commit dates, which equal the files' modification times). On the night of 2026-10-27 a web sweep (notes/reports/ONLINE_SWEEP.md) found the public account by Ethan Sussman and Levent Alpöge, github.com/ethanwsussman/Yang--Mills-LLM-experiment, which follows the same route and reaches the same open one-loop comparison lemma. That account was not read by any derivation here; notes/reports/SUSSMAN_ALPOGE_MAP.md compares the two.
