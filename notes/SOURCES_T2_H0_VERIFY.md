@@ -1,6 +1,6 @@
 # SOURCES_T2_H0_VERIFY — item H0, VERIFY
 
-Date: 2026-10-28. Author: Claude (headless verifier session). Status: in progress.
+Date: 2026-10-28. Author: Claude (headless verifier session). Status: complete.
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). reports/ONLINE_SWEEP.md not read.
 
 Read list (filled in as read): SOURCES_T2_H0.md (full); see §0 for the rest.
@@ -241,3 +241,4 @@ NR CONFIRMED — under A15.
 ET CORRECTED — omits A4, A14, A17, A18; G3 becomes a new open item in T1's minimal set.
 FB CONFIRMED — arithmetic only, unused.
 SUMMARY: 47 CONFIRMED, 10 CORRECTED, 0 UNSUPPORTED; verdict: Proposition H0-red holds as a reduction (no constant found depending on j or the past), so row A5 can be rewritten for T1's use as "[reduced, residue G3 (N2)]" with N3, N5 standard, N6/N8 Balaban-internal (input list enlarged by A4, A14, A17, A18), and B7, A15 already in T1, while Balaban's C^∞ and all-derivative claims become unused rather than reduced.
+STATUS: COMPLETE
