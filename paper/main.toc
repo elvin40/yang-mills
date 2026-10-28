@@ -1,227 +1,227 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
 \contentsline {subsection}{\numberline {1.1}The problem}{4}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Ba{\l }aban's programme and the missing Theorem 2}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}The two targets and the main results}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.3}The two targets and the main results}{5}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}Status conventions}{6}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Relation to other work}{7}{subsection.1.5}%
-\contentsline {subsection}{\numberline {1.6}Organization}{8}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.6}Organization}{9}{subsection.1.6}%
 \contentsline {section}{\numberline {2}Setup and notation}{9}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Lattice, measure, and scales}{9}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Range of $L$}{9}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}The coupling sequence}{9}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.2}Range of $L$}{10}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}The coupling sequence}{10}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}One-loop notation}{10}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Observables and Schwinger functions}{10}{subsection.2.5}%
 \contentsline {subsection}{\numberline {2.6}Names}{11}{subsection.2.6}%
 \contentsline {section}{\numberline {3}The coupling flow and Theorem 2}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}What Ba{\l }aban's Theorem 1 actually needs}{11}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}The weak form proved conditionally}{12}{subsection.3.2}%
-\contentsline {subsection}{\numberline {3.3}Literal (0.31)}{12}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.3}Literal (0.31)}{13}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Shooting lemmas}{13}{subsection.3.4}%
-\contentsline {subsubsection}{\numberline {3.4.1}Lemma D$'$ (shooting without early positivity) {\normalfont \scshape [proved+verified; Lean]}}{13}{subsubsection.3.4.1}%
-\contentsline {subsubsection}{\numberline {3.4.2}Lemma D$''$ (tail-sum form; no index $J$) {\normalfont \scshape [proved+verified; Lean]}}{14}{subsubsection.3.4.2}%
-\contentsline {subsubsection}{\numberline {3.4.3}Lemma D$''$ meets Balaban's proof: the cross-scale sweep {\normalfont \scshape [proved, unverified (sweep); 4 of 19 table rows verified]}}{14}{subsubsection.3.4.3}%
-\contentsline {subsubsection}{\numberline {3.4.4}Lemma D and Lemma E {\normalfont \scshape [proved+verified; Lean]}}{15}{subsubsection.3.4.4}%
-\contentsline {subsubsection}{\numberline {3.4.5}History dependence (L5) {\normalfont \scshape [proved relative to listed inputs; verified (round 7)]}}{15}{subsubsection.3.4.5}%
+\contentsline {subsubsection}{\numberline {3.4.1}L-004 (Lemma D$'$) (shooting without early positivity) {\normalfont \scshape [proved+verified; Lean]}}{13}{subsubsection.3.4.1}%
+\contentsline {subsubsection}{\numberline {3.4.2}L-005 (Lemma D$''$) (tail-sum form; no index $J$) {\normalfont \scshape [proved+verified; Lean]}}{14}{subsubsection.3.4.2}%
+\contentsline {subsubsection}{\numberline {3.4.3}L-005 (Lemma D$''$) meets Balaban's proof: the cross-scale sweep {\normalfont \scshape [proved, unverified (sweep); 4 of 19 table rows verified]}}{15}{subsubsection.3.4.3}%
+\contentsline {subsubsection}{\numberline {3.4.4}L-006 (Lemma D) and L-007 (Lemma E) {\normalfont \scshape [proved+verified; Lean]}}{15}{subsubsection.3.4.4}%
+\contentsline {subsubsection}{\numberline {3.4.5}History dependence (L5) {\normalfont \scshape [proved relative to listed inputs; verified (round 7)]}}{16}{subsubsection.3.4.5}%
 \contentsline {subsection}{\numberline {3.5}The exact structure of the one-loop sums}{16}{subsection.3.5}%
 \contentsline {subsubsection}{\numberline {3.5.1}Telescoping {\normalfont \scshape [proved+verified, corrected scope]}}{16}{subsubsection.3.5.1}%
-\contentsline {subsubsection}{\numberline {3.5.2}Anchor-free identity {\normalfont \scshape [proved+verified]}}{16}{subsubsection.3.5.2}%
+\contentsline {subsubsection}{\numberline {3.5.2}Anchor-free identity {\normalfont \scshape [proved+verified]}}{17}{subsubsection.3.5.2}%
 \contentsline {subsubsection}{\numberline {3.5.3}The constant $c$ {\normalfont \scshape [proved+verified]}}{17}{subsubsection.3.5.3}%
 \contentsline {subsubsection}{\numberline {3.5.4}The decomposition $S_k=ck\log L+\kappa _W^F-\kappa _k$}{17}{subsubsection.3.5.4}%
-\contentsline {subsubsection}{\numberline {3.5.5}Level-uniform symbol facts used below {\normalfont \scshape [proved+verified]}}{17}{subsubsection.3.5.5}%
+\contentsline {subsubsection}{\numberline {3.5.5}Level-uniform symbol facts used below {\normalfont \scshape [proved+verified]}}{18}{subsubsection.3.5.5}%
 \contentsline {subsection}{\numberline {3.6}Bounded window sums: two formally distinct conditional routes}{18}{subsection.3.6}%
-\contentsline {subsubsection}{\numberline {3.6.1}Route K: Theorem K {\normalfont \scshape [proved+verified, conditional on (B2) and the fixed-level inputs]}}{18}{subsubsection.3.6.1}%
-\contentsline {subsubsection}{\numberline {3.6.2}Route B: Theorem~B$_{\mathrm {PW}}${} {\normalfont \scshape [proved+verified, conditional (logic of Theorem~B$_{\mathrm {PW}}$)]}}{19}{subsubsection.3.6.2}%
-\contentsline {subsubsection}{\numberline {3.6.3}Route B inputs after \texttt {BETA\_FP\_U} {\normalfont \scshape [proved, unverified; no verifier file]}}{20}{subsubsection.3.6.3}%
+\contentsline {subsubsection}{\numberline {3.6.1}Route K: L-009 (Theorem K) {\normalfont \scshape [proved+verified, conditional on (B2) and the fixed-level inputs]}}{19}{subsubsection.3.6.1}%
+\contentsline {subsubsection}{\numberline {3.6.2}Route B: Theorem~B$_{\mathrm {PW}}${} {\normalfont \scshape [proved+verified, conditional (logic of Theorem~B$_{\mathrm {PW}}$)]}}{20}{subsubsection.3.6.2}%
+\contentsline {subsubsection}{\numberline {3.6.3}Route B inputs after \texttt {BETA\_FP\_U} {\normalfont \scshape [proved, unverified; no verifier file]}}{21}{subsubsection.3.6.3}%
 \contentsline {subsubsection}{\numberline {3.6.4}Comparison}{21}{subsubsection.3.6.4}%
-\contentsline {subsection}{\numberline {3.7}The hypothesis (B2) of Route K, and the single uniform inequality (H2)}{21}{subsection.3.7}%
+\contentsline {subsection}{\numberline {3.7}The hypothesis (B2) of Route K, and the single uniform inequality R-025 (H2)}{22}{subsection.3.7}%
 \contentsline {subsubsection}{\numberline {3.7.1}Proved}{22}{subsubsection.3.7.1}%
-\contentsline {subsubsection}{\numberline {3.7.2}Refuted, and the failed one-step bound}{22}{subsubsection.3.7.2}%
-\contentsline {subsubsection}{\numberline {3.7.3}(H2) and the two-step theorems {\normalfont \scshape [proved+verified, conditional on (H2)]}}{22}{subsubsection.3.7.3}%
-\contentsline {subsubsection}{\numberline {3.7.4}One-step sufficiency {\normalfont \scshape [arithmetic proved; input certified at $L=13$]}}{23}{subsubsection.3.7.4}%
-\contentsline {subsubsection}{\numberline {3.7.5}The precise remaining inequality}{23}{subsubsection.3.7.5}%
+\contentsline {subsubsection}{\numberline {3.7.2}Refuted, and the failed one-step bound}{23}{subsubsection.3.7.2}%
+\contentsline {subsubsection}{\numberline {3.7.3}R-025 (H2) and the two-step theorems {\normalfont \scshape [proved+verified, conditional on R-025 (H2)]}}{23}{subsubsection.3.7.3}%
+\contentsline {subsubsection}{\numberline {3.7.4}One-step sufficiency {\normalfont \scshape [arithmetic proved; input certified at $L=13$]}}{24}{subsubsection.3.7.4}%
+\contentsline {subsubsection}{\numberline {3.7.5}The precise remaining inequality}{24}{subsubsection.3.7.5}%
 \contentsline {subsection}{\numberline {3.8}Conclusion of the reduction}{24}{subsection.3.8}%
 \contentsline {subsection}{\numberline {3.9}The convergence route: what it adds, and its status}{25}{subsection.3.9}%
 \contentsline {subsubsection}{\numberline {3.9.1}Components and status}{25}{subsubsection.3.9.1}%
 \contentsline {subsubsection}{\numberline {3.9.2}Early steps and $j_*$}{26}{subsubsection.3.9.2}%
-\contentsline {section}{\numberline {4}The finite-torus existence theorem}{26}{section.4}%
-\contentsline {subsection}{\numberline {4.1}What ``exists'' means here}{26}{subsection.4.1}%
+\contentsline {section}{\numberline {4}The finite-torus existence theorem}{27}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What ``exists'' means here}{27}{subsection.4.1}%
 \contentsline {subsection}{\numberline {4.2}Hypothesis delivered by the blocks}{27}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Theorem (finite-torus existence, compactness form)}{27}{subsection.4.3}%
-\contentsline {subsection}{\numberline {4.4}Theorem (nontriviality), conditional on (B-NT)}{28}{subsection.4.4}%
-\contentsline {subsection}{\numberline {4.5}Proof modulo blocks}{28}{subsection.4.5}%
-\contentsline {subsubsection}{\numberline {4.5.1}(B-T2) Theorem 2: the running coupling}{28}{subsubsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.2}(B-S) Sourced bounds E14-a..g}{28}{subsubsection.4.5.2}%
-\contentsline {subsubsection}{\numberline {4.5.3}(B-N1) Bridge: source-form bounds $\Rightarrow $ (H-U) {\normalfont \scshape [open]}}{29}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}(B-C) Compactness {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.4}%
-\contentsline {subsubsection}{\numberline {4.5.5}(B-REG) Regularity (OS0) {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.5}%
-\contentsline {subsubsection}{\numberline {4.5.6}(B-TI) Translation and hypercubic invariance (OS1) {\normalfont \scshape [proved here, given (H-U)]}}{30}{subsubsection.4.5.6}%
-\contentsline {subsubsection}{\numberline {4.5.7}(B-RP) Reflection positivity (OS2)}{31}{subsubsection.4.5.7}%
+\contentsline {subsection}{\numberline {4.4}Theorem (nontriviality), conditional on H-081 (B-NT)}{28}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}Proof modulo blocks}{29}{subsection.4.5}%
+\contentsline {subsubsection}{\numberline {4.5.1}H-084 (B-T2) Theorem 2: the running coupling}{29}{subsubsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.2}R-035 (B-S) Sourced bounds E14-a..g}{29}{subsubsection.4.5.2}%
+\contentsline {subsubsection}{\numberline {4.5.3}R-045 (B-N1) Bridge: source-form bounds $\Rightarrow $ H-116 (H-U) {\normalfont \scshape [open]}}{29}{subsubsection.4.5.3}%
+\contentsline {subsubsection}{\numberline {4.5.4}H-074 (B-C) Compactness {\normalfont \scshape [proved here, given H-116 (H-U)]}}{30}{subsubsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.5}H-082 (B-REG) Regularity (OS0) {\normalfont \scshape [proved here, given H-116 (H-U)]}}{31}{subsubsection.4.5.5}%
+\contentsline {subsubsection}{\numberline {4.5.6}H-085 (B-TI) Translation and hypercubic invariance (OS1) {\normalfont \scshape [proved here, given H-116 (H-U)]}}{31}{subsubsection.4.5.6}%
+\contentsline {subsubsection}{\numberline {4.5.7}H-083 (B-RP) Reflection positivity (OS2)}{31}{subsubsection.4.5.7}%
 \contentsline {subsubsection}{\numberline {4.5.8}(OS3) Symmetry and reality {\normalfont \scshape [proved here]}}{32}{subsubsection.4.5.8}%
-\contentsline {subsubsection}{\numberline {4.5.9}(B-NT) Nontriviality: what is needed}{32}{subsubsection.4.5.9}%
-\contentsline {subsection}{\numberline {4.6}Dependency table}{32}{subsection.4.6}%
-\contentsline {subsection}{\numberline {4.7}What the theorem does not give}{44}{subsection.4.7}%
-\contentsline {subsection}{\numberline {4.8}Corrections after verification}{44}{subsection.4.8}%
-\contentsline {section}{\numberline {5}The sources block}{45}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Target 1: inputs of Theorem 2w}{46}{subsection.5.1}%
-\contentsline {paragraph}{\texttt {SOURCES_GGAIN_NONMONO.md}: item 7$'$, the running-maximum lift.}{46}{section*.2}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_KUNIF.md}: item 9, $K$-independence of $\beta _j(g)$.}{46}{section*.3}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_V1.md}: item 5, V1, ledger B5.}{46}{section*.4}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_G2.md}: item 6, (G2), ledger B6.}{47}{section*.5}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_S123.md}: ($M_j$), ledger B4.}{47}{section*.6}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_I3.md}: the Peierls input (I3), ledger B4.}{47}{section*.7}%
-\contentsline {subsection}{\numberline {5.2}Target 2, step 2: the sourced Theorem 1 (ledger B11)}{48}{subsection.5.2}%
-\contentsline {paragraph}{\texttt {SOURCES.md}: the E14 reduction of (B-S).}{48}{section*.8}%
-\contentsline {paragraph}{\texttt {SOURCES_D1.md}: one sourced step at one loop (D1).}{48}{section*.9}%
-\contentsline {paragraph}{\texttt {SOURCES_D2.md}: sourced small-field step (E14-a).}{48}{section*.10}%
-\contentsline {paragraph}{\texttt {SOURCES_D2C.md}: step (c) redone, frozen source per domain (Lemma A).}{49}{section*.11}%
-\contentsline {paragraph}{\texttt {SOURCES_D3.md}: sourced large-field step (E14-b).}{49}{section*.12}%
-\contentsline {paragraph}{\texttt {SOURCES_D3R.md}: revision of D3 ((P3), (P8), freezing through R, Gevrey order).}{50}{section*.13}%
-\contentsline {paragraph}{\texttt {SOURCES_D3W8.md}: covariance change along $t$ and merged R-outputs (Lemma F2$'$).}{50}{section*.14}%
-\contentsline {paragraph}{\texttt {SOURCES_D4D5.md}: RP and symmetry transfer, and the cumulant bound (S$_{\mathrm {src}}$).}{50}{section*.15}%
-\contentsline {paragraph}{\texttt {SOURCES_HBETA.md}: Lemma H, the two-loop bound (H$\beta $).}{51}{section*.16}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_KAPPA2.md}: ledger B22.}{51}{section*.17}%
-\contentsline {paragraph}{\texttt {SOURCES_UN1.md}: (U), ledger C23.}{52}{section*.18}%
-\contentsline {subsection}{\numberline {5.3}Step 3: the (S) clauses and (FX) (ledgers B21, B19)}{52}{subsection.5.3}%
-\contentsline {paragraph}{\texttt {SOURCES_B21_S.md}: uniformity of (S), ledger B21.}{52}{section*.19}%
-\contentsline {paragraph}{\texttt {SOURCES_FX.md}: hypothesis (FX), ledger B19.}{52}{section*.20}%
-\contentsline {paragraph}{\texttt {SOURCES_FX_O1.md}: gap O1(b) of (FX), Lemma [P].}{53}{section*.21}%
-\contentsline {paragraph}{\texttt {SOURCES_FX_O23.md}: gaps O2 and O3 of (FX).}{53}{section*.22}%
-\contentsline {paragraph}{\texttt {SOURCES_FX_R2.md}: gap R2 of (FX), $\kappa _{\mathrm {fin}}\ge \kappa _{\mathrm {final}}$.}{53}{section*.23}%
-\contentsline {subsection}{\numberline {5.4}Steps 4--5: N3, (H-hol), and the large-field inputs (ledgers B18, B16, B17)}{54}{subsection.5.4}%
-\contentsline {paragraph}{\texttt {SOURCES_HBETA_N3.md}: N3, the strip bound, ledger B18.}{54}{section*.24}%
-\contentsline {paragraph}{\texttt {SOURCES_N3A.md}: condition (a) of Lemma N3.}{54}{section*.25}%
-\contentsline {paragraph}{\texttt {SOURCES_HHOL.md}: (H-hol), small field, ledger B16.}{54}{section*.26}%
-\contentsline {paragraph}{\texttt {SOURCES_HHOL_LF.md}: (H-hol), large field, ledger B17.}{55}{section*.27}%
-\contentsline {paragraph}{\texttt {SOURCES_MA.md}: (M-A), the equipartition bound.}{55}{section*.28}%
-\contentsline {paragraph}{\texttt {SOURCES_MA2.md}: (M-A$'$) and (H$-$).}{55}{section*.29}%
-\contentsline {paragraph}{\texttt {SOURCES_MB.md}: (M-B), the large-field bookkeeping.}{56}{section*.30}%
-\contentsline {paragraph}{\texttt {SOURCES_MC.md}: (M-C), the complex small-field step.}{56}{section*.31}%
-\contentsline {paragraph}{\texttt {SOURCES_MC_IV0.md}: (I-V0), the vertex part of (M-C).}{57}{section*.32}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_IEPS.md}: (I-$\varepsilon $) and (I-ord), small-field layer.}{57}{section*.33}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_IEPS_LF.md}: (I-$\varepsilon $), large-field layer.}{57}{section*.34}%
-\contentsline {paragraph}{\texttt {SOURCES_HIGHER_M1.md}: higher derivatives, and (M1).}{57}{section*.35}%
-\contentsline {subsection}{\numberline {5.5}Step 6: thresholds and second history derivatives (ledgers B15, B14)}{58}{subsection.5.5}%
-\contentsline {paragraph}{\texttt {SOURCES_HTHR.md}: (H-thr), first attempt.}{58}{section*.36}%
-\contentsline {paragraph}{\texttt {SOURCES_HTHR2.md}: (H-thr), Lemma T.}{58}{section*.37}%
-\contentsline {paragraph}{\texttt {SOURCES_HHIST2.md}: (H-hist2), second history derivatives.}{58}{section*.38}%
-\contentsline {paragraph}{\texttt {SOURCES_SM.md}: Theorem SM, the step-map Lipschitz bound.}{59}{section*.39}%
-\contentsline {subsection}{\numberline {5.6}Step 7: history bounds and the gain (ledger B13)}{59}{subsection.5.6}%
-\contentsline {paragraph}{\texttt {SOURCES_HHIST.md}: Lemma HH, (H-hist) in column-sum form.}{59}{section*.40}%
-\contentsline {paragraph}{\texttt {SOURCES_GGAIN.md}: (G-gain), small field.}{60}{section*.41}%
-\contentsline {paragraph}{\texttt {SOURCES_GGAIN_LF.md}: (G-gain), large field.}{60}{section*.42}%
-\contentsline {paragraph}{\texttt {SOURCES_G3.md}: Lemma G3, the $\chi _k$ surface term.}{60}{section*.43}%
-\contentsline {paragraph}{\texttt {SOURCES_Q.md}: input (Q), the covariance lower bound $c_->0$.}{61}{section*.44}%
-\contentsline {paragraph}{\texttt {SOURCES_LOC.md}: Lemma LOC, the localized covariance $C^{(k)}(Z_0,0)$.}{61}{section*.45}%
-\contentsline {subsection}{\numberline {5.7}Step 8: Ba{\l }aban-level propagator inputs (ledgers A1--A4)}{61}{subsection.5.7}%
-\contentsline {paragraph}{\texttt {SOURCES_A1_KERNEL.md}: ledger A1, kernel-decay form.}{61}{section*.46}%
-\contentsline {paragraph}{\texttt {SOURCES_QE_KE_HQ.md}: (KE$'$) and (H$_Q$), inputs of (C).}{62}{section*.47}%
-\contentsline {paragraph}{\texttt {SOURCES_QE_INV.md}: Theorem QE, input (C) of Lemma CT.}{62}{section*.48}%
-\contentsline {paragraph}{\texttt {SOURCES_S2_FORM.md}: S2, the form bound for $G$.}{62}{section*.49}%
-\contentsline {paragraph}{\texttt {SOURCES_S2_G1_V7.md}: S2 for $G_1$, and the V7 repair of ledger A2.}{63}{section*.50}%
-\contentsline {paragraph}{\texttt {SOURCES_A1_WALK.md}: ledger A1w, walk-expansion form of A1.}{63}{section*.51}%
-\contentsline {paragraph}{\texttt {SOURCES_WG.md}: (W$_G$), walk expansions of $G$ and $G_1$.}{64}{section*.52}%
-\contentsline {paragraph}{\texttt {SOURCES_A2_R2.md}: ledger A2, $R_2$ and $R_3$ of CMP 116 (2.16).}{64}{section*.53}%
-\contentsline {paragraph}{\texttt {SOURCES_A3_GAMMA0.md}: ledger A3, the Kato route.}{65}{section*.54}%
-\contentsline {paragraph}{\texttt {SOURCES_A3_GAMMA0_FULL.md}: ledger A3, full proof.}{65}{section*.55}%
-\contentsline {paragraph}{\texttt {SOURCES_A3_SIGMA.md}: ledger A3, $\sigma $-localized clause.}{66}{section*.56}%
-\contentsline {paragraph}{\texttt {SOURCES_A4_D189.md}: ledger A4, CMP 102 (189).}{66}{section*.57}%
-\contentsline {subsection}{\numberline {5.8}Step 8$'$: the three write-outs of the propagator expansions}{66}{subsection.5.8}%
-\contentsline {subsection}{\numberline {5.9}Step 8$''$: round 5, the remaining Group A rows and Lemma G3}{68}{subsection.5.9}%
-\contentsline {paragraph}{The operator of A7.}{68}{section*.58}%
-\contentsline {paragraph}{The positivity device of A8.}{69}{section*.59}%
-\contentsline {paragraph}{The form A10$'$ of A10.}{69}{section*.60}%
-\contentsline {paragraph}{The free exponent $\beta _H$.}{70}{section*.61}%
-\contentsline {paragraph}{The whole-lattice coefficient (A15).}{70}{section*.62}%
-\contentsline {paragraph}{The reduction of A5 and Lemma G3.}{71}{section*.63}%
-\contentsline {subsection}{\numberline {5.10}Step 8$'''$: round 6, locality, the boundary, the 2D gap, and the order of constants}{72}{subsection.5.10}%
-\contentsline {paragraph}{Locality of torus activities.}{72}{section*.64}%
-\contentsline {paragraph}{The boundary of the small-field region.}{73}{section*.65}%
-\contentsline {paragraph}{Row B8 replaced.}{73}{section*.66}%
-\contentsline {paragraph}{The volume hypothesis (Vol).}{73}{section*.67}%
-\contentsline {paragraph}{The 2D gap (G$_A'$).}{74}{section*.68}%
-\contentsline {paragraph}{The canonical order of constants.}{74}{section*.69}%
-\contentsline {subsection}{\numberline {5.11}Step 8$''''$: round 7, the implicit Group A rows, ($M_j$), L5, and the sweep}{75}{subsection.5.11}%
-\contentsline {paragraph}{The fixed-level input ($M_j$) (ledger B4).}{75}{section*.70}%
-\contentsline {paragraph}{History dependence L5 (ledger B7).}{75}{section*.71}%
-\contentsline {paragraph}{The cut and the analyticity domain (ledgers A17, A19).}{76}{section*.72}%
-\contentsline {paragraph}{The regular class (ledger A18).}{76}{section*.73}%
-\contentsline {paragraph}{The large-field T-step rate loss (ledger A23).}{77}{section*.74}%
-\contentsline {paragraph}{The propagator replacement (ledger A16).}{77}{section*.75}%
-\contentsline {paragraph}{The large-field holomorphy chain (ledger B17, chain item 5).}{78}{section*.76}%
-\contentsline {paragraph}{The sweep and N3 in the D$''$ form (ledger B10).}{78}{section*.77}%
-\contentsline {paragraph}{The canonical order, section F.}{78}{section*.78}%
-\contentsline {paragraph}{The lattice log coefficient (ledger B3) {\normalfont \scshape [reduced [R], unverified]}.}{78}{section*.79}%
-\contentsline {paragraph}{(H2) at $L=15,17,21$ (ledger B1).}{79}{section*.80}%
-\contentsline {subsection}{\numberline {5.12}Step 9: round 8, the sub-items of B15, B20, B21, the condition (C), and (L-LL)}{79}{subsection.5.12}%
-\contentsline {paragraph}{The threshold mismatch (H-thr) (ledger B15).}{79}{section*.81}%
-\contentsline {paragraph}{The R operation and the domains $\Lambda _j$ (ledger B20).}{80}{section*.82}%
-\contentsline {paragraph}{The (E14-c) clause (ledger B21) {\normalfont \scshape [reduced to (S); verified]}.}{80}{section*.83}%
-\contentsline {paragraph}{The page readings A9, A12, A20, A22 {\normalfont \scshape [verified readings]}.}{81}{section*.84}%
-\contentsline {paragraph}{The condition (C) (ledgers A1, A1w, A2, A7, A8, A16).}{81}{section*.85}%
-\contentsline {paragraph}{The lattice log coefficient (ledger B3).}{82}{section*.86}%
-\contentsline {subsection}{\numberline {5.13}Step 10: round 9, a proof of (F), (S$'$), the $s$-rule, the p.~254 transfer, and CMP 99 Theorems 3.7 and 3.9}{83}{subsection.5.13}%
-\contentsline {paragraph}{A proof of (F) (ledger B3).}{83}{section*.87}%
-\contentsline {paragraph}{(S) at every scale (ledgers B21, B19).}{84}{section*.88}%
-\contentsline {paragraph}{The $s$-rule convention (ledger C45).}{84}{section*.89}%
-\contentsline {paragraph}{The completeness item (M1) of A16 {\normalfont \scshape [closed as a list; verifier running]}.}{84}{section*.90}%
-\contentsline {paragraph}{The transfer of CMP 98 results (ledger A2, input R4; new rows A25, A26).}{85}{section*.91}%
-\contentsline {paragraph}{CMP 99 Theorems 3.7 and 3.9 written out (ledger A1w).}{85}{section*.92}%
-\contentsline {paragraph}{Order of constants and a new condition (ledgers C5, C46).}{86}{section*.93}%
-\contentsline {subsection}{\numberline {5.14}Step 11: the alternative (E$_U$) route}{86}{subsection.5.14}%
-\contentsline {paragraph}{\texttt {SOURCES_EU.md}: (E$_U$), uniform block extension (alternative route).}{86}{section*.94}%
-\contentsline {paragraph}{\texttt {SOURCES_T2_EUMOM.md}: ledger A21, $k$-uniform moments of $E_0$.}{86}{section*.95}%
-\contentsline {paragraph}{\texttt {SOURCES_CDC.md}: the norm bound $\gamma _1$ (ledger A7).}{87}{section*.96}%
-\contentsline {section}{\numberline {6}Numerical and certified results}{87}{section.6}%
-\contentsline {subsection}{\numberline {6.1}First increment $\beta _1(0)$}{87}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Later increments ($L=2$ only)}{88}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}Quantities of the Route K proof}{89}{subsection.6.3}%
-\contentsline {subsection}{\numberline {6.4}Values of (H2) {\normalfont \scshape [numerical; (H2) at $L=13$ is certified in Section~\ref {sec:certH2}]}}{90}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}One-step values}{91}{subsection.6.5}%
-\contentsline {subsection}{\numberline {6.6}A rigorous point enclosure at $L=3$ {\normalfont \scshape [interval enclosure, verified]}}{91}{subsection.6.6}%
-\contentsline {subsection}{\numberline {6.7}(H2) at $L=13$ {\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{92}{subsection.6.7}%
-\contentsline {paragraph}{Residue.}{93}{section*.97}%
-\contentsline {subsection}{\numberline {6.8}Round 7: more certified $L$, the gap and neutral-sector checks, and an open tension}{93}{subsection.6.8}%
-\contentsline {paragraph}{(H2) at $L=15,17,21$ {\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}.}{93}{section*.98}%
-\contentsline {paragraph}{The 2D gap (G$_A'$) {\normalfont \scshape [numerical]}.}{94}{section*.99}%
-\contentsline {paragraph}{The neutral sector of ($M_j$) {\normalfont \scshape [numerical, reproduced]}.}{94}{section*.100}%
-\contentsline {paragraph}{Open: the single-step $\beta _1$ against $c\log L$.}{94}{section*.101}%
-\contentsline {subsection}{\numberline {6.9}Round 8: the $\beta _1$ tension rewritten, the cell cross-check, (L-LL), and (C)}{94}{subsection.6.9}%
-\contentsline {paragraph}{The single-step $\beta _1$ against $c\log L$ {\normalfont \scshape [open]}.}{94}{section*.102}%
-\contentsline {paragraph}{The cell certificate at $L=13$, mode $M=1$ {\normalfont \scshape [partial cross-check]}.}{95}{section*.103}%
-\contentsline {paragraph}{(L-LL) {\normalfont \scshape [numerical]}.}{96}{section*.104}%
-\contentsline {paragraph}{The free constant of (C) {\normalfont \scshape [numerical]}.}{96}{section*.105}%
-\contentsline {subsection}{\numberline {6.10}Round 9: the seam test of (C), (L-LL) at smaller $\varphi $, and the $\beta _1$ run}{96}{subsection.6.10}%
-\contentsline {paragraph}{The free constant and the seam test of (C) {\normalfont \scshape [numerical; verified]}.}{96}{section*.106}%
-\contentsline {paragraph}{(L-LL) at smaller $\varphi $ {\normalfont \scshape [numerical; verified]}.}{97}{section*.107}%
-\contentsline {paragraph}{The converged-grid $\beta _1$ run {\normalfont \scshape [running; results pending]}.}{97}{section*.108}%
-\contentsline {subsection}{\numberline {6.11}Certification plan and $j_0$ {\normalfont \scshape [designed; superseded at $L=13$ by Section~\ref {sec:certH2}]}}{97}{subsection.6.11}%
-\contentsline {section}{\numberline {7}What remains}{98}{section.7}%
-\contentsline {subsection}{\numberline {7.1}Certification}{98}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Fixed-level and structural inputs of Theorem 2w}{98}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Items of the sources block}{101}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}Verification debt}{103}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Open for stronger statements}{104}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Why the mass gap is not on this route}{104}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Trust ledger}{105}{subsection.7.7}%
-\contentsline {paragraph}{Verified readings.}{116}{section*.109}%
-\contentsline {paragraph}{The free parameter $\beta _H$.}{116}{section*.110}%
-\contentsline {paragraph}{Binding sets (round 9; ledger round 10).}{116}{section*.111}%
-\contentsline {paragraph}{Lean support (round 9).}{117}{section*.112}%
-\contentsline {section}{\numberline {A}Lean formalization}{119}{appendix.A}%
-\contentsline {paragraph}{{\normalfont \scshape [Lean]}}{119}{section*.113}%
-\contentsline {section}{\numberline {B}Index of results by status}{120}{appendix.B}%
-\contentsline {paragraph}{{\normalfont \scshape [proved+verified]}}{120}{section*.114}%
-\contentsline {paragraph}{{\normalfont \scshape [proved, unverified]}}{122}{section*.115}%
-\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{123}{section*.116}%
-\contentsline {paragraph}{{\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{123}{section*.117}%
-\contentsline {paragraph}{{\normalfont \scshape [verified reduction]}}{123}{section*.118}%
-\contentsline {paragraph}{{\normalfont \scshape [interval enclosure, verified]}}{124}{section*.119}%
-\contentsline {paragraph}{{\normalfont \scshape [argued]}}{124}{section*.120}%
-\contentsline {paragraph}{{\normalfont \scshape [open]}}{124}{section*.121}%
-\contentsline {paragraph}{{\normalfont \scshape [corrected by verifiers since v3]}}{124}{section*.122}%
-\contentsline {paragraph}{{\normalfont \scshape [refuted]}}{125}{section*.123}%
-\contentsline {paragraph}{{\normalfont \scshape [Balaban]}}{125}{section*.124}%
-\contentsline {paragraph}{{\normalfont \scshape [verified quote]}}{125}{section*.125}%
-\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{125}{section*.126}%
-\contentsline {section}{\numberline {C}Label map}{125}{appendix.C}%
-\contentsline {section}{\numberline {D}Revision history}{128}{appendix.D}%
+\contentsline {subsubsection}{\numberline {4.5.9}H-081 (B-NT) Nontriviality: what is needed}{32}{subsubsection.4.5.9}%
+\contentsline {subsection}{\numberline {4.6}Dependency table}{33}{subsection.4.6}%
+\contentsline {subsection}{\numberline {4.7}What the theorem does not give}{45}{subsection.4.7}%
+\contentsline {subsection}{\numberline {4.8}Corrections after verification}{46}{subsection.4.8}%
+\contentsline {section}{\numberline {5}The sources block}{46}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Target 1: inputs of L-001 (Theorem 2w)}{47}{subsection.5.1}%
+\contentsline {paragraph}{\texttt {SOURCES_GGAIN_NONMONO.md}: item 7$'$, the running-maximum lift.}{47}{section*.2}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_KUNIF.md}: item 9, $K$-independence of $\beta _j(g)$.}{47}{section*.3}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_V1.md}: item 5, V1, ledger R-029.}{48}{section*.4}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_G2.md}: item 6, R-030 (G2), ledger R-030.}{48}{section*.5}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_S123.md}: ($M_j$), ledger R-028.}{48}{section*.6}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_I3.md}: the Peierls input (I3), ledger R-028.}{48}{section*.7}%
+\contentsline {subsection}{\numberline {5.2}Target 2, step 2: the sourced Theorem 1 (ledger R-035)}{49}{subsection.5.2}%
+\contentsline {paragraph}{\texttt {SOURCES.md}: the E14 reduction of R-035 (B-S).}{49}{section*.8}%
+\contentsline {paragraph}{\texttt {SOURCES_D1.md}: one sourced step at one loop (D1).}{49}{section*.9}%
+\contentsline {paragraph}{\texttt {SOURCES_D2.md}: sourced small-field step H-096 (E14-a).}{50}{section*.10}%
+\contentsline {paragraph}{\texttt {SOURCES_D2C.md}: step (c) redone, frozen source per domain (L-054 (Lemma A)).}{50}{section*.11}%
+\contentsline {paragraph}{\texttt {SOURCES_D3.md}: sourced large-field step H-097 (E14-b).}{50}{section*.12}%
+\contentsline {paragraph}{\texttt {SOURCES_D3R.md}: revision of D3 (H-235 (P3), H-240 (P8), freezing through R, Gevrey order).}{51}{section*.13}%
+\contentsline {paragraph}{\texttt {SOURCES_D3W8.md}: covariance change along $t$ and merged R-outputs (L-164).}{51}{section*.14}%
+\contentsline {paragraph}{\texttt {SOURCES_D4D5.md}: RP and symmetry transfer, and the cumulant bound (S$_{\mathrm {src}}$).}{52}{section*.15}%
+\contentsline {paragraph}{\texttt {SOURCES_HBETA.md}: L-182 (Lemma H), the two-loop bound (H$\beta $).}{52}{section*.16}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_KAPPA2.md}: ledger R-046.}{52}{section*.17}%
+\contentsline {paragraph}{\texttt {SOURCES_UN1.md}: K-024 (U), ledger K-024.}{53}{section*.18}%
+\contentsline {subsection}{\numberline {5.3}Step 3: the R-045 (S) clauses and R-043 (FX) (ledgers R-045, R-043)}{53}{subsection.5.3}%
+\contentsline {paragraph}{\texttt {SOURCES_B21_S.md}: uniformity of R-045 (S), ledger R-045.}{53}{section*.19}%
+\contentsline {paragraph}{\texttt {SOURCES_FX.md}: hypothesis R-043 (FX), ledger R-043.}{54}{section*.20}%
+\contentsline {paragraph}{\texttt {SOURCES_FX_O1.md}: gap Q-059(b) of R-043 (FX), Lemma [P].}{54}{section*.21}%
+\contentsline {paragraph}{\texttt {SOURCES_FX_O23.md}: gaps Q-060 and Q-061 of R-043 (FX).}{54}{section*.22}%
+\contentsline {paragraph}{\texttt {SOURCES_FX_R2.md}: gap R2 of R-043 (FX), $\kappa _{\mathrm {fin}}\ge \kappa _{\mathrm {final}}$.}{55}{section*.23}%
+\contentsline {subsection}{\numberline {5.4}Steps 4--5: N3, R-040/R-041 (H-hol), and the large-field inputs (ledgers R-042, R-040, R-041)}{55}{subsection.5.4}%
+\contentsline {paragraph}{\texttt {SOURCES_HBETA_N3.md}: N3, the strip bound, ledger R-042.}{55}{section*.24}%
+\contentsline {paragraph}{\texttt {SOURCES_N3A.md}: condition (a) of L-232 (Lemma N3).}{56}{section*.25}%
+\contentsline {paragraph}{\texttt {SOURCES_HHOL.md}: R-040 (H-hol), small field, ledger R-040.}{56}{section*.26}%
+\contentsline {paragraph}{\texttt {SOURCES_HHOL_LF.md}: R-041 (H-hol), large field, ledger R-041.}{56}{section*.27}%
+\contentsline {paragraph}{\texttt {SOURCES_MA.md}: H-143 (M-A), the equipartition bound.}{57}{section*.28}%
+\contentsline {paragraph}{\texttt {SOURCES_MA2.md}: H-144 (M-A$'$) and (H$-$).}{57}{section*.29}%
+\contentsline {paragraph}{\texttt {SOURCES_MB.md}: H-145 (M-B), the large-field bookkeeping.}{57}{section*.30}%
+\contentsline {paragraph}{\texttt {SOURCES_MC.md}: H-146 (M-C), the complex small-field step.}{58}{section*.31}%
+\contentsline {paragraph}{\texttt {SOURCES_MC_IV0.md}: H-133 (I-V0), the vertex part of H-146 (M-C).}{58}{section*.32}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_IEPS.md}: (I-$\varepsilon $) and H-131 (I-ord), small-field layer.}{58}{section*.33}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_IEPS_LF.md}: (I-$\varepsilon $), large-field layer.}{59}{section*.34}%
+\contentsline {paragraph}{\texttt {SOURCES_HIGHER_M1.md}: higher derivatives, and K-025 (M1).}{59}{section*.35}%
+\contentsline {subsection}{\numberline {5.5}Step 6: thresholds and second history derivatives (ledgers R-039, R-038)}{59}{subsection.5.5}%
+\contentsline {paragraph}{\texttt {SOURCES_HTHR.md}: R-039 (H-thr), first attempt.}{59}{section*.36}%
+\contentsline {paragraph}{\texttt {SOURCES_HTHR2.md}: R-039 (H-thr), L-285 (Lemma T).}{60}{section*.37}%
+\contentsline {paragraph}{\texttt {SOURCES_HHIST2.md}: R-038 (H-hist2), second history derivatives.}{60}{section*.38}%
+\contentsline {paragraph}{\texttt {SOURCES_SM.md}: L-281 (Theorem SM), the step-map Lipschitz bound.}{60}{section*.39}%
+\contentsline {subsection}{\numberline {5.6}Step 7: history bounds and the gain (ledger R-037)}{61}{subsection.5.6}%
+\contentsline {paragraph}{\texttt {SOURCES_HHIST.md}: L-189 (Lemma HH), R-037 (H-hist) in column-sum form.}{61}{section*.40}%
+\contentsline {paragraph}{\texttt {SOURCES_GGAIN.md}: H-111 (G-gain), small field.}{61}{section*.41}%
+\contentsline {paragraph}{\texttt {SOURCES_GGAIN_LF.md}: H-111 (G-gain), large field.}{62}{section*.42}%
+\contentsline {paragraph}{\texttt {SOURCES_G3.md}: L-174 (Lemma G3), the $\chi _k$ surface term.}{62}{section*.43}%
+\contentsline {paragraph}{\texttt {SOURCES_Q.md}: input (Q), the covariance lower bound $c_->0$.}{62}{section*.44}%
+\contentsline {paragraph}{\texttt {SOURCES_LOC.md}: L-213 (Lemma LOC), the localized covariance $C^{(k)}(Z_0,0)$.}{63}{section*.45}%
+\contentsline {subsection}{\numberline {5.7}Step 8: Ba{\l }aban-level propagator inputs (ledgers R-001--R-005)}{63}{subsection.5.7}%
+\contentsline {paragraph}{\texttt {SOURCES_A1_KERNEL.md}: ledger R-001, kernel-decay form.}{63}{section*.46}%
+\contentsline {paragraph}{\texttt {SOURCES_QE_KE_HQ.md}: H-136 (KE$'$) and H-123 (H$_Q$), inputs of H-057 (C).}{63}{section*.47}%
+\contentsline {paragraph}{\texttt {SOURCES_QE_INV.md}: L-252 (Theorem QE), input H-057 (C) of L-125 (Lemma CT).}{64}{section*.48}%
+\contentsline {paragraph}{\texttt {SOURCES_S2_FORM.md}: S2, the form bound for $G$.}{64}{section*.49}%
+\contentsline {paragraph}{\texttt {SOURCES_S2_G1_V7.md}: S2 for $G_1$, and the V7 repair of ledger R-003.}{65}{section*.50}%
+\contentsline {paragraph}{\texttt {SOURCES_A1_WALK.md}: ledger R-002, walk-expansion form of R-001.}{65}{section*.51}%
+\contentsline {paragraph}{\texttt {SOURCES_WG.md}: (W$_G$), walk expansions of $G$ and $G_1$.}{65}{section*.52}%
+\contentsline {paragraph}{\texttt {SOURCES_A2_R2.md}: ledger R-003, $R_2$ and $R_3$ of CMP 116 (2.16).}{66}{section*.53}%
+\contentsline {paragraph}{\texttt {SOURCES_A3_GAMMA0.md}: ledger R-004, the Kato route.}{66}{section*.54}%
+\contentsline {paragraph}{\texttt {SOURCES_A3_GAMMA0_FULL.md}: ledger R-004, full proof.}{67}{section*.55}%
+\contentsline {paragraph}{\texttt {SOURCES_A3_SIGMA.md}: ledger R-004, $\sigma $-localized clause.}{67}{section*.56}%
+\contentsline {paragraph}{\texttt {SOURCES_A4_D189.md}: ledger R-005, CMP 102 (189).}{68}{section*.57}%
+\contentsline {subsection}{\numberline {5.8}Step 8$'$: the three write-outs of the propagator expansions}{68}{subsection.5.8}%
+\contentsline {subsection}{\numberline {5.9}Step 8$''$: round 5, the remaining Group A rows and L-174 (Lemma G3)}{70}{subsection.5.9}%
+\contentsline {paragraph}{The operator of R-008.}{70}{section*.58}%
+\contentsline {paragraph}{The positivity device of R-009.}{71}{section*.59}%
+\contentsline {paragraph}{The form R-011 of R-010.}{71}{section*.60}%
+\contentsline {paragraph}{The free exponent $\beta _H$.}{71}{section*.61}%
+\contentsline {paragraph}{The whole-lattice coefficient (R-015).}{72}{section*.62}%
+\contentsline {paragraph}{The reduction of R-006 and L-174 (Lemma G3).}{73}{section*.63}%
+\contentsline {subsection}{\numberline {5.10}Step 8$'''$: round 6, locality, the boundary, the 2D gap, and the order of constants}{74}{subsection.5.10}%
+\contentsline {paragraph}{Locality of torus activities.}{74}{section*.64}%
+\contentsline {paragraph}{The boundary of the small-field region.}{74}{section*.65}%
+\contentsline {paragraph}{Row R-032 replaced.}{75}{section*.66}%
+\contentsline {paragraph}{The volume hypothesis K-032 (Vol).}{75}{section*.67}%
+\contentsline {paragraph}{The 2D gap (G$_A'$).}{75}{section*.68}%
+\contentsline {paragraph}{The canonical order of constants.}{76}{section*.69}%
+\contentsline {subsection}{\numberline {5.11}Step 8$''''$: round 7, the implicit Group A rows, ($M_j$), L5, and the sweep}{77}{subsection.5.11}%
+\contentsline {paragraph}{The fixed-level input ($M_j$) (ledger R-028).}{77}{section*.70}%
+\contentsline {paragraph}{History dependence L5 (ledger R-031).}{77}{section*.71}%
+\contentsline {paragraph}{The cut and the analyticity domain (ledgers R-017, R-019).}{78}{section*.72}%
+\contentsline {paragraph}{The regular class (ledger R-018).}{78}{section*.73}%
+\contentsline {paragraph}{The large-field T-step rate loss (ledger R-020).}{79}{section*.74}%
+\contentsline {paragraph}{The propagator replacement (ledger R-016).}{79}{section*.75}%
+\contentsline {paragraph}{The large-field holomorphy chain (ledger R-041, chain item 5).}{80}{section*.76}%
+\contentsline {paragraph}{The sweep and N3 in the D$''$ form (ledger R-034).}{80}{section*.77}%
+\contentsline {paragraph}{The canonical order, section F.}{80}{section*.78}%
+\contentsline {paragraph}{The lattice log coefficient (ledger R-027) {\normalfont \scshape [reduced [R], unverified]}.}{80}{section*.79}%
+\contentsline {paragraph}{R-025 (H2) at $L=15,17,21$ (ledger R-025).}{81}{section*.80}%
+\contentsline {subsection}{\numberline {5.12}Step 9: round 8, the sub-items of R-039, R-044, R-045, the condition H-057 (C), and H-137 (L-LL)}{81}{subsection.5.12}%
+\contentsline {paragraph}{The threshold mismatch R-039 (H-thr) (ledger R-039).}{81}{section*.81}%
+\contentsline {paragraph}{The R operation and the domains $\Lambda _j$ (ledger R-044).}{82}{section*.82}%
+\contentsline {paragraph}{The H-098 (E14-c) clause (ledger R-045) {\normalfont \scshape [reduced to R-045 (S); verified]}.}{82}{section*.83}%
+\contentsline {paragraph}{The page readings R-047, R-048, R-049, R-051 {\normalfont \scshape [verified readings]}.}{83}{section*.84}%
+\contentsline {paragraph}{The condition H-057 (C) (ledgers R-001, R-002, R-003, R-008, R-009, R-016).}{83}{section*.85}%
+\contentsline {paragraph}{The lattice log coefficient (ledger R-027).}{84}{section*.86}%
+\contentsline {subsection}{\numberline {5.13}Step 10: round 9, a proof of R-027 (F), H-168 (S$'$), the $s$-rule, the p.~254 transfer, and CMP 99 Theorems 3.7 and 3.9}{85}{subsection.5.13}%
+\contentsline {paragraph}{A proof of R-027 (F) (ledger R-027).}{85}{section*.87}%
+\contentsline {paragraph}{R-045 (S) at every scale (ledgers R-045, R-043).}{86}{section*.88}%
+\contentsline {paragraph}{The $s$-rule convention (ledger K-046).}{86}{section*.89}%
+\contentsline {paragraph}{The completeness item H-035 (M1) of R-016 {\normalfont \scshape [closed as a list; verifier running]}.}{86}{section*.90}%
+\contentsline {paragraph}{The transfer of CMP 98 results (ledger R-003, input R4; new rows R-022, R-023).}{87}{section*.91}%
+\contentsline {paragraph}{CMP 99 Theorems 3.7 and 3.9 written out (ledger R-002).}{87}{section*.92}%
+\contentsline {paragraph}{Order of constants and a new condition (ledgers K-005, K-047).}{88}{section*.93}%
+\contentsline {subsection}{\numberline {5.14}Step 11: the alternative (E$_U$) route}{88}{subsection.5.14}%
+\contentsline {paragraph}{\texttt {SOURCES_EU.md}: (E$_U$), uniform block extension (alternative route).}{88}{section*.94}%
+\contentsline {paragraph}{\texttt {SOURCES_T2_EUMOM.md}: ledger R-050, $k$-uniform moments of $E_0$.}{89}{section*.95}%
+\contentsline {paragraph}{\texttt {SOURCES_CDC.md}: the norm bound $\gamma _1$ (ledger R-008).}{89}{section*.96}%
+\contentsline {section}{\numberline {6}Numerical and certified results}{89}{section.6}%
+\contentsline {subsection}{\numberline {6.1}First increment $\beta _1(0)$}{90}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Later increments ($L=2$ only)}{90}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}Quantities of the Route K proof}{91}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}Values of R-025 (H2) {\normalfont \scshape [numerical; R-025 (H2) at $L=13$ is certified in Section~\ref {sec:certH2}]}}{92}{subsection.6.4}%
+\contentsline {subsection}{\numberline {6.5}One-step values}{93}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}A rigorous point enclosure at $L=3$ {\normalfont \scshape [interval enclosure, verified]}}{93}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}R-025 (H2) at $L=13$ {\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{94}{subsection.6.7}%
+\contentsline {paragraph}{Residue.}{95}{section*.97}%
+\contentsline {subsection}{\numberline {6.8}Round 7: more certified $L$, the gap and neutral-sector checks, and an open tension}{95}{subsection.6.8}%
+\contentsline {paragraph}{R-025 (H2) at $L=15,17,21$ {\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}.}{95}{section*.98}%
+\contentsline {paragraph}{The 2D gap (G$_A'$) {\normalfont \scshape [numerical]}.}{96}{section*.99}%
+\contentsline {paragraph}{The neutral sector of ($M_j$) {\normalfont \scshape [numerical, reproduced]}.}{96}{section*.100}%
+\contentsline {paragraph}{Open: the single-step $\beta _1$ against $c\log L$.}{96}{section*.101}%
+\contentsline {subsection}{\numberline {6.9}Round 8: the $\beta _1$ tension rewritten, the cell cross-check, H-137 (L-LL), and H-057 (C)}{96}{subsection.6.9}%
+\contentsline {paragraph}{The single-step $\beta _1$ against $c\log L$ {\normalfont \scshape [open]}.}{96}{section*.102}%
+\contentsline {paragraph}{The cell certificate at $L=13$, mode $M=1$ {\normalfont \scshape [partial cross-check]}.}{97}{section*.103}%
+\contentsline {paragraph}{H-137 (L-LL) {\normalfont \scshape [numerical]}.}{98}{section*.104}%
+\contentsline {paragraph}{The free constant of H-057 (C) {\normalfont \scshape [numerical]}.}{98}{section*.105}%
+\contentsline {subsection}{\numberline {6.10}Round 9: the seam test of H-057 (C), H-137 (L-LL) at smaller $\varphi $, and the $\beta _1$ run}{98}{subsection.6.10}%
+\contentsline {paragraph}{The free constant and the seam test of H-057 (C) {\normalfont \scshape [numerical; verified]}.}{98}{section*.106}%
+\contentsline {paragraph}{H-137 (L-LL) at smaller $\varphi $ {\normalfont \scshape [numerical; verified]}.}{99}{section*.107}%
+\contentsline {paragraph}{The converged-grid $\beta _1$ run {\normalfont \scshape [running; results pending]}.}{99}{section*.108}%
+\contentsline {subsection}{\numberline {6.11}Certification plan and $j_0$ {\normalfont \scshape [designed; superseded at $L=13$ by Section~\ref {sec:certH2}]}}{99}{subsection.6.11}%
+\contentsline {section}{\numberline {7}What remains}{100}{section.7}%
+\contentsline {subsection}{\numberline {7.1}Certification}{100}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}Fixed-level and structural inputs of L-001 (Theorem 2w)}{100}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Items of the sources block}{103}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Verification debt}{106}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Open for stronger statements}{106}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Why the mass gap is not on this route}{106}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Trust ledger}{107}{subsection.7.7}%
+\contentsline {paragraph}{Verified readings.}{119}{section*.109}%
+\contentsline {paragraph}{The free parameter $\beta _H$.}{119}{section*.110}%
+\contentsline {paragraph}{Binding sets (round 9; ledger round 10).}{120}{section*.111}%
+\contentsline {paragraph}{Lean support (round 9).}{121}{section*.112}%
+\contentsline {section}{\numberline {A}Lean formalization}{122}{appendix.A}%
+\contentsline {paragraph}{{\normalfont \scshape [Lean]}}{123}{section*.113}%
+\contentsline {section}{\numberline {B}Index of results by status}{124}{appendix.B}%
+\contentsline {paragraph}{{\normalfont \scshape [proved+verified]}}{124}{section*.114}%
+\contentsline {paragraph}{{\normalfont \scshape [proved, unverified]}}{126}{section*.115}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{127}{section*.116}%
+\contentsline {paragraph}{{\normalfont \scshape [certified (interval arithmetic, outward rounding; verified)]}}{127}{section*.117}%
+\contentsline {paragraph}{{\normalfont \scshape [verified reduction]}}{127}{section*.118}%
+\contentsline {paragraph}{{\normalfont \scshape [interval enclosure, verified]}}{128}{section*.119}%
+\contentsline {paragraph}{{\normalfont \scshape [argued]}}{128}{section*.120}%
+\contentsline {paragraph}{{\normalfont \scshape [open]}}{128}{section*.121}%
+\contentsline {paragraph}{{\normalfont \scshape [corrected by verifiers since v3]}}{128}{section*.122}%
+\contentsline {paragraph}{{\normalfont \scshape [refuted]}}{129}{section*.123}%
+\contentsline {paragraph}{{\normalfont \scshape [Balaban]}}{129}{section*.124}%
+\contentsline {paragraph}{{\normalfont \scshape [verified quote]}}{129}{section*.125}%
+\contentsline {paragraph}{{\normalfont \scshape [numerical]}}{129}{section*.126}%
+\contentsline {section}{\numberline {C}Label map}{129}{appendix.C}%
+\contentsline {section}{\numberline {D}Revision history}{132}{appendix.D}%

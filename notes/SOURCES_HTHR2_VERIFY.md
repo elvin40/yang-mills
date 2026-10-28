@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HTHR2 verification (independent)
 
 Date 2026-10-27. Firewall: /tmp/sa_repo and SUSSMAN_ALPOGE_MAP.md not read.

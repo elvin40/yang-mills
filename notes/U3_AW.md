@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # U3_AW: uniform strip analyticity (A), the Ward statement (W), and evenness in K
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: U3_LEMMA51_R23.md §0–§5 (focus §3b, §3c, §4, §5), U3_LEMMA51_R23_VERIFY.md (all), U3_REPAIRS.md §1–§4, U3_REPAIRS_VERIFY.md §3–§4, U3_GAUSSIAN_RG.md §2–§3, U3_LEMMA51.md §1–§3. No numerics were run. No existing file was edited. Sections were appended one at a time.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HHOL_VERIFY — independent check of SOURCES_HHOL.md
 
 Started 2026-10-27. Firewall kept: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # A1_WALK_FULL — Theorem A1-W: a walk expansion of (QGQ*)^{−1} with (3.108)-form bounds
 
 Date 2026-10-28. Author: Opus session. Paper-grade write-out.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # BETA_FP_M: input (M) of BETA_FP_H Theorem 3.1 without the false resolvent bound
 
 Written 2026-10-27 (Claude, Opus 5.5). Scope: repair (M) of BETA_FP_H §3.1 after BETA_FP_H_VERIFY item (3) ("‖𝒦_t^{−1}‖ ≤ C/|f| in |K| < |f|^{1/2}" is false: the Nielsen–Olesen eigenvalue k_⊥² − |ef| vanishes inside the region). Read: BETA_FP_H §1–§3, BETA_FP_H_VERIFY §5–§7, numerics/NUMERICS.md §4, U3_REPAIRS Prop. B and O6, U3_AW §4, U3_LEMMA51 §2. No existing file edited. No numerics run. Tags: [proved here], [cited], [argued], [open], [refuted].

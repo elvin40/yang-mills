@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 import numpy as np
 from scipy.ndimage import binary_dilation, binary_erosion
 q=16; n=8

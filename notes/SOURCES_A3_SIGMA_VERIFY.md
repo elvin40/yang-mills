@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A3_SIGMA_VERIFY
 
 Independent verification of SOURCES_A3_SIGMA.md (2026-10-28). Firewall respected.

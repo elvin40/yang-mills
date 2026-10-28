@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # IDEAS_FABLE.md — proof routes proposed by the coordinator for Opus to execute and verify (2026-10-28)
 
 Rule: each idea is a precise proposition, a mechanism, and a kill test. Opus agents attempt; verifiers grade. Nothing here is a claim.

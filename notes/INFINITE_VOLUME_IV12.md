@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # INFINITE_VOLUME_IV12 — Lemma IV-1 (ℓ-free trajectory) and Lemma IV-2 (ℓ-audit of Target 2's constants)
 
 Date: 2026-10-28 (Opus). Status: derivation + audit, unverified. Edits: this file only.

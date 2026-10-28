@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A7_CDC verification (independent)
 
 Date 2026-10-28. Scope: claims (1)-(5) of SOURCES_A7_CDC.md.

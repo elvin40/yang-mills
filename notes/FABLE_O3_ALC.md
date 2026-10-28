@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # FABLE_O3_ALC — Task A (O3, the sourced R-denominators) and Task B (AL-c, complex averaged link)
 
 Fable 5.1, 2026-10-28. New file; no existing file edited. Scratch numerics: numerics/fable_o3_*.py.
@@ -97,3 +98,101 @@ Verdict Task A. O3 (as stated in A1) is PROVED relative to:
  [I] n ≤ d(100M)^d; n_p, |supp ζ_0| ≤ C_p(100MR_k)^d; ‖H_{1,k}‖ ≤ C_HB_3; 0 ≤ ζ_0 ≤ 1; the plaquette split (4.1) = CMP 99 (3.10) (D3_NEW4 VERIFY); N2 (|P_p| ≤ O(ε_k²) on supp χ, FX_O23_VERIFY item 3) is NOT needed by the Gaussian route (it is replaced by the cutoff |B′| ≤ M_0p_0 and a_k); the (1.68)–(1.69) bookkeeping of a bounded local change;
  [R, open] N3 = (O3-hol), i.e. the N3 row of TRUST_LEDGER, reduced in SOURCES_HBETA_N3 §4 to (H-hol) + (H-hist_C) + (B-hol).
  Not OBSTRUCTED: every inequality of A3 closes with explicit constants. The one open input is the same one the FX row already carries ("Remaining: [N3]"). Gain over the ledger: (i) the complex-FIELD denominator (needed for the field-Cauchy estimates at later scales) is now covered, with Balaban's asserted lower bound proved rather than assumed; (ii) the conditions are explicit (C-θ), (C-9), (D1), (D2); (iii) N2 is no longer on the (O3-den) chain.
+
+# TASK B — the complex averaged-link bound (AL-c)
+
+## B0. Inputs read [V]
+
+THM39_FULL.md §4.4 ((AL′) with K′ = c_3 + πA_Lc_P/(L(L − 1)); (AL′-ax) with K″), §7.1–7.5 ((AL-c) REDUCED; c_P′ = 2 + 6e²(2c_3 + 1); k_av^c, K_av := 2(1 + πA_Lc_P′/(L(L − 1))); the five open items); SOURCES_F22_VERIFY.md §7 (c_P′ confirmed; items (i)–(v)); SOURCES_F19_WGRATE_VERIFY.md §A1–A5 (the (AL′) re-derivation on the CMP 98 images; A_L = 4d(d + 1)L² as the lasso area; |log g| ≤ (π/2)|g − 1| for unitary g); SOURCES_A18_REGULAR.md 6.1 Lemma Q (I-Q1: transport cost ‖Ad − 1‖ ≤ c(d, L)αL^{j+1−k}; "Complex U′U: the extra transport factors are Ad(e^{iηA′})").
+CMP 98 pp. 19–26 (PDF 3–10, 300 dpi images, read this session): (15) one-step average Ū_c = exp[iΣ_{x∈B(c−)}L^{−d}(1/i)log U(Γ_{c,x})U(c)^{−1}]U(c); p. 20 "we will consider complexified algebras and groups … G^c … we will need only a neighborhood of G"; (19)–(20) operator norm |X| and |XY| ≤ |X||Y|; (21) log X := Σ(−1)^{n+1}(X − 1)^n/n for |X − 1| < 1, "analytic functions of complex matrices"; (22)–(25) the spectral log for unitary U and |log U| ≤ (π/2)|U − 1|; (26)–(27) for "arbitrary complex matrices X" with |X − 1| ≤ ½: |log X| ≤ 2|X − 1|, |X − 1| ≤ 2|log X|; (28)–(31) Z(u, v) = log e^{uX}e^{vY} analytic for |uX|, |vY| < 1/8, BCH, |Z − X − Y| ≤ 2|X||Y| for |X|, |Y| ≤ c_1; (32)–(41) derivative formulas; (42)–(43) the k-th order average, "local: Ū^k_c depends only on U_b, b ⊂ B^k(c−) ∪ B^k(c+)", covariance (Ū^u)_c = u(c−)Ū_cu^{−1}(c+) proved by unitary equivalence of U^u(Γ)U^u(c)^{−1} and U(Γ)U(c)^{−1}; (44) |V(∂p) − 1| < α_0 on the unit lattice; pp. 24–25 the proof of Prop. 1: axial gauge v_0 from the corner y with V_0(Γ_{y,x}) = 1, (45) |V_0(∂p) − 1| = |V(∂p) − 1| (uses unitarity of v_0), |V_{0,b} − 1| < |b_− − y|α_0 ≤ dLα_0, V_{0,b} = e^{iA_b}, |A_b| < 2dLα_0, |V_0(Γ_{c,x}) − 1| < (2d + 1)LdLα_0, the (21)-log, (31), the identity (48), (49), (50) |V̄_0(∂p′) − 1| < L²α_0 + O(1)(L²α_0)²; p. 26 Prop. 1 ((51), C_0 depends on d, c′_2 on d and L; neither is printed as a number), (52)–(53) the induction, Prop. 2 ((54): α_0 ≤ c_2 = min{1/(3C_0), ½c′_2} ⇒ |Ū^k(∂p) − 1| < α_0 + 2C_0α_0² < 2α_0), locality "(52) for p ⊂ B^k(x) ∪ … ∪ B^k(w)".
+
+## B1. Tools for non-unitary matrices [P; all elementary]
+
+(T1) Non-unitarity measure. For an invertible complex N×N matrix g put κ(g) := max{log|g|, log|g^{−1}|} ≥ 0 (operator norm (19)). Then κ(g_1g_2) ≤ κ(g_1) + κ(g_2); κ(g^{−1}) = κ(g); κ(ugv) = κ(g) for unitary u, v; κ(g) = 0 iff g is unitary; ‖Ad(g)‖ := sup_{|X|=1}|gXg^{−1}| ≤ |g||g^{−1}| ≤ e^{2κ(g)}; |g| ≤ e^{κ(g)}. [P: submultiplicativity of the operator norm.]
+(T2) Log-norm bound. For Z = Z_h + iZ_a with Z_h := (Z + Z*)/2, Z_a := (Z − Z*)/(2i) Hermitian: |e^{iZ}| ≤ e^{|Z_a|} and |e^{−iZ}| ≤ e^{|Z_a|}, hence κ(e^{iZ}) ≤ |Z_a|. [P: for any M, |e^{M}| ≤ e^{λ_max((M + M*)/2)} (Gronwall for d/dt|e^{tM}x|²); here (iZ + (iZ)*)/2 = −Z_a.] Also |Z_a| ≤ |Z| and, if Z = Z_0 + G with Z_0 Hermitian, Z_a = G_a and |Z_a| ≤ |G|.
+(T3) Series log under similarity. If |X − 1| < 1 and v is any invertible matrix, then log(vXv^{−1}) := Σ_n(−1)^{n+1}(v(X − 1)v^{−1})^n/n converges and equals v(log X)v^{−1} (termwise; |v(X − 1)^nv^{−1}| ≤ |v||v^{−1}||X − 1|^n). So CMP 98's covariance (11)/(43) holds for G^c-valued gauge transformations u whenever the untransformed arguments U(Γ_{c,x})U(c)^{−1} satisfy |· − 1| < 1: (Ū^u)_c = u(c−)Ū_cu^{−1}(c+). [P; Balaban's proof on p. 24 uses unitary equivalence and the spectral log (22); for G^c one uses (21) instead, which Balaban also allows ("both functions are analytic functions of complex matrices", p. 21).]
+(T4) Products near 1. For matrices a_1, …, a_m with s := Σ_k|a_k − 1| ≤ 1: |a_1⋯a_m − 1| ≤ Π(1 + |a_k − 1|) − 1 ≤ e^s − 1 ≤ s(1 + s). For s ≤ ¼: ≤ 1.14s. [P: e^s − 1 ≤ s + s² for s ≤ 1.79; (e^{1/4} − 1)/(1/4) = 1.136.]
+(T5) Schwarz. If G is analytic on |t| < R, G(0) = 0, |G| ≤ M_G there, then |G(t)| ≤ M_G|t|/R. [standard]
+(T6) (26) for complex X with |X − 1| ≤ ½: |log X| ≤ 2|X − 1| [V p. 22].
+
+Convention. ℓ := L^jη (block scale of level j), λ_i := L^iη/ℓ = L^{i−j} (level-i spacing in ℓ-units), i ≤ j. m := Mα_0. The real field U = e^{iηA} obeys (3.35): |A| ≤ c_3m/ℓ, |∇^ηA| ≤ c_3m/ℓ². The complex field is V := U′U = e^{iηA′}U with A′ ∈ 𝔤^c, |A′| ≤ β/ℓ, |∇^η_UA′| ≤ β/ℓ² (THM39 7.1; β plays the role of b_1, and the lemma below is stated for every β ≤ k_1 at once, which the proof needs).
+
+## B2. Complex Proposition 1 (one averaging step at a non-unitary configuration) [P rel. CMP 98 pp. 24–26 [V] and the unprinted constants C_0, c′_2 of Prop. 1]
+
+Statement. Let V be a G^c-valued configuration on a unit lattice Ω′, p′ ⊂ Ω′^{(1)} a block plaquette, Δ(p′) = B(y_0) ∪ B(y_1) ∪ B(y_2) ∪ B(y) its four corner blocks ((46) [V]). Assume
+ |V(∂p) − 1| < a for p ⊂ Δ(p′),  κ(V_b) ≤ κ_V for b ⊂ Δ(p′),  4dLκ_V ≤ log 2,  a ≤ c′_2{}^c.
+Then |V̄(∂p′) − 1| < e^{4dLκ_V}(L²a + C_0^c(L²a)²), with C_0^c, c′_2{}^c the constants of Balaban's Prop. 1 enlarged/reduced by a factor ≤ 8 [I: the factor; see the proof].
+
+Proof (Balaban's pp. 24–25, with the non-unitary cost tracked).
+ (1) Axial gauge. v_0(x) := V(Γ_{y,x}) ∈ G^c for x in the 2^d blocks around y (v_0(y) = 1), the contours Γ_{y,x} of the page (|x − y|_1 ≤ dL). Then V_0 := V^{v_0} satisfies V_0(Γ_{y,x}) = 1 (same algebra as on p. 24; G^c is a group). κ(v_0(x)) ≤ dLκ_V by (T1).
+ (2) Plaquettes in the new gauge. V_0(∂p) = v_0(x_p)V(∂p)v_0(x_p)^{−1} (x_p the base corner), so |V_0(∂p) − 1| ≤ e^{2dLκ_V}a =: a′ by (T1). (This replaces (45), which used |v_0| = 1.)
+ (3) Bonds. V_0(x, x + e_1) = 1; V_0(x, x + e_μ) is the product of ≤ |x_1 − y_1| + … + |x_{μ−1} − y_{μ−1}| ≤ dL plaquette holonomies in the V_0 gauge (the ladder identity on p. 24, an identity in any group). By (T4) with s ≤ dLa′ ≤ ¼: |V_{0,b} − 1| < 1.14|b_− − y|a′ ≤ 1.14dLa′. Then V_{0,b} = e^{iA_b} with |A_b| ≤ 2|V_{0,b} − 1| ≤ 2.3dLa′ by (T6) (complex X allowed [V p. 22]).
+ (4) Contours. |V_0(Γ_{c,x}) − 1| ≤ 1.14Σ_{b⊂Γ}|V_{0,b} − 1| < 1.3(2d + 1)LdLa′ (T4; p. 25 has the same with constant 1), and |V_0(Γ_{c,x}) − 1 − iA(Γ_{c,x})| ≤ e^{S} − 1 − S ≤ ½S²e^{S} with S := Σ_{b⊂Γ}|A_b| (product of exponentials; p. 25 has ½S², unitary). The (21)-log of V_0(Γ_{c,x} ∪ (−c)): |(1/i)log V_0(Γ ∪ (−c)) − A(Γ ∪ (−c))| < O(1)(L²a′)², from (T6) and |log X − (X − 1)| ≤ |X − 1|²/(1 − |X − 1|). (31) for complex X, Y [V p. 22: "analytic function of uX, vY"].
+ (5) (48) is an identity in the Lie algebra 𝔤^c (linear). (49) as in (4). (50): |V̄_0(∂p′) − 1| < L²a′ + C_0^c(L²a′)².
+ (6) Undo the gauge: V̄(∂p′) = v_0(y_0)^{−1}V̄_0(∂p′)v_0(y_0), by the G^c covariance (T3) of the averaging (its arguments satisfy |V(Γ_{c,x})V(c)^{−1} − 1| < 1 by (4)). So |V̄(∂p′) − 1| ≤ e^{2dLκ_V}|V̄_0(∂p′) − 1| ≤ e^{4dLκ_V}(L²a + C_0^c(L²a)²·e^{2dLκ_V}), and e^{2dLκ_V} ≤ √2 is absorbed in C_0^c. ∎
+ Where the factor 8 comes from [I]: steps (3), (4) each lose a factor ≤ 1.3 against the unitary proof (T4 and e^{S} ≤ 1.3 for S ≤ ¼), step (6) a factor ≤ √2 on the quadratic term; the O(1) of (50) is a product of such steps, each degraded by ≤ 1.3–1.5. Since C_0 is unprinted, the exact factor cannot be checked against the page; 8 is a safe upper bound for three losses of ≤ 1.5 plus √2. The range c′_2{}^c: every smallness condition in steps (3)–(4) holds with a replaced by a′ ≤ √2·a, and the (T4)/(T6) conditions s ≤ ¼, |X − 1| ≤ ½ hold if a′·2(d + 1)L·dL·1.3 ≤ ¼; so c′_2{}^c ≥ c′_2/8 for L ≥ 2 (these conditions are the ones Balaban's c′_2(d, L) encodes, with the same (d, L)-dependence).
+
+## B3. Complex Proposition 2 (k-fold average) [P rel. B2]
+
+Setting. V on the η-lattice, η = L^{−j}ℓ (so λ_0 = η/ℓ), with |V(∂p) − 1| < α_cλ_0² on the fine plaquettes of the relevant blocks, and non-unitarity profile κ_i := sup_b κ(Ū^i_b) for the level-i links, 0 ≤ i < j. Put F := Σ_{i<j}4dLκ_i.
+Claim. If F ≤ log 2, C_0^cα_c ≤ 1/12, and 3α_c ≤ c′_2{}^c, then for every level i ≤ j and every level-i plaquette p (in the block cover):
+  |Ū^i(∂p) − 1| < 3α_cλ_i².
+Proof. Write a_i := sup|Ū^i(∂p) − 1|/λ_i². B2 at level i (unit = level-i spacing, a = a_iλ_i², κ_V = κ_i): a_{i+1}λ_{i+1}² < e^{4dLκ_i}(L²a_iλ_i² + C_0^c(L²a_iλ_i²)²) = e^{4dLκ_i}a_iλ_{i+1}²(1 + C_0^ca_iλ_{i+1}²). So a_{i+1} < e^{4dLκ_i}a_i(1 + C_0^ca_iλ_{i+1}²). Unrolling with the inductive bound a_l ≤ 3α_c and Σ_{l≤j}λ_l² ≤ 1/(1 − L^{−2}) ≤ 4/3:
+  a_i ≤ α_c·e^{F}·exp(C_0^c·3α_c·4/3) = α_c·e^{F}·e^{4C_0^cα_c} ≤ α_c·2·e^{1/3} = 2.79α_c < 3α_c,
+using F ≤ log 2 and C_0^cα_c ≤ 1/12. ∎ (Balaban's constant 2 is the case F = 0 with the sharper bookkeeping of (53); the 3 here is a convenience.)
+Locality: as on p. 26, only the fine plaquettes in B^i(corners) enter at each level, so the hypothesis is needed on the blocks of the corners only [V p. 26 last paragraph].
+
+## B4. Lemma AL-c (averaged links at complex points: analyticity, link bound, non-unitarity ∝ b_1) [P rel. B2, B3, the (15) reading of U(c) [I], the lasso count A_L [I, THM39 (AL′)(c)]]
+
+Constants (all (d, L) only; c_3 = 12L², A_L = 4d(d + 1)L², c_P = 2c_3 + 6e²c_3², c_P′ = 2 + 6e²(2c_3 + 1) as in THM39; c_2^c := min{1/(12C_0^c), c′_2{}^c/3} from B3):
+  K_m := 2.6c_3 + 27.6A_Lc_P/(L(L − 1)),   K_β := 2.6 + 27.6A_Lc_P′/(L(L − 1)),
+  k_1 := min{ 1/(48A_Lc_P′), 0.12/K_β, 0.02/(dLK_β), c_2^c/(2c_P′), 1/4 },
+  a_AL^c := min{ 1/(48A_Lc_P), 0.12/K_m, 0.02/(dLK_m), c_2^c/(2c_P), 1/(4c_3) },
+  K_av := 4K_β + 4K_m·a_AL^c/k_1,   c_N := 4K_av.
+(0.02 = 0.34/16 rounded down; 0.34 = ½ log 2 rounded down.)
+
+Statement. Let m = Mα_0 ≤ a_AL^c and 0 < β ≤ k_1. For V = e^{iηA′}U as in B1 (|A′| ≤ β/ℓ, |∇A′| ≤ β/ℓ²) and every level i ≤ j, on the block cover of □(y):
+ (A) analyticity: every log in the recursion (43) converges (its argument is within 0.29 of 1), so Ū^i_b(V) is an analytic function of A′ on 𝒰(β);
+ (C) curvature: |Ū^i(∂p) − 1| ≤ 3α_cλ_i², α_c := c_Pm + c_P′β;
+ (L) links: |Ū^i_b − 1| ≤ (K_mm + K_ββ)λ_i;
+ (K) non-unitarity: κ(Ū^i_b) ≤ K_avβλ_i; hence ‖Ad(Ū^i_b)‖ = |R(Ū^i_b)| ≤ e^{2K_avL^{i−j}β}, and for the composite transport along Γ^{(j)}_{y,x} (≤ dL level-i links at each level i < j) ‖Ad(Ū(Γ))‖ ≤ e^{2dLK_avβ/(L − 1)}.
+ The constants do not depend on j, M, η, or on β beyond the factor written.
+
+Proof. Induction on i, for all β′ ∈ ]0, k_1] simultaneously (the Schwarz step at radius β uses the hypothesis at radius k_1).
+ Level 0. (C_0): |V(∂p) − 1| ≤ |U(∂p) − 1| + |V(∂p) − U(∂p)| ≤ (c_Pm + c_P′β)λ_0² [V: F22_VERIFY §7 and THM39 7.3 for the two terms; the second is the non-unitary plaquette defect 2η²|∇A′| + 6e²η²|A′|(2|A| + |A′|)]. (L_0): |V_b − 1| ≤ e^{η(|A| + |A′|)} − 1 ≤ 1.3(c_3m + β)λ_0 since (c_3m + β)λ_0 ≤ ½. (K_0): κ(V_b) = κ(e^{iηA′}) ≤ η|A′_a| ≤ βλ_0 ≤ K_avβλ_0 by (T2).
+ Step i → i + 1, for (C) and (L) at a given β′ ≤ k_1, assuming (C_l), (L_l), (K_l) for l ≤ i (at all radii ≤ k_1).
+ (a) Lasso. For a level-(i+1) bond c and x ∈ B(c−): g_x := Ū^i(Γ_{c,x})Ū^i(c)^{−1}, with Ū^i(c) the product of the L level-i links of c [I, the (15) reading; p. 25's display exp[iA(c) + …] supports it]. Lattice Stokes: g_x = Π_{k≤m_x}h_kp_kh_k^{−1}, m_x ≤ A_L, p_k level-i plaquette holonomies, h_k products of ≤ (d + 1)L level-i links [I, THM39 (AL′)(c); the identity holds in any group]. By (K_i) and (T1): κ(h_k) ≤ (d + 1)L·K_avβ′λ_i ≤ 2dLK_avk_1 =: κ_h, and e^{2κ_h} ≤ 2 because 4dLK_avk_1 = 16dL(K_βk_1 + K_ma_AL^c) ≤ 0.68 ≤ log 2 by the 0.02/(dLK_·) entries. So |q_k − 1| ≤ 2|p_k − 1| ≤ 6α_cλ_i² with q_k := h_kp_kh_k^{−1}, and Σ_k|q_k − 1| ≤ 6A_Lα_cλ_i² ≤ ¼ (A_Lα_c ≤ 1/24 by the 1/(48A_Lc_·) entries). By (T4): |g_x − 1| ≤ 1.14·6A_Lα_cλ_i² ≤ 0.29 < ½, which gives (A), and by (T6) |Y_c| ≤ 2 max_x|g_x − 1| ≤ 13.8A_Lα_cλ_i², Y_c := Σ_xL^{−d}(1/i)log g_x.
+ (b) Links. Ū^{i+1}_c = e^{iY_c}Ū^i(c). By (T4) applied to the L + 1 factors (|e^{iY_c} − 1| ≤ e^{|Y_c|} − 1): W_{i+1} ≤ e^{s_i} − 1 ≤ s_i(1 + s_i), s_i := LW_i + |Y_c|, where W_i := (K_mm + K_ββ′)λ_i bounds the level-i links. In w_i := W_i/λ_i: w_{i+1} ≤ (w_i + 13.8A_Lα_cλ_i/L)(1 + s_i). Unrolling: w_i ≤ [w_0 + 13.8A_Lα_cΣ_{l<i}λ_l/L]·exp(Σ_{l<i}s_l) with Σ_{l<j}λ_l ≤ 1/(L − 1), Σ_{l<j}λ_l² ≤ 1/(L² − 1) ≤ 1/3, w_0 ≤ 1.3(c_3m + β′). The exponent: Σs_l ≤ L(K_mm + K_ββ′)/(L − 1) + 13.8A_Lα_c/3 ≤ 2·0.24 + 4.6/24 ≤ 0.68 ≤ log 2 (0.12 entries; A_Lα_c ≤ 1/24). So w_i ≤ 2[1.3(c_3m + β′) + 13.8A_L(c_Pm + c_P′β′)/(L(L − 1))] = K_mm + K_ββ′. This is (L_{i+1}); also W_i ≤ 0.24 < ½, as (T6) and the κ ≤ 2W step below need.
+ (c) Curvature. B3 with the profile κ_l ≤ K_avβ′λ_l: F = 4dLK_avβ′Σ_{l<j}λ_l ≤ 4dLK_avk_1/(L − 1) ≤ log 2; C_0^cα_c ≤ 1/12 and 3α_c ≤ c′_2{}^c by the c_2^c/(2c_·) entries. So (C_{i+1}) holds with 3α_c.
+ (d) Non-unitarity by Schwarz. Fix β ≤ k_1 and A′ with the β-bounds. For t ∈ ℂ, |t| < R := k_1/β (≥ 1), the configuration V(t) := e^{itηA′}U has A″ = tA′ with |A″| ≤ |t|β/ℓ ≤ k_1/ℓ, |∇A″| ≤ k_1/ℓ², so (A), (L_{i+1}) at radius β′ = |t|β ≤ k_1 apply: t ↦ Ū^{i+1}_b(V(t)) is analytic on |t| < R (compositions of exp, products, and convergent (21)-logs, by (A)), and |Ū^{i+1}_b(V(t)) − 1| ≤ (K_mm + K_βk_1)λ_{i+1} ≤ 0.24. Put Z(t) := (1/i)log Ū^{i+1}_b(V(t)) (analytic, |Z(t)| ≤ 2·0.24 by (T6)) and G(t) := Z(t) − Z(0). Z(0) is Hermitian (V(0) = U unitary; the (21)-log of a unitary matrix within ½ of 1 is i·Hermitian). |G| ≤ 4(K_mm + K_βk_1)λ_{i+1} on |t| < R and G(0) = 0, so (T5) at t = 1:
+   |G(1)| ≤ 4(K_mm + K_βk_1)λ_{i+1}·β/k_1 ≤ (4K_β + 4K_ma_AL^c/k_1)βλ_{i+1} = K_avβλ_{i+1}.
+ By (T2), κ(Ū^{i+1}_b) = κ(e^{iZ(1)}) ≤ |Z(1)_a| = |G(1)_a| ≤ |G(1)| ≤ K_avβλ_{i+1}. This is (K_{i+1}), at every β ≤ k_1. The Ad bound and the composite transport follow from (T1): ‖Ad(Ū(Γ))‖ ≤ Π_{i<j}e^{2dL·K_avβλ_i} ≤ e^{2dLK_avβ/(L − 1)}. ∎
+
+Remarks. (1) The linearity in β of (K) is exact (Schwarz), not a first-order expansion: this settles THM39's item (iii) "beyond first order". (2) The real part of the field enters (K) only through K_ma_AL^c/k_1, a (d, L) constant: the non-unitarity of the averaged links vanishes as β → 0, uniformly in Mα_0 ≤ a_AL^c. (3) The conjugation cost is e^{2κ(h)} ≤ e^{4dLK_avβ} =: e^{c_NdLβ}, so c_N = 4K_av, the slot of THM39 7.3. (4) The real range a_AL^c is smaller than THM39's ½a_AL by (d, L) factors (the 0.02/(dLK_m) entry is the binding one: ≈ (L − 1)/(2·10⁷d³L⁶) against ½a_AL ≈ 1/(5·10⁵d²L⁶)); keeping ½a_AL would need the conjugation costs e^{O(dLK_m·a_AL)} carried as constants instead of ≤ 2, which is possible but not done here.
+
+## B5. The five open items of SOURCES_F22_VERIFY §7, the canon lines, and the verdict
+
+(i) Complex form of CMP 98 Props. 1/2: PROVED (B2, B3) with the non-unitary cost e^{4dLκ_V} per step and the cumulative factor e^{F}, F = Σ4dLκ_i ≤ log 2. (44) with G^c-valued V is admissible once κ(V_b) is tracked; the only unitary-specific step of Balaban's proof is (45), replaced by B2 step (2). Constants: C_0^c ≤ 8C_0, c′_2{}^c ≥ c′_2/8 [I, factor], both still (d, L) slots because C_0, c′_2 are unprinted.
+(ii) c_N computed: c_N = 4K_av with K_av = 4K_β + 4K_ma_AL^c/k_1, K_β = 2.6 + 27.6A_Lc_P′/(L(L − 1)), K_m = 2.6c_3 + 27.6A_Lc_P/(L(L − 1)); all (d, L) only. The conjugating factors h (≤ (d + 1)L level-i links) have ‖Ad(h)‖ ≤ e^{2κ(h)} ≤ e^{c_NdLβ}.
+(iii) Linearity in b_1 beyond first order: PROVED exactly by the Schwarz step B4(d); no expansion of the log is used.
+(iv) Real and A′ curvature sources: no linearity of Prop. 2 in its source is needed; Prop. 2 is applied once to the total plaquette defect α_c = c_Pm + c_P′β (triangle inequality on |V(∂p) − 1|, B4 level 0). Settled.
+(v) The (15) reading of U(c) (product of the L finer links of c): still [I]; supported by p. 25's display exp[iA(c) + O((L²α_0)²)] with A(c) the bond sum, which is what the reading gives. Not a page statement.
+Comparison with THM39 7.3. Its K_av := 2(1 + πA_Lc_P′/(L(L − 1))) was the unitary recursion with a factor 2 for the conjugation; the proved K_av = 4K_β + 4K_ma_AL^c/k_1 is larger (the 2.6/27.6 constants come from the complex product bounds (T4)/(T6) in place of |Πu − 1| ≤ Σ|u − 1| and |log u| ≤ (π/2)|u − 1|; the second term is the Schwarz price of the real field). Its k_av^c = min{(log 2)/(c_NdL), c_2/(2c_P′), 1/(8A_Lc_P′)} is replaced by k_1 (same three kinds of entries, with the explicit numbers of B4, plus β ≤ ¼). Its real-range entry "Mα_0 ≤ ½a_AL" is replaced by Mα_0 ≤ a_AL^c (Remark 4 of B4). Its claim "K_av ≤ 2K′" does not survive (K_av here is not comparable to 2K′); THM39's downstream use needs only a finite (d, L) constant c̄_Γ = dK_avL/(L − 1), which is what B4(K) provides with the new K_av.
+
+Canon lines in final form (complex rows; dependency order after c_3, A_L, c_P, K′, c_2):
+ C1. c_P′ := 2 + 6e²(2c_3 + 1) (unchanged, [V F22_VERIFY §7]).
+ C2. C_0^c := 8C_0, c′_2{}^c := c′_2/8 (slots; C_0, c′_2 = Balaban's unprinted Prop. 1 constants); c_2^c := min{1/(12C_0^c), c′_2{}^c/3}.
+ C3. K_m := 2.6c_3 + 27.6A_Lc_P/(L(L − 1)); K_β := 2.6 + 27.6A_Lc_P′/(L(L − 1)).
+ C4. k_av^c := k_1 = min{1/(48A_Lc_P′), 0.12/K_β, 0.02/(dLK_β), c_2^c/(2c_P′), 1/4}.
+ C5. a_AL^c := min{1/(48A_Lc_P), 0.12/K_m, 0.02/(dLK_m), c_2^c/(2c_P), 1/(4c_3)}; complex rows require Mα_0 ≤ a_AL^c (replaces ½a_AL).
+ C6. K_av := 4K_β + 4K_m a_AL^c/k_av^c; c_N := 4K_av; c̄_Γ := dK_avL/(L − 1) (THM39 7.3 unchanged in form).
+ C7. b_1^{37} ≤ k_av^c (THM39 7.4 radius), as before.
+Conditions these rows impose: on b_1 only through C4; on Mα_0 through C5 (binding entry 0.02/(dLK_m)); no condition on M, η, j.
+
+Verdict Task B. (AL-c) PROVED relative to [CMP 98 Prop. 1 proof pp. 24–26 [V], with its unprinted constants C_0, c′_2 as (d, L) slots; the (15)/(43) reading of U(c) [I]; the lasso count A_L and the dL-per-level contour count [I, THM39 (AL′)(c), F19_WGRATE_VERIFY A1(c)]; F22_VERIFY §7's c_P′ [V]]. Inputs tagged [V] on the images this session: (15), (21), (26)–(27), (31), (42)–(45), (48)–(54). Numerical check (numerics/fable_o3_alc.py, Mac, < 20 s): (T1)–(T3) on 300 random 2×2 samples and the Schwarz inequality κ(e^{iY(1)}) ≤ sup_{|t|=R}|Y(t) − Y(0)|/R on 100 random six-factor products (worst ratio 0.945 < 1).
+
+# Summary (both tasks)
+
+Task A. O3, stated in A1 as (O3-den) + (O3-up) + (O3-hol): PROVED rel. [N3 = the TRUST_LEDGER N3 row (c ↦ u_k(c) holomorphic on Q with Σ_{j≤K}|B_j′| ≤ ½), reduced in SOURCES_HBETA_N3 §4; Balaban's (1.7)–(1.8) as printed and his G^c sentence on p. 358 for (1.7); readings n ≤ d(100M)^d, n_p ≤ C_p(100MR_k)^d, ‖H_{1,k}‖ ≤ C_HB_3, 0 ≤ ζ_0 ≤ 1; (1.68)–(1.69) bookkeeping of a bounded local change]. New: Lemma O3-den (A3) covers complex weight AND complex field by a Gaussian/determinant estimate, proves Balaban's asserted complex lower bound (1.10)–(1.11), removes N2 from the (O3-den) chain, and gives the conditions (C-θ) 6.5γ²r ≤ ½, (C-9), (D1), (D2) (A5). Not obstructed; the single open input is the one the FX row already carries.
+Task B. (AL-c) PROVED rel. [CMP 98 Prop. 1 proof [V] with C_0, c′_2 as slots; (15) reading [I]; lasso count [I]]. c_N = 4K_av, K_av = 4K_β + 4K_ma_AL^c/k_av^c, k_av^c = k_1 (C4), real range a_AL^c (C5) replacing ½a_AL. Items (i)–(iv) settled; (v) stays [I].
+Files: FABLE_O3_ALC.md (this), numerics/fable_o3_det.py, numerics/fable_o3_alc.py. No existing file edited.

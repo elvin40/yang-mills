@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # D1: one Balaban step with a local-coupling source, at one loop
 
 Status: written 2026-10-27 by Claude (Fable 5.1). Inputs: SOURCES.md §2.4 (the formula-level sketch this file replaces), numerics/NUMERICS.md §1, §5, §6, THEOREM2.md §3a and §8a, CMP 109 (1.3)–(1.5) and Sect. 2 (2.6)–(2.11). Tags: [exact] derived here with a complete argument; [num] checked numerically with numerics/d1_check.py; [derived] my derivation, not independently verified; [open] not done.

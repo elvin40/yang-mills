@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # LEMMA_DPRIME.md: Lemma D′ (shooting with early negative one-loop increments)
 
 Date 2026-10-27. Status: proved here, not yet independently verified. Sources: THEOREM2_PROOF_VERIFY.md §5 (Point 5(b)–(c)), LEMMAS.md Lemma D, LEMMAS_DE_VERIFY.md §1.4, THEOREM2.md §1, §3, §7 (R1), THEOREM2_PROOF.md §2, §6.

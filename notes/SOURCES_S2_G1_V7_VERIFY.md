@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_S2_G1_V7 — independent verification (2026-10-28)
 
 Verifier: Opus, firewalled (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP).

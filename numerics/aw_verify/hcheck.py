@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Check (i) of U3_AW: max_K ||H_j(K)||/L at L = 3, d = 4, f = 0, real (0.4) row from ym_momentum.
 import sys, os, pickle, itertools, numpy as np
 D = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, os.path.dirname(D))

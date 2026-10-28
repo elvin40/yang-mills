@@ -1,7 +1,7 @@
 import YmLean.LemmaDPrime
 
 /-!
-# Lemmas D and E (LEMMAS.md, corrected) and Step 8 of Lemma D′
+# Lemmas D and E (LEMMAS.md, corrected) and Step 8 of L-004 (Lemma D′)
 
 One-argument form `β j g` (as in LemmaDPrime.lean); the history version of LEMMAS.md is not
 formalized. Lean names `b`, `b'` are the note's constants β, β′.
@@ -35,7 +35,7 @@ lemma tail_bounds {b b' : ℝ} (hbd : ∀ j x, 0 < x → x ≤ γ → b ≤ β j
   rw [Nat.card_Ioc, nsmul_eq_mul] at lo
   exact ⟨by linarith, window_sum_le _ fun i hi => (hci i hi).2⟩
 
-/-- **Lemma D** (LEMMAS.md, corrected). Increments in `[b, b']`, `0 ≤ b ≤ b'`, continuous on
+/-- **L-006 (Lemma D)** (LEMMAS.md, corrected). Increments in `[b, b']`, `0 ≤ b ≤ b'`, continuous on
 `]0, γ]`. (1) Every trajectory with couplings in `]0, γ]` and `u K = 1/g²` satisfies
 `1/g² + b(K-k) ≤ u k ≤ 1/g² + b'(K-k)`. (2) For every `K` and `g ∈ ]0, γ]` a shot trajectory
 exists (IVT on `[t + bK, t + b'K]`). -/
@@ -80,7 +80,7 @@ theorem lemma_D (β : ℕ → ℝ → ℝ) (γ b b' : ℝ) (hγ : 0 < γ) (hb : 
 /-- `γ = min(γ₀, √(β₀/(2C)))`, `γ = γ₀` if `C = 0`. -/
 def γE (γ₀ C β₀ : ℝ) : ℝ := if C = 0 then γ₀ else min γ₀ (√(β₀ / (2 * C)))
 
-/-- **Lemma E** (LEMMAS.md, corrected). `β1 j` is the one-loop coefficient `β_j^{(0)}`. -/
+/-- **L-007 (Lemma E)** (LEMMAS.md, corrected). `β1 j` is the one-loop coefficient `β_j^{(0)}`. -/
 theorem lemma_E (β : ℕ → ℝ → ℝ) (β1 : ℕ → ℝ) (γ₀ C β₀ β₀' : ℝ) (hγ₀ : 0 < γ₀) (hC : 0 ≤ C)
     (hβ₀ : 0 < β₀) (h1 : ∀ j, β₀ ≤ β1 j ∧ β1 j ≤ β₀')
     (hrem : ∀ j g, 0 ≤ g → g ≤ γ₀ → |β j g - β1 j| ≤ C * g ^ 2) :
@@ -103,7 +103,7 @@ theorem lemma_E (β : ℕ → ℝ → ℝ) (β1 : ℕ → ℝ) (γ₀ C β₀ β
   have := hrem j g hg0.le (hg.trans hle); have := hk g hg0 hg; have := h1 j
   constructor <;> linarith [le_abs_self (β j g - β1 j), neg_abs_le (β j g - β1 j)]
 
-/-- Lemmas E + D: under E's hypotheses and continuity, shooting for every `K` and `g ∈ ]0, γ]`
+/-- L-006 + L-007 (Lemmas D, E). Lemmas E + D: under E's hypotheses and continuity, shooting for every `K` and `g ∈ ]0, γ]`
 with the two-sided bound for `β = β₀/2`, `β′ = β₀′ + β₀/2`. -/
 theorem lemma_DE (β : ℕ → ℝ → ℝ) (β1 : ℕ → ℝ) (γ₀ C β₀ β₀' : ℝ) (hγ₀ : 0 < γ₀) (hC : 0 ≤ C)
     (hβ₀ : 0 < β₀) (h1 : ∀ j, β₀ ≤ β1 j ∧ β1 j ≤ β₀')
@@ -116,17 +116,17 @@ theorem lemma_DE (β : ℕ → ℝ → ℝ) (β1 : ℕ → ℝ) (γ₀ C β₀ �
   exact (lemma_D β _ _ _ hp (by positivity) (by linarith)
     (fun j => (hcont j).mono fun x hx => ⟨hx.1.le, hx.2.trans hle⟩) hb).2 K g hg0 hg
 
-/-- Lemma D′ constants: `g₁ = γ` if `J = 0`. -/
+/-- L-004 (Lemma D′) constants: `g₁ = γ` if `J = 0`. -/
 lemma g₁_of_J_zero {γ : ℝ} (hγ : 0 < γ) (B βinf : ℝ) : g₁ γ 0 B βinf = γ := by
   simp only [g₁, D, Nat.cast_zero, zero_mul, add_zero]; exact inv_sqrt_inv_sq hγ
 
-/-! ### Step 8 of Lemma D′: all `β_j(0) > 0` -/
+/-! ### Step 8 of L-004 (Lemma D′): all `β_j(0) > 0` -/
 
 /-- `β₀ = min(min_{j ≤ J} β_j(0), β∞/2)`. -/
 def β0min (β : ℕ → ℝ → ℝ) (J : ℕ) (βinf : ℝ) : ℝ :=
   min ((range (J + 1)).inf' ⟨0, mem_range.2 J.succ_pos⟩ fun j => β j 0) (βinf / 2)
 
-/-- **Lemma D′ (d), last sentence (Step 8).** Hypotheses of `lemma_DPrime` plus `β_j(0) > 0` for
+/-- **L-004 (Lemma D′) (d), last sentence (Step 8).** Hypotheses of `lemma_DPrime` plus `β_j(0) > 0` for
 all `j`. With `β₀ = β0min` and `γ″ = min(γ₀, γ_Bal, β₀/(2C₁))` (= `γdef γ₀ γBal C₁ (2β₀)`):
 `γ″ ≤ γ_Bal`, and for every `K` and `g ∈ ]0, γ″]` there is a shot trajectory with
 `1/g² + (β₀/2)(K-k) ≤ u_k ≤ 1/g² + (B + β₀/2)(K-k)`. -/

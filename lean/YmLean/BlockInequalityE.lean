@@ -1,11 +1,11 @@
 import Mathlib.Analysis.InnerProductSpace.Adjoint
 
 /-!
-# Lemma E: block inequality with the exponential gauge term (L8)
+# L-153 (Lemma E): block inequality with the exponential gauge term (L8)
 
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md, no reports/ONLINE_SWEEP.md).
 
-Source: `../SOURCES_WC_EXPGAUGE.md` §3.2 (Lemma E, steps (a)–(f)) and §1.5 (b), (c);
+Source: `../SOURCES_WC_EXPGAUGE.md` §3.2 (L-153 (Lemma E), steps (a)–(f)) and §1.5 (b), (c);
 `../SOURCES_WC_EXPGAUGE_VERIFY.md` V1 (algebra of (f)) and V2 (corrections to (d) and to the
 `𝒢`-bound). One block `B(y)`. Finite-dimensional real inner product spaces: bond fields `E`,
 site fields `F`, plaquette fields `Pl`, values of `𝒢` in `H`. Linear maps: `D` (= `D^V`, the
@@ -36,7 +36,7 @@ theorem smallness_iff {K c : ℝ} (hc : 0 < c) : 16 * K * c ≤ 1 / 2 ↔ 32 * K
   rw [le_div_iff₀ hc]
   constructor <;> intro h <;> linarith
 
-/-- Algebra of Lemma E (f) (V1). `S0 = S_y(B_ax)`, `δ = d² τ_p²`.
+/-- Algebra of L-153 (Lemma E) (f) (V1). `S0 = S_y(B_ax)`, `δ = d² τ_p²`.
 `h1` is (b) + (c), `h2` is (d). -/
 theorem block_f_real {A δ c S0 P G Λ : ℝ} (hA : 0 ≤ A) (hδ : 0 ≤ δ) (hc : 0 < c)
     (hS0 : 0 ≤ S0) (hG : 0 ≤ G)
@@ -130,7 +130,7 @@ variable {E F Pl H : Type*}
   [NormedAddCommGroup Pl] [InnerProductSpace ℝ Pl] [FiniteDimensional ℝ Pl]
   [NormedAddCommGroup H] [InnerProductSpace ℝ H] [FiniteDimensional ℝ H]
 
-/-- Lemma E (b)–(d), (f) for one `B` and its axial shift `B_ax = B + D λ`:
+/-- L-153 (Lemma E) (b)–(d), (f) for one `B` and its axial shift `B_ax = B + D λ`:
 `S(B_ax) ≤ 4dL^d P + G/c_𝒢` and `Λ ≤ 16 G + 32 c_𝒢 d L^d P`. -/
 theorem block_ineq_E_axial (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢 : E →ₗ[ℝ] H)
     {d L : ℕ} {cG τp τG : ℝ} (hcG : 0 < cG) (hτG : τG ≤ 1 / 2)
@@ -164,7 +164,7 @@ theorem block_ineq_E_axial (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢
   -- (f)
   exact block_f_real hA0 hδ0 hcG (sq_nonneg _) (sq_nonneg _) h1 h2 (by nlinarith)
 
-/-- **Lemma E** (source §3.2, V1–V2): on one block, `S_y ≤ K_b (P_y + ‖𝒢 B‖²)`.
+/-- **L-153 (Lemma E)** (source §3.2, V1–V2): on one block, `S_y ≤ K_b (P_y + ‖𝒢 B‖²)`.
 (a) `ha`; (b) `hb`; (c) `hc`; (d) `hd` with `τ_G ≤ 1/2`; (e) `he`; §1.5 (b) `hG`. -/
 theorem block_ineq_E (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢 : E →ₗ[ℝ] H)
     (N : Submodule ℝ F) (W : Submodule ℝ E)

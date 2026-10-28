@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """SOURCES_T2_PI_VERIFY §8: independent rerun of the d = 2 probe-independence test of SOURCES_T2_PI §8.1.
 Imports (does not modify) t2_pi_d2check.py. Writes a new JSON only.
 Adds two checks not in the derivation run: (i) Gamma at a randomly SU(2)-gauge-transformed constant-field

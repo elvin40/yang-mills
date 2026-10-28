@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_EUMOM_VERIFY — independent check of SOURCES_T2_EUMOM.md (2026-10-28)
 Item EUMOM, VERIFY. Status: complete.
 Read: SOURCES_T2_EUMOM.md (full), SOURCES_EU.md (full), SOURCES_EU_VERIFY.md (full), numerics/k0_d.py, numerics/kappa_d.py (function T only), numerics/t2_eumom_n7.py, numerics/t2_eumom_strip.py (read only); Balaban CMP 95 PDF pp. 18–20 (journal pp. 34–36), page images.

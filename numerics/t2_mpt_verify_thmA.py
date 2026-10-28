@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """Verifier for SOURCES_T2_MPT_STEPC: (1) Theorem A after the t-integral: R(a) = W(a; m2) - a^2 w2(m2), W by (1.1);
 expect R m^4/a^4 bounded up to the edge m2 = 6a. (2) Lemma S1' k=0: scalar a^4 coefficient of T_a(t) = E[A^4;X=0]/24,
 expect ~ t^3 and continuum 7 t^3/(1440 pi)."""

@@ -6,13 +6,13 @@ import Mathlib.Algebra.BigOperators.Ring.Finset
 
 /-!
 # Interpolation and rate arithmetic (SOURCES_A3_SIGMA.md §3.2, SOURCES_T2_KUNIF.md §5.2,
-SOURCES_T2_KAPPA2.md (K1), SOURCES_GGAIN_LF.md)
+SOURCES_T2_KAPPA2.md H-215 (K1), SOURCES_GGAIN_LF.md)
 
 1. `multilinear_convex`: a function affine in each coordinate is the convex combination of its
    corner values with product weights (A3_SIGMA §3.2, the identity C_s = Σ_τ w_τ(s) C_τ).
    `monomial_affine` shows that the walk weight s^ω = Π_{c∈T} s_c is affine in each coordinate.
 2. `window_perturb`: KUNIF (K3) under a perturbation |β_j − β_j^0| ≤ C_β g_j, g_j ≤ γ, C_βγ ≤ b/4.
-3. `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`: KAPPA2 (2.36) recovery and (K1).
+3. `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`: KAPPA2 (2.36) recovery and H-215 (K1).
 4. `xexp_le`, `xexp_absorb`: x e^{−θx} ≤ 1/(θe) and x e^{−x} ≤ e^{−(1−θ)x}/(θe).
 -/
 
@@ -132,7 +132,7 @@ theorem window_perturb (β β0 g : ℕ → ℝ) (b R Cβ γ : ℝ) (hC : 0 ≤ C
   have hn : (0 : ℝ) ≤ ((K - k : ℕ) : ℝ) := Nat.cast_nonneg _
   constructor <;> nlinarith [abs_le.mp hw, abs_le.mp hd]
 
-/-- `window_perturb` fed by `window_of_partial` (Theorem K form |Σ_{i<k} β_i^0 − k b| ≤ R). -/
+/-- `window_perturb` fed by `window_of_partial` (L-009 (Theorem K) form |Σ_{i<k} β_i^0 − k b| ≤ R). -/
 theorem window_perturb_partial (β β0 g : ℕ → ℝ) (b R Cβ γ : ℝ) (hC : 0 ≤ Cβ)
     (hβ : ∀ j, |β j - β0 j| ≤ Cβ * g j) (hg : ∀ j, g j ≤ γ) (hCγ : Cβ * γ ≤ b / 4)
     (h : ∀ k, |(∑ i ∈ range k, β0 i) - k * b| ≤ R) (k K : ℕ) (hkK : k ≤ K) :
@@ -153,7 +153,7 @@ theorem rescale_rate (θ L β κ : ℝ) (hκ : 0 < κ) :
   rw [show θ * κ * (L / 2) = (θ * L / 2) * κ by ring]
   exact mul_le_mul_iff_of_pos_right hκ
 
-/-- SOURCES_T2_KAPPA2 (K1): θ(1 − 10δ)L/2 ≥ 1 + 4β ⇔ δ ≤ (1/10)(1 − 2(1+4β)/(θL)). -/
+/-- SOURCES_T2_KAPPA2 H-215 (K1): θ(1 − 10δ)L/2 ≥ 1 + 4β ⇔ δ ≤ (1/10)(1 − 2(1+4β)/(θL)). -/
 theorem K1_iff (θ L β δ : ℝ) (hθ : 0 < θ) (hL : 0 < L) :
     1 + 4 * β ≤ θ * (1 - 10 * δ) * L / 2 ↔ δ ≤ 1 / 10 * (1 - 2 * (1 + 4 * β) / (θ * L)) := by
   have hθL : 0 < θ * L := mul_pos hθ hL
@@ -168,7 +168,7 @@ theorem K1_iff (θ L β δ : ℝ) (hθ : 0 < θ) (hL : 0 < L) :
       (fun h => absurd h.2 (not_le.mpr (by positivity)))
 
 /-- SOURCES_T2_KAPPA2 numbers at L = 13, θ = 1/2, β = 1/4: δ_θ = 1/26 ≈ 0.0385, and
-δ = 0.03 satisfies (K1) (3.25 · 0.7 = 2.275 ≥ 2). -/
+δ = 0.03 satisfies H-215 (K1) (3.25 · 0.7 = 2.275 ≥ 2). -/
 theorem K1_numeric :
     (1 / 10 : ℝ) * (1 - 2 * (1 + 4 * (1 / 4)) / ((1 / 2) * 13)) = 1 / 26 ∧
       (1 / 26 : ℝ) ≤ 0.0385 ∧

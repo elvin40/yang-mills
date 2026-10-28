@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # t2_fstepb_verify_umk.py with a jax port of Umk.terms (d0, dsym, hess_sym, csym, terms in one jit; float64). Same output and
 # checkpoint names as t2_fstepb_verify_umk.py, so either script resumes the other's .partial.npz.
 # Usage: python t2_fstepb_verify_umk_gpu.py L Ng Lp [--backend numpy|jax]   (default numpy = unported path)

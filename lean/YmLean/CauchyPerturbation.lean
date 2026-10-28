@@ -3,9 +3,9 @@ import Mathlib.Analysis.Calculus.MeanValue
 import Mathlib.Analysis.InnerProductSpace.Positive
 
 /-!
-# Lemma CP (Cauchy perturbation to accretivity)
+# L-122 (Lemma CP) (Cauchy perturbation to accretivity)
 
-Sources: `../SOURCES_WC_RESIDUE.md` §6.1 (Lemma CP with proof) and `../SOURCES_WC_RESIDUE_VERIFY.md`
+Sources: `../SOURCES_WC_RESIDUE.md` §6.1 (L-122 (Lemma CP) with proof) and `../SOURCES_WC_RESIDUE_VERIFY.md`
 Q6 (re-derivation; hypothesis restated in accretive form). Brief: `api_runs/CLOUD_BRIEFS.md` L7.
 
 `H` is a complex Hilbert space, `F : ℂ → (H →L[ℂ] H)` is complex differentiable on the open disc
@@ -70,7 +70,7 @@ theorem cp_increment {F : ℂ → H →L[ℂ] H} {ρ Γ : ℝ} {z : ℂ}
   rw [div_lt_iff₀ hD] at hr1
   linarith
 
-/-- **Lemma CP**, quadratic-form statement. -/
+/-- **L-122 (Lemma CP)**, quadratic-form statement. -/
 theorem cauchy_perturbation {F : ℂ → H →L[ℂ] H} {ρ Γ c t : ℝ} {z : ℂ}
     (hF : DifferentiableOn ℂ F (ball 0 ρ)) (hΓ : ∀ w ∈ ball (0 : ℂ) ρ, ‖F w‖ ≤ Γ)
     (hρ : 0 < ρ) (hc : 0 < c) (h0 : ∀ v : H, c * ‖v‖ ^ 2 ≤ re ⟪v, F 0 v⟫_ℂ)
@@ -119,7 +119,7 @@ theorem cauchy_perturbation {F : ℂ → H →L[ℂ] H} {ρ Γ c t : ℝ} {z : �
   rw [hsplit]
   nlinarith [h0 v]
 
-/-- **Lemma CP** in the normalization of SOURCES_WC_RESIDUE §6.1: `f` analytic on `|s| < t` with
+/-- **L-122 (Lemma CP)** in the normalization of SOURCES_WC_RESIDUE §6.1: `f` analytic on `|s| < t` with
 `‖f‖ ≤ Γ`, `Re f(0) ≥ c`, `t ≥ 1 + 2Γ/c` ⇒ `Re ⟪u, f(1) u⟫ ≥ ½c ‖u‖²`. -/
 theorem lemma_CP {f : ℂ → H →L[ℂ] H} {Γ c t : ℝ}
     (hf : DifferentiableOn ℂ f (ball 0 t)) (hΓ : ∀ s ∈ ball (0 : ℂ) t, ‖f s‖ ≤ Γ)
@@ -150,7 +150,7 @@ theorem isSelfAdjoint_reOp_sub (T : H →L[ℂ] H) (a : ℝ) :
     simp [add_comm]
   · simp [IsSelfAdjoint, star_smul]
 
-/-- **Lemma CP**, operator statement: `Re F(0) ≥ c` ⇒ `Re F(z) ≥ ½c` in the Loewner order. -/
+/-- **L-122 (Lemma CP)**, operator statement: `Re F(0) ≥ c` ⇒ `Re F(z) ≥ ½c` in the Loewner order. -/
 theorem cauchy_perturbation_op {F : ℂ → H →L[ℂ] H} {ρ Γ c t : ℝ} {z : ℂ}
     (hF : DifferentiableOn ℂ F (ball 0 ρ)) (hΓ : ∀ w ∈ ball (0 : ℂ) ρ, ‖F w‖ ≤ Γ)
     (hρ : 0 < ρ) (hc : 0 < c) (h0 : (c : ℂ) • (1 : H →L[ℂ] H) ≤ reOp (F 0))

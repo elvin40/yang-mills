@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_PI_VERIFY — independent verification of SOURCES_T2_PI (item PI, VERIFY)
 
 Date: 2026-10-28. Item PI, VERIFY. Author: headless Claude session (verifier).

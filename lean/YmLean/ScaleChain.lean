@@ -8,12 +8,12 @@ import Mathlib.Algebra.BigOperators.Intervals
 Sources: SOURCES_A11_CONST.md §1 (transcription of (2.4)–(2.9), side conditions (T1)–(T4)),
 §4 (the (2.46) re-proof); SOURCES_A11_CONST_VERIFY.md §8 (the naive product gives (1 + β₀)² in
 (2.8) line 1; the printed (1 + β₀) needs monotonicity of g ℓ^q, here
-`YmLean.gLogPow_strictMonoOn`; (T2), (T3) hold for real p > 0), §17 (S1–S11);
-SOURCES_B10_SWEEP.md (i) (P-up)/(P-low) ⇒ (2.6), c_sw = 64/15 at β₀ = 1/7, (2.46) recomputed);
-THEOREM2_PROOF_v4.md §1.2 ((P-up), (P-low), (S)).
+`YmLean.gLogPow_strictMonoOn`; (T2), (T3) hold for real p > 0), §17 (H-255–H-265);
+SOURCES_B10_SWEEP.md (i) H-156 (P-up)/H-155 (P-low) ⇒ (2.6), c_sw = 64/15 at β₀ = 1/7, (2.46) recomputed);
+THEOREM2_PROOF_v4.md §1.2 (H-156 (P-up), H-155 (P-low), K-018 (S)).
 
 Scope. Everything is a statement about a real sequence g : ℕ → ℝ with 0 < g_j ≤ γ. The
-recursion bounds (2.6) (or (P-up)/(P-low)) are hypotheses. This file certifies the arithmetic of
+recursion bounds (2.6) (or H-156 (P-up)/H-155 (P-low)) are hypotheses. This file certifies the arithmetic of
 the chain, not Balaban's derivation of (2.6)–(2.7) from the renormalization group equations.
 
 Notation: ℓ(x) = log x^{−2} (`ell`), x^a = exp(a log x) (`epow`, rpow avoided),
@@ -42,7 +42,7 @@ noncomputable def epow (a x : ℝ) : ℝ := Real.exp (a * Real.log x)
 /-- (2.4): ε = g A₀ (log g^{−2})^{p₀}. -/
 noncomputable def eps (A0 p0 x : ℝ) : ℝ := x * A0 * epow p0 (ell x)
 
-/-- c_sw = max(2, 1/(1 − (1 + β₀)^{−2})) (THEOREM2_PROOF_v4 §1.2 (S)). -/
+/-- c_sw = max(2, 1/(1 − (1 + β₀)^{−2})) (THEOREM2_PROOF_v4 §1.2 K-018 (S)). -/
 noncomputable def cSw (β0 : ℝ) : ℝ := max 2 (1 / (1 - ((1 + β0) ^ 2)⁻¹))
 
 /-- SOURCES_B10_SWEEP (i): c_sw = 64/15 at β₀ = 1/7. -/
@@ -114,7 +114,7 @@ lemma cast_sub_ge_one {m n : ℕ} (hmn : m < n) : (1 : ℝ) ≤ (n : ℝ) - m :=
   have : (m : ℝ) + 1 ≤ n := by exact_mod_cast hmn
   linarith
 
-/-- (T1): g_n²β′ ≤ (1 + β₀)² − 1 from (S1) γ²β′ ≤ (1 + β₀)² − 1. -/
+/-- (T1): g_n²β′ ≤ (1 + β₀)² − 1 from H-255 (S1) γ²β′ ≤ (1 + β₀)² − 1. -/
 theorem T1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ' : 0 ≤ β')
     (hS1 : γ ^ 2 * β' ≤ (1 + β0) ^ 2 - 1) (n : ℕ) : g n ^ 2 * β' ≤ (1 + β0) ^ 2 - 1 :=
   le_trans (mul_le_mul_of_nonneg_right (pow_le_pow_left₀ (hg n).le (hγ n) 2) hβ') hS1
@@ -367,7 +367,7 @@ theorem eq29_line2_full (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 
     _ = (L + 1) * epow β0 (n - m) * R n := by field_simp
 
 /-- A11_CONST_VERIFY §8 rederivation 3: R_k ≤ L R_{k+1} (integer powers of L; needs
-1 + β₀ < L). Used for S4 (M₂ ≥ 1/δ) and the k₁ monotonicity (§10). -/
+1 + β₀ < L). Used for H-258 (M₂ ≥ 1/δ) and the k₁ monotonicity (§10). -/
 theorem R_step (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (hβ0h : β0 ≤ 1 / 2)
     (hβ' : 0 ≤ β') (hS1 : γ ^ 2 * β' ≤ (1 + β0) ^ 2 - 1) (hL : 1 + β0 < L) (hr : 0 < r)
     (hrβ : r ≤ β0 * ell γ)
@@ -398,7 +398,7 @@ theorem R_step (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0
 
 end R
 
-/-- (P-up) ⇒ first step of (2.6) line 1: u_m ≤ u_n + β′(n − m) (u = g^{−2}) gives
+/-- H-156 (P-up) ⇒ first step of (2.6) line 1: u_m ≤ u_n + β′(n − m) (u = g^{−2}) gives
 g_n² ≤ (1 + g_n²β′(n − m)) g_m² (B10_SWEEP (i)). -/
 theorem eq26_line1_of_Pup (hg : ∀ j, 0 < g j)
     (hPup : ∀ m n : ℕ, m ≤ n → 1 / g m ^ 2 ≤ 1 / g n ^ 2 + β' * (n - m))
@@ -413,7 +413,7 @@ theorem eq26_line1_of_Pup (hg : ∀ j, 0 < g j)
         mul_le_mul_of_nonneg_left h (by positivity)
     _ = _ := by linear_combination (g m ^ 2) * hy1
 
-/-- (P-low) + (S) ⇒ (2.6) line 2: u_m ≥ u_n + β(n − m) − D′ and γ^{−2} ≥ c_sw D′ give
+/-- H-155 (P-low) + K-018 (S) ⇒ (2.6) line 2: u_m ≥ u_n + β(n − m) − D′ and γ^{−2} ≥ c_sw D′ give
 g_m ≤ (1 + β₀) g_n (B10_SWEEP (i): needs u_n ≥ D′/(1 − (1 + β₀)^{−2})). -/
 theorem eq26_line2_of_Plow {β D' : ℝ} (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 < β0)
     (hD : 0 ≤ D') (hβ : 0 ≤ β)
@@ -471,7 +471,7 @@ lemma sum_inv_sq_le {a β : ℝ} (ha : 0 < a) (hβ : 0 < β) (N : ℕ) :
         = (1 / a - 1 / (a + β * ((N + 1 : ℕ) : ℝ))) / β := by ring
     linarith
 
-/-- (2.46), explicit form: with (P-low) and γ^{−2} ≥ c_sw D′ (so u_n ≥ 2D′), for κ₀ ≥ 4 and
+/-- (2.46), explicit form: with H-155 (P-low) and γ^{−2} ≥ c_sw D′ (so u_n ≥ 2D′), for κ₀ ≥ 4 and
 k = ⌊κ₀/2⌋, Σ_{j=1}^n g_j^{κ₀} ≤ (2g_n²)^k + (2g_n²)^{k−1}/β. -/
 theorem eq246_explicit {β D' : ℝ} {κ0 n : ℕ} (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ)
     (hγ1 : γ ≤ 1) (hβ : 0 < β) (hD : 0 ≤ D') (hκ : 4 ≤ κ0)
@@ -533,7 +533,7 @@ theorem eq246_explicit {β D' : ℝ} {κ0 n : ℕ} (hg : ∀ j, 0 < g j) (hγ : 
         rw [mul_add, ← one_div_pow, e1, ← mul_div_assoc, e2]
     _ = _ := by rw [hinva]
 
-/-- (2.46) as printed: Σ_{j=1}^n g_j^{κ₀} < g_n^{κ₀−6} for κ₀ ≥ 7, under (P-low), (S), and the
+/-- (2.46) as printed: Σ_{j=1}^n g_j^{κ₀} < g_n^{κ₀−6} for κ₀ ≥ 7, under H-155 (P-low), K-018 (S), and the
 smallness 2^{⌊κ₀/2⌋}(1 + 1/β)γ³ < 1 (A11 §4, A11_CONST_VERIFY S8: an upper bound on γ after
 β, κ₀). -/
 theorem eq246 {β D' : ℝ} {κ0 n : ℕ} (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ)

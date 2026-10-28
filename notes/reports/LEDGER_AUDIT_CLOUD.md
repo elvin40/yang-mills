@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # LEDGER_AUDIT_CLOUD — second-pass consistency audit of notes/TRUST_LEDGER.md
 
 Date: 2026-10-28. Author: Claude (cloud session). Brief S1. Read-only audit: no existing file was changed.

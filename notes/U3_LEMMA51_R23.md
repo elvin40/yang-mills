@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # U3_LEMMA51_R23: items R2 and R3 of U3_LEMMA51
 
 Written 2026-10-27 (Claude, Opus 5.5). Scope: items R2 and R3 of U3_LEMMA51.md §3.4. R1 is assumed (U3_REPAIRS.md, item O6). Read: U3_LEMMA51.md §1–§6, U3_GAUSSIAN_RG.md §1–§4, U3_VERIFY.md §5–§6, R2_VERIFY.md §0 (third correction, called "item 6" in the task), CMP 109 pp. 252–254 (balaban/1987_cmp109_rg_approach_I.txt, definition (0.4) and the contour family G(y, x)). No numerics were run. Built one section per step.

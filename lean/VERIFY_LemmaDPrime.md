@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Verification: `YmLean.lemma_DPrime` against LEMMA_DPRIME.md §1
 
 2026-10-27. Read: LEMMA_DPRIME.md, LEMMA_DPRIME_VERIFY.md, README.md, YmLean/LemmaDPrime.lean (405 lines).

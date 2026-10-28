@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # H2 certification at L = 15, 17, 21: independent verification
 
 2026-10-28. Scope: TRUST_LEDGER row B1 "at other L".

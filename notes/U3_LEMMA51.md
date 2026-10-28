@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # U3_LEMMA51: the soft-leg vertices of the level-j quadratic form (Lemma 5.1 of U3)
 
 Written 2026-10-27 (Claude, Opus 5.5). Scope: Lemma 5.1 of U3_GAUSSIAN_RG.md (ledger O1), the only open input of U3 Theorem 7.1. Read first: U3_GAUSSIAN_RG.md, U3_VERIFY.md, numerics/NUMERICS.md §1, §5, §6, ym_oneloop.py, CMP 98 p. 31 ("fundamental fact"), CMP 102 pp. 278 and 297. Script: numerics/u3_lemma51_check.py.

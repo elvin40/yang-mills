@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Verification of SOURCES_T2_MPT_STEPC.md
 
 Date 2026-10-28. Independent verifier. Firewall respected.

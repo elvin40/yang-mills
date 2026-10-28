@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Verification of SOURCES_MULTISCALE_OMEGA_SOURCED.md (§0–§7)
 
 Date 2026-10-28. Independent verifier. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md not read.

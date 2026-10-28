@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """Task A: Lemma S+G, (I1)+tower, (1.1) vs production rho1, L = 13, 10 random K, j in {1, 2, inf}."""
 import sys, time, numpy as np
 sys.path.insert(0, "~/claude_code/yang_mills/numerics"); sys.path.insert(0, "~/claude_code/yang_mills/numerics/h1analytic")

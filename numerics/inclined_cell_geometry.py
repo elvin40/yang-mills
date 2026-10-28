@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Geometry checks for the inclined cell B(0) = 5R(-1/2,1/2)^4 cap Z^4, R = R_theta in the (1,2)-plane, cos=3/5.
 # (1) 625 sites, no boundary sites, nearest-neighbour connected (LEMMAS.md Lemma B2 facts).
 # (2) every coordinate-order ("comb") path from the centre to a site stays inside the cell, for all 24 orders

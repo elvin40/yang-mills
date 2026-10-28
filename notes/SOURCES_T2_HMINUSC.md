@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_HMINUSC — conditions (C1), (C2) of SOURCES_MA2 for (H−)
 
 Status: complete, unverified (Claude Opus, 2026-10-28). Ledger §7 is authoritative.

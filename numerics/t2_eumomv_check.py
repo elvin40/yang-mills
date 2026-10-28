@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """EUMOM VERIFY (SOURCES_T2_EUMOM_VERIFY.md section 6), d = 4.
 (a) E_0 on the torus from the symbol formula e(p) = w(p)/(Delta(p) T(p')) (SOURCES_T2_EUMOM 2.1) vs k0_d-style kernel (t2_eumom_n7.kernel) + Lu^{-d}.
 (b) grid checks of (S4) sum_l |w_l|^2 <= 1, T >= t0, and the symbol bound |e| <= C_e |w| / (1 + |p|^2) (4.1).

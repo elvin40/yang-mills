@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D1_VERIFY: independent check of SOURCES_D1.md
 
 Status: started 2026-10-27 by Claude (Opus 5.5), verifier. One section per step.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # R2_VERIFY: independent check of R2_TELESCOPING.md
 
 Written 2026-10-27 (Claude, Fable 5.1), independent of the R2 author. Sources opened: CMP 109 PDF pages 7–8, 10–13, 49–50 (printed 255–256, 258–261, 297–298) rendered as images; OCR text of CMP 109, 98, 95, 96, 99, 102 for the other quotes. Every derivation below is mine. Numerical checks were run in a scratch directory (deleted) with the project venv; the Hessian/averaging code of numerics/ym_oneloop.py was reused read-only.

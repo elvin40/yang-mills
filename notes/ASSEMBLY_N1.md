@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # ASSEMBLY_N1 — the bridge (B-N1): sourced cumulant bounds ⇒ (H-U)
 
 Aligned 2026-10-28 with the verified C¹ + Lemma C form (SOURCES_D4D5 §5.1–§5.2, HHIST_N1_VERIFY claim 6, SOURCES_B21_S_VERIFY §5)

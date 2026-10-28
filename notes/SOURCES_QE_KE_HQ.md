@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_QE_KE_HQ — (KE′) at all scales and (H_Q) (2026-10-28)
 Scope: two of the four conditions of SOURCES_QE_INV_VERIFY §8 regrade of (C): (KE′) = (2.151)-type decay for an extension 𝓔_1 with Q_98(1)𝓔_1 = I exactly on the multiscale coarse space 𝔅; (H_Q) = Q_j(U) = transported free weights + O(Mα_0) remainder.
 Tags: [V] read on the page (image or pdftotext), [P] proved here, [P-sketch] steps named, [R] reasoned from Balaban's text without a page check, [I] gap, [N] numerics.

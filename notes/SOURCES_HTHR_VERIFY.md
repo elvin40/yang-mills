@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HTHR verification (independent)
 
 ## Step 1. Read SOURCES_HTHR.md in full

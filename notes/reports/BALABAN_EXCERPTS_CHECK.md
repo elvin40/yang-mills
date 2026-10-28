@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # BALABAN_EXCERPTS "Needs verification" check (2026-10-27)
 
 Every item was read from the PDF page image (150 dpi). Offsets: CMP 109 +248, CMP 122 II +354, CMP 98 +16, CMP 96 +222, CMP 99 propagators +388, CMP 102 variational +276, CMP 116 +0.

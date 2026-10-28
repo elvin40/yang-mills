@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_MULTISCALE_OMEGA — NEW-3: the Q-list in the multiscale Ω-sequence geometry
 
 Target: NEW-3 of SOURCES_M1_SWEEP.md (CMP 119 pp. 275–276). Owner I-37 / C-new-3.

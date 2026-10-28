@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_FX_O1 — reverse scaling inequality for tree length (gap O1(b))
 
 Status: done (2026-10-27). O1(b) proved (elementary lemma, §2–§4); residual page checks R1–R3 in §6.

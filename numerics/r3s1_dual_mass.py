@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # r3s1: (1) 3d lattice Coulomb potential v(0) (Watson integral); (2) dual-photon mass for SU(2) on R^3 x S^1
 # from the sine-Gordon form; (3) one-loop running turns exp(-4pi^2/(g^2 N)) into (Lambda L)^{11/6}.
 import numpy as np, sympy as sp

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """S123 check (2D, t = 0): spectrum of the charged block A' of the 2D SU(2) Wilson
 Hessian + background Feynman term at constant flux phi per plaquette (Landau gauge,
 N x N torus, phi = 2 pi m / N), Bloch-reduced in x_0.  Normalisation: 4*Hess(S_W) + D_r D_r^T,

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """One-loop increment of one Balaban block-spin step for SU(2) lattice gauge theory.
 
 Setup (THEOREM2.md section 8, with the determinant formula derived 2026-10-27):

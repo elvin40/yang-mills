@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_KUNIF verification
 
 Independent check of SOURCES_T2_KUNIF.md. Firewall respected.

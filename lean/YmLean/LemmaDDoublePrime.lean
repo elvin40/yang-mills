@@ -1,7 +1,7 @@
 import YmLean.LemmaDPrime
 
 /-!
-# Lemma D″ (window-sum shooting; no index J)
+# L-005 (Lemma D″) (window-sum shooting; no index J)
 
 KAPPA_BOUNDED.md §5.3, THEOREM2_PROOF_v3.md §2.2. Hypothesis (5.1):
 `|Σ_{i=k+1}^K β_i(0) − b(K−k)| ≤ 2R` for all `k < K`. Reuses the clamped flow of LemmaDPrime.
@@ -63,7 +63,7 @@ lemma flow_contDD (hγ : 0 < γ) (hγ₀ : γ ≤ γ₀) (hcont : ∀ j, Continu
     exact ih.sub ((hcont (k + 1)).comp_continuous hφ fun u₀ =>
       ⟨(φ_pos hγ _).le, (φ_le hγ _).trans hγ₀⟩)
 
-/-- **Lemma D″.** `γ` is any number in `]0, γ₀]` with `C₁γ ≤ b/4` (e.g. `min(γ₀, γ_Bal, b/(4C₁))`).
+/-- **L-005 (Lemma D″).** `γ` is any number in `]0, γ₀]` with `C₁γ ≤ b/4` (e.g. `min(γ₀, γ_Bal, b/(4C₁))`).
 `g₁ = (1/γ² + 2R)^{−1/2}`, `D = D′ = 2R`, `β = 3b/4`, `B′ = 5b/4 + 2R`. -/
 theorem lemma_DDoublePrime (β : ℕ → ℝ → ℝ) (γ₀ C₁ b R γ : ℝ)
     (hb : 0 < b) (hC₁ : 0 ≤ C₁) (hγpos : 0 < γ) (hγ : γ ≤ γ₀) (hγC : C₁ * γ ≤ b / 4)

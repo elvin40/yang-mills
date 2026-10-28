@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # A1_WALK_FULL verification (independent)
 Started 2026-10-28. Sections appended per step.
 

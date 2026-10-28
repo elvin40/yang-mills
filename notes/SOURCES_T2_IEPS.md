@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_IEPS — closure of (I-ε) and (I-ord)
 
 Scope: Task A = (I-ε), shrinking ε_1, α_0, α_1. Task B = (I-ord), constant order.

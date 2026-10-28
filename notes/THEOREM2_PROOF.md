@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # THEOREM2_PROOF.md: Balaban's Theorem 2 (running-coupling control), conditional proof
 
 Written 2026-10-27 (Opus). Assembled from verified files in this folder. Unverified as a whole document.

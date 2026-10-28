@@ -1,15 +1,15 @@
 import YmLean.BlockInequalityE
 
 /-!
-# Lemma E (exact step (d)) and Theorem L (γ_exp = γ_e/4)
+# L-153 (Lemma E) (exact step (d)) and L-206 (Theorem L) (γ_exp = γ_e/4)
 
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md, no reports/ONLINE_SWEEP.md).
 
-Source: `../WC_FULL.md` §2 (Lemma E, 2.1–2.8), §3.1 (Lemma P_exp), §3.2 (Theorem L);
-`../WC_FULL_VERIFY.md` (recomputed Lemma E (f) lines, Theorem L bracket).
+Source: `../WC_FULL.md` §2 (L-153 (Lemma E), 2.1–2.8), §3.1 (L-248 (Lemma P_exp)), §3.2 (L-208 (Theorem L));
+`../WC_FULL_VERIFY.md` (recomputed L-153 (Lemma E) (f) lines, L-208 (Theorem L) bracket).
 Same abstract setting as `BlockInequalityE.lean` (`D`, `curl`, `𝒢`, `N`, `W`), but with
-Lemma G(c) `‖𝒢B‖² ≤ 2c_𝒢‖B‖²`, the exact step (d) `‖λ‖ ≤ ‖𝒢 D λ‖` (WC_FULL 1.6(d), i.e.
-`τ_G = 0`), and (H_E) `16 d³ L^d c_𝒢 τ_p² ≤ 1`. The `τ_G = 0` instance of `block_ineq_E` keeps
+L-170 (Lemma G)(c) `‖𝒢B‖² ≤ 2c_𝒢‖B‖²`, the exact step (d) `‖λ‖ ≤ ‖𝒢 D λ‖` (WC_FULL 1.6(d), i.e.
+`τ_G = 0`), and H-121 (H_E) `16 d³ L^d c_𝒢 τ_p² ≤ 1`. The `τ_G = 0` instance of `block_ineq_E` keeps
 the factor `1/(1-τ_G)² ≤ 4` of its step (d), so it cannot give the sharper `K_b`; the algebra of
 §2.7 is redone here.
 -/
@@ -20,7 +20,7 @@ open scoped InnerProductSpace
 
 set_option linter.unusedSectionVars false
 
-/-- WC_FULL 2.1: (H_E) implies the (E) condition `2√N c_4 Mα_0 ≤ 1`.
+/-- WC_FULL 2.1: H-121 (H_E) implies the (E) condition `2√N c_4 Mα_0 ≤ 1`.
 `x = 2√N c_4 Mα_0`, `τ_p = 8x`, `K = 16 d³ L^d c_𝒢 ≥ 1`. -/
 theorem HE_implies_E_cond {x τp K : ℝ} (hx : 0 ≤ x) (hτ : τp = 8 * x) (hK : 1 ≤ K)
     (hHE : K * τp ^ 2 ≤ 1) : x ^ 2 ≤ 1 / 64 ∧ x ≤ 1 := by
@@ -29,7 +29,7 @@ theorem HE_implies_E_cond {x τp K : ℝ} (hx : 0 ≤ x) (hτ : τp = 8 * x) (hK
   constructor <;> nlinarith
 
 /-- WC_FULL 2.7, (2.6)–(2.7). `A = dL^d`, `δ = d²τ_p²`, `S0 = S_y(B_ax)`.
-`h1` = (2.1)+(2.3), `h2` = (2.4), `hHE` = (H_E) as `16Aδc ≤ 1`. -/
+`h1` = (2.1)+(2.3), `h2` = (2.4), `hHE` = H-121 (H_E) as `16Aδc ≤ 1`. -/
 theorem blockExact_f_real {A δ c S0 P G Λ : ℝ} (hA : 0 ≤ A) (hδ : 0 ≤ δ) (hc : 0 < c)
     (hS0 : 0 ≤ S0) (hG : 0 ≤ G)
     (h1 : S0 ≤ 2 * A * P + 2 * A * δ * Λ) (h2 : Λ ≤ 2 * G + 4 * c * S0)
@@ -93,9 +93,9 @@ variable {E F Pl H : Type*}
   [NormedAddCommGroup Pl] [InnerProductSpace ℝ Pl] [FiniteDimensional ℝ Pl]
   [NormedAddCommGroup H] [InnerProductSpace ℝ H] [FiniteDimensional ℝ H]
 
-/-- **Lemma E, exact-step form** (WC_FULL 2.1–2.8): `S_y ≤ K_b (P_y + G_y)`,
+/-- **L-153 (Lemma E), exact-step form** (WC_FULL 2.1–2.8): `S_y ≤ K_b (P_y + G_y)`,
 `K_b = 8dL^d(1 + 16dc_𝒢)`. (a) `ha`; (b) `hb` = (2.1); (c) `hc` = (2.2)+(E);
-(d) `hd` = Lemma G(d), exact; (e) `he`; Lemma G(c) `hG`; (H_E) `hHE`; `c_𝒢 ≥ 1` (2.8). -/
+(d) `hd` = L-170 (Lemma G)(d), exact; (e) `he`; L-170 (Lemma G)(c) `hG`; H-121 (H_E) `hHE`; `c_𝒢 ≥ 1` (2.8). -/
 theorem block_ineq_E_exact (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢 : E →ₗ[ℝ] H)
     (N : Submodule ℝ F) (W : Submodule ℝ E)
     {d L : ℕ} {cG τp : ℝ} (hd1 : 1 ≤ d) (hL1 : 1 ≤ L) (hcG : 1 ≤ cG)
@@ -144,7 +144,7 @@ theorem block_ineq_E_exact (D : F →ₗ[ℝ] E) (curl : E →ₗ[ℝ] Pl) (𝒢
     _ ≤ _ := hKb
     _ = KbExact d L cG * (‖curl B‖ ^ 2 + ‖𝒢 B‖ ^ 2) := by unfold KbExact; ring
 
-/-- **Lemma P_exp** assembly (WC_FULL 3.1 (3)): from (1) `S_b ≤ K_b(P + G)`, (2)
+/-- **L-248 (Lemma P_exp)** assembly (WC_FULL 3.1 (3)): from (1) `S_b ≤ K_b(P + G)`, (2)
 `S_c ≤ (3/m_L)(2P + 2dS_b) + η_6‖B‖²`, and `‖B‖² = S_b + S_c`:
 `γ_e(1 − η_6)‖B‖² ≤ P + G`, `γ_e⁻¹ = K_b(1 + 6d/m_L) + 6/m_L`. -/
 theorem lemmaPexp_real {Kb d m η Sb Sc P G B2 : ℝ} (hKb : 0 ≤ Kb) (hd : 0 ≤ d) (hm : 0 < m)
@@ -166,8 +166,8 @@ theorem lemmaPexp_real {Kb d m η Sb Sc P G B2 : ℝ} (hKb : 0 ≤ Kb) (hd : 0 �
 theorem gammaExp_eq {cG γe : ℝ} (hcG : 1 / 2 ≤ cG) : 1 / 2 * min (1 / 2) cG * γe = 1 / 4 * γe := by
   rw [min_eq_left hcG]; ring
 
-/-- Theorem L bracket (WC_FULL 3.2). `e0 = ⟨B, Δ^full B⟩ = E(B) − ⟨B, Δ_J B⟩`, bounded below by
-(A3-6.1) and (A3-R4) as `hE0`; `G = ‖𝒢B‖²`; `hPexp` = Lemma P_exp; (3.1) = `hε`, `hη`, `hJ`.
+/-- L-208 (Theorem L) bracket (WC_FULL 3.2). `e0 = ⟨B, Δ^full B⟩ = E(B) − ⟨B, Δ_J B⟩`, bounded below by
+(A3-6.1) and H-069 (A3-R4) as `hE0`; `G = ‖𝒢B‖²`; `hPexp` = L-248 (Lemma P_exp); (3.1) = `hε`, `hη`, `hJ`.
 Then `e0 + c_G G ≥ ½ min(½, c_G) γ_e ‖B‖²`. -/
 theorem theoremL_real {e0 P G B2 ε7 η6 ε7a cJ γe cG : ℝ} (hG : 0 ≤ G)
     (hB2 : 0 ≤ B2) (hγ : 0 ≤ γe) (hcG : 1 / 2 ≤ cG)
@@ -190,8 +190,8 @@ theorem theoremL_real {e0 P G B2 ε7 η6 ε7a cJ γe cG : ℝ} (hG : 0 ≤ G)
   have h3 : γe * B2 / 3 ≤ r / 2 * (γe * (1 - η6) * B2) := by nlinarith
   nlinarith
 
-/-- **Theorem L** (WC_FULL 3.2) as a quadratic-form inequality. `A = Δ^full + c_G 𝒢*𝒢` (1.1),
-`A_exp = C* A C`, `B = C B̃`. Inputs at `B`: `hE0` = (A3-6.1)+(A3-R4), `hPexp` = Lemma P_exp,
+/-- **L-208 (Theorem L)** (WC_FULL 3.2) as a quadratic-form inequality. `A = Δ^full + c_G 𝒢*𝒢` (1.1),
+`A_exp = C* A C`, `B = C B̃`. Inputs at `B`: `hE0` = (A3-6.1)+H-069 (A3-R4), `hPexp` = L-248 (Lemma P_exp),
 `hC` = `‖CB̃‖ ≥ ‖B̃‖` (A3 §6.5). Conclusion `⟨B̃, A_exp B̃⟩ ≥ ½ min(½, c_G) γ_e ‖B̃‖²`. -/
 theorem theoremL {E' : Type*} [NormedAddCommGroup E'] [InnerProductSpace ℝ E']
     [FiniteDimensional ℝ E']

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 import sys, numpy as np
 sys.path.insert(0, "~/claude_code/yang_mills/numerics")
 import h2_scan as h2

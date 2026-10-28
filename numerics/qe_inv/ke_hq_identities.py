@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Checks (A1)-(A3) of SOURCES_QE_KE_HQ: straight-line Q vs corridor Q, j-step gradient structure, d psi repair.
 import numpy as np
 d, L = 2, 3

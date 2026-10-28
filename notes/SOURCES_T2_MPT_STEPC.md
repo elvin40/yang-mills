@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_MPT_STEPC — (MPT) by proper time, and the gauge-fixing part of Step C
 
 Date 2026-10-28. Target: TRUST_LEDGER row B3, the two inputs left after SOURCES_T2_LLL + VERIFY: (a) (MPT) = SOURCES_T2_F_STEPB Lemma 1; (b) Step C's gauge-fixing part (STEPB §2.3(ii)).

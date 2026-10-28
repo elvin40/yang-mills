@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_EUMOM — k-uniform decay and moments of the free minimal-extension kernel E_0 (2026-10-28)
 Item EUMOM, DERIVE. Status: complete.
 Read: SOURCES_EU.md (full), SOURCES_EU_VERIFY.md (full), SOURCES_CDC.md §4, SOURCES_CDC_VERIFY.md, numerics/k0_d.py, numerics/kappa_d.py (read only), numerics/KAPPA_D.md, numerics/NUMERICS.md l. 79, TRUST_LEDGER.md ll. 31, 43, 146 only. Balaban pages: listed in §1.

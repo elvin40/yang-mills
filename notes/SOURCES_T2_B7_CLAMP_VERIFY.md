@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_B7_CLAMP verification
 
 Verifier: independent, firewall kept (no sa_repo, no SA map, no online sweep).

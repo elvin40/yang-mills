@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D2C — step (c) redone: extraction of the marginal term with a position-dependent source
 
 Status: draft by Claude (Opus 5.5), unverified, 2026-10-27. Supersedes SOURCES_D2.md §4.3 (rejected in SOURCES_D2_VERIFY.md §V3/§V5).

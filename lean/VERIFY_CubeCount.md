@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # VERIFY_CubeCount — statement check of YmLean/CubeCount.lean
 
 Source: ../SOURCES_FX_O1.md §2 (Lemma O1-R proof), §3 (Lemma O1-R′); ../SOURCES_FX_O1_VERIFY.md §3 (item 2, "21^d step").

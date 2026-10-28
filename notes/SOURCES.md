@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # E14: gauge-invariant sources in Balaban's induction (what is needed, the reduction, a work plan)
 
 Status: drafted 2026-10-27 by Claude (Fable 5.1). Not verified. Inputs: LEMMA_B4.md §E14/S7, LEMMA_B4_VERIFY.md (no E14 content beyond the quote table), PLAN.md, THEOREM2.md §3a, reports/O3_TEMPLATE.md, reports/o3_continuum.txt §9–§11, reports/clay_ym.txt, balaban/*.txt (CMP 109, 116, 119, 122 I–II), and one Opus literature pass (Dimock, Balaban–Imbrie–Jaffe, Federbush, MRS, 2018–2026 arXiv). Tags: [V] verbatim-checked quote; [lit-agent] quote relayed by the literature agent, not re-checked by me; [derived] my own derivation, unverified; [guess] stated without derivation.

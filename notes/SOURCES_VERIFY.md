@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Verification of SOURCES.md (E14: sources in Balaban's induction)
 
 Status: independent pass, 2026-10-27, Claude (Fable 5.1). Scope: the 12 summary items of SOURCES.md, checked against balaban/*.txt and *.pdf (CMP 109, 119, 122 I–II, 116), reports/clay_ym.txt, reports/o3_continuum.txt, and the primary literature re-fetched by me (Dimock I–III, QED₃ 2009.01156, overview 2204.07201, scalar QED 1502.02946, Gross–Neveu 2406.16799, BIJ CMP 114 author copy, BBIJ Ann. Phys. 158 author copy, BIJ Cargèse 1983 author copy, INSPIRE author records). The mathematics of items 6, 8, 10 was re-derived by hand. No other file was edited. Temporary downloads were deleted.

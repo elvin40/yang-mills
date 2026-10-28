@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D3R_VERIFY
 
 Independent verification of SOURCES_D3R.md (items 1-6). One section per step.

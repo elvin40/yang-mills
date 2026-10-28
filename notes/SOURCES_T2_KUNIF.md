@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_KUNIF — item 9 (K-independence of β_j(g)) reduced to (H-hist)
 
 Date 2026-10-28. Scope: THEOREM2_PROOF_v4.md §10 item 9 and its uses. Firewall kept (no reads of /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md).

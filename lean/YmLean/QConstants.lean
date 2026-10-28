@@ -4,10 +4,10 @@ import YmLean.Resolvent
 import Mathlib.Analysis.InnerProductSpace.Rayleigh
 
 /-!
-# The (Q) constants: Λ, c₋, and Lemma N (LEAN_CATALOGUE.md wave 2, item 1: H2 + H3 + N1)
+# The (Q) constants: Λ, c₋, and L-226 (Lemma N) (LEAN_CATALOGUE.md wave 2, item 1: H2 + H3 + N1)
 
 Sources: `../SOURCES_G3_N2.md` §3.1–3.4, §3.6 and `../SOURCES_G3_N2_VERIFY.md`;
-`../SOURCES_A7_CDC.md` §2.1–2.3 (Lemma N, two-sided form of §2.3) and `../SOURCES_A7_CDC_VERIFY.md`.
+`../SOURCES_A7_CDC.md` §2.1–2.3 (L-226 (Lemma N), two-sided form of §2.3) and `../SOURCES_A7_CDC_VERIFY.md`.
 
 Norm: the ℓ² operator (spectral) norm `Matrix.Norms.L2Operator` (as in OishiRump, CertBridge,
 CombesThomas, Resolvent). All matrices are real. Quadratic forms are written with `⬝ᵥ`:
@@ -78,7 +78,7 @@ theorem norm_le_of_abs_dot {M : Matrix n n ℝ} (hM : M.IsHermitian) {c : ℝ} (
 
 /-! ### (a) The upper bound Λ (SOURCES_G3_N2.md §3.2–3.3) -/
 
-/-- `H ≥ h⁻¹` (form) ⇒ `‖H⁻¹‖ ≤ h`. In §3.1, `H₀ ≥ ¾γ_exp` (A8) gives `h = 4/(3γ_exp)`. -/
+/-- `H ≥ h⁻¹` (form) ⇒ `‖H⁻¹‖ ≤ h`. In §3.1, `H₀ ≥ ¾γ_exp` (R-009) gives `h = 4/(3γ_exp)`. -/
 theorem inv_norm_le {H : Matrix κ κ ℝ} {h : ℝ} (hh : 0 < h)
     (hc : ∀ z, z ⬝ᵥ z ≤ h * (z ⬝ᵥ (H *ᵥ z))) : IsUnit H ∧ ‖H⁻¹‖ ≤ h := by
   have := coercive_inv (𝕜 := ℝ) H (inv_pos.2 hh) fun v => by
@@ -201,7 +201,7 @@ theorem Lambda_bound {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDe
   refine ⟨hQ, hu, hn, (le_trans ?_ hn)⟩
   exact norm_submatrix_le Q⁻¹ Sum.inr Sum.inr Sum.inr_injective Sum.inr_injective
 
-/-- §3.6 with `h = 4/(3γ_exp)` (from `H₀ ≥ ¾γ_exp`, A8):
+/-- §3.6 with `h = 4/(3γ_exp)` (from `H₀ ≥ ¾γ_exp`, R-009):
 `Λ = 2(1 + 4/(3γ_exp) + (16/(9γ_exp²))G_Γ²)` bounds `‖(Q⁻¹)_BB‖`. -/
 theorem Lambda_bound_gamma {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H.PosDef) {γ g pp : ℝ}
     (hγ : 0 < γ) (hc : ∀ z, 3 * γ / 4 * (z ⬝ᵥ z) ≤ z ⬝ᵥ (H *ᵥ z)) (hg : ‖G‖ ≤ g)
@@ -218,7 +218,7 @@ theorem Lambda_bound_gamma {H : Matrix κ κ ℝ} (G : Matrix κ ι ℝ) (hH : H
 
 /-! ### (b) The lower bound c₋ (SOURCES_G3_N2.md §3.4) -/
 
-/-- §3.4: `H₀ = sym K₀`, `|⟨B, A_Z B⟩| ≤ γ₁ᴺ‖B‖²` (Lemma N, two-sided), `‖K₀ − A_Z‖ ≤ ε₀`
+/-- §3.4: `H₀ = sym K₀`, `|⟨B, A_Z B⟩| ≤ γ₁ᴺ‖B‖²` (L-226 (Lemma N), two-sided), `‖K₀ − A_Z‖ ≤ ε₀`
 ⇒ `‖H₀‖ ≤ γ₁ᴺ + ε₀`; with `ε₀ ≤ γ₁ᴺ/4`, `c₋ = (γ₁ᴺ + ε₀)⁻¹ ≥ 4/(5γ₁ᴺ)` (`c_minus_ge`).
 The step `Γ_bb ≥ H₀⁻¹ ≥ ‖H₀‖⁻¹` (inversion is operator-decreasing) is not formalized here. -/
 theorem c_minus_bound (K A : Matrix n n ℝ) {γ ε : ℝ} (hγ : 0 < γ)
@@ -237,11 +237,11 @@ theorem c_minus_bound (K A : Matrix n n ℝ) {γ ε : ℝ} (hγ : 0 < γ)
     calc _ ≤ |x ⬝ᵥ (A *ᵥ x)| + |x ⬝ᵥ ((K - A) *ᵥ x)| := abs_add_le _ _
       _ ≤ _ := by linarith
 
-/-! ### (c) Lemma N, abstract two-sided form (SOURCES_A7_CDC.md §2.2–2.3) -/
+/-! ### (c) L-226 (Lemma N), abstract two-sided form (SOURCES_A7_CDC.md §2.2–2.3) -/
 
-/-- **Lemma N** (A7 §2.2 steps (c)–(e), two-sided form of §2.3). With `B = C B̃`, the precision
+/-- **L-226 (Lemma N)** (A7 §2.2 steps (c)–(e), two-sided form of §2.3). With `B = C B̃`, the precision
 `C*Δ_kC` has form `⟨B, (P − a − Δ_J + 𝒢*𝒢)B⟩` (I1), where `P = (QG₁Q*)⁻¹` with
-`0 ≤ P`, `‖P‖ ≤ K_{ext,1}` (C₁); `‖Δ_J‖ ≤ c_J` (A3-R4); `‖𝒢‖² ≤ 2c_𝒢` (Lemma G(c)); `a ≥ 0`. Then
+`0 ≤ P`, `‖P‖ ≤ K_{ext,1}` (C₁); `‖Δ_J‖ ≤ c_J` H-069 (A3-R4); `‖𝒢‖² ≤ 2c_𝒢` (L-166 (Lemma G)(c)); `a ≥ 0`. Then
 `‖C*(P − a − Δ_J + 𝒢*𝒢)C‖ ≤ ‖C‖²·max{K_{ext,1} − a + c_J + 2c_𝒢, a + c_J}`. -/
 theorem lemmaN (C : Matrix m n ℝ) (P Δ : Matrix m m ℝ) (G : Matrix p m ℝ) {K cJ cG a : ℝ}
     (hP : P.PosSemidef) (hPK : ‖P‖ ≤ K) (hΔ : Δ.IsHermitian) (hΔc : ‖Δ‖ ≤ cJ)

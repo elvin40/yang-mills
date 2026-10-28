@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_B20_LAMBDAJ — field-dependent domains Λ_j in the W factorization (B20 sub-item)
 
 Date: 2026-10-28. Target: the open sub-item of TRUST_LEDGER row B20, "field-dependent domains Λ_j in the W factorization".

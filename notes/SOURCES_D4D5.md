@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D4D5 — D4 (RP and lattice symmetry transfer) and D5 (assembly of (S))
 
 Status: complete draft (2026-10-27), Claude (Opus 5.5), unverified. Ledger §6.

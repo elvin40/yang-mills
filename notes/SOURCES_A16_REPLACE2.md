@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A16_REPLACE2 — repair of the A16 replacement (C_f with nonlocal source kernel 𝒲_S)
 
 Date 2026-10-28. Self-contained revision of SOURCES_A16_REPLACE.md (not edited). Ledger tags: [P] proved here, [V] verified elsewhere (file named) or page-read, [I] reading/interpretation, [R] reduction to a printed statement or sketch.

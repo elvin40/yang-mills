@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_P254_TRANSFER — CMP 109 p. 254 transfer (R26), readings I-09 and I-10
 
 Task: CLOSURE_PLAN top-5 item 5. Ledger tags: [P] proved here, [V] verified on page image, [I] interpretation, [R] relies on Balaban's text without our proof.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Theorem 2 — proof chapter, version 4 (shortest route; (H2) as the single uniform hypothesis)
 
 Written 2026-10-28 (Opus). v4 = v3 (THEOREM2_PROOF_v3.md) updated with the verified material that appeared after v3: B2_TWOSTEP.md + B2_TWOSTEP_VERIFY.md, H2_LARGE_L.md + H2_LARGE_L_VERIFY.md, lean/README.md (Lemma D″ in Lean), BETA_FP_U.md (Route B inputs), numerics/NUMERICS.md §7. Main changes: §5 is rewritten around (H2); §8, §9, §10 are updated; small consistency edits elsewhere. It does not edit v1, v2, or v3. It is not itself verified as a whole document. It adds no claim beyond the cited verifier verdicts. The change log is at the end.

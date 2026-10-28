@@ -3,10 +3,10 @@ import YmLean.Schur
 import Mathlib.Analysis.SpecialFunctions.Exp
 
 /-!
-# Block-level Combes–Thomas estimate (Lemma CT)
+# Block-level Combes–Thomas estimate (L-125 (Lemma CT))
 
-Sources: `../SOURCES_A1_KERNEL.md` §7 (Lemma CT [P]) with its use in §8–§10 (Theorem A1′), and
-`../SOURCES_A1_A4_VERIFY.md` Part A §1 / grade (4) ("Lemma CT: CONFIRMED").
+Sources: `../SOURCES_A1_KERNEL.md` §7 (L-125 (Lemma CT) [P]) with its use in §8–§10 (L-066), and
+`../SOURCES_A1_A4_VERIFY.md` Part A §1 / grade (4) ("L-125 (Lemma CT): CONFIRMED").
 Abstract form on `ℓ²(ι)` with counting measure (the μ-weights of the note are absorbed into `N̂`).
 `N ≥ c` is written in Rayleigh form `c ‖v‖² ≤ re ⟪v, N v⟫` (`rq` of CertBridge.lean); `N` need not
 be Hermitian. `W = diag(w)`, `w > 0`. Norm: spectral norm (`Matrix.Norms.L2Operator`).
@@ -67,7 +67,7 @@ theorem coercive_inv (A : Matrix n n 𝕜) {c : ℝ} (hc : 0 < c)
   rw [hAA] at this
   rw [div_mul_eq_mul_div, one_mul, le_div_iff₀ hc]; linarith
 
-/-- **Lemma CT, weighted form.** `c ‖v‖² ≤ re ⟪v, N v⟫` with `c > 0`, `w > 0`, `W = diag w`, and
+/-- **L-125 (Lemma CT), weighted form.** `c ‖v‖² ≤ re ⟪v, N v⟫` with `c > 0`, `w > 0`, `W = diag w`, and
 `‖W N W⁻¹ − N‖₂ ≤ c/2` ⇒ `N` invertible, `‖(W N W⁻¹)⁻¹‖₂ ≤ 2/c`, and
 `|N⁻¹ x y| ≤ (2/c) · w y / w x` for all `x, y`. -/
 theorem combes_thomas (N : Matrix n n 𝕜) (w : n → ℝ) (hw : ∀ x, 0 < w x) {c : ℝ} (hc : 0 < c)
@@ -105,7 +105,7 @@ theorem combes_thomas (N : Matrix n n 𝕜) (w : n → ℝ) (hw : ∀ x, 0 < w x
   calc ‖N⁻¹ x y‖ * w x = w x * ‖N⁻¹ x y‖ * (w y)⁻¹ * w y := by field_simp
     _ ≤ 2 / c * w y := mul_le_mul_of_nonneg_right h hy.le
 
-/-- Exponential weight `w x = exp(ε d(x, x₀))` (the `ψ = e^{εf}` of Lemma CT):
+/-- Exponential weight `w x = exp(ε d(x, x₀))` (the `ψ = e^{εf}` of L-125 (Lemma CT)):
 `|N⁻¹ x y| ≤ (2/c) exp(ε (d y x₀ − d x x₀))`. -/
 theorem combes_thomas_exp (N : Matrix n n 𝕜) (d : n → n → ℝ) (x₀ : n) {c ε : ℝ} (hc : 0 < c)
     (hN : ∀ v, c * ‖v‖ ^ 2 ≤ rq N v)
@@ -117,7 +117,7 @@ theorem combes_thomas_exp (N : Matrix n n 𝕜) (d : n → n → ℝ) (x₀ : n)
   refine ⟨hu, fun x y => ?_⟩
   rw [mul_sub, Real.exp_sub]; exact h x y
 
-/-- **Lemma CT, decay form.** If the hypothesis of `combes_thomas_exp` holds for every centre `x₀`
+/-- **L-125 (Lemma CT), decay form.** If the hypothesis of `combes_thomas_exp` holds for every centre `x₀`
 and `d x x = 0`, then `|N⁻¹ x y| ≤ (2/c) e^{−ε d(x, y)}` (take `x₀ = y`). -/
 theorem combes_thomas_decay (N : Matrix n n 𝕜) (d : n → n → ℝ) (hd : ∀ x, d x x = 0) {c ε : ℝ}
     (hc : 0 < c) (hN : ∀ v, c * ‖v‖ ^ 2 ≤ rq N v)
@@ -128,7 +128,7 @@ theorem combes_thomas_decay (N : Matrix n n 𝕜) (d : n → n → ℝ) (hd : �
   have := (combes_thomas_exp N d y hc hN (hE y)).2 x y
   rwa [hd, zero_sub, mul_neg] at this
 
-/-- **Lemma CT with the Schur step** (the proof of SOURCES_A1_KERNEL §7): the kernel of
+/-- **L-125 (Lemma CT) with the Schur step** (the proof of SOURCES_A1_KERNEL §7): the kernel of
 `E = W N W⁻¹ − N` is `N x y (e^{ε(d x x₀ − d y x₀)} − 1)`; if its row and column sums are `≤ c/2` for
 every `x₀`, then `‖E‖₂ ≤ c/2` by `schur_test`, and `|N⁻¹ x y| ≤ (2/c) e^{−ε d(x, y)}`. -/
 theorem combes_thomas_schur (N : Matrix n n 𝕜) (d : n → n → ℝ) (hd : ∀ x, d x x = 0) {c ε : ℝ}

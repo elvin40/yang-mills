@@ -4,7 +4,7 @@ import YmLean.LemmaH
 # Discrete Gronwall and the contraction bound (THEOREM2_PROOF_v4.md §4.1, §5.1–§5.3)
 
 `discrete_gronwall` is the Gronwall form of the task. `contraction_bound` is the form the
-source uses (Prop. 4.1, Theorems C1 and B2: `N_j ≤ q N_{j−1} + Z`, `q < 1`).
+source uses (Prop. 4.1, Theorems L-011 and L-012: `N_j ≤ q N_{j−1} + Z`, `q < 1`).
 Reuses `prod_le_exp` from LemmaH.lean.
 -/
 
@@ -38,7 +38,7 @@ theorem discrete_gronwall_exp (a ε f : ℕ → ℝ) (hε : ∀ j, 0 ≤ ε j) (
   (discrete_gronwall a ε f hε hf ha0 h n).trans (mul_le_mul_of_nonneg_right
     (prod_le_exp ε hε _) (add_nonneg ha0 (sum_nonneg fun j _ => hf j)))
 
-/-- Contraction form (Prop. 4.1, Theorems C1/B2): `N_{j+1} ≤ q N_j + Z`, `0 ≤ q < 1`,
+/-- Contraction form (Prop. 4.1, Theorems L-011/L-012): `N_{j+1} ≤ q N_j + Z`, `0 ≤ q < 1`,
 `N_0, Z ≥ 0` ⇒ `N_j ≤ N_0 + Z/(1 − q)` for all `j`. -/
 theorem contraction_bound (N : ℕ → ℝ) (q Z : ℝ) (hq0 : 0 ≤ q) (hq1 : q < 1) (hN0 : 0 ≤ N 0)
     (hZ : 0 ≤ Z) (h : ∀ j, N (j + 1) ≤ q * N j + Z) (n : ℕ) : N n ≤ N 0 + Z / (1 - q) := by

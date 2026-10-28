@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # WC_FULL — Theorem WC: the exponential-gauge covariance C^{(k)}(Z_0), complete proof
 
 Date 2026-10-28. Author: Opus write-out session. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md were not read.

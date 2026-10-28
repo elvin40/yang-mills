@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_B15_M245 — B15 (H-thr): M2′, M4, M5
 
 Status: complete (2026-10-28). Author: Claude (Opus), unverified.

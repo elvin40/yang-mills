@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_G3 verification
 
 Independent check of SOURCES_G3.md items 1-5. Firewall kept.

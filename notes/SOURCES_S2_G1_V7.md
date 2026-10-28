@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_S2_G1_V7 — S2 for G_1 (form bound via Δ^{(2)}_π) and the A2 V7 repair with its two [I] items
 
 Date 2026-10-28. Opus draft, unverified. Firewall kept: no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md, no reports/ONLINE_SWEEP.md.

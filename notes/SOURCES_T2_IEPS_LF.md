@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_IEPS_LF: (I-ε) in the large-field layer (CMP 119/122)
 
 Closure task for the residue of SOURCES_T2_IEPS_VERIFY §20–§22. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

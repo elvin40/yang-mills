@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_MPT_REST — the two residual items of (F) on the Theorem 2w (Route K) path
 
 Date 2026-10-28. Target: TRUST_LEDGER row B3 ((F)), the two items listed in SOURCES_T2_MPT_STEPC_VERIFY §6(f) and §7.

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """S123: split the 2D charged operator K = 4H + D D^+ into the gauge part (ran D, should equal the
 scalar magnetic Laplacian spectrum) and the physical part (ker D^+, operator 4H). Also checks F1
 normalisation at phi = 0. Imports t2_s123_gap2d (read-only)."""

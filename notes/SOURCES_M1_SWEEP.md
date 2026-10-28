@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_M1_SWEEP — (M1) sweep of CMP 119 Sect. 3 and CMP 122 II for uses of the fluctuation covariance
 
 Date 2026-10-28. Ledger tags: [P] proved here, [V] page-read (image or text layer, named), [I] reading, [R] reduction, [open].

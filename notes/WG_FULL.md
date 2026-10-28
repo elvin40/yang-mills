@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # WG_FULL — walk expansions of G and G_1 from the walk expansion of G_0
 
 Date 2026-10-28. Paper-grade write-out of SOURCES_WG §2–§5 with the corrections of SOURCES_WG_VERIFY.

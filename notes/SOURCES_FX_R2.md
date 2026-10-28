@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_FX_R2 — gap R2: κ_fin ≥ κ_final at the last scale
 
 Tags: [V] = read on the source; [P] = proved here; [R] = reduced to a named item; [I] = inference.

@@ -2,7 +2,7 @@ import Mathlib.Analysis.Real.Sqrt
 import Mathlib.Topology.Order.IntermediateValue
 
 /-!
-# Lemma D′ (shooting with early negative one-loop increments)
+# L-004 (Lemma D′) (shooting with early negative one-loop increments)
 
 Abstract form of LEMMA_DPRIME.md. `β j g` is the `j`-th increment at coupling `g`,
 `u k = 1/g_k²`, recursion `u (k+1) = u k - β (k+1) (g_k)`, `g_k = 1/√(u k)`.
@@ -14,7 +14,7 @@ noncomputable section
 
 namespace YmLean
 
-/-- Hypotheses (i)–(iii) of Lemma D′, plus the three properties of `γ` the proof uses. -/
+/-- Hypotheses (i)–(iii) of L-004 (Lemma D′), plus the three properties of `γ` the proof uses. -/
 structure Hyp (β : ℕ → ℝ → ℝ) (γ₀ C₁ B βinf γ : ℝ) (J : ℕ) : Prop where
   βinf_pos : 0 < βinf
   cont : ∀ j, ContinuousOn (β j) (Set.Icc 0 γ₀)
@@ -345,7 +345,7 @@ lemma γdef_spec {γ₀ γBal C₁ βinf : ℝ} (hγ₀ : 0 < γ₀) (hγBal : 0
 
 /-! ### Main theorem -/
 
-/-- **Lemma D′.** Hypotheses (i)–(iii) of LEMMA_DPRIME.md in abstract form; `J` is any index with
+/-- **L-004 (Lemma D′).** Hypotheses (i)–(iii) of LEMMA_DPRIME.md in abstract form; `J` is any index with
 `β_j(0) ≥ β∞/2` for all `j > J` (the least such `J` gives the constants of the note).
 Conclusions: `γ ≤ γ_Bal`, `g₁ ≤ γ`, (a) tail sums, (b) shooting for `g ≤ g₁`,
 (c) the two-sided bound, (d) literal (0.31) for `K ≥ K₀` and shooting for all `g ≤ γ`. -/

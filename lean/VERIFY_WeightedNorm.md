@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # VERIFY: WeightedNorm.lean
 
 Statement check of the Lean theorems against the Markdown source `../SOURCES_A2_R2.md` §3 (and `VERIFY_Resolvent.md` (d), differences 1–3). Build: `lake build` passes, no `sorry`. Axioms of all eleven printed theorems: `[propext, Classical.choice, Quot.sound]`.

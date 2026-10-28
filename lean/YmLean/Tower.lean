@@ -3,7 +3,7 @@ import YmLean.CertBridge
 /-!
 # Tower identity and the majorant inequalities (H1_ANALYTIC.md §1–§3, §5; H1_ANALYTIC_VERIFY.md V1–V3)
 
-Source: `../H1_ANALYTIC.md` §2 (tower identity (2.2), consequence (I1)), §3 Lemma T (a)–(c),
+Source: `../H1_ANALYTIC.md` §2 (tower identity (2.2), consequence (I1)), §3 L-283 (Lemma T) (a)–(c),
 (1.1), (5.3); `../H1_ANALYTIC_VERIFY.md` V1 (inequalities (i)–(vii)). Abstract algebraic core only:
 the Fourier/umklapp derivation of (2.2) and the specific symbols `a_ρ`, `σ`, `q̃` are not formalized.
 `λ_max(G) ≤ c` is written in Rayleigh form `∀ x, rq G x ≤ c ‖x‖²` (`rq` of CertBridge.lean).
@@ -142,7 +142,7 @@ theorem majorant_core (Z T2 : Matrix n n 𝕜) (w : Matrix n Unit 𝕜) {t γ : 
     rq (Zᴴ * T2 * Z + (γ : 𝕜) • (w * wᴴ)) x ≤ (‖Z‖ ^ 2 * t + γ * ‖w‖ ^ 2) * ‖x‖ ^ 2 :=
   rayleigh_sum_bound _ _ (conj_rayleigh_bound Z T2 ht hT) (rank_one_bound w hγ) x
 
-/-- The sharper form Lemma T (a), (c) actually uses: `T2 ≤ d_max T` (Loewner, Rayleigh form) and
+/-- The sharper form L-283 (Lemma T) (a), (c) actually uses: `T2 ≤ d_max T` (Loewner, Rayleigh form) and
 `Zᴴ T Z = Z` (`Z = (P_⊥TP_⊥)⁺`) ⇒ `λ_max(Zᴴ T2 Z) ≤ d_max ‖Z‖`. -/
 theorem lemmaT_core (Z T T2 : Matrix n n 𝕜) {dmax : ℝ} (hdm : 0 ≤ dmax)
     (hT2 : ∀ y, rq T2 y ≤ dmax * rq T y) (hZ : Zᴴ * T * Z = Z) (x : EuclideanSpace 𝕜 n) :

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # H2_LARGE_L — (H2) at L ≥ 5 and a certification plan for all j
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: B2_TWOSTEP.md §1–§6, U3_AW_VERIFY.md §5–§9, UMK_BETA1.md + numerics/umk_beta1.py, U3_GAUSSIAN_RG.md §1–§4, U3_REPAIRS.md §1, §3, §4. Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited. New files: this file, numerics/h2_scan.py, numerics/h2_launch.sh, numerics/results/h2_*.{json,npz}.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_C_CONDITION — the (C) condition (lower bound on the compressed operator)
 
 Date: 2026-10-28. Status: complete (Opus draft, unverified). Pages checked this session by pdftotext only (CMP 99 pp. 398–399, 416–417, 423; CMP 98 pp. 19–20; CMP 95 p. 19); page-image facts are taken from the verified files cited. Ledger: [P] proved here, [V] verified from source/numerics, [I] interpretation, [R] relies on printed claim, [N] numerics only.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Verify SOURCES_HHOL_LF_SPRIME
 
 Independent check, 2026-10-28.

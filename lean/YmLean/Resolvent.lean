@@ -5,7 +5,7 @@ import YmLean.CertBridge
 
 Sources: `../SOURCES_A3_SIGMA.md` §4 (4.2, 4.5) and `../SOURCES_A3_SIGMA_VERIFY.md` V5 and grade 2
 (the 4.3(iii) correction: `re⟪v, C_s⁻¹v⟫ ≥ (γ_0 − 2γ_1²η_M)‖v‖²` without symmetry);
-`../SOURCES_A2_R2.md` §3 (facts (N1), Lemma N: Neumann series in a weighted kernel norm).
+`../SOURCES_A2_R2.md` §3 (facts (N1), L-225 (Lemma N): Neumann series in a weighted kernel norm).
 Parts (a)–(c): spectral norm `Matrix.Norms.L2Operator`, `rq G v = re⟪v, G v⟫` (CertBridge.lean).
 Part (d): `wnorm w K = sup_x Σ_y ‖K x y‖ w x y` for a two-point weight `w > 0` with
 `w x z ≤ w x y · w y z` and `w x x ≤ 1`. The vertex weight `pw p x y = p y / p x` (`‖K‖_p`) and
@@ -77,7 +77,7 @@ theorem resolvent_chain (C₁ Cs : Matrix n n 𝕜) (h₁ : IsUnit C₁) {γ₀ 
       _ = 2 * γ₁ ^ 2 * η := by ring)
   exact ⟨hs, hs2, hR, lower_transfer _ _ hγ₀ hR⟩
 
-/-! ### (d) Weighted row-sum norm (A2_R2 §3 (N1), Lemma N) -/
+/-! ### (d) Weighted row-sum norm (A2_R2 §3 (N1), L-225 (Lemma N)) -/
 
 /-- `‖K‖_w := sup_x Σ_y ‖K x y‖ w x y`. -/
 noncomputable def wnorm (w : n → n → ℝ) (K : Matrix n n 𝕜) : ℝ := ⨆ x, ∑ y, ‖K x y‖ * w x y
@@ -133,7 +133,7 @@ theorem wnorm_mul_le {w : n → n → ℝ} (hw : ∀ x y, 0 ≤ w x y)
         exact mul_le_mul_of_nonneg_right (row_le_wnorm _ _ x) (wnorm_nonneg hw _))
     (mul_nonneg (wnorm_nonneg hw _) (wnorm_nonneg hw _))
 
-/-- **Neumann in the weighted norm** (A2_R2 §3 Lemma N, first step): `w > 0`,
+/-- **Neumann in the weighted norm** (A2_R2 §3 L-225 (Lemma N), first step): `w > 0`,
 `w x z ≤ w x y · w y z`, `w x x ≤ 1`, `‖K‖_w < 1` ⇒ `1 − K` invertible and
 `‖(1 − K)⁻¹‖_w ≤ 1 / (1 − ‖K‖_w)`. Proof without the series: `(1 − K)v = 0` gives `V = K V` for
 the matrix `V` with every column `v`, so `‖V‖_w ≤ ‖K‖_w ‖V‖_w`, `‖V‖_w = 0`, `v = 0`; then

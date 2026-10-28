@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A11_CONST_VERIFY — independent check of SOURCES_A11_CONST.md
 Started 2026-10-28. One section per tool call.
 

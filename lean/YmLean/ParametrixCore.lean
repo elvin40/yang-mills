@@ -4,9 +4,9 @@ import YmLean.KernelRow
 import Mathlib.Analysis.SpecificLimits.Normed
 
 /-!
-# A1-W core: weighted kernel norm, μ-weighted Lemma CT, parametrix, Neumann step
+# A1-W core: weighted kernel norm, μ-weighted L-124 (Lemma CT), parametrix, Neumann step
 
-Sources: `../A1_WALK_FULL.md` §1.5 ((N0)–(N3)), §0.1 (V, m), §3 (Lemma CT), §4.1 (parametrix
+Sources: `../A1_WALK_FULL.md` §1.5 ((N0)–H-226 (N3)), §0.1 (V, m), §3 (L-124 (Lemma CT)), §4.1 (parametrix
 identity), §5.2 (Neumann series); constants as confirmed in `../A1_WALK_FULL_VERIFY.md` §1, §3.
 Catalogue: `LEAN_CATALOGUE.md` §10 wave 2 item (2) = P1 (kernel form), P2, P3, P7, P8.
 
@@ -234,7 +234,7 @@ theorem parametrix_knorm [Nonempty n] {κ : ℝ} (hκ : 0 ≤ κ) (hd : ∀ x y,
   refine ⟨hu, hN, hb, hK, fun x y => (entry_le_knorm _ x y).trans
     (mul_le_mul_of_nonneg_right hK (Real.exp_pos _).le)⟩
 
-/-! ### (b) Lemma CT with μ-weights (§0.1, §3.1–§3.3) -/
+/-! ### (b) L-124 (Lemma CT) with μ-weights (§0.1, §3.1–§3.3) -/
 
 /-- Matrix of `V A V⁻¹` for the operator `A u = Σ_y μ y a(·, y) u y` on `ℓ²(n, μ)` (§0.1):
 `diag(√μ) a diag(√μ)`. -/
@@ -324,7 +324,7 @@ theorem ct_conj_sub_le (B : Matrix n n 𝕜) (hd : ∀ x y, 0 ≤ d x y)
       simpa only [hsymm _ y] using hSig y))
   rwa [Real.sqrt_mul_self hS0] at hs
 
-/-- **Lemma CT, μ-weighted, conjugation-norm form** (A1_WALK_FULL §3.1, P3). `a` is the kernel of
+/-- **L-124 (Lemma CT), μ-weighted, conjugation-norm form** (A1_WALK_FULL §3.1, P3). `a` is the kernel of
 an operator on `ℓ²(n, μ)`; (i) `|a(x, y)| ≤ b m(x, y) e^{−δ d(x, y)}`; (ii) accretivity
 `Re⟨u, A u⟩_μ ≥ c‖u‖²_μ`, stated for `vconj μ a = V A V⁻¹` (V unitary, prose). With
 `0 ≤ ε ≤ δ/2` and `bεΣ ≤ c/2` (i.e. `ε ≤ c/(2bΣ(½δ))`): `V A V⁻¹` is invertible; for every

@@ -5,9 +5,9 @@ import Mathlib.Analysis.Real.Sqrt
 SOURCES_FX_O1_VERIFY.md §3)
 
 Abstract inequality on counts. The geometric inputs are hypotheses:
-(F1) `N ≤ 4^d (1 + 2ℓ)` (Fact B: a tree of length `ℓ` meets at most `4^d(1 + 2ℓ)` unit cubes),
+(F1) `N ≤ 4^d (1 + 2ℓ)` (L-080 (Fact B): a tree of length `ℓ` meets at most `4^d(1 + 2ℓ)` unit cubes),
 (F2) `21^d ≤ N` (`S(Y)` has one cube plus ten layers),
-(F3) `n_f ≤ (ρ + 2)^d N_Y`, `N_Y ≤ N` (Fact C).
+(F3) `n_f ≤ (ρ + 2)^d N_Y`, `N_Y ≤ N` (L-106 (Fact C)).
 -/
 
 namespace YmLean
@@ -19,7 +19,7 @@ lemma four_pow_le (d : ℕ) (hd : 1 ≤ d) : 21 * (4 : ℝ) ^ d ≤ 4 * 21 ^ d :
   rw [pow_add, pow_add]; nlinarith
 
 /-- (F1), (F2) ⇒ `17 N ≤ 42 · 4^d ℓ` (SOURCES_FX_O1_VERIFY §3: `N ≤ (42/17)4^d ℓ`) and
-`N/(3 · 4^d) ≤ ℓ` (Lemma O1-R′, first inequality). -/
+`N/(3 · 4^d) ≤ ℓ` (L-236, first inequality). -/
 theorem cube_count_sharp (d : ℕ) (hd : 1 ≤ d) (N ℓ : ℝ)
     (hF1 : N ≤ 4 ^ d * (1 + 2 * ℓ)) (hF2 : 21 ^ d ≤ N) :
     17 * N ≤ 42 * 4 ^ d * ℓ ∧ N / (3 * 4 ^ d) ≤ ℓ := by
@@ -31,7 +31,7 @@ theorem cube_count_sharp (d : ℕ) (hd : 1 ≤ d) (N ℓ : ℝ)
   have hN : 0 ≤ N := le_trans (by positivity) hF2
   nlinarith
 
-/-- Lemma O1-R′: (F1), (F2), (F3) ⇒ `ℓ ≥ N/(3 · 4^d)` and `ℓ ≥ n_f/(3 · 4^d (ρ + 2)^d)`.
+/-- L-236: (F1), (F2), (F3) ⇒ `ℓ ≥ N/(3 · 4^d)` and `ℓ ≥ n_f/(3 · 4^d (ρ + 2)^d)`.
 `ρ ≥ 1` is the coarse/fine side ratio (only `ρ + 2 > 0` is used). -/
 theorem cube_count_lower (d : ℕ) (hd : 1 ≤ d) (ρ nf N NY ℓ : ℝ) (hρ : 1 ≤ ρ)
     (hF1 : N ≤ 4 ^ d * (1 + 2 * ℓ)) (hF2 : 21 ^ d ≤ N)

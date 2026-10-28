@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_F_STEPB_VERIFY — independent check of SOURCES_T2_F_STEPB
 
 Date 2026-10-28. Verifier. Firewall kept (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP §2).

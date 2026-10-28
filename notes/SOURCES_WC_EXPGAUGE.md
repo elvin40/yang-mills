@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_WC_EXPGAUGE — (W^c) for C^{(k)}(Z_0) with exponential gauge fixing, without the CMP 99 Thm 3.15 transfer
 
 Date 2026-10-28. Author: Opus session. Firewall kept (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP).

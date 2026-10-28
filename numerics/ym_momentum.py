@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """Infinite-volume one-loop vacuum polarization of one block-spin step, in coarse momentum space.
 
 Background: U(b) = exp(i a A(b) sigma_3/2) around U = 1, with A(b) a plane wave of fine momentum p.

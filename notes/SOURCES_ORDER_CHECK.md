@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_ORDER_CHECK — one acyclic order of constants across the source files
 
 Date 2026-10-28. Author: Claude (Opus), unverified. No other file edited.

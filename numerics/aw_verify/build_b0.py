@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Build and cache the one-step d=4, L=3 bordered kernel B0 (f=0, one color) from ym_momentum.Step.
 import time, sys, os, pickle; sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from ym_momentum import Step

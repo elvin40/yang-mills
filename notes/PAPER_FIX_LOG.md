@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # PAPER_FIX_LOG.md (2026-10-27)
 - started; read PAPER_INTRO_VERIFY + PLAN tail
 - main.tex: F1, F2, F3 applied verbatim.

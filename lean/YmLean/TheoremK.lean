@@ -1,9 +1,9 @@
 import Mathlib.Topology.Algebra.InfiniteSum.Real
 
 /-!
-# Theorem K, telescoping parts (KAPPA_BOUNDED.md §5.1–§5.2)
+# L-009 (Theorem K), telescoping parts (KAPPA_BOUNDED.md §5.1–§5.2)
 
-`x j` stands for `S_j`, `β∞` for `b = c log L`. Theorem K itself (|d_k| ≤ κ_*) is analysis
+`x j` stands for `S_j`, `β∞` for `b = c log L`. L-009 (Theorem K) itself (|d_k| ≤ κ_*) is analysis
 of the one-loop symbols and is not formalized; these are the arithmetic steps around it.
 -/
 
@@ -30,7 +30,7 @@ theorem telescoping_bound_tsum (x : ℕ → ℝ) (βinf : ℝ) (D : ℕ → ℝ)
     |x n - x 0 - n * βinf| ≤ ∑' j, D j :=
   (telescoping_bound x βinf D h n).trans (hs.sum_le_tsum _ fun j _ => hD j)
 
-/-- KAPPA_BOUNDED (5.1): `|S_k − k b| ≤ R` for all `k` (Theorem K, `R = κ_*`) gives the
+/-- KAPPA_BOUNDED (5.1): `|S_k − k b| ≤ R` for all `k` (L-009 (Theorem K), `R = κ_*`) gives the
 two-sided window bound `|S_K − S_k − b(K − k)| ≤ 2R` for `k ≤ K`. -/
 theorem window_of_partial (x : ℕ → ℝ) (b R : ℝ) (h : ∀ k, |x k - k * b| ≤ R) (k K : ℕ)
     (hkK : k ≤ K) : |x K - x k - b * ((K - k : ℕ) : ℝ)| ≤ 2 * R := by

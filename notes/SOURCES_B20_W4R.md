@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_B20_W4R — (W4) for the R operation; D3W8 §1.4(i) line check
 
 Date 2026-10-28. Ledger: [P] proved here, [V] verified on page image, [I] inherited from a cited file, [R] reduced to a named item.

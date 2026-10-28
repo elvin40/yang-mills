@@ -1,7 +1,7 @@
 import Mathlib.Analysis.SpecialFunctions.Exp
 
 /-!
-# Concatenation lemma (WG_FULL §3.1 Lemma C, as used in §4.3 and §5.7)
+# Concatenation lemma (WG_FULL §3.1 L-115 (Lemma C), as used in §4.3 and §5.7)
 
 Abstract form on a finite type `X` with a function `d : X → X → ℝ` (triangle inequality only;
 `d ≥ 0` only where a rate is weakened). Composition rule of WG_FULL 0.2:
@@ -17,7 +17,7 @@ Junction hypothesis `hS` (one CMP 96 Lemma 2.1-type sum per junction):
 Main results: `concat_two` (head at rate δ, tail at rate (1 − θ)δ), `concat_two_rate` (both at δ),
 `concat_list` (m-fold product: constant `Π a_i · c₁^{m−1}`, rate `(1 − θ)δ`, the factor
 `(1 − θ)` paid once for the whole product, WG_FULL 3.6(i)). Applying `concat_list` to the kernels
-`|K_i|` gives the absolute-sum form of Lemma C(c).
+`|K_i|` gives the absolute-sum form of L-115 (Lemma C)(c).
 -/
 
 open Finset
@@ -41,7 +41,7 @@ theorem exp_rate_weaken {t : ℝ} (ht : 0 ≤ t) (hθ0 : 0 ≤ θ) (hδ : 0 ≤ 
     Real.exp (-δ * t) ≤ Real.exp (-((1 - θ) * δ) * t) :=
   Real.exp_le_exp.mpr (by nlinarith [mul_nonneg (mul_nonneg hθ0 hδ) ht])
 
-/-- **Lemma C, two kernels, one junction** (WG_FULL §3.4 Steps 4–5 for N = 2, in the form used
+/-- **L-115 (Lemma C), two kernels, one junction** (WG_FULL §3.4 Steps 4–5 for N = 2, in the form used
 by the induction): `A` at rate δ, `B` at rate `(1 − θ)δ`. The θ-split
 `e^{−δ d(x,z)} = e^{−(1−θ)δ d(x,z)} e^{−θδ d(x,z)}`, the triangle inequality
 `d(x,y) ≤ d(x,z) + d(z,y)`, and one junction sum `hS` give rate `(1 − θ)δ`, constant `a b c₁`. -/
@@ -74,7 +74,7 @@ theorem concat_two (hμ : ∀ z, 0 ≤ μ z) (hm : ∀ x y, 0 ≤ m x y)
         mul_le_mul_of_nonneg_left (hS x y) (by positivity)
     _ = _ := by ring
 
-/-- **Lemma C, two kernels at the common rate δ** (WG_FULL 3.1(c), N = 2): both factors at rate δ
+/-- **L-115 (Lemma C), two kernels at the common rate δ** (WG_FULL 3.1(c), N = 2): both factors at rate δ
 give rate `(1 − θ)δ` and constant `a b c₁`. -/
 theorem concat_two_rate (hμ : ∀ z, 0 ≤ μ z) (hm : ∀ x y, 0 ≤ m x y) (hd : ∀ x y, 0 ≤ d x y)
     (htri : ∀ x z y, d x y ≤ d x z + d z y) (hθ0 : 0 ≤ θ) (hθ : θ ≤ 1) (hδ : 0 ≤ δ)
@@ -87,7 +87,7 @@ theorem concat_two_rate (hμ : ∀ z, 0 ≤ μ z) (hm : ∀ x y, 0 ≤ m x y) (h
     (mul_le_mul_of_nonneg_left (exp_rate_weaken (hd x y) hθ0 hδ)
       (mul_nonneg hb (hm x y)))) x y
 
-/-- **Lemma C, m-fold** (WG_FULL 3.1(c), §3.4, Remark 3.6(i)). Kernels `K₁ :: Ks` with bounds
+/-- **L-115 (Lemma C), m-fold** (WG_FULL 3.1(c), §3.4, Remark 3.6(i)). Kernels `K₁ :: Ks` with bounds
 `|K_i(x,y)| ≤ a_i m(x,y) e^{−δ d(x,y)}` (the list `L` holds the pairs `(K_i, a_i)`, i ≥ 2). Then
 `|(K₁ ∘ ⋯ ∘ K_m)(x,y)| ≤ (Π a_i) c₁^{m−1} m(x,y) e^{−(1−θ)δ d(x,y)}`: one junction sum `c₁`
 per junction (m − 1 of them), and the rate loss `(1 − θ)` once for the whole product.

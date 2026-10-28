@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_H0 — item H0 (DERIVE): reducing TRUST_LEDGER A5 to the first-derivative form 7′, uniform in j and in the history
 
 Date: 2026-10-28. Author: Claude (headless session). Status: complete (unverified).

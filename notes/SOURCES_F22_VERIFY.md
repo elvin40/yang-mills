@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_F22_VERIFY — independent check of F22 edits (WG_FULL "WG-rate fix 2", THM39_FULL "F19 fixes", A18 Lemma Q step (3))
 
 Date 2026-10-28. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

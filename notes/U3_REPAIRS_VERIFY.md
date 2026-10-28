@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # U3_REPAIRS verification
 
 Independent check of U3_REPAIRS.md (2026-10-27).

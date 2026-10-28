@@ -4,7 +4,7 @@ import YmLean.OishiRump
 # Schur test (CMP 96 Lemma 2.1 as used in the notes)
 
 Sources: `../SOURCES_S2_FORM.md` §2 (Step Π3, "Schur over blocks"), `../SOURCES_A3_SIGMA.md` 2.6,
-`../SOURCES_LOC.md` §3.3 (Schur test [P]), `../SOURCES_A1_KERNEL.md` §7 (Schur step of Lemma CT).
+`../SOURCES_LOC.md` §3.3 (Schur test [P]), `../SOURCES_A1_KERNEL.md` §7 (Schur step of L-125 (Lemma CT)).
 Norm: the ℓ² operator (spectral) norm `Matrix.Norms.L2Operator`, as in OishiRump.lean.
 `schur_test_weighted`: positive weight `p`, `Σ_y |K x y| p y ≤ a p x`, `Σ_x |K x y| p x ≤ b p y`
 ⇒ `‖K‖₂ ≤ √(ab)`. `schur_test`: `p = 1` (sup row sum ≤ a, sup column sum ≤ b).

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HIGHER_M1 — higher derivatives (Part A) and (M1) (Part B)
 
 Status: complete (2026-10-28), unverified. Firewall kept: no SA repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP.

@@ -5,7 +5,7 @@ import Mathlib.LinearAlgebra.Matrix.PosDef
 /-!
 # WG algebra (LEAN_CATALOGUE.md wave 2, item 4: P16 + P18 + P21)
 
-Sources: `../WG_FULL.md` §1.2 (Lemma N), §2.2–2.6 (polarization of `V = −Δ′_π`, 6 and 24
+Sources: `../WG_FULL.md` §1.2 (L-228 (Lemma N)), §2.2–2.6 (polarization of `V = −Δ′_π`, 6 and 24
 patterns, `N_V = 9`), §4.3 and §4.7 (step factor `ρ_*`, WG-1 exponent `10 = N_V + 1`),
 §5.1 (`G₁⁻¹ = G⁻¹ − Δ_π^{(2)}`, four-term expansion (3.135)), §5.6–5.7 and 5.10(b)
 (`k_2 = 12`, `M₁^{−12}`); `../WG_FULL_VERIFY.md` items (4), (6), (7) and the regrade
@@ -28,7 +28,7 @@ section LemmaN
 
 variable {𝕜 : Type*} [RCLike 𝕜] {n : Type*} [Fintype n] [DecidableEq n]
 
-/-- WG_FULL §1.2, the partial-sum identity: with `x = −G₀V` and `S_N = Σ_{k<N} x^k G₀`,
+/-- L-228 (Lemma N). WG_FULL §1.2, the partial-sum identity: with `x = −G₀V` and `S_N = Σ_{k<N} x^k G₀`,
 `(G₀⁻¹ + V) S_N = 1 − G₀⁻¹ x^N G₀`. (Source form: `S_N = Σ G₀(Δ′_πG₀)^k`, `V = −Δ′_π`;
 `x^k G₀ = G₀(−VG₀)^k`.) -/
 theorem lemmaN_partial (G₀ V : Matrix n n 𝕜) (hG₀ : IsUnit G₀) (N : ℕ) :
@@ -39,7 +39,7 @@ theorem lemmaN_partial (G₀ V : Matrix n n 𝕜) (hG₀ : IsUnit G₀) (N : ℕ
   rw [hA, ← Finset.sum_mul, mul_assoc, ← mul_assoc (1 - _), mul_neg_geom_sum, ← mul_assoc,
     mul_sub, mul_one, sub_mul, nonsing_inv_mul _ hd]
 
-/-- **Lemma N** (WG_FULL §1.2, finite volume): `‖G₀V‖ < 1` ⇒ `G₀⁻¹ + V` is invertible,
+/-- **L-228 (Lemma N)** (WG_FULL §1.2, finite volume): `‖G₀V‖ < 1` ⇒ `G₀⁻¹ + V` is invertible,
 `(G₀⁻¹ + V)⁻¹ = Σ_k (−G₀V)^k G₀`, and `‖(G₀⁻¹ + V)⁻¹‖ ≤ ‖G₀‖ / (1 − ‖G₀V‖)`. No separate
 existence assumption on `G`: the series gives it. -/
 theorem lemmaN (G₀ V : Matrix n n 𝕜) (hG₀ : IsUnit G₀) (h : ‖G₀ * V‖ < 1) :
@@ -72,7 +72,7 @@ theorem lemmaN (G₀ V : Matrix n n 𝕜) (hG₀ : IsUnit G₀) (h : ‖G₀ * V
   rw [hinv, ← hxV, le_div_iff₀ (by linarith)]
   nlinarith [norm_nonneg (S * G₀)]
 
-/-- Lemma N for `G₁` (WG_FULL §5.1): `G₁⁻¹ = G⁻¹ − Δ_π^{(2)}`, `‖GΔ_π^{(2)}‖ < 1` ⇒
+/-- L-228 (Lemma N) for `G₁` (WG_FULL §5.1): `G₁⁻¹ = G⁻¹ − Δ_π^{(2)}`, `‖GΔ_π^{(2)}‖ < 1` ⇒
 `G₁ = Σ_k (GΔ_π^{(2)})^k G` and `‖G₁‖ ≤ ‖G‖ / (1 − ‖GΔ_π^{(2)}‖)`. -/
 theorem lemmaN_G1 (G Δ : Matrix n n 𝕜) (hG : IsUnit G) (h : ‖G * Δ‖ < 1) :
     IsUnit (G⁻¹ - Δ) ∧ (G⁻¹ - Δ)⁻¹ = ∑' k : ℕ, (G * Δ) ^ k * G ∧

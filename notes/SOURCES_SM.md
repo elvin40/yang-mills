@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_SM — the step-map Lipschitz bound (SM) for Lemma HH, from (W4)
 
 Status 2026-10-27 (Claude, Opus; unverified). Inputs: SOURCES_HHIST §6–7, SOURCES_HHIST_N1_VERIFY Part 1, SOURCES_W4 §1–8, SOURCES_D3W8 §2.2–2.3 (F2′) + VERIFY S5/S8, CMP 109 pp. 270–280, CMP 116 Sect. 1–2. Firewall kept.

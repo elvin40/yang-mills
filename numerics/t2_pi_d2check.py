@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """SOURCES_T2_PI §8: direct d = 2 test of probe independence (Theorem PI).
 
 Functional: Gamma(U) = log det(D_k^T D_k) - 1/2 log|det Bord(U)|, Bord = [[Hess + D_k D_k^T, Q^T], [Q, 0]],

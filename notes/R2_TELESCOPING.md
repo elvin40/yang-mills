@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # R2: Telescoping and one-loop universality for Balaban's running coupling
 
 Written 2026-10-27 (Claude, Fable 5.1). Scope: refinement (R2)/(R3) of THEOREM2.md. Sources read verbatim: THEOREM2.md, LEMMAS.md (Lemmas D, E), CMP 109 pp. 252–261 and 290–298 (PDF pages rendered for the garbled equations), CMP 98 Sect. B, CMP 95 Props. 1.1–1.2, CMP 96 Props. 2.5–2.6, CMP 99 Thms. 3.1, 3.12 and p. 428. All derivations below are mine unless a verbatim quote is marked. Page numbers are printed pages.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D3 — the sourced large-field step (task D3)
 
 Status: complete draft (2026-10-27), verified with corrections (SOURCES_D3_VERIFY, D3R, D3W8). Summary: §3.1.

@@ -1,14 +1,14 @@
 import YmLean.Resolvent
 
 /-!
-# Weighted kernel norm max(row, column) and Lemma N
+# Weighted kernel norm max(row, column) and L-225 (Lemma N)
 
 Source: `../SOURCES_A2_R2.md` §3 (the norm `‖K‖_ρ := max{sup_b Σ_{b′}, sup_{b′} Σ_b} |K(b,b′)|e^{ρ|b−b′|}`,
-fact (N1), Lemma N); `VERIFY_Resolvent.md` (d), differences 1–2.
+fact (N1), L-225 (Lemma N)); `VERIFY_Resolvent.md` (d), differences 1–2.
 Resolvent.lean has the row half `wnorm w K = sup_x Σ_y ‖K x y‖ w x y`. Here: the column half
 `cwnorm w K = sup_y Σ_x ‖K x y‖ w x y = wnorm (tw w) Kᵀ` with the transposed weight
 `tw w x y = w y x`; `mnorm w K = max (wnorm w K) (cwnorm w K)` (= `‖K‖_ρ` for
-`w x y = e^{ρ d(x,y)}`, `expw_props`); and Lemma N for `mnorm`. In Lemma N the weight is `ω`,
+`w x y = e^{ρ d(x,y)}`, `expw_props`); and L-225 (Lemma N) for `mnorm`. In L-225 (Lemma N) the weight is `ω`,
 since `w` is the bound on `‖W‖_ρ` in the note.
 -/
 
@@ -142,9 +142,9 @@ theorem expw_props {d : n → n → ℝ} (hd : ∀ x y z, d x z ≤ d x y + d y 
     rw [← Real.exp_add, Real.exp_le_exp, ← mul_add]
     exact mul_le_mul_of_nonneg_left (hd x y z) hρ, fun x => by simp [hd0]⟩
 
-/-! ### Lemma N (A2_R2 §3) -/
+/-! ### L-225 (Lemma N) (A2_R2 §3) -/
 
-/-- Lemma N's `T := Σ_{n≥1} (A_Z W)^n A_Z`, in closed form `(1 − A_Z W)⁻¹ (A_Z W) A_Z`
+/-- L-225 (Lemma N)'s `T := Σ_{n≥1} (A_Z W)^n A_Z`, in closed form `(1 − A_Z W)⁻¹ (A_Z W) A_Z`
 (`lemmaN_series` identifies it with the series). -/
 noncomputable def lemmaN_T (A W : Matrix n n 𝕜) : Matrix n n 𝕜 := (1 - A * W)⁻¹ * (A * W) * A
 
@@ -164,7 +164,7 @@ theorem neumann_partial (X Y : Matrix n n 𝕜) (h1 : Y * (1 - X) = 1) (h2 : (1 
     congr 1
     conv_lhs => rw [hY, mul_add, mul_one, ← mul_assoc, ← pow_succ]
 
-/-- **Lemma N** (A2_R2 §3). Weight `ω > 0` with `ω x z ≤ ω x y · ω y z`, `ω x x ≤ 1`;
+/-- **L-225 (Lemma N)** (A2_R2 §3). Weight `ω > 0` with `ω x z ≤ ω x y · ω y z`, `ω x x ≤ 1`;
 `A = A_Z` invertible, `C₁ = A⁻¹`, `‖A‖_ρ ≤ a`, `‖W‖_ρ ≤ w`, `a w ≤ ½` (`‖·‖_ρ = mnorm ω`).
 Then `C₁ − W` is invertible, `(C₁ − W)⁻¹ = A + T`, `‖T‖_ρ ≤ 2a²w`. -/
 theorem lemma_N {ω : n → n → ℝ} (hω : ∀ x y, 0 < ω x y) (htri : ∀ x y z, ω x z ≤ ω x y * ω y z)
@@ -197,7 +197,7 @@ theorem lemma_N {ω : n → n → ℝ} (hω : ∀ x y, 0 < ω x y) (htri : ∀ x
           (mnorm_nonneg hω0 A) (by positivity)
       _ = 2 * a ^ 2 * w := by ring
 
-/-- Lemma N, `T` is the series `Σ_{n≥1} (A_Z W)^n A_Z` in `‖·‖_ρ`: under the hypotheses of
+/-- L-225 (Lemma N), `T` is the series `Σ_{n≥1} (A_Z W)^n A_Z` in `‖·‖_ρ`: under the hypotheses of
 `lemma_N`, `‖T − Σ_{k<N} (A W)^{k+1} A‖_ρ ≤ 2a (aw)^{N+1}` (→ 0 since `aw ≤ ½`). -/
 theorem lemmaN_series {ω : n → n → ℝ} (hω : ∀ x y, 0 < ω x y)
     (htri : ∀ x y z, ω x z ≤ ω x y * ω y z) (hdiag : ∀ x, ω x x ≤ 1) (A W : Matrix n n 𝕜)
@@ -228,7 +228,7 @@ theorem lemmaN_series {ω : n → n → ℝ} (hω : ∀ x y, 0 < ω x y)
           (mnorm_nonneg hω0 A) (by have := (mnorm_nonneg hω0 _).trans hXN; positivity)
     _ = 2 * a * (a * w) ^ (N + 1) := by ring
 
-/-- Lemma N with the weight of the note, `ω(x,y) = e^{ρ d(x,y)}` (`d` with the triangle
+/-- L-225 (Lemma N) with the weight of the note, `ω(x,y) = e^{ρ d(x,y)}` (`d` with the triangle
 inequality and `d(x,x) = 0`, e.g. `|b − b′|`), `ρ ≥ 0`. -/
 theorem lemma_N_exp {d : n → n → ℝ} (hd : ∀ x y z, d x z ≤ d x y + d y z) (hd0 : ∀ x, d x x = 0)
     {ρ : ℝ} (hρ : 0 ≤ ρ) (A W : Matrix n n 𝕜) (hA : IsUnit A) {a w : ℝ}

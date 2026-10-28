@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_I3_VERIFY: independent verification of SOURCES_T2_I3.md (item I3)
 
 Date: 2026-10-28. Item I3, VERIFY. Status: complete (see Grades).

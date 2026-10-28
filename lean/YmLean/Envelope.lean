@@ -1,9 +1,9 @@
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-!
-# Nontriviality from the two-sided (0.31) envelope (ASSEMBLY.md §2.9; ASSEMBLY_VERIFY.md (B-NT))
+# Nontriviality from the two-sided (0.31) envelope (ASSEMBLY.md §2.9; ASSEMBLY_VERIFY.md H-081 (B-NT))
 
-Arithmetic core of the derivation of Theorem 1.4 from (NT) and (B-T2). Notation: `u = 1/g_k²`,
+Arithmetic core of the derivation of Theorem 1.4 from (NT) and H-084 (B-T2). Notation: `u = 1/g_k²`,
 `t = 1/g²`, `β' = β′`, `s = L^k ε` (layer scale), `d0 = d_0`. The upper envelope is
 `1/g_k² ≤ 1/g² + β′ log(L^k ε)^{−1}`, the lower one `1/g² + β log(L^k ε)^{−1} ≤ 1/g_k²`.
 The integral `∫∫ f_1 f_2 g_k⁴ |x−y|^{−8}` is replaced by a finite nonnegative weighted sum

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_G2 — item (G2): per-cell one-loop densities as limits of torus determinants (DERIVE)
 
 Date: 2026-10-28. Status: complete (all sections and ledger written).

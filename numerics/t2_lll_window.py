@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """(L-LL) check. Lattice H_phi(mu) = -phi^-2 * [tau U(A') - tau U(A'_0)], U(l) = int rho_perp(k) u_m(l+k) dk,
 u_m(x) = log|x| - log|x+m^2|, m^2 = mu*|phi| = mu*alpha/2, alpha = 2 pi/q (charge-2 holonomy), phi = alpha/2.
 A' from t2_gaprime2_check.ops (Landau gauge, Bloch blocks 2q x 2q). Compared with the continuum limit

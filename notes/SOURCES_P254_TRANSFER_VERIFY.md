@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_P254_TRANSFER — independent verification (2026-10-28)
 
 Verifier: Opus subagent. Firewall respected (no /tmp/sa_repo, SUSSMAN_ALPOGE_MAP, ONLINE_SWEEP).

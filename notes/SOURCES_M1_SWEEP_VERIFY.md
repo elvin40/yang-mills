@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_M1_SWEEP_VERIFY
 
 Independent verification of SOURCES_M1_SWEEP.md §1–§6. Firewall respected.

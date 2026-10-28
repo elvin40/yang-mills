@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A4_D189 — derivation attempt of CMP 102 (189) (trust-ledger A4), IDEAS_FABLE §I4
 
 Status: complete, unverified (Claude Opus, 2026-10-28). Ledger §7 is authoritative.

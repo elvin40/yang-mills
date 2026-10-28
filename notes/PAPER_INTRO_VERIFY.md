@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # PAPER_INTRO_VERIFY.md
 
 Second-pass verification of paper intro/remains/appendix B/assembly table vs ground truth. Started 2026-10-27.

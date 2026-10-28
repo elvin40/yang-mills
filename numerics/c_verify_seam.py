@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # d=2 seam test: SU(2) flat links U_1 = exp(i theta sigma3 / n) (Polyakov angle theta), plaquettes = 1.
 # Dressed field F(b) = chi*E(b) Ad(axial path y->b) X, axial rule in the fundamental domain centred at y.
 # Model kernel E = exp(-delta*dist) (block units). Energy = eta^d sum |D_nu F|^2, D_nu covariant difference.

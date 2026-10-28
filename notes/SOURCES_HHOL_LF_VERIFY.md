@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HHOL_LF verification
 
 Independent check of SOURCES_HHOL_LF.md items 1-6. Firewall respected.

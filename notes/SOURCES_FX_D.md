@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_FX_D — open item (FX-D): fixed-polydisc holomorphy of the fine-scale R-terms
 
 Target: settle (FX-D) as used by (L1) of INFINITE_VOLUME_IV12 §4.4. One section per tool call. Ledger tags: [P] proved here; [V] verbatim quote checked in a project file; [I] inference; [R] reduced to a quoted result. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

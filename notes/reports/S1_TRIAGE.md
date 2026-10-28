@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # S1_TRIAGE — the 68 findings of LEDGER_AUDIT_CLOUD.md against the current TRUST_LEDGER.md
 
 Date: 2026-10-28. Author: Claude (integration of PR #10). The ledger was not edited.

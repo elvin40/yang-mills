@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # H1_OTHER_L — the (H1_L) majorant certificate at L = 15, 17, 21 (2026-10-28)
 Command: `uv run --no-project --with python-flint --with numpy python bb_arb.py L L−1 16` in numerics/h1analytic (python-flint 0.9.0, numpy 2.5.3), the unmodified script certified at L = 13 (H1_ANALYTIC_VERIFY V6).
 

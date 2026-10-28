@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # ASSEMBLY_VERIFY.md — independent check of ASSEMBLY.md (2026-10-27)
 
 One section per tool call. Grades: CONFIRMED / CORRECTED / UNSUPPORTED.

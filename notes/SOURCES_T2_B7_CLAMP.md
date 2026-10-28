@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_B7_CLAMP — TRUST_LEDGER row B7 (L5): β_{k+1} on the clamped cube, or D″ on true trajectories
 
 Date: 2026-10-28. Status: in progress. Ledger: [P] proved here, [V] verified reading of a source, [I] interpretation, [R] relies on a named input.

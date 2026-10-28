@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # BETA_FP_LEMMA43: proof attempt of Lemma 4.3 of BETA_FP.md
 
 Written 2026-10-27 (Claude, Opus 5.5). Scope: Lemma 4.3 of BETA_FP.md §4 (𝒞(Λ) = c log Λ + C + o(1), c = 11N²/(12π²)). No existing file edited. Every claim is marked [proved here], [cited], [hypothesis], or [open].

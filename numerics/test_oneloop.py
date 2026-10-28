@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """Self-checks: quaternion conventions vs 2x2 matrices; stationarity; gauge invariance; F -> -F; averaging at U=1."""
 import numpy as np, jax.numpy as jnp, scipy.sparse as sp
 from ym_oneloop import *

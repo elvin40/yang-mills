@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # THEOREM2_PROOF.md independent verification (2026-10-27)
 
 Status: in progress.

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D3_NEW4 — sourced R-operation Wilson Hessian lower bounds (NEW-4)
 
 Date 2026-10-28. Target: NEW-4 of SOURCES_M1_SWEEP (+ VERIFY §(NEW-4)).

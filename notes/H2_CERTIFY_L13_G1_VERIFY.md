@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # H2_CERTIFY_L13_G1_VERIFY — pre-launch verification of the G1 certifier
 
 Written 2026-10-27 (Claude, Opus 5.5). Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. Certifier files not edited. Nothing launched on the box.

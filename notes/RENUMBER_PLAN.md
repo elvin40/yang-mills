@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping; the "new" ids of §3 are provisional and superseded by IDS.md.
 # RENUMBER_PLAN — one identifier scheme for the Yang–Mills project
 
 Date: 2026-10-28. Author: Claude (Opus 5.5), design task. Status: PLAN ONLY. No existing file was edited. Nothing in this plan is applied.

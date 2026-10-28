@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_BOOKKEEPING_VERIFY — independent page check of ledger rows A9, A12, A20, A22, §6; S1 #48 (WC_FULL rate)
 
 Firewall: did not read /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md.

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 import numpy as np, itertools
 def dinf(K, N=6, tail=True):   # Prop. A M=inf, direct sum over |n|_inf<=N  (lower bound: truncated sum of positive terms)
     K = np.atleast_2d(K); n = np.arange(-N, N+1)

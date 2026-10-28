@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # BETA_FP verification (independent)
 
 Started 2026-10-27. One section per step.

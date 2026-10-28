@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # BETA_FP: per-level increments β_{j+1}(0) by the Gaussian recursion, and the fixed-point value β_∞
 
 Written 2026-10-27 (Claude, Fable 5.1). Scope: tasks (A) numerics of the per-level increments through the exact level-j data recursion, (B1) the value Φ(𝒟_∞) = c log L, (B2) what remains for convergence and positivity. Read: U3_GAUSSIAN_RG.md (all), U1_INFINITE_LATTICE.md (all), U1_VERIFY.md (§0, 2.4, 2.6, 2.9, 3, 5), numerics/NUMERICS.md, numerics/ym_momentum.py, THEOREM2.md §3a, §8a. U3_LEMMA51.md did not exist when this was written. Code: numerics/betafp_recursion.py, numerics/betafp_test.py (new; no existing file edited). Every claim is marked [proved here], [verified numerically], [cited], or [open].

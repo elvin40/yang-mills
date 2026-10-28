@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_FRANGE — which flux range (M_j) needs the gap (G_A′) on (brief check)
 
 Date: 2026-10-28. Headless check. No existing file edited.

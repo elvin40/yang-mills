@@ -3,7 +3,7 @@ import YmLean.Schur
 /-!
 # Block-valued Schur test (SOURCES_A1_KERNEL.md §7; SOURCES_S2_FORM.md §2 Π3)
 
-Sources: `../SOURCES_A1_KERNEL.md` §7 (Schur step of Lemma CT on ℓ²(𝔅)), `../SOURCES_S2_FORM.md`
+Sources: `../SOURCES_A1_KERNEL.md` §7 (Schur step of L-125 (Lemma CT) on ℓ²(𝔅)), `../SOURCES_S2_FORM.md`
 §2 (Step Π3, "Schur over blocks", ‖T_{yy′}‖ in place of |K|); gap 5 of `VERIFY_CombesThomas.md`.
 Norm: spectral norm `Matrix.Norms.L2Operator` on `𝕜^{ι × Fin n}` and on each block `𝕜^{Fin n}`.
 `blk K x y` = block `K_{xy}`, `k(x,y) := ‖K_{xy}‖₂`.

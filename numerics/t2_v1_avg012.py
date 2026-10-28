@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """t2_v1_avg012: does the one-step one-loop beta_1(0) depend on the averaging, CMP 109 (0.4) vs (0.12)?
 
 ym_momentum.py implements (0.4): average over contour pairs of (1/i) log U(Gamma u [x,x'] u -Gamma' u -c).

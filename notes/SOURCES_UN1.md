@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_UN1 — does (U) conflict with (B-N1)?
 
 Status: complete (2026-10-27). Verdict: NO CONFLICT, given the norm identification of §4.

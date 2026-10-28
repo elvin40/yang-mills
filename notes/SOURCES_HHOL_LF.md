@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HHOL_LF — large-field half of (H-hol)
 
 Status: complete, unverified (Claude Opus, 2026-10-27). Ledger §7 is authoritative.

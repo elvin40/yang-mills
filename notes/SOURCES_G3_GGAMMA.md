@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_G3_GGAMMA — uniform bound on G_Γ = ‖Γ_k(Z_0, 0)‖ (open [I] of SOURCES_G3_N2 §3.5, VERIFY V5)
 
 Date 2026-10-28. Author: Claude (Opus), unverified. No existing file edited.

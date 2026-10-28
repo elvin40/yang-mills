@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Step B checks: (A) log-L fits of first-step beta_1(L) from umk results; (B) 2D Harper heat-trace phi^2 coefficient vs continuum
 import json, glob, numpy as np
 from scipy.linalg import eigvalsh

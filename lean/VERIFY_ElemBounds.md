@@ -1,1 +1,2 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # VERIFY_ElemBounds — YmLean/ElemBounds.lean: A10 §3 j-sum (`a10Sum_eq_four`, `a10Sum_closed` for n < 4, `a10Sum_ge_top`, `a10Sum_unbounded` for all n with L ≥ 1); A11 monotonicity of g(log g^{−2})^q on (0, e^{−q}) (`gLogPow_strictMonoOn`, ℓ^q written exp(q log ℓ) because rpow oleans are not built); ORDER_CANON Lemma M2 (`schurSum_antitone` over any index type via tsum, `kMap_mono`, `epsMap_mono`, `expRange_mono`); full `lake build` 5 s; axioms propext, Classical.choice, Quot.sound only.

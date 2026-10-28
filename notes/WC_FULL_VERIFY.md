@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # WC_FULL independent verification (2026-10-28)
 
 ## 1. Read of §0–§5 (first pass)

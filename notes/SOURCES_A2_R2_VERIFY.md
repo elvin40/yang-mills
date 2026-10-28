@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A2_R2 verification (independent)
 
 Date 2026-10-28. Verifier: Opus. Firewall kept (no sa_repo, no SA map, no online sweep).

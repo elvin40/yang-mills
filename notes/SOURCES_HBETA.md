@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_HBETA — the summability hypothesis (Hβ) of SOURCES_D2
 
 Status 2026-10-27 (Claude, Opus; unverified). Inputs: SOURCES_D2.md §0, §4.4, §6.1, §8; SOURCES_VERIFY.md §8(b)–(c); LEMMAS.md Lemmas D and E (corrected); THEOREM2.md §3a; SOURCES_D1.md §2.1–2.2.

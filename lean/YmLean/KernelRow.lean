@@ -2,9 +2,9 @@ import YmLean.CombesThomas
 import Mathlib.Analysis.SpecificLimits.Normed
 
 /-!
-# Kernel bound to row sums (input of Lemma CT)
+# Kernel bound to row sums (input of L-125 (Lemma CT))
 
-Sources: `../SOURCES_A1_KERNEL.md` §7 (ii), proof of Lemma CT (the step from (i)
+Sources: `../SOURCES_A1_KERNEL.md` §7 (ii), proof of L-125 (Lemma CT) (the step from (i)
 `|n̂| ≤ c_+ e^{−δd}` to `‖E‖ ≤ c_−/2`), and `VERIFY_CombesThomas.md` "Not formalized", item 2.
 Weight `w x = e^{ε d(x, x₀)}`, so `w x / w y = exp(ε (d x x₀ − d y x₀))` (`Real.exp_sub`), the form
 used in `combes_thomas_schur`. Counting measure (m = 1), as in CombesThomas.lean.
@@ -69,7 +69,7 @@ theorem kernel_col (N : Matrix ι ι 𝕜) (d : ι → ι → ℝ) (hsymm : ∀ 
   rw [mul_sum]
   exact sum_le_sum fun x _ => kernel_entry_le hε (hK x y) (abs_dist_sub_le d hsymm htri x y x₀)
 
-/-- **Lemma CT from the kernel bound** (§7 with (i) in place of `hrow`, `hcol`): if
+/-- **L-125 (Lemma CT) from the kernel bound** (§7 with (i) in place of `hrow`, `hcol`): if
 `Σ_y d(x,y) e^{−(δ−ε) d(x,y)} ≤ S` for all `x` and `C ε S ≤ c/2`, then `N` is invertible and
 `|N⁻¹ x y| ≤ (2/c) e^{−ε d(x,y)}`. -/
 theorem combes_thomas_kernel [DecidableEq ι] (N : Matrix ι ι 𝕜) (d : ι → ι → ℝ)
@@ -157,7 +157,7 @@ theorem kernel_col_fin {n : ℕ} (N : Matrix (Fin n) (Fin n) 𝕜) {C δ ε : �
   refine mul_le_mul_of_nonneg_left ?_ hC
   simpa only [abs_sub_comm _ ((y : ℕ) : ℝ)] using fin_sum_le n y (a := δ - ε) (by linarith)
 
-/-- **Lemma CT on `Fin n`** (chain of (c) with `combes_thomas_schur`): `N ≥ c > 0`,
+/-- **L-125 (Lemma CT) on `Fin n`** (chain of (c) with `combes_thomas_schur`): `N ≥ c > 0`,
 `|N x y| ≤ C e^{−δ|x−y|}`, `0 < ε ≤ δ/2` and `2 C ε / (1 − e^{−(δ−ε)})² ≤ c/2` ⇒ `N` invertible and
 `|N⁻¹ x y| ≤ (2/c) e^{−ε|x−y|}`. -/
 theorem combes_thomas_fin {n : ℕ} (N : Matrix (Fin n) (Fin n) 𝕜) {c C δ ε : ℝ} (hc : 0 < c)

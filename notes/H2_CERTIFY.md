@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # H2_CERTIFY — plan and prototype for a computer-assisted proof of (H2) at L = 3
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: B2_TWOSTEP.md §1, §4–§6; B2_TWOSTEP_VERIFY.md §4–§6; U3_REPAIRS.md (all); U3_AW_VERIFY.md §5–§6; U3_GAUSSIAN_RG.md §2–§3; numerics/aw_verify/{hcheck, hscan, h2step, build_b0}.py. Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited. New files: this file, numerics/h2cert_proto.py, numerics/h2cert_launch.sh. python-flint 0.9.0 installed into numerics/.venv (1 s).

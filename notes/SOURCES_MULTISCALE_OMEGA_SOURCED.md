@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_MULTISCALE_OMEGA_SOURCED — NEW-3, sourced part: 𝒲_S, Q1, Q8, (U-b) in the Ω-sequence geometry
 
 Date 2026-10-28. Target: item U1 of SOURCES_MULTISCALE_OMEGA_VERIFY V10/V12 (the sourced extension that NEW-2 consumes). Owner I-37 / NEW-3.

@@ -143,7 +143,7 @@ theorem straight_isPath (a : Fin d → ℤ) (μ : Fin d) (n : ℕ) :
     simp only [Step.stop, ite_true]
     convert this using 1; push_cast; rw [add_smul, one_smul]; abel
 
-/-- (D) for the order-0 profile of H2_CERTIFY_P4 Step 1: the straight path `0 → L e_μ` plus
+/-- L-246 (Lemma P4). (D) for the order-0 profile of H2_CERTIFY_P4 Step 1: the straight path `0 → L e_μ` plus
 `Σ_i w_i χ` of loops `0 → d_i → d_i + L e_μ → L e_μ → 0` (four arbitrary path pieces) has
 divergence `δ_{L e_μ} − δ_0`, for every choice of weights. -/
 theorem P4_divergence {ι : Type*} (S : Finset ι) (w : ι → R) (μ : Fin d) (L : ℕ)

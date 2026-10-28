@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A16_REPLACE — TRUST_LEDGER row A16 (propagator replacement, CMP 116 p. 3)
 
 Date 2026-10-28. Ledger tags: [P] proved here, [V] verified elsewhere (file named), [I] reading/interpretation, [R] reduction to a printed Balaban statement or sketch.

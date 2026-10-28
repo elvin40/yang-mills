@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # U3_LEMMA51_R23 verification (2026-10-27)
 
 Verifier: Claude (Opus 5.5), independent. Scratch scripts in /tmp/r23v (deleted at the end). Python: numerics/.venv/bin/python -I, Mac only.

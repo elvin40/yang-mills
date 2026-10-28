@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_W4 — hypothesis (W4): holomorphy of one Balaban RG step in its input activities
 
 Status: complete (2026-10-27). W4 for the regular step G: proved given Balaban's conditions (C1)–(C5) with E_0ε_1 → ρε_1. W4 for the R operation at radius 2E_0: open (local radius only, §6.2). Ledger §8.

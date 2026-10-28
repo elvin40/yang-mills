@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """beta_1(0) of one Balaban step by umklapp sums in certified arithmetic: port of umk_beta1.py (formulas ../notes/UMK_BETA1.md)
 to python-flint arb (outward-rounded balls). Same quantity as umk_beta1.py: the shifted, symmetry-reduced K grid sum at fixed Ng, p.
 - Constants G, G2, J1, J2, E1, E2, H0, H1, T: exact rationals from truncated Taylor polynomials of the quaternion maps (no JAX).

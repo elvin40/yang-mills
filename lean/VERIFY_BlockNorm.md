@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # VERIFY_BlockNorm — statement check of BlockNorm.lean and OishiRump.lean
 
 Both files build without `sorry` (`lake build`, a few seconds each). Axioms of every theorem: `[propext, Classical.choice, Quot.sound]`.

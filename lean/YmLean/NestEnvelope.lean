@@ -161,7 +161,7 @@ theorem cprimeDD {b R : ℝ} (hR : 0 ≤ R)
     constructor <;> nlinarith
   · simp; linarith
 
-/-- **Lemma D″-nest** (§4.2), abstract form. Slack `b/4` (= worst step error `C₁γ`),
+/-- **L-149 (Lemma D″-nest)** (§4.2), abstract form. Slack `b/4` (= worst step error `C₁γ`),
 (5.1) `|T₀(m,n) − b(n − m)| ≤ 2R` for `m < n ≤ K`. There is `u₀` with `u_K = t`, the envelope
 bounds, (b) `u_k ≥ t − 2R` (so `u_k ≥ γ^{−2}` when `t ≥ γ^{−2} + 2R`), and (c′) with
 `β = 3b/4`, `B′ = 5b/4 + 2R`, `D′ = 2R`. -/
@@ -218,7 +218,7 @@ theorem cprimeDP {B βinf : ℝ} {J : ℕ} (hβ : 0 < βinf) (hbound : ∀ j, |c
     window_sum_le _ fun i _ => (le_abs_self _).trans (hbound i)
   constructor <;> linarith
 
-/-- **Lemma D′-nest** (§4.3), abstract form. Hypotheses (ii) `|c j| ≤ B`, (iii′) `c j ≥ β∞/2`
+/-- **L-146 (Lemma D′-nest)** (§4.3), abstract form. Hypotheses (ii) `|c j| ≤ B`, (iii′) `c j ≥ β∞/2`
 for `j > J`; slack `β∞/4` (= `C₁γ` bound). There is `u₀` with `u_K = t`, the envelope bounds,
 (b) `u_k ≥ t − D`, `D = J(B + β∞/4)`, and (c′) with slope `β∞/4`, `D′ = J(B + β∞/2)`,
 `B′ = B + β∞/4`. -/

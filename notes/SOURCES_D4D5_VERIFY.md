@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_D4D5 verification
 
 Independent check of SOURCES_D4D5.md. One section per tool call.

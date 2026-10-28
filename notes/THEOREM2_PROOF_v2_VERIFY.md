@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # THEOREM2_PROOF_v2 verification
 
 Verifier: independent Opus pass, 2026-10-27. Firewall kept: no /tmp/sa_repo, SUSSMAN_ALPOGE_MAP.md only to §5.1.

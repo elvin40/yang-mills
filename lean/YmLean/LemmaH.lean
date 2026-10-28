@@ -2,7 +2,7 @@ import YmLean.LemmaDPrime
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
 
 /-!
-# Lemma H, Steps 1–2 (SOURCES_HBETA.md §2, as corrected in SOURCES_HBETA_VERIFY.md §5)
+# L-182 (Lemma H), Steps 1–2 (SOURCES_HBETA.md §2, as corrected in SOURCES_HBETA_VERIFY.md §5)
 
 Abstract form. `a j i` stands for `∂β_j/∂u_i` (`i < j`), `v` for `v_j = du_j/dc`.
 Variational equation `v (j+1) = v j - B'_{j+1}`, `B'_j = Σ_{i<j} a j i · v i`.
@@ -82,7 +82,7 @@ lemma v_le_PH (a : ℕ → ℕ → ℝ) (v : ℕ → ℝ) {K : ℕ} (hv0 : |v 0|
         _ ≤ PH a j + εH a (j + 1) * PH a j := add_le_add (ih' j le_rfl) hB
         _ = _ := by ring
 
-/-- **Lemma H, Step 1** (abstract). Variational equation, `|v_0| ≤ 1`, column sums
+/-- **L-182 (Lemma H), Step 1** (abstract). Variational equation, `|v_0| ≤ 1`, column sums
 `Σ_{j∈(i,K]} |a j i| ≤ c i` with `Σ_{i<K} c i ≤ x`. Then
 `Σ_{j=1}^K |B'_j| ≤ Π_{j=1}^K (1+ε_j) − 1 ≤ e^x − 1` and `|v_k − v_0| ≤ e^x − 1` for `k ≤ K`. -/
 theorem lemma_H (a : ℕ → ℕ → ℝ) (v c : ℕ → ℝ) (x : ℝ) (K : ℕ) (hv0 : |v 0| ≤ 1)
@@ -111,7 +111,7 @@ theorem lemma_H (a : ℕ → ℕ → ℝ) (v c : ℕ → ℝ) (x : ℝ) (K : ℕ
   rw [abs_sub_comm, e]
   exact (abs_sum_le_sum_abs _ _).trans (hsub.trans (h1.trans h2))
 
-/-- Lemma H with the note's constants: `v_0 = −1`, `x ≤ ln(3/2)` give
+/-- L-182 (Lemma H) with the note's constants: `v_0 = −1`, `x ≤ ln(3/2)` give
 `Σ|B'_j| ≤ 1/2` and `1/2 ≤ |v_k| ≤ 3/2`. -/
 theorem lemma_H_half (a : ℕ → ℕ → ℝ) (v c : ℕ → ℝ) (x : ℝ) (K : ℕ) (hv0 : v 0 = -1)
     (hrec : ∀ j < K, v (j + 1) = v j - Bp a v (j + 1))

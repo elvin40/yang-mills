@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # IV-1/IV-2 independent verification (2026-10-28)
 
 Scope: INFINITE_VOLUME_IV12.md claims (1)-(4). Firewall respected.

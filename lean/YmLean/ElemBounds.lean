@@ -5,7 +5,7 @@ import Mathlib.Algebra.Order.Archimedean.Basic
 import Mathlib.Topology.Algebra.InfiniteSum.Real
 
 /-!
-# Elementary bounds used in the A10, A11, and ORDER_CANON notes
+# Elementary bounds used in the R-010, R-012, and ORDER_CANON notes
 
 1. `a10Sum`: the j-sum of SOURCES_A10_LOWER.md §3 (c) and SOURCES_A10_LOWER_VERIFY claim (1).
    A raw order-n term (n ≤ 4) gives (6L)^4 L^{(4−n)(k−j)} at scale j; the sum over j = 0..k is
@@ -14,7 +14,7 @@ import Mathlib.Topology.Algebra.InfiniteSum.Real
 2. `gLogPow_strictMonoOn`: SOURCES_A11_CONST_VERIFY.md (monotonicity fix of (2.8) line 1) and
    SOURCES_T2_IEPS_LF_VERIFY.md: F(g) = g (log g^{−2})^q, F′ = ℓ^{q−1}(ℓ − 2q) with ℓ = log g^{−2},
    so F is strictly increasing on (0, e^{−q}).
-3. SOURCES_ORDER_CANON.md A.2 Lemma M2 (safe direction): S(δ) = Σ e^{−δ|x|} decreasing in δ
+3. SOURCES_ORDER_CANON.md A.2 L-221 (Lemma M2) (safe direction): S(δ) = Σ e^{−δ|x|} decreasing in δ
    (abstract index type, `tsum`); k = c_P c/(c + 4Γ) increasing in c, decreasing in Γ;
    ε^a = min{½δ, c/(16 C b Σ(½δ))} increasing in δ, c and decreasing in b; e^{2Lδ} increasing in δ.
 -/
@@ -98,7 +98,7 @@ theorem gLogPow_strictMonoOn {q : ℝ} (hq : 0 < q) :
     rw [this]
     exact mul_pos hE (div_pos (by linarith) hℓ0)
 
-/-- ORDER_CANON Lemma M2: S(δ) = Σ_x e^{−δ|x|} is decreasing in δ (any index type, |x| ≥ 0,
+/-- ORDER_CANON L-221 (Lemma M2): S(δ) = Σ_x e^{−δ|x|} is decreasing in δ (any index type, |x| ≥ 0,
 summability at the smaller rate). -/
 theorem schurSum_antitone {ι : Type*} (w : ι → ℝ) (hw : ∀ x, 0 ≤ w x) {δ₁ δ₂ : ℝ}
     (hδ : δ₁ ≤ δ₂) (hs : Summable fun x => Real.exp (-δ₁ * w x)) :
@@ -107,7 +107,7 @@ theorem schurSum_antitone {ι : Type*} (w : ι → ℝ) (hw : ∀ x, 0 ≤ w x) 
     Real.exp_le_exp.mpr (by nlinarith [hw x])
   exact (hs.of_nonneg_of_le (fun _ => (Real.exp_pos _).le) hle).tsum_le_tsum hle hs
 
-/-- ORDER_CANON Lemma M2: k = c_P c/(c + 4Γ) is increasing in c and decreasing in Γ. -/
+/-- ORDER_CANON L-221 (Lemma M2): k = c_P c/(c + 4Γ) is increasing in c and decreasing in Γ. -/
 theorem kMap_mono {cP c₁ c₂ Γ₁ Γ₂ : ℝ} (hcP : 0 ≤ cP) (hc₁ : 0 < c₁) (hc : c₁ ≤ c₂)
     (hΓ₂ : 0 ≤ Γ₂) (hΓ : Γ₂ ≤ Γ₁) :
     cP * c₁ / (c₁ + 4 * Γ₁) ≤ cP * c₂ / (c₂ + 4 * Γ₂) := by
@@ -115,7 +115,7 @@ theorem kMap_mono {cP c₁ c₂ Γ₁ Γ₂ : ℝ} (hcP : 0 ≤ cP) (hc₁ : 0 <
   have : c₁ * (c₂ + 4 * Γ₂) ≤ c₂ * (c₁ + 4 * Γ₁) := by nlinarith
   nlinarith
 
-/-- ORDER_CANON Lemma M2: ε^a = min{½δ, c/(16 C b Σ(½δ))} is increasing in δ and c and
+/-- ORDER_CANON L-221 (Lemma M2): ε^a = min{½δ, c/(16 C b Σ(½δ))} is increasing in δ and c and
 decreasing in b, given Σ decreasing (Σ(½δ₂) ≤ Σ(½δ₁), `schurSum_antitone`). -/
 theorem epsMap_mono {C δ₁ δ₂ c₁ c₂ b₁ b₂ S₁ S₂ : ℝ} (hC : 0 < C) (hδ : δ₁ ≤ δ₂)
     (hc₁ : 0 ≤ c₁) (hc : c₁ ≤ c₂) (hb₂ : 0 < b₂) (hb : b₂ ≤ b₁) (hS₂ : 0 < S₂) (hS : S₂ ≤ S₁) :
@@ -126,7 +126,7 @@ theorem epsMap_mono {C δ₁ δ₂ c₁ c₂ b₁ b₂ S₁ S₂ : ℝ} (hC : 0 
     gcongr
   exact div_le_div₀ (by linarith) hc (by positivity) h1
 
-/-- ORDER_CANON Lemma M2 / amendment E4: e^{2Lδ} is increasing in δ (for L ≥ 0). -/
+/-- ORDER_CANON L-221 (Lemma M2) / amendment E4: e^{2Lδ} is increasing in δ (for L ≥ 0). -/
 theorem expRange_mono {L δ₁ δ₂ : ℝ} (hL : 0 ≤ L) (hδ : δ₁ ≤ δ₂) :
     Real.exp (2 * L * δ₁) ≤ Real.exp (2 * L * δ₂) :=
   Real.exp_le_exp.mpr (by nlinarith)

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_A3_GAMMA0_VERIFY — independent check of SOURCES_A3_GAMMA0.md
 
 Status: done 2026-10-28 (Opus verifier). Firewall: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

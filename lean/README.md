@@ -6,7 +6,7 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 |---|---|---|---|
 | `LemmaDPrime.lean` | `lemma_DPrime` (405 lines) | LEMMA_DPRIME.md §1–§2 | VERIFY_LemmaDPrime.md |
 | `LemmaDE.lean` | `lemma_D`, `lemma_E`, `lemma_DE`, `lemma_DPrime_step8`, `g₁_of_J_zero` (162) | LEMMAS.md; LEMMA_DPRIME.md step 8 | none (LEMMAS_DE_VERIFY.md) |
-| `LemmaH.lean` | `gronwall_telescope`, `lemma_H`, `lemma_H_half` (132) | SOURCES_HBETA.md Lemma H | none (SOURCES_HBETA_VERIFY.md) |
+| `LemmaH.lean` | `gronwall_telescope`, `lemma_H`, `lemma_H_half` (132) | SOURCES_HBETA.md L-182 (Lemma H) | none (SOURCES_HBETA_VERIFY.md) |
 | `DetIdentities.lean` | `det_bordered`, `det_restrict_add_gauge` (143) | numerics/NUMERICS.md §1 (iv), (v) | none |
 | `Telescoping.lean` | `quad_split`, `adapted_in_ker`, `telescoping_det`, `gram_adapted`, `telescoping_log` (127) | R2_TELESCOPING.md Prop. 3.1 | none (R2_VERIFY.md) |
 | `AbelianCount.lean` | `su2_count`, `ab_count`, `equipartition`, `abelian_share`, `Sab_values`, `βab` (55) | U1_INFINITE_LATTICE.md Prop. 9.1 | none (U1_VERIFY.md) |
@@ -16,35 +16,35 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `CubeCount.lean` | `cube_count_sharp`, `cube_count_lower` (51) | SOURCES_FX_O1.md §2–§3 | VERIFY_CubeCount.md |
 | `BlockNorm.lean` | `blockDiag_opNorm_le/eq`, `blockDiag_comp_opNorm_le`, `blockCol_opNorm_le`, `rho2_le` (94) | H2_CERTIFY.md §1 R2, §2 (i-a) | VERIFY_BlockNorm.md |
 | `OishiRump.lean` | `oishi_rump_ring`, `oishi_rump`, `oishi_rump_eta`, `l2_le_frob`, `frobenius_power_bound` (115) | H2_CERTIFY.md §5 C2/C4; H2_CERTIFY_VERIFY.md §4 | VERIFY_BlockNorm.md |
-| `Envelope.lean` | `envelope_layer`, `envelope_nontrivial`, `envelope_decay`, `envelope_not_scale_invariant` (104) | ASSEMBLY.md §2.9 (B-NT) | VERIFY_Envelope.md |
+| `Envelope.lean` | `envelope_layer`, `envelope_nontrivial`, `envelope_decay`, `envelope_not_scale_invariant` (104) | ASSEMBLY.md §2.9 H-081 (B-NT) | VERIFY_Envelope.md |
 | `Divergence.lean` | `div_add/smul/sum`, `step_divergence`, `path_divergence`, `loop_divergence`, `profile_divergence`, `straight_isPath`, `P4_divergence` (171) | H2_CERTIFY_P4.md §2 Steps 2–3 | VERIFY_Envelope.md |
 | `TheoremC1.lean` | `c1_two_step`, `c1_kappa_bound`, `c1_window` (59) | THEOREM2_PROOF_v4.md §5.3; B2_TWOSTEP.md §2 | VERIFY_TheoremC1.md |
 | `StripBound.lean` | `strip_bound_linear`, `strip_bound_quadratic` (73) | SOURCES_HBETA_N3.md §4 | VERIFY_TheoremC1.md |
 | `CertBridge.lean` | `entrywise_to_opnorm`, `interval_to_opnorm`, `cell_invertible`, `norm_submatrix_le`, `rq_weyl`, `pert_bound`, `cell_sup_bound`, `vertex_bound` (268) | numerics/h1cert_cell.py, h1cert_cell2.py | VERIFY_CertBridge.md |
 | `Tower.lean` | `weighted_tower`, `weighted_tower_le`, `tower_bounds`, `I1_compress`, `rq_conj`, `rayleigh_sum_bound`, `conj_rayleigh_bound`, `rank_one_bound`, `majorant_core`, `lemmaT_core` (167) | H1_ANALYTIC.md §2–§3, (1.1); H1_ANALYTIC_VERIFY.md V1 | VERIFY_Tower.md |
 | `Schur.lean` | `schur_test_weighted`, `schur_test` (65) | SOURCES_LOC.md §3.3; SOURCES_S2_FORM.md §2 Π3; SOURCES_A3_SIGMA.md 2.6 | VERIFY_CombesThomas.md |
-| `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 Lemma CT (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
-| `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (212) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
-| `Resolvent.lean` | `resolvent_identity`, `resolvent_bound`, `lower_transfer`, `neumann_perturb`, `resolvent_chain`, `wnorm_mul_le`, `wnorm_neumann`, `pwnorm_mul_le`, `pwnorm_neumann` (210) | SOURCES_A3_SIGMA.md §4 (4.2, 4.5); SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N | VERIFY_Resolvent.md |
+| `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 L-125 (Lemma CT) (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
+| `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (212) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), H-215 (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
+| `Resolvent.lean` | `resolvent_identity`, `resolvent_bound`, `lower_transfer`, `neumann_perturb`, `resolvent_chain`, `wnorm_mul_le`, `wnorm_neumann`, `pwnorm_mul_le`, `pwnorm_neumann` (210) | SOURCES_A3_SIGMA.md §4 (4.2, 4.5); SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), L-225 (Lemma N) | VERIFY_Resolvent.md |
 | `SlabCounterexample.lean` | `slab_fails_10`, `slab_fails_11`, `slab_fails_12`, `slab_fails_13`, `slab_fails`, `lambda1_lt` (116) | SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1 §1–§3 | VERIFY_SlabCounterexample.md |
 | `BlockSchur.lean` | `block_row_le`, `block_schur_test` (77) | SOURCES_A1_KERNEL.md §7; SOURCES_S2_FORM.md §2 Π3; VERIFY_CombesThomas.md item 5 | VERIFY_BlockSchur.md |
 | `GaugeMin.lean` | `posdef_inv`, `inv_symm`, `inv_posdef`, `qf_add`, `schur_surjective`, `variational`, `constrMin_existsUnique`, `gauge_min_abstract`, `lemma5_step`, `lemma5`, `lemma5_full` (219 lines) | SOURCES_A3_GAMMA0_FULL.md §5 (5.1, Lemma 5); SOURCES_A3_GAMMA0_FULL_VERIFY.md §4 (1) | VERIFY_GaugeMin.md |
 | `WalkAffine.lean` | `affineEach_sum`, `affineEach_smul_const`, `walkSum_affineEach`, `walkSum_convex`, `walkSum_corner` (70) | SOURCES_A3_SIGMA.md 3.2; VERIFY_Interp.md §1 gap | VERIFY_WalkAffine.md |
-| `KernelRow.lean` | `abs_exp_sub_one_le_mul_exp`, `abs_dist_sub_le`, `kernel_entry_le`, `kernel_row`, `kernel_col`, `combes_thomas_kernel`, `hasSum_int_abs_geometric`, `fin_sum_le`, `kernel_row_fin`, `kernel_col_fin`, `combes_thomas_fin` (184) | SOURCES_A1_KERNEL.md §7 (proof of Lemma CT, (i) ⇒ ‖E‖ ≤ c_−/2); VERIFY_CombesThomas.md gap 2 | VERIFY_KernelRow.md |
-| `WeightedNorm.lean` | `cwnorm_mul_le`, `pcwnorm_mul_le`, `mnorm_add_le`, `mnorm_smul`, `mnorm_eq_zero`, `mnorm_mul_le`, `mnorm_neumann`, `expw_props`, `lemma_N`, `lemmaN_series`, `lemma_N_exp` (254) | SOURCES_A2_R2.md §3 (‖·‖_ρ, (N1), Lemma N); VERIFY_Resolvent.md (d) gaps 1–2 | VERIFY_WeightedNorm.md |
+| `KernelRow.lean` | `abs_exp_sub_one_le_mul_exp`, `abs_dist_sub_le`, `kernel_entry_le`, `kernel_row`, `kernel_col`, `combes_thomas_kernel`, `hasSum_int_abs_geometric`, `fin_sum_le`, `kernel_row_fin`, `kernel_col_fin`, `combes_thomas_fin` (184) | SOURCES_A1_KERNEL.md §7 (proof of L-125 (Lemma CT), (i) ⇒ ‖E‖ ≤ c_−/2); VERIFY_CombesThomas.md gap 2 | VERIFY_KernelRow.md |
+| `WeightedNorm.lean` | `cwnorm_mul_le`, `pcwnorm_mul_le`, `mnorm_add_le`, `mnorm_smul`, `mnorm_eq_zero`, `mnorm_mul_le`, `mnorm_neumann`, `expw_props`, `lemma_N`, `lemmaN_series`, `lemma_N_exp` (254) | SOURCES_A2_R2.md §3 (‖·‖_ρ, (N1), L-225 (Lemma N)); VERIFY_Resolvent.md (d) gaps 1–2 | VERIFY_WeightedNorm.md |
 | `BlockInequalityE.lean` | `smallness_iff`, `block_f_real`, `block_e_real`, `block_Kb_real`, `Kb_le`, `cG_ge_one`, `block_ineq_E_axial`, `block_ineq_E` (200) | SOURCES_WC_EXPGAUGE.md §1.5, §2, §3.2; SOURCES_WC_EXPGAUGE_VERIFY.md V1–V4 | VERIFY_BlockInequalityE.md |
 | `CauchyPerturbation.lean` | `cp_increment`, `cauchy_perturbation`, `lemma_CP`, `cauchy_perturbation_op` (169) | SOURCES_WC_RESIDUE.md §4, §6.1; SOURCES_WC_RESIDUE_VERIFY.md Q5–Q6 | VERIFY_CauchyPerturbation.md |
 | `K1Prime.lean` | `K1_numeric_13` (L = 13, θ = ½, β = ¼, δ = 1/40; 13δ form). Axioms: standard. Build 9 s | SOURCES_A23_TSTEP.md §4 | VERIFY_K1Prime.md |
-| `CanonOrder.lean` | `canon_acyclic`, `canon_wf`, `counts` (43 lines, 135 edges; transcription only). Axioms: none. Build 13.7 s | SOURCES_ORDER_CANON.md Part B (E7, E8, F.3, F.5) | VERIFY_CanonOrder.md |
-| `ElemBounds.lean` | `a10Sum_eq_four`, `a10Sum_closed`, `a10Sum_ge_top`, `a10Sum_unbounded`, `gLogPow_strictMonoOn`, `schurSum_antitone`, `kMap_mono`, `epsMap_mono`, `expRange_mono`. Axioms: standard. Build 5 s | SOURCES_A10_LOWER.md §3 (c); SOURCES_A11_CONST_VERIFY.md; SOURCES_ORDER_CANON.md A.2 Lemma M2 | VERIFY_ElemBounds.md |
+| `CanonOrder.lean` | `canon_acyclic`, `canon_wf`, `counts` (50 lines N010–N500, 170 edges; transcription only), `id_eq_rank` (num a = 10·(rank a + 1): N-id order = canon rank), `edges_forward_num`. Axioms: none. Build 13.7 s | SOURCES_ORDER_CANON.md Part B (E7, E8, F.3, F.5) | VERIFY_CanonOrder.md |
+| `ElemBounds.lean` | `a10Sum_eq_four`, `a10Sum_closed`, `a10Sum_ge_top`, `a10Sum_unbounded`, `gLogPow_strictMonoOn`, `schurSum_antitone`, `kMap_mono`, `epsMap_mono`, `expRange_mono`. Axioms: standard. Build 5 s | SOURCES_A10_LOWER.md §3 (c); SOURCES_A11_CONST_VERIFY.md; SOURCES_ORDER_CANON.md A.2 L-221 (Lemma M2) | VERIFY_ElemBounds.md |
 | `SchurMarginal.lean` | `block_inv`, `det_block`, `schur_posDef`, `schur_lower`, `schur_eigenvalues_ge`, `gamma_bb_eq`, `author_Bblock`, `c_minus_ge` (18 theorems). Axioms: standard. Build 5.6 s | SOURCES_G3_N2.md §2.4, §3.3–3.4 | VERIFY_SchurMarginal.md |
 | `NestEnvelope.lean` | `nest_shoot`, `nest_DDoublePrime`, `nest_DPrime`, `env_of_terminal`, `cprimeDD`, `cprimeDP` (253 lines). Axioms: standard. Build time not recorded | SOURCES_T2_B7_CLAMP.md §4.2–§4.4 | VERIFY_NestEnvelope.md |
-| `Concatenation.lean` | `concat_two`, `concat_two_rate`, `concat_list`, `junction_of_telescope`, `junction_of_weighted` (136 lines). Axioms: standard. Build 5.0 s | WG_FULL §3.1 Lemma C (§4.3, §5.7) | VERIFY_Concatenation.md |
+| `Concatenation.lean` | `concat_two`, `concat_two_rate`, `concat_list`, `junction_of_telescope`, `junction_of_weighted` (136 lines). Axioms: standard. Build 5.0 s | WG_FULL §3.1 L-115 (Lemma C) (§4.3, §5.7) | VERIFY_Concatenation.md |
 | `NeutralSpectrum.lean` | `neutral_form`, `hodge_eq_lap`, `hodge_ker`, `finrank_ker_hodgeL`, `hodge_gap`, `poincare1/2`, `neutral_gap`, `neutral_gap_cos` (63 theorems, 642 lines). Axioms: standard. Build 2.8 s | SOURCES_T2_MJ_REST.md §5.2, §6; SOURCES_T2_MJ_REST_VERIFY.md §7 | VERIFY_NeutralSpectrum.md |
 | `ComplexGaussian.lean` | `gauss_posDef`, `gauss_posDef_eq`, `cgauss_bound`, `lemmaS_form`, `norm_cexp_cq_le`, `lemmaD_core` (11 theorems, 188 lines). Axioms: standard. Build 2.8 s | SOURCES_A8_POS.md §3.1, §4, §5.2–5.3; SOURCES_A8_POS_VERIFY.md V2, V5 | VERIFY_ComplexGaussian.md |
-| `TheoremL.lean` | `block_ineq_E_exact`, `KbExact_le`, `HE_implies_E_cond`, `lemmaPexp_real`, `theoremL_real`, `theoremL`, `gammaExp_eq` (10 theorems, 216 lines). Axioms: standard. Build 3.7 s | WC_FULL.md §2 (Lemma E), §3.1–§3.2 (Theorem L); WC_FULL_VERIFY.md | VERIFY_TheoremL.md |
+| `TheoremL.lean` | `block_ineq_E_exact`, `KbExact_le`, `HE_implies_E_cond`, `lemmaPexp_real`, `theoremL_real`, `theoremL`, `gammaExp_eq` (10 theorems, 216 lines). Axioms: standard. Build 3.7 s | WC_FULL.md §2 (L-153 (Lemma E)), §3.1–§3.2 (L-208 (Theorem L)); WC_FULL_VERIFY.md | VERIFY_TheoremL.md |
 | `QConstants.lean` | `Lambda_bound`, `Lambda_bound_gamma`, `author_Bblock_norm_le`, `c_minus_bound`, `lemmaN`, `norm_le_of_abs_dot` (14 theorems, 290 lines). Axioms: standard. Build 3.4 s | SOURCES_G3_N2.md §3.1–3.6; SOURCES_A7_CDC.md §2.1–2.3 | VERIFY_QConstants.md |
-| `ScaleChain.lean` | `T1`–`T4`, `eq26_line1`, `eq28_line1`, `eq28_line2`, `eq29_line1/2`, `eq29_line2_full`, `R_step`, `cSw_one_seventh`, `eq246` (30 theorems, 592 lines). Axioms: standard. Build 6.6 s (full `lake build`) | SOURCES_A11_CONST.md §1, §4; SOURCES_A11_CONST_VERIFY.md §8, §17; SOURCES_B10_SWEEP.md (i) | VERIFY_ScaleChain.md |
+| `ScaleChain.lean` | `Target 1`–`T4`, `eq26_line1`, `eq28_line1`, `eq28_line2`, `eq29_line1/2`, `eq29_line2_full`, `R_step`, `cSw_one_seventh`, `eq246` (30 theorems, 592 lines). Axioms: standard. Build 6.6 s (full `lake build`) | SOURCES_A11_CONST.md §1, §4; SOURCES_A11_CONST_VERIFY.md §8, §17; SOURCES_B10_SWEEP.md (i) | VERIFY_ScaleChain.md |
 | `ParametrixCore.lean` | `knorm`, `conj_le_knorm`, `combes_thomas_mu`, `parametrix_identity`, `parametrix_neumann`, `parametrix_inv`, `knorm_neumann`, `parametrix_knorm` (20 theorems, 381 lines). Axioms: standard. Build 3 s | A1_WALK_FULL.md §1.5, §3, §4.1, §5.2; A1_WALK_FULL_VERIFY.md §1, §3 | VERIFY_ParametrixCore.md |
 | `WGAlgebra.lean` | `lemmaN_partial`, `lemmaN`, `lemmaN_G1`, `resolvent_G1`, `G1_loewner`, `deltaPi2_expand`, `wg1_alpha`, `wg1_G`, `wg1_G1`, `wg1_cmp99`, `card_pattern`, `k₂_eq` (25 theorems, 319 lines). Axioms: standard. Build 2.4 s | WG_FULL.md §1.2, §2.2–2.6, §4.3, §4.7, §5.1, §5.6–5.7; WG_FULL_VERIFY.md items (4), (6), (7) | VERIFY_WGAlgebra.md |
 | `MagneticShift.lean` | `T0_T1`, `comm_nab`, `X_eq`, `ladder_comm_sin`, `J_eq`, `Aprime_decomp`, `R_eq`, `Kbar_eq`, `sigmaY_norm` (61 theorems, 513 lines). Axioms: standard. Build 4.3 s | SOURCES_T2_GAPRIME2.md §1–§4; SOURCES_T2_GAPRIME2_VERIFY.md §1, §4, §5 | VERIFY_MagneticShift.md |
@@ -108,17 +108,17 @@ Conclusions of `lemma_DPrime` (one conjunction, in this order):
 - `lemma_D β γ b b'`: `0 < γ`, `0 ≤ b ≤ b'`, `β j` continuous on `]0, γ]`, `b ≤ β j x ≤ b'` for `x ∈ ]0, γ]`. Conclusions: (1) every trajectory with couplings in `]0, γ]` for `k < K` and `u K = 1/g²` has `1/g² + b(K−k) ≤ u k ≤ 1/g² + b'(K−k)`; (2) for every `K` and `g ∈ ]0, γ]`, `∃ u, Shot β γ g K u` with these bounds. Hypotheses weaker than the note (0 ≤ b, continuity and bounds only on `]0, γ]`, K = 0 allowed). The history-dependent β_{k+1}(g_0, …, g_k) of LEMMAS.md is NOT formalized.
 - `γE γ₀ C β₀ = if C = 0 then γ₀ else min γ₀ √(β₀/(2C))`. `lemma_E β β1 γ₀ C β₀ β₀'`: `β₀ ≤ β1 j ≤ β₀'` (β1 = β_j^{(0)}), `|β j g − β1 j| ≤ C g²` on `[0, γ₀]` ⇒ `0 < γE ≤ γ₀` and `β₀/2 ≤ β j g ≤ β₀' + β₀/2` for `g ∈ ]0, γE]`.
 - `lemma_DE`: E + continuity on `[0, γ₀]` ⇒ shooting for every K and `g ∈ ]0, γE]` with bounds `β₀/2`, `β₀' + β₀/2`.
-- `lemma_DPrime_step8`: Lemma D′ (d), last sentence. `β0min β J βinf = min(min_{j ≤ J} β_j(0), β∞/2)` (min over j = 0, …, J), `γ″ = γdef γ₀ γBal C₁ (2·β0min)`.
+- `lemma_DPrime_step8`: L-004 (Lemma D′) (d), last sentence. `β0min β J βinf = min(min_{j ≤ J} β_j(0), β∞/2)` (min over j = 0, …, J), `γ″ = γdef γ₀ γBal C₁ (2·β0min)`.
 - `g₁_of_J_zero`: `g₁ γ 0 B βinf = γ`.
 
-## LemmaH.lean (SOURCES_HBETA.md Lemma H, Step 1, abstract form)
+## LemmaH.lean (SOURCES_HBETA.md L-182 (Lemma H), Step 1, abstract form)
 
 - `Bp a v j = Σ_{i<j} a j i · v i` (B′_j, with `a j i` = ∂β_j/∂u_i), `εH a j = Σ_{i<j} |a j i|`, `PH a j = Π_{l=1}^{j} (1 + ε_l)`.
 - `gronwall_telescope`: `Π_{l=1}^{K}(1+e_l) − 1 = Σ_{j=1}^{K} e_j Π_{l=1}^{j−1}(1+e_l)`. `prod_le_exp`: `Π(1+e_l) ≤ exp Σ e_l` for `e_l ≥ 0`.
 - `lemma_H a v c x K`: `|v 0| ≤ 1`, `v (j+1) = v j − Bp a v (j+1)` for `j < K`, column sums `Σ_{j ∈ (i, K]} |a j i| ≤ c i` for `i < K`, `Σ_{i<K} c i ≤ x` ⇒ `Σ_{j=1}^{K} |B′_j| ≤ Π(1+ε_j) − 1 ≤ e^x − 1` and `|v k − v 0| ≤ e^x − 1` for `k ≤ K`.
 - `lemma_H_half`: with `v 0 = −1` and `x ≤ log(3/2)`: `Σ |B′_j| ≤ 1/2` and `1/2 ≤ |v k| ≤ 3/2`.
 - The hypothesis is the SUM of the column sums (Σ_j ε_j ≤ x, what the note's Step 2 produces). A bound on sup_i of the column sums alone is not enough: `a j (j−1) = −x`, other entries 0, gives Σ|B′_j| = (1+x)^K − 1.
-- Not formalized: Step 2 (S_3 ≤ 2γ/β, i.e. Σ c_i ≤ x for c_i = ½C₁A g_i³), Step 3 (bootstrap on |c| ≤ 2r), and the Yang–Mills identification (I).
+- Not formalized: Step 2 (S_3 ≤ 2γ/β, i.e. Σ c_i ≤ x for c_i = ½C₁A g_i³), Step 3 (bootstrap on |c| ≤ 2r), and the Yang–Mills identification R-036 (I).
 
 ## DetIdentities.lean (numerics/NUMERICS.md §1, steps (iv) and (v))
 
@@ -147,13 +147,13 @@ Notation: `Q₁ : ℝ^ι → ℝ^ρ₁`, `Q₂ : ℝ^ρ₁ → ℝ^ρ₂`, `Q = 
 - `Sab L k = (1 − L^{−4k})/4`; `Sab_values`: 15/64 (L=2, k=1), 20/81 (L=3, k=1), 255/1024 (L=2, k=2); `βab`: `Sab L (j+1) − Sab L j = (1 − L^{−4}) L^{−4j}/4`.
 - Not formalized: the physics inputs (Hessian `¼ cos(θ/2) (dB)_p²`, hypercubic symmetry of `E_p`, the rank statements behind the dimension count). They are hypotheses or arithmetic here.
 
-## LemmaDDoublePrime.lean (THEOREM2_PROOF_v3.md §2.2, KAPPA_BOUNDED.md §5.3; Lemma D″)
+## LemmaDDoublePrime.lean (THEOREM2_PROOF_v3.md §2.2, KAPPA_BOUNDED.md §5.3; L-005 (Lemma D″))
 
-Reuses `flow`, `φ`, `Shot`, `window_sum_le`, `tail_eq`, `flow_tail`, `t_ge_of_le_g₁`, `shot_of_flow` from LemmaDPrime.lean. `flow_contDD` repeats `flow_cont` without the structure `Hyp` (Hyp contains (ii), (iii) of Lemma D′, which D″ does not assume).
+Reuses `flow`, `φ`, `Shot`, `window_sum_le`, `tail_eq`, `flow_tail`, `t_ge_of_le_g₁`, `shot_of_flow` from LemmaDPrime.lean. `flow_contDD` repeats `flow_cont` without the structure `Hyp` (Hyp contains (ii), (iii) of L-004 (Lemma D′), which D″ does not assume).
 
 | Note | Lean |
 |---|---|
-| (i) continuity on [0, γ_0], \|β_j(g) − β_j(0)\| ≤ C_1 g | `hcont`, `hlip` (as in Lemma D′; C¹ not assumed) |
+| (i) continuity on [0, γ_0], \|β_j(g) − β_j(0)\| ≤ C_1 g | `hcont`, `hlip` (as in L-004 (Lemma D′); C¹ not assumed) |
 | (5.1) T_0(k, K) ∈ [b(K−k) − 2R, b(K−k) + 2R], 0 ≤ k < K | `hwin : ∀ k K, k < K → \|∑ i ∈ Ioc k K, β i 0 - b * (K - k)\| ≤ 2 * R`, `hb : 0 < b` |
 | γ = min(γ_0, γ_Bal, b/(4C_1)) | any `γ` with `0 < γ`, `γ ≤ γ₀`, `C₁ * γ ≤ b / 4` |
 | D = D′ = 2R, β = 3b/4, B′ = 5b/4 + 2R, g_1 = (1/γ² + 2R)^{−1/2} | written inline |
@@ -176,7 +176,7 @@ Weaker than the note: continuity instead of C¹; γ is any admissible value (γ_
 | same, uniform in n for D ≥ 0 summable: ≤ Σ' D | `telescoping_bound_tsum` |
 | (5.1): \|S_k − kb\| ≤ R ∀k ⇒ \|S_K − S_k − b(K−k)\| ≤ 2R, k ≤ K | `window_of_partial x b R` |
 
-Not formalized: Theorem K itself (\|d_k\| ≤ κ_*, Prop. 2.2; analysis of the one-loop symbols).
+Not formalized: L-009 (Theorem K) itself (\|d_k\| ≤ κ_*, Prop. 2.2; analysis of the one-loop symbols).
 
 ## Gronwall.lean (THEOREM2_PROOF_v4.md §5.1, §5.3; KAPPA_BOUNDED Prop. 4.1)
 
@@ -184,7 +184,7 @@ Not formalized: Theorem K itself (\|d_k\| ≤ κ_*, Prop. 2.2; analysis of the o
 |---|---|
 | a_{j+1} ≤ (1+ε_j)a_j + f_j, ε, f, a_0 ≥ 0 ⇒ a_n ≤ Π_{j<n}(1+ε_j)(a_0 + Σ_{j<n} f_j) | `discrete_gronwall` |
 | same with Π(1+ε_j) ≤ exp Σ ε_j (`prod_le_exp` of LemmaH.lean) | `discrete_gronwall_exp` |
-| N_{j+1} ≤ qN_j + Z, 0 ≤ q < 1, N_0, Z ≥ 0 ⇒ N_j ≤ N_0 + Z/(1−q) (the recursion of Prop. 4.1, Theorems C1, B2) | `contraction_bound` |
+| N_{j+1} ≤ qN_j + Z, 0 ≤ q < 1, N_0, Z ≥ 0 ⇒ N_j ≤ N_0 + Z/(1−q) (the recursion of Prop. 4.1, Theorems L-011, L-012) | `contraction_bound` |
 
 Window-to-pointwise (increments in [b/2, B′] ⇒ pointwise bounds) is not repeated: it is conclusion 5 ((d)) of `lemma_DDoublePrime`.
 
@@ -227,7 +227,7 @@ Window-to-pointwise (increments in [b/2, B′] ⇒ pointwise bounds) is not repe
 
 | Note | Lean |
 |---|---|
-| (F1) Fact B N ≤ 4^d(1+2ℓ), (F2) N ≥ 21^d ⇒ N ≤ (42/17)4^dℓ and ℓ ≥ N/(3·4^d) | `cube_count_sharp d hd N ℓ` |
+| (F1) L-080 (Fact B) N ≤ 4^d(1+2ℓ), (F2) N ≥ 21^d ⇒ N ≤ (42/17)4^dℓ and ℓ ≥ N/(3·4^d) | `cube_count_sharp d hd N ℓ` |
 | O1-R′: + (F3) n_f ≤ (ρ+2)^d N_Y, N_Y ≤ N ⇒ ℓ ≥ N/(3·4^d) and ℓ ≥ n_f/(3·4^d(ρ+2)^d) | `cube_count_lower d hd ρ nf N NY ℓ hρ` |
 
 Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence. Axioms: `[propext, Classical.choice, Quot.sound]` for both.
@@ -238,7 +238,7 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - `OishiRump.lean` (115 lines): spectral norm (`Matrix.Norms.L2Operator`), 𝕜 = ℝ or ℂ. `oishi_rump_ring` (complete normed ring), `oishi_rump` (‖RA−1‖ < 1 ⇒ IsUnit A, ‖A⁻¹‖ ≤ ‖R‖/(1−‖RA−1‖)), `oishi_rump_eta` (the η of `solve_cert`), `frob` (Frobenius, written out), `l2_le_frob`, `frobenius_power_bound` (‖M‖₂ ≤ frob((MᴴM)^{2^m})^{1/2^{m+1}}, the bound of `norm2_upper`).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all ten theorems. Not formalized: interval arithmetic, the identification of H_j with blocks of 𝔅_j⁻¹. Oleans: closure of `Mathlib.Analysis.CStarAlgebra.Matrix` (315 files from the local cache, no download).
 
-## Envelope.lean, Divergence.lean (ASSEMBLY.md §2.9 (B-NT); H2_CERTIFY_P4.md §2 Steps 2–3); statement check `VERIFY_Envelope.md`
+## Envelope.lean, Divergence.lean (ASSEMBLY.md §2.9 H-081 (B-NT); H2_CERTIFY_P4.md §2 Steps 2–3); statement check `VERIFY_Envelope.md`
 
 - `Envelope.lean` (104 lines): `envelope_layer` (L^kε > d_0/L and 1/g_k² ≤ 1/g² + β′ log(L^kε)^{−1} ⇒ g_k⁴ ≥ (1/g² + β′ log(L/d_0))^{−2}), `envelope_nontrivial` (§2.9 (i) with the integral replaced by a finite nonnegative weighted sum and |R| ≤ ½: S ≥ ½c(1/g² + β′ log(L/d_0))^{−2}Σw, and S > 0 if Σw > 0), `envelope_decay` (§2.9 (ii): 0 ≤ S(d) ≤ A(d)c u(d)^{−2}, A ≤ M, u(d) ≥ 1/g² + β log(1/d) ⇒ S(d) → 0 as d → 0⁺), `envelope_not_scale_invariant` (no limit a ≠ 0).
 - `Divergence.lean` (171 lines): 1-chains `Fin d × (Fin d → ℤ) → R` (R a commutative ring), `div F y = Σ_ν [F(ν, y − e_ν) − F(ν, y)]`, steps with the χ_Γ sign convention. `div_add`, `div_smul`, `div_sum` (linearity), `step_divergence`, `path_divergence` (δ_b − δ_a), `loop_divergence` (0), `profile_divergence` (path + Σ w_i · loop_i ⇒ δ_b − δ_a), `straight_isPath`, `P4_divergence` (identity (D) for the profile straight 0 → Le_μ plus loops 0 → d_i → d_i + Le_μ → Le_μ → 0).
@@ -246,41 +246,41 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 ## TheoremC1.lean, StripBound.lean (THEOREM2_PROOF_v4.md §5.3, B2_TWOSTEP.md §2, KAPPA_BOUNDED.md Prop. 4.1; SOURCES_HBETA_N3.md §4, SOURCES_HBETA_N3_VERIFY.md item 2); statement check: `VERIFY_TheoremC1.md`
 
-- `TheoremC1.lean` (59 lines): `c1_two_step` (D_{j+2} ≤ qD_j + S, q < 1 ⇒ D_n ≤ max(D_0, D_1) + S/(1−q), last line of Theorem C1), `c1_kappa_bound` (κ_j ≤ A + C·N_j ⇒ κ_j ≤ A + C(N_0 + Z/(1−q)); Prop. 4.1 is A = 0), `c1_window` (|β_j − β∞| ≤ κ_j g_j², κ_j ≤ κ_*, Σ_s g² ≤ |s|γ² ⇒ |Σ_s β − |s|β∞| ≤ κ_*|s|γ²).
+- `TheoremC1.lean` (59 lines): `c1_two_step` (D_{j+2} ≤ qD_j + S, q < 1 ⇒ D_n ≤ max(D_0, D_1) + S/(1−q), last line of L-011), `c1_kappa_bound` (κ_j ≤ A + C·N_j ⇒ κ_j ≤ A + C(N_0 + Z/(1−q)); Prop. 4.1 is A = 0), `c1_window` (|β_j − β∞| ≤ κ_j g_j², κ_j ≤ κ_*, Σ_s g² ≤ |s|γ² ⇒ |Σ_s β − |s|β∞| ≤ κ_*|s|γ²).
 - `StripBound.lean` (73 lines): `strip_bound_linear` (x_{k+1} ≤ (1+ε_k)x_k ⇒ x_n ≤ x_0 exp Σε), `strip_bound_quadratic` (x_{k+1} ≤ (1+ε_k)x_k + δ_k x_k², x_0 ≤ τ, Σε ≤ a, Σδ·2τ ≤ b, e^{a+b} ≤ 3/2 ⇒ x_n ≤ τe^{a+b} ≤ (3/2)τ for n ≤ N; bootstrap with ε′ = ε + (3/2)τδ).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all five. Not formalized: (H2) ⇒ q < 1 (numerical), the derivative estimate (2.2) of B2_TWOSTEP, Steps 0 and 2 of Lemma N3 (the inputs ε_k, δ_k). The N3 proof of the note uses the tangent recursion for v = du/dc, not the quadratic δw recursion (see VERIFY).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all five. Not formalized: R-025 (H2) ⇒ q < 1 (numerical), the derivative estimate (2.2) of B2_TWOSTEP, Steps 0 and 2 of L-232 (Lemma N3) (the inputs ε_k, δ_k). The N3 proof of the note uses the tangent recursion for v = du/dc, not the quadratic δw recursion (see VERIFY).
 
 ## CertBridge.lean (numerics/h1cert_cell.py `final_bound`, h1cert_cell2.py `cell_bound2`; VERIFY_BlockNorm gaps 3–4); statement check: `VERIFY_CertBridge.md`
 
-- `CertBridge.lean` (268 lines, no `sorry`): `entrywise_to_opnorm` (‖A_ij − B_ij‖ ≤ E_ij ⇒ ‖A − B‖₂ ≤ ‖E‖_F), `interval_to_opnorm` (real Alo ≤ A, A₀ ≤ Ahi ⇒ ‖A − A₀‖₂ ≤ ‖Ahi − Alo‖_F), `cell_invertible` (every A in the enclosure: invertible, ‖A⁻¹‖ ≤ nR/(1−η), ‖A⁻¹ − R‖ ≤ nR η/(1−η), via `oishi_rump_eta`), `norm_submatrix_le`, `rq` (Rayleigh numerator re⟪x, Gx⟫), `rq_weyl`, `pert_bound` (the `pert` term of `final_bound`), `cell_sup_bound` (composite: λ_max(Zᴴ T2 Z + γ′ w wᴴ) ≤ core + pert), `vertex_bound` (h1cert_cell2: max over 2^4 vertices + ‖r_G‖_F).
+- `CertBridge.lean` (268 lines, no `sorry`): `entrywise_to_opnorm` (‖A_ij − B_ij‖ ≤ E_ij ⇒ ‖A − B‖₂ ≤ ‖E‖_F), `interval_to_opnorm` (real Alo ≤ A, A₀ ≤ Ahi ⇒ ‖A − A₀‖₂ ≤ ‖Ahi − Alo‖_F), `cell_invertible` (every A in the enclosure: invertible, ‖A⁻¹‖ ≤ nR/(1−η), ‖A⁻¹ − R‖ ≤ nR η/(1−η), via `oishi_rump_eta`), `norm_submatrix_le`, `rq` (Rayleigh numerator re⟪x, Gx⟫), `rq_weyl`, `pert_bound` (the `pert` term of `final_bound`), `cell_sup_bound` (composite: λ_max(Zᴴ Target 2 Z + γ′ w wᴴ) ≤ core + pert), `vertex_bound` (h1cert_cell2: max over 2^4 vertices + ‖r_G‖_F).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all twelve printed theorems. Not formalized: correctness of the arb enclosures (P1′/P2/P3, P4), the Python implementation, ρ_1 = √λ_max(G)/L, and the `inv_or` η of h1cert_cell2.
 
-## Tower.lean (H1_ANALYTIC.md §2 (2.2), (I1), §3 Lemma T (a)–(c), (1.1); H1_ANALYTIC_VERIFY.md V1); statement check `VERIFY_Tower.md`
+## Tower.lean (H1_ANALYTIC.md §2 (2.2), (I1), §3 L-283 (Lemma T) (a)–(c), (1.1); H1_ANALYTIC_VERIFY.md V1); statement check `VERIFY_Tower.md`
 
-- `weighted_tower` (w ≥ 0, Σw = 1 ⇒ min d ≤ Σ w d ≤ max d), `weighted_tower_le` (0 ≤ s ≤ 1, 0 ≤ d ≤ b ⇒ Σ w s d ≤ Σ w b ≤ max b; Lemma T (b)), `towerSym` = (2.2) as a definition, `tower_bounds` (0 ≤ d^{ML}_μ ≤ L^{−2} max_l b_l).
+- `weighted_tower` (w ≥ 0, Σw = 1 ⇒ min d ≤ Σ w d ≤ max d), `weighted_tower_le` (0 ≤ s ≤ 1, 0 ≤ d ≤ b ⇒ Σ w s d ≤ Σ w b ≤ max b; L-283 (Lemma T) (b)), `towerSym` = (2.2) as a definition, `tower_bounds` (0 ≤ d^{ML}_μ ≤ L^{−2} max_l b_l).
 - `I1_compress`: P_⊥, P_l Hermitian, P_⊥E_lP_l = P_⊥diag(e_l) ⇒ P_⊥(s²Σ_l E_lP_l diag(d_l) P_lE_lᴴ)P_⊥ = P_⊥diag(s²Σ_l e_l d_l conj e_l)P_⊥ (the algebraic step of (I1)).
-- Rayleigh form (`rq` of CertBridge.lean): `rq_conj` (rq(ZᴴTZ)x = rq T (Zx)), `rayleigh_sum_bound`, `conj_rayleigh_bound` (λ_max(ZᴴTZ) ≤ ‖Z‖²t, t ≥ 0), `rank_one_bound` (λ_max(γwwᴴ) ≤ γ‖w‖²), `majorant_core` (λ_max(ZᴴT2Z + γwwᴴ) ≤ ‖Z‖²t + γ‖w‖²), `lemmaT_core` (T2 ≤ d_max T, ZᴴTZ = Z ⇒ λ_max(ZᴴT2Z) ≤ d_max‖Z‖, the form Lemma T uses).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: the Fourier/umklapp derivation of (2.2), Lemma S, the symbols a_ρ, σ, q̃ and the Fejér identity, Lemma T (d), Lemma Gauge, F_CS, and the branch-and-bound.
+- Rayleigh form (`rq` of CertBridge.lean): `rq_conj` (rq(ZᴴTZ)x = rq T (Zx)), `rayleigh_sum_bound`, `conj_rayleigh_bound` (λ_max(ZᴴTZ) ≤ ‖Z‖²t, t ≥ 0), `rank_one_bound` (λ_max(γwwᴴ) ≤ γ‖w‖²), `majorant_core` (λ_max(ZᴴT2Z + γwwᴴ) ≤ ‖Z‖²t + γ‖w‖²), `lemmaT_core` (Target 2 ≤ d_max T, ZᴴTZ = Z ⇒ λ_max(ZᴴT2Z) ≤ d_max‖Z‖, the form L-283 (Lemma T) uses).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: the Fourier/umklapp derivation of (2.2), L-264 (Lemma S), the symbols a_ρ, σ, q̃ and the Fejér identity, L-283 (Lemma T) (d), L-180 (Lemma Gauge), F_CS, and the branch-and-bound.
 
-## Schur.lean, CombesThomas.lean (SOURCES_LOC.md §3.3, SOURCES_S2_FORM.md §2, SOURCES_A3_SIGMA.md 2.6; SOURCES_A1_KERNEL.md §7 Lemma CT, SOURCES_A1_A4_VERIFY.md Part A §1); statement check `VERIFY_CombesThomas.md`
+## Schur.lean, CombesThomas.lean (SOURCES_LOC.md §3.3, SOURCES_S2_FORM.md §2, SOURCES_A3_SIGMA.md 2.6; SOURCES_A1_KERNEL.md §7 L-125 (Lemma CT), SOURCES_A1_A4_VERIFY.md Part A §1); statement check `VERIFY_CombesThomas.md`
 
 - `Schur.lean` (65 lines): spectral norm, 𝕜 = ℝ or ℂ. `schur_test_weighted` (weight p > 0, Σ_y |K x y| p y ≤ a p x, Σ_x |K x y| p x ≤ b p y, a, b ≥ 0 ⇒ ‖K‖₂ ≤ √(ab); Cauchy–Schwarz on each row, then swap sums), `schur_test` (p = 1: sup row sum ≤ a, sup column sum ≤ b).
 - `CombesThomas.lean` (161 lines): `norm_entry_le` (|A x y| ≤ ‖A‖₂), `coercive_inv` (c‖v‖² ≤ re⟪v, Av⟫, c > 0 ⇒ A invertible, ‖A⁻¹‖₂ ≤ 1/c), `combes_thomas` (N ≥ c in Rayleigh form, w > 0, ‖WNW⁻¹ − N‖₂ ≤ c/2 ⇒ N invertible, ‖(WNW⁻¹)⁻¹‖₂ ≤ 2/c, |N⁻¹ x y| ≤ (2/c) w y / w x), `combes_thomas_exp` (w x = e^{ε d(x,x₀)}: |N⁻¹ x y| ≤ (2/c) e^{ε(d(y,x₀) − d(x,x₀))}), `combes_thomas_decay` (hypothesis for every x₀, d(x,x) = 0 ⇒ |N⁻¹ x y| ≤ (2/c) e^{−ε d(x,y)}; take x₀ = y), `combes_thomas_schur` (row and column sums of |N x y|·|e^{ε(d(x,x₀) − d(y,x₀))} − 1| ≤ c/2 for every x₀ ⇒ the same decay, via `schur_test`).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all eight theorems. N need not be Hermitian; d need not be symmetric or satisfy the triangle inequality. Not formalized: the identification of N with N̂ = S^{−1/2}QGQ*S^{−1/2} on ℓ²(𝔅, μ), the μ-weights m(y,y′), the kernel bound (i) ⇒ row-sum bound via |e^x − 1| ≤ |x|e^{|x|} and Σ(δ/2), inputs (K) and (C) (walk expansion; (C) is open per SOURCES_A1_A4_VERIFY §3).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eight theorems. N need not be Hermitian; d need not be symmetric or satisfy the triangle inequality. Not formalized: the identification of N with N̂ = S^{−1/2}QGQ*S^{−1/2} on ℓ²(𝔅, μ), the μ-weights m(y,y′), the kernel bound (i) ⇒ row-sum bound via |e^x − 1| ≤ |x|e^{|x|} and Σ(δ/2), inputs (K) and H-057 (C) (walk expansion; H-057 (C) is open per SOURCES_A1_A4_VERIFY §3).
 
-## Interp.lean (SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md); statement check `VERIFY_Interp.md`
+## Interp.lean (SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), H-215 (K1); SOURCES_GGAIN_LF.md); statement check `VERIFY_Interp.md`
 
 - `multilinear_convex` (F affine in each coordinate, s ∈ [0,1]^S, S a Fintype ⇒ F(s) = Σ_T w_T(s)F(corner_T), w_T ≥ 0, Σ_T w_T = 1; F valued in any real vector space), `monomial_affine` (s ↦ Π_{c∈T} s_c is affine in each coordinate), via `convex_aux` (induction on the set of interpolated coordinates).
 - `window_perturb` (|β_j − β_j^0| ≤ C_βg_j, C_β ≥ 0, g_j ≤ γ, C_βγ ≤ b/4, reference window within 2R of b(K−k) ⇒ Σ_{k≤i<K} β_i ∈ [(3b/4)(K−k) − 2R, (5b/4)(K−k) + 2R]); hypothesis = conclusion of `window_of_partial`; `window_perturb_partial` composes the two.
-- `rescale_exp` (L d_{k+1} ≤ 2d_k, θκ ≥ 0 ⇒ e^{−θκd_k} ≤ e^{−θκ(L/2)d_{k+1}}), `rescale_rate` (κ > 0: θκL/2 ≥ (1+4β)κ ⇔ θL/2 ≥ 1+4β), `K1_iff` (θ, L > 0: θ(1−10δ)L/2 ≥ 1+4β ⇔ δ ≤ (1/10)(1 − 2(1+4β)/(θL))), `K1_numeric` (L = 13, θ = 1/2, β = 1/4: δ_θ = 1/26 ≤ 0.0385; δ = 0.03 satisfies (K1)).
+- `rescale_exp` (L d_{k+1} ≤ 2d_k, θκ ≥ 0 ⇒ e^{−θκd_k} ≤ e^{−θκ(L/2)d_{k+1}}), `rescale_rate` (κ > 0: θκL/2 ≥ (1+4β)κ ⇔ θL/2 ≥ 1+4β), `K1_iff` (θ, L > 0: θ(1−10δ)L/2 ≥ 1+4β ⇔ δ ≤ (1/10)(1 − 2(1+4β)/(θL))), `K1_numeric` (L = 13, θ = 1/2, β = 1/4: δ_θ = 1/26 ≤ 0.0385; δ = 0.03 satisfies H-215 (K1)).
 - `xexp_le` (θ > 0: x e^{−θx} ≤ 1/(θe), from Real.add_one_le_exp), `xexp_absorb` (θ > 0: x e^{−x} ≤ e^{−(1−θ)x}/(θe)).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: multilinearity of C_s itself (infinite absolutely convergent walk sum of monomials), the eigenvalue consequences (a)–(b) of A3_SIGMA 3.2, (K1)/(K2) of KUNIF, (K2) of KAPPA2, the x^{−1}x^A absorption (trivial).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: multilinearity of C_s itself (infinite absolutely convergent walk sum of monomials), the eigenvalue consequences (a)–(b) of A3_SIGMA 3.2, (K1)/(K2) of KUNIF, H-217 (K2) of KAPPA2, the x^{−1}x^A absorption (trivial).
 
-## Resolvent.lean (SOURCES_A3_SIGMA.md §4 4.2, 4.5; SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N); statement check `VERIFY_Resolvent.md`
+## Resolvent.lean (SOURCES_A3_SIGMA.md §4 4.2, 4.5; SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), L-225 (Lemma N)); statement check `VERIFY_Resolvent.md`
 
 - (a)–(c), spectral norm, 𝕜 = ℝ or ℂ, no symmetry assumed: `resolvent_identity` (C_1, C_s invertible ⇒ C_1⁻¹ − C_s⁻¹ = C_1⁻¹(C_s − C_1)C_s⁻¹), `resolvent_bound` (‖C_s − C_1‖ ≤ η ⇒ ‖C_1⁻¹ − C_s⁻¹‖ ≤ ‖C_1⁻¹‖η‖C_s⁻¹‖), `lower_transfer` (re⟪v, Av⟫ ≥ γ_0‖v‖², ‖A − B‖ ≤ ε ⇒ re⟪v, Bv⟫ ≥ (γ_0 − ε)‖v‖²), `neumann_perturb` (η‖C_1⁻¹‖ < 1 ⇒ C_s invertible, ‖C_s⁻¹‖ ≤ ‖C_1⁻¹‖/(1 − η‖C_1⁻¹‖), via `oishi_rump` with R = C_1⁻¹), `resolvent_chain` (‖C_1⁻¹‖ ≤ γ_1, 2γ_1η ≤ 1 ⇒ ‖C_s⁻¹‖ ≤ 2γ_1, ‖C_1⁻¹ − C_s⁻¹‖ ≤ 2γ_1²η, re⟪v, C_s⁻¹v⟫ ≥ (γ_0 − 2γ_1²η)‖v‖²).
 - (d), weighted row-sum norm `wnorm w K = sup_x Σ_y ‖K x y‖ w x y` for a two-point weight w > 0 with w(x,z) ≤ w(x,y)w(y,z) and w(x,x) ≤ 1: `wnorm_mul_le` (submultiplicative), `wnorm_neumann` (‖K‖_w < 1 ⇒ 1 − K invertible, ‖(1 − K)⁻¹‖_w ≤ 1/(1 − ‖K‖_w); proof by injectivity and X = 1 + KX, no series). `pw p x y = p y / p x` gives ‖K‖_p = sup_x Σ_y |K x y| p y/p x: `pw_props`, `pwnorm_mul_le`, `pwnorm_neumann`. The weight e^{ρ|x−y|} of A2_R2 §3 also satisfies the hypotheses.
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; now WeightedNorm.lean), the bound ‖T‖_ρ ≤ 2a²w of Lemma N (now WeightedNorm.lean), the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; now WeightedNorm.lean), the bound ‖T‖_ρ ≤ 2a²w of L-225 (Lemma N) (now WeightedNorm.lean), the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.
 
 ## SlabCounterexample.lean (SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1); statement check `VERIFY_SlabCounterexample.md`
 
@@ -307,19 +307,19 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - `affineEach_sum` (finite sums preserve `AffineEach`), `affineEach_smul_const` (f affine in each coordinate ⇒ s ↦ f(s)•v is), `walkSum_affineEach` (C(s) = Σ_ω s^ω T_ω is `AffineEach`, from `monomial_affine`), `walkSum_convex` (S a Fintype, s ∈ [0,1]^S ⇒ C(s) = Σ_U w_U(s) C(corner_U), w_U ≥ 0, Σ_U w_U = 1; `multilinear_convex` applied), `walkSum_corner` (C(corner_U) = Σ_{ω∈Ω, cubes ω ⊆ U} T_ω: the walks meeting {τ = 0} deleted).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all five. Not formalized: the infinite walk sum (limit under absolute convergence (W)), the identification of the [13] expansion of C^{(k)}(Z_0) with a walk sum with s-free T_ω, and the eigenvalue consequences (a)–(b) of 3.2.
 
-## KernelRow.lean (SOURCES_A1_KERNEL.md §7, proof of Lemma CT: kernel bound (i) ⇒ row/column sums; VERIFY_CombesThomas.md gap 2); statement check `VERIFY_KernelRow.md`
+## KernelRow.lean (SOURCES_A1_KERNEL.md §7, proof of L-125 (Lemma CT): kernel bound (i) ⇒ row/column sums; VERIFY_CombesThomas.md gap 2); statement check `VERIFY_KernelRow.md`
 
 - (a) `abs_exp_sub_one_le_mul_exp` (|e^x − 1| ≤ |x|e^{|x|}). (b) `abs_dist_sub_le` (|d(x,x₀) − d(y,x₀)| ≤ d(x,y) for symmetric d with the triangle inequality), `kernel_entry_le` (one entry), `kernel_row`, `kernel_col` (|N x y| ≤ C e^{−δd}, ε ≥ 0, w x = e^{εd(x,x₀)} ⇒ Σ_y |N x y|·|w x/w y − 1| ≤ Cε Σ_y d e^{−(δ−ε)d}, and the column version), `combes_thomas_kernel` (Σ_y d e^{−(δ−ε)d} ≤ S, CεS ≤ c/2 ⇒ conclusion of `combes_thomas_schur`). (c) `hasSum_int_abs_geometric` (Σ_{k∈ℤ} |k|r^{|k|} = 2r/(1−r)²), `fin_sum_le` (Fin n, d = |x − y|: Σ_y d e^{−ad} ≤ 2/(1 − e^{−a})²), `kernel_row_fin`, `kernel_col_fin` (row/column sums ≤ 2Cε/(1 − e^{−(δ−ε)})² for 0 < ε ≤ δ/2), `combes_thomas_fin` (chain: N ≥ c, 2Cε/(1 − e^{−(δ−ε)})² ≤ c/2 ⇒ N invertible, |N⁻¹ x y| ≤ (2/c)e^{−ε|x−y|}).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven theorems. Oleans: adds the closure of `Mathlib.Analysis.SpecificLimits.Normed`. Not formalized: the μ-weights m(y,y′), the bound on Σ(δ/2) for the block lattice 𝔅 (§5 (2.61); only Fin n is proved), the choice ε = min{δ/2, c_−/(2c_+Σ(δ/2))}, inputs (K) and (C).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven theorems. Oleans: adds the closure of `Mathlib.Analysis.SpecificLimits.Normed`. Not formalized: the μ-weights m(y,y′), the bound on Σ(δ/2) for the block lattice 𝔅 (§5 (2.61); only Fin n is proved), the choice ε = min{δ/2, c_−/(2c_+Σ(δ/2))}, inputs (K) and H-057 (C).
 
-## WeightedNorm.lean (SOURCES_A2_R2.md §3: ‖·‖_ρ = max(row, column), (N1), Lemma N; VERIFY_Resolvent.md (d) gaps 1–2); statement check `VERIFY_WeightedNorm.md`
+## WeightedNorm.lean (SOURCES_A2_R2.md §3: ‖·‖_ρ = max(row, column), (N1), L-225 (Lemma N); VERIFY_Resolvent.md (d) gaps 1–2); statement check `VERIFY_WeightedNorm.md`
 
 - Column half `cwnorm w K = sup_y Σ_x ‖K x y‖ w x y = wnorm (tw w) Kᵀ` (`tw w x y = w y x`; `cwnorm_eq` is rfl, `tw_props`). `cwnorm_mul_le` (from `wnorm_mul_le` and (KL)ᵀ = LᵀKᵀ), `pcwnorm_mul_le` (transposition of `pwnorm_mul_le`, `tw (pw p) = pw p⁻¹`).
 - `mnorm w K = max (wnorm w K) (cwnorm w K)` (= ‖K‖_ρ of A2_R2 for w = e^{ρd}, `expw_props`): a norm (`mnorm_nonneg`, `mnorm_add_le`, `mnorm_smul`, `mnorm_eq_zero`), ‖1‖ ≤ 1, submultiplicative (`mnorm_mul_le`, `mnorm_pow_le`), Neumann (`mnorm_neumann`: ‖K‖_ρ < 1 ⇒ ‖(1 − K)⁻¹‖_ρ ≤ 1/(1 − ‖K‖_ρ); column half via `wnorm_neumann` for Kᵀ).
 - `lemma_N` (A invertible, ‖A‖_ρ ≤ a, ‖W‖_ρ ≤ w, aw ≤ ½ ⇒ A⁻¹ − W invertible, (A⁻¹ − W)⁻¹ = A + T, ‖T‖_ρ ≤ 2a²w with T = (1 − AW)⁻¹(AW)A), `lemmaN_series` (‖T − Σ_{k<N}(AW)^{k+1}A‖_ρ ≤ 2a(aw)^{N+1}, via `neumann_partial`), `lemma_N_exp` (weight e^{ρd}).
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven printed theorems. Oleans: no new files (closure of Resolvent.lean). Not formalized: (N2)–(N4), S(t), the inputs (W), (K_A), (G), (S-rule), (κ) and the bounds on W_σ and A_Z that feed `ha`, `hw`; Proposition R2.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven printed theorems. Oleans: no new files (closure of Resolvent.lean). Not formalized: (N2)–(N4), S(t), the inputs (W), (K_A), (G), H-164 (S-rule), (κ) and the bounds on W_σ and A_Z that feed `ha`, `hw`; L-258.
 
-## BlockInequalityE.lean, CauchyPerturbation.lean (Lemma E of SOURCES_WC_EXPGAUGE.md §3.2; Lemma CP of SOURCES_WC_RESIDUE.md §6.1); statement checks `VERIFY_BlockInequalityE.md`, `VERIFY_CauchyPerturbation.md`
+## BlockInequalityE.lean, CauchyPerturbation.lean (L-153 (Lemma E) of SOURCES_WC_EXPGAUGE.md §3.2; L-122 (Lemma CP) of SOURCES_WC_RESIDUE.md §6.1); statement checks `VERIFY_BlockInequalityE.md`, `VERIFY_CauchyPerturbation.md`
 
 - Details, hypotheses beyond the printed ones, and not-formalized items are in the two VERIFY files. CauchyPerturbation.lean adds the closure of `Mathlib.Analysis.Complex.Liouville` (Bochner integral and Cauchy integral oleans, built locally).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all theorems of both files.

@@ -1,3 +1,4 @@
+# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 """t2_i3_qflux_check.py  (SOURCES_T2_I3 §8)
 Nonlinear Balaban averaging CMP 109 (0.4), SU(2), constant abelian flux in the (0,1) plane,
 symmetric gauge, midpoint fluctuation convention. Linearize by central finite differences,

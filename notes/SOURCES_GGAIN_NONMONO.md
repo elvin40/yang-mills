@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_GGAIN_NONMONO — lifting the monotone-history restriction on C_β
 
 Status: complete, unverified (2026-10-28). Task: lift the monotone-history restriction of GGAIN's C_β to the (4.1) segment and the (K1) point, or restate THEOREM2_PROOF_v4 §10 item 7 minimally.

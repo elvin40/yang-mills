@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_GAPRIME2 — the 2D gap (G_A′) for the charged SU(2) Wilson Hessian at constant flux
 
 Date: 2026-10-28. Item GAPRIME, DERIVE (second attempt; the first attempt, SOURCES_T2_GAPRIME.md, stopped after its header and plan).

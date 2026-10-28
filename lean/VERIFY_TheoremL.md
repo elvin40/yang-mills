@@ -1,1 +1,2 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # VERIFY: TheoremL.lean — 2026-10-28: `lake build` passes (TheoremL 3.7 s, full YmLean 3052 jobs), no sorry; axioms of block_ineq_E_exact, KbExact_le, HE_implies_E_cond, lemmaPexp_real, theoremL_real, theoremL, gammaExp_eq = [propext, Classical.choice, Quot.sound]; transcribes WC_FULL §2.1–2.8 (K_b = 8dL^d(1+16dc_𝒢) ≤ 64d³L^{2d+1}, exact step (d), Lemma G(c) as ‖𝒢B‖² ≤ 2c_𝒢‖B‖²) and §3.1–3.2 (bracket (8/9)(3/4)½ − 1/12 = ¼, needs c_G ≥ ½).

@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # SOURCES_T2_G2_VERIFY — independent check of SOURCES_T2_G2.md (item G2, VERIFY)
 
 Date: 2026-10-28. Status: complete.

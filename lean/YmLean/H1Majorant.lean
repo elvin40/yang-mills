@@ -17,7 +17,7 @@ open Real Finset
 
 namespace YmLean.H1M
 
-/-! ## Lemma T, trigonometric steps (H1_ANALYTIC §3 (b), (d)) -/
+/-! ## L-283 (Lemma T), trigonometric steps (H1_ANALYTIC §3 (b), (d)) -/
 
 /-- Concavity of `sin` on `[0, π]`: `t sin y ≤ sin (t y)` for `t ∈ [0, 1]`. -/
 theorem sin_mul_ge {t y : ℝ} (ht0 : 0 ≤ t) (ht1 : t ≤ 1) (hy0 : 0 ≤ y) (hy : y ≤ π) :
@@ -136,7 +136,7 @@ theorem cs_weighted {ι : Type*} (s : Finset ι) (W x : ι → ℝ) (hW : ∀ i 
   apply le_of_eq; field_simp
 
 /-- (6.1) factorization over directions: `Σ_ε Π_ρ w_ρ(ε_ρ) = Π_ρ Σ_b w_ρ(b)` (also the expectation
-of a product of independent coordinates in Lemma G). The certificate's rigor rests on bb_arb's
+of a product of independent coordinates in L-166 (Lemma G)). The certificate's rigor rests on bb_arb's
 interval evaluation of `B_L` over the cells. -/
 theorem sum_prod_factor {R : Type*} [CommSemiring R] {d m : ℕ} (w : Fin d → Fin m → R) :
     ∑ ε : Fin d → Fin m, ∏ ρ, w ρ (ε ρ) = ∏ ρ, ∑ b, w ρ b :=
@@ -185,7 +185,7 @@ theorem F_le_of_cs {K2 dlow SW SWx Sinv : ℝ} (hK2 : 0 < K2) (hSW : 0 < SW) (hS
   rw [div_le_div_iff₀ (by positivity) (by positivity)]
   nlinarith [mul_le_mul_of_nonneg_right hd hSWx.le]
 
-/-! ## Lemma G, the gauge row (H1_ANALYTIC §4) -/
+/-! ## L-166 (Lemma G), the gauge row (H1_ANALYTIC §4) -/
 
 /-- The axis variables before `ν` in the order `π` (`π.symm ρ` = position of axis `ρ`). -/
 def before (p : Equiv.Perm (Fin 4)) (ν : Fin 4) : Finset (Fin 4) :=
@@ -254,7 +254,7 @@ theorem g_norm_le {Φ α kh : ℂ} (hΦ : ‖Φ‖ ≤ 1) : ‖Φ * (α - 1) / k
   rw [norm_div, norm_mul, norm_sub_rev]
   exact div_le_div_of_nonneg_right (mul_le_of_le_one_left (norm_nonneg _) hΦ) (norm_nonneg _)
 
-/-! ## Lemma Gauge (H1_ANALYTIC §2 consequences, §5) -/
+/-! ## L-180 (Lemma Gauge) (H1_ANALYTIC §2 consequences, §5) -/
 
 /-- `k̂ = 1 − e^{ik}`. -/
 noncomputable def khat (k : ℝ) : ℂ := 1 - Complex.exp (k * Complex.I)
@@ -327,7 +327,7 @@ theorem gauge_G_le {c2 kh σ L τ : ℝ} (hkh : 0 < kh) (hσ : 0 < σ) (hL : 0 <
   have : (1 + τ) ^ 2 * (σ * kh ^ 4 * L ^ 2) = (kh * (1 + τ)) ^ 2 * (kh ^ 2 * (σ * L ^ 2)) := by ring
   rw [this]; exact mul_le_mul_of_nonneg_right hc (by positivity)
 
-/-! ## Lemma S: reduction to the sorted chamber (H1_ANALYTIC §6, H2_CERTIFY_P5_VERIFY P5) -/
+/-! ## L-264 (Lemma S): reduction to the sorted chamber (H1_ANALYTIC §6, H2_CERTIFY_P5_VERIFY P5) -/
 
 /-- Signed permutation `K ↦ (s_ρ K_{σ ρ})_ρ`, `s_ρ = −1` iff `s ρ`. -/
 def act (σ : Equiv.Perm (Fin 4)) (s : Fin 4 → Bool) (K : Fin 4 → ℝ) : Fin 4 → ℝ :=
@@ -366,7 +366,7 @@ noncomputable def fcsForm (S Sm r rm : Bool → ℝ → ℝ) (x : ℝ → ℝ) (
       ((∑ ρ, x |K ρ| * (if ρ = μ then rm (c ρ) |K ρ| else r (c ρ) |K ρ|)) / ∑ ρ, x |K ρ|) /
         ∏ ρ, (if ρ = μ then Sm (c ρ) |K ρ| else S (c ρ) |K ρ|)
 
-/-- Lemma S for F_CS: the (6.1) shape is invariant under the 384 signed permutations, for any
+/-- L-264 (Lemma S) for F_CS: the (6.1) shape is invariant under the 384 signed permutations, for any
 one-dimensional factors. The certificate's rigor rests on bb_arb's interval evaluation of `B_L`
 over the cells of the sorted chamber; this theorem justifies restricting to that chamber. -/
 theorem fcsForm_act (S Sm r rm : Bool → ℝ → ℝ) (x : ℝ → ℝ) (σ : Equiv.Perm (Fin 4))
@@ -396,12 +396,12 @@ noncomputable def fcsrm (c : Bool) (t : ℝ) : ℝ :=
 /-- F_CS of (6.1). -/
 noncomputable def FCS (K : Fin 4 → ℝ) : ℝ := fcsForm fcsS fcsSm fcsr fcsrm (fun t => t ^ 2) K
 
-/-- Lemma S for the explicit F_CS. The certificate's rigor rests on bb_arb's interval evaluation of
+/-- L-264 (Lemma S) for the explicit F_CS. The certificate's rigor rests on bb_arb's interval evaluation of
 `B_L` over the cells. -/
 theorem FCS_act (σ : Equiv.Perm (Fin 4)) (s : Fin 4 → Bool) (K : Fin 4 → ℝ) :
     FCS (act σ s K) = FCS K := fcsForm_act _ _ _ _ _ σ s K
 
-/-- Lemma S for the gauge part: every `l`-sum of (5.2) (`S_L`, `V`, `U`, and `|K̂|²`) has the shape
+/-- L-264 (Lemma S) for the gauge part: every `l`-sum of (5.2) (`S_L`, `V`, `U`, and `|K̂|²`) has the shape
 `Σ_{l ∈ {0..L−1}⁴} Ψ((l_ρ, |K_ρ|)_ρ)` with `Ψ` symmetric under permutations of the four pairs
 (products, sums and maxima over `ρ`). Such a sum is invariant under the 384 signed permutations.
 The sign part relies on evaluating at `|K_ρ|` (the chamber `[0, π]⁴` of bb_arb); the evenness of
@@ -422,7 +422,7 @@ noncomputable def SLsum (L : ℕ) (K : Fin 4 → ℝ) : ℝ :=
   (1 / (L : ℝ) ^ 2) * ∑ l : Fin 4 → Fin L,
     1 / ∑ ρ, 4 * sin ((|K ρ| + 2 * π * (l ρ : ℕ)) / (2 * L)) ^ 2
 
-/-- Lemma S for `S_L`. The certificate's rigor rests on bb_arb's interval evaluation of `B_L` over the cells. -/
+/-- L-264 (Lemma S) for `S_L`. The certificate's rigor rests on bb_arb's interval evaluation of `B_L` over the cells. -/
 theorem SLsum_act (L : ℕ) (σ : Equiv.Perm (Fin 4)) (s : Fin 4 → Bool) (K : Fin 4 → ℝ) :
     SLsum L (act σ s K) = SLsum L K := by
   unfold SLsum

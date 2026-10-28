@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # OpenAI 4D Yang-Mills / QCD / GUT existence claim: likely formal statement and gap list
 
 Date: 2026-10-27. Tags: **[SQ]** = source-quoted (exact words or a direct report from the cited source). **[INF]** = my inference. **[MEM]** = standard literature fact from memory, not re-fetched in this session.

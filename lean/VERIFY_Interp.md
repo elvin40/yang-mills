@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Statement check: Interp.lean
 
 Build: `lake build` from lean/ (Interp.lean builds in about 1 s). No `sorry`. Axioms of all ten printed theorems: `[propext, Classical.choice, Quot.sound]`.

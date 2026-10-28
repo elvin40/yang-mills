@@ -1,3 +1,4 @@
+IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
 # Euclidean (rotation) invariance of lattice-regularized constructive QFT: literature check
 
 Date: 2026-10-27. Scope: literature only, no derivations. Tags: [quoted] = verbatim text read from the primary source (or a named secondary source) during this check; [inference] = my reading, not stated in the source; [not found] = searched, no source located.
