@@ -91,3 +91,36 @@ Reading of the audit [I]. Every UV ingredient (scales k < K) is volume-uniform p
 - E3 [P, ASSEMBLY §2.8]. Linear identities pass to the limit.
 - Nontriviality [conditional]. ASSEMBLY §1.4 uses (NT) with remainder C(g_{k(d)}² + (d/ℓ)²) [V]; (d/ℓ)² → 0 as ℓ → ∞, which helps. (NT) must hold with constants uniform in ℓ; same status as (H-U∞).
 
+## 4. The real obstructions, and the proposed way around (a)
+
+### 4.1 (b) The coupling flow is ℓ-independent: a point in favour
+- The shooting uses the whole-lattice β_j (A15 small-field terms "coincide with the corresponding terms arising from the expressions defined on the whole lattice", CMP 119 p. 278, verified on the page image [V, SOURCES_D3W8_VERIFY S3 via KUNIF l. 17]). β_j is "a K-free, volume-free function of (j; g_0, …, g_{j−1})" [V, KUNIF §3.2].
+- So g_0(K, g) and the trajectory (g_k) do not depend on ℓ. Every torus with ℓ > 22M, ℓ even, uses the same bare coupling at the same ε [I, from V9 of §3.2].
+- On the torus, the β mismatch leaves only Balaban's irrelevant class when (Vol) holds (B8 replaced form, TRUST_LEDGER §4.2 item 8 [V]). (Vol) is a lower bound, so it becomes easier as ℓ grows.
+- Consequence [I]: the family {μ_{ε,ℓ}} is a two-parameter family with one bare coupling per ε. The double limit is well posed. No ℓ-dependent renormalization is needed.
+
+### 4.2 (a) ℓ-uniformity through the large-field region, and the conditional bound (CG)
+The issue. Target 2 gets locality of log Z[f] from the final Mayer expansion (FX). Its Steps A, C, D are UV statements with per-polymer constants (V7, V8). Step B expands the unit-scale integral on the whole ℓ⁴ lattice (V4). Uniformly in ℓ, Step B is an infrared statement. The global bound V1 alone gives |log Z[f]/Z[0]| = O(ℓ⁴), which is useless.
+
+The proposal: do not expand the unit scale at all; bound it by positivity.
+Definitions. Let 𝒜_K be Balaban's composed averaging, U ↦ V = 𝒜_K(U) ∈ SU(2)^{unit links of T⁴_ℓ}. Let ν_{ε,ℓ} := law of V under μ_{ε,ℓ}. It is a probability measure (marginal of a probability measure). Its density is Balaban's ρ_K, which he proves positive (CMP 122 I p. 176, quoted in SOURCES_D3 (B7) [V]). For a source f, put
+  Γ_f(V) := E_{μ_{ε,ℓ}}[ e^{ϕ(f) − W^{(2)}_ε[f]} | 𝒜_K(U) = V ],
+with W^{(2)} the nonlinear part of the contact functional W_ε (its linear part is fixed by the centring of φ_p) [I: normalization convention; any bounded linear part changes moments by binomial terms, cost 2^n].
+Then, exactly, Z_ε[f] e^{−W^{(2)}[f]}/Z_ε[0] = E_ν[Γ_f] (tower property; this is the conditional form of the identity Z_ε[f] = 𝒩_K e^{−W_K[f]} I_K[f] of SOURCES_D4D5 §3 (a) [V]).
+
+(CG) [statement; status: needs new work, §4.2 end]. There are r > 0, a ∈ [0, 1[, C_0 < ∞, K_0, such that for all K ≥ K_0, all even ℓ > 22M, all n, all real f_1, …, f_n ∈ C¹ with pairwise distance of supports ≥ σ ∈ [16ε, 1], all complex z with |z_i| ≤ r/N(f_i), and ALL unit-scale fields V:
+  |Γ_{Σ z_i f_i}(V)| ≤ Π_i exp(C_0 σ^{−a}(1 + |supp f_i|_1)),
+where |X|_1 := number of unit cubes meeting X. The constants do not depend on ℓ, K, or V.
+
+Lemma IV-M (moments from (CG)) [P]. Assume (CG). Then for the same f_i:
+  |⟨ϕ(f_1) ⋯ ϕ(f_n)⟩_{μ_{ε,ℓ}}| ≤ Π_i r^{−1} N(f_i) exp(C_0 σ^{−a}(1 + |supp f_i|_1)), uniformly in ε and ℓ.
+Proof. z ↦ E_ν[Γ_{Σ z_i f_i}] is holomorphic on the polydisc (finite-dimensional integral at fixed ε, ℓ; W^{(2)} holomorphic on the (FX2) polydisc [I; ASSEMBLY_N1 §1 item 3 states that disjoint supports keep the polydisc in the (FX2) domain, citing SOURCES_UN1 §2.4, not re-read here]). Since ν is a probability measure, |E_ν Γ| ≤ sup_V |Γ| ≤ the (CG) bound. W^{(2)} is local and additive over disjoint supports, so it contributes nothing to the mixed derivative ∂_{z_1}⋯∂_{z_n} at 0 [V: SOURCES_VERIFY item 5(a), quoted in ASSEMBLY §2.2]. That mixed derivative is ⟨Π ϕ(f_i)⟩. Cauchy's estimate on the polydisc of radii r/N(f_i) gives the bound. ∎
+Remarks. (i) No infrared input is used: the unit-scale theory enters only through "ν is a probability measure". This is where compactness of SU(2) does the work [I]. (ii) The bound is a MOMENT bound, polynomial in the support sizes, with no n! for separated products. Target 2's Gevrey factor came from cumulant combinatorics; moments avoid it. (iii) Lemma IV-M gives no decay in the separation. That is consistent: decay would be clustering (§4.3).
+
+Why (CG) is plausible, and what it needs [I].
+- Small-field part. In Balaban's sourced representation (D2, D3) the source enters as a local coupling w_k(x) = u_k(f(x)) and as local polymer activities (E-, R-, B-terms) [V, SOURCES_D3 l. 35]. So e^{W}ρ_K^f(V)/ρ_K(V) = exp(−A(w_K − u_K, V) + Σ_{X ∩ supp f ≠ ∅}(activity differences)). The first term is O(r) per plaquette of the unit lattice in supp f, since A_p(V) ∈ [0, 2] for every V. The sum is O(r) per unit cube by the per-polymer tree decay of FX Step D ("#{polymers touching a fixed m-cube, weighted by |activity|} ≤ Σ_s e^{c_0 s}e^{−κ′(s−1)} < ∞ uniformly" [V, SOURCES_FX §6.4]).
+- Large-field part. Balaban's positivity bound for the large-field operation, CMP 122 II (1.73)–(1.75): |T_k(X, (U, J))F| ≤ e^{3 sup|σ|} sup|F| · T_k(X, (U, 0))1, "All the expressions … are real, and the exponential density in the integral is positive" [V, quoted in SOURCES_D3 (B11)]. This is a ratio bound term by term. The per-cube source cost is dominated by Balaban's own large-field suppression (FX §6.3(a) [P there, given (1.79)–(1.80)]). So the sourced large-field gas is dominated by a positive gas with modified activities.
+- The step that is NOT written: at FIXED V, the ratio (sourced gas)/(unsourced gas) is exp(local sum near supp f), with constants independent of ℓ and V. This is FX Steps A, C, D re-run conditionally on the unit-scale field, i.e. without the final integration over V. It does not need Step B. The divergence of the expected number of fine large-field cubes (SOURCES_D4D5 §3.2(ii) [V]) must be handled exactly as in FX §6.4 (fine large-field regions renormalized into R-terms at their own scale), now pointwise in V.
+- Risk. The unit-scale large-field set (where V itself is large) is fixed when V is fixed; its characteristic functions do not depend on f. If some R-operation at the last step mixes V-large regions with supp f nonlocally, (CG) can fail there [I; not checked against CMP 122 II §1].
+Status of (CG): needs new mathematics, but of the kind the project has done (a re-organization of verified FX/D3 material), not an infrared problem [I].
+

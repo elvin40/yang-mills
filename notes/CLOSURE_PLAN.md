@@ -220,3 +220,48 @@ New conventions surfaced in Table 2 (proposed rows):
 - The two conventions of (C) (Table 4): U(c) = product of the L links on the straight segment c_− → c_+; axial contours Γ translation covariant. Both class (ii); consistency: a different U(c) adds ≤ O(L²) plaquettes per level and changes only constants (QE_KE_HQ_VERIFY (3)). S to write.
 
 Table 3 size: 42 rows + 6 proposed (C-new-1–4, the two (C) conventions) = 48. Class counts on C1–C42: (i) 26 (C2, C5, C6, C8, C11–C15, C17, C19–C21, C23–C30, C38–C42); (ii) 4 (C1, C34, C35, C37); (ii*) 3 (C9, C10, C16); (iii) 5 (C3, C4, C18, C22, C31); readings/sketches 4 (C7 closed, C32, C33, C36). (C24, C25 counted as (i).) Open consistency proofs: C1 (via B15), C10 (inside B11), C16 (ε_1 audit), C34, C35, and the four new (ii) rows.
+
+## 4. Table 4 — the (C) condition
+
+### 4.1 Exact statement, as used
+
+(C) for G (A1_WALK_FULL (H2) = IN3; WC_FULL C1; SOURCES_A1_KERNEL §8). Let N := QGQ* on ℋ = ℓ²(𝔅, μ), S := multiplication by (L^jη)², N̂ := S^{−1/2}NS^{−1/2}. Then
+ Re⟨u, N̂u⟩ ≥ c_−‖u‖² for all u ∈ ℋ, with c_− = 1/K_ext > 0,
+uniform in regular U ((3.35)–(3.36), Mα_0 ≤ a_0), j, k, η, {Ω_j}, and volume. Variational form: N̂ ≥ c_− iff every B on 𝔅 has a fine extension A with QA = B and ⟨A, G^{−1}A⟩ ≤ c_−^{−1}Σ_jΣ_{y∈Λ_j}(L^jη)^{d−2}|B(y)|².
+
+(C) for G_1 (WC_FULL C2 = A7 (C_1) = IN4; A1_KERNEL §9). N̂_1 := S^{−1/2}QG_1Q*S^{−1/2} ≥ c_{−,1} := 1/K_{ext,1} > 0, same uniformity, with c_{−,1} ≥ c_−(G)(1 − O(Mα_0)) ≥ ½c_− under the cap Mα_0 ≤ a_{−,1} = 1/(2C_{G1}) (canon B12c). The step uses G_1^{−1} = G^{−1} − Δ^{(2)}_π and |⟨A, Δ^{(2)}_πA⟩| ≤ O(Mα_0)·(form of (C)), "from (3.137) via Schur" [I].
+
+Status words in the ledger: "conditional: torus-side hypothesis + two unprinted conventions" (rows A1, A1w, A2, A7), plus one [I] for the G_1 step (SOURCES_A7_CDC_VERIFY (b2)).
+- Torus-side hypothesis (SOURCES_QE_INV_VERIFY, torus paragraph): the side of the periodic lattice, in units of the coarsest block present, is ≥ c·RM (precisely: > RM/(2L²) suffices for the far/near split at D = RM/(4L²)). Below that size, wrapped loops are "near", have no spanning surface, and the holonomy bound fails.
+- Convention 1: U(c) = product of the L level-(i−1) links on the straight segment c_− → c_+ (the x = c_− term of the corridor family).
+- Convention 2: axial contours are translation covariant, Γ_{y+Le, x+Le} = Γ_{y,x} + Le.
+- Unvalued constants: C′_1(d, L) (existence printed in CMP 98, value not), c_cone(d).
+
+Consumers: A1-W (H2) and Lemma LT(e) (local inverses by restriction); A1 kernel form via Lemma CT; WG-G1 (I6) through A1-W for G_1; WC_FULL C1–C2 ⇒ A2; A7 Lemma N (γ_1^N contains K_{ext,1}); A16 via A1-W for G_1; A8 via WC. So (C) sits under A1, A1w, A2, A7, A8, A16, and through them under G3, B13, A13's inputs. It is the most load-bearing single condition in the propagator layer.
+
+### 4.2 What is proved toward (C)
+
+| piece | status | source |
+|---|---|---|
+| Lemma CT (accretive Combes–Thomas, block inverse-closedness) | [P] + [L] (Lean combes_thomas, coercive_inv, schur_test, BlockSchur; no sorry) | SOURCES_A1_KERNEL §7; A1_WALK_FULL §3; lean/VERIFY_CombesThomas |
+| (K) kernel input for N | [R] to CMP 99 Thm 3.12 / Thm 3.3 | A1_KERNEL §8 |
+| (KE′): Q_j is the straight-line average; QH = I on all of 𝔅 incl. interfaces and Λ_0 | [V] by citation (CMP 95 (1.11)/(1.18), CMP 96 (2.7), (2.35), CMP 98 p. 27) | SOURCES_QE_KE_HQ + VERIFY |
+| (H_Q): k-step averaging vs axial transport, error ≤ c_Hα_0ℓ_j² | [P] (D_j induction = CMP 98 (144)–(145)) | SOURCES_QE_KE_HQ_VERIFY (3) |
+| Feasible extension 𝓔_U = dressed free minimizer; Neumann K_Q ≤ 2 for c_QMα_0 ≤ ¼ | [P] given (KE), (H_Q), torus side | SOURCES_QE_INV §4–§5 + VERIFY |
+| S2 for G: |⟨A, Δ′_πA⟩| ≤ C′_ΠMα_0(‖DA‖² + ‖D*A‖² + ‖ℓ^{−1}A‖²); G^{−1} ≤ (1 + O(Mα_0))(D*D + DD*) + O(Mα_0)ℓ^{−2} + Q*aQ | CLOSED [P], conditional on (KE′), QE_INV 5.1/5.3, a = 1 [I-a1], [I-geom] (now closed) | SOURCES_S2_FORM + VERIFY |
+| S2 for G_1 | CLOSED [P] on printed CMP 99 inputs + one I-conv (symmetry of Δ^{(2)}) | SOURCES_S2_G1_V7 + VERIFY |
+| A3: C*Δ_kC ≥ γ_0 = m_L/(48d²L^d) | FULL PROOF, verified | SOURCES_A3_GAMMA0_FULL + VERIFY. Note: A3 is a lower bound for a different operator (the constrained precision on unit fields, not N̂ on 𝔅). It shares the method (block Poincaré + covariant comparison) and the inputs R2, R3, R-Δ2, but it does not imply (C) |
+| Theorem L (WC_FULL §3): A_exp ≥ γ_exp = ¼γ_e | [P] | WC_FULL; again a different operator |
+| §7.3 partition bound Σφ² ≥ c(d) = 1 | [P] | A1_WALK_FULL_VERIFY |
+
+### 4.3 What a full proof of (C) still needs
+
+1. State the torus-side hypothesis as part of Theorem 2w's setting (or derive it). Check: Balaban's tori have side L^N ≥ L^{K + m_M + 2} (C31). In coarsest-block units the side is L^{N−j_max}. So the hypothesis reads L^{N − K} ≥ c·RM/L² at the coarsest scale K. C31 (Vol) already demands side > 22M final cells. Task: show C31 ⇒ the (C) torus side for the R used, or add the explicit inequality RM ≤ c′·22M (i.e. R ≤ const) to the canon. If R is a fixed (d, L) number (canon B10), C31 with a larger constant implies it. Effort S. This turns the "hypothesis" into one more line of C31, class (iii) mild, already stated.
+2. The two conventions: write the half-page lemma "any choice of U(c) inside the corridor family and any translation-covariant axial Γ changes c_− only by a factor (1 + O(L²α_0))". Effort S.
+3. The constants C′_1(d, L) and c_cone(d): existence suffices for (C) (only uniformity is needed). Value not needed. Closed by statement.
+4. QE_INV 5.1/5.3: the Neumann invertibility and the energy bound are [P]; 5.3 [I-c] (far thin loops, closes for RM ≥ 8 log L/δ_H) is a P-sketch. Write it out. Effort M, 3 h.
+5. [I-a1]: a = 1 in Thms 3.1/3.3. IMG check of CMP 99 Thm 3.1 statement (the averaging constant a). Effort S.
+6. The G_1 step: write the Schur bound |⟨A, Δ^{(2)}_πA⟩| ≤ C·Mα_0·(C)-form from (3.137) + symmetry (I-17, I-18). Effort S–M, 2 h.
+7. Assemble one theorem "(C) for G and G_1", paper grade, with a verifier. Effort L, ≈ 6 h (items 1–6 feed it).
+
+Total for (C): ≈ 15 agent-hours, about 8 agents. Risk: low for items 1–3, 5; medium for item 4 (multiscale far-loop geometry across Ω_j interfaces is where earlier gaps sat, e.g. the Q_95/Q_98 misreading).
