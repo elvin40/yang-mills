@@ -21,3 +21,5 @@ import YmLean.CombesThomas
 import YmLean.Interp
 import YmLean.Resolvent
 import YmLean.SlabCounterexample
+import YmLean.BlockSchur
+import YmLean.GaugeMin

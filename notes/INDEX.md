@@ -125,6 +125,60 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | ASSEMBLY_VERIFY.md | Verifier of ASSEMBLY. | report |
 | ASSEMBLY_N1.md | The bridge (B-N1): sourced cumulant bounds ⇒ (H-U). | verified (SOURCES_HHIST_N1_VERIFY; given (S); one constant slip) |
 | INBOX.md | Delta notes for Elvin (certification cost and launch decision). | report |
+| H1_ANALYTIC_VERIFY.md | H1_ANALYTIC_VERIFY — independent check of H1_ANALYTIC.md | verified |
+| H1_ANALYTIC_VERIFY2.md | H1_ANALYTIC_VERIFY2 — independent construction of H_j(K) (residue of H1_ANALYTIC_VERIFY item 6) | numerical |
+| H2_CERTIFY_L13_G1_VERIFY.md | H2_CERTIFY_L13_G1_VERIFY — pre-launch verification of the G1 certifier | numerical, unverified |
+| H2_CERTIFY_P5_VERIFY.md | H2 certify P5 verify | verified |
+| IDEAS_FABLE.md | IDEAS_FABLE.md — proof routes proposed by the coordinator for Opus to execute and verify (2026-10-28) | — |
+| PAPER_FIX_LOG.md | PAPER_FIX_LOG.md (2026-10-27) | — |
+| PAPER_INTRO_VERIFY.md | PAPER_INTRO_VERIFY.md | — |
+| PAPER_PASS5_VERIFY.md | Paper pass 5 verify (2026-10-27) | verified |
+| SOURCES_A1_A4_VERIFY.md | SOURCES_A1_A4_VERIFY — independent check of SOURCES_A1_KERNEL.md and SOURCES_A4_D189.md | verified |
+| SOURCES_A1_KERNEL.md | SOURCES_A1_KERNEL — attempt on trust-ledger item A1 (CMP 99 (3.132)) | proved |
+| SOURCES_A1_WALK.md | SOURCES_A1_WALK — A1 as a convergent walk expansion of (QGQ*)^{−1} with (3.108)-type bounds | — |
+| SOURCES_A1_WALK_VERIFY.md | SOURCES_A1_WALK verification (independent) | verified |
+| SOURCES_A2_R2.md | SOURCES_A2_R2 — proof of CMP 116 (2.16) for R_2 and R_3 from kernel decay (row A2) | proved, unverified |
+| SOURCES_A2_R2_VERIFY.md | SOURCES_A2_R2 verification (independent) | verified |
+| SOURCES_A3_GAMMA0.md | SOURCES_A3_GAMMA0 — attempt on trust-ledger item A3 (lower bound γ_0 > 0 on C*Δ_k(U)C) | — |
+| SOURCES_A3_GAMMA0_FULL.md | SOURCES_A3_GAMMA0_FULL — Theorem A3 (γ_0 > 0 for C*Δ_k(U)C) with a complete proof | proved |
+| SOURCES_A3_GAMMA0_FULL_VERIFY.md | SOURCES_A3_GAMMA0_FULL_VERIFY — independent check of SOURCES_A3_GAMMA0_FULL.md | verified |
+| SOURCES_A3_GAMMA0_VERIFY.md | SOURCES_A3_GAMMA0_VERIFY — independent check of SOURCES_A3_GAMMA0.md | verified |
+| SOURCES_A3_SIGMA.md | SOURCES_A3_SIGMA — lower bound for the s-localized covariance C^{(k)}(Z_0, s), s ∈ [0, 1] | proved |
+| SOURCES_A3_SIGMA_VERIFY.md | SOURCES_A3_SIGMA_VERIFY | verified |
+| SOURCES_A4_D189.md | SOURCES_A4_D189 — derivation attempt of CMP 102 (189) (trust-ledger A4), IDEAS_FABLE §I4 | — |
+| SOURCES_B21_S.md | SOURCES_B21_S — uniformity of (S) at small widths and at separation 16ε | proved, unverified |
+| SOURCES_B21_S_VERIFY.md | SOURCES_B21_S_VERIFY — independent check of SOURCES_B21_S.md | verified |
+| SOURCES_BOOKKEEPING.md | SOURCES_BOOKKEEPING — closing TRUST_LEDGER rows A9, A12, A20, A22 | proved |
+| SOURCES_EU_VERIFY.md | SOURCES_EU verification (independent) | verified |
+| SOURCES_G4.md | SOURCES_G4 — Lemma G4 repair (real-t Mayer form, per-vertex absorption) | — |
+| SOURCES_GGAIN_LF.md | SOURCES_GGAIN_LF — large-field half of (G-gain): uniform first g-derivative of the large-field step contributi | — |
+| SOURCES_GGAIN_LF_VERIFY.md | SOURCES_GGAIN_LF verification (independent) | verified |
+| SOURCES_GGAIN_NONMONO.md | SOURCES_GGAIN_NONMONO — lifting the monotone-history restriction on C_β | — |
+| SOURCES_GGAIN_NONMONO_VERIFY.md | SOURCES_GGAIN_NONMONO verification (2026-10-28) | — |
+| SOURCES_MA2_VERIFY.md | SOURCES_MA2_VERIFY.md | verified |
+| SOURCES_MC.md | SOURCES_MC — (M-C): the complex small-field step reduced to printed CMP 116 §2 conditions | — |
+| SOURCES_MC_VERIFY.md | SOURCES_MC verification (independent) | verified |
+| SOURCES_QE_INV.md | SOURCES_QE_INV — uniform bound on ‖(Q(U)𝓔_U)^{−1}‖ (2026-10-28) | proved, unverified |
+| SOURCES_QE_INV_VERIFY.md | SOURCES_QE_INV verification (independent) | — |
+| SOURCES_QE_KE_HQ.md | SOURCES_QE_KE_HQ — (KE′) at all scales and (H_Q) (2026-10-28) | proved |
+| SOURCES_QE_KE_HQ_VERIFY.md | SOURCES_QE_KE_HQ verification (2026-10-28) | verified |
+| SOURCES_S2_FORM.md | SOURCES_S2_FORM — S2: form bound for the dressed extension field | reduced |
+| SOURCES_S2_FORM_VERIFY.md | SOURCES_S2_FORM verification (independent) | verified |
+| SOURCES_S2_G1_V7.md | SOURCES_S2_G1_V7 — S2 for G_1 (form bound via Δ^{(2)}_π) and the A2 V7 repair with its two [I] items | proved, unverified |
+| SOURCES_S2_G1_V7_VERIFY.md | SOURCES_S2_G1_V7 — independent verification (2026-10-28) | verified |
+| SOURCES_T2_KAPPA2.md | SOURCES_T2_KAPPA2 — B22 (κ → κ/2 decay recovery) via rescaling (IDEAS_FABLE §I5) | proved, unverified |
+| SOURCES_T2_KAPPA2_VERIFY.md | SOURCES_T2_KAPPA2 verification (independent) | — |
+| SOURCES_T2_KUNIF.md | SOURCES_T2_KUNIF — item 9 (K-independence of β_j(g)) reduced to (H-hist) | — |
+| SOURCES_T2_KUNIF_VERIFY.md | SOURCES_T2_KUNIF verification | verified |
+| SOURCES_T2_S123.md | SOURCES_T2_S123 — spectral inputs (S1)–(S3) for (M_j) at fixed level j (DERIVE) | proved |
+| SOURCES_T2_S123_VERIFY.md | SOURCES_T2_S123_VERIFY — independent check of SOURCES_T2_S123.md (spectral inputs (S1)–(S3) for (M_j)) | not in PLAN |
+| SOURCES_T2_V1.md | SOURCES_T2_V1: order-g⁰ completeness of CMP 109 (1.3) — β_{j+1}(0) is the Maxwell coefficient of the per-step | not in PLAN |
+| SOURCES_UN1.md | SOURCES_UN1 — does (U) conflict with (B-N1)? | — |
+| SOURCES_UN1_VERIFY.md | SOURCES_UN1 verification (independent) | verified |
+| SOURCES_WG.md | SOURCES_WG — Neumann derivation of (W_G) for G and G_1 from G_0 | reduced |
+| SOURCES_WG_VERIFY.md | SOURCES_WG verification (independent) | verified |
+| TRUST_LEDGER.md | TRUST_LEDGER — statements the two targets rest on that are NOT proved in this repository | — |
+| TRUST_LEDGER_VERIFY.md | TRUST_LEDGER_VERIFY | verified |
 
 ## notes/reports/
 
@@ -143,15 +197,19 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SUSSMAN_ALPOGE_MAP.md | Map of the Sussman–Alpöge account against these notes; citation block §5.1. | unverified |
 | ETH_CONSTANTS.md | Explicit constants of the OpenAI "ETH is False" paper (side reading, not on the Yang–Mills path). | unverified |
 | LOCAL_SMOOTHING_READ.md | Close reading of the OpenAI local-smoothing paper (side reading, not on the Yang–Mills path). | unverified |
+| CITATION_CHECK.md | Citation resolution check | — |
+| CITATION_CHECK2.md | Citation resolution, pass 2 | — |
+| CITATION_FIX_LOG.md | Citation fix log | — |
+| PAPER_AUDIT_CLOUD.md | PAPER_AUDIT_CLOUD — status consistency of paper/*.tex against the ledger and the PLAN tail | — |
 
 ## lean/
 
-All 17 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
+All 25 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
 
 | File | Description | State |
 |---|---|---|
 | README.md | Toolchain, build, statement correspondence (one inventory table). | report |
-| YmLean.lean | Root file importing the 17 modules. | proved (builds) |
+| YmLean.lean | Root file importing the 25 modules. | proved (builds) |
 | YmLean/LemmaDPrime.lean | Lemma D′ (shooting), step 8. Statement check: VERIFY_LemmaDPrime.md. | proved in Lean, no sorry |
 | YmLean/LemmaDE.lean | Lemmas D and E. Statement check: none (note verifier LEMMAS_DE_VERIFY.md). | proved in Lean, no sorry |
 | YmLean/LemmaH.lean | Lemma H (Gronwall telescoping, column-sum form). Statement check: none (note verifier SOURCES_HBETA_VERIFY.md). | proved in Lean, no sorry |
@@ -169,12 +227,19 @@ All 17 Lean files build with no sorry (axioms propext, Classical.choice, Quot.so
 | YmLean/TheoremC1.lean | c1_two_step, c1_kappa_bound, c1_window. Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/StripBound.lean | strip_bound_linear, strip_bound_quadratic ((3/2)τ bootstrap of N3). Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/CertBridge.lean | Entrywise enclosure to certified cell bound (cell_sup_bound, vertex_bound). Statement check: VERIFY_CertBridge.md. | proved in Lean, no sorry |
-| VERIFY_*.md (7 files) | Statement checks of the Lean files against the notes. | report |
+| VERIFY_*.md (14 files) | Statement checks of the Lean files against the notes. | report |
 | lakefile.toml, lake-manifest.json, lean-toolchain | Build configuration (Lean v4.33.1, Mathlib v4.33.1). | report |
+| YmLean/CombesThomas.lean | Lemma CT (Combes–Thomas) of SOURCES_A1_KERNEL §7: coercive_inv, combes_thomas, combes_thomas_schur. Statement check: VERIFY_CombesThomas.md. | proved in Lean, no sorry |
+| YmLean/Interp.lean | Interpolation and rescaling lemmas (A3_SIGMA 3.2, T2_KUNIF (K3), T2_KAPPA2 (K1)). Statement check: VERIFY_Interp.md. | proved in Lean, no sorry |
+| YmLean/Resolvent.lean | Resolvent identity, Neumann perturbation, weighted row-sum norms (A3_SIGMA §4, A2_R2 §3). Statement check: VERIFY_Resolvent.md. | proved in Lean, no sorry |
+| YmLean/Schur.lean | Weighted Schur test (schur_test_weighted, schur_test). Statement check: VERIFY_CombesThomas.md. | proved in Lean, no sorry |
+| YmLean/Tower.lean | Tower property bounds for probability weights (min ≤ average ≤ max). Statement check: VERIFY_Tower.md. | proved in Lean, no sorry |
+| YmLean/BlockSchur.lean | Block-valued Schur test (block_row_le, block_schur_test). Statement check: VERIFY_BlockSchur.md. | proved in Lean, no sorry |
+| YmLean/GaugeMin.lean | Gauge condition of the constrained minimizer, A3_GAMMA0_FULL §5 Lemma 5 (lemma5, lemma5_full). Statement check: VERIFY_GaugeMin.md. | proved in Lean, no sorry |
 
 ## paper/
 
-One article, 51 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
+One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
 
 | File | Description | State |
 |---|---|---|
@@ -183,12 +248,14 @@ One article, 51 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | setup.tex | §2: notation, range of L, renamed labels. | unverified |
 | theorem2.tex | §3: coupling flow, shooting lemmas, Routes K and B, (B2) and (H2). | reduced; Route K reduction verified |
 | assembly.tex | §4: finite-torus existence and the dependency table. | verified (ASSEMBLY_VERIFY corrections applied); table follows PLAN.md |
+| sources.tex | §5: the sources block, one paragraph per verified SOURCES_*.md (statement, method, verifier grade, open inputs). | unverified |
 | numerics.tex | §5: numerical results, verified point enclosure at L = 3. | unverified (floating point; one enclosure verified) |
 | remains.tex | §6: open items. | unverified |
 | appendix.tex | A Lean inventory, B status ledger, C label map, D revision history. | unverified |
 | refs.bib, refs_check.md | Bibliography (entries from memory except the Sussman–Alpöge block) and its check list. | unverified |
 | README.md | Build instructions and label map. | report |
-| main.pdf | Compiled 51-page paper. | unverified |
+| main.pdf | Compiled 87-page paper. | unverified |
+| refs_check_cloud.md | Online check of every refs.bib entry (2026-10-28): all CONFIRMED, none corrected. | — |
 
 ## numerics/
 
@@ -202,3 +269,4 @@ One article, 51 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | h1cert_cell.py, h1cert_cell2.py | Rigorous cell enclosures of ρ_1 (cell2 = 16-vertex Taylor-1 form); formulas bridged in Lean CertBridge.lean. | enclosures validated at L = 3, 5, 13; code not independently verified |
 | h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | unverified; nothing launched |
 | h1cert_L{3,5,7,9,11,13}_{j1,j2,jinf}.json, h1cert_prof_L{11,13}.npz | Stored scan data. | report |
+| H1_OTHER_L.md | H1_OTHER_L — the (H1_L) majorant certificate at L = 15, 17, 21 (2026-10-28) | numerical |

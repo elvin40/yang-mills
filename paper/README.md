@@ -1,6 +1,6 @@
 # paper/
 
-One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (61 pages).
+One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (87 pages).
 
 Build:
 
@@ -13,10 +13,11 @@ Files, in reading order:
 - `setup.tex`: §2. Notation for both parts (lattice, range of L, coupling sequence, one-loop symbols, observables and Schwinger functions) and the three renamed labels.
 - `theorem2.tex`: §3. The coupling flow: what Theorem 1 needs, Theorem 2w, shooting lemmas, one-loop sums, Routes K and B, (B2) and (H2), conclusion, convergence route.
 - `assembly.tex`: §4. Finite-torus existence: meaning of "exists", (H-U), Theorems 4.x, proofs modulo blocks, the dependency table (the single status table; it also holds the hypothesis rows of v4 §10), non-results, verifier corrections.
-- `numerics.tex`: §5. All numerical results: β_1(0), later increments, Route K quantities, (H2) values, one-step values, the verified point enclosure at L = 3, certification plan.
-- `remains.tex`: §6. Open items grouped as certification, fixed-level and structural inputs, sources block, verification debt, stronger statements. Item labels H, 1–13, B1–B8 are those of v4 §10.
+- `sources.tex`: §5. The sources block: one paragraph (statement, method, verifier grade, open inputs) per SOURCES_*.md with a verifier file, grouped as in TRUST_LEDGER §4.
+- `numerics.tex`: §6. All numerical results: β_1(0), later increments, Route K quantities, (H2) values, one-step values, the verified point enclosure at L = 3, certification plan.
+- `remains.tex`: §7. Open items grouped as certification, fixed-level and structural inputs, sources block, verification debt, stronger statements. Item labels H, 1–13, B1–B8 are those of v4 §10.
 - `appendix.tex`: A Lean inventory; B index of results by status (the v4 ledger); C label map; D revision history (v2→v3, v3→v4, the Route B tag decision, assembly correction 5, and this merge).
-- `refs.bib`, `refs_check.md`: bibliography and its check record.
+- `refs.bib`, `refs_check.md`, `refs_check_cloud.md`: bibliography and its check records.
 
 Label map (Appendix C): every numbered environment carries its project name in its title, for example "Theorem 3.8 (Theorem K)". Appendix C maps each numbered result to its name and source file, and maps every section number of v4 and ASSEMBLY.md to the new section. Project files still use the old numbers.
 

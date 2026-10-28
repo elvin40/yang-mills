@@ -17,7 +17,7 @@ Statement check of the Lean theorems against the Markdown sources. Build: `lake 
 | SOURCES_A3_SIGMA.md 2.6: ‖D(s)‖ ≤ ‖K‖ ≤ S_d ε_W | `schur_test` with a = b = S_d ε_W (row and column sums of the majorant ε_W e^{−½δ_0|·|}) |
 | SOURCES_A1_KERNEL.md §7 Schur step with weights (μ(y″)/μ(y))^{1/2} | `schur_test_weighted K p`: `p > 0`, `Σ_y ‖K x y‖ p y ≤ a p x`, `Σ_x ‖K x y‖ p x ≤ b p y` ⇒ `‖K‖ ≤ √(a * b)` |
 
-Hypotheses `0 ≤ a`, `0 ≤ b` are assumed. They follow from the row-sum bounds when ι is nonempty. The Schur test of the note is stated on block-valued kernels (T_{yy′} operators, ‖T_{yy′}‖ in place of |K|) in SOURCES_S2_FORM Π3. The Lean statement is scalar. The block version follows by applying `schur_test` to the scalar majorant ‖T_{yy′}‖ and the triangle inequality for the block sum; this step is NOT formalized.
+Hypotheses `0 ≤ a`, `0 ≤ b` are assumed. They follow from the row-sum bounds when ι is nonempty. The Schur test of the note is stated on block-valued kernels (T_{yy′} operators, ‖T_{yy′}‖ in place of |K|) in SOURCES_S2_FORM Π3. The Lean statement is scalar. The block version follows by applying `schur_test` to the scalar majorant ‖T_{yy′}‖ and the triangle inequality for the block sum; this step is formalized in BlockSchur.lean (`block_schur_test`, VERIFY_BlockSchur.md).
 
 ## Lemma CT (CombesThomas.lean)
 
@@ -41,4 +41,4 @@ Weaker than the note (the Lean hypotheses are weaker): N need not be self-adjoin
 2. The step from kernel bound (i) |n̂| ≤ c_+ m e^{−δd} to the row/column-sum hypothesis of `combes_thomas_schur`: |e^x − 1| ≤ |x|e^{|x|}, the triangle inequality |f(y) − f(y″)| ≤ d(y,y″), ε ≤ δ/2, and the sum Σ(δ/2) with ε c_+ Σ(δ/2) ≤ c_−/2.
 3. The inputs (K) (kernel decay of QGQ* from CMP 99 Thm 3.3/3.12, walk expansion) and (C) (N̂ ≥ c_−; open per SOURCES_A1_A4_VERIFY.md §3, grade "UNSUPPORTED").
 4. Theorem A1′ (§10) arithmetic: the rescaling by s(y) = (L^jη)² and the conversion to Balaban's two-scale form.
-5. Block-valued Schur test (see above).
+5. Block-valued Schur test: formalized in BlockSchur.lean (see above).

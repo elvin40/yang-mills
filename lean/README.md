@@ -1,4 +1,4 @@
-# Lean 4 formalization (23 files)
+# Lean 4 formalization (25 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -27,13 +27,15 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `Interp.lean` | `multilinear_convex`, `monomial_affine`, `window_perturb`, `window_perturb_partial`, `rescale_exp`, `rescale_rate`, `K1_iff`, `K1_numeric`, `xexp_le`, `xexp_absorb` (212) | SOURCES_A3_SIGMA.md 3.2; SOURCES_T2_KUNIF.md 5.2 (K3); SOURCES_T2_KAPPA2.md (2.36), (K1); SOURCES_GGAIN_LF.md | VERIFY_Interp.md |
 | `Resolvent.lean` | `resolvent_identity`, `resolvent_bound`, `lower_transfer`, `neumann_perturb`, `resolvent_chain`, `wnorm_mul_le`, `wnorm_neumann`, `pwnorm_mul_le`, `pwnorm_neumann` (210) | SOURCES_A3_SIGMA.md §4 (4.2, 4.5); SOURCES_A3_SIGMA_VERIFY.md V5, grade 2; SOURCES_A2_R2.md §3 (N1), Lemma N | VERIFY_Resolvent.md |
 | `SlabCounterexample.lean` | `slab_fails_10`, `slab_fails_11`, `slab_fails_12`, `slab_fails_13`, `slab_fails`, `lambda1_lt` (116) | SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1 §1–§3 | VERIFY_SlabCounterexample.md |
+| `BlockSchur.lean` | `block_row_le`, `block_schur_test` (77) | SOURCES_A1_KERNEL.md §7; SOURCES_S2_FORM.md §2 Π3; VERIFY_CombesThomas.md item 5 | VERIFY_BlockSchur.md |
+| `GaugeMin.lean` | `posdef_inv`, `inv_symm`, `inv_posdef`, `qf_add`, `schur_surjective`, `variational`, `constrMin_existsUnique`, `gauge_min_abstract`, `lemma5_step`, `lemma5`, `lemma5_full` (219 lines) | SOURCES_A3_GAMMA0_FULL.md §5 (5.1, Lemma 5); SOURCES_A3_GAMMA0_FULL_VERIFY.md §4 (1) | VERIFY_GaugeMin.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 23 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 25 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -263,3 +265,16 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - d = 2 slice, f : ℕ → ℝ on the path {0, …, L−1}: `slabForm L f` = q_L(f) = L^{−1}Σ_{i<L−1}(f_{i+1} − f_i)² + L^{−3}(Σf)² (= L·K(f) of VERIFY §1), `sqNorm L f` = Σf², `SlabFails L f` := Σf = 0 ∧ q_L(f) < L^{−2}‖f‖² (Balaban's p. 245 claim violated).
 - `slab_fails_10` … `slab_fails_13`: explicit witnesses f_i = round(1000·cos(π(i+½)/L))/1000 (`milli c10` …), checked by `norm_num`. `slab_fails` (L ≥ 10 ⇒ ∃ f, SlabFails L f): cosine witnesses for L = 10, 11, linear f_i = 2i − (L−1) for L ≥ 12 (Rayleigh 12/(L(L+1)) < 1/L). `lambda1_lt`: 2(1 − cos(π/L)) < 1/L for L ≥ 10 (cos x ≥ 1 − x²/2, π < 3.15).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all six. Not formalized: the exact spectrum L^{−1}min(λ_1, 1/L), the bound (3.1) for L ≤ 9, d ≥ 3, the failure of (2.127) and the corrected (3.2)/(3.4). The mean coefficient is L^{−3} (source), not the brief's L^{−2}; the witnesses have Σf = 0, so both give the same theorems. Oleans: closure of `Mathlib.Analysis.Real.Pi.Bounds` (112 files from the local cache, no download).
+
+## BlockSchur.lean (SOURCES_A1_KERNEL.md §7, SOURCES_S2_FORM.md §2 Π3; VERIFY_CombesThomas.md item 5); statement check `VERIFY_BlockSchur.md`
+
+- Spectral norm, 𝕜 = ℝ or ℂ, K : Matrix (ι × Fin n) (ι × Fin n) 𝕜, blocks `blk K x y` = K_{xy}, k(x,y) = ‖K_{xy}‖₂. `block_row_le` (‖(Kv)_x‖ ≤ Σ_y k(x,y)‖v_y‖), `block_schur_test` (p > 0, Σ_y k(x,y)p(y) ≤ a p(x), Σ_x k(x,y)p(x) ≤ b p(y), a, b ≥ 0 ⇒ ‖K‖₂ ≤ √(ab); `schur_test_weighted` on the real matrix k applied to w_y = ‖v_y‖).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for both. Not formalized: unequal block sizes (zero-padding), infinite/continuum blocks, the μ-weights of A1 §7.
+
+## GaugeMin.lean (SOURCES_A3_GAMMA0_FULL.md §5: 5.1 and Lemma 5; SOURCES_A3_GAMMA0_FULL_VERIFY.md §4 item (1)); statement check `VERIFY_GaugeMin.md`
+
+- Finite-dimensional inner product spaces `V`, `W`, `U` over `𝕜` = ℝ or ℂ. `G₁` symmetric with `re⟪x, G₁x⟫ > 0` for `x ≠ 0`; `K` its two-sided inverse (`posdef_inv`: exists). `qf K A = re⟪A, K A⟫` = ⟨A, G_1^{−1}A⟩. `IsConstrMin K Q B A`: `A` minimizes `qf K` on `{Q A = B}`.
+- 5.1: `inv_symm`, `inv_posdef` (G_1^{−1} symmetric, > 0), `qf_add` (cross term), `schur_surjective` (Q onto ⇒ QG₁Q* onto), `variational` (A_* = G₁Q*w with QG₁Q*w = B: q(A) = q(A_*) + q(A − A_*) on extensions, q(A_*) = re⟪B, w⟫), `constrMin_existsUnique`.
+- 5.2: `gauge_min_abstract` (A′ = A − DG′RD*A keeps QA_* and lowers q by ‖RD*A_*‖² ⇒ RD*A_* = 0), `lemma5_step` (steps (i)–(iii) from (F1) `∀ μ ∈ N, Q (D μ) = 0`, (F3) `G′RD*A ∈ N` and `RD*A′ = 0`, (F4) `qf K A = Φ(A′) + ‖RD*A‖² + a‖QA‖²`, `Φ` arbitrary), `lemma5` (any constrained minimizer: RD*A_* = 0, A_*′ = A_*, q(A_*) = Φ(A_*) + a‖B‖²), `lemma5_full` (5.1 + 5.2).
+- `R` is any linear map (the orthogonal-projection property is not used); (F2) is not used; `lemma5` needs no positivity.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven. Not formalized: the derivation of (F1), (F3), (F4) from CMP 99, R1, the second equality of (5.1), 5.3.
