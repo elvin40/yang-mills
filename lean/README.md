@@ -1,4 +1,4 @@
-# Lean 4 formalization (25 files)
+# Lean 4 formalization (31 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -29,13 +29,18 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `SlabCounterexample.lean` | `slab_fails_10`, `slab_fails_11`, `slab_fails_12`, `slab_fails_13`, `slab_fails`, `lambda1_lt` (116) | SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1 §1–§3 | VERIFY_SlabCounterexample.md |
 | `BlockSchur.lean` | `block_row_le`, `block_schur_test` (77) | SOURCES_A1_KERNEL.md §7; SOURCES_S2_FORM.md §2 Π3; VERIFY_CombesThomas.md item 5 | VERIFY_BlockSchur.md |
 | `GaugeMin.lean` | `posdef_inv`, `inv_symm`, `inv_posdef`, `qf_add`, `schur_surjective`, `variational`, `constrMin_existsUnique`, `gauge_min_abstract`, `lemma5_step`, `lemma5`, `lemma5_full` (219 lines) | SOURCES_A3_GAMMA0_FULL.md §5 (5.1, Lemma 5); SOURCES_A3_GAMMA0_FULL_VERIFY.md §4 (1) | VERIFY_GaugeMin.md |
+| `WalkAffine.lean` | `affineEach_sum`, `affineEach_smul_const`, `walkSum_affineEach`, `walkSum_convex`, `walkSum_corner` (70) | SOURCES_A3_SIGMA.md 3.2; VERIFY_Interp.md §1 gap | VERIFY_WalkAffine.md |
+| `KernelRow.lean` | `abs_exp_sub_one_le_mul_exp`, `abs_dist_sub_le`, `kernel_entry_le`, `kernel_row`, `kernel_col`, `combes_thomas_kernel`, `hasSum_int_abs_geometric`, `fin_sum_le`, `kernel_row_fin`, `kernel_col_fin`, `combes_thomas_fin` (184) | SOURCES_A1_KERNEL.md §7 (proof of Lemma CT, (i) ⇒ ‖E‖ ≤ c_−/2); VERIFY_CombesThomas.md gap 2 | VERIFY_KernelRow.md |
+| `WeightedNorm.lean` | `cwnorm_mul_le`, `pcwnorm_mul_le`, `mnorm_add_le`, `mnorm_smul`, `mnorm_eq_zero`, `mnorm_mul_le`, `mnorm_neumann`, `expw_props`, `lemma_N`, `lemmaN_series`, `lemma_N_exp` (254) | SOURCES_A2_R2.md §3 (‖·‖_ρ, (N1), Lemma N); VERIFY_Resolvent.md (d) gaps 1–2 | VERIFY_WeightedNorm.md |
+| `BlockInequalityE.lean` | `smallness_iff`, `block_f_real`, `block_e_real`, `block_Kb_real`, `Kb_le`, `cG_ge_one`, `block_ineq_E_axial`, `block_ineq_E` (200) | SOURCES_WC_EXPGAUGE.md §1.5, §2, §3.2; SOURCES_WC_EXPGAUGE_VERIFY.md V1–V4 | VERIFY_BlockInequalityE.md |
+| `CauchyPerturbation.lean` | `cp_increment`, `cauchy_perturbation`, `lemma_CP`, `cauchy_perturbation_op` (169) | SOURCES_WC_RESIDUE.md §4, §6.1; SOURCES_WC_RESIDUE_VERIFY.md Q5–Q6 | VERIFY_CauchyPerturbation.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 25 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 31 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -258,7 +263,7 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 - (a)–(c), spectral norm, 𝕜 = ℝ or ℂ, no symmetry assumed: `resolvent_identity` (C_1, C_s invertible ⇒ C_1⁻¹ − C_s⁻¹ = C_1⁻¹(C_s − C_1)C_s⁻¹), `resolvent_bound` (‖C_s − C_1‖ ≤ η ⇒ ‖C_1⁻¹ − C_s⁻¹‖ ≤ ‖C_1⁻¹‖η‖C_s⁻¹‖), `lower_transfer` (re⟪v, Av⟫ ≥ γ_0‖v‖², ‖A − B‖ ≤ ε ⇒ re⟪v, Bv⟫ ≥ (γ_0 − ε)‖v‖²), `neumann_perturb` (η‖C_1⁻¹‖ < 1 ⇒ C_s invertible, ‖C_s⁻¹‖ ≤ ‖C_1⁻¹‖/(1 − η‖C_1⁻¹‖), via `oishi_rump` with R = C_1⁻¹), `resolvent_chain` (‖C_1⁻¹‖ ≤ γ_1, 2γ_1η ≤ 1 ⇒ ‖C_s⁻¹‖ ≤ 2γ_1, ‖C_1⁻¹ − C_s⁻¹‖ ≤ 2γ_1²η, re⟪v, C_s⁻¹v⟫ ≥ (γ_0 − 2γ_1²η)‖v‖²).
 - (d), weighted row-sum norm `wnorm w K = sup_x Σ_y ‖K x y‖ w x y` for a two-point weight w > 0 with w(x,z) ≤ w(x,y)w(y,z) and w(x,x) ≤ 1: `wnorm_mul_le` (submultiplicative), `wnorm_neumann` (‖K‖_w < 1 ⇒ 1 − K invertible, ‖(1 − K)⁻¹‖_w ≤ 1/(1 − ‖K‖_w); proof by injectivity and X = 1 + KX, no series). `pw p x y = p y / p x` gives ‖K‖_p = sup_x Σ_y |K x y| p y/p x: `pw_props`, `pwnorm_mul_le`, `pwnorm_neumann`. The weight e^{ρ|x−y|} of A2_R2 §3 also satisfies the hypotheses.
-- Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; no lemma), the bound ‖T‖_ρ ≤ 2a²w of Lemma N, the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all nine printed theorems. Oleans: no new files (closure of CertBridge.lean). Not formalized: the column half of A2_R2's ‖·‖_ρ = max(row, column) (it is the row norm of Kᵀ with the transposed weight; now WeightedNorm.lean), the bound ‖T‖_ρ ≤ 2a²w of Lemma N (now WeightedNorm.lean), the inputs (W), (K_A), (G) of A2_R2, and the bound ‖C_1⁻¹‖ ≤ γ_1 from the compression γ_0 ≤ Z_0AZ_0 ≤ γ_1.
 
 ## SlabCounterexample.lean (SOURCES_A3_GAMMA0_FULL.md §3.2–§3.3 Remark; SOURCES_A3_GAMMA0_FULL_VERIFY.md Part 1); statement check `VERIFY_SlabCounterexample.md`
 
@@ -278,3 +283,26 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - 5.2: `gauge_min_abstract` (A′ = A − DG′RD*A keeps QA_* and lowers q by ‖RD*A_*‖² ⇒ RD*A_* = 0), `lemma5_step` (steps (i)–(iii) from (F1) `∀ μ ∈ N, Q (D μ) = 0`, (F3) `G′RD*A ∈ N` and `RD*A′ = 0`, (F4) `qf K A = Φ(A′) + ‖RD*A‖² + a‖QA‖²`, `Φ` arbitrary), `lemma5` (any constrained minimizer: RD*A_* = 0, A_*′ = A_*, q(A_*) = Φ(A_*) + a‖B‖²), `lemma5_full` (5.1 + 5.2).
 - `R` is any linear map (the orthogonal-projection property is not used); (F2) is not used; `lemma5` needs no positivity.
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven. Not formalized: the derivation of (F1), (F3), (F4) from CMP 99, R1, the second equality of (5.1), 5.3.
+
+## WalkAffine.lean (SOURCES_A3_SIGMA.md 3.2; the gap "C_s affine in each coordinate" of VERIFY_Interp.md §1); statement check `VERIFY_WalkAffine.md`
+
+- `walkWeight cubes s ω = Π_{c∈cubes ω} s c`, `walkSum Ω cubes T s = Σ_{ω∈Ω} walkWeight cubes s ω • T ω` for a Finset Ω of walks and T valued in any real vector space (matrices, kernels).
+- `affineEach_sum` (finite sums preserve `AffineEach`), `affineEach_smul_const` (f affine in each coordinate ⇒ s ↦ f(s)•v is), `walkSum_affineEach` (C(s) = Σ_ω s^ω T_ω is `AffineEach`, from `monomial_affine`), `walkSum_convex` (S a Fintype, s ∈ [0,1]^S ⇒ C(s) = Σ_U w_U(s) C(corner_U), w_U ≥ 0, Σ_U w_U = 1; `multilinear_convex` applied), `walkSum_corner` (C(corner_U) = Σ_{ω∈Ω, cubes ω ⊆ U} T_ω: the walks meeting {τ = 0} deleted).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all five. Not formalized: the infinite walk sum (limit under absolute convergence (W)), the identification of the [13] expansion of C^{(k)}(Z_0) with a walk sum with s-free T_ω, and the eigenvalue consequences (a)–(b) of 3.2.
+
+## KernelRow.lean (SOURCES_A1_KERNEL.md §7, proof of Lemma CT: kernel bound (i) ⇒ row/column sums; VERIFY_CombesThomas.md gap 2); statement check `VERIFY_KernelRow.md`
+
+- (a) `abs_exp_sub_one_le_mul_exp` (|e^x − 1| ≤ |x|e^{|x|}). (b) `abs_dist_sub_le` (|d(x,x₀) − d(y,x₀)| ≤ d(x,y) for symmetric d with the triangle inequality), `kernel_entry_le` (one entry), `kernel_row`, `kernel_col` (|N x y| ≤ C e^{−δd}, ε ≥ 0, w x = e^{εd(x,x₀)} ⇒ Σ_y |N x y|·|w x/w y − 1| ≤ Cε Σ_y d e^{−(δ−ε)d}, and the column version), `combes_thomas_kernel` (Σ_y d e^{−(δ−ε)d} ≤ S, CεS ≤ c/2 ⇒ conclusion of `combes_thomas_schur`). (c) `hasSum_int_abs_geometric` (Σ_{k∈ℤ} |k|r^{|k|} = 2r/(1−r)²), `fin_sum_le` (Fin n, d = |x − y|: Σ_y d e^{−ad} ≤ 2/(1 − e^{−a})²), `kernel_row_fin`, `kernel_col_fin` (row/column sums ≤ 2Cε/(1 − e^{−(δ−ε)})² for 0 < ε ≤ δ/2), `combes_thomas_fin` (chain: N ≥ c, 2Cε/(1 − e^{−(δ−ε)})² ≤ c/2 ⇒ N invertible, |N⁻¹ x y| ≤ (2/c)e^{−ε|x−y|}).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven theorems. Oleans: adds the closure of `Mathlib.Analysis.SpecificLimits.Normed`. Not formalized: the μ-weights m(y,y′), the bound on Σ(δ/2) for the block lattice 𝔅 (§5 (2.61); only Fin n is proved), the choice ε = min{δ/2, c_−/(2c_+Σ(δ/2))}, inputs (K) and (C).
+
+## WeightedNorm.lean (SOURCES_A2_R2.md §3: ‖·‖_ρ = max(row, column), (N1), Lemma N; VERIFY_Resolvent.md (d) gaps 1–2); statement check `VERIFY_WeightedNorm.md`
+
+- Column half `cwnorm w K = sup_y Σ_x ‖K x y‖ w x y = wnorm (tw w) Kᵀ` (`tw w x y = w y x`; `cwnorm_eq` is rfl, `tw_props`). `cwnorm_mul_le` (from `wnorm_mul_le` and (KL)ᵀ = LᵀKᵀ), `pcwnorm_mul_le` (transposition of `pwnorm_mul_le`, `tw (pw p) = pw p⁻¹`).
+- `mnorm w K = max (wnorm w K) (cwnorm w K)` (= ‖K‖_ρ of A2_R2 for w = e^{ρd}, `expw_props`): a norm (`mnorm_nonneg`, `mnorm_add_le`, `mnorm_smul`, `mnorm_eq_zero`), ‖1‖ ≤ 1, submultiplicative (`mnorm_mul_le`, `mnorm_pow_le`), Neumann (`mnorm_neumann`: ‖K‖_ρ < 1 ⇒ ‖(1 − K)⁻¹‖_ρ ≤ 1/(1 − ‖K‖_ρ); column half via `wnorm_neumann` for Kᵀ).
+- `lemma_N` (A invertible, ‖A‖_ρ ≤ a, ‖W‖_ρ ≤ w, aw ≤ ½ ⇒ A⁻¹ − W invertible, (A⁻¹ − W)⁻¹ = A + T, ‖T‖_ρ ≤ 2a²w with T = (1 − AW)⁻¹(AW)A), `lemmaN_series` (‖T − Σ_{k<N}(AW)^{k+1}A‖_ρ ≤ 2a(aw)^{N+1}, via `neumann_partial`), `lemma_N_exp` (weight e^{ρd}).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eleven printed theorems. Oleans: no new files (closure of Resolvent.lean). Not formalized: (N2)–(N4), S(t), the inputs (W), (K_A), (G), (S-rule), (κ) and the bounds on W_σ and A_Z that feed `ha`, `hw`; Proposition R2.
+
+## BlockInequalityE.lean, CauchyPerturbation.lean (Lemma E of SOURCES_WC_EXPGAUGE.md §3.2; Lemma CP of SOURCES_WC_RESIDUE.md §6.1); statement checks `VERIFY_BlockInequalityE.md`, `VERIFY_CauchyPerturbation.md`
+
+- Details, hypotheses beyond the printed ones, and not-formalized items are in the two VERIFY files. CauchyPerturbation.lean adds the closure of `Mathlib.Analysis.Complex.Liouville` (Bochner integral and Cauchy integral oleans, built locally).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all theorems of both files.
