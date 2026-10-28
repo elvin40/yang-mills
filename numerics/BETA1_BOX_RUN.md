@@ -49,3 +49,45 @@ Extrapolate Lp → 0 per L in (Lp)^2 (the plane-wave bias is O((Lp)^2), NUMERICS
 ## Comparison target
 
 c = 11N²/(12π²) = 0.3715 per unit log L (N = 2). Verifier values: β_1 = 0.74233 at L = 5, 0.79024 at L = 7. The slope test is β_1(9) − β_1(7) against 0.3715 · log(9/7) = 0.0934, and β_1(11) − β_1(9) against 0.3715 · log(11/9) = 0.0745.
+
+## GPU venv (2026-10-28)
+
+### Box check
+
+- WSL sees the GPU: `nvidia-smi` shows an RTX 4090 Laptop GPU, 16376 MiB, driver 595.79, CUDA 13.2. No other GPU process ran.
+- Disk: 865 GB free on /. RAM: 19 GB total, ~7 GB available (h1cert2, ymbetafp2, and beta1 active, load average ~43).
+- CPU venv ~/ym/.venv: Python 3.12.3 (/usr/bin/python3.12), jax 0.12.0.1 (CPU only), numpy 2.5.4, scipy 1.18.1.
+- The code already sets `jax_enable_x64` (umk_beta1.py line 12, ym_momentum.py, and ym_oneloop.py). No change was necessary for float64.
+
+### Install
+
+- New venv ~/ym/.venv_gpu: `uv venv --python /usr/bin/python3.12`, then `uv pip install "jax[cuda12]==0.12.0.1" numpy==2.5.4 scipy==1.18.1`. The versions are identical to the CPU venv. The CUDA 12.9 and cuDNN 9.27 pip wheels came with the extra. I did not install a system CUDA toolkit.
+- The transient unit `gpuvenv` ran the install (script ~/ym/install_gpu.sh, log ~/ym/install_gpu.log).
+
+### Tests
+
+- Unit `gputest` (~/ym/gpu_test.py): `jax.devices()` = `[CudaDevice(id=0)]`, backend gpu. 4096² matmul: float32 28.9 TFLOP/s, float64 0.67 TFLOP/s. That is the consumer-card FP64 rate, about 1/43 of FP32.
+- The default XLA preallocation (75% of 16 GB) fails under WSL with CUDA_ERROR_OUT_OF_MEMORY retries. XLA then falls back to smaller sizes and still runs. The GPU launcher sets `XLA_PYTHON_CLIENT_PREALLOCATE=false` to stop this.
+- Smoke test, unit `beta1gpusmoke`, directory ~/ym/beta1/smoke_gpu/, command `t2_fstepb_verify_umk.py 5 12 1.0` in .venv_gpu:
+  β = 0.7681671498542626. The Mac gives 0.7681671498542636 and the CPU box run gives 0.7681671498542639. The differences are ~1e-15, so the GPU result is correct.
+  Timing: total 319 s, profile 94.5 s, K loop 224.6 s for 1512 K points = 0.149 s per K = **238 µs per (K, l) block**. The CPU figure is 543 µs, so the GPU is **2.3× faster** at the same box load. (The profile build took 94 s here and 59 s on CPU. The profile is numpy plus small jax ops, and the box load is noisy.)
+- Only `taus` (the batched 12×12 complex inverses and traces) runs in jax. `csym` (FFT + einsum), `hess_sym`, and `dsym` stay in numpy on the loaded CPU. The ~238 µs that remains is mostly that numpy part. To make the run faster than 2.3×, someone must port `Umk.terms` to jax. That is a code change and I did not do it.
+- Batch sizes are similar across L (bs = 20000 // L^4 → 32 × 625, 3 × 6561, and 1 × 14641 matrices per call), so the L = 5 rate should transfer to L = 9 and 11. This is an assumption and I did not measure it.
+
+### Expected runtime on GPU (at 238 µs, present load)
+
+| point | blocks | CPU 543 µs | GPU 238 µs |
+|---|---|---|---|
+| L = 9, Ng = 24, one Lp | 1.47e8 | 22 h | 9.7 h |
+| L = 11, Ng = 28, one Lp | 6.03e8 | 91 h | 40 h |
+| all six points | 2.25e9 | ~340 h | ~150 h (6.2 days) |
+
+### Restart command (NOT executed; for the coordinator)
+
+GPU launcher: ~/ym/beta1/run_beta1_gpu.sh. It is a sed copy of run_beta1.sh with one difference: it activates .venv_gpu and exports `XLA_PYTHON_CLIENT_PREALLOCATE=false`. It uses the same results/ directory, the same JSON and .partial.npz names, and the same log. I did not edit run_beta1.sh because the running unit reads it.
+Inside WSL:
+
+    sudo -n systemctl stop beta1
+    sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu.sh
+
+The in-flight point (L = 9, Ng = 24, Lp = 1.0, started 14:08) resumes from its .partial.npz and loses at most 60 s of K loop plus the profile build. Never run the CPU and GPU launchers at the same time: they write the same files. Small risk: if the stop lands during `np.savez`, the .partial.npz can be truncated. In that case, delete that .partial.npz and the point restarts from zero.

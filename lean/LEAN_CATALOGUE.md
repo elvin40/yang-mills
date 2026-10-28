@@ -130,7 +130,7 @@ Not Mathlib-ready in MJ_REST: the per-cell trace τ on the twisted group algebra
 
 ### 5a. SOURCES_A15_WHOLE.md (Proposition A15-N, counting)
 
-- W1. Orbit unfolding: for f summable on ℤ⁴ and the fundamental domain F_N of NℤN⁴, Σ_{x∈F_N}Σ_{γ∈Nℤ⁴}f(x̂+γ) = Σ_{y∈ℤ⁴}f(y); and |x̂ + γ|_∞ ≥ N/2 for x̂ ∈ F_N, γ ≠ 0. §6.2 proof of (i), (ii). `Equiv` ℤ⁴ ≃ F_N × ℤ⁴ (`Int.emod`/`Int.ediv` per coordinate), `tsum_sigma'`, `Summable`. Medium.
+- W1. Orbit unfolding: for f summable on ℤ⁴ and the fundamental domain F_N of Nℤ⁴, Σ_{x∈F_N}Σ_{γ∈Nℤ⁴}f(x̂+γ) = Σ_{y∈ℤ⁴}f(y); and |x̂ + γ|_∞ ≥ N/2 for x̂ ∈ F_N, γ ≠ 0. §6.2 proof of (i), (ii). `Equiv` ℤ⁴ ≃ F_N × ℤ⁴ (`Int.emod`/`Int.ediv` per coordinate), `tsum_sigma'`, `Summable`. Medium.
 - W2. Tail sums of (iii): with |Π^N(0,x) − ΣΠ^∞(0,x̂+γ)| ≤ Ce^{−mN} and |Π^∞(0,y)| ≤ Ce^{−m|y|}: the three moment errors are ≤ CN⁶e^{−mN}, CN⁶e^{−mN/2}, CN⁵e^{−mN/2}. §6.2 (iii). Finite sums over F_N (|F_N| = N⁴), `tsum` of e^{−m|y|}|y|² over |y| ≥ N/2 on ℤ⁴ (bound by a shell count Σ_{r≥R} c r³·r²e^{−mr}). Medium. Load-bearing: it is the coefficient-level bound |β_j^{(N)} − β_j| ≤ C_jN_j⁶e^{−m_jN_j/2}.
 - W3. (iv) second difference: for an even analytic (or C⁴) function F on ℝ², the centred second difference at step p = 2π/N misses −∂₁∂₂F(0) by O(p²); sampling errors divided by p₁p₂ cost N². §6.2 (iv). `taylor_mean_remainder_lagrange`, `iteratedDeriv`. Easy–medium.
 - W4. (Cnt) polymer counting Σ_{X∋b, d(X)≥n}e^{−κd(X)}|X|² ≤ C₀e^{−(κ−κ₀)n}, κ₀ = κ₀(d,L): number of connected trees of length n through b is ≤ e^{κ₀n}. §6.1. Lattice-animal / tree counting on ℤ^d. Hard (Mathlib has no lattice-animal bounds; a direct count of rooted trees by Prüfer/DFS code is medium–hard). Prose otherwise. Also used by Balaban everywhere ("standard tree counting").
@@ -180,3 +180,48 @@ Canon acyclicity: covered (CanonOrder.lean). Monotonicity of the k-map, ε^a-map
 - K7. (2.46) sweep sum: u_j ≥ u_n/2 + β(n−j) for j ≤ n ⇒ Σ_{j≤n}u_j^{−κ₀/2} ≤ (u_n/2)^{−κ₀/2} + (u_n/2)^{1−κ₀/2}/(β(κ₀/2 − 1)) ≤ C(β,κ₀)g_n^{κ₀−2} < g_n^{κ₀−6} once Cg_n⁴ < 1. §4 #16. `AntitoneOn.sum_le_integral`, `integral_rpow`. Easy–medium. Load-bearing: it is the precise form of "the sum over j is controlled by g_j^{κ₀}".
 - K8. Side conditions S1–S11 cycle check: covered by CanonOrder (the S-lines are in Part B). Not listed again.
 
+## 8. Certificates (H1_ANALYTIC.md: Lemmas S, G, T, Gauge, F_CS)
+
+Covered already: Tower.lean (Lemma T (a)–(c), tower identity (2.2) as algebra, (I1) compression, rank-one and Rayleigh bounds). The README lists as not formalized: the Fourier derivation of (2.2), Lemma S, the symbols and the Fejér identity, Lemma T (d), Lemma Gauge, F_CS, branch-and-bound.
+
+- C1. Fejér identity: Σ_{l=0}^{L−1}a_l² = 1 with a_l = sin(K/2)/(L sin((K + 2πl)/(2L))), hence Σ_lΠ_ρa_{l,ρ}² = 1. §2. Parseval on ℤ/Lℤ for the block-average symbol (`ZMod.dft`, `Finset.sum` of geometric sums), or the identity Σ_l csc²(x + πl/L) = L²csc²(Lx). Medium. Load-bearing: it is the normalization in Lemma T (b) (Σ_m c_m ≤ 1).
+- C2. Lemma S symbol facts: S_L(k) = Σ_{t<L}e^{ikt} has |S_L(k_{l,μ})| = |sin(K_μ/2)/sin(k_{l,μ}/2)| = L|a_{l,μ}|; e^{iLk_{l,μ}} = e^{iK_μ}; S_L(k_μ)k̂_μ = K̂_μ with k̂ = 1 − e^{ik} convention; hence P_⊥E_l = P_⊥E⁰_l and P_⊥E⁰_lP_l = P_⊥E⁰_l. §2. `geom_sum_eq`, `Complex.exp` algebra, `Complex.abs` of 1 − e^{iθ}. Easy–medium. Prose: the path form of F^μ (H2_CERTIFY_P4 Step 1), i.e. that the averaging operator is this sum.
+- C3. Lemma G closed form: averaging over the 24 axis orders and independent uniform coordinates d_ρ ∈ {−h..h} gives g_{l,ν} = Φ_ν(α_ν − 1)/k̂_ν with Φ_ν = ¼Σ_{r=0}^{3}e_r({α_ρ}_{ρ≠ν})/C(3,r); |Φ_ν| ≤ 1; |g_{l,ν}| ≤ |1 − α_ν|/|k̂_{l,ν}|. §4. `Equiv.Perm (Fin 4)`, `Finset.esymm`, expectation of a product of independent coordinates as a product of finite sums (`Finset.prod_sum`). Medium. Makes the averaging operator explicit in Lean (the code check 3·10⁻¹³ becomes a theorem).
+- C4. Lemma T (b), (d) real analysis: N|sin(q/(2N))| ≤ |q|/2 and σ^N ≥ σ^∞ termwise; 2M sin(x/(2M)) ≥ 2 sin(x/2) ≥ x·sinc(π/(2L)) for |x| ≤ π/L; d_max ≤ L²γ_L/|K|²; min_μ d^{ML}_μ ≥ d̲(K) (truncation of a nonnegative sum). §3 (b), (d). `Real.sin_le`, concavity of sin on [0, π] (`Real.sin_ge`/`strictConcaveOn_sin_Icc`), `Finset.sum_le_tsum`. Easy–medium. Closes Lemma T (d) (README gap).
+- C5. Lemma Gauge (5.2): |c†b| ≤ |K̂|b(1 + τ) with τ = (V + |K̂|U)/d̲ from ‖Z‖ ≤ 1/d̲, |n_K†diag(v)P_⊥| ≤ max|v_μ|, ‖E⁰_l‖ = LΠ|a_{l,ρ}|max|a_{l,μ}|; then G ≤ (1+τ)²/(|K̂|²S_L) and ρ₁² ≤ B_L(K) (5.3). §5. Matrix norm inequalities (diagonal, projection, rank-one: Tower.`rank_one_bound`). Medium. Load-bearing: (5.3) is the analytic bound the H1 certificate evaluates.
+- C6. F_CS (6.1): Cauchy–Schwarz Σ_εW_ε/|q_ε|² ≥ (ΣW_ε)²/ΣW_ε|q_ε|²; factorization over ρ because σ_{ε,ρ}²q_{ε,ρ}² = 4sin²(K_ρ/2) for every ε; F ≤ F_CS. §6. `Finset.inner_mul_le_norm_mul_norm`, `Finset.prod_sum`. Easy–medium.
+- C7. γ₁₃ = sinc(π/26)⁻² ≤ 1.00487 and the margin arithmetic (sup B₁₃ ≤ 9.9995 < 10). §3, §7. `Real.pi_gt_d6`, `Real.sin_gt_sub_cube`. Easy.
+- C8. The branch-and-bound enclosure sup_{chamber}B₁₃(K) ≤ 9.9995 itself (25,169 boxes, float64 without directed rounding). §6–7. Needs certified interval arithmetic for sin/cos in Lean (not in Mathlib; would need a reflective interval library or per-box `norm_num` certificates, ~10⁴ goals). Not Mathlib-ready. The CertBridge pattern applies: formalize "box enclosures ⇒ sup bound" with the enclosures as hypotheses (easy), and leave enclosure correctness to a re-run with directed rounding (python-flint/arb), as CertBridge does for h1cert.
+
+## 9. What stays prose after every item above (by chain)
+
+- Propagator chain: Balaban's walk expansions of G₀, G′, C′ (CMP 99 Thms 3.7–3.10, printed sketches); the lower bound (C) (c_−, conditional row A1); CMP 96 Lemma 2.1 (c₁ uniform under (2.59)); the multiscale block lattice 𝔅, its norms (3.42)–(3.47), Q and S; regular backgrounds; CMP 99 Thm 3.4 (complex continuation); the cube geometry [I] items (C_𝒟, O2 Lipschitz across scales, Q-locality, C^{(2)}-locality). Lean can hold every algebraic and counting step of A1-W, WG, WC around these inputs, with the inputs as hypotheses on abstract finite metric spaces.
+- Fixed-level chain: the per-cell trace on the twisted group algebra and its spectral calculus; S123 Thms 3.3, 3.4, 4.3 (operator bounds of the actual Hessian); Lemma 1.1 of GAPRIME2 (A′ from the Wilson action via BCH); gauge covariance of the averaging. Lean can hold the abstract magnetic-shift algebra (GAPRIME2 §2–3) and the scalar inequalities of MJ_REST.
+- History chain: Balaban's pointwise chain (2.15)–(2.25); the Kotecký–Preiss derivative step (N3); Theorem SM and HHOL holomorphy; N6, A15 (β from the small-field chain); (FI), (U), (Det) of LOC; the large-field level-set Jacobian (open even in prose). Lean can hold (Q)'s matrix analysis, Lemma P, the G3 one-bond calculus, and the abstract recursions.
+- Constants/canon: nothing analytic remains; the residue is the [I] readings of Balaban's pages (r > 1, φ_j ∈ [0,1], the forms of p₁(g)), which are reading questions, not proofs.
+- Certificates: the float64 branch-and-bound (C8) and the arb enclosures behind CertBridge; the identification of the averaging operator with Balaban's (H2_CERTIFY_P4 path form, R1).
+
+## 10. Wave 2: eight items, in priority order
+
+Criteria: load-bearing in the ledger; a verifier corrected a number or a form there; feasible in Mathlib now.
+
+1. H2 + H3 — (Q) constants: Λ = 2(1 + h + h²G_Γ²) and c_− ≥ (γ₁^N + ε₀)⁻¹ from block inverses and operator monotonicity of inversion; plus N1 (Lemma N two-sided form). Medium. Supplies the open "(Q)/c_−" of B13 and HHIST2 R3; turns the 2000-instance numpy check into a theorem; the B-block formula was corrected once.
+2. P7 + P8 + P1 + P2/P3 — A1-W core: conjugation norm (N0)–(N4), μ-weighted (N3) and Lemma CT, the parametrix identity N̂P = I + ΣF_□, and the Neumann/right-inverse step. Medium. Closes VERIFY_CombesThomas items 1–2 and makes the algebraic skeleton of A1-W (and of WC §5.3, Lemma AW) Lean.
+3. P9 = P22 (+ P10) — Lemma C (concatenation) on an abstract finite metric space with μ-weights, path length as an infimum, subadditivity at junctions, θ-split, c₁ as hypothesis. Medium–hard. Used by A1-W, WG-G, WG-G1, WC W_N, and A15-LOC; the "no step lost at a junction" point is exactly what a formal proof checks.
+4. P16 + P18 + P21 — WG algebra: Lemma N (finite-volume Neumann, both for G and G₁), the expansions of Λ, Λ_D, Λ*, Λ_D*, Δ_π^{(2)}, and the WG-1 exponent arithmetic (10 and 12 junction steps). Easy–medium. Earlier sources miscounted the P-chain twice (M⁻³, M⁻⁸).
+5. M4 + M2 (+ M5 Hermitian/skew parts) — Lemma P (a)–(b) and Lemma D arithmetic with the corrected e^{−ε″M/8}; antisymmetric-part determinant facts of §6.4. Easy–medium. Gives the reference measure positivity (row A8) its finite-dimensional core.
+6. P34 + P25 — Theorem L assembly (γ_exp = γ_e/4) and the sharper Lemma E constant K_b = 8dL^d(1 + 16dc_𝒢) (re-instance BlockInequalityE with the exact step (d)). Easy. Makes WC (i) Lean modulo the A3 inputs.
+7. K4 + K5 + K6 + K7 — the A11 chain: (2.6)–(2.9) with side conditions (T1)–(T4), the class-(b) corollaries, and the (2.46) sweep sum. Easy–medium. Every "similar inequality" of CMP 119 reduces to these; they connect LemmaDDoublePrime (c′) to Balaban's (2.6).
+8. G1 + G2 + G3 (stretch G4) — GAPRIME2 magnetic-shift algebra: Lemma 2.1, regularity Lemmas 2.2–2.3, ladder commutator Lemma 3.1, Lemma 3.2; then the scalar Landau gap via an approximate-eigenvector form. Medium (G1–G3), hard (G4). The (G_A′) gap is proved from scratch with no literature input, so a formal check has high value; it feeds S123 Prop. 5.6 and (M_j).
+
+Runners-up: C1 + C4 + C5 (Fejér, Lemma T (d), Lemma Gauge: completes the analytic H1 bound around Tower.lean); F5 (neutral (N2) by bordered inverses); W1 + W2 (A15-N counting); H7 (history-dependent D′/D″, Route 1, if NestEnvelope.lean does not already cover history dependence).
+
+## 11. How much of the ledger can become Lean
+
+Counts in this catalogue: about 90 new items (beyond the 35 existing files). Rough split: easy ≈ 38, medium ≈ 36, hard ≈ 12, not Mathlib-ready ≈ 4 (C8 interval enclosure, Karcher mean, lattice-animal count W4 if done fully, the per-cell trace of MJ_REST).
+
+Estimate, stated with its basis:
+- Of the project's own [P] steps in the files read here, about 40% are finite-dimensional, algebraic, combinatorial, or one-variable real-analytic, and Mathlib can state and prove them now (≈ 25% easy/medium, ≈ 15% hard). The existing 35 files cover roughly a quarter of that 40%.
+- The other ≈ 60% of [P] steps manipulate Balaban's objects (walk factors on 𝔅, polymer activities, the per-cell trace, gauge-field measures). Lean can hold them only as hypotheses on abstract structures; their content stays prose.
+- Weighted by the whole ledger (rows A1–A19, B*, C*), where most load sits on Balaban's [R]/[V] inputs (CMP 95–122 walk expansions, cluster and large-field steps, A13-type inductions), the Lean-able share of load-bearing content is about 10–15%. It is concentrated in the "glue": constant orders, inverse and Neumann steps, form bounds, counting, and the flow lemmas D′/D″/H.
+- So Lean can certify that the glue is correct and that the constants close; it cannot certify the RG analysis itself. That analysis (Balaban's inductive bounds and their uniformity) remains prose under every plan in this catalogue.

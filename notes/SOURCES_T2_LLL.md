@@ -67,7 +67,7 @@ This is the part of "Helffer–Sjöstrand" that (L-LL) needs: integrated Landau 
 
 3.4 Theorem S (scalar (L-LL)) [P rel. (IP)]. Put m² = μ′α. Then
   α^{−2}∫dF_⊥(κ)[τ_2u_m(𝔏_α + κ) − τ_2u_m(𝔏_0 + κ)] → h_sc(μ′) := (16π²)^{−1}∫_0^∞(dτ/τ²)(e^{−μ′τ} − 1)(1/sinh τ − 1/τ).
-Proof. For X ≥ 0, u_m(X) = ∫_0^∞(dt/t)(e^{−tm²} − 1)e^{−tX}; with the transverse factor p_t(0)², the left side is α^{−2}∫_0^∞(dt/t)(e^{−tm²} − 1)p_t(0)²[T_α(t) − T_0(t)]. Substitute t = τ/α. Domination: for τ ≤ 1, |e^{−tm²} − 1| ≤ μ′τ, Lemma S1 gives |ΔT| ≤ Cα²t, p_t(0)² ≤ C/(1+t): integrand ≤ Cμ′ uniformly. For τ ≥ 1: |ΔT| ≤ 2T_0(t) ≤ C/t (diamagnetic), p_t(0)² ≤ C/t: integrand ≤ Cτ^{−3}. Pointwise: Lemma S2, the free 2D local limit α^{−1}T_0(τ/α) → 1/(4πτ), and αp_{τ/α}(0)²·α^{−1}·… → 1/(4πτ). Dominated convergence. ∎
+Proof. For X ≥ 0, u_m(X) = ∫_0^∞(dt/t)(e^{−tm²} − 1)e^{−tX}; with the transverse factor p_t(0)², the left side is α^{−2}∫_0^∞(dt/t)(e^{−tm²} − 1)p_t(0)²[T_α(t) − T_0(t)]. Substitute t = τ/α. Domination: for τ ≤ 1, |e^{−tm²} − 1| ≤ μ′τ, Lemma S1 gives |ΔT| ≤ Cα²t, p_t(0)² ≤ C/(1+t): integrand ≤ Cμ′ uniformly. For τ ≥ 1: |ΔT| ≤ 2T_0(t) ≤ C/t (diamagnetic), p_t(0)² ≤ C/t: integrand ≤ Cτ^{−3}. Pointwise: Lemma S2, the free 2D local limit α^{−1}T_0(τ/α) → 1/(4πτ), and α^{−1}p_{τ/α}(0)² → 1/(4πτ). Dominated convergence. ∎
 This proves (L-LL) for the scalar ghost alone (the case left open in STEPB §2.5 with a cited LLT on the discrete Heisenberg group): the only import is (IP), a textbook invariance principle. Large μ′: h_sc(μ′) = (96π²)^{−1} ln μ′ + O(1) (region 1/μ′ ≪ τ ≪ 1, where (e^{−μ′τ} − 1)(1/sinh τ − 1/τ) ≈ τ/6); see §5.3.
 
 ## 4. Vector part: the matrix operator A′_α
@@ -101,3 +101,74 @@ Insert in (2.1). With u_m(X) = ∫_0^∞(dt/t)(e^{−tm²} − 1)e^{−tX} for X
   NO_α := ∫dF_⊥(κ)τ_2(P_−D_m(κ, |A′|)).
 The heat-kernel term carries no negative eigenvalue (|A′| ≥ 0). The N–O term is the only place where log|·| of a sign-changing argument appears.
 
+## 5. The theorem
+
+Theorem 5.1 ((L-LL)) [P rel. (IP), the continuity theorem for Laplace transforms, and counting monotonicity (all standard, §7); inputs GAPRIME2 Lemmas 1.1, 4.1 and S123 Lemmas 5.1, 5.2 (all [P], verified)]. For every μ > 0 (no lower bound μ_0 is needed), as φ → 0 through all real values,
+  H_φ(μ) → h(μ) := −4[I_heat(μ/2) + g(1, μ/2)/(8π²)],
+  I_heat(μ′) := (8π²)^{−1}∫_0^∞(dτ/τ²)(e^{−μ′τ} − 1)(1/sinh τ − 1/τ),
+  g(a, μ′) := ∫_0^∞dε[u(ε − a) − u(ε + a)],  u(x) := log|x| − log|x + μ′|.
+Proof. Write α = 2|φ|, μ′ = μ/2, m² = μ′α.
+(a) Heat term. Substitute t = τ/α. For τ ≤ 1: |e^{−tm²} − 1| ≤ μ′τ; |τe^{−t|A′|} − τe^{−tA′}| = |τ(P_−(e^{−t|A′|} − e^{t|A′|}))| ≤ τ(P_−)·2 sinh(3αt) ≤ Cα²t (Lemma V0(b), (c)); |τe^{−tA′} − τe^{−tA′_0}| ≤ Cα²t (Lemma V1); p_t(0)² ≤ C/(1 + t). So α^{−2}× the integrand is ≤ Cμ′ per dτ. For τ ≥ 1: τe^{−t|A′|} ≤ 4C_d(1/t + 3α) ≤ Cα (Lemma V0(d), integration by parts), 2T_0(t) ≤ C/t ≤ Cα, p_t(0)² ≤ Cα/τ; so α^{−2}× the integrand is ≤ Cτ^{−2} per dτ. Pointwise limit: Lemma V2(ii), α^{−1}T_0(τ/α) → 1/(4πτ), α^{−1}p_{τ/α}(0)² → 1/(4πτ). Dominated convergence: Heat_α/α² → ∫(dτ/τ)(e^{−μ′τ} − 1)(4πτ)^{−1}(2π)^{−1}(1/sinh τ − 1/τ) = I_heat(μ′).
+(b) N–O term. Scale-invariance: D_m(αε, αa) = u(ε − a) − u(ε + a) =: D̃(ε, a). So NO_α/α² = ∫μ_−^α(da)G_α(a), G_α(a) := ∫_0^{8/α}ρ_⊥(αε)D̃(ε, a)dε. Bounds: |D̃(ε, a)| ≤ 8aμ′/ε² for ε ≥ 2(a + μ′); ρ_⊥(κ) = 1/(4π) + O(κ) on [0, 2], with a log singularity at κ = 4 that costs O(α); D̃(·, a) is locally integrable (log singularities at ε = a and ε = a − μ′), continuously in a. So G_α → g/(4π) uniformly on a ∈ [0, 3]. With μ_−^α → (2π)^{−1}δ_1 (Lemma V2(i)): NO_α/α² → g(1, μ′)/(8π²).
+(c) H_φ(μ) = −(4/α²)(Heat_α + NO_α) by §4.4. ∎
+
+5.1 The Nielsen–Olesen band (task item 4) [P]. In the fine bracket the N–O band enters as log|λ| (definition of W, STEPB §2). In (2.1) it is the term NO_α. Its 4D zero is at κ = |A′| ≈ α, i.e. ε = 1, where D̃ has the singularity log|ε − 1| against the flat density ρ_⊥ ≈ 1/(4π). This is integrable. So NO_α = α²g(1, μ′)/(8π²) + o(α²): order φ², finite coefficient, no log φ. A log could only come from (i) a non-flat density at the zero or (ii) a mismatch in the number of N–O states. (i) is excluded because κ is the free transverse energy, with density 1/(4π) at 0, independent of φ (exact fibre separability at the Wilson level). (ii) is excluded because τ(P_−) = α/(2π)·(1 + o(1)) (Lemma V2(i); numerically exact to 5 digits, §6). The imaginary part, if log det is read as log of the complex determinant, is π·∫dF_⊥ n_{A′}(−κ) = π·α²/(8π²)·(1 + o(1)): also φ², no log (agrees with BETA_FP_H_VERIFY l. 30).
+
+5.2 Explicit leading term (task item 2) [P for the formula, N for the values]. H_φ(μ) = h(μ) + o(1), with h(3) = 0.116322, h(5) = 0.169938 (quadrature, §6). In scaled form: each Landau level contributes α/(2π) states per site, the transverse density is α dε/(4π), and the per-state weight is a φ-independent function of (e, ε, μ′); the product is α²/(8π²)·O(1) = φ²/(2π²)·O(1), so φ^{−2}× it is O(1). Level-by-level sums are not used, because the individual levels give log(1/α)-divergent pieces that cancel only in the sum (§2.4).
+
+5.3 Consistency check: the ln μ coefficient [P + N]. For μ′ → ∞: I_heat(μ′) = (48π²)^{−1}ln μ′ + O(1) (region 1/μ′ ≪ τ ≪ 1, (e^{−μ′τ} − 1)(1/sinh τ − 1/τ) ≈ τ/6); g(1, μ′) = −2 ln μ′ + O(1) (u(ε − 1) − u(ε + 1) ≈ −2/ε for 1 ≪ ε ≪ μ′). So
+  h(μ) = 4[2/(8π²) − 1/(48π²)] ln μ + O(1) = (4 − 1/3)·(4π²)^{−1} ln μ + O(1) = (11/(12π²)) ln μ + O(1).
+The 4 is the N–O/spin (paramagnetic) part, the −1/3 the orbital (diamagnetic) part. STEPB §2.6 needs h(μ) = n_2c_2 ln μ + const + o(1) for B to be μ-independent; with c_2 = 11N²/(24π²) = 11/(6π²) (N = 2) and n_2 = ½ (BETA_FP_H §1, U3_LEMMA51 convention) this is n_2c_2 = 11/(12π²). It matches. Numerically h(μ) − (11/(12π²)) ln μ = 0.014285, 0.020457, 0.022722, 0.023437, 0.023444, 0.023444 at μ = 3, 5, 10, 10², 10³, 10⁴ (§6). This also checks the sign conventions and the normalization chain of §1–§2 end to end (a wrong spin sign, a wrong multiplicity, or a missing ghost cancellation would change the 11).
+
+## 6. Numerics [N] (numerics/t2_lll_window.py, Mac, 13 s total; output JSON to /tmp only)
+
+Method. A′_α from t2_gaprime2_check.ops (GAPRIME2 Lemma 1.1, Landau gauge), flux α = 2π/q (p = 1), Bloch blocks 2q × 2q, grid nk × nk over k_0 ∈ [0, α), k_1 ∈ [0, 2π). Lattice H_φ(μ) computed DIRECTLY from (2.1): H = −φ^{−2}[τU(A′) − τU(A′_0)], U(λ) := ∫_0^8 ρ_⊥(κ)u_m(λ + κ)dκ with the exact lattice transverse density ρ_⊥ (elliptic K; ∫ρ_⊥ = 1 − 2·10^{−13}); U by adaptive quadrature (spline for λ > 0, max spline error 3·10^{−10}; direct quadrature for the N–O eigenvalues); free part by the 4D proper-time integral 2∫(dt/t)(e^{−tm²} − 1)(e^{−2t}I_0(2t))⁴. The split Heat/NO of §4.4 is printed as a diagnostic only (it is an identity). Continuum h(μ) by quadrature of the §5 formulas.
+Checks. Mehler identity of Lemma S2(e): relative error ≤ 9·10^{−16} at τ = 0.3, 1, 3. Evenness A′_{−α} = CA′_αC: spectra equal (max difference 0.0) at q = 79. k-grid: nk = 2, 4, 6 at q = 79 and nk = 2, 4 at q = 157 agree to all 6 printed digits (low bands flat; U analytic on the spectrum). τ(P_−)/(α/2π) = 1.00000 at every q (one N–O eigenvalue per block).
+
+| φ | 0.03977 | 0.02001 | 0.01001 | 0.00500 | continuum h |
+|---|---|---|---|---|---|
+| H_φ(3) | 0.124869 | 0.121263 | 0.119109 | 0.117872 | 0.116322 |
+| H_φ(5) | 0.183646 | 0.177929 | 0.174470 | 0.172467 | 0.169938 |
+| Heat_α/α² (μ = 3) | 0.003904 | 0.004085 | 0.004191 | 0.004250 | I_heat = 0.004321 |
+| NO_α/α² (μ = 3) | −0.035122 | −0.034401 | −0.033968 | −0.033718 | g/(8π²) = −0.033402 |
+| scalar, Thm S (μ′ = 1.5) | 0.002003 | 0.002071 | 0.002110 | 0.002133 | h_sc = 0.002161 |
+(q = 79, 157, 314, 628; φ = π/q.)
+Reading.
+- H_φ(μ) converges to the continuum h(μ) for both μ. The error H − h is 0.00855, 0.00494, 0.00279, 0.00155 (μ = 3): each halving of φ divides it by 1.73, 1.77, 1.80. (H − h)/φ = 0.215, 0.247, 0.278, 0.310: it grows by ≈ 0.031 per halving, so H − h ≈ φ(0.07 + 0.046 ln(1/φ)). μ = 5: (H − h)/φ = 0.345, 0.399, 0.453, 0.506, i.e. ≈ φ(0.10 + 0.077 ln(1/φ)). Observed rate O(φ ln(1/φ)). No rate is proved (§7).
+- Both pieces converge separately (heat term from below, N–O term from above in absolute value), as Theorem 5.1's proof says.
+- The scalar ghost-type quantity converges to h_sc (Theorem S).
+- Continuum: h(μ) − (11/(12π²)) ln μ → 0.023444 (μ = 10³, 10⁴ agree to 6 digits): the ln μ coefficient is 11/(12π²) = n_2c_2 (§5.3).
+Not done: irrational-flux runs (the proof covers every real α; GAPRIME2 found no arithmetic dependence at p > 1); φ below 0.005 (q = 1256 would take about 1 min; not needed for the reading).
+
+## 7. Conclusion and ledger
+
+Verdict: (L-LL) PROVED, for the scalar part and for the matrix (spin) part, relative to:
+- (IP) the invariance principle for the 1D continuous-time simple-random-walk bridge (convergence in law in D[0, τ] to the Brownian bridge) [I, textbook; used only in Lemma S2(c)];
+- the continuity theorem for Laplace transforms of measures on [0, ∞) (Feller XIII.1) [I, textbook; Cor. S3];
+- counting monotonicity of the per-site IDS under form inequalities, and cyclicity of τ, in the magnetic (twisted) von Neumann algebra [I, standard; already used in S123 Prop. 5.3];
+- Bessel asymptotics e^{−2t}I_0(2t)√(4πt) → 1 and the bound e^{−2t}I_x(2t) ≤ C(1 + t)^{−1/2} [standard];
+and on project inputs that are already [P] and verified: GAPRIME2 Lemma 1.1 (explicit A′) and Lemma 4.1 (remainder R); S123 Lemma 5.1 (exact k_⊥ separability at the Wilson level, (b_2, b_3) block = 𝔏) with the midpoint upgrade of GAPRIME2_VERIFY §1; S123 Lemma 5.2 (diamagnetic IDS bound).
+Not used: Helffer–Sjöstrand or any Harper band-width theorem; the gap Theorem 5.1 of GAPRIME2; rational flux; level-by-level sums.
+What the proof replaces. The verifier's suggested route (band centres (2n + 1)α + O(α²) and widths o(α) for n ≤ μ/2, scalar and matrix) is replaced by a weaker and sufficient statement: convergence of the scaled integrated density of states (Cor. S3 for 𝔏, Lemma V2 for A′), plus two uniform small-time bounds (Lemma S1, Lemma V1) that control the high-energy region where the logs live. The exact missing lemma of STEPB §2.5 was not "Harper semiclassics" but a heat-trace bound linear in t: |τe^{−tX_α} − τe^{−tX_0}| ≤ Cα²t for t ≤ 1/α, X = 𝔏 or A′. It is proved here (Lemma S1 by the Poisson/Fourier computation of the lattice Lévy-area second moment; Lemma V1 by Dyson expansion + Lemma S1 + charge-conjugation evenness).
+The value: h(μ) = −4[I_heat(μ/2) + g(1, μ/2)/(8π²)] (Theorem 5.1); h(3) = 0.116322, h(5) = 0.169938; h(μ) = (11/(12π²)) ln μ + 0.023444 + o(1) as μ → ∞, which equals n_2c_2 ln μ as STEPB §2.6 requires.
+No rate is proved. A rate would need a quantitative (IP) (e.g. a coupling of the walk bridge and the Brownian bridge with the area functional) and quantitative versions of V2. Observed: H_φ(μ) − h(μ) ≈ φ(a + b ln(1/φ)) (§6).
+
+Consequence for row B3 (proposed text for the ledger owner; this file edits no ledger):
+"(F) [continuum value X5, source checked]. Lattice transfer (SOURCES_T2_F_STEPB): Step B ⇐ Lemma 1 (MPT remainder, [I-cite]) + Lemma 2 [P given Step C; gauge-fixing symbols [I]] + (L-LL). (L-LL) PROVED (SOURCES_T2_LLL Theorem 5.1, scalar and spin parts, relative to the textbook invariance principle for random-walk bridges); limit h(μ) explicit, its ln μ coefficient = n_2c_2 = 11/(12π²) (consistency check passed). Remaining: (MPT) and the gauge-fixing part of Step C. Unverified."
+The numerical tension on the single-step β_1(L) slope (STEPB §3.3, VERIFY §8) is outside (L-LL) and is unaffected.
+
+Possible next step [I, not done]. The proper-time method of §3–§5 may also replace Lemmas 1–2 of STEPB (and so (MPT) and Step C): H_φ was controlled without any symbol calculus. The massless bracket W(φ; 0)/φ² in proper time has a log(1/φ) from 1 ≪ t ≪ 1/α, with coefficient fixed by the large-t behaviour of the fixed-t α²-coefficient c_A(t) of τe^{−tA′}. What is missing for that route: a fourth-order analogue of Lemma V1 (|τe^{−tA′_α} − τe^{−tA′_0} − α²c_A(t)| ≤ Cα⁴t³ for t ≤ 1/α, via E[A_t⁴; X_t = 0] ≤ Ct², plausible by the same Poisson computation) and c_A(t) = c_∞t + O(1) with c_∞ the continuum value. Not attempted here.
+
+Ledger of this file.
+- [V] §1.2 objects (STEPB §2); §2.1 fibres (S123 §5.1, Lemma 5.1; GAPRIME2_VERIFY §1); GAPRIME2 Lemmas 1.1, 4.1 statements; S123 Lemma 5.2; n_2 = ½ (BETA_FP_H §1).
+- [P] Lemma 2.1 (ghost cancels the (b_2, b_3) block; W reduces to A′ alone) and (2.1).
+- [P] Lemma S1 (E_y[A_t²; X_t = 0] ≤ C_rt; |T_α − T_0| ≤ Cα²t).
+- [P rel. (IP)] Lemma S2 (α^{−1}T_α(τ/α) → 1/(4π sinh τ)); [P] its parts (a) Harper/Feynman–Kac reduction, (d) uniform ϑ-domination, (e) Mehler integral.
+- [P rel. (IP) + Laplace continuity] Cor. S3, Theorem S (scalar (L-LL)).
+- [P] Lemma V0 (form sandwich, constants 102, 3, 8C_d); [P] evenness A′_{−α} = CA′_αC; [P] Lemma V1.
+- [P rel. (IP)] Lemma V2; [P] §4.4 exact N–O isolation; [P rel. the above] Theorem 5.1 ((L-LL)), §5.1 (no log φ from the N–O band), §5.3 (ln μ coefficient 11/(12π²)).
+- [N] §6: H_φ(3) = 0.124869 → 0.117872 (φ = 0.040 → 0.005) vs h(3) = 0.116322; H_φ(5) = 0.183646 → 0.172467 vs 0.169938; error ≈ φ(a + b ln(1/φ)); τ(P_−) = α/2π to 5 digits; Mehler to 1e−15; evenness exact; h(μ) − (11/12π²) ln μ → 0.023444.
+- [I] (IP), Laplace continuity theorem, counting monotonicity (standard). Remark after Lemma V1 and "Possible next step": not checked.
+- Not done: a rate; irrational-flux numerics; φ < 0.005; no verifier yet.
+
+STATUS: COMPLETE
