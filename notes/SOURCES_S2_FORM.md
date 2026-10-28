@@ -18,3 +18,12 @@ Support restriction. Each argument lives in ONE block Δ(·). This is the restri
 Scaling check [P]. A field of size a on one block of side ℓ: RHS ~ Mα_0·ℓ^d·a·ℓ^{−1}·ℓ^{−1}·a = Mα_0ℓ^{d−2}a². The free energy of a block-scale field is ℓ^d(a/ℓ)² = ℓ^{d−2}a². Same order. So (3.131) is scale covariant.
 Text before (3.131): "It is easy to find estimates for the operator Δ′_π using Theorem 3.1 and the inequality (3.49); we have to be careful only with the third term in the definition (3.120)". So (3.131) is derived, not a primitive; its sources are Theorem 3.1 and (3.49).
 Also printed, (3.119) [V p. 419 pdftotext]: ⟨A, Δ_πA⟩ = ⟨A − DG′RD*A, Δ(A − DG′RD*A)⟩. This exact identity is the basis of §3 below.
+
+## 2. The planned block-decomposition route, and why it stalls as printed
+Plan (from the brief): A = 𝓔_UX = Σ_c A_c, bound each ⟨A_c, Δ′_πA_{c′}⟩ by (3.131), sum with the (KE′) decay.
+Unit check [P]. Lattice of spacing η, ⟨A, B⟩ = Σ_b η^d tr A(b)B(b), derivatives = η^{−1}× nearest-neighbour differences (CMP 99 (3.3)–(3.8)). Let ℓ = L^jη.
+(a) Sharp cut A_c = 1_{Δ(c)}A. At a face site, D*(1_ΔA) contains one un-paired term η^{−1}A. So sup|D*A_c| ≥ η^{−1}|A| on the face, against the scale ℓ^{−1}|A| of the other term: ratio ℓ/η = L^j, unbounded in j ≤ k. On the L¹ side the same jump costs (ℓ/η)^{d−1} face sites × η^d × η^{−1}|A| = ℓ^{d−1}|A|, the same order as ℓ^{−1}‖A‖_{L¹} ~ ℓ^{d−1}|A|. So only the sup side fails. CONFIRMED (QE_INV_VERIFY §7).
+(b) Smooth cut χ_c with |∇χ_c| ≤ c/ℓ. Then |D*(χ_cA)| ≤ |D*A| + (c/ℓ)|A|: no η^{−1}. The brief's unit analysis is right: in lattice units the cutoff term is ℓ^{−2}·Σ_bη^d|A|², the same order as the block-scale energy Σ_bη^d|∇A|² ~ ℓ^{−2}Σ_bη^d|A|². The cut-off costs a constant factor only.
+(c) But (b) is not admissible in (3.131). The blocks Δ(c) of one layer tile the layer. If Σ_cχ_c = 1 and supp χ_c ⊂ Δ(c), then χ_c = 1_{Δ(c)} on each block: the partition is sharp. A smooth partition needs supports in a union of at least 2^d blocks (e.g. the doubled cube Δ̃(c) of CMP 99 p. 397). (3.131) is printed for one block only.
+Verdict on the planned route: it closes iff (3.131) holds for supports in Δ̃(y) (a bounded union of blocks). This is plausible (Balaban's random-walk localizations use Δ̃), but it is NOT printed. Planned route = STALL at step "apply (3.131) to χ_cA" [I].
+§3 gives a different route that does not use (3.131) at all.

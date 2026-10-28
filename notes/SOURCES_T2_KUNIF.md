@@ -38,3 +38,23 @@ Use-by-use list. "Identity" = β_j is the same function for all K (or for all hi
 
 Result of task (1) [P, by inspection of the proofs listed]. No use needs the history identity "β_j depends only on g_{j−1}". U1, U3, U4, U5, U6, U8 need K-uniform bounds only. U2 and U7 need that the β_i(0) entering the recursion equal the whole-lattice one-loop values Theorem K bounds; that is a volume statement, handled in §4. No use evaluates β along one trajectory and transfers the value to another trajectory.
 
+## 3. Task (2): the history identity, and which part of β_j is history-free
+
+3.1 The identity is not available [R]. CMP 109 p. 298 (verbatim, via SOURCES_HHIST §4): "We write β_j as explicitly dependent on g_{j−1}, although it depends also on all preceding coupling constants." The channel is identified in SOURCES_HHIST §3 (C1)–(C3): the past enters step k+1 only through the curly bracket {E_k(fluctuated) − E_k(U_{k+1})} of (2.12), i.e. through the irrelevant remainders V^{(l)}(g_{l−1}, ·), l ≤ k. Two histories h, h′ with the same g_k and different g_0, …, g_{k−1} give different V^{(l)}, hence different curly brackets, hence in general different second moments (1.22), hence β_{k+1}(h) ≠ β_{k+1}(h′). Nothing in the construction forces this difference to vanish, and Balaban says it does not. [R for the statement; I for "generically nonzero"; no exact cancellation is claimed or needed.]
+
+3.2 CMP 119 p. 278 does not make β_j a function of g_{j−1} alone [R, P]. The quote (SOURCES_D3W8_VERIFY S3) is: small-field terms E_0^{(k+1)}(Λ_{k+1}, X, z), X ⊂ Λ_{k+1}, "do not depend on Λ_{k+1}, and coincide with the corresponding terms arising from the expressions defined on the whole lattice". This removes the VOLUME Λ_{k+1}. It says nothing about earlier couplings: the whole-lattice terms of CMP 109 are themselves history-dependent by p. 298. So p. 278 + (2.24) make β_j a K-free, volume-free function of (j; g_0, …, g_{j−1}). They do not reduce it to (j; g_{j−1}).
+
+3.3 History-free part [P from R]. In the slot representation (SOURCES_HHIST §5) write h_k = (h_{k−1}, g_k).
+ (a) Coupling-free term. log Z^{(k)} carries no coupling ((1.3), "terms of the order 0"). Its contribution β_{k+1}(0) is a function of k only (whole-lattice, so not of K either).
+ (b) At g_k = 0 the whole step is history-free: p. 268, "the expression under the exponential above vanishes at g_k = 0". The past slots enter only through that exponent (curly bracket, (C1)). So
+   β_{k+1}(h_{k−1}, 0) = β_{k+1}(0) for every past h_{k−1}.   (3.1)
+ (c) Hence the decomposition
+   β_{k+1}(h_k) = β_{k+1}(0) + Δ^{own}_{k+1}(g_k) + Δ^{hist}_{k+1}(h_k),
+   Δ^{own}_{k+1}(g_k) := β_{k+1}(0_{k−1}, g_k) − β_{k+1}(0)   (all past slots set to 0),
+   Δ^{hist}_{k+1}(h_k) := β_{k+1}(h_{k−1}, g_k) − β_{k+1}(0_{k−1}, g_k).
+   The first two pieces are history-free. By (3.1), Δ^{hist} vanishes at g_k = 0 for every past.
+ (d) Size of the history part [P given Lemma HH]. On the slot cube [0, γ]^{k+1} (convex), along the straight segment from (0_{k−1}, g_k) to (h_{k−1}, g_k):
+   |Δ^{hist}_{k+1}(h_k)| ≤ Σ_{i≤k−1} sup|∂β_{k+1}/∂g_i|·g_i ≤ (C_Π/C_V)S_0 Σ_{i≤k−1} λ^{k−i} g_i ≤ (C_Π/C_V)S_0 (λ/(1−λ)) γ.
+   Also, from (3.1) and the own-slot bound alone: |Δ^{own} + Δ^{hist}| ≤ C_β g_k.
+ Caveat [open, not new]. Statement (3.1) and the slot cube are the small-field slot construction of SOURCES_HHIST §5. Balaban defines β only on his trajectory (B7 = L5). The large-field part (CMP 122) is outside SOURCES_HHIST (its open list). Under D3W8's repair the R-terms carry no counterterm, so the large-field part does not enter β_j at all (SOURCES_D3W8 §2.4: "β_{k+1}(g_k) is the whole-lattice coefficient … E_R carries no counterterm") [R; D3W8 repair is proved by the author, verifier CONFIRMED the p. 278/(2.24) reading].
+
