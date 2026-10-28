@@ -17,3 +17,5 @@ balaban/
 notes/balaban/
 # OS
 .DS_Store
+# Local API run briefs and logs (never commit)
+api_runs/
