@@ -27,3 +27,19 @@ Box bound ≥ point value in all 9 cells. F is L-independent and G falls with L,
 | 21 | (13,13,13,15) | 11.77698 | 1.830 | 1.95128 | 11.7770, G_max 1.9513 |
 F max on the subset = 10.01993 at (12,12,12,15), equal to the record's F_max. All five record numbers per L reproduce to the printed digits. So the record came from this code at n0 = 16. Margins: 13.738 < 14 < 15 (gap 1.26 to L), 12.826 < 16 < 17 (gap 4.17), 11.777 < 20 < 21 (gap 9.22).
 Not rerun: the other 3,750 cells (brief: no full sweeps). Their "< L − 1" status rests on the record (failed = 0). Per-cell cost here is ≤ 0.05 s, so a full Mac rerun is about 1–3 min per L if wanted.
+
+## 4. Independent H_j at other L; chain to (H2)
+indep_H.py is written for general L, but the 6e−9 production match was run at L = 3, 13 only. New point runs (/tmp/h2v/rho.py, indep_H.solve + rho_parts) at K/π = (0.84375, 0.84375, 0.90625, 0.96875), the centre of the L = 15 worst cell:
+| L | M | ρ_1² (indep) | B_L at point | residual |
+|---|---|---|---|---|
+| 15 | 1 | 4.2094 | 7.6038 | 2e−13 |
+| 15 | 15 | 4.3139 | 7.6038 | 2e−13 |
+| 17 | 1 | 4.2479 | 7.3751 | 2e−13 |
+| 21 | 1 | 4.2962 | 7.1062 | 1e−13 |
+| 21 | ∞ | 4.3531 | 7.1062 | 2e−13 |
+B_L ≥ ρ_1² at all 5 points (ratio ≥ 1.63). This is evidence [N] for the paper majorant at these L, not a production cross-check (production code not compared here).
+Chain: rho2_le (lean/YmLean/BlockNorm.lean:78) holds for any real L > 0 and gives ρ_2 ≤ ρ_1(j,K)·sup ρ_1 ≤ sup ρ_1². B_L is uniform in j ≥ 1 (H1_ANALYTIC §5, "j-dependence"). So ρ_2 ≤ 13.738 < 15, 12.826 < 17, 11.777 < 21.
+
+## 5. Grade of TRUST_LEDGER B1 at L = 15, 17, 21
+CERTIFIED, with the same standing as L = 13: rigorous outward-rounded cover of the chamber by the audited bb_arb.py; paper lemmas valid for odd L ≥ 3. Verified here: record numbers reproduce exactly (worst cell, F_max, G_max); 9 spot cells consistent; L-hypotheses hold; comparison value is L via rho2_le.
+Residue: (a) 3,750 of 3,876 cells per L were not recomputed (record says 0 failed; full rerun ≈ 1–3 min per L on the Mac). (b) The numerical B_L ≥ ρ_1² sweep (896 cases) and the production cross-checks were done at L = 13; here only 5 points at L = 15, 17, 21. Neither affects the proof logic.
