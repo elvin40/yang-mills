@@ -52,3 +52,19 @@ Script /tmp/h2v/norm.py: hcheck matrix with fine blocks ¼Δ (as coded) and with
 - U3_REPAIRS' 177 (M = 3, corner) and the task's 195 (M = ∞, corner) are the full-Δ normalization of O6 (A = ⊕Δ + DD^†). The factor ≈ 4 is the ¼. The Q̃ choice matters little here: σ_min(Q̃) = 0.213 for the (0.4) row vs 0.21 reported for the minimal-Λ row.
 - ρ_1 is identical to 4 digits in both normalizations. Reason: H minimizes ⟨x, Ax⟩ on {Q̃x = 1}; Q̃D = 0 and Δ ⊕ vanishes on im D, so the im D component is 0 and scaling Δ only rescales the objective. So ρ_2 does not depend on this choice; ‖𝔅^{−1}‖ does.
 - Verdict (2): CORRECTED. Bounds are right; "unreconciled" is wrong (factor 4 from ¼Δ). "The hcheck number enters ρ_2" is imprecise: no ‖𝔅^{−1}‖ enters ρ_2; it enters only the cell-size and O5-constant estimates, for the matrix actually solved.
+
+## 7. Item (1): reruns of h2cert_proto.py at K = (2.4035, 2.4035, π, π)
+| N | result | width | time |
+|---|---|---|---|
+| 6 | aborted: inner solve η = 1.159 > 1 (assert) | — | ~30 s |
+| 12 | [1.547453, 2.579186] | 1.03 | 251 s |
+| 20 (author) | [1.999315, 2.127325] | 0.128 | 310 s |
+- N = 12 contains the float value 2.063361 (hscan lmax 5) and is < 3. Width ratio 1.03/0.128 = 8.0 vs (20/12)⁴ = 7.7, consistent with N^{−4}.
+- N = 6 fails safe: the code refuses rather than reporting a wrong interval. Outer solve at N = 6 had η = 0.956 and ‖𝔅^{−1}‖ ≤ 975.
+- Outer ‖𝔅^{−1}‖ at N = 12: [40.37, 46.34], contains the author's N = 20 interval [42.744, 43.562].
+Verdict (1): CONFIRMED given P1–P3 (P1 now proved, §2). Scope: one point, j = ∞ only.
+Item (4): arithmetic rechecked. b²‖∂𝔅‖ = 49.3²·7.6 = 1.85·10⁴; (2.1) gives 2.8·10⁴; with ‖H_full‖ ≈ 6 in place of one b: 3.5·10³. Inputs are float measurements. The claim "uniform norm-product Λ_K is useless" is CONFIRMED. The per-cell replacement (i-a)/(i-b) is standard Krawczyk/Oishi-type logic and correct as stated; not implemented (G1).
+
+## 8. Items (7) cost and (8) launcher
+(7) Cost. The estimates are order-of-magnitude and unmeasured beyond the prototype. One measured point against the model: N = 12 (25⁴ = 3.9·10⁵ box terms per block) took 251 s and N = 20 (41⁴ = 2.8·10⁶) took 310 s. So 7.3× more terms cost only 1.2× time: at these N the Python-level arb work dominates, not the box sum. Engineering (a) (3D box, 40× fewer terms) will give far less than 40× at N = 20; (c) and (b) are the real levers. The cell-count ∫(4g)⁴ uses g from 60 float points with the corner undersampled. Verdict (7): UNSUPPORTED (plausible but not evidenced; (a) speedup overstated).
+(8) Launcher h2cert_launch.sh: five points at N = 30, one output file per point, skip-if-done on the "tail included" line, transient systemd unit with MemoryMax, OMP_NUM_THREADS=1. Checkpoint granularity = one point (15–20 min est.); a killed point restarts from zero, which is acceptable. Not launched (no word from Elvin). Verdict (8): CONFIRMED as a correct, checkpointed validation launcher; it is not the certification.
