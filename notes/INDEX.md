@@ -51,8 +51,12 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | B2_TWOSTEP_VERIFY.md | Verifier of B2_TWOSTEP. | report |
 | H2_LARGE_L.md | (H2) at L up to 15: umklapp scan (numerics/h2_scan.py), one-step sufficiency at L >= 5, certification tail bound. | corrected (H2_LARGE_L_VERIFY: L-trend and tail inputs) |
 | H2_LARGE_L_VERIFY.md | Verifier of H2_LARGE_L; L = 5 value rechecked with an independent code; j_0 about 8 (L = 3), 6 (L = 5). | report |
-| H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of (H2) at L = 3; rigorous point enclosure of rho_2 at K*. | unverified (H2_CERTIFY_VERIFY) |
-| H2_CERTIFY_VERIFY.md | Independent check of H2_CERTIFY and numerics/h2cert_proto.py. | report |
+| H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of (H2) at L = 3; rigorous point enclosure ρ_2(∞, K*) ∈ [1.9993, 2.1273]. | verified (H2_CERTIFY_VERIFY: point enclosure confirmed, P1 proved, Oishi–Rump and finite-M tail corrected); full certificate ≈ 1.5e4 core-h at L = 3, not run |
+| H2_CERTIFY_VERIFY.md | Independent check of H2_CERTIFY and numerics/h2cert_proto.py (rerun at N = 12). | report |
+| H2_CERTIFY_L13.md | The one-step condition (H1_L) at L = 13: ρ_1(∞) = 1.760 … 2.0895 for L = 3 … 13, sup ρ_1² = 4.37 < 13; cell certificate and cost; numerics/h1cert_*. | reduced: float values numerical, cell certificate unrun (cost ≈ 1,100 core-h after fix G1) |
+| H2_CERTIFY_L13_G1.md | Fix G1: Taylor-1 cell certificate in the K̂-adapted frame (Schur-reduced bordered system, Oishi–Rump on the 3×3 transverse block). | unverified, in progress; launch approved 2026-10-28, not launched |
+| H2_CERTIFY_P4.md | Premise P4 (E_q(k_l) k̂_l = K̂) proved by per-block telescoping; identity (D) of the divergence of the averaging profile. | proved (exact arithmetic); Lean Divergence.lean |
+| H1_ANALYTIC.md | Analytic bound ρ_1(j, K) ≤ C_* and (H1_L) without a computer; F → 1 as K → 0, face maximum 5.45 at h = 6. | unverified, in progress |
 | KAPPA_BOUNDED.md | Theorem K (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
 | UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743 (L up to 9 in numerics/NUMERICS.md). | unverified (code validated against ym_momentum to 1e−12) |
@@ -73,12 +77,36 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_W4.md | (W4): holomorphy of one RG step in its input activities; proved for the regular step. | unverified |
 | SOURCES_HBETA.md | The summability hypothesis (Hβ), reduced to (I) and (H-hist). | corrected (SOURCES_HBETA_VERIFY: hypothesis list; Lean Lemma H: column-sum hypothesis must be summable, PLAN.md) |
 | SOURCES_HBETA_VERIFY.md | Verifier of HBETA. | report |
+| SOURCES_HBETA_N3.md | Lemma N3: |δw_k| ≤ (3/2)τ for the complex source on Q = {|Re c| ≤ 2r, |Im c| ≤ τ}; reduced to Lemma H on complex c plus (H-hol). | corrected (SOURCES_HBETA_N3_VERIFY: condition (a) does not follow from γ small; (H2-hist) sufficient not necessary); reduced |
+| SOURCES_HBETA_N3_VERIFY.md | Verifier of SOURCES_HBETA_N3. | report |
+| SOURCES_N3A.md | Condition (a) of Lemma N3 settled: order L → constants → γ → g_K ≤ γ/2 → (r_0, τ_0) → K; uniform r_0 = τ_0 with slack > 5×. | corrected (SOURCES_N3A_VERIFY: k-direction of g_k corrected; D″-form sketch has two gaps); condition (a) verified |
+| SOURCES_N3A_VERIFY.md | Verifier of SOURCES_N3A. | report |
+| SOURCES_HHOL.md | (H-hol) for the small-field chain: β_j holomorphic on |g − x| < ρ_0 x, ρ_0 = min(0.1, …), |β_j| ≤ M; reduced to Balaban's conditions with modified constants. | corrected (SOURCES_HHOL_VERIFY: Lemma D right with one factor √2 gap; |β_j| ≤ M a reduction); verified reduction |
+| SOURCES_HHOL_VERIFY.md | Verifier of SOURCES_HHOL. | report |
+| SOURCES_HHOL_LF.md | Large-field half of (H-hol): freeze the R-ratio density at Balaban's real trajectory x*; reduced to (M-A), (M-B), (M-C). | corrected (SOURCES_HHOL_LF_VERIFY: R_k, (M-D) corrected; freeze repair confirmed as reduced to (M-A)); reduced |
+| SOURCES_HHOL_LF_VERIFY.md | Verifier of SOURCES_HHOL_LF. | report |
 | SOURCES_HHIST.md | (H-hist) in column-sum form, reduced to (B2) and (SM). | corrected (SOURCES_HHIST_N1_VERIFY: per-hop θ unsupported; ratio claim false) |
 | SOURCES_HHIST_N1_VERIFY.md | Verifier of SOURCES_HHIST and ASSEMBLY_N1. | report |
+| SOURCES_HHIST2.md | (H-hist2) reduced: summable ε′, ε″ via u-unit Jacobians (∂_u = −½g³∂_g); own-slot second derivative by relative u-disc Cauchy. | corrected (SOURCES_HHIST2_VERIFY: Lemma H′ still needs a summable β_j′; λ^m product form false); verified reduction |
+| SOURCES_HHIST2_VERIFY.md | Verifier of SOURCES_HHIST2. | report |
 | SOURCES_SM.md | (SM): per-hop contraction of the history dependence, derived from (W4) and CMP 116 (1.24). | corrected (SOURCES_SM_VERIFY: (G-gain) needed in hop and own slot) |
 | SOURCES_SM_VERIFY.md | Verifier of SOURCES_SM (page images). | report |
-| SOURCES_GGAIN.md | (G-gain): g_k-uniform derivative bound for the small-field step by pointwise Cauchy in x = g_k B. | corrected (SOURCES_GGAIN_VERIFY: Lemma G4, chi_k surface term) |
+| SOURCES_GGAIN.md | (G-gain): g_k-uniform derivative bound for the small-field step by pointwise Cauchy in x = g_k B; C_β uniform on (0, γ]. | corrected (SOURCES_GGAIN_VERIFY: Lemma G4 corrected, reduced via the real-t Mayer form; χ_k surface term then closed by SOURCES_G3) |
 | SOURCES_GGAIN_VERIFY.md | Verifier of SOURCES_GGAIN. | report |
+| SOURCES_G3.md | Lemma G3: the χ_k surface term of the g-derivative, proved by a direct surface estimate given (Q); S_χ = O(γ^p) for all p, uniform in g, k, X, volume. | corrected (SOURCES_G3_VERIFY: fixed-B vs fixed-B̃ settled, γ_k has two readings); proved given (Q) |
+| SOURCES_G3_VERIFY.md | Verifier of SOURCES_G3 (n = 8 numerics reproduced). | report |
+| SOURCES_Q.md | (Q): Gaussian domination constant c_− = ‖C*Δ_kC‖^{−1}; reduced to the norm bound ‖C*Δ_kC‖ ≤ γ_1 (CMP 116 (2.7)). | corrected (SOURCES_Q_VERIFY: order reversal confirmed with corrections; CMP 99 (3.132) prints the needed kernel bound); reduced |
+| SOURCES_Q_VERIFY.md | Verifier of SOURCES_Q. | report |
+| SOURCES_CDC.md | The norm bound ‖C*Δ_kC‖ ≤ γ_1 reduced by a Woodbury cancellation to the block-extension lemma (E_U); "unitary U suffices" refuted. | corrected (SOURCES_CDC_VERIFY: (E_U) is not the last input, (3.132) omitted; constants corrected); reduced |
+| SOURCES_CDC_VERIFY.md | Verifier of SOURCES_CDC (text layers). | report |
+| SOURCES_EU.md | (E_U) of SOURCES_CDC §4: K_0(4) = 103.25, 146.73, 185.64, 195.19 at N = 3, 5, 13, ∞ (numerics/k0_d.py); explicit covariant extension. | unverified (numbers [N], extension [R]) |
+| SOURCES_LOC.md | Lemma LOC: localized covariance C^{(k)}(Z_0, 0) via Balaban's (2.16) and the Schur test; c_− = (γ_1 + ε_M)^{−1}; corrects SOURCES_Q_VERIFY §1. | reduced (verifier SOURCES_LOC_VERIFY in progress; case (a) confirmed) |
+| SOURCES_LOC_VERIFY.md | Verifier of SOURCES_LOC (page images). | report, in progress |
+| SOURCES_MA.md | (M-A): ⟨A − A_min⟩_u ≤ (n_i/u)(1 + η_x) by a virial identity; statement corrected to G = A − A_min. | corrected (SOURCES_MA_VERIFY: theorem confirmed given (H−); (M-A′) normalized-ratio bookkeeping a real open gap); reduced |
+| SOURCES_MA_VERIFY.md | Verifier of SOURCES_MA (SU(2) toy reproduced). | report |
+| SOURCES_MA2.md | (M-A′) normalized-ratio bookkeeping and (H−) from CMP 102. | unverified, in progress |
+| SOURCES_MB.md | (M-B): closes with p_0(g) ≥ 17/(γ_0A_1²) (option B) or 20/(γ_0A_1²) (option A); depends on (M-A), (M-C). | corrected (SOURCES_MB_VERIFY: perturbation weights additive, g* = 0.82645 − θ_W − τ_C; condition p_0 ≥ 17/(γ_0A_1²) endorsed under θ_W + τ_C ≤ 0.2); verified |
+| SOURCES_MB_VERIFY.md | Verifier of SOURCES_MB (page images pp. 377–390). | report |
 | SOURCES_HTHR.md | (H-thr): threshold-shell contribution under model assumptions M1-M4. | corrected (SOURCES_HTHR_VERIFY: Lemma S; superseded by SOURCES_HTHR2.md) |
 | SOURCES_HTHR_VERIFY.md | Verifier of SOURCES_HTHR (page images); resolves M1. | report |
 | SOURCES_HTHR2.md | (H-thr) via Balaban's printed tail factor (Lemma T); M2' closed without a density. | verified, conditional on (H-hist2) (SOURCES_HTHR2_VERIFY) |
@@ -87,13 +115,16 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_D4D5_VERIFY.md | Verifier of SOURCES_D4D5. | report |
 | SOURCES_FX.md | (FX): cluster-expanded form of the sourced output with epsilon-uniform radius; reduced to O1-O3. | corrected (SOURCES_FX_VERIFY: final step is not one more R step; O1 open) |
 | SOURCES_FX_VERIFY.md | Verifier of SOURCES_FX (page images CMP 122 I, II; Dimock III). | report |
-| SOURCES_FX_O1.md | O1(b): reverse-scaling lemma d'_{j+1}(S(Y)) >= c_* d'_j(Y), no additive constant. | verified (SOURCES_FX_O1_VERIFY; R2 open) |
+| SOURCES_FX_O1.md | O1(b): reverse-scaling lemma d'_{j+1}(S(Y)) >= c_* d'_j(Y), no additive constant (Lemma [P]). | verified (SOURCES_FX_O1_VERIFY; R2 then closed by SOURCES_FX_R2) |
 | SOURCES_FX_O1_VERIFY.md | Verifier of SOURCES_FX_O1. | report |
-| SOURCES_FX_O23.md | O2 and O3 closed by the real R-denominator (1.100) and upper-bound checks; new O4. | unverified |
-| SOURCES_FX_R2.md | Gap R2 (kappa_fin >= kappa_final); stub with inputs only. | open, not started |
+| SOURCES_FX_O23.md | O2 closed via the real R-denominator (1.100); O3 closed for the upper bounds; O4 raised. | verified with corrections (SOURCES_FX_O23_VERIFY: O2 confirmed; O3 conditional on N3; O4 avoided by the main form) |
+| SOURCES_FX_O23_VERIFY.md | Verifier of SOURCES_FX_O23. | report |
+| SOURCES_FX_R2.md | Gap R2 (κ_fin ≥ κ_final): constant order fixed, volume-rate form κ_vol = √d κ_fin. | verified (SOURCES_FX_R2_VERIFY; two minor [I] inputs: R_{K+1} ≥ 1, C_c independent of g) |
+| SOURCES_FX_R2_VERIFY.md | Verifier of SOURCES_FX_R2 (text layers and page quotes). | report |
 | ASSEMBLY.md | Finite-torus existence theorem (compactness form) modulo named blocks; dependency table §3. | corrected (ASSEMBLY_VERIFY: proofs confirmed; table stale, nontriviality wording) |
 | ASSEMBLY_VERIFY.md | Verifier of ASSEMBLY. | report |
 | ASSEMBLY_N1.md | The bridge (B-N1): sourced cumulant bounds ⇒ (H-U). | verified (SOURCES_HHIST_N1_VERIFY; given (S); one constant slip) |
+| INBOX.md | Delta notes for Elvin (certification cost and launch decision). | report |
 
 ## notes/reports/
 
