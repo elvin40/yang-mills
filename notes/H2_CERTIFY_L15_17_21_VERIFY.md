@@ -43,3 +43,6 @@ Chain: rho2_le (lean/YmLean/BlockNorm.lean:78) holds for any real L > 0 and give
 ## 5. Grade of TRUST_LEDGER B1 at L = 15, 17, 21
 CERTIFIED, with the same standing as L = 13: rigorous outward-rounded cover of the chamber by the audited bb_arb.py; paper lemmas valid for odd L ≥ 3. Verified here: record numbers reproduce exactly (worst cell, F_max, G_max); 9 spot cells consistent; L-hypotheses hold; comparison value is L via rho2_le.
 Residue: (a) 3,750 of 3,876 cells per L were not recomputed (record says 0 failed; full rerun ≈ 1–3 min per L on the Mac). (b) The numerical B_L ≥ ρ_1² sweep (896 cases) and the production cross-checks were done at L = 13; here only 5 points at L = 15, 17, 21. Neither affects the proof logic.
+
+## Full Mac rerun (coordinator, 2026-10-28)
+`uv run --no-project --with python-flint --with numpy python bb_arb.py L L−1 16`, all 3,876 cells per L, failed_leaves = 0: L = 15 supB = 13.737723 (33 s); L = 17 supB = 12.826432 (51 s); L = 21 supB = 11.776985 (113 s). Matches H1_OTHER_L.md to the printed digits. Gap closed: B1 at L = 15, 17, 21 CERTIFIED with the same standing as L = 13.

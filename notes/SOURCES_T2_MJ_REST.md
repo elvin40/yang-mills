@@ -140,3 +140,37 @@ Script numerics/t2_mjrest_neutral.py (new; imports the read-only builder t2_s123
 | 48 | 1 | 0.1309 | 1.4e−8 | 2 | 0.0169639 | 0.0169639 |
 
 Reading [V: numerics, this session]. The whole neutral spectrum matches {l, cos φ·l} to the finite-difference error (h = 10^{−4}, ≤ 5·10^{−8}). Exactly two zero modes (the constant 1-forms, d = 2) at every flux. The gap is cos φ·2(1 − cos(2π/N)), relative error ≤ 8·10^{−8}. The flux enters the neutral block only through cos φ on the transverse part, as U3_LEMMA51 Prop. 2.2(b) states. Limits: 2D, t = 0 (Wilson level, no Balaban averaging), rational fluxes. The level-j neutral symbol is not checked numerically here; Lemma 5.1 uses only (N1), (N2).
+
+## 7. Conclusion and ledger
+
+Corollary 7.1 ((M_j)) [P given the list below; this file not yet independently verified]. Fix j ≥ 1, L odd ≥ 3. Then [Γ_c(Λ_j; f) − Γ_c(1; f) − (f = 0 value)]/(n_2f²) → d_j as f → 0 (KAPPA_BOUNDED l. 32).
+Proof. δΓ_j = δΓ^{ch} + δΓ^{neu}; Theorem 4.2 and Lemma 5.1; d_j = d_j^{ch} + d_j^{neu} by the sector split of the integrand of KAPPA (1.1). ∎
+
+Verdict. (M_j) PROVED relative to:
+- (G_A′) [P+V, SOURCES_T2_GAPRIME2 + VERIFY] (enters only through S123 Prop. 5.6, i.e. the N–O window term II);
+- (I3) [P+V, SOURCES_T2_I3 + VERIFY] (through S123 Prop. 2.1, and the covariance in Lemma 4.1);
+- the S123 results graded CONFIRMED in SOURCES_T2_S123_VERIFY: Lemmas 1.1, 1.3, 1.4, Prop. 2.1, Thms 3.3, 3.4, 4.3, Lemma 4.2 (ER), Lemma 5.2, Props. 5.3–5.6, Lemma 5.8, facts (F1)–(F5) (with their cited inputs O6, Prop. B, Lemma M, A0, Theorem W, Prop. E); U3_LEMMA51 Prop. 2.2 (neutral closed form); BETA_FP_M Lemma 4.1;
+- standard cited facts: d/dt τh(X + tV) = τ(h′(X + tV)V) for C¹ h in a finite von Neumann algebra; τ log X = ∫tr log x̂ for a positive convolution X with log-integrable symbol (Fuglede–Kadison); Parseval on offset lattices;
+- one convention reading [I]: the Moyal inverse coefficients b_{t,m} in KAPPA (1.1) (U3_LEMMA51 (3.2)–(3.3)) equal the b̂_m of §3.1 at σ = 0 (same twisted product, S123 Lemma 1.1(e)). If they differ by a convention, d_j must be read as c_2(0)/(−2n_2) with the b̂_m of §3.1, which is the formal coefficient of the same τ-quantity.
+Not proved: the printed rate O(ε|f|³ log(1/|f|)) of BETA_FP_M Prop. 4.4. The proof gives o(f²) (error O(|f|^{9/4}) plus the dominated-convergence term of Lemma 3.1). No consumer uses the rate.
+
+Ledger.
+1. Targets quoted (§1): region 1 = momentum range |K|² ≥ R′|f| (BETA_FP_M) or spectral range ≥ Rμ (S123); the open step is an asymptotic identity, not an inequality. [V: read in the files, this session]
+2. Lemma 2.1, partial fractions with Σc_k = 1. [P]
+3. Split (2.1): log|x| = F_s + g̃ + ψ (f ≠ 0), log = F_s + ψ⁰ (f = 0), s = |f|^{3/4}, N = 4. [P]
+4. IDS bound (2.2): N_t(λ) ≤ C_4(λ + C_1′|f|)², N_t(λ) ≤ C_5λ² for λ ≥ s. [P given Thm 3.4, Lemma 5.2, BETA_FP_M Lemma 4.1]
+5. Lemma 2.2: |Φ_ψ(f)| ≤ C(s³ + |f|³), |Φ_{ψ⁰}(0)| ≤ Cs³; needs a > 2/3. [P given Thm 3.3, Thm 4.3(a), item 4, (F2), (F3)]
+6. (K1) symbol envelopes |∂^αb̂_m| ≤ C(l + σ)^{−1−m−|α|/2}, uniform in σ ∈ [0, 1]. [P]
+7. (K2) kernel moments ‖b_m‖_{(P)} ≤ Cσ^{−m−P/2−3/2} (lossy by σ^{−1/2}; enough). [P]
+8. Lemma A, Steps 0–4; Step 4 = exact 2-gon identity τ(W·(b ⋆_f v)) = ∫tr[b̂v̂] at finite f. [P given Prop. 2.1, Thm 3.3, ER, Lemmas 1.1, 1.3, 1.4, (F1)–(F5)]
+9. Lemma 3.1: c_2(σ) → c_2(0) by dominated convergence; identification with KAPPA (1.1). [P; identification I, see verdict]
+10. Lemma 4.1: δΓ_j even in f (global rotation by π about σ_1). [P given (I3) covariance]
+11. Theorem 4.2: charged-sector (M_j), error O(|f|^{9/4}) + o(1)·f². [P given items 2–10, S123 Props. 5.5, 5.6, (G_A′)]
+12. BETA_FP_M Prop. 4.4: holds as I(f) − I(0) = n_2d_jf² + o(f²) at fixed j (charged sector); the printed rate is not proved. S123 Lemma 7.2 no longer needed. [P for the o(f²) form]
+13. (N2): ±∂_f^p𝔨_t^{neu} ≤ C_pl, by induction over the one-step recursion with the bordered-inverse derivative formula. [P given Prop. 2.2(a),(b), O6, (F1), KAPPA (E0)]
+14. Lemma 5.1: neutral f² coefficient by differentiation under the integral; all f-derivatives of tr log 𝔨^{neu} are bounded uniformly in K; error O(f⁴). Closes the neutral [I] of S123 §7.2. [P given (N1), (N2), Fuglede–Kadison]
+15. §5.2: finite-torus zero modes = the d constant (harmonic) 1-forms, flux-independent, not gauge, not lifted by the Feynman term; null set for τ; no atom (N^{neu}(λ) ≤ Cλ²); irrelevant to (M_j), which is an infinite-lattice statement. [P]
+16. Neutral 2D spectrum = ∪_K{l, cos φ·l}, two zero modes, gap cos φ·2(1 − cos(2π/N)), to ≤ 5·10^{−8}, N = 12–48, m = 0–2. [V: numerics/t2_mjrest_neutral.py + JSON]
+17. Rate of c_2(σ) → c_2(0): O(σ log(1/σ)) expected by power count. [I, not used]
+
+Points a verifier should check first. (i) Step 2 of Lemma A: the sharp bound ‖R_0W·v^{[2]}‖ ≤ C, in particular ER for W·k^{[2]} and the Lemma 1.4(b) bound for |β| = 2. (ii) Step 3: the bookkeeping that all Moyal terms of total f-order ≤ M cancel, including the j = 1, 2 pieces of k^{[2]}. (iii) Lemma 2.2 range (s, K_*]: the Stieltjes step with N = 4. (iv) (N2): the bordered-inverse derivative chain and the claim that A(f) ≥ ½A_0 suffices for invertibility at each step.

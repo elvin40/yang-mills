@@ -22,3 +22,44 @@ Remark on what (3.1) needs. Put G(φ) := F_W(φ)/φ². Since Λ⁴F_W(f/Λ²)/f�
 (3.1′) is weaker than (F_lat): G may carry a bounded term with period 2 ln L in ln φ. This form is used below.
 
 Note on the caller's framing. The task text describes "a_j + b·log(L^j)" for the scale-j block determinant. In the project, the scale-j determinant is the massive total log Z_Λ, and its log in Λ comes entirely from the fine bracket through Step A. So the object to control is the single level-0 lattice functional F_W(φ) at small φ. The Λ-dependence is a pure rescaling; no block structure enters Step B.
+
+## 2. The lattice transfer: split by an infrared mass
+Notation. Charged sector only matters at order φ² up to analytic terms (see 2.0). A_φ := charged fine Feynman operator (Wilson Hessian + D_φD_φ^T on charged link fields, C⁴-valued per colour ±), 𝒢_φ := charged ghost D_φ^TD_φ. Both are magnetically covariant: A_φ = W_φ·a_φ with W_φ the Peierls phase and a_φ a finite-range matrix kernel, entire in φ (U3_LEMMA51 Lemma 3.1 setting). For m ≥ 0 put, per fine cell,
+  W(φ; m²) := −½ log|det|(A_φ + m²) + log|det|(𝒢_φ + m²) − (same at φ = 0),
+so F_W(φ) = W(φ; 0) + (neutral part). Signs follow Fine = log det X − ½ log|det K|.
+
+2.0 Neutral sector [P]. At an abelian σ_3 background the neutral Hessian is the free one with each (0,1) plaquette weighted by cos φ (NUMERICS §2, the U(1) computation). Its log det per cell is log det(1 + (cos φ − 1)Δ_0^{−1}d_{01}^Td_{01}); Δ_0^{−1}d^Td has a bounded degree-0 symbol, so this is analytic in φ with an O(φ²) BZ-integral coefficient. No logarithm. It enters B only.
+
+2.1 Lower bound [P, sketch]. Write U_p = e^{iφσ_3}e^{tY_p + t²Z_p + …}, Y_p the covariant curl of the fluctuation, Z_p a sum of commutators (tr Z_p = 0). The second-order term of 1 − ½Re tr U_p is −½Re tr(e^{iφσ_3}(Y_p² + 2Z_p))/… = cos φ·(positive square in Y_p) + sin φ·(bounded quadratic form). With D_φD_φ^T ≥ 0: A_φ ≥ −C_0|φ| for |φ| ≤ 1/2. 𝒢_φ ≥ 0. So A_φ + m² > 0 when m² ≥ μ|φ|, μ ≥ 2C_0.
+
+2.2 Lemma 1 (massive regime, remainder in φ) [P modulo the magnetic-perturbation bound (MPT) below]. For 0 < m ≤ 1 and |φ| ≤ m²/μ:
+  W(φ; m²) = φ² w_2(m²) + R(φ, m),  |R| ≤ C φ⁴ m^{−4},  C independent of φ, m.
+Proof. W(φ;m²) = −∫_{m²}^∞ ds per-cell tr[(−½)((A_φ+s)^{−1} − (A_0+s)^{−1}) + ((𝒢_φ+s)^{−1} − (𝒢_0+s)^{−1})] (all operators positive for s ≥ m²). W is even in φ (charge conjugation, U3_LEMMA51 §2.1), so the φ³ term is 0. Taylor in φ to order 4 with integral remainder. (MPT): for a covariant operator W_φ·a_φ with a_0 elliptic of degree 2 (a_0(K) ≥ c|K̂|²), the per-cell trace of the resolvent at s satisfies |∂_φ⁴ tr_cell(A_φ + s)^{−1}| ≤ C s^{−3}, uniformly for |φ| ≤ s/μ. Reason: (W a)(W b) = W(a ⋆_φ b) with the kernel product weighted by e^{iφ·area(0,w,z)}, area ≤ |w||z − w|; each φ-derivative brings one area factor; the resolvent kernel at s decays on the scale s^{−1/2}; so four derivatives cost (s^{−1/2})⁴·s^{−2}... per dimension count f-weight 2, K-weight 1: the φ⁴ coefficient of a degree −2 symbol integrated over d⁴K has scaling s^{2−1−4} = s^{−3}. Spin/artifact terms of a_φ − a_0 = O(φ) are bounded local insertions with the same count. Then ∫_{m²}^∞ s^{−3} ds = m^{−4}/2. ∎
+(MPT) is standard gauge-covariant magnetic perturbation theory (Nenciu; Cornean–Nenciu type kernel bounds; lattice versions exist) [I-cite, not checked here]. The scalar ghost case is checked numerically in §3.2.
+
+2.3 Lemma 2 (the log in m² is the continuum log) [P given Step C].
+w_2(m²) = −∫_{m²}^∞ ds ∫_{BZ} dK/(2π)⁴ ρ_2(K; s), ρ_2 := tr of the φ² Moyal coefficient of the inverse symbol (U3_LEMMA51 (3.2)–(3.3) with 𝔨_0 → a_0 + s; the per-cell trace is the BZ integral of the symbol, BETA_FP_H §2.1 fact (i)). Put J(K; m²) := −∫_{m²}^∞ ρ_2(K; s) ds.
+(i) Bounds: |ρ_2(K;s)| ≤ C(|K̂|² + s)^{−3} (BETA_FP_H (2.3a) count with 𝔨_0 + s). So |J(K;m²)| ≤ C(|K̂|² + m²)^{−2}.
+(ii) Step C: on |K| ≤ δ the lattice symbols a_m (m = 0, 1, 2) equal the continuum ones times (1 + even O(|K|²)) with the derivatives needed (VERIFY §7 Step C: [P] for the Hessian by Lemma 3.4; ghost: the Peierls-substituted lattice Laplacian has magnetic Weyl symbol exactly |K̂|² (no f¹, f² symbol terms), so the ghost part is [P]; gauge-fixing D_φD_φ^T stays [I]). Hence ρ_2 = ρ_2^c(1 + O(|K|²)) relative, and |J − J^c| ≤ C|K|²(|K|² + m²)^{−2}.
+(iii) Homogeneity of the continuum: J^c(λK; λ²m²) = λ^{−4}J^c(K; m²). So J^c(K; m²) = |K|^{−4} j(K̂, m²/|K|²) with j bounded, j(·, u) = O(u^{−2}) as u → ∞, and j(Ω, 0) = |K|⁴J^c(K;0) =: I_{−4}(Ω), the degree −4 part of Step B.
+(iv) Split ∫_{BZ} = ∫_{|K|>δ} + ∫_{|K|<δ}. Outer part: continuous in m² ∈ [0,1], no log. Inner difference J − J^c: bounded by C|K|^{−2}, dominated, and |[J − J^c](m²) − [J − J^c](0)| ≤ C|K|^{−2}min(1, m²/|K|²), integral O(m² ln(1/m)). Inner J^c: ∫_{|K|<δ}d⁴K |K|^{−4}j = ∫_{S³}dΩ ∫_0^δ dr r^{−1} j(Ω, m²/r²) = ½ ln(1/m²)·∫_{S³} I_{−4} dΩ + const + O(m²/δ²).
+Result:
+  w_2(m²) = n_2c_2^{lat} ln(1/m²) + β_lat + O(m² ln(1/m)),  n_2c_2^{lat} = ½(2π)^{−4}∫_{S³} I_{−4} dΩ.   (2.1)
+I_{−4} is built from continuum symbols only, so c_2^{lat} = c_2^{cont,m}, the ln(1/m²) coefficient of the φ² term of the continuum massive one-loop (the Seeley–DeWitt a_2 ∝ tr F² coefficient). This is the caller's "shell" mechanism: the O(|K|²) lattice corrections lower the degree to −2, which is summable; only the scale-invariant degree −4 part produces ln(1/m²). The Nielsen–Olesen mode plays no role here, since A_φ + m² > 0.
+
+2.4 Continuum: ln(1/m²) coefficient = ln(1/|φ|) coefficient [P, continuum, standard]. In the continuum the per-volume heat trace at constant field is (4πt)^{−2}Φ(φt), Φ even, Φ(x) − Φ(0) = κx² + O(x⁴) (κ = gluon 10/3·(norm.) + ghost 1/3·(norm.), BETA_FP_H_VERIFY §4 split). Massive: −∫dt/t e^{−tm²}(4πt)^{−2}·κφ²t² gives κφ²/(16π²)·ln(1/m²) + const. Massless: with t = τ/|φ| the φ² ln(1/|φ|) coefficient comes from τ → 0 only and equals κ/(16π²) again; the Nielsen–Olesen growth of Φ at large τ affects only the constant (and the imaginary part). So c_2^{cont,m} = c_2 (Savvidy (1.4), X5). With 2.3: c_2^{lat} = c_2.
+
+2.5 Lemma 3 (from m² = μ|φ| down to m = 0): the residue (L-LL) [open]. Define
+  H_φ(μ) := φ^{−2}[W(φ; 0) − W(φ; μ|φ|)].
+(L-LL) For each fixed μ ≥ μ_0, H_φ(μ) has a limit h(μ) as φ → 0 (value not needed).
+Content: only spectrum of A_φ, 𝒢_φ at energies ≲ μ|φ| enters at leading order. In scaled units E = |φ|e this is the lattice Landau problem; (L-LL) says it converges to the continuum Landau problem (k_⊥ free, Landau levels (2n+1 ± 2)|φ| + k_⊥² for the vector, n = 0 spin-down = Nielsen–Olesen band through E = 0). Three parts: (a) vague convergence of the scaled per-cell spectral measures |φ|^{−2}(ν_φ − ν_0)(|φ|·de); (b) a uniform bound on the scaled density near e = 0 (the N–O zero: log|e| is integrable against a bounded density; needs a non-degenerate crossing ∂_{k_⊥²}E_0 ≥ c > 0 of the lattice n = 0 band); (c) a tail bound for e ≫ μ (follows from Lemma 1's remainder count). For the scalar ghost, (a) is a local limit theorem for the lattice walk with its Lévy area, i.e. on the discrete Heisenberg group (Alexopoulos, Ann. Probab. 30 (2002); Breuillard) [I-cite, not checked], and §3.2 checks the heat-trace version numerically. For the matrix-valued vector operator (spin term, lattice mixing of components) no source was checked; status [I].
+
+2.6 Assembly [P given Lemmas 1, 2, 3]. Fix μ ≥ max(μ_0, 2C_0). For small φ, with m² = μ|φ| in Lemmas 1–2:
+  G(φ) = F_W(φ)/φ² = w_2(μ|φ|) + R/φ² + H_φ(μ) + (neutral, analytic)
+       = n_2c_2 ln(1/|φ|) − n_2c_2 ln μ + β_lat + O(μ|φ| ln) + O(μ^{−2}) + H_φ(μ) + b_n + o(1).
+For fixed λ = L^{−2k}:
+  G(φ) − G(λφ) = n_2c_2 ln(1/λ) + [H_φ(μ) − H_{λφ}(μ)] + O(μ^{−2}) + o(1).
+By (L-LL) the bracket → 0. So limsup_{φ→0}|G(φ) − G(λφ) − n_2c_2 ln(1/λ)| ≤ Cμ^{−2} for every μ; let μ → ∞. This is (3.1′), hence (3.1), with c = 2c_2 = 11N²/(12π²). (F_lat) itself also follows, with B = −n_2c_2 ln μ + β_lat + h(μ) + b_n + O(μ^{−2}) independent of μ in the limit; it is not needed.
+Explicit remainder. The quantitative form is |G(φ) − G(λφ) − n_2c_2 ln(1/λ)| ≤ Cμ^{−2} + Cμ|φ| ln(1/|φ|) + |H_φ(μ) − H_{λφ}(μ)|; with μ = |φ|^{−1/3} the first two give O(|φ|^{2/3} ln). A rate for (L-LL) would give a rate for (3.1); none is claimed.
+
+2.7 What the argument does not touch. (F) is a one-loop statement (the fine bracket is the g⁰ term of log Z). There is no higher-loop residue inside (F). Higher loops enter Theorem 2w through Balaban's β_j(g) − β_j(0) (row A5, 7′), not through B3.

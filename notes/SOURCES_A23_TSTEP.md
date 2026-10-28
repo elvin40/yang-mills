@@ -107,3 +107,5 @@ Suggested row changes (for the ledger owner; not applied):
 - B22 → replace (K1) by (K1′) (13δ) and δ = 0.03 by δ = 0.025 at L = 13, β = ¼; κ_0 factor 3.6 → 5.5. Lean K1_numeric checks only the 10δ step.
 
 STATUS: COMPLETE (pending independent verification)
+
+Corrections after verification (SOURCES_A23_TSTEP_VERIFY, 2026-10-28): the "(6.6)" cite is on CMP 116 p. 3; the tree-length bound is printed as CMP 116 (2.27) (R2 → [V]); the verifier's own count of the unprinted cost is 2δ (Mayer expansion of exp(−ΣẼ) costs nothing; the Y_i sum 1δ; the volume factor ≤ 1δ by (2.30); the Z_0 sum paid by the 8δ/10δ slack), so 13δ is safe but loose; the κ_0 factor compared on one baseline is 4.3–4.7 (5.5 mixed baselines); paper/sources.tex ll. 100–101 still state (K1) with 1/10, δ ≤ 0.0385, 3.6, 10δ — to update; Lean K1_numeric_13 added (lean/YmLean/K1Prime.lean; build 9 s; no sorry; axioms propext, Classical.choice, Quot.sound). R1 (full count) and R3 (H′(Z_0) bound, Balaban's assertion) stay open.
