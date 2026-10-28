@@ -1,4 +1,4 @@
-# Lean 4 formalization (41 files)
+# Lean 4 formalization (45 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -45,13 +45,19 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `TheoremL.lean` | `block_ineq_E_exact`, `KbExact_le`, `HE_implies_E_cond`, `lemmaPexp_real`, `theoremL_real`, `theoremL`, `gammaExp_eq` (10 theorems, 216 lines). Axioms: standard. Build 3.7 s | WC_FULL.md §2 (Lemma E), §3.1–§3.2 (Theorem L); WC_FULL_VERIFY.md | VERIFY_TheoremL.md |
 | `QConstants.lean` | `Lambda_bound`, `Lambda_bound_gamma`, `author_Bblock_norm_le`, `c_minus_bound`, `lemmaN`, `norm_le_of_abs_dot` (14 theorems, 290 lines). Axioms: standard. Build 3.4 s | SOURCES_G3_N2.md §3.1–3.6; SOURCES_A7_CDC.md §2.1–2.3 | VERIFY_QConstants.md |
 | `ScaleChain.lean` | `T1`–`T4`, `eq26_line1`, `eq28_line1`, `eq28_line2`, `eq29_line1/2`, `eq29_line2_full`, `R_step`, `cSw_one_seventh`, `eq246` (30 theorems, 592 lines). Axioms: standard. Build 6.6 s (full `lake build`) | SOURCES_A11_CONST.md §1, §4; SOURCES_A11_CONST_VERIFY.md §8, §17; SOURCES_B10_SWEEP.md (i) | VERIFY_ScaleChain.md |
+| `ParametrixCore.lean` | `knorm`, `conj_le_knorm`, `combes_thomas_mu`, `parametrix_identity`, `parametrix_neumann`, `parametrix_inv`, `knorm_neumann`, `parametrix_knorm` (20 theorems, 381 lines). Axioms: standard. Build 3 s | A1_WALK_FULL.md §1.5, §3, §4.1, §5.2; A1_WALK_FULL_VERIFY.md §1, §3 | VERIFY_ParametrixCore.md |
+| `WGAlgebra.lean` | `lemmaN_partial`, `lemmaN`, `lemmaN_G1`, `resolvent_G1`, `G1_loewner`, `deltaPi2_expand`, `wg1_alpha`, `wg1_G`, `wg1_G1`, `wg1_cmp99`, `card_pattern`, `k₂_eq` (25 theorems, 319 lines). Axioms: standard. Build 2.4 s | WG_FULL.md §1.2, §2.2–2.6, §4.3, §4.7, §5.1, §5.6–5.7; WG_FULL_VERIFY.md items (4), (6), (7) | VERIFY_WGAlgebra.md |
+| `MagneticShift.lean` | `T0_T1`, `comm_nab`, `X_eq`, `ladder_comm_sin`, `J_eq`, `Aprime_decomp`, `R_eq`, `Kbar_eq`, `sigmaY_norm` (61 theorems, 513 lines). Axioms: standard. Build 4.3 s | SOURCES_T2_GAPRIME2.md §1–§4; SOURCES_T2_GAPRIME2_VERIFY.md §1, §4, §5 | VERIFY_MagneticShift.md |
+| `H1Majorant.lean` | `sin_mul_ge`, `N_sin_le`, `sigma_inf_le_sigma_N`, `two_sin_le_deformed`, `cs_weighted`, `F_le_of_cs`, `Phi_closed`, `g_norm_le`, `gauge_kernel`, `gauge_G_le`, `card_B4` (33 theorems, 469 lines). Axioms: standard. Build 13.5 s | H1_ANALYTIC.md §2–§6; H1_ANALYTIC_VERIFY.md V0–V1; H1_ANALYTIC_VERIFY2.md; H2_CERTIFY_P5_VERIFY.md | VERIFY_H1Majorant.md |
+
+Wave 1–3 (2026-10-28): new files Concatenation, NeutralSpectrum, ComplexGaussian, TheoremL, QConstants, ScaleChain, ParametrixCore, WGAlgebra, MagneticShift, H1Majorant (wave 2 and 3). Wave 2 and 3 are complete.
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 41 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 45 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
