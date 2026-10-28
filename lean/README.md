@@ -1,6 +1,6 @@
 # Lean 4 formalization of Lemmas D′, D, E, H
 
-Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (162 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`. Added 2026-10-27: `YmLean/DetIdentities.lean` (143 lines), `YmLean/Telescoping.lean` (127 lines), `YmLean/AbelianCount.lean` (55 lines), all without `sorry`. Added 2026-10-27: `YmLean/LemmaDDoublePrime.lean` (146 lines, `YmLean.lemma_DDoublePrime`), without `sorry`.
+Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (162 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`. Added 2026-10-27: `YmLean/DetIdentities.lean` (143 lines), `YmLean/Telescoping.lean` (127 lines), `YmLean/AbelianCount.lean` (55 lines), all without `sorry`. Added 2026-10-27: `YmLean/LemmaDDoublePrime.lean` (146 lines, `YmLean.lemma_DDoublePrime`), without `sorry`. Added 2026-10-27: `YmLean/TheoremK.lean` (45 lines) and `YmLean/Gronwall.lean` (56 lines), without `sorry`; statement check `VERIFY_TheoremK.md`.
 Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRIME_VERIFY.md`.
 
 ## Toolchain
@@ -8,7 +8,7 @@ Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRI
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all seven files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all nine files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -119,6 +119,26 @@ Conclusions of `lemma_DDoublePrime` (in this order):
 
 Weaker than the note: continuity instead of C¹; γ is any admissible value (γ_Bal is not built in; with γ ≤ γ_Bal added by the caller, the note's γ is one instance); R ≥ 0 is derived, not assumed; K = 0 allowed in (b); (c′) and (d) hold for every trajectory with couplings in ]0, γ], not only those of (b). Same as the note: (5.1) is assumed for every pair k < K (all K), as in KAPPA_BOUNDED (5.1). Not formalized: history-dependent β (L5).
 
+## TheoremK.lean (KAPPA_BOUNDED.md §5.1–§5.2, arithmetic steps only)
+
+| Note | Lean |
+|---|---|
+| per-step errors summed: \|x_n − x_0 − nβ_∞\| ≤ Σ_{j<n} D(j) | `telescoping_bound x βinf D` |
+| same, uniform in n for D ≥ 0 summable: ≤ Σ' D | `telescoping_bound_tsum` |
+| (5.1): \|S_k − kb\| ≤ R ∀k ⇒ \|S_K − S_k − b(K−k)\| ≤ 2R, k ≤ K | `window_of_partial x b R` |
+
+Not formalized: Theorem K itself (\|d_k\| ≤ κ_*, Prop. 2.2; analysis of the one-loop symbols).
+
+## Gronwall.lean (THEOREM2_PROOF_v4.md §5.1, §5.3; KAPPA_BOUNDED Prop. 4.1)
+
+| Statement | Lean |
+|---|---|
+| a_{j+1} ≤ (1+ε_j)a_j + f_j, ε, f, a_0 ≥ 0 ⇒ a_n ≤ Π_{j<n}(1+ε_j)(a_0 + Σ_{j<n} f_j) | `discrete_gronwall` |
+| same with Π(1+ε_j) ≤ exp Σ ε_j (`prod_le_exp` of LemmaH.lean) | `discrete_gronwall_exp` |
+| N_{j+1} ≤ qN_j + Z, 0 ≤ q < 1, N_0, Z ≥ 0 ⇒ N_j ≤ N_0 + Z/(1−q) (the recursion of Prop. 4.1, Theorems C1, B2) | `contraction_bound` |
+
+Window-to-pointwise (increments in [b/2, B′] ⇒ pointwise bounds) is not repeated: it is conclusion 5 ((d)) of `lemma_DDoublePrime`.
+
 ## Axioms
 
 ```
@@ -146,4 +166,10 @@ Weaker than the note: continuity instead of C¹; γ is any admissible value (γ_
 'YmLean.Sab_values' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YmLean.βab' depends on axioms: [propext, Classical.choice, Quot.sound]
 'YmLean.lemma_DDoublePrime' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.telescoping_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.telescoping_bound_tsum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.window_of_partial' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.discrete_gronwall' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.discrete_gronwall_exp' depends on axioms: [propext, Classical.choice, Quot.sound]
+'YmLean.contraction_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```

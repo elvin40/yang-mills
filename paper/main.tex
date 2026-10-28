@@ -6,39 +6,53 @@
 \usepackage[hidelinks]{hyperref}
 \sloppy
 
+% numbered environments, one counter per section
 \theoremstyle{plain}
-\newtheorem*{theorem}{Theorem}
-\newtheorem*{lemma}{Lemma}
-\newtheorem*{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{mainthm}{Theorem}
+\renewcommand{\themainthm}{\Alph{mainthm}}
 \theoremstyle{definition}
-\newtheorem*{definition}{Definition}
+\newtheorem{definition}[theorem]{Definition}
 \theoremstyle{remark}
-\newtheorem*{remark}{Remark}
+\newtheorem{remark}[theorem]{Remark}
 
-% status tags, e.g. \status{proved+verified}
+% status tags, e.g. \status{proved+verified}; legend in Section 1.4
 \newcommand{\status}[1]{\textsc{\upshape[#1]}}
 % project file references; footnote on first use only
 \newif\iffirstfile\firstfiletrue
-\newcommand{\file}[1]{\texttt{\detokenize{#1}}\iffirstfile\footnote{Project files named in this chapter live in the \texttt{notes/} directory of the \texttt{yang-mills} repository.}\global\firstfilefalse\fi}
+\newcommand{\file}[1]{\texttt{\detokenize{#1}}\iffirstfile\footnote{Project files named in this paper live in the \texttt{notes/} directory of the \texttt{yang-mills} repository \cite{ymrepo}.}\global\firstfilefalse\fi}
 % interval ]0,x]
 \newcommand{\ioc}[1]{\mathopen{]}0,#1\mathclose{]}}
 \newcommand{\BZ}{\mathrm{BZ}}
 \newcommand{\tr}{\operatorname{tr}}
+% the plane-wave theorem of BETA_FP_PW (called "Theorem B" there)
+\newcommand{\ThmPW}{Theorem~B$_{\mathrm{PW}}$}
 
-\title{Theorem 2 for lattice Yang--Mills theory: proof chapter, version 4\\
-\large (shortest route; Route K reduction verified)}
-\author{}
-\date{Written 2026-10-27/28}
+\title{Yang--Mills on a finite torus along Ba{\l}aban's route:\\ a verified reduction}
+\author{Claude}
+\date{October 2026}
 
 \begin{document}
 \maketitle
+
+\begin{abstract}
+Ba{\l}aban's renormalization-group construction of four-dimensional SU(2) lattice Yang--Mills theory rests on the control of the running coupling, his Theorem 2, whose proof was never published. We prove that a weak form of Theorem 2 (two-sided bounds on $1/g_k^2$ with an additive constant), which is enough for Ba{\l}aban's Theorem 1, follows from one uniform inequality (H2) on a two-step minimizer map together with named fixed-level inputs; the shooting lemmas of this step are also formalized in Lean 4. We prove that, on a fixed torus, a uniform moment bound (H-U) gives compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder--Schrader axioms OS0--OS3. The bound (H-U) is reduced, not proved: it rests on sourced versions of Ba{\l}aban's bounds, on a hypothesis (FX) that is now reduced to one open strip bound, and on a bridge from the source form to (H-U), and one dependency table records the status of each block. Numerically, (H2) holds in floating point with margins of 31\% and 58\% at $L=3$ and $L=5$, and a rigorous interval enclosure holds at one point at $L=3$, but (H2) is certified at no $L$, no value exists in Ba{\l}aban's range $L>11$, and the result is not a solution of the Clay Millennium problem.
+\end{abstract}
+
 \tableofcontents
 
+\input{intro}
+\input{setup}
 \input{theorem2}
-
 \input{assembly}
+\input{numerics}
+\input{remains}
 
 \appendix
+\input{appendix}
 
 \nocite{*}
 \bibliographystyle{plain}
