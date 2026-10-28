@@ -147,47 +147,47 @@ Caveat. (ii) needs (NT) uniformly down to $d\ge L\varepsilon$ with the remainder
 \subsection{Dependency table}\label{sec:deptable}
 The table gives the status of every block of Theorem~\ref{thm:B} and of every named hypothesis of Theorem~\ref{thm:A}. It follows the state recorded in \file{PLAN.md} (through the entries \file{SOURCES_FX_O23.md}, \file{SOURCES_FX_O23_VERIFY.md}, \file{SOURCES_FX_O1_VERIFY.md}, \file{SOURCES_FX_R2_VERIFY.md}, \file{SOURCES_GGAIN_VERIFY.md}, \file{H2_CERTIFY.md}, \file{H2_CERTIFY_VERIFY.md}) and \S10 of \file{THEOREM2_PROOF_v4.md}. Global conditions carried by every row: (GC1) Balaban's published proofs CMP 95--122 (1984--89) are correct as published; nothing in this paper re-checks them line by line. (GC2) Balaban's inductive assumptions (CMP 109 pp.\ 263--264) hold with the stated uniformity. (GC3) $L$ odd, $L>11$, $M$ large, $\gamma$ small as Balaban requires; $\ell$ even (sufficient, Section~\ref{sec:observables}). Rows ``item $n$'' are the named hypotheses of Section~\ref{sec:flow}; $n$ is their item in Section~\ref{sec:remains}. Their file columns use the short names of \file{THEOREM2_PROOF_v2_VERIFY} \S K (KAPPA = \texttt{KAPPA\_BOUNDED}, H\_VERIFY = \texttt{BETA\_FP\_H\_VERIFY}, PW\_VERIFY = \texttt{BETA\_FP\_PW\_VERIFY}, v1 verifier = \texttt{THEOREM2\_PROOF\_VERIFY}).
 
-\begingroup\small
+\begingroup\small\tablefiles
 \begin{longtable}{|p{1.3cm}|p{2.9cm}|p{4.1cm}|p{3.3cm}|p{2.2cm}|}
 \hline
 Block & Content & Current tag & Files & Hypotheses carried \\ \hline
 \endhead
 B-T2 & Theorem 2w (Theorem~\ref{thm:2w}): trajectory $g_0(\varepsilon,g)$, (b), (c$'$), (S) & \status{proved+verified, conditional} (Route K = Theorem K + Lemma D$''$). Literal (0.31) not obtained & \file{THEOREM2_PROOF_v4.md}, \file{KAPPA_BOUNDED.md} & (H2), (PI), (F), $(M_j)$, V1, (G2), L5, (H0), $K$-independence of $\beta_j(g)$ \\ \hline
 B-T2.a & Lemmas D, D$'$, D$''$, E (shooting) & \status{proved+verified; Lean} (D$'$, D, E, D$''$ one-argument form; history form open) & \file{LEMMA_DPRIME.md}, \file{lean/} & continuity of $\beta_{k+1}$ in history \\ \hline
-B-T2.b & Sweep: (c$'$)+(S) $\Rightarrow$ Balaban's Theorem 1 inputs (Section~\ref{sec:sweep}; item 10) & \status{proved, unverified}; 4 of 19 rows verified (LEMMA\_DPRIME\_VERIFY Steps 4--5, rows 11, 12, 16, 18) & \file{LEMMA_DPRIME_SWEEP.md} & Balaban readings (unchecked list) \\ \hline
+B-T2.b & Sweep: (c$'$)+(S) $\Rightarrow$ Balaban's Theorem 1 inputs (Section~\ref{sec:sweep}; item 10) & \status{proved, unverified}; 4 of 19 rows verified (LEMMA\_\allowbreak{}DPRIME\_\allowbreak{}VERIFY Steps 4--5, rows 11, 12, 16, 18) & \file{LEMMA_DPRIME_SWEEP.md} & Balaban readings (unchecked list) \\ \hline
 B-T2.1 & U3 Thm 4.1 (Gaussian RG, rate $L^{-2j}$) + O5 & \status{proved+verified} & \file{U3_GAUSSIAN_RG.md}, \file{U3_REPAIRS.md} & trivial background \\ \hline
 B-T2.2 & U3 Lemma 5.1; (A), (W) & neutral sector \status{proved+verified}. (W) numerically exact; (A) confirmed qualitatively and quantitatively (\file{U3_AW_VERIFY.md}); (HS) \status{refuted} at $L=3$. Not on the path of Theorem 2w after (H2); needed for the convergence route only & \file{U3_LEMMA51.md}, \file{U3_AW.md} & (A) in full, (N) (plausibly false) \\ \hline
 B-T2.3 & O6 bordered-matrix invertibility & one-step \status{proved+verified}; composed constraint reduced to one-step O6 + (A) & \file{U3_REPAIRS.md} & --- \\ \hline
 B-T2.4 & $c=11N^2/(12\pi^2)$, anchor-free identity Prop.\ 2.1, telescoping & \status{proved+verified}. $\beta_\infty=c\log L$ itself replaced by window sums (Theorem K, Route B) & \file{BETA_FP_LEMMA43.md}, \file{BETA_FP_LEMMA43_VERIFY.md} & (F) \status{cited, source checked} \\ \hline
 B-T2.5 & $\kappa_k$ bounded (Theorem K) & \status{proved+verified, conditional on (B2)}; (B2) \status{proved+verified, conditional on (H2)} & \file{KAPPA_BOUNDED.md}, \file{KAPPA_BOUNDED_VERIFY.md}, \file{B2_TWOSTEP.md}, \file{B2_TWOSTEP_VERIFY.md} & (H2), (PI), $(M_j)$ \\ \hline
-B-T2.H2 & (H2) uniform two-step inequality $\rho_2<L$ (Section~\ref{sec:twostep}; item H) & \status{numerical}: $L=3,5,9$ confirmed by verifier, margin 31\% ($L=3$), 58\% ($L=5$); certification open. Point enclosure $[1.9993,2.1273]<3$ at $L=3$, $j=\infty$, one point \status{interval enclosure, verified} (Section~\ref{sec:enclosure}); full certification about $1.5\times10^4$ core-hours, an estimate graded UNSUPPORTED & \file{H2_LARGE_L.md}, \file{H2_LARGE_L_VERIFY.md}, \file{H2_CERTIFY.md}, \file{H2_CERTIFY_VERIFY.md}; B2\_TWOSTEP \S2; BETA\_FP\_U \S2.3 & interval arithmetic, tail bound $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$) \\ \hline
-B-T2.B & Route B (\ThmPW; item B8) & logic \status{proved+verified, conditional} (tag decision, \file{PLAN.md}; PW\_VERIFY \S6 items 1--4); inputs (U), (DF), (T1) \status{proved, unverified} & \file{BETA_FP_PW.md}, \file{BETA_FP_PW_VERIFY.md}, \file{BETA_FP_U.md} & (H2), ($B\theta$), A6, LW (5.7), (H0) \\ \hline
-item 1 & (B2) / (B2w) (Section~\ref{sec:B2}) & open; reduced to (H2) & KAPPA \S2, Rem.\ 2.3; KAPPA\_VERIFY \S7--\S9 & (H2) \\ \hline
-item 1 & (H2) $\Rightarrow$ ($C1\sigma$) $\Rightarrow$ (B2) (Theorems~\ref{thm:C1}, \ref{thm:B2}) & proved+verified, conditional on (H2) & B2\_TWOSTEP \S2--\S3; B2\_TWOSTEP\_VERIFY grades 1, 3, 4 & (H2) \\ \hline
-item 1 & ($C1\sigma$) + (h) $\Rightarrow$ (B2) & implication verified; ($C1\sigma$) $\Leftarrow$ (H2); (h) numerical $L=3,5$ & KAPPA Prop.\ 4.1; KAPPA\_VERIFY \S7 & --- \\ \hline
-item 1 & (H$''$) $\Rightarrow$ (A) $\Rightarrow$ (B2) & implication argued; not needed after (H2) & U3\_AW \S4.7; no verifier (U3\_AW\_VERIFY grade 5 covers (H$'$) only) & --- \\ \hline
---- & (HS) (Section~\ref{sec:refuted}) & refuted $L=3$ & U3\_AW (H$'$); U3\_AW\_VERIFY \S6 & --- \\ \hline
-item H & $\rho_1^2<L\Rightarrow$ (H2) (one step, $L\ge5$) & arithmetic; $\rho_1^2/L=0.771$ at $L=5$, numerical & H2\_LARGE\_L \S3; H2\_LARGE\_L\_VERIFY grade 4 (measurement) & --- \\ \hline
-item H & certification tail $j_0$ & derivation confirmed; $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$), corrected & H2\_LARGE\_L \S4.1; H2\_LARGE\_L\_VERIFY grade 6 & --- \\ \hline
-item 2 & (PI) & argued & BETA\_FP\_H \S3.1; H\_VERIFY \S5 & --- \\ \hline
-item 3 & (F) & cited, source checked & BETA\_FP\_LEMMA43; H\_VERIFY \S4 & --- \\ \hline
-item 4 & ($M_j$): (S1)--(S3), Prop.\ 4.4 & open / argued & BETA\_FP\_M \S4 (no verifier); H\_VERIFY \S5 refuted the old step & (S1)--(S3) \\ \hline
-item 5 & V1 & open & R2; U3\_VERIFY C4 (order $p^2$) & --- \\ \hline
-item 6 & (G2) & formal & BETA\_FP\_LEMMA43 & --- \\ \hline
-item 7 & (H0), uniform in $j$ and history & \status{Balaban}, odd $L>11$ & CMP 109 (1.22); BALABAN\_CHECK item 10 & --- \\ \hline
-item 8 & L5 history form and domain (Section~\ref{sec:L5}) & open & LEMMA\_DPRIME Rem.\ 3; LEMMAS\_DE\_VERIFY \S2.1; v2\_VERIFY \S F & --- \\ \hline
-item 9 & $\beta_j(g)$ independent of $K$ & open & LEMMAS\_DE\_VERIFY \S2 item 2; v1 verifier Point 7 & --- \\ \hline
-item 10 & BALABAN\_CHECK item 11 readings & unchecked & BALABAN\_EXCERPTS & --- \\ \hline
+B-T2.H2 & (H2) uniform two-step inequality $\rho_2<L$ (Section~\ref{sec:twostep}; item H) & \status{numerical}: $L=3,5,9$ confirmed by verifier, margin 31\% ($L=3$), 58\% ($L=5$); certification open. Point enclosure $[1.9993,2.1273]<3$ at $L=3$, $j=\infty$, one point \status{interval enclosure, verified} (Section~\ref{sec:enclosure}); full certification about $1.5\times10^4$ core-hours, an estimate graded UNSUPPORTED & \file{H2_LARGE_L.md}, \file{H2_LARGE_L_VERIFY.md}, \file{H2_CERTIFY.md}, \file{H2_CERTIFY_VERIFY.md}; B2\_\allowbreak{}TWOSTEP \S2; BETA\_\allowbreak{}FP\_\allowbreak{}U \S2.3 & interval arithmetic, tail bound $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$) \\ \hline
+B-T2.B & Route B (\ThmPW; item B8) & logic \status{proved+verified, conditional} (tag decision, \file{PLAN.md}; PW\_\allowbreak{}VERIFY \S6 items 1--4); inputs (U), (DF), (T1) \status{proved, unverified} & \file{BETA_FP_PW.md}, \file{BETA_FP_PW_VERIFY.md}, \file{BETA_FP_U.md} & (H2), ($B\theta$), A6, LW (5.7), (H0) \\ \hline
+item 1 & (B2) / (B2w) (Section~\ref{sec:B2}) & open; reduced to (H2) & KAPPA \S2, Rem.\ 2.3; KAPPA\_\allowbreak{}VERIFY \S7--\S9 & (H2) \\ \hline
+item 1 & (H2) $\Rightarrow$ ($C1\sigma$) $\Rightarrow$ (B2) (Theorems~\ref{thm:C1}, \ref{thm:B2}) & proved+verified, conditional on (H2) & B2\_\allowbreak{}TWOSTEP \S2--\S3; B2\_\allowbreak{}TWOSTEP\_\allowbreak{}VERIFY grades 1, 3, 4 & (H2) \\ \hline
+item 1 & ($C1\sigma$) + (h) $\Rightarrow$ (B2) & implication verified; ($C1\sigma$) $\Leftarrow$ (H2); (h) numerical $L=3,5$ & KAPPA Prop.\ 4.1; KAPPA\_\allowbreak{}VERIFY \S7 & --- \\ \hline
+item 1 & (H$''$) $\Rightarrow$ (A) $\Rightarrow$ (B2) & implication argued; not needed after (H2) & U3\_\allowbreak{}AW \S4.7; no verifier (U3\_\allowbreak{}AW\_\allowbreak{}VERIFY grade 5 covers (H$'$) only) & --- \\ \hline
+--- & (HS) (Section~\ref{sec:refuted}) & refuted $L=3$ & U3\_\allowbreak{}AW (H$'$); U3\_\allowbreak{}AW\_\allowbreak{}VERIFY \S6 & --- \\ \hline
+item H & $\rho_1^2<L\Rightarrow$ (H2) (one step, $L\ge5$) & arithmetic; $\rho_1^2/L=0.771$ at $L=5$, numerical & H2\_\allowbreak{}LARGE\_\allowbreak{}L \S3; H2\_\allowbreak{}LARGE\_\allowbreak{}L\_\allowbreak{}VERIFY grade 4 (measurement) & --- \\ \hline
+item H & certification tail $j_0$ & derivation confirmed; $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$), corrected & H2\_\allowbreak{}LARGE\_\allowbreak{}L \S4.1; H2\_\allowbreak{}LARGE\_\allowbreak{}L\_\allowbreak{}VERIFY grade 6 & --- \\ \hline
+item 2 & (PI) & argued & BETA\_\allowbreak{}FP\_\allowbreak{}H \S3.1; H\_\allowbreak{}VERIFY \S5 & --- \\ \hline
+item 3 & (F) & cited, source checked & BETA\_\allowbreak{}FP\_\allowbreak{}LEMMA43; H\_\allowbreak{}VERIFY \S4 & --- \\ \hline
+item 4 & ($M_j$): (S1)--(S3), Prop.\ 4.4 & open / argued & BETA\_\allowbreak{}FP\_\allowbreak{}M \S4 (no verifier); H\_\allowbreak{}VERIFY \S5 refuted the old step & (S1)--(S3) \\ \hline
+item 5 & V1 & open & R2; U3\_\allowbreak{}VERIFY C4 (order $p^2$) & --- \\ \hline
+item 6 & (G2) & formal & BETA\_\allowbreak{}FP\_\allowbreak{}LEMMA43 & --- \\ \hline
+item 7 & (H0), uniform in $j$ and history & \status{Balaban}, odd $L>11$ & CMP 109 (1.22); BALABAN\_\allowbreak{}CHECK item 10 & --- \\ \hline
+item 8 & L5 history form and domain (Section~\ref{sec:L5}) & open & LEMMA\_\allowbreak{}DPRIME Rem.\ 3; LEMMAS\_\allowbreak{}DE\_\allowbreak{}VERIFY \S2.1; v2\_\allowbreak{}VERIFY \S F & --- \\ \hline
+item 9 & $\beta_j(g)$ independent of $K$ & open & LEMMAS\_\allowbreak{}DE\_\allowbreak{}VERIFY \S2 item 2; v1 verifier Point 7 & --- \\ \hline
+item 10 & BALABAN\_\allowbreak{}CHECK item 11 readings & unchecked & BALABAN\_\allowbreak{}EXCERPTS & --- \\ \hline
 item 11 & odd $L$; $L>11$ in Balaban & input & CMP 109 pp.\ 251--252; v1 verifier Step 6 & --- \\ \hline
 item 12 & SU(2) & scope & --- & --- \\ \hline
 item 13 & Lean history form & open & --- & --- \\ \hline
-B1, B2$'$ & Route B: (H2) + (T1) $\Rightarrow$ (U) (Theorem 2.4 of BETA\_FP\_U) & proved, unverified & BETA\_FP\_U \S2.4; no verifier & (H2), (T1) \\ \hline
-B1, B2$'$ & Route B: (U) & hypothesis; $\Leftarrow$ (T1) + (H2) (BETA\_FP\_U); proved, unverified & BETA\_FP\_PW \S1.2; PW\_VERIFY \S3 & (T1), (H2) \\ \hline
-B1 & Route B: (T1) & argued & BETA\_FP\_U \S2.3; no verifier & --- \\ \hline
-B3 & Route B: ($B\theta$) $=\gamma_{rec}+\mathfrak d_F$ & $\gamma_{rec}$ bounded given Thm 2.4 (proved, unverified); (DF) argued & BETA\_FP\_PW \S3.3; BETA\_FP\_U \S3; PW\_VERIFY \S6 (logic of \ThmPW); none for BETA\_FP\_U & (DF) \\ \hline
-B4 & Route B: LW (5.7) & cited & cited; PW\_VERIFY \S3 (regime correct) & --- \\ \hline
-B5 & Route B: A6 ($\beta$ identification, uniform in $k$) & argued & SOURCES\_D1\_VERIFY 8; PW\_VERIFY \S3; BETA\_FP\_U \S4.2 & --- \\ \hline
-B7 & Route B: $\theta_*<1$ & trivial condition & PW\_VERIFY \S3 & --- \\ \hline
+B1, B2$'$ & Route B: (H2) + (T1) $\Rightarrow$ (U) (Theorem 2.4 of BETA\_\allowbreak{}FP\_\allowbreak{}U) & proved, unverified & BETA\_\allowbreak{}FP\_\allowbreak{}U \S2.4; no verifier & (H2), (T1) \\ \hline
+B1, B2$'$ & Route B: (U) & hypothesis; $\Leftarrow$ (T1) + (H2) (BETA\_\allowbreak{}FP\_\allowbreak{}U); proved, unverified & BETA\_\allowbreak{}FP\_\allowbreak{}PW \S1.2; PW\_\allowbreak{}VERIFY \S3 & (T1), (H2) \\ \hline
+B1 & Route B: (T1) & argued & BETA\_\allowbreak{}FP\_\allowbreak{}U \S2.3; no verifier & --- \\ \hline
+B3 & Route B: ($B\theta$) $=\gamma_{rec}+\mathfrak d_F$ & $\gamma_{rec}$ bounded given Thm 2.4 (proved, unverified); (DF) argued & BETA\_\allowbreak{}FP\_\allowbreak{}PW \S3.3; BETA\_\allowbreak{}FP\_\allowbreak{}U \S3; PW\_\allowbreak{}VERIFY \S6 (logic of \ThmPW); none for BETA\_\allowbreak{}FP\_\allowbreak{}U & (DF) \\ \hline
+B4 & Route B: LW (5.7) & cited & cited; PW\_\allowbreak{}VERIFY \S3 (regime correct) & --- \\ \hline
+B5 & Route B: A6 ($\beta$ identification, uniform in $k$) & argued & SOURCES\_\allowbreak{}D1\_\allowbreak{}VERIFY 8; PW\_\allowbreak{}VERIFY \S3; BETA\_\allowbreak{}FP\_\allowbreak{}U \S4.2 & --- \\ \hline
+B7 & Route B: $\theta_*<1$ & trivial condition & PW\_\allowbreak{}VERIFY \S3 & --- \\ \hline
 B-T2.6 & certified early steps $\beta_j(0)>0$ & needed only for literal (0.31) at every $K$, not for Theorem 1; \status{numerical}, no certificate; $\beta_1(0)$ computed to $L=11$ & \file{numerics/NUMERICS.md}, \file{UMK_BETA1.md} & $L>11$ is Balaban's range \\ \hline
 B-S & sourced Theorem 1 (E14-a,b,c) & \status{open} & \file{SOURCES.md} \S2.5 & B-T2 for the sourced trajectory \\ \hline
 B-S.D1 & one sourced step, Gaussian level & \status{proved+verified} (with corrections) & \file{SOURCES_D1.md}, \file{SOURCES_D1_VERIFY.md} & --- \\ \hline

@@ -4,6 +4,10 @@
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{longtable,array}
 \usepackage[hidelinks]{hyperref}
+\pdfstringdefDisableCommands{\def\status#1{}\def\ThmPW{Theorem B-PW}}
+% let file names break at underscores inside tables
+\makeatletter\g@addto@macro\UrlBreaks{\do\_\do\.}\makeatother
+\newcommand{\tablefiles}{\renewcommand{\file}[1]{\nolinkurl{##1}}}
 \sloppy
 
 % numbered environments, one counter per section
@@ -20,7 +24,7 @@
 \newtheorem{remark}[theorem]{Remark}
 
 % status tags, e.g. \status{proved+verified}; legend in Section 1.4
-\newcommand{\status}[1]{\textsc{\upshape[#1]}}
+\newcommand{\status}[1]{{\normalfont\scshape[#1]}}
 % project file references; footnote on first use only
 \newif\iffirstfile\firstfiletrue
 \newcommand{\file}[1]{\texttt{\detokenize{#1}}\iffirstfile\footnote{Project files named in this paper live in the \texttt{notes/} directory of the \texttt{yang-mills} repository \cite{ymrepo}.}\global\firstfilefalse\fi}

@@ -12,3 +12,4 @@
 | OAI26-O3 | family 215, Oct 4 2026, repo openai/math consistent with notes | reports/ONLINE_SWEEP.md, O3_TEMPLATE.md |
 | ymrepo | local, unchanged | n/a |
 | Savvidy2019 | added; published as EPJC 80 (2020) 165, arXiv 2019-10-01 | arXiv abs page, INSPIRE |
+| os1973, os1975 | added (Osterwalder–Schrader I, II); title, volume, pages, year match | Crossref (DOI lookup) |

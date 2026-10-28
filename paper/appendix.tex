@@ -1,0 +1,189 @@
+\section{Lean formalization}\label{app:lean}
+
+The shooting lemmas of Section~\ref{sec:shooting} are formalized in Lean 4 with Mathlib. The inventory is as follows.
+
+\paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
+\begin{itemize}
+\item Lemma D$'$ (a)--(d) (\texttt{YmLean.lemma\_DPrime}), Step 8 (\texttt{lemma\_DPrime\_step8}), Lemma D, Lemma E ($Cg^2$ form), Lemma D+E (\file{lean/YmLean/LemmaDPrime.lean}, \file{LemmaDE.lean}). One-argument $\beta$ only.
+\item Lemma D$''$ (\texttt{YmLean.lemma\_DDoublePrime}, \file{lean/YmLean/LemmaDDoublePrime.lean}, 146 lines): (a$''$) bracket $(3b/4)(K-k)-2R\le T(k,K)\le(5b/4)(K-k)+2R$; (b) shooting for $g\in\,]0,g_1]$ with the clamp inactive; (c$'$) with $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$, for every trajectory with couplings in $]0,\gamma]$; (d) for $n-m\ge8R/b$, lower constant $b/2$. Hypotheses weaker than the note (continuity, any admissible $\gamma$, $R\ge0$ derived). One-argument $\beta$ only; L5 not formalized.
+\item The Lean folder also has Telescoping, DetIdentities, AbelianCount, and LemmaH files (\file{lean/README.md}); this paper uses only the AbelianCount counting part, as a cross-check in Section~\ref{sec:later}.
+\end{itemize}
+
+\section{Index of results by status}\label{app:ledger}
+
+This appendix indexes the results of the paper by status tag; the tags match the verifier files. Here v1--v4 denote the successive versions \texttt{THEOREM2\_PROOF.md}, \texttt{THEOREM2\_PROOF\_v2.md}, \file{THEOREM2_PROOF_v3.md}, and \file{THEOREM2_PROOF_v4.md} of the Theorem 2 notes.
+
+\paragraph{\status{proved+verified}}
+\begin{itemize}
+\item Lemma D$'$ (a)--(d), $K_0$, Remark 4 (\file{LEMMA_DPRIME_VERIFY} grades 1, 2, 5).
+\item Lemma D (corrected interval), Lemma E ($Cg^2$ form), nested-interval variant of Lemma D (\file{LEMMAS_DE_VERIFY}). Lemma E $C^1$ form: trivial variant, same proof.
+\item Lemma D$''$ (tail-sum form, no $J$) (\file{KAPPA_BOUNDED_VERIFY} \S6).
+\item Telescoping $S_k=\sum\beta_j(0)$ for the $p\to0$ coefficient (\file{BETA_FP_VERIFY} item 1, corrected scope).
+\item Prop.\ 2.1 anchor-free identity; exact at the constant field (\file{BETA_FP_LEMMA43_VERIFY} item 1; \file{BETA_FP_H_VERIFY} item 1).
+\item $c=11N^2/(12\pi^2)$, normalization chain; (F) source (Savvidy eq.\ (1.4)) (\file{BETA_FP_LEMMA43_VERIFY} item 2; \file{BETA_FP_H_VERIFY} \S4).
+\item KAPPA Prop.\ 1.1 as an identity given its fixed-level inputs; Lemma 2.1 (integration by parts); Prop.\ 2.2; level-independence of the degree $-4$ part; Theorem K and Theorem 2w as conditional reductions (\file{KAPPA_BOUNDED_VERIFY} (i)--(v)).
+\item $\sup_j|\sigma_j^{(2)}(0)|<\infty$; Prop.\ 4.1 algebra (\file{KAPPA_BOUNDED_VERIFY} (vi), reason for A4 failure corrected: obstruction = $\partial\sigma^{(1)}$ in $Q_j$ and in (W-2), \S7 there).
+\item \file{B2_TWOSTEP} two-step recursion; Theorem C1 ((H2) $\Rightarrow$ ($C1\sigma$), factor $\rho_2^2/L^2$) and Theorem B2 ((H2) $\Rightarrow$ (B2), factor $\rho_2^2/L^4$), conditional on (H2); threshold $\rho_2<L$ (no strip loss); (H2) weaker than (H$''$) at $n=2$ (\file{B2_TWOSTEP_VERIFY} grades 1, 3, 4). Form of $Q_j$ by read-off (grade 8; \file{U3_LEMMA51} (3.3) not re-derived).
+\item \file{h2_scan} code structure, one-colour reduction, $H$ and $\Delta_{out}$ blocks, Gram identity, separable Prop.\ A form (\file{H2_LARGE_L_VERIFY} grade 1); tail-bound derivation (4.1)--(4.3) (grade 6, inputs corrected).
+\item Logic of Theorem B and Lemma 1.3 of \file{BETA_FP_PW}, as conditional implications (\file{BETA_FP_PW_VERIFY} \S6 items 1--4 CONFIRMED: doubling identity and Lemma 1.3; Prop.\ 2.2 / Lemma 2.3; Theorems A, B; Lemma 4.1, conditional). Its inputs (U), (DF), (T1) are listed under \status{proved, unverified} and \status{argued}.
+\item Prop.\ E evenness, Theorem W0/W, Theorem A3, Lemma A4, A0, Prop.\ A2 (\file{U3_AW_VERIFY} grades 1--4).
+\item U3 Theorem 4.1 + O5, Prop.\ A, Prop.\ B, O6, Theorem 6.1 (given V1; Taylor-data norm), Lemma 5.1 neutral value bound, single-block $m=2$ failure in $d=4$, one-step recursion, R2 midpoint identity (\file{U3_VERIFY}, \file{U3_REPAIRS_VERIFY}, \file{U3_LEMMA51_VERIFY}, \file{U3_LEMMA51_R23_VERIFY}).
+\item Ces\`aro: given convergence, $\kappa_k=o(k)\Leftrightarrow\beta_\infty=c\log L$ (equivalence, not a weaker form) (\file{THEOREM2_PROOF_VERIFY} Point 4).
+\end{itemize}
+
+\paragraph{\status{proved, unverified}}
+\begin{itemize}
+\item \file{BETA_FP_U}, no verifier file: Theorem 2.4 ((U) $\Leftarrow$ (T1) + (H2)), Prop.\ 3.1 ($\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$), Prop.\ 3.2 ($\gamma_{rec}$ bounded), Corollary 4.1, Theorem 2w by the plane-wave route given (T1), (H2), (DF), LW (5.7), A6, (H0); the argued step ``(H2) closes ($C1\sigma$)'' of \S3.5 there is superseded by \file{B2_TWOSTEP} Theorem C1 \status{proved+verified}.
+\item \file{LEMMA_DPRIME_SWEEP}: 19 cross-scale uses covered by (b) + (c$'$) + (S) (4 of 19 table rows, 11, 12, 16, 18, verified on page images by \file{LEMMA_DPRIME_VERIFY} comparisons A--E).
+\item Step ``Theorem 2w $\Rightarrow$ Balaban's Theorem 1'' (depends on the sweep and on L5 in the sharpened form of Section~\ref{sec:L5}).
+\item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$; neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
+\item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
+\item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given (S1)--(S3)); no verifier file.
+\item One-step sufficiency $\rho_1^2<L\Rightarrow$ (H2) (submultiplicativity; arithmetic, \file{H2_LARGE_L} \S3).
+\end{itemize}
+
+\paragraph{\status{argued}}
+\begin{itemize}
+\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) as a bare hypothesis (now reduced, see above); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
+\end{itemize}
+
+\paragraph{\status{open}}
+\begin{itemize}
+\item (H2) (certification; numerical at $L=3,5,9$). (B2) is reduced to it \status{verified reduction}. (T1), (DF), A6 for Route B. V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). $K$-independence of $\beta_j(g)$. (A) in full. See Section~\ref{sec:remains}.
+\end{itemize}
+
+\paragraph{\status{corrected by verifiers since v3}}
+\begin{itemize}
+\item \file{B2_TWOSTEP} G1: the certification of (H2) is a computer-assisted proof project, not a check (\file{B2_TWOSTEP_VERIFY} grade 6).
+\item \file{H2_LARGE_L}: $L$-trend rate claim (grade 5); $j_0$ inputs, $\delta_m$ 45--90$\times$ larger, $a_*(L=5)=0.0107$ (grade 6), giving $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$).
+\item \file{BETA_FP_PW}: comparison and numerics (\file{BETA_FP_PW_VERIFY} grades 5, 6).
+\end{itemize}
+
+\paragraph{\status{refuted}}
+\begin{itemize}
+\item (HS) $\sup\|H_j\|<L\sqrt{L-1}$ at $L=3$.
+\item Not a refuted statement, but a failed method: the one-step sup-norm $C^1$ recursion at $L=3$ (factor 1.005--1.033 for $j\ge2$; Section~\ref{sec:refuted}).
+\item \file{U3_LEMMA51} Theorem 4.1 for $m=2$ with a single block-$M$ constraint in $d=4$.
+\item v1 claims withdrawn: ``every early step must be certified for Theorem 1'' (false: Lemma D$'$/D$''$); ``(H$'$) is weaker than $\beta_\infty=c\log L$'' (it is equivalent); ``the whole $\log\Lambda$ sits in the fine piece'' as a fact (it is equivalent to the open statement); ``one-loop parts hold for SU($N$)'' (Lemma 5.1's charged/neutral split is the SU(2) Cartan split); (3.2) with $Cj^2L^{-2j}$ (0 at $j=0$); the (M) resolvent bound $\|\mathcal K_t^{-1}\|\le C/|f|$ (Nielsen--Olesen zero); (H) with IR weights as stated (UNSUPPORTED).
+\end{itemize}
+
+\paragraph{\status{Balaban}}
+\begin{itemize}
+\item (H0) smoothness and uniform bounds of $\beta_{j+1}$ in $g$ (CMP 109 (1.22), pp.\ 263--264), at odd $L>11$ only; Theorem 1 and the inductive bounds of CMP 109, 116, 119, 122 and the propagator papers CMP 95, 96, 98, 99, 102. Uniform level bounds partly cited from CMP 95/96/99 (O6 replaced the main citation).
+\end{itemize}
+
+\paragraph{\status{verified quote}}
+\begin{itemize}
+\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images). \file{BALABAN_EXCERPTS_CHECK} items 10 (CMP 116 has no $C^m$-in-$g$ statement) and 11 (unchecked readings) are unchanged since v3.
+\end{itemize}
+
+\paragraph{\status{numerical}} see Section~\ref{sec:numerics}.
+
+\section{Label map}\label{app:labels}
+
+The numbered environments of this paper carry the names used in the project files. The first table maps them. The second table maps the section numbers of \file{THEOREM2_PROOF_v4.md} (``v4'') and \file{ASSEMBLY.md} to the sections of this paper; section references inside the project files use the old numbers.
+
+\begingroup\small
+\begin{longtable}{|p{4.2cm}|p{5.4cm}|p{5.4cm}|}
+\hline
+this paper & name in the project files & source \\ \hline
+\endhead
+Theorem~\ref{thm:A} & Route K summary: Theorem 2w $\Rightarrow$ Theorem 1 & \texttt{THEOREM2\_PROOF\_v4} \S6, \S10 \\ \hline
+Theorem~\ref{thm:B} & Theorem 1.3 (summary) & \texttt{ASSEMBLY} \S1.3 \\ \hline
+Theorem~\ref{thm:2w} & Theorem 2w & \texttt{THEOREM2\_PROOF\_v4} \S1.3 \\ \hline
+Lemma~\ref{lem:Dprime} & Lemma D$'$ & \texttt{LEMMA\_DPRIME}; v4 \S2.1 \\ \hline
+Remark~\ref{rem:4} & Remark 4 & \texttt{LEMMA\_DPRIME}; v4 \S2.1 \\ \hline
+Lemma~\ref{lem:Ddprime} & Lemma D$''$ & \texttt{KAPPA\_BOUNDED} \S5.3; v4 \S2.2 \\ \hline
+Lemma~\ref{lem:D} & Lemma D & \texttt{LEMMAS}; v4 \S2.4 \\ \hline
+Lemma~\ref{lem:E} & Lemma E & \texttt{LEMMAS}; v4 \S2.4 \\ \hline
+Proposition~\ref{prop:anchorfree} & Prop.\ 2.1 (anchor-free identity) & \texttt{BETA\_FP\_LEMMA43}; v4 \S3.2 \\ \hline
+Theorem~\ref{thm:K} & Theorem K & \texttt{KAPPA\_BOUNDED}; v4 \S4.1 \\ \hline
+Theorem~\ref{thm:PW} (\ThmPW) & Theorem B = Theorem 3.2 & \texttt{BETA\_FP\_PW}; v4 \S4.2 \\ \hline
+Theorem~\ref{thm:C1} & Theorem C1 & \texttt{B2\_TWOSTEP}; v4 \S5.3 \\ \hline
+Theorem~\ref{thm:B2} & Theorem B2 & \texttt{B2\_TWOSTEP}; v4 \S5.3 \\ \hline
+Definition~\ref{def:HU} & (H-U) & \texttt{ASSEMBLY} \S1.2 \\ \hline
+Theorem~\ref{thm:existence} & Theorem 1.3 & \texttt{ASSEMBLY} \S1.3 \\ \hline
+Theorem~\ref{thm:nontriv} & Theorem 1.4 & \texttt{ASSEMBLY} \S1.4 \\ \hline
+Proposition~\ref{prop:compactness} & Proposition of (B-C) & \texttt{ASSEMBLY} \S2.4 \\ \hline
+Lemma~\ref{lem:finiteform} & finite-form lemma of (B-RP) & \texttt{ASSEMBLY} \S2.7 \\ \hline
+(GC1)--(GC3) & (G1)--(G3) of the dependency table & \texttt{ASSEMBLY} \S3 \\ \hline
+(S$_{\mathrm{src}}$) & (S), final sourced bound & \texttt{SOURCES\_D4D5} \\ \hline
+items H, 1--13, B1--B8 & items of the open list & \texttt{THEOREM2\_PROOF\_v4} \S10 \\ \hline
+\end{longtable}
+\begin{longtable}{|p{6cm}|p{6cm}|}
+\hline
+old section & this paper \\ \hline
+\endhead
+v4 \S1.1 & Section~\ref{sec:balaban} \\ \hline
+v4 \S1.2 & Section~\ref{sec:needs} \\ \hline
+v4 \S1.3 & Section~\ref{sec:2w} \\ \hline
+v4 \S1.4 & Section~\ref{sec:literal} \\ \hline
+v4 \S2 (notation) & Section~\ref{sec:couplings} \\ \hline
+v4 \S2.1 & Section~\ref{sec:Dprime} \\ \hline
+v4 \S2.2 & Section~\ref{sec:Ddprime} \\ \hline
+v4 \S2.3 & Section~\ref{sec:sweep} \\ \hline
+v4 \S2.4 & Section~\ref{sec:DE} \\ \hline
+v4 \S2.4 (L5) & Section~\ref{sec:L5} \\ \hline
+v4 \S3.1 & Section~\ref{sec:telescope} \\ \hline
+v4 \S3.2 & Section~\ref{sec:prop21} \\ \hline
+v4 \S3.3 & Section~\ref{sec:const} \\ \hline
+v4 \S3.4 & Section~\ref{sec:decomp} \\ \hline
+v4 \S3.5 & Section~\ref{sec:symbols} \\ \hline
+v4 \S4 & Section~\ref{sec:routes} \\ \hline
+v4 \S4.1 & Section~\ref{sec:routeK} \\ \hline
+v4 \S4.2 & Section~\ref{sec:routeB} \\ \hline
+v4 \S4.2a & Section~\ref{sec:routeBinputs} \\ \hline
+v4 \S4.3 & Section~\ref{sec:compare} \\ \hline
+v4 \S5 & Section~\ref{sec:H2} \\ \hline
+v4 \S5.1 & Section~\ref{sec:B2proved} \\ \hline
+v4 \S5.2 & Section~\ref{sec:refuted} \\ \hline
+v4 \S5.3 & Section~\ref{sec:twostep} \\ \hline
+v4 \S5.4 & Section~\ref{sec:numH2} \\ \hline
+v4 \S5.5 (arithmetic) & Section~\ref{sec:onestep} \\ \hline
+v4 \S5.5 (values) & Section~\ref{sec:numonestep} \\ \hline
+v4 \S5.6 & Section~\ref{sec:cert} \\ \hline
+v4 \S5.7 & Section~\ref{sec:remainingineq} \\ \hline
+v4 \S6 & Section~\ref{sec:conclusion} \\ \hline
+v4 \S7 & Section~\ref{sec:convergence} \\ \hline
+v4 \S8.1 & Section~\ref{sec:beta1} \\ \hline
+v4 \S8.2 & Section~\ref{sec:later} \\ \hline
+v4 \S8.3 & Section~\ref{sec:routeKnum} \\ \hline
+v4 \S9 (Lean) & Appendix~\ref{app:lean} \\ \hline
+v4 \S9 (other tags) & Appendix~\ref{app:ledger} \\ \hline
+v4 \S10 (open list) & Section~\ref{sec:remains} \\ \hline
+v4 \S10 (hypothesis table) & Section~\ref{sec:deptable} \\ \hline
+v4 \S11 & Section~\ref{sec:independence} \\ \hline
+v4 preamble (tag legend) & Section~\ref{sec:status} \\ \hline
+v4 preamble (range of $L$) & Section~\ref{sec:rangeL} \\ \hline
+v4 change logs & Appendix~\ref{app:history} \\ \hline
+\texttt{ASSEMBLY} \S0 (notation) & Section~\ref{sec:lattice} \\ \hline
+\texttt{ASSEMBLY} \S0 (observables) & Section~\ref{sec:observables} \\ \hline
+\texttt{ASSEMBLY} \S1.1 & Section~\ref{sec:exists} \\ \hline
+\texttt{ASSEMBLY} \S1.2 & Section~\ref{sec:HU} \\ \hline
+\texttt{ASSEMBLY} \S1.3 & Section~\ref{sec:existthm} \\ \hline
+\texttt{ASSEMBLY} \S1.4 & Section~\ref{sec:nontrivthm} \\ \hline
+\texttt{ASSEMBLY} \S2 & Section~\ref{sec:blocks} \\ \hline
+\texttt{ASSEMBLY} \S2.1 & Section~\ref{sec:BT2} \\ \hline
+\texttt{ASSEMBLY} \S2.2 & Section~\ref{sec:BS} \\ \hline
+\texttt{ASSEMBLY} \S2.3 & Section~\ref{sec:BN1} \\ \hline
+\texttt{ASSEMBLY} \S2.4 & Section~\ref{sec:BC} \\ \hline
+\texttt{ASSEMBLY} \S2.5 & Section~\ref{sec:BREG} \\ \hline
+\texttt{ASSEMBLY} \S2.6 & Section~\ref{sec:BTI} \\ \hline
+\texttt{ASSEMBLY} \S2.7 & Section~\ref{sec:BRP} \\ \hline
+\texttt{ASSEMBLY} \S2.8 & Section~\ref{sec:OS3} \\ \hline
+\texttt{ASSEMBLY} \S2.9 & Section~\ref{sec:BNT} \\ \hline
+\texttt{ASSEMBLY} \S3 & Section~\ref{sec:deptable} \\ \hline
+\texttt{ASSEMBLY} \S4 & Section~\ref{sec:notgiven} \\ \hline
+\texttt{ASSEMBLY} corrections & Section~\ref{sec:corrections} \\ \hline
+\end{longtable}
+\endgroup
+
+\section{Revision history}\label{app:history}
+
+\begin{itemize}
+\item \emph{Theorem 2 notes, v3.} Built on \file{THEOREM2_PROOF_v2.md} with the corrections of \file{THEOREM2_PROOF_v2_VERIFY} (cited there as \file{v2_VERIFY}): the range of $L$ (odd, $L>11$, or (H0) at this $L$ as a hypothesis); L5 sharpened (the clamped shooting leaves Ba{\l}aban's domain; the nested-interval variant of Lemma D$''$ is \status{not written}); (H$''$) $\Rightarrow$ (B2) tagged \status{argued}; ``independent'' routes replaced by ``formally distinct'', with the points $\theta_*<1$, $k$-uniform $\beta$ identification, and the first-order vertex smoothness of (U); the independence record completed (ONLINE\_SWEEP \S2 as the first channel; the O(3) paper cited); open list extended (item 9, B5, item 10, hypothesis table); sweep count ``4 of 19 table rows''; $\gamma_*$ depends on $R$ through $B'$. At that time \file{BETA_FP_PW_VERIFY.md} had no grade, and Route B stayed \status{proved, unverified}. The grades of \file{LEMMA_DPRIME_VERIFY} and \file{KAPPA_BOUNDED_VERIFY} \S9(iv) were cited explicitly.
+\item \emph{Theorem 2 notes, v4.} Added the material verified after v3: \file{B2_TWOSTEP.md} with \file{B2_TWOSTEP_VERIFY.md}, \file{H2_LARGE_L.md} with \file{H2_LARGE_L_VERIFY.md}, \file{lean/README.md} (Lemma D$''$ in Lean), \file{BETA_FP_U.md} (Route B inputs), and \file{numerics/NUMERICS.md} \S7. The section on (B2) was rewritten around (H2) (Theorems C1, B2; threshold $\rho_2<L$; one-step sufficiency at $L\ge5$; certification plan; corrected $L$-trend and $j_0$ inputs). The ledger and open list were updated, with item H as the single uniform hypothesis of both routes. \file{KAPPA_BOUNDED_VERIFY} states the (B2) obstruction in its \S7 and \S9(vi). \file{BALABAN_EXCERPTS_CHECK} had no change since v3.
+\item \emph{Tag change in the LaTeX version of v4.} The logic of \ThmPW{} is tagged \status{proved+verified, conditional}, citing \file{BETA_FP_PW_VERIFY} \S6 items 1--4, per the tag decision in \file{PLAN.md} (2026-10-28). The Markdown v4 kept \status{proved, unverified}. The inputs (U), (DF), (T1) from \file{BETA_FP_U} stay \status{proved, unverified}.
+\item \emph{Assembly.} \file{ASSEMBLY.md} with the corrections of \file{ASSEMBLY_VERIFY.md} (Section~\ref{sec:corrections}). The verifier also found the dependency table stale in five rows (grade 7; no overclaim): B-T2.2, B-T2.3, B-T2.4, B-S.D2C, B-S.D3 lagged \file{PLAN.md}. The table was rebuilt with a tag for every block and the sub-blocks added later (Route K, Route B, (H2), (H-thr), (G-gain), (FX)). Minor items: \file{SOURCES.md} \S1.3 gives $c_j=1+O(g_j^4)$, while this paper uses $O(g^3)$ per \file{SOURCES_VERIFY} item 8 (the corrected value); the variance estimate drops a harmless $g_0^4$ (logarithmic) factor.
+\item \emph{This version.} The Theorem 2 chapter and the assembly chapter are merged into one article: one notation section, one status legend, numbered environments (Appendix~\ref{app:labels}), one numerical section, one list of open items, and the hypothesis table of v4 \S10 merged into the dependency table. Three names were changed to avoid collisions (Section~\ref{sec:names}). The dependency table and the open list were brought to the current state of \file{PLAN.md}: (FX) is reduced to N3 (O2 and R2 \status{proved+verified}, O3 \status{proved+verified, conditional on N3}, O4 avoided by the main form; previously O2, O3 \status{proved, unverified} and R2, O4 \status{open}), and the point enclosure of (H2) at $L=3$ is verified (Section~\ref{sec:enclosure}). No theorem, lemma, or proof changed.
+\end{itemize}

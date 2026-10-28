@@ -40,7 +40,7 @@ $d_1$, $\kappa_1$, $L=2$ & $-0.372$, $1.114$ & \status{numerical, reproduced} \\
 $d_2$, $d_3$, $L=2$ & $\approx-0.44$, $\approx-0.45$ ($d_3$ uses unconverged $\beta_3$) & \status{numerical}; bounded-looking, not a test \\ \hline
 $\rho_1=\max_K\|H_j(K)\|/L$, $L=3$, $j=1,2,3,\infty$ & 1.652, 1.736, 1.757, 1.760 & \status{numerical, run by the verifier, \file{U3_AW_VERIFY} \S6}; refutes (HS); $h^2/L^4\approx0.34<1$; one-step $C^1$ factor $\rho_1^2/L>1$ for $j\ge2$ \\ \hline
 $\rho_1$, $L=5$, $j=1,2,\infty$ & 1.860, 1.9565, 1.963; $\rho_1^2/L=0.771$ & \status{numerical}; $j=1$ and the bound measured by the verifier (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
-$\rho_2$ ((H2)), $L=3,5,7,9$ & see \S5.4: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$ against thresholds 3, 5, 7, 9 & \status{numerical, reproduced} at $L=3,5$; \status{numerical, run by the verifier} at $L=7,9$ \\ \hline
+$\rho_2$ ((H2)), $L=3,5,7,9$ & see Section~\ref{sec:numH2}: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$ against thresholds 3, 5, 7, 9 & \status{numerical, reproduced} at $L=3,5$; \status{numerical, run by the verifier} at $L=7,9$ \\ \hline
 $a_*$, $L=5$ & 0.0107 (binding mode near $K=0$, gauge/ghost sector) & \status{numerical, run by the verifier} (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
 (H$''$), $n=2$, $L=3$ & $2.056<2.828$ & \status{numerical, run by the verifier}, coarse grid, one level pair \\ \hline
 $\sigma_j^{(1)}(0)$ $J$-part, $j=0,1,2$ ($d=2$ proxy) & 0.750000, 0.75015, 0.75051 vs 0.75 & \status{numerical, run by the verifier} supports Theorem W \\ \hline
@@ -57,7 +57,7 @@ $L$ & $j$ & $\rho_2$ (scan max) & threshold $L$ & status \\ \hline
 3 & $\infty$ & 2.0634 (2.06332--2.06377 over $l_{max}$ 2--5) & 3 & \status{numerical, reproduced}; margin 31\%; $q_1\le0.473$, $q_2\le0.053$ \\ \hline
 5 & 2, 3, 4, $\infty$ & 2.098, 2.108, 2.108, 2.108 & 5 & \status{numerical, reproduced}: independent dense code gives 2.098283 at $j=2$; the verifier's own search gives 2.107921 at $j=\infty$, same argmax; margin 58\% \\ \hline
 7 & $\infty$ & $\ge2.1131$ (face diagonal only) & 7 & \status{numerical, run by the verifier} (spot 2.11309) \\ \hline
-9 & $\infty$ & $\ge2.1142$ (one point, $(2.6,2.6,\pi,\pi)$) & 9 & \status{numerical, run by the verifier}; the author's $j=2$ point gives $\ge2.1104$ \\ \hline
+9 & $\infty$ & $\ge2.1142$ (one point, $(2.6,2.6,\pi,\pi)$) & 9 & \status{numerical, run by the verifier}; the $j=2$ point of \file{H2_LARGE_L} gives $\ge2.1104$ \\ \hline
 \end{longtable}
 \begin{itemize}
 \item Shape. The argmax lies on the face $K_3=K_4=\pi$, on the diagonal $K_1=K_2$: $\approx2.22\to2.40$ ($L=3$, $j=2\to\infty$), $\approx2.54$ ($L=5$). Off-face points are lower: best off-face 1.995 ($L=3$, $j=2$), 2.004 ($L=3$, $j=\infty$), 2.088 ($L=5$, $j=\infty$). The corner $(\pi,\pi,\pi,\pi)$ stays below the face peak, but the gap shrinks: $0.0070$, $0.0028$, $\ge0.0025$, $\ge0.0023$ ($L=3,5,7,9$). The corner is the obvious place for a competing maximum at large $L$.
@@ -70,7 +70,7 @@ $L$ & $j$ & $\rho_2$ (scan max) & threshold $L$ & status \\ \hline
 
 The arithmetic of Section~\ref{sec:onestep} shows that $\rho_1^2<L$ implies (H2). The measured one-step values are as follows.
 \begin{itemize}
-\item $L=3$: $\rho_1^2=3.10>3$. The one-step route fails (\S5.2); the two-step map is needed.
+\item $L=3$: $\rho_1^2=3.10>3$. The one-step route fails (Section~\ref{sec:refuted}); the two-step map is needed.
 \item $L=5$: $\rho_1=1.860$ ($j=1$, Wilson fine kernel, dense, measured by the verifier), $1.9565$ ($j=2$), $1.963$ ($j=\infty$). So $\rho_1^2\le3.853<5$ and $\rho_1^2/L=0.771$ \status{numerical, CONFIRMED as a measurement, uncertified; \file{H2_LARGE_L_VERIFY} grade 4}.
 \item $L=7$: $\rho_1\ge2.032$ (diagonal only), $\rho_1^2/L\approx0.59$ \status{numerical}.
 \end{itemize}
@@ -97,7 +97,7 @@ This is one point at one level. It does not certify the supremum over the Brillo
 
 (a) Tail $j\ge j_0$. From the resolvent identity, $\rho_2(j)\le R_\infty+(\rho_1^2/a_*)(\delta_{j-2}+\delta_{j-1})$, where $R_\infty=\rho_2$ at $j=\infty$, $a_*=\inf_Ka_j(K)$ with $\|[\mathfrak B^{-1}]_{f,f}\|=1/a_j(K)$ exactly, and $\delta_m=\sup_K\|\Delta_{L^m}-\Delta_\infty\|$ (O5 decay) [derivation CONFIRMED]. Inputs CORRECTED by the verifier: the 2-norm sup of $\delta_m$ is at the corner, $\delta=179,\,92.0,\,18.7,\,2.39,\,0.317$ ($M=1,3,9,27,81$), 45--90$\times$ the assumed value at small $m$; $a_*(L=5)=0.0107$, not 0.05. With these inputs, $j_0\approx8$ ($L=3$) and $\approx6$ ($L=5$). With the O6 coercivity constant, $j_0=25$, which cannot be used in practice (\file{B2_TWOSTEP_VERIFY} \S5 estimated $j\gtrsim45$ with $\|\mathfrak B^{-1}\|\le b(L)\sim10^{19}$).
 
-(b) Levels $2\le j<j_0$ and $j=\infty$. A certified sup over the BZ of $\|H_{(2),j}(K)\|$ (at $L\ge5$: of $\|H_j(K)\|$, \S5.5). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the BZ), $4\times4$ and $5\times5$ verified inverses, one $4\times4$ $\lambda_{max}$ per $K$; about $2.5\cdot10^3$ boxes at half-width 0.05 at $L=3$; the analytic form of $\Delta$ near $K=0$, where $\rho_2(0)=1$. At $j=\infty$ also a certified tail bound for the Prop.\ A sum ($l_{max}$ truncation; observed effect $4\cdot10^{-4}$). There is no explicit global Lipschitz constant today: the A0/O5 strip width is existential, and the constant that can be made explicit is $\sim10^{40}$. Monotonicity in $j$ is not proved and is not used.
+(b) Levels $2\le j<j_0$ and $j=\infty$. A certified sup over the BZ of $\|H_{(2),j}(K)\|$ (at $L\ge5$: of $\|H_j(K)\|$, Section~\ref{sec:onestep}). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the BZ), $4\times4$ and $5\times5$ verified inverses, one $4\times4$ $\lambda_{max}$ per $K$; about $2.5\cdot10^3$ boxes at half-width 0.05 at $L=3$; the analytic form of $\Delta$ near $K=0$, where $\rho_2(0)=1$. At $j=\infty$ also a certified tail bound for the Prop.\ A sum ($l_{max}$ truncation; observed effect $4\cdot10^{-4}$). There is no explicit global Lipschitz constant today: the A0/O5 strip width is existential, and the constant that can be made explicit is $\sim10^{40}$. Monotonicity in $j$ is not proved and is not used.
 
 (c) Inputs to certify first: $\|\mathfrak B_j(K)^{-1}\|\le B_{num}$ for all $j$, $K$ (the O6 constant $b(L)$ is unusable), the O5 constant $C_0$ explicitly (or certified $\delta_m$), certified $a_*$, $\rho_1$, $R_\infty$.
 

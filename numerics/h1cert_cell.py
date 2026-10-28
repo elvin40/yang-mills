@@ -126,6 +126,7 @@ def qrows(L, pf, Kc, h):
     hk = h / L; hh = (L - 1) // 2
     kp = [(Kc[i] + 2 * np.pi * np.arange(L)) / L for i in range(4)]
     C = np.zeros((L,) * 4 + (4, 4), complex); G = np.zeros((L,) * 4 + (4, 4)); Rd = np.zeros((4, 4)); err = np.zeros((4, 4))
+    dC = np.zeros((4,) + (L,) * 4 + (4, 4), complex); dR = np.zeros((4, 4, 4))
     for mu, F in enumerate(pf):
         y = [np.arange(F.shape[1 + a]) - hh for a in range(4)]
         W = [np.exp(1j * kp[a][:, None] * y[a][None]) for a in range(4)]
@@ -133,16 +134,20 @@ def qrows(L, pf, Kc, h):
         C[..., mu, :] = con(F)
         for nu in range(4):  # |grad_nu Q| at the centre: sum_x F y_nu e^{iky}
             sh = [1] * 5; sh[1 + nu] = -1
-            G[..., mu, :] += np.abs(con(F * y[nu].reshape(sh)))
+            g = con(F * y[nu].reshape(sh)); G[..., mu, :] += np.abs(g); dC[nu][..., mu, :] = 1j * g / L
         ay = sum(np.abs(y[a]).reshape([1] * (1 + a) + [-1] + [1] * (3 - a)) for a in range(4))
         aF = np.abs(F); n1 = aF.sum((1, 2, 3, 4))
         Rd[mu] = 0.5 * (aF * ay**2).sum((1, 2, 3, 4))                  # Taylor remainder (1/2) h_k^2 sum |F| |y|_1^2
+        for nu in range(4):  # |d_nu E(K) - d_nu E(K_c)| <= (h_k / L) sum |F| |y_nu| |y|_1, d_nu = d/dK_nu
+            sh = [1] * 5; sh[1 + nu] = -1
+            dR[nu, mu] = (aF * np.abs(y[nu]).reshape(sh) * ay).sum((1, 2, 3, 4)) / L
         th = (np.pi + h / L) * 2 * L + 2
         err[mu] = (2 * (4 * sum(F.shape[1:]) + 40) * U * 1.1 + 8 * U * th * 4 + 1e-13) * n1  # float centre + P1' (F radius)
         Gerr = (2 * (4 * sum(F.shape[1:]) + 40) * U * 1.1 + 8 * U * th * 4) * (aF * ay).sum((1, 2, 3, 4))
         G[..., mu, :] += Gerr
     rad = (G * hk * (1 + 1e-12) + Rd * hk * hk + err) * (1 + 1e-12)
-    return C.reshape(-1, 4, 4), rad.reshape(-1, 4, 4)
+    drad = (dR * hk + 2 * err[None] * L) * (1 + 1e-12)                  # float error of dC: same a priori bound with weights |y| <= L
+    return C.reshape(-1, 4, 4), rad.reshape(-1, 4, 4), err, dC.reshape(4, -1, 4, 4), drad
 
 
 def lam_max_upper(G):
@@ -164,9 +169,13 @@ def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
     """Certified upper bound on sup_{K in cell} rho_1(j, K) (arb), or None if the cell touches the K = 0 block."""
     t0 = time.time(); pf = pf if pf is not None else prof(L)
     Kf = np.array([float(x.mid()) if isinstance(x, arb) else float(x) for x in Kc])
-    ax = [axis_data(L, Kc[i] if isinstance(Kc[i], arb) else arb(Kc[i]), h, M, N) for i in range(4)]
+    Kc = [Kc[i] if isinstance(Kc[i], arb) else arb(Kc[i]) for i in range(4)]
+    ax = [axis_data(L, Kc[i], h, M, N) for i in range(4)]
+    kc = [[acb(0, (Kc[i] + 2 * PI * l) / L).exp() - 1 for l in range(L)] for i in range(4)]  # centre kh (tight)
     dlo, dhi = d_enclosure(L, ax, M, N, h)
-    Ec, Er = qrows(L, pf, Kf, h)
+    Ec, Er, Ee, dEc, dEr = qrows(L, pf, Kf, h)
+    hb = arb(0, h)
+    cb = lambda z, r: acb(arb(z.real, r), arb(z.imag, r))
     t1 = time.time()
     T = acb_mat(4, 4); T2 = acb_mat(4, 4); bsum = acb(0); sig = arb(0)
     I4 = acb_mat(4, 4, [1 if i == j else 0 for i in range(4) for j in range(4)])
@@ -178,9 +187,20 @@ def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
         if not (a2 > 0): return None
         khm = acb_mat([[x] for x in kh])
         P = I4 - khm * khm.conjugate().transpose() / a2
+        k0 = acb_mat([[kc[0][l0]], [kc[1][l1]], [kc[2][l2]], [kc[3][l3]]]); a20 = sum((k0[i, 0].real**2 + k0[i, 0].imag**2 for i in range(4)), arb(0))
+        P0 = I4 - k0 * k0.conjugate().transpose() / a20
+        E0 = acb_mat([[cb(Ec[idx, m, r], Ee[m, r]) for r in range(4)] for m in range(4)])
+        Eq = acb_mat([[cb(Ec[idx, m, r], Er[idx, m, r]) for r in range(4)] for m in range(4)])
+        EP = E0 * P0                                                     # E P on the cell = centre + sum_nu [-h, h] d_nu(E P)(cell)
+        for nu in range(4):
+            dk = acb_mat(4, 1); dk[nu, 0] = (kh[nu] + 1) * acb(0, 1) / L
+            da2 = 2 * (kh[nu].conjugate() * dk[nu, 0]).real
+            dP = -(dk * khm.conjugate().transpose() + khm * dk.conjugate().transpose()) / a2 + khm * khm.conjugate().transpose() * (da2 / (a2 * a2))
+            dE = acb_mat([[cb(dEc[nu, idx, m, r], dEr[nu, m, r]) for r in range(4)] for m in range(4)])
+            EP += (dE * P + Eq * dP) * hb
         D = acb_mat(4, 4, [ball(dlo[idx, i], dhi[idx, i]) if i == j else 0 for i in range(4) for j in range(4)])
         Eq = acb_mat([[acb(arb(Ec[idx, m, r].real, Er[idx, m, r]), arb(Ec[idx, m, r].imag, Er[idx, m, r])) for r in range(4)] for m in range(4)])
-        EP = Eq * P; EPD = EP * D
+        EPD = EP * D
         T += EPD * EP.conjugate().transpose(); T2 += EPD * P * EPD.conjugate().transpose()
         bsum += (Kh.conjugate().transpose() * Eq * khm)[0, 0] / a2    # phi_l |Kh|^2 / a2  (E_q kh = phi Kh, premise P4)
         sig += 1 / a2
