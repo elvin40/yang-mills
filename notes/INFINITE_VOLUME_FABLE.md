@@ -240,3 +240,14 @@ ATTEMPT (INFINITE_VOLUME_ATTEMPT.md), read after it was completed:
 6. Disagreements: PLAN's (CG)/Lemma IV-M is not ε-uniform as written (uncentred moments; centring fixes it), and its no-factorial claim holds given B18 plus L6 in sup form on the common polydisc, on par with (S∞); ATTEMPT's BP4 is a verified reduction (D3W8 F2′(ii)), not new mathematics, and its Gevrey order 3 + η is 1 + η.
 
 STATUS: COMPLETE (unverified). No file other than INFINITE_VOLUME_FABLE.md written. Firewall kept.
+
+## Change log
+
+2026-10-28 (fix pass, per INFINITE_VOLUME_FABLE_VERIFY.md §7.3). Only the verifier's fixes applied. Firewall kept.
+- (a) Theorem IV §7.1: B18, (D), and (Reg) named in the hypothesis list.
+- (b) L3 residue (§2.2 (FX-V), §7.2 row L3, §7.3 item 1): residue = B18 via O3; O1, O2 closed per TRUST_LEDGER B19. The "O1, O3, (FX-D) or fallback" wording removed. Grade [R] kept.
+- (c) §2.4(d): bridge now uses (S′∞) with σ′ = min(σ, 1); Lemma C′ for mixed blocks when D > 1. The per-rung count is written out (rungs δ ≤ 64 and δ > 64): q = 6, s = 16. "q ≤ 5" and "|F|_{15n+1}" replaced (§6, §7.1(b), rows L7, L8, L12). Grades kept ([P] / [P, bookkeeping]).
+- Beyond the verifier: the singleton factor (1 + |supp f_i|_1) of §2.4(b) is not O(1) at rungs δ > 64 (bump side h > 1). It adds ≤ 4 to q, the same caveat as B21_S_PRIME §3.6. The file states q = 6 (s = 16) for the (S′∞) count and q ≤ 10 (s ≤ 20) as the safe count. OS0 accepts any fixed s.
+- (d) §2.4(b1): Lemma h_K added. It uses only |h_K| (D2C §5.3) and locality; not |∇h_K|. Grade [P given D2C §5.3; locality range I].
+- (e) §7.4 Disagree 2 refreshed: common polydisc available given B18 (FX_O23 §4, FX_D §4–§5.3); the moment route is on par with (S∞); L6 in sup form on the polydisc is still needed (FX_D §5.4). §7.5 item 6 aligned.
+- (f) §7.4 Disagree 1: Lemma IV-M fix written as one line (centred moments).
