@@ -24,7 +24,7 @@ Reduced to a quoted Balaban estimate with a stated modification:
 
 Open:
  - (Hβ): sup_{|c| ≤ 2r} Σ_j |B_j′(c)| ≤ ½. Needed for |f_k| and |∇f_k| bounds and for the coupling condition. One-loop part is c-independent (D1), so this is two loops and beyond, uniformly in the history. Same item as SOURCES_VERIFY §8(c)(ii).
- - Convention (U): the last RG scale must be ≤ c_* r/(M^a ρ_1) relative to the test-function scale; this must appear in the final theorem's statement.
+ - Convention (U): ρ_1 ≤ c_* r_0/M^a at λ_K = 1 (a fixed constant choice; r_0 = the Cauchy margin of the constant-source family, D2C (3.5)). Stated once with the order of constants; not a hypothesis on test functions (SOURCES_UN1 + VERIFY).
  - All large-field content: D3 (§8).
  - N1 for F flat on diagonals (SOURCES_VERIFY §5(b)): unchanged.
  - Balaban's (0.29) is OCR-garbled in the text file; the form used is SOURCES.md's reconstruction. Check the PDF before relying on α.
@@ -37,7 +37,7 @@ Tags: [V] verbatim-checked here against balaban/*.txt; [proved] complete argumen
 
 ### 1.1 Notation
 
-- ε = L^{−K}, λ_j := εL^j = L^{j−K} the physical spacing of T^{(j)} (torus side 1). In Balaban's step-k units η = L^{−k}, so L^jη = λ_j/λ_k.
+- ε = L^{−K}, λ_j := εL^j = L^{j−K} the physical spacing of T^{(j)} (last spacing 1, torus side ℓ). In Balaban's step-k units η = L^{−k}, so L^jη = λ_j/λ_k.
 - Reference trajectory: g_j, Balaban's couplings at f = 0 (CMP 109 (0.20)). All analyticity domains U_j^c(X, α_0, α_1), cube sizes M, constants κ, γ are Balaban's for this trajectory.
 - Constant-source trajectories (new definition). For a constant c with |c| ≤ 2r let u_j(c) := 1/g_j(c)² be the j-th coupling produced by the sourced construction itself with the constant source f ≡ c (§4.2), and B_j(c) := u_{j−1}(c) − u_j(c) its j-th β-increment. Since a constant source is translation invariant, this is Balaban's construction with one translation-invariant extra quadratic vertex (§3). By the exact Faddeev–Popov identity (CMP 109 (0.15)–(0.16): the gauge-fixing weight enters only through a field-independent normalization z) it equals Balaban's coupling for the bare coupling 1/g_0² − c, up to the dependence of the small-field cutoffs on the gauge-fixing weight, which is a large-field effect (D3). D2 does not use this identification. The definition needs only Balaban's Theorem 3 hypothesis 0 < g_j(c) ≤ γ along that trajectory, which holds for 2r ≤ ½(g_K^{−2} − γ^{−2}) [derived, SOURCES_VERIFY §7]. Defining u_j(c) through whole constant trajectories avoids the chain-rule problem of SOURCES_VERIFY §8(c)(ii) (β_j depends on all earlier couplings, CMP 109 p. 298): Φ_j(1/g_0² − c) := u_j(c) is a function of c by construction, and c_j-products are never needed.
 - Effective source at level k: f_k(x) := g_k^{−2} − w_k(x), where w_k is the local coupling below. At k = 0, f_0 = f.
@@ -214,7 +214,7 @@ D1 consistency: at one loop B_j(c) does not depend on c (D1 (2.1): c_1 = 1 exact
 
 Needed for (H1) and (a2), and open: (Hβ) sup_{|c| ≤ r} Σ_{j ≤ K} |B_j′(c)| ≤ ½. Then |u_k′| ≤ 3/2, |f_k| ≤ 3r/2, |∇f_k| ≤ (3/2)ρ_1, uniformly in k. (Hβ) follows from |B_j′(c)| ≤ C g_{j−1}³, because Σ_j g_j³ = O(γ). Holomorphy alone gives only |B_j′| ≤ 2C/r, which is not summable. Since the one-loop part of B_j is c-independent (D1), (Hβ) is a statement about two loops and beyond, uniformly in the history. It is SOURCES_VERIFY §8(c)(ii) in another form. [open]
 
-Unit-scale condition (U). The irrelevance constant carries ρ_1M/r. With λ_j ≤ L^jη alone, Balaban's E_0 is recovered only if M^aρ_1 ≤ c_* r for a fixed power a (a = 7 with the crude cone bound of §4.3(4); Balaban's local base points would lower it), with ρ_1 measured in units of the last RG scale. This is a choice of where the RG stops: put the unit scale at a fixed number N_0 of L-steps below the physical scale of the test functions, with L^{N_0} ≥ M^a/c_*. The final unit-lattice integral is still finite-dimensional of fixed size. [proved; a convention]
+Unit-scale condition (U). The irrelevance constant carries ρ_1M/r. With λ_j ≤ L^jη alone, Balaban's E_0 is recovered only if (U) ρ_1 ≤ c_* r_0/M^a at λ_K = 1 (a fixed constant choice; r_0 = the Cauchy margin of the constant-source family, D2C (3.5)), for a fixed power a (a = 7 with the crude cone bound of §4.3(4); Balaban's local base points would lower it). A scale-matched reading (unit scale N_0 L-steps below the test-function scale) would make the unit lattice depend on h and is not used (SOURCES_UN1 §3.1). [proved; a constant choice]
 
 ## 5. (d) Jet functional W_{k+1}[f]
 

@@ -23,7 +23,7 @@ Result in one line. Under hypothesis (S) below, |S_{n,ε}(F)| ≤ A_η (n!)^{2+2
 Where each part comes from.
 1. Gevrey order 2 + η, uniform in ε: SOURCES_D3R §4.1 [V]: "|cumulant_n| ≤ C(g, δ, r)^n (n!)² e^{O(n log log log n)} ≤ C_ε(g, δ, r)^n (n!)^{2+ε} for every fixed ε > 0, uniformly in the lattice cutoff." (D3R's ε is the η here.)
 2. Dependence on the separation: SOURCES_D3R §4.3(d) [V]: "C(g, δ, r)^n ≤ C^n (log log(1/δ))^{O(n)}". This is ≤ (C_a δ^{−a})^n for every a > 0. So any a > 0 is allowed; a < 1 is all that §4 uses.
-3. Dependence on f through N(f). The sourced bounds hold for f ∈ F_r = {real f: |f| ≤ r, |∂^m f| ≤ C_m, m ≤ 5} (SOURCES.md §2.2). By n-linearity, κ_n(f_1,…,f_n) = Π_i λ_i · κ_n(f_1/λ_1, …) with λ_i = N(f_i)/min(r, C_m). So the F_r bound becomes a bound in Π N(f_i). The constant r^{−n} goes into C_S^n.
+3. Dependence on f through N(f). The sourced bounds hold for f ∈ F_r = {real f: |f| ≤ r, |∂^m f| ≤ C_m, m ≤ 5} (SOURCES.md §2.2). By n-linearity, κ_n(f_1,…,f_n) = Π_i λ_i · κ_n(f_1/λ_1, …) with λ_i = 2N_U(f_i), N_U(f) := max(‖f‖_∞/r, 2‖∇f‖_∞/ρ_1) (the N of SOURCES_D4D5 l. 103/144 with the ρ_1/2 radius of (FX2)); disjoint supports keep the polydisc in the (FX2) domain (SOURCES_UN1 §2.4, UN1_VERIFY item 2). Since ρ_1 ≤ r, N_U(f) ≤ (2/ρ_1) N(f), so the F_r bound becomes a bound in Π N(f_i) with a factor ≤ (4/ρ_1)^n: the 2^nρ_1^{−n} of the ρ_1/2 radius times 2^n for λ_i = 2N_U. This goes into C_S^n; it is K- and h-independent, and s and D do not change.
 4. Volume factor. The bound comes from |log Z − W| ≤ E_+|T_η| (SOURCES.md Corollary), with fixed torus volume ℓ⁴. It does not depend on the size of the supports. ℓ⁴ is absorbed in C_S.
 5. Lower limit σ ≥ 16ε. D3 (iv)(G1) uses physical separation δ at scales Mλ_m ≳ δ. Below a few lattice spacings this is not claimed. The fine region ρ ≲ ε is handled without (S), in §4.4.
 
@@ -95,7 +95,7 @@ The series converges absolutely and uniformly (Σ_k Π(1+|k_i|²)^{−5} < ∞).
   S_{n,ε}(G) = Σ_k γ_k ⟨Π_i ϕ(g_{i,k_i})⟩.
 
 ### 4.2 Complex modes vs real sources (VERIFY gap 1)
-(S) is for real sources. Write g_{i,q} = g^R + i g^I with g^R := ψ_i cos(2πq·(y−a)/4h), g^I := ψ_i sin(…). Both are real, supported in c″_i, and N(g^{R,I}) ≤ C_ψ′ (1 + |q|)^5 h^{−5} (Leibniz, h ≤ 1). By complex multilinearity of the moment,
+(S) is for real sources. Write g_{i,q} = g^R + i g^I with g^R := ψ_i cos(2πq·(y−a)/4h), g^I := ψ_i sin(…). Both are real, supported in c″_i, and N(g^{R,I}) ≤ C_ψ′ (1 + |q|)^5 h^{−5} (Leibniz, h ≤ 1); in the (U)-weighted norm N_U(g^{R,I}) ≤ (2/ρ_1) C_ψ′ (1 + |q|)^5 h^{−5}, the 1/ρ_1 weight being h-independent (§1 item 3). Real and imaginary parts are rescaled separately. By complex multilinearity of the moment,
   ⟨Π_i ϕ(g_{i,k_i})⟩ = Σ_{ω ∈ {R,I}^n} i^{#{i: ω_i = I}} ⟨Π_i ϕ(g_i^{ω_i})⟩.
 That is 2^n real moments. (A real cos/sin basis gives the same count.)
 
@@ -112,7 +112,7 @@ Per tuple (σ = σ_m = δ_m/4):
 Per scale, 4 ≤ m ≤ m_1 (count (64ℓ/δ_m)^{4n}, h_m = δ_m/64, §3.4):
   Σ_c |S_{n,ε}(G_{m,c})| ≤ C_1^n 4^N (n!)^{2+η} δ_m^{N − (9+a)n} ‖F‖_N,
   C_1 := 4 C_L C_S C_ψ′ Z C_G · 64^{9} · 4^a · max(1, ℓ)^4.
-Exponent count: δ^{−4n} (cells) · δ^{−5n} (bump derivatives) · δ^{−an} (separation constant) · δ^{N} (flatness).
+Exponent count: δ^{−4n} (cells) · δ^{−5n} (bump derivatives) · δ^{−an} (separation constant) · δ^{N} (flatness). The 1/ρ_1 weight of N_U (§1 item 3, §4.2) sits in C_S: a C^n price 2^nρ_1^{−n} (times 2^n for λ_i = 2N_U), with no power of δ. It does not change s or D.
 Choose N = 11n. Then N ≥ 10n (needed by §3.4 and §4.1) and p := N − (9+a)n = (2 − a)n ≥ n. With δ_m = ℓ2^{−m}:
   Σ_{m=4}^{m_1} δ_m^p ≤ (ℓ/16)^p Σ_{j≥0} 2^{−jp} ≤ 2 max(1, ℓ)^{2n}.
 This is uniform in m_1, i.e. in ε. Scale m = 3: (64·8)^{4n}(4C_LC_SC_ψ′Z)^n (ℓ/32)^{−an}(ℓ/512)^{−5n}(n!)^{2+η}C_G^n‖F‖_{10n} = C^n (n!)^{2+η}‖F‖_{10n}.
