@@ -2,7 +2,9 @@
 E(U) = [min <A,K A> : Q(U)A = B], K = M_1(U) + D D^T (ghost gauge, lambda = 0 on anchors),
 read off the bordered KKT inverse: E = -(lower-right block of [[K,Qt^T],[Qt,0]]^-1).
 M_1 = 'hess' (Wilson Hessian, hessian_matrix) or 'curl' ((1/8) sum_p |J_p A|^2, the ||D_U A||^2 leading term)."""
-import sys, copy, json, time
+import os
+os.environ.setdefault("OMP_NUM_THREADS", "1"); os.environ.setdefault("XLA_FLAGS", "--xla_cpu_multi_thread_eigen=false intra_op_parallelism_threads=1")
+import sys, copy, json, time, multiprocessing as mp
 import numpy as np, jax, jax.numpy as jnp, scipy.sparse as sp, scipy.sparse.linalg as spla
 from ym_oneloop import *
 
@@ -40,9 +42,15 @@ def analyze(lat, U0):
         E = -(S + S.T) / 2
         resid = np.abs(Bord @ lu.solve(rhs) - rhs).max()
         w_all = np.linalg.eigvalsh(E); w_c = np.linalg.eigvalsh(Pc.T @ E @ Pc)
-        out[name] = dict(all=w_all[:3].tolist(), comp=w_c[:16].tolist(), resid=float(resid),
-                         Kmin_hint=None)
+        out[name] = dict(all=w_all[:3].tolist(), comp=w_c[:16].tolist(), resid=float(resid))
     return out
+
+OUT = "/tmp/kt"  # scratch; task allows only this script + KATO_TEST.md
+
+def work(job):  # per-case JSON, skip-if-done on rerun
+    i, cls, lab, U = job
+    t = time.time(); o = analyze(Lat(6, 3), U); o.update(cls=cls, label=lab, secs=time.time() - t)
+    json.dump(o, open(f"{OUT}/{i}.json", "w")); return i, o
 
 def haar(rng, k):
     g = rng.normal(size=(k, 4)); return g / np.linalg.norm(g, axis=1, keepdims=True)
@@ -61,11 +69,10 @@ if __name__ == "__main__":
             if i == 0 and eps in (0.1, 0.3): cases.append(("regular", f"small random eps={eps} #0 gauge", gauge_transform(lat, U, haar(rng, lat.nsites))))
     for i in range(30): cases.append(("arbitrary", f"Haar #{i}", haar(rng, lat.nlinks)))
     if len(sys.argv) > 1: cases = cases[:int(sys.argv[1])]
-    res = []
-    for cls, lab, U in cases:
-        t = time.time(); o = analyze(lat, U); o.update(cls=cls, label=lab); res.append(o)
-        print(f"{cls:9s} {lab:32s} rk={o['gauge_rank']} |grad|={o['grad']:.1e} "
-              f"hess all={o['hess']['all'][0]:+.4e} comp={o['hess']['comp'][0]:+.4e},{o['hess']['comp'][12]:+.4e} | "
-              f"curl all={o['curl']['all'][0]:+.4e} comp={o['curl']['comp'][0]:+.4e},{o['curl']['comp'][12]:+.4e} "
-              f"res={max(o['hess']['resid'], o['curl']['resid']):.0e} {time.time()-t:.0f}s", flush=True)
-        json.dump(res, open("/tmp/kt/kato_res.json", "w"))
+    os.makedirs(OUT, exist_ok=True)
+    jobs = [(i, c, l, U) for i, (c, l, U) in enumerate(cases) if not os.path.exists(f"{OUT}/{i}.json")]
+    with mp.get_context("spawn").Pool(8) as pool:
+        for i, o in pool.imap_unordered(work, jobs):
+            print(i, o["cls"], o["label"], f"{o['secs']:.0f}s", flush=True)
+    res = [json.load(open(f"{OUT}/{i}.json")) for i in range(len(cases))]
+    json.dump(res, open(f"{OUT}/all.json", "w"), indent=0)
