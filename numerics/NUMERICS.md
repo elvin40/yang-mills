@@ -87,10 +87,11 @@ Rewrite 2026-10-28 (source: SOURCES_T2_F_STEPB_VERIFY.md §2, §4, §6–§8).
 | 7 | 0.79024 | Ng = 12 (converged) | 0.142 (5 → 7, converged values) | 0.3715 |
 | 9 | 0.8267 | Ng = 8 | 0.119 (7 → 9, Ng = 8 at both ends) | 0.3715 |
 | 11 | 0.8436 | Ng = 8 | 0.084 (9 → 11, Ng = 8) | 0.3715 |
+| 13 | 0.8511 | Ng = 8 (N2: Lp = 0.5, 1 arb-certified for rounding only; the Lp → 0 fit is not certified) | 0.045 (11 → 13, Ng = 8) | 0.3715 |
 
 At Ng = 8 the 5 → 7 slope is 0.161; grid convergence lowers it to 0.142. The Ng = 8 grid error lowers β_1 more at larger L, so the grid does not explain the deficit.
 
-(d) The expected form is β_1(L) = c log L + C + O(L^{−2} log L): one step spans log L e-folds between the constraint scale 1/L and the lattice scale, so the local slope should rise toward c from below. The measured slopes fall away from c (0.142 → 0.119 → 0.084). No c log L + C + d/L² or + d/L form fits. The earlier sentence "decreasing toward the universal slope" (below) was wrong: β_1 − c log L falls without levelling, which is the opposite of convergence.
+(d) The expected form is β_1(L) = c log L + C + O(L^{−2} log L): one step spans log L e-folds between the constraint scale 1/L and the lattice scale, so the local slope should rise toward c from below. The measured slopes fall away from c (0.142 → 0.119 → 0.084 → 0.045 at 11 → 13, N2). No c log L + C + d/L² or + d/L form fits. The earlier sentence "decreasing toward the universal slope" (below) was wrong: β_1 − c log L falls without levelling, which is the opposite of convergence.
 
 (e) Status: open [N] tension. It does not refute Theorem 3.1, because the family is different. It also does not support it. It is the only multi-L data. Likely cause [P]: the residual gauge fixes λ = 0 at one anchor per block. The anchored ghost then has an IR scale 2.54/L in coarse units (0.51, 0.36, 0.28, 0.23 at L = 5, 7, 9, 11). The shifted Ng = 8 grid has no point with |K| < 0.785, so it does not resolve this scale at large L.
 
