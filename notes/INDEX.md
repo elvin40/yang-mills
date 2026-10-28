@@ -1,4 +1,4 @@
-# INDEX: files in notes/ and notes/reports/
+# INDEX: files in notes/, notes/reports/, lean/, and paper/
 
 States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims, with at most minor fixes. corrected = the verifier changed or rejected at least one claim in substance; read the verifier file with the note. unverified = no independent pass yet. superseded = a later file replaces the note, in full or in the named part. report = a verifier report, a status log, or a source text, not a claim in its own right. States come from the *_VERIFY.md files and the dated lines of PLAN.md. Files that agents are still writing are marked "in progress".
 
@@ -10,7 +10,9 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | PLAN.md | Dated status lines, rules, and decisions for the whole campaign. | report |
 | THEOREM2.md | Balaban's unpublished Theorem 2 stated precisely, with the open sub-theorem (T2-a). | §3 reduction verified (LEMMAS_DE_VERIFY); rest unverified; assembly superseded by THEOREM2_PROOF.md |
 | THEOREM2_PROOF.md | Conditional proof of Theorem 2: reduction chain (T2-a1′) ⇒ Theorem 2 ⇒ Theorem 1, ledger §7. | corrected (THEOREM2_PROOF_VERIFY) |
-| THEOREM2_PROOF_v2.md | Theorem 2 proof chapter, version 2 (shortest verified route). | unverified, in progress |
+| THEOREM2_PROOF_v2.md | Theorem 2 proof chapter, version 2 (Route K and Route B). | superseded by THEOREM2_PROOF_v3.md (corrected by THEOREM2_PROOF_v2_VERIFY) |
+| THEOREM2_PROOF_v2_VERIFY.md | Verifier of v2: Lemma D'' confirmed; Route B "independent" weakened to "formally distinct". | report |
+| THEOREM2_PROOF_v3.md | Theorem 2 chapter, current version: weak form reduced to (H2) + (PI), (F), (M_j), V1, (G2), L5/(H0); section 10 hypothesis table. | reduced; Route K reduction verified, whole document not verified |
 | THEOREM2_PROOF_VERIFY.md | Verifier of THEOREM2_PROOF; finds that certified early steps are not needed for Theorem 1. | report |
 | LEMMAS.md | Generic lemmas A, B, C (rotations, inclined cells, observables) and Lemmas D, E (shooting, uniform bounds). | corrected (LEMMAS_VERIFY, LEMMAS_DE_VERIFY; fixes applied in file) |
 | LEMMAS_VERIFY.md | Verifier of Lemmas A, B, C; finds that rotation invariance needs the R⁴ limit. | report |
@@ -33,7 +35,7 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | U3_LEMMA51_R23.md | Items R2 (midpoint identity, odd M) and R3 (volume pieces; single-block failure in d = 4). | verified (U3_LEMMA51_R23_VERIFY; one sign fix) |
 | U3_LEMMA51_R23_VERIFY.md | Verifier of R2, R3, the one-step recursion, and the rates. | report |
 | U3_AW.md | Uniform strip analyticity (A), the Ward identity (W), and evenness in K. | corrected (U3_AW_VERIFY: (W) and (A) qualitative confirmed; (HS) false at L = 3) |
-| U3_AW_VERIFY.md | Verifier of U3_AW with numerical checks (numerics/aw_verify/). | report, in progress |
+| U3_AW_VERIFY.md | Verifier of U3_AW with numerical checks (numerics/aw_verify/). | report |
 | BETA_FP.md | Per-level increments β_{j+1}(0) by the exact Gaussian recursion; β_∞ = c log L reduced to Lemma 4.3. | corrected (BETA_FP_VERIFY) |
 | BETA_FP_VERIFY.md | Verifier of BETA_FP. | report |
 | BETA_FP_LEMMA43.md | Lemma 4.3: Prop. 2.1 anchor-free identity, c = 11N²/(12π²), reduction to (H). | corrected (BETA_FP_LEMMA43_VERIFY: Prop. 2.1 confirmed; (H) unsupported as stated) |
@@ -41,12 +43,14 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | BETA_FP_H.md | Repair of (H) at a constant abelian background; Theorem 3.1. | corrected (BETA_FP_H_VERIFY: resolvent step of (M) false); (M) part superseded by BETA_FP_M.md |
 | BETA_FP_H_VERIFY.md | Verifier of BETA_FP_H. | report |
 | BETA_FP_M.md | Input (M) without the false resolvent bound; reduced to three spectral bounds (S1)–(S3). | unverified |
-| BETA_FP_PW.md | β_∞ = c log L from plane waves only (second route after BETA_FP_M). | unverified, in progress |
-| BETA_FP_PW_VERIFY.md | Verifier of BETA_FP_PW. | report, in progress |
-| B2_TWOSTEP.md | Attempt to prove (B2) for Theorem K through the two-step recursion (H″). | unverified, in progress |
+| BETA_FP_PW.md | β_∞ = c log L from plane waves only (Route B, Theorem B). | corrected (BETA_FP_PW_VERIFY: confirmed as conditional; inputs not weaker than Theorem K) |
+| BETA_FP_PW_VERIFY.md | Verifier of BETA_FP_PW. | report |
+| BETA_FP_U.md | (U) proved given (T1) and (H2); Theorem B and Theorem 2w given (T1), (H2), (DF), LW (5.7), A6, (H0). | unverified |
+| B2_TWOSTEP.md | (B2) proved given the two-step inequality (H2); L = 3 margin 31%. | verified as a conditional reduction (B2_TWOSTEP_VERIFY; certification G1 sized up) |
+| B2_TWOSTEP_VERIFY.md | Verifier of B2_TWOSTEP. | report |
 | KAPPA_BOUNDED.md | Theorem K (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
-| UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743. | unverified (code validated against ym_momentum to 1e−12) |
+| UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743 (L up to 9 in numerics/NUMERICS.md). | unverified (code validated against ym_momentum to 1e−12) |
 | SOURCES.md | E14: gauge-invariant sources in Balaban's induction; reduction and work plan D1–D5. | corrected (SOURCES_VERIFY: structure sound, two claims overstated) |
 | SOURCES_VERIFY.md | Verifier of SOURCES. | report |
 | SOURCES_D1.md | D1: one Balaban step with a local-coupling source at one loop; c_1 = 1 exactly. | corrected (SOURCES_D1_VERIFY: items 5, 7) |
@@ -87,3 +91,26 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SUSSMAN_ALPOGE_MAP.md | Map of the Sussman–Alpöge account against these notes; citation block §5.1. | unverified |
 | ETH_CONSTANTS.md | Explicit constants of the OpenAI "ETH is False" paper (side reading, not on the Yang–Mills path). | unverified |
 | LOCAL_SMOOTHING_READ.md | Close reading of the OpenAI local-smoothing paper (side reading, not on the Yang–Mills path). | unverified |
+
+## lean/
+
+| File | Description | State |
+|---|---|---|
+| README.md | Toolchain, build, and statement correspondence between the notes and the Lean theorems. | report |
+| VERIFY_LemmaDPrime.md | Statement check of lemma_DPrime against LEMMA_DPRIME.md. | report |
+| YmLean.lean | Root file importing the seven modules. | proved (builds) |
+| YmLean/LemmaDPrime.lean | Lemma D' (shooting), with step 8. | proved in Lean, no sorry |
+| YmLean/LemmaDE.lean | Lemmas D and E. | proved in Lean, no sorry |
+| YmLean/LemmaH.lean | Lemma H (Gronwall telescoping, column-sum form). | proved in Lean, no sorry |
+| YmLean/LemmaDDoublePrime.lean | Lemma D'' (window-sum shooting). | proved in Lean, no sorry |
+| YmLean/DetIdentities.lean | Bordered determinant and gauge-restriction identities. | proved in Lean, no sorry |
+| YmLean/Telescoping.lean | Determinant and log telescoping, adapted Gram identity. | proved in Lean, no sorry |
+| YmLean/AbelianCount.lean | SU(2) and abelian mode counts, equipartition, abelian share. | proved in Lean, no sorry |
+| lakefile.toml, lake-manifest.json, lean-toolchain | Build configuration (Lean v4.33.1, Mathlib v4.33.1). | report |
+
+## paper/
+
+| File | Description | State |
+|---|---|---|
+| main.tex | LaTeX wrapper for the Theorem 2 chapter (version 3). | unverified |
+| theorem2.tex | Statement, shooting lemmas, and exact one-loop sum structure of the Theorem 2 chapter. | unverified, partial |
