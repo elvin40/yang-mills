@@ -213,7 +213,7 @@ Lemma 5.1 (U3 for the soft vertices; OPEN). Let Δ_j^{(1)}, Δ_j^{(2)} denote th
 
 What is in place for it: (a) Lemma 5.0, the exact structure; (b) the per-momentum finite-dimensional form: for the composed constraint one needs the F-expansion of each one-step factor Q̃_{F_i}, which is a fixed kernel (the one-step covariant average at flux F_i), so Q̃^{(j)}_F = Q_{L^j} + Σ_i (Q_{L^{j−i}} Q̃_{F_i}^{(1)} Q_{L^{i−1}}) F_i + O(F²) with F_i = F L^{−2(j−i)} — a convergent sum dominated by the top levels (the lower levels see a field smaller by L^{−2(j−i)}); the Wilson Hessian in the background has the explicit expansion Δ_1(F) = Δ_0 + F Δ_1^{(1)} + F² Δ_1^{(2)} with Δ_1^{(1)} the lattice "spin + orbital" coupling (R2 §1.2 continuum form) and lattice corrections O(k²) relative; (c) the mechanism of Theorem 4.1: in the composed Schur complement every lattice object is the continuum object times (1 + O(|k_l|²)) with even relative errors, and the umklapp sums converge with two powers of |l| to spare. What is not done: writing the Schur complement of a magnetic-covariant form to second order in F per coarse momentum (the per-momentum block is no longer diagonal in l because the background carries momentum; to order F² it couples l to l and to the momentum derivatives at l), and checking that the first-order (odd) lattice errors cancel as in Step 2 of Theorem 4.1 for the F-dependent factors (the phases E(k) that cancelled between R_M and P_T have background-dependent analogues). I expect the result to hold with the same rate but I have not proved it. This is the single open input of this document.
 
-Remark on Balaban's uniform bounds. CMP 99 Theorem 3.1 and Theorem 3.12 (quoted in R2 §5.3) give, for backgrounds satisfying the regularity condition (3.35), bounds and exponential decay for the background-field propagators "with positive constants ... dependent on d and L only", for every level. These are the uniform-in-j bounds on 𝒟_j that §6 needs; they say nothing about Lemma 5.1.
+Remark on Balaban's uniform bounds. CMP 99 (propagators) Theorem 3.1 and Theorem 3.12 (quoted in R2 §5.3) give, for backgrounds satisfying the regularity condition (3.35), bounds and exponential decay for the background-field propagators "with positive constants ... dependent on d and L only", for every level. These are the uniform-in-j bounds on 𝒟_j that §6 needs; they say nothing about Lemma 5.1.
 
 ## 6. Theorem 6.1: the increment is a Lipschitz functional of the level-j data (U3′)
 
@@ -247,7 +247,7 @@ Remarks. (a) The uniform invertibility hypothesis is what makes the K-integral h
 
 ## 7. Conclusion for the increments
 
-Theorem 7.1 (conditional). Assume Lemma 5.1. Then the level-j data 𝒟_j = (Δ_j, Γ_j^{(3)}, Γ_j^{(4)}) satisfy ‖𝒟_j − 𝒟_∞‖ ≤ C L^{−2j} (Theorem 4.1 for Δ_j; Lemma 5.1 for the vertices), the 𝒟_j lie in a fixed 𝒟_{a,b} (uniform bounds: Balaban CMP 95 Prop. 1.1, CMP 96 Prop. 2.5–2.6, CMP 99 Theorem 3.1, quoted in R2 §5.3; uniform invertibility: §6.2), and by Theorem 6.1
+Theorem 7.1 (conditional). Assume Lemma 5.1. Then the level-j data 𝒟_j = (Δ_j, Γ_j^{(3)}, Γ_j^{(4)}) satisfy ‖𝒟_j − 𝒟_∞‖ ≤ C L^{−2j} (Theorem 4.1 for Δ_j; Lemma 5.1 for the vertices), the 𝒟_j lie in a fixed 𝒟_{a,b} (uniform bounds: Balaban CMP 95 Prop. 1.1, CMP 96 Prop. 2.5–2.6, CMP 99 (propagators) Theorem 3.1, quoted in R2 §5.3; uniform invertibility: §6.2), and by Theorem 6.1
 
   β_∞ := Φ(𝒟_∞) exists and |β_{j+1}(0) − β_∞| ≤ C ρ^j,   ρ = L^{−2}.   (7.1)
 
@@ -271,7 +271,7 @@ Proved here:
 - P9. Theorem 7.1: |β_j(0) − β_∞| ≤ C L^{−2j} conditional on Lemma 5.1; unconditional subsequence statement.
 
 Reduced to cited results (quoted verbatim above):
-- C1. Uniform-in-level bounds and decay for the level-j data (CMP 95 Prop. 1.1 "γ_0 independent of k, T, and depending on d only", pp. 25–26 "γ_0 ≤ Q′_kG′_kQ′*_k ≤ γ_1"; CMP 96 p. 246 "uniform exponential decay with a decay rate depending on d only"; CMP 99 Theorems 3.1, 3.12 via R2 §5.3). Used for 𝒟_j ∈ 𝒟_{a,b} and for Corollary 4.2's hypothesis.
+- C1. Uniform-in-level bounds and decay for the level-j data (CMP 95 Prop. 1.1 "γ_0 independent of k, T, and depending on d only", pp. 25–26 "γ_0 ≤ Q′_kG′_kQ′*_k ≤ γ_1"; CMP 96 p. 246 "uniform exponential decay with a decay rate depending on d only"; CMP 99 (propagators) Theorems 3.1, 3.12 via R2 §5.3). Used for 𝒟_j ∈ 𝒟_{a,b} and for Corollary 4.2's hypothesis.
 - C2. The composition of averagings in an arbitrary background: CMP 98 p. 31, "the new kth order averaging operation ... is a composition of k averaging operations ... with properly chosen configurations V_0". Used in Lemma 5.0.
 - C3. The fixed point as the standard object: Hasenfratz–Niedermayer (17), (20)–(23) and "largest irrelevant eigenvalue of the FP is 1/4" (block factor 2); Bietenholz–Wiese (3.6), (3.13), (3.16)–(3.18), (3.29)–(3.30); Bell–Wilson/Wilson–Bell abstracts. None is used in a proof; they identify (3.1) with the literature's perfect gauge propagator (not verified term by term against BW (3.18)).
 - C4. Representation (6.1) of the increment: NUMERICS §5 (derived from R2 (2.4), verified R2_VERIFY §2.3, numerically cross-checked), resting on V1 (order-g⁰ completeness of (1.3)).

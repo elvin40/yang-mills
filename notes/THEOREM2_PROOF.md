@@ -279,7 +279,7 @@ Proof.
 5. Theorem 2. Lemma D with β := β_0/2, β′ := β_0′ + β_0/2 and (H0′): for every K and g ∈ ]0,γ] there is g_0 = g_0(ε, g) with all g_k ∈ ]0,γ], g_K = g, and
   1/g² + (β/log L) log(L^kε)^{−1} ≤ 1/g_k² ≤ 1/g² + (β′/log L) log(L^kε)^{−1},
   which is (0.31) with Balaban's constants β_Bal = β/log L, β′_Bal = β′/log L.
-6. Theorem 1. The couplings lie in ]0,γ], which is the hypothesis of Balaban's Theorem 1 (CMP 122 p. 355), so its conclusion (the form and bounds of ρ_k, (0.1)) holds for the bare coupling g_0(ε, g). This step is conditional on Balaban's published proofs. ∎
+6. Theorem 1. The couplings lie in ]0,γ], which is the hypothesis of Balaban's Theorem 1 (CMP 122 II p. 355), so its conclusion (the form and bounds of ρ_k, (0.1)) holds for the bare coupling g_0(ε, g). This step is conditional on Balaban's published proofs. ∎
 
 Constants in the expected regime [heuristic]. If β_j(0) stayed close to c log L, then β_Bal ≈ c/2 and β′_Bal ≈ 3c/2 up to the early-step extremes, with c = 0.3715 (SU(2), Balaban's normalized-trace units). The early-step values measured so far (β_1 = 0.63–0.76 at L = 2–4) are above c log L, so β′ is set by them at small L.
 

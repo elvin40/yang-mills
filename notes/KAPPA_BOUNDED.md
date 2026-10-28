@@ -136,7 +136,7 @@ Theorem 2w [proved here given Theorem K's inputs, (i), and Balaban's published p
 
   1/g_n² + (3/4)c·log L^{n−m} − 2κ_* ≤ 1/g_m² ≤ 1/g_n² + ((5/4)c + 2κ_*/log L)·log L^{n−m}.
 
-So the hypothesis of Balaban's Theorem 1 (CMP 122 p. 355: effective couplings in ]0, γ]) holds, and the pairwise forms that its proof uses (LEMMA_DPRIME_SWEEP §7: upper side with no constant for items 1, 7, 10, 12, 17; lower side with additive D′ for items 2, 3, 5, 11, 13, 15, 16, 18) hold with D′ = 2κ_*. The single smallness condition of the sweep becomes γ^{−2} ≥ c_sw·2κ_* (c_sw = max(2, 1/(1 − (1 + β_0)^{−2})), β_0 fixed first), plus the D-free conditions γ ≤ γ_*.
+So the hypothesis of Balaban's Theorem 1 (CMP 122 II p. 355: effective couplings in ]0, γ]) holds, and the pairwise forms that its proof uses (LEMMA_DPRIME_SWEEP §7: upper side with no constant for items 1, 7, 10, 12, 17; lower side with additive D′ for items 2, 3, 5, 11, 13, 15, 16, 18) hold with D′ = 2κ_*. The single smallness condition of the sweep becomes γ^{−2} ≥ c_sw·2κ_* (c_sw = max(2, 1/(1 − (1 + β_0)^{−2})), β_0 fixed first), plus the D-free conditions γ ≤ γ_*.
 Not used: (A) in the strip/C³ form, U3 Lemma 5.1 (convergence of the symbols), convergence of β_i(0), the index J, (N), any rate. Literal (0.31) holds for n − m ≥ 8κ_*/b (lower side (b/2)(n − m)); it is not needed (sweep §7).
 ## 6. Ledger
 
