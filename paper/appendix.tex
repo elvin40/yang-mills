@@ -1,6 +1,6 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (21 files in \file{lean/YmLean/}); three files formalize lemmas of the sources block (Schur test, Combes--Thomas, interpolation and rescaling). The inventory is as follows.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K and Theorem C1, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib (22 files in \file{lean/YmLean/}); four files formalize lemmas of the sources block (Schur test, Combes--Thomas, interpolation and rescaling, resolvent and weighted Neumann bounds). The inventory is as follows.
 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
@@ -29,6 +29,7 @@ The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of Theorem K a
 \item \texttt{Schur}: \texttt{schur\_test\_weighted}, \texttt{schur\_test} (weighted Schur test for the spectral norm); \file{SOURCES_LOC.md} \S3.3, \file{SOURCES_S2_FORM.md} \S2, \file{SOURCES_A3_SIGMA.md} 2.6.
 \item \texttt{CombesThomas}: \texttt{norm\_entry\_le}, \texttt{coercive\_inv}, \texttt{combes\_thomas}, \texttt{combes\_thomas\_exp}, \texttt{combes\_thomas\_decay}, \texttt{combes\_thomas\_schur} (the proof structure of Lemma CT, the kernel-decay reduction of ledger A1); \file{SOURCES_A1_KERNEL.md} \S7. The identification with the block operators, the kernel-to-row-sum step, (K)/(C), the rescaling, and the block-valued Schur test are not formalized (\file{lean/VERIFY_CombesThomas.md}).
 \item \texttt{Interp}: \texttt{multilinear\_convex}, \texttt{monomial\_affine} (\file{SOURCES_A3_SIGMA.md} 3.2); \texttt{window\_perturb}, \texttt{window\_perturb\_partial} (\file{SOURCES_T2_KUNIF.md} 5.2, chained to Theorem K); \texttt{rescale\_exp}, \texttt{rescale\_rate}, \texttt{K1\_iff}, \texttt{K1\_numeric} (\file{SOURCES_T2_KAPPA2.md}); \texttt{xexp\_le}, \texttt{xexp\_absorb} (\file{SOURCES_GGAIN_LF.md} \S2).
+\item \texttt{Resolvent}: \texttt{resolvent\_identity}, \texttt{resolvent\_bound}, \texttt{lower\_transfer}, \texttt{neumann\_perturb}, \texttt{resolvent\_chain} (\file{SOURCES_A3_SIGMA.md} \S4); \texttt{wnorm\_mul\_le}, \texttt{wnorm\_neumann}, \texttt{pwnorm\_mul\_le}, \texttt{pwnorm\_neumann} (weighted Neumann series, row half; \file{SOURCES_A2_R2.md} \S2).
 \end{enumerate}
 Not formalized: interval arithmetic itself, the enclosure premises P1$'$--P4, the identity $\rho_1^2L^2=\lambda_{\max}(G)$, and the history form of the shooting lemmas.
 \end{itemize}
@@ -55,6 +56,8 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Exact one-step factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$ (\file{H2_CERTIFY_VERIFY}; Lean \texttt{rho2\_le}).
 \item Sources block: Lemma G3 given (Q) (\file{SOURCES_G3_VERIFY}); LOC (\file{SOURCES_LOC_VERIFY}); (M-A) given (H$-$) and (M-A$'$) (\file{SOURCES_MA_VERIFY}, \file{SOURCES_MA2_VERIFY}); (M-B) with $p_0\ge17/(\gamma_0A_1^2)$ (\file{SOURCES_MB_VERIFY}); condition (a) of Lemma N3 (\file{SOURCES_N3A_VERIFY}); the sourced large-field draft B-S.D3, with corrections (\file{SOURCES_D3_VERIFY}, \file{SOURCES_D3R_VERIFY}, \file{SOURCES_D3W8_VERIFY}); (B-N1) given (S) (\file{SOURCES_HHIST_N1_VERIFY}).
 \item Ces\`aro: given convergence, $\kappa_k=o(k)\Leftrightarrow\beta_\infty=c\log L$ (equivalence, not a weaker form) (\file{THEOREM2_PROOF_VERIFY} Point 4).
+\item Item 7$'$: the running-maximum lift of $C_\beta$ to non-monotone pasts (\file{SOURCES_GGAIN_NONMONO_VERIFY}).
+\item $(KE')$ by citation and (H$_Q$) (\file{SOURCES_QE_KE_HQ_VERIFY}); S2 for $G$ and $G_1$ (\file{SOURCES_S2_FORM_VERIFY}, \file{SOURCES_S2_G1_V7_VERIFY}); fixed-$j$ (S1), (S3), (S2)$|_{t=0}$, (S2c) given (I3) (\file{SOURCES_T2_S123_VERIFY}).
 \end{itemize}
 
 \paragraph{\status{proved, unverified}}
@@ -65,7 +68,6 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$; neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
 \item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
 \item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given (S1)--(S3)); no verifier file.
-\item Item 7$'$: the running-maximum lift of $C_\beta$ to non-monotone pasts (\file{SOURCES_GGAIN_NONMONO.md}); verified (\file{SOURCES_GGAIN_NONMONO_VERIFY}).
 \item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
 \end{itemize}
 
@@ -86,7 +88,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item (H-hol), small field, to Ba{\l}aban's conditions with modified constants (\file{SOURCES_HHOL_VERIFY}); large field to (M-A), (M-B), (M-C), (H-hist2) (\file{SOURCES_HHOL_LF_VERIFY}); (M-D) to (H-hist) + (H-thr).
 \item (H$-$) to CMP 102 (189), an existing trust item (\file{SOURCES_MA2_VERIFY}).
 \item (H-hist2) to the real uniform (H-hist), no new input (\file{SOURCES_HHIST2_VERIFY}).
-\item Round 3 (ledger A1--A4, B13, B17, B21, B22): A1 kernel-decay form via Lemma CT to CMP 99 Thms 3.1, 3.3, 3.12 + (KE$'$) + (H$_Q$) + S2 (\file{SOURCES_QE_KE_HQ_VERIFY}, \file{SOURCES_S2_FORM_VERIFY}); A2 to (W) + A1w + A7 + (An) (\file{SOURCES_A2_R2_VERIFY}); A3 and its $\sigma$-localized clause (\file{SOURCES_A3_GAMMA0_VERIFY}, \file{SOURCES_A3_SIGMA_VERIFY}); A4 to A1 + CMP 102 (\file{SOURCES_A1_A4_VERIFY}); large-field (H-hist) (\file{SOURCES_GGAIN_LF_VERIFY}); (M-C) to the printed CMP 116 \S2 conditions (\file{SOURCES_MC_VERIFY}); the (S) clauses of B21 (\file{SOURCES_B21_S_VERIFY}); the $\kappa\to\kappa/2$ recovery B22 (\file{SOURCES_T2_KAPPA2_VERIFY}).
+\item Round 3 (ledger A1--A4, B13, B17, B21, B22): A1 kernel-decay form via Lemma CT to CMP 99 Thms 3.1, 3.3, 3.12 + (KE$'$) + (H$_Q$) + S2 (\file{SOURCES_QE_KE_HQ_VERIFY}, \file{SOURCES_S2_FORM_VERIFY}); A1w to (W$_G$) + (C) + CMP 96 Lemma 2.1 (\file{SOURCES_A1_WALK_VERIFY}); A2 with the V7 repair to (W$^c$) + A7 + two [I] (\file{SOURCES_A2_R2_VERIFY}, \file{SOURCES_S2_G1_V7_VERIFY}); A3, full proof with $\gamma_0\ge m_L/(48d^2L^d)$, and its $\sigma$-localized clause (\file{SOURCES_A3_GAMMA0_FULL_VERIFY}, \file{SOURCES_A3_SIGMA_VERIFY}); $(M_j)$ to (I3), (G$_A'$), Prop.\ 4.4 region 1 (\file{SOURCES_T2_S123_VERIFY}); A4 to A1 + CMP 102 (\file{SOURCES_A1_A4_VERIFY}); large-field (H-hist) (\file{SOURCES_GGAIN_LF_VERIFY}); (M-C) to the printed CMP 116 \S2 conditions (\file{SOURCES_MC_VERIFY}); the (S) clauses of B21 (\file{SOURCES_B21_S_VERIFY}); the $\kappa\to\kappa/2$ recovery B22 (\file{SOURCES_T2_KAPPA2_VERIFY}).
 \item Item 9 ($K$-independence in the shooting) closed: $\beta_j$ is the whole-lattice coefficient by definition, Lemmas D$'$/D$''$ run at fixed $K$ (\file{SOURCES_T2_KUNIF_VERIFY}).
 \end{itemize}
 
@@ -97,12 +99,12 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{argued}}
 \begin{itemize}
-\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (U) (now a constant choice, ledger C23; the $\kappa\to\kappa/2$ recovery B22 is a verified reduction); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger A6) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
+\item (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (T1) (plane-wave form of A3, \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger A6) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$''$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
 \end{itemize}
 
 \paragraph{\status{open}}
 \begin{itemize}
-\item (H2) at $L\ne13$ (numerical at $L=3,5,9$; certified at $L=13$, see above); (B2) is reduced to it \status{verified reduction}. A1w, the walk-expansion form of A1 (CMP 99 Thm 3.15). The residual inputs of (M-C): (I-$\varepsilon$), (I-V0), (M1). (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. (S1)--(S3). L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). The finite-volume identification of the step, R-term part (ledger B8; an input of Theorem 1). The (E14-c) clause of B21. (A) in full. See Section~\ref{sec:remains}.
+\item (H2) at $L\ne13$ (numerical at $L=3,5,9$; certified at $L=13$, see above); (B2) is reduced to it \status{verified reduction}. The residue of A1w: (W$_G$) for the final $G$, $G_1$ (reduced to printed sketches with WG-1, \file{SOURCES_WG_VERIFY}), the $Z_0$-compressed variant (O3), and the complex $\alpha'$-space (O4). The residual inputs of (M-C): (I-$\varepsilon$), (I-V0), (M1). (T1), (DF), A6 (v4 label) for Route B (ledger B9). V1. The residue of $(M_j)$: (I3), (G$_A'$), Prop.\ 4.4 region 1. L5 (domain of $\beta$; nested-interval D$''$ \status{not written}). The finite-volume identification of the step, R-term part (ledger B8; an input of Theorem 1). The (E14-c) clause of B21. (A) in full. See Section~\ref{sec:remains}.
 \end{itemize}
 
 \paragraph{\status{corrected by verifiers since v3}}
@@ -127,7 +129,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 
 \paragraph{\status{verified quote}}
 \begin{itemize}
-\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images). \file{BALABAN_EXCERPTS_CHECK} items 10 (CMP 116 has no $C^m$-in-$g$ statement) and 11 (unchecked readings) are unchanged since v3.
+\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images). \file{BALABAN_EXCERPTS_CHECK} item 10 (CMP 116 has no $C^m$-in-$g$ statement) is unchanged since v3; the item 11 readings are verified, with corrections, in \file{SOURCES_BOOKKEEPING.md} (former ledger A22).
 \end{itemize}
 
 \paragraph{\status{numerical}} see Section~\ref{sec:numerics}.
@@ -239,4 +241,5 @@ v4 change logs & Appendix~\ref{app:history} \\ \hline
 \item \emph{Tag change in the LaTeX version of v4.} The logic of \ThmPW{} is tagged \status{proved+verified, conditional}, citing \file{BETA_FP_PW_VERIFY} \S6 items 1--4, per the tag decision in \file{PLAN.md} (2026-10-28). The Markdown v4 kept \status{proved, unverified}. The inputs (U), (DF), (T1) from \file{BETA_FP_U} stay \status{proved, unverified}.
 \item \emph{Assembly.} \file{ASSEMBLY.md} with the corrections of \file{ASSEMBLY_VERIFY.md} (Section~\ref{sec:corrections}). The verifier also found the dependency table stale in five rows (grade 7; no overclaim): B-T2.2, B-T2.3, B-T2.4, B-S.D2C, B-S.D3 lagged \file{PLAN.md}. The table was rebuilt with a tag for every block and the sub-blocks added later (Route K, Route B, (H2), (H-thr), (G-gain), (FX)). Minor items: \file{SOURCES.md} \S1.3 gives $c_j=1+O(g_j^4)$, while this paper uses $O(g^3)$ per \file{SOURCES_VERIFY} item 8 (the corrected value); the variance estimate drops a harmless $g_0^4$ (logarithmic) factor.
 \item \emph{This version.} The Theorem 2 chapter and the assembly chapter are merged into one article: one notation section, one status legend, numbered environments (Appendix~\ref{app:labels}), one numerical section, one list of open items, and the hypothesis table of v4 \S10 merged into the dependency table. Three names were changed to avoid collisions (Section~\ref{sec:names}). The dependency table and the open list were brought to the current state of \file{PLAN.md}: (FX) is reduced to N3 (O2 and R2 \status{proved+verified}, O3 \status{proved+verified, conditional on N3}, O4 avoided by the main form; previously O2, O3 \status{proved, unverified} and R2, O4 \status{open}), and the point enclosure of (H2) at $L=3$ is verified (Section~\ref{sec:enclosure}). No theorem, lemma, or proof changed.
+\item \emph{Round 3.} A1--A4 regraded to verified reductions (A3 a full proof with a corrected constant), A1w added and reduced, item 9 closed (B8 moved to the input set of Theorem 1), item 7 restated as 7$'$, G4 off-chain, B13, B17, B21, B22 regraded, Lean files 21 $\to$ 22 (\file{TRUST_LEDGER.md} round 3; \file{PLAN.md}).
 \end{itemize}

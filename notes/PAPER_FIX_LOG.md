@@ -77,3 +77,13 @@
 - paper/assembly.tex: 2 edits (B-N1 row: alignment done, open list trimmed; B-N1 sketch closing sentence: supersedes ∂^5, δ^{−5n}, s ≥ 20). Sketch items 2 and 5 left as the historical route.
 - Fix outside brief: bare SOURCES_GGAIN_NONMONO_VERIFY wrapped in \file{} (assembly.tex ×2, remains.tex, appendix.tex); it caused 12 "Missing $" errors.
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs or citations; 66 pages; aux files deleted.
+
+## Pass 8 (cloud audit)
+- Source: reports/PAPER_AUDIT_CLOUD.md (cloud PR #1; 90 graded rows: 57 MATCH, 9 OVERSTATED, 1 UNDERSTATED, 23 STALE; fix list F1–F35).
+- Applied all 35 fixes (F26 and F31 optional, applied): intro.tex F1–F4; remains.tex F5–F18; appendix.tex F19–F26 (F20 Resolvent item inserted after Interp; F21 item 7′ moved to proved+verified with the KE′/H_Q, S2, S123 item; F23 deletes (U) from "argued"; F26 Round 3 revision entry); assembly.tex F27–F35.
+- DEVIATION (PLAN newer than the audit: SOURCES_WG_VERIFY): F8, F13, F24 add that (W_G) is reduced to Balaban's printed proof sketches (Thms 3.7, 3.9, 3.10) + Neumann (3.130) + CMP 96 Lemma 2.1, with WG-1 order α_0 ≤ c′M^{−11}.
+- DEVIATION (PLAN: SOURCES_S2_G1_V7_VERIFY): F9 "intersect reading [I]" → "boundary-contact reading (item (i), [I-forced])"; F14 "two [I]" → "item (i) [I-forced] + RM distance [I]".
+- A3 constant: the only 48d occurrence (remains l. 60) replaced by F10; no Λ = 1.43e8 or 1.403e−8 strings in the paper.
+- README.md (~/git/yang_mills): Balaban-level core line (A3 full proof + corrected constant; A1w → (W_G) → printed sketches; A2 → (W^c); G_1 closed), Lean 22 files, 68 pages.
+- NOT edited: "(H2) at L ≠ 13" open items; PR #2 now certifies (H1_L) at L = 15, 17, 21 (numerics/H1_OTHER_L.md), the paper does not yet say so. Ledger lags of audit §4 not applied (outside the paper).
+- Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 68 pages (was 66); 10 overfull boxes (was 9); aux files deleted.
