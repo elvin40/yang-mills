@@ -61,3 +61,31 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
  (G3) No single-factor bound is stated ("difficult to make … more precise"); the whole-term bound (3.99) is stated without proof.
  (G4) The local inverses C_□ rest on Cor. 3.6, which rests on Cor. 3.5 (perturbation from U = 1) and CMP 96 Prop. 2.3. Their lower-bound input is the U = 1 Fourier bound (2.76).
 
+## 2. Setting, hypotheses, and the statement proved here
+
+2.1 Spaces and kernels [as A1_WALK_FULL 0.1; SOURCES_A1_KERNEL §5]. 𝔅 = ∪_jΛ_j (finite). For y ∈ Λ_j: Δ(y) = B^j(y), μ(y) := (L^jη)^d, s(y) := (L^jη)². ℋ := ℓ²(𝔅, μ) (CMP 96 (2.69) [V]). Kernels are taken with respect to μ: (Tf)(y) = Σ_{y′}μ(y′)t(y, y′)f(y′). m(y, y′) := (μ(y)μ(y′))^{−1/2}. The fine space is 𝒦 := ℓ²(Ω_0, η^d; 𝔤). Q′: 𝒦 → ℋ and Q′* is its adjoint. S := multiplication by s on ℋ. d is the metric of CMP 96 (2.46). θ_L := log L/(RM). Scale conversion [P, SOURCES_A1_KERNEL §5]: for y ∈ Λ_j, y′ ∈ Λ_{j′} and real p, L^{p(j−j′)} ≤ L^{|p|}e^{|p|θ_Ld(y,y′)}. c_1(κ) := sup_ySΣ_{y′}e^{−κd(y,y′)} and Σ(κ) are as in A1_WALK_FULL 0.1; both are finite and volume-uniform by CMP 96 Lemma 2.1 under (2.59) [R-full].
+ Walks of domains, |ω|, the path length d(ω, y, y′) (inf over x_i ∈ X_i ∩ 𝔅, with x_0 ∈ X_0), (D1), (D2), and the walk-expansion conditions (L1), (L2), (B1), (B2) are as in A1_WALK_FULL 0.2 and 1.2. A domain X is a subset of the fine lattice that is a connected union of cubes of 𝒟; X ∩ 𝔅 := {y : Δ(y) ⊂ X}. Remark: Balaban's (3.93) takes no x_0 and requires y ∈ □_0. For y ∈ X_0 the two infima agree (take x_0 = y; the reverse inequality is the triangle inequality).
+ Domains are listed in the enlarged form X → X⁺ of WG_FULL 0.4. This gives the ⅓M_1 band of (L1) for kernels supported in X × X, with the local margin c_loc of WG_FULL (I7). We use this convention without further mention.
+
+2.2 Structural readings [I]. These are the readings of the earlier write-outs, restated for Q′.
+ (I-Q) For y ∈ Λ_j, (Q′λ)(y) = (Q′_jλ)(y) = L^{−jd}Σ_{x∈Δ(y)}R(U(Γ_{y,x}))λ(x), with contours Γ_{y,x} ⊂ Δ(y) of η-length ≤ c_Γ(d)L^jη. Evidence: the a-term of (3.88) [V p. 409] is exactly a_j(L^jη)^{−2}Q′_j*Q′_j in this form; CMP 96 (2.39) [V, THM37_FULL 2.2] has the same form at U = 1. Uniform weights L^{−jd} are the reading; §4 uses only "nonnegative weights on Δ(y) with sum 1 and the bump average ≥ c_φ".
+ (I-B) The blocks Δ(y), y ∈ 𝔅, are pairwise disjoint and contained in Ω_0. Each block Δ(y), y ∈ Λ_j, together with its one-step η-neighbourhood, lies in a cube □(y) of the (3.35) class whose index is j or j − 1 [I, cube geometry of CMP 99 p. 396].
+ Consequence of (I-Q) [P]. For ω ∈ ℋ and x ∈ Δ(y): (Q′*ω)(x) = R(U(Γ_{y,x}))^{−1}ω(y). Proof: ⟨Q′λ, ω⟩_ℋ = Σ_yμ(y)L^{−jd}Σ_{x∈Δ(y)}⟨R(U(Γ_{y,x}))λ(x), ω(y)⟩ = η^dΣ_x⟨λ(x), R(U(Γ_{y,x}))^{−1}ω(y)⟩, since μ(y)L^{−jd} = η^d and R(·) is orthogonal on 𝔤. ∎ Hence |Q′*ω|_∞ on Δ(y) equals |ω(y)|, and |Q′λ(y)| ≤ sup_{Δ(y)}|λ|. Also Q′*aQ′ = Q′*(aS^{−1})Q′ with a := a_j on Λ_j, by (3.24); and a_j ≤ a for all j, since a_{j+1} = a·a_j/(aL^{−2} + a_j) < a.
+
+2.3 Input (T37) [cite THM37_FULL §1.6–§1.8, §5, §7; R-sketch at the source]. For real U with (3.35) and O(1)Mα_0 ≤ a_37(d, L): G′ = Σ_{ω∈𝒲′}G′_ω, ω = (□_0, …, □_n), □_i ∈ 𝒟, □_{i−1} ∩ □_i ≠ ∅, G′_ω := h_{□_0}G′_{□_0}h_{□_0}Π_{i=1}^nK(h_{□_i})G′_{□_i}h_{□_i}, with:
+ (T37a) the kernel of G′_ω is supported in □_0 × □_n (end factors h_{□_0}, h_{□_n}); every factor is supported in □_i × □_i up to the local range c_loc;
+ (T37b) G′_ω depends on U only on ∪_i□̃_i^5;
+ (T37c) |1_{Δ(y)}G′_ω1_{Δ(y′)}λ|_∞ ≤ B′(L^jη)²ρ′^{|ω|}e^{−δ′d(ω,y,y′)}|λ|_∞, y ∈ Λ_j; printed (3.94): ρ′ = c′M^{−1} (from O(M^{−1/2})M^{−1/2}) and δ′ = ½δ_0; M_1 version: ρ′ = c′M_1^{−1} (THM37_FULL §7);
+ (T37d) every cube meets at most C_37(d) cubes of 𝒟, and C_37c_1(½θδ′)ρ′ ≤ ¼ for M_1 large;
+ (T37e) G′ is real symmetric and positive on 𝒦 (U real).
+ For the complex form (§7) we use in addition (T37-c): the same at complex U′U ∈ 𝒰(b) with analytic terms (THM37_FULL §8, R7).
+
+2.4 Theorem 3.9-W (what is proved here). Let U be real with (3.35) and O(1)Mα_0 ≤ min{a_37, a_LB}, a_LB(d, L) of §4. Fix θ := ½. Let RM be so large that θ_L ≤ δ′/(8(d + 4)) and CMP 96 (2.59) holds at every rate used below. Put N̂ := S^{−1}NS^{−1}. There are γ_N, ε, K_W, M_W depending only on (d, L, a) such that for M_1 ≥ M_W (in the CMP 99 setting M_1 = M):
+ (i) N is invertible and C′ = Σ_ω S^{−1}T_ωS^{−1}, a walk expansion in the sense of A1_WALK_FULL 1.2. The factors are of three kinds: h_□C_□h_□ and E^com_□C_□h_□ on □⁺ (C_□ := local inverse, §5), and the walk factors of N̂ built in §3;
+ (ii) |T_ω(y, y′)| ≤ (4/γ_N)(c_1ρ)^{|ω|}m(y, y′)e^{−½εd(ω,y,y′)}, c_1 := c_1(½ε), ρ ≤ K_W/M_1;
+ (iii) T_ω depends on U only on ∪_iX̃_i^5;
+ (iv) Σ_ω|T_ω(y, y′)| ≤ (8C_𝒟/γ_N)m(y, y′)e^{−½εd(y,y′)};
+ (v) (3.99) form: |(S^{−1}T_ωS^{−1})(y, y′)| ≤ (4/γ_N)L^{|2−d/2|}(L^jη)^{−4}(L^{j′}η)^{−d}(c_1ρ)^{|ω|}e^{−(½ε − |2−d/2|θ_L)d(ω,y,y′)};
+ (vi) (3.48) form (Thm 3.2): |C′(y, y′)| ≤ (8C_𝒟/γ_N)L^{|2−d/2|}(L^jη)^{−4}(L^{j′}η)^{−d}e^{−(½ε − |2−d/2|θ_L)d(y,y′)}.
+ All constants are uniform in U (with the hypothesis), j, k, η, {Ω_j}, and the volume. The rate ½ε is a fixed positive number. It is not Balaban's ½δ_0 (§8.3).
+
