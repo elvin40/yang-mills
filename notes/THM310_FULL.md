@@ -69,3 +69,30 @@ It is the gauge-field propagator with the averaging term Q*aQ and the gauge-fixi
  (U5) A fixed rate δ, set before M_1. WG_FULL takes δ = ½δ_0; any fixed rate is enough (SOURCES_BOOKKEEPING_VERIFY #48).
  (U6) The complex form on 𝒰(b⁗) (R7; WC_FULL 6.4, A1_WALK_FULL 8.4 level 4).
  (U7) Uniformity in U, j, k, η, {Ω_j}, and the volume.
+
+## 3. Setting, conventions, and inputs
+
+3.1 Conventions [THM37_FULL 3.1]. ξ_n := L^nη. For x in a block of level n, Δ(y(x)) is its block. 𝔅 = ∪_nΛ_n is the set of blocks, with the CMP 96 metric d (2.46). Block norms of an operator T: N_∞(T; y, y′) (sup→sup on Δ(y)TΔ(y′)) and N_2(T; y, y′) (L² operator norm of Δ(y)TΔ(y′), the norm of (3.46)). Lemma N (composition), THM37_FULL 3.1: N(AB; y, y′) ≤ Σ_zN(A; y, z)N(B; z, y′). We write N for either norm. Functions are g-valued 1-forms on bonds of Ω_0 (for G) or g-valued functions on points (for G′). The μ-weighted kernels of WG_FULL 0.2 (m(y, y′), S-rescaling) are obtained from N by the bookkeeping C0 [I, WG_FULL 0.2]; we do not redo it. Scale conversion [P, THM39_FULL 2.1]: for y ∈ Λ_j, y′ ∈ Λ_{j′}, p real, (ξ_j/ξ_{j′})^p ≤ L^{|p|}e^{|p|θ_Ld(y,y′)}, θ_L := log L/(RM).
+ Walks of domains, |ω|, and the path distance d(ω, y, y′) are as in WG_FULL 0.3 ((3.93)). We use: (D1) d(ω, y, y′) ≥ d(y, y′); (D2) d(ω, y, y′) ≥ d(y, X_i) + d(X_i, y′) for every domain X_i of ω (both by the triangle inequality).
+
+3.2 Hypotheses (as THM37_FULL 3.2, with the gauge-field operator in place of Δ′_a).
+ (H1) U is G-valued and satisfies (3.35) with O(1)Mα_0 ≤ a_1 (Cor. 3.6). (3.36) is not used for Thm 3.10 (it is used for Δ′_π in WG_FULL).
+ (H2) RM satisfies CMP 96 (2.59) at every rate α used below. We use the form ¼αδ_0RM > 2d log c_0(½α) + 1, as read on the page image by THM37_FULL (H2); WG_FULL (I4) prints ½αδ_0RM, which the coordinator reports as a misquote. Only "RM large after α" is used, so the factor does not matter here.
+ (H3) M_1 (the walk cube size, CMP 116 notation) is a power of L, M_1 ≤ M, and M_1 ≥ M_310 (8.3). In the CMP 99 setting M_1 = M.
+ (H-PU) [THM37_FULL 3.2 (a)–(e) and the repair of 3.4, ledger X-PU]. The cover 𝒟 by cubes of side 2M_1ξ_j and h_□ with supp h_□ ⊂ □, margin ⅓M_1ξ_j (⅓M_1ξ_j/L on interface faces), Σ_□h_□² = 1 on Ω_0, |∂h_□| ≤ c_hL/(M_1ξ_n), |Δh_□| ≤ c_hL²/(M_1ξ_n)², counts C_pt ≤ C_𝒟^in ≤ 3(2L + 2)^d. The proof below uses Σh_□² = 1 (Lemma B) and the Lipschitz bound (Lemma A). So it uses the repaired family, and it carries the factor L of the repair: every commutator constant below contains c_hL (or c_hL²), exactly as K_1 of THM37_FULL 4.5.
+ (I-Ω0) [I, THM37_FULL 3.2]: for □ meeting ∂Ω_0 the local operators are the Dirichlet operators on Ω_0(□) ∩ Ω_0.
+
+3.3 Inputs (IDs used in the ledger §12).
+ T310-R1 [R-sketch: CMP 99 Cor. 3.6, p. 408, from Cor. 3.5, Thm 3.4 (3.84)–(3.86), and CMP 96 Props. 2.5–2.7 (U = 1) [R-full]]. For every □ ∈ 𝒟 and for every admissible local sequence whose Ω_0 lies in one (3.35)-cube: G_□, G′_□, C_□ exist and obey Thms 3.1–3.3 with constants (B_0, δ_0) of d, L only. In block form, for y ∈ Λ_n:
+ N(G_□; y, y′), N(∇G_□; y, y′), N(G_□∇*; y, y′) ≤ B_0[ξ_n², ξ_n, ξ_n]e^{−δ_0d(y,y′)}, and N_2(∇G_□∇*), N_2(∇∇G_□), N_2(G_□∇*∇*) ≤ B_0e^{−δ_0d}; (3.3.1)
+ and the (3.49) form for the local projection, with y ∈ Λ_n, y′ ∈ Λ_{n′}:
+ N(DP_□D*; y, y′) ≤ B_0ξ_n^{−1}ξ_{n′}^{−1}e^{−δ_0d(y,y′)}, N(P_□D*; y, y′) ≤ B_0ξ_{n′}^{−1}e^{−δ_0d}, N(DP_□; y, y′) ≤ B_0ξ_n^{−1}e^{−δ_0d}. (3.3.2)
+ (3.49) is printed on p. 399 [V] as a consequence of Thms 3.1–3.2 "using again Lemma 2.1"; for the local sequences it follows from Cor. 3.6 the same way. The cube geometry "□̃^5 lies in one (3.35)-cube" is [I-geo] as in THM37_FULL 3.3; for the merged cube □_0 of 1.5 we need (□_0)~^5 = □̃^8 inside one cube, i.e. the (3.35) constant O(1) ≥ 20 instead of Balaban's 12 (p. 409) [I; harmless, O(1) is free in (3.35), "O(1) ≥ 10"].
+ T310-P2 [P given its inputs: THM37_FULL Theorem T37, T37-M1, T37^c]. G′ for any admissible sequence and any cover with (H-PU) at a cube size M′ ≥ M_37: walk expansion with per-walk bound B_0ξ²(K_1c_1(θ)/M′)^{|ω|}e^{−(1−θ)δ_0d(ω)}, terms supported in □_0 × □_n, U-dependence in ∪□̃_i^5. Rate δ_37 := (1−θ)δ_0. Right derivatives in N_∞ use the transposed expansion (THM37_FULL 6.2).
+ T310-P3 [P given its inputs: THM39_FULL Theorem 3.9-W, §6, §7]. C′ for any admissible sequence and cover, at cube size M′ ≥ M_W: walk expansion with per-walk bound (4/γ_N)(c_1ρ)^{|ω|}·(scale factors of (3.99))·e^{−δ_39d(ω)}, ρ ≤ K_W/M′, δ_39 := ½ε − |2 − d/2|θ_L > 0, and the sum (3.48) at rate δ_39.
+ T310-R4 [R-full: CMP 96 Lemma 2.1, (2.61)–(2.62), under (H2)]. sup_yΣ_{y′}e^{−αδd(y,y′)} ≤ c_1(α) for the rates used.
+ T310-P5 [P: Lemma AG′, §5.1]. The local parts of Δ_a and Δ_{a,□} agree at points of □.
+ T310-I6 [I-geo; Balaban p. 411, 414]. Geometry of ζ_□ and 𝒟′_□ with explicit margins (§6.0).
+ T310-I7 [I; sequence-locality]. For a cube □′ of a cover at size M′, the local sequence {Ω_n(□′)} and the local operators G′_{□′}, C_{□′}, and the A1-W factors of THM39 are determined by the level structure of {Ω_j}, by Ω_0, and by U, all restricted to (□′)~^5 (resp. X̃^5). This is the reading behind THM37_FULL Lemma S(iv) and THM39_FULL (iii) for U; here it is used also for the sequence data.
+ T310-I8 [I, C0]: conversion of block norms to the μ-weighted kernels of WG_FULL 0.2.
+ Common rate. δ_* := min{(1 − θ)δ_0, δ_39}. With the printed inputs ((3.94), (3.99) at ½δ_0) δ_* = ½δ_0. With THM39's proved rate, δ_* = δ_39 < ½δ_0 (since ε ≤ ½δ_G).

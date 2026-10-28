@@ -373,10 +373,10 @@ lemma op_neg_right (u v : Fin 2 → E) : op u (-v) = -op u v := by ext a b : 2; 
 noncomputable def c : Fin 2 → E := ![1 - q α • T1, T0 α - q α • (1 : E)]
 /-- `c^† = (1 − q̄T₁^*, T₀^* − q̄)^T`. -/
 noncomputable def cs : Fin 2 → E := ![1 - qb α • T1s, T0s α - qb α • (1 : E)]
-/-- Flat curl `c₀ = (−∇₁, ∇₀)` ((1.a)). -/
-noncomputable def c0 : Fin 2 → E := ![-nab1, nab0 α]
-/-- `c₀^† = (−∇₁^*, ∇₀^*)^T`. -/
-noncomputable def c0s : Fin 2 → E := ![-nab1s, nab0s α]
+/-- Flat curl `c₀ = (−∇₁, ∇₀)` ((1.a)); `−∇₁` is written `T₁ − 1`. -/
+noncomputable def c0 : Fin 2 → E := ![T1 - 1, nab0 α]
+/-- `c₀^† = (−∇₁^*, ∇₀^*)^T`, `−∇₁^* = T₁^* − 1`. -/
+noncomputable def c0s : Fin 2 → E := ![T1s - 1, nab0s α]
 /-- `δ = (1 − e^{−iα})(T₁, 1)` ((1.a)). -/
 noncomputable def dl : Fin 2 → E := ![(1 - q α) • T1, (1 - q α) • (1 : E)]
 /-- `δ^† = (1 − e^{iα})(T₁^*, 1)^T`. -/
@@ -388,11 +388,11 @@ noncomputable def Ds : Fin 2 → E := ![nab0s α, nab1s]
 
 /-- (1.a): `c = −c₀ + δ`. -/
 theorem c_eq : c α = -c0 α + dl α := by
-  ext a : 1; fin_cases a <;> simp [c, c0, dl, nab0, nab1] <;> module
+  ext a : 1; fin_cases a <;> simp [c, c0, dl, nab0] <;> module
 
 /-- (1.a), adjoint side: `c^† = −c₀^† + δ^†`. -/
 theorem cs_eq : cs α = -c0s α + dls α := by
-  ext a : 1; fin_cases a <;> simp [cs, c0s, dls, nab0s, nab1s] <;> module
+  ext a : 1; fin_cases a <;> simp [cs, c0s, dls, nab0s] <;> module
 
 /-- The commutator block `C = [[0, [T₀,T₁^*]], [[T₁,T₀^*], 0]]` of (1.b). -/
 noncomputable def Cm : M2 := !![0, T0 α * T1s - T1s * T0 α; T1 * T0s α - T0s α * T1, 0]
@@ -412,7 +412,7 @@ theorem Cm_eq : Cm α = !![0, (qb α - 1) • (T1s * T0 α); (1 - qb α) • (T1
 
 /-- Corner maps `u₁ … u₄` of Lemma 1.1 with generic shifts `a₀, a₁` and phase `p`. -/
 def uG (a0 a1 : E) (p : ℂ) : Fin 4 → Fin 2 → E :=
-  ![![1, 0], ![0, a0], ![-(p • a1), 0], ![0, -(p • (1 : E))]]
+  ![![1, 0], ![0, a0], ![(-p) • a1, 0], ![0, (-p) • (1 : E)]]
 
 /-- Generic `K = Σ_{i<j}(u_i^†u_j − u_j^†u_i)/(2i)`, with `1/(2i) = −i/2`; `b₀, b₁, pb` play the
 roles of `T₀^*, T₁^*, q̄`. -/
@@ -434,7 +434,7 @@ theorem Kbar_eq : KG 1 1 1 1 1 1 = sigmaYM := by
   refine Matrix.ext fun a b => ?_
   fin_cases a <;> fin_cases b <;>
     simp only [KG, Matrix.smul_apply, Matrix.add_apply, Matrix.sub_apply, op_apply] <;>
-    simp [uG, sigmaYM] <;> module
+    simp [uG, sigmaYM, smul_smul] <;> module
 
 theorem sigmaYM_sq : sigmaYM * sigmaYM = 1 := by
   refine Matrix.ext fun a b => ?_
