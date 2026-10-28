@@ -135,4 +135,6 @@ Ledger.
 - [I] Skipping the extraction at scale K (§4 remark), not used.
 - Suggested ledger row: B22 → "reduced [R]: rescaling gain L/2 (CMP 116 (2.36)) with δ re-chosen by (K1); last scale κ_eff = θκ/(1 + 4β), M-condition (K3) implied by FX_R2's; SOURCES_T2_KAPPA2". Needs an independent verifier before the ledger changes.
 
+Correction after verification (SOURCES_T2_KAPPA2_VERIFY item 1): the three losses stack within one step; θ must be read as the TOTAL kept fraction per cycle, θ := 1 − m_tot/κ with m_tot ≤ 9 the sum of the additive absorption costs, so θ ≥ ½ for κ ≥ 2m_tot; with this reading (K1)–(K3) hold as stated.
+
 STATUS: COMPLETE
