@@ -1,6 +1,6 @@
 # paper/
 
-One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (51 pages).
+One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (61 pages).
 
 Build:
 
