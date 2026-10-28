@@ -13,3 +13,40 @@
 - Numerics (/tmp/wcfv/cm2.py, U(3), n = 2, 6, w ≤ 0.3, Karcher mean by fixed-point with Hermitian eigen-log, central differences): max ‖ω_jX − X/n‖/(|X|w) = 0.54 < 8√3/n. Consistent.
 - Gap noted: (c) "M̄ is within the same order of 1 by (0.8)" needs the mean of elements within r of 1 to lie within r of 1. True for the Karcher mean inside the convexity radius (bi-invariant metric); not stated. Minor.
 - Grade (1): CORRECTED — c_M is finite for any admissible M (existence correct); explicit for Federbush's M: c_M ≤ 4√N, and Lemma G(c) (κ ≤ √2) holds for w ≤ 0.054/√N, i.e. c_wMα_0 ≤ 0.054/√N. Paper should state which M and this constant.
+
+## 3. Priority (2)–(4)
+- (2) Lemma E (f): see §1 above. CONFIRMED (arithmetic exact; (H_E) used twice, both uses valid). Small omission: (E) needs 2√N c_4Mα_0 ≤ 1; it should be listed with (H_E).
+- (3) 5.4(e) merged runs. A walk with m far domains has ≤ m + 1 maximal near runs (including end runs and empty runs). Runs of length n: ≤ (C′_𝒟)^n codings, each (c_1ρ)^n, so Σ_{n≥0}(C′_𝒟c_1ρ)^n ≤ 2 if C′_𝒟c_1ρ ≤ ½. Prefactor (4/γ)·2^{m+1} = (8/γ)2^m: matches (8/γ_exp)(2c_1ρ)^m. d(ω) ≥ d(ω̄) holds since near domains ⊂ X_0. CONFIRMED, with two notes: (a) the condition C′_𝒟c_1ρ ≤ ½ is not derived from 5.3's C_𝒟c_1ρ ≤ ¼; the relation of C′_𝒟 (4.2, 5.4) to C_𝒟 (5.3) is never stated; (b) ω̄ may contain X_0 several times (one per run); p. 13 says "a domain X_0", which allows repeats, but the text should say so.
+- (4) 5.5(iii). E^sep, E^tr, E^com are x-independent: (1 − 1_□)xh_□ = 0, x cancels in A_Z − A^{(□)} if A^{(□)} → A^{(□)} + x1_{□∩Z_0}, [x, h_□] = 0. But F_□ = (E^sep + E^tr + E^com)C_□h_□ and C_□ = (A_□ + x)^{-1} DOES depend on x. So "F_□ is unchanged" is false as written. What is true: the E-factors are unchanged and ‖C_□(x)‖_ε ≤ 4/(γ_exp + 2x) ≤ 4/γ_exp, so ‖F_□‖_ε ≤ K_F/M_1 uniformly in x. CMP 116 uses the resolvent to build (C^{(k)})^{1/2} = π^{-1}∫_0^∞x^{-1/2}(x + A_Z)^{-1}dx; convergence at x → ∞ needs a per-walk prefactor O(1/(γ_exp + x)), not only "uniform in x". That prefactor holds (P = Σh C_□(x) h carries 4/(γ+x)), but WC(iv) does not state it. Grade: CORRECTED (wording false, bound true; state the 1/(γ_exp + x) prefactor).
+
+## 4. Priority (5), item (7), item (8)
+- (5) CMP 99 pp. 396–397, 400 (pdftotext): Thm 3.4's class is U real with (3.35) and |A′| < a_1(L^jη)^{-1}, |∇A′| < a_1(L^jη)^{-2} (3.37), plus |D*DA′| (3.38); Balaban says the U′U plaquette bound "will not be used here". All constraints are homogeneous of degree 1 in A′, U fixed. So along A′ → tA′ the radius is exactly b_1/a_1 (no c_P). CONFIRMED. With c_P ≤ 1, c_3 = c_Pc_−/(c_− + 4Γ_4) gives t ≥ 1 + 4Γ_4/c_−. Note: 6.0 compares the real regularity α_0 with the J-bound a_0 (two different quantities under one row); sufficient but the notation conflates them.
+- (7) grep "3.15|3.185|3.186|3.187|G_2|Ğ_2": hits only lines 57, 255, 344, 346, 408 — all are "not used" statements or §8 itself (255 is a parenthetical on Balaban's route). CONFIRMED not used.
+- (8) Ledger IDs. P1–P14, R1–R4, C1–C2, I1–I8 all appear in §9; P*, C*, I2, I7 appear only in §9 (body uses section numbers and bare tags — acceptable). Problems:
+  (a) V1–V10 collide: the body's "VERIFY V1–V10" are items of SOURCES_WC_EXPGAUGE_VERIFY (V5 = numerics, V7 = 5.4 geometry, V8 = Δ_J tree), while §9's V1–V10 are different page facts (V5 = CMP 109 p. 266, V8 = CMP 99 p. 400). Rename one set.
+  (b) R-label collision: body (R3), (R4) are A3's inputs (regular U_1; c_J bound); §9 R3 is the A3 bundle and §9 R4 is (p254). Line 41 "(R4) [R/I, A3 §6.1]" ≠ ledger R4.
+  (c) Mistags: line 192 "item I4" for locality of C̃^{(2)} — that is ledger I2 (ledger I4 = R2 of A3). Line 185 "(I5) J is local and |J| = O(Mα_0)" — ledger I5 is WG-1 (M^{-11}); J-locality has no ledger row.
+  (d) P13 says "(D) proved directly"; (D) is defined nowhere in WC_FULL.
+  (e) P2 claims weights n^{-1}(1 + O(Mα_0)) as [P] while I8 says c_M is not computed; tag P2 as [P given I8], or insert the §2 constant above.
+
+## 5. Item (6): read for asserted steps
+Rechecked by hand and found correct: 0.5 linearization; (1.2) backward transport; Lemma G(a), (d); (2.2); Lemma P_exp sums (ε_8 = 32d(d−1)τ²L^{-d} from 16(d−1)·2d); Theorem L bracket (8/9)(3/4)(1/2) − 1/12 = 1/4; m_L = 1/L for 3 ≤ L ≤ 9; §7.3 K_b = 83088 and 2,520,072; 5.2(c) distance (K_0 − c_X)M_1 = (c_X + 2)M_1; 5.2(d); Lemma CP; Lemma AW threshold 1 + 4Γ_b/c_−; 5.4(a)–(d). Numerics rerun: poincare_exp.py reproduces the §7.2 table exactly; wc_residue_geom.py gives ℓ^∞ X̃_0^5 = Z̃_0 True, face-only False.
+Steps that are asserted or wrong:
+- F1 (constant error) 5.2(e): the Combes–Thomas Schur sum is bounded by 2B_AεS(½δ_A) with S(δ) = sup Σe^{−δ|b−b′|} (4.3). This drops a factor d: |e^{x} − 1| ≤ |x|e^{|x|} gives kernel 2B_Aε d e^{−½δd}. A1_WALK_FULL uses Σ(δ′) = sup Σ(1 + d)e^{−δ′d} for this reason. Fix: S(½δ_A) → Σ(½δ_A) ≤ (1 + 4/(eδ_A))S(¼δ_A) in 5.2(e), 6.2 (ε^a) and 6.7 (ε″). Only ε changes.
+- F2 5.5(iii) / WC(iv): see §3. "F_□ unchanged" is false (C_□ depends on x); the bound is uniform. CMP 116 p. 13 integrates π^{-1}∫x^{-1/2}(x + A)^{-1}dx, so WC(iv) must state the per-walk prefactor 4/(γ_exp + x) (true by the same proof), not only uniformity.
+- F3 Lemma G(b)–(c): c_M not computed; "M̄ within the same order of 1 by (0.8)" asserted (needs the mean of elements in a ball to stay in the ball — true for the Karcher mean within the convexity radius). Fix with §2 above.
+- F4 (E) of 2.4 needs 2√N c_4Mα_0 ≤ 1; not listed with (H_E). Trivial.
+- F5 5.4(e) uses C′_𝒟c_1ρ ≤ ½; 5.3 states C_𝒟c_1ρ ≤ ¼; the relation of C′_𝒟 to C_𝒟 is never given.
+- F6 6.5–6.6: the complex continuation of 𝒢*𝒢 (weights ω_Γ at complex W_Γ, transports Ad(e^{iA′})) is "absorbed in B_A″" without a bound. Needs one line: analyticity of M on a fixed polydisc plus Cauchy gives ‖ω_Γ‖ ≤ 2/n on 𝒰(α″) for α″ small.
+- F7 WC(ii) claims every factor kernel vanishes within ⅓M_1 of its domain boundary; 5.4 proves it only for the merged X_0. For other factors it holds because (L1) of A1_WALK_FULL §1 includes the band; WC_FULL should say its (L1) is that one, and that WG_FULL's G_1-tree factors satisfy it.
+- F8 Ledger defects of §4 item (8): V- and R-label collisions; I4/I5 mistags; undefined "(D)" in P13; P2 tag.
+- F9 Cosmetic: poincare_exp.py prints a stale 1/K_b (6.02e-6 for d = 2, L = 3, i.e. 2× the current 1/K_b = 1.20e-5). §7.3 uses the correct value; the script is not an input.
+No step found that breaks the logic. Every gap is a constant, a wording, or a missing one-line justification.
+
+## 6. Grades
+(1) Lemma G(b)–(c): CORRECTED (c_M ≤ 4√N for Federbush's mean; κ ≤ √2 for w ≤ 0.054/√N).
+(2) Lemma E (f): CONFIRMED.
+(3) 5.4(e) merged runs: CONFIRMED (C′_𝒟 vs C_𝒟 unstated).
+(4) 5.5(iii): CORRECTED (F_□ changes through C_□(x); bound uniform; state the 1/(γ_exp + x) prefactor).
+(5) Disc radius at Thm 3.4: CONFIRMED (exactly b_1/a_1).
+Whole proof: NEEDS FIXES — F1–F8 above; none structural. §8 claim (Thm 3.15, (3.185)–(3.187) unused): CONFIRMED by grep.
