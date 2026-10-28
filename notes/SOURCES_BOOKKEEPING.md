@@ -20,3 +20,33 @@ Proof [P]. Let g_j ≤ γ with γ² < e^{−1} (γ < 0.607). Then log g_j^{−2}
 
 Grade: R_{K+1} ≥ 1 is PROVED from the printed definition [V + P], with the stronger R_{K+1} ≥ L. The only condition is γ < e^{−1/2}, which every "γ sufficiently small" choice meets.
 
+## 2. C_c independent of g (row A20, second half)
+
+Pages read on images: CMP 122 II pp. 380, 382, 383, 384, 385, 386, 387 (pdf 26, 28–33) [V].
+
+Where the cost O(1) comes from. (1.79) (p. 383) is the summary of four sources, all printed on pp. 380–383:
+1. p. 380 [V]: "At first we bound all the expressions in the exponential, except the Wilson action and the quadratic forms. The expression V(X~) is bounded in (1.69). Similar bounds hold for vacuum energy counterterms and normalization constants, except that for the last we have the corresponding constant O(log g_j^{−2}) instead of O(1). In effect we get a bound, to which every large field domain Z_j contributes the constant O(1) log g_j^{−2}|Z_j| ≤ O(1) log g_j^{−2}(MR_j)^d d′_j(Z_j) ≤ O(1)M^dR_j^{d+1}d′_j(Z_j), where d′_j is the linear size defined in terms of MR_j-cubes instead of M-cubes."
+2. p. 383 [V]: "All the integrals with respect to the group valued variables in the definition (1.71) are estimated by 1."
+3. p. 383 [V]: "The integrals with respect to the fields A_j in (2.21) [III], or (1.25) [IV], are estimated using the positivity properties of the quadratic forms, and we get the factors exp O(1)|Z_j ∩ Ω_j|, where the volume is for the corresponding scale."
+4. p. 383 [V]: "Finally, the summations over the admissible sequences can be replaced by the factors exp O(1)(MR_j)^{−d}|Z_j|."
+5. The B-integral, p. 383 [V]: (1.77) has the error term "−O(1)A_0A_1²B_3⁴B_5M^{d+6}R_j^{d+3}p_0(g_j)p_1²(g_j)g_j", and Balaban writes "We assume that g_j is sufficiently small, so that the constant on the right-hand side above is small, or O(1)." So g enters here only as a smallness condition. The resulting lower bound has the g-free constant γ_0.
+
+Where g enters. Only in item 1, through log g_j^{−2}. Balaban removes it with the second "≤" of item 1. That step is log g_j^{−2} ≤ R_j, which follows from (2.5) of CMP 119: R_j ≥ (log g_j^{−2})^r with r ≥ 2 and log g_j^{−2} > 1 (§1). So the g-dependence of the normalization constants is moved into the factor R_j^{d+1}, which is written out in (1.79). The remaining O(1) is g-free.
+
+Same constant in (1.82), (1.83), (1.85), (1.86), (1.87) [V]: each line writes "O(1)M^dR_{j+1}^{d+1}d′_{j+1}" (or "O(1)2dM^dR_{j+1}^{d+1}" in (1.87)), with the same shape as (1.79). All other g-dependence in these lines is explicit: p_0(g_j), p_1(g_j), A_1²p_0²(g_1), 2(1+β_0)^{−1}p_0(g_{j+1}). These are the factors already separated in SOURCES_FX_R2 §4.
+
+What C_c can depend on [P from the quotes; Balaban does not list it]: d (lattice combinatorics, the (MR_j)^d / d′_j conversion), the per-site constants of (1.69) and of the Gaussian bounds (Balaban's inductive constants, fixed before γ), and possibly L (through "the corresponding scale"). M is written out as M^d. κ does not enter: the κ-factors are bounded by 1 in these estimates. g does not enter: it is either explicit (p_0, p_1) or absorbed into R_j by log g_j^{−2} ≤ R_j.
+
+Caveat. "O(1)" is Balaban's notation; he does not print a value or a dependence list. The claim "C_c is g-free" is a reading of how each O(1) is produced, not a printed sentence. Grade: SUPPORTED [V quotes + P]. One real point to record: the cost line is g-dependent through R_j^{d+1}; R_j grows like (log g_j^{−2})^r. SOURCES_FX_R2 treats R_{K+1} as explicit, so this is consistent with its use.
+
+## 3. A22 readings (BALABAN_EXCERPTS "Needs verification" items 5, 8–12)
+
+Page map for CMP 109: printed page = pdf page + 248.
+
+### 3.1 Item 5: CMP 109 (4.37)/(5.1), pp. 291–292 [V, pdf 43–45]
+- (4.37), p. 291: "Π_{μ,ν}(x, y) = Σ_{X∈D_j^0} E^{(2)}_{μ,ν}(X, x, y), and the irrelevant terms resummed over X ∈ D_j, X ⊂ □̃². The function Π is called the vacuum polarization tensor."
+- (5.1), p. 292, Sect. 5 opening: "The vacuum polarization tensor is defined by the formula (4.37) of the previous section. From this it follows that it can be defined also as Π(b, b′) = lim_{T_1^{(j)}↗Z⁴} δ²/δB(b)δB(b′) E^{(j)}(U_j(exp iB))|_{B=0}."
+- p. 292 after (4.45): "We define the β-function β_j(g_{j−1}) equal to this coefficient."
+- p. 293, (5.10): "|Π_{μν}(x−y)| ≤ O(1)E_0 exp(−δ_1|x−y|), with a positive constant δ_1 determined by δ_0, κ, and M (e.g., δ_1 = 1/2 min{δ_0, κM^{−1}})."
+Our reading: "Π^{(j)}(b,b′) = lim_{T→Z⁴} δ²/δB(b)δB(b′) E^{(j)}(U_j(exp iB))|_{B=0}, pp. 291–292". Grade: CONFIRMED. Notation notes: the print writes Π without the superscript (j); the limit is over the lattice T_1^{(j)}; (4.37) is on p. 291 and (5.1) on p. 292. (5.1) is a consequence of (4.37) in Balaban's words ("it follows that"), not an independent definition.
+
