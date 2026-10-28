@@ -1,7 +1,7 @@
 # THM39_FULL — paper-grade write-out of CMP 99 Theorem 3.9 (walk expansion of C′ = (Q′G′²Q′*)^{−1})
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (second of three); Table 1 row R2, with R36 (M_1 version) and R7 (complex form) for this operator.
-Status: author write-out complete 2026-10-28; not verified.
+Status: author write-out complete 2026-10-28; verified 2026-10-28 (THM39_FULL_VERIFY V1–V7, NEEDS FIXES, minor); fixes applied 2026-10-28 (change log at end).
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [R-full] printed with full proof; [R-sketch] printed sketch or proof by reference; [V] read on the page image in this session; [P] proved in this file or in a named project file; [I] reading or geometric fact not proved here.
 No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8) is cited from THM37_FULL (parallel write-out) as input (T37); it is not re-proved here.
@@ -55,8 +55,9 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
  (M1) (3.96) prints (Q′G′Q′*)^{−1}; the square is missing. It must be (Q′G′²Q′*)^{−1}.
  (M2) p. 411 prints "e^{−(1/4)δ_0M} ≥ 3!(1/4δ_0M)^{−3}". The inequality is reversed: e^{−x} ≤ 3!x^{−3} for x > 0.
  (M3) p. 412 prints "□̃Q′h′G′h′²G′h′Q′h_□C_□h_□"; the last Q′ must be Q′*.
- (M4) "restructed" for "restricted" in Thm 3.9 (typographic).
- (G1) The hypothesis "Mα_0 small" is not in the statement; it is needed (Cor. 3.6 needs O(1)Mα_0 ≤ a_1). We add it.
+ (M4) "restructed" for "restricted" in Thm 3.9 (typographic); also "expanson" p. 412.
+ (M5) p. 412 says "with Ω_0 contained in a cube for which the condition (3.25) is satisfied". (3.25) is the definition of R; it must be (3.35) [V, THM39_FULL_VERIFY V2].
+ Standing hypothesis, not a gap [V p. 396]: "We will need α_0 so small that O(1)Mα_0 is still a sufficiently small number." So "Mα_0 small" is in force for all of Sect. 3, Thm 3.9 included. This file states it explicitly (2.4).
  (G2) The domain-change estimate for (3.97) is cited to CMP 89 and Cor. 3.5 "by an argument similar"; it is not written.
  (G3) No single-factor bound is stated ("difficult to make … more precise"); the whole-term bound (3.99) is stated without proof.
  (G4) The local inverses C_□ rest on Cor. 3.6, which rests on Cor. 3.5 (perturbation from U = 1) and CMP 96 Prop. 2.3. Their lower-bound input is the U = 1 Fourier bound (2.76).
@@ -68,7 +69,7 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
  Domains are listed in the enlarged form X → X⁺ of WG_FULL 0.4. This gives the ⅓M_1 band of (L1) for kernels supported in X × X, with the local margin c_loc of WG_FULL (I7). We use this convention without further mention.
 
 2.2 Structural readings [I]. These are the readings of the earlier write-outs, restated for Q′.
- (I-Q) For y ∈ Λ_j, (Q′λ)(y) = (Q′_jλ)(y) = L^{−jd}Σ_{x∈Δ(y)}R(U(Γ_{y,x}))λ(x), with contours Γ_{y,x} ⊂ Δ(y) of η-length ≤ c_Γ(d)L^jη. Evidence: the a-term of (3.88) [V p. 409] is exactly a_j(L^jη)^{−2}Q′_j*Q′_j in this form; CMP 96 (2.39) [V, THM37_FULL 2.2] has the same form at U = 1. Uniform weights L^{−jd} are the reading; §4 uses only "nonnegative weights on Δ(y) with sum 1 and the bump average ≥ c_φ".
+ (I-Q) For y ∈ Λ_j, (Q′λ)(y) = (Q′_jλ)(y) = L^{−jd}Σ_{x∈Δ(y)}R(U(Γ_{y,x}))λ(x), with contours Γ_{y,x} ⊂ Δ(y) of η-length ≤ c_Γ(d)L^jη. Correction [V: CMP 98 (64), (70), (77)–(80), pp. 29–30, via THM39_FULL_VERIFY V1]: Q′_j is block-diagonal with uniform weights L^{−d} per step (composite weight L^{−jd}), but the transport is U(Γ^{(j)}_{y,x}) := Ū^{j−1}(Γ_{x_j,x_{j−1}})···Ū^1(Γ_{x_2,x_1})U(Γ_{x_1,x}), a product of averaged links Ū^i on level-i axial contours (each ≤ dL level-i bonds), not a fine holonomy. Averaged links are G-valued and transform as Ū^i_b → u(b_−)Ū^i_bu(b_+)^{−1} (CMP 98 (70)). Below, "U(Γ_{y,x})" means this composite transport. Block-diagonality is [V]; the transport form is [V]; the small-field bound it needs is input (AL) of 4.4. Evidence: the a-term of (3.88) [V p. 409] is exactly a_j(L^jη)^{−2}Q′_j*Q′_j in this form; CMP 96 (2.39) [V, THM37_FULL 2.2] has the same form at U = 1. Uniform weights L^{−jd} are the reading; §4 uses only "nonnegative weights on Δ(y) with sum 1 and the bump average ≥ c_φ".
  (I-B) The blocks Δ(y), y ∈ 𝔅, partition Ω_0 (they are pairwise disjoint and their union is Ω_0). Each block Δ(y), y ∈ Λ_j, together with its one-step η-neighbourhood, lies in a cube □(y) of the (3.35) class whose index is j or j − 1 [I, cube geometry of CMP 99 p. 396].
  Consequence of (I-Q) [P]. For ω ∈ ℋ and x ∈ Δ(y): (Q′*ω)(x) = R(U(Γ_{y,x}))^{−1}ω(y). Proof: ⟨Q′λ, ω⟩_ℋ = Σ_yμ(y)L^{−jd}Σ_{x∈Δ(y)}⟨R(U(Γ_{y,x}))λ(x), ω(y)⟩ = η^dΣ_x⟨λ(x), R(U(Γ_{y,x}))^{−1}ω(y)⟩, since μ(y)L^{−jd} = η^d and R(·) is orthogonal on 𝔤. ∎ Hence |Q′*ω|_∞ on Δ(y) equals |ω(y)|, and |Q′λ(y)| ≤ sup_{Δ(y)}|λ|. Also Q′*aQ′ = Q′*(aS^{−1})Q′ with a := a_j on Λ_j, by (3.24); and a_j ≤ a for all j, since a_{j+1} = a·a_j/(aL^{−2} + a_j) < a.
 
@@ -88,6 +89,7 @@ No existing file is edited. The walk expansion of G′ (CMP 99 Thm 3.7, Cor. 3.8
  (v) (3.99) form: |(S^{−1}T_ωS^{−1})(y, y′)| ≤ (4/γ_N)L^{|2−d/2|}(L^jη)^{−4}(L^{j′}η)^{−d}(c_1ρ)^{|ω|}e^{−(½ε − |2−d/2|θ_L)d(ω,y,y′)};
  (vi) (3.48) form (Thm 3.2): |C′(y, y′)| ≤ (8C_𝒟/γ_N)L^{|2−d/2|}(L^jη)^{−4}(L^{j′}η)^{−d}e^{−(½ε − |2−d/2|θ_L)d(y,y′)}.
  All constants are uniform in U (with the hypothesis), j, k, η, {Ω_j}, and the volume. The rate ½ε is a fixed positive number. It is not Balaban's ½δ_0 (§8.3).
+ Output rate in Balaban's (3.99) normalization: ½ε − |2 − d/2|θ_L (= ½ε at d = 4; ≥ ¼ε when RM ≥ 4(d + 4)log L/ε). The rate ½ε holds only in the rescaled form (ii). Consumer: WG_FULL (I3) quotes C′ in the (3.99) normalization, so its common rate must be ≤ ½ε − |2 − d/2|θ_L, or it must take C′ in the rescaled form (ii). Pending: that edit to WG_FULL waits for the Thm 3.7/3.10 verifiers [THM39_FULL_VERIFY V6].
 
 ## 3. Step A: the walk expansion of N̂ (hypothesis (H1) of A1-W) [P given (T37), (I-Q), (I-B)]
 
@@ -141,7 +143,9 @@ and λ_y := 0 off Δ(y). Put λ := Σ_yλ_y. It is supported in ∪Δ(y) ⊂ Ω_
 
 4.4 The term ⟨Q′λ, ω⟩ [P]. Blocks are disjoint and Q′(y′) sees only Δ(y′) (I-Q), so (Q′λ)(y) = (Q′λ_y)(y). By covariance, R(U(Γ_{y,x}))R(u_y(x))^{−1} = R(u_y(y))^{−1}R(U^{u_y}(Γ_{y,x})). Hence
  (Q′λ)(y) = R(u_y(y))^{−1}M_yR(u_y(y))s(y)²ω(y), M_y := L^{−jd}Σ_{x∈Δ(y)}φ_y(x)R(e^{iηA}(Γ_{y,x})).
-Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. Also |R(e^{iηA}(Γ)) − I| ≤ Σ_{b∈Γ}|e^{iη ad A(b)} − I| ≤ (c_Γℓ/η)·η·2|A|e^{2η|A|} ≤ K_ΓMα_0, K_Γ := 2e·c_Γc_3 (for η|A| ≤ ½). So ‖M_y − c_yI‖ ≤ K_ΓMα_0 with c_y := L^{−jd}Σφ_y ≥ c_φ. If K_ΓMα_0 ≤ ½c_φ, then
+Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. The transport is the composite of averaged links (2.2 (I-Q) correction), so the bound needs one input:
+ (AL) [R/I: form of Ū^i read on CMP 98 (64), (70), (77)–(80), pp. 29–30 (THM39_FULL_VERIFY V1); the bound itself is a standard small-field estimate of CMP 98 type, not located on a page]. There are K_av(d, L) ≥ 1 and k_av(d, L) > 0 such that, if U = e^{iηA} on a cube □ with L^jη·sup_□|A| ≤ k_av, then every averaged link Ū^i_b, 0 ≤ i ≤ j − 1, whose averaging corridor lies in □ satisfies |Ū^i_b − 1| ≤ K_avL^iη·sup_□|A| (Ū^0 = U). Expected proof: induction on i from (77)–(80); each level-(i+1) link is an L^{−d}-weighted average of logs of products of ≤ c(d)L level-i links. Also needed: the corridors of the averaged links in Γ^{(j)}_{y,x} lie in □(y) (they lie in Δ(y) plus at most a boundary corridor, covered by the η-layer of □(y)).
+ Given (AL) on □(y): |R(Ū(Γ^{(j)}_{y,x})) − I| ≤ Σ_{i=0}^{j−1}Σ_{b∈level-i contour}|R(Ū^i_b) − I| ≤ Σ_{i=0}^{j−1}dL·2e·K_avL^iη|A| ≤ 2e·dK_av(L/(L − 1))·ℓ|A| ≤ K_ΓMα_0, K_Γ := 2e·dK_av(L/(L − 1))c_3 (for c_3Mα_0 ≤ k_av, which also gives η|A| ≤ ½ when k_av ≤ ½). So ‖M_y − c_yI‖ ≤ K_ΓMα_0 with c_y := L^{−jd}Σφ_y ≥ c_φ. If K_ΓMα_0 ≤ ½c_φ, then
  ⟨(Q′λ)(y), ω(y)⟩ ≥ s(y)²(c_y − K_ΓMα_0)|ω(y)|² ≥ ½c_φs(y)²|ω(y)|², and ⟨Q′λ, ω⟩_ℋ ≥ ½c_φ⟨ω, S²ω⟩_ℋ.
 
 4.5 The term ‖Δ′_aλ‖² [P].
@@ -155,12 +159,13 @@ Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. Also |R(e^{iηA}(Γ)) − I| ≤ �
  (c) Sum. |v_y| = s(y)²|ω(y)|, so Σ_yμs^{−2}|v_y|² = ⟨ω, S²ω⟩. With ‖Ω_0f‖ ≤ ‖f‖ and (p + q)² ≤ 2p² + 2q²:
  ‖Δ′_aλ‖²_𝒦 ≤ K_N⟨ω, S²ω⟩, K_N := 2((2d + 1)3^dK_Δ² + a²).
 
-4.6 Conclusion. Put a_LB := min{1, c_φ/(2K_Γ), 1/(2c_3)} (the last term gives η|A| ≤ ½). For Mα_0 ≤ a_LB, 4.1, 4.4, and 4.5 give ⟨ω, Nω⟩ ≥ γ_N⟨ω, S²ω⟩ with γ_N = c_φ²/(4K_N). Write u = Sω: ⟨u, N̂u⟩ = ⟨ω, Nω⟩ ≥ γ_N‖u‖². N̂ is real symmetric, so the bound holds for complex u as well (A1_WALK_FULL 8.2 remark). ∎
+4.6 Conclusion. Put a_LB := min{1, c_φ/(2K_Γ), 1/(2c_3), k_av/c_3} (the third term gives η|A| ≤ ½; the last gives the (AL) range). For Mα_0 ≤ a_LB, 4.1, 4.4, and 4.5 give ⟨ω, Nω⟩ ≥ γ_N⟨ω, S²ω⟩ with γ_N = c_φ²/(4K_N). Write u = Sω: ⟨u, N̂u⟩ = ⟨ω, Nω⟩ ≥ γ_N‖u‖². N̂ is real symmetric, so the bound holds for complex u as well (A1_WALK_FULL 8.2 remark). ∎
 
 4.7 Remarks.
  (a) Only (3.35) on single blocks is used, and only through |A| and |∇^ηA|. The bound does not use Cor. 3.5/3.6, the U = 1 Fourier formula CMP 96 (2.75)–(2.76), or the walk expansion. It does not depend on M_1 or on M except through Mα_0 ≤ a_LB.
  (b) It is the scalar analogue of SOURCES_A1_KERNEL §8 (E^ms) for QGQ*. For scalars, Q′ is exactly block-diagonal (I-Q), so the bond-corridor items [I] of (E^ms) do not arise. Unlike (C) for G, (H2) for C′ is not conditional; it rests only on the readings (I-Q), (I-B).
  (c) The constant is not optimal. A1-W needs only uniformity.
+ (d) Why the bump argument does not give (C) for QGQ* (1-forms) [THM39_FULL_VERIFY V3]. The variational step works the same way: ⟨ω, QGQ*ω⟩ ≥ |⟨Qλ, ω⟩|²/⟨λ, G^{−1}λ⟩, and the energy form is controlled by the S2 route Π, since R is an orthogonal projection. The failure is in the numerator. The 1-form average Q_j(c) is a straight-line corridor average over B(c_−) ∪ B(c_+). A μ-bond at axial position t in a block gets weight ≈ (t + 1)/L from row c and ≈ (L − 1 − t)/L from row c − Le_μ. So bump trial fields give a bidiagonal matrix with comparable entries a, b. Its symbol a + be^{ip} has modulus ≈ |a − b| ≈ 0 at p = π (checkerboard ω), so ⟨Qλ, ω⟩ has no diagonal dominance. Only the last bond layer of a block is seen by one row alone, and a bump there has gradient ~ η^{−1}, not ℓ^{−1}. For gauge functions Q′_j is exactly block-diagonal (2.2), so the cross term is zero. This is the precise difference. (C) is [P] by SOURCES_C_CONDITION (verified), via Theorem QE + Lemma T, not via a bump.
 
 ## 5. Step C: the parametrix and the walk expansion of C′ [P given §3, §4, and Theorem A1-W]
 
@@ -169,7 +174,7 @@ Each R(·) is orthogonal, so ‖M_y‖ ≤ 1. Also |R(e^{iηA}(Γ)) − I| ≤ �
  (H2) §4: Re⟨u, N̂u⟩ ≥ γ_N‖u‖², c_− := γ_N;
  (H3) the geometry (G) of A1_WALK_FULL 2.1 on the M_1-cover [I, same items as there: cube cover, cores, h_□ Lipschitz with c_h/M_1 (open item O2)];
  (H4) the order of constants of 5.6 below. WG-1 is not part of it (3.6).
- Put c_+ := C_𝒟^Nb_G and ε := min{½δ_G, γ_N/(8c_+Σ(½δ_G))}.
+ Put δ_G^min := (7/16)δ′ (RM-free floor of δ_G, 3.4), c_+ := C_𝒟^Nb_G with b_G at the minimal RM of 5.6, and ε := min{½δ_G^min, γ_N/(8c_+Σ(½δ_G^min))}. Since δ_G ≥ δ_G^min and b_G, c_1(·), Σ(·) do not get worse as RM grows, every later use of "ε ≤ ½δ_G" and of these constants holds for all larger RM. So raising RM after ε (5.3, 5.6) does not change ε [fix per THM39_FULL_VERIFY V5].
 
 5.2 The steps, with the objects of this file. We list each step of A1_WALK_FULL §2–§5, so the proof is complete with that file.
  (a) Truncation (A1_WALK_FULL 2.2). 𝒲_□ := merged walks ω with X̃_i^5 ⊂ □⁺ for all i. N̂^{(□)} := Σ_{ω∈𝒲_□}N̂_ω. N̂_□ := 1_□N̂^{(□)}1_□ on ℓ²(□, μ).
@@ -202,7 +207,7 @@ The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2} = L^{(2�
 
 5.5 Uniformity. Every constant is one of: (T37) constants B′, c′, δ′, C_37; γ_N (§4); geometric constants; c_1(·), Σ(·) (CMP 96 Lemma 2.1, [R-full]). None depends on U (within the hypothesis), j, k, η, {Ω_j}, or the volume. The volume enters only through finite dimension (5.2(f), (h)).
 
-5.6 Order of constants. (d, L, a) → (T37): B′, c′, δ′, C_37, a_37 → minimal RM with θ_L ≤ δ′/(8(d + 4)) → γ_N, a_LB (§4; RM-free) → b_G, δ_G, C_𝒟^N, c_X^N → ε → K_F, K_W, C_W → M_1 ≥ M_W (and M_1 ≥ (2C_Wc_1K_W)², M_1 ≥ 3c_loc) → M with R_1M_1 ≤ M and (2.59) at every rate used, RM ≥ 4(d + 4)log L/ε → α_0 with Mα_0 ≤ min{a_37, a_LB}. No loop.
+5.6 Order of constants. (d, L, a) → (T37): B′, c′, δ′, C_37, a_37 → minimal RM with θ_L ≤ δ′/(8(d + 4)) → γ_N, a_LB (§4; RM-free) → b_G, δ_G^min = (7/16)δ′, C_𝒟^N, c_X^N → ε (RM-free) → K_F, K_W, C_W → M_1 ≥ M_W (and M_1 ≥ (2C_Wc_1K_W)², M_1 ≥ 3c_loc) → M with R_1M_1 ≤ M and (2.59) at every rate used, RM ≥ 4(d + 4)log L/ε → α_0 with Mα_0 ≤ min{a_37, a_LB}. No loop.
 
 ## 6. The M_1 version (R36) [P given (T37) in its M_1 form]
 
@@ -223,11 +228,13 @@ The ratio to Balaban's split is (L^jη)^{2−d/2}(L^{j′}η)^{d/2−2} = L^{(2�
 
 7.2 The one named input (T37-c) [THM37_FULL §8, R7; P pending its verification]. On 𝒰(b_1^{37}), G′(U′U) = Σ_ωG′_ω(U′U) with each term analytic in A′ and (T37a)–(T37d) with B′ replaced by B′^c = B′(1 + O(b_1^{37})) and the same ρ′, δ′.
 
-7.3 Step A at complex points [P]. Q′(U′U) is an entire function of A′: each R(U′U(Γ)) is a finite product of e^{iη ad A′(b)}R(U_b). On a block, |R(U′U(Γ))| ≤ e^{2c_Γb_1}, so |Q′f(y)| ≤ e^{2c_Γb_1}sup_{Δ(y)}|f| and the same for the transpose. §3 runs unchanged: N̂(U_c) = Σ_ωN̂_ω(U_c), each term analytic, with b_G^c := b_G(1 + O(b_1))·e^{4c_Γb_1}, the same ρ_G, δ_G, and C_𝒟^N. Put c_+^c := C_𝒟^Nb_G^c and Γ_c := 2c_+^cΣ(δ_G). Then ‖N̂_□(U_c)‖ ≤ Γ_c for every □ (Lemma LT(b) and (N3)).
+7.3 Step A at complex points [P given (AL-c)]. The transports of Q′ are products of averaged links (2.2), and Ū^i involves logs, so Q′(U′U) is analytic in A′ only on a small-field domain. Input:
+ (AL-c) [R/I, same pointer as (AL) of 4.4: CMP 98 (64), (70), (77)–(80)]. There is k_av^c(d, L) > 0 such that for b_1 ≤ k_av^c the averaged links Ū^i_b(U′U) are analytic in A′ on 𝒰(b_1) and |R(Ū^i_b(U′U))| ≤ e^{2K_avL^{i−j}b_1} on blocks of level j. Expected proof as for (AL), with the complex field A′ in place of A.
+ Given (AL-c), on a block |R(Ū(Γ^{(j)}_{y,x})(U′U))| ≤ Π_{i<j}e^{2dLK_avL^{i−j}b_1} ≤ e^{2c̄_Γb_1}, c̄_Γ := dK_avL/(L − 1). So |Q′f(y)| ≤ e^{2c̄_Γb_1}sup_{Δ(y)}|f| and the same for the transpose. §3 runs unchanged: N̂(U_c) = Σ_ωN̂_ω(U_c), each term analytic, with b_G^c := b_G(1 + O(b_1))·e^{4c̄_Γb_1}, the same ρ_G, δ_G, and C_𝒟^N. The radius b_1^{37} of 7.4 is taken ≤ k_av^c. Put c_+^c := C_𝒟^Nb_G^c and Γ_c := 2c_+^cΣ(δ_G). Then ‖N̂_□(U_c)‖ ≤ Γ_c for every □ (Lemma LT(b) and (N3)).
 
 7.4 Lemma AW for N̂ [P given 7.2–7.3 and A1_WALK_FULL 8.2–8.3]. The proof of Lemma AW (A1_WALK_FULL 8.3) uses: (i) an analytic walk expansion with (B1)–(B3) on the larger domain; (ii) the real global bound; (iii) M_1 ≥ M_a. Here (i) is 7.3, (ii) is Lemma LB at the real point U, and (iii) is 5.2(b). The truncated local operators N̂_□(U(t)) are analytic in t, bounded by Γ_c, and Re ≥ ½γ_N at t = 0. Lemma CP (A1_WALK_FULL 8.2) gives Re⟨u, N̂_□(U_c)u⟩ ≥ ¼γ_N‖u‖² on 𝒰(a_1), provided
  b_1/a_1 ≥ 1 + 4Γ_c/γ_N, i.e. a_1 ≤ k_{C′}b_1, k_{C′} := γ_N/(γ_N + 4Γ_c).
-Then Lemma CT with c = ¼γ_N gives ‖C_□(U_c)‖_{ε^c} ≤ 8/γ_N, ε^c := min{½δ_G, γ_N/(16c_+^cΣ(½δ_G))} ≥ ½ε. §5.2(d)–(h) are algebraic or use only kernel bounds, the local inverse bound, and counting. So on 𝒰(k_{C′}b_1^{37}):
+Then Lemma CT with c = ¼γ_N gives ‖C_□(U_c)‖_{ε^c} ≤ 8/γ_N, ε^c := min{½δ_G^min, γ_N/(16c_+^cΣ(½δ_G^min))} ≥ ½ε. §5.2(d)–(h) are algebraic or use only kernel bounds, the local inverse bound, and counting. So on 𝒰(k_{C′}b_1^{37}):
  C′(U_c) = Σ_ωS^{−1}T_ω(U_c)S^{−1}, |T_ω(U_c)| ≤ (8/γ_N)(c_1ρ^c)^{|ω|}m e^{−½ε^cd(ω)}, Σ_ω|T_ω| ≤ (16C_𝒟^N/γ_N)m e^{−½ε^cd},
 with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic (Cramer's rule), so each T_ω is analytic, the series converges uniformly, and C′ is analytic on 𝒰(k_{C′}b_1^{37}). The (3.99) form follows as in 5.3; S is real, so undoing the rescaling is unchanged. N is not Hermitian at complex points; Lemma LB is used only at the real point.
 
@@ -243,7 +250,7 @@ with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic
 8.1 Inputs [IDs; tags].
  T39-V1 CMP 99 p. 413 Thm 3.9 statement; pp. 411–413 sketch [V; R-sketch]. The target.
  T39-V2 CMP 99 p. 394 (3.21)–(3.25) definitions of Δ′_a, G′, Q′*aQ′, R [V].
- T39-V3 CMP 99 p. 396 (3.35) regularity; (3.32)–(3.33) gauge covariance [V].
+ T39-V3 CMP 99 p. 396 (3.35) regularity; (3.32)–(3.33) gauge covariance; standing hypothesis "O(1)Mα_0 sufficiently small" for Sect. 3 [V].
  T39-V4 CMP 99 p. 398 Thm 3.2 (3.48) [V].
  T39-V5 CMP 99 p. 400 Thm 3.4 and (3.50)–(3.51) [V]. Only the formula (3.51) is used (4.5); Thm 3.4's proof is not used.
  T39-V6 CMP 99 p. 409 (3.87)–(3.88) [V]; the a-term of (3.88) is the evidence for (I-Q).
@@ -257,7 +264,8 @@ with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic
  T39-L1 lean/YmLean/Concatenation.lean `concat_two`, `concat_list` (junction sums, 3.4, 5.2(g)) [L].
  T39-L2 lean/YmLean/CombesThomas.lean `coercive_inv`, `combes_thomas` (local inverses, 5.2(c)) [L].
  T39-L3 lean/YmLean/SchurMarginal.lean `compression_lower` (restriction of a lower bound to a block, 5.2(b)) [L]. Not formalized: the merged-walk inequality (F1), Lemma LB, the change of variables V and the factor m.
- T39-I1 (I-Q): Q′_j is the transported average over Δ(y) with contours inside Δ(y), length ≤ c_ΓL^jη, nonnegative weights (uniform L^{−jd} read) [I; evidence T39-V6, CMP 96 (2.39)].
+ T39-V8 CMP 98 (64), (70), (77)–(80), pp. 29–30: Q′_j block-diagonal (row y sees only Δ(y)), uniform weights L^{−d} per step, transports = products of averaged links Ū^i, covariance of Ū^i [V, THM39_FULL_VERIFY V1]. Replaces former T39-I1 (moved from [I] to [V]).
+ T39-I1 (AL), (AL-c): small-field bound on averaged links Ū^i of e^{iηA} (real, 4.4) and of U′U on 𝒰(b_1) (complex, 7.3), with corridors inside □(y) [R/I; pointer CMP 98 (77)–(80); bound not located on a page]. Enters K_Γ, a_LB, c̄_Γ, b_G^c.
  T39-I2 (I-B): the blocks Δ(y), y ∈ 𝔅, partition Ω_0; each block with its one-step neighbourhood lies in a class cube of index j or j − 1 [I, cube geometry of p. 396].
  T39-I3 Form of (3.31): Δ_{U^u} = R(u)Δ_UR(u^{−1}), U^u(Γ) = u(start)U(Γ)u(end)^{−1} [I; (3.32)–(3.33) read].
  T39-I4 Geometry (G) of A1_WALK_FULL 2.1 on the M_1-cover, with the X-PU repair (c_h → Lc_h) [I; same item as A1_WALK_FULL O2 and THM37_FULL X-PU].
@@ -272,18 +280,21 @@ with ρ^c ≤ 2K_W/M_1 and threshold M_W^c ≈ 2M_W. Each C_□(U_c) is analytic
  S4 The whole-term bound (3.99) is proved with explicit constants (5.2(g), 5.3), including the scale-power conversion and its rate cost |2 − d/2|θ_L.
  S5 Explicit treatment of G′² (§3): the junction of two G′-walks is one merged domain, so the per-step factor is c′/M_1 per step with no lost step; the junction sum costs only c_1(¼δ′)L².
  S6 No WG-1-type condition on α_0 (3.6, 6.2(e)).
- S7 Misprints identified: (M1) (3.96) missing square; (M2) reversed inequality p. 411; (M3) Q′ for Q′* p. 412.
+ S7 Misprints identified: (M1) (3.96) missing square; (M2) reversed inequality p. 411; (M3) Q′ for Q′* p. 412; (M5) "(3.25)" for (3.35) p. 412.
  S8 The complex form is reduced to the complex walk form of G′ alone (7.5), with an explicit radius factor k_{C′}.
- Where this file is weaker. The rate is ½ε (ε from (b_G, δ_G, γ_N)), not ½δ_0; the split (L^jη)^{−4}(L^{j′}η)^{−d} costs the rate |2 − d/2|θ_L. The consumers need only a fixed positive rate (A1_WALK_FULL 9.3). Consumer note (no edit made): WG_FULL (I3) takes δ := ½δ_0 as the common rate of (I1)–(I3). With this file the C′ rate is ½ε; WG_FULL must take its common rate ≤ ½ε and compute M_*, a_* at that rate. This is a monotone weakening; ε depends only on (T37) and γ_N, not on G, so the order has no loop.
+ Where this file is weaker. The rate is ½ε (ε from (b_G, δ_G, γ_N)), not ½δ_0; the split (L^jη)^{−4}(L^{j′}η)^{−d} costs the rate |2 − d/2|θ_L. The consumers need only a fixed positive rate (A1_WALK_FULL 9.3). Consumer note (no edit made): WG_FULL (I3) takes δ := ½δ_0 as the common rate of (I1)–(I3). With this file the C′ rate in the (3.99) normalization is ½ε − |2 − d/2|θ_L (= ½ε at d = 4); WG_FULL must take its common rate ≤ that (or use the rescaled form (ii) at rate ½ε) and compute M_*, a_* at that rate. Pending, after the Thm 3.7/3.10 verifiers. This is a monotone weakening; ε depends only on (T37) and γ_N, not on G, so the order has no loop.
 
 8.3 Open items for a verifier.
  (a) (T37) and (T37-c) as delivered by THM37_FULL (not verified at the time of writing); in particular that its per-walk bound is in the block sup norm used in 3.4.
- (b) T39-I1: an image read of CMP 98 (78)–(80) (the averaging of gauge transformations) to confirm the block-diagonal form of Q′_j and contours inside Δ(y).
+ (b) SETTLED [V, THM39_FULL_VERIFY V1]: Q′_j block-diagonal (T39-V8). Remaining: the averaged-link bound (AL)/(AL-c), T39-I1.
  (c) T39-I2: the class cube containing a block and its η-layer, with index j or j − 1 (the constant c_3 = 12L²).
  (d) The constant bookkeeping of Lemma LB 4.5(a) (K_A) and the case split of the bump 4.2 (L^j < 8).
  (e) The use of A1-W "verbatim" for N̂ = S^{−1}NS^{−1} (5.1): check that no step of A1_WALK_FULL §2–§6 uses the specific form S^{−1/2}QGQ*S^{−1/2}.
  (f) X-PU repair as carried in 8.0(b).
 
-8.4 Status. Author write-out complete (2026-10-28). Not verified. Grade proposal for CLOSURE_PLAN R2: SKETCH → written out [P] given T39-P1 (THM37_FULL), T39-P2 (A1-W), and the [I] items T39-I1–I6. R36 for C′: [P] given the same and THM37_FULL §7. R7 for C′: [P] given (T37-c).
+8.4 Status. Author write-out complete (2026-10-28). Verified 2026-10-28 (THM39_FULL_VERIFY: NEEDS FIXES, minor); fixes applied. Grade: PAPER-GRADE relative to tagged inputs. Grade proposal for CLOSURE_PLAN R2: SKETCH → written out [P] given T39-P1 (THM37_FULL), T39-P2 (A1-W), (3.51), and the [I]/[R/I] items T39-I1 (AL), T39-I2–I6. R36 for C′: [P] given the same and THM37_FULL §7. R7 for C′: [P] given (T37-c).
 
 Corrections after verification (THM39_FULL_VERIFY, 2026-10-28, images): misprints M1–M4 confirmed, plus M5 (p. 412 cites "(3.25)" for (3.35)); G1 is not a gap (p. 396's standing hypothesis "α_0 so small that O(1)Mα_0 is still sufficiently small"); merged-cube step confirmed; Lemma LB confirmed — but CMP 98 (77)–(80) show Q′_j block-diagonal with uniform weights L^{−d} per step whose transports are products of AVERAGED links Ū^i, not fine holonomies, so §4.4 and §7.3 need a tagged small-field bound on averaged links of e^{iηA}; why the bump argument does not give (C) for QGQ*: the 1-form Q_j is a corridor average over B(c_−) ∪ B(c_+), giving a bidiagonal matrix with comparable entries whose symbol |a + be^{ip}| ≈ 0 at p = π (no diagonal dominance; cross term exactly zero for gauge functions); define ε from the RM-free floor (7/16)δ′; in Balaban's (3.99) normalization the C′ rate is ½ε − |2 − d/2|θ_L (= ½ε only at d = 4), so WG_FULL's common rate must be ≤ that; no circularity (G′ → C′ → G → (QGQ*)^{−1}). With these local fixes: PAPER-GRADE relative to tagged inputs.
+
+Change log.
+ 2026-10-28: applied THM39_FULL_VERIFY fixes: M5 added, G1 replaced by p. 396 standing hypothesis; (I-Q) transport = averaged links, block-diagonality [I]→[V] (T39-V8), new input (AL)/(AL-c) in 4.4, 7.3 (T39-I1); 4.7(d) why the bump does not give (C); ε from RM-free floor (7/16)δ′; (3.99)-normalization rate ½ε − |2 − d/2|θ_L stated in 2.4 and 8.2, WG_FULL (I3) edit pending. WG_FULL not edited.
