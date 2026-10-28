@@ -73,8 +73,35 @@ Two composed steps at L = 2, p = 0.2, box GPU, Ng = 8: β_1 + β_2 = 0.953 (Ng =
 
 ## 7. Large odd L by the umklapp code (box, 2026-10-28)
 
-β_1(0) single step, SU(2), fixed Lp where noted: L = 5: 0.749 (Ng=12, p=0.1), fit 0.743; L = 7: 0.803 (Ng=8, Lp=0.5). First-step constant β_1 − c log L: 0.372 (L=2), 0.256 (3), 0.242 (4), 0.145 (5), 0.080 (7): decreasing toward the universal slope. Queue continues to L = 15.
+Rewrite 2026-10-28 (source: SOURCES_T2_F_STEPB_VERIFY.md §2, §4, §6–§8).
+
+(a) What was measured. The single-step β_1(L): one step from the unit lattice with block size L, SU(2), p → 0. Each L is a different constraint family. This is not the fixed-L composed family of BETA_FP_H Theorem 3.1. That theorem concerns β_∞ = lim_k[𝒞(L^{k+1}) − 𝒞(L^k)] at fixed odd L.
+
+(b) "β_∞ = 0.3715 log L" is the theoretical value, never a fit. 0.3715 = c = 11N²/(12π²) at N = 2. No run computed β_∞.
+
+(c) Data. β_1(0) = (4β(0.5) − β(1))/3, quadratic in Lp; the extrapolation holds to 2e−4 at L = 5 (Lp = 0.25 check).
+
+| L | β_1(0) | grid | local slope from previous L | c |
+|---|---|---|---|---|
+| 5 | 0.74233 | Ng = 16 (converged) | — | 0.3715 |
+| 7 | 0.79024 | Ng = 12 (converged) | 0.142 (5 → 7, converged values) | 0.3715 |
+| 9 | 0.8267 | Ng = 8 | 0.119 (7 → 9, Ng = 8 at both ends) | 0.3715 |
+| 11 | 0.8436 | Ng = 8 | 0.084 (9 → 11, Ng = 8) | 0.3715 |
+
+At Ng = 8 the 5 → 7 slope is 0.161; grid convergence lowers it to 0.142. The Ng = 8 grid error lowers β_1 more at larger L, so the grid does not explain the deficit.
+
+(d) The expected form is β_1(L) = c log L + C + O(L^{−2} log L): one step spans log L e-folds between the constraint scale 1/L and the lattice scale, so the local slope should rise toward c from below. The measured slopes fall away from c (0.142 → 0.119 → 0.084). No c log L + C + d/L² or + d/L form fits. The earlier sentence "decreasing toward the universal slope" (below) was wrong: β_1 − c log L falls without levelling, which is the opposite of convergence.
+
+(e) Status: open [N] tension. It does not refute Theorem 3.1, because the family is different. It also does not support it. It is the only multi-L data. Likely cause [P]: the residual gauge fixes λ = 0 at one anchor per block. The anchored ghost then has an IR scale 2.54/L in coarse units (0.51, 0.36, 0.28, 0.23 at L = 5, 7, 9, 11). The shifted Ng = 8 grid has no point with |K| < 0.785, so it does not resolve this scale at large L.
+
+(f) Decisive test (pending, box): L = 9 and L = 11 with Ng ≥ 2.5L, plus the Lp → 0 check. Results will land in numerics/BETA1_BOX_RUN.md. If the converged slopes still fall, the tension stands; if they rise toward c, the deficit was the grid.
+
+Original data (2026-10-28, kept unchanged except the struck sentence):
+
+β_1(0) single step, SU(2), fixed Lp where noted: L = 5: 0.749 (Ng=12, p=0.1), fit 0.743; L = 7: 0.803 (Ng=8, Lp=0.5). First-step constant β_1 − c log L: 0.372 (L=2), 0.256 (3), 0.242 (4), 0.145 (5), 0.080 (7): ~~decreasing toward the universal slope.~~ (withdrawn 2026-10-28) Queue continues to L = 15.
 L = 9 (box, Ng=8): β_1 = 0.833 (Lp=0.5), 0.846 (Lp=0.9), 0.851 (Lp=1.0) [c log 9 = 0.816]: first-step constant ≈ +0.02, nearly zero.
 L = 11 (box, Ng=8): β_1 = 0.850 (Lp=0.5), 0.868 (Lp=1.0) [c log 11 = 0.891]: first-step constant −0.04 at Lp=0.5 (Ng=8 grid adequacy at L=11 unchecked). Sequence of constants β_1 − c log L for L = 2,3,4,5,7,9,11: +0.37, +0.26, +0.24, +0.15, +0.08, +0.02, −0.04.
 2026-10-27 κ_d (`kappa_d.py`, KAPPA_D.md): CMP 95 (1.101) gives κ = 1 + 1/(a·inf T), min at p' = (π,…,π); d = 4, a = 1: κ = 104.25 (N = L^k = 3), 147.73 (5), 186.64 (13), 196.19 (k → ∞, the sup over k); d = 3: 127.85 (k → ∞). Finite, so (1.100) gives c_− ≥ (aκ_4L⁵)^{−1} = 1.37e−8 at L = 13 (1.44e−8 if k = 1 only); Λ ≤ 2(1 + 12d²L^{d+1}) = 1.43e8 [I: γ_0 from CMP 96 (2.128)].
 2026-10-28 (H1_L) at other L (`h1analytic/bb_arb.py L L−1 16`, H1_OTHER_L.md): certified sup_{j ≥ 1, K} ρ_1² ≤ 13.738 < 15 (L = 15), ≤ 12.826 < 17 (L = 17), ≤ 11.777 < 21 (L = 21); target L − 1, 3,876 boxes each (the n0 = 16 chamber grid, no refinement), 0 failed leaves; 125 s, 201 s, 429 s on a 2.1 GHz Xeon. F_max = 10.020 at every L, G_max = 4.005, 3.061, 1.951.
+
+Change log 2026-10-28: §7 rewritten as an open [N] tension (single-step β_1(L) slopes 0.142/0.119/0.084 fall away from c = 0.3715); "decreasing toward the universal slope" withdrawn.
