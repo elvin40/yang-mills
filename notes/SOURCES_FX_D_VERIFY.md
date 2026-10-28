@@ -22,3 +22,8 @@ Date 2026-10-28. Firewall kept: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLIN
 ## 4. IV12 §4.4 and IV12_VERIFY l. 43, 60, 62 [read]
 - IV12_VERIFY l. 43: "(L1) needs the large-field AND R-denominator activities holomorphic at an ε-free radius c·r, i.e. FX Step C(b) = open item (FX-D)/O3 … Cauchy on a fixed polydisc fails if fine-scale R-terms meeting supp f have radius ∝ R̄_m^{−4} → 0." The author's reading of this sentence is accurate. It uses FX §6.3(b)/(c), the pre-FX_O23 state.
 - FABLE_VERIFY l. 25 already records SOURCES_FX_D (unverified) and its §5.4 exclusions.
+
+## 5. FABLE §2.2/§2.4 constituent list [read]
+- FABLE §2.2: Δ(f, V) has four constituent types: (b1) coupling term −Σ_p[w_K^f − w_K^0]A_p(V); (b2) unit-scale E-terms; (b3) Step-A polymers R_fin; (b4) fine-origin R-, B-, e-terms at scales m < K KEPT IN A_K^f, density (Mλ_m)^{−4} per unit volume.
+- (b4) is controlled only through vacuum subtraction: F2′(ii) gives |E_R^{(m)}(X, U) − E_R^{(m)}(X, 1)| ≤ C(L^mη)⁴g_m^{κ_0}e^{−κ′d}, and FABLE needs its sourced form (S1-pt, L6, unverified), stated for the first derivative and for osc_V only.
+- m = 0: B21_S l. 49 "the source is a local perturbation of the bare action only at m = 0"; D3W8 l. 112 base case "a_m = 0 before the first R-operation".

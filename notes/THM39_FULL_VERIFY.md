@@ -33,3 +33,26 @@ Supports: G′_{ω1}G′_{ω2} ≠ 0 needs □_n ∩ □′_0 ≠ ∅. Step coun
 (F1): d(x_{n−1}, z) ≤ d(x_{n−1}, x_n) + d(x_n, z); also d(z, x′_1) ≤ d(z, x′_0) + d(x′_0, x′_1) on the ω2 side (author mentions only one side; trivial). CONFIRMED.
 Rate/constant: ½δ′d(ω) + ½δ′d(z, y′); Σ_z with L²e^{2θ_Ld}, 2θ_L ≤ ¼δ′ → c_1(¼δ′); 1/μ(y′) ≤ mL^{d/2}e^{(d/2)θ_Ld}. b_G = B′²L^{2+d/2}c_1(¼δ′), δ_G = ½δ′ − (d/2)θ_L ≥ ½δ′ − δ′/16 = (7/16)δ′. CONFIRMED.
 Counting: junction allowed at every step overcounts (each walk has exactly one J); upper bound, fine.
+
+## V5. (3.95) ↔ A1-W map, rates, A1-W reuse, complex form [tasks (d), author items (e), (5)]
+Map: separation (1 − □̃)…hCh ↔ E^sep; domain change □̃Q′(G′² − G′_□²)Q′*hCh ↔ E^tr (truncated walk sum instead of a local domain sequence; same role); commutator ↔ E^com. Balaban: Q′G′²Q′*C_0 = I − R, inverse C_0(I − R)^{-1}; A1-W: N̂P = I + F, inverse P(I + F)^{-1}. Same right-parametrix structure. The algebra N̂hCh = h² + (E^sep + E^tr + E^com)Ch re-derived (h supported in □, N̂_□C_□ = 1_□, Σh² = 1). CONFIRMED.
+Rates: δ′ = ½δ_0 → δ_G ≥ (7/32)δ_0 → ε ≤ ½δ_G → output rate ½ε before rescaling, ½ε − |2 − d/2|θ_L in the (3.99) split. Weaker than printed ½δ_0; stated openly. CONFIRMED.
+Small fix: ε is defined from δ_G, which depends on RM through θ_L, and RM is raised again after ε (5.6). No real loop, because δ_G, Σ(·), c_1(·) improve monotonically in RM. Cleaner: define ε with the RM-free floor δ_G^min := (7/16)δ′ and the constants at the minimal RM. Recommend this one-line change.
+A1-W reuse (author's (e)): A1_WALK_FULL uses S^{-1/2} only in 6.8 (undoing the rescaling), which THM39 5.3 redoes. §2–§5 of A1-W use N̂ only through (H1)–(H4). CONFIRMED.
+No WG-1: WG-1 comes from V-junctions (Δ_π^{(2)} insertions) in G. N̂ for C′ contains only G′ and Q′. CONFIRMED.
+Complex form §7: CP/AW pattern matches A1_WALK_FULL 8.2–8.4 level 3 (k = c_−/(c_− + 4Γ)). LB is used only at the real point. Correct given (T37-c). The same averaged-link correction (V1) applies to the bound |Q′(U′U)| ≤ e^{2c_Γb_1}: the complexified averaged links need the small-field estimate on 𝒰(b_1). CONFIRMED rel. (T37-c) and that input.
+M_1 version §6: LB uses class cubes at scale M only; γ_N is M_1-free. CONFIRMED.
+
+## V6. WG_FULL (I3) and circularity [task (f)]
+Dependency chain: (T37) G′ → THM39 C′ (needs only T37 + γ_N) → WG-G for G (uses I1–I3, common rate δ) → A1-W for (QGQ*)^{-1}. ε does not depend on G, G_1, WG, or A1-W for G. No loop. CONFIRMED.
+CORRECTION to claim (6): WG_FULL (I3) quotes C′ in Balaban's (3.99) normalization. In that normalization the C′ rate is ½ε − |2 − d/2|θ_L, not ½ε (equal only for d = 4). So the common rate must be ≤ ½ε − |2 − d/2|θ_L (≥ ¼ε under RM ≥ 4(d + 4)log L/ε), or WG_FULL must take C′ in the rescaled form. In d = 4 the claim holds as stated.
+
+## V7. Grades
+(1) Misprints/gaps: CORRECTED. M1–M4 confirmed on images. Missed M5: p. 412 "(3.25)" must be "(3.35)". G1 is not a gap: p. 396 states the standing hypothesis "α_0 so small that O(1)Mα_0 is still a sufficiently small number".
+(2) Merged-cube walk expansion: CONFIRMED (no lost step; b_G, δ_G ≥ (7/16)δ′ correct).
+(3) Lemma LB: CONFIRMED in structure and constants; unconditional; γ_N = γ_N(d, L, a). CORRECTED in one input: Q′_j transports are products of averaged links (CMP 98 (77)–(80)), so 4.4 needs a small-field bound on averaged links of e^{iηA}; add as tagged input.
+(4) Error-term map and rate ½ε: CONFIRMED; recommend RM-free definition of ε.
+(5) M_1 version and complex form: CONFIRMED rel. (T37-c) and the V1 input.
+(6) WG_FULL (I3) rate: CORRECTED (rate ≤ ½ε − |2 − d/2|θ_L in Balaban's normalization); no circularity CONFIRMED.
+Block-diagonality [I] (author open item (b)): SETTLED on CMP 98 p. 30 image — Q′_j is block-diagonal, uniform weights L^{-d} per step; T39-I1 moves from [I] to [V] for diagonality, with the transport form corrected.
+Overall: NEEDS FIXES (minor, local: transport form in (I-Q)/4.4/7.3, M5, G1 wording, rate in (6), ε definition). After these: PAPER-GRADE relative to tagged inputs (T37, T37-c, A1-W, (3.51), I-B, averaged-link small-field bound).
