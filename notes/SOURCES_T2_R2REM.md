@@ -47,3 +47,94 @@ Corollary 2′ [P given (Id), (W), (G-a), (N)]. Put T := C_1. At s ≡ 1 every w
   |P(b,b′)| ≤ 2γ_1 e^{−a_CT|b−b′|},  a_CT > 0 defined by B_0 h(a_CT) = 1/(2γ_1).  (3.1)
 (If B_0 h(a) < 1/(2γ_1) for all a < δ_0, take any a_CT < δ_0.) Size [I]: h(a) ≈ a Σ_x |x|e^{−δ_0|x|} for small a, so a_CT ≈ (2γ_1B_0Σ_x|x|e^{−δ_0|x|})^{−1}. With explicit constants of the size in numerics/NUMERICS.md l. 79 (Λ ≤ 1.43e8, c_− ≥ 1.37e−8) this rate is astronomically small. Only a_CT > 0 matters below.
 Under (A-dec): P(b,b′) = A(b,b′) for b, b′ ∈ Λ_0 (compression keeps the kernel), so |P(b,b′)| ≤ K_A e^{−δ_A|b−b′|} directly [P given (A-dec)].
+
+## 4. The two perturbation lemmas
+
+Standing condition (M1): M ≥ 2κ_1/δ_1. Put θ := κ_1/(δ_1M) ∈ (0, ½], t_1 := (1 − θ)½δ_0, t_2 := (1 − θ)δ_0, c_1 := 16 + δ_0/(3δ_1). Note θδ_0M/3 = κ_1δ_0/(3δ_1), independent of M.
+
+4.1 Walk weight lemma [P given (G)]. For y, y′ ∈ Λ_0, a walk ω contributing at (y,y′), and |σ(Δ)| ≤ e^{κ_1}, put Φ(ω) := e^{m(ω)κ_1}e^{−δ_0d(ω,y,y′)}. Then
+ (a) Φ(ω) ≤ e^{16κ_1}e^{−(1−θ)δ_0d(ω,y,y′)} ≤ e^{16κ_1}e^{−t_2|y−y′|};
+ (b) if m(ω) ≥ 1: Φ(ω) ≤ e^{c_1κ_1}e^{−δ_0M/3}e^{−t_1|y−y′|};
+ (c) if m(ω) ≥ 1: e^{−δ_0d(ω,y,y′)} ≤ e^{−δ_0M/3}e^{−½δ_0|y−y′|}.
+Proof. (a) If m ≤ 16, then e^{mκ_1} ≤ e^{16κ_1} and e^{−δ_0d} ≤ e^{−(1−θ)δ_0d}. If m > 16, (G-c) gives θδ_0d ≥ θδ_1mM = mκ_1, so Φ ≤ e^{−(1−θ)δ_0d}. The second inequality is (G-a). (b) By (a), (G-a) and (G-b), (1 − θ)δ_0d ≥ (1 − θ)δ_0[½·(2/3)M + ½|y − y′|]. So Φ ≤ e^{16κ_1}e^{−(1−θ)δ_0M/3}e^{−t_1|y−y′|}, and e^{θδ_0M/3} = e^{κ_1δ_0/(3δ_1)}. (c) d ≥ ½(2/3)M + ½|y − y′| by (G-a), (G-b). ∎
+Remark. (c) is the mechanism behind the printed form of (2.16): half of the walk decay pays e^{−½δ_0(2/3)M} = e^{−(1/3)δ_0M}; the other half is the printed rate ½δ_0. The extra e^{16κ_1} in (b) is the factor that Balaban's side condition "e^{−1/3δ_0M}e^{16κ_1} < 1" controls [I: reading of his side condition].
+
+4.2 Lemma 3 (σ-change) [P given (W), (G)]. At the real pair (U, 0) put E_s(σ) := C(σ; U, 0) − C_1 = Σ_{ω: m(ω)≥1}(σ^ω − 1)R_ω(U, 0). For all σ in the closed polydisc |σ(Δ)| ≤ e^{κ_1}:
+  |E_s(σ)(y,y′)| ≤ 2B_0 e^{c_1κ_1}e^{−δ_0M/3}e^{−t_1|y−y′|},  (4.1)
+and at σ ≡ 0 (also for all real σ ∈ [0,1]^{σ_0}):
+  |E_s(0)(y,y′)| ≤ B_0 e^{−δ_0M/3}e^{−½δ_0|y−y′|}.  (4.2)
+Proof. Walks with m(ω) = 0 have σ^ω = 1 and cancel. For m ≥ 1, |σ^ω − 1| ≤ e^{mκ_1} + 1 ≤ 2e^{mκ_1}. So |E_s(σ)(y,y′)| ≤ Σ_{ω∋y, m≥1} c_ω·2Φ(ω) ≤ 2B_0 sup_{m≥1}Φ(ω), and 4.1(b) gives (4.1). For σ ∈ [0,1]^{σ_0}, |σ^ω − 1| ≤ 1; use 4.1(c) and Σc_ω ≤ B_0 to get (4.2). ∎
+Note. (4.2) has no κ_1 and no α: at σ ≡ 0 the deleted walks enter with weight exactly −1.
+
+4.3 Lemma 4 ((U, J)-change) [P given (W), (G), (H-an), (H-sc)]. For σ in the closed polydisc put E_α(σ) := C(σ; **U**, **J**) − C(σ; U, 0). Then
+  |E_α(σ)(y,y′)| ≤ (2B_0e^{16κ_1}/α′_min)(α_0 + α_1) e^{−t_2|y−y′|},  α′_min := min(α′_0, α′_1).  (4.3)
+Proof. Fix σ, y, y′ and unit vectors u, v ∈ C^n. Put f(z) := ⟨u, [C(σ; **U**_z, **J**_z) − C(σ; U, 0)](y,y′)v⟩ for |z| < ρ, with the family of (H-sc). Each walk term is analytic in z by (H-an) and (H-sc). By (W) and 4.1(a), Σ_ω c_ω|σ^ω|e^{−δ_0d} ≤ B_0e^{16κ_1}e^{−t_2|y−y′|} uniformly in z. So the walk sum converges uniformly, f is analytic (Weierstrass), and |f| ≤ 2B_0e^{16κ_1}e^{−t_2|y−y′|} =: S_f. At z = 0 the configuration is (U, 0), so f(0) = 0. Schwarz's lemma on the disc of radius ρ gives |f(z)| ≤ S_f|z|/ρ. At z = 1: |f(1)| ≤ S_f/ρ, and 1/ρ = max(α_0/α′_0, α_1/α′_1) ≤ (α_0 + α_1)/α′_min. Take the sup over u, v. ∎
+Remark. (4.3) is the O(α_0 + α_1) term of (2.16). Its constant carries e^{16κ_1} and 1/α′_min. Balaban's "O(α_0 + α_1)" hides both [I]. Its decay rate t_2 ≈ δ_0 is better than ½δ_0.
+
+## 5. Theorem R2
+
+5.1 Rate and constants. Let a_P be a decay rate of P: a_P := a_CT of (3.1) (always available), or a_P := δ_A under (A-dec). Fix a with 0 < a < min(t_1, a_P). Put
+ K_P(a) := 2γ_1 S(a_CT − a) (from (3.1)), or K_A S(δ_A − a) (under (A-dec)); then ‖P‖_a ≤ K_P(a) by Lemma 1(iv).
+ η̄ := 2B_0 S(t_1 − a)·[e^{c_1κ_1}e^{−δ_0M/3} + e^{16κ_1}(α_0 + α_1)/α′_min].
+Smallness condition (M2): K_P(a)·η̄ ≤ ½.
+
+Theorem R2 [P given (Id), (W), (G), (H-an), (H-sc), (N, upper half only); (A-dec) optional]. Assume (M1) and (M2). Then for every σ in the closed polydisc |σ(Δ)| ≤ e^{κ_1}, Δ ∈ σ_0 ∩ Z, and every (**U**, **J**) in U^c_{k+1}(X, α_0, α_1):
+ (i) C(σ) and C_0 are invertible on fields on Λ_0;
+ (ii) for all b, b′ ∈ Λ_0,
+  |R_2(b,b′)| ≤ 8K_P(a)²η̄ e^{−a|b−b′|}
+   = 16B_0K_P(a)²S(t_1 − a)·[e^{c_1κ_1}e^{−δ_0M/3} + e^{16κ_1}(α_0 + α_1)/α′_min]·e^{−a|b_−−b′_−|}.
+The constant depends on B_0, δ_0, δ_1, κ_1, γ_1, α′_min, d, a (and on K_A, δ_A under (A-dec)). It does not depend on k, the volume, σ, or (**U**, **J**) in the domain. It does not depend on M, provided B_0 and a_CT do not [I: Balaban treats B_0 as a constant, p. 5 "B_0e^{16κ_1}"; its M_1, M dependence is in [13], not read].
+
+Proof. Put E := C(σ) − C_1 = E_α(σ) + E_s(σ) and E_0 := C_0 − C_1 = E_s(0).
+Step 1 (norms). By (4.1), (4.3) and Lemma 1(iv), and since S(t_2 − a) ≤ S(t_1 − a) (t_2 ≥ t_1):
+ ‖E‖_a ≤ 2B_0S(t_1 − a)e^{c_1κ_1}e^{−δ_0M/3} + S(t_1 − a)(2B_0e^{16κ_1}/α′_min)(α_0 + α_1) = η̄.
+By (4.2), ‖E_0‖_a ≤ B_0S(½δ_0 − a)e^{−δ_0M/3} ≤ η̄ (½δ_0 ≥ t_1 and c_1κ_1 ≥ 0). So ‖E_0 − E‖_a ≤ 2η̄.
+Step 2 (inverses). C_1P = I by (Id). So C(σ) = C_1 + E = C_1(I + PE). By Lemma 1(i) and (M2), ‖PE‖_a ≤ K_P η̄ ≤ ½. By Lemma 1(v), I + PE is invertible with ‖(I + PE)^{−1}‖_a ≤ 2. Hence C(σ) is invertible and C(σ)^{−1} = (I + PE)^{−1}P. Likewise C_0^{−1} = (I + PE_0)^{−1}P with ‖(I + PE_0)^{−1}‖_a ≤ 2. This is (i).
+Step 3 (difference). With X := I + PE, Y := I + PE_0, X^{−1} − Y^{−1} = X^{−1}(Y − X)Y^{−1} and Y − X = P(E_0 − E). So
+ C(σ)^{−1} − C_0^{−1} = (I + PE)^{−1}P(E_0 − E)(I + PE_0)^{−1}P.
+By Lemma 1(i): ‖C(σ)^{−1} − C_0^{−1}‖_a ≤ 2·K_P·2η̄·2·K_P = 8K_P²η̄.
+Step 4 (kernel). Lemma 1(iii) gives |(C(σ)^{−1} − C_0^{−1})(b,b′)| ≤ 8K_P²η̄e^{−a|b−b′|}. (1.5) transfers it to R_2. ∎
+
+5.2 Balaban's form. Write O_1 := 16B_0K_P²S(t_1 − a)e^{c_1κ_1} and O_2 := 16B_0K_P²S(t_1 − a)e^{16κ_1}/α′_min. Then
+ |R_2(b,b′)| ≤ (O_1e^{−(1/3)δ_0M} + O_2(α_0 + α_1)) e^{−a|b_−−b′_−|}.
+This is (2.16) for R_2 with two changes. (1) The rate is a < min(t_1, a_P) in place of ½δ_0. (2) The "O(1)" carries e^{c_1κ_1}, c_1 = 16 + δ_0/(3δ_1). If one wants an O(1) free of κ_1: for ν ∈ (0,1) and M ≥ 3c_1κ_1/(νδ_0), e^{c_1κ_1}e^{−δ_0M/3} ≤ e^{−(1−ν)δ_0M/3}. Balaban's order "M much bigger than κ_1" (p. 16) allows this choice [I].
+5.3 Rate ½δ_0 exactly (variant) [P given the same inputs and (A-dec) with δ_A > ½δ_0]. Repeat 4.1(b) with weights λ, 1 − λ in place of ½, ½: prefactor e^{−(1−θ)λ(2/3)δ_0M}, rate (1 − θ)(1 − λ)δ_0. Choose λ < ½ and M so large that (1 − θ)(1 − λ)δ_0 > ½δ_0 and also δ_A > ½δ_0. Then a = ½δ_0 is admissible, at the cost of the prefactor e^{−(1−θ)λ(2/3)δ_0M} = e^{−(1/3)(1−ν′)δ_0M} with ν′ := 1 − 2λ(1 − θ) > 0. So the printed pair (e^{−δ_0M/3}, ½δ_0) is reached up to an arbitrarily small loss ν′ in one of the two exponents, never both exactly. The rate δ_0 of the brief is not reached by this method.
+5.4 Which inputs are used where. (N) enters only as P ≤ γ_1 in Corollary 2′ (to get C_1 ≥ γ_1^{−1} for Combes–Thomas). γ_0 is not used in Theorem R2. Under (A-dec), (N) is not used at all in Theorem R2. (Id) is used once (C_1P = I). Symmetry of C(σ) or C_0 is not used.
+
+## 6. Corollary (E) at σ ≡ 1, and side results
+
+6.1 What (E) says. SOURCES_LOC §4: "(E) C_0^{−1} = Z_0AZ_0 − R with ‖R‖ ≤ ε_M", A at the real pair (U, 0), s ≡ 1. So R := P − C_0^{−1}. At σ ≡ 1 and (**U**, **J**) = (U, 0), C(σ) = C_1 and Re C(σ)^{−1} = P, so R = −R_2(σ ≡ 1, U, 0). Theorem R2 then gives ‖R‖_op ≤ ‖R_2‖_a ≤ 8K_P²η̄ (Lemma 1(ii)), with the α-term absent since E_α = 0 at the real pair. A direct argument gives a sharper and cheaper bound.
+
+Corollary E [P given (Id), (W), (G-a), (G-b), and P ≤ γ_1 from (N)]. Put
+ e_M := B_0 S(½δ_0) e^{−δ_0M/3},  and assume γ_1e_M ≤ ½.
+Then C_0 is invertible and
+ C_0^{−1} = Z_0AZ_0 − R,  ‖R‖_op ≤ ε_M := 2γ_1²e_M = 2γ_1²B_0S(½δ_0)e^{−δ_0M/3}.
+Proof. E_0 = C_0 − C_1 obeys (4.2), so ‖E_0‖_op ≤ ‖E_0‖_0 ≤ e_M (Lemma 1(ii), (iv) with a = 0). ‖P‖_op ≤ γ_1. So ‖PE_0‖_op ≤ ½, and C_0 = C_1(I + PE_0) is invertible with C_0^{−1} = (I + PE_0)^{−1}P and ‖(I + PE_0)^{−1}‖_op ≤ 2. Then
+ R = P − C_0^{−1} = [I − (I + PE_0)^{−1}]P = (I + PE_0)^{−1}PE_0P,
+so ‖R‖_op ≤ 2·γ_1·e_M·γ_1. ∎
+What Corollary E does not need: (G-c), κ_1, the Cauchy polydisc, (H-an), (H-sc), α_0, α_1, any decay of P, γ_0, symmetry (S). Reason: (E) is a statement at the real point σ ≡ 0, (U, 0), where every deleted walk enters with weight exactly −1 (4.2).
+Correction to SOURCES_LOC §3.3 and SOURCES_LOC_VERIFY §5 [P]: ε_M has no O(α_0 + α_1) term. So the caveat "ε_M ≤ γ_0/2 needs α_0, α_1 small after M" is not needed for (E). The condition of Lemma LOC becomes 2γ_1²B_0S(½δ_0)e^{−δ_0M/3} ≤ γ_0/2, a condition on M alone (given B_0, γ_0, γ_1 independent of M [I]).
+
+6.2 Lower bound on C_0 without inverses [P given the same inputs and (N)]. For real v on Λ_0: ⟨v, C_0v⟩ = ⟨v, C_1v⟩ + ⟨v, E_0v⟩ ≥ (γ_1^{−1} − e_M)‖v‖², since C_1 = P^{−1} ≥ γ_1^{−1}. And ‖C_0‖_op ≤ ‖C_1‖ + e_M ≤ γ_0^{−1} + e_M. So
+ c_− := γ_1^{−1} − e_M ≥ (2γ_1)^{−1},  Λ := γ_0^{−1} + e_M,
+for the input of Lemma G3 (SOURCES_LOC §0). This is the "backup route" of SOURCES_LOC §4, now with the walk bound made explicit by (4.2). It does not use the symmetry (S) of C_0: the form ⟨v, C_0v⟩ only sees the symmetric part. It is slightly sharper than SOURCES_LOC Lemma LOC (ii), which gives (γ_1 + ε_M)^{−1}.
+6.3 The condition α_5‖C^{(k)}(Z_0,0)‖ < ½ of p. 17 [P given 6.2]. It holds if α_5(γ_0^{−1} + e_M) < ½.
+6.4 The measure in (2.15) is a genuine Gaussian [P given Theorem R2, Corollary E, (N)]. For real v: ⟨v, C_0^{−1}v⟩ = ⟨v, Pv⟩ − ⟨v, Rv⟩ ≥ (γ_0 − ε_M)‖v‖². Re C(σ)^{−1} = C_0^{−1} − R_2, so ⟨v, Re C(σ)^{−1}v⟩ ≥ (γ_0 − ε_M − 8K_P²η̄)‖v‖². This is positive if ε_M + 8K_P²η̄ < γ_0. Then dμ_{(Re C(σ)^{−1})^{−1}} in (2.15) is a positive Gaussian for every σ in the polydisc and every (**U**, **J**) in the domain.
+6.5 Not done here. The quotient of determinants on p. 16 ("which can be estimated by (2.17)") is not derived. R_1 and R_3 are not derived; R_3 = Re Γ_k(σ) − Γ_k(0) and R_1 involve (C^{(k)})^{1/2}(σ) and Δ_k(σ), whose expansions (p. 13, (2.7)) are separate inputs. The same Lemma 3/Lemma 4 pattern applies to each walk-expanded operator; the inverse step of §5 is specific to R_2.
+
+## 7. Constants, scope, and what is not claimed
+
+7.1 Hierarchy of choices [I, consistent with p. 16 and CMP 99 p. 428]. Fix δ_0, δ_1, B_0, γ_0, γ_1 (walk and norm constants, assumed independent of M, κ_1, k, volume). Fix κ_1. Choose M with (M1) M ≥ 2κ_1/δ_1, and M so large that the e^{−δ_0M/3} parts of (M2), of γ_1e_M ≤ ½, and of ε_M ≤ γ_0/2 hold. Fix α′_0, α′_1 (the analyticity domain of (H-an)). Then choose α_0, α_1 small so that the α-part of (M2) holds. This matches Balaban's order: "M is much bigger than κ_1" (p. 16) and "Mα_0 sufficiently small" (CMP 99 p. 428).
+7.2 Size. All constants are existential in Balaban's constants B_0, δ_0, δ_1, γ_0, γ_1, α′. None is computed. With the explicit γ-type constants of numerics/NUMERICS.md l. 79 (c_− ≥ 1.37e−8, Λ ≤ 1.43e8 at L = 13) the Combes–Thomas rate a_CT of (3.1) and the required M are astronomically small/large. I claim nothing better. No numerical check was run for this item; nothing here is numerical.
+7.3 Where the open weight now sits. The proof replaces Balaban's one word "similarly" by a complete argument, conditional on five named inputs. Ranked by risk:
+ (G-b) [I] the geometric claim that a walk meeting σ_0 has tree length ≥ (2/3)M from Z_0. It rests on the p. 13 choice dist(X, Z_0) > ⅔M and on "intersect" excluding boundary contact with Z̃_0. If Δ(y) sticks out of Z_0 by O(M_1), the prefactor becomes e^{−δ_0(M/3 − O(M_1))}, still small if M_1 ≪ M [I].
+ (W) [R] the walk bound (1.7) for the Sect. 2 expansion of C^{(k)}(Z_0), uniformly on the α′-domain. Printed for the Sect. 1 propagators; asserted for C^{(k)}(Z_0) on p. 13 by reference to [13] (CMP 109 Sect. C), not read.
+ (H-sc) [I] the scaling of the complex configuration into the α′-domain.
+ (G-c) [V for Sect. 1, I for Sect. 2] the m > 16 tree-length bound.
+ (Id) [V + R] s ≡ 1 recovers C^{(k)}(Z_0) = P^{−1}.
+ (N) upper half [R] via SOURCES_Q. γ_0 (lower half) enters only Corollary E's use in Lemma LOC and 6.4, not Theorem R2.
+7.4 Effect on the ledger rows named in the brief [I: my reading of those rows].
+ - SOURCES_LOC (E): now [R] to (Id), (W), (G-a), (G-b), P ≤ γ_1 (Corollary E), with ε_M free of α. Previously [R] to Balaban's unproved "similarly".
+ - SOURCES_HHOL 2.3(ii) (R_2 multiplied by w or 1/w): Theorem R2 bounds R_2 at w = 1. Multiplying the precision by w multiplies R_2 by w; the coefficient grows by |w| ≤ 1.235. This needs nothing new for R_2.
+ - SOURCES_GGAIN, TRUST_LEDGER B13 and B16: they quote (2.16)–(2.26) and use R_2 only through (2.16)/(2.21) (Schur norm). Theorem R2 gives the Schur norm bound ‖R_2‖_0 ≤ ‖R_2‖_a ≤ 8K_P²η̄ (Step 3 of §5.1, Lemma 1(ii), (vi)), which is what (2.21) needs, with constant changes as in 5.2. R_1 and R_3 remain Balaban's unproved assertions in the same rows.
+7.5 What is not claimed. The rate δ_0 of the brief (1.6). Any explicit value of an O(1). The determinant quotient. R_1, R_3. The positivity/symmetry statement (S) of p. 15 (not needed here, 5.4, 6.2). The definition of C^{(k)}(Z_0, s) beyond the p. 3 s-rule "as before".
