@@ -51,7 +51,7 @@ Both ratios have the same sign convention: second-order coefficient of Γ divide
 
 ### 1.3 Statement
 Theorem PI. Fix j ≥ 1, L odd ≥ 3. Assume (I1)–(I3) of §2. Then:
-(i) w(p) and t(p) are real-analytic and even in p on a neighbourhood of p = 0, both vanish at p = 0, and t(p) = Λ⁴p²/4 + O(p⁴) ≠ 0 for small p ≠ 0. Hence β^{pw}(p) = S_j^{pw} + O(p²) with S_j^{pw} existing.
+(i) w(p) and t(p) are real-analytic and even in p on a neighbourhood of p = 0, both vanish at p = 0, and t(p) = Λ⁴(1 − cos p) = Λ⁴p²/2 + O(p⁴) ≠ 0 for small p ≠ 0 (convention θ = a cos(p x_1); Λ⁴(1 − cos p)/4 in the code's convention θ = (a/2)cos(p x_1)). Hence β^{pw}(p) = S_j^{pw} + O(p²) with S_j^{pw} existing.
 (ii) Γ̄(U_{θ^{cf}_φ}) is twice differentiable in φ at φ = 0 (indeed C² near 0), even in φ, and its φ² coefficient is the second-order kernel of Γ̄ at the trivial background evaluated on the linear potential θ^{cf}_1, with no contact or boundary term beyond that kernel (formula (4.3)).
 (iii) S_j^{pw} = S_j^{cf} = 𝒞(Λ) = π_Λ/π_W, where π_Λ, π_W are the coefficients of the unique O(P²) structure (Lemma 5.3) of the second-order kernels of Γ̄ and Ā.
 The O(p²) in (i) has natural scale (Λp)², i.e. (Lp)² at j = 1, because the kernels of Γ have range of order Λ fine spacings (§8.2).
@@ -76,3 +76,37 @@ Status [R]: for the one-step bordered matrix, invertibility for all real K is U3
 (I3) Lattice symmetry. Γ(U^σ) = Γ(U) for the axis permutation σ: e_0 → e_1, e_1 → e_2, e_2 → e_0, e_3 → e_3, acting about a block centre. Reason: odd L and centred blocks make the block lattice and the anchor set invariant; the Wilson action is invariant; the contour family is the full permutation family quoted above, so (0.4) is invariant; σ maps links to links with their orientation, so no change of trivialization occurs [I: invariance of the composed linearized averaging under σ read off (0.4), not checked entry by entry]. Lemma 5.3 (optional, obligation (b)) uses the full hypercubic group including reflections; Theorem PI uses only σ.
 
 Charge conjugation. The constant transformation c = e^{iπσ_1/2} maps U_θ to U_{−θ} and is a global gauge transformation. By (I2), Γ(U_{−θ}) = Γ(U_θ) [P given (I2)].
+
+## 3. The local density ρ_c and its Taylor kernels — obligation (a)
+
+### 3.1 Definition
+Every coordinate of Bord and of the ghost (a fine link component, a fine ghost site, a coarse multiplier) is assigned to the coarse cell that contains its position. For a bounded operator Y write tr_c Y := Σ_{i ∈ cell c} Y_{ii}. Bord(U) is real symmetric, so X(U) := Bord(U)^T Bord(U) = Bord(U)² ≥ 0 and log|det Bord| = ½ log det X. Put G(U) := D_k(U)^TD_k(U). When X(U) and G(U) are invertible, define
+
+  ρ_c(U) := tr_c[log G(U)] − ¼ tr_c[log X(U)],   log Y := (2πi)^{−1} ∮_𝒞 log z (z − Y)^{−1} dz,   (3.1)
+
+with 𝒞 a contour in Re z > 0 around the spectrum. The per-coarse-cell density is Γ̄(U) := lim_{N→∞} (2N + 1)^{−4} Σ_{|c|_∞ ≤ N} ρ_c(U), whenever the limit exists. Ā is defined the same way from the Wilson action density per cell.
+
+Lemma 3.1 (consistency with the code) [P, Floquet–Bloch]. If U is periodic under translations by ΛN e_μ, then Γ̄(U) = N^{−4} ∫ dk/(2π)⁴ [log det Ĝ_N(k) − ½ log|det B̂ord_N(k)|] over the reduced Brillouin zone, with Ĝ_N, B̂ord_N the Bloch fibres. Proof: the operators commute with the period translations; the Bloch transform maps the per-period sum of diagonal blocks of log Y to ∫ tr log Ŷ_N(k), and tr log Ŷ = log det Ŷ for positive Ŷ. ∎ The NUMERICS §5 formula for w(p) is the second a-derivative of this BZ integral, written with transfer kernels; it was checked against real-space finite differences of log|det| on the periodic 6⁴ lattice to 8·10^{−8} (NUMERICS §5) [I: the transfer-kernel algebra itself not rederived here; SOURCES_D1_VERIFY item (6) rederived the analogous source formulas].
+
+### 3.2 Gauge invariance
+Lemma 3.2 [P given (I2)]. ρ_c(U^u) = ρ_c(U) for every fine gauge transformation u (finitely supported or not) for which both sides are defined.
+Proof. By (I2), Bord(U^u) = 𝒰 Bord(U) 𝒰^{−1} with 𝒰 = diag(R(u), R(u|_{anchors})) orthogonal and block diagonal, each block acting on the coordinates at one site, hence inside one cell. So X(U^u) = 𝒰X(U)𝒰^{−1} and log X(U^u) = 𝒰 log X(U) 𝒰^{−1}. The diagonal block at cell c is conjugated by the orthogonal block 𝒰_c, so tr_c is unchanged. The ghost term is the same. ∎
+For abelian u = e^{iχσ_3} and abelian U_θ, U_θ^u = U_{θ+dχ}. Hence ρ_c(U_{θ+dχ}) = ρ_c(U_θ).
+
+### 3.3 Localization of the Taylor kernels at the trivial background
+Let r be the range of Bord and G in fine units (r is of order Λ: one block for Q̃, one plaquette for Δ). X has range 2r.
+
+Lemma 3.3 [P given (I1)]. (a) There are m > 0 and C with |(z − X(1))^{−1}(u, v)| ≤ C e^{−m|u−v|} and |(z − G(1))^{−1}(u, v)| ≤ C e^{−m|u−v|} for all z ∈ 𝒞.
+(b) For θ supported on a finite set S, ρ_0(U_θ) is real-analytic in (θ(x))_{x∈S} near 0. Its first derivatives vanish at θ = 0. Its second-derivative kernel R_0(x, y) := ∂²ρ_0(U_θ)/∂θ(x)∂θ(y)|_{θ=0} is real, symmetric, and |R_0(x, y)| ≤ C′ e^{−m′(|x| + |y|)}, with |x| the distance of the link x from cell 0 and some m′ ∈ (0, m).
+(c) By coarse translation invariance at U = 1, R_c(x, y) = R_0(x − Λc, y − Λc).
+Proof. (a) At U = 1 the operators are invariant under coarse translations. The symbol z − X̂(K) = z − B̂ord(K)² is invertible for real K and z ∈ 𝒞 because B̂ord(K) is invertible and real symmetric (I1), so X̂(K) ≥ c_X > 0; choose 𝒞 around [c_X, ‖X‖] in Re z > 0. By compactness of 𝒞 × BZ it stays invertible on a strip |Im K| ≤ δ, uniformly in z ∈ 𝒞. Shifting the K-integration contour gives the bound. The ghost is the same.
+(b) For θ supported on S, X(U_θ) − X(1) has finitely many nonzero entries, each analytic in θ and O(|θ|). So the resolvent and (3.1) are analytic in θ near 0. Charge conjugation (§2.2) gives ρ_0(U_{−θ}) = ρ_0(U_θ), so the first derivatives vanish at 0. Write X_x := ∂_{θ(x)}X|_0, X_{xy} := ∂²_{θ(x)θ(y)}X|_0 (supported within 2r of x, and zero unless |x − y| ≤ 4r) and 𝓡 := (z − X(1))^{−1}. Then
+  ∂_x∂_y tr_0 log X = (2πi)^{−1} ∮_𝒞 log z · tr_0[𝓡X_{xy}𝓡 + 𝓡X_x𝓡X_y𝓡 + 𝓡X_y𝓡X_x𝓡] dz,
+and the same for G. In tr_0[𝓡X_x𝓡X_y𝓡] the chain of kernels runs from cell 0 to a point near x, to a point near y, and back to cell 0. By (a) and finite range its modulus is ≤ C e^{−m(|x| + |x − y| + |y|) + C(r)}, with polynomial prefactors from the finite ranges. The X_{xy} term is bounded the same way. This gives the bound with any m′ < m. Realness and symmetry are those of mixed partials of a real function. (c) is immediate. ∎
+
+### 3.4 The kernel Π̂ and its analyticity — obligation (a)
+Use link midpoints as positions. For link directions μ, ν define
+
+  Π̂_{μν}(p) := Σ_{x: dir μ} Σ_{y: dir ν} e^{ip·(x−y)} R_0(x, y),   Π̂^W_{μν}(p) the same for the Wilson density.   (3.2)
+
+By Lemma 3.3(b) the double sum converges absolutely for |Im p| < m′. So Π̂ is analytic there [P given (I1)]. By Lemma 3.3(c), Π̂_{μν}(p) = Σ_{x ∈ cell 0, dir μ} Σ_{y, dir ν} e^{ip·(x−y)} R(x, y) with R := Σ_c R_c the total second-derivative kernel: Π̂ is the per-cell (umklapp-diagonal) second-order kernel of Γ at the trivial background, the object called Π_Λ(P) in BETA_FP_H §3.1 (there in coarse momentum P = Λp). Its domain of analyticity is |Im P| < Λm′ in coarse units. The diagonal entries are real and even: Π̂_{νν}(p)‾ = Π̂_{νν}(−p) by realness, and Π̂_{νν}(−p) = Π̂_{νν}(p) by the symmetry R_0(x, y) = R_0(y, x) and relabelling.
