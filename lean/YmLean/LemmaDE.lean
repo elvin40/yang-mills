@@ -116,6 +116,10 @@ theorem lemma_DE (β : ℕ → ℝ → ℝ) (β1 : ℕ → ℝ) (γ₀ C β₀ �
   exact (lemma_D β _ _ _ hp (by positivity) (by linarith)
     (fun j => (hcont j).mono fun x hx => ⟨hx.1.le, hx.2.trans hle⟩) hb).2 K g hg0 hg
 
+/-- Lemma D′ constants: `g₁ = γ` if `J = 0`. -/
+lemma g₁_of_J_zero {γ : ℝ} (hγ : 0 < γ) (B βinf : ℝ) : g₁ γ 0 B βinf = γ := by
+  simp only [g₁, D, Nat.cast_zero, zero_mul, add_zero]; exact inv_sqrt_inv_sq hγ
+
 /-! ### Step 8 of Lemma D′: all `β_j(0) > 0` -/
 
 /-- `β₀ = min(min_{j ≤ J} β_j(0), β∞/2)`. -/

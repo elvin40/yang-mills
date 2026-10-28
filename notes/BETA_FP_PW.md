@@ -38,3 +38,43 @@ Reading. The top level (j = k − 1, transfer θ/L) carries the bound; lower lev
 
 Data check [existing numbers]. L = 2, one step (Ng = 12): β_1(p) = 0.6299, 0.6307, 0.6340 at p = 0.1, 0.2, 0.4; the 0.2/0.4 pair gives C ≈ 0.028. L = 3 (Ng = 8): 0.6692, 0.6893 at p = 0.2, 0.4; C ≈ 0.17. L = 2, level 1 (N = 8, Ng = 8): 0.3412, 0.3288 at p_1 = 0.2, 0.4; C ≈ −0.10 (Ng = 8 grid error ≈ +1% at p = 0.2). So |C_U| ≲ 0.2 at the levels computed. For L = 2 this gives |S(θ; L^k) − S_k| ≤ 0.07θ².
 
+## 2. Prop. 2.1 in plane-wave form
+
+### 2.1 The exact identity at any background
+Notation as BETA_FP_LEMMA43 §2: X := D^TD (fine ghost, full group), K := H + DD^T (fine background-Feynman form at the wave), s := ι_a^TX^{−1}ι_a, S_K := (Q̃K^{−1}Q̃^T)^{−1}, G_c := K^{−1} − K^{−1}Q̃^TS_KQ̃K^{−1}, D_c the coarse covariant gradient at V = Ū(U_0). New: R := HD (the gauge defect of the Hessian; R = 0 iff the background is stationary, at the order used). At the wave R = O(ap_0²): HDλ = −ad(λ)^T∇A(U_0) and ∇A(U_0) = a p̂_0² (wave) + O(a³).
+
+Proposition 2.2 [proved here]. Assume D of full column rank, Q̃ surjective, and X, K, s, Q̃K^{−1}Q̃^T invertible. Put N := 1 − D_a^TG_cD_a and Y := s^{−1}Ns^{−1}. Then for the direct (D_k^T-gauge) one-loop integral, exactly (constant 0),
+
+  log det(D_k^TD_k) − ½ log|det Bord| = [log det X − ½ log|det K|] + ½ log|det S_K| − ½ log|det Y|.   (2.1)
+
+Proof. Steps (a)–(c) of the proof of BETA_FP_LEMMA43 Prop. 2.1 do not use ΔD = 0: (a) Jacobi, log det(D_k^TD_k) = log det X + log det s; (b) the matrix determinant lemma on W = ker Q̃, det(K_D|_W) = det(K|_W)·det N with K_D = K − D_aD_a^T; (c) det(K|_W)det(Q̃Q̃^T) = det K / det S_K. So the left side is log det X + log det s − ½[log det K − log det S_K + log det N]. Write log det N = 2 log det s + log det Y. The log det s terms cancel. ∎
+
+Lemma 2.3 (the defect of Y) [proved here]. Put Y_0 := D_c^TS_KD_c, c_1 := ι_a^TD^TK^{−1}RX^{−1}ι_a, c_2 := Q̃K^{−1}RX^{−1}ι_a. Then Y = Y_0 + 𝔡_Y with
+
+  𝔡_Y = s^{−1}c_1s^{−1} − D_c^TS_Kc_2s^{−1} − s^{−1}c_2^TS_KD_c + s^{−1}c_2^TS_Kc_2s^{−1}.   (2.2)
+
+Proof. KD = DX + R gives K^{−1}D = DX^{−1} − K^{−1}RX^{−1}. Hence D_a^TK^{−1}D_a = ι_a^TD^TDX^{−1}ι_a − c_1 = 1 − c_1. Exact covariance Q̃D = D_cι_a^T (at every background, BETA_FP_LEMMA43_VERIFY §4, lattice 9·10^{−16}) gives Q̃K^{−1}D_a = D_cs − c_2. So N = c_1 + (D_cs − c_2)^TS_K(D_cs − c_2). Multiply by s^{−1} on both sides. ∎
+At R = 0, 𝔡_Y = 0 and (2.1) is (2.1) of BETA_FP_LEMMA43. So Prop. 2.2 is Prop. 2.1 with its one non-algebraic input isolated in 𝔡_Y.
+
+Corollary 2.4 (split) [proved here; linear algebra of BETA_FP_LEMMA43 (e), which needs no ΔD = 0]. Let E be an orthonormal basis of (im D_c)^⊥ and Δ_T := (E^TQ̃K^{−1}Q̃^TE)^{−1}. Then
+
+  log Z^{dir} = Fine − Γ_c^T − ½ log det(1 + Y_0^{−1}𝔡_Y),   Γ_c^T := ½ log det(D_c^TD_c) − ½ log det Δ_T,   (2.3)
+
+where Fine := log det X − ½ log det K and Γ_c^T is the coarse Feynman-gauge one-loop log Z of the kernel Δ_T with coarse ghost D_c^TD_c.
+Remark. Δ_T is the inverse transverse block of C := Q̃K^{−1}Q̃^T, the coarse covariance of the block average of the fine background-Feynman field. It is defined at any background. At R = 0 it equals E^TΔ_ΛE, the code's coarse kernel (BETA_FP_LEMMA43 (e)). At the wave the two differ at O(R); the coarse piece of (2.3) is Δ_T, not the recursion kernel.
+
+### 2.2 Normalized form, and the cancellation of the two ln(1/p²)
+Normalize every a²-coefficient per level-k cell by the fine tree coefficient (Definition 1.1). Then:
+- Fine piece [cited: LW (5.7), normalization U1_VERIFY item 2; BETA_FP_LEMMA43 (3.1)]: Π̂(p) := 2Nν^{(1)}(p) = c_2 ln(1/p²) + κ_W^F + η(p), η(p) = O(p² ln p), c_2 = c/2, κ_W^F = 0.434197N² − ¼. It is evaluated at the fine momentum p = θ/Λ.
+- Coarse remainder (exact, by definition): Γ^{ex}(θ; Λ) := Π̂(θ/Λ) − S(θ; Λ).
+- By (2.3): Γ^{ex} = γ_T(θ; Λ) + 𝔡(θ; Λ), with γ_T the normalized a²-coefficient of Γ_c^T and 𝔡 := [normalized a²-coefficient of ½ log det(1 + Y_0^{−1}𝔡_Y)] + 𝔡_gf (Fact 1.2). 𝔡 = 0 at a stationary background.
+
+Proposition 2.5 (log cancellation at fixed k) [proved here, given LW (5.7) and the finiteness of S_k]. For fixed k, as θ → 0,
+
+  Γ^{ex}(θ; L^k) = c_2 ln(1/θ²) + ρ_k + o(1),   ρ_k := c k log L + κ_W^F − S_k.   (2.4)
+
+Proof. S(θ; L^k) → S_k. Π̂(θL^{−k}) = c_2 ln(L^{2k}/θ²) + κ_W^F + η(θL^{−k}) and c_2 ln L^{2k} = c k log L. ∎
+In fine units (p = θL^{−k}): the fine piece carries c_2 ln(1/p²); the coarse remainder carries c_2 ln(1/p²) − c k log L + ρ_k + o(1). The ln(1/p²) terms cancel. What remains as p → 0 is S_k = c k log L + κ_W^F − ρ_k, a function of k only. The coefficient c_2 of the coarse log is forced by the finiteness of S_k (as in BETA_FP_LEMMA43_VERIFY item 2). In the coarse theory it comes from the infrared of Δ_T: Maxwell coefficient exactly 1 (U3_AW Lemma M) and spin coupling τ_c (U3_AW Theorem W). This is interpretation only; §3 does not use it. ρ_k is BETA_FP_LEMMA43's ρ(L^k).
+
+IR-cutoff reading (task item 3). Put Π_k(p) := S(pL^k; L^k) = Π̂(p) − Γ^{ex}(pL^k; L^k). This is the fine Wilson vacuum polarization with the composed block constraint acting as an infrared cutoff at μ_k = L^{−k}. Then S_k = Π_k(0) and β_{k+1}(0) = Π_{k+1}(0) − Π_k(0) exactly: a difference of two infinite-lattice vacuum-polarization coefficients with IR cutoffs L^{−k−1} and L^{−k}. If Γ^{ex}(P; L^k) → Γ^∞(P) as functions, then Π_k(p) ≈ Π̂(p) − Γ^∞(p/μ_k): one fixed IR profile, scaled by μ_k (scale covariance). Then Π_{k+1}(0) − Π_k(0) → lim_{P→0}[Γ^∞(P) − Γ^∞(LP)] = c_2 ln L² = c log L. This reading needs k → ∞ to commute with P → 0. That is the old (H) with IR weights (BETA_FP_LEMMA43 §4). §3 replaces it by fixed-θ statements.
+

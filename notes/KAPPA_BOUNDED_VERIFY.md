@@ -32,3 +32,15 @@ Caveat: this is the definition of d_j via S_j, not an independent evaluation of 
 - LEMMA_DPRIME Steps 2–5 use only continuity from (i) and the bracket (2.1) T̃ ∈ [−D, B′(K−k)] for every clamped trajectory. (a″) supplies it, because clamped couplings lie in ]0, γ]. J enters only Step 1 and Step 6 (to get the lower tail bound). (5.1) replaces both. "No J needed": CONFIRMED. (ii) is implied by (5.1); (iii) is not needed.
 - (c′) and the Theorem 2w display: (5/4)c log L·(n−m) + 2κ_*(n−m) = B′(n−m); lower side (3b/4)(n−m) − 2κ_*. CONFIRMED.
 - Inherited: (i) is the single-coupling form; history version (L5) not written.
+
+## 7. U3_AW inputs, (B2) at K = 0, A4 (item vi, partial)
+- (E0) δσ^(0) ~ |K|^4 with |∂| ~ |K|^3 uniformly: U3_AW §3.4(a) with i = 0 gives it (bound C L^0 on B_{ρ_1}, Schwarz). OK.
+- K = 0 argument: |Q_j(εK)| = ε²|Q_j(K)| ≤ C_A ε²|K|² + O_j(ε⁴) ⇒ |Q_j| ≤ C_A|K|². Polarization gives |∂_e∂_f σ^(1)(0)| ≤ 2C_A (author's 4C_A is looser, still correct). (W-2) slaving formula matches U3_AW §3.4(b). CONFIRMED.
+- Prop. 4.1 algebra: ±L^{-2}𝒜_j s = ±L^{-4}H†(⊕s)H ≤ L^{-4}N(Δ_j + H†H) ≤ (h²/L⁴)N(Δ_j + 1), using h² ≥ 1. |σ| ≤ N(‖Δ_j‖+1), ‖Δ_j‖ ≤ 16/c_0. CONFIRMED.
+- A4 non-applicability: correct that ±s ≤ NΔ forces sd = 0 and s(0) = 0. But the stated reason is incomplete. A3 itself handles a nonzero K = 0 value (τ_c) by subtraction and an explicit longitudinal part from (W-1). The σ^(2) analogue fails for a different reason: (W-2) gives the longitudinal part σ^(2)d = (ie/2){σ^(1), d} + …, which contains ∂σ^(1), and the source Q_j contains L^{-3}∂σ^(1). So the real obstruction is the missing uniform C¹ bound on σ^(1), in two places, not σ^(2)(0) ≠ 0. Also the A3-type transverse bound would need |P_⊥ s_j P_⊥| ≲ |K|² near 0, i.e. uniform C² of the source. Grade: CORRECTED (reasoning), conclusion unchanged.
+
+## 8. (B2) sufficient conditions vs existing numerics; σ^(2) scan feasibility
+- U3_AW_VERIFY §5 already ran O1 at L = 3: max_K‖H_j‖/L = 1.652, 1.736, 1.757, 1.760 (j = 1, 2, 3, ∞). So (HS) = (H′) is REFUTED at L = 3 (threshold 1.414). KAPPA §4 and §6 list (HS) as "open" with O1 as the pending test: outdated.
+- The same numbers give h/L ≈ 1.76 < L = 3, so h²/L⁴ ≈ 0.34 < 1. The first hypothesis of Prop. 4.1 holds numerically at L = 3 (j ≤ 3 and j = ∞, grid + refinement; sup over all j inferred from the observed convergence). (H″) at n = 2 passes on a coarse grid (2.06 < 2.83).
+- So at L = 3 the live route to (B2) is Prop. 4.1 (needs the uniform C¹ bound on σ^(1)) or (H″). KAPPA should state this.
+- σ_1^(2)(K) scan: ym_momentum.Step.build makes plane-wave a-expansion kernels (K0, K1, K2 in the wave amplitude a), not the constant-field f-expansion symbols 𝔨_m. U3_AW_VERIFY §7: no d = 4 per-momentum f-code exists. A σ^(2) scan needs new code (constant-field Moyal symbols of C_f and the ghost term, then (3.3) of U3_LEMMA51). Not feasible in 10 minutes. Not run.
