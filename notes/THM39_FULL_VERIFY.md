@@ -1,3 +1,8 @@
 # THM39_FULL verification (independent)
 Started 2026-10-28. Firewall respected: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP.
 
+## V1. CMP 98 (78)-(80), p. 30 image (pdf p. 14, 300 dpi) [task (e)]
+- (78): (R̄_0v)(y) = v(y) exp[i Σ_{x∈B(y)} L^{-d} (1/i) log v^{-1}(y)R(V_0(Γ_{y,x}))v(x)], y ∈ Ω′^{(1)}. Uses v only on B(y). Uniform weights L^{-d}. Contours Γ_{y,x} are the axial contours inside B(y) (CMP 98 (64), p. 29).
+- Linearize at v = e^{iλ}: exponent = Σ L^{-d}[Ad(V_0(Γ_{y,x}))λ(x) − λ(y)] + λ(y) + O(λ²). So the linear part is L^{-d}Σ_{x∈B(y)} R(V_0(Γ_{y,x}))λ(x). Block-diagonal, uniform weights.
+- (79)-(80): R̄_0u^{j+1}(x_{j+1}) = (R(Ū_0^j)R̄_0u^j)(x_{j+1}). Iteration of block-local averages. So Q′_j is block-diagonal: row y sees only B^j(y). [I-Q] block-diagonality CONFIRMED.
+- CORRECTION to the form of (I-Q): the composite transport is U_0(Γ^{(j)}_{y,x}) = Ū_0^{j−1}(Γ_{x_j,x_{j−1}})···Ū_0(Γ_{x_2,x_1})U_0(Γ_{x_1,x}) (p. 29 last line). It is a product of AVERAGED links Ū^i on level-i axial contours, not a fine-lattice holonomy. Consequences for LB §4.4: (a) covariance still holds, since averaged links transform as Ū^i_b → u(b_−)Ū^i_bu(b_+)^{-1} (CMP 98 (70)); (b) the bound |R(Ū(Γ^{(j)})) − I| ≤ K_ΓMα_0 needs |Ū^i − 1| ≲ ηℓ_i|A|-type bounds for averages of a near-identity field e^{iηA}. This is an extra input (averages of a small field stay small, level by level). It is standard (CMP 98) but not stated in THM39_FULL. Tag it [R/I], new item. Locality: averaged links of bonds inside B^{i+1}(x_{i+1}) depend on U only inside that block, so Q′(y) depends on U only on Δ(y) (plus possibly its boundary corridor; harmless for LB since □(y) contains the η-layer).

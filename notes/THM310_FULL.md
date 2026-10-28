@@ -96,3 +96,53 @@ It is the gauge-field propagator with the averaging term Q*aQ and the gauge-fixi
  T310-I7 [I; sequence-locality]. For a cube □′ of a cover at size M′, the local sequence {Ω_n(□′)} and the local operators G′_{□′}, C_{□′}, and the A1-W factors of THM39 are determined by the level structure of {Ω_j}, by Ω_0, and by U, all restricted to (□′)~^5 (resp. X̃^5). This is the reading behind THM37_FULL Lemma S(iv) and THM39_FULL (iii) for U; here it is used also for the sequence data.
  T310-I8 [I, C0]: conversion of block norms to the μ-weighted kernels of WG_FULL 0.2.
  Common rate. δ_* := min{(1 − θ)δ_0, δ_39}. With the printed inputs ((3.94), (3.99) at ½δ_0) δ_* = ½δ_0. With THM39's proved rate, δ_* = δ_39 < ½δ_0 (since ε ≤ ½δ_G).
+
+## 4. Lemma A: the commutators (3.100)–(3.104), with bounds
+
+4.1 Definitions. For a real function h on the fine lattice put
+ K(h) := hΔ_loc − Δ_loch, P_1(∂h) := DPD*h − hDPD* = [DPD*, h], P_{□,1}(∂h) := [DP_□D*, h].
+Then, since Δ_a = Δ_loc − DPD*,
+ Δ_ah = hΔ_a − K(h) − P_1(∂h). (4.1.1)
+This is (3.104) [V]; it holds by definition, with no computation. The kernel of P_1(∂h) is (DPD*)(x, x′)(h(x′) − h(x)), which is (3.101) [V], since (∂h)(Γ_{x′x}) = h(x′) − h(x) for any contour from x to x′.
+
+4.2 Lemma A (bounds) [P given T310-R1 and (H-PU)(d); the Lipschitz reading (A-Lip) below is I]. Let h be one of h_□, ζ_□, h′_{□_0} (all obey (H-PU)(d) at scale M_1, §6.0). Let g be a 1-form and x a point of a block Δ(z) of level n.
+ (a) |(K(h)g)(x)| ≤ c_A(d)[ (c_hL/(M_1ξ_n))·max_{b∼x}|(∇_Ug)(b)| + (c_hL²/(M_1ξ_n)²)·max_{b∼x}|g(b)| ] + 2a·(dc_hL/M_1)ξ_n^{−2}·sup_{B^n(z)∪B^n(z′)}|g| + c(d)Mα_0(c_hL/M_1)ξ_n^{−2}max_{b∼x}|g(b)|,
+ where b ∼ x runs over the bonds in the stencil of Δ_loc at x (bonds within η-distance 2 of x), and c_A(d) counts that stencil.
+ (b) (A-Lip) [I, as A1_WALK_FULL O2]: |h(x) − h(x′)| ≤ (c_hL/M_1)·d(z(x), z(x′)) for all x, x′. Then for y ∈ Λ_n, y′ ∈ Λ_{n′} and any θ′ ∈ (0, 1):
+ N(P_{□,1}(∂h); y, y′) ≤ (c_hL/M_1)(eθ′δ_0)^{−1}B_0ξ_n^{−1}ξ_{n′}^{−1}e^{−(1−θ′)δ_0d(y,y′)}.
+ (c) For the global P the same holds with (B_0, δ_0) replaced by the constants (B_P, δ_P) of (3.49) for P, which T310-P2, P3 and Lemma C of WG_FULL give with δ_P := (1 − θ)δ_*.
+Proof. (a) Write D*D + DD* = Y_1*Y_1 + Y_2Y_2* with Y_1 = D (1-forms to plaquettes) and Y_2 = D (points to 1-forms). For a first-order covariant difference Y, (3.100) gives Y(hg) = hYg + (∂h)·τg, where τ is a parallel transport by one bond (norm 1 for G-valued U) and ∂h is the η-difference of h along that bond. So [h, Y] = −(∂h)τ, and
+ [h, Y*Y] = Y*[h, Y] + [h, Y*]Y = −Y*((∂h)τ·) + ((∂h)τ)^T Y.
+Expand Y*((∂h)τg) once more with (3.100) for Y*: it equals (∂h)τ′Y*-type terms plus (∂²h)ττ′g. Each term is a product of one coefficient bounded by sup|∂h| or sup|∂²h| near x with either one covariant difference of g or g itself, at bonds of the stencil. By (H-PU)(d), |∂h| ≤ c_hL/(M_1ξ_n) and |∂²h| ≤ c_hL²/(M_1ξ_n)²; a stencil bond may lie in a block of level n ± 1, which the factor L in (H-PU)(d) already covers (as in THM37_FULL 4.5). This gives the first bracket. The averaging term: by (3.102)–(3.103), Q_j has a kernel supported on bonds b ⊂ B^j(c_−) ∪ B^j(c_+) with weights summing to ≤ 1 per bond c (its transports have norm 1), and Q*aQ = Σ_ja_jξ_j^{−2}Q_j*Q_j in the units of (3.24); so ([h, Q*aQ]g)(x) = Σ a_jξ_j^{−2}(Q_j*Q_j)(x, x′)(h(x) − h(x′))g(x′) with x, x′ in one double block, where |h(x) − h(x′)| ≤ 2d·ξ_n·c_hL/(M_1ξ_n); the two blocks c_± and Q_j*Q_j's two passes give the factor 2 (a_j ≤ a, THM37_FULL 4.2(iii)). The Δ′ term: Δ′ is a sum over plaquettes of zeroth-order terms with coefficients |F| ≤ c(d)Mα_0ξ_n^{−2} by (3.35) (SOURCES_A3_GAMMA0_FULL 6.1 R-Δ′, [R]) acting at bonds of one plaquette, so [h, Δ′] has the extra factor |h(x) − h(x′)| ≤ c_hL/M_1·(η/ξ_n) ≤ c_hL/M_1.
+ (b) The kernel of P_{□,1}(∂h) is (DP_□D*)(x, x′)(h(x′) − h(x)). By (A-Lip) and (3.3.2), N ≤ (c_hL/M_1)d(y, y′)B_0ξ_n^{−1}ξ_{n′}^{−1}e^{−δ_0d(y,y′)}; and t e^{−θ′δ_0t} ≤ (eθ′δ_0)^{−1}. (A-Lip) is only used inside one local domain (□̃^8) in §6, where the sup over blocks along a d-geodesic of |∂h| times the block side is ≤ c_hL/M_1 per unit of d [I: d of CMP 96 (2.46) weighs a contour of level-n blocks by (ξ_n)^{−1} times its η-length, which is the reading of A1_WALK_FULL O2].
+ (c) Same proof with the global (3.49). ∎
+4.3 Corollary A (the one-step size of a commutator factor) [P given Lemma A and T310-R1]. Put δ′ := (1 − θ)δ_0. For y ∈ Λ_n, y′ ∈ Λ_{n′}:
+ N(K(h_□)G_□h_□; y, y′) ≤ (K_A/M_1)e^{−δ_0d(y,y′)}, K_A := 2[c_A(d)c_hL² + 2dc_hL + c(d)c_hL]B_0, (4.3.1)
+ N(ζ_□P_{□,1}(∂h_□)G_□h_□; y, y′) ≤ (K_P/M_1)e^{−(1−θ)δ′d(y,y′)}, K_P := c_hL·L(eθδ_0)^{−1}B_0²c_1(θ(1 − θ)), (4.3.2)
+ for N = N_∞ and N_2 (Mα_0 ≤ 1). (4.3.1) is the analogue of (3.89) and of THM37_FULL (4.5.1); the factor 2 covers the L² form (THM37_FULL 4.2). (4.3.2): Lemma N with one junction z; insert Lemma A(b) with θ′ = θ and (3.3.1); the scale factors give ξ_{n_z}²·ξ_n^{−1}ξ_{n_z}^{−1} = ξ_{n_z}/ξ_n ≤ L e^{θ_Ld(y,z)} (scale conversion); with θ_L ≤ θδ′/2 this is absorbed into the rate split; sum over z by T310-R4 at α = θ(1 − θ). The bound has no ξ prefactor: R-terms are dimensionless, like Δ_aG (cf. (3.85) "|V(A)G(U)J| ≤ O(1)α_1e^{−½δ_0d}|J|").
+
+## 5. Lemma AG′ and Lemma B: the parametrix identity (3.105)
+
+5.1 Lemma AG′ (agreement of the local parts) [P given THM37_FULL Lemma AG's proof, (H-PU)(a), and the block form of Q_j, CMP 99 (3.102) [V]]. Let Δ_{loc,□} be the local part of Δ_{a,□}, i.e. Δ_loc built for the sequence {Ω_n(□)} with the Dirichlet cut at Ω_0(□) ∩ Ω_0 (I-Ω0). For every 1-form g supported in Ω_0(□) ∩ Ω_0 and every bond b with both ends in □:
+ (Ω_0Δ_locΩ_0g)(b) = (Δ_{loc,□}g)(b).
+Proof. The terms D*D, DD*, Δ′ have stencils of η-range ≤ 2 (plaquettes through b, and the stars of the end points of b). These bonds lie in □̃ ⊂ Ω_0(□), and they are cut by Ω_0 in both operators alike. The term Q*aQ at b is Σ_ja_jξ_j^{−2}(Q_j*Q_jg)(b) over the bonds c of level j whose double block B^j(c_−) ∪ B^j(c_+) contains b (3.102); its level, its blocks, its weights a_j, and its transports are the same in both sequences by steps (iii)–(v) of THM37_FULL Lemma AG, applied to the two end points of b. ∎
+
+5.2 Notation. 𝒢_0 := Σ_{□∈𝒟}h_□G_□h_□ (Balaban's G_0 of (3.87); renamed, §1.1). For □ ∈ 𝒟 let ζ_□ := ζ_□̃ be the function of 1.4 and §6.0: supp ζ_□ ⊂ □̃, ζ_□ = 1 on supp h_□ and on its η-neighbourhood. Put
+ R^K_□ := K(h_□)G_□h_□ (commutator);
+ R^sep_□ := (1 − ζ_□)DPD*h_□G_□h_□ (separation);
+ R^dc_□ := ζ_□(DPD* − DP_□D*)h_□G_□h_□ (domain change);
+ R^P_□ := ζ_□P_{□,1}(∂h_□)G_□h_□ (P-commutator);
+ R_□ := R^K_□ + R^sep_□ + R^dc_□ + R^P_□, R := Σ_□R_□.
+Here G_□, P_□ act on forms supported in Ω_0(□) ∩ Ω_0 and are extended by 0.
+
+5.3 Lemma B (parametrix identity) [P given Lemma AG′, (H-PU)(c), T310-R1]. Ω_0Δ_aΩ_0𝒢_0 = I − R. This is (3.105).
+Proof. Fix λ and □, and put g := G_□h_□λ. It is supported in Ω_0(□) ∩ Ω_0. By (4.1.1),
+ Δ_a(h_□g) = Δ_loc(h_□g) − DPD*(h_□g) = h_□Δ_locg − K(h_□)g − DPD*(h_□g).
+Split DPD*(h_□g) with 1 = (1 − ζ_□) + ζ_□ and DPD* = (DPD* − DP_□D*) + DP_□D*:
+ DPD*(h_□g) = (1 − ζ_□)DPD*h_□g + ζ_□(DPD* − DP_□D*)h_□g + ζ_□DP_□D*h_□g.
+In the last term, DP_□D*h_□ = h_□DP_□D* + P_{□,1}(∂h_□) (definition 4.1), and ζ_□h_□ = h_□. So
+ ζ_□DP_□D*h_□g = h_□DP_□D*g + ζ_□P_{□,1}(∂h_□)g.
+Collect:
+ Δ_a(h_□g) = h_□(Δ_locg − DP_□D*g) − R^K_□λ − R^sep_□λ − R^dc_□λ − R^P_□λ.
+On supp h_□ ⊂ □, Lemma AG′ gives Δ_locg = Δ_{loc,□}g, so h_□(Δ_locg − DP_□D*g) = h_□Δ_{a,□}g = h_□Δ_{a,□}G_□h_□λ = h_□²λ, because supp h_□λ ⊂ Ω_0(□) ∩ Ω_0 and Δ_{a,□}G_□ = I there. Sum over □ and use Σ_□h_□² = 1 ((H-PU)(c), repaired family X-PU). ∎
+Remarks. (i) The identity is exact and algebraic. It uses neither positivity nor smallness. (ii) The derivation fixes the signs of (3.105); they agree with the image (1.4). (iii) The only places where the specific geometry enters are ζ_□h_□ = h_□ and the support of g; the sizes of the four error terms are the subject of §6. (iv) Lemma B needs Σh_□² = 1 exactly. With the literal family of CMP 95 (1.118), Σh² = 1 fails near level interfaces for L > 5 (THM37_FULL 3.4); the repaired family restores it at the cost of the factor L in (H-PU)(d), which sits in K_A and K_P.
