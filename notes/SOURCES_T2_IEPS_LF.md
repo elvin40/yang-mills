@@ -50,3 +50,32 @@ Monotonicity [P]: F(g) = g(log g^{−2})^q has F′(g) = (log g^{−2})^{q−1}(
   - q_0 > p_0: C3 holds for g small at any A_0, C_0; γ restores it. "(L1) restored by γ small" is TRUE in this case.
   - q_0 = p_0: C3 is C_0 ≥ A_0/c(B_3), g-free. γ does not restore it. C_0 restores it: C_0 is free upward (§3: no printed upper bound by an earlier constant; all upper uses go to γ). If C4 binds with q_1 = q_0, raise C_1 ≥ 2B_3²O(1)M·C_0 too; C_1 is also free upward.
 - Verdict: VERIFY's grade UNSUPPORTED stands for the sentence as written. Corrected statement [P]: (L1) is untouched by the MC shrink; if A_0 is raised, (L1) is restored by γ when q_0 > p_0 and by C_0 (then C_1) when q_0 = p_0; q_0 < p_0 is excluded by Balaban's own Theorem 1. Which of q_0 > p_0 or q_0 = p_0 holds is not printed [I]; both cases close.
+
+## 6. Task (4): CMP 116's ε_1 in CMP 119/122
+- CMP 116's ε_1 has two roles: (i) the real fluctuation cut χ_k: |g_kB| < ε_1, with cut gain exp(−½γ_2ε_1²g_k^{−2}|P|) and B11; (ii) the B-radius of the analyticity domain (1.34).
+- Counterpart of role (i) [V]: the δ-thresholds. First step: CMP 119 (1.8) δ_0 = g_0A_1p_0(g_0) = (A_1/A_0)ε_0 (p. 247, text). Later steps: CMP 122 I (1.27) p. 182–183 [V text] δ′_j = g_jA_1p_1(g_j), p_1(g) = (log g^{−2})^{p_1}, p_1 < p_0, cut "< 2δ′_j" on the approximate fluctuation field; CMP 122 II (1.82) cut on B′(b), p. 381 [V, VERIFY §21]. The B11 analogue is the p. 381 factor exp(−γ_0A_1²p_1²(g_j)(d′_j + 1)). So CMP 116's ε_1 ↦ δ′_j = g_jA_1p_1(g_j): a running threshold with prefactor A_1, not a fixed number.
+- CMP 119's own symbol ε_1 is ε_j at j = 1 = g_1A_0p_0(g_1). It is the counterpart of CMP 109's curvature threshold ε_0, not of CMP 116's ε_1 (VERIFY §18 confirmed).
+- Role (ii): no separate printed B-radius in the pages read. It must contain the real cut ball |gB| < 2δ′_j; its upper uses are g·polylog-small [I].
+- Effect of the MC ε_1-shrink in this layer [P on printed items]. Keep A_1. Upper uses of the radius (activity bounds linear in it, p. 366 ε_k-terms, (1.47), p. 379) are K·g·polylog ≤ a and γ′ absorbs any fixed factor, including λ_V. Cut uses keep A_1 and change γ_0 → γ_0″ ≥ 0.82γ_0 (HHOL_LF 4.4), inside VERIFY §21's margin (γ_0A_1² ≥ 8 + 4 log F). B11's exact restoration at γ′ = γ/(8λ_V) is not needed here: the p. 381 factor has no γ.
+
+## 7. Task (5): constant order with C_i, q_i inserted
+d, L → δ = (1/10)(1 − 2L^{−1}) → κ → κ_1 → M_1, M_2 → M → β, α′ → fixed-layer α-chain (α_1 → α_0 → α_3 → α_2; α_4, γ_2, α_6, a_1) → E_0 (absolute) → ε_1 (fixed-layer only) → ρ_0 → integer exponents p_1 < p_0, r_0, ν (2p_1 − (d+5)r_0 > p_0; ν ≥ 2p_0 + dr_0; ½ν ≥ p_0 − p_1 − 1), q_0 ≥ p_0 (§5), q_1 ≥ q_0 (C4) → A_1 → A_0 (≫ A_1) → C_0 (C2, C3) → C_1 (C2, C4) → γ (C6–C8, B10, B11, (1.68), p. 379, N3) → g.
+- Edges: C3 bounds C_0 below by A_0 (earlier). C4 bounds C_1 below by C_0 (earlier). C6–C8 bound γ above by C_i, A_i, M, R-rules, N (all earlier). No printed condition bounds A_0, A_1, the exponents, or any fixed-layer constant by C_i. No cycle [P on the printed list §3].
+- Joint scaling [P]: (C_0, C_1) → λ(C_0, C_1), λ ≥ 1, helps C2, C3, keeps C4 exactly, and moves only γ. If the internal radii α_{2,j}, α_{3,j} are g-scaled with prefactors C_2, C_3 (forced by C5) and the CMP 109 p. 280 recovery reads δ′-radius ≤ c·α_{2,j}(α_{3,j}/α_{1,j})^5 in this layer, that item is degree 1 in the C's and joint scaling of (C_0, C_1, C_2, C_3) helps it too [I: LF form of α_2, α_3 not printed].
+
+## 8. Task (6): verdict and residue
+(I-ε), large-field layer: CLOSED [P] for the α_0, α_1 shrink and for the ε_1 role of the cut threshold, with these compensations: keep C_0, C_1, q_0, q_1, A_0, A_1 at Balaban's values; lower γ to γ′ with C_iF_i(γ′) ≤ ¼·(Balaban's absolute admissible bound) and λ_V·K·F(γ′) ≤ a for each printed g-small item (C6–C8, p. 366); freeze α_{i,j} at x* together with the other thresholds. No C_i shrink. (L1) is untouched.
+Residue (precise):
+- R1 [I]. α_2, α_3, α_4, γ_2 never print in CMP 119/122. C5 forces α_2, α_3 to scale with α_{0,j}. If α_4 is also g-scaled, MC's vertex pairing "λ_VE_0 with ε_1/λ_V" (via the p. 20 C_3 ∝ E_0α_4^{−1}) becomes degree 0 in g: (δ′-radius)/α_{4,j} ∝ (A_1/C_4)(log g^{−2})^{p_1−q_4}. γ then absorbs λ_V only if q_4 > p_1; if q_4 = p_1, absorb by C_4 → λ_VC_4 (free upward if, as for C_0, C_1, its only upper uses go through g). If α_4 stays absolute, γ absorbs λ_V. All three branches close; which one Balaban uses is not printed.
+- R2 [I]. q_0 > p_0 or q_0 = p_0 is not printed. Only matters if A_0 is raised (author §9.2 variant); both cases close (§5). q_0 < p_0 is excluded by Balaban's Theorem 1.
+- R3 [P, convention]. HHOL_LF 4.1 must list α_{i,j} among the frozen parameters. Additive; no proof changes.
+- R4 coverage. CMP 122 I and CMP 119 §3–§5 were searched by text only (OCR); images at hits. A Greek-only condition on C_i, q_i outside the imaged pages cannot be excluded.
+
+## 9. Ledger
+[V] 300 dpi images this session: CMP 119 pp. 259, 261, 262 (PDF 17, 19, 20); CMP 122 II pp. 366, 368, 379 (PDF 12, 14, 25).
+[V text] pdftotext: CMP 119 pp. 247–248, 255, 262–263, 276–277; CMP 122 I pp. 182–183, 189–192, 198–199; CMP 122 II pp. 364, 366–367; grep of all three texts for q_0, q_1, C_0, C_1, α_2–α_6, γ_2, p_0/p_1 relations.
+[P] Ũ^c_j = multiscale space on (α_{i,n})_n (§1). Option (a) refuted; shrink propagates and is absorbed by γ at fixed C_i (§4). Monotonicity of gC(log g^{−2})^q (§3). q_0 ≥ p_0 necessary for Theorem 1 (§5). (L1) untouched by MC; restoration rule if A_0 is raised (§5). CMP 116 ε_1 ↦ δ′_j = g_jA_1p_1(g_j) (§6). Order acyclic with C_0, C_1 after A_0 and before γ (§7). Joint C-scaling helps all C-items (§7).
+[I] R1, R2, R4; p. 368/379 O(1) absorptions imply q_0 = q_1 (not needed).
+Corrections to inputs: VERIFY §19's α̃_i are (α_{i,n})_n of (2.28) (now [V]). VERIFY §20's "repair via C_0 ≥ A_0/c" is needed only if A_0 moves; under the MC route nothing on C3 moves. CMP 122 II p. 368 (1.47) carries M^{10}R_k^7 (p. 367 text read "M p_0 q_1 R").
+Firewall kept. Unverified by an independent agent.
+STATUS: COMPLETE
