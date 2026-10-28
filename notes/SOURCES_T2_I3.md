@@ -44,3 +44,35 @@ All quotes checked on page images.
 (B6) CMP 99 p. 393 (PDF 5), (3.15) [V: page image]: "Q_j(U) = Q(Ū^{j−1})·…·Q(Ū)Q(U), (3.15) where Q(V) is given by the explicit formula (124) in [5]. These definitions extend straightforwardly to configurations U, A with values in the complexified group G^c and algebra g^c, see Sect. E in [5]." So the j-step linearization is the composition of one-step linearizations at the successive averaged backgrounds. This is what makes "one step, then each of the j steps" the right structure.
 
 (B7) CMP 99 p. 395 (PDF 7), (3.32), and p. 396 (PDF 8), (3.34) [V: page image]: "(Q′_j(U^u)R(u)λ)(y) = R(u(y))(Q′_j(U)λ)(y), (3.32)"; "Finally inspecting the definitions of the averaging operators Q_j(U) for gauge fields we can see that the equalities (3.32) hold again. This implies the transformation laws for the operators Δ_a and G: Δ_a(U^u) = R(u)Δ_a(U)R(u^{−1}), G(U^u) = R(u)G(U)R(u^{−1}). (3.34)" Also p. 393, (3.19): "(Q′(V)λ)(y) = Σ_{x∈B(y)} L^{−d}R(V(Γ_{y,x}))λ(x)", and p. 394, (3.25): "Rf = (I − G′Q′*(Q′G′²Q′*)^{−1}Q′G′)f". Note: (3.34) is on p. 396, not p. 395 (correction already made in S123_VERIFY).
+
+## 3. Set-up at one step
+
+Units. One step of the recursion goes from level i−1 ("fine", spacing 1 in this section) to level i ("coarse", spacing L, L odd ≥ 3, centered blocks). Fine lattice Z⁴ (infinite), coarse lattice LZ⁴. The coarse flux per coarse plaquette is f_i; the fine flux per fine plaquette is φ := f_iL^{−2}. In this section write f for f_i. In the recursion of S123 §2, f_i = fL^{−2(j−i)} with |f_i| ≤ |f|.
+
+Background. x∧y := x_0y_1 − x_1y_0. For a fine bond b = (x, x + e_μ) with midpoint m_b put θ_b := (φ/2)(m_b ∧ e_μ) = (φ/2)(x ∧ e_μ). So θ_b = −φx_1/2 for μ = 0, θ_b = φx_0/2 for μ = 1, θ_b = 0 for μ = 2, 3. U_0(b) := exp(iθ_bσ_3). Each (0,1) plaquette has angle θ_{x,0} + θ_{x+e_0,1} − θ_{x+e_1,0} − θ_{x,1} = φ; all other plaquettes have angle 0 [P, direct computation]. Every link angle is linear in φ, hence linear in f.
+Background loop angles. For a closed lattice path ℓ, U_0(ℓ) = exp(iΘ_ℓσ_3) with Θ_ℓ = φ·A(ℓ), A(ℓ) the signed area of the projection of ℓ to the (0,1) plane (sum over unit squares of the winding number) [P: the torus is abelian; lattice Stokes]. Bound for the loops of (0.4) [P]: ℓ is the concatenation of four pieces Γ, [x,x′], −Γ′, −c, each monotone in every coordinate (shortest paths and straight segments). A ray in direction e_0 from the center of a unit square meets each monotone piece in at most one e_1-edge, so it crosses ℓ at most 4 times and |winding| ≤ 4. The projection of ℓ lies in the projection of B(c_−) ∪ B(c_+) ∪ c, a rectangle of at most (2L − 1)(L − 1) < 2L² unit squares. So |A(ℓ)| ≤ 8L², and
+
+  |Θ_ℓ| ≤ 8L²|φ| = 8|f|.   (3.1)
+
+The same bound holds for the averaged loops of (0.12): with Federbush's average on abelian sets the loop angle is the mean of Θ_ℓ over the contour pairs (§5, Lemma 5.3). (The isoperimetric inequality would give 3 instead of 8; only "≤ C|f| with C independent of L" is used.)
+
+Fluctuation fields. Midpoint convention (U3_AW §1): U(b) = U_0(b)^{1/2} e^{iB(b)} U_0(b)^{1/2}, B = B^aσ_a/2 ∈ su(2), complexified when needed. Charged sector b := B^1 + iB^2, neutral sector B^3. Ad(e^{iασ_3}) multiplies the charged component by e^{ieα}, e = 2, and fixes the neutral component. The same conventions on the coarse lattice: Ū(c) = Ū_0(c)^{1/2} e^{iV(c)} Ū_0(c)^{1/2}.
+
+The averaging 𝔄. 𝔄 denotes Balaban's one-step averaging, either (0.4) of CMP 109 or (0.12) of CMP 109 (or (42) of CMP 98). In each case Ū(c) = exp(iZ_c(U)) U(c) with
+
+  Z_c(U) = Σ_{ℓ∈𝓛(c)} w_ℓ (1/i) log U(ℓ)   for (0.4) and (42),   (3.2)
+
+w_ℓ > 0, Σ_ℓ w_ℓ = 1 (for (0.4), w_ℓ = L^{−4}|G(c_−,x)|^{−1}|G(c_+,x′)|^{−1}, and Σ_x L^{−4} = 1 because |B(c_−)| = L⁴), 𝓛(c) the finite set of loops of (B1), all based at c_−. For (0.12), log U(ℓ) is replaced by log of U(c_−,x)U([x,x′])U(x′,c_+)U(−c) with averaged contour variables U(y,x) = M({U(Γ)}_{Γ∈G(y,x)}).
+
+The three one-step objects.
+- Q̃_f: the linearization of 𝔄 at U_0: (Q̃_fB)(c) := d/dt|_{t=0} V_t(c), where 𝔄(U_t)(c) = Ū_0(c)^{1/2}e^{iV_t(c)}Ū_0(c)^{1/2}, U_t(b) = U_0(b)^{1/2}e^{itB(b)}U_0(b)^{1/2}, Ū_0 := 𝔄(U_0). This is the operator Q̃ of U3_AW §1 and U3_REPAIRS §3.1 at flux f; at f = 0 it is U3 (1.1), Q̃ = Q_L + D′Λ (U3_GAUSSIAN_RG Lemma 1.1) [I: identification of conventions, at f = 0 checked against U3 (1.1) in §5].
+- D_f: the linearized gauge orbit at U_0. For u_t = e^{itν}, U_0^{u_t}(b) = u_t(b_−)U_0(b)u_t(b_+)^{−1} = U_0(b)^{1/2}e^{itB(b) + O(t²)}U_0(b)^{1/2} with B(b) = Ad(U_0(b)^{−1/2})ν(b_−) − Ad(U_0(b)^{1/2})ν(b_+). So D_f := (ν ↦ B). Charged component:
+
+  (D_fν)(b) = e^{−ieθ_b/2} ν(b_−) − e^{ieθ_b/2} ν(b_+);  neutral: ν(b_−) − ν(b_+).   (3.3)
+
+ [P: Ad of e^{±iθ_bσ_3/2} on the charged component.]
+- Π: the orthogonal projection on ℓ²(fine sites) onto Λ_gh := {ν : ν(y) = 0 for y ∈ LZ⁴} (gauge parameters vanishing at the coarse sites; U3_REPAIRS §3.1 writes it per K as 1 − uu^†/N). In position space Π is multiplication by 1 − 1_{LZ⁴}. It does not depend on f. The ghost term is D_fΠD_f^* = D_rD_r^†, D_r := D_f|_{Λ_gh} (U3_LEMMA51 §2.3).
+
+Why Λ_gh is the right residual group. By Lemma 4.1(ii) below, 𝔄(U^u) = 𝔄(U)^{u|coarse}, so gauge transformations with u = 1 at the coarse sites leave the constraint 𝔄(U) = V unchanged. This is the residual gauge group of the one-step problem.
+
+The bordered matrix. 𝔅_f = [[A_f, Q̃_f^†], [Q̃_f, 0]], A_f = Δ_{i−1}(fL^{−2}) + D_fΠD_f^* (S123 §2 (I1); U3_AW §1). The input block Δ_{i−1} is not part of (I3); it is covered by the induction of S123 Prop. 2.1.
