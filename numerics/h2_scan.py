@@ -4,7 +4,7 @@ the outer solve (fine kernel Delta_{j-1}) gives H_j(K); rho_2(K)^2 = lambda_max(
 Bordered pieces as in umk_beta1 (real (0.4) row q_0, ghost DD^dag, aux row W^dag). Inner fine kernel Delta_M (M = L^{j-2}, M = 1 Wilson,
 'inf' fixed point) by U3_REPAIRS Prop. A: Delta^+ = P diag(d^M) P, A^{-1} = P diag(d) P + n n^dag/|k^|^2 (H, Delta_out do not depend on scales).
 d^M_mu = int_0^inf dt g_mu prod_{nu != mu} f_nu (1/|q~|^2 = int e^{-t|q~|^2}), 1D tables, t = e^s trapezoid.
-Usage: python h2_scan.py L j [--check] [--n4 N]  -> results/h2_L{L}_j{j}.json (per-K cache, skip-if-done, resumable).
+Usage: python h2_scan.py L j [--check] [--nface 7] [--n4 0] [--maxfev 30]  -> results/h2_L{L}_j{j}.json (per-K cache, skip-if-done, resumable).
 """
 import sys, os, json, time, itertools
 import numpy as np
@@ -144,7 +144,7 @@ def check():
         assert abs(r2 - ref) < 2e-3, (r2, ref)
 
 
-def scan(L, j, nface=7, n4=0):
+def scan(L, j, nface=7, n4=0, maxfev=30):
     os.makedirs(os.path.join(HERE, "results"), exist_ok=True)
     out = os.path.join(HERE, "results", f"h2_L{L}_j{j}.json")
     res = json.load(open(out)) if os.path.exists(out) else {}
@@ -168,8 +168,8 @@ def scan(L, j, nface=7, n4=0):
         for c in itertools.combinations_with_replacement(range(n4), 4): ev(g4[list(c)])
     best = max(pts, key=lambda k: pts[k][0]); Kb = np.array(eval(best))
     fx = lambda x: -ev([x[0], x[1], np.pi, np.pi])
-    r = minimize(fx, Kb[:2] if Kb[2] == Kb[3] == np.pi else [2.3, 2.3], method="Nelder-Mead",
-                 options=dict(maxfev=30, xatol=2e-2, fatol=1e-5, initial_simplex=None))
+    r = minimize(fx, Kb[:2] if min(Kb[2:]) > np.pi - 1e-5 else [2.3, 2.3], method="Nelder-Mead",
+                 options=dict(maxfev=maxfev, xatol=2e-2, fatol=1e-5))
     Kr = np.array([r.x[0], r.x[1], np.pi, np.pi])
     for dk in (0.15, 0.3):                                                 # transverse probes off the face at the refined point
         ev([Kr[0], Kr[1], np.pi - dk, np.pi]); ev([Kr[0], Kr[1], np.pi - dk, np.pi - dk])
@@ -185,5 +185,5 @@ if __name__ == "__main__":
     if "--check" in sys.argv:
         check(); sys.exit()
     L = int(sys.argv[1]); j = sys.argv[2]; j = j if j == "inf" else int(j)
-    n4 = int(sys.argv[sys.argv.index("--n4") + 1]) if "--n4" in sys.argv else 0
-    scan(L, j, n4=n4)
+    opt = lambda f, d: int(sys.argv[sys.argv.index(f) + 1]) if f in sys.argv else d
+    scan(L, j, nface=opt("--nface", 7), n4=opt("--n4", 0), maxfev=opt("--maxfev", 30))
