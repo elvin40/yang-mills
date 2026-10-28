@@ -45,3 +45,28 @@ From M1_SWEEP 2.7–2.8 [V-project] and P3–P5:
  - Q1, Q5 are used through the above (the per-walk prefactor and the norm bound).
 Not used on pp. 275–276: Q3, Q8–Q11 (those enter elsewhere in CMP 119 Sect. 3; they consume Q1, Q2, Q5 and inherit whatever §4–§5 give).
 The constant demands are those of [I] = CMP 109 "with η replaced by L^{−n}" for cubes of layer n (P4): every bound holds in the local units of its cube. So the target is: Theorem WC and Prop. W_N with all distances in the scaled metric d of 2.1 and all cube sizes in local units.
+
+## §4 Extension of Prop. W_N and Theorem WC (ii) to the Ω-geometry
+
+4.0 Two cases. Case A (the one Balaban uses, §2.2): the variable space V_red(Z_0), Z_0 ⊂ Λ_{k+1}, is one layer; only the kernel pieces are multiscale. Case B (general, not used by Balaban): the variable space itself spans several layers. Case A is proved here. Case B is discussed in §6, because it is where the per-layer conditions sit.
+Standing condition (Sep) [I]. Every point at unit ℓ^∞ distance ≤ R′M from Z_0 lies in the finest layer Λ_k (units L^kη = 1) and in the region where (H1)–(H3) hold in unit form, with R′ ≥ 2. Source: WC 0.8 dist(Z_0, Λ_k^c) > RM (A3 §0.1, ledger I6), and P6: Λ_{k+1} is two cube layers inside Ω_{k+1}. The step-(k+1) analogue of (1.20) was not imaged; this stays [I].
+
+4.1 Prop. W_N^Ω (tree expansion of A_exp^Ω) [P given the multiscale inputs below]. Inputs:
+ (W_G1^Ω) WG-G1 for the multiscale G_1: domains = connected families of M_1-cubes of proper scale; (L1)–(L2); bounds B_1ρ_*^{|τ|}m(y, y′)e^{−δ_1d(τ, y, y′)} in the scaled metric d. Status: same as WG_FULL [R to CMP 99 Thms 3.7–3.10], which Balaban states for the sequence {Ω_j} (P10; p. 276 "in their full generality").
+ (A1-W^Ω) A1-W for (QG_1Q*)^{−1} on ℓ²(𝔅, μ). A1_WALK_FULL is already written on 𝔅 (A1_WALK_FULL §0, §2.1). Status: [C on (C)], plus O2 [I] (Lipschitz of h_□ across layer boundaries), see 4.4.
+ (Conc^Ω) WG Lemma 2.3 is stated with the weights m and μ and junction sums by CMP 96 Lemma 2.1 (A1_WALK_FULL l. 208: "μ(z)m(x, z)m(z, x′) = m(x, x′)"). So it is multiscale as stated [P].
+ Proof. WC 4.2 runs verbatim with |·| → d and S(δ) → c_1 of Lemma 2.1. The outer factors C*, C and the vertices 𝒢*𝒢, a, K_{b_0} sit in Λ (one layer, μ = 1, m = 1 there). Junction points inside branches may lie in coarser layers; they are summed with μ-weights by (Conc^Ω), and the weights telescope to m(b, b′) = 1 for b, b′ ∈ Λ. The domain count C′_𝒟 is per domain and counts neighbouring M_1-cubes in the scaled metric; at a layer interface a cube has at most 2^{d}·L^{d−1}·(const) neighbours of the finer layer [P: a face of a coarse cube meets L^{d−1} finer cubes]. So C′_𝒟 → C′_𝒟^Ω ≤ L^{d−1}C′_𝒟 [P-sketch]. Result: |A_ω(b, b′)| ≤ B_Aρ_A^{|ω|}e^{−δ_Ad(ω, b, b′)}, Σ_ω|A_ω| ≤ 2B_Ae^{−δ_Ad(b, b′)} if C′^Ω_𝒟c_1ρ_A ≤ ½. ∎
+ Distance on Λ [P given (Sep)]. For b, b′ ∈ Z_0: a path inside the single-scale band {d_∞(·, Z_0) ≤ R′M} has d-length = graph length ≥ |b − b′|_∞; a path that leaves the band has d-length ≥ 2R′M. So d(b, b′) ≥ min{|b − b′|_∞, 2R′M}. The Schur sums over Z_0 are bounded directly by c_1 of Lemma 2.1, which replaces S(δ).
+4.2 Compression [P]. WC 4.4 is algebraic: A_Z = Σ_ω1_{Z_0}A_ω1_{Z_0}, same bounds. Unchanged.
+4.3 The parametrix in Case A [P]. WC 5.2–5.3 cover Z_0 by cubes of side K_1M_1 at ONE scale, because Z_0 ⊂ Λ_k (Sep). So:
+ (a) the h_□ Lipschitz bound c_h/M_1 is elementary (one scale; O2 does not arise at this level);
+ (b) □⁺ := {y ∈ 𝔅 : d(y, □) ≤ K_0M_1}, defined in d (A1_WALK_FULL 2.1). Under (Sep) with R′M ≥ K_0M_1 + K_1M_1, □⁺ is a unit-scale set, but the truncation (c) is stated in d and does not need this;
+ (c) truncation: a dropped tree has a domain X with X̃^5 ⊄ □⁺; with d-diam X̃^5 ≤ c_XM_1 in local units (P9: the scaled distance is counted in M_1-cubes of each scale), d(X, □) ≥ (K_0 − c_X)M_1 ≥ 2M_1, so d(ω, b, b′) ≥ 4M_1 as in WC 5.2(c). Unchanged;
+ (d) separation: dist(supp h_□, □^c) ≥ M_1 inside the single layer. Unchanged;
+ (e) commutator: [A_□, h_□] uses |h_□(b) − h_□(b′)| ≤ (c_h/M_1)|b − b′| for b, b′ ∈ □ ∩ Z_0 only (h_□ lives on Z_0). Unchanged;
+ (f) local inverses C_□ = A_□^{−1} by Lemma CT on Y = □ ∩ Z_0; the kernel bound of A_□ is the d-bound of 4.1 restricted to Y. Unchanged.
+ So E^sep, E^tr, E^com, F_□, and the Neumann series of WC 5.3 hold with the same constants, except C′_𝒟 → C′^Ω_𝒟 and S → c_1. The walk domains are the □⁺ and the multiscale A-tree domains.
+4.4 Where the uniform block size was used, and its status in Case A.
+ (U1) WC 5.2(a) "One scale is used … m ≡ 1, μ ≡ 1": at the parametrix level this stays true in Case A (Z_0 is one layer). The multiscale cover sits one level down, inside (A1-W^Ω) and (W_G1^Ω). There, O2 (Lipschitz of h_□ across a layer interface) is the one place where a uniform size matters. It is already an open [I] item of A1_WALK_FULL (IN9); NEW-3 makes it load-bearing. Replacement, per adjacent layer pair (j, j+1): build h_□ from tent functions in the local coordinates of each cube; across the interface the local unit changes by the factor L, so the Lipschitz constant in d is ≤ Lc_h/M_1 [P-sketch]. Non-adjacent layers never meet a common cube when each layer has width ≥ RM in its own units (CMP 96 (2.1)–(2.4), "with M and R", P10) and RM > 2K_1M_1 [I: (2.1)–(2.4) not re-read]. Effect: K_F → LK_F, M_W → LM_W; admissible (M_1 is chosen after d, L).
+ (U2) S(δ) = sup_bΣ_{b′}e^{−δ|b−b′|}: replaced by c_1 of Lemma 2.1, which is multiscale by design and uniform in {Ω_j} under (2.59) δ_0RM > 16d log c_0 + 1 at the smallest rate used (already in A1_WALK_FULL's canon list, l. 426).
+ (U3) WC 5.4 (q = M/M_1 > 10, q > 3(6 + c_X), ⅔M separation): see 4.5.

@@ -88,3 +88,22 @@ Complex f. Not done through the Hessian, and not needed: D3 Lemma D3.1 (iv) comp
 
 Smallness condition, exact. θ ≤ ½, i.e. γ²δ_r ≤ ½, sufficient: 5γ²r ≤ ½ (for ρ_1λ_k small, D3R). No γ_0-, M-, or R_k-dependent condition on r arises: the source multiplies a nonnegative leading form plaquette by plaquette, and the non-positive remainder c_p is already ε_k-small. This refutes the M1_SWEEP §5.1 sketch condition "2c_Hg_k²r‖H_{1,k}‖² ≤ γ_0/(4d(100M)^5)" as NECESSARY: that sketch bounded the shift additively by the full plaquette Hessian norm; the multiplicative split (Step 2) avoids it. The task's proposed form "g_k²r ≤ c·γ_0" is also not needed; the condition is γ_0-free.
 
+## 5. Place in the canon (task part (3))
+
+The condition is an UPPER BOUND ON r relative to γ: 5γ²r ≤ ½ (equivalently θ = γ²δ_r ≤ ½). It is the same inequality as D3 (P6)/(ix) ("binding condition 3γ²r ≤ ½", corrected by D3R 1.4 to 5γ²r ≤ ½ relative to the local coupling). So NEW-4 adds NO new condition to the canon. Since γ ≤ 1, r ≤ 1/10 implies it for every γ; D3R 1.3 already needs r ≤ 1/8, so the canon's r_0 becomes r_0 ≤ 1/10 if one wants a γ-free statement. The only other requirement is a larger O(1) inside Balaban's "g_k sufficiently small" (factor 1 + B_3² in the ε_k term of (1.7), and R_j^3 ≥ const/γ_0 for (1.77) on the alternative route): this is a condition on γ alone, of the type Balaban's Theorem 1 already imposes (B12), and it is r-independent.
+Other uses of the R-denominator form, for completeness: (1.10)–(1.11) need only an UPPER bound of the form (boundedness); the sourced form is ≤ (1 + θ)×Balaban's + θ·O(B_3²a)‖B′‖² by Step 2 with signs reversed, so |I(U_0)| < O(1)M^5 holds with a doubled O(1). [P] The leading-term cancellation g_k^{−2}A(ζ_0ω, U_0) between denominator and numerator is D3 (P4) (mismatch O(rε_k²) per plaquette) [I].
+
+## 6. Verdict and ledger (task part (4))
+
+NEW-4: CLOSED relative to [D3 (B8), (L0), (P4), (P5); D3R Lemma P3 + §1.3–1.4 (θ ≤ 5γ²r); D3 Lemma D3.1 / FX §6.3 (complex f, O2 open there); Balaban's (1.7)–(1.9), (1.21), (1.77) as printed; the plaquette expansion (4.1) of his p. 357 first-order-in-A_0 argument; reading that ‖H_{1,k}‖ ≤ O(1)B_3 and 0 ≤ ζ_0 ≤ 1].
+
+Ledger.
+[V] Page images pp. 357, 358, 359, 361, 362, 367, 383 read this session: unweighted variational problems (F1); split (1.14) (F2); (1.7)–(1.9), (1.13), (1.21), (1.40)–(1.41), (1.77)–(1.78) as quoted in §2. Page corrections to the brief: (1.21) is p. 361, (1.40) p. 367, (1.77) p. 383.
+[P] §1: the source enters the R-operation only as a plaquette factor ω on the Wilson weight; Hessian shift Δ_1(ζ_0(ω − 1)), |ω − 1| ≤ θ = O(γ²r).
+[P] §3: (1.13), (1.40) source-free (unweighted problem); (1.21), (1.77) source-free by the split (3.1); on the alternative weighted-extraction route, (1.21) ≥ (1 − θ)× and (1.77) with γ_0 → (1 − θ)γ_0, factor still beats exp(−R_j^{−d−5}p_1²) for g_j small.
+[P] §3: J_0 = 0 unchanged; the sourced linear term (3.2) is D3 (P5)'s vertex, now with an explicit ε_k factor: coefficient ≤ g_k^{−1}θ·O(M^6R_kε_k) per plaquette.
+[P] §4: sourced (1.7) with (1 − θ)γ_0 and error ×(1 + θB_3²); sourced (1.9) with γ_0/(4d(100M)^5) for θ ≤ ½ and g_k small (Balaban's condition, enlarged O(1)); same on the G^c extension.
+[I] D3R's θ bound (relative to the local coupling); D3 (P4), (P5); Lemma D3.1 for complex f.
+[R] (a) (4.1) is my plaquette-local reading of Balaban's "expand to first order in A_0" (p. 357); the commutator-drop at background 1 is standard but not checked against [13] Sect. B. (b) p. 382 ("the quadratic form in the expansion (1.20)") not re-imaged; the claim that (1.77)'s form is the unweighted (1.21) form rests on p. 383's display, which carries ζ only. (c) The (P5) vertex itself stays [reduced] in D3; this file improves its coefficient but does not redo the Gaussian booking. (d) Complex f inherits FX-D (O2).
+Correction for SOURCES_M1_SWEEP §5.1 / §5.3 sketches (this file edits neither): the condition 2c_Hg_k²r‖H_{1,k}‖² ≤ γ_0/(4d(100M)^5) is not needed; the binding condition is θ ≤ ½ (5γ²r ≤ ½), already in D3. The "(1.21) joins the small form" option is not needed either: (1.21) is source-free by (1.14).
+Suggested CLOSURE_PLAN line (not written there): "NEW-4: CLOSED rel. D3 (B8)/(P4)/(P5), D3R θ ≤ 5γ²r, Lemma D3.1/FX-D (SOURCES_D3_NEW4); no new condition beyond 5γ²r ≤ ½."
