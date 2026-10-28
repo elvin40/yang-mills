@@ -88,3 +88,49 @@ Proof. Write Π^{(N)}(0, x) = Σ_X Σ_{b,b′∈X} E″_N(X)(b, b′)H_N(b, 0)H_
  - Coefficient level (β_j^{(N)} vs β_j): NOT exact in general. Two independent sources survive: the images γ ≠ 0 of H_N (H is an inverse-type map with infinite range, only exponential decay) and the wrapping polymers, which have no Z⁴ counterpart and generically nonzero activity. At g = 0 this is visible directly: G2 Lemma 2.2 writes the torus density minus the Z⁴ density as Σ_{γ≠0} of image terms, which are nonzero generically (Poisson: grid sum − integral = Σ_{n≠0}ĝ(N n)); the G2 §7 grid errors (L = 2: 1.6·10^{−2} at N_g = 4 down to 8.4·10^{−7} at N_g = 10, geometric) show they are nonzero [N, G2 §7.1, antiperiodic torus]. So the correct statement is |β_j^{(N)} − β_j| ≤ C_je^{−c_jN_j}, c_j > 0 at fixed j, with (D1); (D2) adds O(N_j^{−2}).
  - The step is not strictly finite-range: walk expansions are infinite sums of local terms (WG_FULL (B1): Σ_λ|T_λ| ≤ 2Bm e^{−δd}); only each walk term is local.
  - Constants: C_j, m_j are fixed-j constants. A j-uniform m needs a j-uniform κ − κ_0 and δ_H; Balaban's κ, δ_0 are j-independent (CMP 109 (1.18) "absolute constants", CMP 95 Prop. 1.2), so m is j-uniform in his units [I: not traced through H at each level]. Not needed for Theorem 2w (§8).
+
+6.4 Relation to SOURCES_T2_G2 [P].
+ - G2 is the g = 0 case of Proposition A15-N, proved there without (Loc): at g = 0 the step is an explicit function (log det) of local operators, and G2 Lemma 1.1(b) gives the needed locality directly (local operators on T_N = induced operators for NΛ > 2R_j). G2 Cor. 2.3 is (i)–(ii) for densities; G2 Theorem 3.2(iii) is (iv) for the plane-wave extraction (rate O(N^{−2}) + O(N²e^{−δN}), matching (iv)). So for β_j(0) the volume question is already closed by G2 (verified), modulo (Gap), (Gap_f), and the averaging-analyticity reading.
+ - G2 does not contain the g > 0 case. For g > 0 the activities E(X) are not explicit; locality must be supplied by (Loc). That is the only new input Proposition A15-N needs beyond Balaban's inductive bounds.
+
+## 7. Task (4): what stays Balaban's assertion, what is proved here
+ Proved / verified here:
+ (a) A15-def: β_j in CMP 119 (2.24)–(2.25) is the CMP 109 number defined as the T ↗ Z^d limit, (1.20)–(1.22) on p. 264 [V, images]. No proof is needed; it is the definition.
+ (b) The limit in (1.22) exists, and torus moments converge at rate e^{−m_jN_j} (Prop. A15-N (ii)–(iii)) [P given (Loc), (Bd), (H), (Cnt)]. Balaban only says "This limit exists by the localized representation (1.7)". At g = 0 the same is G2 [P+V, no (Loc) needed].
+ (c) Exact coefficient equality β_j^{(N)} = β_j is refuted in general; the correct form is exponential closeness (6.3). This matches CMP 109 Sect. 4, which books every volume difference as an "exponentially small" irrelevant term (4.36) and never claims equality.
+ (d) Page corrections: the β definition is CMP 109 (1.20)–(1.22), p. 264, not "(1.41)–(1.43), pp. 258–260"; the CMP 119 citation of β is on p. 253, (2.24) on p. 259, not p. 249.
+ Remains Balaban's assertion:
+ (e) (Loc) for g > 0: each torus activity E^{(j+1)}(X), X non-wrapping, is the same function as its Z⁴ lift. Printed only as the p. 278 sentence ("do not depend on Λ_{k+1}, and coincide …") and used silently in CMP 109 Sect. 4. Walk-factor locality (L2) is proved relative to Balaban's Thms 3.7–3.10 (WG_FULL); the cluster-expansion assembly is not checked [I].
+ (f) The boundary half of p. 278: for the small-field region Λ_{k+1} ⊊ torus, terms with X ⊂ Λ_{k+1} near ∂Λ_{k+1} depend on Λ_{k+1} through the Dirichlet-type covariance C(Λ) and the boundary function H_{1,Λ} (CMP 119 p. 251, (1.21): "depends on its argument restricted to a small neighborhood of ∂Λ_1 … has the exponential decay property") [P text layer]. Balaban moves clusters within distance MR of Λ^c into B-terms (p. 253, text l. 549–553) and removes H_{1,Λ} by the change of variables (1.22). So the literal "X ⊂ Λ_{k+1}" must be read as "X in the interior class" [I]. Unproved here.
+ (g) The R-term part (B8): unchanged; the framework of [I] has no R-terms (D3W8_VERIFY S3).
+
+## 8. Task (5): conclusion and effect on Theorem 2w's binding set
+ Verdict: A15 is SPLIT.
+ - For Theorem 2w (T1, Route K): A15 is DISCHARGED as a separate binding item. Its only use in T1 is through B6 = (G2) (ledger §4.1 item 2; SOURCES_T2_KUNIF §2 table: U7). What T1 needs is: β_j is the whole-lattice coefficient (A15-def, a definition [V]) and β_j(0) equals the per-cell whole-lattice one-loop coefficient that Theorem K bounds (volume part = B6, verified reduction; identification part = B5, proved+verified). The g > 0 values enter T1 only through A5/(H0) (Lipschitz C_β), and A5 already presupposes the Z^d limit: the A5 sentence "It is a smooth function defined on [0, γ]" is about the β of (1.22) (p. 264 [V]). The shooting runs at one fixed K with the whole-lattice function (KUNIF, verified). No step of T1 compares a torus coefficient with β_j at g > 0.
+   New T1 Route K binding set: {A5} + B1–B7 + X5 (1 Group A, 7 Group B). Route B: {A5} + {B1, B6, B7, B9} + X1. Condition: B6 stays as listed (its own residue Q̃ surjectivity, (Gap_f), averaging analyticity).
+ - For T1 ⇒ Theorem 1 and for T2: A15 STAYS, narrowed to A15-loc = (Loc) for g > 0 + the boundary reading (f), both Balaban's p. 278 assertion; plus B8 for R-terms. Proposition A15-N reduces the coefficient-level consistency ("subtracting the whole-lattice β inside a finite torus leaves an irrelevant remainder") to (Loc): the remainder is ≤ C_je^{−m_jN_j}·|A|, an irrelevant term in Balaban's sense when N_j ≥ L^{k−j}-type sizes [I: irrelevance threshold not computed]. The ledger status of A15 for these targets: "reduced (R) to (Loc) + boundary reading (f) [both Balaban, p. 278]; coefficient level proved given (Loc) (this file); g = 0 closed by G2".
+ Suggested ledger edits (not made; editing is outside this task):
+ 1. A15 row: source column "(1.41)–(1.43)" → "CMP 109 (1.20)–(1.22), p. 264"; "p. 249" → "p. 253 (β quote), p. 259 ((2.24)–(2.27))".
+ 2. A15 "uses" column: drop "(G2) ⇒ T1"; T1 uses only A15-def (definition) and B6.
+ 3. §4.1/§5 counts: T1 Route K {A5, A15} → {A5}; T1 ⇒ Theorem 1 keeps A15 (narrowed). T2 count unchanged.
+ 4. TRUST_LEDGER l. 127 item 2 "B6 (G2, ⇐ A15)" → "B6 (G2)" (G2 needs no (Loc) at g = 0).
+
+## 9. Ledger
+ 1. CMP 109 (1.20)–(1.22), p. 264: β_{j+1}(g_j) = mixed second moment of the vacuum polarization tensor of E^{(j+1)}(g_j, ·) at U = 1, defined after the limit T^{(j+1)} ↗ Z^d; "This limit exists by the localized representation (1.7)". [V, image PDF 16]
+ 2. CMP 109 works on a periodic torus (§0, text l. 121–139). [P, text layer]
+ 3. CMP 119 p. 253: β_1 "defined in [I] by the formulas (1.41)-(1.43)"; the printed CMP 109 numbering is (1.20)–(1.22). [P text layer; numbering mismatch I]
+ 4. CMP 119 p. 259 (2.24)–(2.27), verbatim. [V, image PDF 17]
+ 5. CMP 109 p. 290 (4.35)–(4.36): local H_j(□_0) → free H_j, y-sums → Z⁴, X ⊂ □̃² → all X ∈ D_j^0; all differences exponentially small in (L^jη)^{−1} and booked as irrelevant. [V, image PDF 42]; p. 291 (4.37)–(4.40). [P text layer]
+ 6. Sect. 4 reuses the torus terms E^{(2)}(X) unchanged in the Z⁴ sum; it presupposes (Loc). [I]
+ 7. In Balaban's step no torus coefficient β_j^{(N)} appears; the whole-lattice β_j is subtracted and volume differences are irrelevant terms. [P from 4, 5]
+ 8. Proposition A15-N (i)–(iv): |β_j^{(N)} − β_j| ≤ C_jN_j^6e^{−m_jN_j/2} (moment form), + O(N_j^{−2}) (Fourier second-difference form); the (1.22) limit exists. [P given (Loc) [R: CMP 119 p. 278; walk-factor (L2) P in WG_FULL; assembly I], (Bd) [R: CMP 109 (1.18)], (H) [R: CMP 95/96 decay], (Cnt) [P]]
+ 9. Exact coefficient equality is false in general (image terms of H and wrapping polymers); term-wise equality for non-wrapping interior X is exact under (Loc). [P; N witness at g = 0 from G2 §7.1]
+ 10. G2 is the g = 0 case of item 8, proved without (Loc). [P]
+ 11. j-uniformity of m_j. [I; not needed for T1]
+ 12. Boundary half of p. 278 (X near ∂Λ_{k+1}) needs the interior reading; B-terms and change of variables (1.22) of CMP 119. [I]
+ 13. A15 leaves T1 Route K binding set: {A5, A15} → {A5}; stays (narrowed to (Loc) + item 12, plus B8) for T1 ⇒ Theorem 1 and T2. [P, by inspection of ledger §4.1 and KUNIF §2 uses]
+ 14. Ledger page/equation fixes listed in §8. [P]
+
+Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not opened. No existing file edited. Page images rendered to /tmp/a15img and deleted after use.
+
+STATUS: COMPLETE (unverified; needs an independent verifier pass, at least on items 8, 9, 13).

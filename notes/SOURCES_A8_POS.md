@@ -44,3 +44,22 @@ Alternative check without (a)–(d) piecewise: WC_FULL (1.1) gives ⟨B, Δ^{(k)
 3.2 Positivity [V-quote + P]. WC_FULL 0.10, verbatim with hypotheses: "Fix d ≥ 2 and odd L ≥ 3. There are M_1, M with M/M_1 > 3(6 + c_X) and M/M_1 > 10, a smallness α_*, a four-level chain of complex domains α′ ⊂ α″ ⊂ α‴ ⊂ a_1-domain, and constants γ_exp = ½min(½, c_G)γ_e(d, L) = ¼γ_e(d, L) > 0, ε″ > 0, ρ > 0, such that for every real regular U and every Z_0 as in 0.8: (i) (real lower bound) ⟨B̃, A_ZB̃⟩ ≥ γ_exp‖B̃‖² for all B̃ ∈ V_red(Z_0); … (iii) (complex points) at every U_c in the α′-space, Re⟨u, A_Z(U_c)u⟩ ≥ ½γ_exp‖u‖², C^{(k)}(Z_0; ·) is analytic there, and (ii) holds with 4/γ_exp → 8/γ_exp, ε → ε″". "Real regular" = (H1)–(H3) of A3 §0.5 with M ≥ max(M_1(d,L), L), Mα_0 ≤ α_*; Z_0 = union of M-cubes with dist(Z_0, Λ_k^c) > RM (WC 0.3, 0.8). Inputs of Theorem WC: R1–R4, C1–C2, I1–I9 (TRUST_LEDGER A2).
  With Lemma S: A_Z is real symmetric with spectrum in [γ_exp, Γ_1], where Γ_1 := sup over real points of ‖A_exp‖ ≤ Γ_1″ (WC 6.6: ‖A_exp‖ ≤ Γ_1″ on 𝒰(α″), which contains the real points). So C^{(k)}(Z_0) = A_Z^{−1} is real symmetric with Γ_1^{−1} ≤ A_Z^{−1} ≤ γ_exp^{−1}, and dμ_{C^{(k)}(Z_0)} is a positive normalized Gaussian on V_red(Z_0). [P]
 3.3 Note on "¼γ_e". The brief writes A_Z ≥ ¼γ_e; WC_FULL writes γ_exp = ¼γ_e(d,L). Same constant.
+
+## 4. Lemma D: the σ-truncation is a small perturbation of A_Z^{−1}
+4.1 Setting. Cauchy variables σ(Δ), Δ ∈ σ_0, with |σ(Δ)| ≤ e^{κ_1} (CMP 116 p. 5: |s(Δ)| ≤ e^{κ_1} [V pdftotext]). U_c in the α′-space of Theorem WC (real points included). Put D_σ := C^{(k)}(Z_0,σ) − A_Z^{−1} = Σ_{ω meets σ_0}(Π_{Δ met by ω}σ(Δ) − 1)T_ω, by (1.1). ℓ := LM is the side of the σ_0-cubes.
+4.2 Geometric inputs [I, stated as hypotheses].
+ (G1) Every σ_0-cube Δ obeys dist(Δ, Z_0) ≥ M. Reason: Δ is disjoint from the interior of Z̃_0 (p. 13), and Z̃_0 is Z_0 with one full layer of M-cubes adjoined (WC 0.8).
+ (G2) Every localization domain of a walk of Theorem WC has diameter ≤ c′M_1, c′ = c′(d) (boxes □⁺ of WC 5.2(a): side (K_1 + 2K_0)M_1), and d(ω, b, b′) is the length of a shortest tree that meets b, b′ and all domains of ω.
+ (G3) Cube count: a tree of length D can be cut into ≤ 2(1 + D/ℓ) pieces of diameter ≤ ℓ (standard). The c′M_1-neighbourhood of one piece has diameter ≤ 2ℓ when c′M_1 ≤ ℓ/2, and so meets ≤ 3^d cubes. Hence a walk meets m ≤ 2·3^d(1 + d(ω,b,b′)/ℓ) cubes of σ_0.
+ (G4) Walk count: W := sup_b Σ_{b′}Σ_{ω: b→b′}(c_1ρ)^{|ω|}e^{−(ε″/8)d(ω,b,b′)} < ∞, the same count that gives the absolute convergence in Theorem WC(ii)–(iii), with rate ½ε″ lowered to ε″/8 [R to WC (ii); the count is driven by (c_1ρ)^{|ω|}]. W is symmetric in the roles of b, b′ (the count is the same from either end) [I].
+4.3 Statement [P given (G1)–(G4) and Theorem WC(ii)–(iii)]. Assume
+ (H_κ) ℓ = LM ≥ 16·3^dκ_1/ε″, and (H_M) M ≥ 2c′M_1.
+Then for every σ with |σ(Δ)| ≤ e^{κ_1} and every U_c in the α′-space,
+ ‖D_σ‖ ≤ η_M := (16/γ_exp)·e^{2·3^dκ_1}·W·e^{−ε″M/4}.
+The same bound holds for the kernel in the weighted form |D_σ(b,b′)| ≤ (16/γ_exp)e^{2·3^dκ_1}e^{−ε″M/4}Σ_ω(c_1ρ)^{|ω|}e^{−(ε″/8)d(ω,b,b′)}, so D_σ is (2.16)-type: small times exponential decay.
+4.4 Proof. Fix b, b′ ∈ Z_0 and a walk ω that meets σ_0. Write D := d(ω, b, b′).
+ Step 1 (length). Some domain X of ω meets a σ_0-cube Δ. By (G1)–(G2), dist(b, X) ≥ M − c′M_1 ≥ M/2 by (H_M), and the same for b′. A tree through b, b′, and X has length ≥ dist(b,X) + dist(X,b′) ≥ M. So D ≥ M. Also D ≥ |b − b′|.
+ Step 2 (weight). |Πσ − 1| ≤ 1 + e^{κ_1m} ≤ 2e^{κ_1m} ≤ 2e^{2·3^dκ_1}e^{2·3^dκ_1D/ℓ} ≤ 2e^{2·3^dκ_1}e^{(ε″/8)D}, by (G3) and (H_κ).
+ Step 3 (walk bound). Theorem WC(iii): |T_ω(b,b′)| ≤ (8/γ_exp)(c_1ρ)^{|ω|}e^{−½ε″D} (at real points the better 4/γ_exp, ½ε holds; the complex constants dominate).
+ Step 4. Multiply: |(Πσ − 1)T_ω(b,b′)| ≤ (16/γ_exp)e^{2·3^dκ_1}(c_1ρ)^{|ω|}e^{−(3/8)ε″D}. Split e^{−(3/8)ε″D} = e^{−(1/4)ε″D}e^{−(1/8)ε″D} ≤ e^{−ε″M/4}e^{−(ε″/8)D} by Step 1. Sum over ω, then Schur's test with (G4). ∎
+4.5 Remark. At σ ≡ 0 the weight is |0 − 1| = 1, so the bound holds without the e^{2·3^dκ_1} factor. Lemma D is the "backup route" of SOURCES_LOC §4 ("Needs the walk bound for the C(Z_0) expansion of [13], not read"); Theorem WC now supplies that walk bound.

@@ -87,7 +87,35 @@ def support(loops, cpath):
             if sg < 0: t[k] -= 1
             S.add((tuple(t), k))
     return sorted(S)
+def bond_of(st):
+    s, k, sg = st; t = list(s)
+    if sg < 0: t[k] -= 1
+    return (tuple(t), k)
 def fd_row(cm, mu, phi, bonds, eps=1e-5):
+    """Exact same nonlinear map as average(), but recomputes only the loops through the perturbed bond."""
+    loops, cpath = build_loops(cm, mu)
+    logs0 = [log_su2(hol(lp, phi, {})) for (_, lp) in loops]
+    Z0 = sum(w * l0 for (w, _), l0 in zip(loops, logs0))
+    idx = {}
+    for i, (_, lp) in enumerate(loops):
+        for st in lp: idx.setdefault(bond_of(st), set()).add(i)
+    def avg(pert):
+        (bd,) = pert.keys(); Z = Z0.copy()
+        for i in idx.get(bd, ()):
+            w, lp = loops[i]; Z = Z + w * (log_su2(hol(lp, phi, pert)) - logs0[i])
+        return expm_su2(Z) @ hol(cpath, phi, pert)
+    Ub0 = expm_su2(Z0) @ hol(cpath, phi, {})
+    res = {}
+    for bd in bonds:
+        J = np.zeros((3, 3))
+        for a in range(3):
+            v = np.zeros(3); v[a] = eps
+            Vp = coarse_V(avg({bd: v}), Ub0)
+            Vm = coarse_V(avg({bd: -v}), Ub0)
+            J[:, a] = (Vp - Vm) / (2 * eps)
+        res[bd] = J
+    return res, loops, cpath
+def fd_row_slow(cm, mu, phi, bonds, eps=1e-5):
     loops, cpath = build_loops(cm, mu)
     Ub0 = average(loops, cpath, phi, {})
     res = {}
