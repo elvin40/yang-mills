@@ -17,3 +17,14 @@
 - CORRECTION: the product form (1−θ_g)(1−θ_W)(1−τ_C) is not justified. D3W8 §1.1: w_k = g_k^{−2} + d_B + d_S, additive; d_S does not scale with u. At complex u: Re w ≥ (Re u − |d_B + d_S| − |δw|) ≥ (0.82645 − θ_W)x^{−2}. Safe g* = (0.82645 − θ_W)(1 − τ_C) (or 0.82645 − θ_W for the P/Q/R factors, which are all Wilson, FX_O23_VERIFY §3 remark).
   With θ_W = ¼ (allowed by θ_W + τ_C ≤ ¼): g* = 0.5764, option B c = 26.2, not 16.69. c ≤ 17 needs g* ≥ ½ + 2/17 = 0.6176, i.e. θ_W + τ_C ≤ 0.2088. Fix: require θ_W + τ_C ≤ 0.2 (then g* ≥ 0.6264, c ≤ 15.8). Both are O(γ²r), so this only lowers γ.
   Option A uniform 20: with θ_W = τ_C = ½ in additive form g* = 0.163, c = 24.5 > 20. It holds if τ_C is dropped for the Wilson factors (g* ≥ 0.326, c = 12.3) or if θ_W ≤ 0.44, τ_C ≤ ½... simplest: state option A as c = 4/g* with the additive g*.
+
+## V3. p. 383 image (PDF 29, 400 dpi crop) [V]
+- Printed: exp(−½γ_0[6(d+3)(100M(L+1)N^{β_0}R_j)^{d+2}]^{−1}A_1²p_1(g_j)) < exp(−R_j^{−d−5}p_1²(g_j)). Then "We assume that 2p_1 − (d+5)r_0 > p_0, and we estimate the factors by exp(−p_0(g_j))".
+- CORRECTION (minor): coefficient is ½γ_0, not ¼γ_0 (MB L9); N^{β_0}, not Nβ_0. Left side prints p_1(g_j), right side p_1²: left is a misprint for p_1² (from |B(b)|² ≥ A_1²p_1² via (1.78)). Not load-bearing.
+- Tolerance: Balaban drops the constant into R_j^{−3}-type slack (R_j → ∞ as g → 0), then uses the log-power gap. A fixed factor g* > 0 multiplies the left exponent and is absorbed the same way, for g small. So the factor tolerates ANY fixed g* > 0; MB's "≥ 0.21" is true but not sharp. CONFIRMED.
+- Same page: Gaussian costs exp O(1)|Z_j ∩ Ω_j|, sequences exp O(1)(MR_j)^{−d}|Z_j|, group integrals "estimated by 1"; (1.79) display MATCHES MB L11 (O(1) = C_c; ½γ_0A_1²p_0²(d′+1) + 2p_0; Π′exp(−p_0)). (1.77): quadratic form ≥ γ_0Σ|∂B|² − O(1)A_0A_1²B_3⁴B_5M^{d+6}R_j^{d+3}p_0p_1²g_j: γ_0 from (1.7), a quadratic-form factor, so here (1 − τ_C) does enter.
+
+## V4. p. 389 image (PDF 35) [V]
+- Printed: "We assume that g_k is so small that −2(1+β_0)^{−1}p_0(g_k) + 1 + 2κ(100R_k)^d ≤ −(3/2)p_0(g_k) (for example, take β_0 = 1/7, then this means that −(1/4)p_0(g_k) + 1 + 2κ(100R_k)^d ≤ 0, and before we had stronger restrictions on p_0(g_k))". RHS −(3/2)p_0 is legible at 130 dpi.
+- Algebra: 2·(7/8) − 3/2 = ¼, so p_0 ≥ 4 + 8κ(100R_k)^d. MATCHES MB L22. No γ_0, no C_c, no A_1. Unchanged under the perturbation once p_0 is evaluated at x*_k. CONFIRMED.
+- (1.95)–(1.97) on the image use p_0 only through exp(−q(3/2)p_0)c_0, exp(−½p_0)100^dR_k^{−d} ≤ βκ/(6·2^d). Unchanged. CONFIRMED.

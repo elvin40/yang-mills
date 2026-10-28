@@ -16,3 +16,10 @@ Better route [P]: no invertibility of M_1 is needed. On {QA = B}, ⟨A,G_1^{−1
 ## 3. CMP 99 pp. 396–397 [V text]
 (3.35), (3.36) as SOURCES_CDC §4 quotes. In unit units (j = k, L^kη = 1): |A|, |∇A|, |∂*∂A| all ≤ O(1)Mα_0. CONFIRMED.
 Small correction to §5.2: J = D*η^{−2}Im∂U is D* of the curvature, i.e. a SECOND derivative of A, not a third. (3.36) bounds exactly this second derivative. The conclusion |J| = O(Mα_0) in unit units stands.
+
+## 4. CMP 95 pp. 33–34 [V text] and K_0 numerics [N]
+p. 33: R = I − P, P = Δ^{−1}Q′*(Q′Δ^{−2}Q′*)^{−1}Q′Δ^{−1} = X(X*X)^{−1}X* with X = Δ^{−1}Q′*. So R is an orthogonal projection in the free case. (1.95), (1.97): the extra constraint Rd*A = 0 is automatic, so H_k is the min over QA = B alone. (1.99)–(1.100) as quoted.
+K_0 [P]. From (1.99), QGQ* ≥ a^{−1}(φ−1)φ^{−1} (third term ≥ 0). With φ = 1 + aT (KAPPA_D): (QGQ*)^{−1} ≤ a + 1/T. So N_0^{−1} = (QGQ*)^{−1} − a ≤ 1/T and K_0 ≤ 1/inf T = a(κ − 1). This is a-free because T has no a. It is an upper bound (the third term of (1.99) is dropped), not proved equal.
+Numbers [N, recomputed, k → ∞ corner sum]: d = 4: 1/inf T = 195.19 (= κ_4 − 1 at a = 1). d = 3: 126.85. Matches KAPPA_D (196.188, 127.853). The "inf at the corner (π,…,π)" and "κ increasing in N" are KAPPA_D numerics [N], not proofs.
+Crude bound check [P]: s(q) ≥ (2/π)² on |q| ≤ π and Δ(p′) ≤ dπ², so the l′ = 0 term gives K_0 ≤ dπ²(π/2)^{2(d+1)} = 3610 (d = 4). The author's dπ²(π/2)^{4d} = 54235 is valid (d+1 ≤ 2d sinc factors) but 15× looser than needed; the true value is 195.19.
+Multiscale caveat [P/I]. CMP 95 is single-scale (Q = composite k-step average on all of T). CMP 99's Q acts on the multiscale lattice 𝔅. For B supported in Λ the constraint Q_𝔅A = B also forces zero averages in the finer regions Λ_j, j < k. The min-energy is then ≥ the single-scale min, so CMP 95 gives K_0 only after a correction e^{−δ RM} from dist(Λ, Λ_k^c) > RM and exponential decay of the single-scale minimizer [I]. "Free case PROVED" holds for single-scale U = 1; for the multiscale free G_0 it needs this step.
