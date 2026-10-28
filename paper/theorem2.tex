@@ -323,10 +323,17 @@ Source: \file{B2_TWOSTEP.md} \S1--\S3; \file{B2_TWOSTEP_VERIFY.md} grades 1, 3, 
 \text{(H2)}\quad\rho_2=\sup_{j\ge2}\sup_{K\in\BZ\text{ real}}\|(\oplus_lH_{j-1}(k_l))H_j(K)\|/L^2<L.
 \]
 (H2) is a plain operator-norm inequality on real $K$. It uses no strip, no $\Delta$-relative weight, and only $n=2$.
+\begin{theorem}[Theorem C1 of \file{B2_TWOSTEP}]\label{thm:C1}
+(H2) $\Rightarrow$ ($C1\sigma$), with contraction factor $q_1=\rho_2^2/L^2$ on the derivative.
+\end{theorem}
+\begin{theorem}[Theorem B2 of \file{B2_TWOSTEP}]\label{thm:B2}
+(H2) $\Rightarrow$ (B2), hence (B2w), in plain sup norm, with factor $q_2=\rho_2^2/L^4$.
+\end{theorem}
+Here ($C1\sigma$) is $\sup_j\sup_K|\partial_K\sigma_j^{(1)}(K)|<\infty$ (Section~\ref{sec:B2proved}). The verified points are these.
 \begin{itemize}
 \item Two-step map. $\mathcal A_j\mathcal A_{j-1}s=L^{-4}H_{(2)}^\dagger(\oplus s)H_{(2)}$, with $dk_{l,l'}/dK=L^{-2}$ [CONFIRMED, grade 1].
-\item Theorem C1: (H2) $\Rightarrow$ ($C1\sigma$), with contraction factor $q_1=\rho_2^2/L^2$ on the derivative. The chain-rule gain is exactly $L^{-2}$ per two steps on real $K$. So the threshold is $\rho_2<L$, not $\sqrt{L^2-1}$: no strip-Cauchy loss enters. The large constants ($b(L)$ of O6, $\eta_1$, $\eta_2$, $G_1$) enter only the source term, not the contraction factor [CONFIRMED, grade 3].
-\item Theorem B2: (H2) $\Rightarrow$ (B2), hence (B2w), in plain sup norm, with factor $q_2=\rho_2^2/L^4$. This contraction needs only $\rho_2<L^2$, which (H2) implies [CONFIRMED, grade 3]. In one step it is Prop.\ 4.1's (h).
+\item Theorem~\ref{thm:C1}. The chain-rule gain is exactly $L^{-2}$ per two steps on real $K$. So the threshold is $\rho_2<L$, not $\sqrt{L^2-1}$: no strip-Cauchy loss enters. The large constants ($b(L)$ of O6, $\eta_1$, $\eta_2$, $G_1$) enter only the source term, not the contraction factor [CONFIRMED, grade 3].
+\item Theorem~\ref{thm:B2}. This contraction needs only $\rho_2<L^2$, which (H2) implies [CONFIRMED, grade 3]. In one step it is Prop.\ 4.1's (h).
 \item (H2) vs (H$''$). (H2) is the plain operator norm of the same matrix as \file{U3_AW} (H$''$) at $n=2$. It is weaker: threshold $L$ (3 at $L=3$) against $\sqrt{L^2-1}$ (2.828), real $K$ only, $n=2$ only [CONFIRMED, grade 4]. (H$''$) $\Rightarrow$ (B2) stays \status{argued} and is no longer needed.
 \item Form of $Q_j$ (G3) [CONFIRMED by read-off of \file{U3_AW} (1.2)/(3.3) and P10]: $\partial\sigma^{(1)}$ enters linearly. \file{U3_LEMMA51} (3.3) itself was not re-derived from the Moyal rule by either party.
 \item Not covered: $C^2$ and $C^3$ bounds on $\sigma^{(1)}$ under (H2) (\file{B2_TWOSTEP} \S5, ``look routine'', not written, not graded). They are not needed for (B2).

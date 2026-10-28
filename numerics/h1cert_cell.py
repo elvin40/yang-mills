@@ -44,7 +44,7 @@ def axis_data(L, Kc_i, h, M, N):
                 else: sg = (k / 2).sin() / (M * (q / (2 * M)).sin())
                 qt2 = (2 * M * (q / (2 * M)).sin())**2
             s2.append(sg * sg); q2.append(qt2)
-        out.append((kh, s2, q2, sum(s2, arb(0))))
+        out.append((kh, s2, q2, sum(s2, arb(0)), k))
     return out
 
 
@@ -85,23 +85,21 @@ def d_enclosure(L, ax, M, N, h):
 def tail_inf(L, ax, N, h):
     """M = inf tail (|n|_inf > N) of d_mu at all blocks, as h2cert_proto.tail_enclosure (H2_CERTIFY sec. 2(iv)) with
     q_min = pi(2N+1) - h/L (|k'| <= pi + h/L), per-axis pieces in arb, block combination in float with outward factors.
-    One large component rho0: U2 = sum_{|n|>N} 4s^2/q^4 = (1/s^2 - 2/3)/4 - box, U4 = sum 16 s^4/q^6 = (1/s^2 - 1 + 2s^2/15)/4 - box;
-    if s^2 < 1e-6 (K near 0) the crude 0 <= U2 <= 8 s^2 / (6 pi c^3), 0 <= U4 <= 32 s^4 / (10 pi c^5), c = 2 pi N - pi - h/L.
+    One large component rho0: U2 = sum_{|n|>N} 4s^2/q^4, U4 = sum_{|n|>N} 16 s^4/q^6, E = sum_{|n|>N} 4s^2/q^2, all by Hurwitz zeta
+    (no cancellation, valid at k = 0; the closed-form-minus-box of the prototype loses everything on intervals).
     1/(q^2 + R) in [(1 - R/q_min^2)/q^2, 1/q^2]. Two or more large: [0, sum_pairs E_a E_b / (2 q_min^2)], E = 1 - sum_box s2."""
-    qmin2 = (PI * (2 * N + 1) - arb(h) / L)**2; c = 2 * PI * N - PI - arb(h) / L
+    qmin2 = (PI * (2 * N + 1) - arb(h) / L)**2
     P = {key: np.zeros((4, L, 2)) for key in ("U2", "U4", "A1", "A2", "B1", "B2", "E")}
     for i in range(4):
         for l in range(L):
-            kh, s2, q2, _ = ax[i][l]
+            kh, s2, q2, _, k = ax[i][l]
             ss = (kh.real**2 + kh.imag**2) / 4
             A1 = sum(s2, arb(0)); A2 = sum((a * a for a in s2), arb(0))
             B1 = sum((a * b for a, b in zip(s2, q2)), arb(0)); B2 = sum((a * a * b for a, b in zip(s2, q2)), arb(0))
-            if ss.lower() > 1e-6:
-                U2 = (1 / ss - arb(2) / 3) / 4 - sum((a / b for a, b in zip(s2, q2)), arb(0))
-                U4 = (1 / ss - 1 + 2 * ss / 15) / 4 - sum((a * a / b for a, b in zip(s2, q2)), arb(0))
-            else:
-                U2 = arb(0).union(8 * ss / (6 * PI * c**3)); U4 = arb(0).union(32 * ss * ss / (10 * PI * c**5))
-            for key, v in (("U2", U2), ("U4", U4), ("A1", A1), ("A2", A2), ("B1", B1), ("B2", B2), ("E", 1 - A1)):
+            kap = k / (2 * PI)                                              # k'/(2 pi), |k'| <= pi + h/L
+            Z = lambda p: arb(p).zeta(N + 1 + kap) + arb(p).zeta(N + 1 - kap)  # sum_{|n|>N} (n + kap)^-p, Hurwitz
+            U2 = 4 * ss * Z(4) / (2 * PI)**4; U4 = 16 * ss * ss * Z(6) / (2 * PI)**6; Et = 4 * ss * Z(2) / (2 * PI)**2
+            for key, v in (("U2", U2), ("U4", U4), ("A1", A1), ("A2", A2), ("B1", B1), ("B2", B2), ("E", Et)):
                 P[key][i, l] = [max(float(v.lower()), 0.0), float(v.upper())]
     g = 1 + 64 * U
     def blk(key, i, side):  # (L,L,L,L) broadcast of axis i values
@@ -162,35 +160,6 @@ def lam_max_upper(G):
     return arb(t) + e.sqrt()
 
 
-def _mat(X): return acb_mat([[acb(z.real, z.imag) for z in r] for r in np.atleast_2d(X)])
-def _mid(B): return np.array([[complex(float(B[i, j].real.mid()), float(B[i, j].imag.mid())) for j in range(B.ncols())] for i in range(B.nrows())])
-def _radF(B, C):  # rigorous upper bound on sup ||B - C||_F over the ball matrix B (C exact)
-    e = arb(0)
-    for i in range(B.nrows()):
-        for j in range(B.ncols()): e += (B[i, j] - C[i, j]).abs_upper()**2
-    return arb(e.sqrt().upper())
-def _norm2(X):  # rigorous upper bound on ||X||_2 for an exact float matrix X
-    return arb(lam_max_upper(_mat(X.conj().T @ X)).sqrt().upper()) if X.shape[0] >= X.shape[1] else _norm2(X.conj().T)
-
-
-def outer_bound(S, R):
-    """Upper bound on sup ||R^{1/2} (S^-1)[:, :4]||_2 = sqrt(lambda_max(Sc^dag R Sc)) over the ball matrices S, R.
-    Oishi-Rump: X = float inv(S_mid), ||I - X S|| <= ||I - X S_mid||_F + ||X|| r_S =: eta < 1, ||S^-1 - X|| <= ||X|| eta / (1 - eta) =: eps.
-    Then Sc = X_c + Delta, ||Delta|| <= eps, and with R = R_h + dR (R_h = Hermitian mid, ||dR|| <= r_R):
-    lambda_max(Sc^dag R Sc) <= lambda_max(X_c^dag R_h X_c) + 2 ||R_h X_c|| eps + ||R_h|| eps^2 + (||X_c|| + eps)^2 r_R."""
-    Sm = _mid(S); X = np.linalg.inv(Sm); Sma, Xa = _mat(Sm), _mat(X)
-    I5 = acb_mat(5, 5, [1 if i == j else 0 for i in range(5) for j in range(5)])
-    nX = _norm2(X); rS = _radF(S, Sma)
-    eta = _radF(I5 - Xa * Sma, acb_mat(5, 5)) + nX * rS
-    assert eta < 1, eta
-    eps = nX * eta / (1 - eta)
-    Rm = _mid(R); Rh = (Rm + Rm.conj().T) / 2; rR = _radF(R, _mat(Rh))
-    Xc = X[:, :4]
-    lam = lam_max_upper(_mat(Xc.conj().T) * _mat(Rh) * _mat(Xc)) + 2 * _norm2(Rh @ Xc) * eps + _norm2(Rh) * eps**2 \
-        + (_norm2(Xc) + eps)**2 * rR
-    return arb(lam.sqrt().upper())
-
-
 def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
     """Certified upper bound on sup_{K in cell} rho_1(j, K) (arb), or None if the cell touches the K = 0 block."""
     t0 = time.time(); pf = pf if pf is not None else prof(L)
@@ -199,8 +168,10 @@ def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
     dlo, dhi = d_enclosure(L, ax, M, N, h)
     Ec, Er = qrows(L, pf, Kf, h)
     t1 = time.time()
-    Ssum = acb_mat(5, 5); Rsum = acb_mat(5, 5)
+    T = acb_mat(4, 4); T2 = acb_mat(4, 4); bsum = acb(0); sig = arb(0)
     I4 = acb_mat(4, 4, [1 if i == j else 0 for i in range(4) for j in range(4)])
+    Kh = acb_mat([[acb(0, Kc[i] + arb(0, h)).exp() - 1] for i in range(4)]); Kn2 = sum((Kh[i, 0].real**2 + Kh[i, 0].imag**2 for i in range(4)), arb(0))
+    if not (Kn2 > 0): return None                                      # cell touches K = 0
     for idx, (l0, l1, l2, l3) in enumerate(np.ndindex(L, L, L, L)):
         kh = [ax[0][l0][0], ax[1][l1][0], ax[2][l2][0], ax[3][l3][0]]
         a2 = sum((x.real**2 + x.imag**2 for x in kh), arb(0))
@@ -208,17 +179,18 @@ def cell_bound(L, M, Kc, h, N=3, pf=None, log=None):
         khm = acb_mat([[x] for x in kh])
         P = I4 - khm * khm.conjugate().transpose() / a2
         D = acb_mat(4, 4, [ball(dlo[idx, i], dhi[idx, i]) if i == j else 0 for i in range(4) for j in range(4)])
-        rows = [[acb(arb(Ec[idx, m, r].real, Er[idx, m, r]), arb(Ec[idx, m, r].imag, Er[idx, m, r])) for r in range(4)] for m in range(4)]
-        rows.append([(-x).conjugate() for x in kh])                     # aux row: E[4, r] = conj(1 - e^{ik_r})
-        E = acb_mat(rows)
-        Z = E * P; ZD = Z * D; w = E * khm; ww = w * w.conjugate().transpose()
-        Ssum += ZD * Z.conjugate().transpose() + ww / (a2 * a2)
-        Rsum += ZD * P * D * Z.conjugate().transpose() + ww / (a2 * a2 * a2)
+        Eq = acb_mat([[acb(arb(Ec[idx, m, r].real, Er[idx, m, r]), arb(Ec[idx, m, r].imag, Er[idx, m, r])) for r in range(4)] for m in range(4)])
+        EP = Eq * P; EPD = EP * D
+        T += EPD * EP.conjugate().transpose(); T2 += EPD * P * EPD.conjugate().transpose()
+        bsum += (Kh.conjugate().transpose() * Eq * khm)[0, 0] / a2    # phi_l |Kh|^2 / a2  (E_q kh = phi Kh, premise P4)
+        sig += 1 / a2
     s2 = arb(1) / L**4
-    S = acb_mat(5, 5, [1 if i == j == 4 else 0 for i in range(5) for j in range(5)]) - Ssum * s2
-    R = Rsum * s2
-    ub = outer_bound(S, R) / L
-    if log: log(f"  d,E {t1-t0:.1f}s, blocks {time.time()-t1:.1f}s; max rad S {max(float(S[i,j].rad()) for i in range(5) for j in range(5)):.2e}")
+    T, T2, beta, sig = T * s2, T2 * s2, bsum * s2 / Kn2, sig * s2
+    Ti = T.inv(); u = Ti * Kh; c = (Kh.conjugate().transpose() * u)[0, 0]
+    Z = Ti - u * u.conjugate().transpose() / c                          # (P T P)^+ on Kh-perp
+    G = Z * T2 * Z + u * u.conjugate().transpose() * (sig / (c.abs_lower()**2 * beta.abs_lower()**2))
+    ub = arb((lam_max_upper(G).sqrt() / L).upper())
+    if log: log(f"  d,E {t1-t0:.1f}s, blocks {time.time()-t1:.1f}s; max rel rad T {max(float(T[i,j].rad()) for i in range(4) for j in range(4)) / float(T[0,0].real.mid()):.2e}, |beta| {float(beta.abs_lower()):.4f}")
     return ub
 
 
