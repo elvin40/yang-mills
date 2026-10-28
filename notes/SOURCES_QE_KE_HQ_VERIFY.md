@@ -22,3 +22,9 @@ p. 249: (2.150) (HB)(b) = Σ_{c∈𝔅}(L^{j(c)}η)^dH(b,c)B(c); (2.151) |H|, |�
 Verdict: the H of Cor. 2.8 is H = GQ*(QGQ*)^{−1} with Q = (Q_0 = 1 on Λ_0; straight-line Q_j on Λ_j). No switch to (1.8) on any page read. Interfaces and the Λ_0 rows are inside the SAME operator Q and the same identity QH = I.
 Side remark [R, not load-bearing for (KE′)]: at an interface bond c ∈ Λ_j with c_+ ∈ Ω_{j+1}^{(j)}, the group (2.7) constrains only Q′_{j+1}λ at c_+, not Q′_jλ(c_+). So invariance of that row is not obvious as printed. This affects Balaban's orbit argument, not the identity QH = I, which follows from (2.35) directly.
 
+## 3. CMP 98 pp. 27, 31 page images (pdf 11, 15) [V]
+p. 27, quoted: "we make a gauge transformation λ satisfying (Q′λ)(y) = Σ_{x∈B(y)}L^{−d}λ(x) = 0. Such a transformation does not change the average given by (1.11) in [2], and this is very important because the explicit representations of propagators, and other formulas, hold for this specific form of the averaging operation." Reference [2] = Balaban, CMP 95, 17–40 (1984) (reference list, p. 51). Author's §1.7 CONFIRMED verbatim.
+(55)–(58): V = V′V_0, R(X)Y = XYX^{−1}; axial condition (R_{0,y}V′)(Γ_{y,x}) = Π_{b⊂Γ_{y,x}}R(V_0(Γ_{y,b_−}))V′_b = 1, x ∈ B(y).
+p. 31: (89) (R̄(V_0)V_1)_c = (R̄_{0,c_−}V_1)^{−1}Ṽ_1R̄_{0,c}R̄_{0,c_+}V_1, Ṽ_1 := (V_1V_0)‾_c(V̄_0)_c^{−1} (the (59) object). (90)–(91): Ū_1 = R̄(U_0)U_1, Ū_1^{j+1} = R̄(Ū_0^j)Ū_1^j — composition of one-step operations with background V_0 = Ū_0^j. (92) the k-th order operation equals this composition. The background sequence Ū_0^j itself is the j-fold one-step average (63) of U_0.
+Note: (89) is a statement about V_1 (fluctuation) relative to V_0; for (iii) the relevant object is the background average Ū_0^{j+1} = (Ū_0^j)‾ via (63). Reading (61)–(63) next.
+

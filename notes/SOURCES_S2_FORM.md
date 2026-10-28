@@ -68,3 +68,23 @@ Notation: ‖DA‖ = curl norm (3.4), ‖D*A‖ = divergence norm (3.8), ‖ℓ^
 - So C_Π = C_Π(d, L) and K = K(d, L, a) once Mα_0 ≤ a_0 and RM satisfies (2.59) at α = 1/2 and the QE_INV conditions. Uniform in j, k, η, volume, {Ω_j}, and regular U.
 - Relation to A1's input (K). Route Π does not use Theorem 3.3 for G or (3.131). It uses Theorem 3.1 for G′, which Balaban proves before G (CMP 99 Sect. C, ends p. ~412 "completed the proof of Theorem 3.1"). So there is no circularity with the order of A1_KERNEL §9.
 - G_1 clause [P-sketch]. A1 §9 needs the same form bound for Δ^{(2)}_π (3.135). That is a different operator (built from Δ^{(2)}, (3.136)–(3.137)); route Π does not cover it. A1 §9 states its own [I] for it ("from (3.137) via Schur"). (3.137) is a pointwise kernel bound |Δ^{(2)}A| ≤ O(1)Mα_0ℓ^{−2}|A| per A1 §9; if it is a local kernel, the same Π3-type Schur applies with sharp cut-offs on the input and no derivatives. Not checked here.
+
+## 6. Ledger and status
+[V] (3.131) as printed: bilinear Δ′_π bound, L¹ × sup, one block per argument (p. 422 image).
+[V] (3.119)–(3.120) structure; R orthogonal projection (3.20)–(3.21); G′ = (Δ_U + Q′*aQ′)^{−1}, Dirichlet on Ω_0 (3.23)–(3.25); Δ = D*D + Δ′ (3.10) (pdftotext, formulas partly garbled).
+[V] Theorem 3.1 (3.46) L² block bounds (p. 398 image). Proof printed in CMP 99, jointly with Theorem 3.3 for G_0 (text p. 398 "We will do it together with ... G(U)"; "completed the proof of Theorem 3.1" in Sect. C). Proof not re-checked here.
+[V] CMP 96 Lemma 2.1 (2.61) (p. 234 image).
+[P] §2: unit analysis. Sharp cut → η^{−1} on the sup side only (L¹ side is fine). Smooth block cut-off → O(1/ℓ), constant factor, as the brief said. But a smooth partition cannot have one-block supports, so the brief's route needs (3.131) on Δ̃(y): NOT printed → that route stalls.
+[P] Π1 curl of gradient = η^{−2}(Ad U(∂p) − 1)λ(z) (exact telescoping). [I-conv] sign/transport conventions of (3.3)–(3.4) taken from the garbled text; the modulus bound does not depend on them.
+[P] Π2 |⟨A, Δ′A⟩| ≤ κ′Mα_0‖ℓ^{−1}A‖² from (3.10) + (3.35).
+[P] Π3 ‖ℓ^{−2}λ‖, ‖ℓ^{−1}Dλ‖ ≤ B_0c_1‖D*A‖ from (3.46) + (2.61). Sharp input cut-offs are harmless here.
+[P] 4.1 |⟨A, Δ′_πA⟩| ≤ C_ΠMα_0(‖DA‖² + ‖D*A‖² + ‖ℓ^{−1}A‖²) for ALL A. This is S2 in the form of A1_KERNEL §13.
+[P] 4.2 G^{−1} ≤ (1 + C_ΠMα_0)(D*D + DD*) + (κ′ + C_Π)Mα_0ℓ^{−2} + Q*aQ (operator inequality).
+[P given (KE′), QE_INV 5.1 and 5.3] 4.3 ⟨𝓔_UX, G^{−1}𝓔_UX⟩ ≤ K‖X‖²_S, K = K(d, L, a), uniform (§5).
+[I-a] Normalization of Q*aQ for the gauge field (a vs. scale-dependent a_j with ℓ^{d−2} weights, cf. (3.24) for Q′). Either way a‖QA‖² ≤ a_max‖B‖²_S with a_max = sup_j a_j < ∞ (the a_j recursion of (3.24) converges). Replace (9/4)a by (9/4)a_max in K if needed.
+[I-a1] Theorem 3.1 is stated for a = 1. Route Π uses G′ with the a of the model; Balaban takes a = 1 in these theorems. If another a is used, Theorem 3.1 must hold for it (same proof).
+[I-geom] The cubes Δ(y), y ∈ 𝔅, partition Ω_0 (inherited, A1_KERNEL §5).
+[open, not S2] The G_1 analogue for Δ^{(2)}_π (§5 last item).
+
+Status. S2 is CLOSED [P given (KE′) + QE_INV 5.1/5.3 + printed CMP 99 Theorem 3.1, (3.10), (3.119), (3.20)–(3.21), (3.35), and CMP 96 Lemma 2.1]. It does NOT need (3.131): route Π replaces it. The planned route via (3.131) STALLS at "(3.131) for supports in Δ̃(y)" and is not needed. Downstream: QE_INV 5.4 and A1_KERNEL §8 used "G^{−1} ≤ (1 + O(Mα_0))(D*D + DD*) + Q*aQ" without the ℓ^{−2} term; 4.2 shows an extra O(Mα_0)ℓ^{−2} term, harmless for the upper bound because (KE′) controls ‖ℓ^{−1}𝓔_UX‖ (4.3). Needs an independent verifier before it carries weight.
+No STALL section needed for the S2 target itself.
