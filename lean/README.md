@@ -1,14 +1,33 @@
-# Lean 4 formalization of Lemmas D′, D, E, H
+# Lean 4 formalization (17 files)
 
-Files (no `sorry`): `YmLean/LemmaDPrime.lean` (405 lines, `YmLean.lemma_DPrime`), `YmLean/LemmaDE.lean` (162 lines), `YmLean/LemmaH.lean` (132 lines). Statement check of Lemma D′: `VERIFY_LemmaDPrime.md`. Added 2026-10-27: `YmLean/DetIdentities.lean` (143 lines), `YmLean/Telescoping.lean` (127 lines), `YmLean/AbelianCount.lean` (55 lines), all without `sorry`. Added 2026-10-27: `YmLean/LemmaDDoublePrime.lean` (146 lines, `YmLean.lemma_DDoublePrime`), without `sorry`. Added 2026-10-27: `YmLean/TheoremK.lean` (45 lines) and `YmLean/Gronwall.lean` (56 lines), without `sorry`; statement check `VERIFY_TheoremK.md`.
-Source: `../LEMMA_DPRIME.md` §1–§2 (Steps 0–7), verified in `../LEMMA_DPRIME_VERIFY.md`.
+No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
+
+| File (`YmLean/`) | Theorems (lines) | Markdown source | VERIFY file |
+|---|---|---|---|
+| `LemmaDPrime.lean` | `lemma_DPrime` (405 lines) | LEMMA_DPRIME.md §1–§2 | VERIFY_LemmaDPrime.md |
+| `LemmaDE.lean` | `lemma_D`, `lemma_E`, `lemma_DE`, `lemma_DPrime_step8`, `g₁_of_J_zero` (162) | LEMMAS.md; LEMMA_DPRIME.md step 8 | none (LEMMAS_DE_VERIFY.md) |
+| `LemmaH.lean` | `gronwall_telescope`, `lemma_H`, `lemma_H_half` (132) | SOURCES_HBETA.md Lemma H | none (SOURCES_HBETA_VERIFY.md) |
+| `DetIdentities.lean` | `det_bordered`, `det_restrict_add_gauge` (143) | numerics/NUMERICS.md §1 (iv), (v) | none |
+| `Telescoping.lean` | `quad_split`, `adapted_in_ker`, `telescoping_det`, `gram_adapted`, `telescoping_log` (127) | R2_TELESCOPING.md Prop. 3.1 | none (R2_VERIFY.md) |
+| `AbelianCount.lean` | `su2_count`, `ab_count`, `equipartition`, `abelian_share`, `Sab_values`, `βab` (55) | U1_INFINITE_LATTICE.md Prop. 9.1 | none (U1_VERIFY.md) |
+| `LemmaDDoublePrime.lean` | `lemma_DDoublePrime` (146) | THEOREM2_PROOF_v3.md §2.2; KAPPA_BOUNDED.md §5.3 | none (THEOREM2_PROOF_v2_VERIFY.md) |
+| `TheoremK.lean` | `telescoping_bound`, `telescoping_bound_tsum`, `window_of_partial` (45) | KAPPA_BOUNDED.md §5.1–§5.2 | VERIFY_TheoremK.md |
+| `Gronwall.lean` | `discrete_gronwall`, `discrete_gronwall_exp`, `contraction_bound` (56) | THEOREM2_PROOF_v4.md §5.1, §5.3; KAPPA_BOUNDED.md Prop. 4.1 | VERIFY_TheoremK.md |
+| `CubeCount.lean` | `cube_count_sharp`, `cube_count_lower` (51) | SOURCES_FX_O1.md §2–§3 | VERIFY_CubeCount.md |
+| `BlockNorm.lean` | `blockDiag_opNorm_le/eq`, `blockDiag_comp_opNorm_le`, `blockCol_opNorm_le`, `rho2_le` (94) | H2_CERTIFY.md §1 R2, §2 (i-a) | VERIFY_BlockNorm.md |
+| `OishiRump.lean` | `oishi_rump_ring`, `oishi_rump`, `oishi_rump_eta`, `l2_le_frob`, `frobenius_power_bound` (115) | H2_CERTIFY.md §5 C2/C4; H2_CERTIFY_VERIFY.md §4 | VERIFY_BlockNorm.md |
+| `Envelope.lean` | `envelope_layer`, `envelope_nontrivial`, `envelope_decay`, `envelope_not_scale_invariant` (104) | ASSEMBLY.md §2.9 (B-NT) | VERIFY_Envelope.md |
+| `Divergence.lean` | `div_add/smul/sum`, `step_divergence`, `path_divergence`, `loop_divergence`, `profile_divergence`, `straight_isPath`, `P4_divergence` (171) | H2_CERTIFY_P4.md §2 Steps 2–3 | VERIFY_Envelope.md |
+| `TheoremC1.lean` | `c1_two_step`, `c1_kappa_bound`, `c1_window` (59) | THEOREM2_PROOF_v4.md §5.3; B2_TWOSTEP.md §2 | VERIFY_TheoremC1.md |
+| `StripBound.lean` | `strip_bound_linear`, `strip_bound_quadratic` (73) | SOURCES_HBETA_N3.md §4 | VERIFY_TheoremC1.md |
+| `CertBridge.lean` | `entrywise_to_opnorm`, `interval_to_opnorm`, `cell_invertible`, `norm_submatrix_le`, `rq_weyl`, `pert_bound`, `cell_sup_bound`, `vertex_bound` (268) | numerics/h1cert_cell.py, h1cert_cell2.py | VERIFY_CertBridge.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all nine files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 17 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
