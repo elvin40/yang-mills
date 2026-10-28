@@ -20,3 +20,28 @@ Sources checked: page images of CMP 109 printed pp. 258, 268, 280, 298 (rendered
 **Claim (4), slot definition: CONFIRMED, one caveat.** Check of double counting: by (2.15), 1/g_k² + Σ_{j<k} β_{j+1} = 1/g_0² on the trajectory, so the total coefficient of A(U_k) in (1.3) is the bare 1/g_0². The −β_{j+1}A pieces are bookkeeping inside V^{(j+1)}, not marginal inputs. So ∂β_j/∂g_i at fixed other slots, times v_i, is exactly the chain rule; the dg_k/dg_i dependence sits in v_k only. No double count. Caveat: the slot functions need Balaban's step-(k+1) bounds for histories OFF the trajectory (arbitrary h_k ∈ [0,γ]^{k+1}). Balaban's induction is stated along one trajectory with E^{(j)} a function of g_{j−1}; the extension is natural (the step integral uses only g_k and E_k) but is an extra assumption, close to hypothesis (I).
 
 **Claim (5), open list: CONFIRMED as complete for the small-field chain.** Add two items: (i) C_β itself is an inductive assumption of CMP 109, finished only in CMP 116; (ii) off-trajectory validity of the step bounds (above).
+
+## Part 2 — ASSEMBLY_N1.md
+
+Context checked: ASSEMBLY.md §1.2 (H-U) line 34 and §2.3; ASSEMBLY_VERIFY.md line 55 (item 5 gaps); SOURCES_D3R.md §4.1–4.3; reports/o3_continuum.txt lines 4987–4998 (OS quote matches word for word).
+
+**Lemma T (flatness): CONFIRMED.** y = x with x_i, x_j moved to the midpoint lies on {x_i = x_j}. ‖x − y‖_1 ≤ 2·(ℓ1 length of a 4-vector of Euclidean length ρ/2) ≤ 2ρ. Taylor of order q = N − |β| from y uses only derivatives of order ≤ N − 1 at y (zero) and order N on the segment. Bound (2ρ)^q ‖F‖_N holds; the dropped 1/q! is a gain.
+
+**Lemma P and cutoff bound (D): CONFIRMED. The packing answer is C^n, not n^{cn}.** On the closure of supp Φ_m every pair has |x_i − x_j| ≥ δ_m/2 (θ vanishes to all orders at 1/2). Disjoint balls of radius δ/4 inside B(x_i, 5δ/4) give ≤ 625 points within δ (δ ≤ ℓ/8, so balls embed in the torus). A pair factor θ(|x_i − x_j|/δ) is non-constant only when |x_i − x_j| ∈ [δ/2, δ]. Sequential Leibniz assigns each of the |β| unit derivatives to one of ≤ 624 live partners. So ≤ 624^{|β|} terms, each ≤ (C/δ)^{|β|} (each factor gets ≤ 20 derivatives; the number of differentiated factors is ≤ |β|). With |β| ≤ 10n this is C^n δ^{−|β|}. Θ_m support {δ_m/2 ≤ ρ ≤ 2δ_m} and the telescoping identity are right.
+
+**Cells and separation (§3.2–3.3): CONFIRMED.** c″ has diameter 6h; δ/2 − 12h = 0.3125 δ > δ/4 = σ_m ≥ 16ε for δ_m ≥ 64ε. Coincident cells in a live tuple are impossible (would force ρ ≤ 4h < δ/2).
+
+**Fourier step (§4.1): CONFIRMED, one numerical slip.** L_i e_{−q} = (1 + |q|²) e_{−q} is right. The ψ_i product form is exact on all of T^{4n} (c″_i ⊂ B_i, no wraparound). Z = Σ_q (1+|q|)^5 (1+|q|²)^{−5} ~ Σ |q|^{−5} converges in Z⁴. Correction: C_L = (1 + 4(2/π)²)^5 = 2.621^5 ≈ 123, not ≈ 11.2. Constant only; no effect on s or D.
+
+**Real/imaginary split, Lah sum (§4.2–4.3): CONFIRMED.** ϕ is complex-linear, so 2^n real moments. Σ_π Π_B |B|! = Σ_k C(n−1,k−1) n!/k! ≤ 2^{n−1} n!. Same count as D3R §4.3(a).
+
+**Exponent count and scale sum (§4.4): CONFIRMED.** δ^{−4n} (cells, (64ℓ/δ)^{4n}) · δ^{−5n} (h^{−5n}) · δ^{−an} · δ^N; N = 11n gives p = (2−a)n ≥ n; Σ_{m≥4} δ_m^p ≤ 2(ℓ/16)^p, uniform in m_1. Region R: (6ℓ⁴ε^{−4})^n 2^n (256ε)^N ≤ C^n for N ≥ 4n, |R| ≤ 1. n = 1 gives 0. Corollary: C^n ≤ A_η (n!)^η via n! ≥ (n/e)^n.
+
+**Claim (1): CONFIRMED (given (S)).** |S_{n,ε}(F)| ≤ A_η (n!)^{2+2η} ‖F‖_{11n}; (H-U) with s = 11, any D > 2. s = 10 also works on this count (p = (1−a)n > 0); 10 per block is also the Fourier minimum (need 2s′ − 5 > 4).
+**Claim (2): CONFIRMED.** All bridge costs are C^n. D3R §4.3(c) "(n!)^c" is superseded.
+**Claim (3): CONFIRMED.** The three ASSEMBLY_VERIFY item-5 gaps are closed by §4.2, §4.1, §3.1.
+**Claim (4): CONFIRMED.** ∫_{|z|<1} |z|^{−4} d⁴z = 2π² ∫ dr/r = ∞. With F = O(|z|^k), |z|^{k−8} is integrable in 4D iff k ≥ 5. Convention note: "order k" here means F = O(|z|^k), i.e. derivatives up to order k−1 vanish. Consequence for the test class: none, because D_n (and the quoted OS class, line 4997–4998) is flat to all orders.
+**Claim (5): CONFIRMED.** Open parts of (S) are listed correctly. Fallback: for σ ≥ ε^θ the region ρ < 4ε^θ costs C^n ε^{θN − 4n}, so N ≥ 4n/θ suffices; s = max(11, ⌈4/θ⌉ + 1) is right. A fixed threshold σ_0 would leave ε^{−4n} unbounded, as stated.
+**Claim (6): CONFIRMED, sharpened.** With C¹ dependence: Fourier needs 2s′ − 1 > 4, so 6 derivatives per block; the scale sum needs N > (5 + a)n. N = 6n meets both for a < 1. So s = 6 exactly on this count.
+
+Residual risk (not an error in the file): everything rests on (S), in particular the uniformity of the D3R constants in support size down to h ~ ε and validity at σ = 16ε.
