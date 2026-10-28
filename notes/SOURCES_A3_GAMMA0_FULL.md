@@ -172,3 +172,32 @@ By 4.2, S_b ≤ dL^dP^U. So
 Then ‖B‖² = S_b + S_c ≤ [6/m_L + 6d²L^d/m_L + dL^d]P^U + η_6‖B‖².
 The bracket is ≤ 12d²L^d/m_L = γ_L^{−1}: multiplied by m_L/6 it reads 1 + d²L^d + dL^dm_L/6 ≤ 2d²L^d, true since m_L ≤ ½ and d²L^d ≥ 16. Hence (1 − η_6)‖B‖² ≤ γ_L^{−1}P^U. ∎
 Remark. The factor 2 in 4.3(a) costs nothing in γ_L: the free assembly in 3.4 had slack in exactly this place. The only loss is (1 − η_6), with η_6 = O((Mα_0)²)·c(d, L). At U = 1, η_6 = 0 and (4.1) with Q_1B = 0 is (3.4).
+
+## §5 Lemma 5 (the gauge-fixing part drops out; κ_π is not needed)
+
+5.0 Printed facts used [V, CMP 99 pp. 418–421].
+ (F1) (3.115): Q_jDλ = D^jQ′_jλ. Hence QDλ = 0 for λ ∈ N(Q′) (p. 420: "QA is gauge invariant with respect to gauge transformations satisfying this condition").
+ (F2) p. 419, after (3.118): RD*(A − Dλ) = RD*A − RΔλ = RD*A − Δλ for λ ∈ N(Q′), "by the definition of R and the fact that λ ∈ N(Q′)".
+ (F3) (3.118)–(3.119) and the sentence after (3.119): G′RD*A ∈ N(Q′), and A − DG′RD*A "is obtained by gauge transforming an arbitrary configuration A to the subspace {A : RD*A = 0}". So RD*(A − DG′RD*A) = 0. G′ is linear.
+ (F4) (3.128) and (3.134): ⟨A, G_1^{−1}A⟩ = Φ(A′) + ‖RD*A‖² + a‖QA‖², with A′ := A − DG′RD*A and Φ(X) := ⟨X, ΔX⟩ − ⟨X, Δ^{(2)}X⟩.
+ (R1, part) G_1 > 0 and QG_1Q* is invertible on the B-space [R: CMP 99 Thms 3.11, 3.12; (3.132) for G_1].
+
+5.1 Variational identity [P]. Put A_* := H_1B = G_1Q*(QG_1Q*)^{−1}B (3.129). Then QA_* = B and
+ ⟨B, (QG_1Q*)^{−1}B⟩ = ⟨A_*, G_1^{−1}A_*⟩ = min{⟨A, G_1^{−1}A⟩ : QA = B},
+and A_* is the unique minimizer.
+Proof. QA_* = QG_1Q*(QG_1Q*)^{−1}B = B. Let QA = B and Z := A − A_*, so QZ = 0. Since G_1^{−1}A_* = Q*w with w = (QG_1Q*)^{−1}B, the cross term is 2Re⟨Z, Q*w⟩ = 2Re⟨QZ, w⟩ = 0. So ⟨A, G_1^{−1}A⟩ = ⟨A_*, G_1^{−1}A_*⟩ + ⟨Z, G_1^{−1}Z⟩. The last term is > 0 for Z ≠ 0 because G_1 > 0. Finally ⟨A_*, G_1^{−1}A_*⟩ = ⟨w, QG_1Q*w⟩ = ⟨B, w⟩. ∎
+
+5.2 Lemma 5 [P]. RD*A_* = 0. Hence A_*′ = A_* and
+ ⟨B, (QG_1Q*)^{−1}B⟩ − a‖B‖² = Φ(A_*) = ‖D_UA_*‖² + ⟨A_*, Δ′A_*⟩ − ⟨A_*, Δ^{(2)}A_*⟩. (5.1)
+Proof. Let A be any extension (QA = B) and A′ = A − Dλ_A, λ_A := G′RD*A.
+ (i) A′ is an extension: λ_A ∈ N(Q′) by (F3), so QDλ_A = 0 by (F1), so QA′ = QA = B.
+ (ii) RD*A′ = 0 by (F3). Hence λ_{A′} = G′RD*A′ = 0 and (A′)′ = A′.
+ (iii) By (F4) applied to A′, and (ii): ⟨A′, G_1^{−1}A′⟩ = Φ(A′) + 0 + a‖B‖². By (F4) applied to A: ⟨A, G_1^{−1}A⟩ = Φ(A′) + ‖RD*A‖² + a‖B‖². So
+ ⟨A′, G_1^{−1}A′⟩ = ⟨A, G_1^{−1}A⟩ − ‖RD*A‖².
+ Take A = A_*. If RD*A_* ≠ 0, then A_*′ is an extension with a strictly smaller value. This contradicts 5.1. So RD*A_* = 0, λ_{A_*} = 0 and A_*′ = A_*. Then (F4) and QA_* = B give ⟨A_*, G_1^{−1}A_*⟩ = Φ(A_*) + a‖B‖². With 5.1 and (3.10) this is (5.1). ∎
+
+5.3 Consequences.
+ (a) The oblique projection I − DG′RD* never acts on A_*. The bound ‖A_*′‖² ≤ κ_π‖A_*‖² of SOURCES_A3_GAMMA0 §5.1 is replaced by the identity A_*′ = A_*. The gap "κ_π uniform in k" (VERIFY V5) is closed by removal. No bound on ‖DG′RD*‖ is used anywhere below.
+ (b) Lemma 5 is the G_1-analogue of Balaban's (3.124) RD*GQ* = 0 (p. 420, proved there by a Gaussian-integral symmetry). Here the proof is variational and uses only (F1)–(F4).
+ (c) The minimizer bound [P from R1]. By 5.1 and (R1): ‖A_*‖²_𝔴 ≤ K_1⟨A_*, G_1^{−1}A_*⟩ = K_1(E + a‖B‖²), E := ⟨B, (QG_1Q*)^{−1}B⟩ − a‖B‖². (5.2)
+ (d) On κ_π, for the record. One has (DG′RD*)² = DG′RD*: by (F2)–(F3), Δλ_A = RD*A, and G′ applied to Δλ for λ ∈ N(Q′) returns λ (the unique solution in N(Q′)). So I − DG′RD* is a projection onto {RD*A = 0} along D·N(Q′). In a Hilbert space a projection P ≠ 0, I has ‖P‖ = ‖I − P‖ = 1/sin θ, θ the angle between range and kernel. A uniform bound needs a uniform lower bound on that angle. It is not proved here, and it is not needed.
