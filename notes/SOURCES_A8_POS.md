@@ -83,3 +83,36 @@ The same bound holds for the kernel in the weighted form |D_σ(b,b′)| ≤ (16/
  (e) |dμ_{C_σ}|/dμ_{A^{−1}} = (|det K_σ|/det A)^{1/2}exp(−½⟨B,(H_σ − A)B⟩). ‖H_σ − A‖ = ‖H(K_σ − A)‖ ≤ ε_σ. |det K_σ|/det A = |det(I + A^{−1/2}(K_σ − A)A^{−1/2})| ≤ exp(n_Zε_σ/γ_exp). ∎
 5.4 Refinement at σ ≡ 1 [P]. K = A_c is complex symmetric (WC 6.0), so H = Re A_c and E = i Im A_c with Im A_c real symmetric. F = iS, S real symmetric, so |det(I + F)| = Π(1 + λ_j²)^{1/2} ≤ exp(½n_Z‖S‖²): the determinant cost is second order in Im A_c, and r ≥ 1.
 5.5 Size of ε_σ. ε_σ = O(e^{−ε″M/4}e^{2·3^dκ_1}) + O(|J| + |A′|)/α″-scale. This is Balaban's (2.16) size "O(1)e^{−δ_0M/3} + O(α_0 + α_1)", with δ_0/3 replaced by ε″/4 [P up to the constant in the δ_c term, which depends on α″ through Lemma CP].
+
+## 6. The real pair at σ ≡ 0: Balaban's literal symmetry claim
+6.1 Realness [P]. At real U, J = 0, σ ≡ 0, every walk term T_ω is a finite product of real matrices (real local inverses C_□, real F-factors; WC 5.2–5.3). So C_0 := C^{(k)}(Z_0,0) and K_0 := C_0^{−1} are real.
+6.2 Symmetry of C_0: NOT proved [residue, harmless]. The walk series of WC 5.3 is the right-parametrix series P(I + F)^{−1}. Its terms are not closed under walk reversal with T_{ω^rev} = T_ω^T. Deleting the walks that meet σ_0 therefore need not keep symmetry. We expect C_0 to be non-symmetric at order η_M [I, not tested numerically]. Balaban's [13] expansion is not read; it may be different.
+6.3 What holds instead [P, Lemma P at real U, σ ≡ 0, with the real constants]. Write K_0 = H_0 + N_0, H_0 := H(K_0) real symmetric, N_0 real antisymmetric. Since A is symmetric, N_0 is the antisymmetric part of K_0 − A, so ‖N_0‖ ≤ ‖K_0 − A‖ ≤ 2Γ_1²η_M^0 (η_M^0 := η_M without the e^{2·3^dκ_1} factor and with real constants, 4.5). Also H_0 ≥ γ_exp − 2Γ_1²η_M^0 ≥ ¾γ_exp and ‖H_0‖ ≤ 2Γ_1.
+6.4 The reading of (2.23) that works. Read dμ_{C^{(k)}(Z_0,0)} as dμ_{H_0^{−1}}: a positive Gaussian with covariance H_0^{−1}, 1/(2Γ_1) ≤ H_0^{−1} ≤ 4/(3γ_exp). Three checks.
+ (a) Measure cost. With M_0 := H_0^{−1/2}N_0H_0^{−1/2} (antisymmetric, real, eigenvalues ±iλ_j): det K_0/det H_0 = det(I + M_0) = Π(1 + λ_j²)^{1/2} ∈ [1, exp(½n_Z‖M_0‖²)]. So the factor r_0 ≤ exp(¼nd|Z_0|·‖M_0‖²), ‖M_0‖ ≤ (4/(3γ_exp))·2Γ_1²η_M^0. Second order in η_M; (2.17) form.
+ (b) The cancellation in (2.24). Real fields X see only the symmetric part of C_0. (I + M_0)^{−1} = (I − M_0)(I − M_0²)^{−1}, whose symmetric part is (I − M_0²)^{−1}; since −M_0² = M_0^TM_0 ≥ 0, sym(C_0) = H_0^{−1/2}(I + M_0^TM_0)^{−1}H_0^{−1/2} ≤ H_0^{−1} and ‖H_0^{−1} − sym(C_0)‖ ≤ (4/(3γ_exp))‖M_0‖². In (2.23)–(2.24) the B-integral returns +½⟨Γ_0X, (H_0 − α_5)^{−1}Γ_0X⟩ and the first exponential carries −½⟨Γ_0X, sym(C_0)Γ_0X⟩. Their sum is ½⟨Γ_0X, [(H_0 − α_5)^{−1} − H_0^{−1}]Γ_0X⟩ + ½⟨Γ_0X, [H_0^{−1} − sym(C_0)]Γ_0X⟩. The first bracket is Balaban's symmetric-case remainder O(α_5). The second is ≥ 0 with norm ≤ (4/(3γ_exp))‖M_0‖², so it adds O(η_M²)‖Γ_0‖²‖ZX‖² to the O(α_5)‖ZX‖² of (2.25) [R: ‖Γ_0‖ ≤ const is the same input Balaban's own (2.24)–(2.25) step uses].
+ (c) The side condition "α_5‖C^{(k)}(Z_0,0)‖ < ½" becomes α_5‖H_0^{−1}‖ < ½, implied by α_5 < (3/8)γ_exp. Since ‖C_0‖ = ‖K_0^{−1}‖ ≤ 4/(3γ_exp) (Re⟨v,K_0v⟩ = ⟨v,H_0v⟩ ≥ ¾γ_exp‖v‖² gives σ_min(K_0) ≥ ¾γ_exp), Balaban's form α_5‖C_0‖ < ½ also holds for α_5 < (3/8)γ_exp.
+6.5 Conclusion of §6. Symmetry of C_0 is not needed. Positivity of the reference measure holds with covariance H_0^{−1}. All changes enter as (2.17)-type factors exp(O(η_M²)|Z_0|) and O(η_M²)‖ZX‖² terms, both of smaller order than the terms Balaban already carries.
+
+## 7. Task (4): verdict and ledger
+7.1 Verdict. A8 is PROVED relative to WC_FULL's inputs, in the following corrected form [P given the items of 7.2]:
+ (A8-real) At the real pair (U, 0) and s ≡ 1, A_Z is real symmetric with γ_exp ≤ A_Z ≤ Γ_1, so dμ_{C^{(k)}(Z_0)} is a positive Gaussian (§3).
+ (A8-σ0) At the real pair and σ ≡ 0, H_0 = sym C_0^{−1} obeys ¾γ_exp ≤ H_0 ≤ 2Γ_1, and dμ_{H_0^{−1}} is the positive Gaussian that (2.23)–(2.25) need (§6). Literal symmetry of C_0 is not proved and not needed; it costs exp(O(η_M²)|Z_0|) and an O(η_M²)‖ZX‖² form.
+ (A8-complex) For |σ(Δ)| ≤ e^{κ_1} and U_c in the α′-space, the complex Gaussian dμ_{C^{(k)}(Z_0,σ;U_c)} exists, its modulus is r_σ·dμ_{Γ_σ} with a positive Gaussian of covariance 1/(2Γ_1″) ≤ Γ_σ ≤ 4/γ_exp (this is (2.15)), r_σ ≤ exp((4nd/γ_exp)ε_σ|Z_0|) (this is (2.17)), and the ratio to the real measure is ≤ exp((nd/(2γ_exp))ε_σ|Z_0|)e^{½ε_σ‖B‖²}, ε_σ ≤ 2Γ_1″²η_M + Γ_1″/(t(a,α″) − 1) (§5).
+ So input (Q) of SOURCES_G3 2.2, as far as positivity and two-sided spectral bounds of the dominating covariance go, holds with c_− = 1/(2Γ_1″) and Λ = 4/γ_exp (complex) or c_− = 1/(2Γ_1), Λ = 4/(3γ_exp) (real reference). The one-bond-fixed form of (Q) and the other factors of (2.15)–(2.26) are not part of A8 and are not treated here.
+7.2 Residue (what A8 now rests on).
+ W1 Theorem WC (i), (iii), and the walk bounds (ii)–(iii), with their inputs R1–R4, C1–C2, I1–I9 (row A2).
+ W2 ‖A_exp‖ ≤ Γ_1″ on 𝒰(α″) (WC 6.6; Schur on W_N).
+ I-a Operators defined by quadratic forms are their symmetric representatives (Lemma S (a), (d)). Balaban's convention; never contradicted on the pages read.
+ I-b C^{(k)}(Z_0, σ) is (1.1): the σ-weighted walk sum of A_Z^{−1}, with WC_FULL's walk expansion standing in for Balaban's [13] expansion (not read).
+ I-c Geometry (G1)–(G3): dist(σ_0, Z_0) ≥ M; domain diameters ≤ c′M_1; the tree-cutting cube count.
+ I-d Walk count W < ∞ at rate ε″/8 (G4), from the same counting as WC(ii).
+ I-e Reading of "Re C^{−1}" in (2.15) as the symmetric real part H(·) (2.4); reading of dμ_C for non-symmetric C by the density formula 2.2.
+ Constants: (H_κ) LM ≥ 16·3^dκ_1/ε″, (H_M) M ≥ 2c′M_1, (H_η) via M ≥ (4/ε″)[2·3^dκ_1 + log(128WΓ_1″²/γ_exp²)], α_5 < (3/8)γ_exp. All are "M large after κ_1", consistent with Balaban p. 16.
+ Not needed by the majorant: literal symmetry of C_0 (6.2) and symmetry of Γ_k (Γ_k maps Z_0^c-fields to Z_0-fields and is not a symmetric operator even at s ≡ 1 [I]; "the operators are symmetric" on p. 15 can only refer to the covariances).
+7.3 Ledger.
+ [V] CMP 116 pp. 12, 13, 15 at 300 dpi: (2.5), (2.6), the p. 13 σ_0 and walk text, (2.7), (2.14), (2.15), the "symmetric/positive/perturbative" sentences; p. 3 s-rule and p. 5 |s(Δ)| ≤ e^{κ_1} via pdftotext; p. 17 α_5 condition via LOC 3.2. WC_FULL 0.10 quoted verbatim.
+ [P] 2.3 (only H(K) enters the modulus); Lemma S modulo I-a; 3.2 positivity; Lemma D modulo I-b, I-c, I-d; Lemma P (a)–(e); 5.4 second-order refinement; 6.1, 6.3, 6.4 (a)–(c).
+ [I] I-a … I-e; 6.2 expectation that C_0 is not symmetric.
+ [R] ‖Γ_0‖ bounded in 6.4(b) (Balaban's own step); W1, W2.
+7.4 Suggested TRUST_LEDGER A8 status (for the caller; this file edits no ledger): "proof relative to listed inputs [P, unverified]: SOURCES_A8_POS — positivity at (U,0) from WC(i) + Lemma S; complex case = Lemma P from WC(iii) + Lemma D (σ-truncation O(e^{2·3^dκ_1}e^{−ε″M/4})); literal symmetry of C^{(k)}(Z_0,0) not proved, replaced by its symmetric part H_0 at cost exp(O(η_M²)|Z_0|); residue I-a–I-e." Needs an independent verifier before any status change.
