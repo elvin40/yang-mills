@@ -115,3 +115,28 @@ Standing condition (Sep) [I]. Every point at unit ℓ^∞ distance ≤ R′M fro
  (C4) count: a layer-j cube face meets ≤ L^{d−1} layer-(j−1) cubes; C′_𝒟 → L^{d−1}C′_𝒟, (G3) × (1 + L^{d−1}).
  (C5) q = M/M_1 is the same on all layers (both scale with L^{j−k}), so "M/M_1 > 10" and "q > 3(6 + c_X)" are one condition each, not one per layer.
  The ⅔M separation and the ℓ^∞ band were the feared places. Neither needs a uniform size: 4.4a (d ≥ d_∞ at step k) and P4 (local-unit bands) settle both.
+
+## §7 Conclusion and ledger
+
+7.1 Verdict on NEW-3. The Q-list items used on CMP 119 pp. 275–276 (Q2 with s-rule, p. 13 form and Y_0-resummation; Q6; Q7/WC(iv); Q4 incl. (3.43); the Λ-independence sub-clause) HOLD in the Ω-sequence geometry [P] relative to:
+ (R1) (W_G1^Ω): WG-G1 for the multiscale G_1 — same status as before [R to CMP 99 Thms 3.7–3.10, which Balaban states for {Ω_j}];
+ (R2) (A1-W^Ω): A1-W on ℓ²(𝔅, μ) — same status [C on (C)], with O2 now load-bearing and replaced by (C3) [P-sketch];
+ (R3) (Sep): Z_0 ⊂ Λ_{k+1} lies at unit distance ≥ 2M inside the layer Λ_k where (H1)–(H3) hold in unit form [I; supported by P6 for step 1 and WC 0.8 / A3 I6];
+ (R4) the scaled metric counts each layer in local units, so d ≥ d_∞ at step k (4.4a) [I-strong; P9 text, CMP 96 (2.46) garbled in the text layer];
+ (R5) the P4 convention: tilde and the ⅓M_1 band in local units [V P4 + I];
+ (R6) the per-adjacent-layer conditions (C1)–(C4) inside the inputs [V/P-sketch];
+ (R7) for CMP 122 I (1.25) only: smallness absorbing the relaxed regularity 3L_0^{2N_0} of (1.24) [I].
+ Nothing breaks in the case Balaban uses. The reason is structural: every Gaussian variable lives on one region at one scale (P1, P6, P7). The multiscale geometry enters only through kernel pieces and s-cubes, which are handled term by term in the scaled metric. The single place where WC used a uniform block size (5.2(a), "one scale, m ≡ 1, μ ≡ 1") stays true at the WC level; its multiscale form (O2) sits inside A1-W, where it was already an open [I].
+ What would break: a variable space spanning several layers (Case B). Its lower bound needs a new interface-corridor lemma (6.1(c)). Balaban never uses this case.
+7.2 Constant changes (all (d, L) factors, fixed before M_1): S(δ) → c_1 of CMP 96 Lemma 2.1 under (2.59); C′_𝒟 → L^{d−1}C′_𝒟; K_F, M_W → L·K_F, L·M_W inside A1-W; (G3) count × (1 + L^{d−1}), (H_κ^f) ℓ ≥ 32·3^d(1 + L^{d−1})κ_1/ε″. γ_exp unchanged. q = M/M_1 conditions unchanged.
+7.3 Upgrade of (U-a) [V]. The A16_REPLACE2 4.1 volume convention "B′ = 0 off Λ, compression" is confirmed on images for the Ω-setting (P1, P6, P7). The residue there is only (R3).
+7.4 Ledger.
+ [V] page images 300 dpi: CMP 119 pp. 250, 251, 275, 276; CMP 122 I pp. 180, 181, 182, 183. Text layer: CMP 122 I pp. 184–186 (P9); CMP 99 Ω_j passages (P10). pp. 252–253 of CMP 119 rendered; their content was already [V] in B20_LAMBDAJ F1–F2 and is not re-quoted.
+ [P] 2.4 (where the multiscale enters); 4.1 W_N^Ω given inputs; 4.2–4.3 parametrix in Case A; 4.4a d ≥ d_∞ consequence; 4.5 (a)–(e) regrouping; 4.6; 5.1 Theorem L in Case A (given A3 inputs); 5.3 disc radius per layer; 6.1(c) failure of Case B as written.
+ [P-sketch] C′_𝒟 interface count; (G3) interface factor; (C3) O2 replacement Lc_h/M_1.
+ [I] (Sep) at step k + 1; the d-metric reading (R4) [I-strong]; tilde/band in local units (R5); CMP 122 I (1.25) operator identification (CMP 122 III (2.21) not read) and relaxed regularity (R7); α̃ ≤ α for (3.43); CMP 96 (2.1)–(2.4) not re-read.
+ [R] (W_G1^Ω), (A1-W^Ω) inputs, (A3-6.1) multiscale inputs — unchanged status.
+ [R]efuted: none.
+7.5 Suggested CLOSURE_PLAN status (this file edits no other file): "I-37 / NEW-3: CLOSED [P] rel. inputs (SOURCES_MULTISCALE_OMEGA): Balaban's Gaussian variables are single-scale on one region (CMP 119 pp. 251, 275; CMP 122 I (1.25) [V]); WC/W_N carry over with S → c_1 (CMP 96 L2.1), C′_𝒟 × L^{d−1}, (G3) × (1 + L^{d−1}); γ_exp unchanged; residue (Sep) [I], d-metric reading [I-strong], O2 → (C3) [P-sketch] inside A1-W. Case B (multiscale variable space) would need an interface-corridor lemma; not used."
+Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md were not read.
+STATUS: COMPLETE (unverified).

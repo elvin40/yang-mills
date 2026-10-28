@@ -14,3 +14,26 @@ Grade (page facts pp. 357–358): CONFIRMED.
 (1.1): numerator and denominator Wilson terms are −g_k^{−2}A(ζ_0, U_{k,Z}(V′_kV_Λ)) (unsourced, as printed for constant coupling). Text: the numerator part combines into the new Wilson term, the rest "has to be cancelled, or approximately cancelled, with the term from the denominator". V′ = exp ig_kB′ is the block-lattice variable; U_{k,Z}(V′V_Λ) is expanded around U_0 by (2.8) [I], which produces H_{1,k}B′. NEW4 §1 writes "V = exp(ig_kB′) and U = U_0V"; that is shorthand: the expansion variable at link level is H_{1,k}B′ (plus higher order, inside V(·)), not B′. NEW4 (1.1) itself uses HB′, so nothing downstream changes.
 Grade: CONFIRMED (notation imprecision only).
 
+## C. Page 359 (image read)
+
+- Variational problem V′↾Λ → A(U_{k,Z}(V′V_k)): no weight, no ζ_0, V′ = exp iB′ ("without the powers of g_k, and with ζ_0 = 1"). (1.12) critical-point equation with Δ_1 (no argument, i.e. ζ_0 = 1). (1.13) inverse of P_0H*Δ_1HP_0 bounded by γ_0^{−1}2d(100M)^5 "by the inequality (1.9)". Solution bound 2γ_0^{−1}2d(100M)^5B_3²4ε_k. This is Proposition 1 [IV]; the source has no entry point (the functional is a pure Wilson action of a geometric configuration).
+- (1.14) A(1/(g″_k(·))², U″_k) = g_k^{−2}A(U″_k) + A(1/(g″_k(·))² − g_k^{−2}, U″_k); second term "We leave it in this form … use it to get the bounds for large fields". (1.15) splits the FIRST term only.
+Grade (items 2 for (1.12)/(1.13), 3 for (1.14)): CONFIRMED. Remark: (1.13) cites (1.9), but the operator there has ζ_0 = 1, so it is the ζ_0 = 1 version of (1.9) (same proof). Either way unweighted; NEW4's note "the sourced (1.9) is never needed here" is correct.
+
+## D. Pages 360–361 (images read)
+
+- p. 360: chain from (1.14): the FIRST term g_k^{−2}A(U″_k) is split by (1.15); A(ζ_0, U″_k) is localized by (1.16) and expanded in (1.17); its main term is split by (1.18) A(ζ_0, U″_{k,Z}) = A(ζ_0(1 − ζ_1), ·) + A(ζ_1, ·), ζ := ζ_0(1 − ζ_1); V′ = exp ig_kB with |B| < g_k^{−1}δ′_k; (1.19) new background U^0_{k,Z}.
+- p. 361: (1.20) expands A(ζ, U″_{k,Z}) (ζ from (1.18)) as quoted in NEW4 §2. The quadratic form is "according to the formulas (79) [15], (3.10) [13] … a sum of several terms, which are small except the one term determined by the operator D*ζD"; small-form bound O(1)B_3^5B_5M^{5+d}A_1²p_1²(g_k)R_k^{d+2}ε_k; nonnegative form (1.21) Σ_{p∈T_η} η^dζ(x(p))|(DH″_{1,k,Z}B)(p)|²; "In the effective action we have the form (1.21) with the minus sign, therefore it can be bounded by 0."
+Grade item 3 ((1.21) source-free by (1.14)): CONFIRMED. The whole chain (1.15)–(1.21) starts from the first term g_k^{−2}A(U″_k) of (1.14); the variable coupling sits only in the second term. Page correction (1.21) on p. 361: CONFIRMED.
+Side fact for item 4: p. 361 states that Balaban's quadratic form = D*ζD-term + small terms whose size is controlled by the regularity constant of the background, citing [15] (79) and [13] (3.10). This is the same structure as NEW4 (4.1) (leading c_N|∂X|² term weighted by the plaquette cutoff, plus background-small remainder), and it is written with ζ evaluated at x(p), i.e. plaquette by plaquette.
+
+## E. Pages 365–367 (images read; 365–366 were not in the brief, read because (1.37) assembles the Wilson terms)
+
+- p. 365 (1.37): all Wilson terms of (1.1) combine to
+  −A(1/(g_k(·))², U_k) − A((1/(g″_k(·))² − g_k^{−2})ζ, U″_{k,Z}) − A((1/(g″_k(·))²)ζ_1, U″_{k,Z}) − ½Σ_p η^4ζ(x(p))|(DH″B)(p)|² + O(1).
+  So the remainder of (1.14) does NOT stay as one block: on supp ζ it is the second term; on supp ζ_1 Balaban RECOMBINES it with g_k^{−2}A(ζ_1, ·) of (1.18) into the WEIGHTED term A((g″)^{−2}ζ_1, U″_{k,Z}). This third term is the one "which gives the small factors connected with large plaquette variables in the domain Ω^c_h" (p. 366).
+- p. 366: second term small since 1/(g″)² − g_k^{−2} = O(N) ≤ O(R_k) on supp ζ, bound O(1)B_3²B_5²M^9R_k^7ε_k². With the source this difference gains the D3R δ_r-piece (|·| ≤ δ_r, O(r)), still ≤ O(R_k): bound unchanged up to O(1). Third term: G^c extension loses "the obvious positivity properties of the Wilson action"; Balaban writes it "as a small perturbation of a positive Wilson action". (1.39): V′_Λ is a critical point of V′↾Λ → A(U_{k,Z}(Ṽ′V, V′V_Λ(V))) — unweighted.
+- p. 367: (1.40) "only with ζ_0 = 1 and g_k = 1"; inverse "as in (1.13)"; (1.41) |B′_Λ(B̃′)| ≤ 4d(100M)^5γ_0^{−1}B_3²|B̃′|; text then turns to A((1/(g″_k(·))²)ζ_1, U″_{k,Z}) — weighted.
+Grade item 2 (unweighted variational problems U_0, (1.12)/(1.13), (1.39)/(1.40)): CONFIRMED on images. Page correction (1.40) on p. 367: CONFIRMED.
+Grade NEW4 (F2) "the forms (1.20)–(1.21) and (1.77) come from the constant-coupling part only": CORRECTED for (1.77) pending §F — (1.37) shows the large-field factors come from the weighted term A((g″)^{−2}ζ_1, U″), into which the (1.14) remainder is recombined on supp ζ_1.
+

@@ -22,3 +22,24 @@ Composite transport: Σ_{i=0}^{j−1}(≤ dL bonds)·|R(Ū^i_b) − I|, with |R(
 
 ## A3. a_LB
 a_LB = min{1, c_φ/(2K_Γ), 1/(2c_3), a_AL}: c_φ/(2K_Γ) gives K_ΓMα_0 ≤ ½c_φ (4.4); 1/(2c_3) gives η|A| ≤ ½ (4.5, (a) of AL′; redundant with a_AL, harmless); a_AL gives the Prop. 2 range and A_Lε_i ≤ ½. Mα_0 ≤ 1 is used in (a) and 4.5. Consistent. Grade: CONFIRMED.
+
+## A4. §7.3 (AL-c), K_av := 2K′
+- The O(·) in e^{O(P·b_1)} = e^{O(dLb_1)} is not named anywhere in THM39_FULL. k_av^c(d, L) is asserted to exist but has no formula. grep of SOURCES_ORDER_CANON for k_av, k_{C′}, b_1^{37}, T37-c: no hit. So the condition b_1 ≤ k_av^c is NOT in the canon.
+- K_av := 2K′ is plausible but not derived. Two points are missing: (i) at complex U′U the fine curvature also has an A′ part, |∇_UA′| < b_1ℓ^{−2}, so the curvature source is c_P(Mα_0 + b_1)-type, not c_PMα_0; (ii) the bound e^{2K_avL^{i−j}b_1} is stated in b_1 only, which needs the imaginary part of log of a product to be linear in b_1 with an M α_0-independent constant (true to first order, not shown). Neither changes the form; both change the constant.
+Grade: CORRECTED (status stays REDUCED; the file should name the constant, e.g. "c_N(d, L) := the non-unitary conjugation constant, k_av^c := (log 2)/(c_NdL)", and the canon needs b_1^{37} ≤ k_av^c in the complex-domain line B14/B20, after K′).
+
+## A5. Does (AL′) supply A18 Lemma Q input I-Q1? (SOURCES_A18_REGULAR 6.1)
+I-Q1 as used in Lemma Q step (3): averaged fields Ū^j keep a link bound of size O(α)·(L^jη) (units L^kη = 1), so the transport along a level-j path of length dL·L^jη costs ‖Ad − 1‖ ≤ c(d, L)αL^{j+1−k}.
+- Corollary (b) (A3-R2, (3.35) gauge): (AL′) gives |Ū^i_b − 1| ≤ K′L^iηMα_0/ℓ, exactly this form with α → Mα_0 and the (d, L) constant K′. SUPPLIED.
+- Corollary (a) (axial gauge, α = plaquette parameter, "no factor M"): (AL′) as stated assumes (3.35) data |A|, |∇A|; it does not cover the axial gauge. The same recursion works there: skip step (a) (the curvature bound is the hypothesis (52) directly, α̃ = α), and take w_0 ≤ 2d²α from Lemma Q step (1). Result K″ = 2d² + πA_L/(L(L − 1)). This variant is one line but is not written.
+- Lemma Q's bracket says "same bound up to a factor 2". (AL′) gives the factor K′/c_3 = 1 + πA_Lc_P/(c_3L(L − 1)) = O(d²L²), not 2. Only c_Q(d, L) changes; uniformity in k holds.
+Grade: CORRECTED (scope). The THM39 note "supplies I-Q1 in the (3.35) gauge" is accurate as stated; A18 Lemma Q's corollary (a) still needs the axial variant and the "factor 2" must read "factor c(d, L)".
+
+## A6. Stale (AL) uses
+grep "(AL)", "k_av", "K_av", "AL-c" over THM39_FULL, WG_FULL, SOURCES_A18_REGULAR, SOURCES_ORDER_CANON: THM39_FULL hits are the new (AL′)/(AL-c) text, the historical change-log line 310 (labelled history), and line 156 "The earlier form (AL) … is UNSUPPORTED" (intended). No stale use in WG_FULL, A18, or the canon. A18 Lemma Q still calls I-Q1 an [I] item and does not point to THM39 (AL′) — not stale, but unlinked.
+Minor tag issue: THM39 4.4, 8.1 T39-PR1, 8.3(b) tag CMP 98 Prop. 2 as [R]; this session read (52)–(54) and the proof on the image, so [V] is available.
+Grade: CONFIRMED (no stale use).
+
+## B1. (2.59) on the page image
+CMP 96 p. 233 (balaban/1984_cmp96_propagators_renormalization_II.pdf, pdf p. 11, 300 dpi) [V]: "Now we require that RM is sufficiently large, i.e. we assume ¼αδ_0RM > 2d log c_0(½α) + 1. (2.59)". Then c_1(α) = 12c_0^d(½α). WG_FULL (I4) now quotes ¼αδ_0RM: CONFIRMED. Note: WG_FULL names this page as CMP 96 p. 233, not an A1-W page; the brief's "A1-W page image" is the same item. Side remark: (2.59) is stated with κ = αδ_0, α < 1, so Lemma 2.1 at κ = θδ_WG needs α = θδ_WG/δ_0 < 1, true since δ_WG < δ_0.
+
