@@ -6,6 +6,7 @@ Bordered pieces as in umk_beta1 (real (0.4) row q_0, ghost DD^dag, aux row W^dag
 d^M_mu = int_0^inf dt g_mu prod_{nu != mu} f_nu (1/|q~|^2 = int e^{-t|q~|^2}), 1D tables, t = e^s trapezoid.
 Usage: python h2_scan.py L j [--check] [--nface 7] [--n4 0] [--maxfev 30]  -> results/h2_L{L}_j{j}.json (per-K cache, skip-if-done, resumable).
 """
+import os as _os
 import sys, os, json, time, itertools
 import numpy as np
 from scipy.optimize import minimize
@@ -156,7 +157,7 @@ def scan(L, j, nface=7, n4=0, maxfev=30):
         K = np.sort(np.abs(np.asarray(K, float)))                          # hypercubic reduction (perm + sign)
         key = str(np.round(K, 6).tolist())
         if key not in pts:
-            t = time.time(); pts[key] = h.rho(K); json.dump(res, open(out, "w"))
+            t = time.time(); pts[key] = h.rho(K); _tmp = out + ".tmp"; json.dump(res, open(_tmp, "w")); _os.replace(_tmp, out)
             print(f"L={L} j={j} K={np.round(K, 4)} rho2={pts[key][0]:.5f} rho1={pts[key][1]:.5f} {time.time()-t:.0f}s", flush=True)
         return pts[key][0]
 
@@ -176,7 +177,7 @@ def scan(L, j, nface=7, n4=0, maxfev=30):
     best = max(pts, key=lambda k: pts[k][0])
     summ = dict(L=L, j=str(j), rho2=pts[best][0], rho1_there=pts[best][1], K=eval(best), rho2_over_L=pts[best][0] / L,
                 rho1_max_seen=max(v[1] for v in pts.values()), npts=len(pts), secs=time.time() - t0)
-    res["summary"] = summ; json.dump(res, open(out, "w"), indent=0)
+    res["summary"] = summ; _tmp = out + ".tmp"; json.dump(res, open(_tmp, "w"), indent=0); _os.replace(_tmp, out)
     print("summary", summ, flush=True)
     return summ
 

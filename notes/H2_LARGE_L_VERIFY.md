@@ -40,3 +40,29 @@ Verdict: h2_scan at L = 5 agrees with an independent dense computation to ≥ 6 
 - L = 3 JSON summaries: 2.008567 / 2.056007 / 2.063320, argmax (2.212, 2.221, π, π) / (2.372, 2.376, π, π) / (2.404, 2.405, π, π), 175–176 points each. Match §2 table. My --check reproduces j = 2 and j = ∞ point values. Reference agreement 4·10^{−5} at j = ∞ is inside the aw_verify lmax spread (2.06329–2.06366). Item 2 CONFIRMED.
 - L = 5 JSON summaries: 2.098283 / 2.107520 / 2.107904 / 2.107920 (j = 2/3/4/∞), 120–122 points (28 face + 70 sorted 4D + NM + 4 probes). Gaps to j = ∞: 9.64·10^{−3}, 4.0·10^{−4}, 1.6·10^{−5}; ratios 24.1, 25.0 (L² = 25). Matches §3.
 - Launcher h2_launch.sh: per-K JSON checkpoint and skip-if-done are present; nothing launched. L⁸ cost extrapolation from 43 s at L = 9: 3.6 / 13.5 / 42.6 min at L = 11/13/15. CONFIRMED. Issues: (a) json.dump(res, open(out, "w")) is not atomic; a kill during the write leaves a corrupt JSON and the resume json.load fails for that (L, j). Use write-to-tmp + os.replace. (b) Same-L jobs share results/h2_prof_L{L}.npz; with no cache on the box, parallel jobs can race on np.savez/np.load. Copy the Mac cache files (h2_prof_L5/7/9.npz exist) to the box, and build L = 11, 13, 15 profiles once before the parallel phase. (c) The profile build time at L ≥ 11 is not in the budget (UMK_BETA1 §5: ~2.5·10⁹ link visits per direction at L = 15). (d) Phase 2/3 scans (10 face points at spacing π/4, 12 NM evaluations, 4 probes) give loose lower estimates only; this is stated in G2. Item 8 CONFIRMED with these corrections.
+
+## 8. L-trend spot checks (items 5, 7), j = ∞, h2_scan on the Mac
+- L = 7: (2.565, 2.565, π, π) 2.11309 (author 2.11309); (2.3, 2.3, π, π) 2.11023 (author range 2.1102–2.1131); (2.565, 2.9, π, π) 2.1119; off-face (2.565, 2.565, 2.9, π) 2.1012; corner 2.11064. 8.3 s per K (author 6 s).
+- L = 9, j = ∞ (author had only j = 2 at one point): (2.6, 2.6, π, π) 2.11423; corner 2.11189. 53 s per K (author 43 s).
+- Corner vs face max: gap 0.0070 (L = 3), 0.0028 (5), ≥ 0.0025 (7), ≥ 0.0023 (9). The corner stays below the face peak but the gap shrinks; it is the obvious place for a competing maximum at large L, as the author's (ii) says.
+- Trend j = ∞: 2.0633, 2.1079, ≥ 2.1131, ≥ 2.1142 (L = 3, 5, 7, 9). Consistent with a bounded ρ_2 near 2.11–2.14. But the "convergence at least as fast as L^{−2}" inference uses a lower bound at L = 7 (diagonal only) as if it were the sup, so it does not follow. The statement "(H2) gets easier with L" is a measured trend for L ≤ 9, not a result for L > 11. Item 5 CORRECTED (rate claim unsupported; trend stands as measurement). Item 7 (what L = 5, 7 must show) is a sound list; (ii) is supported by the corner data above. CONFIRMED.
+
+## 9. Separable d^M vs direct Prop. A sums
+h2_scan.dgrid vs my direct sums at 3 momenta (incl. (3.1)⁴): M = 25 relative 2·10^{−8}–7·10^{−7}; M = ∞ difference 2.7·10^{−4}, 7.1·10^{−5}, 2.8·10^{−5} for direct lmax = 10, 16, 22, i.e. the residue is the direct sum's truncation, and the separable form (|n| ≤ 200) is the more accurate one. CONFIRMED.
+
+## 10. Own maximization of ρ_2(∞, K) at L = 5 (item 3)
+Design differs from the author's: 150 uniform random sorted 4D points (seed 2026), 78-point face grid (12 per axis from 0.2), corner and 3 edge points, then 4D Nelder–Mead (120 evaluations each) from the top 3 grid points and from the best off-face point. 509 s.
+- Grid top 2.10781 at (2.607, 2.607, π, π). Best off-face point (K_3 < π − 0.05): 2.08844 at (2.11, 2.25, 2.93, 3.0).
+- All four 4D Nelder–Mead runs, including the off-face start, converge to 2.107921 at (2.5445, 2.5445, π, π).
+- Corner 2.10508.
+2.1079 is not exceeded. Argmax on the face diagonal. CONFIRMED (still a lower estimate of the sup).
+
+## 11. Grades
+1. Code structure: CONFIRMED. One-colour reduction exact at U = 1; H, Δ_out blocks and Gram identity correct; separable Prop. A exact; level cost same for the dominant L⁸ part (1D tables grow ∝ M). Sign slip H = −[𝔅^{−1}]_{f,c} in §4 (it is +).
+2. L = 3 validation: CONFIRMED (rerun of --check; JSON summaries).
+3. L = 5 values: CONFIRMED (independent dense ρ_2(j = 2) = 2.098283; own search max 2.107921, same argmax).
+4. ρ_1(L = 5): CONFIRMED as measurement; j = 1 now measured, 1.860 (< 1.963). ρ_1²/L = 0.771. Uncertified.
+5. L-trend: CORRECTED. Bounded trend consistent (new: L = 9, j = ∞ ≥ 2.1142), but the rate claim uses a lower bound as the sup; corner gap shrinks to 0.0023.
+6. Tail bound: derivation CONFIRMED; j_0 arithmetic CONFIRMED for the stated inputs; inputs CORRECTED: sup_K δ_m is 45–90× the assumed value (corner), a_*(L = 5) = 0.0107 not 0.05. j_0 ≈ 8 (L = 3), ≈ 6 (L = 5); O6 j_0 = 25 unchanged.
+7. Requirements list: CONFIRMED.
+8. Box plan: CONFIRMED with fixes: atomic JSON writes, pre-copied profile caches, profile build time at L ≥ 11 not budgeted.
