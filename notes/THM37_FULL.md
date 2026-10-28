@@ -188,3 +188,26 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
  (ii) No loop. The local constants (B_0, δ_0) of (3.3.1) come from Cor. 3.6, which rests on CMP 96 (U = 1) and the perturbation (3.64) (3.3). The global constants of (d) are new names: (2C_ptB_0, (1−θ)δ_0). Balaban reuses the letters B_0, δ_0 for both ("we define new constants", p. 403; "after adjusting a definition of δ_0", p. 427). With distinct names the order is: (d, L) → B_0, δ_0, M_th (local) → θ → c_1(θ) → M_37 → RM with (2.59) → α_0.
  (iii) The global inequality (3.47) follows from (d) and Lemma 2.1, as Balaban says on p. 398 ("the global inequalities (3.47) are consequences of the local ones (3.42) and Lemma 2.1").
  (iv) What is not used: CMP 96 (2.82)–(2.85) (the regrouping for operators without a small factor in every step) is not needed for G′, because every factor F_□ carries K_1/M (Lemma K). It is the template for Thm 3.9, not for Thm 3.7.
+
+## 6. Step 3: the other norms of Cor. 3.8 ("Similar estimates hold for the other norms")
+
+Balaban gives one sentence. We separate three cases, because they are not all true for the same expansion in the same norm.
+
+6.1 Left derivatives [P given (3.3.1) and (H-PU)(d)]. A derivative on the left acts only on the first factor F_0 = h_{□_0}G′_{□_0}h_{□_0} of T_ω. By the product rule,
+ ∇_U(h_□G′_□h_□λ) = (∂h_□)·(G′_□h_□λ)(shifted) + h_□∇_UG′_□h_□λ, so N(∇_UF_0; y, y′) ≤ B_0ξ_j(1 + c_hL/M)e^{−δ_0d} ≤ 2B_0ξ_je^{−δ_0d};
+ Δ_U(h_□g) = h_□Δ_Ug − 2Σ(∂h_□)(D_Ug) + (Δh_□)g (up to the sign convention), so N(Δ_UF_0; y, y′) ≤ B_0(1 + 2dc_hL/M + c_hL²/M²)e^{−δ_0d} ≤ 2B_0e^{−δ_0d},
+ for M ≥ 4dc_hL² (included in M_37: 2C_𝒟^inK_1c_1(θ) ≥ 4dc_hL²). The same holds in N_2 with (3.46) (also ∇∇ on the left). Proposition W then gives, for the same terms T_ω of (3.90) and N ∈ {N_∞, N_2},
+ N(∇_UT_ω; y, y′) ≤ 2B_0ξ_j(K_1c_1(θ)/M)^{|ω|}e^{−(1−θ)δ_0d(ω,y,y′)}, N(Δ_UT_ω; y, y′) ≤ 2B_0(…)^{|ω|}e^{−(1−θ)δ_0d(ω,y,y′)}. (6.1.1)
+
+6.2 Right derivatives in the sup norm: use the transposed expansion [P; this is CMP 95 p. 39 [V]: "in the estimates of G∇*J we have to take a representation of G adjoint to (1.123), with the operators K(h) acting on the right"]. For G-valued U, Δ′_a↾Ω_0 and every Δ′_{a,□} are symmetric for the real inner product, so G′ and G′_□ are symmetric, and K(h)^T = −K(h) (a commutator of two symmetric operators). Transposing (4.3.1) gives G′_0Ω_0Δ′_aΩ_0 = I − R′^T, hence G′ = (I − R′^T)^{−1}G′_0 = Σ_ω T_ω^T with T_ω^T = F_{□_n}^T···F_{□_1}^TF_0 and F_□^T = −h_□G′_□K(h_□). A right derivative now acts on F_0 only, and the interior factors h_□G′_□K(h_□) obey Lemma K with the same K_1: the proof of 4.5 runs with K(h) on the input side, using the entries N(G′_□∇*_U) ≤ B_0ξ and N(G′_□) ≤ B_0ξ² of (3.3.1). So, with N_∞:
+ N_∞(T_ω^T∇*_U; y, y′) ≤ 2B_0ξ_{j′}(K_1c_1(θ)/M)^{|ω|}e^{−(1−θ)δ_0d(ω,y′,y)}, y′ ∈ Λ_{j′}. (6.2.1)
+ The walk ω is read from y′ to y. The terms T_ω^T are the transposes of the terms T_ω; they have the same walks, the same locality, and the same supports (exchanged).
+
+6.3 All derivative forms in the L² block norm, for the single expansion (3.90) [P given (3.46) for G′_□]. N_2 is invariant under transposition (N_2(T^T; y, y′) = N_2(T; y′, y)). For the right end of T_ω (n ≥ 1) write F_{□_n}∇*_U = K(h)G′_□∇*_U h + K(h)G′_□[h, ∇*_U]. Lemma K0 in L² form then needs N_2(∇_UG′_□∇*_U) ≤ B_0e^{−δ_0d}, which is in (3.46) [V] ("‖h∇_UG′(U)∇*_Uλ‖ ≤ B_0·1"). Each of the three terms of 4.5 loses one factor ξ_{n′} relative to Lemma K (n′ the level of the input block), so N_2(F_{□_n}∇*_U; z, y′) ≤ 2L(K_1/M)ξ_{j′}^{−1}e^{−δ_0d(z,y′)} (the 2L covers the commutator [h, ∇*] and neighbour levels). With 6.1 on the left end:
+ N_2(∇_UT_ω∇*_U; y, y′) ≤ 4LB_0(ξ_j/ξ_{j′})(K_1c_1(θ)/M)^{|ω|}e^{−(1−θ)δ_0d(ω,y,y′)}, (6.3.1)
+ and the same with ∇ dropped (factor ξ_j²/ξ_{j′}).
+ Scale shift [P given (2.60)]. (2.60) says d(y, y′) ≥ RM·max{|j − j′| − 1, 0}. So L^{|j−j′|} ≤ L·e^{θ_Sd(y,y′)}, θ_S := log L/(RM). Hence ξ_j/ξ_{j′} ≤ L·e^{θ_Sd(ω,y,y′)}, and (6.3.1) becomes the Thm 3.1 form N_2(∇T_ω∇*) ≤ 4L²B_0(…)^{|ω|}e^{−((1−θ)δ_0 − θ_S)d(ω,y,y′)}. With RM ≥ log L/(θδ_0) the rate is ≥ (1 − 2θ)δ_0. This is Balaban's p. 398 remark ("we may replace the factor (L^jη)^α by (L^jη)^β(L^{j′}η)^γ"), here with the rate cost written out. In the sup norm the mixed pointwise form needs the Hölder bound (3.44) and is not proved here; WG_FULL 0.2 does not use it.
+
+6.4 Hölder norms (3.43)–(3.45) [P-sketch, not used by the chain]. The same scheme works: on the left end use (3.43) for G′_□ with ζh_□ in place of ζ (‖ζh‖_β ≤ ‖ζ‖_β + |ζ|·‖h‖_β and ‖h_□‖_β^ξ ≤ c_hL/M^β); on the right end of a direct-expansion term with ∇*, use (3.44) for G′_□ applied to h_□λ (‖h_□λ‖_ε ≤ ‖λ‖_ε + c|λ|). The interior factors are bounded in N_∞ as in Lemma K. This gives (3.43)–(3.45) for each T_ω with the factor (K_1c_1(θ)/M)^{|ω|} and constants B_0′(β), B_0′(ε, β) times 2. We do not write the Hölder bookkeeping in full.
+
+6.5 Summary of Cor. 3.8 as proved. Expansion (3.90): left-derivative forms in N_∞ and N_2 (6.1); all forms in N_2 (6.3). Expansion (3.90)^T: right-derivative forms in N_∞ (6.2). Locality and supports: Lemma S. Balaban's single sentence hides the left/right distinction in the sup norm; CMP 95 p. 39 states it for the U = 1 template.

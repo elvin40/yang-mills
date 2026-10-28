@@ -116,3 +116,25 @@ Reading of (3.2). The limit Schwinger functions are determined by (a) Balaban's 
 At fixed ℓ one can avoid Step B differently: run m := ⌊log_L(ℓ/(22ML))⌋ more RG steps, so the torus has between 22M and 22ML unit cells per side, and the last integral is finite-dimensional with constants depending on M, L only. This needs g_{K+m} ∈ ]0, γ], i.e. ℓ ≤ 22ML·ξ_g with log ξ_g ≈ (g^{−2} − γ^{−2})/c (PLAN Lemma IV-ξ [P there, given (c′) for the continued flow]). So Target 2's constants are uniform for ℓ up to a huge but finite ξ_g, and not beyond. For ℓ → ∞ at fixed g this route runs into strong coupling. This confirms, from the other side, that the ν-route of §2 is the only ℓ-uniform one with present tools, and that it must give up convergence.
 
 Ledger §3: [V] LOC, BDRY, wrapping bounds as cited; [P] (3.1) given (Loc-f), (3.2), the two compactness routes; [R] (Loc-f) for sourced and large-field constituents; [I] §3.4; [BLOCKED] full convergence in ℓ (= ν-uniqueness).
+
+## 4. OS2: reflection positivity
+
+### 4.1 Which object Target 2's limit is [V]
+ASSEMBLY §0 and §2.2 (E14-e) [V]: "the symmetries are exact symmetries of μ_ε, and the RG is used only for bounds"; S_{n,ε}(F) are moments of the centred plaquette density under the FULL Wilson measure μ_{ε,ℓ}; no field renormalization factor is inserted (B_K bounded, omitted). So Target 2's limit is a limit of expectations of the lattice measure itself, not of a renormalized object. RP is inherited; nothing has to be re-derived from the RG. The only RG input to OS2 is the bound (H-U) used in the seam-shift step (ASSEMBLY §2.7 Step 2 [V]).
+
+### 4.2 Lattice RP and the two seams [R + P]
+X3 (Osterwalder–Seiler 1978, text not fetched) [R]: for the Wilson action with compact group, any coupling, and θ the reflection in a lattice hyperplane bisecting the links orthogonal to it, ⟨Θ(Φ)Φ⟩ ≥ 0 for every Φ of the links in the positive half, (ΘΦ)(U) := conj Φ(θU). On the periodic lattice with N_ε = ℓL^K sites per side (even iff ℓ even, L odd) the reflection x_0 ↦ ε − x_0 has two fixed link planes, x_0 = ε/2 and x_0 = ε/2 + ℓ/2 (ASSEMBLY §0, §2.7 [V]). The positive half Λ_+ is the slab ε ≤ x_0 ≤ ℓ/2.
+Embedding [P]. Let F_n ∈ D_n(B) with supports in {δ ≤ x_0 ≤ T}^n, and take ε < δ/2, ℓ > 2T + 2δ. Every plaquette with centre in a support has all four links in Λ_+. Put Φ := F_0 + Σ_n Σ_{p_1..p_n} F_n(x_{p_1}, …, x_{p_n}) Π_i φ_{p_i}. Φ depends only on Λ_+ links (the centring constants c_{ε,ℓ} are numbers). Reflection: P_{θ_ε p}(U) = P_p(θ_ε U) (orientation reversal leaves Re tr invariant), and c_{ε,ℓ} is the same for p and θ_ε p (lattice symmetry). So ΘΦ = conj F_0 + Σ_n Σ_q conj F_n(θ_ε x_{q_1}, …, θ_ε x_{q_n}) Π φ_{q_i}, and
+  Σ_{n,m=0}^N S_{n+m,ε,ℓ}(Θ_ε F_n ⊗ F_m) = ⟨Θ(Φ)Φ⟩ ≥ 0,   (Θ_εF_n)(x) := conj F_n(θ_ε x_n, …, θ_ε x_1).
+Θ_εF_n ⊗ F_m ∈ D_{n+m}: flat within each factor by assumption, and across factors because the supports are separated (x_0 ≤ ε − δ < 0 < δ ≤ x_0). [P; as ASSEMBLY §2.7 Step 1]
+
+### 4.3 Passage to the limit (ε → 0, ℓ → ∞ jointly) [P given (H-U∞)]
+Seam shift: θ_ε = θ shifted by ε e_0. ‖Θ_εF_n ⊗ F_m − ΘF_n ⊗ F_m‖_{s(n+m)} ≤ 2^{s(n+m)} 4n ε ‖F_n‖_{s(n+m)+1}‖F_m‖_{s(n+m)} (ASSEMBLY §2.7 Step 2 [V]); by (H-U∞) the difference of the S-values is ≤ A_B^{n+m}((n+m)!)^D times this, → 0 as ε → 0. Hence for every i large enough (ε_i < δ/2, ℓ_i > 2T + 2δ): Σ_{n,m} S_{n+m,ε_i,ℓ_i}(ΘF_n ⊗ F_m) ≥ −o(1). Limits of nonnegative numbers are nonnegative. So every limit family of §3.3 satisfies
+  Σ_{n,m} S_{n+m}(ΘF_n ⊗ F_m) ≥ 0  for all F_n ∈ D_n(B) with supports in {x_0 > 0}^n, every ball B,
+and by OS0-continuity (§6) for all F_n ∈ ⁰S_n with supports in the open half space. The second seam at x_0 = ℓ_i/2 + ε_i/2 moves to infinity and never meets a support. [P]
+Half space, not slab. On T_ℓ RP holds for supports in 0 < x_0 < ℓ/2 (ASSEMBLY (OS2)). In the limit the constraint x_0 < ℓ/2 disappears. This is the one axiom where ℓ → ∞ gives strictly more than Target 2: half-space RP is the OS2 of OS I–II, and its reconstruction gives a positive Hamiltonian on a Hilbert space with a time-translation semigroup, instead of a thermal transfer matrix at inverse temperature ℓ. [R, OS I–II; the thermal reading at fixed ℓ is SOURCES_D4D5 §2 [V]]
+
+### 4.4 Conclusion for OS2
+RP passes with no new input: the lattice theorem (X3) and (H-U∞). No gap. The only sense in which "RP must be re-derived" would arise is if the limit object were renormalized by a V-dependent or non-positive factor; it is not (§4.1). The centring constant c_{ε,ℓ} is a number and does not affect positivity. The sign convention ΘF_n reverses the order of arguments, so symmetry (OS3) is used to match ASSEMBLY's form; OS3 is a linear identity that passes to the limit (ASSEMBLY §2.8 [V]).
+
+Ledger §4: [V] quotes; [R] X3, OS reconstruction; [P] embedding, seam shift, limit.
