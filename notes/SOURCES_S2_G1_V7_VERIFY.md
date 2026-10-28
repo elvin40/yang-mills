@@ -1,0 +1,14 @@
+# SOURCES_S2_G1_V7 — independent verification (2026-10-28)
+
+Verifier: Opus, firewalled (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP).
+Sections are appended per step.
+
+## V1. Part A on CMP 99 pp. 421–423 images (pdf 33–35, 300 dpi)
+- (3.128) [V]: line 1 has −2⟨HC_π^{(2)}(A), J⟩; line 2 prints ⟨A − DG′RD*A, Δ(A − DG′RD*A)⟩ − 2⟨HC^{(2)}(A − DG′RD*A), J⟩ + ‖RD*A‖² + a‖QA‖². Both the Δ term and the C^{(2)} term are at the same Ã = A − DG′RD*A. CONFIRMED.
+- (3.135) [V]: Δ_π^{(2)} = Δ^{(2)} − DRG′D*Δ^{(2)} − Δ^{(2)}DG′RD* + DRG′D*Δ^{(2)}DG′RD*. With P = DG′RD*, P* = DR*G′*D* = DRG′D* (R, G′ self-adjoint). (I − P)*Δ^{(2)}(I − P) expands to exactly these four terms. CONFIRMED. It also agrees with line 2 of (3.128) through (3.134), as claimed.
+- Sign: (3.134) ⟨A, Δ^{(2)}A⟩ = 2⟨HC^{(2)}(A), J⟩ [V], so the C-term of (3.128) is −⟨Ã, Δ^{(2)}Ã⟩ = −⟨A, Δ_π^{(2)}A⟩. (3.138) [V] G_1 = G_0(I − (Δ′_π + Δ_π^{(2)})G_0)^{−1} gives G_1^{−1} = G_0^{−1} − Δ′_π − Δ_π^{(2)}; (3.130) [V] G^{−1} = G_0^{−1} − Δ′_π. So G_1^{−1} = G^{−1} − Δ_π^{(2)}. CONFIRMED.
+- (3.137) [V]: |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0(L^jη)^{−2}|A|, b ∈ Δ(y), y ∈ Λ_j, "the supremum |A| is taken over several j-blocks surrounding Δ(y)". The bound holds for all A, so A = 0 near Δ(y) forces (Δ^{(2)}A)(b) = 0. Locality follows from the printed bound alone. CONFIRMED. Caveat: (3.137) is derived from the form bound "(149) in [5]" with Q_j″|δA|; the pointwise reading is Balaban's, not re-derived here [R, printed].
+- |H*J| ≤ O(1)Mα_0(L^jη)^{−3} [V], text between (3.136) and (3.137).
+- Symmetry: (3.136) [V] writes Δ^{(2)}A = Σ_j Σ_{b∈Λ_j}(L^jη)^{d+1} tr (δ/δA)C_j^{(2)}(A, b)(H*J)(b). C_j^{(2)}(·, b) is homogeneous of degree 2 (second-order term of Q_j), H*J is independent of A. So Δ^{(2)} is (a multiple of) the gradient of a scalar quadratic, hence its Hessian, hence self-adjoint for the inner product that defines δ/δA. (3.134) also defines it through a quadratic form. CONFIRMED with the author's [I-conv].
+- Point the author did not state, checked here: symmetry is LOAD-BEARING in the Schur step. (3.137) controls only row sums at the output bond b. Without symmetry the column sum Σ_b‖K(b, b′)‖ is not controlled: entrywise one only gets η^d‖K‖ ≤ Cεℓ(b)^{−2}, and the number of b with b′ ∈ N(b) is ~ (ℓ/η)^d. So the [I-conv] carries the whole A3.1 step. It is a safe convention reading: an operator "determined by" a form (3.134) is its symmetric part, and on a non-symmetric part (3.134) gives no information at all, so any other reading makes (3.134) not define Δ^{(2)}.
+- Weight check: the AM–GM step works for any bond weights w(b) (η^d or a scale-dependent (L^jη)^d), provided the row-sum extraction, the symmetry, and ‖ℓ^{−1}B‖² all use the weights of the inner product ⟨·,·⟩. The author writes η^d throughout; this is consistent under that reading. No change.
