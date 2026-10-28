@@ -50,6 +50,19 @@ and the extension A := 𝓔_U (Q(U)𝓔_U)^{−1}B. Then Q(U)A = B exactly, when
  Best R ∝ α_F^{−1/3} gives ‖G^U‖ ≤ K_0 + C_G(d)α_F^{2/3}, C_G = 3(dΓ_1)^{2/3}(n_dΓ_2/2)^{1/3}·2^{−1/3}-type [P-sketch, constant not optimized].
 4.6 Assembly. With ε_Q from 4.3 and K from 4.5:
  √K ≤ [√(K_0 + C_Gα_F^{2/3} + dα_FΓ_2) + dα_Fν_1]/(1 − ε_Q),  α_F ≤ 20Mα_0(1 + O(Mα_0)) (O(1) ≤ 10, CMP 99 p. 396 [V]).
- So K ≤ K_0(1 + c_{2/3}(Mα_0)^{2/3} + c_1Mα_0) [P-sketch]. Plugging the d = 4, N = 5 moments (Γ_1 ≈ 2γ_0γ_1 ≈ 3.8e3, Γ_2 ≈ 4γ_0γ_2 ≈ 2.0e4, n_4 = 16) gives c_{2/3} of order 10³ relative to K_0 = 195, i.e. K ≤ 1.1K_0 needs Mα_0 ≲ 1e−6 [N, crude; all Schur steps lossy]. This is "O(1)Mα_0 sufficiently small" in Balaban's sense, but the constant is large.
+ So K ≤ K_0(1 + c_{2/3}(Mα_0)^{2/3} + c_1Mα_0) [P-sketch]. Plugging the d = 4, N = 5 moments (Γ_1 ≈ 2γ_0γ_1 ≈ 3.8e3, Γ_2 ≈ 4γ_0γ_2 ≈ 2.0e4, n_4 = 16) gives C_G ≈ 7.9e4, so c_{2/3} ≈ (C_G/K_0)·20^{2/3} ≈ 3e3, i.e. K ≤ 1.1K_0 needs Mα_0 ≲ 2e−7 [N, crude; all Schur steps lossy]. This is "O(1)Mα_0 sufficiently small" in Balaban's sense, but the constant is large.
  The LINEAR form K ≤ K_0(1 + c·Mα_0) asked in the brief is NOT proved here [I]. It needs the flat-frame step without patching: a gauge-covariant (non-abelian, lattice) version of the magnetic Weyl calculus / Peierls-phase lemma (abelian constant-field analogues: Nenciu; Iftimie–Măntoiu–Purice, where Op^B(a) = Op(a) + O(B) in norm). Plausible, not checked. For the use in SOURCES_CDC (any K = K(d) with K → K_0 as Mα_0 → 0) the 2/3-power bound is sufficient.
 
+## 5. What remains, and ledger
+5.1 Open items.
+ [I] Boundary blocks at ∂Λ. E_0 has infinite range (decay δ ≈ 1.2 per unit). The extension must vanish off Λ and must not be seen by the coarser Q_j on Λ_j, j < k. Fix: multiply by a cutoff at distance ≥ RM/2 from ∂Λ (dist(Λ, Λ_k^c) ≥ RM, CMP 99 p. 427 [V in SOURCES_CDC]); cost e^{−δRM/2}·(moments) in ε_Q and in the energy. Plaquettes outside Λ are not regular, but they enter only through this exponentially small tail. Not written out.
+ [I] Gauge-fixing term. Bounded by ‖D_U*A‖² with the same thin-loop and patch argument (4.5); that R(U) of CMP 99 (3.20) is an orthogonal projection is [V] on p. 394. Using R ≤ I discards nothing needed for an upper bound. Line-by-line not done.
+ [I/R] Exact corridor of Q(U). Main term: equal-weight average of transported A over the L^d straight lines [x, x′] (CMP 98 (125) [V]). The meaning of R_{0,c_−} (transport to c_−) and of x′ is [R], not read on CMP 98 pp. 33–35. The remainder Q″ = O(L²α_0) per step (139) [V]; its k-step composition constant (141) [R]. Path choices only change constants, because the inverse correction 4.1 makes Q(U)A = B exact anyway.
+ [I] Linear dependence on Mα_0 (4.6): needs a non-abelian lattice Peierls/magnetic-calculus lemma.
+ [I] Schur steps replace lattice sums over blocks by η^d sums over fine sites (factor ≤ 2^d-type, not tracked).
+5.2 Ledger.
+ [V] CMP 99 pp. 392–394 (Q_j(U) deferred to CMP 98 (89)–(92), (124); (3.15), (3.16), (3.19)); p. 396 (3.35)–(3.36), "O(1) ≤ 10". CMP 98 p. 19 (14)–(15), p. 26 (52), p. 35 (115)–(120), p. 36 (121)–(126), p. 37 (139)–(140). CMP 96 (2.125): used only through SOURCES_Q §3 (not re-read; pdftotext garbled).
+ [P] K_0 = 1/inf T = κ_d − 1 (a = 1); lattice Stokes; the plaquette bound from (3.35); the brief's "exact Q(U)A = B by transport-and-back" is false and a local exact profile has energy ∝ N³; Q(U)A = B exactly via the inverse correction.
+ [N] K_0(4) = 103.25 / 146.73 / 185.64 / 195.19 (N = 3 / 5 / 13 / ∞); K_0(3) = 75.31 / 102.11 / 122.44 / 126.85; real-space check d = 2 to 1e−8; kernel moments and decay δ ≈ 1.2 (indicative).
+ [P-sketch] K ≤ K_0(1 + c_{2/3}(Mα_0)^{2/3} + c_1Mα_0), c_{2/3} ≈ 3e3 crude, d = 4.
+ [I] linear form; boundary; gauge-fixing line-by-line; corridor details; lattice-sum factors.
