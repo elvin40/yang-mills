@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY_TheoremK — statement check of TheoremK.lean and Gronwall.lean
 
 Build: `lake build` passes (2096 jobs); no `sorry`; every theorem depends only on propext, Classical.choice, Quot.sound.

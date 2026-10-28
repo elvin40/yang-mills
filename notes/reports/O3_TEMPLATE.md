@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Architecture of "The canonical massive continuum limit of the two-dimensional O(3) model" (OpenAI, Oct 4 2026, 122 pp)
 
 Purpose: template for reverse-engineering the claimed 4D Yang–Mills existence proof.

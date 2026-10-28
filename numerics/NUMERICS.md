@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Numerical one-loop increment of one Balaban step (2026-10-27)
 
 Code: `ym_oneloop.py` (SU(2), quaternions, JAX autodiff for local pieces, scipy sparse LU for determinants). Tests: `test_oneloop.py`. Results: `results/*.json` (one file per (n, L, q); skip-if-done).

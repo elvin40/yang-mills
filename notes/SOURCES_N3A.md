@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_N3A — condition (a) of Lemma N3: the source radius against the final-coupling gap
 
 Status 2026-10-27 (Claude, Opus; unverified). Firewall kept: /tmp/sa_repo and reports/SUSSMAN_ALPOGE_MAP.md not read. No existing file edited.

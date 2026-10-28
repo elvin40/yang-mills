@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Free (U = 1) single-layer constant of (C): K(p) = max eig of B -> min{energy(A) : QA = B} at coarse momentum p.
 Feynman form (|grad A|^2, upper bound, = K_0 of SOURCES_EU) and gauge-invariant form (|dA|^2, exact for G at U = 1,
 since the minimizer of <A, G^{-1}A> has RD*A = 0). c_-^free = 1/(a + K_gi), a = 1. Straight-line Q, N fine bonds per block.

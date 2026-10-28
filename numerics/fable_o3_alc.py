@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Checks for FABLE_O3_ALC B1 tools and the Schwarz mechanism of B4 on random matrices.
 import numpy as np
 from scipy.linalg import expm, logm

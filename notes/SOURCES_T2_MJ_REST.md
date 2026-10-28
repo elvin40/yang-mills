@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_MJ_REST — the two residues of the (M_j) reduction: BETA_FP_M Prop. 4.4 region 1, and the neutral sector
 
 Date: 2026-10-28. DERIVE. Sections appended one at a time.

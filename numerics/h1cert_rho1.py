@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """(H1_L) float scan: rho_1(j, K) = ||H_j(K)|| / L, one-step map, one colour (../H2_CERTIFY_L13.md).
 Fine kernel Delta_{j-1} = Prop. A at M = L^{j-1} (j = 1: Wilson, M = 1; j = inf: fixed point); pieces from h2_scan.py.
 Usage: python h1cert_rho1.py L j [--check] [--nd 13] [--nr 8]  -> h1cert_L{L}_j{j}.json (per-K cache, skip-if-done).

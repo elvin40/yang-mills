@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_MC_IV0 — closing (I-V0): the w-dependence of the {…} vertex part (log σ, Jacobian)
 
 Date 2026-10-28. Status: in progress (Claude Opus). Firewall kept: no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md, no reports/ONLINE_SWEEP.md.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A15_LOC — (Loc): torus activity of a non-wrapping polymer = its Z^4 lift
 
 Date: 2026-10-28. Scope: TRUST_LEDGER row A15, input (Loc) only. Write-only file; no other file edited.

@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Compare bb.py and bb_arb.py box values on random boxes (sanity of the port)."""
 import sys, numpy as np
 from fractions import Fraction as Fr

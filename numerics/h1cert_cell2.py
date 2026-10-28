@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """G1 cell certificate: rigorous upper bound on sup rho_1(j, K) over a cell K_c + [-h, h]^4 (../H2_CERTIFY_L13_G1.md sec. 1).
 rho_1^2 L^2 = lambda_max(Z T2 Z + w w^dag / sigma)  ((2.1) of H2_CERTIFY_L13 with beta = sigma, Lemma P4 of H2_CERTIFY_P4).
 K^-adapted frame W = [Q', Kh], Q'^dag rows K^_4 e_mu - K^_mu e_4, so Q'^dag Kh = 0 for every K. By P4 (E k^ = Kh) Q'^dag E P = Q'^dag E =: V'

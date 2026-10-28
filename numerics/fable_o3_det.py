@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Numerical check of FABLE_O3_ALC A3 Steps 2-4: complex symmetric Gaussian, determinant and total-variation ratios,
 # and the perturbation lower bound |int F dmu| >= |int dmu| (1 - e^{sum mu^2/4} s_F).
 import numpy as np

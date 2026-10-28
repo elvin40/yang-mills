@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_B20_W4R verification
 
 Independent check of SOURCES_B20_W4R.md claims (1)-(3). Firewall respected.

@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """GAPRIME check (2D, charged sector). Builds A' = cos(phi) C^+C + 2 sin(a/2) Sigma + D D^+ from the
 explicit formula of SOURCES_T2_GAPRIME Lemma 1.1 (q = e^{i a}, a = -2 phi, Landau gauge, N x N torus,
 Bloch-reduced in x_0), and checks: (1) equality with the finite-difference model of t2_s123_gap2d

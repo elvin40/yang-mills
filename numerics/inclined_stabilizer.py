@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Stabilizer of a rotated sublattice A Z^4 (A A^T = m I) inside the hyperoctahedral group B_4,
 # and the number of independent B_4-stabilizer-invariant quadratic forms on Lambda^2 R^4
 # (= number of independent marginal gauge couplings sum c_{mu nu rho sigma} tr F_{mu nu} F_{rho sigma}

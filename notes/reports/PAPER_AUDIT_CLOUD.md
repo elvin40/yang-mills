@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # PAPER_AUDIT_CLOUD — status consistency of paper/*.tex against the ledger and the PLAN tail
 
 Written 2026-10-28 (cloud session, P1). Read-only audit; no .tex edited.

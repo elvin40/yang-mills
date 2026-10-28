@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY: QConstants.lean
 
 SOURCES_G3_N2.md §3.2–3.4, §3.6 and SOURCES_A7_CDC.md §2.2–2.3 formalized over ℝ in the ℓ² operator norm (`Matrix.Norms.L2Operator`): Λ bound `Q = Q₀′ − P`, `‖P‖ ≤ p`, `pΛ₀ ≤ ½` ⇒ `Q ≥ (2Λ₀)⁻¹`, `‖Q⁻¹‖ ≤ Λ`, `‖(Q⁻¹)_BB‖ ≤ Λ = 2(1 + h + h²G_Γ²)` (`Lambda_bound`, `Lambda_bound_gamma` with h = 4/(3γ_exp); proof via `q0_split`/`q0_lower` (`Q₀′ ≥ Λ₀⁻¹`) + `lower_transfer` + `coercive_inv`), B-block of `Q₀′⁻¹` `≤ h + h²G_Γ²` (`author_Bblock_norm_le`), `‖H₀‖ ≤ γ₁ᴺ + ε₀` and `c₋ ≥ 4/(5γ₁ᴺ)` (`c_minus_bound`, reuses `c_minus_ge`), Lemma N two-sided `‖Cᵀ(P − a − Δ_J + 𝒢ᵀ𝒢)C‖ ≤ ‖C‖²·max{K_{ext,1} − a + c_J + 2c_𝒢, a + c_J}` with `‖𝒢‖² ≤ 2c_𝒢` (`lemmaN`); helper `norm_le_of_abs_dot` (symmetric M, |⟨x,Mx⟩| ≤ c‖x‖² ⇒ ‖M‖ ≤ c); lake build passes, no `sorry`, axioms `[propext, Classical.choice, Quot.sound]`; not formalized: the operator-monotone step Γ_bb ≥ H₀⁻¹ of §3.4, the structure of P (only ‖P‖ ≤ p is used), and H₀ ≥ ¾γ_exp (a hypothesis, from A8).

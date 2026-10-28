@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Generic lemmas for a lattice-to-continuum Yang–Mills construction
 
 Status: drafted 2026-10-27 by Claude (Fable); verified by an independent Fable pass (LEMMAS_VERIFY.md). Verdicts: A correct; B geometry/B1/B3 correct, B2 correct with fix (applied below); C corrected (conjugation closure). The ledger was amended after the verifier found a structural gap (rotation invariance needs the R⁴ limit). Each lemma states what it needs from the heavy construction (Balaban-type RG) as hypotheses, so the generic part is separated from the open part.

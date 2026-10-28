@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # S123 VERIFY extra check: 2D physical/gauge split at flux 2pi m/N; imports t2_s123_gap2d read-only; prints only.
 import numpy as np, sys, time
 sys.path.insert(0,'numerics'); import t2_s123_gap2d as g

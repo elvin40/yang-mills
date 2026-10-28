@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H1CERT2_M1_RESULT — the h1cert2 cross-check, mode M = 1 (j = 1), sorted chamber, h = 0.08, DMAX = 2 (2026-10-28)
 Source: box ~/ym/h1cert2_out_L13_M1_h0.08_sorted/ (14,423 cell JSONs, read only; nothing launched or stopped).
 DONE marker: top_cells 8,855; ok 13,872; split 348; FAILED 200; near0 3; max_ok_ub 3.59685; √13 = 3.60555.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_MULTISCALE_OMEGA_VERIFY — independent check of SOURCES_MULTISCALE_OMEGA.md §1–§7
 
 Verifier: Opus, 2026-10-28. Tags: CONFIRMED / CORRECTED / REFUTED per item.

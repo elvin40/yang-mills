@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # BETA_FP_H: repair of hypothesis (H) of BETA_FP_LEMMA43 at a stationary background
 
 Written 2026-10-27 (Claude, Opus 5.5). Scope: replace (H) of BETA_FP_LEMMA43.md §4.2 by a statement about the constant-background symbols of U3 Lemma 5.1, as asked after BETA_FP_LEMMA43_VERIFY.md §7. Read: BETA_FP_LEMMA43.md, BETA_FP_LEMMA43_VERIFY.md, SOURCES_D1_VERIFY.md (items 5, 8), U3_LEMMA51.md §1–§3, U3_LEMMA51_R23.md §0–§3c with its verification, U3_REPAIRS.md §1, U3_VERIFY.md §2. No existing file edited. No numerics run. Tags: [proved here], [cited], [argued] (argument written, not a full proof), [open].

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_FX — hypothesis (FX): polymer representation of log I_K
 
 Target: prove (FX) of SOURCES_D4D5.md §3.3 or reduce it to precise, quoted statements. One section per tool call. Tags: [V] = verbatim quote checked on text layer or page image; [P] = proved here; [R] = reduced to quoted result; [O] = open.

@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """bb.py with outward rounding (H1_ANALYTIC_VERIFY V6). Same enclosures as bb.py; box coordinates K = pi*u, u exact dyadic
 (Fraction); every 1D function value in arb (python-flint) at the exact endpoints, converted outward to float64; the 4D
 combination in numpy with one-ulp outward rounding after each correctly rounded op and Higham bounds for np.sum.

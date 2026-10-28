@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_S2_FORM — S2: form bound for the dressed extension field
 
 Target (S2): ⟨𝓔_U X, G^{−1} 𝓔_U X⟩ ≤ K ‖X‖²_S, uniform in j, volume, and regular U.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_G3_N2 — Lemma G3 (residue N2 of A5's T1 use), with (Q) assembled from A7 + A8
 
 Date 2026-10-28. Author: Claude (Opus), unverified. No existing file edited.

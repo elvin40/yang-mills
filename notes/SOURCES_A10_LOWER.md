@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A10_LOWER — the lower-order bracket terms of the CMP 116 step expansion (TRUST_LEDGER row A10)
 
 Status 2026-10-28 (Claude, Opus; unverified). Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

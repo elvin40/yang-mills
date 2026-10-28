@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Verification of LEMMA_B4.md
 
 Status: independent pass, 2026-10-27, Claude (Fable 5.1). Scope: every claim of LEMMA_B4.md checked against balaban/*.txt, reports/o3_continuum.txt, LEMMAS.md, and by recomputation. Scripts used: the author's numerics/inclined_stabilizer.py (runs 125 s, not seconds) and numerics/inclined_cell_geometry.py (0.6 s); stab_search_big.py not rerun (its stab_search_big.out is complete through m = 45; the text's "m = 49, 50 still running" has no output in the file). My own checks ran from /tmp (not kept). No other file was edited.

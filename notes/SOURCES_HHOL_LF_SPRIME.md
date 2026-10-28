@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_HHOL_LF_SPRIME — holomorphy and small-difference bounds with thresholds frozen at s′ near ū
 
 Status: complete, unverified (Claude Opus, 2026-10-28). §5 ledger is authoritative. Ledger tags: [P] proved here, [V] verified in a cited file, [I] imported from Balaban/literature, [R] reduced to a named open item.

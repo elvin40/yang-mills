@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """GAPRIME2 check. Explicit complex charged operator A' = cos(phi) c^+c + div^+div - 2 sin(phi) K
 (Landau gauge, T0 psi(x) = e^{i a x1} psi(x+e0), T1 psi(x) = psi(x+e1), a = 2 phi = charge-2 flux),
 compared with the finite-difference Wilson Hessian of t2_s123_gap2d (read-only import), then

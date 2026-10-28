@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_HHIST — proof attempt of (H-hist), column-sum form
 
 Status 2026-10-27 (Claude, Opus; unverified). Result: (H-hist) reduced to (B2) + (SM), §6–7; rate λ^m, λ = L^{−α} + θ.

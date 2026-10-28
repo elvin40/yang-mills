@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # BETA_FP_PW verification (independent)
 
 ## 1. Read BETA_FP_PW.md (230 lines) and BETA_FP_LEMMA43 §1–3 + VERIFY

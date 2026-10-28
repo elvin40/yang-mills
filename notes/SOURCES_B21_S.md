@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_B21_S — uniformity of (S) at small widths and at separation 16ε
 
 Status: complete (2026-10-28). Verdict: B21 (S)-uniformity CLOSED as a reduction to D4D5 Lemma C + S1 + (FX) main form. Firewall respected: no read of /tmp/sa_repo, SUSSMAN_ALPOGE_MAP, ONLINE_SWEEP.

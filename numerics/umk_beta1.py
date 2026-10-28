@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """beta_1(0) of one Balaban step for arbitrary L by umklapp sums (formulas: ../UMK_BETA1.md).
 Per coarse momentum K only 12x12 blocks at the L^4 umklapp momenta k_l = K + 2 pi l / L plus a rank-15 border.
 Usage: python umk_beta1.py L Ng p_list [--u1] [--gauge]   -> results/umk_L{L}_Ng{Ng}_p{p}_{kind}[_u1].json (skip-if-done,

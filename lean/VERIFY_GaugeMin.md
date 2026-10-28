@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY: GaugeMin.lean
 
 Statement check of the Lean theorems against `notes/SOURCES_A3_GAMMA0_FULL.md` §5 (5.0–5.2), verified in `notes/SOURCES_A3_GAMMA0_FULL_VERIFY.md` §4 item (1) and summary item 5. Build: `lake build` passes, no `sorry`. Axioms of all eleven printed theorems: `[propext, Classical.choice, Quot.sound]`.

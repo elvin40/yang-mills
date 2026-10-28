@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_CDC — norm bound ‖C*Δ_kC‖ ≤ γ_1 (last input of Lemma G3)
 
 Status: done 2026-10-27. Verdict §8: REDUCED to one named lemma (E_U) plus two O(Mα_0) perturbation inputs; free case proved. Firewall kept: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U1′: the composed one-loop increment on the infinite lattice
 
 Written 2026-10-27 (Claude, Fable 5.1). Scope: restate Lemma U1 of R2_TELESCOPING.md on the infinite lattice (as R2_VERIFY.md Sect. 2.8 recommends), derive the universal coefficient from cited lattice one-loop results, and reduce the rest to named inputs. Sources read: THEOREM2.md (all, incl. §8a), R2_TELESCOPING.md Sect. 3–6, R2_VERIFY.md, numerics/NUMERICS.md §1, §5, §6, numerics/ym_momentum.py, CMP 109 OCR text for (0.2), (0.4), (0.14)–(0.23), (1.3)–(1.5), (5.37)–(5.43), Lüscher–Weisz hep-lat/9505011 (text layer of the PDF), Capitani hep-lat/0211036 (text layer), INSPIRE abstracts of Dashen–Gross 1981 and Hasenfratz–Hasenfratz 1980. Numerical checks ran in a scratch directory (deleted) with the project venv; ym_momentum.py and ym_oneloop.py were used read-only. No file in the project was edited except this one.

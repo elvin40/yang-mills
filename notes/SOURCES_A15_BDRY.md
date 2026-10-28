@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A15_BDRY — row A15 residue (f) (∂Λ_{k+1} reading of CMP 119 p. 278) and row B8 (R-term part, β subtraction in finite volume)
 
 Date: 2026-10-28. Write-only file; no other file edited.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_VOL — the volume hypothesis (Vol) in the Theorem 2 setting
 
 Date: 2026-10-28. Edits: THEOREM2_PROOF_v4.md §1.1 (one paragraph) and its change log; this file. No other file edited.

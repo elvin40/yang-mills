@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Balaban's unpublished Theorem 2: the precise open sub-theorem
 
 Anchored 2026-10-27 on balaban/1987_cmp109_rg_approach_I.pdf (CMP 109) and balaban/1989_cmp122_large_field_renormalization_II.pdf (CMP 122). Page numbers are printed pages.

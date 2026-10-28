@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # INFINITE_VOLUME_FABLE — independent attempt: infinite-volume limit from the finite-torus theorem (Target 2)
 
 Date: 2026-10-28 (Fable). Status: PAPER-GRADE as a conditional statement (VERIFY + VERIFY2 applied). Edits: this file only; no existing file touched.

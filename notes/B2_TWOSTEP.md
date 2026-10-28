@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # B2_TWOSTEP — (B2) via the two-step recursion
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: KAPPA_BOUNDED.md §2, §4–§6; KAPPA_BOUNDED_VERIFY.md §7–§9; U3_AW.md §1, §4; U3_AW_VERIFY.md §4–§11; numerics/aw_verify/{hcheck, hscan, h2step}.py and h2step.json. Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited. Sections were appended one at a time.

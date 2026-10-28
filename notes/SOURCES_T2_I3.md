@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_I3: the Peierls input (I3) at one step, with explicit f-dependence
 
 Date: 2026-10-28. Item I3, DERIVE. Status: complete (see §9).

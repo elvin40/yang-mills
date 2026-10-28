@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Lemma B4: the inclined first step and Balaban's class of effective densities
 
 Status: drafted 2026-10-27 by Claude (Fable). Not verified by an independent pass. Everything marked [proved here] is proved in this text or by the two scripts in numerics/. Everything marked [quoted] is Balaban's or the template's statement, verbatim. Nothing else is claimed.

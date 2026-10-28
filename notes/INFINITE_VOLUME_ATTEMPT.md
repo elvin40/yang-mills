@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # INFINITE_VOLUME_ATTEMPT — trying the subsequential infinite-volume limit from Target 2
 
 Date: 2026-10-28 (Opus). Status: exploratory derivation attempt, unverified. Edits: this file only.

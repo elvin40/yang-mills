@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_G3 — Lemma G3: the g-derivative of the small-field cut χ_k
 
 Date: 2026-10-27. Status: complete when §7 is present; unverified (Claude Opus).

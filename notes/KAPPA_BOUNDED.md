@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # KAPPA_BOUNDED — uniform bound on the coarse F²-coefficient κ_k (Theorem K) and Theorem 2 (weak form)
 
 Status: complete (2026-10-27), not independently verified. Sections were appended one at a time.

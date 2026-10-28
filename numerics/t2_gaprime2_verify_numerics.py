@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """GAPRIME2 VERIFY. Independent numerics, prints only.
 A: own finite-difference Wilson Hessian in the OTHER Landau gauge (phases on 1-links, U_{x,1} = e^{i phi x0 s3}),
    Bloch in x1, x0-period q; physical part via H' + M D D^+ (M large), no SVD.  Compared with own Lemma 1.1 code.

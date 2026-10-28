@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # INFINITE_VOLUME_FABLE_VERIFY2
 
 Verification of B121 edits to INFINITE_VOLUME_FABLE.md (2026-10-28). Firewall respected.

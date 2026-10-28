@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY_CertBridge.md — statement check of `YmLean/CertBridge.lean`
 
 Sources: `../numerics/h1cert_cell.py` (`_radF`, `final_bound`, `cell_bound`), `../numerics/h1cert_cell2.py` (`inv_or`, `cell_bound2`), `VERIFY_BlockNorm.md` "Gaps to the numerical normalization". Build: `lake build` (whole project) succeeds; `CertBridge.lean` has 268 lines and no `sorry`.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_LLL — (L-LL): the scaled low-energy limit of the level-0 fine bracket
 
 Date 2026-10-28. Target: TRUST_LEDGER row B3, the open item (L-LL) of SOURCES_T2_F_STEPB §2.5 (graded UNSUPPORTED as a theorem in SOURCES_T2_F_STEPB_VERIFY §5.4).

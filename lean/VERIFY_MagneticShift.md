@@ -1,2 +1,2 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 MagneticShift.lean (2026-10-28): GAPRIME2 §1–§4 algebra on all functions ℤ×ℤ → ℂ (every real α, no flux quantization) — Weyl relation, adjoints, [∇₀,∇₁], [T₀,T₁^*] = (e^{iα} − 1)T₁^*T₀, Π^*Π = 𝔏 + J, [Π,Π^*] = 2s·sin(α/2)(V′ + V′^*), J formula, sine bounds, (1.a), (1.b), A′ decomposition, exact R formula, K̄ = σ_y, ‖σ_y‖ = 1; no sorry; axioms propext, Classical.choice, Quot.sound; lake build 8 s (file 4.3 s); NOT done: Lemmas 2.1–2.3 norm bounds, [Π,Π^*] form bound, X(X − 2|α|) ≥ −157|α|³, Prop. 3.3, Lemma 4.1/Cor. 4.3 bounds, Thm 5.1.

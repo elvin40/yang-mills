@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_B21_S_PRIME — the ℓ-free form (S′) of the cumulant bound
 
 Date 2026-10-28. Task: locate the ℓ-dependence in Lemma C ⇒ (S), state (S′) with an ℓ-free constant, check every consumer.

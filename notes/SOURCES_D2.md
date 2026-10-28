@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_D2 — sourced small-field step (task D2)
 
 Status: draft by Claude (Opus 5.5), unverified, 2026-10-27. Prose: short sentences, plain technical English. Inputs: SOURCES.md, SOURCES_VERIFY.md, SOURCES_D1.md, THEOREM2.md §3a, CMP 109 Sect. 1–5, CMP 119 Sect. 2, U3_REPAIRS.md.

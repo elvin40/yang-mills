@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A18_REGULAR — regular-class identification (TRUST_LEDGER row A18)
 
 Date: 2026-10-28. Ledger tags: [P] printed (page cited), [V] verified by us on the page image, [I] interpretation/reading, [R] relied on (printed sketch or assertion, not checked line by line).

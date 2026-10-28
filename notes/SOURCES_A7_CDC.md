@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A7_CDC — TRUST_LEDGER row A7: ‖C*Δ_kC‖ ≤ γ_1 and uniform exponential decay of C*Δ_kC
 
 Date 2026-10-28. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md were not read. No existing file was edited.

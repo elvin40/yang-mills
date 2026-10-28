@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Free (U=1) check of the exponential-gauge Poincare inequality on a periodic unit lattice.
 # P = sum_p |curl B|^2, G = sum_{y,x} |(GB)(y,x)|^2 (avg over staircase contours from block centre y),
 # constraint Q_1 B = 0 (CMP 96 (2.125) averaging). Reports min eig of P+G on ker Q, the block-only

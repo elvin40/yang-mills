@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H2_CERTIFY prototype: interval (arb) enclosure of rho_2(inf, K) = ||(+)_l H_inf(k_l) H_inf(K)|| / L^2 at one K, L = 3,
 # plus an Oishi-Rump enclosure of ||B_inf(K)^{-1}||. Symbols as exact trig expressions; the (0.4) row is rational (k/648).
 # Usage: numerics/.venv/bin/python -I numerics/h2cert_proto.py [lmax] [K1 K2 K3 K4]   (lmax 2: truncated check; lmax >= 4: rigorous)   (a component "pi" means exact pi)

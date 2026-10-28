@@ -145,5 +145,28 @@ Corollary W2 also gives a necessity statement: OS4 for every limit implies decay
 \item The finite window. Theorem FD (\S\ref{sec:open-ulap}, item 4) gives Step~B with $\ell$-free constants for $\ell\le22ML\,\xi_g$. Beyond the window the first inequality to fail is the Kotecký--Preiss/Cammarota smallness $\exp(-p_0(g_{K+k}))\le\varepsilon_{\mathrm{KP}}(d,L,M)$ at depth $k>k_*(g)$. It fails as an inequality, not as a divergence of constants: no statement with any constant is proved at $g>\gamma$, and the small-field set is empty as $g\to1$. Continuation of the renormalization group past the unit scale is graded \status{refuted as a route to $\ell\to\infty$; proved as a window statement}.
 \item Reflection positivity alone. For the transfer matrix $T=e^{-H}$ of any Theorem IV limit and a bounded observable $A$ of the half-space algebra, $\langle\Theta(A)\tau_tA\rangle=\int_{[0,1]}s^t\,d\mu_A(s)$, so the time-direction two-point function is non-increasing, log-convex, and convergent as $t\to\infty$, with limit $\|P_1A\Omega\|^2$ (Proposition RP1, \status{proved, standard}). Clustering for $A$ is equivalent to $P_1A\Omega=\langle\Omega,A\Omega\rangle\Omega$, that is, to uniqueness of the vacuum, which is the open statement. Chessboard and Gaussian-domination bounds give no decay. Griffiths and FKG inequalities are not available for SU(2). This route is graded \status{refuted as a replacement for the cluster expansion}.
 \item Ergodic decomposition. Each ergodic component of $\nu_\infty$ clusters in the mean on $\mathfrak F$. With Proposition RP1 this would give pointwise clustering in the time direction if the component were itself reflection positive. Reflection positivity of an arbitrary ergodic Gibbs component is not known; \file{FABLE_HARD.md} \S4.3 marks this as unsettled.
-\item Regime separation. The parameter range of Ba{\l}aban's construction at the unit scale and the strong-coupling range where a lattice mass gap is proved are separated by at least seventeen orders of magnitude in $\beta_W$ (Section~\ref{sec:rem-gap}). No numerical evidence on (Gap$_K$) is in the project files.
+\item Regime separation. The parameter range of Ba{\l}aban's construction at the unit scale and the strong-coupling range where a lattice mass gap is proved are separated by at least seventeen orders of magnitude in $\beta_W$ (Section~\ref{sec:rem-gap}). The project files contain no numerical test of (Gap$_K$) or of (U-Lap)$_K$; \file{FABLE_HARD.md} used no numerics.
 \end{enumerate}
+
+\begin{remark}[equivalent, stronger, and weaker forms of (Gap$_K$)]\label{rem:open-gap-forms}
+\begin{enumerate}
+\item Equivalent form for one limit. For a fixed limit point, OS4 for the plaquette two-point function is equivalent to decay of $\operatorname{Cov}_{\nu_\infty}(w_1,\tau_aw_2)$ for all bump pairs, and a mass gap $m<c/M$ is equivalent to exponential decay at rate $m$ (Theorem~\ref{thm:open-W1}). This is a statement about the one state $\nu_\infty$ that occurs, not about all Gibbs states of $\Phi_K$.
+\item Why the source quantifies over all states. Different Gibbs states of $\Phi_K$ can have different covariance decay. An argument that uses only $(W_\infty,\Delta_\infty)$ and bounds valid for every state cannot prove OS4 (\file{FABLE_HARD.md} \S4.4). A proof must either identify the specific $\nu_\infty$ or prove decay for all translation-invariant Gibbs states; (Gap$_K$) is the second option.
+\item A possibly weaker form. (Gap$_K$) asks for decay on $\mathfrak F$ only. Whether decay on $\mathfrak F$ is strictly easier than decay for all local functionals is not settled; $\mathfrak F$ is the family of sourced response functionals and need not separate Gibbs states (Remark~\ref{rem:open-ulap-forms}(3)).
+\item A stronger form. \file{PLAN.md} (entry for \file{ALT_ROUTES.md}) restates the common target of three routes as boundary-condition-uniform and volume-uniform exponential decay of the unit-scale measure at distance $\xi_g$, and calls it ``= (Gap$_K$)''. That statement is stronger than (Gap$_K$) as defined in \file{FABLE_HARD.md} \S4.4, which asks for decay on $\mathfrak F$ of translation-invariant Gibbs states only, with no rate in its plain form. \file{ALT_ROUTES.md} has no verifier report. This draft uses the \file{FABLE_HARD.md} definition.
+\item Relation to (U-Lap)$_K$. The sources give no implication between (Gap$_K$) and (U-Lap)$_K$. Both are infrared statements about the same family $\nu_\ell$ and the same interaction $\Phi_K$, and both are reached by Proposition RP1 in the form ``clustering is equivalent to vacuum uniqueness'' (\file{FABLE_HARD.md} \S4.3).
+\end{enumerate}
+\end{remark}
+
+\subsection{Summary of the two problems}\label{sec:open-summary}
+
+\begin{center}
+\begin{tabular}{p{0.15\textwidth}p{0.37\textwidth}p{0.38\textwidth}}
+\hline
+problem & if it holds & status in the sources \\
+\hline
+(U-Lap)$_K$ & at fixed $K$, the $\ell\to\infty$ limit of Theorem IV exists along the full sequence (Theorem U1); the joint limit needs E13-type UV uniqueness and uniformity in $K$ in addition & open; equivalent to (U-IV)$_K$ given (L6-$\mathcal P$), L3, L14 \status{proved, unverified}; implied by (U-Gibbs)$_K$; no proof route \\
+(Gap$_K$) & OS4 (resp.\ a mass gap $m<c/M$) for the plaquette field of every Theorem IV limit, read at fixed $K$; the joint limit needs uniformity in $K$ & open; necessary on $\mathfrak F$ for the states that occur (Corollary W2 \status{proved, unverified}); $\ell$-uniform Step~B, RP alone, and RG continuation are \status{refuted} as routes \\
+\hline
+\end{tabular}
+\end{center}

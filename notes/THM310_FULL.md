@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # THM310_FULL — paper-grade write-out of CMP 99 Theorem 3.10 (walk expansion of the basic propagator G = G_0)
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (third of three); Table 1 row R1, with R36 (M_1 version) and R7 (complex form) for this operator. Companion files: THM37_FULL.md (G′, Thm 3.7 + Cor. 3.8) and THM39_FULL.md (C′ = (Q′G′²Q′*)^{−1}, Thm 3.9). They are cited by name and not repeated.

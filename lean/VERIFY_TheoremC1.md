@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Statement check: TheoremC1.lean, StripBound.lean
 
 Build: `lake build` from lean/. Both files have no `sorry` and build in about 2 s each. Axioms of all five theorems: `[propext, Classical.choice, Quot.sound]`.

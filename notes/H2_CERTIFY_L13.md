@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H2_CERTIFY_L13 — the one-step condition (H1_L) at L = 13: measurement, cell certificate, cost
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: H2_CERTIFY.md, numerics/h2cert_proto.py, H2_LARGE_L.md, H2_LARGE_L_VERIFY.md, numerics/h2_scan.py, B2_TWOSTEP.md §1–§2, THEOREM2_PROOF_v4.md (range of L). Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited. New files: this file, numerics/h1cert_rho1.py, numerics/h1cert_cell.py, numerics/h1cert_drive.py, numerics/h1cert_launch.sh, numerics/h1cert_modal.md, and data files numerics/h1cert_L{L}_j{j}.json, numerics/h1cert_prof_L{11,13}.npz. Nothing was launched on the box or on Modal.

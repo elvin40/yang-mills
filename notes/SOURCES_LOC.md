@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_LOC — localization of the majorant covariance C^{(k)}(Z_0,0)
 
 Status: complete (2026-10-27).

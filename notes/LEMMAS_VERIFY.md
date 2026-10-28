@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Verification of LEMMAS.md (Lemmas A, B, C and the open ledger)
 
 Verifier: Claude (Fable), 2026-10-27. Adversarial read of `~/claude_code/yang_mills/LEMMAS.md` against the template `/tmp/oai_oct26/o3_continuum.txt` (§1.4, §4.1 Lemma 4.1, §10.2, §10.3, §15). All algebra and geometry below was also checked numerically (4D cell enumeration, SU(3) equivariance, Frobenius nearest-point comparison). No web search.

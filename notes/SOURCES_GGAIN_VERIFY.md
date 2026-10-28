@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_GGAIN_VERIFY.md
 
 Independent verification of SOURCES_GGAIN.md (2026-10-27). Firewall: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP.md.

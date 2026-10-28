@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_SRULE_CONVENTION_VERIFY
 
 Independent check of SOURCES_SRULE_CONVENTION.md (C-new-2). Started 2026-10-28.

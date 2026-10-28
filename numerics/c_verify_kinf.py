@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # independent N->inf Feynman constant at p=(pi..pi): T = sum_l |D_mu|^2 prod_nu |D_nu|^2 / |k|^2, k = pi(2l+1), |D|^2 = 4/k^2
 import numpy as np, itertools
 for d, M in ((2, 400), (3, 120), (4, 40)):

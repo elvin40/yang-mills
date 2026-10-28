@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Checkpointed cell driver for (H1_L) with the G1 certifier h1cert_cell2.cell_bound2 (../H2_CERTIFY_L13_G1.md).
 Domain: --domain box = [0, pi]^4 (16 sign flips K_mu -> -K_mu, premise P5a) or sorted = 0 <= K1 <= .. <= K4 <= pi (also the 24
 axis permutations, premise P5b). Top cells: half-width h, centres (i + 1/2) 2h per axis (sorted: i1 <= .. <= i4; rounding is

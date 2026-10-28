@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Balaban excerpts: verified verbatim index
 
 Built 2026-10-27 from the *_VERIFY files, LEMMA_DPRIME_SWEEP.md, THEOREM2.md §1–§2, and LEMMAS.md. Page numbers are printed pages. Nothing here was re-read from the papers: each entry reports what a verifier recorded.

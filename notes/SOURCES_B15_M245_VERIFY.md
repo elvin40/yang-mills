@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_B15_M245_VERIFY — independent check of SOURCES_B15_M245.md
 
 Verifier: Opus subagent, 2026-10-28. Firewall kept (no SA files read).

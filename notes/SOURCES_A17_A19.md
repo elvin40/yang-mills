@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A17_A19 — derivations for TRUST_LEDGER rows A17 and A19
 
 Date: 2026-10-28. Ledger tags: [P] printed (page cited), [V] verified here by computation or reading, [I] inferred / reading choice, [R] relied on (cited result, not re-proved).

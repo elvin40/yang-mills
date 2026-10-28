@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_QE_INV — uniform bound on ‖(Q(U)𝓔_U)^{−1}‖ (2026-10-28)
 Tags: [V] read on the page, [P] proved here, [P-sketch] proof outline with all steps named, [N] numerics, [R] reasoned from Balaban's text without a page check, [I] gap.
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

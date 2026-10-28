@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # FABLE_A25_A26_H1 — Lemma LB_Q̃ (row A25), the A26 gluing step (CMP 109 p. 275), and THM37's (H1)
 
 Date 2026-10-28. Author: Fable 5.1, derivation agent. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.

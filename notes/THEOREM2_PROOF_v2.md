@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Theorem 2 — proof chapter, version 2 (shortest verified route)
 
 Written 2026-10-27/28 (Opus). Supersedes the route of THEOREM2_PROOF.md (v1). It does not edit v1. It is not itself verified as a whole document.

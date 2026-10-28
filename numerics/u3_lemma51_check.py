@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """U3 Lemma 5.1 check: background-field (F) Taylor coefficients of the block-M Schur complement.
 
 d = 2 model (4D is out of reach in real space for M = 8, 16), SU(2), constant abelian flux in sigma_3.

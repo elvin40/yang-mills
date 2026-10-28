@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Verification of Lemma D and Lemma E (LEMMAS.md) and of the reduction in THEOREM2.md §3
 
 Date 2026-10-27. Adversarial check, no web. Notation: u_k := 1/g_k², t := 1/g², K steps, 0 < β ≤ β′.

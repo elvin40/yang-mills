@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A3_GAMMA0_FULL — Theorem A3 (γ_0 > 0 for C*Δ_k(U)C) with a complete proof
 
 Status: complete 2026-10-28 (Opus), not independently verified. Sections appended one per tool call.

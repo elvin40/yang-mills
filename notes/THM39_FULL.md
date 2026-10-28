@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # THM39_FULL — paper-grade write-out of CMP 99 Theorem 3.9 (walk expansion of C′ = (Q′G′²Q′*)^{−1})
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 2 (second of three); Table 1 row R2, with R36 (M_1 version) and R7 (complex form) for this operator.

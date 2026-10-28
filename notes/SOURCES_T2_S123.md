@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_S123 — spectral inputs (S1)–(S3) for (M_j) at fixed level j (DERIVE)
 
 Date: 2026-10-28. Status: complete (sections appended one at a time). (M_j) reduced to the 2D gap (G_A′) [open] and BETA_FP_M Prop. 4.4 region 1 [argued].

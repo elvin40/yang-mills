@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Close reading: "Local smoothing for the Euclidean wave equation" (OpenAI, 2026-10-25, 59 pp.)
 
 Source: `/tmp/oai_oct26/local_smoothing.txt` (pdftotext of the PDF). Companion: "Critical local smoothing for the three-dimensional wave equation" (OpenAI, 2026-09-24, 165 pp.), `/tmp/oai_oct26/local_smoothing_3d.txt`. This is a reading of the proof mechanism, not a verification. Equation and section numbers refer to the October paper unless marked "[3D]".

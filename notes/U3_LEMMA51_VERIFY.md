@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U3_LEMMA51_VERIFY: independent check of U3_LEMMA51.md
 
 Written 2026-10-27 (Claude, Opus 5.5, verifier). Built incrementally, one section per step.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U3_AW_VERIFY — independent check of U3_AW.md (2026-10-27)
 
 ## 1. Read U3_AW.md in full (214 lines)

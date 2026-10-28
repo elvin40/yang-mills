@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """SOURCES_T2_PI §8: plane-wave probe only, d = 2, larger torus (complements t2_pi_d2check.py, which timed out
 at nc = 18 after the m = 2 point). Single amplitude a = 0.01 (a^2 error ~ 3e-5 by the nc = 12 Richardson data).
 Usage: python t2_pi_d2pw.py [L] [nc] [m1,m2,...]"""

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A15_LOC verification
 
 Verifier: independent Opus pass, 2026-10-28. Firewall kept (no sa_repo, no SA map, no online sweep).

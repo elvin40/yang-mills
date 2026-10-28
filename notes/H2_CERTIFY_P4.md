@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H2_CERTIFY_P4 — proof of premise P4 (gauge covariance of the order-0 averaging symbol)
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: H2_CERTIFY_L13.md §2.1 and §6, numerics/h1cert_rho1.py, numerics/h2_scan.py (qsym, border, schur), numerics/umk_beta1.py (avg_profile, path_arrays, csym), numerics/h1cert_cell.py (the β sum), H2_LARGE_L.md §1, U3_REPAIRS.md §1. Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited.

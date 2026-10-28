@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # R3S1_GAP — mass gap for center-stabilized SU(N) Yang–Mills on R³ × S¹ at small circle: assessment and first derivations
 
 Written 2026-10-28 (Claude, Fable 5.1). New file; no existing file edited. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read. Scratch numerics: numerics/r3s1_*.py (Mac, minute-scale).

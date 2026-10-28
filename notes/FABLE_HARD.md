@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # FABLE_HARD — four hard items of the infinite-volume programme (S1/L6, O(4), uniqueness, the wall)
 
 Date: 2026-10-28 (Fable 5.1). Status: IN PROGRESS, sections appended one per tool call. Edits: this file only (+ numerics/fable_hard_*.py if any). No existing file touched.

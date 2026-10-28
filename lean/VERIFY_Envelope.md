@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY — Envelope.lean and Divergence.lean against the Markdown sources
 
 Written 2026-10-27. Build: `lake build` from lean/, all files, no `sorry`, one style-linter warning (`<;>`) in Divergence.lean. Each new file builds in about 2 s.

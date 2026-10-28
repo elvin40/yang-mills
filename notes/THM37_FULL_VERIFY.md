@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # THM37_FULL independent verification (2026-10-28)
 
 Scope: THM37_FULL.md §1–§9. Firewall respected (no sa_repo, SA map, ONLINE_SWEEP).

@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Rigorous upper bound on rho_1(j, K) = ||H_j(K)|| / L for ALL K in a cell K_c + [-h, h]^4 (../H2_CERTIFY_L13.md sec. 2).
 One-step umklapp Schur form (h1cert_rho1.py): rho_1^2 = lambda_max(Sc^dag R Sc) / L^2, Sc = (S^-1)[:, :4],
 S = J - L^-4 sum_l E_l A_l^-1 E_l^dag, R = L^-4 sum_l E_l A_l^-2 E_l^dag, A_l^-1 = P D P + kh kh^dag / |kh|^4, P = 1 - kh kh^dag / |kh|^2.

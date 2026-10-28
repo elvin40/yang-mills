@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_F_STEPB — (F) Step B: lattice log coefficient = continuum log coefficient at constant field
 
 Date 2026-10-28. Target: TRUST_LEDGER row B3. Ledger tags: [P] proved here, [V] read verbatim in a project file, [I] interpretation, [R] reduction, [N] numerics.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_MA — input (M-A): equipartition bound for the cut-off Wilson density
 
 Goal: prove ⟨A⟩_u ≤ C·n/u for the real (1.100)-type density, or state exactly what blocks it.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U3_VERIFY: independent check of U3_GAUSSIAN_RG.md
 
 Written 2026-10-27 (Claude, Fable 5.1, verifier). Checked document: U3_GAUSSIAN_RG.md (all nine sections, ledger §8, numerics §9). Context read: numerics/NUMERICS.md, THEOREM2.md, R2_VERIFY.md §2–3, R2_TELESCOPING.md Prop. 3.1. Primary sources read in the OCR texts: CMP 109 pp. 252–254 ((0.3)–(0.14)), CMP 98 pp. 24 and 31–33 ((88)–(92)), CMP 95 pp. 25–26 and 33 (Prop. 1.1, 1.2), CMP 96 p. 246. Literature downloaded and text-extracted this session: hep-lat/9308004 (Hasenfratz–Niedermayer), hep-lat/9510026 (Bietenholz–Wiese); Bell–Wilson 1974 and Wilson–Bell 1975 abstracts via web search. All derivations below are mine. Numerical checks ran in a scratch directory (deleted) with numerics/.venv/bin/python -I; the project's own averaging code (ym_oneloop.py, CMP 109 (0.4) with all permutation staircases) was used for the 4D real-space checks.

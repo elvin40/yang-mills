@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_D3R — revision of D3 on four points (P3), (P8), freezing through R, Gevrey order
 
 Status: draft by Claude (Opus 5.5), 2026-10-27, unverified. Revises SOURCES_D3.md after SOURCES_D3_VERIFY.md (V1–V9). D3 is not edited; this file supersedes D3 items (i)(P3), (i) "full list", (iii), (iv)(G1) and the ledger lines that cite them.

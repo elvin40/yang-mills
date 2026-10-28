@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """(H2) scan: rho_2(L; j) = sup_K ||(+)_l H_{j-1}(k_l) H_j(K)|| / L^2, d = 4, one colour, trivial background (../H2_LARGE_L.md).
 Per coarse K: L^4 inner bordered solves (level j-1, fine kernel Delta_{j-2}) give Delta_{j-1}(k_l) and the Gram G(k_l) = H_{j-1}^dag H_{j-1};
 the outer solve (fine kernel Delta_{j-1}) gives H_j(K); rho_2(K)^2 = lambda_max(sum_l H_{j,l}^dag G(k_l) H_{j,l}) / L^4.

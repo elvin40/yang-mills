@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H2 certify P5 verify
 
 Independent check of P5a (sign flips) and P5b (axis permutations) for rho_1(j,K). Started 2026-10-27.

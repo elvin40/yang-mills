@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U1_VERIFY: independent check of U1_INFINITE_LATTICE.md
 
 Written 2026-10-27 (Claude, Fable 5.1), independent of the U1′ author. Sources opened: Lüscher–Weisz hep-lat/9505011 (arXiv PDF; pages 2, 3, 4, 11, 26 rendered as images and read, text layer for the rest); Lüscher–Weisz hep-lat/9504006 (ref. [2] of the above; text layer, eqs. (2.1), (5.1), (5.2), (5.5)–(5.7)); INSPIRE record of Dashen–Gross, Phys. Rev. D 23 (1981) 2340 (abstract verbatim); CMP 109 OCR text (p. 298 sentence on Π′); THEOREM2.md §8a, R2_VERIFY.md, numerics/NUMERICS.md, numerics/ym_momentum.py, numerics/results/*.json. All derivations below are mine. Numerical checks ran in /tmp/u1v with the project venv (deleted afterwards); ym_momentum.py was imported read-only. No project file was edited except this new one.

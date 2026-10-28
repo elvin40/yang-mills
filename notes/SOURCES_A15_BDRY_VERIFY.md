@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A15_BDRY verification (independent)
 
 Date 2026-10-28. Verifier for SOURCES_A15_BDRY.md. Firewall kept.

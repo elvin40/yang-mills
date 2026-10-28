@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_SRULE_CONVENTION — C-new-2 (s-rule on the WC_FULL walk expansion) and A16 (M1) scan
 
 Date: 2026-10-28. CLOSURE_PLAN top-5 item 4 (I-22, I-35). Ledger: [P] proved here, [V] verified against page image, [I] inherited from a cited project file, [R] reading (interpretation of Balaban's text).

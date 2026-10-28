@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_P253_P275_VERIFY — independent check of SOURCES_P253_P275 §§1–6 and WC_FULL §3.1(2) (log item 14)
 
 Date 2026-10-28. Verifier: Opus, independent. Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md were not read.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_B21_E14C — the C^∞ real-source form of (E14-c) (TRUST_LEDGER B21, open clause)
 
 Date: 2026-10-28. Ledger: [P] proved here, [V] verified elsewhere, [I] reading/interpretation, [R] reduction.

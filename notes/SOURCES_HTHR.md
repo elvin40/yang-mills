@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_HTHR — proof attempt for (H-thr)
 
 Status 2026-10-27 (Claude, Opus; unverified). Inputs: SOURCES_D3.md §(vi), §(viii); SOURCES_D3_VERIFY.md V7 and grade 6; SOURCES_D2C_VERIFY.md §1; SOURCES_HBETA.md §2 (Lemma H); Balaban CMP 122 I p. 175 (0.1), §1; CMP 122 II §1 (1.73)–(1.75). Firewall respected: /tmp/sa_repo and reports/SUSSMAN_ALPOGE_MAP.md not read.

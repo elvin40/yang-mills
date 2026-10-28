@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A3_SIGMA — lower bound for the s-localized covariance C^{(k)}(Z_0, s), s ∈ [0, 1]
 
 Status: Opus draft 2026-10-28, unverified. Firewall kept (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP).

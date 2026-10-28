@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_HHIST2 — the second-derivative history bound (H-hist2)
 
 Status: complete (2026-10-27). Unverified. Result: (H-hist2) reduced; cleanest route = Route 2(a), §5.

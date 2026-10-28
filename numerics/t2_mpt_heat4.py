@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """SOURCES_T2_MPT_STEPC numerics.
 (A) Lemma V1'/C: D_a(t) = tau e^{-tA'_a} - tau e^{-tA'_0} on an open box (any real a, no Bloch),
     Richardson c_A(t) = (16D(a)-D(2a))/(12a^2), d(t) = (D(2a)-4D(a))/(12a^4); expect c_A/t -> 11/(12 pi), |d| <~ t(1+t)^2.

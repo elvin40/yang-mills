@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # LEMMA_DPRIME_SWEEP.md: cross-scale coupling comparisons in Balaban's series
 
 Date 2026-10-27. Scope: all 12 files balaban/*.txt (CMP 95, 96, 98, 99 ×2, 102 ×2, 109, 116, 119, 122 I, 122 II). Inputs: LEMMA_DPRIME.md §1, §5; LEMMA_DPRIME_VERIFY.md Steps 4–6.

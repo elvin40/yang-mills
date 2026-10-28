@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A18_REGULAR — independent verification (2026-10-28)
 
 Firewall: /tmp/sa_repo, SUSSMAN_ALPOGE_MAP.md, ONLINE_SWEEP.md not read.

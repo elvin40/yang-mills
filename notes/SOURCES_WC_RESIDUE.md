@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_WC_RESIDUE — the two residues of SOURCES_WC_EXPGAUGE_VERIFY (three-level Cauchy chain; Z̃_0 geometry)
 
 Date 2026-10-28. Author: Opus session. Firewall kept (no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP, no ONLINE_SWEEP).

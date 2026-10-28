@@ -1,2 +1,2 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 NestEnvelope.lean (253 lines, no sorry): SOURCES_T2_B7_CLAMP §4.2–4.4 + VERIFY V1 abstract shooting — YmLean.Nest.nest_shoot, nest_DDoublePrime, nest_DPrime, env_of_terminal, cprimeDD, cprimeDP; step bound assumed on Good k (prefix in envelopes) ⊆ D_k; axioms propext, Classical.choice, Quot.sound; lake build OK 2026-10-28.

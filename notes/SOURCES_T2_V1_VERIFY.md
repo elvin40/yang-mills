@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_T2_V1_VERIFY: independent verification of SOURCES_T2_V1.md (order-g⁰ completeness of CMP 109 (1.3))
 
 Date: 2026-10-28. Item V1, VERIFY. Author: Claude (headless session).

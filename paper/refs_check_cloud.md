@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # refs.bib check (cloud, 2026-10-28)
 
 Method. Crossref, arXiv, Springer and doi.org were blocked from the session, so journal entries were checked against web-search records (Project Euclid, MaRDI/zbMATH, Scilit, INSPIRE, APS, EPJC, publisher and library pages). The two GitHub entries were checked by fetching the cited commits with git. Verdict per entry: CONFIRMED (title, authors, year, journal, volume, pages and DOI or locator agree with at least one authoritative record) or CORRECTED (with the fix). No entry needed a correction, so refs.bib is unchanged.

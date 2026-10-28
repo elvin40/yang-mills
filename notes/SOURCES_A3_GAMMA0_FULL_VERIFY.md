@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A3_GAMMA0_FULL_VERIFY — independent check of SOURCES_A3_GAMMA0_FULL.md
 
 Status: complete 2026-10-28 (Opus verifier). Part 1 CONFIRMED (slab claim false for L ≥ 10); (2.127) threshold CORRECTED; Part 2 CONFIRMED with two constant/argument corrections (§4(6), §5).

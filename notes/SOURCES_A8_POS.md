@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A8_POS — Positivity of dμ_{C^{(k)}(Z_0,0)} and the complex case (TRUST_LEDGER row A8)
 
 Date: 2026-10-28. Status tags: [P] proved here, [V] read on the page / quoted verbatim, [I] identification or reading choice, [R] reduction to a stated input.

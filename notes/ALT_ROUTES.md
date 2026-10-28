@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # ALT_ROUTES — two nonperturbative routes (Chatterjee center symmetry; stochastic quantization) against the project's wall
 
 Date: 2026-10-28 (Fable 5.1). Status: IN PROGRESS, one section per tool call. Edits: this file only. No existing file touched.

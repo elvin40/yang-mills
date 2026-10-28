@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A1_KERNEL — attempt on trust-ledger item A1 (CMP 99 (3.132))
 
 Date 2026-10-28. Author: Opus session. Status: complete for this session; see §12 ledger, §13 STALL.

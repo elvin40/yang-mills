@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Independent construction of the one-step minimizer map H_j(K) (../../H1_ANALYTIC_VERIFY2.md).
 Shares no matrix-building code with h2_scan / h1cert_rho1 / umk_beta1; those are imported only in compare() for reference numbers.
 Fine Bloch field A_nu(z) = sum_l x_l e^{i k_l z}, k_l = (K + 2 pi l)/L; coarse B_mu(y) = b_mu e^{iKy}; rho_1 = L sqrt(lmax(X^dag X)).

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # ASSEMBLY — finite-torus existence theorem for SU(2) lattice Yang–Mills, proof modulo named blocks
 
 Status: DRAFT (2026-10-27, Opus). Not verified. Every block below names its file and status. Proofs marked [proved here] are short and have no independent verifier yet.

@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # U3_REPAIRS: proofs of the open items O5 and O6 of U3_VERIFY
 
 Written 2026-10-27 (Claude, Opus 5.5). Inputs read in full: U3_GAUSSIAN_RG.md, U3_VERIFY.md; NUMERICS.md §1 and §5 for the bordered matrix. No existing file was edited. Numerical checks ran from a heredoc (no file written); they are listed in §4.

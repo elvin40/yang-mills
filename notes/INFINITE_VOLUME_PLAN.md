@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # INFINITE_VOLUME_PLAN — the route from the finite-torus theorem (Target 2) to infinite volume
 
 Date: 2026-10-28 (Opus). Status: PLAN + partial derivations, unverified as a whole. Edits: this file only.

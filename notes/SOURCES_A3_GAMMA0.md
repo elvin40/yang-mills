@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A3_GAMMA0 — attempt on trust-ledger item A3 (lower bound γ_0 > 0 on C*Δ_k(U)C)
 
 Status: done 2026-10-28 (Opus). Verdict §8: Kato route REFUTED; A3 REDUCED to Balaban's two-step route made covariant [P-sketch], free constant corrected, M-independence obtained; five named [R] inputs remain. Not yet independently verified.

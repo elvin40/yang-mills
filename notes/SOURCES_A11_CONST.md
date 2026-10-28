@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A11_CONST — TRUST_LEDGER A11: "Similar inequalities hold for other constants, which will be introduced later" (CMP 119 p. 256)
 
 Tags: [P] proved here; [V] verified on the page image this session; [I] inherited from a named project file.

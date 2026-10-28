@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_FX_O23 — R-denominators (O2) and large-field source bound (O3)
 
 Status: complete (2026-10-27). O2 closed, O3 closed, new O4 open; see §7.

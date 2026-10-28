@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_A23_TSTEP — the large-field T-step rate loss (TRUST_LEDGER A23)
 
 Date: 2026-10-28. Target: row A23 (consumer B22, SOURCES_T2_KAPPA2, SOURCES_BOOKKEEPING §4).

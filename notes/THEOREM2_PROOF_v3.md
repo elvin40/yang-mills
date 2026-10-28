@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Theorem 2 — proof chapter, version 3 (shortest route; Route K reduction verified)
 
 Written 2026-10-27/28 (Opus). v3 = v2 (THEOREM2_PROOF_v2.md) with the corrections of THEOREM2_PROOF_v2_VERIFY.md §A–§N applied. Nothing else is changed. It does not edit v1 or v2. It is not itself verified as a whole document. The change log is at the end.

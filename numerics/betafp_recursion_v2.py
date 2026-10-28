@@ -1,4 +1,4 @@
-# IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+# IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Per-level one-loop increments beta_{j+1}(0) by the exact Gaussian recursion on the level-j data (U3 Thm 4.1 / Lemma 5.0).
 
 Level-j data = translation-invariant kernels on the level-j lattice (unit spacing), stored as symbols on an N^4 grid

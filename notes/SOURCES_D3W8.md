@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_D3W8 — covariance change along t, and merged R-outputs (W8)
 
 Task: (1) the Gaussian measure with covariance C_f^{(k)} along the t-interpolation; (2) Lemma F2 or a replacement for the merged R-outputs. Inputs: SOURCES_D3R §3, SOURCES_D3R_VERIFY items 2–3, SOURCES_D2 §3.3, §6.1–6.3, SOURCES_D2_VERIFY (b), CMP 119 pp. 270–279, CMP 109 p. 280. Started 2026-10-27.

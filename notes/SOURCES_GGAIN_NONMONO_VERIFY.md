@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_GGAIN_NONMONO verification (2026-10-28)
 
 ## V1. F2′ Step 2 text (D3W8 §2.3) vs running max

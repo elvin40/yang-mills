@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # H2_LARGE_L verification (independent)
 
 Firewall kept: no /tmp/sa_repo, no SUSSMAN_ALPOGE_MAP.md. Mac only, numerics/.venv.

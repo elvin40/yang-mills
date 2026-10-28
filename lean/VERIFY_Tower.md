@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY_Tower.md — statement check of `YmLean/Tower.lean`
 
 Sources: `../H1_ANALYTIC.md` §1 (1.1), §2 (tower identity (2.2), consequence (I1)), §3 Lemma T (a)–(c), (5.3); `../H1_ANALYTIC_VERIFY.md` V1 (inequalities (i)–(vii)), V2, V3. Build: `lake build` (whole project, 18 files) succeeds. `Tower.lean` has 167 lines and no `sorry`. `λ_max(G) ≤ c` is written in Rayleigh form: `∀ x, rq G x ≤ c ‖x‖²`, `rq G x = re⟪x, Gx⟫` (CertBridge.lean). For Hermitian G the two forms are equivalent. The field is any `RCLike 𝕜`, so ℂ is one instance.

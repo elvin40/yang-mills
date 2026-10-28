@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_G4 — Lemma G4 repair (real-t Mayer form, per-vertex absorption)
 
 Date 2026-10-28. Task C2 of OPUS_QUEUE. Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md not read.

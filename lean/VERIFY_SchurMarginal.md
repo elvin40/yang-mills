@@ -1,4 +1,4 @@
-IDs in this file follow the pre-2026-10-29 scheme; see IDS.md for the mapping.
+IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # VERIFY: SchurMarginal.lean
 
 SOURCES_G3_N2.md §2.4, §3.2–3.4 and VERIFY V1 formalized over ℝ with `Q = fromBlocks A B Bᵀ D` (first block = integrated out: w or X; second = kept: x = B(b) or B): block inverse (`block_inv`, `block_inv_posDef`), `(Q⁻¹)_xx = S_b⁻¹ = Γ_bb` (`toBlocks₂₂_inv`, `gamma_bb_eq`), `det Q = det Q_ww · det S_b` (`det_block`), author's B-block `H₀⁻¹ + H₀⁻¹ΓΓ*H₀⁻¹` of `Q₀′⁻¹` (`author_Bblock`, `schur_inv_author`), `S_b > 0` (`schur_posDef`), completing the square and the fixed-x minimum (`quad_split`, `schur_le_quad`, `quad_at_min`), lower bound c of Q passes to S_b and its eigenvalues (`schur_lower`, `schur_eigenvalues_ge`, `compression_lower`), `c₋ ≥ 4/(5γ₁ᴺ)` (`c_minus_ge`); lake build passes, no `sorry`, axioms `[propext, Classical.choice, Quot.sound]`; not formalized: λ_min(Q) as an eigenvalue hypothesis (it enters as the quadratic-form bound `c‖v‖² ≤ ⟨v,Qv⟩`, c ≥ 0), the Gaussian integrals of §2.4, and the operator-monotone step Γ_bb ≥ H₀⁻¹ of §3.4.
