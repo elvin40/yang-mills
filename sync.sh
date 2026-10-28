@@ -8,6 +8,7 @@ rsync -a $EX "$SRC/reports/" notes/reports/
 rsync -a $EX "$SRC/numerics/" numerics/
 [ -d "$SRC/lean" ] && rsync -a $EX "$SRC/lean/" lean/
 [ -d "$SRC/paper" ] && rsync -a $EX "$SRC/paper/" paper/
+[ -d "$SRC/api_runs" ] && mkdir -p api_runs && rsync -a --exclude .env --exclude key_helper.sh --exclude settings.json --exclude logs/ --exclude "run*.log" "$SRC/api_runs/" api_runs/
 n=$(git status --porcelain | wc -l | tr -d ' ')
 [ "$n" = "0" ] && { echo "nothing new"; exit 0; }
 git add -A && git commit -q -m "${1:-Update $n files}" && git push -q origin main && git log --oneline | wc -l

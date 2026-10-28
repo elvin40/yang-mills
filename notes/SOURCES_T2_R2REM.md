@@ -138,3 +138,32 @@ for the input of Lemma G3 (SOURCES_LOC §0). This is the "backup route" of SOURC
  - SOURCES_HHOL 2.3(ii) (R_2 multiplied by w or 1/w): Theorem R2 bounds R_2 at w = 1. Multiplying the precision by w multiplies R_2 by w; the coefficient grows by |w| ≤ 1.235. This needs nothing new for R_2.
  - SOURCES_GGAIN, TRUST_LEDGER B13 and B16: they quote (2.16)–(2.26) and use R_2 only through (2.16)/(2.21) (Schur norm). Theorem R2 gives the Schur norm bound ‖R_2‖_0 ≤ ‖R_2‖_a ≤ 8K_P²η̄ (Step 3 of §5.1, Lemma 1(ii), (vi)), which is what (2.21) needs, with constant changes as in 5.2. R_1 and R_3 remain Balaban's unproved assertions in the same rows.
 7.5 What is not claimed. The rate δ_0 of the brief (1.6). Any explicit value of an O(1). The determinant quotient. R_1, R_3. The positivity/symmetry statement (S) of p. 15 (not needed here, 5.4, 6.2). The definition of C^{(k)}(Z_0, s) beyond the p. 3 s-rule "as before".
+
+## 8. Ledger
+
+Claims, numbered for the verifier.
+1. R_2 = C_0^{−1} − Re C(σ)^{−1}, and |R_2(b,b′)| ≤ |(C(σ)^{−1} − C_0^{−1})(b,b′)| (§1.4–1.5). [P]
+2. The printed decay rate of (2.16) is ½δ_0, not δ_0 as in the brief (§1.6). [V image CMP 116 p. 16]
+3. Lemma 1, weighted Schur algebra (§3.1). [P]
+4. Lemma 2, Combes–Thomas, and Corollary 2′: |P(b,b′)| ≤ 2γ_1e^{−a_CT|b−b′|} (§3.2). [P] for Lemma 2; [R] for 2′ to (Id), (W), (G-a), P ≤ γ_1.
+5. Walk weight lemma 4.1 (a)–(c). [R] to (G); the algebra is [P].
+6. Lemma 3, σ-change bounds (4.1) and (4.2). [R] to (W), (G).
+7. Lemma 4, (U, J)-change bound (4.3) via Schwarz's lemma. [R] to (W), (G), (H-an), (H-sc).
+8. Theorem R2: on the whole closed polydisc |σ| ≤ e^{κ_1}, uniformly in k and volume, |R_2(b,b′)| ≤ 16B_0K_P²S(t_1 − a)[e^{c_1κ_1}e^{−δ_0M/3} + e^{16κ_1}(α_0 + α_1)/α′_min]e^{−a|b−b′|}, for 0 < a < min(t_1, a_P), under (M1), (M2) (§5.1). [R] to (Id), (W), (G), (H-an), (H-sc), P ≤ γ_1; the operator argument is [P].
+9. Balaban's form (2.16) for R_2 holds with rate a in place of ½δ_0 and with κ_1-dependent O(1) (or prefactor e^{−(1−ν)δ_0M/3}) (§5.2). [R] as 8; [I] that this matches Balaban's intended O(1).
+10. Variant: rate exactly ½δ_0 with prefactor e^{−(1−ν′)δ_0M/3}, under (A-dec) with δ_A > ½δ_0 (§5.3). [R] to the inputs of 8 plus (A-dec) (rate not printed).
+11. Theorem R2 does not use γ_0 or symmetry (S) (§5.4). [P]
+12. Corollary E: C_0^{−1} = Z_0AZ_0 − R with ‖R‖ ≤ ε_M = 2γ_1²B_0S(½δ_0)e^{−δ_0M/3}, if γ_1B_0S(½δ_0)e^{−δ_0M/3} ≤ ½; no α, κ_1, polydisc, or analyticity needed (§6.1). [R] to (Id), (W), (G-a), (G-b), P ≤ γ_1.
+13. Correction to SOURCES_LOC §3.3 / LOC_VERIFY §5: ε_M carries no O(α_0 + α_1) term; Lemma LOC's condition is a condition on M alone (§6.1). [P given 12]
+14. c_− = γ_1^{−1} − e_M ≥ (2γ_1)^{−1}, ‖C_0‖ ≤ γ_0^{−1} + e_M, without (S) (§6.2). [R] as 12 plus (N).
+15. α_5‖C_0‖ < ½ holds if α_5(γ_0^{−1} + e_M) < ½ (§6.3). [P given 14]
+16. Re C(σ)^{−1} ≥ γ_0 − ε_M − 8K_P²η̄ on real fields (§6.4). [R] as 8, 12, (N).
+17. Hierarchy (M1), (M2) fits Balaban's order κ_1 → M → α (§7.1). [I]
+
+Verified against Balaban [V, page images]: CMP 116 p. 3 (1.6)–(1.7) and s-rule; p. 5 (1.11), m > 2^4 rule, |s(Δ)| ≤ e^{κ_1}; p. 6 uniform analyticity sentence; p. 12 (2.5); p. 13 σ_0, X_0, dist(X, Z_0) > ⅔M, (2.7); p. 15 (2.14)–(2.15), analyticity on α′-domain, replacement point; p. 16 (2.16), R_2 sentence, e^{−δ_0M/3}e^{16κ_1} < 1; p. 17 (2.23)–(2.25), α_5‖C^{(k)}(Z_0,0)‖ < ½. CMP 99 p. 428 (3.157)–(3.158) and the γ_0 and "uniform exponential decay of C*Δ_kC" prose. CMP 99 (3.132) read on the text layer only (p. 422; it is a kernel bound for (QGQ*)^{−1}-type operators; not used).
+Named inputs [R]: (Id), (W), (G-a), (G-b), (G-c), (H-an), (H-sc), (N), optional (A-dec); stated in §2.2 with sources.
+Inferences [I]: (G-a), (G-b) geometry (incl. the "intersect" reading and O(M_1) corrections); (G-c) transferred from Sect. 1 to Sect. 2; (H-sc); M-independence of B_0, a_CT, γ_0, γ_1; the polydisc of Sect. 1 used in Sect. 2; reading of Balaban's O(1) as κ_1-dependent.
+Open: (W) for the Sect. 2 expansion of C^{(k)}(Z_0) (CMP 109 Sect. C not read); a rate δ_A for (A-dec); R_1, R_3 and the determinant quotient; the rate δ_0 requested by the brief (not reachable by this method, and not what Balaban prints).
+Numerics: none run.
+Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md).
+STATUS: COMPLETE
