@@ -15,7 +15,7 @@ A.1 Fixed caps (all chosen before M_1; none is a domain size).
 - Real background caps: Mα_0 ≤ a_0 (regularity, A1_WALK_FULL 0.3); Mα_0 ≤ a_L(d, L, N, a) (Theorem L: (H_E) and (3.1), WC_FULL 2.1, 3.2; A3_GAMMA0_FULL (H3) α_*(d, L)); Mα_0 ≤ a_{−,1} := 1/(2C_{G1}) (see A.2 item 6); Mα_0 ≤ a_* , a_**. Here a = 1 in CMP 99 (A3_GAMMA0_FULL 6.4).
 - Complex caps: a_1 (CMP 99 Thm 3.4 [V]); J-caps in scaled form, Mα_0‴ ≤ a_** and M·M_1^{12}·α_0‴ ≤ c″ (CMP 99 (3.137); WG-1 for G_1, A1_WALK_FULL F3); 𝒢-weight caps α_1″ ≤ a_𝒢(d, L, N) and α_1″ ≤ a_t(d, L, N) (WC_FULL 6.5: "max|A_Γ| ≤ 0.2/√N", "‖t_{Γ,b}‖² ≤ 2 for α_1″ small").
 - Geometry: c_P(d), C_𝒟, C_𝒟^{(1)}, C″_𝒟, C′_𝒟, K_0, K_1, D_+, c_h (A1_WALK_FULL 2.1, 6.9a; WC_FULL 4.2).
-- The concatenation split θ_c ∈ (0, 1), fixed (for example ½). It is the θ of WC_FULL 4.2 and of δ_1 = (1 − θ)½ε. It is not θ_S = log L/(RM).
+- The concatenation split θ_c ∈ [1/16, 1), fixed (for example ½). The lower bound keeps every rate ≥ ¼ε_min (amendment E3). It is the θ of WC_FULL 4.2 and of δ_1 = (1 − θ)½ε. It is not θ_S = log L/(RM).
 - Real constants fixed at M_min (A1_WALK_FULL 9.1 steps 2–4): c_−, b_G, c_G, δ_G, Σ(·) on 𝔅, c_+ = C_𝒟b_G, ε; WG-G1 constants B_1, δ_1; γ_exp = ¼γ_e(d, L).
 
 A.2 Two lemmas [P].
@@ -26,7 +26,8 @@ Lemma M2 (safe direction of the formulas). The chain uses only these maps:
  S(δ), Σ(δ) — decreasing in δ;
  Γ = 2C·b·Σ(δ) — increasing in b, decreasing in δ;
  k = c_P·c/(c + 4Γ) (or c + 2Γ) — increasing in c, decreasing in Γ;
- ε^a = min{½δ, c/(16C·b·Σ(½δ))} — increasing in δ and c, decreasing in b.
+ ε^a = min{½δ, c/(16C·b·Σ(½δ))} — increasing in δ and c, decreasing in b;
+ e^{2Lδ} (range factor of the explicit pieces inside B_A″, A.4 item 10) — increasing in δ. This map is not used in the safe direction: the level-2 rate is defined as δ_A″ := δ̄_A″ (a kernel bound at a rate implies the same bound at any smaller rate with the same prefactor), so the factor is evaluated at the rate actually used (amendment E4).
 So if each input is replaced by a one-sided bound (b by an upper bound; δ, c by lower bounds), Γ grows, k and ε^a shrink. Each change is safe. k enters only as α^{(n)} ≤ k·α^{(n+1)}, which shrinks a domain. A rate enters only as decay "at least e^{−rate·d}". A prefactor or Γ enters only as an upper bound or inside an M_1 threshold, and M_1 has only lower bounds. ∎
 Consequence. It suffices to give, for each constant, a bound in the safe direction by an explicit function of A.1. The value at the cap is that bound.
 
@@ -40,16 +41,16 @@ A.4 Constant by constant. Bars denote the explicit caps. "θ_S" dependence is fi
 2. Γ_4 := 2c_+⁗Σ(δ_G) ≤ Γ̄_4 := 2c̄_+⁗Σ(δ̄_G) [P from 0, 1, Lemma M2].
 3. k_3 := c_Pc_−/(c_− + 4Γ_4) ≥ k̄_3 := c_Pc_−/(c_− + 4Γ̄_4) [P]. c_− is M-free and α-free [conditional (C), A1_WALK_FULL (H2)].
 4. ε_3 := min{½δ_G, c_−/(16c_+⁗Σ(½δ_G))} ≥ ε̄_3 := min{½δ̄_G, c_−/(16c̄_+⁗Σ(½δ̄_G))} [P, Lemma AW(b) + M2].
-5. B_1‴, δ_1‴ (level 3, domain 𝒰(α‴)). δ_1‴ = (1 − θ_c)·½ε_3 ≥ δ̄_1‴ := (1 − θ_c)·½ε̄_3 [P]. B_1‴ = O(1)B_1 [I: A1_WALK_FULL 8.4, WC_FULL 6.4]. The α‴-dependence enters in two places only. (a) The A′-part: H = GQ*(QGQ*)^{−1} uses the level-3 bound 8/c_− (Lemma AW), valid on all of 𝒰(k̄_3a_1); α_1‴ does not enter. (b) The J-part: ‖Δ^{(2)}‖ ≤ O(1)M|J| ≤ O(1)a_** (CMP 99 (3.137)) and the WG-1 free factor, which uses only M·M_1^{12}·α_0‴ ≤ c″. So B_1‴ ≤ B̄_1‴(d, L, a, a_0, a_**, c″) [P given the [I] form B_1 = B_1(d, L, a, a_0) under WG-1, WG_FULL 4.7]. M and M_1 enter only through the two scaled caps.
+5. B_1‴, δ_1‴ (level 3, domain 𝒰(α‴)). δ_1‴ = (1 − θ_c)·½ε_3 ≥ δ̄_1‴ := (1 − θ_c)·½ε̄_3 [P]. B_1‴ = O(1)B_1 [I: A1_WALK_FULL 8.4, WC_FULL 6.4]. The α‴-dependence enters in two places only. (a) The A′-part: H = GQ*(QGQ*)^{−1} uses the level-3 bound 8/c_− (Lemma AW), valid on all of 𝒰(k̄_3a_1); α_1‴ does not enter. (b) The J-part: ‖Δ^{(2)}‖ ≤ O(1)|J| ≤ O(1)a_**/M ≤ O(1)a_** (CMP 99 (3.137); WG_FULL (I5), 5.5; amendment E5) and the WG-1 free factor, which uses only M·M_1^{12}·α_0‴ ≤ c″. So B_1‴ ≤ B̄_1‴(d, L, a, a_0, a_**, c″) [P given the [I] form B_1 = B_1(d, L, a, a_0) under WG-1, WG_FULL 4.7]. M and M_1 enter only through the two scaled caps.
 6. c_{−,1} := c_−(G_1) ≥ c_−(1 − C_{G1}Mα_0) [conditional, A1_KERNEL §9; WC_FULL 6.5]. The real α_0 enters only through Mα_0. Under the cap Mα_0 ≤ a_{−,1} = 1/(2C_{G1}): c_{−,1} ≥ c̄_{−,1} := ½c_− [P]. If instead the cap a_0 is used, c̄_{−,1} := c_−(1 − C_{G1}a_0) needs C_{G1}a_0 < 1; this is a smallness condition on a_0, which is a Balaban constant fixed in step 2. Either way no M and no α^{(n)} remain.
 7. Γ_3 := 2C_𝒟^{(1)}B_1‴Σ(δ_1‴) ≤ Γ̄_3 := 2C_𝒟^{(1)}B̄_1‴Σ(δ̄_1‴) [P; tree count C_𝒟^{(1)} is [I] cube geometry, A1_WALK_FULL 6.9a Fix A]. A1_WALK_FULL 8.4 writes C_𝒟; for the G_1 tree form the set-form count C_𝒟^{(1)} is the right one. A larger count only lowers k_2.
 8. k_2 := c_Pc_{−,1}/(c_{−,1} + 4Γ_3) ≥ k̄_2 := c_Pc̄_{−,1}/(c̄_{−,1} + 4Γ̄_3) [P].
 9. ε_2 := min{½δ_1‴, c_{−,1}/(16C_𝒟^{(1)}B_1‴Σ(½δ_1‴))} ≥ ε̄_2 (same formula with bars) [P].
-10. B_A″, δ_A″ (level 2, domain 𝒰(α″)). δ_A″ := (1 − θ_c)·min{½ε_2, δ_1‴} ≥ δ̄_A″ := (1 − θ_c)·min{½ε̄_2, δ̄_1‴} [P]. The explicit pieces C, C*, 𝒢*𝒢, aI have range ≤ 2L, so they decay at any rate with a factor ≤ e^{2Lδ}, absorbed in B_A″. B_A″ is the sum of four piece bounds (WC_FULL 4.2 at complex points, 6.5):
+10. B_A″, δ_A″ (level 2, domain 𝒰(α″)). δ_A″ := δ̄_A″ := (1 − θ_c)·min{½ε̄_2, δ̄_1‴} ≤ (1 − θ_c)·min{½ε_2, δ_1‴} [P; amendment E4: the rate is fixed at the bar value, so the factor e^{2Lδ} below is e^{2Lδ̄_A″}]. The explicit pieces C, C*, 𝒢*𝒢, aI have range ≤ 2L, so they decay at any rate with a factor ≤ e^{2Lδ}, absorbed in B_A″. B_A″ is the sum of four piece bounds (WC_FULL 4.2 at complex points, 6.5):
  (a) C, C*: c_C(d, L)·(1 + C_Th·a_1) [I: "M analytic near 1, Q̃ explicit", WC_FULL 6.5];
  (b) 𝒢*𝒢 ≤ 8c_𝒢, c_𝒢 = d(L − 1)L^d/2, under α_1″ ≤ min(a_𝒢, a_t) [P given WC_FULL 6.5]; a·I = a;
  (c) (QG_1Q*)^{−1}: per tree 8/c_{−,1} ≤ 16/c_− under item 6;
- (d) Δ_J: one factor O(M|J|) ≤ O(a_**) times the branch sum c_1(θ_cδ̄_A″).
+ (d) Δ_J: one factor O(|J|) ≤ O(a_**/M) ≤ O(a_**) (E5) times the branch sum c_1(θ_cδ̄_A″).
  Junctions cost c_1(θ_c·δ) each; the number of junctions per main line is fixed (two outer factors). So B_A″ ≤ B̄_A″(d, L, N, a, a_0, a_1, a_**, c″, θ_c) [P given the tags]. The sum Σ_ω|A_ω| ≤ 2B_A″e^{−δ_A″|b−b′|} needs C′_𝒟c_1ρ_A″ ≤ ½. That is a threshold on M_1 (and a real cap on Mα_0 for ρ_*), not a value in B_A″.
 11. c_A″ := C_𝒟B_A″ ≤ c̄_A″; Γ_1″ := 2c_A″Σ(δ_A″) ≤ Γ̄_1″ := 2c̄_A″Σ(δ̄_A″) [P].
 12. k_1 := c_Pγ_exp/(γ_exp + 2Γ_1″) ≥ k̄_1 := c_Pγ_exp/(γ_exp + 2Γ̄_1″) [P]. γ_exp = ¼γ_e, γ_e^{−1} = K_b(1 + 6d/m_L) + 6/m_L, K_b = 8dL^d(1 + 16dc_𝒢): a function of (d, L) only, valid under Mα_0 ≤ a_L (WC_FULL 3.2, 3.4).
@@ -89,37 +90,41 @@ New items found (not in the source files):
 
 ## B. The canonical order
 
-Rules. One constant (or one tied group) per line: conditions; files that fix it. "≥" = lower bound (up-set), "≤" = upper bound (down-set). Every condition uses only constants on earlier lines [P, checked line by line against ORDER_CHECK §1 and Part A]. The seven resolutions of ORDER_CHECK §4 are applied and marked (R1)–(R7). Renames: β_0^H (Hölder bound, was "β_0" in C27); r_0^{exp} (integer exponent) vs r_0^{rad} = τ_0 (radius); ν_I, ν_II (two uses of ν, IEPS_LF_VERIFY); a_L (Theorem L cap on Mα_0, was α_*(d, L)); M_99 (CMP 99 Thm 3.1 threshold, was M_1(d, L)); θ_c (concatenation split) vs θ_S vs θ_WG; C_i^{116} (CMP 116 (1.20)–(1.22) constants) vs C_0, C_1 (α_{i,j} prefactors).
+Rules. One constant (or one tied group) per line: conditions; files that fix it. "≥" = lower bound (up-set), "≤" = upper bound (down-set). Every condition uses only constants on earlier lines [P after amendments E1–E3 and the topological pass E7; the first version had forward references (SOURCES_ORDER_CANON_VERIFY §4)]. The seven resolutions of ORDER_CHECK §4 are applied and marked (R1)–(R7). Renames: β_0^H (Hölder bound, was "β_0" in C27); r_0^{exp} (integer exponent) vs r_0^{rad} = τ_0 (radius); ν_I, ν_II (two uses of ν, IEPS_LF_VERIFY); a_L (Theorem L cap on Mα_0, was α_*(d, L)); M_99 (CMP 99 Thm 3.1 threshold, was M_1(d, L)); θ_c (concatenation split) vs θ_S vs θ_WG; C_i^{116} (CMP 116 (1.20)–(1.22) constants) vs C_0, C_1 (α_{i,j} prefactors).
 
 Group 0. Free exponents.
 B1. β_0^H ∈ (0, 1). Hölder bound of CMP 99 Thm 2 / CMP 102 Thm 1; costs B_2(β_0^H), B_4(β_0^H). Not the CMP 119 β_0 ≤ ½ (B6). — C27; SOURCES_GGAIN_BETAH §5.
 B2. β_H ∈ (0, β_0^H]. — C27; SOURCES_A10_LOWER_VERIFY (5).
+B6. β_0 (CMP 119 slack): β_0 ≤ ½ (S3). Moved here from Group 2 (E2); B4 uses its cap. — SOURCES_A11_CONST S3.
 Group 1. Dimension, group, block factor.
 B3. d ≥ 2; N (G ⊂ U(N)). — WC_FULL 0.10.
 B4. L odd, L ≥ 13, in the certified set of HIGHER_M1 B1. S10, 2(1 + β_0)L^{−2} + 0.4 < 1, holds for every β_0 ≤ ½, so it is checked with the cap ½ of B6. — SOURCES_A11_CONST S10; SOURCES_HIGHER_M1 B1.
 Group 2. Constants of (d, L, N) and fixed caps.
-B5. δ = (1/10)(1 − 2/L); δ_[15](d, L); β = ¼; B_3, B_0, δ_0, c_0, γ_0, γ_1, C_i^{116}; a (= 1), a_0, a_1 (CMP 99 Thm 3.4), a_*, a_**; E_0 (absolute; may go first); γ_e, γ_exp = ¼γ_e; c_P(d); geometry C_𝒟, C_𝒟^{(1)}, C″_𝒟, C′_𝒟, C_ov, c_h, K_0, K_1, D_+; caps a_L, a_{−,1}, c″, a_𝒢, a_t; θ_c; C_Th; M_99(d, L). — A1_WALK_FULL 9.1 step 2; SOURCES_T2_IEPS §10; WC_FULL 3.2, 6.0, 6.5; G3_GGAMMA 4.4; Part A.1.
-B6. β_0 (CMP 119 slack): β_0 ≤ ½ (S3). — SOURCES_A11_CONST S3.
+B5. θ_WG = ½ (a number; first); δ = (1/10)(1 − 2/L); δ_[15](d, L); β = ¼; B_3, B_0, δ_0, c_0, γ_0, γ_1, C_i^{116}; a (= 1), a_0, a_1 (CMP 99 Thm 3.4), c_J(d, L); E_0 (absolute; may go first); γ_e, γ_exp = ¼γ_e; c_P(d); geometry C_𝒟, C_𝒟^{(1)}, C_𝒟^{H1}, C″_𝒟 = T_2C_𝒟^{H1}, C′_𝒟, C_ov, c_h, K_0, K_1, D_+; caps a_L, a_{−,1}, a_𝒢, a_t; θ_c ∈ [1/16, 1) (E3); C_Th; M_99(d, L). — A1_WALK_FULL 9.1 step 2; SOURCES_T2_IEPS §10; WC_FULL 3.2, 6.0, 6.5; G3_GGAMMA 4.4; Part A.1.
+B5a. c_1(θ_WG½δ_0), K_V, M_* (threshold on M_1), a_* = K_V^{−1}(4C′_𝒟)^{−10} (Theorem WG-G); c′ := c_0^{10}K_V^{−1}. — WG_FULL 4.3, 4.5, 4.7, 6.4 (E1).
 Group 3. κ's.
 B7. κ: large; δLκ/48 ≥ K_abs. — SOURCES_T2_IEPS §10.
 B8. κ_0 ≥ 7, large; then β_0′ with (1 + β_0′)^{κ_0} ≤ 1 + β_0 if a step needs it (S11). — SOURCES_A11_CONST §4 #16, S11.
 B9. κ_1: ⅛(κ_1 − 1) ≥ (1 − 3δ)κ; ½(κ_1 − 1) ≥ 2Lκ; large. Before M_1 (R6). — SOURCES_T2_IEPS §10; C24; SOURCES_HIGHER_M1 B2.2.
 Group 4. Constants fixed before M_1 (the M-free side of the split).
-B10. R, θ_WG = ½, M_min(d, L): θ_S = log L/(RM) ≤ δ_0/(4(d + 2)) for M ≥ M_min. — A1_WALK_FULL 9.1 step 2; WG_FULL 0.6.
-B11. Walk constants at M_min: c_−, b_G, c_G, δ_G, c_X, C_𝒟^{H1}, c_loc, Σ(·), c_1(·); c_+ = C_𝒟b_G. Monotone in θ_S [I, A1_WALK_FULL F4; see A.7]. — A1_WALK_FULL 9.1 step 3; WG_FULL 6.4.
-B12. ε = min{½δ_G, c_−/(8c_+Σ(½δ_G))}; c_1(½ε), Σ(½ε), Σ(¼δ_G), K_F, K_W, C_W; thresholds M_a, M_e, M_e′, M_N, M_c, M_W, M_*, M_*′. Before M_1 (R4). — A1_WALK_FULL 9.1 step 4, 5.7; WG_FULL 6.4.
+B10. R, M_min(d, L) (θ_WG is in B5): θ_S = log L/(RM) ≤ δ_0/(4(d + 2)) for M ≥ M_min. — A1_WALK_FULL 9.1 step 2; WG_FULL 0.6.
+B11. Walk constants at M_min: c_−, b_G, c_G, δ_G, c_X, c_loc, Σ(·), c_1(·); c_+ = C_𝒟b_G. Monotone in θ_S [I, A1_WALK_FULL F4; see A.7]. — A1_WALK_FULL 9.1 step 3; WG_FULL 6.4.
+B12. ε = min{½δ_G, c_−/(8c_+Σ(½δ_G))}; c_1(½ε), Σ(½ε), Σ(¼δ_G), K_F, K_W, C_W, B_W, c_W; thresholds M_a, M_e, M_e′, M_N, M_c, M_W, M_*′ (M_* is in B5a). Before M_1 (R4). — A1_WALK_FULL 9.1 step 4, 5.7; WG_FULL 6.4.
+B12a. δ_1 := ½ε (WG common rate); a_*′ := min{a_*, K_V^{−1}(4C_𝒟^{H1}c_1)^{−10}, K_V^{−1}(4C″_𝒟max{1, c_W})^{−10}}; c_L, K_2; a_** := min{a_*′, a_0, K_2^{−1}(4C″_𝒟)^{−12}}; c″ := c^{12}K_2^{−1}. — WG_FULL 5.9 (i)–(iii), 5.10 remark (b), 6.4 (E1).
+B12b. B_1 and the tree rate (1 − θ_WG)δ_1 of Theorem WG-G1 (valid under Mα_0 ≤ a_**). — WG_FULL (G1), 4.7 (E1).
+B12c. c_{−,1} ≥ c̄_{−,1} = ½c_− (cap a_{−,1}, A.4 item 6); then δ_W, the real A1-W rate for P = G_1, from c_{−,1}, B_1, δ_1. — WC_FULL (A1W), 6.5; A1_KERNEL §9 (E1).
 B13. WC real constants: B_A, δ_A, ε_WC = min{½δ_A, γ_exp/(8B_AΣ(½δ_A))}, Γ_1 = 2B_AS(δ_A), K_F^{WC}. — WC_FULL 4.2, 4.3, 5.2(e); G3_GGAMMA 2.3.
-B14. Level constants (Part A.4, all M-free and α-free): c_+⁗, Γ_4, k_3, ε_3; B_1‴, δ_1‴, c_{−,1}, Γ_3, k_2, ε_2; B_A″, δ_A″, c_A″, Γ_1″, k_1; ε″. Then the level thresholds M_W^c and K_F″. Before M_1 and M (R7). — A1_WALK_FULL 8.4; WC_FULL 6.4–6.7; this file A.4.
+B14. Level constants (Part A.4, all M-free and α-free): c_+⁗, Γ_4, k_3, ε_3; B_1‴, δ_1‴, Γ_3, k_2, ε_2 (c_{−,1} from B12c); B_A″, δ_A″, c_A″, Γ_1″, k_1; ε″. Then the level thresholds M_W^c and K_F″. Before M_1 and M (R7). — A1_WALK_FULL 8.4; WC_FULL 6.4–6.7; this file A.4.
 Group 5. Cube sizes (only lower bounds).
 B15. M_1 = L^{m_1}: M_1 ≥ M_W; ≥ M_W^c at each level; ≥ (2C_Wc_1K_W)²; ≥ M_*, M_*′; ≥ 3c_loc; ≥ (2δ_A)^{−1}log(4B_AS(½δ_A)/γ_exp) (WC 5.2(d)); ≥ (2δ_A″)^{−1}log(8B_A″S(½δ_A″)/γ_exp) (WC 6.7); C′_𝒟c_1ρ ≤ ¼ real and complex (WC 5.3); ≫ e^{2cκ_1} (A3_SIGMA 5.3); the A7 complex-s clause; M_1 ≥ 1/(L²δ_[15]) (so B16 meets S4). — A1_WALK_FULL 9.1 step 5; WG_FULL 6.4; WC_FULL 5.2(d), 5.3, 6.7; SOURCES_HIGHER_M1 corr.; C24; C29.
 B16. M_2 := L²M_1 (CMP 119 p. 245). Determined by B15; M_2 ≥ 1/δ_[15] holds by B15 (S4). (R3: M_1 → M_2 → M.) — C28; C29; SOURCES_A11_CONST corr.
 B17. G3_GGAMMA constants K_½, Ḡ (G_Γ ≤ Ḡ, M-free [I, G3_GGAMMA 4.1 unverified]), Λ̄_0, W. This slot is safe even if they depend on M_1; no condition on M_1 uses them. — SOURCES_G3_GGAMMA §2–§4; A8 (G4).
-B18. M = L^m: M ≥ M_req of HIGHER_M1 B3 (20 entries) and the C24 round-4 entries (M/M_1 > 10; M/M_1 ≥ 3(7 + c_X); RM ≥ 8 log L/(θε); RM > M_*(¼ε_min)); NEW: M > M_2 = L²M_1, that is m ≥ m_1 + 3 (R3); M > 48κ_1/ε_min with ε_min ∋ ½ε″; (H_κ) LM ≥ 16·3^dκ_1/ε″; (H_M) M ≥ 2c′M_1; (H_η); M_Γ; M_{α5}; (2.30) η = δκ/(24c_dM⁴) ≤ 1; A3_SIGMA 5.1; M ≥ max(M_99, L). Only lower bounds; no upper bound on M. — C24; SOURCES_HIGHER_M1 B3; G3_GGAMMA 4.3; A8; this file.
+B18. M = L^m: M ≥ M_req of HIGHER_M1 B3 (20 entries) and the C24 round-4 entries (M/M_1 > 10; M/M_1 ≥ 3(7 + c_X); RM ≥ 8 log L/(θε); RM > M_*(¼ε_min)); NEW: M > M_2 = L²M_1, that is m ≥ m_1 + 3 (R3); M > 48κ_1/ε_min with ε_min ∋ ½ε″; (H_κ) LM ≥ 16·3^dκ_1/ε″; (H_M) M ≥ 2c′M_1; (H_η); M_Γ; M_{α5}; (2.30) η = δκ/(24c_dM⁴) ≤ 1; A3_SIGMA 5.1; M ≥ max(M_99, L); M ≥ 1/c_J (E5). Only lower bounds; no upper bound on M. — C24; SOURCES_HIGHER_M1 B3; G3_GGAMMA 4.3; A8; this file.
 Group 6. Smallness parameters (only upper bounds).
 B19. ρ_0 ≤ min{0.1, (LM)^{−2}(0.45a/(16n))^{1/2}}. Any slot after B18. — SOURCES_HIGHER_M1 A5; SOURCES_T2_IEPS §10.
 B20. Complex domains (A.6): α‴ = (j‴, k_3a_1), j‴ = min(a_**/M, c″M^{−1}M_1^{−12}); α″ ≤ k_2·(mixed row), α_1″ ≤ min(a_𝒢, a_t) (new, N1); α′ ≤ k_1·(mixed row). — A1_WALK_FULL 8.4; WC_FULL 6.4–6.8; this file A.6.
 B21. α_*: α_0 + α_1 ≤ α_*, needs α ≪ α′. — WC_FULL 6.9; S2_G1_V7 B1.4.
-B22. Fixed-layer α-chain, after α′ (R5): β, α′ → α_1 → α_0 → α_3 → α_2 (α_4, γ_2, α_6, Latin a_1). Conditions: α ≪ α′; (LM)⁴α_i ≤ ¼; Mα_0 ≤ min{a_0, a_*, a_**, a_L, a_{−,1}}; WG-1 α_0 ≤ c′M^{−1}M_1^{−10} (G), c″M^{−1}M_1^{−12} (G_1); Mα_0 ≤ a(κ_1); (4B_3O(1)M)²α_0 ≤ β; α_0 ≲ α_1/M; α_3 ≲ α_0, α_1; α_2 ≲ α_3; (Hα-1) α-part of α_5 ≤ 1/(8Λ̄_0). — SOURCES_T2_IEPS §10; A1_WALK_FULL 9.1 step 7; WG_FULL; G3_GGAMMA 4.3.
+B22. Fixed-layer α-chain, after α′ (R5): β, α′ → α_1 → α_0 → α_3 → α_2 (α_4, γ_2, α_6, Latin a_1). Conditions: α ≪ α′, which includes real α_0 ≤ α_0′/(CM) with C > c_J (real J ∈ 𝒰(α′), E5); (LM)⁴α_i ≤ ¼; Mα_0 ≤ min{a_0, a_*, a_**, a_L, a_{−,1}}; WG-1 α_0 ≤ c′M^{−1}M_1^{−10} (G), c″M^{−1}M_1^{−12} (G_1); Mα_0 ≤ a(κ_1); (4B_3O(1)M)²α_0 ≤ β; α_0 ≲ α_1/M; α_3 ≲ α_0, α_1; α_2 ≲ α_3; (Hα-1) α-part of α_5 ≤ 1/(8Λ̄_0). — SOURCES_T2_IEPS §10; A1_WALK_FULL 9.1 step 7; WG_FULL; G3_GGAMMA 4.3.
 B23. α_5 (composite, not free); (Hα) (α_5 + G_Γ²δ_S)Λ_0 ≤ ½ holds by B18 and B22. — C25; G3_GGAMMA 4.3.
 B24. ε_1: upper bounds via κ_1, B_0, C_i^{116}, α_2, α_4, Latin a_1, M^q, E_0, L; ε_1M^q ≤ 1. — SOURCES_T2_IEPS §10; SOURCES_HIGHER_M1 B2.3.
 Group 7. Exponents (use only each other; any slot after B24 and before B26).
@@ -200,3 +205,14 @@ Summary.
 - Task A: every level constant is bounded in the safe direction by an explicit function of (d, L, N, a, a_0, a_1), the caps (a_**, c″, a_𝒢, a_t, a_{−,1}, a_L), θ_c, and real constants at M_min. No dependence on α‴, α″, α′, M, M_1. M enters only through θ_S (fixed at M_min) and scaled caps; M_1 only through thresholds and the scaled WG-1 cap. The split of ORDER_CHECK §2 holds; the [I] there becomes [P] relative to the tags above.
 - Task B: canon B1–B33, resolutions R1–R7 applied, p_1 the only two-sided constant (A_1 only in the superseded order), β_0^H renamed.
 - Task C: 33 fix items in 12 files; the load-bearing ones are WC_FULL 6.9, A1_WALK_FULL 9.1 steps 5–9, A11 §9 order line and S5, G3_GGAMMA 4.4, HIGHER_M1 B3 (+ L²M_1), TRUST_LEDGER C24 and C30.
+
+## E. Amendments after verification (SOURCES_ORDER_CANON_VERIFY, 2026-10-28)
+
+E1. Placement of a_**, B_1, δ_1, δ_W, c_{−,1}. WG_FULL 5.9 (iii) and 6.4 define a_** := min{a_*′, a_0, K_2^{−1}(4C″_𝒟)^{−12}}, with a_*′ using c_W and K_2 using δ_1 = ½ε, B_W, c_J. So a_** cannot sit in B5. It moved to the new line B12a, after the A1-W constants of B12 (which now list B_W, c_W). The cap c″ := c^{12}K_2^{−1} (WG_FULL 5.10 remark (b)) moved with it. New lines B12b (B_1, tree rate of WG-G1) and B12c (c_{−,1}, then the real G_1 A1-W rate δ_W) come before B13, which uses them. B14 no longer lists c_{−,1}.
+E2. θ_WG and B6. θ_WG = ½ moved from B10 to the head of B5. The new line B5a holds c_1(θ_WG½δ_0), K_V, M_*, a_*, c′ (functions of (d, L, θ_WG)); M_* left the B12 list. The B6 line (β_0 ≤ ½) moved into Group 0, after B2, so B4's use of its cap is backward. C_𝒟^{H1} moved from B11 to the B5 geometry list, because C″_𝒟 = T_2C_𝒟^{H1} (B5) uses it; it is a (d, L) count (WG_FULL 5.4, 6.4). Line labels are kept so that other files' citations stay valid.
+E3. θ_c ∈ [1/16, 1). All rates in the Schur sums (δ_G, δ_1‴, ½δ_1‴, δ_A″, ½δ_A″, θ_cδ_A″) are then ≥ ¼ε_min, so the B18 threshold RM > M_*(¼ε_min) covers c_1(θ_cδ̄_A″). θ_c = ½ remains the example. (Alternative not taken: an extra entry M_*(θ_cδ̄_A″) in B18.)
+E4. Lemma M2. The map δ ↦ e^{2Lδ} inside B̄_A″ increases in δ, so B̄_A″ at δ̄_A″ need not bound the piece constant at a larger actual rate. Repair: A.4 item 10 now defines δ_A″ := δ̄_A″. Items 11 and 13 then use δ_A″ = δ̄_A″ directly; their bars are unchanged. Lemma M2's list now names this map. Grade of M2: CORRECTED, conclusion unchanged.
+E5. J scale. WG_FULL (I5) defines J := D*η^{−2}Im ∂U, with |J(b)| ≤ O(1)Mα_0(L^jη)^{−3}; in rescaled units |Ĵ| ≤ c_JMα_0. WG_FULL 5.5 reproduces (3.137) as |Δ^{(2)}| ≤ O(1)Mα_0, from |ŵ| ≤ O(1)Mα_0 and |K̂_b| ≤ c_κ. So Δ^{(2)} is linear in J with an M-free coefficient: |Δ^{(2)}| ≤ O(1)|J|. WC_FULL (I9), |J| = O(Mα_0), is right. WC_FULL 6.0, "Δ^{(2)} … of size O(1)M|J|", counts M twice; it now reads O(1)|J|. Consequences: (i) a real J lies in 𝒰(α′) only if c_JMα_0 < α_0′, that is real α_0 ≤ α_0′/(CM) with C > c_J; B22 states this. (ii) The J-row α_0‴ ≤ min(a_**/M, c″M^{−1}M_1^{−12}) was written for the M|J| convention. With |J| ≤ c_JMα_0 the real conditions Mα_0 ≤ a_** and α_0 ≤ c″M^{−1}M_1^{−12} read |J| ≤ c_Ja_** and |J| ≤ c_Jc″M_1^{−12}; the row implies both when M ≥ 1/c_J (added to B18). The row is then stricter than needed; Lemma M1 makes that safe. A.4 items 5(b) and 10(d) now carry O(1)|J|.
+E6. Caveat kept, not repaired. Lemma M1's nesting of the plaquette row is by reading: the right side of the CMP 109 (1.13)–(1.14) bound is not written in A1_WALK_FULL 8.1 or WC_FULL 6.0 (VERIFY §1).
+E7. Topological pass after E1–E5 [P]. Line by line: Group 0 (B1, B2, B6) uses nothing. B3, B4 (B4 uses B6). B5 = (d, L, N) numbers, caps, and c_J. B5a uses B5. B7–B9 use δ (B5). B10 uses δ_0. B11 uses B5, B5a (G walk expansion from WG-G), B10 (M_min). B12 uses B11. B12a uses B5 (C_𝒟^{H1}, C″_𝒟, c_J), B5a, B11 (c_1), B12 (ε, c_W, B_W). B12b uses B12a. B12c uses B11, B12b, a_{−,1}. B13 uses B12b–B12c, γ_exp, θ_c. B14 uses B5, B11, B12a (a_**, c″), B12b, B12c. B15 uses B9, B12, B13, B14. B16–B18 use B15 and earlier (B18 adds M ≥ 1/c_J). B19–B22 use M, M_1, B5a (c′), B12a (a_**, c″), B14 (k̄'s), B17 (Λ̄_0). B23–B33 are unchanged from the verified version. No forward reference remains; the order is acyclic. Symbol clashes noted in VERIFY §4 (q of CMP 116 vs q_i vs q = M/M_1; r exponent vs r radius) are unchanged.
+Change log: 2026-10-28 amendment pass (E1–E7) applied to Parts A–B; Part C is unchanged.

@@ -132,7 +132,7 @@ Dangerous = a constant bounded above by an earlier constant while it also needs 
 - p_1: (p_0 + (d+5)r_0^{exp})/2 < p_1 < p_0 and p_1 ≤ p_0 − 1 − ν/2. Non-empty for integer p_1 if p_0 > (d+5)r_0^{exp} + ν + 4 [P]. So p_0 must be chosen large after r_0^{exp}, ν are fixed.
 - A_0 and p_0, if the A11 §9 slot for C_i, q_i is kept (item 2). Safe under IEPS_LF.
 - M_2, if the A11 body order M → M_2 is kept: then M_2 < M is a cap on M_2 with lower bound 1/δ_[15]. Safe under M_1 → M_2 → M, where M_2 = L²M_1 is fixed.
-- M_1 and M, conditionally: safe only if the complex-level constants are M-free (the split of §2, [I]) and G_Γ is M-free (G3_GGAMMA, unverified). If either fails, M_1 or M acquires a self-referential condition.
+- M_1 and M, conditionally: safe only if the complex-level constants are M-free (the split of §2, [P rel. tags, SOURCES_ORDER_CANON Task A + VERIFY]) and G_Γ is M-free (G3_GGAMMA, unverified). If either fails, M_1 or M acquires a self-referential condition.
 - Walk constants and ε at M_min: valid for larger M only by monotonicity in θ_S ([I] except Σ).
 
 Safe = only lower bounds: κ, κ_0, κ_1, M_1, M_2 (= L²M_1 ≥ 1/δ_[15]), M (no upper bound; HIGHER_M1 B2.3), q_0, q_1, A_1 (IEPS order), A_0, C_0, C_1, p_0.
@@ -140,7 +140,7 @@ Safe = only lower bounds: κ, κ_0, κ_1, M_1, M_2 (= L²M_1 ≥ 1/δ_[15]), M (
 Safe = only upper bounds by earlier constants, no lower bound (smallness parameters): β_H, β_0^{Höl}, CMP 119 β_0, ρ_0, α‴, α″, α′, α_*, α_1, α_0, α_3, α_2, α_4, γ_2, α_6, a_1 (Latin), ε_1, γ, g, r_0 = τ_0, ρ_1, r. (Hγ) and (2.31) bound ε_1 from below only relative to γ, a later constant; they are conditions on γ.
 
 ## 6. Summary
-- Cycle: no genuine cycle. Two nominal cycles in the written orders of WC_FULL 6.9 / A1_WALK_FULL 9.1 (M_1 ← B_A″, δ_A″ ← α″ ← M; M ← ε″ ← α′ ← M), removed by placing the complex-level constants (M-free caps, [I]) before M_1 and the domain sizes after M.
+- Cycle: no genuine cycle. Two nominal cycles in the written orders of WC_FULL 6.9 / A1_WALK_FULL 9.1 (M_1 ← B_A″, δ_A″ ← α″ ← M; M ← ε″ ← α′ ← M), removed by placing the complex-level constants (M-free caps, [P rel. tags, SOURCES_ORDER_CANON Task A + VERIFY]) before M_1 and the domain sizes after M.
 - Merged order: §3.
 - Incompatibilities: A_1/A_0 (A11, C30, C24 vs IEPS, IEPS_LF); C_i, q_i vs A_0, p_0 (A11 vs IEPS_LF); M_2 vs M (A11 body vs its correction, C28); c_±, ε vs M_1 (WC_FULL 6.9 vs A1_WALK_FULL, WG_FULL, HIGHER_M1, WC_FULL 6.2); α_0 vs α′ (WC_FULL 6.9, A1_WALK step 7 vs IEPS); κ_1 vs M_1 (G3_GGAMMA vs C24 and the rest); ε″ vs M (G3_GGAMMA, A8 vs WC_FULL 6.9, A1_WALK step 8). Missing entry: M > L²M_1 in M_req.
 - Dangerous: A_1 under C30's order; p_1 (two-sided, needs p_0 > (d+5)r_0 + ν + 4); A_0, p_0 under A11's C_i, q_i slot; M_2 under A11's body order; M_1, M conditional on the M-free cap of the complex-level constants and on G_Γ ≤ Ḡ.
@@ -148,3 +148,4 @@ Safe = only upper bounds by earlier constants, no lower bound (smallness paramet
 Suggested edits (not made): C24 order line → §3; C30 "A_1 after A_0" → "A_0 after A_1 (A_0 ≥ 80B_3A_1)"; HIGHER_M1 B3 add L²M_1 + 1; WC_FULL 6.9 and A1_WALK_FULL 9.1 move c_±, ε and the complex-level constants before M_1; G3_GGAMMA 4.4 move κ_1 before M_1.
 
 Order-canon fix (SOURCES_ORDER_CANON Task C, 2026-10-28): C-O5 §1 complex-level row and §2 "Why neither is real" tag [I] → [P relative to the tags of SOURCES_ORDER_CANON A.4–A.7].
+Order-canon amendment (2026-10-28): §5 "Dangerous" item M_1, M and §6 summary: [I] → [P rel. tags, SOURCES_ORDER_CANON Task A + VERIFY].

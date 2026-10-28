@@ -26,7 +26,7 @@ Reading [P]. (2.6)–(2.9) are not threshold conditions on fixed constants. They
 - (T3) for (2.7) line 2: (1 + log(1 + X)/ℓ_n)^p ≤ (1 + X)^{p/ℓ_n} ≤ (1 + X)^{β_0} if ℓ_n ≥ p/β_0. Upper bound on γ.
 - (T4) (1 + X)^{β_0} ≤ (1 + β_0)(n−m)^{β_0} with X = g_n²β′(n−m): from 1 + X ≤ (1 + g_n²β′)(n−m) and (T1) via (1 + g_n²β′)^{β_0} ≤ (1 + β_0)^{2β_0} ≤ 1 + β_0 for β_0 ≤ 1 [P: (1+b)^{2b} ≤ 1+b iff 2b log(1+b) ≤ log(1+b), true for b ≤ 1/2].
 - (2.8) multiplies (2.6) and (2.7) with p = p_0 (p_0 a positive integer here [I, the p_0 of (2.4)]); (2.9) applies (2.7) with p = r and rounds to powers of L (factor L).
-All of (T1)–(T4) are upper bounds on γ with arguments β_0, β′ (= B′), p ∈ {p_0, r, …}. They sit inside v4 §1.2's γ_*(β_0, β, B′, p_0, p_1, r, ν, κ_0). No cycle: β_0, B′, p_0, r are fixed before γ (HIGHER_M1 §B2.2 order: … A_0, p_0 → γ → g).
+All of (T1)–(T4) are upper bounds on γ with arguments β_0, β′ (= B′), p ∈ {p_0, r, …}. They sit inside v4 §1.2's γ_*(β_0, β, B′, p_0, p_1, r, ν, κ_0). No cycle: β_0, B′, p_0, r are fixed before γ (SOURCES_ORDER_CANON B6, B25–B31: β_0 first; … exponents p_0 → p_1 → r → q_0 → q_1 → A_1 → A_0 → C_0 → C_1 → γ → g).
 
 ## §2 Constants introduced after p. 256: pp. 257–260 [V, page images]
 | # | page, display | new constant | printed condition |
@@ -191,3 +191,4 @@ Firewall kept. No existing file edited. Status: complete 2026-10-28, unverified.
 Corrections after verification (SOURCES_A11_CONST_VERIFY, 2026-10-28): list omissions p_0³(g_k) (p. 278), β_j(g_{j−1}) = β′_j (pp. 259, 282; no ratio bound needed), the multi-scale use of g_k^{−2}(·) − g_k^{−2} on p. 277 (needs (2.6) at general n − m); (2.6)×(2.7) gives (1 + β_0)², fixed by monotonicity of gℓ^q in g for ℓ > 2q (same fix for α_{i,j} and ε_{k+1} ≤ (1 + β_0)ε_k); u_j(x) = φ_ju_j + (1 − φ_j)u_{j−1} (φ swapped); order M_1 → M_2 → M (p. 245: M_2 = L²M_1, M ≫ M_2) — add M > M_2 to HIGHER_M1 §B; "r > 1" closed: p. 245 prints r ≥ 2; (3.7) halves need one strict; (2.46) keeps R_1, so R_1g^{κ_0−6} < 1 goes into S8; p. 283 sketch needs κ > 10 log L (outside A11). Inherited: p_1(g) form from CMP 122.
 
 Order-canon fixes (SOURCES_ORDER_CANON Task C, 2026-10-28): C-11a §9 cycle-check order replaced by canon B (κ_1 → walk, WC, level constants → M_1 → M_2 → M → α's → ε_1 → ρ_0 → exponents → A_1 → A_0 → C_0 → C_1 → γ → g); C-11b S5 is a lower bound on A_0 (A_0 ≥ 80B_3A_1), A_0 after A_1 (R1); C-11c residue item 4 "A_1 before A_0"; C-11d S4 row M_2 = L²M_1, S4 = M_1 ≥ 1/(L²δ_[15]).
+Order-canon amendment (2026-10-28): §1 order quote (old HIGHER_M1 §B2.2 form) replaced by the canon (SOURCES_ORDER_CANON B6, B25–B31).
