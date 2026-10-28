@@ -162,3 +162,61 @@ Plan codes: IMG = page-image read can make it [V]; PRF = an independent proof re
 | I-56 | B13 large field: coarea Jacobian on non-round level sets | GGAIN_LF 6.3 | — | not a reading: open estimate. PRF, M–L |
 
 Table 2 size: 56 readings. 8 are DONE or closed by declaration (I-11 partly, I-12, I-13, I-14, I-15, I-16, I-19, and I-36 via I-05). 30 are S-size image reads or half-page checks. About 12 need a short proof (M). Three are open estimates that are not readings at all (I-20, I-49, I-56).
+
+## 3. Table 3 — conventions C1–C42
+
+Classes: (i) free parameter choice, admissible by SOURCES_ORDER_CANON (closed); (ii) fixes an unprinted part of Balaban's construction (needs a consistency proof: A13 must hold for the fixed construction); (ii*) changes a printed part of the construction (same need, stronger); (iii) substantive hypothesis in disguise. Readings that sit in Group C are sent to Table 2.
+
+| C | short name | class | what closes it / what it hides |
+|---|---|---|---|
+| C1 | freeze thresholds at x* | (ii) for the sourced construction | consistency = (H-thr) B15 (frozen map vs running map). Open through B15 |
+| C2 | Option B margin θ_W + τ_C ≤ 0.2 | (i) | closed; cost = smaller γ |
+| C3 | L odd > 11; certification at L = 13 (also 15, 17, 21) | (iii) | hypothesis: "L ∈ {13, 15, 17, 21}" for (H2). Theorem 2w is proved only at certified L |
+| C4 | SU(2), d = 4 | (iii) | hypothesis: G = SU(2). Lemma 5.1 charged/neutral split and (W) are SU(2) statements |
+| C5 | canonical constant order | (i) | closed (verified twice, acyclic); F.2 open items: r_0^{exp} vs r (closed in B25), C_1^{FX} and κ ≥ 1536 not yet in the canon (S) |
+| C6 | holomorphy radius ρ_0 | (i) | closed |
+| C7 | cut on B vs B′ | closed reading | closed (A17 at r = 1) |
+| C8 | sharp χ_k; smooth χ̂ fallback | (i) for the sharp cut | closed; the fallback would be (ii*) |
+| C9 | χ_k threshold shrink | (ii*) | NOT NEEDED since A17 holds at r = 1. Action: delete from the chain; use C9′ only if a consumer needs r < 1 |
+| C10 | adapted gauge-fixing weight 1/u_k(c) | (ii*) | consistency: A13's proof with the weight 1/u_k(c) in place of 1/g_k². Reduces to Balaban's at f = 0; the sourced Theorem 1 (B11) already re-runs the step, so the proof is part of B11, not separate |
+| C11 | h ≡ 0 booking; freezing set S_X | (i) | closed (our construction) |
+| C12 | additive source normalization | (i) | closed |
+| C13 | main R-step form (1.90)–(1.98) | (i) | closed |
+| C14 | κ_final, M ≥ 12L(3κ_final)^{1/d} | (i) | closed |
+| C15 | 2p_1 − (d + 5)r_0 > p_0 | (i) | Balaban's own condition, satisfiable (canon B25) |
+| C16 | 32ε′ ≤ 1, S ≥ 1, κ_0 > 2 | (ii*) as an extra ε_1 cap | consistency = the global ε_1 audit: every ε_1 condition in CMP 116–122 is an upper bound or of the form γ ≪ ε_1 (open per SOURCES_A17_A19_VERIFY). M, 3 h |
+| C17 | (S): γ^{−2} ≥ c_sw D′ | (i) | closed (β_0 fixed before γ, A12) |
+| C18 | ℓ even, thermal state, plaquette observable, subsequence limits | (iii) | hypotheses: thermal (periodic time), one observable, compactness form, no uniqueness. Not removable inside this project |
+| C19 | coupling domain ]0, γ] | (i) | closed |
+| C20 | Route K primary | (i) | closed |
+| C21 | θ_* < 1 (Route B) | (i) | closed |
+| C22 | g_0(K, g) any shooting solution | (iii) | hypothesis: limits may depend on the choice. Removable only by uniqueness of the shooting (not planned) |
+| C23 | (U): ρ_1 ≤ c_*r_0/M^a | (i) | closed (verified compatible with B-N1) |
+| C24 | M ≥ M_req (37 lower bounds) | (i) | closed (up-set) |
+| C25 | (Hα) | (i) as an M threshold | closed given I-27 (G_Γ ≤ Ḡ re-verify) and I-22 (s-rule) |
+| C26 | (Hγ), (2.31) γ condition | (i) | closed (γ-smallness) |
+| C27 | β_H first in the order | (i) | closed; residue I-52 (misprint reading); GGAIN_BETAH unverified: S verify |
+| C28 | M_2 slot | (i) | closed |
+| C29 | M_2 ≥ 1/δ | (i) | closed |
+| C30 | A_0 ≥ 80B_3A_1 | (i) | closed |
+| C31 | (Vol): torus side ℓ > 22M final cells; even form ℓ = 2L^{m_T} | (iii), mild | hypothesis: "the physical torus side is at least 22M (≥ 2L^{m_T}) in final-scale units". Removes small tori. Stated in THEOREM2_PROOF_v4 §1.1; keep as a stated hypothesis |
+| C32 | (Cube) | reading → Table 2 I-44 | — |
+| C33 | (Cases) "in exactly the same way" | sketch → Table 1 R37 | — |
+| C34 | (Conv): cube sides divide N; partitions = π-images of Z^4 partitions; M = KR_0M_0 | (ii) | consistency: Balaban's tori have side L^N and cubes are powers of L (CMP 109 pp. 251, 257). Show every partition he uses is translation-covariant; M_1 check (I-53). S–M, 2 h |
+| C35 | (Det′): domain-assignment rule for closed-walk terms of the [16] determinant | (ii) | consistency: CMP 102 pp. 271–272 bounds hold for any assignment that keeps locality (the trace splits exactly by walk). Write the half-page lemma. S |
+| C36 | p. 290 reading | reading → Table 2 I-45 | — |
+| C37 | (Enl): s-rule localization domain = whole-lattice ∪X_i^5 | (ii) | consistency: CMP 116 p. 3 is stated on the whole torus; the Λ-restricted alternative costs ≤ one M-cube layer, also admissible. Closed [P] |
+| C38 | (C1*) γ-smallness | (i) | closed (canon B30) |
+| C39 | M_0 slot, a_*^{102} | (i) | closed |
+| C40 | A16 tree conditions | (i) | closed (verified) |
+| C41 | (A18-1)–(A18-4), M ≥ 5M_99 | (i) | closed (acyclic, canon F.3); ε_0^{102} window nonempty |
+| C42 | CMP 122 S12–S16, X1–X10 | (i) | closed (Balaban's own) |
+
+New conventions surfaced in Table 2 (proposed rows):
+- C-new-1 (ii): ι-domain assignment (WG 2.5). Consistency = locality (I-03).
+- C-new-2 (ii): the s-version of every covariance is defined on the WC_FULL walk expansion, not on Balaban's [13] expansion. Consistency = I-22 (consumers use only (L1)–(L2), bounds, analyticity). This is the most load-bearing convention.
+- C-new-3 (ii): A16 Ω-setting volume convention.
+- C-new-4 (ii): B20 (Conv_Λ) and Λ_j nesting.
+- The two conventions of (C) (Table 4): U(c) = product of the L links on the straight segment c_− → c_+; axial contours Γ translation covariant. Both class (ii); consistency: a different U(c) adds ≤ O(L²) plaquettes per level and changes only constants (QE_KE_HQ_VERIFY (3)). S to write.
+
+Table 3 size: 42 rows + 6 proposed (C-new-1–4, the two (C) conventions) = 48. Class counts on C1–C42: (i) 26 (C2, C5, C6, C8, C11–C15, C17, C19–C21, C23–C30, C38–C42); (ii) 4 (C1, C34, C35, C37); (ii*) 3 (C9, C10, C16); (iii) 5 (C3, C4, C18, C22, C31); readings/sketches 4 (C7 closed, C32, C33, C36). (C24, C25 counted as (i).) Open consistency proofs: C1 (via B15), C10 (inside B11), C16 (ε_1 audit), C34, C35, and the four new (ii) rows.

@@ -34,3 +34,9 @@ Printed factors (all of form exp(−c·g^{−2}·cut²), cut ∈ {ε_m, 2δ′_m
  - 1−χ′_m (1.27): exp(−γ_0g_m^{−2}(2δ′_m)²) ≤ exp(−γ_0·4(1+β_0)^{−2}A_1²p_1²(g_j)) ≤ exp(−γ_0A_1²p_1²(g_j));
  - 1−χ_{j,Λ}: exp(−(1/4g_j²)(O(1)B_3M²)^{−1}ε_j²) ≤ exp(−A_1²p_0²(g_j)).
 Each exponent is (weight)·(cut radius)²; at frozen s′ it scales by E(s′_m)/E(ū_m) ∈ [e^{−1/9}, e^{1/9}] (my recomputation, §7). The step m → j conversion (1+β_0) uses the real trajectory x* (couplings in the radii are frozen), so ordering is unchanged. The second inequalities use fixed slack (A_0 ≫ A_1; 4(1+β_0)^{−2} ≥ 1). With the factor 0.895 they either need A_0 slightly larger / β_0 ≤ 0.89, or carry 0.895 into the output. Author's 2.2(iv) form "exponent ≥ e^{−1/9}× x*-exponent" is CONFIRMED for these four factors. "−2p_0" split: γ-item.
+
+## 6. Page image CMP 122 II p. 383 (pdf p. 29)
+(1.77): ⟨DH″B, ζDH″B⟩ > γ_0Σ|(∂B)(p′)|² − O(1)A_0A_1²B_3^4B_5M^{d+6}R_j^{d+3}p_0p_1²g_j (g-small item). (1.78): |B(b)|² ≤ 6(d+3)(100M(L+1)N^{β_0}R_j)^{d+2}Σ|∂B|². Bond with |B(b)| ≥ g_j^{−1}δ′_j = A_1p_1(g_j) gives exp(−½γ_0[6(d+3)(100M(L+1)N^{β_0}R_j)^{d+2}]^{−1}A_1²p_1²) < exp(−R_j^{−d−5}p_1²(g_j)) = (F3). "Largest factor among all small factors"; with 2p_1 − (d+5)r_0 > p_0 it is ≤ exp(−p_0(g_j)).
+So q = 2p_1 − (d+5)r_0 > p_0 [V, page image]: author's 2.2(viii) "q > p_0" CONFIRMED. (F3) is the weakest preparatory factor, so using κ_2 from (F3) for every shell (3.2) is the conservative choice. CONFIRMED.
+The threshold enters (F3) only as δ′_j in the lower bound |B(b)| ≥ g^{−1}δ′_j; R_j, N frozen. At s′: exponent × E(s′)/E(ū) ≥ e^{−1/9}. CONFIRMED.
+(1.79): T′_k(X)1 ≤ sup exp{ΣO(1)M^dR_j^{d+1}d′_j}·ΠΠexp(−½γ_0A_1²p_0²(d′+1) − 2p_0)Π′exp(−p_0). Positive product: the per-cutoff structure used by Lemma T.
