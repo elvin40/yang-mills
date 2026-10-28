@@ -1,6 +1,6 @@
 # SOURCES_T2_I3: the Peierls input (I3) at one step, with explicit f-dependence
 
-Date: 2026-10-28. Item I3, DERIVE. Status: in progress.
+Date: 2026-10-28. Item I3, DERIVE. Status: complete (see §9).
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). ONLINE_SWEEP §2 not read.
 
 Read list. SOURCES_T2_S123.md l. 60–110, 215–285; SOURCES_T2_S123_VERIFY.md l. 45–56, 160–172; BETA_FP_M.md l. 36–56, 120–148; U3_LEMMA51.md l. 1–140; U3_AW.md §1, §4.2; U3_REPAIRS.md §3; U3_REPAIRS_VERIFY.md §5, grade 4; BETA_FP_H.md l. 13–60. Balaban: CMP 109 pp. 251–256 (PDF 3–8), CMP 98 (definitions of the averaging), CMP 99 propagators pp. 392–396 (PDF 4–8), CMP 122 II p. 380 (PDF 26).
@@ -194,3 +194,42 @@ Results [V: numerics this session].
 
 Reading. The closed form (5.1) is the exact linearization of (0.4) at the constant-flux background (to rounding), its reduced entries are smooth in f, and the magnetic covariance holds with the stated W. The check covers (0.4) only, one coarse bond direction (μ = 0, in the flux plane), and in d = 4 a subset of 40 of 459 support bonds.
 Consistency with NUMERICS l. 53–78. Nothing here computes or constrains d_1. The f = 0 linearization reproduces U3 (1.1) exactly (§5 check (a)), and by U3 Lemma 1.4 the gauge part D′Λ does not change the constrained minimum, so the f = 0 data behind the first-step constant (+0.26 at L = 3, i.e. d_1 = −0.256 in the KAPPA_BOUNDED sign) are unchanged [I: I did not reopen ym_oneloop.py]. So there is no contradiction with d_1 = −0.256 (L = 3).
+
+## 9. Ledger
+
+Numbered claims (for the verifier).
+1. CMP 122 II (1.73)–(1.75) are positivity bounds for a large-field integration operation and carry no information on the f-dependence of Q̃_f [V: page image, PDF 26].
+2. Quotes of CMP 109 (0.4), (0.5)–(0.12), contour families G(y,x) (pp. 252–254); CMP 98 (33), (34), (36), (38), (41), (42), (124), Prop. 3 (pp. 22–23, 36); CMP 99 (3.15), (3.19), (3.25), (3.32), (3.34) and the positivity sentence (pp. 393–396) [V: page images; CMP 98 (114), (117) and the identity g^{−1}(−z)e^z = g^{−1}(z) from the text layer, the identity also checked by hand].
+3. Symmetric-gauge background: link angles θ_b = (φ/2)(b_−∧e_μ), linear in f; plaquette angle φ in the (0,1) plane [P].
+4. Loop-angle bound |Θ_ℓ| ≤ 8|f| for every loop of (0.4) (monotone pieces, |winding| ≤ 4, < 2L² squares) [P].
+5. Lemma 4.0: U_0 is invariant under 𝔐_a, a ∈ Z⁴; action on midpoint fluctuations by the phase exp(−ie(φ/2)a∧m_b) [P].
+6. Lemma 4.1: translation and gauge covariance of the nonlinear averaging (0.4), (0.12), (42); 𝔐^c_aŪ_0 = Ū_0 [P from (0.4), (0.6); this is the nonlinear form of CMP 99 (3.32)/(3.34)].
+7. Corollary 4.2: Q̃_f, D_f, Π, D_fΠD_f^* commute with the magnetic translations by LZ⁴ (D_f by all of Z⁴) [P].
+8. Canonical form A = W·a with a invariant under joint coarse translations [R: U3_LEMMA51 Lemma 3.1; phase bookkeeping rechecked here, P].
+9. Finite range: Q̃_f rows in B(c_−) ∪ B(c_+) ∪ c (two blocks; correction to "one block" in S123 §2 (I3)); D_f one bond; Π diagonal; D_fΠD_f^* adjacent bonds [P].
+10. Lemmas 5.1, 5.2: first-order expansion of path holonomies and of the principal log at a torus element, charged factor g^{−1}(ieΘ), analytic for |eΘ| < 2π [P from CMP 98 (34), (36)].
+11. Prop. 5.3: closed form (5.1) of the charged linearization of (0.4) at flux f; neutral part (5.2) f-independent; no sector mixing; at f = 0 it equals U3 (1.1) [P; also V numerically, claim 16].
+12. Prop. 5.4: reduced charged entries of Q̃_f analytic on |f| < π/8; at most 4(8L⁴ + L) distinct entries per sector; f ↦ a_f analytic into ℓ¹_{θ,k} for every θ, k; C³ bounds and ‖a_f − a_0‖_{θ,k} ≤ C(L,θ,k)|f| on |f| ≤ π/16 [P].
+13. Prop. 5.5: the same for (0.12) with Federbush's average, radius min(π/8, 1/8) [P]; for a general axiomatic average [R: CMP 109 (0.5)–(0.9), analyticity of M is Balaban's axiom].
+14. Prop. 6.1: reduced kernel of D_f is the f-independent lattice gradient (±1); Π f-independent; reduced kernel of D_fΠD_f^* entire in f, with the phase e^{±ieφ/8} on orthogonal pairs in the flux plane [P]. Balaban's alternative R(U) of CMP 99 (3.25): C³ in f given an f = 0 lower bound [I; not used].
+15. Theorem 7.1 ((I3) at one step) and Corollary 7.2 ((I3) at each step i ≤ j, constants independent of i and j) [P given the identification of §3, which is [I] for the conventions; Cor. 7.2 also R: S123 (I1) = BETA_FP_H Fact 1.1(b),(d) for the background at each level].
+16. Numerics: FD linearization of (0.4) agrees with (5.1) to ≤ 4.2·10^{−15}; neutral entries f-independent; covariance defect ≤ 7.6·10^{−16}; second f-differences of reduced entries bounded and h-independent (d = 4: 3.43·10^{−3}; d = 2: 5.12·10^{−2}) [V: numerics this session, t2_i3_qflux_check.py; d = 4 on 40 of 459 bonds].
+17. No conflict with d_1 = −0.256 (L = 3) [I].
+
+Effect on the project (suggested text for the supervisor; not written into other files).
+- SOURCES_T2_S123 §2 (I3): the [I] tag can be replaced by "[P, SOURCES_T2_I3 Thm 7.1, Cor. 7.2, given (I1)]", with the range corrected to "two adjacent blocks". Open item O3 of S123 §8 is closed at the level of this file (pending verification).
+- BETA_FP_M ledger A1, (P_0): the Q̃_φ and D_φ parts are now written (Props. 5.3–5.4, 6.1). The Wilson-Hessian part of (P_0) is (I4), not treated here. BETA_FP_M (P_i) for i ≥ 1 uniformly in i (its O4) is a statement about Δ_i, not about the fixed vertices, and is not touched.
+- (S1), (S3) of (M_j) move from "conditional on (I3)" to "proved at fixed j" if this file verifies, still resting on (I1), (I2), (I4), (F1)–(F4).
+
+What is not claimed.
+- Nothing about the input block Δ_{i−1}(f_{i−1}); that is S123 Prop. 2.1's induction.
+- No statement for complexified backgrounds beyond the constant-flux family, and no large-field statement.
+- The identification of the project's one-step Q̃ with the linearization of Balaban's (0.4)/(0.12) in midpoint coordinates is checked at f = 0 against U3 (1.1) (exactly) and numerically at f ≠ 0 against my own implementation of (0.4); it is not checked against the project's umklapp code [I].
+- The composed j-step averaging is used only through the exact one-step recursion (I1), not re-derived.
+
+Open.
+- None for (I3) itself, beyond verification. Residual [I] items: the convention identification (claim 15) and the unused R(U) variant (claim 14).
+
+Summary. Proved: at one step, Balaban's linearized averaging (0.4) at constant flux f has the closed form (5.1); it commutes with the coarse magnetic translations; its rows have range two blocks; its reduced kernel has at most 4(8L⁴ + L) distinct entries per sector, each analytic on |f| < π/8 (neutral entries constant). D_f has the f-independent reduced kernel ±1, Π is f-independent, and D_fΠD_f^* is entire in f. Same at each of the j steps, with constants independent of i and j. Reduced: the level-wise background to (I1). Judgment: CMP 122 II (1.73)–(1.75) are irrelevant to (I3).
+
+STATUS: COMPLETE
