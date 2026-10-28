@@ -13,7 +13,7 @@ The task brief cites §2. The identity is in §3.2 ("Convex-combination structur
 | `multilinear_convex F hF s hs`: S a Fintype, E any real vector space, `AffineEach F`, s ∈ [0,1]^S ⇒ F s = Σ_T w_T(s) • F(corner T), w_T(s) ≥ 0, Σ_T w_T(s) = 1 | 3.2: "C_s = Σ_{τ∈{0,1}^{σ_0}} w_τ(s) C_τ, w_τ(s) ≥ 0, Σ_τ w_τ(s) = 1" | Exact for finite σ_0 (the note also assumes finite σ_0). E covers matrices/kernels. The identity itself holds for every real s; [0,1] is used only for w ≥ 0. |
 | `monomial_affine T`: s ↦ Π_{c∈T} s c satisfies `AffineEach` | 3.2: s^ω multilinear | Covers each walk weight s^ω = Π_{Δ∈T_ω} s(Δ) (degree ≤ 1 per cube). |
 
-Not formalized: that C_s = Σ_ω s^ω T_ω is affine in each coordinate. This needs AffineEach to pass through the infinite walk sum (absolute convergence (W)). Finite sums of AffineEach functions are AffineEach (linearity), but this lemma is not stated. Also not formalized: consequences (a) symmetry and (b) the λ_min/λ_max bracket.
+Not formalized: that C_s = Σ_ω s^ω T_ω is affine in each coordinate. This needs AffineEach to pass through the infinite walk sum (absolute convergence (W)). Finite sums of AffineEach functions are AffineEach (linearity); the finite walk sum is now covered by WalkAffine.lean (`walkSum_affineEach`, VERIFY_WalkAffine.md). Also not formalized: consequences (a) symmetry and (b) the λ_min/λ_max bracket.
 
 ## 2. Window arithmetic (SOURCES_T2_KUNIF.md 5.2)
 

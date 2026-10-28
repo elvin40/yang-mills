@@ -34,9 +34,9 @@ Differences from the notes.
 | Lemma N proof: ‖A_ZW‖_ρ ≤ ½ ⇒ I − A_ZW invertible, inverse Σ_{n≥0}(A_ZW)^n, norm ≤ Σ(aw)^n | `wnorm_neumann`: ‖K‖_w < 1 ⇒ IsUnit (1 − K), ‖(1 − K)⁻¹‖_w ≤ 1/(1 − ‖K‖_w); `pwnorm_neumann` for `pw p` |
 
 Differences from the notes.
-1. Row part only. A2_R2's ‖·‖_ρ is max(row sup, column sup). The column part of K is the row part of Kᵀ with the transposed weight w′(x, y) = w(y, x), which satisfies the same hypotheses; (KL)ᵀ = LᵀKᵀ and ((1 − K)⁻¹)ᵀ = (1 − Kᵀ)⁻¹ give the column statements. This transposition step is NOT a Lean lemma.
+1. Row part only. A2_R2's ‖·‖_ρ is max(row sup, column sup). The column part of K is the row part of Kᵀ with the transposed weight w′(x, y) = w(y, x), which satisfies the same hypotheses; (KL)ᵀ = LᵀKᵀ and ((1 − K)⁻¹)ᵀ = (1 − Kᵀ)⁻¹ give the column statements. This transposition step is NOT a Lean lemma. (Now `cwnorm_mul_le`, `mnorm_neumann` in WeightedNorm.lean, VERIFY_WeightedNorm.md.)
 2. Proof route. Lean does not sum the series. Invertibility: (1 − K)v = 0 ⇒ the matrix V with every column v satisfies V = KV ⇒ ‖V‖_w ≤ ‖K‖_w‖V‖_w ⇒ ‖V‖_w = 0 ⇒ v = 0 (uses w(x,x) > 0). Bound: X = (1 − K)⁻¹ = 1 + KX ⇒ ‖X‖_w ≤ ‖1‖_w + ‖K‖_w‖X‖_w with ‖1‖_w ≤ 1. The conclusion equals the series bound Σ_n ‖K‖_w^n.
-3. Not formalized: the conclusion ‖T‖_ρ ≤ 2a²w of Lemma N (T = Σ_{n≥1}(A_ZW)^nA_Z), facts (N2)–(N4), and the inputs (W), (K_A), (G). (N2) and the ‖T‖_ρ bound follow from `wnorm_mul_le` and `wnorm_neumann` (T = (1 − A_ZW)⁻¹A_ZWA_Z) but are not written.
+3. Not formalized: the conclusion ‖T‖_ρ ≤ 2a²w of Lemma N (T = Σ_{n≥1}(A_ZW)^nA_Z), facts (N2)–(N4), and the inputs (W), (K_A), (G). (N2) and the ‖T‖_ρ bound follow from `wnorm_mul_le` and `wnorm_neumann` (T = (1 − A_ZW)⁻¹A_ZWA_Z) but are not written. (‖T‖_ρ ≤ 2a²w is now `lemma_N` in WeightedNorm.lean.)
 
 ## Not formalized
 

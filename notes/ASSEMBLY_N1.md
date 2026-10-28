@@ -156,7 +156,7 @@ Hypothesis, not proved here: (S). Its parts and their status in the sources:
 3. Validity down to σ = 16ε. Not checked in D3 (G1), which argues at scales Mλ_m ≳ δ. Fallback [derived here]: if (S) holds only for σ ≥ ε^θ (some θ ∈ ]0, 1]), stop the scales at δ ~ 4ε^θ and treat {ρ < 4ε^θ} as in §4.5: the bound is C^n ε^{θN − 4n}‖F‖_N, bounded for N ≥ 4n/θ. Then s = max(11, ⌈4/θ⌉ + 1). So any power-law threshold suffices; only a threshold independent of ε (σ ≥ σ_0 > 0) would not.
 4. Multilinear form in N(f) with five derivatives: follows from the F_r bound by scaling (§1 item 3). If the true dependence is only on ‖f‖_∞ and ‖∇f‖_∞ (D2 uses only C¹, SOURCES_D2 line 44), the exponent 5n drops to n and s drops to about 6.
 5. Volume factor: ℓ⁴, independent of support sizes (from |log Z − W| ≤ E_+|T_η|). Not re-derived.
-Minor: for ℓ > 512 the top-scale cells have h > 1, so N(g) carries max(1, h^{−5}); this changes constants only. B_K omitted (bounded, ASSEMBLY §0).
+Minor: for ℓ > 512 the top-scale cells have h > 1, so N(g) carries max(1, h^{−1}); this changes constants only. B_K omitted (bounded, ASSEMBLY §0).
 
 What N1 does not give. The bound is uniform but lossy (each bump costs h^{−5}, true size O(g²)). It gives no information on the limit beyond (OS0) via ASSEMBLY §2.4–2.5. It does not use the e^{−κd} decay directly; that decay is inside (S).
 

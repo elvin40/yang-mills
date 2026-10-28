@@ -1,6 +1,6 @@
 # paper/
 
-One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (106 pages).
+One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`../THEOREM2_PROOF_v4.md`) and the assembly notes (`../ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (116 pages).
 
 Build:
 
@@ -29,4 +29,4 @@ Conventions:
 - A section sign after a file name refers to a section of that file, not of the paper.
 - `\nocite{*}` lists every entry, cited or not.
 
-State: the dependency table, §5 Steps 8′–8‴, and §7.7 follow PLAN.md through round 6 (2026-10-28): the three propagator theorems, the Group A derivations, Theorem LOC, Prop. BDRY, (Vol), Theorem (G_A′), and the canonical constant order. Headline unchanged: verified reduction, not a proof.
+State: the dependency table, §5 Steps 8′–8⁗, §6.8, and §7.7 follow PLAN.md through round 7 (2026-10-28). Round 7 added Step 8⁗ (($M_j$) proved at fixed j, L5 by nested intervals, A16 tree form, A17 identity, A18/A19/A23 verified reductions, B17 chain item 5, B10 cleared, canon section F, B3 reduced [R, unverified]), the (K1′) fix (13δ, δ = 0.025), §6.8 (H2 certified at L = 15, 17, 21; (G_A′) and neutral-sector numerics; the open β_1 vs c log L tension), trust-table rows C38–C42 (counts A 19 / B 22 / C 42 / X 5), and Appendix C rows for the environments of rounds 5–7. Headline unchanged: verified reduction, not a proof.

@@ -1,6 +1,6 @@
 # SOURCES_B15_M245 — B15 (H-thr): M2′, M4, M5
 
-Status: in progress (2026-10-28). Author: Claude (Opus), unverified.
+Status: complete (2026-10-28). Author: Claude (Opus), unverified.
 Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read. No existing file edited.
 Ledger tags: [P] proved here, [V] read on page image or verified file, [I] interpretation/convention, [R] reduced to a named input.
 
@@ -60,3 +60,69 @@ The factor s^{−1} = g² from the shell width cancels the Cauchy cost α_{1,j}^
 which holds for y ≥ y_D := max(e, (2P_D/κ_2)^{1/(q−1)}) since log y ≤ y and q > 1. [P]
 Zero-order (tail) form, used in §4: |B_j(w; s) − B_j(w; s′)| ≤ Σ_i a_{j−1−i}|s_i − s′_i|·sup_{segment}Φ_D ≤ 3r·Σ_i a_{j−1−i}Φ_D*(s_i) (integrate 3.4 along the segment; |s_i − s′_i| ≤ 3r).
 Status: M4 [P given (2.28), (1.13), (2.25) all V; M3 R; (Q) R].
+
+## 4. M5: the weight part by Cauchy in the history (task 4)
+
+Idea. Do not estimate the real mixed derivative ∂_s∂_wB_j. Split Δ_j′ at the point c into a weight part (thresholds frozen at two REAL values) and a threshold part (weights real). The weight part is a directional derivative of a holomorphic function of w. Cauchy turns it into a zero-order threshold difference on the complex polydisc. The threshold part is §3.
+
+4.1 Split [P]. With s′ := u(c) (real, fixed during the differentiation) and v = du/dc:
+ Δ_j′(c) = W_j(c) + T_j(c),
+ W_j(c) := d/dz|_{z=0} φ(z),  φ(z) := B_j(u(c) + zv; ū) − B_j(u(c) + zv; s′),
+ T_j(c) := −Σ_{i<j} ∂_{s_i}B_j(u(c); s)|_{s=u(c)}·v_i.
+(Chain rule on B_j(u(c); ū) − B_j(u(c); u(c)); the second argument's dependence on c is T_j.)
+4.2 Holomorphy of φ [R]. For each frozen real threshold vector s′ within 3r of ū, w ↦ B_j(w; s′) is holomorphic on the u-polydisc 𝒫 := Π_l{|w_l − u*_l| < 0.17u*_l}. Reason: HHOL §1–§4 + HHOL_LF §3.4–§4 prove this for thresholds frozen at x*. The proofs use only that every cutoff is g-free in B̃ units with a real frozen threshold (HHOL 1.2, HHOL_LF 4.1–4.2); the R-ratio density weight stays at x* (HHOL_LF 3.4) and does not involve thresholds. Replacing x*-thresholds by s′ changes only threshold values by relative O(rγ²). 𝒫 lies in the image of P_{ρ_0}(x*), ρ_0 = 0.1, under g ↦ g^{−2}: that image contains |w/u* − 1| < 1 − (1+ρ_0)^{−2} = 0.1736. Inputs inherited: (M-A), (M-B), (M-C) of HHOL_LF. [R]
+Radius in z. u_l(c) + zv_l ∈ 𝒫 if |z| < ρ_z := min_l(0.17u*_l − 3r)/|v_l|. With |v_l| ≤ 3/2 (induction, §5) and u*_l ≥ γ^{−2}: ρ_z ≥ 0.1γ^{−2} when γ^{−2} ≥ 150r. [P]
+4.3 Sup of φ on the polydisc [R to 4.2 + modulus domination]. φ is a threshold difference (ū vs s′) at complex weights. Bound it by the tail form of §3.4 run at complex w:
+ - modulus domination at complex coupling: HHOL Lemma D (per mode (|w|/Re w)^{1/2} ≤ e^{2ρ_0²}) and HHOL_LF 4.4 (Re u ≥ 0.826u*): setting (A) γ_0 → 0.82γ_0; setting (B) Q → (Re w)Q, Λ → Λ/0.826. Thresholds are real and unchanged. So κ_2 → κ_3 := 0.82κ_2 (the B̃-threshold differs from the u*-scaled one by 1 + O(rγ²), absorbed);
+ - history propagation at complex inputs: Theorem SM label decay with λ_C = L^{−α_*} + 1.235C_Vθ_0 (HHOL 4.2(a)) [R];
+ - extraction: §3.2–3.3, with sup over the complex polydisc (constant ×1.235, HHOL 3.3).
+Result: sup_{|z|<ρ_z}|φ(z)| ≤ 3r·Σ_{i<j}a^C_{j−1−i}Φ_3*(u_i), Φ_3(s) := 1.235C_D(log s)^{P_D}e^{−κ_3(log s)^q}, a^C_m := λ_C^m.
+4.4 Cauchy [P given 4.2, 4.3]. |W_j(c)| = |φ′(0)| ≤ sup|φ|/ρ_z ≤ 10γ²·3r·Σ_i a^C_{j−1−i}Φ_3*(u_i).
+The weight part carries an extra factor 30rγ². No real mixed derivative and no (H-hist2) is used. This is HHOL's own-slot Cauchy (HHOL 5.2) applied once, in the direction v, to a difference that is already exponentially small. The B7 verifier's joint holomorphy (Path A) is what makes a directional disc legitimate: φ is a composition of the jointly holomorphic map w ↦ B_j(w; s′) with an affine line.
+4.5 If a genuine second mixed c-derivative is needed (e.g. ∂_c∂_{c′} for two sources, or an (H-hist2)-type use): apply Cauchy twice on the bidisc |z|, |z′| < ρ_z/2 to φ(z, z′) := B_j(u + zv + z′v′; ū) − B_j(·; s′): |∂_z∂_{z′}φ(0,0)| ≤ 4 sup|φ|/ρ_z² ≤ 400γ⁴·3r·Σ_ia^C Φ_3*. [P given 4.2, 4.3] So the mixed object of the original M5 is bounded with the same exponential smallness and an extra γ⁴. HTHR2_VERIFY's objection (complexifying w moves sharp thresholds) does not apply: thresholds are frozen real numbers s′, ū during the complexification; only the weights are complex.
+Status: M5 discharged, reduced to 4.2 (holomorphy at frozen real thresholds) and complex Theorem SM.
+
+## 5. Assembly: pointwise bound, trajectory sum, Gronwall (task 5)
+
+5.1 Pointwise [P given §3, §4]. T_j: |T_j(c)| ≤ V_{j−1}Σ_i a_{j−1−i}Φ_D*(u_i) ≤ (3/2)Σ_ia_{j−1−i}Φ_D*(u_i) (§3.4 at real weights). W_j: §4.4. Put a_m := max(λ^m, λ_C^m), A := Σa_m, and
+ Φ(s) := C_Φ(log s)^{P_D}e^{−κ_3(log s)^q},  C_Φ := (3/2)C_D + 37rγ²C_D,  κ_3 = 0.82κ_2 = 0.41L^{−(d+5)}.
+(Φ_D ≤ Φ and Φ_3 ≤ Φ·(1.235/C_Φ)C_D; 10·3·1.235 ≤ 37.) Then
+ sup_{|c|≤2r}|Δ_j′(c)| ≤ η_j := Σ_{i<j}a_{j−1−i}Φ*(u_i),  Φ*(s) := sup_{|s′−s|≤3r}Φ(s′).
+Compared with HTHR (3.1): no power prefactor s^a survives (§3.4 cancellation), the exponent is κ_3(log s)^q with q = 2p_1 − (d+5)r_0 (C15) instead of the refuted κ(log s)^{2p_0}.
+5.2 Conditions on γ [P]. Write y = log s, y_0 = log(γ^{−2} − 3r).
+ (G1‴) qκ_3y^{q−1} ≥ 2 + P_D/y for y ≥ y_0 (gives h′ ≤ −1 for h(y) = y + log Φ(e^y), and Φ decreasing). Holds for γ small because q > 1.
+ (G2‴) 3r(P_D + qκ_3(log(s+3r))^{q−1})/((s − 3r)log(s − 3r)) ≤ ln 2 for s ≥ γ^{−2} (gives Φ* ≤ 2Φ).
+ (G4‴) γ^{−2} ≥ 150r (radius ρ_z of §4.2) and γ^{−2} ≥ e^{y_D} (§3.4).
+5.3 Sum [P; same argument as HTHR §4, verified in HTHR_VERIFY Step 8 with 2p_0 → q]. Exchange sums; u_i ≥ γ^{−2} + βm (HBETA (E)), Φ decreasing:
+ x_thr := Σ_{j≤K}sup_c|Δ_j′| ≤ 2AΣ_{m≥1}Φ(γ^{−2} + βm) ≤ (2A/β)∫_{γ^{−2}}^∞Φ ≤ 2A(γ^{−2}/β)Φ(γ^{−2})
+  = 2AC_Φ β^{−1}γ^{−2}(log γ^{−2})^{P_D}exp(−κ_3(log γ^{−2})^q),
+uniformly in K. This is the B15 target Σ ≤ C(γ^{−2}/β)Φ(γ^{−2}) with C = 2A.
+Numerical check [num] (python -I inline, 2·10^6 terms, no file kept), log Σ_{m≥1}Φ(G+βm) vs log[(G/β)Φ(G)], Φ = (log s)^Pe^{−κ(log s)^q}: (κ,q,P,β,G) = (1,1.5,3,.05,10³): −3.42 ≤ −2.45; (…,10⁵): −18.65 ≤ −17.23; (0.3,2,6,.02,10⁴): −0.40 ≤ 1.00. Where (G1‴) fails the bound can fail: (0.05,1.2,4,.05,10⁴): 23.18 > 20.37; (0.3,2,6,.02,10²): 11.27 ≤ 11.32 (holds narrowly). As expected.
+5.4 Gronwall [P; HTHR §5 Lemma H′, verified (HTHR_VERIFY Step 8)]. Induction on j with V_{j−1} ≤ 3/2 and g_i(c) ≤ γ for i < j. These give |u_i(c) − u_i| ≤ 3r (used by §3.4's segment and §4.2's radius) and |v_l| ≤ 3/2 (used in ρ_z and T_j). Then B_j′ = β_j′ + Δ_j′, |β_j′| ≤ ε_jV_{j−1} (H-hist), |Δ_j′| ≤ η_j (5.1), V_j ≤ (1 + ε_j)V_{j−1} + η_j, so V_j ≤ e^x(1 + x_thr) ≤ (6/5)(5/4) = 3/2 under
+ (G3‴) 2AC_Φβ^{−1}γ^{−2}(log γ^{−2})^{P_D}e^{−κ_3(log γ^{−2})^q} ≤ ¼, and x = C_1Aγ/β ≤ ln(6/5).
+No circularity: step j uses only V_{j−1}; the complex disc of §4 is centred at the real point u(c) of the current induction stage. The HTHR2 route (Lemma 7.1(a) + (H-hist2)) is not used, so the (H-hist2) objection of HTHR2_VERIFY no longer applies to B15.
+Size note (as HTHR2 L11): κ_3 ≈ 0.41·2^{−9} ≈ 8·10^{−4} for d = 4, L = 2; with q = 2, (G1‴) needs log γ^{−2} ≳ 1.2·10³. "γ small" only. If only the (1.27) cut matters (HTHR2 L10), κ_3 → 0.82·(A_1²/2Λ) with exponent 2p_1 and no L^{−(d+5)} loss.
+
+## 6. Ledger and conclusion (task 6)
+
+[V] this session: CMP 122 II p. 383 image (P1: (1.77), (1.78), factor line, p_1 misprint confirmed again; P2: "estimate the quadratic form in B from below by 0", pointwise estimate); p. 381 text (P3). Earlier [V] reused: CMP 122 I p. 183 (HTHR_VERIFY Step 6), CMP 122 II p. 380 (1.73) (HTHR2_VERIFY Step 4), CMP 109 (1.13), CMP 119 (2.25), (2.28) (HTHR2_VERIFY Steps 5–6, IEPS_LF §1).
+[P] here:
+ - Exact statements of M2′, M4, M5 (§1).
+ - M2′(A): density form of the printed block bound by the pointwise route (2.1); constant σ_0|S^{n−1}|e^{c_0}A_1^{n−1}θ^{n−1}-type, polylog prefactor (n−1)p_1, exponent R^{−(d+5)}p_1² ≥ κ_2(log s)^q; only upper bounds used. Radial-graph coarea for the group variable (1.27) (factor 2^n).
+ - M2′(B): Schur-complement density (2.2) with (det S_b)^{1/2} ≤ ‖Q_xx‖^{n/2} = c_−^{−n/2} (S_b ≤ Q_xx; second derivation of G3_N2's constant) and λ_min(S_b) ≥ 1/Λ; no R loss. This replaces the Lemma T transfer for small-field shell terms.
+ - M4 inequality (§3.4): shell width s^{−1} cancels the Cauchy cost α_{1,j}^{−2} ≤ C_1^{−2}s; residue (log s)^{np_1−1+dr_0} beaten by e^{−(κ_2/2)(log s)^q} for log s ≥ (2P_D/κ_2)^{1/(q−1)}.
+ - M5 replacement (§4): split Δ_j′ = W_j + T_j; W_j by directional Cauchy on a z-disc of radius ≥ 0.1γ^{−2}, extra factor 30rγ²; second mixed derivative by bidisc Cauchy, extra 400γ⁴ (4.5).
+ - Assembly (§5): sup_c|Δ_j′| ≤ Σ_ia_{j−1−i}Φ*(u_i); x_thr ≤ 2A(γ^{−2}/β)Φ(γ^{−2}), Φ(s) = C_Φ(log s)^{P_D}e^{−κ_3(log s)^q}; Gronwall closes under (G1‴)–(G4‴); numerics §5.3.
+[R] reduced (named inputs B15 now rests on):
+ (R1) Holomorphy of w ↦ B_j(w; s′) on 𝒫 for every frozen real threshold vector s′ within 3r of ū, sup ≤ M: the HHOL + HHOL_LF chain with x*-thresholds replaced by s′; inherits (M-A), (M-B), (M-C).
+ (R2) M3 history propagation: a threshold perturbation at step i reaches B_j with weight λ^{j−1−i} (real) and λ_C^{j−1−i} (complex): Theorem SM / HHOL (F1) chain; bond count (MR)^d ≤ C(log s)^{dr_0}.
+ (R3) (Q) of G3_N2 (Q > 0, c_− ≤ Γ_bb ≤ Λ), verified with one [I] (G_Γ vs M), and its pointwise majorant (2.1) at complex (U, J, σ).
+ (R4) Balaban's (1.79) bookkeeping for setting (A) read as "pointwise bound, then integrate" (P2 supports it; the per-bond measure identification σ_0g^n is from (1.71)'s last line, [I] for the exact constant).
+[I] conventions: frozen integers R, N, partitions at x* (C1, L3); norm used in ψ = |e^{iB} − 1| (§2.1); the background cutoffs χ_k^{(n)} contribute no threshold derivative at the extraction point (they equal 1 near U ≈ 1 and are booked into Z by 1 = χ + (1 − χ), HTHR_VERIFY Step 5) — stated, not re-read.
+[num] trajectory sum §5.3.
+Not used any more: HTHR2's Lemma 7.1(a) route and its (H-hist2) input; the "small-field analogue of (1.73)" assumption (now (R3)); the Lemma T transfer (now M2′(B)).
+
+CONCLUSION. B15 (H-thr) is PROVED relative to (R1)–(R4) and the [I] conventions, unverified. M2′, M4, M5 are discharged as separate items: M2′ by (2.1)/(2.2), M4 by §3.4, M5 by the directional Cauchy of §4. Result:
+ sup_{|c|≤2r}Σ_{j≤K}|Δ_j′(c)| ≤ 2A(γ^{−2}/β)Φ(γ^{−2}),  Φ(s) = C_Φ(log s)^{np_1−1+dr_0}exp(−0.82κ_2(log s)^{2p_1−(d+5)r_0}),
+uniform in K, with Lemma H′ closing under (G1‴)–(G4‴). The sharpest remaining input is (R1): holomorphy in the weights with thresholds frozen at a real s′ ≠ x*. It has the same status as (H-hol) itself (HHOL_LF, reduced to (M-A)–(M-C)), so B15 adds no new open item beyond (H-hol). Needs an independent verifier; check first §4.2 (does the HHOL_LF freeze really allow any real s′?) and §2.1 (is (1.79) pointwise in bond b?).
+Status: complete (2026-10-28). Unverified.

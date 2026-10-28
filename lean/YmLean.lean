@@ -24,3 +24,8 @@ import YmLean.Resolvent
 import YmLean.SlabCounterexample
 import YmLean.BlockSchur
 import YmLean.GaugeMin
+import YmLean.WalkAffine
+import YmLean.KernelRow
+import YmLean.WeightedNorm
+import YmLean.BlockInequalityE
+import YmLean.CauchyPerturbation
