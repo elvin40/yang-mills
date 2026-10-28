@@ -137,7 +137,7 @@ Minimal sets:
 
 DAG:
 1. (H-U) ⇐ B-T2 (= §4.1 including A13) + B-S (B11) + B-N1 and (S) (B21), with X2 for the OS growth form.
-2. B11 ⇐ B22 ((U), κ → κ/2 recovery) + D1 [verified] + D2/D2C (B20: (D) ⇐ A4 via Prop. 9) + D3/D3R/D3W8 (B20: (P8) ⇐ A16; F2′ ⇐ (W4) ⇐ printed (C1)–(C5) + A10; (Eps) ⇐ Theorem SM ⇐ A10; C16) + Lemma H (HBETA) ⇐ B12 (I) + B13 real (H-hist) + (E).
+2. B11 ⇐ B22 (κ → κ/2 recovery; (U) = C23, constant choice) + D1 [verified] + D2/D2C (B20: (D) ⇐ A4 via Prop. 9) + D3/D3R/D3W8 (B20: (P8) ⇐ A16; F2′ ⇐ (W4) ⇐ printed (C1)–(C5) + A10; (Eps) ⇐ Theorem SM ⇐ A10; C16) + Lemma H (HBETA) ⇐ B12 (I) + B13 real (H-hist) + (E).
 3. B21 needs B19 (FX). B19 ⇐ O1, O2 [verified] + R2 [verified ⇐ A20, C14] + O3 ⇐ B18 N3 + C13, with X4 for the final convergence.
 4. B18 N3 ⇐ B12 (I) + B13 real (H-hist) + B16 (H-hol, small field) + B17 (H-hol, large field) + B14 (H2-hist) or its Route 2(a) + C5, C6, C12.
 5. B17 ⇐ (M-A) ⇐ (H−) ⇐ A4 + A19 + A18 + (C1), (C2) of MA2; (M-B) ⇐ C2; (M-C) open; (M-D) ⇐ B13 + B15 (frozen map, C1).
