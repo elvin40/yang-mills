@@ -15,7 +15,7 @@ No existing file is edited. Sections are appended one per step.
 - m(y, y′) := (μ(y)μ(y′))^{−1/2}. The map V: ℋ → ℓ²(𝔅), (Vu)(y) := μ(y)^{1/2}u(y), is unitary. The matrix of VAV^{−1} in the standard basis is μ(y)^{1/2}μ(y′)^{1/2}a(y, y′). So |a| ≤ c·m·h implies |(VAV^{−1})(y, y′)| ≤ c·h(y, y′).
 - For X ⊂ 𝔅, 1_X is multiplication by the indicator of X.
 - Schur constant: Σ(δ′) := sup_y Σ_{y′}(1 + d(y, y′))e^{−δ′d(y, y′)}. Lemma 2.1 of CMP 96 [R, printed proof] gives c_1(κ) := sup_y Σ_{y′}e^{−κd(y, y′)} < ∞, uniform in k, η, {Ω_j}, and volume, under its condition (2.59) RM > M_*(κ). Since (1 + x)e^{−δ′x} ≤ (1 + 2/(eδ′))e^{−½δ′x}, Σ(δ′) ≤ (1 + 2/(eδ′))c_1(½δ′).
-- Remark on Σ. SOURCES_A1_KERNEL §5 uses a variant with the extra factor (μ(y′)/μ(y))^{1/2}. The counting form above is the Schur constant of VAV^{−1} on ℓ²(𝔅). It is the form that Lemma 2.1 bounds directly. Every bound below uses the counting form.
+- Remark on Σ. SOURCES_A1_KERNEL §5 uses a variant with the extra factor (μ(y′)/μ(y))^{1/2}. The counting form above is the Schur constant of VAV^{−1} on ℓ²(𝔅). It is the form that CMP 96 Lemma 2.1 bounds directly. Every bound below uses the counting form.
 
 ### 0.2 Path length of a domain list
 - A domain list is ω = ((α_0, X_0), …, (α_n, X_n)), with X_i ⊂ 𝔅 and labels α_i. Put |ω| := n.
@@ -95,7 +95,8 @@ For an operator A on ℋ and κ ≥ 0, put ‖A‖_κ := sup_f ‖e^{κf}Ae^{−
 - Local operator: N̂_□ := 1_□N̂^{(□)}1_□, an operator on ℋ_□ := ℓ²(□, μ). We extend operators on ℋ_□ by 0 to ℋ when needed.
 This is the analogue of Balaban's compressed local operator □Q′G′(□̃)²Q′*□ of CMP 96 (2.82) [V image]. Balaban uses the propagator of a local domain. We use the truncated walk sum. The reason is CMP 99 Thm 3.14 [V text p. 426–427]: Balaban proves his domain-change estimates by cancelling the walks with all localizations inside the domain. So the domain-change error is a walk-truncation error. With the truncated sum we bound that error directly by (B1), and CMP 99 Cor. 3.6 (local gauge to U ≈ 1) is not needed.
 
-### 2.3 Lemma 2.1 (locality and truncation) [P]
+### 2.3 Lemma LT (locality and truncation) [P]
+Naming. This lemma is called Lemma LT. "Lemma 2.1" in this file always means CMP 96 Lemma 2.1.
 Assume (H1), (H3), and C_𝒟ρ_G ≤ ½. Then:
  (a) N̂^{(□)} and N̂_□ depend on U only through U restricted to □⁺. The kernel of N̂_□ vanishes outside □ × □.
  (b) |n̂_□(y, y′)| ≤ 2c_+ m(y, y′) e^{−δ_G d(y, y′)}.
@@ -130,13 +131,13 @@ Match with 3.1. Apply V of §0.1. VAV^{−1} is a matrix on ℓ²(Y) with counti
 
 ### 3.4 Application to N̂_□ [P]
 Assume M_1 ≥ M_a and C_𝒟ρ_G ≤ ½. Apply Lemma CT on Y = □ to A = N̂_□ with:
- c = ½c_− (Lemma 2.1(e)); b = 2c_+ (Lemma 2.1(b)); δ = δ_G.
+ c = ½c_− (Lemma LT(e)); b = 2c_+ (Lemma LT(b)); δ = δ_G.
 The condition on ε reads ε ≤ min{½δ_G, (½c_−)/(2·2c_+Σ(½δ_G))} = min{½δ_G, c_−/(8c_+Σ(½δ_G))}. This is the ε of Theorem A1-W. Define C_□ := N̂_□^{−1} on ℋ_□, extended by 0. Then:
  (a) N̂_□C_□ = 1_□ exactly (as operators on ℋ).
  (b) ‖C_□‖_ε ≤ 2/(½c_−) = 4/c_−. The extension by 0 keeps this: a 1-Lipschitz f on 𝔅 restricts to a 1-Lipschitz f on □, and e^{εf}(C_□ ⊕ 0)e^{−εf} = (e^{εf}C_□e^{−εf}) ⊕ 0.
  (c) ‖h_□C_□h_□‖_ε ≤ 4/c_−, by (N1), since h_□ commutes with e^{εf} and ‖h_□‖ ≤ 1.
- (d) C_□ depends on U only on □⁺, because N̂_□ does (Lemma 2.1(a)).
- (e) ε, c_±, and the bound 4/c_− do not depend on M_1, □, U, j, k, η, or volume. c_− is uniform by (H2). c_+ and δ_G are uniform by (H1). Σ is monotone in θ and bounded for M at least a minimal M(d, L) [R, Lemma 2.1].
+ (d) C_□ depends on U only on □⁺, because N̂_□ does (Lemma LT(a)).
+ (e) ε, c_±, and the bound 4/c_− do not depend on M_1, □, U, j, k, η, or volume. c_− is uniform by (H2). c_+ and δ_G are uniform by (H1). Σ is monotone in θ and bounded for M at least a minimal M(d, L) [R, CMP 96 Lemma 2.1].
 Remark. Smallness never comes from the decay of C_□ inside □. Supports lie in □. Only the M_1-free bound ‖C_□‖_ε is used. This is CMP 96 p. 237's "another way" [V image]: conjugate by e^{⟨a,·⟩}, show the difference is O(|a|), and conclude decay. There it is applied at U = 1 on one cube. Here uniformity in U comes from (H1)–(H2), not from U ≈ 1.
 
 ## 4. The parametrix identity and the three error terms
@@ -163,8 +164,8 @@ Assume C_𝒟ρ_G ≤ ½ and M_1 ≥ M_a. Let 0 ≤ κ ≤ ½δ_G. Then:
 Σ is decreasing in its argument, so Σ(κ′) ≤ Σ(¼δ_G) for κ′ ≥ ¼δ_G. This is used in each step below.
 
 Proof of (sep). The kernel is (1 − 1_□(y))n̂(y, z)h_□(z). It vanishes unless y ∉ □ and z ∈ □⁻. Then d(y, z) ≥ d(□⁻, 𝔅∖□) ≥ M_1. By Corollary 1.2 with 𝒲′ = 𝒲, |n̂(y, z)| ≤ 2c_+ m e^{−δ_Gd(y, z)}. Split δ_Gd = ¼δ_Gd + ¾δ_Gd ≥ ¼δ_GM_1 + ¾δ_Gd. So the kernel is ≤ 2c_+e^{−¼δ_GM_1} m e^{−¾δ_Gd}. Apply (N3) with κ′ = ¾δ_G. Then κ′ − κ ≥ ¼δ_G. ∎
-Proof of (tr). The kernel is (n̂ − n̂^{(□)})(y, z)h_□(z) for y, z ∈ □, and 0 otherwise. By Lemma 2.1(c), second bound, it is ≤ 2c_+e^{−δ_GM_1} m e^{−¾δ_Gd}. Apply (N3) with κ′ = ¾δ_G. ∎
-Proof of (com). The kernel is n̂_□(y, z)(h_□(z) − h_□(y)) for y, z ∈ □. By Lemma 2.1(b) and the Lipschitz bound of 2.1, it is ≤ 2c_+(c_h/M_1) m d(y, z) e^{−δ_Gd} ≤ 2c_+(c_h/M_1) m (1 + d)e^{−δ_Gd}. Apply (N3) with κ′ = δ_G. Then κ′ − κ ≥ ½δ_G ≥ ¼δ_G. ∎
+Proof of (tr). The kernel is (n̂ − n̂^{(□)})(y, z)h_□(z) for y, z ∈ □, and 0 otherwise. By Lemma LT(c), second bound, it is ≤ 2c_+e^{−δ_GM_1} m e^{−¾δ_Gd}. Apply (N3) with κ′ = ¾δ_G. ∎
+Proof of (com). The kernel is n̂_□(y, z)(h_□(z) − h_□(y)) for y, z ∈ □. By Lemma LT(b) and the Lipschitz bound of 2.1, it is ≤ 2c_+(c_h/M_1) m d(y, z) e^{−δ_Gd} ≤ 2c_+(c_h/M_1) m (1 + d)e^{−δ_Gd}. Apply (N3) with κ′ = δ_G. Then κ′ − κ ≥ ½δ_G ≥ ¼δ_G. ∎
 Note. The (1 + d) weight is already inside Σ. So no separate constant Σ′ is needed (SOURCES_A1_WALK_VERIFY §8).
 
 ### 4.3 The error per cube [P]
@@ -193,8 +194,8 @@ Every F_□ is now written as a sum of products of "blocks". A block is an opera
  (K) K_□ := h_□C_□h_□. Domain list (□⁺). Kernel in □⁻ × □⁻. β = 4/c_−, by (N2) and 3.4(c).
  (Γ) Γ_□ := E^com_□C_□h_□. Domain list (□⁺). Kernel in □ × □⁻. β = ρ_com := (4/c_−)·2c_+c_hΣ(¼δ_G)/M_1, by (N1), (N2), 3.4(b), and 4.2(com).
  (S) For ω′ ∈ 𝒲: S_{□,ω′} := (1 − 1_□)N̂_{ω′}1_{□⁻}. Domain list ω′. The kernel vanishes unless y ∉ □ and z ∈ □⁻. Then d(ω′, y, z) ≥ d(y, z) ≥ M_1 by (D1). So δ_Gd(ω′, y, z) ≥ ¼δ_GM_1 + ¾δ_Gd(ω′, y, z), and with ε ≤ ¾δ_G, β = b_Ge^{−¼δ_GM_1}ρ_G^{|ω′|}.
- (R) For ω′ ∈ 𝒲∖𝒲_□: R_{□,ω′} := 1_□N̂_{ω′}1_{□⁻}. Domain list ω′. For y, z ∈ □, d(ω′, y, z) > 4M_1 (proof of Lemma 2.1(c)). So β = b_Ge^{−δ_GM_1}ρ_G^{|ω′|}.
-The multiplications 1_□, 1 − 1_□, 1_{□⁻} are attached to the first or last factor of N̂_{ω′}. They shrink kernel supports and do not depend on U. So (L1)–(L2) of the (H1) factors survive. K_□ and Γ_□ satisfy (L1) for □⁺ by 2.1 (kernels in □ × □), and (L2) by 3.4(d) and Lemma 2.1(a).
+ (R) For ω′ ∈ 𝒲∖𝒲_□: R_{□,ω′} := 1_□N̂_{ω′}1_{□⁻}. Domain list ω′. For y, z ∈ □, d(ω′, y, z) > 4M_1 (proof of Lemma LT(c)). So β = b_Ge^{−δ_GM_1}ρ_G^{|ω′|}.
+The multiplications 1_□, 1 − 1_□, 1_{□⁻} are attached to the first or last factor of N̂_{ω′}. They shrink kernel supports and do not depend on U. So (L1)–(L2) of the (H1) factors survive. K_□ and Γ_□ satisfy (L1) for □⁺ by 2.1 (kernels in □ × □), and (L2) by 3.4(d) and Lemma LT(a).
 Decomposition. Since h_□ = 1_{□⁻}h_□ and 1_□h_□ = h_□:
  E^sep_□C_□h_□ = Σ_{ω′∈𝒲} S_{□,ω′}K_□, E^tr_□C_□h_□ = Σ_{ω′∈𝒲∖𝒲_□} R_{□,ω′}K_□, E^com_□C_□h_□ = Γ_□.
 Both sums converge absolutely, by (B1) and Lemma 1.1.
@@ -250,7 +251,7 @@ Each factor of kind (f2) or (f3) is one factor, not a product of smaller factors
 
 ### 6.3 (L2) [P]
  (f1) A multiplication by an indicator does not depend on U. So the U-dependence of an (f1) factor is that of R_α(X): only U on X̃^5.
- (f2), (f3) By Lemma 2.1(a) and 3.4(d), N̂_□ and C_□ depend on U only on □⁺. The function h_□ does not depend on U. Since □⁺ ⊂ (□⁺)~^5, the factor depends on U only through U on (□⁺)~^5.
+ (f2), (f3) By Lemma LT(a) and 3.4(d), N̂_□ and C_□ depend on U only on □⁺. The function h_□ does not depend on U. Since □⁺ ⊂ (□⁺)~^5, the factor depends on U only through U on (□⁺)~^5.
  Hence T_ω depends on U only through U restricted to ∪_iX̃_i^5. This is also part (b) of the concatenation lemma.
 
 ### 6.4 Walk property [P]
@@ -296,7 +297,7 @@ Cover: the cubes □ of side K_1M_1 that meet Z_0. Let φ_□ be tent functions 
 Replace 1_□ by 1_{□∩Z_0} everywhere in §2–§5. The steps go through with these renamings:
  N̂ → A_Z; c_− → γ; c_+ → c_A; δ_G → δ_A; b_G, ρ_G → b_A, ρ_A; I → I_{Z_0}.
 Check of each step:
- - Lemma 2.1: the local operator is A_{Z,□} := 1_{□∩Z_0}A_Z^{(□)}1_{□∩Z_0}, with A_Z^{(□)} the kept-walk sum of A_Z. The proof of 2.1(e) uses only the identity ⟨u, A_{Z,□}u⟩ = ⟨u, A_Zu⟩ − ⟨u, 1(A_Z − A_Z^{(□)})1u⟩ for u supported in □ ∩ Z_0, and 7.2(a). So Re⟨u, A_{Z,□}u⟩ ≥ ½γ‖u‖² for M_1 ≥ M_a(γ, c_A, δ_A).
+ - Lemma LT: the local operator is A_{Z,□} := 1_{□∩Z_0}A_Z^{(□)}1_{□∩Z_0}, with A_Z^{(□)} the kept-walk sum of A_Z. The proof of Lemma LT(e) uses only the identity ⟨u, A_{Z,□}u⟩ = ⟨u, A_Zu⟩ − ⟨u, 1(A_Z − A_Z^{(□)})1u⟩ for u supported in □ ∩ Z_0, and 7.2(a). So Re⟨u, A_{Z,□}u⟩ ≥ ½γ‖u‖² for M_1 ≥ M_a(γ, c_A, δ_A).
  - §3: ε_Z := min{½δ_A, γ/(8c_AΣ(½δ_A))} and ‖C_□‖_{ε_Z} ≤ 4/γ.
  - §4.1: h_□ = 1_{□∩Z_0}h_□, because supp h_□ ⊂ □⁻ ∩ Z_0. A_Z is already compressed, and Σh_□² = I_{Z_0} on ℓ²(Z_0). So A_ZP = I_{Z_0} + ΣF_□, with no boundary term at ∂Z_0.
  - §4.2 (sep): y ∈ Z_0∖□ and z ∈ □⁻ give d(y, z) ≥ d(□⁻, 𝔅∖□) ≥ M_1. The rest of the proof of 4.2 is unchanged.
@@ -341,7 +342,7 @@ Remark on the hypothesis. SOURCES_WC_RESIDUE §6.1 assumed F(U_c^0) real symmetr
 Hypotheses on 𝒰(b):
  (i) the propagator P (P = G or G_1) has a walk or tree expansion with (B1)–(B3) of (H1), constants b^b, ρ^b ≤ c^b/M_1, δ^b, and every term analytic in U_c. Put c_+^b := C_𝒟b^b;
  (ii) at every real point, N̂_P := S^{−1/2}QPQ*S^{−1/2} satisfies Re⟨u, N̂_Pu⟩ ≥ c_−‖u‖² (input (C) for P);
- (iii) M_1 ≥ M_a, so that every real truncated local operator N̂_{P,□} has Re ≥ ½c_− (Lemma 2.1(e) at the real point).
+ (iii) M_1 ≥ M_a, so that every real truncated local operator N̂_{P,□} has Re ≥ ½c_− (Lemma LT(e) at the real point).
 Put Γ_b := 2c_+^bΣ(δ^b). Assume t(a, b) ≥ 1 + 4Γ_b/c_−.
 Conclusion on 𝒰(a):
  (a) Re⟨u, N̂_{P,□}(U_c)u⟩ ≥ ¼c_−‖u‖² for every □;
@@ -349,15 +350,15 @@ Conclusion on 𝒰(a):
  (c) N̂_P(U_c)^{−1} = Σ_ωT_ω(U_c), with |T_ω| ≤ (8/c_−)(c_1ρ^a)^{|ω|}m e^{−½ε^a d(ω)} and absolute sum ≤ (16C_𝒟/c_−)m e^{−½ε^a d}, for M_1 ≥ M_W^c;
  (d) every T_ω and the sum are analytic on 𝒰(a).
 Proof.
- (a) F := N̂_{P,□} is a truncated walk sum. Each term is analytic on 𝒰(b) by (i). The sum converges uniformly on 𝒰(b), by (B1)–(B2) and Lemma 1.1. ℋ_□ is finite-dimensional, so F is analytic. By Lemma 2.1(b) and (N3) with κ = 0 and κ′ = δ^b, ‖F‖ ≤ 2c_+^bΣ(δ^b) = Γ_b. At U_c^0, Re ≥ ½c_− by (iii). Apply Lemma CP with c = ½c_−. Its condition is t ≥ 1 + 2Γ_b/(½c_−) = 1 + 4Γ_b/c_−.
+ (a) F := N̂_{P,□} is a truncated walk sum. Each term is analytic on 𝒰(b) by (i). The sum converges uniformly on 𝒰(b), by (B1)–(B2) and Lemma 1.1. ℋ_□ is finite-dimensional, so F is analytic. By Lemma LT(b) and (N3) with κ = 0 and κ′ = δ^b, ‖F‖ ≤ 2c_+^bΣ(δ^b) = Γ_b. At U_c^0, Re ≥ ½c_− by (iii). Apply Lemma CP with c = ½c_−. Its condition is t ≥ 1 + 2Γ_b/(½c_−) = 1 + 4Γ_b/c_−.
  (b) Apply Lemma CT with c = ¼c_−, b = 2c_+^b, δ = δ^b. The condition is ε ≤ (¼c_−)/(2·2c_+^bΣ(½δ^b)) = c_−/(16c_+^bΣ(½δ^b)). The bound is 2/(¼c_−) = 8/c_−. Compared with 3.4, the Combes–Thomas branch of the minimum is halved and the δ-branch is unchanged. Since min{x, y/2} ≥ ½min{x, y}, ε^a ≥ ½ε^{real}(c_+^b, δ^b).
  (c) §4 and §5 are algebraic or use only kernel bounds, the local inverse bound, and counting. Replace 4/c_− by 8/c_−, c_+ by c_+^b, δ_G by δ^b, and ε by ε^a. The identity of 4.1 holds because C_□ = N̂_{P,□}^{−1} exists by (a). The right-inverse step 5.2(b) holds in finite dimension. The constants ρ_1, K_F, and K_W at most double. M_N and M_c grow by bounded factors, and c_1 is taken at ½ε^a. So the threshold becomes M_W^c ≥ M_W (SOURCES_WC_RESIDUE_VERIFY Q6 (ii)). M_W^c is fixed before every α^{(n)}.
  (d) C_□(U_c) is analytic, since N̂_{P,□} is analytic and invertible on 𝒰(a) (Cramer's rule). Each T_ω is a finite product of analytic factors and of absolutely convergent analytic sums. The sum over ω converges uniformly on 𝒰(a) by (c). So the limit is analytic, and it equals N̂_P(U_c)^{−1} by 5.2(b). ∎
-Constant corrections from SOURCES_WC_RESIDUE_VERIFY Q6. Γ_b carries the factor 2 of Lemma 2.1(b): Γ_b = 2c_+^bΣ(δ^b), not c_+^bΣ(δ^b). The per-walk constant is 8/c_−, and the absolute sum constant is 16C_𝒟/c_−.
+Constant corrections from SOURCES_WC_RESIDUE_VERIFY Q6. Γ_b carries the factor 2 of Lemma LT(b): Γ_b = 2c_+^bΣ(δ^b), not c_+^bΣ(δ^b). The per-walk constant is 8/c_−, and the absolute sum constant is 16C_𝒟/c_−.
 
 ### 8.4 The four-level chain [P given the tagged inputs; constants from SOURCES_WC_RESIDUE §6.3–§7.2 with VERIFY Q6–Q7]
 Why four levels [V]. CMP 99 Thm 3.4 (p. 400, image) extends only G′, (Q′G′²Q′*)^{−1}, R, and G to complex U′U, for α_1 ≤ a_1. Thm 3.12 (p. 423) and the G_1 tree paragraph (p. 427) are stated at G-valued U only. A scan of CMP 99 finds no complex statement for G_1, H, H_1, or (QGQ*)^{−1} (SOURCES_WC_RESIDUE_VERIFY Q5). A complex G_1 needs H = GQ*(QGQ*)^{−1} at complex points. So the chain starts at G.
-Chain constants are named k_1, k_2, k_3 to avoid a clash with c_1 of Lemma 2.1.
+Chain constants are named k_1, k_2, k_3 to avoid a clash with c_1 of CMP 96 Lemma 2.1.
  Level 4, domain 𝒰(b⁗), b⁗ := (∞ in J, a_1). Input: CMP 99 Thm 3.4 [V]. The walk form (W_G) at complex points is [R]: Thm 3.4's "quantitative statements ... small perturbations" plus Thm 3.10 for the same G; each walk term is a finite product of operators that Thm 3.4 continues. Constants c_+⁗ = c_+(1 + O(a_1)) (the factors ‖Ad e^{iA′}‖ ≤ e^{2|A′|}) and δ⁗ = δ_G.
  Level 3, domain 𝒰(α‴). Put Γ_4 := 2c_+⁗Σ(δ_G) and k_3 := c_Pc_−/(c_− + 4Γ_4). Take α_1‴ ≤ k_3a_1. Then t(α‴, b⁗) ≥ 1 + 4Γ_4/c_−, and Lemma AW with P = G gives the walk expansion of (QGQ*)^{−1} on 𝒰(α‴), at rate ε_3 ≥ ½ε (ε = the real rate of Theorem A1-W). Then H = GQ*(QGQ*)^{−1}, H*J, Δ_π^{(2)}, and the tree expansion of G_1 = Σ_nG(Δ_π^{(2)}G)^n are built on 𝒰(α‴) by the steps of SOURCES_WG §3.1–§3.7. Each step concatenates analytic kernels. The Neumann condition for Δ_π^{(2)}G uses |J| < α_0‴ with Mα_0‴ ≤ a_** (CMP 99 (3.137): |Δ^{(2)}| ≤ O(1)Mα_0, linear in J by (3.134)). Result: (W_G1) on 𝒰(α‴) with B_1‴ = O(1)B_1 and δ_1‴ = (1 − θ)·½ε_3. J-row: α_0‴ ≤ min(a_**/M, c′M^{−11}) (SOURCES_WG §3.6 and WG-1).
  Level 2, domain 𝒰(α″). Put Γ_3 := 2B_1‴Σ(δ_1‴) and k_2 := c_Pc_{−,1}/(c_{−,1} + 4Γ_3), with c_{−,1} = c_−(G_1) ≥ c_−(1 − O(Mα_0)) (conditional, 6.9). Take α″ ≤ k_2α‴ componentwise, with the mixed α_0-row of 8.1. Lemma AW with P = G_1 (tree form, 6.9) gives the tree expansion of (QG_1Q*)^{−1} on 𝒰(α″): |T_τ| ≤ (8/c_{−,1})(c_1ρ)^{|τ|}e^{−½ε_2d(τ)}, ε_2 ≥ ½ε_1^{real}(B_1‴, δ_1‴). This is the input of (W_N) on 𝒰(α″). SOURCES_WC_EXPGAUGE §6.0 then gives (W_N) for A_exp on 𝒰(α″), with constants B_A″ and δ_A″ ≤ min(½ε_2, rates of the explicit pieces).
@@ -382,7 +383,7 @@ Inputs used only here: Thm 3.4 [V]; (W_G) at complex points [R]; (C) for G and c
   - R_1M_1 ≤ M (σ_k cubes, CMP 116 p. 3);
   - M/M_1 > 10 and M/M_1 > 3(6 + c_X) (§7.4);
   - M > 48κ_1/ε_min, where ε_min is the smallest walk rate used (½ε at real points, ½ε″ on 𝒰(α′)). This is the s-rule side condition e^{−⅓ε_minM}e^{16κ_1} < 1 of SOURCES_A1_WALK §7.4(a), the walk-rate form of CMP 116 p. 5 "δ_1M ≥ κ_1" [V]. κ_1 must be M-free [I];
-  - CMP 96 (2.59) RM > M_*(¼ε_min), so that Lemma 2.1 holds at every rate used (SOURCES_A1_WALK_VERIFY §6 added this);
+  - CMP 96 (2.59) RM > M_*(¼ε_min), so that CMP 96 Lemma 2.1 holds at every rate used (SOURCES_A1_WALK_VERIFY §6 added this);
   - M ≥ M_* of Theorem WG-G (SOURCES_WG §2.7).
  7. α_0: Mα_0 ≤ min{a_0, a_*, a_**}, and α_0 ≤ c′M^{−11} (WG-1, 6.6).
  8. Complex domains: α‴ ≤ k_3a_1, α″ ≤ k_2α‴, α′ ≤ k_1α″ (8.4), with the J-row.
@@ -397,7 +398,7 @@ Each constant of Theorem A1-W is one of the following.
  - c_1(·), Σ(·): uniform in k, η, {Ω_j}, and volume by CMP 96 Lemma 2.1 under (2.59).
  - ε, K_F, K_W, M_W, and the bounds 4/c_−, 8/c_−: functions of the above.
 The volume enters only through finite dimension: invertibility from injectivity (3.2, 5.2) and free rearrangement of absolutely convergent sums (5.6). No bound depends on it. The scale j enters only through the explicit factors (L^jη) of 6.8. The step index k enters nowhere. The regular background U enters only through (H1) and (H2), and at complex points through a_1 of Thm 3.4.
-The local inverses are not obtained by gauging to U ≈ 1 on a cube (CMP 99 Cor. 3.6). They come from the global lower bound by restriction (Lemma 2.1(e)) and the accretive Lemma CT (§3). So the rate is set by (c_−, c_+, δ_G), not by the U = 1 rate δ_4 (SOURCES_A1_WALK §7.2).
+The local inverses are not obtained by gauging to U ≈ 1 on a cube (CMP 99 Cor. 3.6). They come from the global lower bound by restriction (Lemma LT(e)) and the accretive Lemma CT (§3). So the rate is set by (c_−, c_+, δ_G), not by the U = 1 rate δ_4 (SOURCES_A1_WALK §7.2).
 
 ### 9.3 The rate, and what the consumers accept [P for the order; R and I as tagged]
 The walk rate is ½ε. It is smaller than Balaban's printed ½δ_0. Balaban's own U = 1 proof ends at half his local Combes–Thomas rate (CMP 96 (2.87), ½δ_1 [V]), so the loss is of the same kind.
@@ -414,7 +415,7 @@ Each input has an ID used in this file and, where one exists, the TRUST_LEDGER r
 |---|---|---|---|---|
 | IN1 | (W_G): walk expansion of G with (3.108)-form bounds and locality, as Theorem WG-G (SOURCES_WG §2.8) | [P] given CMP 99 Thms 3.7, 3.9, 3.10 (printed sketches [R]), CMP 96 Lemma 2.1, (3.131), I-D, Q-locality; VERIFIED (SOURCES_WG_VERIFY) | (H1), §2–§6 | A1w (reduction) |
 | IN2 | (W_G1): tree expansion of G_1, Theorem WG-G1 (SOURCES_WG §3.7) | [P] given IN1, A1-W for (QGQ*)^{−1}, C^{(2)}-locality [I] | 6.9, 8.4 | A1w |
-| IN3 | (C): Re⟨u, N̂u⟩ ≥ c_−‖u‖², c_− uniform | conditional: SOURCES_A1_KERNEL §8; torus-side hypothesis and two unprinted conventions | (H2), Lemma 2.1(e) | A1 (remaining items) |
+| IN3 | (C): Re⟨u, N̂u⟩ ≥ c_−‖u‖², c_− uniform | conditional: SOURCES_A1_KERNEL §8; torus-side hypothesis and two unprinted conventions | (H2), Lemma LT(e) | A1 (remaining items) |
 | IN4 | c_{−,1} = c_−(G_1) ≥ c_−(1 − O(Mα_0)) | conditional: SOURCES_A1_KERNEL §9 | 6.9, 8.4 | A1 (G_1 clause) |
 | IN5 | CMP 96 Lemma 2.1: c_1(κ) uniform under (2.59) | [R] printed with proof | §0.1, 5.5, 9.1 | inside A1 |
 | IN6 | Lean: `schur_test`, `coercive_inv`, `combes_thomas`, `combes_thomas_schur` | [L] no `sorry`; axioms propext, Classical.choice, Quot.sound | §1.5 (N3), §3 | none (proved) |
@@ -439,10 +440,10 @@ Theorem A1-W (§0.5) is [P] relative to IN1, IN3, IN5–IN11, and IN13. The Z_0-
 
 ### 10.2 Points where this file is more precise than its sources
 A verifier should check these first. None changes a conclusion of the sources.
- 1. §0.1: the Schur constant is the counting form sup_y Σ_{y′}(1 + d)e^{−δ′d}, which Lemma 2.1 bounds directly. SOURCES_A1_KERNEL §5 uses a μ-weighted variant.
+ 1. §0.1: the Schur constant is the counting form sup_y Σ_{y′}(1 + d)e^{−δ′d}, which CMP 96 Lemma 2.1 bounds directly. SOURCES_A1_KERNEL §5 uses a μ-weighted variant.
  2. 1.3, 5.6: the absolute walk sum carries the first-domain count C_𝒟 (constant 8C_𝒟/c_−). The kernel bound (iv) does not.
  3. 5.1: ‖F‖_{½ε} is bounded through the kernel of Σ_□F_□. A bound by sup_□‖F_□‖ alone is not uniform in volume, because E^sep_□ has a global left support.
  4. 5.5: an S- or R-insertion adds two junction steps but only one separation or truncation factor. So ρ contains e^{−⅛δ_GM_1}, the square root of the separation factor, and the threshold M_e′ uses ⅛.
  5. 7.4: c_X in the near/far condition must bound all domains of the series, including the □⁺. So it is max{c_X, D_+}.
  6. 7.5: the merged-slot constant is bounded per walk, (8C_W/γ), with every far domain except at most one carrying c_1ρ.
- 7. 8.4: the chain constants are named k_1, k_2, k_3 (the sources write c_1, c_2, c_3, which clashes with c_1 of Lemma 2.1), and Γ_3, Γ_4 carry the factor 2 of SOURCES_WC_RESIDUE_VERIFY Q6.
+ 7. 8.4: the chain constants are named k_1, k_2, k_3 (the sources write c_1, c_2, c_3, which clashes with c_1 of CMP 96 Lemma 2.1), and Γ_3, Γ_4 carry the factor 2 of SOURCES_WC_RESIDUE_VERIFY Q6.
