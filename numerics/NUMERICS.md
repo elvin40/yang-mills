@@ -74,3 +74,4 @@ Two composed steps at L = 2, p = 0.2, box GPU, Ng = 8: β_1 + β_2 = 0.953 (Ng =
 ## 7. Large odd L by the umklapp code (box, 2026-10-28)
 
 β_1(0) single step, SU(2), fixed Lp where noted: L = 5: 0.749 (Ng=12, p=0.1), fit 0.743; L = 7: 0.803 (Ng=8, Lp=0.5). First-step constant β_1 − c log L: 0.372 (L=2), 0.256 (3), 0.242 (4), 0.145 (5), 0.080 (7): decreasing toward the universal slope. Queue continues to L = 15.
+L = 9 (box, Ng=8): β_1 = 0.833 (Lp=0.5), 0.846 (Lp=0.9), 0.851 (Lp=1.0) [c log 9 = 0.816]: first-step constant ≈ +0.02, nearly zero.

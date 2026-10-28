@@ -33,3 +33,15 @@
 - N1 level 0, L = 3, Ng = 6 (recomputed from w; old JSON β is ×1/4): 0.6839, 0.6930, 0.7681 at p = 0.2, 0.4, 0.8. 0.4→0.8 slope 0.156 vs 0.2→0.4 slope 0.076: p⁴ term is comparable to p² near p ≈ 0.6 (Lp = 1.8). Bound form |β − β(0)| ≤ 0.17p² still holds to p = 0.8 (β(0) ≈ 0.664). "No large p⁴ term" fails at L = 3.
 - N1 level 1, L = 2, v2 sym, N = 8, Ng = 8: β_2 = 0.33334, 0.32685, 0.35499 at p_1 = 0.2, 0.4, 0.8. Non-monotone: fit C = −0.092, D = +0.188. Bound C_U ≈ 0.06 holds. Author's C_1 = −0.10 used one-sided Nyquist data (0.3412 → sym 0.3333).
 - N2 with sym data: D_1(0.4) = 0.33251, D_1(0.8) = 0.32352, D_1(1.6) = 0.34171. Slope (0.4→0.8) −0.019, not −0.031. Inside 2C_U/(L²−1) = 0.13 (author's 0.07 is a factor-2 slip).
+
+## 6. N = 12 level 1 and grades
+- v2 sym, N = 12, Ng = 8: β_2(0.4) = 0.32283 (N = 8: 0.32685; β_2(0.2): 0.31679 vs 0.33334). Level-1 slope C ≈ +0.050 at N = 12 vs −0.054 at N = 8: sign set by aliasing, not resolved. D_1(0.4) = 0.31596, D_1(0.8) = 0.31950 at N = 12: slope +0.007.
+- (U) vs data: the bound |β_{j+1}(p) − β_{j+1}(0)| ≤ 0.2p² holds at every point computed (L = 2 levels 0–1, L = 3 level 0, p ≤ 0.8). Uniformity in j is not testable with two levels; level-1 values carry N-aliasing of ±5%.
+Grades:
+1. Doubling identity, bulk cancellation, Lemma 1.3: CONFIRMED (identity is a definition; LW regime is right; 1/(L²−1) right).
+2. Prop. 2.2 / Lemma 2.3: CONFIRMED (hand + lattice 1e−12 at raw H). 𝔡_Y count argued; N3 compressed defect 0.0103 → 0.0034 (L = 2 → 3). 𝔡_gf uniformity open, as stated.
+3. Theorems A, B: CONFIRMED as conditional logic. (Cθ) ⇔ "S(θ; L^k) − ck log L converges": all content in §4.
+4. Lemma 4.1: CONFIRMED (conditional; (i) from Prop. B, odd L).
+5. Comparison: CORRECTED ((U), 𝔡_gf, A6 are uniform-in-k inputs; KAPPA Theorem K needs (PI)/(M_j) only per level; "weaker type" not shown).
+6. Numerics: CORRECTED (slope −0.031 used one-sided Nyquist data: sym −0.019 at N = 8, +0.007 at N = 12; bound is 0.13 not 0.07; L = 3 has p⁴ ~ p² at p ≈ 0.6; N3 as designed gives 2 ln a from σ_{1,2}-constant near-zero modes).
+New JSONs: numerics/results/betafp_v2_L2_N8_Ng8_j1_p{0.4,0.8}, betafp_v2_L2_N12_Ng8_j1_p0.4, mom_L2_Ng12_p0.8_trans, mom_L3_Ng6_p0.8_trans. Scratch /tmp/n3 deleted.
