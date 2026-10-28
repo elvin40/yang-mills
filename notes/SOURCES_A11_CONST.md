@@ -118,3 +118,72 @@ Cross-scale content [P]:
 - #36 p_1(g_k): a scale-indexed number. Its form is from CMP 109 [I: the project writes δ′_j = g_jA_1p_1(g_j) (v4 §2.3, CMP 122) and lists p_1 among γ_*'s arguments (v4 §1.2); it is a power of log g^{−2} by the same pattern as p_0(g) = A_0(log g^{−2})^{p_0}]. Given that form, ratios follow from (2.7) with p = p_1. Class (b) [conditional on the form of p_1(g), not re-read here on a CMP 109 page].
 - #36 (1 + β)α̃_i: the new terms live on spaces enlarged by the fixed factor (1 + β). The next step reads them at scale k+1 with α_{i,k+1}. Matching (1 + β)α_{i,k} to α_{i,k+1}-based spaces needs α_{i,k} ≤ (1 + β_0)²α_{i,k+1} (one-step (2.8) form for α). This is §2 #5. Class (b). Whether (1 + β)(1 + β_0)² fits inside Balaban's (1 − β(1 − 2^{−(j−n)})) budget is a single-step check that Balaban does not print [I: not a ratio of g's; out of A11 scope, but recorded].
 - #37: the shrinking factor (1 − β(1 − 2^{−(j−n)})) is bounded below by 1 − β = 3/4 for all j − n. It compares one fixed-scale α_{0,n} at different steps j; no ratio of α_{0,n} to α_{0,j}. No g-inequality needed.
+
+## §7 pp. 278–284 [V: pp. 278–280 page images; pp. 281–284 OCR text only, flagged]
+| # | page, display | new constant | printed condition |
+|---|---|---|---|
+| 38 | p. 278, after (3.47) [V] | B_0 replaced by O(p_0³(g_k)) (the OCR reads "p_1"; the image reads p_0³) | "the multiplication by g_k yields small bounds" |
+| 39 | p. 279 [V] | g_{k+1}^{−2}(·) by (2.24) with j = k+1 | = #4 |
+| 40 | p. 280, (3.48) [V] | E_0 in \|E^{(j)}(X, z)\| ≤ E_0exp(−κ(L^jL^{−n})^{−1})exp(−½κd_j(X)) | from (I.1.18); none new |
+| 41 | p. 281 [OCR] | β > 0 in O((L^jL^{−n})^{5−β}) ("irrelevant terms") | "β is a positive number" |
+| 42 | p. 283, (3.67) [OCR] | same β; "(with 1 − β, β > 0, instead of β < 1)" | none |
+| 43 | p. 284, (3.68) [OCR] | 11d²ε_n(L^jL^{−n})² + dM(n − j + 2)…, 3dM(1 + log L^jL^{−n})ε_n(L^jL^{−n})² | sketch of a second proof; not load-bearing (sweep item 8) |
+
+Cross-scale content [P]:
+- #38: g_kp_0³(g_k) = g_kA_0³(log g_k^{−2})^{3p_0} → 0; single-scale upper bound on γ (g_kO(p_0³(g_k)) ≤ B_0). Not a ratio.
+- #40–#42: fixed constants. #43: mixes ε_n with scale j inside a sketch; it needs no g-ratio beyond (2.8).
+- pp. 281–284 were read in OCR only. No display there introduces a new g-dependent number (the OCR shows E^{(j)}, Π^{(j)}, β_j, F_{κμ}, h_z). Residual risk: OCR may hide a symbol; it does not affect a load-bearing step (Theorem 2 proof, not Theorem 1's inductive bounds) [I].
+
+## §8 Complete list and classification
+"Similar inequality" = cross-scale ratio bound of (2.6)–(2.9) type for a number X_j = f(g_j). Classes: (a) printed later; (b) implied by a printed one; (c) supplied by a project file; (d) missing; (–) not scale-indexed, out of A11 scope.
+| X_j | where | class | how |
+|---|---|---|---|
+| g_j, (log g_j^{−2})^p, ε_j, R_j | (2.4)–(2.9) | printed | §1; follows from (P-up), (P-low), (S) [I, v4 §1.2] plus (T1)–(T4) [P] |
+| α_{0,j}, α_{1,j} | (2.28) p. 259 | (b) | §2 #5: (2.8) with (A_0, p_0) → (C_i, q_i) |
+| g_j^{κ_0} | (2.31) p. 260 | (b) | §2 #6: factor (1 + β_0)^{κ_0} |
+| Σ_{j≤n}g_j^{κ_0} vs g_n^{κ_0−6} | (2.46) p. 263 | (b)+(c) | §4 #16; sweep item 5 (v4 §2.3) |
+| g_j(x) | (2.24) p. 259 | (b) | convex combination of u_{j−1}, u_j (§2 #4) |
+| δ_k = (A_1/A_0)ε_k | p. 265 | (b) | constant multiple of ε_k |
+| p_1(g_k) = (log g_k^{−2})^{p_1} | (3.43) p. 276 | (b) given the form | form from CMP 122 I (1.27) [I, HTHR_VERIFY Step 6]; then (2.7) with p = p_1 |
+| e^{−R_k} vs e^{−δLM_2R_{k+1}} | p. 268 | (b) | R_k ≤ LR_{k+1} from (2.9) + δM_2 ≥ 1 |
+| L^{−(k−j)}R_j monotone (k_1) | p. 270 | (b) | R_j ≤ LR_{j+1} from (2.9) |
+| ε_{k+1} ≤ (1 + β_0)ε_k | (3.8), p. 268 | (a)/(b) | (2.8) at n − m = 1; sweep item 6 |
+| (1 + β)α_{i,k} into step k+1 | (3.43) p. 276 | (b) | one-step α form of (2.8) |
+| M_2, s*, C, B, B_0, B_1, B_3, β (= 1/4), β (exponents), E_0, E_1, E_±, R_1, δ, d, R, r, λ_0, σ_0, z, k_1-rule constants | various | (–) | fixed constants; no cross-scale inequality is meaningful |
+No row of class (d) for the cross-scale reading.
+
+Note: (2.7) is printed for "p a positive integer". (T2), (T3) hold for every real p > 0, so p ∈ {p_0, p_1, q_0, q_1, r, 3p_0, κ_0/2} needs no integrality [P].
+
+## §9 Side conditions (threshold forms) that the list generates, and admissibility
+No ratio bound is in class (d) (§8). The derivations in §1–§7 need the following threshold conditions. Some are not printed by Balaban, and two constants (M_2, A_1) are not in HIGHER_M1 §B2.2's order. Each is checked for admissibility: a lower bound on a parameter that is unbounded above, or an upper bound on γ (or on a later constant), placed in the order without a cycle.
+| # | condition | printed? | type | order slot | status |
+|---|---|---|---|---|---|
+| S1 | (T1) γ²B′ ≤ (1 + β_0)² − 1 | implicit in (2.6) | upper bound on γ | after β_0, B′ (R) | in v4 §1.2 γ_* (c) |
+| S2 | (T2) log γ^{−2} ≥ 2p, (T3) log γ^{−2} ≥ p/β_0, for p ∈ {p_0, p_1, q_0, q_1, r, κ_0/2} | no | upper bound on γ | after β_0, the exponents | new, admissible [P] |
+| S3 | (T4) β_0 ≤ 1/2 | no | upper bound on β_0 | β_0 first | admissible; Balaban uses 1/7 [I, v4 §1.2] |
+| S4 | M_2 ≥ 1/δ (covers 2δM_2 ≥ 1 in (3.7) and δLM_2R_{k+1} ≥ R_k on p. 268) | no | lower bound on M_2 | after δ (decay rate of [15], depends on d, L), before γ | new; up-set; no upper bound on M_2 found on pp. 257–280 [P]; not in HIGHER_M1 §B (which covers M) |
+| S5 | A_1/A_0 ≤ 1/(80B_3) ((3.7)); A_1/A_0 small ((3.9)) | "A_1/A_0 sufficiently small" | upper bound on A_1 | after A_0, B_3; before γ | admissible; project reads A_0 ≫ A_1 [I, SOURCES_D3_VERIFY]; A_1 is not in HIGHER_M1 §B2.2's order line: insert "A_0, p_0 → A_1, p_1 → γ" |
+| S6 | 30d²L²B_3²(1 + β_0)e^{−R_k} ≤ 1/20; O(1)44d²B_3²(1 + β_0)(A_0/A_1)e^{−R_k} < 1 | "γ sufficiently small" | upper bound on γ via R_k ≥ (log γ^{−2})^r | after A_1, B_3, β_0, r | admissible [P] |
+| S7 | e^{−R_k} ≤ g_k^N ("any positive power of g_k", p. 269) | asserted | upper bound on γ; needs r > 1 | after r, N | admissible if r > 1; r > 1 not on the pages read [I] |
+| S8 | C(β, κ_0)γ⁴ < 1 for (2.46); γ^{−2} ≥ 2D′ | "κ_0 ≥ 7 and g sufficiently small" | upper bound on γ | after β, D′, κ_0 | (S) of v4 §1.2 covers 2D′ (c_sw ≥ 2) [I] |
+| S9 | g_kO(p_0³(g_k)) ≤ B_0 (p. 278) | "multiplication by g_k yields small bounds" | upper bound on γ | after A_0, p_0, B_0 | admissible [P] |
+| S10 | 2(1 + β_0)L^{−2} + 4/10 < 1 ((3.8)) | implicit | condition on L | L odd > 11 | holds [P] |
+| S11 | (1 + β_0)^{κ_0} is a fixed factor in the g^{κ_0} ratio | no | none (fixed number) | κ_0, β_0 before γ, either order | no cycle: no printed step needs it below 1 + β_0 [P, on pp. 257–280] |
+Cycle check [P]: every new condition is an up-set in M_2 or a down-set in A_1 or γ. All arguments sit left of the constrained parameter in the order d, L → κ, κ_0, β (= 1/4), δ → … → M_1 → M → M_2 → α's (C_i, q_i) → ε_1 → ρ_0 → A_0, p_0 → A_1, p_1 → γ → g, with β_0 and B′ (through R) fixed before γ (v4 §1.2). M_2 enters no condition on an earlier constant on the pages read. So no cycle.
+Limit: β_0 enters S1–S3, S6, S11 only as a fixed number. Balaban's "β_0 can be chosen arbitrarily small, if g is sufficiently small" is consistent with this order (β_0 fixed, then γ); no step on pp. 257–284 needs β_0 → 0 [P, reading].
+
+## §10 Conclusion
+A11 CLOSED as a list, single reader, unverified. The "other constants, which will be introduced later" are the scale-indexed numbers α_{0,j}, α_{1,j} ((2.28), p. 259; Balaban names them with ε_j as "constants" on p. 262), g_j^{κ_0} ((2.31)), δ_k ((3.4) line, p. 265), p_1(g_k) ((3.43)), and g_j(x) ((2.24)). Each "similar inequality" follows from (2.6)–(2.9), i.e. from (P-up), (P-low), (S) of v4 §1.2 plus the side conditions S1–S11. None is missing. This also settles v4 §2.3 caveat (2) and §10 item 10's clause "does not name α_0/α_1": the later constants include α_{0,j}, α_{1,j}.
+Residue (not blocking A11):
+1. p_1(g) = (log g^{−2})^{p_1}, p_1 < p_0 is taken from CMP 122 I (1.27) [I]; CMP 119 (3.43) prints only "C_1p_1(g_k)".
+2. pp. 281–284 read in OCR only (Theorem 2 proof; no Theorem 1 inductive bound there).
+3. S7 needs r > 1 (exponent in (2.5)); not printed on pp. 255–284.
+4. Two order entries to add to HIGHER_M1 §B2.2 / Group C: M_2 ≥ 1/δ (S4) and A_1 between A_0 and γ (S5). Both admissible.
+5. The restrictions "from the paper [I]" on κ, M, ε_j, α_{0,j}, α_{1,j} (p. 262) are CMP 109 conditions; the sweep found no cross-scale use in CMP 109 [I, v4 §2.3]; their threshold forms are outside this file.
+Suggested TRUST_LEDGER edit (not made): A11 status "the later inequalities not located" → "located and covered: SOURCES_A11_CONST §8 (all class (b)); side conditions S1–S11 admissible; residue items 1–3".
+
+## Ledger
+[V] page images 300 dpi: CMP 119 pp. 255–280. [OCR] pp. 281–284.
+[P] §1 (T1)–(T4); §2–§7 class (b) derivations; §8 table; §9 cycle check.
+[I] v4 §1.2, §2.3 ((P-up), (P-low), (S), sweep items 5, 6); HIGHER_M1 §B2.2 order; p_1 form (CMP 122 I (1.27) via HTHR_VERIFY); A_0 ≫ A_1 (SOURCES_D3_VERIFY).
+Firewall kept. No existing file edited. Status: complete 2026-10-28, unverified.
