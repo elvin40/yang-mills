@@ -1,6 +1,19 @@
+# Python
 .venv/
 __pycache__/
-log_*.txt
 *.pyc
+# Lean build output
 .lake/
 lean/.lake/
+lean/build/
+# Caches, logs, and large scratch output
+numerics/results/cache_*/
+log_*.txt
+*.log
+*.jsonl
+*.out
+# Copyrighted paper scans (never commit)
+balaban/
+notes/balaban/
+# OS
+.DS_Store
