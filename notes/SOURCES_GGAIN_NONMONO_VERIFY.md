@@ -19,3 +19,18 @@ Side condition: old F2′ condition 4g_K^{κ_0} ≤ E_0, required uniformly over
 Quote (KUNIF §4.3): "During the IVT, β is evaluated on clamped histories g̃_i = φ(ũ_i) ∈ ]0, γ]. The proof needs only the bracket (a″) on each such history, and (4.1) gives it pointwise". Also (4.4): bracket holds "for every admissible history". Confirmed these are what the shooting evaluates.
 KUNIF does NOT state that clamped pasts fail monotonicity. That is the author's inference; checking v4 next.
 KUNIF_VERIFY item 3(a) (verbatim): "(4.1) via GGAIN needs the monotone restriction removed for β ... removal is plausible but not written." Item 7 restatement suggested there: "|∂β_j/∂g_{j−1}| ≤ C_β on {admissible past} × [0, γ], including non-monotone pasts".
+
+## V5. Do clamped pasts fail monotonicity?
+v4 §2.4 (l.113, verbatim): "A clamped history can violate the growth side of (c′): from max(a, c) − max(b, c) ≥ min(a − b, 0) one gets only u_m ≥ u_n − D′". Also (5.1) is a window bracket with ±2R slack, so per-step β_i need not be positive, and ũ_{k+1} = ũ_k − β_{k+1}(φ(ũ_k)) can increase. So clamped (and even unclamped short-window) pasts can be non-monotone. Author's §2.4 claim CONFIRMED, but the source is v4 §2.4, not KUNIF §4.3 (KUNIF does not say it).
+Scope note: whether β is DEFINED on such pasts is L5/B7 (v4 item 8), unchanged.
+
+## V6. (K1) at g = 0
+CMP 109 pdf page 20 = printed p. 268 (pdftotext -f 20 -l 20), verbatim: "Let us remark that the expression under the exponential above vanishes at gk = 0". The exponent is P^{(k)} + {…} of (2.12)/(2.13).
+The bracket is a difference of the same input functional E_k at the fluctuated and unfluctuated configuration; the fluctuation enters only through B′ = g_kCB − hD(g_kCB) (GGAIN l.9, l.56). At g = 0, B′ = 0, so the bracket is 0 for ANY input, including R′ and E_R inside the merged E_k. χ_k = 1 at B′ = 0. The P-part g^{−2}ψ(gB) = O(g|B|³) → 0 (limit, not a value; GGAIN 4.1(b)). No input bound, no F2′, no ordering used. CONFIRMED. The "value at 0" is a limit; this is c3 / LEMMAS_DE_VERIFY §3 item 3 (one-loop by definition), already listed.
+
+## V7. Caveats and grades
+c1: the frozen-threshold remark (x*_j)^{κ_0} controls R-input SIZES. It does not show that the R-input FUNCTION R^{(k)} is g-independent. On the literal reading (β = Π of whole E^{(k+1)}), ∂_g hitting R^{(k)} is open, monotone or not. Void on the pure-part reading (D3W8 §2.4: "B_{k+1}(c) is defined from the pure part"). CORRECTED (sharpened).
+c2: correct; small field only. c3: correct; [R] dominated convergence.
+Scope (new, c4): the sweep covers GGAIN, SM, D3W8. Balaban's own R-operation bounds (CMP 119 (2.31)) and the off-trajectory small-field induction (SM §5.1, itself [reduced]) are inputs, not swept for history order here.
+Grades: (1) CONFIRMED (no telescoping; max only; running-max induction closes with 32ε′ ≤ 1). (2) CONFIRMED with wording correction: C_β′ = C_β because E_0 + 4γ^{κ_0} ≤ 2E_0, the radius of C_3 and (Eps); GGAIN does not itself name E_0 + 4γ^{κ_0}. (K1) CONFIRMED. (3) CONFIRMED, source corrected to v4 §2.4 l.113 (KUNIF §4.3 does not say clamped pasts are non-monotone). (4) CONFIRMED with c1 sharpened and c4 added.
+Item 7 → 7′: YES, as a [P] item, with inherited conditions G3 (reduced), (M_r), small field, L5/B7, SM §5.1 [reduced], and c1 on the literal reading (void on the pure-part reading). Keep (H0) as alternative source.

@@ -1,6 +1,6 @@
 # SOURCES_A3_GAMMA0_FULL — Theorem A3 (γ_0 > 0 for C*Δ_k(U)C) with a complete proof
 
-Status: in progress 2026-10-28 (Opus). Sections appended one per tool call.
+Status: complete 2026-10-28 (Opus), not independently verified. Sections appended one per tool call.
 Inputs read: SOURCES_A3_GAMMA0.md §1–§7, SOURCES_A3_GAMMA0_VERIFY.md (all), page images CMP 99 pp. 392, 397–400, 418–428; CMP 96 pp. 243–246; CMP 95 pp. 28–30.
 Firewall: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 Tags: [V] read on a page image; [P] proved here; [R] cited published result, not re-proved; [I] open input.
@@ -206,7 +206,7 @@ Proof. Let A be any extension (QA = B) and A′ = A − Dλ_A, λ_A := G′RD*A.
 
 6.1 The remaining published inputs, stated precisely. All constants depend on d, L only; they are uniform in k, η, Λ, the domains Ω_j, M ≥ M_1, and U obeying (H1).
  (R1) [CMP 99 Thms 3.11, 3.12; local L² bounds (3.46) for G_1; [4] Lemma 2.1]. G_1 > 0, and for all fine X, ‖X‖²_𝔴 ≤ K_1⟨X, G_1^{−1}X⟩. Equivalently ‖𝔴^{1/2}G_1𝔴^{1/2}‖ ≤ K_1. Derivation [P-sketch]: Theorem 3.12 gives (3.46) for G_1, i.e. block bounds ‖hG_1λ‖ ≤ B_0(L^jη)²|h|e^{−δ_0d(y,y′)}‖λ‖ for supp h ⊂ Δ(y), y ∈ Λ_j, supp λ ⊂ Δ(y′). Self-adjointness of G_1 lets one use the smaller of the two scales. The weights 𝔴^{1/2} then give block factors L^{−|j−j′|} ≤ 1, and the Schur test with the summability of e^{−δ_0d(y,y′)} ([4] Lemma 2.1, the step "(3.47) follows from (3.42) and Lemma 2.1", p. 398) gives the bound. Theorem 3.12 excludes only the covariant-Laplace inequality, which is not used.
- (R-Δ′) [CMP 99 (3.10), (3.35); p. 392: "Δ′ will be a bounded, small operator"]. |⟨X, Δ′X⟩| ≤ ε_1‖X‖²_𝔴, ε_1 = c(d, L)Mα_0. Reason: both terms of (3.10) carry η^{−2}(U(∂p) − 1), which is O(Mα_0(L^jη)^{−2}) by (3.35); the first term carries in addition the small factor (Re U(∂p) − 1)/(Im U(∂p)) = O(η²Mα_0(L^jη)^{−2}).
+ (R-Δ′) [CMP 99 (3.10), (3.35); p. 392: "Δ′ will be a bounded, small operator"]. |⟨X, Δ′X⟩| ≤ ε_1‖X‖²_𝔴, ε_1 = c(d, L)Mα_0. Reason: by (3.35), in a regular gauge U(∂p) = exp(iη²F), |F| ≤ c·Mα_0(L^jη)^{−2}. The second term of (3.10) is then ≤ Σ_p η^d|X(b_1)||X(b_2)|·c·Mα_0(L^jη)^{−2}, bounded by c(d)Mα_0‖X‖²_𝔴. In the first term, η^{−2}|Re U(∂p) − 1| ≤ η²|F|² ≤ c(Mα_0)²(L^jη)^{−2}·(η/L^jη)², and |(D^1_UX)(p)|² ≤ 4Σ_{b⊂p}|X(b)|² if D^1 is the unscaled four-term sum (our reading of the superscript 1; not checked against the definition of D^1).
  (R-Δ2) [CMP 99 (3.134)–(3.137), p. 422: |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0(L^jη)^{−2}|A|, sup over a few j-blocks]. |⟨X, Δ^{(2)}X⟩| ≤ ε_1‖X‖²_𝔴. Reason: Δ^{(2)} is local on the j-block scale by (3.136); a local operator with this sup bound is bounded on the 𝔴-weighted ℓ² by Schur's test.
  (R4) [CMP 99 (3.156); SOURCES_CDC §5.3; R/I]. |⟨B, Δ_JB⟩| ≤ c_J‖B‖², c_J = c(d, L)Mα_0. Reason: D̃^{(2)} is quadratic and local, H_1 obeys (3.133) (Theorem 3.12), and |J| = O(Mα_0) by (3.36). The form is homogeneous of degree 2 in B.
  (R2), (R2′), (R3), (R5) as in §2.1 and §4.0.
@@ -232,3 +232,41 @@ Arithmetic: (8/9)(3/8) = 1/3; 1/3 − 1/12 = 1/4.
 Consequences [P]. ‖C̃^{(k)}(Λ)‖ = ‖(C*Δ_kC)^{−1}‖ ≤ γ_0^{−1}, and ‖C^{(k)}(Λ)‖ ≤ ‖C‖²γ_0^{−1}, with ‖C‖² ≤ 1 + L^{d+1} (SOURCES_CDC §3.3).
 
 6.6 Uniformity [P]. γ_0 contains only d and L. k and η enter nowhere: Lemma 1 is exact for every k, and every error is relative with k-uniform constants (6.1). Λ enters nowhere: all inequalities are local and summed with overlap ≤ 2d or 2(d−1). M enters only through (H2) and (H3). U enters only through (H1) and the inputs. δ = 1 is a choice: any γ_0 < γ_L can be reached with δ small and α_* smaller.
+
+## §7 Ledger
+
+7.1 Proved here [P], complete.
+ - Lemma 1: ‖∂_1Q_k(1)X‖² ≤ ‖D_1X‖², c_* = 1, all k (exact Stokes (1.1) + Cauchy–Schwarz + counting).
+ - Lemma 2: covariant version (2.1) with relative error 2(1 + δ^{−1})ε_2²‖X‖²_W, given (R2), (R3).
+ - Lemma 3: CMP 96 Lemma 2.4 with γ_L = m_L/(12d²L^d). Equal to the printed (12d²)^{−1}L^{−d−1} for 2 ≤ L ≤ 9.
+ - Lemma 4: covariant Lemma 2.4 with factor (1 − η_6), given (R2′), (R3), (R5). The block part is exact.
+ - Lemma 5: RD*A_* = 0 for the G_1-minimizer; the gauge-fixing part drops out exactly. κ_π is not needed.
+ - Assembly: γ_0 = γ_L/4 = m_L/(48d²L^d); = (48d²)^{−1}L^{−d−1} for L ≤ 9; ≥ (48d²)^{−1}L^{−d−1}·min(1, 4/L) for all L ≥ 2. No M, k, η, Λ, U dependence.
+
+7.2 Published inputs used (all [V] on page images unless marked).
+ - CMP 96: (2.121) axial condition, (2.123) block statement, (2.125) form of Q_1, (2.128) statement (pp. 244–245).
+ - CMP 95: (1.65)–(1.67) only for comparison (Corollary 1 reproves the lower half of (1.67) with γ_0′ = 1).
+ - CMP 99: (3.8)–(3.10) curl form and Δ′ (p. 392); (3.35)–(3.36) regularity (p. 396); (3.32)–(3.34) covariance (p. 396); (3.115), (3.118)–(3.119) and the text after them (pp. 418–419); (3.128), (3.129), (3.134) (pp. 421–422); (3.155)–(3.158) and the description of C (pp. 427–428).
+ - CMP 99 Theorems 3.11, 3.12 (+ (3.46) for G_1, [4] Lemma 2.1): R1 [R].
+ - CMP 99 (3.10) + (3.35): R-Δ′ [R, D^1 normalization read, not checked].
+ - CMP 99 (3.134)–(3.137): R-Δ2 [R; the Schur step from the sup bound to ℓ² is standard but not written out].
+ - CMP 98 (139), one step: R2′ [R].
+ Not used: CMP 99 Theorem 3.1 bounds on G′, Theorems 3.2, 3.3 (except through Theorem 3.12), (3.49), any bound on DG′RD*, and A1 ((QG_1Q*)^{−1} kernel).
+
+7.3 Remaining items.
+ [I] R2 (k-step averaging comparison, the A18 piece "Q(U) = Q_free(1 + O(α_0))", uniform in k): |(Q_k(U^u)X − Q_k(1)X)(c)| ≤ ε_Q(Q̂|X|)(c) in a regular gauge, ε_Q = c(d, L)Mα_0. CMP 98 (139) gives one step only. This is the single open input of Lemma 2.
+ [R] R1 (‖X‖²_𝔴 ≤ K_1⟨X, G_1^{−1}X⟩): from Theorem 3.12 by a Schur argument sketched in 6.1, not written out.
+ [R] R3 (the averaged background U_1 is regular on unit bonds, |A_1| ≤ c_4Mα_0 in the induced gauge).
+ [R/I] R4 (c_J = c(d, L)Mα_0 for the J-term of (3.156)).
+ [R] R5 (A_x(y) = T(y); CMP 99 p. 428 points to [4] (2.154)–(2.155)).
+ [R] R-Δ′, R-Δ2 (relative bounds by ε_1‖X‖²_𝔴).
+ [I] not covered: the σ-/s-localized operators C*Δ_k(s)C (A18; SOURCES_CDC_VERIFY §5).
+
+7.4 Changes against SOURCES_A3_GAMMA0 and its VERIFY.
+ (1) κ_π gap: CLOSED by removal (Lemma 5). The minimizer is already in the gauge RD*A = 0. R1 no longer needs a bound on DG′RD*.
+ (2) R1 shrinks to Theorems 3.11–3.12 (positivity and a weighted norm bound of G_1).
+ (3) c_* = 1 (VERIFY V4) confirmed with a full proof (§1).
+ (4) NEW correction: the printed slab bound in CMP 96 (2.126)–(2.127) ("bounded from below by L^{d−1}Σ|B_μ|²" after factoring) is false for L ≥ 10; (2.127) itself fails for L ≥ 30. Lemma 2.4 is proved here with m_L in place of 1/L. For L ≤ 9 nothing changes. For L ≥ 10 the constants γ_L, γ_0 of KAPPA_D/SOURCES_Q and of the trust ledger must carry the factor L·m_L = 2L(1 − cos(π/L)) ∈ [4/L, 1]. Whether Lemma 2.4's printed constant still holds for L ≥ 10 by another proof is not decided here (the global mode of the counterexample satisfies it, with Σ_p|∂_1B|² = λ_1‖B‖² ≫ L^{−d−1}‖B‖²).
+ (5) Region size: the largest set that needs one regular gauge has unit ℓ^∞-diameter ≤ 4L. So M ≥ L/2 suffices in addition to M ≥ M_1.
+
+7.5 Verification status. Not independently verified. A verifier should check first: Lemma 5 step (iii) (that (3.128) depends on A only through A′ and ‖RD*A‖²), the counting in 3.1 and 3.3(b), and the remark in 3.3 (numbers λ_1(10) = 0.0979 < 0.1; λ_1(30) = 0.01095 < 1/90 = 0.01111).
