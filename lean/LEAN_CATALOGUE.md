@@ -156,3 +156,27 @@ Remark. Theorem LOC is "transport of structure". Lean adds value only at L1 (the
 - M5. Lemma P (d)–(e) and 5.4, 6.3–6.4 determinant and symmetric-part facts: |det(I + F)| ≤ Π(1 + s_j(F)) ≤ exp(n‖F‖); for real symmetric S, |det(I + iS)| = Π(1 + λ_j²)^{1/2} ≤ exp(½n‖S‖²); for real antisymmetric M₀, det(I + M₀) ∈ [1, exp(½n‖M₀‖²)] and sym((I + M₀)⁻¹) = (I − M₀²)⁻¹ ≤ I with ‖I − sym((I+M₀)⁻¹)‖ ≤ ‖M₀‖²; ‖N₀‖ ≤ ‖K₀ − A‖ for the antisymmetric part when A is symmetric. §5.3–5.4, 6.3–6.4. `Matrix.det` via eigenvalues (`Matrix.IsHermitian.det_eq_prod_eigenvalues`), singular values (not in Mathlib: use ‖F‖ and `Matrix.det_le`-type Hadamard bounds or work with I + F = exp(log) for small F), skew-symmetric spectra. Medium (Hermitian and skew parts), hard for the general singular-value product bound. Load-bearing: the (2.17)-type factor exp(O(η_M²)|Z₀|) and the sign of the extra (2.24) term (≥ 0, a cost).
 - M6. Lemma P (c) Gaussian modulus: for complex K with real symmetric part H ≥ c > 0 on ℝ^n, |e^{−½⟨B,KB⟩}| = e^{−½⟨B,HB⟩} and ∫_{ℝ^n}e^{−½⟨B,HB⟩}dB = (2π)^{n/2}(det H)^{−1/2}. §5.2 (c). `Complex.abs_exp`, multivariate Gaussian integral (`integral_gaussian` 1D; n-dim via diagonalization and `MeasureTheory.integral_fintype_prod_eq_prod` / `MeasurePreserving` of orthogonal maps). Medium–hard (n-dim change of variables). Partly overlaps the in-progress Schur-marginal file; check SchurMarginal.lean before starting.
 
+### 6b. SOURCES_A7_CDC.md (Lemma N, norm bound of C*Δ_kC)
+
+- N1. Lemma N assembly (two-sided, corrected form): N̂₁ ≥ c_{−,1} ⇒ N̂₁⁻¹ ≤ K_{ext,1}; |⟨B,Δ_JB⟩| ≤ c_J‖B‖²; ‖𝒢B‖² ≤ 2c_𝒢‖B‖²; ‖CB̃‖² ≤ c_C‖B̃‖²; the identity (1.1) as hypothesis ⇒ |⟨B̃,A_expB̃⟩| ≤ c_C·max{K_{ext,1} − a + c_J + 2c_𝒢, a + c_J}‖B̃‖²; for symmetric A this is the operator norm; compression keeps it. §2.2–2.3 + VERIFY. Loewner order, operator monotonicity of inversion (as H3), `ContinuousLinearMap.opNorm` of self-adjoint = sup of |⟨x,Ax⟩| (`IsSelfAdjoint.norm_eq_iSup_inner`-type; Mathlib has `ContinuousLinearMap.IsSelfAdjoint` norm via Rayleigh quotients). Easy–medium. Load-bearing: γ₁^N gives c_− of (Q) (H3).
+- N2. c_C by Cauchy–Schwarz: if Σ_{b∈B(c)}w_bT_bB(b) = 0 with T_b orthogonal, w_b > 0, then |B(b₀)|² ≤ w_{b₀}⁻²(Σ_{b≠b₀}w_b²)Σ_{b≠b₀}|B(b)|², so c_C ≤ 1 + max w_{b₀}⁻²Σw_b² (≤ n_c for equal weights). §2.1 (c_C). `inner_mul_le_norm_mul_norm`, `Finset.inner_mul_le_norm_mul_norm`. Easy.
+- N3. Size check 2.5: at d = 4, L = 3, 2c_𝒢 = d(L−1)L^d = 648 and n_c = L^{d+1} = 243. `norm_num`. Easy, low value.
+
+## 7. Constants / canon
+
+Canon acyclicity: covered (CanonOrder.lean). Monotonicity of the k-map, ε^a-map, Schur sum, e^{2Lδ}: covered (ElemBounds.lean, Lemma M2). gℓ^q monotonicity: covered.
+
+### 7a. SOURCES_ORDER_CANON.md Part B (numeric and existence facts inside lines)
+
+- K1. B25 two-sided p₁ exists: if p₀ > (d+5)r + ν_I + 4, the interval ((p₀ + (d+5)r)/2, p₀ − 1 − ν_I/2] has length > 1 and contains an integer. `Int.floor`, `Int.lt_floor_add_one`. Easy. The only two-sided constant in the canon.
+- K2. Numeric lines: B5 (K1′) δ = 0.025 ≤ (1/13)(1 − 4(1 + 4β)/L) at L = 13, β = ¼ (value 5/169); B7 κ ≥ (1 + 4β)·6·2^d/(βθ_K) = 1536 at d = 4, β = ¼, θ_K = ½; B4/S10 2(1 + β₀)L⁻² + 0.4 < 1 for β₀ ≤ ½, L ≥ 13; B22a nonemptiness 2B₃ε₀^{109} ≤ B₃a₁^{102} ≤ a₀^{102}. `norm_num`. Easy. Low risk, but these are the numbers the canon cites.
+- K3. Existence of a full assignment: given the transcribed edges (CanonOrder), each line an up-set or a down-set in earlier lines (plus the one two-sided p₁ of K1), there is an assignment of all 43 lines satisfying every condition. Abstract induction along the rank order (`WellFounded.fix`). Easy–medium given CanonOrder.lean. Adds the step "acyclic ⇒ satisfiable", which acyclicity alone does not state.
+
+### 7b. SOURCES_A11_CONST.md (class-(b) inequalities and side conditions)
+
+- K4. (2.6) from the flow: u_m ≤ u_n + β′(n−m) ⇒ g_n ≤ (1 + g_n²β′(n−m))^{1/2}g_m ≤ (1 + β₀)(n−m)^{1/2}g_m under (T1) γ²β′ ≤ (1+β₀)² − 1; g_m ≤ (1+β₀)g_n from u_n ≤ u_m. §1. `Real.sqrt`, `Real.rpow`. Easy. Connects to LemmaDDoublePrime conclusion (c′).
+- K5. (2.7)–(2.9) with side conditions (T2)–(T4): (log g_n⁻²)^p ≤ (1+β₀)(log g_m⁻²)^p if log γ⁻² ≥ 2p; (log g_m⁻²)^p ≤ (1+X)^{β₀}(log g_n⁻²)^p if log γ⁻² ≥ p/β₀; (1+b)^{2b} ≤ 1+b for b ≤ ½; then (2.8) for ε_j = g_jA₀(log g_j⁻²)^{p₀} and (2.9) for R_j = least L^r with L^r ≥ ... (rounding factor L). §1. `Real.log`, `Real.rpow`, `Real.add_pow_le_pow_mul_pow_of_sq_le_sq`-type, `one_add_mul_le_pow`, `Real.exp`/log monotonicity. Easy–medium. Load-bearing: every later "similar inequality" is derived from these four.
+- K6. Class-(b) corollaries: α_{i,j} = g_jC_i(log g_j⁻²)^{q_i} obeys (2.8) with p = q_i; g_j^{κ₀} ratio with factor (1+β₀)^{κ₀}; g_j(x) as convex combination 1/g_j²(x) = (1−φ)u_j + φu_{j−1}; δ_k = (A₁/A₀)ε_k; R_k ≤ LR_{k+1} and monotonicity of L^{−(k−j)}R_j; e^{−R_k} ≤ g_k^N for r > 1 and g small. §2–§5 (#4, #5, #6, #20, #26, #29, #31). Same toolkit as K5. Easy each.
+- K7. (2.46) sweep sum: u_j ≥ u_n/2 + β(n−j) for j ≤ n ⇒ Σ_{j≤n}u_j^{−κ₀/2} ≤ (u_n/2)^{−κ₀/2} + (u_n/2)^{1−κ₀/2}/(β(κ₀/2 − 1)) ≤ C(β,κ₀)g_n^{κ₀−2} < g_n^{κ₀−6} once Cg_n⁴ < 1. §4 #16. `AntitoneOn.sum_le_integral`, `integral_rpow`. Easy–medium. Load-bearing: it is the precise form of "the sum over j is controlled by g_j^{κ₀}".
+- K8. Side conditions S1–S11 cycle check: covered by CanonOrder (the S-lines are in Part B). Not listed again.
+

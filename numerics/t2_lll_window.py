@@ -76,4 +76,4 @@ if __name__ == "__main__":
                 print('q=%d nk=%d phi=%.5f mu=%d H=%.6f heat/a2=%.6f NO/a2=%.6f Hsc=%.6f tauP-/(a/2pi)=%.5f splerr=%.1e t=%.0fs'
                       % (q, nk, phi, mu, H, heat, NO, Hsc, r['n_neg_per_site']/(a/(2*np.pi)), serr, time.time() - t0), flush=True)
     out['lattice'] = rows
-    json.dump(out, open(sys.argv[1] if len(sys.argv) > 1 else 'numerics/t2_lll_window.json', 'w'), indent=1)
+    json.dump(out, open(sys.argv[1] if len(sys.argv) > 1 else '/tmp/t2_lll_window.json', 'w'), indent=1)

@@ -1,4 +1,7 @@
-import Mathlib
+import Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic
+import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
+import Mathlib.Data.ZMod.Basic
+import Mathlib.Tactic.FinCases
 
 /-!
 # Neutral-sector spectrum on the 2D periodic lattice
@@ -75,6 +78,7 @@ def neutral (c : R) (v : Fin 2 → Site N → R) : Fin 2 → Site N → R :=
 /-- Scalar lattice Laplacian (positive sign). -/
 def lap (g : Site N → R) : Site N → R := fun x => ∑ μ, (2 * g x - g (x + e μ) - g (x - e μ))
 
+omit [NeZero N] in
 lemma hodge_eq_neutral_one (v : Fin 2 → Site N → R) : hodge v = neutral 1 v := by
   funext μ x; simp [hodge, neutral]
 
@@ -84,16 +88,22 @@ theorem grad_adjoint (v : Fin 2 → Site N → R) (g : Site N → R) :
   conv_rhs => rw [Finset.sum_comm]
   refine Finset.sum_congr rfl fun μ _ => ?_
   have h : ∑ x, v μ x * g (x + e μ) = ∑ x, v μ (x - e μ) * g x := by
-    simpa using (sum_shift_add (fun x => v μ (x - e μ) * g x) (e μ))
+    have := sum_shift_add (fun x => v μ (x - e μ) * g x) (e μ)
+    simp only [add_sub_cancel_right] at this
+    exact this
   simp only [grad, mul_sub, sub_mul, Finset.sum_sub_distrib, h]
 
 theorem cocurl_adjoint (v : Fin 2 → Site N → R) (F : Site N → R) :
     ∑ μ, ∑ x, v μ x * cocurl F μ x = ∑ x, curl v x * F x := by
   have h1 : ∑ x, v 0 x * F (x - e 1) = ∑ x, v 0 (x + e 1) * F x := by
-    simpa using (sum_shift_add (fun x => v 0 x * F (x - e 1)) (e 1)).symm
+    have := sum_shift_add (fun x => v 0 x * F (x - e 1)) (e 1)
+    simp only [add_sub_cancel_right] at this
+    exact this.symm
   have h2 : ∑ x, v 1 x * F (x - e 0) = ∑ x, v 1 (x + e 0) * F x := by
-    simpa using (sum_shift_add (fun x => v 1 x * F (x - e 0)) (e 0)).symm
-  simp only [Fin.sum_univ_two, cocurl, curl, if_pos rfl, Fin.one_eq_zero_iff, if_false,
+    have := sum_shift_add (fun x => v 1 x * F (x - e 0)) (e 0)
+    simp only [add_sub_cancel_right] at this
+    exact this.symm
+  simp only [Fin.sum_univ_two, cocurl, curl, ↓reduceIte, Fin.one_eq_zero_iff,
     OfNat.ofNat_ne_one, mul_sub, sub_mul, add_mul, Finset.sum_sub_distrib,
     Finset.sum_add_distrib, h1, h2]
   ring
@@ -112,7 +122,9 @@ theorem neutral_symm (c : R) (u v : Fin 2 → Site N → R) :
 
 theorem neutral_nonneg {c : ℝ} (hc : 0 ≤ c) (v : Fin 2 → Site N → ℝ) :
     0 ≤ ∑ μ, ∑ x, v μ x * neutral c v μ x := by
-  rw [neutral_form]; simp only [← sq]; positivity
+  rw [neutral_form]
+  exact add_nonneg (sum_nonneg fun _ _ => mul_self_nonneg _)
+    (mul_nonneg hc (sum_nonneg fun _ _ => mul_self_nonneg _))
 
 theorem hodge_symm (u v : Fin 2 → Site N → R) :
     ∑ μ, ∑ x, u μ x * hodge v μ x = ∑ μ, ∑ x, hodge u μ x * v μ x := by
@@ -121,6 +133,7 @@ theorem hodge_symm (u v : Fin 2 → Site N → R) :
 theorem hodge_nonneg (v : Fin 2 → Site N → ℝ) : 0 ≤ ∑ μ, ∑ x, v μ x * hodge v μ x := by
   simpa [hodge_eq_neutral_one] using neutral_nonneg zero_le_one v
 
+omit [NeZero N] in
 /-- The Hodge Laplacian is the scalar Laplacian on each component. -/
 theorem hodge_eq_lap (v : Fin 2 → Site N → R) (μ : Fin 2) : hodge v μ = lap (v μ) := by
   funext x

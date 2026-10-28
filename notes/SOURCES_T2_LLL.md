@@ -70,3 +70,34 @@ This is the part of "Helffer–Sjöstrand" that (L-LL) needs: integrated Landau 
 Proof. For X ≥ 0, u_m(X) = ∫_0^∞(dt/t)(e^{−tm²} − 1)e^{−tX}; with the transverse factor p_t(0)², the left side is α^{−2}∫_0^∞(dt/t)(e^{−tm²} − 1)p_t(0)²[T_α(t) − T_0(t)]. Substitute t = τ/α. Domination: for τ ≤ 1, |e^{−tm²} − 1| ≤ μ′τ, Lemma S1 gives |ΔT| ≤ Cα²t, p_t(0)² ≤ C/(1+t): integrand ≤ Cμ′ uniformly. For τ ≥ 1: |ΔT| ≤ 2T_0(t) ≤ C/t (diamagnetic), p_t(0)² ≤ C/t: integrand ≤ Cτ^{−3}. Pointwise: Lemma S2, the free 2D local limit α^{−1}T_0(τ/α) → 1/(4πτ), and αp_{τ/α}(0)²·α^{−1}·… → 1/(4πτ). Dominated convergence. ∎
 This proves (L-LL) for the scalar ghost alone (the case left open in STEPB §2.5 with a cited LLT on the discrete Heisenberg group): the only import is (IP), a textbook invariance principle. Large μ′: h_sc(μ′) = (96π²)^{−1} ln μ′ + O(1) (region 1/μ′ ≪ τ ≪ 1, where (e^{−μ′τ} − 1)(1/sinh τ − 1/τ) ≈ τ/6); see §5.3.
 
+## 4. Vector part: the matrix operator A′_α
+
+Inputs [V, verified files]: GAPRIME2 Lemma 1.1 (A′ = cos φ c^†c + D′D′^† − 2 sin φ K), Lemma 4.1 (A′ = 𝔏⊗1 − 2ασ_y + R, ‖Rψ‖ ≤ 19|α|N_1(ψ)^{1/2} + 11α²‖ψ‖ for every ψ, |α| ≤ 0.1); S123 Lemma 5.2 (n_𝔏(E) ≤ C_dE). Theorem 5.1 of GAPRIME2 (gap) is not needed below; it only simplifies.
+
+4.1 Lemma V0 (form sandwich) [P]. For 0 < |α| ≤ 10^{−4}, with ε := |α|^{1/2}, δ := 102|α|^{3/2}:
+  A_− := (1 − ε)𝔏⊗1 − 2ασ_y − δ ≤ A′_α ≤ A_+ := (1 + ε)𝔏⊗1 − 2ασ_y + δ.
+Proof. |⟨ψ, Rψ⟩| ≤ 19|α|‖ψ‖N_1^{1/2} + 11α²‖ψ‖² ≤ εN_1 + (19²α²/(4ε) + 11α²)‖ψ‖², and 90.25|α|^{3/2} + 11α² ≤ 102|α|^{3/2}. ∎
+Consequences [P]. (a) 𝔏⊗1 and σ_y commute, so n_{A_±}(λ) = Σ_{s=±1} n_𝔏((λ + 2αs ∓ δ)/(1 ± ε)) exactly. (b) A′ ≥ A_− ≥ −3|α|. (c) τ(P_−) ≤ n_{A_−}(0) ≤ 2n_𝔏(4|α|) ≤ 8C_d|α|, P_− := 1_{(−∞,0)}(A′). (d) n_{|A′|}(λ) ≤ n_{A′}(λ) ≤ 4C_d(λ + 3|α|).
+
+4.2 Lemma V2 (scaled spectrum of A′ → spin-split Landau measure) [P rel. (IP)]. Counting monotonicity, Lemma V0(a), ε, δ/α → 0, and Corollary S3 give, for every e not an odd integer,
+  α^{−1}n_{A′}(αe) → N′_c(e) := (2π)^{−1}[#{n ≥ 0 : 2n − 1 ≤ e} + #{n ≥ 0 : 2n + 3 ≤ e}].
+So the scaled spectral measure of A′ converges vaguely to ν′_c := (2π)^{−1}Σ_{n≥0}(δ_{2n−1} + δ_{2n+3}); level −1 is the N–O band. Hence: (i) μ_−^α(da) := α^{−1}τ(P_−1_{αda}(|A′|)) → (2π)^{−1}δ_1 weakly (supports in [0, 3] by V0(b)); (ii) for every τ > 0, α^{−1}τ_2e^{−(τ/α)|A′|} → ∫e^{−τ|e|}dν′_c = 1/(2π sinh τ) (uniform tail from V0(d)).
+This is the "matrix Helffer–Sjöstrand" input in the form actually needed: integrated counts at scale α, with the ∓2α spin shift. The O(α^{3/2}) remainder R moves scaled levels by O(α^{1/2}); band widths are not needed.
+
+4.3 Lemma V1 (small-time heat trace of A′) [P]. There is C with
+  |τ_2e^{−tA′_α} − τ_2e^{−tA′_0}| ≤ Cα²t   for 0 < |α| ≤ α_1, 0 ≤ t ≤ 1/|α|.
+Proof. (i) Structure. A′_α and 𝔏_α⊗1 are finite sums of words in T_0^{±1}, T_1^{±1} with 2×2 coefficients entire in α. So E_α := A′_α − 𝔏_α⊗1 has kernel E_α(x, x + v) = e^{iαx_1v_0}η_α(v), |v|_∞ ≤ r, η_α entire, and η_0 = 0 because A′_0 = 𝔏_0⊗1 ((F1)). So |η_α(v)| ≤ C|α|, η_α = αη′ + O(α²).
+(ii) Evenness [P]. With C = complex conjugation in the Landau-gauge basis: T_0(−α) = CT_0(α)C, T_1 real, e^{iα} ↦ e^{−iα}; c, D′, u_i transform the same way, and K(−α) = −CK(α)C; with sin(−φ) = −sin φ this gives A′_{−α} = CA′_αC. So τf(A′_{−α}) = τf(A′_α) for real f. Same for 𝔏_α. [Checked numerically: spectra equal to 0.0, §6.]
+(iii) Dyson expansion of e^{−t(L + E)}, L = 𝔏_α⊗1, with the diamagnetic kernel bound |e^{−uL}(x, y)| ≤ p^{2D}_u(x − y) and Chapman–Kolmogorov: the k-th term has |τ| ≤ (C′|α|t)^k/k!·C(1 + t)^{−1}. For k ≥ 2 the sum is ≤ Cα²t²/(1 + t)·e^{C′} ≤ Cα²t when |α|t ≤ 1.
+(iv) First order. By cyclicity it is −tτ(E e^{−tL}) = −tΣ_v tr η_α(v)·e^{−t𝔏_α}(v, 0). By §3.1 and Lemma S1, |e^{−t𝔏_α}(v, 0) − p^{2D}_t(v)| ≤ |α|E_v[|A_t|; X_t = 0] ≤ |α|(C_rt·C(1 + t)^{−1})^{1/2} ≤ C|α| for |v| ≤ r. So the first-order term is −tαS_1(t) + O(α²t), S_1(t) := Σ_v tr η′(v)p^{2D}_t(v), independent of α.
+(v) τe^{−tA′_α} − 2T_α(t) is even in α by (ii) and equals −tαS_1(t) + O_t(α²). So S_1(t) = 0 for every t. With Lemma S1 for 2[T_α − T_0]: total ≤ Cα²t. ∎
+Remark. (iv)–(v) are a heat-kernel form of magnetic perturbation theory at order α². They use only the walk representation, Lemma S1, and the symmetry; no symbol classes. Whether the same method also gives the φ⁴ resolvent remainder of STEPB Lemma 1 ((MPT)) was not checked.
+
+4.4 The N–O band: exact isolation [P]. On ran P_−, A′ = −|A′|. Hence, for every κ ≥ 0 and m² > 0,
+  τ_2u_m(A′ + κ) = τ_2u_m(|A′| + κ) + τ_2(P_−D_m(κ, |A′|)),  D_m(κ, a) := u_m(κ − a) − u_m(κ + a).
+Insert in (2.1). With u_m(X) = ∫_0^∞(dt/t)(e^{−tm²} − 1)e^{−tX} for X ≥ 0 and ∫dF_⊥e^{−tκ} = p_t(0)²:
+  H_φ(μ) = −(4/α²)[Heat_α + NO_α],
+  Heat_α := ∫_0^∞(dt/t)(e^{−tm²} − 1)p_t(0)²[τ_2e^{−t|A′|} − 2T_0(t)],
+  NO_α := ∫dF_⊥(κ)τ_2(P_−D_m(κ, |A′|)).
+The heat-kernel term carries no negative eigenvalue (|A′| ≥ 0). The N–O term is the only place where log|·| of a sign-changing argument appears.
+
