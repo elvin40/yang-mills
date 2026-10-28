@@ -27,13 +27,13 @@ Route K hypothesis set (all must hold):
 
 Route B hypothesis set (alternative to 1--5; per \file{BETA_FP_U} \S4; all \status{proved, unverified} as implications, no verifier file for \file{BETA_FP_U}):
 \begin{itemize}
-\item[R-025.] (T1) $\sup_j\sup_{q\text{ real}}|c^{(1)}_{T,j}(q)|<\infty$, the plane-wave form of L-071 \status{argued; the Landau-to-symmetric gauge conversion and Steps 2--5 of R-004 for (2.1) are not written}.
+\item[B1.] (T1) $\sup_j\sup_{q\text{ real}}|c^{(1)}_{T,j}(q)|<\infty$, the plane-wave form of L-071 \status{argued; the Landau-to-symmetric gauge conversion and Steps 2--5 of L-071 (Theorem A3) for (2.1) are not written}.
 \item[B2$'$.] R-025 (H2) = item H.
-\item[R-027.] (DF) $\sup_k|\mathfrak d_F(\theta_*;L^k)|<\infty$, the gauge-fixing difference at the plane wave \status{hypothesis, argued}. With the exact split $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$ (\file{BETA_FP_U} Prop.\ 3.1) there is no $Y$-defect; all non-stationarity sits in $\mathfrak d_F$. This replaces the earlier $\mathfrak d_Y$, $\mathfrak d_{gf}$ items for this route (Section~\ref{sec:routeB}).
-\item[R-028.] L\"uscher--Weisz (5.7) \status{cited}.
-\item[R-029.] R-007 (the label of v4; not ledger R-007): the plane-wave increment equals Balaban's $\beta$ up to the expansion point, uniformly in $k$ \status{argued}. A uniform-in-$k$ input, of the same kind as (DF).
-\item[R-030.] H-202 (H0) = item 7$'$ (L-005 (Lemma D$''$) (i)).
-\item[R-031.] $\theta_*<1$, so that $c_2\ln(1/\theta_*^2)\ge0$ in $C_B$ \status{trivial condition on the choice of $\theta_*$}.
+\item[B3.] (DF) $\sup_k|\mathfrak d_F(\theta_*;L^k)|<\infty$, the gauge-fixing difference at the plane wave \status{hypothesis, argued}. With the exact split $\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$ (\file{BETA_FP_U} Prop.\ 3.1) there is no $Y$-defect; all non-stationarity sits in $\mathfrak d_F$. This replaces the earlier $\mathfrak d_Y$, $\mathfrak d_{gf}$ items for this route (Section~\ref{sec:routeB}).
+\item[B4.] L\"uscher--Weisz (5.7) \status{cited}.
+\item[B5.] A6 (the label of v4; not ledger R-007): the plane-wave increment equals Balaban's $\beta$ up to the expansion point, uniformly in $k$ \status{argued}. A uniform-in-$k$ input, of the same kind as (DF).
+\item[B6.] H-202 (H0) = item 7$'$ (L-005 (Lemma D$''$) (i)).
+\item[B7.] $\theta_*<1$, so that $c_2\ln(1/\theta_*^2)\ge0$ in $C_B$ \status{trivial condition on the choice of $\theta_*$}.
 \end{itemize}
 Route B also needs 6 (R-030 (G2)), item 7$'$, and the items 8 and 10--13 (item 9 is closed). It does not need R-026 (PI), ($M_j$), V1; it needs (DF) and R-007 instead.
 
@@ -78,7 +78,7 @@ So the Ba{\l}aban-level core now rests on published propagator theorems, Ba{\l}a
 \subsection{Verification debt}\label{sec:rem-verif}
 \begin{itemize}
 \item[10.] Balaban readings: the sweep (Section~\ref{sec:sweep}) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; ``Similar inequalities hold for other constants, which will be introduced later'' (CMP 119 p.\ 256) is closed as a verified list (Proposition~\ref{prop:L023}, ledger R-012); ``$\beta_0$ can be chosen arbitrarily small'' is on CMP 119 p.\ 255, and $\beta_0$ is fixed before $\gamma$, as used (verified reading, \file{SOURCES_BOOKKEEPING.md}; former ledger R-048); the readings of \file{BALABAN_EXCERPTS_CHECK} item 11 ($\Pi$ (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the ``$L$ odd'' page) are verified, with corrections, in \file{SOURCES_BOOKKEEPING.md} (former ledger R-051); the CMP 119 Sect.\ 3 residue is the unprinted T-step rate loss (ledger R-020); Theorem 1 itself rests on Balaban's published proof, which uses the Group A items of Section~\ref{sec:rem-ledger}.
-\item[R-032.] Verification: \file{BETA_FP_U} has no verifier file. \file{BETA_FP_PW_VERIFY} \S6 items 1--4 grade the logic of L-088 (Theorem B) \status{proved+verified, conditional} (tag decision, \file{PLAN.md}); the inputs (U), (DF), (T1) stay \status{proved, unverified}.
+\item[B8.] Verification: \file{BETA_FP_U} has no verifier file. \file{BETA_FP_PW_VERIFY} \S6 items 1--4 grade the logic of L-088 (Theorem B) \status{proved+verified, conditional} (tag decision, \file{PLAN.md}); the inputs (U), (DF), (T1) stay \status{proved, unverified}.
 \item[13.] Lean formalization of the history form of Lemmas D$'$/D$''$ \status{open}. L-005 (Lemma D$''$) in the one-argument form is done (Section~\ref{sec:Ddprime}).
 \item Results tagged \status{proved, unverified} need a verifier pass; Appendix~\ref{app:ledger} lists them. They include the \file{BETA_FP_U} reductions and H2\_CERTIFY\_L13. Round 7 cleared the sweep, \file{BETA_FP_M} Prop.\ 4.3 (for $j\ge j_1$), the Prop.\ 3.6 assembly, and N3 in the D$''$ form (ledger R-034, Section~\ref{sec:src-r7}); this also covers the sweep in the step L-001 (Theorem 2w) $\Rightarrow$ Theorem 1. H2\_CERTIFY\_L13 (its cell plan is superseded at $L=13$ by Theorem~\ref{thm:L046}; the box sweep runs as a cross-check). H2\_CERTIFY\_P4 has partial support: identity (D) is proved in Lean (\texttt{P4\_divergence}), L-264 (Lemma S) is rederived in \file{H1_ANALYTIC_VERIFY.md} V1, and the rebuilt $H_j$ of \file{H1_ANALYTIC_VERIFY2.md} confirms it numerically; the Fourier step has no independent verifier.
 \item The paper is not verified as one document. Its statements carry the tags of the project files.

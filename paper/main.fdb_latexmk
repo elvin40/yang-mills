@@ -1,13 +1,13 @@
 # Fdb version 4
-["bibtex main"] 1793228873.83775 "main.aux" "main.bbl" "main" 1793229201.93845 0
+["bibtex main"] 1793231846.15448 "main.aux" "main.bbl" "main" 1793231847.47222 0
   "./refs.bib" 1793169418.6193 7601 ca7a49bb0f1571cbb6d419840803b3e9 ""
   "/usr/local/texlive/2025/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "main.aux" 1793229201.4874 55902 2a7aa9cd8b239b0d49d9b675da8bc976 "pdflatex"
+  "main.aux" 1793231847.02511 55902 2a7aa9cd8b239b0d49d9b675da8bc976 "pdflatex"
   (generated)
   "main.bbl"
   "main.blg"
   (rewritten before read)
-["pdflatex"] 1793229200.70707 "main.tex" "main.pdf" "main" 1793229201.93864 0
+["pdflatex"] 1793231846.25779 "main.tex" "main.pdf" "main" 1793231847.47243 0
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -155,19 +155,19 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1770427682 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "appendix.tex" 1793228857.45876 45933 065a258c2aa45975cfc3a3bf9a23cae4 ""
+  "appendix.tex" 1793231636.92029 45945 cb173e54f369f23488095837fbc680fd ""
   "assembly.tex" 1793228857.45777 60393 edf629957ed7578d556d74037aa05f10 ""
   "intro.tex" 1793228857.45251 19654 ba2d835894ccb99f8cd631fe4600700c ""
-  "main.aux" 1793229201.4874 55902 2a7aa9cd8b239b0d49d9b675da8bc976 "pdflatex"
-  "main.bbl" 1793228873.92245 5861 51dc8d0db160743f94c639790ae48aa4 "bibtex main"
-  "main.out" 1793229201.49104 26101 a03debd7265457b0a601efcd2b2b1688 "pdflatex"
+  "main.aux" 1793231847.02511 55902 2a7aa9cd8b239b0d49d9b675da8bc976 "pdflatex"
+  "main.bbl" 1793231846.25683 5861 51dc8d0db160743f94c639790ae48aa4 "bibtex main"
+  "main.out" 1793231847.0288 26101 a03debd7265457b0a601efcd2b2b1688 "pdflatex"
   "main.tex" 1793228857.45592 3604 899fdadfa4765121135a636f1db8650a ""
-  "main.toc" 1793229201.49126 25356 6544c55a79f2b9bdbc549a8157f2170f "pdflatex"
+  "main.toc" 1793231847.02902 25356 6544c55a79f2b9bdbc549a8157f2170f "pdflatex"
   "numerics.tex" 1793228857.45643 37069 e918ecaad67aa78fc10fdec717836676 ""
-  "remains.tex" 1793228935.76211 64534 d404814ef1d3004b48e7623c5ca838f3 ""
+  "remains.tex" 1793231482.79801 64523 9d7c10be8855736b329d5ca7ba61cd1b ""
   "setup.tex" 1793228857.45815 8174 ed4bd2a7dee1458c1dcd707dd44fd108 ""
   "sources.tex" 1793229200.6308 199764 25fea805b791bff52359032959ba4f91 ""
-  "theorem2.tex" 1793228857.45336 54577 ef299de0add6029efd7a70b5b94c20c4 ""
+  "theorem2.tex" 1793231636.92629 54609 6a42e48af27e900e0968c2d4c74fbc43 ""
   (generated)
   "main.aux"
   "main.log"

@@ -9,15 +9,16 @@ import numpy as np, sys
 from numpy.polynomial.legendre import leggauss
 
 def nodes1d(N4, K, order):
-    # composite Gauss-Legendre on [0, pi], panels graded geometrically toward p = 0 (cusp of |p|)
-    br = np.concatenate([[0.0], np.pi*0.5**np.arange(K, 0, -1)/max(1, N4/4), [np.pi]])
-    br = np.unique(np.concatenate([br, np.linspace(br[-2], np.pi, 5)]))
+    # composite Gauss-Legendre on [0, pi], panels [pi 2^-(k+1), pi 2^-k] graded toward p = 0 (cusp of |p|);
+    # ratio-2 panels resolve exp(-N4 |p|) at every scale; K counted below the scale 1/N4
+    Kt = K + int(np.ceil(np.log2(N4)))
+    br = np.concatenate([[0.0], np.pi*0.5**np.arange(Kt, -1, -1)])
     x, w = leggauss(order); X, W = [], []
     for a, b in zip(br[:-1], br[1:]):
         X.append(0.5*(b-a)*x + 0.5*(a+b)); W.append(0.5*(b-a)*w)
     return np.concatenate(X), np.concatenate(W)/np.pi      # weight normalized: int_0^pi dp/pi
 
-def qgrid(N4, K=14, order=8):
+def qgrid(N4, K=10, order=8):
     p, w = nodes1d(N4, K, order)
     s = 4*np.sin(p/2)**2
     om2 = s[:, None, None] + s[None, :, None] + s[None, None, :]
@@ -78,10 +79,16 @@ if __name__ == "__main__":
     NMAX = 200
     print("== convergence of the lattice quadrature (K panels, GL order) ==")
     for N4 in (4, 16, 64):
-        for K, o in ((10, 6), (14, 8), (18, 10)):
+        for K, o in ((6, 6), (10, 8), (14, 10)):
             print(f"N4={N4:3d} K={K} order={o}:  SU(2) v''_GPY(pi) = {hess_center_lat(N4, K=K, order=o):.8f}"
                   f"   c_1^lat = {cn_lat(N4, 1, K=K, order=o)[0]:.8f}")
     print(f"continuum: v''_GPY(pi) = {-1/3:.8f}, c_1 = {2/np.pi**2:.8f}, SU(3) Hess = {-2/3:.8f}")
+    print(f"continuum exact thresholds: SU(2) local 1/6={1/6:.5f} global pi^2/48={np.pi**2/48:.5f};"
+          f" SU(3) local 2/9={2/9:.5f} global 5pi^2/162={5*np.pi**2/162:.5f}")
+    print("SU(3) minimizer just below the global threshold (continuum, a1 = 0.28):")
+    c = cn_cont(200); t = np.linspace(-np.pi, np.pi, 241); T1, T2 = np.meshgrid(t, t)
+    v = v_su3(T1, T2, 0.28, c); i = np.unravel_index(v.argmin(), v.shape)
+    print(f"  theta = ({T1[i]:.4f}, {T2[i]:.4f}, {-T1[i]-T2[i]:.4f}),  |tr Omega| = {min_su3(0.28, c):.4f}")
     print("== series truncation: SU(2) v''(pi) from c_n, n<=nmax, vs direct (N4 = 8) ==")
     c8 = cn_lat(8, 2000); n = np.arange(1, 2001)
     for nm in (50, 200, 2000):

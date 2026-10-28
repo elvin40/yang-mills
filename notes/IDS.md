@@ -19,7 +19,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | new id | kind | short name | old ids / aliases | defining file § |
 |---|---|---|---|---|
 | R-001 | ledger row (group A) | Kernel bound \|(QGQ*)^{−1}(y,y′)\|, \|(QG_1Q*)^{−1}(y,y′)\| ≤ … | A1 | TRUST_LEDGER.md §1 |
-| R-002 | ledger row (group A) | Walk-expansion form of R-001: the A1-level walk expansion of (QGQ*)^{−1} that builds the walk … | A1w | TRUST_LEDGER.md §1 |
+| R-002 | ledger row (group A) | Walk-expansion form of R-001: the R-001-level walk expansion of (QGQ*)^{−1} that builds the walk … | A1w | TRUST_LEDGER.md §1 |
 | R-003 | ledger row (group A) | R_2 (precision difference C_0^{−1} − Re C^{(k)}(Z_0,σ)^{−1}) and R_3 obey \|R_2(b,b′)\| ≤ … | A2 | TRUST_LEDGER.md §1 |
 | R-004 | ledger row (group A) | C*Δ_kC ≥ γ_0 > 0 with γ_0 independent of k and U, for every U obeying (3.35)–(3.36) with Mα_0 … | A3 | TRUST_LEDGER.md §1 |
 | R-005 | ledger row (group A) | Exponential kernel decay of δ²V/δA′²: \|Δ(y)(δ²V/δA′²)(A′)𝔄\| ≤ … | A4 | TRUST_LEDGER.md §1 |
@@ -69,6 +69,9 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | R-049 | ledger row (group A) (retired) | R_{K+1} ≥ L from CMP 119 (2.5) for γ < e^{−1/2} (page reading, left §6) | A20 | TRUST_LEDGER.md §6 (retired) |
 | R-050 | ledger row (group A) (retired) | uniform-in-k moments and decay of E_0 (proved, SOURCES_T2_EUMOM; left round 4) | A21 | TRUST_LEDGER.md §6 (retired) |
 | R-051 | ledger row (group A) (retired) | Π (4.37)/(5.1); CMP 119 (2.42) corrected (page reading, left §6) | A22 | TRUST_LEDGER.md §6 (retired) |
+| R-052 | ledger row (group B, outside the targets) | FABLE_HARD.md: L6 ν/polydisc forms, O(4) obstruction, Theorems U1/U2/FD/W1/W2, RP1, (Gap_K); UNVERIFIED (round 12) | — | TRUST_LEDGER.md §2.1 |
+| R-053 | ledger row (group B, outside the targets) | ALT_ROUTES.md: Chatterjee center-symmetry route (CS_σ), stochastic quantization route (PI), Prop. 9.1; UNVERIFIED (round 12) | — | TRUST_LEDGER.md §2.1 |
+| R-054 | ledger row (group B, outside the targets) | R3S1_GAP.md: Theorem B′ (center-stabilized SU(N) on R³ × S¹), reduction Theorem R, [C1]–[C5]; UNVERIFIED (round 12) | — | TRUST_LEDGER.md §2.1 |
 
 ## K- conventions and choices (TRUST_LEDGER.md §3)
 
@@ -83,7 +86,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | K-007 | convention | Cut on B vs B′ — CLOSED: the cut is \|B(b)\| < ε_1/g_k on every bond except b_0 (h = 0, C = 1 … | C7 | TRUST_LEDGER.md §3 |
 | K-008 | convention | Keep the sharp χ_k (G3 Route 2); smooth χ̂ (Route 3) is the fallback with ε_1 → ε_1/2, γ → γ/2 | C8 | TRUST_LEDGER.md §3 |
 | K-009 | convention | Shrink the χ_k threshold by a fixed factor so that supp χ_k lies inside the (1.34) domain … | C9 | TRUST_LEDGER.md §3 |
-| K-010 | convention | C9 variant (shrink r < 1) named in CLOSURE_PLAN Table 3; unused | C9′ | CLOSURE_PLAN.md Table 3 |
+| K-010 | convention | C9 variant (shrink r < 1) named in CLOSURE_PLAN Table 3; unused | C9′ | CLOSURE_PLAN.md Table 3, mentioned inside row K-009 (no separate row) |
 | K-011 | convention | Adapted gauge-fixing weight 1/u_k(c) in the sourced construction | C10 | TRUST_LEDGER.md §3 |
 | K-012 | convention | h ≡ 0 booking of the source gradient remainder; freezing set S_X = points of X nearest to the … | C11 | TRUST_LEDGER.md §3 |
 | K-013 | convention | Additive source normalization w_0 = g_0^{−2} − f, τ in absolute u-units; N3 constant 3/2 (any … | C12 | TRUST_LEDGER.md §3 |
@@ -294,7 +297,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | H-031 | reading [I] | R-019 (a): (189) holds at complex B | I-31 | CLOSURE_PLAN.md Table 2 |
 | H-032 | reading [I] | R-019 (b): (73) complex clause | I-32 | CLOSURE_PLAN.md Table 2 |
 | H-033 | reading [I] | R-019 (c): the (172) ball | I-33 | CLOSURE_PLAN.md Table 2 |
-| H-034 | reading [I] | R-019 4.1(f): propagator lemmas are B-independent | I-34 | CLOSURE_PLAN.md Table 2 |
+| H-034 | reading [I] | SOURCES_A17_A19 4.1(f): propagator lemmas are B-independent | I-34 | CLOSURE_PLAN.md Table 2 |
 | H-035 | reading [I] | R-016 H-035 (M1): the H-281–H-291 list is complete (every property of C^{(k)} that CMP 116 … | I-35, (M1) [A16 list completeness], (M1) [split] | CLOSURE_PLAN.md Table 2 |
 | H-036 | reading [I] | R-016 H-166 (S_H): scale normalization of D_S, J_S in the k-scale norm | I-36 | CLOSURE_PLAN.md Table 2 |
 | H-037 | reading [I] | R-016 Ω-setting volume convention (CMP 122); widened in round 11 to Q-049 (multiscale … | I-37 | CLOSURE_PLAN.md Table 2 |
@@ -607,8 +610,8 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-001 | result proved here | Theorem 2w | Theorem 2w, paper label thm:2w (now thm:L001) | THEOREM2_PROOF_v4.md §1.3 |
 | L-002 | result stated in the paper | Theorem A (paper intro) | paper label thm:A (now thm:L002) | paper/intro.tex |
 | L-003 | result stated in the paper | Theorem B (paper; Target 2) | paper label thm:B (now thm:L003) | paper/intro.tex |
-| L-004 | result proved here — to review | Lemma D′ | Lemma D′ [KAPPA_BOUNDED], paper label lem:Dprime (now lem:L004) | KAPPA_BOUNDED.md |
-| L-005 | result proved here — to review | Lemma D″ | Lemma D″ [THEOREM2_PROOF], paper label lem:Ddprime (now lem:L005) | THEOREM2_PROOF.md |
+| L-004 | result proved here — to review | Lemma D′ | Lemma D′ [KAPPA_BOUNDED], paper label lem:Dprime (now lem:L004) | LEMMA_DPRIME.md (restated in KAPPA_BOUNDED.md and THEOREM2_PROOF_v4.md §2.1) |
+| L-005 | result proved here — to review | Lemma D″ | Lemma D″ [THEOREM2_PROOF], paper label lem:Ddprime (now lem:L005) | THEOREM2_PROOF_v4.md §2.2 (first form KAPPA_BOUNDED.md §5.3) |
 | L-006 | result proved here — to review | Lemma D | Lemma D [LEMMAS], paper label lem:D (now lem:L006) | LEMMAS.md |
 | L-007 | result proved here — to review | Lemma E | Lemma E [LEMMAS], paper label lem:E (now lem:L007) | LEMMAS.md |
 | L-008 | result stated in the paper | anchor-free proposition | paper label prop:anchorfree (now prop:L008) | paper/theorem2.tex |
@@ -627,7 +630,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-021 | result stated in the paper | proves A8 | paper label thm:A8 (now thm:L021) | paper/sources.tex |
 | L-022 | result stated in the paper | proves A10′ | paper label thm:A10 (now thm:L022) | paper/sources.tex |
 | L-023 | result stated in the paper | A11 list | paper label prop:A11 (now prop:L023) | paper/sources.tex |
-| L-024 | result proved here — to review | Proposition A15-N | Proposition A15-N [S_A15_LOC], paper label prop:A15N (now prop:L024) | SOURCES_A15_LOC.md |
+| L-024 | result proved here — to review | Proposition A15-N | Proposition A15-N [S_A15_LOC], paper label prop:A15N (now prop:L024) | SOURCES_A15_WHOLE.md §6.2 (input (Loc) from SOURCES_A15_LOC.md) |
 | L-025 | result stated in the paper | G3 = N2 theorem | paper label thm:G3N2 (now thm:L025) | paper/sources.tex |
 | L-026 | result proved here — to review | Theorem LOC | Theorem LOC [S_A15_LOC], paper label thm:LOC (now thm:L026) | SOURCES_A15_LOC.md |
 | L-027 | result proved here | Theorem BDRY | Theorem BDRY [S_A15_BDRY], paper label prop:BDRY (now prop:L027) | SOURCES_A15_BDRY.md |
@@ -666,14 +669,14 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-060 | result proved here — to review | Theorem A | Theorem A [S_T2_MPT_STEPC] | SOURCES_T2_MPT_STEPC.md |
 | L-061 | result proved here | Proposition A0 | Proposition A0 [U3_AW] | U3_AW.md |
 | L-062 | result proved here | Lemma A1 | Lemma A1 [U3_AW] | U3_AW.md |
-| L-063 | result proved here — to review | Theorem A1-W | Theorem A1-W [S_A1_WALK] | SOURCES_A1_WALK.md |
-| L-064 | result proved here — to review | Proposition A15-N | Proposition A15-N [S_A15_WHOLE] | SOURCES_A15_WHOLE.md |
+| L-063 | result proved here — to review | Theorem A1-W (first form, SOURCES_A1_WALK §7.1) | Theorem A1-W [S_A1_WALK] | SOURCES_A1_WALK.md |
+| L-064 | result proved here (retired → L-024, merged 2026-10-28) | Proposition A15-N | Proposition A15-N [S_A15_WHOLE] | SOURCES_A15_WHOLE.md |
 | L-065 | result proved here | Lemma A17 | Lemma A17 [S_A17_A19] | SOURCES_A17_A19.md |
 | L-066 | result proved here | Theorem A1′ | Theorem A1′ [S_A1_KERNEL (no definition line found; most-cited file)] | SOURCES_A1_KERNEL.md (most-cited; no definition line found) |
-| L-067 | result proved here — to review | Proposition A2 | Proposition A2 [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-067 | result proved here — to review | Proposition A2 | Proposition A2 [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §3.5 and THEOREM2_PROOF_v3.md (restatement of U3_AW Prop. A2, L-068) |
 | L-068 | result proved here — to review | Proposition A2 | Proposition A2 [U3_AW] | U3_AW.md |
 | L-069 | result proved here — to review | Theorem A3 | Theorem A3 [S_A3_GAMMA0_FULL] | SOURCES_A3_GAMMA0_FULL.md |
-| L-070 | result proved here — to review | Theorem A3 | Theorem A3 [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-070 | result proved here — to review | Theorem A3 | Theorem A3 [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §3.5 (restatement of U3_AW Theorem A3, L-071) |
 | L-071 | result proved here — to review | Theorem A3 | Theorem A3 [U3_AW] | U3_AW.md |
 | L-072 | result proved here | Lemma A4 | Lemma A4 [U3_AW] | U3_AW.md |
 | L-073 | result proved here | Lemma AG | Lemma AG [THM37_FULL], T37-P2 | THM37_FULL.md |
@@ -691,22 +694,22 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-085 | result proved here — to review | Lemma B | Lemma B [S_MULTISCALE_OMEGA_SOURCED] | SOURCES_MULTISCALE_OMEGA_SOURCED.md |
 | L-086 | result proved here — to review | Lemma B | Lemma B [THM310_FULL] | THM310_FULL.md |
 | L-087 | result proved here | Proposition B | Proposition B [U3_REPAIRS] | U3_REPAIRS.md |
-| L-088 | result proved here — to review | Theorem B | Theorem B [BETA_FP_PW] | BETA_FP_PW.md |
+| L-088 | result proved here — to review | Theorem B | Theorem B [BETA_FP_PW], Theorem B_PW (paper macro \ThmPW; was L-103) | BETA_FP_PW.md |
 | L-089 | result proved here — to review | Theorem B | Theorem B [BETA_FP_U] | BETA_FP_U.md |
 | L-090 | result proved here — to review | Theorem B | Theorem B [S_T2_MPT_STEPC] | SOURCES_T2_MPT_STEPC.md |
-| L-091 | result proved here — to review | Theorem B | Theorem B [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-091 | result proved here — to review | Theorem B | Theorem B [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §4.2 (restatement of BETA_FP_PW Theorem B, L-088) |
 | L-092 | result proved here | Lemma B0 | Lemma B0 [THM37_FULL] | THM37_FULL.md |
 | L-093 | result proved here | Claim B1 | Claim B1 [LEMMAS] | LEMMAS.md |
 | L-094 | result proved here | Claim B2 | Claim B2 [LEMMAS] | LEMMAS.md |
 | L-095 | result proved here | Lemma B2 | Lemma B2 [numerics/inclined_cell_geometry.py (no definition line found; most-cited file)] | numerics/inclined_cell_geometry.py (most-cited; no definition line found) |
-| L-096 | result proved here — to review | Theorem B2 | Theorem B2 [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-096 | result proved here — to review | Theorem B2 | Theorem B2 [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §5.3 (restatement of B2_TWOSTEP Theorem B2, L-012) |
 | L-097 | result proved here | Theorem B2-full | Theorem B2-full [S_GGAIN_LF] | SOURCES_GGAIN_LF.md |
 | L-098 | result proved here — to review | Theorem B2-unif | Theorem B2-unif [S_GGAIN] | SOURCES_GGAIN.md |
 | L-099 | result proved here — to review | Theorem B2-unif | Theorem B2-unif [S_GGAIN_NONMONO] | SOURCES_GGAIN_NONMONO.md |
 | L-100 | result proved here | Claim B3 | Claim B3 [LEMMAS] | LEMMAS.md |
 | L-101 | result proved here | Lemma B4 | Lemma B4 [LEMMA_B4] | LEMMA_B4.md |
 | L-102 | result proved here | Proposition B7-cube | Proposition B7-cube [S_T2_B7_CLAMP] | SOURCES_T2_B7_CLAMP.md |
-| L-103 | result proved here | Theorem B_PW | Theorem B_PW [paper/README (no definition line found; most-cited file)] | paper/README.md (most-cited; no definition line found) |
+| L-103 | result proved here (retired → L-088, merged 2026-10-28) | Theorem B_PW | Theorem B_PW [paper/README (no definition line found; most-cited file)] | paper/README.md (most-cited; no definition line found) |
 | L-104 | result proved here | Proposition BDRY | Proposition BDRY [paper/appendix.tex (no definition line found; most-cited file)] | paper/appendix.tex (most-cited; no definition line found) |
 | L-105 | result proved here | Corollary C | Corollary C [reports/ETH_CONSTANTS] | reports/ETH_CONSTANTS.md |
 | L-106 | result proved here — to review | Fact C | Fact C [S_FX_O1] | SOURCES_FX_O1.md |
@@ -748,10 +751,10 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-142 | result proved here | Theorem D3 | Theorem D3 [S_D3] | SOURCES_D3.md |
 | L-143 | result proved here | Lemma D4 | Lemma D4 [S_D4D5] | SOURCES_D4D5.md |
 | L-144 | result proved here | Lemma DI | Lemma DI [THM310_FULL] | THM310_FULL.md |
-| L-145 | result proved here — to review | Lemma D′ | Lemma D′ [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-145 | result proved here (retired → L-004, merged 2026-10-28) | Lemma D′ | Lemma D′ [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §2.1 (restatement; defined in LEMMA_DPRIME.md) |
 | L-146 | result proved here | Lemma D′-nest | Lemma D′-nest [S_T2_B7_CLAMP] | SOURCES_T2_B7_CLAMP.md |
-| L-147 | result proved here — to review | Lemma D″ | Lemma D″ [INFINITE_VOLUME_IV12] | INFINITE_VOLUME_IV12.md |
-| L-148 | result proved here — to review | Lemma D″ | Lemma D″ [KAPPA_BOUNDED] | KAPPA_BOUNDED.md |
+| L-147 | result proved here (retired → L-005, merged 2026-10-28) | Lemma D″ | Lemma D″ [INFINITE_VOLUME_IV12] | INFINITE_VOLUME_IV12.md |
+| L-148 | result proved here (retired → L-005, merged 2026-10-28) | Lemma D″ | Lemma D″ [KAPPA_BOUNDED] | KAPPA_BOUNDED.md |
 | L-149 | result proved here | Lemma D″-nest | Lemma D″-nest [S_T2_B7_CLAMP] | SOURCES_T2_B7_CLAMP.md |
 | L-150 | result proved here | Lemma D□ | Lemma D□ [THM37_FULL] | THM37_FULL.md |
 | L-151 | result proved here | Corollary E | Corollary E [S_T2_R2REM] | SOURCES_T2_R2REM.md |
@@ -760,7 +763,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-154 | result proved here — to review | Lemma E | Lemma E [THEOREM2] | THEOREM2.md |
 | L-155 | result proved here — to review | Lemma E | Lemma E [THEOREM2_PROOF] | THEOREM2_PROOF.md |
 | L-156 | result proved here — to review | Lemma E | Lemma E [U3_REPAIRS] | U3_REPAIRS.md |
-| L-157 | result proved here — to review | Proposition E | Proposition E [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-157 | result proved here — to review | Proposition E | Proposition E [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §3.5 and THEOREM2_PROOF_v3.md (restatement of U3_AW Prop. E, L-158) |
 | L-158 | result proved here — to review | Proposition E | Proposition E [U3_AW] | U3_AW.md |
 | L-159 | result proved here | Theorem E | Theorem E [reports/LOCAL_SMOOTHING_READ] | reports/LOCAL_SMOOTHING_READ.md |
 | L-160 | result proved here — to review | Lemma F | Lemma F [S_T2_MPT_STEPC] | SOURCES_T2_MPT_STEPC.md |
@@ -779,8 +782,8 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-173 | result proved here | Lemma G2 | Lemma G2 [S_GGAIN] | SOURCES_GGAIN.md |
 | L-174 | result proved here — to review | Lemma G3 | Lemma G3 [S_G3] | SOURCES_G3.md |
 | L-175 | result proved here — to review | Lemma G3 | Lemma G3 [S_G3_N2] | SOURCES_G3_N2.md |
-| L-176 | result proved here — to review | Lemma G3 | Lemma G3 [S_GGAIN] | SOURCES_GGAIN.md |
-| L-177 | result proved here — to review | Lemma G3 | Lemma G3 [S_GGAIN_NONMONO] | SOURCES_GGAIN_NONMONO.md |
+| L-176 | result proved here (retired → L-174, merged 2026-10-28) | Lemma G3 | Lemma G3 [S_GGAIN] | SOURCES_GGAIN.md |
+| L-177 | result proved here (retired → L-174, merged 2026-10-28) | Lemma G3 | Lemma G3 [S_GGAIN_NONMONO] | SOURCES_GGAIN_NONMONO.md |
 | L-178 | result proved here | Lemma G4 | Lemma G4 [S_GGAIN] | SOURCES_GGAIN.md |
 | L-179 | result proved here | Lemma G4′ | Lemma G4′ [S_G4 (no definition line found; most-cited file)] | SOURCES_G4.md (most-cited; no definition line found) |
 | L-180 | result proved here | Lemma Gauge | Lemma Gauge [H1_ANALYTIC] | H1_ANALYTIC.md |
@@ -807,7 +810,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-201 | result proved here | Lemma J | Lemma J [S_MA] | SOURCES_MA.md |
 | L-202 | result proved here | Fact K | Fact K [S_T2_V1] | SOURCES_T2_V1.md |
 | L-203 | result proved here | Lemma K | Lemma K [THM37_FULL], T37-P6 | THM37_FULL.md |
-| L-204 | result proved here — to review | Theorem K | Theorem K [B2_TWOSTEP] | B2_TWOSTEP.md |
+| L-204 | result proved here (retired → L-009, merged 2026-10-28) | Theorem K | Theorem K [B2_TWOSTEP] | B2_TWOSTEP.md |
 | L-205 | result proved here | Lemma K0 | Lemma K0 [THM37_FULL], T37-P3 | THM37_FULL.md |
 | L-206 | result proved here — to review | Theorem L | Theorem L [S_MULTISCALE_OMEGA] | SOURCES_MULTISCALE_OMEGA.md |
 | L-207 | result proved here — to review | Theorem L | Theorem L [S_WC_EXPGAUGE] | SOURCES_WC_EXPGAUGE.md |
@@ -821,7 +824,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-215 | result proved here — to review | Theorem LOC | Theorem LOC [INFINITE_VOLUME_IV12] | INFINITE_VOLUME_IV12.md |
 | L-216 | result proved here | Lemma LT | Lemma LT [A1_WALK_FULL] | A1_WALK_FULL.md |
 | L-217 | result proved here — to review | Lemma M | Lemma M [KAPPA_BOUNDED] | KAPPA_BOUNDED.md |
-| L-218 | result proved here — to review | Lemma M | Lemma M [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-218 | result proved here — to review | Lemma M | Lemma M [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §3.5 (restatement of U3_AW Lemma M, L-219) |
 | L-219 | result proved here — to review | Lemma M | Lemma M [U3_AW] | U3_AW.md |
 | L-220 | result proved here | Lemma M1 | Lemma M1 [S_ORDER_CANON] | SOURCES_ORDER_CANON.md |
 | L-221 | result proved here | Lemma M2 | Lemma M2 [S_ORDER_CANON] | SOURCES_ORDER_CANON.md |
@@ -880,7 +883,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-274 | result proved here | Lemma S1′ | Lemma S1′ [S_T2_MPT_STEPC] | SOURCES_T2_MPT_STEPC.md |
 | L-275 | result proved here | Lemma S2 | Lemma S2 [S_T2_LLL] | SOURCES_T2_LLL.md |
 | L-276 | result proved here | Corollary S3 | Corollary S3 [S_T2_LLL] | SOURCES_T2_LLL.md |
-| L-277 | result proved here | Lemma S3 | Lemma S3 [H2_CERTIFY_L13_G1] | H2_CERTIFY_L13_G1.md |
+| L-277 | result proved here | Lemma S3 | Lemma S3 [H2_CERTIFY_L13_G1] | H2_CERTIFY_L13_G1_VERIFY.md §4 (cited in H2_CERTIFY_P5_VERIFY.md §5) |
 | L-278 | result proved here | Lemma SIGMA | Lemma SIGMA [S_A3_SIGMA (no definition line found; most-cited file)] | SOURCES_A3_SIGMA.md (most-cited; no definition line found) |
 | L-279 | result proved here — to review | Theorem SM | Theorem SM [S_A10_LOWER] | SOURCES_A10_LOWER.md |
 | L-280 | result proved here — to review | Theorem SM | Theorem SM [S_GGAIN_NONMONO] | SOURCES_GGAIN_NONMONO.md |
@@ -910,7 +913,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-304 | result proved here | Lemma V2 | Lemma V2 [S_T2_LLL] | SOURCES_T2_LLL.md |
 | L-305 | result proved here | Lemma W | Lemma W [S_A15_LOC] | SOURCES_A15_LOC.md |
 | L-306 | result proved here | Proposition W | Proposition W [THM37_FULL], T37-P7 | THM37_FULL.md |
-| L-307 | result proved here — to review | Theorem W | Theorem W [THEOREM2_PROOF] | THEOREM2_PROOF.md |
+| L-307 | result proved here — to review | Theorem W | Theorem W [THEOREM2_PROOF] | THEOREM2_PROOF_v4.md §3.5 (restatement of U3_AW Theorem W, L-308) |
 | L-308 | result proved here — to review | Theorem W | Theorem W [U3_AW] | U3_AW.md |
 | L-309 | result proved here | Theorem W0 | Theorem W0 [U3_AW] | U3_AW.md |
 | L-310 | result proved here | Proposition W10 | Proposition W10 [THM310_FULL] | THM310_FULL.md |
@@ -1215,8 +1218,8 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 | L-057 | HOMONYM: Lemma A has several defining files; restatement (merge) or distinct — to review | Lemma A [THM310_FULL] |
 | L-059 | HOMONYM: Theorem A has several defining files; restatement (merge) or distinct — to review | Theorem A [BETA_FP_PW] |
 | L-060 | HOMONYM: Theorem A has several defining files; restatement (merge) or distinct — to review | Theorem A [S_T2_MPT_STEPC] |
-| L-063 | HOMONYM: Theorem A1-W has several defining files; restatement (merge) or distinct — to review | Theorem A1-W [S_A1_WALK] |
-| L-064 | HOMONYM: Proposition A15-N has several defining files; restatement (merge) or distinct — to review | Proposition A15-N [S_A15_WHOLE] |
+| L-063 | HOMONYM: Theorem A1-W; KEPT SPLIT from L-017 (RENUMBER_VERIFY §7.7): L-063 = first form (SOURCES_A1_WALK §7.1), L-017 = full write-out (A1_WALK_FULL §0.4); merge only if Elvin rules that A1_WALK_FULL supersedes §7.1 | Theorem A1-W [S_A1_WALK] |
+| L-064 | MERGED into L-024 (RENUMBER_VERIFY §7.6; 2026-10-28); retired id kept for frozen-file lookups | Proposition A15-N [S_A15_WHOLE] |
 | L-067 | HOMONYM: Proposition A2 has several defining files; restatement (merge) or distinct — to review | Proposition A2 [THEOREM2_PROOF] |
 | L-068 | HOMONYM: Proposition A2 has several defining files; restatement (merge) or distinct — to review | Proposition A2 [U3_AW] |
 | L-069 | HOMONYM: Theorem A3 has several defining files; restatement (merge) or distinct — to review | Theorem A3 [S_A3_GAMMA0_FULL] |
@@ -1270,9 +1273,9 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 | L-135 | HOMONYM: Lemma D has several defining files; restatement (merge) or distinct — to review | Lemma D [THEOREM2] |
 | L-136 | HOMONYM: Lemma D has several defining files; restatement (merge) or distinct — to review | Lemma D [THEOREM2_PROOF] |
 | L-137 | HOMONYM: Lemma D has several defining files; restatement (merge) or distinct — to review | Lemma D [U3_REPAIRS] |
-| L-145 | HOMONYM: Lemma D′ has several defining files; restatement (merge) or distinct — to review | Lemma D′ [THEOREM2_PROOF] |
-| L-147 | HOMONYM: Lemma D″ has several defining files; restatement (merge) or distinct — to review | Lemma D″ [INFINITE_VOLUME_IV12] |
-| L-148 | HOMONYM: Lemma D″ has several defining files; restatement (merge) or distinct — to review | Lemma D″ [KAPPA_BOUNDED] |
+| L-145 | MERGED into L-004 (RENUMBER_VERIFY §7.4; 2026-10-28); retired id kept for frozen-file lookups | Lemma D′ [THEOREM2_PROOF] |
+| L-147 | MERGED into L-005 (RENUMBER_VERIFY §7.5; 2026-10-28); retired id kept for frozen-file lookups | Lemma D″ [INFINITE_VOLUME_IV12] |
+| L-148 | MERGED into L-005 (RENUMBER_VERIFY §7.5; 2026-10-28); retired id kept for frozen-file lookups | Lemma D″ [KAPPA_BOUNDED] |
 | L-152 | HOMONYM: Lemma E has several defining files; restatement (merge) or distinct — to review | Lemma E [ASSEMBLY] |
 | L-153 | HOMONYM: Lemma E has several defining files; restatement (merge) or distinct — to review | Lemma E [S_WC_EXPGAUGE] |
 | L-154 | HOMONYM: Lemma E has several defining files; restatement (merge) or distinct — to review | Lemma E [THEOREM2] |
@@ -1291,8 +1294,8 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 | L-172 | HOMONYM: Lemma G1 has several defining files; restatement (merge) or distinct — to review | Lemma G1 [S_GGAIN_NONMONO] |
 | L-174 | HOMONYM: Lemma G3 has several defining files; restatement (merge) or distinct — to review | Lemma G3 [S_G3] |
 | L-175 | HOMONYM: Lemma G3 has several defining files; restatement (merge) or distinct — to review | Lemma G3 [S_G3_N2] |
-| L-176 | HOMONYM: Lemma G3 has several defining files; restatement (merge) or distinct — to review | Lemma G3 [S_GGAIN] |
-| L-177 | HOMONYM: Lemma G3 has several defining files; restatement (merge) or distinct — to review | Lemma G3 [S_GGAIN_NONMONO] |
+| L-176 | MERGED into L-174 (RENUMBER_VERIFY §7.3; 2026-10-28); retired id kept for frozen-file lookups | Lemma G3 [S_GGAIN] |
+| L-177 | MERGED into L-174 (RENUMBER_VERIFY §7.3; 2026-10-28); retired id kept for frozen-file lookups | Lemma G3 [S_GGAIN_NONMONO] |
 | L-181 | HOMONYM: Lemma H has several defining files; restatement (merge) or distinct — to review | Lemma H [S_D2C] |
 | L-182 | HOMONYM: Lemma H has several defining files; restatement (merge) or distinct — to review | Lemma H [S_HBETA] |
 | L-184 | HOMONYM: Theorem H2 has several defining files; restatement (merge) or distinct — to review | Theorem H2 [H2_CERTIFY] |
@@ -1302,7 +1305,7 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 | L-188 | HOMONYM: Lemma HH has several defining files; restatement (merge) or distinct — to review | Lemma HH [S_GGAIN_BETAH] |
 | L-189 | HOMONYM: Lemma HH has several defining files; restatement (merge) or distinct — to review | Lemma HH [S_HHIST] |
 | L-190 | HOMONYM: Lemma HH has several defining files; restatement (merge) or distinct — to review | Lemma HH [S_SM] |
-| L-204 | HOMONYM: Theorem K has several defining files; restatement (merge) or distinct — to review | Theorem K [B2_TWOSTEP] |
+| L-204 | MERGED into L-009 (RENUMBER_VERIFY §7.1; 2026-10-28); retired id kept for frozen-file lookups | Theorem K [B2_TWOSTEP] |
 | L-206 | HOMONYM: Theorem L has several defining files; restatement (merge) or distinct — to review | Theorem L [S_MULTISCALE_OMEGA] |
 | L-207 | HOMONYM: Theorem L has several defining files; restatement (merge) or distinct — to review | Theorem L [S_WC_EXPGAUGE] |
 | L-208 | HOMONYM: Theorem L has several defining files; restatement (merge) or distinct — to review | Theorem L [WC_FULL] |

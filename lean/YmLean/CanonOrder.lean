@@ -64,7 +64,7 @@ def canonEdges : List (Line × Line) :=
   , (N060, N250), (N190, N250), (N210, N250), (N220, N250), (N230, N250)
   , (N160, N250)                                   -- level-4 radius k_{C′}b_1^{37} (G)
   , (N060, N260), (N230, N260), (N250, N260)
-  , (N180, N260)                                   -- δ_𝒲^Ω = δ_𝒲 − p_Sθ_S, θ_S at M_min (Ω pass)
+  , (N180, N260)                                   -- Ω pass; no value since the canon fix pass: δ_𝒲^Ω is read under the N-310 entry (S_H^Ω); harmless over-approximation
   , (N060, N270), (N170, N270), (N090, N270), (N190, N270), (N200, N270), (N240, N270), (N250, N270), (N260, N270)
   , (N140, N270)                                   -- M_1 ≥ M_310 (G)
   , (N160, N270)                                   -- M_1 ≥ M_W^{39,c} (VERIFY2)

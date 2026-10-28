@@ -126,6 +126,10 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | ASSEMBLY_VERIFY.md | Verifier of ASSEMBLY. | report |
 | ASSEMBLY_N1.md | The bridge R-045 (B-N1): sourced cumulant bounds ⇒ H-116 (H-U). | verified (SOURCES_HHIST_N1_VERIFY; given R-045 (S); one constant slip) |
 | INBOX.md | Delta notes for Elvin (certification cost and launch decision). | report |
+| ALT_ROUTES.md | Two alternative routes against the wall: Chatterjee's center-symmetry equivalence and stochastic quantization; exact statements, obstructions, extractable inequalities. | unverified (Fable; verifier held) |
+| FABLE_A25_A26_H1.md | Lemma LB_Q̃ (R-022), the gluing step of R-023 (CMP 109 p. 275), and the new hypothesis (H1) of THM37: prove or discharge. | unverified (Fable; verifier held) |
+| FABLE_HARD.md | Four hard items of the infinite-volume programme: S1-pt (H-165) ν form, short-distance O(4), uniqueness, the wall; failing steps named. | unverified (Fable; verifier second attempt banked as OPUS_QUEUE VH1) |
+| FABLE_O3_ALC.md | Task A: O3, non-vanishing of the sourced R-denominators on the source polydisc; Task B: (AL-c) (H-071), the complex averaged-link bound with c_N computed. | unverified (Fable; verifier held) |
 | H1_ANALYTIC_VERIFY.md | H1_ANALYTIC_VERIFY — independent check of H1_ANALYTIC.md | verified |
 | H1_ANALYTIC_VERIFY2.md | H1_ANALYTIC_VERIFY2 — independent construction of H_j(K) (residue of H1_ANALYTIC_VERIFY item 6) | numerical |
 | H2_CERTIFY_L13_G1_VERIFY.md | H2_CERTIFY_L13_G1_VERIFY — pre-launch verification of the G1 certifier | numerical, unverified |
@@ -134,6 +138,8 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | PAPER_FIX_LOG.md | PAPER_FIX_LOG.md (2026-10-27) | — |
 | PAPER_INTRO_VERIFY.md | PAPER_INTRO_VERIFY.md | — |
 | PAPER_PASS5_VERIFY.md | Paper pass 5 verify (2026-10-27) | verified |
+| R3S1_GAP.md | Mass gap for center-stabilized SU(N) Yang–Mills on R³ × S¹ at small circle: assessment, target Theorem B′, first derivations. | unverified (Fable; verifier held) |
+| SOURCES_3D_GAP_LIT.md | Literature check of R3S1_GAP: Ünsal–Yaffe statements and the claim that no rigorous gap exists for the 3d or reduced theory. | unverified check |
 | SOURCES_A1_A4_VERIFY.md | SOURCES_A1_A4_VERIFY — independent check of SOURCES_A1_KERNEL.md and SOURCES_A4_D189.md | verified |
 | SOURCES_A1_KERNEL.md | SOURCES_A1_KERNEL — attempt on trust-ledger item R-001 (CMP 99 (3.132)) | proved |
 | SOURCES_A1_WALK.md | SOURCES_A1_WALK — R-001 as a convergent walk expansion of (QGQ*)^{−1} with (3.108)-type bounds | — |
@@ -147,6 +153,7 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_A3_SIGMA.md | SOURCES_A3_SIGMA — lower bound for the s-localized covariance C^{(k)}(Z_0, s), s ∈ [0, 1] | proved |
 | SOURCES_A3_SIGMA_VERIFY.md | SOURCES_A3_SIGMA_VERIFY | verified |
 | SOURCES_A4_D189.md | SOURCES_A4_D189 — derivation attempt of CMP 102 (189) (trust-ledger R-005), IDEAS_FABLE §I4 | — |
+| SOURCES_ALT_ROUTES_CITES.md | Citation check of ALT_ROUTES: Chevyrev–Shen and Chandra–Chevyrev–Hairer–Shen, line by line against arXiv sources. | unverified check |
 | SOURCES_B21_S.md | SOURCES_B21_S — uniformity of R-045 (S) at small widths and at separation 16ε | proved, unverified |
 | SOURCES_B21_S_VERIFY.md | SOURCES_B21_S_VERIFY — independent check of SOURCES_B21_S.md | verified |
 | SOURCES_BOOKKEEPING.md | SOURCES_BOOKKEEPING — closing TRUST_LEDGER rows R-047, R-048, R-049, R-051 | proved |
@@ -156,6 +163,7 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_GGAIN_LF_VERIFY.md | SOURCES_GGAIN_LF verification (independent) | verified |
 | SOURCES_GGAIN_NONMONO.md | SOURCES_GGAIN_NONMONO — lifting the monotone-history restriction on C_β | — |
 | SOURCES_GGAIN_NONMONO_VERIFY.md | SOURCES_GGAIN_NONMONO verification (2026-10-28) | — |
+| SOURCES_GM1982_CHECK.md | Göpfert–Mack 1982 read against every statement R3S1_GAP attributes to it (DESY preprint, OCR from page images). | unverified check |
 | SOURCES_MA2_VERIFY.md | SOURCES_MA2_VERIFY.md | verified |
 | SOURCES_MC.md | SOURCES_MC — H-146 (M-C): the complex small-field step reduced to printed CMP 116 §2 conditions | — |
 | SOURCES_MC_VERIFY.md | SOURCES_MC verification (independent) | verified |
@@ -163,6 +171,8 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_QE_INV_VERIFY.md | SOURCES_QE_INV verification (independent) | — |
 | SOURCES_QE_KE_HQ.md | SOURCES_QE_KE_HQ — H-136 (KE′) at all scales and H-123 (H_Q) (2026-10-28) | proved |
 | SOURCES_QE_KE_HQ_VERIFY.md | SOURCES_QE_KE_HQ verification (2026-10-28) | verified |
+| SOURCES_R3S1_E2.md | Lemma E2 of R3S1_GAP: Polyakov-loop Cartan frame, lattice monopole charge, flux quantization; script numerics/r3s1_e2_check.py. | unverified check |
+| SOURCES_R3S1_NUMERICS.md | Lattice GPY potential, holonomy mass, and Villain self-energy for R3S1_GAP; scripts numerics/r3s1_gpy_lattice.py, numerics/villain_self_energy.py. | unverified check |
 | SOURCES_S2_FORM.md | SOURCES_S2_FORM — S2: form bound for the dressed extension field | reduced |
 | SOURCES_S2_FORM_VERIFY.md | SOURCES_S2_FORM verification (independent) | verified |
 | SOURCES_S2_G1_V7.md | SOURCES_S2_G1_V7 — S2 for G_1 (form bound via Δ^{(2)}_π) and the R-003 V7 repair with its two [I] items | proved, unverified |
@@ -257,6 +267,7 @@ One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | README.md | Build instructions and label map. | report |
 | main.pdf | Compiled 87-page paper. | unverified |
 | refs_check_cloud.md | Online check of every refs.bib entry (2026-10-28): all CONFIRMED, none corrected. | — |
+| drafts/open_problem.tex | Standalone draft section stating the open problem of FABLE_HARD (Gap_K, (U-Lap)_K, Theorems U1/U2/W1/W2/FD); not \input from main.tex. | unverified check |
 
 ## numerics/
 
@@ -271,3 +282,7 @@ One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | unverified; nothing launched |
 | h1cert_L{3,5,7,9,11,13}_{j1,j2,jinf}.json, h1cert_prof_L{11,13}.npz | Stored scan data. | report |
 | H1_OTHER_L.md | H1_OTHER_L — the (H1_L) majorant certificate at L = 15, 17, 21 (2026-10-28) | numerical |
+| BETA1_SLOPE_STAGE.md | Staged text for NUMERICS §7: converged-grid β_1 at L = 9 (three Lp) against the L = 13 anchor; the slope in log L is about 0.25 c, so the β_1 vs c log L tension stands; L = 11 and 13 not run. | unverified check |
+| r3s1_e2_check.py | Check of Lemma E2 (Polyakov-loop abelian projection, cube charges) on a periodic lattice, SU(2) and SU(3); see SOURCES_R3S1_E2.md. | unverified check |
+| r3s1_gpy_lattice.py | One-loop lattice GPY holonomy potential with the double-trace deformation, SU(2) and SU(3); see SOURCES_R3S1_NUMERICS.md. | unverified check |
+| villain_self_energy.py | Villain monopole self-energy G(0) of the 3d lattice Laplacian: Bessel integral, Watson closed form, finite-torus sum; see SOURCES_R3S1_NUMERICS.md. | unverified check |
