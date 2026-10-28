@@ -88,11 +88,15 @@ theorem I1_compress {ι : Type*} [Fintype ι] (s : 𝕜) (P : Matrix n n 𝕜) (
       _ = P * diagonal (e l) * diagonal (d l) * ((diagonal (e l))ᴴ * P) := by rw [hE l, h2]
       _ = _ := by
           rw [diagonal_conjTranspose]
-          simp only [← Matrix.mul_assoc, diagonal_mul_diagonal]
+          simp only [← Matrix.mul_assoc]
+          rw [Matrix.mul_assoc P (diagonal _) (diagonal _), diagonal_mul_diagonal,
+            Matrix.mul_assoc P, diagonal_mul_diagonal]
           rfl
   have hd : diagonal (fun μ => s ^ 2 * ∑ l, e l μ * d l μ * star (e l μ)) =
       s ^ 2 • ∑ l, diagonal (fun μ => e l μ * d l μ * star (e l μ)) := by
-    ext i j; by_cases h : i = j <;> simp [diagonal_apply, h, Finset.sum_apply]
+    ext i j
+    rw [Matrix.smul_apply, Matrix.sum_apply]
+    by_cases h : i = j <;> simp [h]
   rw [hd, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_smul, Matrix.smul_mul, Matrix.mul_sum,
     Matrix.sum_mul, Matrix.mul_sum, Matrix.sum_mul]
   simp only [← Matrix.mul_assoc] at key ⊢
@@ -102,8 +106,9 @@ theorem I1_compress {ι : Type*} [Fintype ι] (s : 𝕜) (P : Matrix n n 𝕜) (
 theorem rq_conj (Z T : Matrix n n 𝕜) (x : EuclideanSpace 𝕜 n) :
     rq (Zᴴ * T * Z) x = rq T (toEuclideanCLM (n := n) (𝕜 := 𝕜) Z x) := by
   rw [rq, rq, map_mul, map_mul, ← star_eq_conjTranspose, map_star,
-    ContinuousLinearMap.star_eq_adjoint, ContinuousLinearMap.mul_apply,
-    ContinuousLinearMap.mul_apply, ContinuousLinearMap.adjoint_inner_right]
+    ContinuousLinearMap.star_eq_adjoint]
+  simp only [mul_apply_eq_comp]
+  rw [ContinuousLinearMap.adjoint_inner_right]
 
 /-- (2) VERIFY V1 (i): `λ_max(A + B) ≤ λ_max A + λ_max B`, Rayleigh form. Hermiticity is not needed. -/
 theorem rayleigh_sum_bound (A B : Matrix n n 𝕜) {a b : ℝ} (hA : ∀ x, rq A x ≤ a * ‖x‖ ^ 2)
@@ -144,7 +149,8 @@ theorem lemmaT_core (Z T T2 : Matrix n n 𝕜) {dmax : ℝ} (hdm : 0 ≤ dmax)
     rq (Zᴴ * T2 * Z) x ≤ dmax * ‖Z‖ * ‖x‖ ^ 2 := by
   rw [rq_conj]
   have h := hT2 (toEuclideanCLM (n := n) (𝕜 := 𝕜) Z x)
-  rw [← rq_conj, hZ] at h
+  have e : rq T (toEuclideanCLM (n := n) (𝕜 := 𝕜) Z x) = rq Z x := by rw [← rq_conj, hZ]
+  rw [e] at h
   nlinarith [rq_le_norm Z x, mul_le_mul_of_nonneg_left (rq_le_norm Z x) hdm]
 
 end YmLean

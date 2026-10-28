@@ -1,4 +1,4 @@
-# Lean 4 formalization (17 files)
+# Lean 4 formalization (18 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -21,13 +21,14 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `TheoremC1.lean` | `c1_two_step`, `c1_kappa_bound`, `c1_window` (59) | THEOREM2_PROOF_v4.md §5.3; B2_TWOSTEP.md §2 | VERIFY_TheoremC1.md |
 | `StripBound.lean` | `strip_bound_linear`, `strip_bound_quadratic` (73) | SOURCES_HBETA_N3.md §4 | VERIFY_TheoremC1.md |
 | `CertBridge.lean` | `entrywise_to_opnorm`, `interval_to_opnorm`, `cell_invertible`, `norm_submatrix_le`, `rq_weyl`, `pert_bound`, `cell_sup_bound`, `vertex_bound` (268) | numerics/h1cert_cell.py, h1cert_cell2.py | VERIFY_CertBridge.md |
+| `Tower.lean` | `weighted_tower`, `weighted_tower_le`, `tower_bounds`, `I1_compress`, `rq_conj`, `rayleigh_sum_bound`, `conj_rayleigh_bound`, `rank_one_bound`, `majorant_core`, `lemmaT_core` (167) | H1_ANALYTIC.md §2–§3, (1.1); H1_ANALYTIC_VERIFY.md V1 | VERIFY_Tower.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 17 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 18 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -224,3 +225,10 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 - `CertBridge.lean` (268 lines, no `sorry`): `entrywise_to_opnorm` (‖A_ij − B_ij‖ ≤ E_ij ⇒ ‖A − B‖₂ ≤ ‖E‖_F), `interval_to_opnorm` (real Alo ≤ A, A₀ ≤ Ahi ⇒ ‖A − A₀‖₂ ≤ ‖Ahi − Alo‖_F), `cell_invertible` (every A in the enclosure: invertible, ‖A⁻¹‖ ≤ nR/(1−η), ‖A⁻¹ − R‖ ≤ nR η/(1−η), via `oishi_rump_eta`), `norm_submatrix_le`, `rq` (Rayleigh numerator re⟪x, Gx⟫), `rq_weyl`, `pert_bound` (the `pert` term of `final_bound`), `cell_sup_bound` (composite: λ_max(Zᴴ T2 Z + γ′ w wᴴ) ≤ core + pert), `vertex_bound` (h1cert_cell2: max over 2^4 vertices + ‖r_G‖_F).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all twelve printed theorems. Not formalized: correctness of the arb enclosures (P1′/P2/P3, P4), the Python implementation, ρ_1 = √λ_max(G)/L, and the `inv_or` η of h1cert_cell2.
+
+## Tower.lean (H1_ANALYTIC.md §2 (2.2), (I1), §3 Lemma T (a)–(c), (1.1); H1_ANALYTIC_VERIFY.md V1); statement check `VERIFY_Tower.md`
+
+- `weighted_tower` (w ≥ 0, Σw = 1 ⇒ min d ≤ Σ w d ≤ max d), `weighted_tower_le` (0 ≤ s ≤ 1, 0 ≤ d ≤ b ⇒ Σ w s d ≤ Σ w b ≤ max b; Lemma T (b)), `towerSym` = (2.2) as a definition, `tower_bounds` (0 ≤ d^{ML}_μ ≤ L^{−2} max_l b_l).
+- `I1_compress`: P_⊥, P_l Hermitian, P_⊥E_lP_l = P_⊥diag(e_l) ⇒ P_⊥(s²Σ_l E_lP_l diag(d_l) P_lE_lᴴ)P_⊥ = P_⊥diag(s²Σ_l e_l d_l conj e_l)P_⊥ (the algebraic step of (I1)).
+- Rayleigh form (`rq` of CertBridge.lean): `rq_conj` (rq(ZᴴTZ)x = rq T (Zx)), `rayleigh_sum_bound`, `conj_rayleigh_bound` (λ_max(ZᴴTZ) ≤ ‖Z‖²t, t ≥ 0), `rank_one_bound` (λ_max(γwwᴴ) ≤ γ‖w‖²), `majorant_core` (λ_max(ZᴴT2Z + γwwᴴ) ≤ ‖Z‖²t + γ‖w‖²), `lemmaT_core` (T2 ≤ d_max T, ZᴴTZ = Z ⇒ λ_max(ZᴴT2Z) ≤ d_max‖Z‖, the form Lemma T uses).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: the Fourier/umklapp derivation of (2.2), Lemma S, the symbols a_ρ, σ, q̃ and the Fejér identity, Lemma T (d), Lemma Gauge, F_CS, and the branch-and-bound.
