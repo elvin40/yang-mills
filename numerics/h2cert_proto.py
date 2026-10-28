@@ -147,9 +147,6 @@ def norm2_upper(M, m=7):  # ||M||_2 <= ||(M^+M)^{2^m}||_F^{1/2^{m+1}}; overestim
     for _ in range(m): G = G * G
     return frob_upper(G).root(2**(m + 1))
 
-def norm1inf_upper(Xnp):  # cheap ||R||_2 <= sqrt(||R||_1 ||R||_inf), float sums inflated by 1e-10 (a priori rounding bound)
-    a = np.abs(Xnp); return arb(float(np.sqrt(a.sum(0).max() * a.sum(1).max())) * (1 + 1e-10))
-
 def solve_cert(B, sharp=False):
     """H~ (float), rigorous e >= ||H - H~||_2 for the first nf rows of B^{-1}[0; I], and ||B^{-1}|| <= binv, for every B in the ball.
     Oishi-Rump: ||B^{-1}|| <= ||R|| / (1 - eta), eta >= ||R B - I||; B = Bmid + dB with ||dB|| <= r (block-diagonal radius)."""
@@ -213,7 +210,7 @@ def rho2(K, lmax, tail, log=print):
     lo2, hi2 = lam_max(gram(Hin, Hj))
     err = ein * (nj + ej) + nin * ej  # ||X - X~|| <= max e_in (||Hj~|| + e_j) + max ||Hin~|| e_j
     lo = (arb(lo2).sqrt() - err) / L**2; hi = (hi2.sqrt() + err) / L**2
-    log(f"  inner: max e_in {float(ein.upper()):.2e}, max ||Hin|| {float(nin.upper()):.4f}, ||Hj|| {float(nj.upper()):.4f}, max ||B_in^-1|| (1-inf bound) {float(binv_max.upper()):.1f}  ({time.time()-t0:.0f}s)")
+    log(f"  inner: max e_in {float(ein.upper()):.2e}, max ||Hin|| {float(nin.upper()):.4f}, ||Hj|| {float(nj.upper()):.4f}, max ||B_in^-1|| (Oishi-Rump, m=4) {float(binv_max.upper()):.1f}  ({time.time()-t0:.0f}s)")
     return arb(lo.lower()), arb(hi.upper()), out
 
 def float_ref(Kf, lmax):

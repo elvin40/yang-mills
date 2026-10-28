@@ -318,3 +318,213 @@ Not needed for Theorem 1. It adds: (i) existence of β_∞ = lim β_j(0); (ii) i
 ### 7.2 Early steps and j_*
 Under Prop. 3.6 and β_∞ = c log L, β_{j+1}(0) ≥ (c log L)/2 for j ≥ j_* := min{J : C(1 + j)²L^{−2j} ≤ (c log L)/2 for j ≥ J}. Heuristic size [argued]: C ~ b³ gives j_* ≈ 110 (L = 3), ≈ 70 (L = 13); C ~ b⁶ (one-step inverses inside C_data) gives ≈ 218, ≈ 138 (THEOREM2_PROOF_VERIFY Point 5(e)). With the measured ‖𝔅^{−1}‖ ≈ 195: j_* ≈ 10 (L = 3), ≈ 4 (L = 13). Certifying β_1(0), …, β_{j_*}(0) > 0 needs interval arithmetic at odd L ≥ 13 (blocks ≈ 3.4·10⁵ rows per momentum by dense methods; the umklapp code reduces this to 12×12 blocks at L⁴ momenta). It is needed only for (L2), not for Theorem 1.
 
+
+## §8 Numerics
+
+SU(2), infinite volume, Balaban's normalized-trace units. None of this is certified. Only odd L is inside the proofs; L = 2, 4 use corner blocks and are outside them.
+
+### 8.1 First increment β_1(0) (NUMERICS §6–§7; UMK_BETA1.md)
+| L | β_1(0) | how | b = c log L | β_1 − b | status |
+|---|---|---|---|---|---|
+| 2 | 0.630 | Ng = 12, p → 0 fit | 0.2575 | +0.372 | [numerical, reproduced] (KAPPA_BOUNDED_VERIFY §4: 0.6296) |
+| 3 | 0.664 | Ng = 8, p → 0 fit (0.6625–0.6661) | 0.4082 | +0.256 | [numerical, reproduced]; Ng 6 → 8 shift ≈ 0.015 |
+| 4 | 0.757 | Ng = 6, single p = 0.2; O((Lp)²) bias ≈ 0.01 | 0.5150 | +0.242 | [numerical] |
+| 5 | 0.749 (Ng = 12, p = 0.1); fit 0.743 | umklapp code | 0.5979 | +0.145 | [numerical] |
+| 7 | 0.803 | umklapp code, Ng = 8, Lp = 0.5 | 0.7229 | +0.080 | [numerical] |
+| 9 | 0.833 (Lp = 0.5); 0.846 (Lp = 0.9), 0.851 (Lp = 1.0) | umklapp code, Windows, Ng = 8 | 0.8163 | ≈ +0.02 | [numerical] |
+| 11 | 0.850 (Lp = 0.5); 0.868 (Lp = 1.0) | umklapp code, Windows, Ng = 8; Ng = 8 grid adequacy at L = 11 unchecked | 0.8908 | ≈ −0.04 | [numerical] |
+The first-step constant β_1 − c log L is +0.37, +0.26, +0.24, +0.15, +0.08, +0.02, −0.04 for L = 2, 3, 4, 5, 7, 9, 11. It decreases with L and changes sign between L = 9 and L = 11. β_1(0) itself stays positive at every L computed. The umklapp code was validated against ym_momentum to 10^{−12} per K by its author; no independent verifier for the β_1 values at L ≥ 5. The queue continues to L = 15 on Windows. No value at L > 11 exists yet.
+
+### 8.2 Later increments (L = 2 only)
+| quantity | value | status |
+|---|---|---|
+| β_1 + β_2 (composed, Ng = 4/6/8) | 1.148 / 0.967 / 0.953 | [numerical]; single p = 0.2, Lp bias label |
+| per-level β_2(0) | ≈ 0.32 (0.953 − 0.630). Per-level recursion 0.317–0.341 (N = 8–12, single p = 0.2). Symmetric Nyquist: 0.33334 (N = 8, p_1 = 0.2), 0.31679 (N = 12, p_1 = 0.2), 0.32283 (N = 12, p_1 = 0.4) (BETA_FP_VERIFY §7; BETA_FP_PW_VERIFY §5–§6). Level-1 values carry N-aliasing of about ±5%. | [numerical]; per-level recursion reproduced in BETA_FP_VERIFY §7 |
+| β_3(0) | 0.40 (N = 8), 0.286 (N = 12), 0.261 (verifier, symmetric Nyquist, N = 8) | unconverged; not usable |
+| abelian sector S_k^{ab} | (1 − L^{−4k})/4, matched to all digits | [proved+verified]; [Lean] counting part (AbelianCount.lean) |
+| (U) test | |β_{j+1}(p) − β_{j+1}(0)| ≤ 0.2p² at every computed point (L = 2 levels 0–1, L = 3 level 0, p ≤ 0.8); uniformity in j not testable with two levels | [numerical, run by the verifier] (BETA_FP_PW_VERIFY §6) |
+All computed increments are positive.
+
+### 8.3 Quantities of the Route K proof
+| quantity | value | status |
+|---|---|---|
+| d_1 = b − β_1, L = 3 | −0.256 ± 0.01 (fits −0.254 … −0.258) | [numerical, reproduced] |
+| d_1, κ_1, L = 2 | −0.372, 1.114 | [numerical, reproduced] |
+| d_2, d_3, L = 2 | ≈ −0.44, ≈ −0.45 (d_3 uses unconverged β_3) | [numerical]; bounded-looking, not a test |
+| ρ_1 = max_K ‖H_j(K)‖/L, L = 3, j = 1, 2, 3, ∞ | 1.652, 1.736, 1.757, 1.760 | [numerical, run by the verifier, U3_AW_VERIFY §6]; refutes (HS); h²/L⁴ ≈ 0.34 < 1; one-step C¹ factor ρ_1²/L > 1 for j ≥ 2 |
+| ρ_1, L = 5, j = 1, 2, ∞ | 1.860, 1.9565, 1.963; ρ_1²/L = 0.771 | [numerical]; j = 1 and the bound measured by the verifier (H2_LARGE_L_VERIFY §6) |
+| ρ_2 ((H2)), L = 3, 5, 7, 9 | see §5.4: 2.0634, 2.108, ≥ 2.1131, ≥ 2.1142 at j = ∞ against thresholds 3, 5, 7, 9 | [numerical, reproduced] at L = 3, 5; [numerical, run by the verifier] at L = 7, 9 |
+| (H″), n = 2, L = 3 | 2.056 < 2.828 | [numerical, run by the verifier], coarse grid, one level pair |
+| a_*, L = 5 | 0.0107 (binding mode near K = 0, gauge/ghost sector) | [numerical, run by the verifier] (H2_LARGE_L_VERIFY §6) |
+| σ_j^{(1)}(0) J-part, j = 0, 1, 2 (d = 2 proxy) | 0.750000, 0.75015, 0.75051 vs 0.75 | [numerical, run by the verifier] supports Theorem W |
+| σ_j^{(2)}(K) scan | not run: no d = 4 constant-field per-momentum code | — |
+
+## §9 Ledger (tags match the verifier files)
+
+[Lean] (no sorry; axioms propext, Classical.choice, Quot.sound)
+- Lemma D′ (a)–(d) (`YmLean.lemma_DPrime`), Step 8 (`lemma_DPrime_step8`), Lemma D, Lemma E (Cg² form), Lemma D+E (lean/YmLean/LemmaDPrime.lean, LemmaDE.lean). One-argument β only.
+- Lemma D″ (`YmLean.lemma_DDoublePrime`, lean/YmLean/LemmaDDoublePrime.lean, 146 lines): (a″) bracket (3b/4)(K − k) − 2R ≤ T(k, K) ≤ (5b/4)(K − k) + 2R; (b) shooting for g ∈ ]0, g_1] with the clamp inactive; (c′) with β = 3b/4, B′ = 5b/4 + 2R, D′ = 2R, for every trajectory with couplings in ]0, γ]; (d) for n − m ≥ 8R/b, lower constant b/2. Hypotheses weaker than the note (continuity, any admissible γ, R ≥ 0 derived). One-argument β only; L5 not formalized.
+- The Lean folder also has Telescoping, DetIdentities, AbelianCount, and LemmaH files (lean/README.md); this chapter uses only the AbelianCount counting part, as a cross-check in §8.2.
+
+[proved+verified]
+- Lemma D′ (a)–(d), K_0, Remark 4 (LEMMA_DPRIME_VERIFY grades 1, 2, 5).
+- Lemma D (corrected interval), Lemma E (Cg² form), nested-interval variant of Lemma D (LEMMAS_DE_VERIFY). Lemma E C¹ form: trivial variant, same proof.
+- Lemma D″ (tail-sum form, no J) (KAPPA_BOUNDED_VERIFY §6).
+- Telescoping S_k = Σβ_j(0) for the p → 0 coefficient (BETA_FP_VERIFY item 1, corrected scope).
+- Prop. 2.1 anchor-free identity; exact at the constant field (BETA_FP_LEMMA43_VERIFY item 1; BETA_FP_H_VERIFY item 1).
+- c = 11N²/(12π²), normalization chain; (F) source (Savvidy eq. (1.4)) (BETA_FP_LEMMA43_VERIFY item 2; BETA_FP_H_VERIFY §4).
+- KAPPA Prop. 1.1 as an identity given its fixed-level inputs; Lemma 2.1 (integration by parts); Prop. 2.2; level-independence of the degree −4 part; Theorem K and Theorem 2w as conditional reductions (KAPPA_BOUNDED_VERIFY (i)–(v)).
+- sup_j |σ_j^{(2)}(0)| < ∞; Prop. 4.1 algebra (KAPPA_BOUNDED_VERIFY (vi), reason for A4 failure corrected: obstruction = ∂σ^{(1)} in Q_j and in (W-2), §7 there).
+- B2_TWOSTEP two-step recursion; Theorem C1 ((H2) ⇒ (C1σ), factor ρ_2²/L²) and Theorem B2 ((H2) ⇒ (B2), factor ρ_2²/L⁴), conditional on (H2); threshold ρ_2 < L (no strip loss); (H2) weaker than (H″) at n = 2 (B2_TWOSTEP_VERIFY grades 1, 3, 4). Form of Q_j by read-off (grade 8; U3_LEMMA51 (3.3) not re-derived).
+- h2_scan code structure, one-colour reduction, H and Δ_out blocks, Gram identity, separable Prop. A form (H2_LARGE_L_VERIFY grade 1); tail-bound derivation (4.1)–(4.3) (grade 6, inputs corrected).
+- Prop. E evenness, Theorem W0/W, Theorem A3, Lemma A4, A0, Prop. A2 (U3_AW_VERIFY grades 1–4).
+- U3 Theorem 4.1 + O5, Prop. A, Prop. B, O6, Theorem 6.1 (given V1; Taylor-data norm), Lemma 5.1 neutral value bound, single-block m = 2 failure in d = 4, one-step recursion, R2 midpoint identity (U3_VERIFY, U3_REPAIRS_VERIFY, U3_LEMMA51_VERIFY, U3_LEMMA51_R23_VERIFY).
+- Cesàro: given convergence, κ_k = o(k) ⇔ β_∞ = c log L (equivalence, not a weaker form) (THEOREM2_PROOF_VERIFY Point 4).
+
+[proved, unverified]
+- Theorem B and Lemma 1.3 of BETA_FP_PW. BETA_FP_PW_VERIFY §6 now grades items 1–4 CONFIRMED (Theorem B as conditional logic) and items 5, 6 CORRECTED; the tag is kept as in v3 (§4.2).
+- BETA_FP_U (no verifier file): Theorem 2.4 ((U) ⇐ (T1) + (H2)), Prop. 3.1 (Γ^{ex} = γ_rec + 𝔡_F), Prop. 3.2 (γ_rec bounded), Corollary 4.1, Theorem 2w by the plane-wave route given (T1), (H2), (DF), LW (5.7), A6, (H0); the argued step "(H2) closes (C1σ)" of §3.5 there is superseded by B2_TWOSTEP Theorem C1 [proved+verified].
+- LEMMA_DPRIME_SWEEP: 19 cross-scale uses covered by (b) + (c′) + (S) (4 of 19 table rows, 11, 12, 16, 18, verified on page images by LEMMA_DPRIME_VERIFY comparisons A–E).
+- Step "Theorem 2w ⇒ Balaban's Theorem 1" (depends on the sweep and on L5 in the sharpened form of §2.4).
+- Prop. 3.6 assembly with C(1 + j)²L^{−2j}; neutral-sector K-derivative paragraph; σ^{(1)} convergence sketch jL^{−2j}.
+- Necessity of individual positivity for literal (0.31) at every K (elementary).
+- BETA_FP_M Prop. 4.3 (log|det| bound in the N–O window, given (S1)–(S3)); no verifier file.
+- One-step sufficiency ρ_1² < L ⇒ (H2) (submultiplicativity; arithmetic, H2_LARGE_L §3).
+
+[argued]
+- (PI); (M_j) (Prop. 4.4 of BETA_FP_M); (U) as a bare hypothesis (now reduced, see above); (T1) (plane-wave form of A3, BETA_FP_U §2.3); (DF) (BETA_FP_U §3.4); A6 = plane-wave vs constrained-minimizer expansion point (uniform in k); 𝔡_Y, 𝔡_gf bounds; (H″) ⇒ (A) in full ⇒ (B2) (U3_AW §4.7 sketch); C², C³ of σ^{(1)} under (H2) (not written); j_* size; the rate O(Λ^{−2} log Λ).
+
+[open]
+- (H2) (certification; numerical at L = 3, 5, 9). (B2) is reduced to it [verified reduction]. (T1), (DF), A6 for Route B. V1. (S1)–(S3). L5 (domain of β; nested-interval D″ [not written]). K-independence of β_j(g). (A) in full. See §10.
+
+[corrected by verifiers since v3]
+- B2_TWOSTEP G1: the certification of (H2) is a computer-assisted proof project, not a check (B2_TWOSTEP_VERIFY grade 6).
+- H2_LARGE_L: L-trend rate claim (grade 5); j_0 inputs, δ_m 45–90× larger, a_*(L = 5) = 0.0107 (grade 6), giving j_0 ≈ 8 (L = 3), ≈ 6 (L = 5).
+- BETA_FP_PW: comparison and numerics (BETA_FP_PW_VERIFY grades 5, 6).
+
+[refuted]
+- (HS) sup‖H_j‖ < L√(L − 1) at L = 3.
+- U3_LEMMA51 Theorem 4.1 for m = 2 with a single block-M constraint in d = 4.
+- v1 claims withdrawn: "every early step must be certified for Theorem 1" (false: Lemma D′/D″); "(H′) is weaker than β_∞ = c log L" (it is equivalent); "the whole log Λ sits in the fine piece" as a fact (it is equivalent to the open statement); "one-loop parts hold for SU(N)" (Lemma 5.1's charged/neutral split is the SU(2) Cartan split); (3.2) with C j²L^{−2j} (0 at j = 0); the (M) resolvent bound ‖𝒦_t^{−1}‖ ≤ C/|f| (Nielsen–Olesen zero); (H) with IR weights as stated (UNSUPPORTED).
+- Not a refuted statement, but a failed method: the one-step sup-norm C¹ recursion at L = 3 (factor 1.005–1.033 for j ≥ 2; §5.2).
+
+[Balaban]
+- (H0) smoothness and uniform bounds of β_{j+1} in g (CMP 109 (1.22), pp. 263–264), at odd L > 11 only; Theorem 1 and the inductive bounds of CMP 109, 116, 119, 122 and the propagator papers CMP 95, 96, 98, 99, 102. Uniform level bounds partly cited from CMP 95/96/99 (O6 replaced the main citation).
+
+[verified quote]
+- Theorem 2 and Theorem 1 wording, "separate paper", p. 298 history sentence, (0.1) with 1/g_k² and χ_k, (1.3)–(1.5) (print misprint E^{(j+k)} read as E^{(j+1)}), (2.6)–(2.9) of CMP 119, items A–E of CMP 122 (BALABAN_EXCERPTS_CHECK; LEMMA_DPRIME_VERIFY; LEMMA_DPRIME_SWEEP page images). BALABAN_EXCERPTS_CHECK items 10 (CMP 116 has no C^m-in-g statement) and 11 (unchecked readings) are unchanged since v3.
+
+[numerical] see §5.4 and §8.
+
+## §10 Open list (complete for Theorem 2w ⇒ Theorem 1)
+
+Single uniform hypothesis (both routes):
+H. (H2) ρ_2 = sup_{j≥2} sup_{K real} ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L [numerical at L = 3, 5, 9; certification open]. It replaces (C1σ) + (h) and (H″) of v3 as the one uniform-in-level inequality. Route K: (H2) ⇒ (C1σ) ⇒ (B2) [proved+verified, B2_TWOSTEP_VERIFY grade 3]. Route B: (H2) + (T1) ⇒ (U) [proved, unverified, BETA_FP_U Theorem 2.4]. Values (j = ∞, uncertified lower estimates of the sup): 2.0634 (L = 3, threshold 3, margin 31%), 2.108 (L = 5, threshold 5, margin 58%), ≥ 2.1131 (L = 7), ≥ 2.1142 (L = 9, one point). At L ≥ 5 the one-step condition ρ_1² < L suffices (ρ_1²/L = 0.771 at L = 5). Certification (§5.6): a computer-assisted proof project with tail level j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), certified ‖𝔅^{−1}‖, an explicit O5 constant, and interval arithmetic over the BZ; no explicit Lipschitz constant exists today. No value exists at L > 11.
+
+Route K hypothesis set (all must hold):
+1. (B2) sup_j sup_K |σ_j^{(2)}| < ∞ (or (B2w)). Reduced to H [verified reduction]. Older reductions kept: (C1σ) + (h) [proved+verified]; (H″) [argued]. (HS) is refuted.
+2. (PI) probe independence, at each fixed level [argued].
+3. (F) lattice = continuum log coefficient at constant field [cited source checked; lattice transfer standard, not proved here].
+4. (M_j) formal = true f² coefficient at each fixed level: (S1) 𝒦_t(f) ≥ −C_1|f|, (S2) density of states ≤ C_2|f| near 0, (S3) relative bound of the level difference, all on the lattice [open]; Prop. 4.4 [argued].
+5. V1 order-g⁰ completeness of CMP 109 (1.3)–(1.5): β_{j+1}(0) is the Maxwell coefficient of the per-step Gaussian determinant [open; supported at order p²].
+6. (G2) per-cell infinite-volume densities [formal].
+
+Route B hypothesis set (alternative to 1–5; per BETA_FP_U §4; all [proved, unverified] as implications, no verifier file for BETA_FP_U):
+B1. (T1) sup_j sup_{q real} |c^{(1)}_{T,j}(q)| < ∞, the plane-wave form of Theorem A3 [argued; the Landau-to-symmetric gauge conversion and Steps 2–5 of A3 for (2.1) are not written].
+B2′. (H2) = item H.
+B3. (DF) sup_k |𝔡_F(θ_*; L^k)| < ∞, the gauge-fixing difference at the plane wave [hypothesis, argued]. With the exact split Γ^{ex} = γ_rec + 𝔡_F (BETA_FP_U Prop. 3.1) there is no Y-defect; all non-stationarity sits in 𝔡_F. This replaces v3's 𝔡_Y, 𝔡_gf items for this route.
+B4. Lüscher–Weisz (5.7) [cited].
+B5. A6: the plane-wave increment equals Balaban's β up to the expansion point, uniformly in k [argued]. A uniform-in-k input, of the same kind as (DF).
+B6. (H0) = item 7 (Lemma D″ (i)).
+B7. θ_* < 1, so that c_2 ln(1/θ_*²) ≥ 0 in C_B [trivial condition on the choice of θ_*].
+B8. Verification: BETA_FP_U has no verifier file. BETA_FP_PW_VERIFY §6 grades Theorem B CONFIRMED as conditional logic; the v4 tag is kept as in v3.
+Route B also needs 6 ((G2)) and the common items 8–13. It does not need (PI), (M_j), V1; it needs (DF) and A6 instead.
+
+Common to both routes:
+7. (H0) Balaban's smoothness in g with uniform bounds, |β_j(g) − β_j(0)| ≤ C_1 g uniform in j and history [Balaban; CMP 109 inductive assumption at odd L > 11; no explicit proof of the g-derivative bound located in CMP 116].
+8. L5 history dependence [open]. (a) The clamp proof of Lemmas D′/D″ is valid only if β_{k+1}(g_0, …, g_k) is defined and continuous on the whole cube ]0, γ]^{k+1}; Balaban does not supply this. (b) Balaban's β_{k+1} exists only on histories where his induction has run; that domain must carry (c′) + (S), not only g_i ∈ ]0, γ]. Clamped histories can violate the growth side of (c′). (c) True trajectories with all u_i ≥ γ^{−2} inherit (c′) from (a″). A nested-interval variant of Lemma D″ on these trajectories would avoid the gap [not written]; the variant is written only for Lemma D (LEMMAS_DE_VERIFY §1.5). Lean covers one-argument β only (Lemmas D′, D″, D, E).
+9. K-independence of β_j(g) [open]. The shooting needs β_j(g), γ, and the constants independent of K = −log_L ε. After rescaling, each step is the same unit-lattice block step, so β_j is K-independent only in the infinite-volume limit; a finite volume brings K-dependence back. This infinite-volume identification is not proved (LEMMAS_DE_VERIFY §2 item 2; THEOREM2_PROOF_VERIFY Point 7). It is used implicitly through (G2) and (H0).
+10. Balaban readings: the sweep (§2.3) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; "Similar inequalities hold for other constants, which will be introduced later" (CMP 119 p. 256) not located; β_0 must be fixed before γ, while Balaban says β_0 "can be chosen arbitrarily small, if g is sufficiently small" (not checked line by line); BALABAN_EXCERPTS_CHECK item 11 lists unchecked readings (Π (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the "L odd" page, Sect. 3 estimates, 1989 bound lists); Theorem 1 itself rests on Balaban's published proofs.
+11. Odd L. All one-loop proofs need odd L ≥ 3 (centered blocks: U3 Lemma 1.2, O5/Prop. A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes L odd > 11 throughout CMP 109, so (H0) and β_j(g) at g > 0 exist only there. Theorem 2w is stated for odd L > 11, or with (H0) at this L as a hypothesis. Numerics: β_1(0) up to L = 11 (§8.1); (H2) at L = 3, 5 (scans), 7 (face diagonal), 9 (one point). All are outside Balaban's range (L > 11), so they are supportive only. The Windows queue continues to L = 15.
+12. SU(2) only. The charged/neutral split of Lemma 5.1 and (W) are SU(2) statements; c = 11N²/(12π²) is general but the chain is not checked for N > 2.
+13. Lean formalization of the history form of Lemmas D′/D″ [open]. Lemma D″ in the one-argument form is done (§2.2).
+
+Not needed for Theorem 1, open for the stronger statements: (A) in full and Lemma 5.1 for m = 2 (convergence, rate); C², C³ of σ^{(1)} under (H2) (not written); certified β_1(0), …, β_{j_*}(0) > 0 at odd L > 11 (literal (0.31) at every K); explicit j_*; (N).
+
+Hypothesis table (v3 table from THEOREM2_PROOF_v2_VERIFY §K, updated to v4 status).
+| hypothesis | introduced | verified / checked in | status | §10 item |
+|---|---|---|---|---|
+| (H2) | B2_TWOSTEP §2; BETA_FP_U §2.3 | B2_TWOSTEP_VERIFY §4; H2_LARGE_L_VERIFY §1–§10 | numerical at L = 3, 5, 9; certification open | H |
+| (H2) ⇒ (C1σ) ⇒ (B2) (Theorems C1, B2) | B2_TWOSTEP §2–§3 | B2_TWOSTEP_VERIFY grades 1, 3, 4 | proved+verified, conditional on (H2) | 1, H |
+| (H2) + (T1) ⇒ (U) (Theorem 2.4) | BETA_FP_U §2.4 | none | proved, unverified | B1, B2′ |
+| ρ_1² < L ⇒ (H2) (one step, L ≥ 5) | H2_LARGE_L §3 | H2_LARGE_L_VERIFY grade 4 (measurement) | arithmetic; ρ_1²/L = 0.771 at L = 5, numerical | H |
+| certification tail j_0 | H2_LARGE_L §4.1 | H2_LARGE_L_VERIFY grade 6 | derivation confirmed; j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), corrected | H |
+| (B2) / (B2w) | KAPPA §2, Rem. 2.3 | KAPPA_VERIFY §7–§9 | open; reduced to (H2) | 1 |
+| (C1σ) + (h) ⇒ (B2) | KAPPA Prop. 4.1 | KAPPA_VERIFY §7 | implication verified; (C1σ) ⇐ (H2); (h) numerical L = 3, 5 | 1 |
+| (H″) ⇒ (A) ⇒ (B2) | U3_AW §4.7 | none (U3_AW_VERIFY grade 5 covers (H′) only) | implication argued; not needed after (H2) | 1 |
+| (HS) | U3_AW (H′) | U3_AW_VERIFY §6 | refuted L = 3 | §5.2 |
+| (PI) | BETA_FP_H §3.1 | H_VERIFY §5 | argued | 2 |
+| (F) | BETA_FP_LEMMA43 | H_VERIFY §4 | cited, source checked | 3 |
+| (M_j): (S1)–(S3), Prop. 4.4 | BETA_FP_M §4 | none for BETA_FP_M; H_VERIFY §5 refuted old step | open / argued | 4 |
+| V1 | R2 | U3_VERIFY C4 (order p²) | open | 5 |
+| (G2) | BETA_FP_LEMMA43 | — | formal | 6 |
+| β_j(g) independent of K | LEMMAS_DE_VERIFY §2 item 2 | v1 verifier Point 7 | open | 9 |
+| (H0), uniform in j and history | CMP 109 (1.22) | BALABAN_CHECK item 10 | [Balaban], odd L > 11 | 7 |
+| L5 history form and domain | LEMMA_DPRIME Rem. 3; LEMMAS_DE_VERIFY §2.1; v2_VERIFY §F | — | open | 8 |
+| sweep reading | SWEEP §7 | LEMMA_DPRIME_VERIFY Steps 4–5 (rows 11, 12, 16, 18) | proved, unverified | 10 |
+| odd L; L > 11 in Balaban | CMP 109 pp. 251–252 | v1 verifier Step 6 | input | 11 |
+| SU(2) | — | — | scope | 12 |
+| Lean D″ (one-argument) | KAPPA §5.3 | lean/README.md, `lemma_DDoublePrime` | [Lean] | §2.2 |
+| Lean history form | — | — | open | 13 |
+| Route B: (U) | BETA_FP_PW §1.2 | PW_VERIFY §3 | hypothesis; ⇐ (T1) + (H2) (BETA_FP_U) | B1, B2′ |
+| Route B: (T1) | BETA_FP_U §2.3 | none | argued | B1 |
+| Route B: (Bθ) = γ_rec + 𝔡_F | BETA_FP_PW §3.3; BETA_FP_U §3 | PW_VERIFY §6 (Theorem B logic); none for BETA_FP_U | γ_rec bounded given Thm 2.4 (proved, unverified); (DF) argued | B3 |
+| Route B: A6 (β identification, uniform in k) | SOURCES_D1_VERIFY 8; PW_VERIFY §3; BETA_FP_U §4.2 | — | argued | B5 |
+| Route B: θ_* < 1 | PW_VERIFY §3 | — | trivial condition | B7 |
+| LW (5.7) | cited | PW_VERIFY §3 (regime correct) | cited | B4 |
+| BALABAN_CHECK item 11 readings | BALABAN_EXCERPTS | — | unchecked | 10 |
+
+## §11 Citation and independence
+
+Related work 1. E. Sussman and L. Alpöge (with Claude; README: "written largely by LLM ... Novel mathematical ideas should be attributed to Claude (under the guidance of LA)"), "The Yang--Mills continuum limit along Bałaban's renormalization group: a complete account of Theorem 0" (LaTeX, files theorem_0_complete_account_raw_{master,I,II,III}.tex, 424k lines), and "SU(2) Yang–Mills theory in four dimensions via Bałaban's renormalisation group: construction, axioms and non-triviality" (ym4_manuscript_zeroth_draft.pdf, dated 6 October 2026). Repository: https://github.com/ethanwsussman/Yang--Mills-LLM-experiment, commit 1b92bd0347e3b8763cd8ecc1f96dc3c2a92dd310 (2026-10-27T05:45:28-05:00), accessed 2026-10-27. Repository created 2026-10-06. Disclaimer in README: "This repository contains work-in-progress, written largely by LLM. Its content has not been satisfactorily vetted. All claims should be understood as tentative, pending verification." Suggested keys: SA26-T0 (account), SA26-YM4 (draft).
+
+Related work 2. OpenAI, "The canonical massive continuum limit of the two-dimensional O(3) model" (October 4, 2026), github.com/openai/math, family 215 (preprints folder; read locally from the PDF, reports/ONLINE_SWEEP.md §1.2; text in reports/o3_continuum.txt). Suggested key: OAI26-O3.
+
+How content from these works reached this project. The record (file times, PLAN.md, read lists; THEOREM2_PROOF_v2_VERIFY §I) shows the following.
+1. This chapter was written without reading the Sussman–Alpöge repository. Only the citation block above (reports/SUSSMAN_ALPOGE_MAP.md §5.1) was read.
+2. First channel. On the night of 2026-10-27, reports/ONLINE_SWEEP.md §2 (about 20:20) read the Sussman–Alpöge repository directly. It reported that they prove a weak two-sided flow with an additive constant, never need per-step positivity, use a first-passage cutoff, and invoke only containment g_k ≤ γ. This is the first project file with Sussman–Alpöge content.
+3. Second channel. reports/SUSSMAN_ALPOGE_MAP.md (about 20:28) was written by a separate agent under a firewall. Through it, the bounded-κ idea entered the project: the weak form of Theorem 2 needs only κ_k bounded, not convergence (their Lemma 4.19 structure; PLAN.md line 146). KAPPA_BOUNDED.md (about 20:39) received this idea through its prompt. Its read list excludes the map and ONLINE_SWEEP.
+4. Lemma D′ and the cross-scale sweep predate any Sussman–Alpöge content in project files. The shooting-without-positivity lemma and the band with additive constant appear in THEOREM2_PROOF_VERIFY Point 5(b) (about 20:05) and LEMMA_DPRIME.md (about 20:10). LEMMA_DPRIME_SWEEP.md (about 20:16–20:23) overlaps ONLINE_SWEEP in time, but its read list is LEMMA_DPRIME and its verifier only; it did not read ONLINE_SWEEP. Lemma D″ is in KAPPA_BOUNDED.md, written after the map.
+5. Theorem K. Its result form, |S_k − c k log L| ≤ κ_*, matches Sussman–Alpöge Lemma 4.2(b), |Σ_l β⁰_l − k c_0| ≤ c_2 (as reported in PLAN.md line 146; cited there, not proved). The proof in this project (Prop. 1.1, Lemma 2.1, Prop. 2.2 of KAPPA_BOUNDED) was written by firewalled agents from Balaban's papers and project files.
+6. O(3) paper. Route B's doubling comparison follows the template of OAI26-O3 Lemma 6.1 (doubling difference; BETA_FP_PW uses the "O(3) Lemma 6.1 form"). The idea of a coupling band in place of per-step positivity also appears there (ONLINE_SWEEP §1.2(a)). BETA_FP_PW read ONLINE_SWEEP §1.2, §5, §8 and o3_continuum Lemma 6.1, and did not read ONLINE_SWEEP §2.
+7. Route B (other than the O(3) template), the numerics, and the symbol results of §3.5 and §5 were derived by firewalled agents from Balaban's papers and project files.
+
+Any write-up must cite SA26-T0, SA26-YM4, and OAI26-O3, and state these overlaps.
+
+## Change log (v2 → v3)
+
+1. Range of L: new paragraph after the tag legend; §1.1 wording "Balaban assumes L odd, L > 11, for the whole paper"; Theorem 2w stated for odd L > 11, or odd L ≥ 3 with (H0) at this L as a hypothesis; same restriction noted in §1.4 necessity, §2 notation, §4, §4.1 (H0), §6 order of constants and "what this does not give", §9 [Balaban], §10 items 7 and 11. "his constants need odd L > 11" replaced (v2_VERIFY §D, §L(7)).
+2. L5 sharpened in §2.4, §2.1–§2.2 remarks, §6, §9, and §10 item 8: the clamped shooting evaluates β on histories outside Balaban's domain; the nested-interval variant of Lemma D″ on true trajectories is described and tagged [not written] (v2_VERIFY §F).
+3. (H″) ⇒ (B2) tagged [argued] in §5.3, §6, §9, §10 (v2_VERIFY §C).
+4. "independent" / "disjoint" replaced by "formally distinct" in §4 title, §4 intro, §4.3; Route B points added: θ_* < 1 (§4.2 statement, B5), β identification uniform in k (§4.2, §4.3 table row moved, B4), (U) plausibly needs the same uniform first-order vertex smoothness as (C1σ) (§4.2, §4.3, B1) (v2_VERIFY §G).
+5. §11 completed: ONLINE_SWEEP §2 named as the first channel; map named as the channel of the bounded-κ idea; Lemma D′ and the sweep dated before any Sussman–Alpöge content; Theorem K's result form compared with their Lemma 4.2(b); OpenAI O(3) paper (family 215) cited for the doubling difference and the coupling band (v2_VERIFY §I).
+6. §10: added K-independence of β_j(g) (item 9), θ_* < 1 (B5), B2_TWOSTEP as an unverified candidate proof of (C1σ) (item 1; also §5.3, §9), unchecked Balaban items (item 10: CMP 119 p. 256 "other constants", β_0 before γ, BALABAN_EXCERPTS_CHECK item 11); hypothesis table of v2_VERIFY §K added; items renumbered (v2_VERIFY §J, §K).
+7. §2.3: "4 of 19 table rows verified (rows 11, 12, 16, 18)" replaces "5 of 19 items"; sweep items 4, 6, 9, 14 added to the bullet list (v2_VERIFY §E).
+8. §1.2: "D-free" replaced; γ_* depends on R through B′ (v2_VERIFY §A).
+9. Status tags: BETA_FP_PW_VERIFY.md checked 2026-10-27; it has §1–§5 and no grade. Route B stays [proved, unverified]; "verifier running" replaced by "no grade". "Theorem 2w ⇒ Theorem 1" stays [proved, unverified], now also conditional on L5 (v2_VERIFY §N).
+10. Smaller wording fixes (v2_VERIFY §A, §B, §E, §J, §L(9)): title no longer says "verified route"; §2.1 cites LEMMA_DPRIME_VERIFY grades 1, 2, 5 and notes the CORRECTED grades 3, 4, 6 of Step 7; (B2w) tag cites KAPPA_BOUNDED_VERIFY §9(iv); (h) and (H″) numerics tagged [numerical, run by the verifier]; B2_TWOSTEP no longer described as nonexistent; §9 notes the other Lean files.
+
+(v3 status line: complete 2026-10-28, not verified as a whole document.)
+
+## Change log (v3 → v4)
+
+1. §5 rewritten around (H2): definition (§5.3); Theorems C1 and B2 tagged [proved+verified, conditional on (H2)] (B2_TWOSTEP_VERIFY grades 1, 3, 4); threshold ρ_2 < L with no strip loss; (H2) weaker than (H″); one-step sup-norm C¹ recursion fails at L = 3 (factor 1.005–1.033, §5.2); numerics table for L = 3, 5, 7, 9 (§5.4: 2.0634, 2.108, ≥ 2.1131, ≥ 2.1142 at j = ∞; margin 31% at L = 3, 58% at L = 5; L-trend rate claim corrected); one-step sufficiency at L ≥ 5 (§5.5: ρ_1(j = 1) = 1.860, ρ_1²/L = 0.771 at L = 5); certification plan and j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), with the verifier's corrected inputs (§5.6); remaining inequality = (H2) (§5.7). The v3 text "B2_TWOSTEP: no verifier file, nothing used" is removed.
+2. §1.3, §4 intro, §4.1, §4.3, §6: (B2) ⇐ (H2) stated; both routes rest on (H2) (BETA_FP_U §3.5, §4.3). New §4.2a: Route B inputs after BETA_FP_U ((U) ⇐ (T1) + (H2); Γ^{ex} = γ_rec + 𝔡_F; (DF); Corollary 4.1; A6), tagged [proved, unverified; no verifier file].
+3. §4.2, §4.3, §9, §10 B8: BETA_FP_PW_VERIFY now has §6 grades (items 1–4 CONFIRMED, 5–6 CORRECTED); v3's "no grade" is outdated. The Route B tag is kept as in v3; a tag change is left to the next review.
+4. §2.2 and §9: Lemma D″ is formalized in Lean (`YmLean.lemma_DDoublePrime`, no sorry), with (c′) constants β = 3b/4, B′ = 5b/4 + 2R, D′ = 2R and (d) lower constant b/2 for n − m ≥ 8R/b. §2.2 title gains [Lean]; v3's "[open as Lean work]" removed; §10 item 13 reduced to the history form.
+5. §8.1 extended to L = 9 (β_1 = 0.833 at Lp = 0.5, constant ≈ +0.02) and L = 11 (0.850 at Lp = 0.5, constant ≈ −0.04; Ng = 8 adequacy unchecked) from NUMERICS §7. §8.2: per-level β_2(0) ≈ 0.32 with the symmetric-Nyquist values 0.33334, 0.31679, 0.32283, and the (U) test row. §8.3: ρ_1 at L = 5, ρ_2 pointer to §5.4, a_*(L = 5) = 0.0107.
+6. §9 ledger: [Lean] D″ added; [proved+verified] Theorems C1, B2, h2_scan structure, tail-bound derivation added; [proved, unverified] BETA_FP_U items and one-step sufficiency added, the B2_TWOSTEP candidate line removed; [argued] (T1), (DF), A6, C²/C³ under (H2) added; new [corrected by verifiers since v3] block; failed one-step method noted.
+7. §10: new item H, (H2) as the single uniform hypothesis for both routes, status [numerical at L = 3, 5, 9; certification open]; item 1 reduced to H; Route B set rewritten per BETA_FP_U as (T1), (H2), (DF), LW (5.7), A6, (H0), θ_* < 1; (DF) replaces 𝔡_Y, 𝔡_gf for this route; item 11 numerics range updated; item 13 reduced; hypothesis table updated.
+8. Not changed: §1.1, §1.2, §1.4, §2.1, §2.3, §2.4, §3, §7, §11, and all other tags. KAPPA_BOUNDED_VERIFY's (B2) obstruction statement is in its §7 and §9(vi) (the task brief cited §6; §6 there is the Lemma D″ check). BALABAN_EXCERPTS_CHECK has no change since v3.
+
+Status: complete (2026-10-28). Not verified as a whole document.
