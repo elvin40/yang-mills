@@ -63,3 +63,30 @@ Images read [V]: CMP 109 p. 262 (pdf 14), p. 273 (pdf 25), p. 275 (pdf 27); [14]
 - CMP 102 p. 279 [V]: the cube class of Thm 1 is: □ of size 2ML^jη, "M is a multiple of R_1M_1", and the enlarged cube □̃ of size (2M + 4R_1M_1)L^jη with the same centre "is contained in B^j(Λ_j) ∪ B^{j+1}(Λ_{j+1}), but not in B^{j+1}(Λ_{j+1})". Output (9)–(10): |A| < B_3Mε_1(L^jη)^{−1}, |∇A| < B_3Mε_1(L^jη)^{−2}, ‖A‖_{1,β}, |∂*∂A|, |ΔA| bounds; M ≤ M(ε_1) = R_1M_1(a_1/ε_1).
  Consequence for target §5.2(c)–(d) [P, reading]. Route 1's output is NOT "every cube □ ⊂ B^n(Λ_n) ∪ B^{n+1}(Λ_{n+1})": it needs the margin 2R_1M_1L^jη around □ inside the two layers. So Thm 1 gives nothing on cubes within 2R_1M_1L^{−1}η of ∂□_0 (finest scale L^{−1}η, p. 273). Since M is a multiple of R_1M_1 and the Λ_0 width is only > R_1M_1L^{−1}η, the cube size exceeds the Λ_0 width by design; a "Λ_0 at least one cube wide (R_1 ≥ 12)" condition is not the right condition and is not implied. The correct missing input is a patching statement: on cubes that meet ∂□_0, Ũ is regular because Ũ = U on (T_η \ □_0) ∪ Λ_0 (V5, [I]) and Ũ is the minimizer on the rest, with a gauge transition on the overlap. Not proved in the target or here.
 
+## V7. Check (7): WC_FULL §3.1(2) chain-term bound and its propagation — CONFIRMED; one stale scope statement elsewhere
+
+Bound [P, re-derived].
+- Normalization. By V0, (0.4) in the A3 3.3(b) normalization (corridor coefficient L^{−d}) has straight block-bond weights ≤ L^{−d}(L − 1)/L and chain-bond weights ≤ 1/L. WC_FULL takes chain weight ≤ 1 (the L^{−d}-per-x count Σ_xL^{−d}·(fraction of contours through b) ≤ 1). This over-estimates by a factor L, so it is valid and conservative, as WC_FULL says.
+- Per bond: |w_b| ≤ 1 + L^{−d} (chain + straight on the same bond; signs only help). Per side: Σ_b|w_b| ≤ dL + 1 (chain mass Σ_xL^{−d}|x − c_∓|_1 ≤ d(L − 1)/2 ≤ dL; straight mass < 1). So Σw_b² ≤ (1 + L^{−d})(dL + 1) = L^{−d}(L^d + 1)(dL + 1). Correct.
+- Overlap of chain bonds with F_∓: the two subtracted terms add, L^{−d}[1 + (L^d + 1)(dL + 1)] = L^{−d}[2 + dL^{d+1} + L^d + dL] ≤ L^{−d}·2(1 + dL^{d+1}) iff L^d + dL ≤ dL^{d+1}; true for d, L ≥ 2 (at d = L = 2: 8 ≤ 16). κ_ch = 2(1 + dL^{d+1}) CONFIRMED.
+- Chains miss corridor bonds (V2(i)), so the corridor part L^{−d}Σ_Ff is unchanged. Steps 4.3(a) and the R2′ step do not use the axial condition. Summing over corridors (each block in ≤ 2d corridors) and multiplying by 3L^d/m_L: S_c ≤ (3/m_L)(2P^U + 2dκ_chS_b) + η_6‖B‖². CONFIRMED.
+- Assembly: ‖B‖² ≤ (1 + 6dκ_ch/m_L)S_b + (6/m_L)P^U + η_6‖B‖², then S_b ≤ K_b(P^U + G): γ_e^{−1} = K_b(1 + 6dκ_ch/m_L) + 6/m_L. CONFIRMED.
+Numbers [P, recomputed from WC_FULL's own formulas: c_𝒢 = d(L − 1)L^d/2, K_b = 8dL^d(1 + 16dc_𝒢), m_3 = min(2(1 − cos(π/3)), 1/3) = 1/3, γ_exp = ¼γ_e]:
+ d = 2, L = 3: c_𝒢 = 18, K_b = 83088, κ_ch = 110, γ_e^{−1} = 83088·3961 + 18 = 329 111 586, γ_exp = 7.596·10^{−10} (without κ_ch: 8.132·10^{−8}; ratio 107.05).
+ d = 3, L = 3: c_𝒢 = 81, K_b = 2 520 072, κ_ch = 488, γ_e^{−1} = 2 520 072·26 353 + 18 = 6.641·10^{10}, γ_exp = 3.764·10^{−12} (without κ_ch: 1.804·10^{−9}; ratio 479).
+ These match §3.5 (7.6·10^{−10}, 3.8·10^{−12}; 8.1·10^{−8}, 1.8·10^{−9}) and log item 14 ("about 107 for d = 2"). The §3.5 upper bound 64d³L^{2d+1}(1 + 12dL(1 + dL^{d+1})) + 6L is a valid bound (it uses K_b ≤ 64d³L^{2d+1} and 6dLκ_ch = 12dL(1 + dL^{d+1})).
+Propagation, read line by line:
+ §0.9 (A3-4.3): carries "Without the axial condition the last term carries the factor κ_ch". OK. (A3-4.4): labelled axial form with the pointer 2dS_b → 2dκ_chS_b. OK.
+ §0.10: γ_exp = ¼γ_e(d, L), "with the chain factor κ_ch". OK.
+ §3.1 statement, (2), (3): consistent with the bound above. OK.
+ §3.3(c): "(with the factor κ_ch of 3.1(2))". OK.
+ §3.4: "through K_b, κ_ch, m_L". OK.
+ §3.5: numbers correct (above). OK.
+ P5: same γ_e and κ_ch. OK.
+ §6.9: "γ_exp (Theorem L; needs d, L, N only; includes κ_ch)" in the first (d, L, N) group, before c_±, ε, B_A, every α. OK. The cap ε_7a + c_J′ ≤ γ_e/12 of (3.1) now uses the smaller γ_e; it is an α-smallness, chosen after γ_exp, so the order stays acyclic. OK.
+ §7.3(c): "γ_exp is smaller still", no number. OK. No other occurrence of the old values or of "no condition inside the blocks" remains (grep).
+ Stale constant: NONE found.
+ Stale scope statement (not a constant, outside the listed sections): §0.9 item (p254) says the CMP 99 operators G_1, H_1, (QG_1Q*)^{−1}, Q̃ "carry over by this sentence [R]" (p. 254), and §1.9 repeats "[R via (p254)]". By SOURCES_P254_TRANSFER (scope gap) and the target §§1–3, the right source is p. 253 (A25), and the G_1 lower bound is axial-specific (Lemma LB_Q̃, open). WC_FULL nowhere mentions A25 or Lemma LB_Q̃ (grep). Suggested edit (not made; editing existing files is outside this brief): in §0.9 (p254) and §1.9 replace "carry over by this sentence [R]" with "carry over by p. 253 (A25: REDUCED; the free lower bound behind G_1 is the open Lemma LB_Q̃, which enters only through A3-R1 and WG-G1/A1-W, already [R]/[C])".
+ Lemma C remark (c_C(1) ≤ κ_chL^{d+1}): not re-derived here; it is an upper constant used after γ_exp, so no lower bound depends on it.
+Lean [read statements only, lean/YmLean/TheoremL.lean]. `theoremL` (l. 196) and `theoremL_real` (l. 172) take γe as a free real with hypothesis hPexp : γe·(1 − η6)·‖CBt‖² ≤ P + ‖𝒢(CBt)‖²; nothing fixes γe's value. `lemmaPexp_real` (l. 150) has h2 : Sc ≤ 3/m·(2P + 2·d·Sb) + η·B2 with d a real ≥ 0 and conclusion (Kb(1 + 6d/m) + 6/m)^{−1}(1 − η)B2 ≤ P + G. Instantiating its d with dκ_ch ≥ 0 gives exactly the new S_c bound and γ_e. So no Lean edit is needed. CONFIRMED.
+

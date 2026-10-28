@@ -197,3 +197,5 @@ All thresholds, cube sizes, the scaling B′ = g_kB, and the analyticity spaces 
 ### (xi) Inherited hypotheses (D2 §8.9) [carried]
 
 (Hβ) is now reduced to (H-hist) + (H-thr) + Lemma E (item (viii)). (U) is unchanged. Balaban's condition sup g_k ≤ γ on the reference trajectory is the hypothesis of (B12); with the source, sup_x of the local coupling is ≤ γ(1 + O(γ²r)) by (ix)(a), and Balaban's Theorem 1 is used with γ slightly larger. Theorem 2 of CMP 109 (running coupling bounds) is unpublished (THEOREM2.md); D3 inherits Balaban's assumption, as Balaban does.
+
+Addendum under (i)(P4)–(P6) (2026-10-28). NEW-4 (SOURCES_D3_NEW4 + _VERIFY): the source enters R only as the plaquette factor ω, |ω − 1| ≤ θ ≤ 5γ²r; U_0, (1.12), (1.40) unweighted; (1.21), (1.77) source-free by (1.14); denominator (1.9) → γ_0/(4d(100M)^5) by the split CMP 99 (3.10); (1.37)'s weighted ζ_1-term via D3R §1.4; no condition beyond canon B32 (5γ²r ≤ ½, ρ_1 ≤ r/(4C_hM)).
