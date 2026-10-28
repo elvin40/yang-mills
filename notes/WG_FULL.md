@@ -220,3 +220,74 @@ in rescaled units. Define the open path distance d_o(β, b) := inf {d(b, v_1) + 
 Here Σ(κ) := sup_y Σ_{y′}(μ(y′)/μ(y))^{1/2} e^{−κ d(y, y′)} is the Schur constant of A1_KERNEL §5; it is finite and uniform in k, η, {Ω_j} for the rates used here [R Lemma 2.1, as in A1_KERNEL §5].
  Proof. Non-zero summands need u ∈ (last domain of β_1) ∩ (first domain of β_2) and b′ ∈ last domain of β_2 (support, as in 3.2). Insert the (B1) bounds at rate δ_1. The exponent is δ_1[d(β_1, b, u) + d(β_2, u, b′)]. As in Step 2 of 3.4, the two block paths join at u into a path from b through all domains of β, so the bracket is ≥ d_o(β, b). As in Step 3, the bracket is ≥ d(b, u) + d(u, b′). Split with (1 − θ) and θ. The factor e^{−(1−θ)δ_1 d_o(β, b)} does not depend on u, b′. What remains is a double sum over u and b′ of μ-weights, m-weights, e^{−θδ_1 d(b, u)}e^{−θδ_1 d(u, b′)}, and |Ĵ(b′)| ≤ c_JMα_0. Sum b′ first, then u. Each sum is a Lemma 2.1 sum with the scale weights (μ(·)/μ(·))^{±1/2} of the C0 normalization; each is bounded by the Schur constant Σ(θδ_1) of A1_KERNEL §5 [R Lemma 2.1; I for the C0 normalization of the vector Ĵ, the same bookkeeping as in (3.131) and (3.136)]. ∎
  Consistency check against the page [V (3.136)]: summing (5.5.1) over β with the counting of 5.8 gives |ŵ(b)| ≤ O(1)Mα_0, which in Balaban's units is his printed |(H*J)(b)| ≤ O(1)Mα_0(L^jη)^{−3}. With |K̂_b| ≤ c_κ this reproduces (3.137), |(Δ^{(2)}A)(b)| ≤ O(1)Mα_0(L^jη)^{−2}|A|.
+
+5.6 Tree labels and terms [P]. Insert into G_1 = Σ_n G(Δ_π^{(2)}G)^n:
+ - for each G: a walk term T_λ of Theorem WG-G, used as one block (domain list ω(λ), weight B_0′ρ_*^{|ω(λ)|}, rate δ_1);
+ - for each Δ_π^{(2)}: a left chain in {I, −Λ_D*} and a right chain in {I, −Λ_D} ((3.135); 9 chain patterns after the I/P split of 2.3), with walk blocks of (I2)–(I3) as in 2.3 and derivatives placed by rule R-D (2.4);
+ - for Δ^{(2)}: Δ^{(2)} = Σ_X Σ_β κ_{X,β}, κ_{X,β} := Σ_{b: X(b) = X} w_β(b)K_b, with X(b) as in 2.5.
+ κ_{X,β} is a main-line block with one domain X: its kernel is supported in X × X and vanishes unless d(z, z′) ≤ c_b; it depends on U on X̃^5 (through K_b, R_b, and C^{(2)}) and on the domains of β (through w_β). By 5.2(i) and (5.5.1), |κ̂_{X,β}(z, z′)| ≤ c_κ e^{δ_1c_b} sup_{b: X(b) = X, d(b, z) ≤ c_b} |w_β(b)| m(z, z′) e^{−δ_1 d(z, z′)}.
+ A tree label τ consists of: n ≥ 0; n + 1 WG-G labels; for each of the n insertions, a chain pattern, the chain walk blocks, the domain X, and a branch label β. The main line of τ is the concatenated domain list of its main-line blocks. At the κ-domain X of each insertion one branch, the list β, springs off. The domain set of τ is the main line together with all branches. |τ| := (number of domains of τ) − 1. This is Balaban's shape [V p. 427]: "The tree graphs involved have a very simple structure; there is a main line and at some vertices additional lines spring off." A branch has no sub-branches: it contains only walk terms of (QGQ*)^{−1} and of G, never G_1 or Δ^{(2)} (5.3).
+ Locality (L1)–(L2) of every factor follows from 4.2, (I6), 2.5, and 5.2(i). The U-dependence of T_τ is on the union of X̃^5 over all domains of τ. The bond b′ of J(b′) lies in the last domain of its branch (support of T_{β_2}), so J adds no domain.
+
+5.7 Tree distance and the bound per term [P]. Define d(τ, y, y′) := inf of Σ_{edges} d(u, v) over finite connected graphs whose vertex set contains y, y′, and at least one point of each domain of τ. This is Balaban's "length of a shortest tree intersecting all domains X_i" (p. 427 [V]); a shortest connected graph is a tree. A tree contains a path from y to y′, so d(τ, y, y′) ≥ d(y, y′).
+ Bound. Apply Lemma C to the main line, with rate δ_1 and the fixed θ. In Step 2 of 3.4 the main-line points form an explicit path P_main from y to y′ through all main-line domains. At each insertion the κ-block has junction points z (in) and z′ (out) in X, and K_b vanishes unless d(z, b) ≤ c_b. The branch bound (5.5.1) comes from an explicit path P_β from b through all domains of β (proof of 5.5). The union of P_main, the edges (z, b), and the paths P_β is a connected graph that meets every domain of τ and contains y, y′. So
+  (length of P_main) + Σ_branches (length of P_β) ≥ d(τ, y, y′) − c_b·n.
+ Hence the product of the (1 − θ)-parts of the exponentials is ≤ e^{(1−θ)δ_1c_b n} e^{−(1−θ)δ_1 d(τ, y, y′)}. The factor e^{δ_1c_b} per insertion is a constant and joins the insertion weight.
+ Weights per insertion. At most 8 chain walk blocks (B_0′ each), the κ-block (c_κe^{δ_1c_b}), the branch weight from (5.5.1) (B_WB_0′Σ(θδ_1)²c_JMα_0), the edge factor e^{δ_1c_b}, the following WG-G block (B_0′), and at most N_2 + 1 = 10 main-line junctions (c_1 each), where N_2 := 4 + 1 + 4 = 9 is the block count of the main-line part of Δ_π^{(2)}. So the weight is at most
+  ε_2 := K_2Mα_0, K_2 := (B_0′c_1)^{10}c_κe^{2δ_1c_b}B_WB_0′Σ(θδ_1)²c_J.
+ Steps without a small factor per insertion: the 10 main-line junction steps, the step from X to the first domain of β, and the junction step inside β (from β_1 to β_2). So k_2 := 12. All other steps of τ lie inside a walk block and carry ρ, ρ_*, or ρ_W. As in 4.3, if ε_2 ≤ 1, then ε_2 ≤ (ε_2^{1/12})^{k} for every k ≤ 12. With ρ_{**} := max{ρ_*, ρ_W, ε_2^{1/12}}:
+  |T_τ(y, y′)| ≤ B_0′ ρ_{**}^{|τ|} m(y, y′) e^{−(1−θ)½ε d(τ, y, y′)}.  (5.7.1)
+ This is (B1) in tree form, with rate (1 − θ)δ_1 = (1 − θ)½ε.
+
+5.8 Counting trees (B2 in tree form) [P]. Encode a tree label by its tagged factor sequence in depth-first order: the main line from y; at a κ-factor, the whole branch β (A1-W factors, then the factors of the WG-G term T_{β_2}); then a tag "resume main line", and the main line continues from the κ-domain X. Each factor carries a tag from a fixed finite set (the 97 WG-G tags of 4.4 for main-line G-terms and for branch G-terms, the G′ and C′ walk-block tags, the κ-tag with one of 9 chain patterns, the finitely many A1-W factor types, "start branch", "resume main"). Let T_2 be its size; T_2 depends only on d and the factor types of the inputs. The next pair (α, X) meets the previous domain in depth-first order (after "resume", the κ-domain): at most C_𝒟 choices. The decoder recovers τ: the tags give block types, chain patterns, and where each branch starts and ends. So the number of tree labels with |τ| = s is at most C_𝒟(C″_𝒟)^s, C″_𝒟 := T_2C_𝒟. Over-counting only increases the bound.
+
+5.9 Convergence [P]. By 5.7–5.8,
+ Σ_τ |T_τ(y, y′)| ≤ C_𝒟B_0′ m(y, y′) e^{−(1−θ)½ε d(y, y′)} Σ_s (C″_𝒟ρ_{**})^s ≤ 2C_𝒟B_0′ m(y, y′) e^{−(1−θ)½ε d(y, y′)},
+if C″_𝒟ρ_{**} ≤ ¼. This holds if:
+ (i) M ≥ M_*′ := max{M_*, 4C″_𝒟c_0} and Mα_0 small enough that C″_𝒟ρ_* ≤ ¼ and C″_𝒟c_Wρ_* ≤ ¼ (shrink a_* by fixed factors);
+ (ii) M_1 ≥ M_W := max{(A1-W threshold), 4C″_𝒟K_W};
+ (iii) ε_2 ≤ (4C″_𝒟)^{−12}, i.e. Mα_0 ≤ a_{**} := min{a_*′, a_0, K_2^{−1}(4C″_𝒟)^{−12}}.
+ The constants B_W, K_W, c_W, ε of A1-W are uniform for all Mα_0 ≤ a_0. So choosing a_{**} ≤ a_0 after them does not change them: there is no loop. Absolute summability holds as in 4.5, and Lemma N (5.1) gives G_1 = Σ_τ T_τ.
+ In 0.7(G1), "M ≥ M_*" means M ≥ M_*′.
+
+5.10 Theorem WG-G1 [P given Theorem WG-G, (I6), C^{(2)}-locality [I], C0]. Under (i)–(iii), G_1 = Σ_τ T_τ is a tree expansion: (L1)–(L2) for every factor; (B1) in the form (5.7.1) with the tree distance; (B2) with C″_𝒟ρ_{**} ≤ ¼; rate (1 − θ)½ε. The derivative norms hold as in 4.3: the first and last main-line blocks are WG-G terms. ∎
+ Remarks. (a) The rate of G_1 is set by A1-W (½ε), not by δ_0. The branch carries the decay of (QGQ*)^{−1}. Balaban's (3.132) has its own rate δ_1 with the same role (p. 422 [V]: (3.133) for H decays as e^{−½δ_1 d}). (b) The literal (3.108) form for G_1 needs ρ_{**} ≤ cM^{−1}. This needs WG-1 (α_0 ≤ c′M^{−11}), ε_2^{1/12} ≤ cM^{−1} (i.e. α_0 ≤ c″M^{−13}), and K_W/M_1 ≤ cM^{−1}; the last one fails for M_1 < M. So G_1 has the (3.108) form only with M_1 in place of M, as in A1-W. This is a remark on the form; it does not affect convergence.
+
+## 6. Uniformity in regular U and the fixed rate loss
+
+6.1 Where the smallness comes from [V]. The small factor of V and of Δ_π^{(2)} comes from (3.36), not from (3.35). p. 419: J "is small, if U satisfies the condition (3.36)". p. 422: "From the regularity condition (3.36) and the inequality (3.133) we have the estimate |(H*J)(b)| ≤ O(1)Mα_0(L^jη)^{−3}". (3.35) is the hypothesis of the walk theorems for G_0, G′, and C′ (Thms 3.7, 3.9, 3.10; the "(3.95)" of Thm 3.10 is a misprint for (3.35)). p. 405 [V, SOURCES_WG_VERIFY §4]: "for the operators introduced until now we need only the condition (3.35), but later on we will have to assume (3.36)".
+
+6.2 Every constant is uniform [P given the inputs]. Each constant in §1–§5 is one of the following.
+ - B_0, c_0, δ_0, C_𝒟 of Thms 3.7, 3.9, 3.10. These depend on d and L only (p. 416 [V]: "O(1) depends on d and L only") and hold for every U with (3.35).
+ - c_1(·) of Lemma 2.1 and the Schur constant Σ(·). These depend on d, L, and the rate; they are uniform in k, η, {Ω_j} [R].
+ - c_J, c_ι, c_b, c_κ, c_Q: the J-bound O(1)Mα_0 (uniform over U with (3.36)) and local constants of (I7) (d and L only).
+ - The A1-W constants B_W, K_W, c_W, ε, M_W. These are uniform in regular U, j, k, η, {Ω_j}, and volume (SOURCES_A1_WALK §7.1–§7.2). They depend on U only through the lower bound (C) and the constants of the G expansion, which are uniform.
+ - Combinatorial counts: N_V = 9, N_2 = 9, the 24 V-patterns, the 9 chain patterns, the tag counts 97 and T_2. These depend on nothing.
+ - The fixed θ ∈ (0, 1).
+ None of these depends on U beyond (3.35)–(3.36). So M_*, a_*, M_*′, M_W, a_{**}, and every bound in Theorems WG-G and WG-G1 are uniform in U with (3.35)–(3.36), in j, k, η, {Ω_j}, and in the volume.
+
+6.3 The rate loss is fixed [P].
+ - G: the rate goes from ½δ_0 to (1 − θ)½δ_0. The factor (1 − θ) comes once from Lemma C (3.6(i)). It does not depend on U, on n, or on the walk.
+ - G_1: the rate is (1 − θ)·min{(1 − θ)½δ_0, ½δ_0, ½ε} = (1 − θ)½ε, since ½ε < (1 − θ)½δ_0 (5.4). Again one fixed factor, applied to the A1-W rate.
+ Balaban absorbs such fixed losses into δ_0: p. 423 [V], "Let us denote a common, best possible, decay rate for all these operators by δ_0"; p. 427 [V], "(after adjusting a definition of δ_0)" (this phrase is on p. 427, not p. 426).
+
+6.4 Order of constants, written once [P]. (d, L) → B_0, c_0, δ_0, C_𝒟, local constants → θ → c_1(θ½δ_0), K_V, C′_𝒟 → M_*, a_* (Theorem WG-G) → A1-W constants with G from WG-G (they need only Mα_0 ≤ a_0 and C_𝒟c_1ρ_* ≤ ¼) → M_*′, M_W, K_2, a_{**} (Theorem WG-G1) → α_0. Each item depends only on items to its left. There is no loop. The optional WG-1 condition α_0 ≤ c′M^{−11} is imposed at the last step.
+
+## 7. The level of the inputs
+
+7.1 For Theorem WG-G.
+ - CMP 99 Thm 3.10 (G_0, (3.107)–(3.108)): printed proof sketch, about 1.5 pages, pp. 414–416 [V]. p. 409 [V]: the Sect. C constructions are "identical to those in [4], so we will sketch them rather briefly".
+ - CMP 99 Thm 3.7 and Cor. 3.8 (G′, (3.90), (3.94)): statement and per-walk bound printed on p. 410; the proof is by reference [V]: "The arguments are exactly the same as in proofs of Proposition 1.2 [3] and Proposition 2.2 [4], so we will not repeat them here." The printed (3.91)–(3.94) give the per-walk bound. Grade: by reference, backed by printed U = 1 proofs (CMP 95, CMP 96).
+ - CMP 99 Thm 3.9 (C′ = (Q′G′²Q′*)^{−1}, (3.98)–(3.99)): printed sketch, about 2.5 pages, pp. 411–413 [V]. It enters V through R = I − P (2.3).
+ - CMP 96 Lemma 2.1: printed with proof [R].
+ - (3.36) and the J-bound: printed (p. 405, p. 419, (3.131), p. 422) [V].
+ - Unprinted steps used here, all tagged [I]: C0 (scale bookkeeping), (I7) Q-locality and merging of local factors, ι-domain assignment (2.5). I-D was re-derived (2.4) and checked in SOURCES_WG_VERIFY §4.
+ Level comparison [V, SOURCES_WG_VERIFY §4]. Balaban closes Thm 3.1 through Thm 3.7 (p. 410: "Theorem 3.7 implies that all the inequalities (3.42)–(3.47) hold for G′, thus we have completed the proof of Theorem 3.1"), Thm 3.2 through Thm 3.9 (p. 413), and Thm 3.3 through Thm 3.10 (p. 416). The trust ledger already accepts Thms 3.1 and 3.3 as inputs of A1. So the inputs of Theorem WG-G are at the same level as inputs the ledger already accepts.
+ What this file replaces. Balaban's text for G is one sentence (p. 422 [V]): "Of course Theorem 3.10 holds also because we replace each operator in (3.130) by its random walk expansion." For G_1 it is one sentence on p. 423 and one paragraph on p. 427. §3–§5 give written proofs of these claims.
+
+7.2 For Theorem WG-G1. The same inputs, plus a walk expansion of (QGQ*)^{−1}. Balaban does not print that expansion (p. 422 [V]: "We will not repeat these considerations here, let us write only bounds"), and he introduces Thm 3.13 with "assuming (3.132)" (p. 426 [V]). Here it comes from Theorem A1-W (A1_WALK_FULL; SOURCES_A1_WALK §7.1), which is our construction. A1-W is conditional on the lower bound (C) and on its own [I] items (O2 Lipschitz partition, Q-locality, κ_1). So WG-G1 does not reduce to printed sketches alone. It reduces to printed sketches + Lemma N + Lemma C + A1-W (with input WG-G) + C^{(2)}-locality [I].
+
+7.3 Which theorem closes which item.
+ - Theorem WG-G closes the (W_G) input of A1-W for the final G (open point O1 of SOURCES_A1_WALK §9), at the level of 7.1.
+ - Theorem WG-G1 closes the tree expansion of G_1 asserted on pp. 423 and 427, at the level of 7.2.
+ - Not closed here: (QG_1Q*)^{−1} (A1-W applied to the trees of WG-G1, SOURCES_A1_WALK §6.3(a)); Ğ_2 of p. 432 (assertion only); (C); the Z_0-compressed variant (O3); the complex configurations (O4).

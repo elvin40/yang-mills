@@ -274,3 +274,35 @@ as in SOURCES_A1_WALK §5.6 and §7.1. Balaban's split (L^jη)^{−2}(L^{j′}η
 ### 6.9 Trees [P given SOURCES_WG §3]
 If (H1) is a tree expansion, as for G_1 (CMP 99 p. 427 [V text]; Theorem WG-G1 of SOURCES_WG §3.7), then §2–§5 hold with these changes. d(ω, y, y′) is the length of a shortest tree that meets all domains. A G-block is a tree term, and its branches end inside the block. The concatenation lemma extends to trees by SOURCES_WG §3.5. The count uses the depth-first code of SOURCES_WG §3.6, with C_W replaced by 2C_W. The result is the tree expansion of (QG_1Q*)^{−1}. Its lower bound is c_{−,1} := c_−(G_1) ≥ c_−(1 − O(Mα_0)) (SOURCES_A1_KERNEL §9; conditional like (H2)). The a-term of (QG_1Q*)^{−1} = N_1^{−1} + a is a one-cube diagonal factor.
 
+## 7. The Z_0-compressed variant
+
+CMP 116 p. 13 [V image] needs a walk expansion of C^{(k)}(Z_0) of a special form: "we take a domain X_0 such, that X̃_0^5 = Z̃_0 (... the tilde over X_0 means that M_1-cubes are adjoined, and the tilde over Z_0 concerns M-cubes). Other localization domains X ... unions of small, connected families of M_1-cubes, and we assume that dist(X, Z_0) > ⅔M." Balaban refers the construction to [13] = CMP 99 [V, SOURCES_WC_RESIDUE_VERIFY Q3]. This section gives it. It closes open point O3 of SOURCES_A1_WALK §9.
+
+### 7.1 Setting
+- One scale: the reduced unit-lattice bonds, μ ≡ 1, m ≡ 1, no S-rescaling. d_∞ is the ℓ^∞ distance. Euclidean distance is ≥ d_∞, so lower bounds in d_∞ transfer.
+- Z_0 is a union of M-cubes. M and M_1 are powers of L. Put q := M/M_1.
+- A is an operator with a walk (or tree) expansion (W_N): (L1)–(L2) and (B1)–(B3) of (H1), with constants b_A, ρ_A ≤ c_A′/M_1, δ_A, C_𝒟, c_X. Put c_A := C_𝒟b_A.
+- Lower bound: Re⟨u, Au⟩ ≥ γ‖u‖² for all u, with γ > 0.
+- Application [P given its inputs]: A = A_exp of SOURCES_WC_EXPGAUGE, with (W_N) from its §4.2 (a tree expansion; use 6.9) and γ = γ_exp = ½min(½, c_G)γ_e(d, L) from its Theorem L, where c_G = 1 (SOURCES_WC_EXPGAUGE_VERIFY V9). Then A_Z^{−1} = C^{(k)}(Z_0).
+
+### 7.2 Compression [P]
+A_Z := 1_{Z_0}A1_{Z_0}, an operator on ℓ²(Z_0).
+ (a) For u supported in Z_0, ⟨u, A_Zu⟩ = ⟨u, Au⟩. So Re⟨u, A_Zu⟩ ≥ γ‖u‖².
+ (b) A_Z = Σ_ω 1_{Z_0}A_ω1_{Z_0}. Attach 1_{Z_0} to the first and last factor of each term. This shrinks kernel supports and adds no U-dependence. So A_Z has the expansion (W_N) with the same domains, the same U-locality, and the same constants, uniformly in Z_0.
+Compression keeps both inputs. No extra local piece on Z̃_0 is needed. SOURCES_WC_EXPGAUGE_VERIFY V6 confirmed this route.
+
+### 7.3 Local operators, parametrix, and series [P]
+Cover: the cubes □ of side K_1M_1 that meet Z_0. Let φ_□ be tent functions with supp φ_□ ⊂ □⁻ and Σφ_□² ≥ c(d) > 0 on Z_0. Put h_□ := φ_□(Σ_{□′}φ_{□′}²)^{−1/2} on Z_0. Then Σ_□h_□² = 1 on Z_0 and |h_□(b) − h_□(b′)| ≤ (c_h/M_1)|b − b′|. On one scale the multiscale Lipschitz item O2 does not arise.
+Replace 1_□ by 1_{□∩Z_0} everywhere in §2–§5. The steps go through with these renamings:
+ N̂ → A_Z; c_− → γ; c_+ → c_A; δ_G → δ_A; b_G, ρ_G → b_A, ρ_A; I → I_{Z_0}.
+Check of each step:
+ - Lemma 2.1: the local operator is A_{Z,□} := 1_{□∩Z_0}A_Z^{(□)}1_{□∩Z_0}, with A_Z^{(□)} the kept-walk sum of A_Z. The proof of 2.1(e) uses only the identity ⟨u, A_{Z,□}u⟩ = ⟨u, A_Zu⟩ − ⟨u, 1(A_Z − A_Z^{(□)})1u⟩ for u supported in □ ∩ Z_0, and 7.2(a). So Re⟨u, A_{Z,□}u⟩ ≥ ½γ‖u‖² for M_1 ≥ M_a(γ, c_A, δ_A).
+ - §3: ε_Z := min{½δ_A, γ/(8c_AΣ(½δ_A))} and ‖C_□‖_{ε_Z} ≤ 4/γ.
+ - §4.1: h_□ = 1_{□∩Z_0}h_□, because supp h_□ ⊂ □⁻ ∩ Z_0. A_Z is already compressed, and Σh_□² = I_{Z_0} on ℓ²(Z_0). So A_ZP = I_{Z_0} + ΣF_□, with no boundary term at ∂Z_0.
+ - §4.2 (sep): y ∈ Z_0∖□ and z ∈ □⁻ give d(y, z) ≥ d(□⁻, 𝔅∖□) ≥ M_1. The rest of the proof of 4.2 is unchanged.
+ - §5: the counting, the term bound, and the identification hold with the renamed constants.
+Result:
+ C^{(k)}(Z_0) = A_Z^{−1} = Σ_ωT_ω, |T_ω(b, b′)| ≤ (4/γ)(c_1ρ)^{|ω|}e^{−½ε_Z d(ω, b, b′)},
+absolutely convergent for M_1 ≥ M_W(γ, c_A, δ_A, …). The domains are □⁺ for cubes meeting Z_0, and the (W_N) domains. The (W_N) domains may leave Z_0. The kernel arguments of T_ω lie in Z_0.
+Resolvent remark [P, SOURCES_WC_EXPGAUGE §5.5, VERIFY V7]. For x ≥ 0, x·I is diagonal. It adds nothing to the Combes–Thomas error and raises the lower bound to γ + x. So the same holds for (x + A_Z)^{−1}, uniformly in x ≥ 0, with 4/γ → 4/(γ + x).
+
