@@ -81,3 +81,59 @@ Structure [P from the list]. Every Part I condition among (ε_1, α_0, α_1, α_
 - p. 381 (image): per component Z_j^{(i)} of the MR_j-cube cover: exp(−γ_0 min{½B_3^{−2}A_0², 2A_1², A_1²}p_0²(g_j)(d′_j(Z_j^{(i)}) + 1)) ≤ exp(−½γ_0A_1²p_0²(g_j)(d′_j + 1) − 2p_0(g_j)). (1.76): Z_j ⊂ Z′_{j−1}^{~10} ∪ ∪_i(Z_j^{(i)})^{~2}. Preparatory factor exp(−⅛B_3^{−2}(1+β_0)^{−2}A_0²p_0²(g_j)) ≤ exp(−A_1²p_0²(g_j)).
 - Reading [P]: ε_j, δ_j enter the split only through A_0, A_1, p_0, g_j. The CMP 116 constants ε_1, α_0, α_1 enter CMP 122 only via (L1), (L2) of §6 (small field ⊂ analyticity domain) and via σ (helped by the shrink).
 
+## 9. Task A: large-field cost of the shrink, and the A_0 absorption [P]
+Setting. Shrink S: α_i → α_i/4 (i = 0, 1, 4; γ_2; with α_2, α_3, a_1 scaled by the same ¼ to keep §5 (H)), ε_1 → ε_1′ = ε_1/(4λ_V) or smaller, θ := ε_1′/ε_1 ≤ 1/(4λ_V).
+9.1 CMP 116 cut (P = bonds with |g_kB| ≥ ε_1′). The set P grows. Its cost is the per-bond factor in (2.26). The P-sum is over all subsets, so the count of P does not depend on ε_1; only the per-bond gain does. Per bond: ½γ_2′ε_1′²g^{−2} ≥ ½γ_2ε_1²γ^{−2} ≥ 40κ for g ≤ γ′ = γ/(8λ_V) (§7, from B11). So Σ_P Π_{b∈P}e^{−½γ_2′ε_1′²g^{−2}} ≤ Π_b(1 + e^{−40κ}), Balaban's bound. Cost: γ′ = γ/(8λ_V).
+9.2 CMP 119/122 split. If the thresholds ε_j, δ_j are kept (A_0, A_1 unchanged), the split is unchanged; only (L1), (L2) change, and γ restores them (§6). If a construction ties the χ_k threshold to ε_1 by a fixed factor θ (TRUST_LEDGER C9, or the HHOL_LF freeze with prefactor θA_0), the thresholds become g_j(θA_0)(log g_j^{−2})^{p_0}, (θA_1)·(…). Then the large-field region grows, and:
+ (a) Per-cube Gaussian factor (p. 381): exponent ½γ_0A_1²p_0²(g_j)(d′_j + 1) becomes θ²× that. Take A_0′ := A_0/θ, A_1′ := A_1/θ. Then θA_0′ = A_0, θA_1′ = A_1: every factor on pp. 380–381 equals Balaban's exactly. Balaban's conditions on A_0, A_1 are lower bounds ("A_0 sufficiently large", "A_0 much larger than A_1" (ratio kept), C2: p_0(g) ≥ 17/(γ_0A_1²) (helped)). So A_0′, A_1′ are admissible.
+ (b) Any fixed factor F ≥ 1 per large-field component (entropy of the larger region, the e^{3 sup|σ|} of (1.75) at the new radii, or a θ-loss left after (a)) is absorbed by the term −2p_0(g_j) of p. 381. Claim: for g_j ≤ e^{−1/2} (so (log g_j^{−2})^{p_0} ≥ 1) and A_0″ := A_0 + ½log F,
+   F·exp(−2A_0″(log g_j^{−2})^{p_0}) ≤ exp(−2A_0(log g_j^{−2})^{p_0}).
+  Proof: the exponent difference is 2(A_0″ − A_0)(log g_j^{−2})^{p_0} − log F = log F·((log g_j^{−2})^{p_0} − 1) ≥ 0. ∎ The −2p_0 term itself is extracted from ½γ_0A_1²p_0² once p_0(g) ≥ 4/(γ_0A_1²), which a larger A_0 only helps.
+ (c) A fixed factor F per MR_j-cube (not per component) is absorbed by the p_0² term: F^{#cubes} ≤ exp(C_d log F·(d′_j + 1)) [I: #cubes ≤ C_d(d′_j + 1), linear-size bound], and C_d log F ≤ ¼γ_0A_1²p_0²(g_j) once A_1² ≥ 4C_d log F/γ_0 (since p_0(g) ≥ A_0 ≥ 1). Raising A_1 needs A_0 raised to keep A_0 ≫ A_1; both are lower bounds.
+ (d) Raising A_0 raises ε_j. The only upper bounds on A_0 are g-dependent: (L1), (L2), and the "small" σ of p. 379. All read g_jA_0(log g_j^{−2})^{p_0}·(fixed) ≤ (fixed), so γ (chosen after A_0) restores them [P, monotone for g² < e^{−2p_0}].
+9.3 Verdict on (I-ε). Every condition found on ε_1, α_0, α_1 is an UPPER bound, or a homogeneous ratio condition kept by the common shrink, or a LOWER bound relative to a LATER constant (γ: B11, (L1), (L2), σ; A_0: the large-field per-cube factors if a threshold is tied to ε_1). No condition is a lower bound on ε_1, α_0, α_1 relative to an EARLIER constant. No two-sided condition. Lower bounds named and restored:
+ - B11 (CMP 116 p. 18): restored by γ′ = γ/(8λ_V) exactly.
+ - CMP 109 p. 263 (real configurations in the domain) = (L1) in CMP 119 notation: restored by γ small.
+ - (1.34) domain vs the CMP 119/122 small-field bound = (L2): restored by γ small.
+ - CMP 116 p. 10 e^{16κ_1}C_1ε_1 ≤ ⅓a_1 if a_1 = α_1: kept by θ ≤ ¼.
+ - CMP 109 p. 277, p. 280 ratio conditions (α_0 vs α_1 vs α_3 vs α_2 vs ε_1): kept by the common factor.
+ - α-dependent thresholds on ε_1 (CMP 109 p. 280 E_0 recovery): ε_1 re-chosen after the α's; θ may need to be smaller than 1/(4λ_V) by a fixed factor. Not a lower bound.
+ (I-ε): CLOSED [P], with compensations γ′ ≤ γ/(8λ_V) (and smaller as (L1), (L2) need), A_0 (and A_1) raised by fixed amounts if a construction ties the thresholds to ε_1. Residual tags: [I] that the p. 8 exponent q is unchanged by a fixed-factor α shrink (conditions on α_1, α_2, α_3 not printed there); [I] the Latin a_1 / Greek α_1 reading on p. 10 (both readings pass); [I] the linear-size count in 9.2(c).
+
+## 10. Task B: (I-ord) settled against SOURCES_HIGHER_M1 §B2.2 [P]
+Statement of (I-ord) (SOURCES_MC §10, MC_IV0_VERIFY §5 item (4)): Balaban's constants can be chosen in the order L, κ → κ_1 → M → α's → ε_1 → γ, so that each condition of CMP 116 §1–§2 bounds a constant only in terms of constants chosen earlier, and the "shrink then re-choose" steps of Lemma MC are legitimate. It was a reading of the wording, not a check.
+Check. For each constant, the conditions that bound it, and the constants they involve (sources: §2–§8 here; MC §6; HIGHER_M1 §B1–B2):
+ - δ: δ = (1/10)(1 − 2L^{−1}) (CMP 116 p. 21 [V text]). Needs L only.
+ - κ: "κ sufficiently large" (CMP 116 (1.26), (2.29), (2.40)); δLκ/48 ≥ K_abs (B19). Needs L, δ, absolute constants.
+ - κ_1: ⅛(κ_1 − 1) ≥ (1 − 3δ)κ (p. 16), ⅛κ_1 ≥ (1 − 2δ)κ (p. 9), ½(κ_1 − 1) ≥ 2Lκ (p. 20), "κ_1 sufficiently large" (1.27). Needs L, δ, κ.
+ - M: δ_1M ≥ κ_1 (p. 5), M ≫ κ_1 (Ba3), δ_0M ≥ κ (p. 21), and HIGHER_M1 B3 list. Needs L, κ, κ_1, walk constants (δ_0, δ_1, B_0, …). HIGHER_M1 B2.3: no later constant bounds M.
+ - β (domain enlargement, CMP 109) and α′ (CMP 116 p. 10): fixed before the α's; α′ ≫ α.
+ - α_0, α_1, α_4, γ_2, α_6, and α_2, α_3, a_1: (U) items of §5 (O(1)Mα_0 ≤ β, (4B_3O(1)M)²α_0 ≤ β, (LM)^4α ≤ 1, α_5 small) and the (H) ratio items among themselves. Need M, L, β, B_3, α′. The (H) items form a chain α_2 ≲ α_3 ≲ (α_0, α_1), α_0 ≲ α_1/M; choose α_1, then α_0, then α_3, then α_2. No cycle: each ratio item has one side earlier in this chain.
+ - E_0: ½E_0 := the absolute constant of the log Z^{(k)}(U) − log Z^{(k)}(1) expansion (CMP 116 p. 21 [V text]); side condition C_3 ≤ E_0C_1 (p. 16, absolute). E_0 is ε_1-free; "we can take E_0 such that the assumption [O(1)C_3ε_1 ≤ ½E_0] is satisfied" is in fact an upper bound on ε_1. No cycle.
+ - ε_1: upper bounds in terms of κ_1, B_0, C_1, C_2, C_4, α_2, α_4, a_1, M^q, E_0, L (§2, §3, §5, MC B8, B12, B15, B16, B22, (2.40)). All earlier.
+ - ρ_0: (M2) ρ_0 ≤ (LM)^{−2}(0.45a/16n)^{1/2}, ρ_0 ≤ 0.1. Needs L, M, N only. It may sit anywhere after M; HIGHER_M1 puts it after ε_1, which is consistent.
+ - A_0, A_1, p_0 (and p_1, R_j rules): lower bounds only (CMP 119 p. 247–248; C2; C15; HIGHER_M1 B2.3 "(100MR)^d in p_0-conditions"). Need M, B_3, γ_0, R-rules, and (if a threshold is tied to ε_1, §9.2) ε_1. Never bound ε_1, α, M.
+ - γ: B10 (M, κ), B11 (γ_2, ε_1, κ), (L1), (L2) (A_0, p_0, α_0, ε_1), CMP 122 (1.68) "a small", p. 379 σ small (A_1, p_1, M, R, C_0), N3 (d) (ρ). All earlier. γ is bounded only from above.
+ Graph: every edge goes from an earlier to a later constant in d, L → δ → κ → κ_1 → walk constants → M_1 → M → β, α′ → α_1 → α_0 → α_3 → α_2 (and α_4, γ_2, α_6, a_1) → E_0 (absolute; may also be fixed first) → ε_1 → ρ_0 → A_1 → A_0, p_0, p_1 → γ → g. No condition bounds an earlier constant by a later one. No cycle [P, given the lists in §2–§8, MC §6, HIGHER_M1 B1].
+ Shrink compatibility: Lemma MC shrinks α's (after M), then ε_1, then γ, then (if needed) raises A_0 — each change is at or after the position of the changed constant and alters only later constants' admissible sets. Raising M (C24) re-chooses α, ε_1, ρ_0, A_0, p_0, γ only (HIGHER_M1 B2.3). Raising A_0 re-chooses γ only.
+ (I-ord): CLOSED [P]. Refinement of HIGHER_M1 §B2.2: (i) the α-chain internal order α_1 → α_0 → α_3 → α_2 (CMP 109 pp. 277–280); (ii) E_0 is absolute and ε_1-free (p. 21); (iii) A_1 before A_0 (A_0 ≫ A_1); (iv) ρ_0 needs only L, M, N.
+
+## 11. Ledger (authoritative)
+[V] page images this session (200 dpi): CMP 116 pp. 7, 8, 9, 10, 16, 17, 20; CMP 119 p. 255 (PDF p. 13); CMP 122 II pp. 379, 380, 381 (PDF pp. 25–27).
+[V text] pdftotext (not images): CMP 116 pp. 2–6, 11, 18–19, 21; CMP 109 pp. 262–263, 276–280; CMP 119 pp. 247–248; CMP 122 II pp. 377–378.
+[V] corrections to inputs: (2.26) prints on CMP 116 p. 17, not p. 16 ((2.22) is on p. 16). The p. 10 analyticity radius for B′ prints as Latin a_1 ("e^{16κ_1}|B′| ≤ a_1", "≤ ⅓a_1"), not α_1; both readings pass (§3). p. 7 prints "≤ ¼α_2" (pdftotext garbled it).
+[P] proved here:
+ - Classification (§2–§8): every condition on ε_1, α_0, α_1 in CMP 116 §1, CMP 109 Part I §1 and §3, CMP 119 (2.4)–(2.5), CMP 122 II pp. 377–381 is an upper bound, a degree-1 homogeneous ratio condition, or a lower bound relative to a later constant (γ or A_0). No two-sided condition. No lower bound relative to an earlier constant.
+ - ε_j, δ_j contain no ε_1 (CMP 119 (2.4), p. 248); they meet ε_1, α_0 only through (L1), (L2), both restored by γ small.
+ - B11 restored exactly by γ′ = γ/(8λ_V) with ε_1′ = ε_1/(4λ_V), γ_2′ = γ_2/4; P-sum bound identical to Balaban's (§7, §9.1).
+ - A_0 absorption: F·exp(−2(A_0 + ½log F)(log g^{−2})^{p_0}) ≤ exp(−2A_0(log g^{−2})^{p_0}) for g ≤ e^{−1/2}; θ-scaled thresholds restored exactly by (A_0, A_1) → (A_0, A_1)/θ (§9.2).
+ - (I-ε) CLOSED with compensations (γ smaller; A_0, A_1 larger if a threshold is tied to ε_1; ε_1 possibly smaller than ε_1/(4λ_V) by a fixed factor from the α-dependent E_0 recovery).
+ - (I-ord) CLOSED: dependency graph acyclic; refined order in §10.
+[I] inferred, not checked line by line:
+ - The CMP 116 p. 8 exponent q is unchanged by a fixed-factor α shrink (the "conditions on α_1, α_2, α_3" it refers to are not printed there).
+ - #MR_j-cubes in a component ≤ C_d(d′_j + 1) (§9.2(c)); only needed if a per-cube (not per-component) factor arises.
+ - Completeness: the lists cover CMP 116 §1–§2, CMP 109 §1 (definition) and §3 (pp. 276–280); CMP 109 §4–§5 and CMP 122 I were not re-read for further ε_1/α conditions. The pattern found ("sufficiently small" = upper bound) is uniform across the pages read.
+ - α_{i,k} in CMP 122 II p. 379 are capped by the fixed α_i (reading of the notation; the definition sits in CMP 122 I, not read).
+Effect on (M-C) (SOURCES_MC §10, MC_VERIFY §5, MC_IV0_VERIFY §5): open items were (I-ε), (I-ord), (M1), (I-V0) residual. (I-ε) and (I-ord) are now CLOSED [P] modulo the [I] items above. (M1) is the HIGHER_M1 B3 convention (TRUST_LEDGER C24). Unverified by an independent agent.
+
+STATUS: COMPLETE
