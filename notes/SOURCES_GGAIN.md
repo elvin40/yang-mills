@@ -97,3 +97,39 @@ Margin assumption (M_r): on supp χ_k, g_k|B|_Y ≤ rε_1 for all Y, with a fixe
 5.3 Use 2: the own-slot u-disc sup (route (a), SM_VERIFY §7 repair) [reduced: Lemma G4 + SOURCES_SM §4.2 complex covariance].
  In B̃ = g_kB variables χ_k is g-free (SM §4.1), so no surface term arises. On |u − u_k| ≤ z_0u_k, run Lemma G4 with the complex Gaussian (SM §4.2: the shift is a quadratic vertex of relative size z_0; Re u ≥ (1−z_0)u_k keeps (2.22)). The g-dependent part E^{(k+1)} − E^{(k+1)}_{u-free} (u-free = log Z^{(k)}-type terms) has sup ≤ C_G E_0 g_k on the disc, with g varying by ≤ (1−z_0)^{−1/2}. Cauchy: |∂_uE| ≤ C_GE_0g_k/(z_0u_k), so |∂_gE| = 2g_k^{−3}|∂_uE| ≤ 2C_GE_0/z_0. C_G := O(1)C_3K_2α_4^{−1/2}/E_0 (from ε_g), plus the D = ∅ term. Uniform in g_k. Same for β via C_Π.
  Comparison. Route (a) (§5.3) needs Lemma G4 on a complex u-disc and SM §4.2's complex-covariance step, but no χ derivative. Route (b) (§4) needs one insertion only and a real Gaussian, but needs the χ-step (Lemma G3: smooth χ̂ or a surface estimate). Both give uniform S_0 and C_β, with constants of the same form O(1)C_3α_4^{−1/2}×(route constant).
+
+## 6. Resulting uniform (B2) of HHIST, and consequences
+
+6.1 Statement (B2-unif). For every step k, g_k ∈ (0, γ], every monotone slot history (SOURCES_SM §5.1), and (U,J) ∈ U^c_{k+1}(X,α_0,α_1):
+  ‖∂_{g_k}V^{(k+1)}‖ ≤ C_V S_0,  |∂β_{k+1}/∂g_k| ≤ C_β := C_ΠS_0,
+  S_0 = O(1)C_3[K_1α_4^{−1/2}(1−r)^{−1} + O(1)‖χ̂′‖_∞γ_2^{−1/2}]   (route (b)),
+  or S_0 = 2C_G E_0/z_0 = O(1)C_3K_2α_4^{−1/2}/z_0 + (D = ∅ term)   (route (a)).
+ C_3 = 2(L+2)^4O(1)2E_0C_1α_4^{−1}α_6^{−1}M^q e^{C_2κ_1} (CMP 116 p. 20). No factor 1/g_k, no ε_1 in S_0. The O(1)'s are Balaban's unstated constants.
+6.2 Lemma HH (SOURCES_SM §3.2) now runs with uniform S_0 and C_β. Column sum in g-slots:
+  sup_i Σ_{j>i}|∂β_j/∂g_i| ≤ C_β + C_Πθ_0S_0/(1−λ), λ = L^{−α_*} + θ, uniform in i, j, K.
+ In u-slots (SOURCES_HBETA (1.1)): |∂β_j/∂u_i| = ½g_i³|∂β_j/∂g_i|, so the column sum is ≤ ½g_i³[C_β + C_Πθ_0S_0/(1−λ)] = O(g_i³). This meets the HBETA threshold Cg_i^{2+δ} with δ = 1. Σ_ig_i³ over the trajectory converges (g_i² ~ 1/(β_0 i)), uniform in K.
+6.3 The hop gain (§5.2) is then a refinement, not a requirement: λ_g = L^{−α_*} + C_Vθ_g g_k → L^{−α_*} as g_k → 0. SOURCES_SM §4.3's C_g device is no longer needed.
+6.4 What changes against SOURCES_SM §5.2 and SM_VERIFY items 5–6. The two same-type gaps (own-slot S_0 and C_β) close by one argument (§4), because β_{k+1} is a g-free linear functional of E^{(k+1)}. The single remaining load-bearing item is now the χ_k step (route (b)) or the complex-disc G-gain run (route (a)); see the ledger.
+
+## 7. Ledger (authoritative)
+
+Proved here (given the stated inputs):
+ - §3.1: "bounds with explicit g_k factors ⇒ uniform ∂_g" is false as an inference; a derivative bound needs holomorphy on a g-independent disc or a direct real-derivative bound. The task's framing is CORRECTED.
+ - §3.2: in B variables any complex g-disc keeping the integrand in (1.34) has radius ∝ g_k; this is the source of SOURCES_SM §4.2's 1/g_k.
+ - Lemma G1: pointwise in B, |∂_gV″_k(Y,B)| ≤ E_0C_1M^qe^{C_2κ_1}(1−r)^{−1}|B|_Y e^{−(1−2δ)κd_k(Y)} and |∂_g(P-part)| ≤ C_P|B|_Y³(decay); ε_1 cancels. Given (M_r).
+ - Lemma G2: one polynomial insertion is absorbed by the Gaussian at strength α_4, α_5 → α_5 + O(α_4), cost K_1α_4^{−1/2}(1−r)^{−1}ε_1^{−1} relative to (2.26).
+ - Theorem B2-unif (§4.4) and C_β = C_ΠS_0 (§4.5), uniform in g_k, given Lemma G3. First derivative only.
+ - §6.2: Lemma HH column sum uniform; u-slot column sum O(g_i³); HBETA threshold met.
+ - Where the sup ε_1 is needed (§2): analyticity domain (S1), Mayer radius/convergence (S2), large-field complements (S4). Where the Gaussian average suffices: Q-forms (S3, Balaban's own), any single insertion (S5), and vertex SIZES (§5.1, after absorption).
+Quoted [V, page images]: CMP 116 (1.19)–(1.24), p. 8 "better bound" sentence, (1.39)–(1.43), (2.16)–(2.26); OCR: (2.27)–(2.41), C_3 definition.
+Reduced:
+ - Lemma G3 (χ_k step), the REMAINING GAP of route (b): sharp χ_k has a surface derivative that Balaban never estimates. Closure by a smooth χ̂ (changes Balaban's construction; (2.22) with ε_1 → ε_1/2; compatibility with CMP 119/122 not checked) or by a coarea surface estimate (not run). The term is uniformly bounded (≤ O(γ_2^{−1/2}ε_1^{−1})·e^{−γ_2ε_1²/(16g_k²)} per bond); the gap is rigor, not scaling.
+ - Margin (M_r): supp χ_k ⊂ {g_k|B|_Y ≤ rε_1}, r < 1. Balaban's own inclusion (r = 1) is implicit ((2.9) cuts B′, (1.34) is in B) [check].
+ - Lemma G4 (all vertices weighted): ε_1 → ε_g = K_2g_kα_4^{−1/2} in vertex factors; run at majorant level; V″_k(Y,0) = 0 reading [check]; Balaban's "better bound" (p. 8) is thereby carried out at the level of (2.18)–(2.41) bookkeeping, not line by line.
+ - Route (a) (§5.3): Lemma G4 on a complex u-disc with SOURCES_SM §4.2's complex-covariance step.
+ - Hop gain (§5.2) for the Sect. I.4 lower-order terms: per-input g_k|B| factor not displayed by Balaban.
+ - Kotecký–Preiss derivative step (§4.4 (ii)) and dominated differentiation of H(Z) in g: standard, not written out.
+Open:
+ - Higher g-derivatives (Balaban's p. 264 "all derivatives") — not needed for HHIST, not proved.
+ - Large-field (CMP 119/122) analogue of route (b): the χ̂ or surface step there.
+ - Numerical size of S_0: O(1)'s and K_1, K_2 not numerical in Balaban.

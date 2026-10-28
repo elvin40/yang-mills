@@ -212,3 +212,109 @@ Route B hypothesis set in v4: (T1), (H2), (DF), LW (5.7), A6, (H0) (plus L5, (G2
 | common | (H0) at odd L > 11, L5, (G2), V1-type identification, Balaban's proofs, SU(2) | same |
 Shared inputs: (H0), L5, (G2), odd L (> 11 for (H0)), and the identification of the computed β_j(0) with Balaban's β_j(0) (V1; in Route B also the expansion point). The uniform-in-level hypotheses ((B2) vs (U) + (Bθ)) are formally distinct as named hypotheses. Their content overlaps: both rest on (H2) (§5). In Route K, (H2) gives (C1σ) (Theorem C1) and then (B2) (Theorem B2). In Route B, (H2) gives (U) with (T1), and the vertex bound behind (Bθ). So a proof of (H2) serves both routes. One closed route suffices for Theorem 2w.
 
+
+## §5 The hypothesis (B2) of Route K, and the single uniform inequality (H2)
+
+(B2): sup_{j≥0} sup_{K∈BZ} |σ_j^{(2)}(K)| < ∞. Weaker form that suffices, (B2w): sup_j ∫_BZ |K|^{−2}|σ_j^{(2)}(K)| d⁴K < ∞ (σ^{(2)} enters d_j only undifferentiated; KAPPA_BOUNDED Remark 2.3) [proved+verified: not graded by name; implied by KAPPA_BOUNDED_VERIFY §9(iv)].
+σ^{(2)} obeys the one-step recursion (U3_AW (1.2)): σ_j^{(2)} = L^{−2}𝒜_jσ_{j−1}^{(2)} + Q_j[σ_{j−1}^{(1)}] + g_j^{(2)}, with 𝒜_js = L^{−2}H_j^†(⊕_l s(k_l))H_j and H_j(K) the one-step gauge-fixed minimizer map. Notation: ρ_1 := sup_{j,K} ‖H_j(K)‖/L (one step); H_{(2),j}(K) := (⊕_l H_{j−1}(k_l))H_j(K) (two steps), ρ_2 := sup_{j≥2} sup_{K real} ‖H_{(2),j}(K)‖/L².
+
+### 5.1 Proved
+- K = 0 bound [proved+verified]: sup_j |σ_j^{(2)}(0)| ≤ C(|e|C_A + e²). Theorem A3 + scaling give |∂²σ_j^{(1)}(0)| ≤ 2C_A (polarization; KAPPA_BOUNDED_VERIFY §7), and the slaving identity (W-2) expresses σ_j^{(2)}(0) through these second derivatives.
+- Each fixed j [proved+verified]: σ_j^{(2)} is analytic on a fixed strip (Prop. A2), hence bounded. The content of (B2) is uniformity in j.
+- Prop. 4.1 [proved+verified, conditional]: if (h) h := sup_{j,K} ‖H_j(K)‖ < L² and (C1σ) sup_j sup_K |∂_Kσ_j^{(1)}(K)| < ∞, then (B2) holds. Proof: in the form norm ±s ≤ N(Δ + 1), N_j ≤ (h²/L⁴)N_{j−1} + Z_2, and Z_2 is finite by Theorem A3, (C1σ), and fixed f⁰ vertices.
+- Why the Lemma A4 mechanism alone fails [proved+verified, reason corrected by KAPPA_BOUNDED_VERIFY §7]: the obstruction is the missing uniform C¹ bound on σ^{(1)}, which enters twice: in Q_j (term L^{−3}∂_Kσ_{j−1}^{(1)}) and in the longitudinal part of σ^{(2)} given by (W-2). Theorem A3 is C⁰ only.
+
+### 5.2 Refuted, and the failed one-step bound
+- (HS) h < L√(L − 1) (named (H′) in U3_AW) [refuted at L = 3]. Measured max_K ‖H_j(K)‖/L = 1.652, 1.736, 1.757, 1.760 for j = 1, 2, 3, ∞ (U3_AW_VERIFY §6); the threshold is √2 = 1.414. Gauge choice cannot help: H_j is already minimal-norm in its gauge orbit.
+- One-step sup-norm C¹ recursion at L = 3 [numerical, reproduced; B2_TWOSTEP_VERIFY grade 2]. Its factor is ρ_1²/L = 0.909, 1.0046, 1.0289, 1.0325 for j = 1, 2, 3, ∞, so it exceeds 1 for j ≥ 2 (ρ_1 > √3 = 1.7321). At K = 0 the factor is L^{−1}; the bad region is the face K_3 = K_4 = π, K_1 = K_2 ≈ 1.86–1.92. This shows that the one-step sup-norm bound fails at L = 3. It does not show that a C¹ bound fails; a weighted norm is not excluded.
+
+### 5.3 (H2) and the two-step theorems [proved+verified, conditional on (H2)]
+Source: B2_TWOSTEP.md §1–§3; B2_TWOSTEP_VERIFY.md grades 1, 3, 4 (CONFIRMED).
+  (H2)  ρ_2 = sup_{j≥2} sup_{K∈BZ real} ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L.
+(H2) is a plain operator-norm inequality on real K. It uses no strip, no Δ-relative weight, and only n = 2.
+- Two-step map. 𝒜_j𝒜_{j−1}s = L^{−4}H_{(2)}^†(⊕s)H_{(2)}, with dk_{l,l′}/dK = L^{−2} [CONFIRMED, grade 1].
+- Theorem C1: (H2) ⇒ (C1σ), with contraction factor q_1 = ρ_2²/L² on the derivative. The chain-rule gain is exactly L^{−2} per two steps on real K. So the threshold is ρ_2 < L, not √(L² − 1): no strip-Cauchy loss enters. The large constants (b(L) of O6, η_1, η_2, G_1) enter only the source term, not the contraction factor [CONFIRMED, grade 3].
+- Theorem B2: (H2) ⇒ (B2), hence (B2w), in plain sup norm, with factor q_2 = ρ_2²/L⁴. This contraction needs only ρ_2 < L², which (H2) implies [CONFIRMED, grade 3]. In one step it is Prop. 4.1's (h).
+- (H2) vs (H″). (H2) is the plain operator norm of the same matrix as U3_AW (H″) at n = 2. It is weaker: threshold L (3 at L = 3) against √(L² − 1) (2.828), real K only, n = 2 only [CONFIRMED, grade 4]. (H″) ⇒ (B2) stays [argued] and is no longer needed.
+- Form of Q_j (G3) [CONFIRMED by read-off of U3_AW (1.2)/(3.3) and P10]: ∂σ^{(1)} enters linearly. U3_LEMMA51 (3.3) itself was not re-derived from the Moyal rule by either party.
+- Not covered: C² and C³ bounds on σ^{(1)} under (H2) (B2_TWOSTEP §5, "look routine", not written, not graded). They are not needed for (B2).
+- Submultiplicativity: ρ_2 ≤ ρ_1² always. At L = 3 the gain of the two-step map is that this is strict by a factor 1.50 (2.064 vs 3.098) [CONFIRMED].
+
+### 5.4 Numerics for (H2) [numerical; none certified]
+Code: numerics/h2_scan.py (umklapp Schur pieces, one colour, Gram form; H2_LARGE_L §1). Code structure CONFIRMED (H2_LARGE_L_VERIFY grade 1): the one-colour reduction is exact at U = 1, the H and Δ_out blocks and the Gram identity are correct, the separable Prop. A form is exact. Sign slip in H2_LARGE_L §4 (H = +[𝔅^{−1}]_{f,c}); harmless.
+| L | j | ρ_2 (scan max) | threshold L | status |
+|---|---|---|---|---|
+| 3 | 2 | 2.00857 | 3 | [numerical, reproduced] (B2_TWOSTEP_VERIFY §4; H2_LARGE_L_VERIFY §1) |
+| 3 | 3 | 2.05601 | 3 | [numerical, reproduced] (spot value 2.05599 at the argmax) |
+| 3 | ∞ | 2.0634 (2.06332–2.06377 over lmax 2–5) | 3 | [numerical, reproduced]; margin 31%; q_1 ≤ 0.473, q_2 ≤ 0.053 |
+| 5 | 2, 3, 4, ∞ | 2.098, 2.108, 2.108, 2.108 | 5 | [numerical, reproduced]: independent dense code gives 2.098283 at j = 2; the verifier's own search gives 2.107921 at j = ∞, same argmax; margin 58% |
+| 7 | ∞ | ≥ 2.1131 (face diagonal only) | 7 | [numerical, run by the verifier] (spot 2.11309) |
+| 9 | ∞ | ≥ 2.1142 (one point, (2.6, 2.6, π, π)) | 9 | [numerical, run by the verifier]; the author's j = 2 point gives ≥ 2.1104 |
+- Shape. The argmax lies on the face K_3 = K_4 = π, on the diagonal K_1 = K_2: ≈ 2.22 → 2.40 (L = 3, j = 2 → ∞), ≈ 2.54 (L = 5). Off-face points are lower: best off-face 1.995 (L = 3, j = 2), 2.004 (L = 3, j = ∞), 2.088 (L = 5, j = ∞). The corner (π, π, π, π) stays below the face peak, but the gap shrinks: 0.0070, 0.0028, ≥ 0.0025, ≥ 0.0023 (L = 3, 5, 7, 9). The corner is the obvious place for a competing maximum at large L.
+- Level dependence. At L = 5, ρ_2(∞) − ρ_2(j) = 9.64·10^{−3}, 4.0·10^{−4}, 1.6·10^{−5} (j = 2, 3, 4); ratios 24.1, 25.0, against L² = 25. At L = 3 the ratios are 7.5, 8.7. Levels j = 4, …, ∞ − 1 are not sampled at L = 3.
+- L-trend. j = ∞: 2.0633, 2.1079, ≥ 2.1131, ≥ 2.1142 (L = 3, 5, 7, 9). This is consistent with a bounded ρ_2 near 2.11–2.14. The rate claim "at least as fast as L^{−2}" is CORRECTED (H2_LARGE_L_VERIFY grade 5): it used a lower bound at L = 7 as if it were the sup. "(H2) gets easier with L" is a measured trend for L ≤ 9, not a result for L > 11.
+- All values are lower estimates of a sup (grid plus local search).
+
+### 5.5 One-step sufficiency at L ≥ 5 [arithmetic proved; inputs numerical]
+‖H_{(2),j}(K)‖ ≤ max_l ‖H_{j−1}(k_l)‖·‖H_j(K)‖ ≤ L²ρ_1². So ρ_1² < L implies (H2), and then the one-step C¹ recursion of B2_TWOSTEP (2.2) contracts with factor ρ_1²/L.
+- L = 3: ρ_1² = 3.10 > 3. The one-step route fails (§5.2); the two-step map is needed.
+- L = 5: ρ_1 = 1.860 (j = 1, Wilson fine kernel, dense, measured by the verifier), 1.9565 (j = 2), 1.963 (j = ∞). So ρ_1² ≤ 3.853 < 5 and ρ_1²/L = 0.771 [numerical, CONFIRMED as a measurement, uncertified; H2_LARGE_L_VERIFY grade 4].
+- L = 7: ρ_1 ≥ 2.032 (diagonal only), ρ_1²/L ≈ 0.59 [numerical].
+So at L ≥ 5 the one-step map suffices for Theorem C1, as far as measured. For certification this replaces L⁸ blocks per K (two-step map) by L⁴ blocks per K (625× fewer at L = 5).
+
+### 5.6 Certification plan and j_0 [designed, not done]
+B2_TWOSTEP_VERIFY grade 6 (CORRECTED in size): certifying (H2) is a computer-assisted proof project, not a check. H2_LARGE_L §4 gives the design; H2_LARGE_L_VERIFY grades 6–8 check it. Three parts.
+(a) Tail j ≥ j_0. From the resolvent identity, ρ_2(j) ≤ R_∞ + (ρ_1²/a_*)(δ_{j−2} + δ_{j−1}), where R_∞ = ρ_2 at j = ∞, a_* = inf_K a_j(K) with ‖[𝔅^{−1}]_{f,f}‖ = 1/a_j(K) exactly, and δ_m = sup_K ‖Δ_{L^m} − Δ_∞‖ (O5 decay) [derivation CONFIRMED]. Inputs CORRECTED by the verifier: the 2-norm sup of δ_m is at the corner, δ = 179, 92.0, 18.7, 2.39, 0.317 (M = 1, 3, 9, 27, 81), 45–90× the assumed value at small m; a_*(L = 5) = 0.0107, not 0.05. With these inputs, j_0 ≈ 8 (L = 3) and ≈ 6 (L = 5). With the O6 coercivity constant, j_0 = 25, which cannot be used in practice (B2_TWOSTEP_VERIFY §5 estimated j ≳ 45 with ‖𝔅^{−1}‖ ≤ b(L) ~ 10^{19}).
+(b) Levels 2 ≤ j < j_0 and j = ∞. A certified sup over the BZ of ‖H_{(2),j}(K)‖ (at L ≥ 5: of ‖H_j(K)‖, §5.5). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the BZ), 4×4 and 5×5 verified inverses, one 4×4 λ_max per K; about 2.5·10³ boxes at half-width 0.05 at L = 3; the analytic form of Δ near K = 0, where ρ_2(0) = 1. At j = ∞ also a certified tail bound for the Prop. A sum (lmax truncation; observed effect 4·10^{−4}). There is no explicit global Lipschitz constant today: the A0/O5 strip width is existential, and the constant that can be made explicit is ~10^{40}. Monotonicity in j is not proved and is not used.
+(c) Inputs to certify first: ‖𝔅_j(K)^{−1}‖ ≤ B_num for all j, K (the O6 constant b(L) is unusable), the O5 constant C_0 explicitly (or certified δ_m), certified a_*, ρ_1, R_∞.
+Operational fixes for the Windows runs (H2_LARGE_L_VERIFY grade 8): atomic JSON writes, pre-copied profile caches, profile build time at L ≥ 11 not budgeted. Nothing is launched.
+
+### 5.7 The precise remaining inequality
+At a fixed odd L ≥ 3 the single uniform hypothesis is (H2).
+- Route K: (H2) ⇒ (C1σ) (Theorem C1) ⇒ (B2) (Theorem B2) [proved+verified, conditional on (H2)].
+- Route B: (H2) + (T1) ⇒ (U), and (H2) ⇒ the vertex bound for γ_rec in (Bθ) (BETA_FP_U Theorem 2.4, Prop. 3.2) [proved, unverified].
+- Status of (H2): [numerical at L = 3, 5, 9; certification open]. At L = 9 there is one point only. No value exists at L > 11 (Balaban's range), so the numbers are supportive only.
+- Kept as alternatives: (C1σ) + (h) ⇒ (B2) [proved+verified]; (H″) ⇒ (B2) [argued]; (B2w) directly. No per-momentum d = 4 constant-field code exists, so (B2) itself has not been scanned numerically (KAPPA_BOUNDED_VERIFY §8).
+
+## §6 Conclusion
+
+Theorem 2w ⇐ (Route K inputs) or (Route B inputs). Precisely:
+
+Route K. (B2) [open; reduces to (H2) (verified reduction, §5.3); (H2) numerical at L = 3, 5, 9, certification open] + (PI), (F), (M_j), V1, (G2) [fixed-level] + (H0) [Balaban, odd L > 11] + L5 [open] ⇒ Theorem K (R = κ_*) ⇒ (5.1) ⇒ Lemma D″ ⇒ Theorem 2w. Status of the implication: [proved+verified, conditional].
+
+Route B. (U) + (Bθ) with θ_* < 1 + LW (5.7) + bounded 𝔡_Y, 𝔡_gf + identification of β (uniform in k) + (G2) + (H0) [odd L > 11] + L5 ⇒ Theorem B (R = C_B) ⇒ (5.1) ⇒ Lemma D″ ⇒ Theorem 2w. Status: [proved, unverified, conditional]. With BETA_FP_U (§4.2a): (T1) + (H2) + (DF) + LW (5.7) ⇒ Corollary 4.1 (R = C_B); with A6 + (H0) + L5 + (G2) ⇒ Theorem 2w. Status: [proved, unverified, conditional].
+
+Single uniform hypothesis. Both routes need (H2). A certified (H2) at one odd L > 11 would discharge (B2), the only uniform-in-level hypothesis of Route K (Theorems C1, B2). In Route B it would reduce (U) to (T1); (DF) and A6 would remain.
+
+Then Balaban's Theorem 1. Theorem 2w gives (b) and (c′). With γ shrunk so that (S) holds, every one of the 19 cross-scale uses in CMP 119 and CMP 122 I–II is covered (§2.3), and the single-scale uses need only g_k ≤ γ. So Theorem 1 holds for the bare coupling g_0(K, g), for every K and every g ∈ ]0, g_1], without Balaban's coupling assumption. This needs L5 in the sharpened form of §2.4: β must exist on every history the shooting visits. Status: [proved, unverified (sweep), conditional on Route K or Route B inputs, on L5, and on Balaban's published proofs].
+
+Order of constants. Fix β_0, p_0, p_1, r, ν, κ_0 (Balaban). Fix L (odd, > 11), then R from Route K or B, then b = c log L, then γ ≤ min(γ_0, γ_Bal, b/(4C_1), γ_*) with γ^{−2} ≥ c_sw·2R. Then g_1 = (γ^{−2} + 2R)^{−1/2}. Balaban's phrase "for a sufficiently small positive g" fits g ≤ g_1.
+
+What this does not give.
+- Literal (0.31): only for windows of length ≥ 8R/b. Literal (0.31) at every K needs (L1) or (L2) of §1.4, which need individual increments, not window sums. Not needed for Theorem 1.
+- The value lim β_j(0) and any rate: §7.
+- Even L, or odd L ≤ 11 without (H0) as an extra hypothesis (Balaban assumes L odd > 11 throughout CMP 109); SU(N) with N > 2.
+- Monotone couplings: g_m can exceed g_n for m < n by the bounded amount u_m ≥ u_n − D′. §2.3 shows Balaban's proof tolerates this under (S); a line-by-line read was not done.
+- A continuum limit (ASSEMBLY.md treats the assembly separately; not claimed here).
+
+## §7 The convergence route: what it adds, and its status
+
+Not needed for Theorem 1. It adds: (i) existence of β_∞ = lim β_j(0); (ii) its value c log L; (iii) a rate; (iv) eventual positivity, hence literal (0.31) for K ≥ K_0 (Lemma D′ (d)); (v) with certified early steps, literal (0.31) at every K (§1.4 (L2)). It also implies (B2), since convergence of σ_j^{(2)} implies boundedness. So it needs strictly more than Route K.
+
+### 7.1 Components and status
+- U3 Theorem 4.1 with O5: |∂_K^α(Δ_M − Δ_∞)| ≤ C M^{−2}, |α| ≤ 2, uniform to K = 0, odd L [proved+verified] (U3_VERIFY, U3_REPAIRS_VERIFY). Numerically |Δ_M − Δ_∞| = 1.007, 0.129, 0.0147 at M = 3, 9, 27.
+- O6: ‖𝔅_j(K)^{−1}‖ ≤ b(L) for all j, K, one-step constraint, trivial background [proved+verified]. Crude constant (b(3) ≈ 7.5·10^{33}); measured corner values 103.5, 176.7, 193.0, 195.3 (j = 0, 1, 2, ∞, L = 3) use a surrogate Λ (U3_REPAIRS_VERIFY §5).
+- Theorem 6.1: β_{j+1}(0) = Φ(𝒟_j) is Lipschitz in the level data [proved+verified, conditional on V1]. The norm is the Taylor-data norm (U3_VERIFY P8 correction).
+- Lemma 5.1 (convergence of σ_j^{(1)}, σ_j^{(2)} in C², |α| ≤ 2):
+  - neutral sector, rate L^{−4j} [proved+verified for the value bound; the K-derivative paragraph is proved, unverified];
+  - (W) [proved+verified] (U3_AW Theorem W); it removes the marginal direction of the f¹ recursion;
+  - (A) qualitative and Theorem A3 [proved+verified]; (A) in full (strip/C³ for m = 1, all of m = 2) ⇐ (H″) [open]; the route via (HS) is [refuted] at L = 3;
+  - σ^{(1)} convergence at rate jL^{−2j} [sketch in U3_AW §4.7, unverified]; σ^{(2)} convergence [open, needs (A) in full];
+  - the single-block-constraint version of Lemma 5.1 is false for m = 2 in d = 4 [proved+verified]; Balaban's composed constraint is not affected.
+- Prop. 3.6: |β_{j+1}(0) − β_∞| ≤ C(1 + j)²L^{−2j} [proved, unverified as an assembly; conditional on V1, (A) in full]. (v1 wrote C j²L^{−2j}, which is 0 at j = 0; corrected.) The identification of σ-Taylor data with the data of (6.1) is cited from U3_VERIFY §7, not re-shown. (N) (clean rate L^{−2j}) is not needed and is judged plausibly false.
+- Value of the limit. Given convergence, Theorem K or Theorem B gives β_∞ = c log L at once: S_k/k → β_∞ by Cesàro and S_k/k = c log L + O(1/k) [proved+verified as an implication: THEOREM2_PROOF_VERIFY Point 4; BETA_FP_PW Theorem 3.2(iii)]. Older routes to the value: BETA_FP_H Theorem 3.1′ with (H) restated at the constant field, which given (W) reduces to Lemma 5.1 (1.2) alone (BETA_FP_H_VERIFY items (1)–(4)), plus (PI), (F), (M) [conditional; (M) argued]; and BETA_FP_PW Theorem 3.1 (limit form) given (U), (Cθ), LW (5.7) [proved, unverified]. The original (H) with IR weights (BETA_FP_LEMMA43 (4.2)) was graded UNSUPPORTED and is not used.
+- Rate of 𝒞(Λ): O(Λ^{−2} log Λ) given Lemma 5.1 with rates, via U3_AW §3.4(b) slaving [argued, BETA_FP_H_VERIFY §5].
+
+### 7.2 Early steps and j_*
+Under Prop. 3.6 and β_∞ = c log L, β_{j+1}(0) ≥ (c log L)/2 for j ≥ j_* := min{J : C(1 + j)²L^{−2j} ≤ (c log L)/2 for j ≥ J}. Heuristic size [argued]: C ~ b³ gives j_* ≈ 110 (L = 3), ≈ 70 (L = 13); C ~ b⁶ (one-step inverses inside C_data) gives ≈ 218, ≈ 138 (THEOREM2_PROOF_VERIFY Point 5(e)). With the measured ‖𝔅^{−1}‖ ≈ 195: j_* ≈ 10 (L = 3), ≈ 4 (L = 13). Certifying β_1(0), …, β_{j_*}(0) > 0 needs interval arithmetic at odd L ≥ 13 (blocks ≈ 3.4·10⁵ rows per momentum by dense methods; the umklapp code reduces this to 12×12 blocks at L⁴ momenta). It is needed only for (L2), not for Theorem 1.
+
