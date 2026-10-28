@@ -73,3 +73,32 @@ Prior verification. THEOREM2_PROOF_VERIFY Step 4 and Point 3 already graded the 
 
 Grade (iii): CONFIRMED (second confirmation). The assembly is verified; its inputs are not: (A) in full [open], the σ^{(1)} rate (U3_AW §4.7 sketch, unverified), σ^{(2)} convergence [open], the neutral-sector K-derivative paragraph [proved, unverified], and the identification step [cited]. Prop. 3.6 is on the convergence route (v4 §7), which v4 states is not needed for Theorem 1; so it should leave B10 and be booked under §7's inputs.
 
+## (iv) D″ form of N3 Step 3 (SOURCES_HBETA_N3 §4; SOURCES_N3A §2d; N3A_VERIFY gaps)
+
+Claim to prove. Lemma N3 (|δw_k| ≤ (3/2)τ on Q, uniformly in K) with (E) "every β_j ≥ β" replaced by the D″ data: (5.1), D″ hypothesis (i) (C_1γ ≤ b/4), β = 3b/4, D′ = 2R. The two named gaps: (G1) the bootstrap base is real Lemma H (SOURCES_HBETA §2), which uses (E) in Steps 2–3; (G2) complex Step 2 needs a lower bound on Re u_i without (E).
+
+What B7_CLAMP and KUNIF supply. B7_CLAMP Route 2 (verified): Lemma D″-nest gives the reference trajectory, and §4.4 gives (c′) u_m ≥ u_n + β(n−m) − D′ on EVERY true trajectory whose couplings stay in ]0, γ], with Balaban's own β (no clamp). KUNIF (4.1)/(4.4) (verified as a reduction): the per-step bracket |β_{k+1}(h, g) − β_{k+1}(0)| ≤ C_βg on admissible histories, K-uniform (caveat KUNIF_VERIFY 3(a): non-monotone histories need NONMONO, which B7_CLAMP 5.1 cites as verified). Neither file mentions N3 or Lemma H. They supply the inputs; the rewrite below is new [P, this file, unverified].
+
+Lemma H″ (real base, D″ form). Replace (E) by (5.1) + (i). Let x″ := ½C_1A[(D′/β + 1)γ³ + 2γ/β] ≤ ln(3/2) and (a_R) 3r + D′ < g^{−2} − γ^{−2}. Then for every K and real |c| ≤ 2r: all u_k(c) > γ^{−2}, Σ|B_j′(c)| ≤ ½, ½ ≤ |v_k(c)| ≤ 3/2.
+- Step 2″. On a true trajectory with all u_i ≥ γ^{−2}, (c′) with n = K gives u_i ≥ γ^{−2} + max(0, β(K−i) − D′). At most D′/β indices have β(K−i) ≤ D′; each term ≤ γ³. The rest is a progression with step β starting in (0, β]: sum ≤ γ³ + ∫_0^∞(γ^{−2} + βt)^{−3/2}dt = γ³ + 2γ/β. So S_3 ≤ (D′/β + 1)γ³ + 2γ/β and Σε_j ≤ x″.
+- Step 3″ (fixes G1). The old set J used only u_K > γ^{−2} and then "u_k ≥ u_K by (E)". That step fails: (c′) gives only u_k ≥ u_K − D′. New set: J := component of 0 in {c ∈ [−2r, 2r] : the true trajectory has u_k(c) > γ^{−2} for all k ≤ K}. No clamp: each prefix is in Dom (B7_CLAMP §4.4), so Balaban's β is evaluated only inside his domain; continuity in c is (C-tr), C¹ is (H-hist). On J, |v_k| ≤ 3/2 for all k, so u_k(c) ≥ u_k(0) − (3/2)|c| ≥ u_K(0) − D′ − 3r = g^{−2} − D′ − 3r > γ^{−2} by (a_R). Strict, so J is closed and open; J = [−2r, 2r]. ∎
+
+Lemma N3″ (complex, D″ form). Conditions: (a″) 3r + (3/2)τ + D′ < g^{−2} − γ^{−2}; (b″) ½C_1′A[(2D′/β + 1)γ³ + 4γ/β] ≤ ln(3/2); (c) γ³C_1′Y ≤ β; (d) 2√2γ²Y ≤ ρ (Y = 2τ).
+- Step 0″. Unchanged except the last sentence: (E) is not used. What remains is |β_j(u) − β_j(Re u)| ≤ ½C_1′γ³|Im u| ≤ β/2 by (c).
+- Step 2″ (fixes G2). On the bootstrap set all Re u_i ≥ γ^{−2}. Window: Re u_i − Re u_K = Σ_{j=i+1}^{K} Re β_j(u_{j−1}) ≥ Σ_j [β_j(Re u_{j−1}) − β/2] ≥ T_0(i, K) − (b/4)(K−i) − (β/2)(K−i) ≥ (β/2)(K−i) − D′. So Re u_i ≥ γ^{−2} + max(0, (β/2)(K−i) − D′). This is the brief's bound "γ^{−2} + β(K−i) − D′ − η", with the error η absorbed per step into β/2 (condition (c)). It needs no circular estimate. As in Step 2″ of Lemma H″, S_3 ≤ (2D′/β + 1)γ³ + 4γ/β, so Σε_j ≤ x_C″ ≤ ln(3/2) by (b″), and |v_k + 1| ≤ ½.
+- Step 3″. T := {t ∈ [0, 1] : for all s ≤ t and all k ≤ K, u_k(c_s) ∈ D}. 0 ∈ T by Lemma H″. On T: |Im u_k(c_t)| ≤ (3/2)τ < Y, and |u_k(c_t) − u_k(Re c)| ≤ (3/2)τ for EVERY k, so Re u_k(c_t) ≥ g^{−2} − D′ − 3r − (3/2)τ > γ^{−2} by (a″). Strict, so T = [0, 1]. ∎ (This per-k route needs no η in (a″); N3A §2d's "+ η" is not needed.)
+- Constants. With g ≤ (4γ^{−2} + D′)^{−1/2} (≤ min(γ/2, g_1), since D′ = 2R): g^{−2} − γ^{−2} − D′ ≥ 3γ^{−2}. With r_0 = τ_0 ≤ γ^{−2}/10 (N3A): 3r + 1.5τ ≤ 0.45γ^{−2}. Slack 6.7×. (b″) has the old leading term 2C_1′Aγ/β plus O((D′/β)γ³); all K-free.
+
+Domain note (not one of the two gaps). Step 0 expands around the real point Re u_{j−1} ((H-hol) on P_ρ(x), x real). In the history form (§5 of HBETA_N3) the Re-history is not a true trajectory. So N3 in history form evaluates β off Balaban's trajectories and needs Route 1 (slot cube) of B7_CLAMP, as the verified B7 ledger already prescribes for the HHIST/B13 chain. In the one-argument form there is no issue.
+
+Grade (iv): both gaps CLOSED in this file, single reader. D″-nest §4.4 supplies (c′) on every admissible trajectory ("the window form") and KUNIF supplies the K-uniform per-step bracket; the window rewrite of Lemma H Step 3 (all-k bootstrap set, condition (a_R)) and of N3 Step 2 (per-step absorption into β/2) is written above. Status: [proved, unverified]; needs one verifier pass.
+
+## Conclusion for TRUST_LEDGER row B10
+
+- (i) Sweep: all 19 rows now second-read (A11_CONST_VERIFY rows 0–8; LEMMA_DPRIME_VERIFY 11, 12, 16, 18; this file 9, 10, 13, 14, 15, 17). Leaves B10, except one narrow residual: completeness of the CMP 122 I–II list (grep on poor OCR). Book it as a new [I] row or a caveat on A13.
+- (ii) Prop. 4.3: CONFIRMED given (S1)–(S3); scope j ≥ j_1 via Lemma 4.2, (S3w) open below. Leaves B10 (the open part is (S1)–(S3), already listed as open).
+- (iii) Prop. 3.6 assembly: already CONFIRMED in THEOREM2_PROOF_VERIFY Point 3; confirmed again. Leaves B10; the v4 §7.1 tag is stale. Its inputs ((A) in full, σ^{(1)}/σ^{(2)} rates, neutral derivative paragraph) stay open or unverified on the convergence route.
+- (iv) N3 D″ form: gaps closed here, single reader. Stays in B10 until a verifier checks Lemma H″ / N3″ above.
+Suggested B10 text: "N3 in D″ form (Lemma H″, N3″, SOURCES_B10_SWEEP §(iv)) [proved, unverified]; CMP 122 completeness of the sweep [I, grep]".
+
+Cleanup: /tmp/b10 page images deleted after this section.

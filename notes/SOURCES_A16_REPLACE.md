@@ -44,3 +44,26 @@ Input to all of these: (P) for C_0 only, i.e. A1/A1w (and A10 for complex U). No
 
 Where the C_f object is then USED with "Balaban's machinery" (the point of A16): §3.4 says "every bound on the fluctuation propagator that Balaban's Sect. 3–4 and CMP 116 use holds for C_f". The claim that Balaban's cluster expansion then runs with C_f in place of C_0 is the analogy. D2's main route (2.b) does not need it ("Balaban's measure dμ_{C^{(k)}} is untouched", §3); C_f is used in route (b′), in §4 (frozen comparison), §7 (derivative bounds), and in D3R (P8) / D3W8.
 
+## §2b What D3R (P8) and D3W8 use about C_f
+
+D3R §2.3 (P8): the quadratic source part ½g_k²⟨B′, 𝒱_fB′⟩ "changes the covariance by 1 + O(γ²r) and is absorbed by D2 Lemma 3.1"; D3R_VERIFY item 2: this is a covariance change C^{(k)} → C_f^{(k)} in (3.27) at every s, t, not a P^{(k)}-class vertex. D3R needs: Z_{s,t} bounded away from 0, the localized expansion converges uniformly in t, large-field factors survive.
+D3W8 §1.1–§1.4 makes it explicit: C_f^{(k)} := (C_0^{−1} − g_k²𝒲_S)^{−1}, 𝒲_S := C^*𝒱_SC, and lists what the cluster expansion of CMP 116 / CMP 119 pp. 275–279 uses: (G1) exponential decay of the covariance and operators built from it, with s(Δ) inserted in the walk expansion (CMP 116 (1.6)–(1.7)); (G2) analyticity in (U, J); (G3) uniform upper bound (moments, χ_k tails); (G4) normalization / determinant as closed walks. §1.3 is tagged [reduced to (P) and the CMP 116 p. 3 replacement principle]. §1.4 (large-field domination) is proved directly and does not cite A16.
+
+## §2c Consolidated list: what the project uses about C_f
+
+Sourced objects (Z_0-localized, as CMP 116 Sect. 2 needs them; the project wrote only the whole-volume form):
+ A_Z^f := A_Z − g_k²𝒲_Z, 𝒲_Z := 1_{Z_0}𝒲_S1_{Z_0} on V_red(Z_0); C_f(Z_0) := (A_Z^f)^{−1}. At Z_0 = whole region this is D3W8's C_f^{(k)}, since A_exp = C^*Δ^{(k)}C (WC_FULL 0.7, PF5).
+Properties used (each labelled for §3):
+ Q1 Existence and positivity at real points: real U, J = 0, real f ⇒ A_Z^f real symmetric, ≥ c > 0 (D2 L-iv; D3W8 1.4).
+ Q2 Walk expansion with locality (L1)–(L2) and per-walk bounds of the WC(ii) / CMP 116 (1.6)–(1.7) form, rate halved; s(Δ)-insertion per cube met (D2 L-vi; D3W8 1.2(d), (G1)).
+ Q3 Bounds on ∂_L C_f ∂_R for the operators of CMP 109 (1.8) (D2 L-iii; D3W8 1.2(c)).
+ Q4 Analyticity in (U, J) on the α′-domain and in complex f|_X, with the same bounds (D2 L-v; D3W8 1.2(e)–(f), (G2)). Derivatives in the background follow by Cauchy from Q4.
+ Q5 Uniform norm bound ‖C_f‖ ≤ const (G3), used also as α_5‖C(Z_0,0)‖ < ½ (CMP 116 p. 17).
+ Q6 Determinant / normalization ratio as a closed-walk series (D2 §3.4; D3W8 (G4)).
+ Q7 Square root (C_f)^{1/2} with a walk expansion: needed by CMP 116 (2.6)–(2.8) (change of variables B′ = (C^{(k)})^{1/2}X, Γ_k contains (C^{(k)})^{1/2}(σ)). Not listed by D2/D3W8. Missing from their lists. [I: read on CMP 116 pp. 12–13]
+ Q8 The "perturbative argument" of CMP 116 pp. 15–17 (A8 row): σ-truncation small (Lemma D), modulus bound by a positive Gaussian with precision H(K_σ) and determinant ratio (Lemma P). Not listed by D2/D3W8. Missing from their lists.
+ Q9 Gaussian conditioning on Z_0^c, CMP 116 (2.5): exact algebra for the quadratic form ⟨B, A_exp^fB⟩.
+ Q10 t-measure facts (D3W8 1.1, 1.3): C_f independent of the interpolation parameters s, t of (3.26); for the (3.30) family τ → t²τ.
+ Q11 Large-field domination (D3W8 1.4): (1 + τ)^{−1}C_0 ≤ C_f ≤ (1 − τ)^{−1}C_0, density bound on the marginal region (D3W8_VERIFY S9 fix).
+Not a bound, not provided, must not be used: Euclidean (lattice-symmetry) covariance of C_f fails for non-constant f. CMP 119 uses covariance of the effective action ((3.39), (3.58)) for renormalization; the sourced chain handles the relevant terms by frozen constant-c theories (D2 §4, D2C), which are translation invariant. [I: no use of C_f's covariance found in D2/D3R/D3W8]
+
