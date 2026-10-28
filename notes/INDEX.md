@@ -42,6 +42,8 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | BETA_FP_H_VERIFY.md | Verifier of BETA_FP_H. | report |
 | BETA_FP_M.md | Input (M) without the false resolvent bound; reduced to three spectral bounds (S1)–(S3). | unverified |
 | BETA_FP_PW.md | β_∞ = c log L from plane waves only (second route after BETA_FP_M). | unverified, in progress |
+| BETA_FP_PW_VERIFY.md | Verifier of BETA_FP_PW. | report, in progress |
+| B2_TWOSTEP.md | Attempt to prove (B2) for Theorem K through the two-step recursion (H″). | unverified, in progress |
 | KAPPA_BOUNDED.md | Theorem K (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
 | UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743. | unverified (code validated against ym_momentum to 1e−12) |

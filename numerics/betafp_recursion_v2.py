@@ -202,7 +202,7 @@ class Level:
         X = B["Bmp"] @ ip @ B["Bp"] + B["Bpm"] @ im @ B["Bm"]
         S2 = (i0 @ B["B2"] @ i0 - 2 * i0 @ X @ i0)[:, nK:, nK:]
         ph = np.exp(1j * self.p * self.step.lat.h)   # anchor phase: coarse convention e^{i p' X_0}, p' = L p
-        return S0, ph * Sp, Sm / ph, S2
+        return S0.copy(), ph * Sp, Sm / ph, S2.copy()   # copies: the [nK:, nK:] slices are views that pin the full (b, nK+12, nK+12) arrays
 
     def next_data(self, N, cache, batch=64):
         """Tabulate the level-(j+1) data on the N^4 grid K_m = 2 pi m / N (fine k = K/L, umklapp on the (LN)^4 grid).
