@@ -115,3 +115,41 @@ So a_0, a_1 equal the continuum symbols times (1 + O(K²)), and a_2 is a degree-
 6.5 Evenness [P]. Every a_m(K) is a function of cos(K_μ/2) and of the product sin(K_0/2)sin(K_1/2); all are invariant under K → −K. So all O(K²) corrections are even in K. Symmetry reason: point reflection X → −X maps each midpoint polygon to its reflection with the same orientation (area is invariant under x → −x in 2D), so ã(−d) = ã(d); and charge conjugation (α → −α with complex conjugation, LLL V1(ii)) gives σ(K; −α) = conj σ(−K; α)^T, so a_1 is odd under C and a_0, a_2 even, as in the continuum.
 6.6 Convention caveat [I]. STEPB Lemma 2 uses one magnetic Weyl convention for the whole operator A_φ. The midpoint gauge of 6.2 must also be the one used for the Wilson-Hessian symbols (U3 Lemma 3.4, not reread here). If Lemma 3.4 uses site-based positions for bond fields, its a_1 has odd O(K) corrections (factor e^{i(K_μ − K_ν)/2}); the diagonal unitary of 6.2 removes them, and traces do not change. I did not check which convention Lemma 3.4 uses.
 Verdict on Step C, gauge-fixing part: [P] (explicit symbols, exact in α; corrections even). After §5, Step C is no longer needed for (F).
+
+## 7. Numerics [N] (numerics/t2_mpt_heat4.py, Mac, 20 s; plus one 40 s rerun at α = 0.002)
+
+7.1 Step C. Gauge-fixing functional ½Σ_x|D^TB(x)|² built from the real SU(2) adjoint rotations of the background links (not from the complex T_μ formula); Hessian by central finite differences (h = 10^{−3}) on the charged components of a 7×7 patch of links; complexified (U(1)-antilinear residue ≤ 8.5·10^{−16}); midpoint gauge; reduced kernel compared with 6.3.
+| α | 0.3 | 1.0 | 2.0 |
+| max |ã − predicted| (1764 entries) | 3.6·10^{−16} | 5.3·10^{−16} | 9.7·10^{−16} |
+Symbol: |σ_{01} − (a_0 + αa_1 + α²a_2)|/α³ ≤ 0.0013 (Taylor bound 0.0026); σ(K) = σ(−K) exactly. So the symbols of 6.3 are exact, and translation invariance of the reduced kernel holds.
+7.2 Lemma V1′ and Lemma C. Open box [−70, 70]², A′_α from GAPRIME2 Lemma 1.1 (any real α), τ = diagonal at the centre, expm_multiply. Richardson in α (α = 0.005, 0.01): c_A = (16D(α) − D(2α))/(12α²), d = (D(2α) − 4D(α))/(12α⁴). Free check 2πt·τe^{−tA′_0} = 1.0016 at t = 80.
+| t | 0.5 | 1 | 2 | 5 | 10 | 20 | 40 | 80 |
+| c_A(t)/t | 0.3282 | 0.3065 | 0.2977 | 0.2939 | 0.2928 | 0.2923 | 0.2920 | 0.2917 |
+| d(t)/(t(1+t)²) | 0.0118 | 0.0220 | 0.0328 | 0.0442 | 0.0496 | 0.0528 | 0.0548 | 0.0572 |
+Reading.
+- c_A(t)/t → 11/(12π) = 0.291784 (Lemma C). t(c_A/t − c_∞) = +0.0182, +0.0147, +0.0119, +0.0106, +0.0103, +0.0101, +0.0094 (t ≤ 40), and +0.0100, +0.0095 at t = 40, 80 with α = 0.002 (box 70 and 90 agree). So c_A(t) = c_∞t + 0.010 + o(1): the lattice correction is O(1), no log (consistent with STEPB §3.2's −0.376/t relative correction for the scalar). The t = 80 value in the main table (−0.0104) is α⁶ contamination at 2αt = 0.8; the α = 0.002 rerun removes it.
+- d(t)/(t(1+t)²) is bounded and tends to the continuum α⁴ coefficient 0.35278/(2π) = 0.05615 (from x cosh 2x/sinh x = 1 + 11x²/6 + 0.35278x⁴ + …). This confirms the order α⁴t³ of Lemma V1′ and refutes the order t² proposed in the task.
+Not done: a direct numerical check of Theorem A's remainder after the t-integral (it follows from the table by the integration in §4); irrational-flux Bloch runs (the box method already uses non-quantized α).
+
+## 8. Conclusion and ledger
+
+Verdict.
+(a) (MPT) PROVED [P] as Theorem A: for |α| ≤ α_1, 0 < m ≤ 1, m² ≥ 6|α| (μ ≥ 12): W(φ; m²) = α²w̃_2(m²) + R, |R| ≤ C_Aα⁴m^{−4}, by proper time + Lemma V1′ (fourth-order Dyson + Lemma S1′ + evenness). No Weyl calculus, no Combes–Thomas.
+(b) Step C, gauge-fixing part PROVED [P] (§6): exact symbols σ_{μμ} = K̂_μ², σ_{01} = 2e^{iα/8}cos((K_0 − K_1)/2) − 2e^{−iα/8}cos((K_0 + K_1)/2); a_1 = (i/2)cos(K_0/2)cos(K_1/2), a_2 = −K̂_0K̂_1/128; corrections even. One convention caveat (6.6) [I].
+(c) Stronger: Theorem B proves (3.1′) without STEPB Lemma 2 and without Step C. The log coefficient comes from Lemma C (c_A(t)/t → 11/(12π)), which is a corollary of LLL Lemma V2 plus Lemma V1′.
+B3's (F) PROVED relative to:
+- textbook: (IP) invariance principle for the 1D walk bridge (Liggett 1968 + Poissonization), Laplace continuity theorem (Feller XIII.1), counting monotonicity and cyclicity of τ in the magnetic von Neumann algebra, Bessel asymptotics of p_t;
+- project [P, verified]: GAPRIME2 Lemmas 1.1, 4.1; S123 Lemmas 5.1 (identification step upstream [I], LLL_VERIFY), 5.2; LLL Lemmas 2.1, S1, V0, V1, V2, Theorem 5.1; STEPB §2.0 (neutral sector, [P sketch]) and Step A; BETA_FP_H (3.1) ⇔ (3.1′);
+- this file [P, unverified]: Lemma 1.1, Lemma S1′, Lemma V1′, Theorem A, Lemma C, Lemma F, Theorem B.
+What remains for B3: a verifier pass on this file; the upstream [I] in S123 Lemma 5.1's identification step; STEPB §2.0's neutral-sector sketch. The STEPB §1 sign slip in (3.1′) (λ ↔ 1/λ) is notational. The [N] tension of STEPB §3.3 (single-step β_1(L) slope) is outside (F) and untouched.
+Proposed ledger text (for the ledger owner; this file edits no ledger): "B3: (F) PROVED rel. textbook (IP), Laplace continuity, counting monotonicity, and verified project lemmas (GAPRIME2 1.1/4.1, S123 5.1/5.2, LLL) [SOURCES_T2_MPT_STEPC Theorems A, B; unverified]. (MPT) replaced by a proper-time fourth-order heat-trace bound; STEPB Lemma 2 and Step C no longer used (Step C gauge-fixing symbols proved anyway, §6)."
+
+Ledger of this file.
+- [V] LLL Lemma 2.1, V0, V1(i)–(iii), V1(ii) evenness, V2, Theorem 5.1; GAPRIME2 Lemma 1.1; S123 Lemma 5.1, 5.2; STEPB §1, §2.0, §2.6; BETA_FP_H (3.1), (F).
+- [P] Lemma 1.1 (proper-time form); Lemma S1′ (E[𝒜⁴; Cl] ≤ C(1+t)³; E_0[A_t⁴; X_t = 0] ≤ Ct(1+t)²); Lemma V1′; Theorem A with C_A; Lemma C; Lemma F; Theorem B; §6 symbols and evenness.
+- [R] none new.
+- [I] (IP), Laplace continuity, counting monotonicity (inherited from LLL); 6.6 convention of U3 Lemma 3.4 (not read); STEPB §1 sign slip (notation).
+- [N] §7.1: FD Hessian = predicted midpoint kernel to 10^{−15} at α = 0.3, 1, 2; §7.2: c_A(t)/t → 0.29178 with c_A − c_∞t ≈ +0.010; d(t)/t³ → 0.0561 (continuum 0.05615).
+- Not done: verifier; numerical check of Theorem A after integration; reading U3 Lemma 3.4.
+
+STATUS: COMPLETE
