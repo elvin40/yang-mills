@@ -22,6 +22,8 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `StripBound.lean` | `strip_bound_linear`, `strip_bound_quadratic` (73) | SOURCES_HBETA_N3.md §4 | VERIFY_TheoremC1.md |
 | `CertBridge.lean` | `entrywise_to_opnorm`, `interval_to_opnorm`, `cell_invertible`, `norm_submatrix_le`, `rq_weyl`, `pert_bound`, `cell_sup_bound`, `vertex_bound` (268) | numerics/h1cert_cell.py, h1cert_cell2.py | VERIFY_CertBridge.md |
 | `Tower.lean` | `weighted_tower`, `weighted_tower_le`, `tower_bounds`, `I1_compress`, `rq_conj`, `rayleigh_sum_bound`, `conj_rayleigh_bound`, `rank_one_bound`, `majorant_core`, `lemmaT_core` (167) | H1_ANALYTIC.md §2–§3, (1.1); H1_ANALYTIC_VERIFY.md V1 | VERIFY_Tower.md |
+| `Schur.lean` | `schur_test_weighted`, `schur_test` (65) | SOURCES_LOC.md §3.3; SOURCES_S2_FORM.md §2 Π3; SOURCES_A3_SIGMA.md 2.6 | VERIFY_CombesThomas.md |
+| `CombesThomas.lean` | `norm_entry_le`, `coercive_inv`, `combes_thomas`, `combes_thomas_exp`, `combes_thomas_decay`, `combes_thomas_schur` (161) | SOURCES_A1_KERNEL.md §7 Lemma CT (used in §8–§10); SOURCES_A1_A4_VERIFY.md Part A §1, grade (4) | VERIFY_CombesThomas.md |
 
 ## Toolchain
 
@@ -232,3 +234,9 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 - `I1_compress`: P_⊥, P_l Hermitian, P_⊥E_lP_l = P_⊥diag(e_l) ⇒ P_⊥(s²Σ_l E_lP_l diag(d_l) P_lE_lᴴ)P_⊥ = P_⊥diag(s²Σ_l e_l d_l conj e_l)P_⊥ (the algebraic step of (I1)).
 - Rayleigh form (`rq` of CertBridge.lean): `rq_conj` (rq(ZᴴTZ)x = rq T (Zx)), `rayleigh_sum_bound`, `conj_rayleigh_bound` (λ_max(ZᴴTZ) ≤ ‖Z‖²t, t ≥ 0), `rank_one_bound` (λ_max(γwwᴴ) ≤ γ‖w‖²), `majorant_core` (λ_max(ZᴴT2Z + γwwᴴ) ≤ ‖Z‖²t + γ‖w‖²), `lemmaT_core` (T2 ≤ d_max T, ZᴴTZ = Z ⇒ λ_max(ZᴴT2Z) ≤ d_max‖Z‖, the form Lemma T uses).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all ten. Not formalized: the Fourier/umklapp derivation of (2.2), Lemma S, the symbols a_ρ, σ, q̃ and the Fejér identity, Lemma T (d), Lemma Gauge, F_CS, and the branch-and-bound.
+
+## Schur.lean, CombesThomas.lean (SOURCES_LOC.md §3.3, SOURCES_S2_FORM.md §2, SOURCES_A3_SIGMA.md 2.6; SOURCES_A1_KERNEL.md §7 Lemma CT, SOURCES_A1_A4_VERIFY.md Part A §1); statement check `VERIFY_CombesThomas.md`
+
+- `Schur.lean` (65 lines): spectral norm, 𝕜 = ℝ or ℂ. `schur_test_weighted` (weight p > 0, Σ_y |K x y| p y ≤ a p x, Σ_x |K x y| p x ≤ b p y, a, b ≥ 0 ⇒ ‖K‖₂ ≤ √(ab); Cauchy–Schwarz on each row, then swap sums), `schur_test` (p = 1: sup row sum ≤ a, sup column sum ≤ b).
+- `CombesThomas.lean` (161 lines): `norm_entry_le` (|A x y| ≤ ‖A‖₂), `coercive_inv` (c‖v‖² ≤ re⟪v, Av⟫, c > 0 ⇒ A invertible, ‖A⁻¹‖₂ ≤ 1/c), `combes_thomas` (N ≥ c in Rayleigh form, w > 0, ‖WNW⁻¹ − N‖₂ ≤ c/2 ⇒ N invertible, ‖(WNW⁻¹)⁻¹‖₂ ≤ 2/c, |N⁻¹ x y| ≤ (2/c) w y / w x), `combes_thomas_exp` (w x = e^{ε d(x,x₀)}: |N⁻¹ x y| ≤ (2/c) e^{ε(d(y,x₀) − d(x,x₀))}), `combes_thomas_decay` (hypothesis for every x₀, d(x,x) = 0 ⇒ |N⁻¹ x y| ≤ (2/c) e^{−ε d(x,y)}; take x₀ = y), `combes_thomas_schur` (row and column sums of |N x y|·|e^{ε(d(x,x₀) − d(y,x₀))} − 1| ≤ c/2 for every x₀ ⇒ the same decay, via `schur_test`).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eight theorems. N need not be Hermitian; d need not be symmetric or satisfy the triangle inequality. Not formalized: the identification of N with N̂ = S^{−1/2}QGQ*S^{−1/2} on ℓ²(𝔅, μ), the μ-weights m(y,y′), the kernel bound (i) ⇒ row-sum bound via |e^x − 1| ≤ |x|e^{|x|} and Σ(δ/2), inputs (K) and (C) (walk expansion; (C) is open per SOURCES_A1_A4_VERIFY §3).

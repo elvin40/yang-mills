@@ -21,3 +21,13 @@
 | PLAN.md | CMP 99 Thms 3.1 | CMP 99 (propagators) Thms 3.1 | 1 |
 
 Total replacements: 20
+
+## 2026-10-28 pass 3 (bookkeeping)
+
+Source: SOURCES_BOOKKEEPING.md. Replacements by file:
+- TRUST_LEDGER.md: 9. Rows A9, A12, A20, A22 removed from Group A; A23 added; intro of §1 reworded; A14 text; §5 count sentence (Group A 22 → 19; printed 15 → 13; cited-but-unproved 13 → 12; unprinted 6 → 5); §6 bullets (verified readings) and C_1 name-clash note added.
+- THEOREM2.md: 1 ("p. 256" → pp. 251, 259).
+- THEOREM2_PROOF_v4.md: 2 (§1.4 caveat (2), §10 item 10).
+- SOURCES_VERIFY.md: 2 (§6(d) CMP 119 (2.12), (2.23)–(2.24)).
+- SOURCES_D3.md: 2 ((B6) line 17; (L3) line 45: Z̃_j, Ũ_j^c).
+- SOURCES_D2.md: 0 (no (B6) or (2.42) cite found).

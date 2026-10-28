@@ -1,10 +1,10 @@
 # SOURCES_T2_S123_VERIFY — independent check of SOURCES_T2_S123.md (spectral inputs (S1)–(S3) for (M_j))
 
-Date: 2026-10-28. Status: in progress (sections appended one at a time).
+Date: 2026-10-28. Status: complete (sections appended one at a time). 25 CONFIRMED, 2 CORRECTED, 0 UNSUPPORTED.
 Author: headless Claude session, brief S123 (VERIFY).
 Read: SOURCES_T2_S123.md (all, 285 lines); BETA_FP_M.md (all); KAPPA_BOUNDED.md l. 1–41, 105–174; BETA_FP_H.md l. 13–90; U3_LEMMA51.md l. 1–140; THEOREM2_PROOF_v4.md l. 420–488; numerics/NUMERICS.md l. 53–78; numerics/t2_s123_gap2d.py, numerics/t2_s123_phys2d.py (read and rerun). Balaban CMP 99 (propagators) p. 395 (PDF p. 7), page image.
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md; reports/ONLINE_SWEEP.md not opened).
-No existing file edited. No new script written (the two cited scripts were rerun as they are; outputs went to /tmp only, see §8).
+No existing file edited. The two cited scripts were rerun from copies in /tmp (outputs to /tmp only, so no project JSON was overwritten; see §8). One new script: numerics/t2_s123v_gapcheck.py (extra 2D check, prints only; §7).
 
 Tags: [P] proved here; [R] reduced to a named input; [I] inference or reading not checked line by line; [V] checked against a Balaban page image or text layer (stated which), or against a rerun script (stated).
 Grades: CONFIRMED, CORRECTED (correction stated), UNSUPPORTED (missing piece stated).
@@ -109,3 +109,99 @@ CONFIRMED, as "[P given (G_A)]".
 Claim 22, Lemma 5.7. I rechecked: h_μ − S_μ² = h_μ²/4 (expand (2 − T − T^*)² with TT^* = 1); S_0² + S_1² ≥ ±i[S_0, S_1]; the four commutator formulas for T_0T_1 = qT_1T_0 (in particular [T_0^*, T_1^*] = (q − 1)T_1^*T_0^*); i[S_0, S_1] = (α/4)·½{T_0 + T_0^*, T_1 + T_1^*} + O(α²); ½{2 − h_0, 2 − h_1} ≥ 4 − 4𝔏^{01} (Re⟨h_0ψ, h_1ψ⟩ ≥ −½Σ‖h_μψ‖² ≥ −2⟨ψ, 𝔏^{01}ψ⟩, h ≤ 4). Hence (1 + |α|)𝔏^{01} ≥ |α| − Cα². CONFIRMED. Numerics: inf 𝔏^{01}/|ef| = 0.9358, 0.9676, 0.9837, 0.9918 at N = 24, 48, 96, 192, i.e. 1 − 0.12|ef| to two digits (rerun, §8).
 
 Claim 23, Lemma 5.8. H′D′ = 0 at a critical point (second derivative of S(U^{g_s}) = S(U) along the orbit; the gradient term vanishes because V_f is critical, U3_LEMMA51 l. 7). A′D′ = D′𝔏^{01}; D′ injective since 𝔏^{01} > 0; U = D′(𝔏^{01})^{−1/2} is an isometry onto ran D′; ran D′ reduces the self-adjoint A′; on ker D′^†, A′ = H′. The site Laplacian D′^†D′ and the midpoint 𝔏^{01} are unitarily equivalent (same flux, translated lattice). CONFIRMED. Numerics: gauge part min equals the scalar bottom (0.98372327 vs 0.98372378 in units of |ef| at N = 96, difference at the finite-difference level 10^{−7}); off-diagonal block ≤ 3·10^{−8} (rerun). The continuum bookkeeping {−|ef|, 3|ef|, 5|ef|, …} for the physical spectrum I rederived: spin-aligned ladder {−1, 1, 3, …}|ef| ∪ anti-aligned {3, 5, …}|ef| minus the gauge copy {1, 3, 5, …}|ef| = {−1, 3, 5, …}|ef|.
+
+## 6. Check (5): Corollary (M_j), Lemma 7.2, uniformity in j (claims 25–27)
+
+Claim 25, Corollary 7.1. The proof is the BETA_FP_M split δΓ_j = I + II with μ = 2C_1|f|. (i) II = O(|f|³ log(1/|f|)) follows from Prop. 5.5 + Prop. 5.6 + Lemma 5.8, given (G_A′). (ii) I(f) − I(0) = n_2d_jf² + O(|f|³ log) is BETA_FP_M Prop. 4.4, which BETA_FP_M tags [argued] (l. 95–96, ledger A2). (iii) Dividing by n_2f² and taking f → 0 gives the statement of KAPPA l. 32 exactly. The logic is right, and the tag [R] is right. The full list of what (M_j) is reduced to, read off the file: (G_A′) [open]; BETA_FP_M Prop. 4.4 region 1 [argued]; (I3) [I]; the neutral-sector f² coefficient by differentiation under the integral [I, §1 above]; and the cited verified inputs (I1), (I2), (I4), (F2)–(F4). S123's statement of Cor. 7.1 names (G_A′), Prop. 4.4 and "the inputs of claim 5 and claim 10"; that covers (I3) but omits the neutral-sector [I]. CONFIRMED as a reduction, with the neutral item added to the list.
+
+Uniformity in j. I looked for any uniform-in-j use. f_*(j, L), θ_j, h_i, C_j, C_1, C_1′, C_V, C_E, C_3, K_*, n, C_2, C_M all depend on j and L, and S123 says so (Remark after Prop. 2.1; "Not claimed" in §8). KAPPA_BOUNDED Prop. 1.1 uses (M_j) only as a limit f → 0 at each fixed j (l. 32–38), and Theorem K uses the uniform bound on d_j from (B2), not from (M_j) (l. 113–114). The only j-independent object introduced, (G_A′), is a statement about the coarse 2D Wilson Hessian and does not involve j at all. No uniformity in j was used or claimed. CONFIRMED.
+
+Claim 26, Lemma 7.2 (spectral region 2). F(𝒦_t) = PF(𝒦_t)P with P = 1_{[−2μ,2Rμ]}(𝒦_t); |τ(F(𝒦_t)PVP)| ≤ ‖F‖τ|PVP|; ‖F‖ ≤ 2C_R/μ (BETA_FP_M l. 83); ±PVP ≤ C_3[(2R + 1)²μ² + f²]P by Theorem 4.3(a), so τ|PVP| ≤ Cf²τ(P); τ(P) = N_t(2Rμ) ≤ N_0(2Rμ + η_1) = O(f²) (Props. 5.4, 5.3; N_t(−2μ) = 0 by (S1)). Product O(|f|³). Checked. CONFIRMED. The remaining region-1 statement (Moyal expansion of G_f(𝒦_t) = ℓ′(1 − χ_W)(𝒦_t), whose derivatives grow like |f|^{−k}) is correctly left [argued]. I add one point: region 1 here is a spectral cut (spectrum ≥ Rμ), while the formal d_j of KAPPA (1.1) is a per-momentum integral over all K. Matching the two at order f² is the unwritten step; it is the same gap as BETA_FP_M Prop. 4.4 "magnetic phase-space localization".
+
+Claim 27, consistency. Checked in §8 below. CONFIRMED [I-level statement].
+
+## 7. Check (6): rational flux and continuity in f
+
+S123 uses no rational-flux argument. All proofs work at every real f with |f| ≤ f_*: the operators live in the twisted von Neumann algebra 𝒩_f of operators commuting with the magnetic translations, with its finite trace τ (BETA_FP_M §3, cited standard), for rational and irrational f alike. No fibre decomposition over K, no enlarged magnetic cell, and no limit from rational to irrational f is used. The only fibre decomposition is over k_⊥ (directions 2, 3), which is exact for every f (claim 15). Constants are uniform in f in |f| ≤ f_*. [P, by reading.]
+Where rational flux does appear: only in the numerics of §6 (torus N × N, φ = 2πm/N). These are evidence for (G_A′) at those fluxes, not a proof for any f. S123 says this (§6 "Limits of the check"). If (G_A′) is ever proved via rational fluxes, a continuity-in-flux statement for the spectrum (Hausdorff continuity of the spectrum of Harper-type operators in the flux; I recall a ½-Hölder result of Avron–van Mouche–Simon, from memory, not checked) or a direct semiclassical proof at every f is needed. That is part of the open item, not a gap in S123.
+Extra numerical check (new, this session; script numerics/t2_s123v_gapcheck.py, imports t2_s123_gap2d read-only, prints only, 34 s). Non-unit numerators and a smaller flux:
+
+| N | m | ef | inf 𝔏^{01}/|ef| | phys min/|ef| (= top of lowest band) | first phys level > 0 /|ef| | min |phys spec|/|ef| |
+|---|---|---|---|---|---|---|
+| 192 | 1 | 0.0654 | 0.99184 | −1.00807 | 2.9589 | 1.0081 |
+| 100 | 3 | 0.3770 | 0.95354 | −1.04329 | 2.7582 | 1.0433 |
+| 70 | 3 | 0.5386 | 0.93394 | −1.05939 | 2.6509 | 1.0594 |
+
+The pattern (lowest physical band at −|ef|(1 + 0.12|ef|), next physical level → 3|ef|, scalar bottom at |ef|(1 − 0.12|ef|)) is the same for m = 3 as for m = 1, and continues to ef = 0.065. So (G_A′) holds with margin ≈ |ef| at these six fluxes. [V: numerics, this session.] This is evidence only.
+
+## 8. Check (7): numerics rerun, NUMERICS.md l. 53–78, claim 24
+
+Rerun. I copied numerics/t2_s123_gap2d.py and numerics/t2_s123_phys2d.py to /tmp/s123v (the second script hard-codes its JSON path inside numerics/; I redirected it to /tmp so that no project JSON was overwritten) and ran both with numerics/.venv/bin/python: 5.0 s and 6.0 s. Every number in the two project JSON files is reproduced to all printed digits:
+- F1 at φ = 0: error 4.861976954·10^{−8}.
+- Gauge residual |A D_r| ≤ 1.02, 1.38, 1.87 ·10^{−7} (N = 24, 48, 96); neutral leak 0.
+- inf spec A′/|ef| = −1.05796, −1.03090, −1.01591; gauge-part min /|ef| = 0.93575, 0.96761, 0.98372; first physical level > 0 /|ef| = 2.6609, 2.8333, 2.9174; off-diagonal ≤ 3.0·10^{−8}.
+- Scalar bottom /|ef| = 0.93575, 0.96761, 0.98372, 0.99184 (N = 24, 48, 96, 192).
+[V: rerun, this session.]
+Model check. I read the script. It builds 4·Hess(S_p) by central differences (h = 10^{−4}) in the left trivialization U = e^{iB·σ/2}U_0, Landau gauge θ_0(x) = −φx_1, plaquette e^{iφσ_3}, charge 2 so ef = 2φ, plus D_rD_r^T with D_rλ(ℓ) = λ(x) − Ad_{U_ℓ}λ(x + e_μ). This matches U3_LEMMA51 (2.1) conventions (l. 26–30) with the normalization 8Σq_p, i.e. ν_W = 4, and (F1). The physical/gauge split uses an SVD basis of ran D and ker D^†. The model is the A′ of S123 Lemma 5.8 at rational flux.
+Small correction to S123 §6 text. "The lowest physical band has width < 10^{−6}|ef|": the widths are 1.1·10^{−6}, 2.9·10^{−7}, 4.6·10^{−7} (units of |ef|) at N = 24, 48, 96, so the bound fails narrowly at N = 24. The widths are at the level of the finite-difference error (∼10^{−7} absolute), so they do not resolve any band structure. Nothing depends on this. The other readings (inf spec ≈ −|ef|(1 + 0.12|ef|): coefficients 0.111, 0.118, 0.122; positive edge of A′ = scalar bottom; physical spectrum empty in (−1.0159|ef|, 2.917|ef|) at N = 96; g_f ≈ 0.98|ef| for A′) are correct.
+
+Claim 24: CONFIRMED (the ledger statement; the band-width sentence in §6 is corrected above).
+
+NUMERICS.md l. 53–78 (read). Items S123 §7.4 compares with:
+- d_1 = c log L − β_1: L = 2: 0.258 − 0.630 = −0.372; L = 3: 0.408 − 0.664 = −0.256 (NUMERICS table and KAPPA l. 36). Matches S123.
+- First-step constants β_1 − c log L = +0.37, +0.26, +0.24, +0.15, +0.08, +0.02, −0.04 for L = 2, 3, 4, 5, 7, 9, 11 (NUMERICS §7). S123 quotes "+0.37 … −0.04 for L = 2 … 11". Matches.
+- c = 11N²/(12π²) = 44/(12π²) = 0.371511 for N = 2. Matches.
+- Abelian sector S_k^{ab} = (1 − L^{−4k})/4: 15/64 = 0.234375, 20/81 = 0.246914, measured 0.23438, 0.24691. S123 ties this to its neutral-sector remark; U3_LEMMA51 l. 48 makes the same link (neutral cos φ tadpole). Consistent.
+S123 derives no number that could conflict: all its constants are existential and enter only o(f²) errors; it fixes no sign or size of d_j. The one quantitative output (the 2D gap) is not in NUMERICS.md. No conflict. CONFIRMED.
+
+## 9. Status of THEOREM2_PROOF_v4 §10 item 4
+
+Current text (l. 430): "(M_j) … (S1), (S2), (S3), all on the lattice [open]; Prop. 4.4 [argued]." Table row (l. 470): "open / argued".
+
+What this verification supports.
+- (S1) (Theorem 3.3) and (S1+) (Theorem 3.4): proved+verified at fixed j, conditional on (I3).
+- (S3) (Theorem 4.3), in the subdivided form KAPPA_BOUNDED §1.3 uses, with n ≥ C_3(K_* + 1)/c: proved+verified at fixed j, conditional on (I3). The window form (S3w) is not needed.
+- (S2): not proved in its original form for t > 0, and not needed. Replaced by (S2) at t = 0 (Prop. 5.3) and the coarse comparison (S2c) (Prop. 5.4), both proved+verified conditional on (I3), plus the near-zero input (Z_j). (Z_j) is proved+verified conditional on (G_A′) (Props. 5.5, 5.6, Lemma 5.8).
+- BETA_FP_M Prop. 4.3 (the N–O window term II): proved+verified at fixed j, conditional on (I3) and (G_A′).
+- BETA_FP_M Prop. 4.4: region 2 proved+verified (Lemma 7.2), conditional on (I3); region 1 still [argued].
+Here (I3) means: at each of the j steps, the linearized Balaban averaging Q̃_f, the residual gauge gradient D_f and the gauge weight Π at constant flux are magnetically covariant (CMP 99 (3.32), (3.34), checked on page images) with finite range and reduced kernels analytic (C³ suffices) in f near 0. The covariance part is Balaban's; the analyticity is argued, not written entry by entry (= (P_0) of BETA_FP_M, at each step).
+
+Answer. Item 4 as a whole cannot move to "[proved+verified, conditional on X]" with X a set of hypotheses, because one piece is an unwritten proof step, not a hypothesis: the region-1 Moyal expansion of BETA_FP_M Prop. 4.4. If the supervisor accepts that step as a named input, then
+ X = (I3) + (G_A′) + [BETA_FP_M Prop. 4.4, region 1],
+and (M_j) is "[reduced+verified, conditional on X]" (plus the minor neutral-sector [I] of §1, and the cited verified inputs (I1), (I2), (I4), (F1)–(F4)). The sub-items (S1), (S3) can move now to "[proved+verified at fixed j, conditional on (I3)]". (S2) should be rewritten as "(S2)|_{t=0} + (S2c) [proved+verified, conditional on (I3)]; near-zero residue (Z_j) ⇐ (G_A′) [open; numerically confirmed at 6 rational fluxes, margin ≈ |ef|]".
+Suggested text for item 4 (not written into that file): "(M_j): (S1), (S3) [proved+verified at fixed j, conditional on (I3); SOURCES_T2_S123 Thms 3.3, 4.3, VERIFY]; (S2) replaced by (S2)|_{t=0}, (S2c) [same status] and (Z_j) ⇐ (G_A′) [open, 2D, j-independent; numerically true with gap ≈ |ef|]; Prop. 4.4 region 2 [proved+verified, cond. (I3)], region 1 [argued]; (I3) entrywise analyticity of Balaban's linearized averaging at flux f [argued]."
+
+## Grades
+
+1. Lemma 1.1 (twisted product, Moyal remainders): CONFIRMED.
+2. Lemma 1.2 (Nenciu-type inverse, C^m in f): CONFIRMED.
+3. Lemma 1.3 (division, Hermitian sandwich): CONFIRMED (its use on C^∞ symbols in Thm 3.4 / Lemma 4.2 needs the Hadamard-lemma version; the same proof gives it).
+4. Lemma 1.4 (operator bounds from vanishing order): CORRECTED — in (c), ∇^β must be read as W·∂^β (one twisted convolution), not the product ∇_{β_1}∇_{β_2}; the two differ by O(|f|), and the bound ±W·c ≤ C(𝔏 + |f|)² is unchanged.
+5. Prop. 2.1 (fixed-j well-posedness): CONFIRMED given (I1)–(I4); (I3) is [I] as tagged; Balaban (3.34) is on CMP 99 p. 396 (page image), (3.32) on p. 395.
+6. Stationary-value identity: CONFIRMED.
+7. Lemma 3.1 (Wilson Hessian ≥ −(3/2)ν_W|sin φ|): CONFIRMED.
+8. Prop. 3.2 (Δ_j(f) ≥ −C_j|f|): CORRECTED — C_j exists at fixed j, but its explicit L-power depends on the unit convention for fine-field norms in level-i units; the formula (3/2)ν_W L^{−2j}Πh_i² should not be quoted.
+9. Theorem 3.3 = (S1): CONFIRMED.
+10. (F1) [P, and numerics 4.86·10^{−8} rerun]; (F2)–(F4) [R]: CONFIRMED.
+11. Theorem 3.4 = (S1+): CONFIRMED.
+12. Lemma 4.1 = (MC): CONFIRMED.
+13. Lemma 4.2 = (ER): CONFIRMED.
+14. Theorem 4.3 = (S3), subdivided, n ≥ C_3(K_* + 1)/c: CONFIRMED.
+15. Fibre decomposition over k_⊥: CONFIRMED.
+16. Lemma 5.1 (separability at t = 0): CONFIRMED, with the midpoint-transport identification [I] as tagged.
+17. Lemma 5.2 (diamagnetic IDS bound): CONFIRMED.
+18. Prop. 5.3 = (S2) at t = 0: CONFIRMED.
+19. Prop. 5.4 = (S2c): CONFIRMED.
+20. Prop. 5.5 (Prop. 4.3 with (S2)|_{t=0}, (S2c), (Z_j); necessity of (Z_j) for this proof): CONFIRMED.
+21. Prop. 5.6 ((G_A) ⇒ Lipschitz N_1 near 0 ⇒ Z = O(|f|³)): CONFIRMED (derivative formula cited as standard).
+22. Lemma 5.7 (scalar Landau lower bound): CONFIRMED.
+23. Lemma 5.8 ((G_A) ⇔ (G_A′)): CONFIRMED.
+24. Numerics §6: CONFIRMED (rerun reproduces all digits; the §6 sentence "band width < 10^{−6}|ef|" fails narrowly at N = 24, 1.1·10^{−6}, and is at finite-difference level anyway).
+25. Corollary 7.1 = (M_j) as a reduction: CONFIRMED; the input list should also name the neutral-sector differentiation under the integral [I].
+26. Lemma 7.2 (spectral region 2 = O(|f|³)); region 1 stays [argued]: CONFIRMED.
+27. Consistency with NUMERICS l. 53–78 and the continuum IDS slope: CONFIRMED.
+
+Item 4 of THEOREM2_PROOF_v4 §10: (S1), (S3) can move to [proved+verified at fixed j, conditional on (I3)]; (S2) is replaced by (S2)|_{t=0} + (S2c) [same status] and (Z_j) ⇐ (G_A′) [open]; (M_j) itself becomes [reduced+verified, conditional on X], X = (I3) + (G_A′) + BETA_FP_M Prop. 4.4 region 1 [argued]. It cannot be [proved+verified] while region 1 is an unwritten step.
+
+SUMMARY: 25 CONFIRMED, 2 CORRECTED, 0 UNSUPPORTED; verdict: the fixed-j proofs of (S1), (S3), (S2)|_{t=0}, (S2c) and the reduction (Z_j) ⇐ (G_A′) are sound given the Peierls input (I3), and (M_j) is reduced (not proved) to (I3), the open 2D gap (G_A′), and the argued region-1 step of BETA_FP_M Prop. 4.4.
+STATUS: COMPLETE

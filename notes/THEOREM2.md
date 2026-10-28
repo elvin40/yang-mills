@@ -18,7 +18,7 @@ Status of that separate paper: see reports/BALABAN_THM2_STATUS.md (lit check run
 
 ## 2. The objects, verbatim definitions
 
-- Scales: ε = L^{−K}, lattices T^{(k)} of spacing L^k ε, k = 0,…,K; k = K is the unit lattice (p. 256). L odd, > 11.
+- Scales: ε = L^{−K}, lattices T^{(k)} of spacing L^k ε, k = 0,…,K; k = K is the unit lattice (pp. 251 (L odd > 11) and 259 (unit lattice)).
 - Wilson action A^ε(U) = Σ_p ε^{d−4}[1 − Re tr U(∂p)], normalized trace (0.2).
 - Averaging (0.12), p. 254: Ū(c) = exp[ i Σ_{x∈B(c−)} L^{−d} (1/i) log U(c−,x)U([x,x′])U(x′,c+)U(−c) ] U(c).
 - RG step (0.17)/(0.19), p. 255: A_{k+1}(g_{k+1},V) = log N_k^{−1} ∫ dU ∏_{c∈T^{(k+1)}} δ(Ū(c)V^{−1}(c)) χ_k exp[ −(1/g_k²) Σ_y Σ_{x∈B(y), x≠y} [1 − Re tr U(y,x)] + A_k(g_k,U) ], with the exponential gauge fixing (0.14) and the small-field characteristic function χ_k.
