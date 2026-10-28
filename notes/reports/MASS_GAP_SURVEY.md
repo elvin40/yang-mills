@@ -1,10 +1,20 @@
 # Mass-gap mechanisms in 4D non-abelian gauge theory: literature survey
 
+## Corrections after verification (MASS_GAP_VERIFY.md), 2026-10-27
+- Normalization: Balaban's coupling g_B gives β_W = 1/g_B², not 2N/γ². The old §7.2 double-counted the factor 2N. Window factors from γ = 1 are now ≥ 12 (SU(2)) and ≥ 5.3 (SU(3)), not 48 and 32. With γ_max = 5×10⁻⁹ the ratio is ≈ 4.8×10¹⁷. With R_K self-consistent (R_K ≥ (log g⁻²)^r) it is ≈ 3×10³⁵.
+- SZZ action label is eq. 1.2, not 1.1. Arithmetic (β_W < 1/12 and 3/16) is unchanged.
+- "infrared" occurs twice in balaban/*.txt (the second is a bibliography title in CMP 109), not once. The conclusion is unchanged.
+- Chatterjee 2006.16229: the hypothesis is decay of correlations uniform over arbitrary boundary conditions. That is stronger than a lattice mass gap. Table row D4 is changed to match. Ising 1811.09770 is the 4D Z₂ weak-coupling case.
+- Cao–Nissim–Sheffield 2509.04688: the doubled threshold 1/(8(d−1)) applies only to the Durhuus–Fröhlich (d−1)-dimensional vertex σ-model gap, hence to the area law. It is not a YM mass-gap threshold.
+- MRS title confirmed: "Construction of YM₄ with an infrared cutoff", CMP 155 (1993) 325–383.
+- Münster citation (B190 (1981) 439 here, B180 (1981) 23 in UNIT_SCALE_COUPLING.md) is unresolved. Neither is verified against the paper.
+- Not changed: Tomboulis, Faizal–Shabir, and §4 items other than DF80 were not checked by the verifier.
+
 Date: 2026-10-27. Side quest to the Theorem 2 work. Firewall kept: I did not read /tmp/sa_repo or SUSSMAN_ALPOGE_MAP.md.
 
 Honesty tags: **[abs]** = read abstract only. **[sec]** = read the relevant section or verbatim text. **[mem]** = known from training, unverified in this session. **[INF]** = my inference.
 
-Normalization used throughout: Wilson action S = (β_W/N) Σ_p Re Tr U_p with β_W = 2N/g². For SU(2), β_W = 4/g². For SU(3), β_W = 6/g².
+Normalization used throughout: Wilson action S = (β_W/N) Σ_p Re Tr U_p with β_W = 2N/g² (g standard). For SU(2), β_W = 4/g². For SU(3), β_W = 6/g². Balaban's coupling g_B satisfies β_W = 1/g_B² (g² = 2N g_B²).
 
 ---
 
@@ -17,18 +27,18 @@ Normalization used throughout: Wilson action S = (β_W/N) Σ_p Re Tr U_p with β
 - Gap to Clay: the gap is in lattice units at fixed β. Its physical value m_phys = m_lat/a. As a → 0 asymptotic freedom forces β_W → ∞, so the bare coupling leaves the convergence region after finitely many refinements. No continuum statement follows. Chatterjee 1803.01950 §6: "None of the above techniques, however, help in constructing the continuum limit." [sec]
 
 ### 1.2 Münster 1981
-- Citation: G. Münster, "Strong coupling expansions for the mass gap in lattice gauge theories", Nucl. Phys. B190 (1981) 439–453; addendum B200 (1982) 536; erratum B205 (1982) 648. [abs, via INSPIRE record 164289]
+- Citation: G. Münster, "Strong coupling expansions for the mass gap in lattice gauge theories", Nucl. Phys. B190 (1981) 439–453; addendum B200 (1982) 536; erratum B205 (1982) 648. [abs, via INSPIRE record 164289] [Unresolved: UNIT_SCALE_COUPLING.md cites B180 (1981) 23 for the Münster domain; the two citations conflict and neither is verified.]
 - Content: strong-coupling series for the mass gap in any d, to order g⁻¹⁶, for SU(2), SU(3), Z₂, Z₃. Glueball masses in the continuum are estimated "assuming a sudden crossover from strong to weak coupling behavior" [abs, paraphrase].
 - Status: a series computation, not a convergence theorem with a stated radius. The continuum estimate rests on an unproved crossover assumption. This is the "two regimes do not meet" obstruction stated as an assumption (see §5).
 
 ### 1.3 Best published explicit radius: Shen–Zhu–Zhu (stochastic analysis / Bakry–Émery)
 - Citation: H. Shen, R. Zhu, X. Zhu, "A stochastic analysis approach to lattice Yang–Mills at strong coupling", CMP (2023), arXiv 2204.12737. [sec: abstract and §1.1]
-- Normalization: S(Q) = Nβ Re Σ_{p∈P⁺} Tr(Q_p) (eq. 1.1). So β_W = N² β_SZZ and β_SZZ = 2/(N g²).
+- Normalization: S(Q) = Nβ Re Σ_{p∈P⁺} Tr(Q_p) (eq. 1.2). So β_W = N² β_SZZ and β_SZZ = 2/(N g²).
 - Proved: for SU(N), |β_SZZ| < 1/(16(d−1)); for SO(N), |β| < (N−2)/(32(d−1)N): the infinite-volume measure is unique, finite-volume measures converge to it, log-Sobolev and Poincaré inequalities hold, and "correlations of a large class of observables decay exponentially, namely the infinite volume measure has a strictly positive mass gap." The threshold is uniform in N in 't Hooft scaling.
 - Numbers in d = 4: β_SZZ < 1/48. In Wilson normalization:
   - **SU(2): β_W = 4/g² < 4/48 = 1/12 ≈ 0.083, i.e. g² > 48.**
   - **SU(3): β_W = 6/g² < 9/48 = 3/16 = 0.1875, i.e. g² > 32.**
-- Related: Cao–Nissim–Sheffield, "Dynamical approach to area law for lattice Yang–Mills", arXiv 2509.04688 [sec, Def. 1.4, Remark 1.5, Thm 1.6]. Same normalization. They prove a uniform mass gap for the associated σ-model (Prop. 3.2) at β < β*_SU(N) = 1/(8(d−1)) — twice the SZZ threshold — and deduce the area law via Durhuus–Fröhlich 1980. They state that the doubling comes from applying Bakry–Émery to a vertex spin system. This is a σ-model gap, not a YM mass gap, so it does not enlarge the YM-gap radius. [INF from the text: the YM-gap theorem they cite remains SZZ's.]
+- Related: Cao–Nissim–Sheffield, "Dynamical approach to area law for lattice Yang–Mills", arXiv 2509.04688 [sec, Def. 1.4, Remark 1.5, Thm 1.6]. Same normalization. They prove a uniform mass gap for the associated σ-model (Prop. 3.2) at β < β*_SU(N) = 1/(8(d−1)) — twice the SZZ threshold — and deduce the area law via Durhuus–Fröhlich 1980. They state that the doubling comes from applying Bakry–Émery to a vertex spin system. This is a σ-model gap, not a YM mass gap, so it does not enlarge the YM-gap radius. The doubled threshold applies only to the DF80 vertex σ-model gap and the resulting area law. [INF from the text: the YM-gap theorem they cite remains SZZ's.]
 - Cao–Nissim–Sheffield 2505.16585 [sec, Thm 1.2]: area law for U(N) for β ≤ β₀(d) uniform in N. β₀(d) is not explicit. Area law only, no mass gap claim.
 - Gap to Clay: identical to §1.1. Lattice units, fixed β, no continuum. The radius is about 30 times below the β_W used in lattice scaling studies (SU(2) ≈ 2.3–2.9, SU(3) ≈ 5.7–6.5) [mem for these scaling windows].
 
@@ -40,7 +50,7 @@ Normalization used throughout: Wilson action S = (β_W/N) Σ_p Re Tr U_p with β
 - Grep of the local text layers balaban/*.txt for "mass gap", "confinement", "infrared" [sec]:
   - "mass gap" occurs only in the bibliography of CMP 109 (ref. 30, Feldman–Osterwalder on weakly coupled P(φ)₂).
   - "confinement" occurs only as the title of Wilson's 1974 paper in the bibliographies of CMP 98, 102, 109.
-  - "infrared" occurs once, in CMP 109's history of the phase-space method ("the infrared renormalizable and asymptotically free critical (φ⁴)₄ model").
+  - "infrared" occurs twice, both in CMP 109: in the history of the phase-space method ("the infrared renormalizable and asymptotically free critical (φ⁴)₄ model", line 63) and in a bibliography title (FMRS, line 2572).
   - So Balaban makes **no remark on the mass gap or confinement** anywhere in the series.
 - Where the RG stops, CMP 109 p. 256 [sec]: "We continue the calculation of the effective actions until we reach the unit lattice, or rather until we reach a scale which we define as the unit scale. Let us denote the corresponding index by K, hence ε = L^{−K}".
 - Main theorem, CMP 122 (large field renormalization II), Introduction [sec]: "Theorem 1. If the sequence of the effective coupling constants is contained in an interval ]0, γ] with a sufficiently small positive γ, then the effective densities ρ_k have the form, and satisfy all the conditions and bounds, described in Sect. 2 [III]." The consequence is the UV stability bound exp(−E₋|T_η|) ≤ … ≤ exp(E₊|T_η|) with constants independent of k.
@@ -72,8 +82,8 @@ Normalization used throughout: Wilson action S = (β_W/N) Σ_p Re Tr U_p with β
 - Abelian 3D: Göpfert–Mack, CMP 82 (1982) 545: area law (confinement of static charges) for 3D U(1) Villain lattice gauge theory at all β [mem; the all-β area-law statement is confirmed by Chatterjee 1803.01950 and Cao–Nissim–Sheffield 2505.16585 intro, sec]. Mechanism: Polyakov monopole plasma / Debye screening. It is abelian; the continuum limit at fixed physical scale is expected to be a free photon [mem], so it gives no non-abelian continuum gap.
 - Chatterjee's lattice gauge results, stated precisely:
   - "Rigorous solution of strongly coupled SO(N) lattice gauge theory in the large N limit", CMP 366 (2019): Wilson-loop expectations at strong coupling as N → ∞ via a master loop equation, gauge–string duality picture [mem; the strong-coupling large-N content is confirmed in 1803.01950 §6, sec].
-  - "Wilson loops in Ising lattice gauge theory", CMP 377 (2020): Z₂ in d = 4 at **weak** coupling (large β), leading-order Wilson-loop asymptotics (perimeter-type behavior) [mem].
-  - "A probabilistic mechanism for quark confinement", CMP 385 (2021), arXiv 2006.16229: if a lattice gauge theory with compact connected group with nontrivial center has exponential decay of correlations (a lattice mass gap) at a given β, then it confines at that β [abs, via search summary]. This is a conditional theorem: gap ⇒ confinement, not a gap proof.
+  - "Wilson loops in Ising lattice gauge theory", CMP 377 (2020): Z₂ in d = 4 at **weak** coupling (large β), leading-order Wilson-loop asymptotics (perimeter-type behavior) [abs: arXiv 1811.09770 confirms 4D Z₂, weak coupling].
+  - "A probabilistic mechanism for quark confinement", CMP 385 (2021), arXiv 2006.16229: if a lattice gauge theory with compact connected group with nontrivial center has exponential decay of correlations under arbitrary boundary conditions at a given β, then it confines at that β [abs, verified against the arXiv abstract]. The hypothesis is stronger than a plain lattice mass gap. This is a conditional theorem: decay ⇒ confinement, not a gap proof.
   - None of these is a continuum statement and none is 3D-specific. So the task's description is correct for the SO(N) work and needs a correction for the Ising work (which is at weak coupling). [INF]
 - Bottom line for 3D: no rigorous mass gap for any non-abelian continuum gauge theory in 2+1 dimensions. Only lattice-unit strong-coupling gaps and an abelian all-β area law.
 
@@ -138,7 +148,7 @@ Question: is there a published theorem that connects a small-coupling UV constru
 | D1 | Spectrum of the physical Hamiltonian of a Wightman theory on R⁴ avoids (0, Δ); m < ∞ | Clay | the target |
 | D2 | Exponential clustering of truncated Euclidean Schwinger functions of gauge-invariant fields in the continuum | O(3) template Prop 11.4 [sec, O3_TEMPLATE.md §6]; standard | equivalent to D1 on the gauge-invariant sector, via OS reconstruction and the spectral theorem, once OS axioms hold |
 | D3 | Lattice transfer-matrix gap / exponential decay of local gauge-invariant correlations at fixed β, in lattice units | OS78; SZZ 2204.12737 ("strictly positive mass gap") | no continuum content; m_phys = m_lat/a may → 0 or ∞ |
-| D4 | Exponential decay of correlations of bounded local functions, uniform in the volume, at fixed β | Chatterjee 2006.16229 (hypothesis for confinement); DF80 σ-model version | a lattice hypothesis, not a theorem at weak coupling |
+| D4 | Exponential decay of correlations of bounded local functions, uniform in the volume and under arbitrary boundary conditions (stronger than a lattice mass gap), at fixed β | Chatterjee 2006.16229 (hypothesis for confinement); DF80 σ-model version | a lattice hypothesis, not a theorem at weak coupling |
 | D5 | Gap of the finite-volume Hamiltonian on T³ × R, uniform in the volume | Jaffe–Witten §5 | a proposed route to R⁴, not the requirement itself |
 | D6 | Gap in physical units uniform in the cutoff: m_lat(β(a))/a ≥ Δ > 0 for all small a | what a lattice route needs (O3 template Cor 8.5 analogue) [INF] | implies D1 after the continuum limit and OS axioms |
 | D7 | Pole mass of the gauge-variant gluon propagator (e.g. Landau gauge) | Gribov–Zwanziger and Schwinger–Dyson literature | not gauge invariant; not the Clay notion; a decoupling (massive) propagator is neither necessary nor sufficient for D1 [mem] |
@@ -159,8 +169,8 @@ Note on scope: SZZ prove D3 for "a large class of observables", not for every lo
 
 ### 7.2 Where Balaban's construction lands at the unit scale
 - Effective coupling g_K ∈ ]0, γ] with "a sufficiently small positive γ" (CMP 122 II, Theorem 1) [sec]. γ is never given as a number.
-- In Wilson-like units this is β_eff = 2N/g_K² ≥ 2N/γ². Even with γ = 1, far above any constructive smallness, β_eff ≥ 4 (SU(2)) and ≥ 6 (SU(3)). [INF; the unit-scale effective action is not the Wilson action, so this comparison is heuristic]
-- So the open window spans at least β_W ∈ (0.083, 4) for SU(2) and (0.1875, 6) for SU(3): a factor ≥ 48 and ≥ 32 in β. Lattice scaling studies place physical continuum behaviour at β_W ≈ 2.3–2.9 (SU(2)) and 5.7–6.5 (SU(3)) [mem], that is, inside the window.
+- In Wilson-like units, with g_K in Balaban's g_B units, this is β_eff = 1/g_K² ≥ 1/γ². Even with γ = 1, far above any constructive smallness, β_eff ≥ 1. [INF; the unit-scale effective action is not the Wilson action, so this comparison is heuristic]
+- So the open window spans at least β_W ∈ (0.083, 1) for SU(2) and (0.1875, 1) for SU(3): a factor ≥ 12 and ≥ 5.3 in β. With γ_max = 5×10⁻⁹ (UNIT_SCALE_COUPLING.md §1.3) the SU(2) factor is ≈ 4.8×10¹⁷. With R_K self-consistent it is ≈ 3×10³⁵. Lattice scaling studies place physical continuum behaviour at β_W ≈ 2.3–2.9 (SU(2)) and 5.7–6.5 (SU(3)) [mem], that is, inside the window.
 
 ### 7.3 Does any published result narrow the window?
 - Peer-reviewed / accepted: **no**. SZZ (2023) is the explicit gap radius. Cao–Nissim–Sheffield 2509.04688 double the threshold (to 1/(8(d−1))) only for the σ-model gap that yields the area law, not for the YM gap. Cao–Nissim–Sheffield 2505.16585 enlarge the area-law region at large N with a non-explicit β₀(d). None reaches toward β_W = O(1).
