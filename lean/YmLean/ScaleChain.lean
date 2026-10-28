@@ -63,7 +63,7 @@ lemma epow_mul {a x y : ℝ} (hx : 0 < x) (hy : 0 < y) :
     epow a (x * y) = epow a x * epow a y := by
   rw [epow, epow, epow, Real.log_mul hx.ne' hy.ne', mul_add, Real.exp_add]
 
-lemma epow_le_self {a y : ℝ} (ha0 : 0 ≤ a) (ha1 : a ≤ 1) (hy : 1 ≤ y) : epow a y ≤ y := by
+lemma epow_le_self {a y : ℝ} (ha1 : a ≤ 1) (hy : 1 ≤ y) : epow a y ≤ y := by
   have hl : 0 ≤ Real.log y := Real.log_nonneg hy
   calc epow a y ≤ Real.exp (Real.log y) := Real.exp_le_exp.mpr (by nlinarith)
     _ = y := Real.exp_log (by linarith)
@@ -101,9 +101,9 @@ lemma gLogPow_le {q x y : ℝ} (hq : 0 < q) (hx : 0 < x) (hxy : x ≤ y) (hy : y
     have : Real.log y ≤ -q := (Real.log_le_iff_le_exp hy0).mpr hy
     rw [show Real.log (y ^ 2)⁻¹ = ell y from rfl, ell_eq]; intro h; linarith
   have hc : ContinuousAt F y := by
-    have h2 : (y ^ 2)⁻¹ ≠ 0 := by positivity
+    have h2 : (y ^ 2)⁻¹ ≠ 0 := inv_ne_zero (pow_ne_zero 2 hy0.ne')
     have c1 : ContinuousAt (fun g : ℝ => (g ^ 2)⁻¹) y :=
-      (continuousAt_id.pow 2).inv₀ (by positivity)
+      (continuousAt_id.pow 2).inv₀ (pow_ne_zero 2 hy0.ne')
     exact continuousAt_id.mul ((continuousAt_const.mul ((c1.log h2).log hℓ)).rexp)
   exact ContinuousWithinAt.closure_le (by rw [closure_Ioo hlt.ne]; exact ⟨hlt.le, le_rfl⟩)
     continuousWithinAt_const hc.continuousWithinAt hin
@@ -129,7 +129,7 @@ theorem eq26_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
     g n ^ 2 ≤ (1 + g n ^ 2 * β') * (n - m) * g m ^ 2 ∧ g n ≤ (1 + β0) * √(n - m) * g m := by
   have hN := cast_sub_ge_one hmn
   set N : ℝ := (n : ℝ) - m
-  have ha : 0 ≤ g n ^ 2 * β' := by positivity
+  have ha : 0 ≤ g n ^ 2 * β' := mul_nonneg (sq_nonneg _) hβ'
   have h1 : g n ^ 2 ≤ (1 + g n ^ 2 * β') * N * g m ^ 2 :=
     (h26 m n hmn).trans (mul_le_mul_of_nonneg_right (by nlinarith) (sq_nonneg _))
   refine ⟨h1, ?_⟩
@@ -140,9 +140,9 @@ theorem eq26_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
     exact mul_le_mul_of_nonneg_right (by linarith) (by linarith)
   calc g n = √(g n ^ 2) := (Real.sqrt_sq (hg n).le).symm
     _ ≤ √(((1 + β0) * √N * g m) ^ 2) := Real.sqrt_le_sqrt h2
-    _ = _ := Real.sqrt_sq (by positivity)
+    _ = _ := Real.sqrt_sq (mul_nonneg (mul_nonneg (by linarith) (Real.sqrt_nonneg _)) (hg m).le)
 
-lemma ell_pos_of (hγ : ∀ j, g j ≤ γ) (hg : ∀ j, 0 < g j) {c : ℝ} (hc : 0 < c) (h : c ≤ ell γ)
+lemma ell_ge (hγ : ∀ j, g j ≤ γ) (hg : ∀ j, 0 < g j) {c : ℝ} (h : c ≤ ell γ)
     (j : ℕ) : c ≤ ell (g j) := h.trans (ell_anti (hg j) (hγ j))
 
 /-- (T2) = (2.7) line 1: (log g_n^{−2})^p ≤ (1 + β₀)(log g_m^{−2})^p, real p > 0, given
@@ -150,8 +150,8 @@ lemma ell_pos_of (hγ : ∀ j, g j ≤ γ) (hg : ∀ j, 0 < g j) {c : ℝ} (hc :
 theorem T2 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) {p : ℝ} (hp : 0 < p)
     (h2p : 2 * p ≤ ell γ) (h26b : ∀ m n : ℕ, m < n → g m ≤ (1 + β0) * g n)
     {m n : ℕ} (hmn : m < n) : epow p (ell (g n)) ≤ (1 + β0) * epow p (ell (g m)) := by
-  have hm := ell_pos_of hγ hg (by linarith) h2p m
-  have hn := ell_pos_of hγ hg (by linarith) h2p n
+  have hm := ell_ge hγ hg h2p m
+  have hn := ell_ge hγ hg h2p n
   have hL : 0 ≤ Real.log (1 + β0) := Real.log_nonneg (by linarith)
   have hab : ell (g n) ≤ ell (g m) + 2 * Real.log (1 + β0) := by
     have := Real.log_le_log (hg m) (h26b m n hmn)
@@ -173,9 +173,9 @@ theorem T3 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (h
     have : 0 ≤ g n ^ 2 * β' * (n - m) := mul_nonneg (by positivity) (by linarith)
     linarith
   have hγ0 : 0 < ell γ := by
-    by_contra h; push_neg at h; nlinarith [mul_nonneg hβ0 (neg_nonneg.mpr h)]
-  have hm := ell_pos_of hγ hg hγ0 le_rfl m
-  have hn := ell_pos_of hγ hg hγ0 le_rfl n
+    by_contra h; push Not at h; nlinarith [mul_nonneg hβ0 (neg_nonneg.mpr h)]
+  have hm := ell_ge hγ hg (le_refl (ell γ)) m
+  have hn := ell_ge hγ hg (le_refl (ell γ)) n
   have hlX := Real.log_nonneg hX
   have hab : ell (g m) ≤ ell (g n) + Real.log (1 + g n ^ 2 * β' * (n - m)) := by
     have := Real.log_le_log (by have := hg n; positivity) (h26 m n hmn)
@@ -191,7 +191,7 @@ theorem T4 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (h
     (hβ' : 0 ≤ β') (hS1 : γ ^ 2 * β' ≤ (1 + β0) ^ 2 - 1) {m n : ℕ} (hmn : m < n) :
     epow β0 (1 + g n ^ 2 * β' * (n - m)) ≤ (1 + β0) * epow β0 (n - m) := by
   have hN := cast_sub_ge_one hmn
-  have ha : 0 ≤ g n ^ 2 * β' := by positivity
+  have ha : 0 ≤ g n ^ 2 * β' := mul_nonneg (sq_nonneg _) hβ'
   have hT1 := T1 hg hγ hβ' hS1 n
   calc epow β0 (1 + g n ^ 2 * β' * (n - m))
       ≤ epow β0 ((1 + g n ^ 2 * β') * (n - m)) :=
@@ -204,7 +204,7 @@ theorem T4 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (h
         refine mul_le_mul_of_nonneg_right ?_ (epow_pos _ _).le
         have : epow β0 ((1 + β0) ^ 2) = epow (2 * β0) (1 + β0) := by
           rw [epow, epow, Real.log_pow]; push_cast; ring_nf
-        rw [this]; exact epow_le_self (by linarith) (by linarith) (by linarith)
+        rw [this]; exact epow_le_self (by linarith) (by linarith)
 
 /-- (2.7) line 2 in full: (log g_m^{−2})^p ≤ (1 + β₀)(n − m)^{β₀}(log g_n^{−2})^p. -/
 theorem eq27_line2 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (hβ0h : β0 ≤ 1 / 2)
@@ -245,10 +245,10 @@ theorem eq28_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
   have hfac : 1 ≤ (1 + β0) * √((n : ℝ) - m) := by
     have : 1 ≤ √((n : ℝ) - m) := Real.one_le_sqrt.mpr hN
     nlinarith
-  have hm := ell_pos_of hγ hg (by linarith) h2p m
-  have hn := ell_pos_of hγ hg (by linarith) h2p n
+  have hm := ell_ge hγ hg h2p m
+  have hn := ell_ge hγ hg h2p n
   have hexp : ∀ j, g j ≤ Real.exp (-p0) := fun j => by
-    have := ell_pos_of hγ hg (by linarith) h2p j
+    have := ell_ge hγ hg h2p j
     rw [ell_eq] at this
     exact (Real.log_le_iff_le_exp (hg j)).mp (by linarith)
   have hεm : 0 ≤ eps A0 p0 (g m) := by unfold eps; have := hg m; have := epow_pos p0 (ell (g m)); positivity
@@ -281,6 +281,7 @@ theorem eq28_line2 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
   have hb := h26b m n hmn
   have hgn := (hg n).le
   have hE := (epow_pos p0 (ell (g n))).le
+  have hEm := (epow_pos p0 (ell (g m))).le
   have first : eps A0 p0 (g m) ≤
       (1 + β0) * epow β0 (1 + g n ^ 2 * β' * (n - m)) * eps A0 p0 (g n) := by
     unfold eps
@@ -311,7 +312,7 @@ theorem eq29_line1 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
     calc epow r (ell (g n)) ≤ (1 + β0) * epow r (ell (g m)) := T2 hg hγ hβ0 hr h2r h26b hmn
       _ ≤ L * R m := mul_le_mul hL (hRge m) (epow_pos _ _).le (by linarith)
       _ = L ^ (k + 1) := by rw [hk, pow_succ, mul_comm])
-  rwa [hk, pow_succ, mul_comm] at this ⊢
+  rw [hk, ← pow_succ']; exact this
 
 /-- (2.9) line 2, first step: R_m ≤ L(1 + X)^{β₀} R_n. -/
 theorem eq29_line2 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤ β0) (hβ' : 0 ≤ β')
@@ -333,7 +334,7 @@ theorem eq29_line2 (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 0 ≤
     calc epow r (ell (g m)) ≤ c * epow r (ell (g n)) := T3 hg hγ hβ0 hβ' hr hrβ h26 hmn
       _ ≤ c * R n := mul_le_mul_of_nonneg_left (hRge n) (by linarith)
       _ ≤ L ^ (s + 1) * R n := mul_le_mul_of_nonneg_right hs2.le hRn.le
-      _ = L ^ (s + 1 + k) := by rw [hk, pow_add])
+      _ = L ^ (s + 1 + k) := by rw [hk, ← pow_add])
   calc R m ≤ L ^ (s + 1 + k) := this
     _ = L * L ^ s * R n := by rw [hk, pow_add, pow_succ]; ring
     _ ≤ L * c * R n := by gcongr
@@ -348,7 +349,7 @@ theorem eq29_line2_full (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 
     (hRmin : ∀ j (k : ℕ), epow r (ell (g j)) ≤ L ^ k → R j ≤ L ^ k)
     {m n : ℕ} (hmn : m < n) : R m ≤ (L + 1) * epow β0 (n - m) * R n := by
   have hN := cast_sub_ge_one hmn
-  have ha : 0 ≤ g n ^ 2 * β' := by positivity
+  have ha : 0 ≤ g n ^ 2 * β' := mul_nonneg (sq_nonneg _) hβ'
   have haL : g n ^ 2 * β' ≤ 1 / L :=
     (mul_le_mul_of_nonneg_right (pow_le_pow_left₀ (hg n).le (hγ n) 2) hβ').trans hγL
   have hRn : 0 ≤ R n := (epow_pos _ _).le.trans (hRge n)
@@ -359,7 +360,7 @@ theorem eq29_line2_full (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j ≤ γ) (hβ0 : 
       _ = epow β0 (1 + g n ^ 2 * β') * epow β0 (n - m) := epow_mul (by linarith) (by linarith)
       _ ≤ (1 + 1 / L) * epow β0 (n - m) := by
           refine mul_le_mul_of_nonneg_right ?_ (epow_pos _ _).le
-          exact (epow_le_self hβ0 (by linarith) (by linarith)).trans (by linarith)
+          exact (epow_le_self (by linarith) (by linarith)).trans (by linarith)
   calc R m ≤ L * epow β0 (1 + g n ^ 2 * β' * (n - m)) * R n :=
         eq29_line2 hg hγ hβ0 hβ' hL hr hrβ h26 hRpow hRge hRmin hmn
     _ ≤ L * ((1 + 1 / L) * epow β0 (n - m)) * R n := by gcongr
@@ -405,10 +406,12 @@ theorem eq26_line1_of_Pup (hg : ∀ j, 0 < g j)
   have hx : 0 < g m ^ 2 := by have := hg m; positivity
   have hy : 0 < g n ^ 2 := by have := hg n; positivity
   have h := hPup m n hmn.le
-  calc g n ^ 2 = g m ^ 2 * g n ^ 2 * (1 / g m ^ 2) := by field_simp
+  have hx1 : g m ^ 2 * (1 / g m ^ 2) = 1 := mul_one_div_cancel hx.ne'
+  have hy1 : g n ^ 2 * (1 / g n ^ 2) = 1 := mul_one_div_cancel hy.ne'
+  calc g n ^ 2 = g m ^ 2 * g n ^ 2 * (1 / g m ^ 2) := by linear_combination (-(g n ^ 2)) * hx1
     _ ≤ g m ^ 2 * g n ^ 2 * (1 / g n ^ 2 + β' * (n - m)) :=
         mul_le_mul_of_nonneg_left h (by positivity)
-    _ = _ := by field_simp; ring
+    _ = _ := by linear_combination (g m ^ 2) * hy1
 
 /-- (P-low) + (S) ⇒ (2.6) line 2: u_m ≥ u_n + β(n − m) − D′ and γ^{−2} ≥ c_sw D′ give
 g_m ≤ (1 + β₀) g_n (B10_SWEEP (i): needs u_n ≥ D′/(1 − (1 + β₀)^{−2})). -/
@@ -439,9 +442,12 @@ theorem eq26_line2_of_Plow {β D' : ℝ} (hg : ∀ j, 0 < g j) (hγ : ∀ j, g j
       _ ≤ _ := mul_le_mul_of_nonneg_left this (by positivity)
   have h2 : g m ^ 2 ≤ ((1 + β0) * g n) ^ 2 := by
     rw [mul_pow]
-    have e1 : g m ^ 2 = g m ^ 2 * g n ^ 2 * (1 / g n ^ 2) := by field_simp
+    have hx1 : g m ^ 2 * (1 / g m ^ 2) = 1 := mul_one_div_cancel hx.ne'
+    have hy1 : g n ^ 2 * (1 / g n ^ 2) = 1 := mul_one_div_cancel hy.ne'
+    have e1 : g m ^ 2 = g m ^ 2 * g n ^ 2 * (1 / g n ^ 2) := by
+      linear_combination (-(g m ^ 2)) * hy1
     have e2 : g m ^ 2 * g n ^ 2 * ((1 + β0) ^ 2 * (1 / g m ^ 2)) = (1 + β0) ^ 2 * g n ^ 2 := by
-      field_simp
+      linear_combination ((1 + β0) ^ 2 * g n ^ 2) * hx1
     rw [e1, ← e2]; exact mul_le_mul_of_nonneg_left key (by positivity)
   exact (pow_le_pow_iff_left₀ (hg m).le (by have := hg n; positivity) two_ne_zero).mp h2
 
@@ -461,6 +467,8 @@ lemma sum_inv_sq_le {a β : ℝ} (ha : 0 < a) (hβ : 0 < β) (N : ℕ) :
         field_simp; ring
       rw [e]
       exact one_div_le_one_div_of_le (by positivity) (by nlinarith)
+    have e : (1 / a - 1 / (a + β * N)) / β + (1 / (a + β * N) - 1 / (a + β * ((N + 1 : ℕ) : ℝ))) / β
+        = (1 / a - 1 / (a + β * ((N + 1 : ℕ) : ℝ))) / β := by ring
     linarith
 
 /-- (2.46), explicit form: with (P-low) and γ^{−2} ≥ c_sw D′ (so u_n ≥ 2D′), for κ₀ ≥ 4 and
@@ -518,9 +526,11 @@ theorem eq246_explicit {β D' : ℝ} {κ0 n : ℕ} (hg : ∀ j, 0 < g j) (hγ : 
         have : 0 ≤ 1 / (a + β * n) / β := by positivity
         rw [sub_div]; linarith
     _ = (1 / a) ^ k + (1 / a) ^ (k - 1) / β := by
-        obtain ⟨k', rfl⟩ : ∃ k', k = k' + 2 := ⟨k - 2, by omega⟩
-        simp only [Nat.add_sub_cancel, show k' + 2 - 1 = k' + 1 by omega]
-        rw [one_div_pow (n := 2)]; ring
+        have e1 : (1 / a) ^ (k - 2) * (1 / a) ^ 2 = (1 / a) ^ k := by
+          rw [← pow_add]; congr 1; omega
+        have e2 : (1 / a) ^ (k - 2) * (1 / a) = (1 / a) ^ (k - 1) := by
+          rw [← pow_succ]; congr 1; omega
+        rw [mul_add, ← one_div_pow, e1, ← mul_div_assoc, e2]
     _ = _ := by rw [hinva]
 
 /-- (2.46) as printed: Σ_{j=1}^n g_j^{κ₀} < g_n^{κ₀−6} for κ₀ ≥ 7, under (P-low), (S), and the
@@ -531,7 +541,7 @@ theorem eq246 {β D' : ℝ} {κ0 n : ℕ} (hg : ∀ j, 0 < g j) (hγ : ∀ j, g 
     (hPlow : ∀ m n : ℕ, m ≤ n → 1 / g n ^ 2 + β * (n - m) - D' ≤ 1 / g m ^ 2)
     (hS : cSw β0 * D' ≤ 1 / γ ^ 2) (hC : 2 ^ (κ0 / 2) * (1 + 1 / β) * γ ^ 3 < 1) :
     ∑ j ∈ Icc 1 n, g j ^ κ0 < g n ^ (κ0 - 6) := by
-  have h := eq246_explicit (β0 := β0) (n := n) hg hγ hγ1 hβ hD (by omega) hPlow hS
+  have h := eq246_explicit (β0 := β0) (n := n) (κ0 := κ0) hg hγ hγ1 hβ hD (by omega) hPlow hS
   set k := κ0 / 2 with hk
   set x := g n with hx
   have hx0 : 0 < x := hg n

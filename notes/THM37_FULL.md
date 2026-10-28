@@ -92,7 +92,7 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
 
 ## 3. Setting, norms, and hypotheses of the write-out
 
-3.1 Notation. ξ_n := L^nη (block scale at level n). For x ∈ B^n(Λ_n), n(x) := n and y(x) ∈ Λ_n is the centre of the n-block Δ(y(x)) = B^n(y(x)) that contains x. 𝔅 = ∪_n Λ_n is identified with the set of blocks. d(·,·) is the CMP 96 distance (2.46) on 𝔅; it is an infimum of weighted contour lengths over a class closed under concatenation, so it is a metric (CMP 96 (2.54) [V]). Adjacent blocks: d(y, y″) ≤ c_nb := d for blocks that share a face or are equal [I: one straight contour between the centres; at a level interface the weights (ξ_n)^{−1} only decrease the length].
+3.1 Notation. ξ_n := L^nη (block scale at level n). For x ∈ B^n(Λ_n), n(x) := n and y(x) ∈ Λ_n is the centre of the n-block Δ(y(x)) = B^n(y(x)) that contains x. 𝔅 = ∪_n Λ_n is identified with the set of blocks. d(·,·) is the CMP 96 distance (2.46) on 𝔅; it is an infimum of weighted contour lengths over a class closed under concatenation, so it is a metric (CMP 96 (2.54) [V]).
  Block norms. For an operator T on functions on Ω_0 (g-valued) and y, y′ ∈ 𝔅:
  N_∞(T; y, y′) := sup{|(Δ(y)TΔ(y′)λ)(x)| : x, |λ| ≤ 1}, the sup→sup norm of the block Δ(y)TΔ(y′);
  N_2(T; y, y′) := ‖Δ(y)TΔ(y′)‖_{L²→L²}, the L² block norm of (3.46).
@@ -123,3 +123,33 @@ CMP 99 references [V p. 433]: [3] = Balaban, CMP 95, 17–40 (1984) ("Propagator
 3.5 Lemma AG (agreement of the global and local operators) [P given (H-PU)(a) and the block structure of Q′; I for the reading that Q′_n is defined blockwise, independent of the domain sequence (CMP 99 (3.19), (3.55)–(3.57) [V])]. Let □ ∈ 𝒟_j and let Δ′_{a,□} := Ω_0(□)Δ′_a(U; {Ω_n(□)})Ω_0(□) be the operator whose inverse is G′_□. Then for every function g supported in Ω_0(□) ∩ Ω_0 and every x ∈ □:
  (Ω_0Δ′_aΩ_0 g)(x) = (Δ′_{a,□}g)(x).
  Proof. (i) The Laplacian part Δ^η_U is nearest-neighbour; x ∈ □ and its neighbours lie in □̃ ⊂ Ω_0(□), and in Ω_0 or outside it in both operators alike (I-Ω0). (ii) The term Q′*aQ′ at x: by (3.24), (Q′*aQ′g)(x) = a_n(ξ_n)^{d−2}·(Q′_n*(Q′_ng)(y))(x) with n the level of x and y = y(x) in the sequence used; Q′_n averages g over the block B^n(y) with parallel transports along contours inside B^n(y) (CMP 99 (3.19), (3.55) [V]). (iii) Level of x. Globally, x ∈ B^j(Λ_j) or x ∈ B^{j+1}(Λ_{j+1}) by (H-PU)(a). In the □-system, Ω_n(□) ⊃ □̃^4 ⊃ □ for n ≤ j, Ω_{j+1}(□) = □̃^3 ∩ B^{j+1}(Λ_{j+1}), and there is no Ω_{j+2}(□) [V p. 408]. So x has level j+1 in the □-system iff x ∈ B^{j+1}(Λ_{j+1}) iff x has level j+1 globally. (iv) The blocks B^n(y) are cells of the fixed lattice ξ_nZ^d; the coefficients a_n are given by the same recursion with a_0 = a_1 = a [V p. 394]; so both operators use the same block, the same a_n, and the same transports. (v) Ω_{j+2} ∩ □̃^3 = ∅ globally, since □ meets B^j(Λ_j) ⊂ Ω_{j+1}^c and dist(Ω_{j+1}^c, Ω_{j+2}) ≥ RMξ_{j+1} > 4Mξ_j (CMP 96 (2.2), RL > 4). ∎
+
+## 4. Step 1: the commutator, the parametrix identity, supports, and the one-step bound
+
+4.1 Definition. K(h) := hΔ′_a − Δ′_ah, the commutator of Δ′_a (with the Dirichlet cut Ω_0·Ω_0) and multiplication by h. Then Δ′_a(hg) = hΔ′_ag − K(h)g holds by definition. This is (3.88) [V]; we do not need Balaban's explicit three-term formula, only the bound of Lemma K below, which we derive from the commutator.
+
+4.2 Lemma K0 (pointwise commutator bound) [P given (3.23)–(3.24) and the averaging form of Q′_n, CMP 99 (3.19) [V]]. Let x ∈ B^n(y) ∩ Ω_0. For real U and any g on Ω_0,
+ |(K(h)g)(x)| ≤ Σ_{b∈st(x)} |(∂h)(b)|·|(D_Ug)(b)| + |(Δh)(x)|·|g(x)| + a_nξ_n^{−2}·osc_{B^n(y)}(h)·sup_{B^n(y)}|g|. (4.2.1)
+ Here ∂, Δ are the η-lattice derivative and Laplacian of the scalar h, osc_B(h) := max_B h − min_B h, and a_n ≤ a.
+ Proof. (i) Laplacian. For a bond b = (x, x + ηe) write (R_bg)(x + ηe) for the parallel-transported value, so (D_Ug)(b) = η^{−1}((R_bg)(x + ηe) − g(x)). Then η^{−2}(h(x) − h(x + ηe))(R_bg)(x + ηe) = η^{−2}(h(x) − h(x + ηe))g(x) − (∂h)(b)(D_Ug)(b). Sum over the 2d bonds of st(x): the first parts give −(Δh)(x)g(x) (up to the sign convention of Δ), the second parts give −Σ_b(∂h)(b)(D_Ug)(b). So |[h, Δ^η_U]g(x)| ≤ |(Δh)(x)||g(x)| + Σ_b|(∂h)(b)||(D_Ug)(b)|. The Dirichlet cut only removes bonds that leave Ω_0, where g = 0. (ii) Averaging term. From (3.24) and ⟨λ, λ′⟩ = η^dΣ_xλ(x)λ′(x), (Q′*aQ′g)(x) = a_nξ_n^{−2}L^{−nd}Σ_{x′∈B^n(y)} T_{x,x′}g(x′), with T_{x,x′} = R(U(Γ_{y,x}))^{−1}R(U(Γ_{y,x′})) of norm 1 for G-valued U (this is the last term of (3.88) [V]). So ([h, Q′*aQ′]g)(x) = a_nξ_n^{−2}L^{−nd}Σ_{x′}(h(x) − h(x′))T_{x,x′}g(x′), and L^{−nd}Σ_{x′} is an average over the L^{nd} points of the block. (iii) a_n ≤ a: a_{n+1} = aa_n/(aL^{−2} + a_n) < a for a_n > 0, and a_0 = a_1 = a [V p. 394]. ∎
+ L² form [P]. With N_2 in place of sup norms: the Laplacian part gives ‖Δ(z)K_Δ(h)g‖ ≤ sup|Δh|·‖Δ(z)g‖ + 2d sup|∂h|·‖Δ(z)∇_Ug‖ (bonds of Δ(z)); the averaging part is (h − h(x_B))P_Bg − P_B((h − h(x_B))g) with P_B the transported block average, an L²-contraction, so its L² norm is ≤ 2 osc_B(h)a_nξ_n^{−2}‖Δ(z)g‖ (Δ(z) = B^n(y) here).
+
+4.3 Lemma P (parametrix identity) [P given Lemma AG, (H-PU)(c), (I-Ω0)]. Put G′_0 := Σ_{□∈𝒟} h_□G′_□h_□ (3.87) and F_□ := K(h_□)G′_□h_□, R′ := Σ_□ F_□. Then, as operators on functions on Ω_0,
+ Ω_0Δ′_aΩ_0 G′_0 = I − R′. (4.3.1)
+ Proof. Fix λ and put g_□ := G′_□h_□λ, supported in Ω_0(□) ∩ Ω_0. By 4.1, Ω_0Δ′_aΩ_0(h_□g_□) = h_□(Ω_0Δ′_aΩ_0g_□) − K(h_□)g_□. Since supp h_□ ⊂ □, Lemma AG gives h_□(Ω_0Δ′_aΩ_0g_□) = h_□(Δ′_{a,□}g_□) = h_□·h_□λ (Δ′_{a,□}G′_□ = I on Ω_0(□) ∩ Ω_0, and supp h_□λ lies there). Sum over □ and use Σh_□² = 1. ∎
+
+4.4 Lemma S (supports and locality) [P given (H-PU)(a)–(b), Lemma K0, and the definition of G′_□].
+ (i) The block Δ(y)h_□G′_□h_□Δ(y′) vanishes unless Δ(y) and Δ(y′) meet supp h_□.
+ (ii) The block Δ(z)F_□Δ(z′) vanishes unless Δ(z′) meets supp h_□ and Δ(z) meets supp⁺h_□ := {x : x, a nearest neighbour of x, or a point of the block of x lies in supp h_□}. supp⁺h_□ ⊂ □, at distance ≥ (⅓M − L)ξ_j/L > 0 from ∂□ (□ ∈ 𝒟_j, M > 3L), because blocks of level j + 1 do not cross Σ_{j+1} and a block has side ≤ ξ_{j+1} = Lξ_j.
+ (iii) Hence a product h_{□_0}G′_{□_0}h_{□_0}F_{□_1}···F_{□_n} vanishes unless supp h_{□_{i−1}} ∩ supp⁺h_{□_i} ≠ ∅ for all i, which implies □_{i−1} ∩ □_i ≠ ∅. So the expansion of G′_0Σ_nR′^n runs over walks ω = (□_0, …, □_n) as in (3.90).
+ (iv) G′_□ depends on U only through the links inside Ω_0(□) ⊂ □̃^5 [V p. 410: "A propagator G′_□ depends on U restricted to Ω_0(□) ⊂ □̃^5"; the Dirichlet operator Ω_0(□)Δ′_aΩ_0(□) uses only links with both ends in Ω_0(□), and the averages Q′_n use links inside blocks]. K(h_□) depends on U only in the blocks that meet supp h_□. So the term T_ω := h_{□_0}G′_{□_0}h_{□_0}F_{□_1}···F_{□_n} depends on U only in □̃_0^5 ∪ … ∪ □̃_n^5. This is the locality clause of Cor. 3.8.
+ (v) The kernel of T_ω is supported in supp h_{□_0} × supp h_{□_n} ⊂ □_0 × □_n, at distance ≥ ⅓Mξ_{j_0}/L, ⅓Mξ_{j_n}/L from ∂□_0, ∂□_n. This is the band (L1) for the end domains, with the ⅓M band of CMP 116 p. 3 [V] reduced by the factor 1/L at interface faces only (3.4).
+
+4.5 Lemma K (one-step bound; this is (3.89)) [P given (3.3.1), Lemma K0, (H-PU)(d)]. For □ ∈ 𝒟, z, z′ ∈ 𝔅, and N ∈ {N_∞, N_2}:
+ N(F_□; z, z′) ≤ (K_1/M)e^{−δ_0d(z,z′)}, K_1 := 2(3d + 1)c_hL²B_0. (4.5.1)
+ Proof. Let x ∈ Δ(z), level n, and λ supported in Δ(z′), g := G′_□h_□λ. By (H-PU)(d): |∂h_□| ≤ c_hL/(Mξ_n), |Δh_□| ≤ c_hL²/(Mξ_n)², and osc_{B^n}(h_□) ≤ d·ξ_n·c_hL/(Mξ_n) = dc_hL/M. A bond of st(x) may end in a block of level n ± 1, where (3.3.1) gives at most Lξ_n in place of ξ_n. By (3.3.1) (|h_□| ≤ 1, d(·,·) the same for all points of Δ(z)):
+ term 1 ≤ 2d·(c_hL/(Mξ_n))·B_0Lξ_n e^{−δ_0d(z,z′)}|λ| = 2dc_hL²B_0M^{−1}e^{−δ_0d}|λ|;
+ term 2 ≤ (c_hL²/(M²ξ_n²))·B_0ξ_n² e^{−δ_0d}|λ| ≤ c_hL²B_0M^{−1}e^{−δ_0d}|λ|;
+ term 3 ≤ aξ_n^{−2}·(dc_hL/M)·B_0ξ_n² e^{−δ_0d}|λ| ≤ dc_hLB_0M^{−1}e^{−δ_0d}|λ| (a = 1, as in Thm 3.1).
+ The sum is ≤ (3d + 1)c_hL²B_0M^{−1}e^{−δ_0d(z,z′)}|λ|. The L² form of 4.2 doubles the averaging term; the factor 2 in K_1 covers both norms. ∎
+ Comparison. Balaban prints (3.89) as O(M^{−1})e^{−δ_0(L^jη)^{−1}|y−y′|}, "y, y′ ∈ □", and says "It is exactly the bound (2.44) of [4], rescaled". Inside one cube the Euclidean form and d agree up to constants. We use d(z, z′) directly, so no conversion is needed, and the constant is explicit.

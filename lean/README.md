@@ -1,4 +1,4 @@
-# Lean 4 formalization (36 files)
+# Lean 4 formalization (41 files)
 
 No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
@@ -39,13 +39,19 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `ElemBounds.lean` | `a10Sum_eq_four`, `a10Sum_closed`, `a10Sum_ge_top`, `a10Sum_unbounded`, `gLogPow_strictMonoOn`, `schurSum_antitone`, `kMap_mono`, `epsMap_mono`, `expRange_mono`. Axioms: standard. Build 5 s | SOURCES_A10_LOWER.md §3 (c); SOURCES_A11_CONST_VERIFY.md; SOURCES_ORDER_CANON.md A.2 Lemma M2 | VERIFY_ElemBounds.md |
 | `SchurMarginal.lean` | `block_inv`, `det_block`, `schur_posDef`, `schur_lower`, `schur_eigenvalues_ge`, `gamma_bb_eq`, `author_Bblock`, `c_minus_ge` (18 theorems). Axioms: standard. Build 5.6 s | SOURCES_G3_N2.md §2.4, §3.3–3.4 | VERIFY_SchurMarginal.md |
 | `NestEnvelope.lean` | `nest_shoot`, `nest_DDoublePrime`, `nest_DPrime`, `env_of_terminal`, `cprimeDD`, `cprimeDP` (253 lines). Axioms: standard. Build time not recorded | SOURCES_T2_B7_CLAMP.md §4.2–§4.4 | VERIFY_NestEnvelope.md |
+| `Concatenation.lean` | `concat_two`, `concat_two_rate`, `concat_list`, `junction_of_telescope`, `junction_of_weighted` (136 lines). Axioms: standard. Build 5.0 s | WG_FULL §3.1 Lemma C (§4.3, §5.7) | VERIFY_Concatenation.md |
+| `NeutralSpectrum.lean` | `neutral_form`, `hodge_eq_lap`, `hodge_ker`, `finrank_ker_hodgeL`, `hodge_gap`, `poincare1/2`, `neutral_gap`, `neutral_gap_cos` (63 theorems, 642 lines). Axioms: standard. Build 2.8 s | SOURCES_T2_MJ_REST.md §5.2, §6; SOURCES_T2_MJ_REST_VERIFY.md §7 | VERIFY_NeutralSpectrum.md |
+| `ComplexGaussian.lean` | `gauss_posDef`, `gauss_posDef_eq`, `cgauss_bound`, `lemmaS_form`, `norm_cexp_cq_le`, `lemmaD_core` (11 theorems, 188 lines). Axioms: standard. Build 2.8 s | SOURCES_A8_POS.md §3.1, §4, §5.2–5.3; SOURCES_A8_POS_VERIFY.md V2, V5 | VERIFY_ComplexGaussian.md |
+| `TheoremL.lean` | `block_ineq_E_exact`, `KbExact_le`, `HE_implies_E_cond`, `lemmaPexp_real`, `theoremL_real`, `theoremL`, `gammaExp_eq` (10 theorems, 216 lines). Axioms: standard. Build 3.7 s | WC_FULL.md §2 (Lemma E), §3.1–§3.2 (Theorem L); WC_FULL_VERIFY.md | VERIFY_TheoremL.md |
+| `QConstants.lean` | `Lambda_bound`, `Lambda_bound_gamma`, `author_Bblock_norm_le`, `c_minus_bound`, `lemmaN`, `norm_le_of_abs_dot` (14 theorems, 290 lines). Axioms: standard. Build 3.4 s | SOURCES_G3_N2.md §3.1–3.6; SOURCES_A7_CDC.md §2.1–2.3 | VERIFY_QConstants.md |
+| `ScaleChain.lean` | `T1`–`T4`, `eq26_line1`, `eq28_line1`, `eq28_line2`, `eq29_line1/2`, `eq29_line2_full`, `R_step`, `cSw_one_seventh`, `eq246` (30 theorems, 592 lines). Axioms: standard. Build 6.6 s (full `lake build`) | SOURCES_A11_CONST.md §1, §4; SOURCES_A11_CONST_VERIFY.md §8, §17; SOURCES_B10_SWEEP.md (i) | VERIFY_ScaleChain.md |
 
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 36 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 41 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
