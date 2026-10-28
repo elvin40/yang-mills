@@ -7,7 +7,7 @@ import Mathlib.Data.Nat.Basic
 
 `canonEdges` is a hand transcription of SOURCES_ORDER_CANON Part B as of 2026-10-28
 (round B90 + the lift pass of F.5 + canon pass G: B10a–B10g, B5a and B10 moved;
-VERIFY2 fix pass: edges (B10, B18) and (B10g, B15) added). An edge `(a, b)` means "a condition of line `b` uses a
+VERIFY2 fix pass: edges (B10, B18) and (B10g, B15) added; Ω pass: edge (B10, B14a) added). An edge `(a, b)` means "a condition of line `b` uses a
 constant fixed on line `a`". Sources of the edges: the "uses" lists of the topological
 passes E7, E8, F.3, F.5, plus the dependencies that the Part B line text names explicitly.
 Line `B0` does not exist in the source; the lines are B1–B33 plus the sub-lines B5a, B10a–g,
@@ -64,6 +64,7 @@ def canonEdges : List (Line × Line) :=
   , (B5, B14), (B11, B14), (B12a, B14), (B12b, B14), (B12c, B14)
   , (B10g, B14)                                   -- level-4 radius k_{C′}b_1^{37} (G)
   , (B5, B14a), (B12c, B14a), (B14, B14a)
+  , (B10, B14a)                                   -- δ_𝒲^Ω = δ_𝒲 − p_Sθ_S, θ_S at M_min (Ω pass)
   , (B5, B15), (B5a, B15), (B9, B15), (B11, B15), (B12, B15), (B13, B15), (B14, B15), (B14a, B15)
   , (B10e, B15)                                   -- M_1 ≥ M_310 (G)
   , (B10g, B15)                                   -- M_1 ≥ M_W^{39,c} (VERIFY2)
@@ -105,7 +106,7 @@ def Edge (a b : Line) : Prop := (a, b) ∈ canonEdges
 
 theorem canonOrder_nodup : canonOrder.Nodup := by decide
 
-theorem counts : canonOrder.length = 50 ∧ canonEdges.length = 169 := by decide
+theorem counts : canonOrder.length = 50 ∧ canonEdges.length = 170 := by decide
 
 /-- Every transcribed edge goes forward in the file order. -/
 theorem edges_forward : ∀ e ∈ canonEdges, rank e.1 < rank e.2 := by decide
