@@ -1,6 +1,6 @@
 # KAPPA_BOUNDED — uniform bound on the coarse F²-coefficient κ_k (Theorem K) and Theorem 2 (weak form)
 
-Status: in progress (2026-10-27). Sections appended as the work proceeds.
+Status: complete (2026-10-27), not independently verified. Sections were appended one at a time.
 
 Read: LEMMA_DPRIME.md (+VERIFY), U1_INFINITE_LATTICE.md §1, §3.2, §5, §7 (+U1_VERIFY headings), BETA_FP_LEMMA43.md §0–§4, BETA_FP_H.md §0–§3 (+VERIFY §2–§5), BETA_FP_M.md §0, §3–§6, U3_AW.md §0–§1, §3.3–§4.7, §6 (+VERIFY grades), U3_REPAIRS_VERIFY grades, NUMERICS §5–§6 headers, PLAN.md numbers. Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md). No numerics run. No existing file edited. Tags: [proved here], [cited], [argued], [hypothesis], [open].
 
@@ -80,7 +80,7 @@ Take one level j alone. The formal f²-integrand of Γ_c(Λ_j; f) per momentum, 
 - The degree −4 part H_{−4} of G_j is built from three things only: the degree-2 part of 𝔨_0, which is |K|²1 in the Feynman form at every level (Lemma M, U3_AW §3.3: Maxwell exactly, plus the level-independent gauge-fixing term); the degree-0 part of 𝔨_1, which is τ_c + γ^{(1)}(0) at every level (Theorem W); and the fixed ghost.
 So H_{−4} is the same homogeneous function for every j ≥ 0 [proved here, from Lemma M and Theorem W]. Its sphere average ℓ := (2π)^{−4}∫_{S³}H_{−4} dΩ is level-independent. At finite f the integral ∫ G_j is cut off at |K| ~ |f|^{1/2}, so ℓ is the coefficient of ½ ln(1/|f|) in [f²]Γ_c(Λ_j; f).
 
-This is the answer to the question in the task. Yes: the τ_c part, through ¼tr[b_0τ_cb_0τ_c] ~ |τ_c|²|K|^{−4}, gives a log-divergent integrand at every level. That log is the coarse piece's compensating ln: at j = 0 the coarse piece is the Wilson one-loop itself, whose log coefficient is c_2 (LW (5.7); (F)), so ℓ/(2n_2)-normalized equals c_2 at j = 0, hence at every j. This upgrades BETA_FP_H Prop. 3.2(b)–(c) (s_j ∈ {1, s_*}, argued) to a direct statement: with Theorem W, s_j = 1 and the coarse log coefficient is c_2 for every j, with no use of (M).
+This is the answer to the question in the task. Yes: the τ_c part, through ¼tr[b_0τ_cb_0τ_c] ~ |τ_c|²|K|^{−4}, gives a log-divergent integrand at every level. That log is the coarse piece's compensating ln: at j = 0 the coarse piece is the Wilson one-loop itself, whose log coefficient is c_2 (LW (5.7); (F)), so ℓ/(2n_2)-normalized equals c_2 at j = 0, hence at every j. This upgrades BETA_FP_H Prop. 3.2(b)–(c) (s_j ∈ {1, s_*}, argued) to a direct statement: with Theorem W, s_j = 1, and the degree −4 integrand is the j = 0 one. The level-independence of H_{−4} is [proved here]. Reading ∫H_{−4} as the f² ln(1/|f|) coefficient at finite f is a fixed-level asymptotic statement of (M) type [argued]. Theorem K does not use that reading: §3.2 uses only the exact cancellation of H_{−4} in the difference.
 
 ### 3.2 The finite part
 Define the finite part of the level-j coarse piece by subtracting the level-0 coarse piece, as in (1.1). The degree −4 parts cancel identically, because H_{−4} is level-independent. What remains is the integrand of (1.1). By §2 it is bounded by C|K|^{−2}, uniformly in j. In d = 4, ∫_{|K|<1}|K|^{−a}d⁴K < ∞ iff a < 4, so the margin is two powers of |K|. Hence the finite part is d_j, it is absolutely convergent, and |d_j| ≤ κ_*.
@@ -107,3 +107,68 @@ Proof. Let N_j be the least N with ±σ_j^{(2)} ≤ N(Δ_j + 1). By (b), N_j ≤
 Known sufficient condition [cited, U3_AW Reduction R-A]: (HS) h² < L²(L − 1) implies strip bounds for σ^{(1)}, σ^{(2)}, hence (B2) and the C¹ bound on σ^{(1)}. Since L²(L − 1) < L⁴, (HS) also gives h² < L⁴. Or the n-step form (H″). Status of (HS), (H″): [open]; decisive numerical check O1 of U3_AW (max_K ‖H_j(K)‖/L at L = 3, j = 1, 2, 3, ∞; (HS) needs < 1.41; the Prop. 4.1 route needs < 3 plus the C¹ bound).
 
 Conclusion: (B2) is stated as the single uniform hypothesis. It is not derived here.
+## 5. Theorem K and Theorem 2 (weak form)
+
+### 5.1 Theorem K
+Theorem K [proved here given (B2) (or (B2w)) and the fixed-level inputs (PI), (F), (M_j), V1, (G2); L odd ≥ 3]. sup_k |κ_k| ≤ |κ_W^F| + κ_* < ∞, with κ_* of (2.2). Equivalently |S_k − c k log L| ≤ κ_* for all k ≥ 0 (U1′(w) of U1 §1.3, with R = κ_*).
+Proof. (1.2) gives κ_k = κ_W^F + d_k and S_k − c k log L = −d_k. Prop. 2.2 gives |d_k| ≤ κ_*. ∎
+This is Lemma U2′ of U1 §7, proved for the constant-field form of the coarse piece, with hypotheses (a)–(d) of U2′ replaced by (E0), (E1), (B2). The gap (G1) of U1 §7 (Balaban's gauge vs Feynman form) does not arise: Prop. 2.1 of BETA_FP_LEMMA43 is gauge-free in the sense that the coarse kernel Δ_j(f) is a stationary value and does not depend on the fine gauge fixing.
+
+### 5.2 Tail sums
+Put b := c log L > 0 (c = 11N²/(12π²)). For 0 ≤ k < K,
+
+  T_0(k, K) := Σ_{i=k+1}^{K} β_i(0) = S_K − S_k = b(K − k) − (d_K − d_k) ∈ [b(K − k) − 2κ_*, b(K − k) + 2κ_*].   (5.1)
+
+This is the task's statement with κ_K − κ_k = d_K − d_k. No convergence of β_i(0) is used, and no index J.
+
+### 5.3 Lemma D″ (tail-sum form of Lemma D′)
+Hypotheses. (i) of LEMMA_DPRIME §1: β_{k+1} ∈ C¹([0, γ_0]), |β_{k+1}(g) − β_{k+1}(0)| ≤ C_1g, C_1 independent of k, K (Balaban's (H0), Lemma E form), and (5.1). Hypotheses (ii), (iii) of Lemma D′ are not used.
+Constants. γ := min(γ_0, γ_Bal, b/(4C_1)); D := 2κ_*; β := 3b/4; B′ := 5b/4 + 2κ_*; D′ := 2κ_*; g_1 := (1/γ² + D)^{−1/2}.
+Conclusions.
+- (a″) Along any couplings g_0, …, g_{K−1} ∈ [0, γ]: T(k, K) := Σ_{i=k+1}^{K} β_i(g_{i−1}) ∈ [β(K − k) − D′, (5b/4)(K − k) + 2κ_*] ⊂ [−D, B′(K − k)].
+- (b) For every g ∈ ]0, g_1] and every K ≥ 1 there is g_0 ∈ ]0, γ] with g_k ∈ ]0, γ] for 0 ≤ k ≤ K and g_K = g.
+- (c′) Pairwise, along every trajectory from (b), for 0 ≤ m ≤ n ≤ K: u_n + β(n − m) − D′ ≤ u_m ≤ u_n + B′(n − m), u_i := 1/g_i². The upper side has no additive constant.
+Proof. (a″): |T − T_0| ≤ Σ C_1g_{i−1} ≤ C_1γ(K − k) ≤ (b/4)(K − k); add (5.1). The inclusion uses β(K − k) ≥ 0 and 2κ_* ≤ 2κ_*(K − k) for K − k ≥ 1. (b): Steps 2–5 of LEMMA_DPRIME §2 use only the continuity in (i) and the bracket (2.1) there, T̃ ∈ [−D, B′(K − k)] for every clamped trajectory. Clamped couplings lie in ]0, γ], so (a″) supplies that bracket. The IVT and the clamp-inactivity step (ũ_k ≥ t − D ≥ 1/γ² when g ≤ g_1) go through word for word. (c′): u_m − u_n = T(m, n) on the solution; apply (a″) to the window m+1, …, n (the window argument does not depend on K). ∎
+Remark. (a″) needs (i) only as a Lipschitz bound in g; the C¹ part is used for continuity in Step 2. History-dependent β (Balaban CMP 109 p. 298): same as LEMMA_DPRIME Remark 3; the nested-interval variant is still not written (LEMMA_DPRIME ledger L5, inherited).
+
+### 5.4 Theorem 2, weak form
+Theorem 2w [proved here given Theorem K's inputs, (i), and Balaban's published proofs]. For L odd ≥ 3, every g ∈ ]0, g_1] and every K, the bare coupling g_0(K, g) of (b) gives a sequence g_0, …, g_K in ]0, γ] ⊂ ]0, γ_Bal], with the two-sided pairwise bound (c′):
+
+  1/g_n² + (3/4)c·log L^{n−m} − 2κ_* ≤ 1/g_m² ≤ 1/g_n² + ((5/4)c + 2κ_*/log L)·log L^{n−m}.
+
+So the hypothesis of Balaban's Theorem 1 (CMP 122 p. 355: effective couplings in ]0, γ]) holds, and the pairwise forms that its proof uses (LEMMA_DPRIME_SWEEP §7: upper side with no constant for items 1, 7, 10, 12, 17; lower side with additive D′ for items 2, 3, 5, 11, 13, 15, 16, 18) hold with D′ = 2κ_*. The single smallness condition of the sweep becomes γ^{−2} ≥ c_sw·2κ_* (c_sw = max(2, 1/(1 − (1 + β_0)^{−2})), β_0 fixed first), plus the D-free conditions γ ≤ γ_*.
+Not used: (A) in the strip/C³ form, U3 Lemma 5.1 (convergence of the symbols), convergence of β_i(0), the index J, (N), any rate. Literal (0.31) holds for n − m ≥ 8κ_*/b (lower side (b/2)(n − m)); it is not needed (sweep §7).
+## 6. Ledger
+
+Proved here.
+- K1. Prop. 1.1: with the Wilson level j = 0 as reference, S_j = c j log L − d_j and κ_j = κ_W^F + d_j exactly, d_j the per-momentum integral (1.1). No limit symbols σ_∞ are used. Checks: ρ(1) = κ_W^F (LW), L = 2 value κ_1 = 1.114 reproduced.
+- K2. Lemma 2.1: the only K-derivative of σ^{(1)} in d_j enters linearly with f⁰ coefficients, and integration by parts moves it onto f⁰ data. So the uniform bound needs σ^{(1)} in C⁰ only, which is what Theorem A3 gives.
+- K3. Prop. 2.2: |d_j| ≤ κ_*, uniform in j, from (E0), (E1), (B2). Integrand ≤ C|K|^{−2}, two powers of IR margin in d = 4.
+- K4. §3: the degree −4 part of the coarse f² integrand is the same at every level (Lemma M + Theorem W). The τ_c part is log-divergent at each level; it cancels exactly in the level difference, so the finite part is well defined and bounded. Theorem K needs only this cancellation, not the log asymptotics at finite f.
+- K5. §4: sup_j |σ_j^{(2)}(0)| < ∞ (A3 + polarization + (W-2)). Prop. 4.1: (B2) ⇐ [sup‖H_j‖ < L² and a uniform C¹ bound on σ^{(1)}].
+- K6. Theorem K, Lemma D″, Theorem 2w (§5). Lemma D′ is used through its Steps 2–5 only; its (ii), (iii), and J are not needed.
+
+Cited, verified in project files (load-bearing).
+- O5/A0 strip bounds for Δ_M, Prop. B (c_0 = (2/π)^{12}, C_1 ≤ 1363), LEMMA43 Lemma 4.1 two-sided bound: U3_REPAIRS_VERIFY, U3_AW_VERIFY (CONFIRMED, existential constants).
+- Lemma M, Theorem W (σ_j^{(1)}(0) = τ_c, all j ≥ 0), Theorem A3 (|σ_j^{(1)} − τ_c| ≤ C_A|K|²), Prop. A2 (analytic at each level), Prop. E (evenness), §3.4(a), (W-2): U3_AW_VERIFY (CONFIRMED; d = 2 numerics for W and evenness).
+- Prop. 2.1 of BETA_FP_LEMMA43, exact at V_f (BETA_FP_H Consequence 1.2): BETA_FP_H_VERIFY §2 CONFIRMED. Outer Moyal terms vanish in the per-cell trace: BETA_FP_H_VERIFY §3.
+- (F) log coefficient c_2 at constant field: BETA_FP_H_VERIFY §4, checked against Savvidy arXiv:1910.00654.
+- Lemma D′ Steps 2–5: LEMMA_DPRIME_VERIFY (CONFIRMED). Pairwise needs of Theorem 1's proof: LEMMA_DPRIME_SWEEP §7 (not separately verified by me).
+
+The single uniform hypothesis.
+- (B2): sup_j sup_K |σ_j^{(2)}(K)| < ∞, or the weaker (B2w): sup_j ∫|K|^{−2}|σ_j^{(2)}| < ∞. [hypothesis]. Sufficient: (HS) = U3_AW (H′) (sup‖H_j‖ < L√(L − 1)), or (H″), or Prop. 4.1's pair. Decisive cheap test: U3_AW O1 (max_K ‖H_j(K)‖/L at L = 3); a direct test is a per-momentum σ_j^{(2)} scan at j = 1, 2, 3, which no existing code does (U3_AW_VERIFY §7: no d = 4 per-momentum f-code).
+
+Fixed-level inputs (needed at each j separately; no uniformity in j asked).
+- (PI) probe independence: plane-wave p² coefficient = constant-field f² coefficient [argued, BETA_FP_H §3.1; per-cell limit for the linear potential not written].
+- (M_j) the formal f² coefficient d_j equals the true one at fixed j [same status as BETA_FP_M Cor. 4.5: (S1)–(S3) open on the lattice, Prop. 4.4 argued]. The t-subdivision of §1.3 removes the small-ε requirement of BETA_FP_M Lemma 4.2.
+- V1 of R2 (Maxwell coefficient of the per-step determinant = β_{j+1}(0)) [open, plausible], and (G2) per-cell infinite-volume densities [formal]. Both are inherited by every result in the chain.
+- For Theorem 2w also: (i) Lipschitz-in-g bound of the increments (Balaban's (H0)), history version L5 not written; Balaban's published proofs of Theorem 1 [cited].
+
+What this file does not do.
+- It does not prove convergence of κ_k or of β_k(0); nothing here needs it.
+- It does not check the per-momentum formulas numerically. Cheap tests: (1) d_1 from (1.1) with the existing one-step symbols at L = 3 against c log 3 − β_1 = −0.256; (2) d_2, d_3 stay bounded.
+- Constants are existential (C_A, the O5 constants). κ_* is not evaluated; numerically |d_k| ≈ 0.37–0.45 at L = 2 for k ≤ 3 (outside the odd-L scope).
+
+Comparison with the previous route. Theorem 3.1′ of BETA_FP_H/BETA_FP_M gives 𝒞(Λ) = c log Λ + C_∞ + O(ε_j) and needs (H′) = U3 Lemma 5.1 (convergence of σ_j^{(1)}, σ_j^{(2)} in C², which rests on (A) and (N)-type questions). Theorem K needs only a C⁰ bound on σ^{(2)}, and Theorem 2w needs only Theorem K. The fixed-level inputs are the same in both routes.
+
+Status: complete (2026-10-27). Unverified; an independent check should re-derive Lemma 2.1 (the linearity of ∂𝔨_1 in b_2 and the boundary terms) and the level-independence of H_{−4} in §3.1.
