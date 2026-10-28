@@ -65,3 +65,9 @@ nc = 12 results (box R = 5), same method:
 | 1 | 1.2·10^{−2} / 1.6·10^{−2} | 4.4·10^{−5} / 1.1·10^{−4} | 0.912 / 0.309 | 0.915 / 0.307 |
 | 2 | 3.7·10^{−2} / 6.1·10^{−2} | 3.0·10^{−4} / 9.1·10^{−4} | 1.16 / 0.453 | 1.17 / 0.422 |
 Midpoint odd parts fall by 100–300× with the box (finite-volume holonomy effect: point reflection inverts Polyakov loops). Left-trivialization odd parts are O(1) and box-independent. So σ_j^{(1)}, σ_j^{(2)} are even in K in the midpoint trivialization, and not in the left one, as Prop. E and its Remark (ii) say. CONFIRMED in d = 2 (Prop. E is dimension-independent). Not tested in d = 4.
+
+## 9. Extra: the weaker (H″) at n = 2 (aw_verify/h2step.py, 71 K points: 5-point sorted grid + the (H′) argmax)
+‖(⊕_l H_2(k_l))·H_3(K)‖/L²: max 2.056 at (2.356, 2.356, π, π); 2.042 at the (H′) argmax. Threshold √(L² − 1) = 2.828. So the two-step version passes with ~27% margin on this grid (coarse grid; one level pair (2, 3); not a sup over all n, j). One-step 1.76 vs two-step 2.06 suggests sub-multiplicative growth; L^{n/2} grows faster. (H″) is numerically plausible; (H′) is numerically false.
+
+## 10. nc = 16 (box R = 7), j = 1
+σ_1^{(1)}(0) J-part = 0.75015 (nc 8, 12, 16: 0.78184, 0.75230, 0.75015; errors 3.2·10^{−2}, 2.3·10^{−3}, 1.5·10^{−4}, geometric). σ^{(0)}(0) error −3·10^{−5}; 2c = 0.50176; translation error 8·10^{−10}. So σ_1^{(1)}(0) = σ_0^{(1)}(0) = 0.75 to 2·10^{−4}, and g_1^{(1)}(0) = 0 (with 𝒜(0) = id from §5). Checks (ii), (iii) at j = 1: CONFIRMED (d = 2).

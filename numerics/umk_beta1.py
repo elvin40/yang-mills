@@ -34,13 +34,11 @@ def plaq_geom(mu, nu):
 
 def hess_sym(k, q, blocks):
     """sum_planes sum_jj' e^{-i(k+q).o_j} h_jj' e^{ik.o_j'}; blocks[plane] (12,12) slot-major."""
-    out = np.zeros(k.shape[:-1] + (4, 3, 4, 3), complex)
+    out = 0
     for (mu, nu), h in zip(PLANES, blocks):
-        dirs, offs = plaq_geom(mu, nu); h = h.reshape(4, 3, 4, 3)
-        for j in range(4):
-            r = np.exp(-1j * (k + q) @ offs[j])
-            for jp in range(4):
-                out[..., dirs[j], :, dirs[jp], :] += (r * np.exp(1j * k @ offs[jp]))[..., None, None] * h[j, :, jp, :]
+        dirs, offs = plaq_geom(mu, nu); sel = np.eye(4)[list(dirs)]  # slot -> direction
+        r = np.exp(-1j * (k + q) @ offs.T); c = np.exp(1j * k @ offs.T)
+        out = out + np.einsum("...j,jd,jaib,ie,...i->...daeb", r, sel, h.reshape(4, 3, 4, 3), sel, c, optimize=True)
     return out.reshape(k.shape[:-1] + (12, 12))
 
 def hess_blocks(cons, c, p):
@@ -164,16 +162,18 @@ def csym(prof, K, L):
     return out.reshape(Bn, L**4, 12, 12)
 
 # ---------- per-sector traces (UMK_BETA1.md section 4) ----------
+@jax.jit
 def taus(A1, E1, A2, E2, J, a, b, c, A2nd, E2nd):
-    tr = lambda X, Y: np.einsum("...ij,...ji->...", X, Y)
-    A1i, A2i = np.linalg.inv(A1), np.linalg.inv(A2)
-    Y1, Y2 = A1i @ H(E1), A2i @ H(E2)
-    S1i, S2i = np.linalg.inv(J - (E1 @ Y1).sum(1)), np.linalg.inv(J - (E2 @ Y2).sum(1))
-    t1 = tr(A1i, A2nd).sum(1) + tr(S1i, (H(Y1) @ A2nd @ Y1).sum(1)) - 2 * tr(S1i, (E2nd @ Y1).sum(1)).real
-    V = b - a @ Y1; R = H(c) - H(a) @ Y2
-    X = (H(Y2) @ a @ Y1 - H(Y2) @ b - c @ Y1).sum(1)
-    t2 = (tr(A2i @ a, A1i @ H(a)).sum(1) + tr(S1i, (H(V) @ A2i @ V).sum(1)) + tr(S2i, (H(R) @ A1i @ R).sum(1))
-          + tr(S2i @ X, S1i @ H(X)))
+    Hj = lambda X: jnp.conj(jnp.swapaxes(X, -1, -2))
+    tr = lambda X, Y: jnp.einsum("...ij,...ji->...", X, Y)
+    A1i, A2i = jnp.linalg.inv(A1), jnp.linalg.inv(A2)
+    Y1, Y2 = A1i @ Hj(E1), A2i @ Hj(E2)
+    S1i, S2i = jnp.linalg.inv(J - (E1 @ Y1).sum(1)), jnp.linalg.inv(J - (E2 @ Y2).sum(1))
+    t1 = tr(A1i, A2nd).sum(1) + tr(S1i, (Hj(Y1) @ A2nd @ Y1).sum(1)) - 2 * tr(S1i, (E2nd @ Y1).sum(1)).real
+    V = b - a @ Y1; R = Hj(c) - Hj(a) @ Y2
+    X = (Hj(Y2) @ a @ Y1 - Hj(Y2) @ b - c @ Y1).sum(1)
+    t2 = (tr(A2i @ a, A1i @ Hj(a)).sum(1) + tr(S1i, (Hj(V) @ A2i @ V).sum(1)) + tr(S2i, (Hj(R) @ A1i @ R).sum(1))
+          + tr(S2i @ X, S1i @ Hj(X)))
     return (t1 - 2 * t2).real
 
 class Umk:
@@ -221,24 +221,30 @@ class Umk:
         Eg = np.broadcast_to(s * np.eye(len(g)), G1.shape[:2] + (len(g), len(g)))
         Z = np.zeros_like(Eg)
         ghost = taus(F(G1, g, g), Eg, F(G2, g, g), Eg, np.zeros((len(g), len(g))), F(ga, g, g), Z, Z, F(G2nd, g, g), Z)
-        return ghost, bord
+        return np.asarray(ghost), np.asarray(bord)
 
-def kgrid(L, Ng, shift=0.5):
+def kgrid(L, Ng, shift=0.5, sym=True):
+    """Shifted grid; with sym (Ng even) only m1, m2 <= m3 < Ng/2, weights from reflections K_1,K_2,K_3 -> -K and the 2<->3 swap
+    (odd L only; symmetries of the transverse wave e_1 e^{ipx_0}; checked per K at L = 3, 5 and on the L = 3 grid). Returns K, weights summing to Ng^4."""
     ks = (np.arange(Ng) + shift) * 2 * np.pi / (L * Ng)
-    return np.array(list(itertools.product(ks, repeat=4)))
+    if not sym or Ng % 2 or L % 2 == 0:  # even L: corner anchors break the reflections
+        return np.array(list(itertools.product(ks, repeat=4))), np.ones(Ng**4)
+    h = Ng // 2
+    m = [(a, b, c, d) for a in range(Ng) for b in range(h) for c in range(h) for d in range(c, h)]
+    return np.array([ks[list(x)] for x in m]), np.array([8.0 * (1 if x[2] == x[3] else 2) for x in m])
 
 def run(L, Ng, p, kind="trans", colors=(0, 1, 2), ckpt=None):
     t = time.time(); u = Umk(L, p, kind, colors); tprof = time.time() - t
-    K = kgrid(L, Ng); bs = max(1, 20000 // L**4)
+    K, W = kgrid(L, Ng); bs = max(1, 20000 // L**4)
     i0, sg, sb = 0, 0.0, 0.0
     if ckpt and os.path.exists(ckpt):
         z = np.load(ckpt); i0, sg, sb = int(z["i"]), float(z["g"]), float(z["b"])
     tl = time.time()
     for i in range(i0, len(K), bs):
-        g, b = u.terms(K[i:i + bs]); sg += g.sum(); sb += b.sum()
+        g, b = u.terms(K[i:i + bs]); sg += W[i:i + bs] @ g; sb += W[i:i + bs] @ b
         if ckpt and time.time() - tl > 60:
             np.savez(ckpt, i=i + bs, g=sg, b=sb); tl = time.time()
-    g, b = sg / len(K), sb / len(K)
+    g, b = sg / W.sum(), sb / W.sum()
     return dict(w=g - 0.5 * b, ghost=g, bord=b, secs=time.time() - t, prof_secs=tprof)
 
 if __name__ == "__main__":
