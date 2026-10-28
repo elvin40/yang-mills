@@ -189,3 +189,5 @@ Consequences for the campaign (no other file edited). S123 open item O1 is close
 Conclusion: (G_A′) PROVED for small |f| with explicit constants: for every c < 1 (units |ef|), f_0 = ((1 − c)/100)²/2; e.g. gap ≥ |f| for 0 < |f| ≤ 1.25·10^{−5}.
 
 STATUS: COMPLETE
+
+Corrections after verification (SOURCES_T2_GAPRIME2_VERIFY, 2026-10-28): statement in f-units: gap 2c|f| for 0 < |f| ≤ ((1 − c)/100)²/2; Q projects onto a closed interval, so reapply with a slightly smaller θ (the hypothesis is open); constants rederived (25.63 ≤ 26; 156|α|³ + 6α⁴ ≤ 157|α|³; N_1 ≤ 5.29|α| giving 46.9 ≤ 48); the midpoint-transport [I] → [P] (gauge/trivialization changes are pointwise unitaries; the Hessian transforms by congruence at a critical point; a second Landau-gauge finite-difference build agrees to ≤ 1e−6); j, L, averaging enter only through Prop. 5.6's size condition g_f ≥ 4η_1 + 4C_M²|f|³ (usable range |f| ≤ min(f_0, f_1(j))). Numerics: the proof covers |ef| ≤ 1e−4 only, while the gap holds with physical ratio ≥ 0.95 on all α ∈ (0, 3.02] (sparse shift-invert at α = 1e−4, 2.5e−5: min|phys|/α = 1.0000125, 1.0000031).
