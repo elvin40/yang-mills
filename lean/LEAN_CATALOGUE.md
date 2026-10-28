@@ -85,3 +85,44 @@ The Schur-complement Gaussian marginal (2.4) and the one-bond corollary are in p
 
 Not Mathlib-ready in G3_N2: Balaban's pointwise chain (2.15)–(2.25); the Kotecký–Preiss derivative step (N3); A7/A8 inputs; G_Γ via the s-rule; the large-field level-set Jacobian (open even in prose).
 
+Status note (2026-10-28, during this pass): new files CanonOrder.lean (canon acyclicity), ElemBounds.lean (A10′ divergence sum, gℓ^q monotonicity, ORDER_CANON Lemma M2 monotonicity of k-map, ε^a-map, Schur sum), SchurMarginal.lean, NestEnvelope.lean now exist. Items below that they cover are marked "covered".
+
+### 2b. SOURCES_T2_B7_CLAMP.md (row B7 = L5)
+
+D″-nest / D′-nest envelopes (§4) are in progress elsewhere (NestEnvelope.lean). Not listed.
+
+- H7. Route 1 in Lean: Lemma D′ and Lemma D″ with history-dependent β_{k+1}: ]0,γ]^{k+1} → ℝ, continuous on the cube, with (i) |β_{k+1}(h,g) − β_{k+1}(0)| ≤ C₁g on the cube; clamped flow ũ_{k+1} = ũ_k − β_{k+1}(φ(ũ₀),…,φ(ũ_k)) is continuous in u₀ and the shooting/IVT conclusions hold. §3.5. Generalize LemmaDPrime/LemmaDDoublePrime (`Fin (k+1) → ℝ` histories, `Continuous.comp`, `intermediate_value_Icc`). Medium. Closes the README gap "history-dependent β (L5) not formalized" for Route 1. Prose: Proposition B7-cube itself (N6, A15, SM, HHOL).
+- H8. Lemma R1-b (A4) abstract: a recursion E^{(l+1)}(h_l) = F_l(g_l, V^{(1)}(h₀),…,V^{(l)}(h_{l−1})), V^{(l+1)} = −Π(E^{(l+1)})A + E^{(l+1)}, with the (A3) bound ‖F(g,I) − F(g′,I′)‖ ≤ (c/g)|g − g′| + ΘΣ‖V − V′‖ on a ball ⇒ h ↦ β_{k+1}(h) locally Lipschitz on ]0,γ]^{k+1}. §3.3 (A3)–(A4); the same induction gives (C-tr) of §5.2 on the curve u₀ ↦ h_k(u₀). Normed spaces, `LipschitzOnWith`, `ContinuousOn`, induction on k. Medium. Prose: (A1) = Theorem SM and (A2) = HHOL one-slot holomorphy.
+- H9. (A1) mean-value step and (A2) Cauchy step: derivative bound on a convex set ⇒ Lipschitz (`Convex.norm_image_sub_le_of_norm_fderiv_le`); holomorphic on |g − x| < ρ₀x with sup ≤ cE₀ ⇒ ‖∂_gF‖ ≤ 2cE₀/(ρ₀x) on the half disc (`Complex.norm_deriv_le_of_forall_mem_sphere_norm_le`). §3.3. Easy. Optional: Path B (Osgood) is a cross-check only.
+
+### 2c. SOURCES_A10_LOWER.md §3
+
+The raw-term divergence sum and its unboundedness are covered (ElemBounds.`a10Sum_*`). Nothing further in §3.
+
+## 3. Propagator chain, continued: 2D charged gap (SOURCES_T2_GAPRIME2.md §2–§3, used by §5)
+
+Setting for all items: unitaries T₀, T₁ on a complex Hilbert space with T₀T₁ = qT₁T₀, |q − 1| ≤ |α|; ∇_μ = 1 − T_μ, h_μ = ∇_μ*∇_μ, 𝔏 = h₀ + h₁. The neutral-sector spectrum is in progress elsewhere; this charged sector is not.
+
+- G1. Lemma 2.1 (words): for a word m in T_a^{±1}, ‖(m − 1)ψ‖ ≤ Σ_k‖∇_{a_k}ψ‖. §2. `ContinuousLinearMap` on a `InnerProductSpace ℂ`, unitary elements (`unitary`), `List` induction, normality ‖∇*ψ‖ = ‖∇ψ‖. Easy.
+- G2. Lemmas 2.2–2.3 (regularity): N₂ ≤ 2‖𝔏ψ‖² + 2|α|N₁ + 2α²‖ψ‖²; N₃ ≤ 4⟨ψ,𝔏³ψ⟩ + 34α²N₁ + 2|α|N₂ + 16α⁴‖ψ‖². §2. Bounded operators, commutator norms from T₀T₁ = qT₁T₀, `inner_self`, Cauchy–Schwarz, `nlinarith` on the final quadratic. Medium (bookkeeping heavy, no new Mathlib).
+- G3. Lemma 3.1 (ladder commutator): [Π,Π†] = 2|sin(α/2)|(V′ + V′*) exactly, and [Π,Π†] ≥ 2|α| − 3|α|𝔏 − |α|³ as forms for |α| ≤ 1. Lemma 3.2: ‖(J + |α|)ψ‖ ≤ (2N₃)^{1/2} + |α|(2N₁)^{1/2} + α²‖ψ‖. §3. Star-algebra identities (`noncomm_ring` in a C*-algebra), `Real.sin` bounds (`Real.sin_le`, `Real.sin_bound`). Medium.
+- G4. Corollary 2.4 and Proposition 3.3 (scalar Landau gap): for |α| ≤ 1/16 and 26|α|^{1/2} + 157|α| < θ, spec 𝔏 ∩ [(1+θ)|α|, (3−θ)|α|] = ∅. §2–3. Needs spectral subspaces of a bounded self-adjoint operator: `cfc` (continuous functional calculus), `spectrum`, or a reformulation "no approximate eigenvector" via `IsSelfAdjoint` + Weyl criterion. Hard (Mathlib has CFC for C*-algebras; spectral projections of indicator functions are not continuous, so one needs a continuous bump in place of 1_{[a,b]} or the approximate-eigenvector form). Load-bearing: it is the core of (G_A), (G_A′) for every c < 1 (Theorem 5.1), which S123 Prop. 5.6 consumes. Prose: Lemma 1.1 (explicit A′ from the Wilson action via BCH) and the S123 consumer.
+- G5. Theorem 5.1 / Cor. 5.2 assembly: A_c ≅ (𝔏 − 2|α|) ⊕ (𝔏 + 2|α|) by a constant unitary; ‖A_cψ‖ ≥ (1 − θ)|α|‖ψ‖; contradiction with ‖Rψ‖ ≤ 48|α|^{3/2}; A′D′ = D′𝔏 ⇒ ker D′† is invariant and spec(H′|ker D′†) ⊂ spec A′; α₀(c) = ((1−c)/100)² arithmetic. §5. Same tools as G4. Medium given G4 and Lemma 4.1–4.3 (§4, not in the reading list; same toolkit).
+
+## 4. Fixed-level chain (one RG level j at constant flux f: S123, (M_j), KAPPA d_j)
+
+Note: section 3 (GAPRIME2) feeds this chain through S123 Prop. 5.6; it is grouped there only because its tools are operator-theoretic.
+
+### 4a. SOURCES_T2_MJ_REST.md (charged region 1 and the neutral sector (N2))
+
+- F1. Lemma 2.1 (partial fractions): for s > 0, x > −s, 1/x − Σ_{k=1}^N c_k(x+ks)⁻¹ = N!s^N/Π_{k=0}^N(x+ks), c_k = (−1)^{k+1}C(N,k), Σc_k = 1; and ψ′ = N!s^N/Π(x+ks) ∈ (0, min(1/x, N!s^Nx^{−N−1})]. §2, §2.2 (ii). `field_simp`, `Finset.sum_range_choose`-type alternating sums (`Int.alternating_sum_range_choose`), induction on N. Easy.
+- F2. Moyal remainder: |e^{iα} − Σ_{p<P}(iα)^p/p!| ≤ |α|^P/P!; and the 2-gon phase vanishes, (x−z)∧(z−x) = 0. §3.1, Step 4. `Complex.exp_bound`, `Real.exp_bound`. Easy.
+- F3. Lemma 2.2 (iii)–(iv) integrals: (a) Stieltjes bound s^N∫_{(s,K*]}λ^{1−N}dN(λ) ≤ Cs^{3−N} from N(λ) ≤ C₅λ² (N = 4); (b) ∫_{BZ} l·min(1,(s/l)⁴)dK ≤ Cs³ in d = 4 with l ≍ |K|². §2. `MeasureTheory.integral_Ioc`, Stieltjes measures (`StieltjesFunction.measure`), integration by parts on ℝ, polar integrals (`integral_fun_norm_addHaar`). Medium–hard (Stieltjes by parts is thin in Mathlib; the BZ bound is medium). Load-bearing: it is why the remainder ψ is o(f²) with a > 2/3.
+- F4. Exponent bookkeeping of Lemma A and Theorem 4.2: with a = 3/4, M = 14, N = 4, every error exponent (3 − a, M + 1 − a(M+3), 3a, p − a(p−3) for p ≥ 4) is ≥ 9/4 > 2; M > (1+3a)/(1−a). §3.3, §4. `norm_num`. Easy.
+- F5. Neutral (N2) by bordered inverses: for 𝔅(f) = [[A(f), Q̃†],[Q̃, 0]] invertible, ∂𝔅⁻¹ = −𝔅⁻¹(∂𝔅)𝔅⁻¹, so ∂_fS = H†A′H; with ±A^{(q)} ≤ C_qA₀ and A(f) ≥ ½A₀, ±∂_f^pS ≤ C_p·S(0) (induction over levels). §5.1 (N2). `Matrix.fromBlocks`, `HasDerivAt.inverse`-type lemmas for matrix inverse (`hasFDerivAt_ring_inverse`), Loewner order, Cauchy–Schwarz for forms. Medium–hard (the general p-th derivative as a sum over compositions is the hard part; p ≤ 4 suffices for the f⁴ Taylor remainder). Load-bearing: it is the dominated-convergence input S123_VERIFY l. 30 asked for.
+- F6. Lemma 5.1 core: if 𝔨 ≥ c·l·I and ±∂^q𝔨 ≤ C_q·l·I, then ‖𝔨^{−1/2}(∂^q𝔨)𝔨^{−1/2}‖ ≤ C_q/c, so every f-derivative of tr log 𝔨(f;K) is bounded uniformly in K ≠ 0; differentiation under ∫_{BZ}. §5.1 Lemma 5.1. `Matrix.PosDef` square roots (`Matrix.PosSemidef.sqrt` / CFC), `hasDerivAt_integral_of_dominated_loc_of_deriv_le`, derivative of `Matrix.det`/log det (`Matrix.det` derivative is not in Mathlib in usable form: hard part). Medium–hard. Prose: Fuglede–Kadison identity τ log X = ∫tr log x̂ (cited).
+- F7. 5.2 IDS without atom: N(λ) ≤ 4|{K : c·l(K) ≤ λ}|/(2π)⁴ ≤ Cλ² in d = 4, hence no atom at 0. §5.2. `MeasureTheory.volume` of sublevel sets, `EuclideanSpace.volume_ball`. Medium.
+- F8. (K1) symbol bounds |∂^αb̂_m| ≤ C(l+σ)^{−1−m−|α|/2} by degree counting through the Moyal-inverse recursion. §3.2. Multivariate calculus on 𝕋⁴ (`iteratedFDeriv`, Leibniz `norm_iteratedFDeriv_mul_le`). Hard (bookkeeping heavy, no conceptual gap). Prose: admissibility of the kernels k^{(j)}, v^{(n)} (S123 Prop. 2.1).
+
+Not Mathlib-ready in MJ_REST: the per-cell trace τ on the twisted group algebra and its spectral calculus (von Neumann algebra trace; Mathlib has no traces on group von Neumann algebras); S123 Thms 3.3, 3.4, 4.3; Lemma 4.1 (gauge covariance of Balaban's averaging); twisted convolution algebras (magnetic translations) beyond the 2-generator abstract form of section 3.
+

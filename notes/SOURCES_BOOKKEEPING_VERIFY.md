@@ -51,3 +51,24 @@ Grade A22 (the §6 line): CONFIRMED on every clause read. Not re-read here: (5.1
 - BOOKKEEPING §4 says: Sect. 3 prints no loss constant; outputs keep the form (2.42) with the same κ; only prefactors change; rate bookkeeping deferred to CMP 109 Sects. 6–7 / CMP 116 (2.33)–(2.41).
 - A23_TSTEP + VERIFY (images, round 7): loss ≤ 13δ = 10δ printed (CMP 116 (2.41)) + ≤ 3δ unprinted for the Z_0-marked Mayer resummation CMP 119 (3.44)–(3.47) (verifier counts 2δ); CMP 109 "Sects. 6–7" identified with CMP 116 Sects. 1–2.
 - Consistency: no contradiction on what is printed. Both say Sect. 3 prints no rate loss. But BOOKKEEPING §4's sentence "the printed structure ... agrees with homogeneity" and "only prefactors change" is a reading of the printed claim; A23 shows the (3.44)–(3.47) step needs a real rate cost (≤ 3δ) that the print hides. So §4's "use CONSISTENT" (with 10δ) is superseded by A23's 13δ and (K1′). The A23 row already carries this; BOOKKEEPING §4 is history. Not re-read on images here (A23_VERIFY did pp. 277–278 and CMP 116 pp. 18–21).
+
+## 7. #48 printed rates — CMP 116 p. 3 (pdf 3), CMP 99 p. 416 (pdf 28), images
+- CMP 99 p. 416 (3.107) "G = Σ_ω R_0(X_0)R_{α_1}(X_1)···R_{α_n}(X_n)"; (3.108) "|(R_0(X_0)···R_{α_n}(X_n)J)(x)| ≤ O(1)(L^jη)²O(M^{−1/2})^{|ω|}M^{−1/2|ω|}e^{−(1/2)δ_0d(ω,y,y′)}|J|, x ∈ Δ(y), y ∈ Λ_j, supp J ⊂ Δ(y′)"; "The constant O(1) depends on d and L only." δ_0 has no value.
+- CMP 116 p. 3 (1.6) same walk sum; (1.7) "O(1)O(M_1^{−1/2})^{|ω|}M_1^{−1/2|ω|}exp(−δ_0d(ω, y, y′))" — printed WITHOUT the ½ (δ_0 silently redefined; CMP 99 p. 427 text: "after adjusting a definition of δ_0").
+- So the printed form is e^{−c·δ_0 d(ω,y,y′)}, c = ½ (CMP 99) or 1 (CMP 116), with δ_0 an unvalued positive constant of Balaban's walk expansion. Path length d(ω, y, y′), not |b − b′| (the latter only after summing walks). The A2 row's e^{−½δ_0|b−b′|} is CMP 116 (2.16), not (1.7).
+
+## 8. #48 verdict — WC_FULL rate vs printed rate, and consumers
+- WC_FULL 4.2 (l. 196): δ_A := (1 − θ)min{δ_W, δ_1}, δ_W = ½ε (WG_FULL l. 46; WC_FULL l. 44), so δ_A = (1 − θ)min{½ε, δ_1} as the task states. ε is the Combes–Thomas rate of A1-W built from δ_G := (1 − θ)½δ_0 − (d/2 + 1)θ_S (WG_FULL l. 225); δ_1 = ½ε. Hence δ_A ≤ (1 − θ)·½ε < ½δ_0 (CMP 99 units) strictly. Further accretive levels lose up to ½ each (WC_FULL 6.8, l. 308): final rate ½ε″.
+- Mismatch: YES. WC_FULL does not reproduce e^{−½δ_0|b−b′|} (CMP 116 (2.16)) nor the per-walk e^{−½δ_0 d(ω)} of CMP 99 (3.108) / e^{−δ_0 d(ω)} of CMP 116 (1.7). WC_FULL says so itself (l. 309: "It is not Balaban's ½δ_0"). SOURCES_A2_R2_VERIFY l. 39 says the same.
+- Do consumers need the printed rate? NO.
+  - A2's own use, CMP 116 (2.21)–(2.26): R_2 enters only via the coefficient O(1)e^{−δ_0M/3} + O(α_0 + α_1) and the Schur constant S(ρ) (A2_R2_VERIFY l. 29, CONFIRMED tolerance). Condition: the rate is fixed before M. WC_FULL 6.9 fixes δ_A (B13) before M_1 (B15) and M (B18). Met. The e^{−δ_0M/3} factor becomes e^{−cρM}, still small for M after ρ; the side condition e^{−⅓δ_0M}e^{16κ_1} < 1 becomes the same with ρ, and M is already chosen after κ_1 (A7 row: M_1 large after κ_1).
+  - A7 decay: stated and used at rate δ_A itself (|C*Δ_kC| ≤ 2B_Ae^{−δ_A|b−b′|}; γ_1 := 4B_AS(θ′δ_A)). Self-consistent; no δ_0.
+  - G3 (= N2): uses the Schur walk count W_½ of WC(iv) at rate ½ε (SOURCES_G3_N2 l. 62) and no δ_0; its only δ_0 trace is the coefficient e^{−δ_0M/3} in (Q) (SOURCES_G3 l. 25), handled as above.
+  - A1_WALK_FULL l. 407 and S2_G1_V7 B1.5: "consumers accept any fixed rate".
+- Note: printed δ_0 is itself unvalued, and CMP 116 (1.7) halves the CMP 99 normalization; "meeting the printed rate" can only mean a symbolic match, which no step uses.
+Grade #48: MISMATCH EXISTS, NOT LOAD-BEARING. Recommend the ledger A2 row state "rate ½ε″ (fixed, < ½δ_0), not the printed e^{−½δ_0|b−b′|}; consumers need only a fixed rate set before M".
+
+## 9. Summary
+- A9 CONFIRMED; A12 CONFIRMED; A20 CONFIRMED (a proved; b reading, O(1) unvalued); A22 CONFIRMED (every clause of the §6 line, on images).
+- §4 vs A23: no contradiction in print; §4's "use consistent at 10δ" is superseded by A23 (≤ 13δ, (K1′)).
+- Binding-set growth of the S1 fix pass (A12, A22 into T1⇒Thm 1; A12, A20, A22 into T2) should be REVERTED: a verifier now exists (this file) and confirms the readings. Restore "verified readings" and the round-7 sets (4 and 17).

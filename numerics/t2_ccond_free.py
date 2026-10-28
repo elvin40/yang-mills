@@ -26,9 +26,9 @@ def K_at(p, N, d):
         Wl = np.diag(w[l]); P = np.eye(d) - np.outer(eh[l], eh[l].conj())
         Tp += Wl @ P @ Wl.conj().T / e2[l]
     E = np.exp(1j * p) - 1                                     # coarse gradient (gauge direction of B)
-    Ti = np.linalg.inv(Tp); Ti = (Ti + Ti.conj().T) / 2
-    if np.linalg.norm(E) > 1e-12:
-        u = Ti @ E; Ti = Ti - np.outer(u, u.conj()) / np.real(E.conj() @ u)
+    s_ = 1e8 / max(np.linalg.norm(E)**2, 1e-30)                 # t -> 0: gauge direction of B costs 0
+    Ti = np.linalg.inv(Tp + s_ * np.outer(E, E.conj()) if np.linalg.norm(E) > 1e-12 else Tp)
+    Ti = (Ti + Ti.conj().T) / 2
     Kgi = np.max(np.linalg.eigvalsh(Ti))
     par = np.max(np.abs(w * e - PD[:, None] * E[None]))         # W_l e_l = prod D * E(p): gauge part is rank one
     assert par < 1e-9 * max(1, np.abs(PD).max())
@@ -43,7 +43,7 @@ def sweep(d, N, ng):
     pc = np.full(d, np.pi); kf, kg, _ = K_at(pc, N, d)
     return best, kf, kg
 
-def realspace_check(N=3, Lu=4, t=1e-7):
+def realspace_check(N=3, Lu=4, t=1e-4):
     # d = 2 dense: sup_B min{|dA|^2 + t|d*A|^2 : QA = B} vs momentum formula (same t-regularization)
     d = 2; n = N * Lu; sites = list(itertools.product(range(n), repeat=2)); idx = {s: i for i, s in enumerate(sites)}
     nb = 2 * n * n; bond = lambda s, mu: mu * n * n + idx[s]
@@ -83,9 +83,9 @@ def realspace_check(N=3, Lu=4, t=1e-7):
 
 if __name__ == "__main__":
     kr, km = realspace_check()
-    print(f"real-space check d=2 N=3 Lu=4 t=1e-7: real {kr:.6f}  momentum {km:.6f}", flush=True)
+    print(f"real-space check d=2 N=3 Lu=4 t=1e-4: real {kr:.6f}  momentum {km:.6f}", flush=True)
     assert abs(kr - km) < 1e-4 * km
-    for d, Ns, ng in ((2, (2, 3, 5, 9, 27), 24), (3, (2, 3, 5), 10), (4, (2, 3), 6)):
+    for d, Ns, ng in ((2, (2, 3, 5, 9, 27), 24), (3, (2, 3, 5), 10), (4, (2, 3), 6)):  # N = L^k is odd in Balaban (L odd); N = 2 shown as a check only
         for N in Ns:
             (kf, kg, pf, pg), kfc, kgc = sweep(d, N, ng)
             print(f"d={d} N={N:3d}  grid max: K_F={kf:9.4f} K_gi={kg:9.4f} | at (pi..pi): K_F={kfc:9.4f} K_gi={kgc:9.4f}"
