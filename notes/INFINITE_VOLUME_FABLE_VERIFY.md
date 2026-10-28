@@ -85,3 +85,30 @@ Grade (5): CONFIRMED (no inherited ℓ^a in (S∞) as stated), with a CORRECTION
 
 Grade (6): Disagree 1 CONFIRMED (as written); Disagree 2 CORRECTED (common polydisc available given B18; moment route on par); Disagrees 3–4 CONFIRMED.
 
+## 7. Theorem IV as a conditional statement; what remains to an unconditional weak existence statement
+
+7.1 Hypotheses actually used by Theorem IV(a)–(b), as I read the proof:
+ H1. Target 2's hypotheses (ASSEMBLY §1.3) at every even ℓ > 22M: Theorem 2w, Balaban's Theorem 1, S1 (target), (FX) Steps A, C, D (B19: residue B18 via O3), X3 lattice RP, the constant choice (U)/C23, the κ → κ/2 recovery [R, B22].
+ H2. L3 (FX-V): Steps A, C, D hold pointwise in the small-field V with V-, K-, ℓ-free constants and (FX2) at the coarsest scale. Residue: B18, the Step-A sup reading (O1 is closed).
+ H3. L6 (S1-pt): the sourced (L^mη)⁴ g_m^{κ_0} bound for fine-origin terms on regular configurations. Residue: (W4), (Eps), (D), (Reg), Lemma F1, 32ε′ ≤ 1; sourced extension unverified.
+ H4. The ℓ-free trajectory L1 is NOT needed for the diagonal extraction (IV12_VERIFY §6); harmless.
+ Implicit, to be printed: (S′∞) via σ′ = min(σ, 1) in the bridge (with the D-prefactor absorbed or D ≤ CM as in B21_S_PRIME); s = 16 not 15; the h_K part of (b1); the (D) and (Reg) hypotheses named in the theorem statement, not only in the residue table.
+7.2 Conclusions (a)–(b) given H1–H3: compactness (L9) [P]; OS0 weighted (L12) [P, s = 16]; OS1-T/H (L11) [P]; OS2 half-space (L10) [P, §5.2 above]; OS3 [P]. (c) needs L14 (Loc-f) [R, unverified], stated. (d) correctly lists what is not asserted.
+7.3 Grade of Theorem IV: NEEDS FIXES (all small, none structural): (i) hypothesis list: add (D), (Reg), B18 explicitly; drop O1/O2 from L3's residue; (ii) bridge: state (S′∞)/min(σ, 1), q = 6, |F|_{16n+1}; (iii) (b1): bound the h_K part; (iv) §7.4 Disagree 2: update to the FX_O23/FX_D state; (v) cite SOURCES_FX_D §5.3–5.4 for the unit-scale sup bound and the fine single-support terms. With these edits the conditional theorem is paper-grade AS A CONDITIONAL STATEMENT.
+7.4 What remains between Theorem IV and an unconditional weak existence statement (W):
+ 1. Every open row of Target 2 (TRUST_LEDGER §4.2): S1 itself (the sourced Theorem 1, a target), B3, B15 sub-items, B18 (N3), (W4), (Eps), (D), the C-row choices, X4 final convergence — Theorem IV inherits all of them. This is the bulk.
+ 2. L6's sourced form written out and verified (a D3W8-sized item: Lemma A at complex f + Cauchy in f + the (Reg) hypothesis stated from CMP 109 Sect. 1).
+ 3. L3's pointwise reading of Step A written out (that (1.79)-type sup bounds hold for every admissible outside field, not only after ∫dV) — a reading, one paragraph.
+ 4. The bridge re-bookkeeping with (S′∞) (IV12_VERIFY §8 already did the recount at fixed ℓ → ball).
+ Not needed for W: L14 (Loc-f) (only for identifying the limit as (3.2)), L15 (ℓ-convergence; BLOCKED, infrared), L16 (O(4); BLOCKED, lattice artifacts), L17 (OS4, gap; BLOCKED). W is weak existence; Jaffe–Witten footnote 2 excludes it as a Clay solution [V, ASSEMBLY §1.1].
+ Agree with the Fable file's §3: all ℓ-dependence beyond e^{−cℓ} sits in ν_{K,ℓ} (given Loc-f); convergence in ℓ is the infrared problem; compactness only. Not re-checked in detail beyond reading Theorem LOC's statement (A15_LOC §7.5 [V]: exact torus = Z⁴ activity for liftable X; "Not covered: … B8 (R-terms)" l. 109), which matches the Fable file's quotes.
+
+## 8. Summary (6 lines)
+1. (1) CONFIRMED: (2.1) exact given S1(a) + O1; Lemma ν-cum and Σ_π|π|!Π|S|! = 2^{n−1}n! correct; (S∞) Gevrey 1 + η, ℓ-free, for σ ≤ 1 given L3, L5, L6.
+2. (2) CONFIRMED as reduction, residue CORRECTED: fixing V changes nothing in Steps A, C, D or the s-rule; the new object is the fine-origin single-support sum = L6 (FX_D §5.4); residue is B18 (O1, O2 closed in the ledger).
+3. (3) CONFIRMED: F2′(ii), Lemma A, and CMP 119 (2.31)-text are sup bounds pointwise in regular U, ε-uniform; D4D5 §3.2(ii) counts the ν-expected number of fine large-field cubes, a different object; ATTEMPT BP4 is a reduction, not new mathematics, with residue (W4), (Eps), (D), (Reg).
+4. (4) CONFIRMED: slab RP at each (ε_i, ℓ_i) + seam shift by (H-U∞) + closedness gives half-space RP; every fixed support is eventually inside the slab; no new lattice input. (5) CONFIRMED with bridge CORRECTION: (S∞) avoids the ℓ^a by σ ≤ 1, not by the pointwise route; the bridge needs (S′∞) via min(σ, 1); q = 6, s = 16.
+5. (6) Disagree 1 CONFIRMED (Lemma IV-M as written bounds uncentred moments; centring fixes it); Disagree 2 CORRECTED (common polydisc available given B18 per FX_O23/FX_D, so the no-n! moment route is on par with (S∞)); Disagrees 3–4 CONFIRMED.
+6. Theorem IV: NEEDS FIXES (small: explicit (D), (Reg), B18; (S′∞)/s = 16; h_K; stale FX residue). Between Theorem IV and unconditional W: all open rows of Target 2 (S1, B3, B15, B18, (W4), (Eps), (D)), the written sourced L6, the one-paragraph pointwise Step A reading, and the (S′∞) bridge; L15–L17 stay BLOCKED and are not part of W.
+
+STATUS: COMPLETE. Edits: this file only.

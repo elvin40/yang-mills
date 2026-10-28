@@ -23,3 +23,16 @@ Date 2026-10-28. Independent verifier. Firewall respected.
 - Flag (minor): the check "σ(K) = σ(−K) exactly" in symbol_check is vacuous (it compares cos(x) with cos(−x)). Evenness holds analytically anyway (6.3 formula is a function of cos and of s_0s_1).
 - t = 80 entry (−0.0104): α⁶ contamination checked by hand. Continuum x⁶ coefficient of x cosh 2x/sinh x = 0.01462; Richardson bias −4eα⁴, e = 0.01462t⁵/(2π); at t = 80, α = 0.005: t·shift = −0.019. Observed −0.0104 − 0.0095 = −0.0199. Author's explanation CONFIRMED.
 - d/t³ = d/(t(1+t)²)·((1+t)/t)²: 0.0600, 0.0582, 0.0576 at t = 10, 20, 40; distance to 0.05615 halves per doubling (O(1/t)). Consistent with the continuum limit 0.35278/(2π) = 0.05615. (x⁴ coefficient = 2/3 − 1/3 + 7/360 = 0.352778, checked by hand.)
+
+## 5. New numerics: numerics/t2_mpt_verify_thmA.py (Mac, 221 s)
+Box R = 80, A′_α from GAPRIME2 Lemma 1.1 (author's builder), t-grid dt = 0.1 to T = 150, W by (1.1) with exact p_t(0)² = (e^{−2t}I_0(2t))².
+(i) Theorem A after the t-integral (not done by the author). R := W(α; m²) − α²w̃_2(m²), w̃_2 from Richardson (α = 0.0025, 0.005).
+| m² | α | x = m²/α | R m⁴/α⁴ | w̃_4m⁴ (α⁴ term) |
+| 0.24 | 0.01 / 0.02 / 0.04 | 24 / 12 / 6 | 0.00527 / 0.00528 / 0.00531 | 0.00527 |
+| 0.12 | 0.01 / 0.02 | 12 / 6 | 0.00490 / 0.00492 | 0.00489 |
+R m⁴/α⁴ is bounded and equal to the α⁴ coefficient up to the edge x = 6. Theorem A's form holds; no large-t loss at the edge.
+(ii) Lemma S1′ (k = 0), scalar 𝔏_α: E[A_t⁴; X_t = 0] = 24 × (α⁴ coefficient of T_α(t)).
+| t | 1 | 2 | 5 | 10 | 20 | 40 | 60 |
+| E[A⁴;X=0]/(t(1+t)²) | 0.0089 | 0.0156 | 0.0250 | 0.0302 | 0.0334 | 0.0350 | 0.0354 |
+| ratio to 7t³/(60π) | 0.957 | 0.944 | 0.971 | 0.984 | 0.991 | 0.991 | 0.985 |
+Order t³ is sharp; the brief's t² is refuted. Continuum E[A⁴;X=0] = 24·7t³/(1440π) = 7t³/(60π) confirmed (the t = 60 dip is α⁶ bias, 2αt = 0.3).

@@ -36,12 +36,6 @@ if __name__ == "__main__":
             Ra = W(D[a], m2)-a*a*w2
             print(f"  a={a} x=m2/a={m2/a:.0f}: R={Ra:+.4e}  R m^4/a^4={Ra*m2**2/a**4:+.5f}  (alpha^4 term w4 m^4={w4*m2**2:.5f})")
     # scalar S1' check
-    T0, T1, c, N = box_ops(R, 0.0)
-    for a in (s, 2*s):
-        T0a, T1a, _, _ = box_ops(R, a)
-        import scipy.sparse as sp
-        I = sp.identity(N, format='csr')
-        H[('s', a)] = None
     def Lap(a):
         T0a, T1a, c, N = box_ops(R, a); import scipy.sparse as sp; I = sp.identity(N, format='csr')
         return (4*I-T0a-T0a.conj().T-T1a-T1a.conj().T).tocsr(), c, N
