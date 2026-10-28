@@ -56,3 +56,21 @@ Port check (cmp_boxes.py, 30 random boxes): bb_arb/bb − 1 ∈ [1.2e−14, 1.5e
 
 ## V7. Rerun of the original bb.py (float, `python3 bb.py 13 10 16`)
 Reproduced: sup B_13 ≤ 9.99953, 25,169 boxes, 8,075 G evaluations, 0 failed leaves, 102 s. Note: the reported 9.9995 is not a 23% margin to 10; the branch-and-bound refines each box only until it is ≤ 10, so the result is "≤ 10" with 5·10^−5 to spare. The 23% margin in §6–§8 is the margin to 13, not to the target. Float rounding error (≤ 4e−11 relative, V6) is far below 5e−5.
+
+## V8. arb certificate result (task D)
+`uv run --no-project --with python-flint --with numpy python bb_arb.py 13 10 16` (python-flint 0.9.0, numpy 2.5.4):
+sup over the sorted chamber [0, π]⁴ of B_13 ≤ 9.9995277 (every leaf upper bound outward-rounded), 25,169 boxes, 8,075 G evaluations, 0 failed leaves, 58.3 s on the Mac. Worst leaf: u = K/π ∈ [0.719, 0.75] × [0.8125, 0.844]² × [0.875, 0.906]. Fmax (F_CS box bound) 8.3048, Gmax 3.4482 (not the same box).
+Consistency: the float run gives 9.99952769457 = 9.99952768457·(1 + 10^−9); the arb value 9.99952768465 is above the uninflated float value by 8e−11, as outward rounding should give. Point check: max B_crude over 896 test cases = 7.957 ≤ 9.9995.
+
+## V9. What is certified, grades, residue (task E)
+Statement. For L = 13, every K ∈ BZ = [−π, π)⁴ ∖ {0}, and every j ≥ 1 including j = ∞: ρ_1(j, K)² ≤ B_13(K) ≤ C = 9.99953 < 13. At K = 0, ρ_1 = 1. This holds given: (1) Lemma S, Lemma G, (I1)/tower — proved on paper (V1) and checked to ≤ 5e−13 against the production objects (V2); (2) the majorant (5.3) and F ≤ F_CS — rederived step by step, every inequality a valid upper bound (V1), and checked at 896 cases plus local search, min ratio B/ρ_1² = 1.026 (V3, V4); (3) the arb branch-and-bound (V8).
+Grades.
+- (1) three exact lemmas: CONFIRMED.
+- (2) majorant ρ_1² ≤ γ_LF + G_L: CONFIRMED. Note: it is tight to 2.6% at |K| ≈ 1.4–1.6, so it has no slack there.
+- (3) j-uniformity and K → 0: CONFIRMED. q̃_0 = 2M sin(q_0/2M) of the nearest representative; d^M ≤ 1/|q̃_0|² ≤ 1/|k̂|² for every M (Fejér weights sum to 1). The coarse lower bound (termwise σ^N ≥ σ^∞, |q̃^N| ≤ |q|) enters as 1/d̲ and makes the bound larger: valid direction.
+- (4) bb.py certificate: CORRECTED. Logic, chamber cover, 384-fold symmetry (permutations × signs, not 16-fold), K = 0 boxes, boundary boxes, and leaf criterion are correct. Defects: no directed rounding; the grid stopped at fl(π) < π; the "23% margin" is to 13, while the margin to the 10 target is 5e−5. All fixed or restated: arb rerun gives C = 9.99953 (58 s).
+Informal residue (not checked here).
+- The identification ρ_1 = ‖H_j(K)‖/L and the split (1.1) rest on H2_CERTIFY_L13 (2.1), P4 (β = σ), and H2_LARGE_L. I checked (1.1) only against h1cert_rho1.rho1 numerically (≤ 4e−13), not against an independent construction of H_j.
+- Lemma S index and sign conventions were confirmed numerically against h2_scan.qsym (the P4 avg_profile convention), not rederived from umk_beta1 source.
+- Python implements the formulas: bb_arb.py is a port of bb.py's enclosures; I audited each line (V5) and checked the port against bb.py on 30 boxes. No proof assistant was used.
+- python-flint arb and IEEE correctly rounded +, −, ×, ÷, sqrt in numpy are trusted.
