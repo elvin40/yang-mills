@@ -146,33 +146,59 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 
 ## lean/
 
+All 17 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
+
 | File | Description | State |
 |---|---|---|
-| README.md | Toolchain, build, and statement correspondence between the notes and the Lean theorems. | report |
-| VERIFY_LemmaDPrime.md | Statement check of lemma_DPrime against LEMMA_DPRIME.md. | report |
-| YmLean.lean | Root file importing the seven modules. | proved (builds) |
-| YmLean/LemmaDPrime.lean | Lemma D' (shooting), with step 8. | proved in Lean, no sorry |
-| YmLean/LemmaDE.lean | Lemmas D and E. | proved in Lean, no sorry |
-| YmLean/LemmaH.lean | Lemma H (Gronwall telescoping, column-sum form). | proved in Lean, no sorry |
-| YmLean/LemmaDDoublePrime.lean | Lemma D'' (window-sum shooting). | proved in Lean, no sorry |
-| YmLean/DetIdentities.lean | Bordered determinant and gauge-restriction identities. | proved in Lean, no sorry |
-| YmLean/Telescoping.lean | Determinant and log telescoping, adapted Gram identity. | proved in Lean, no sorry |
-| YmLean/AbelianCount.lean | SU(2) and abelian mode counts, equipartition, abelian share. | proved in Lean, no sorry |
+| README.md | Toolchain, build, statement correspondence (one inventory table). | report |
+| YmLean.lean | Root file importing the 17 modules. | proved (builds) |
+| YmLean/LemmaDPrime.lean | Lemma D′ (shooting), step 8. Statement check: VERIFY_LemmaDPrime.md. | proved in Lean, no sorry |
+| YmLean/LemmaDE.lean | Lemmas D and E. Statement check: none (note verifier LEMMAS_DE_VERIFY.md). | proved in Lean, no sorry |
+| YmLean/LemmaH.lean | Lemma H (Gronwall telescoping, column-sum form). Statement check: none (note verifier SOURCES_HBETA_VERIFY.md). | proved in Lean, no sorry |
+| YmLean/LemmaDDoublePrime.lean | Lemma D″ (window-sum shooting). Statement check: none (note verifier THEOREM2_PROOF_v2_VERIFY.md). | proved in Lean, no sorry |
+| YmLean/DetIdentities.lean | Bordered determinant and gauge-restriction identities. Statement check: none. | proved in Lean, no sorry |
+| YmLean/Telescoping.lean | Determinant and log telescoping, adapted Gram identity. Statement check: none (note verifier R2_VERIFY.md). | proved in Lean, no sorry |
+| YmLean/AbelianCount.lean | SU(2) and abelian mode counts, equipartition, abelian share. Statement check: none (note verifier U1_VERIFY.md). | proved in Lean, no sorry |
+| YmLean/TheoremK.lean | Telescoping bound and window_of_partial (arithmetic around Theorem K). Statement check: VERIFY_TheoremK.md. | proved in Lean, no sorry |
+| YmLean/Gronwall.lean | Discrete Gronwall and contraction_bound. Statement check: VERIFY_TheoremK.md. | proved in Lean, no sorry |
+| YmLean/CubeCount.lean | Cube-count arithmetic of Lemma [P] (cube_count_sharp, cube_count_lower). Statement check: VERIFY_CubeCount.md. | proved in Lean, no sorry |
+| YmLean/BlockNorm.lean | ℓ² block-diagonal norms; rho2_le (ρ_2 ≤ ρ_1(j,K)·max_l ρ_1(j−1,k_l)). Statement check: VERIFY_BlockNorm.md. | proved in Lean, no sorry |
+| YmLean/OishiRump.lean | Oishi–Rump invertibility bound; frobenius_power_bound. Statement check: VERIFY_BlockNorm.md. | proved in Lean, no sorry |
+| YmLean/Envelope.lean | Nontriviality envelope of ASSEMBLY §2.9 (B-NT), log form. Statement check: VERIFY_Envelope.md. | proved in Lean, no sorry |
+| YmLean/Divergence.lean | 1-chain divergence; identity (D) of H2_CERTIFY_P4. Statement check: VERIFY_Envelope.md. | proved in Lean, no sorry |
+| YmLean/TheoremC1.lean | c1_two_step, c1_kappa_bound, c1_window. Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
+| YmLean/StripBound.lean | strip_bound_linear, strip_bound_quadratic ((3/2)τ bootstrap of N3). Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
+| YmLean/CertBridge.lean | Entrywise enclosure to certified cell bound (cell_sup_bound, vertex_bound). Statement check: VERIFY_CertBridge.md. | proved in Lean, no sorry |
+| VERIFY_*.md (7 files) | Statement checks of the Lean files against the notes. | report |
 | lakefile.toml, lake-manifest.json, lean-toolchain | Build configuration (Lean v4.33.1, Mathlib v4.33.1). | report |
 
 ## paper/
 
+One article, 51 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
+
 | File | Description | State |
 |---|---|---|
-| main.tex | LaTeX wrapper for the Theorem 2 chapter (version 4). | unverified |
-| theorem2.tex | Statement, shooting lemmas, and exact one-loop sum structure of the Theorem 2 chapter. | unverified, partial |
-| refs.bib | Bibliography; entries written from memory except the Sussman-Alpoge block. | unverified (see refs_check.md) |
-| refs_check.md | Check list for the bibliography entries. | report |
-| README.md | Build instructions and notes for the LaTeX version. | report |
-| main.pdf | Compiled 32-page paper, version 4. | unverified |
+| main.tex | Preamble, title, abstract, and \input of the parts. | unverified |
+| intro.tex | §1: problem, Theorems A and B, status legend, relation to other work. | unverified |
+| setup.tex | §2: notation, range of L, renamed labels. | unverified |
+| theorem2.tex | §3: coupling flow, shooting lemmas, Routes K and B, (B2) and (H2). | reduced; Route K reduction verified |
+| assembly.tex | §4: finite-torus existence and the dependency table. | verified (ASSEMBLY_VERIFY corrections applied); table follows PLAN.md |
+| numerics.tex | §5: numerical results, verified point enclosure at L = 3. | unverified (floating point; one enclosure verified) |
+| remains.tex | §6: open items. | unverified |
+| appendix.tex | A Lean inventory, B status ledger, C label map, D revision history. | unverified |
+| refs.bib, refs_check.md | Bibliography (entries from memory except the Sussman–Alpöge block) and its check list. | unverified |
+| README.md | Build instructions and label map. | report |
+| main.pdf | Compiled 51-page paper. | unverified |
 
 ## numerics/
 
 | File | Description | State |
 |---|---|---|
-| NUMERICS.md | Log of the floating-point runs: beta_1(L) for L = 2..11, per-level beta_2, (H2) scans. Code and results are in the same folder. | unverified (floating point, not certified) |
+| NUMERICS.md | Log of the floating-point runs: β_1(L) for L = 2..11, per-level β_2, (H2) scans. | unverified (floating point, not certified) |
+| KAPPA_D.md, kappa_d.py | κ_4 = 104.25, 147.73, 186.64, 196.19 (N = 3, 5, 13, ∞); free-case c_− ≥ (κ_4 L^5)^{−1}. Numbers only. | unverified ([N]) |
+| k0_d.py | K_0(4) = 103.25, 146.73, 185.64, 195.19 for SOURCES_EU. | unverified ([N]) |
+| h2cert_proto.py, h2cert_launch.sh, h2cert_proto_L3_lmax30.log | Prototype of the L = 3 point enclosure of ρ_2(∞, K*) in arb. | verified (H2_CERTIFY_VERIFY, rerun at N = 12) |
+| h1cert_rho1.py | Float ρ_1(∞) scan: 1.760, 1.963, 2.032, 2.063, 2.080, 2.0895 at L = 3, 5, 7, 9, 11, 13. | unverified (float) |
+| h1cert_cell.py, h1cert_cell2.py | Rigorous cell enclosures of ρ_1 (cell2 = 16-vertex Taylor-1 form); formulas bridged in Lean CertBridge.lean. | enclosures validated at L = 3, 5, 13; code not independently verified |
+| h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | unverified; nothing launched |
+| h1cert_L{3,5,7,9,11,13}_{j1,j2,jinf}.json, h1cert_prof_L{11,13}.npz | Stored scan data. | report |
