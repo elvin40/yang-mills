@@ -46,3 +46,22 @@ Grade NEW4 (F2) "the forms (1.20)–(1.21) and (1.77) come from the constant-cou
 Grade item 3 for (1.77): CONFIRMED — the form is source-free by (1.14) at step j, as NEW4 says. The source in the second case sits in the (1.14) remainder on supp ζ, whose coefficient Balaban bounds by O(N) ≤ O(R_k) (p. 366); the sourced coefficient is O(N) + δ_r, same order. NEW4 [R](b) (p. 382 not re-imaged) is now discharged: p. 382 says exactly "the quadratic form in the expansion (1.20)".
 Correction to my §E remark: (F2) holds for (1.21) and (1.77). What NEW4 §3 states imprecisely is "the large-field factors that the source does touch come from the second term of (3.1) and its analogues": on images, the first-case factor (p. 382) and the positivity (1.48) come from the recombined weighted term A((g″)^{−2}ζ_1, U″) of (1.37), not from (1.14)'s remainder alone. The needed sourced statement (weight ≥ (1 − θ)g_j^{−2} > 0, factor with A_1² → (1 − θ)A_1²) is the same multiplicative loss as NEW4's alternative route; it must be booked somewhere (D3R §1.4 or D3 (P6)) — checked in §G.
 
+## G. Item 1 (definition of ω) and item 4 (Hessian split), with [13] read
+
+[13] located: CMP 109 reference list, no. 13 = Balaban, "Propagators for lattice gauge theories in a background field", CMP 99 = balaban/1985_cmp99_propagators_background_field.pdf. Its Sect. B starts on p. 399 (analyticity; first-order operators V′_1(A), (3.50)–(3.54)). The decisive formula is (3.10) on p. 392 (PDF 4, image read), which II p. 361 cites for the same purpose:
+  ⟨A, ΔA⟩ = ⟨A, D*DA⟩ + ⟨A, Δ′A⟩,
+  ⟨A, Δ′A⟩ = Σ_{p⊂T_η} η^d tr((D^1_UA)(p))² η^{−2}(Re U(∂p) − 1) + tr Σ_{b_1,b_2⊂∂(p), b_1<b_2} i[A′(b_1), A′(b_2)] η^{−2} Im U(∂p).
+"with our assumptions on the configuration U the operator Δ′ will be a bounded, small operator … a small perturbation of D*D."
+
+Item 1 — ω. D3 (L0)/(1.c): Wilson term −A(w_k, U_k); (P4): R-denominator weight w_k = u_k(f) on Z; D3R (B10′) + Lemma P3(b): |w″_k − 1/(g″_k)²| ≤ (3/2)r + r/2 + 2C_hMρ_1λ_k ≤ δ_r and 1/(g″_k)² ≥ γ^{−2}; on Z, Lemma H: |u_k(f) − g_k^{−2}| ≤ (3/2)r. Hence ω := g²(p)w(p) satisfies |ω − 1| ≤ γ²δ_r = θ two-sided, both for the numerator weight and (more strongly, (3/2)γ²r) for the denominator weight. θ ≤ 5γ²r needs ρ_1 ≤ r/(4C_hM) (D3R_VERIFY item 1), which NEW4 writes as "for ρ_1λ_k small". On the pages: (1.1), (1.10), (1.37) show the weight enters only as the coefficient of A(·, U), and the variational problems (1.3), (1.12), (1.39) carry none. Linearity of A(χ, U) = Σ_pχ(p)P_p(U) in χ gives NEW4 (1.1).
+Grade item 1: CONFIRMED (θ ≤ 5γ²r carries D3R_VERIFY's ρ_1 condition; NEW4 states it loosely).
+
+Item 4 — re-derivation.
+(4.1): (3.10) of [13] gives the plaquette split EXACTLY, with no first-order expansion: h_p(X) = η^d|(D_{U_0}X)(p)|² + c_p(X), where the first term is ≥ 0 and c_p is the p-summand of Δ′, |c_p(X)| ≤ C η^{−2}(|Re U_0(∂p) − 1| + |Im U_0(∂p)|)·η^dΣ_{b∈∂p}|X(b)|². In the gauge of p. 357, η^{−2}|U_0(∂p) − 1| ≤ O(|∇^ηA_0| + |A_0|²) ≤ O(a). So NEW4 (4.1) is correct, and the positive part can be taken as |D_{U_0}X|² (covariant) instead of c_N|∂X|² (background 1) — a stronger form that avoids the reading "commutators drop out of Re tr". NEW4's background-1 statement is also correct: Δ′ = 0 and D_U = ∂ at U = 1. [R](a) of NEW4 is discharged.
+Step 2: ω − (1 − θ) ∈ [0, 2θ] (real f), h_p ≥ −|c_p| per plaquette, ζ_0 ≥ 0: Q_{ζ_0ω} − (1 − θ)Q_{ζ_0} = Σζ_0(ω − 1 + θ)h_p ≥ −2θΣ|c_p| ≥ −2θ·C·a·2(d − 1)‖X‖² (each bond lies in 2(d − 1) plaquettes). With ‖X‖ ≤ O(1)B_3‖B′‖: Q_{ζ_0ω}(HB′) ≥ (1 − θ)Q_{ζ_0}(HB′) − θ·O(B_3²M^6R_kε_k)‖B′‖². CONFIRMED (recomputed).
+Order of operations: Balaban's chain on p. 357 (expand in A_0, replace minimizer, ζ_0 → 1 at cost O(e^{−R_k}), compare with [10] (1.67)) is applied to Q_{ζ_0} unchanged; ζ_0ω never has to be replaced by 1. Correct.
+Sourced (1.7): (1 − θ)[γ_0‖∂B′‖² − O(M^6R_kε_k + e^{−R_k})‖B′‖²] − θO(B_3²M^6R_kε_k)‖B′‖² ≥ (1 − θ)γ_0‖∂B′‖² − O(1)((1 + θB_3²)M^6R_kε_k + e^{−R_k})‖B′‖². CONFIRMED.
+Inputs taken as readings, not on images: ‖H_{1,k}‖ ≤ O(1)B_3 (Schur test on the B_3 kernel bound) and 0 ≤ ζ_0 ≤ 1 (ζ_0 is a smooth cutoff; p. 360 describes ζ_1 the same way, "changes from 0 to 1"). Both plausible; ζ_0 ≥ 0 is load-bearing for Step 2.
+G^c extension: for complex X = X_R + iX_I with |X_I| = O(α_{0,k} + α_{1,k})|B′| locally, Re|D X|²-type terms lose ≤ O(α)|X|²_p, which joins c_p; this is Balaban's "ε_k → O(α_{0,k} + α_{1,k})". [reading, as NEW4 says] 
+Grade item 4: CONFIRMED; (4.1) is a correct reading of p. 357 and is in fact exact by [13] (3.10).
+
