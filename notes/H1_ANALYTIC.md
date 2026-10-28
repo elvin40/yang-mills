@@ -2,7 +2,7 @@
 
 Written 2026-10-27 (Claude, Opus 5.5). Read: H2_LARGE_L.md, H2_LARGE_L_VERIFY.md, H2_CERTIFY_L13.md §1–§2 and §4, H2_CERTIFY_P4.md, U3_REPAIRS.md §1 (Prop. A), numerics/h1cert_rho1.py, numerics/h2_scan.py (qsym, dgrid). Did not read /tmp/sa_repo or reports/SUSSMAN_ALPOGE_MAP.md. No existing file was edited. Scratch scripts in /tmp only.
 
-Status: in progress. Sections are appended as the work proceeds.
+Status: complete. Result: ρ_1(j, K)² ≤ 10.0 for all j ≥ 1 (incl. ∞) and all K at L = 13; (H1_13) holds with margin 3.0.
 
 ## 0. Plan
 
@@ -118,4 +118,35 @@ Where the loss is. Measured sup ρ_1² = 4.37. Sharp B: 5.86 (ratio 1.34; from �
 
 j-dependence. Nothing in B_L depends on j: §3 (b) bounds the fine symbol d^M by 1/|q̃^M_0| for every M ∈ {1, L, L², …, ∞}, and §3 (d) bounds the coarse symbol d^{ML} from below by the truncated M = ∞ sum for every ML ≥ L. So the bound is uniform in j ≥ 1 including j = ∞. No monotonicity in j and no O5 rate are used.
 
-K → 0. No separate argument is needed. All enclosures are finite on boxes that contain K = 0 (§6), and B_13 ≤ 2.01 there. At K = 0 itself ρ_1 = 1 (H(0) = L e_{l=0} ⊗ 1).
+K → 0. No separate argument is needed. All enclosures are finite on boxes that contain K = 0 (§6), and the point values of B_13 near 0 are ≈ 2.0 (box values are covered by the global ≤ 10.0). At K = 0 itself ρ_1 = 1 (H(0) = L e_{l=0} ⊗ 1).
+
+A tighter certificate (target 9) did not finish in 285 s on the Mac and was stopped. So C_*² = 10 is what is certified.
+
+## 8. Ledger
+
+Proved [P].
+- (1.1) exact split of ρ_1² into transverse and gauge parts (H2_CERTIFY_L13 (2.1) with P4's β = σ).
+- Lemma S (2.1): E_q(k_l) = E⁰_l − K̂g_l^†, E⁰ the product-symbol (block-average × straight-path) part.
+- Lemma G (4.1): closed form of g_l. The averaging operator is fully explicit.
+- (I1): P_⊥TP_⊥ = P_⊥diag(d^{ML})P_⊥, so Z = Δ_j (Prop. A at the next level), via the tower identity (2.2).
+- Lemma T (3.1): ρ_t² ≤ γ_L F(K), uniform in j (M ∈ {1, L, …, ∞}).
+- Lemma Gauge (5.2): G ≤ (1 + τ)²/(|K̂|²S_L).
+- (6.1): F ≤ F_CS, a closed form made of 1D factors.
+- Box enclosures of γ_LF_CS and Ḡ_L (§6), valid on boxes containing K = 0.
+
+Numerically checked [N].
+- (1.1), (I1), Lemma S, Lemma G against the production code (h1cert_rho1, qsym) to 10^{−6} (quadrature) / 3·10^{−13}.
+- B_13 ≥ exact ρ_1² at 26 test points (j = ∞ and j = 1).
+- Point sups of the majorants at L = 13, 15, 17, 21 (§7 table).
+
+Interval computation [P + check].
+- sup over the chamber of B_13 ≤ 10.0 (bb.py; 95 s; float64 without directed rounding, 10^{−9} inflation; margin to 13 is 23%).
+
+Reduced / not done [R].
+- No closed-form (pen-and-paper) sup of F_CS over the 4D box. The sup is enclosed by a 95 s interval run on 1D-factorized elementary functions, not by hand. A hand proof would need monotonicity/convexity of F_CS in each coordinate; I did not attempt it.
+- Directed rounding is not implemented. The 23% margin makes float error irrelevant in practice, but a strict proof should rerun bb.py with outward rounding (e.g. python-flint arb for the 1D tables).
+- L = 15, 17, 21: only point values (≤ 7.67, 7.48, 7.26). The certificate was run only at L = 13. Since every L only needs one certificate, this is enough for (H1_L) at L = 13.
+- The scripts are in /tmp/h1a (scratch). They should be copied to numerics/ before a verifier runs them. I did not do this because the task allowed writing only this file.
+- Not independently verified.
+
+Final statement. ρ_1(j, K) ≤ C_* = √10 ≈ 3.163 for all j ≥ 1 (including j = ∞) and all K ∈ BZ (K = 0 included: ρ_1(0) = 1) at L = 13. Hence (H1_L) holds at L = 13: sup ρ_1² ≤ 10 < 13. Then (H2) follows at L = 13 with ρ_2 ≤ sup ρ_1² ≤ 10 < 13 (H2_CERTIFY_L13 §1). This is the smallest odd L > 11. The point majorant at L ≥ 15 is ≤ 7.7, but it is not certified there.
