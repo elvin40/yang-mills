@@ -1219,7 +1219,7 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 | L-057 | HOMONYM: Lemma A has several defining files; restatement (merge) or distinct — to review | Lemma A [THM310_FULL] |
 | L-059 | HOMONYM: Theorem A has several defining files; restatement (merge) or distinct — to review | Theorem A [BETA_FP_PW] |
 | L-060 | HOMONYM: Theorem A has several defining files; restatement (merge) or distinct — to review | Theorem A [S_T2_MPT_STEPC] |
-| L-063 | HOMONYM: Theorem A1-W; KEPT SPLIT from L-017 (RENUMBER_VERIFY §7.7): L-063 = first form (SOURCES_A1_WALK §7.1), L-017 = full write-out (A1_WALK_FULL §0.4); merge only if Elvin rules that A1_WALK_FULL supersedes §7.1 | Theorem A1-W [S_A1_WALK] |
+| L-063 | HOMONYM: Theorem A1-W; KEPT SPLIT from L-017 (RENUMBER_VERIFY §7.7): L-063 = first form (SOURCES_A1_WALK §7.1), L-017 = full write-out (A1_WALK_FULL §0.4); merge only if the author rules that A1_WALK_FULL supersedes §7.1 | Theorem A1-W [S_A1_WALK] |
 | L-064 | MERGED into L-024 (RENUMBER_VERIFY §7.6; 2026-10-28); retired id kept for frozen-file lookups | Proposition A15-N [S_A15_WHOLE] |
 | L-067 | HOMONYM: Proposition A2 has several defining files; restatement (merge) or distinct — to review | Proposition A2 [THEOREM2_PROOF] |
 | L-068 | HOMONYM: Proposition A2 has several defining files; restatement (merge) or distinct — to review | Proposition A2 [U3_AW] |

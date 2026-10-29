@@ -6,7 +6,7 @@ import Mathlib.Analysis.InnerProductSpace.Positive
 # L-122 (Lemma CP) (Cauchy perturbation to accretivity)
 
 Sources: `../SOURCES_WC_RESIDUE.md` §6.1 (L-122 (Lemma CP) with proof) and `../SOURCES_WC_RESIDUE_VERIFY.md`
-Q6 (re-derivation; hypothesis restated in accretive form). Brief: `api_runs/CLOUD_BRIEFS.md` L7.
+Q6 (re-derivation; hypothesis restated in accretive form).
 
 `H` is a complex Hilbert space, `F : ℂ → (H →L[ℂ] H)` is complex differentiable on the open disc
 `ball 0 ρ` with `‖F w‖ ≤ Γ` there, and `Re F(0) ≥ c > 0` in the accretive form

@@ -58,7 +58,7 @@ IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 - Build: pdflatex, bibtex, pdflatex ×2; 0 errors, 0 undefined refs; 63 pages (was 61); 40 hyperref PDF-string warnings, 9 overfull boxes (same 9 as Pass 4); aux files deleted.
 
 ## Pass 6 (round 3)
-- Ground truth: PLAN.md from "2026-10-28 ~01:10 UTC Elvin: set Opus subscription subagents" to the end; TRUST_LEDGER rows; lean/README.md (21 files). Firewall kept.
+- Ground truth: PLAN.md from "2026-10-28 ~01:10 UTC the author: set subagents" to the end; TRUST_LEDGER rows; lean/README.md (21 files). Firewall kept.
 - TRUST_LEDGER: † markers removed; new row A1w (walk-expansion form of A1, CMP 99 Thm 3.15); A1, A2, A3, A4, A5 (7′), A13, A15 rows; B8 (moved to Theorem 1 input), B10, B13, B19, B21 ((S) clauses reduced), B22, C17 rows; §4 rewritten (round-3 DAG, item 9 closed, 7′ verifier running, G4 off-chain); §5 counts; two §6 bullets (item 9, G4).
 - New counts: Group A 20 (14 printed, 13 cited-but-unproved, A1–A4 of these now verified reductions; 6 unprinted); X 5; B 22; C 23. T1 alone: {A5, A15} + B1–B7 + X5. T1 ⇒ Thm 1: 4 A (A5, A11, A13, A15) + 9 B + X5. T2: 17 A + X2–X5 + 21 B; 11 of the 17 cited-but-unproved.
 - intro.tex: Theorem A(i) drops K-independence, adds 7′ [verifier running]; consequence sentence; trust-boundary paragraph (4/17/20, 3/11/13, A1–A4 collapse).

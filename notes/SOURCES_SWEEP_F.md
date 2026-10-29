@@ -205,4 +205,4 @@ H-241 (R1′) then carries only (ii) (the N/D telescoping of the R-ratio cutoff,
 | S-90 | Lemma I36: B_j(c) = F_j(u(c); x*) | [P] relative to K-001, K-011, Lemma U | R-036 text of §3.3 |
 | S-95 (i) | joint scaling admissible; individual freedom of C_2, C_3 false and not needed | [P] + [I] residue | R-039 text of §4.3 |
 | S-95 (iii) | T1–T10 keep slack at e^{±1/9} | [P] + [I] completeness | R-039 text of §4.3 |
-Nothing here is verified. Each [P] above should get an independent verifier before any ledger status changes (headline discipline, OPUS_QUEUE rules).
+Nothing here is verified. Each [P] above should get an independent verifier before any ledger status changes (headline discipline, run rules).

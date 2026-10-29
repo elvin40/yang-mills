@@ -1,4 +1,4 @@
-# Statement check: AbelianShare.lean (OPUS_QUEUE item D3)
+# Statement check: AbelianShare.lean
 
 Sources: U1_INFINITE_LATTICE.md §9 Prop. 9.1 and proof; U1_VERIFY.md §2.6 (fine piece 1/4, coarse pieces −L^{−4k}/4); BETA_FP_LEMMA43.md §5 (𝒮^{ab}(Λ) = (1 − Λ^{−4})/4); numerics/NUMERICS.md §6 (values 15/64, 20/81, 255/1024). The queue cites "NUMERICS §4"; in the current NUMERICS.md the abelian values are in §6 (§4 is the self-check list). Build: `lake build YmLean.AbelianShare` (8 s), no `sorry`. Axioms of all eleven printed theorems: `[propext, Classical.choice, Quot.sound]`.
 

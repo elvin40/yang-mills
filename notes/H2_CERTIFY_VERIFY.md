@@ -68,7 +68,7 @@ Item (4): arithmetic rechecked. b²‖∂𝔅‖ = 49.3²·7.6 = 1.85·10⁴; (2
 
 ## 8. Items (7) cost and (8) launcher
 (7) Cost. The estimates are order-of-magnitude and unmeasured beyond the prototype. One measured point against the model: N = 12 (25⁴ = 3.9·10⁵ box terms per block) took 251 s and N = 20 (41⁴ = 2.8·10⁶) took 310 s. So 7.3× more terms cost only 1.2× time: at these N the Python-level arb work dominates, not the box sum. Engineering (a) (3D box, 40× fewer terms) will give far less than 40× at N = 20; (c) and (b) are the real levers. The cell-count ∫(4g)⁴ uses g from 60 float points with the corner undersampled. Verdict (7): UNSUPPORTED (plausible but not evidenced; (a) speedup overstated).
-(8) Launcher h2cert_launch.sh: five points at N = 30, one output file per point, skip-if-done on the "tail included" line, transient systemd unit with MemoryMax, OMP_NUM_THREADS=1. Checkpoint granularity = one point (15–20 min est.); a killed point restarts from zero, which is acceptable. Not launched (no word from Elvin). Verdict (8): CONFIRMED as a correct, checkpointed validation launcher; it is not the certification.
+(8) Launcher h2cert_launch.sh: five points at N = 30, one output file per point, skip-if-done on the "tail included" line, transient systemd unit with MemoryMax, OMP_NUM_THREADS=1. Checkpoint granularity = one point (15–20 min est.); a killed point restarts from zero, which is acceptable. Not launched (no word from the author). Verdict (8): CONFIRMED as a correct, checkpointed validation launcher; it is not the certification.
 
 ## 9. Truncated validation rerun and summary
 - lmax 2, no tail: [2.063769, 2.063769], width 1.78·10^{−8}, 230 s. Matches the author and the hscan lmax-2 float value 2.063769. Outer ‖𝔅^{−1}‖ = 43.1744 (η = 1.3·10^{−9}).

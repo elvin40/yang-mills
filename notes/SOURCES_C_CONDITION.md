@@ -2,6 +2,7 @@ IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_C_CONDITION — the (C) condition (lower bound on the compressed operator)
 
 Date: 2026-10-28. Status: complete (Opus draft, unverified). Pages checked this session by pdftotext only (CMP 99 pp. 398–399, 416–417, 423; CMP 98 pp. 19–20; CMP 95 p. 19); page-image facts are taken from the verified files cited. Ledger: [P] proved here, [V] verified from source/numerics, [I] interpretation, [R] relies on printed claim, [N] numerics only.
+Status update (2026-10-29): verified (SOURCES_C_CONDITION_VERIFY). Part (c) of L-284 (Lemma T) is not proved as written (SOURCES_SWEEP_DE_VERIFY §2); the repaired (c′) is verified, two readers (SOURCES_LEMMA_T_REPAIR_VERIFY, SOURCES_LEMMA_T_G3_VERIFY).
 Firewall: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read.
 
 Inputs read: TRUST_LEDGER rows A1, A1w, A2, A7, A16 and §4.2 lines naming (C); SOURCES_A1_KERNEL (all); SOURCES_QE_INV + VERIFY §7–§8; SOURCES_QE_KE_HQ + VERIFY (all); SOURCES_S2_FORM (all); SOURCES_S2_G1_V7 Part A; SOURCES_A3_GAMMA0_FULL §0, §4–§7; SOURCES_EU §3; SOURCES_T2_VOL §1–§2; CMP 99 pp. 398–399, 416–417, 423 (pdftotext); CMP 98 pp. 19–20, CMP 95 p. 19 (pdftotext).

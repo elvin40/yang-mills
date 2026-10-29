@@ -3,7 +3,7 @@ IDs: this file cites the new ids of IDS.md (2026-10-28) where a row exists, and 
 
 Date: 2026-10-28 (Opus). Type: derivation (repair), not a verification. Edits: this file only. No existing file touched; PLAN.md not appended; sync.sh not run (caller's override).
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md not read and excluded from every grep.
-Inputs read: OPUS_QUEUE.md l. 1–15; FABLE_HARD.md (full, 184 lines); INFINITE_VOLUME_FABLE.md (full, 256 lines); paper/drafts/open_problem.tex (full); SOURCES_FX_D.md l. 46–67 (polydisc 𝒫_*, c_* := min(c, ½), VERIFY corrections); SOURCES_FX_O23.md l. 28–52, 90 (D3 denominator model corrected; choice A/B); SOURCES_D3_NEW4.md l. 90–94 (r ≤ 1/10); IDS.md l. 1–12 and the rows above.
+Inputs read: the run rules (private run queue, l. 1–15); FABLE_HARD.md (full, 184 lines); INFINITE_VOLUME_FABLE.md (full, 256 lines); paper/drafts/open_problem.tex (full); SOURCES_FX_D.md l. 46–67 (polydisc 𝒫_*, c_* := min(c, ½), VERIFY corrections); SOURCES_FX_O23.md l. 28–52, 90 (D3 denominator model corrected; choice A/B); SOURCES_D3_NEW4.md l. 90–94 (r ≤ 1/10); IDS.md l. 1–12 and the rows above.
 Grades: [P] proved here, complete; [P-sketch] proved here up to routine steps named in place; [I] inference or reading, not a proof. A grade "given X" means the proof uses X as an input and X is not proved here.
 
 ## 0. Results in one place

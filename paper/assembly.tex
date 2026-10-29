@@ -154,7 +154,7 @@ The table gives the status of every block of Theorem~\ref{thm:L003} and of every
 Block & Content & Current tag & Files & Hypotheses carried \\ \hline
 \endhead
 B-T2 & L-001 (Theorem 2w) (Theorem~\ref{thm:L001}): trajectory $g_0(\varepsilon,g)$, (b), (c$'$), K-018 (S) & \status{proved+verified, conditional} (Route K = L-009 (Theorem K) + L-005 (Lemma D$''$)). Literal (0.31) not obtained & \file{THEOREM2_PROOF_v4.md}, \file{KAPPA_BOUNDED.md} & R-025 (H2), R-026 (PI), R-027 (F), R-028 ($M_j$), V1, R-030 (G2), L5, item 7$'$ (from H-202 (H0) or H-111 (G-gain), verified (\file{SOURCES_GGAIN_NONMONO_VERIFY})) \\ \hline
-B-T2.a & Lemmas D, D$'$, D$''$, E (shooting) & \status{proved+verified; Lean} (D$'$, D, E, D$''$ one-argument form; history form open) & \file{LEMMA_DPRIME.md}, \file{lean/} & continuity of $\beta_{k+1}$ in history \\ \hline
+B-T2.a & Lemmas D, D$'$, D$''$, E (shooting) & \status{proved+verified; Lean} (D$'$, D, E, D$''$ one-argument form; history form in LemmaDHist.lean, LemmaDHistNested.lean) & \file{LEMMA_DPRIME.md}, \file{lean/} & continuity of $\beta_{k+1}$ in history \\ \hline
 B-T2.b & Sweep: (c$'$)+K-018 (S) $\Rightarrow$ Balaban's Theorem 1 inputs (Section~\ref{sec:sweep}; item 10) & \status{proved; verified} (round 7, R-034 cleared: all 19 rows second-read, SOURCES\_\allowbreak{}B10\_\allowbreak{}SWEEP\_\allowbreak{}VERIFY; first 4 rows by LEMMA\_\allowbreak{}DPRIME\_\allowbreak{}VERIFY) & \file{LEMMA_DPRIME_SWEEP.md} & Balaban readings (unchecked list) \\ \hline
 B-T2.1 & U3 Thm 4.1 (Gaussian RG, rate $L^{-2j}$) + O5 & \status{proved+verified} & \file{U3_GAUSSIAN_RG.md}, \file{U3_REPAIRS.md} & trivial background \\ \hline
 B-T2.2 & U3 Lemma 5.1; (A), (W) & neutral sector \status{proved+verified}. (W) numerically exact; (A) confirmed qualitatively and quantitatively (\file{U3_AW_VERIFY.md}); (HS) \status{refuted} at $L=3$. Not on the path of L-001 (Theorem 2w) after R-025 (H2); needed for the convergence route only & \file{U3_LEMMA51.md}, \file{U3_AW.md} & (A) in full, (N) (plausibly false) \\ \hline
@@ -182,7 +182,7 @@ item 9 & $\beta_j(g)$ independent of $K$ & closed as a reduction \status{verifie
 item 10 & BALABAN\_\allowbreak{}CHECK item 11 readings & verified with corrections (former ledger R-048, R-049, R-051); R-012 closed as a verified list (Proposition~\ref{prop:L023}; K-029--K-031); residue: R-020 (T-step rate loss) & BALABAN\_\allowbreak{}EXCERPTS; \file{SOURCES_BOOKKEEPING.md}, \file{SOURCES_A11_CONST.md} & R-020 \\ \hline
 item 11 & odd $L$; $L>11$ in Balaban & input & CMP 109 pp.\ 251--252; v1 verifier Step 6 & --- \\ \hline
 item 12 & SU(2) & scope & --- & --- \\ \hline
-item 13 & Lean history form & open & --- & --- \\ \hline
+item 13 & Lean history form & done: LemmaDHist.lean, LemmaDHistNested.lean (\texttt{lemma\_DPrime\_hist\_adm}, \texttt{lemma\_DDoublePrime\_hist\_adm}; statement check \file{lean/VERIFY_LemmaDHist.md}); Ba{\l}aban's $\beta_j$ meeting the continuity hypotheses stays an input & --- & --- \\ \hline
 B1, B2$'$ & Route B: R-025 (H2) + (T1) $\Rightarrow$ (U) (Theorem 2.4 of BETA\_\allowbreak{}FP\_\allowbreak{}U) & proved, unverified & BETA\_\allowbreak{}FP\_\allowbreak{}U \S2.4; no verifier & R-025 (H2), (T1) \\ \hline
 B1, B2$'$ & Route B: (U) & hypothesis; $\Leftarrow$ (T1) + R-025 (H2) (BETA\_\allowbreak{}FP\_\allowbreak{}U); proved, unverified & BETA\_\allowbreak{}FP\_\allowbreak{}PW \S1.2; PW\_\allowbreak{}VERIFY \S3 & (T1), R-025 (H2) \\ \hline
 B1 & Route B: (T1) & argued & BETA\_\allowbreak{}FP\_\allowbreak{}U \S2.3; no verifier & --- \\ \hline

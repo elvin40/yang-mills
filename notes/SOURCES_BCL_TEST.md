@@ -2,7 +2,7 @@
 
 Date 2026-10-28. Ids follow IDS.md. Tags: [P] proved here, [P-sketch] proof outline with a named gap, [N] numerics, [I] interpretation or unproved claim, [V] read verbatim in a project file.
 Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP.md were not opened.
-Read: OPUS_QUEUE.md lines 1–15; SOURCES_BETA1_F_TENSION.md (all); numerics/umk_beta1.py (all); U3_GAUSSIAN_RG.md (statements of Theorem 4.1 and Lemma 5.1, by grep); ~/git/yang_mills/README.md line 47; numerics/BETA1_BOX_RUN.md (timing lines).
+Read: the run rules (private run queue, lines 1–15); SOURCES_BETA1_F_TENSION.md (all); numerics/umk_beta1.py (all); U3_GAUSSIAN_RG.md (statements of Theorem 4.1 and Lemma 5.1, by grep); ~/git/yang_mills/README.md line 47; numerics/BETA1_BOX_RUN.md (timing lines).
 The §11 scripts of SOURCES_BETA1_F_TENSION were deleted after use. I rebuilt the split from its description. The rebuilt code reproduces every §11 entry (constraint, fine, ghost at K_1, K_2, K_3, L = 3 … 13) to the 4 printed digits [N].
 New scripts (no existing file changed): numerics/bcl_split.py, bcl_sym.py, bcl_bulk.py, bcl_table.py, bcl_symtable.py, bcl_window.py, bcl_bulkfit.py, bcl_fitK.py, bcl_bzmap.py. Data: numerics/results/bcl_L*_Lp0.5.json, bclsym_L*_Lp0.5.json, bclbulk_L*_Lp0.5.json, bclmap_L5_Ng8_Lp0.5.npz.
 Compute: Mac only, about 15 min in total. The Windows box was not used.
@@ -189,7 +189,7 @@ Run M1 (Mac, about 13 min, not done here because of the session budget). Script 
   cd numerics; for L in 7 9 11 13; do .venv/bin/python bcl_bzmap.py $L 8 0.5; done
 (L = 5 is done; its β matches the stored box value to 3e−16.) Ng = 8 gives the same 320 coarse K points (weights summing to 8⁴ = 4096) at every L, so i_L(K) can be fitted point by point. Cost at 39 µs per (K, l) block: 30 s, 82 s, 183 s, 356 s plus profiles 9, 17, 36, 72 s.
 Output. s(K) at every grid point, its weighted BZ mean (it must equal the Ng = 8 slope of β_1), and the radial profile of ΔB_c binned by |K| and |K + p|.
-Run M2 (only if M1 shows log terms of fixed sign in a K-region). L = 15, 17, 19 at Ng = 8: about 11, 22, 35 min on the Mac rate. This exceeds the Mac rule of OPUS_QUEUE, so it belongs on the Windows box (CPU venv, transient unit with MemoryMax 16G; memory per K at L = 19 is about 2–4 GB). It decides between a + s log L + b/L² and a pure L^{−2} transient with 3 extra points beyond the present range. No GPU is needed; the numpy path at Ng = 8 is CPU-bound and the GPU port gave only 2.3× on the 4090 (BETA1_BOX_RUN).
+Run M2 (only if M1 shows log terms of fixed sign in a K-region). L = 15, 17, 19 at Ng = 8: about 11, 22, 35 min on the Mac rate. This exceeds the Mac rule of the private run queue, so it belongs on the Windows box (CPU venv, transient unit with MemoryMax 16G; memory per K at L = 19 is about 2–4 GB). It decides between a + s log L + b/L² and a pure L^{−2} transient with 3 extra points beyond the present range. No GPU is needed; the numpy path at Ng = 8 is CPU-bound and the GPU port gave only 2.3× on the 4090 (BETA1_BOX_RUN).
 Expected outcomes. If B_c converges, M2 must show every s(K) → 0 and the fits without log must win at L ≥ 15. If B_c diverges like s_B log L, the weighted mean of s(K) stays near c − s_B ≈ 0.04 with s(K) of both signs; the constraint part is then the source.
 
 ## 6. Replacement sentence for the README β_1 line

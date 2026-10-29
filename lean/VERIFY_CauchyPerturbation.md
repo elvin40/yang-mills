@@ -3,7 +3,7 @@ IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 
 Firewall respected (no /tmp/sa_repo, no reports/SUSSMAN_ALPOGE_MAP.md, no reports/ONLINE_SWEEP.md).
 
-Brief: `api_runs/CLOUD_BRIEFS.md` L7. Sources read: `notes/SOURCES_WC_RESIDUE.md` §4 (l. 32–41, disc geometry only) and §6.1 (l. 51–64); `notes/SOURCES_WC_RESIDUE_VERIFY.md` Q5–Q6 (l. 27–39).
+Sources read: `notes/SOURCES_WC_RESIDUE.md` §4 (l. 32–41, disc geometry only) and §6.1 (l. 51–64); `notes/SOURCES_WC_RESIDUE_VERIFY.md` Q5–Q6 (l. 27–39).
 
 ## Plan
 1. What is proved: the four theorems, their hypotheses, the form of `Re F ≥ c`.

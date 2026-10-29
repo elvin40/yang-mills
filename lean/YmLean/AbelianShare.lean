@@ -3,7 +3,7 @@ import Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional
 
 /-!
 # Abelian share, general form (U1_INFINITE_LATTICE.md Prop. 9.1; U1_VERIFY.md §2.6;
-# BETA_FP_LEMMA43.md §5; NUMERICS §6) — OPUS_QUEUE item D3
+# BETA_FP_LEMMA43.md §5; NUMERICS §6)
 
 `abelian_share` (AbelianCount.lean) is the case `d = 4`, `N = L^{4k}`, with the count
 `4N − 4 − (N − 1)` written into the hypothesis. Here:

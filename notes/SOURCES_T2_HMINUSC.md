@@ -6,7 +6,7 @@ Firewall kept: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, reports/ONLINE_SWEEP
 Tags: [P] proved here; [V] checked against a page image or text layer; [I] inference; [R] reduced to a named input; [R-A19] uses (190) on the complex ball as read in SOURCES_A17_A19.
 
 ## 0. Inputs read so far
-- api_runs/BRIEFS_SUB.md "## ITEM HMINUSC" (full).
+- the private agent brief "ITEM HMINUSC" (full).
 - SOURCES_MA2.md (full), SOURCES_MA2_VERIFY.md (full).
 - TRUST_LEDGER rows A4 (l. 29), A18 (l. 41), A19 (l. 42), B17 (l. 77), chain item 5 (l. 158).
 - SOURCES_A17_A19.md §3–§7 and SOURCES_A17_A19_VERIFY.md (full).

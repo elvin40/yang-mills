@@ -1,11 +1,11 @@
 IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # SOURCES_G4 — Lemma G4 repair (real-t Mayer form, per-vertex absorption)
 
-Date 2026-10-28. Task C2 of OPUS_QUEUE. Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md not read.
+Date 2026-10-28. Task C2 of the private run queue. Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md, and reports/ONLINE_SWEEP.md not read.
 Status tags: [proved], [reduced], [check], [open].
 
 ## 0. Process log
-- Step 1: grep for "G4" across *.md and reports/*.md (firewalled files excluded). Hits in B2_TWOSTEP, H2_CERTIFY*, H2_LARGE_L, SOURCES_D3W8 are unrelated local gap labels ("G4" = fourth gap item of that file). Relevant hits: SOURCES_GGAIN §5.1, §5.3, §8; SOURCES_GGAIN_VERIFY items 3–4; SOURCES_G3 l. 67; TRUST_LEDGER l. 145; INDEX l. 94; PAPER_INTRO_VERIFY F-items; OPUS_QUEUE C2.
+- Step 1: grep for "G4" across *.md and reports/*.md (firewalled files excluded). Hits in B2_TWOSTEP, H2_CERTIFY*, H2_LARGE_L, SOURCES_D3W8 are unrelated local gap labels ("G4" = fourth gap item of that file). Relevant hits: SOURCES_GGAIN §5.1, §5.3, §8; SOURCES_GGAIN_VERIFY items 3–4; SOURCES_G3 l. 67; TRUST_LEDGER l. 145; INDEX l. 94; PAPER_INTRO_VERIFY F-items; the private run queue, item C2.
 - Step 2: read SOURCES_GGAIN §1–§7, SOURCES_GGAIN_VERIFY §5 items 3–4, SOURCES_G3 §4.2 and §5, SOURCES_G3_VERIFY l. 11–15, SOURCES_HHIST2 §3 Route 2(a), §5, R1–R7, SOURCES_SM §4.2, TRUST_LEDGER B13, B14 rows and DAG steps 4, 6, 7, paper/assembly.tex l. 200. CMP 116 page images were not opened: the task stops at part (1) (see §1).
 
 ## 1. Part (1): what Lemma G4 is needed for
@@ -21,7 +21,7 @@ Status tags: [proved], [reduced], [check], [open].
  (c) TRUST_LEDGER B13 row ("Lemma G4 repair via the real-t Mayer form [reduced]") and DAG step 7 ("G4 repair [reduced]"). B13 = real uniform (H-hist) ⇐ GGAIN route (b) + G3. By (a) and (b) that chain does not pass through G4. The entry is an over-listing.
  (d) SOURCES_HHIST2 Route 2(a) (own-slot second derivative by the relative u-disc Cauchy). §3.5(a) uses SM §4.2 holomorphy with Balaban's sup C_uE_0, NOT the G-gain sup. HHIST2 l. 78 and l. 112: "needs no G-gain, no G3 at any order, no second insertion". The 1/u radius loss leaves g⁴ per second derivative, summable (HHIST2 P3). TRUST_LEDGER B14: "no input beyond Theorem SM + joint u-disc × input-ball holomorphy [R]". G4 is not used.
  (e) SM §4.2 itself (the u-disc holomorphy that B14 uses) predates GGAIN. It runs at Balaban's τ-circle with the quadratic vertex z·Q of relative size z_0. GGAIN_VERIFY's G4 problem came only from ENLARGING the τ-circle to 1/ε_g. So that problem does not transfer to SM §4.2 at Balaban's circle. SM §4.2 stays [reduced] on its own terms (W4 §7(d) vertex caveat), unchanged by this file.
- (f) Status-only mentions: INDEX l. 94, PLAN l. 186, OPUS_QUEUE C2, PAPER_INTRO_VERIFY F-items, paper/assembly.tex l. 200 ("Lemma G4 corrected, fix reduced"). These report status. Nothing downstream uses their content.
+ (f) Status-only mentions: INDEX l. 94, PLAN l. 186, the private run queue item C2, PAPER_INTRO_VERIFY F-items, paper/assembly.tex l. 200 ("Lemma G4 corrected, fix reduced"). These report status. Nothing downstream uses their content.
 
 1.3 CONCLUSION. No load-bearing result cites Lemma G4. Its only use is GGAIN §5.3 route (a) for the FIRST derivative. Route (a) is an alternative to route (b), and the chain (B13 ⇐ GGAIN route (b) + G3 ⇐ (Q)) uses route (b). The SECOND-derivative u-disc route (HHIST2 Route 2(a), B14) needs Balaban's sup only. Per the task rule, parts (2)–(3) (the real-t Mayer rewrite and Lemma G4′) are not carried out.
 

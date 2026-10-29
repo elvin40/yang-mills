@@ -1,6 +1,6 @@
-# Lean 4 formalization (45 files)
+# Lean 4 formalization (80 files)
 
-No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
+No file contains `sorry`. All theorems depend on the standard axioms only (see Axioms), except the H2Box certificate, whose 16 run files use native_decide (one axiom each; see the H2Box section). Markdown sources are in `../` (= notes/). Per-file detail follows the inventory.
 
 | File (`YmLean/`) | Theorems (lines) | Markdown source | VERIFY file |
 |---|---|---|---|
@@ -35,7 +35,7 @@ No file contains `sorry`. All theorems depend on the standard axioms only (see A
 | `BlockInequalityE.lean` | `smallness_iff`, `block_f_real`, `block_e_real`, `block_Kb_real`, `Kb_le`, `cG_ge_one`, `block_ineq_E_axial`, `block_ineq_E` (200) | SOURCES_WC_EXPGAUGE.md §1.5, §2, §3.2; SOURCES_WC_EXPGAUGE_VERIFY.md V1–V4 | VERIFY_BlockInequalityE.md |
 | `CauchyPerturbation.lean` | `cp_increment`, `cauchy_perturbation`, `lemma_CP`, `cauchy_perturbation_op` (169) | SOURCES_WC_RESIDUE.md §4, §6.1; SOURCES_WC_RESIDUE_VERIFY.md Q5–Q6 | VERIFY_CauchyPerturbation.md |
 | `K1Prime.lean` | `K1_numeric_13` (L = 13, θ = ½, β = ¼, δ = 1/40; 13δ form). Axioms: standard. Build 9 s | SOURCES_A23_TSTEP.md §4 | VERIFY_K1Prime.md |
-| `CanonOrder.lean` | `canon_acyclic`, `canon_wf`, `counts` (50 lines N010–N500, 170 edges; transcription only), `id_eq_rank` (num a = 10·(rank a + 1): N-id order = canon rank), `edges_forward_num`. Axioms: none. Build 13.7 s | SOURCES_ORDER_CANON.md Part B (E7, E8, F.3, F.5) | VERIFY_CanonOrder.md |
+| `CanonOrder.lean` | `canon_acyclic`, `canon_wf`, `counts` (51 lines N010–N500 with N-265, 180 edges; transcription only), `id_eq_rank` (num a = 10·(rank a + 1): N-id order = canon rank), `edges_forward_num`. Axioms: none. Build 13.7 s | SOURCES_ORDER_CANON.md Part B (E7, E8, F.3, F.5) | VERIFY_CanonOrder.md |
 | `ElemBounds.lean` | `a10Sum_eq_four`, `a10Sum_closed`, `a10Sum_ge_top`, `a10Sum_unbounded`, `gLogPow_strictMonoOn`, `schurSum_antitone`, `kMap_mono`, `epsMap_mono`, `expRange_mono`. Axioms: standard. Build 5 s | SOURCES_A10_LOWER.md §3 (c); SOURCES_A11_CONST_VERIFY.md; SOURCES_ORDER_CANON.md A.2 L-221 (Lemma M2) | VERIFY_ElemBounds.md |
 | `SchurMarginal.lean` | `block_inv`, `det_block`, `schur_posDef`, `schur_lower`, `schur_eigenvalues_ge`, `gamma_bb_eq`, `author_Bblock`, `c_minus_ge` (18 theorems). Axioms: standard. Build 5.6 s | SOURCES_G3_N2.md §2.4, §3.3–3.4 | VERIFY_SchurMarginal.md |
 | `NestEnvelope.lean` | `nest_shoot`, `nest_DDoublePrime`, `nest_DPrime`, `env_of_terminal`, `cprimeDD`, `cprimeDP` (253 lines). Axioms: standard. Build time not recorded | SOURCES_T2_B7_CLAMP.md §4.2–§4.4 | VERIFY_NestEnvelope.md |
@@ -57,7 +57,7 @@ Wave 1–3 (2026-10-28): new files Concatenation, NeutralSpectrum, ComplexGaussi
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
 - Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
-- Build: `lake build` (all 45 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
+- Build: `lake build` (all 80 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
 ## Statement correspondence
 
@@ -326,7 +326,7 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 ## LemmaDHist.lean (ledger L5: history-dependent β_j; LEMMA_DPRIME.md Remark 3, LEMMAS_DE_VERIFY.md §1.5); statement check `VERIFY_LemmaDHist.md`
 
-- Not imported by YmLean.lean; build with `lake build YmLean.LemmaDHist`. `β j h` with `h : Fin j → ℝ` = (g_0, …, g_{j−1}); trajectories `HTraj`, shots `HShot`; cube `Cube γ j = ]0, γ]^j`.
+- Build with `lake build YmLean.LemmaDHist`. `β j h` with `h : Fin j → ℝ` = (g_0, …, g_{j−1}); trajectories `HTraj`, shots `HShot`; cube `Cube γ j = ]0, γ]^j`.
 - `lemma_D_hist`: Lemma D with β_j continuous on the cube and `b ≤ β_j ≤ b'` on it (clamped proof). `lemma_DPrime_hist`: Lemma D′ (a)–(d) under Remark 3 (cube continuity, `|β_j(h) − β0_j| ≤ C₁M` for h ∈ ]0, M]^j, β0_j history independent). `lemma_D_hist_adm`: Lemma D by nested intervals, with bounds only on true trajectories in D_k = {u_0, …, u_k ≥ 1/γ²} and continuity of u₀ ↦ u_{k+1} on D_k.
 - `βce_separately_continuous`, `βce_no_shot`, `βce_not_cube_continuous`: β_j bounded in [1, 2] and continuous in each argument separately, but no shot trajectory exists (K = 2, g = 1/2, γ = 1). Continuity in the current argument with the past fixed is not enough; the IVT step needs continuity of u₀ ↦ u_K (joint continuity of β_j along the moving past). The sources do not supply it (THEOREM2_PROOF_v4 §10 item 8(a)).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all eight printed theorems. Not formalized: nested-interval form of Lemma D′/D″ (negative early increments), Step 8 and Lemma D″/E for histories, and that Balaban's β_j meets the continuity hypotheses.
@@ -346,12 +346,12 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 - `LemmaHSteps.lean` closes the two items "Not formalized: Step 2, Step 3" of the LemmaH.lean section. Step 2: S_3 = Σ_{i<K} g_i³ ≤ 2g_K/β ≤ 2γ/β from increments ≥ β and u_K ≥ γ^{−2}; column sums of (1.1) give Σ c_i ≤ x = C₁Aγ/β. Step 3: `bootstrap` (fencing argument on [−R, R]) and `lemma_H_bootstrap` (Lemma H for all c ∈ [−2r, 2r]). (I), (E), (H-hist), (1.1), the smooth clamp and û_K ≤ û_k stay hypotheses.
 - `N3Steps.lean` gives the inputs ε_k of StripBound.lean (gap 2 of VERIFY_TheoremC1.md), one-argument case. Step 0: |(1+s)^{−1/2} − 1| ≤ √2|s|, |z − g_r| ≤ √2g_r³|y|, Cauchy |β″| ≤ 8M/(ρ²g_r²), |β′(z)| ≤ C₁′ = C₁ + 12MγY/ρ², |∂_uβ| ≤ ½C₁′g_r³, Re β ≥ β/2. Step 1 complex (`lemma_H_complex`). Step 2: Σ(Re u_i)^{−3/2} ≤ 4γ/β, Σ|B′_j| ≤ e^{x_C} − 1 ≤ ½, ½ ≤ |v_k| ≤ 3/2. Extra hypothesis ρ ≤ 1. Not formalized: Step 3 (bootstrap in Im c), (B-hol), the identity-theorem transfer of (I), §5 history form.
-- `AbelianShare.lean` (OPUS_QUEUE D3): any dimension d and any N sites per cell, Ē/8 = (1 − 1/N)/d, with the dimension count dN − d − (N − 1) proved from rank hypotheses on Q̃ and D; block form (1 − Λ^{−4})/4; fine piece 1/d and coarse pieces −1/(dN); S_k = Σβ_j, geometric ratio L^{−4}, limit 1/4. The case d ≠ 4 is an extension beyond the notes. The physics inputs stay hypotheses, as in AbelianCount.lean.
-- Axioms: `[propext, Classical.choice, Quot.sound]` for every printed theorem of the three files. Build: 9.4 s, 19 s, 8 s. Oleans: closure of `Mathlib.Analysis.SpecialFunctions.Pow.Deriv` and `Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional` (local cache, no download). Imports into `YmLean.lean` are left to the coordinator.
+- `AbelianShare.lean`: any dimension d and any N sites per cell, Ē/8 = (1 − 1/N)/d, with the dimension count dN − d − (N − 1) proved from rank hypotheses on Q̃ and D; block form (1 − Λ^{−4})/4; fine piece 1/d and coarse pieces −1/(dN); S_k = Σβ_j, geometric ratio L^{−4}, limit 1/4. The case d ≠ 4 is an extension beyond the notes. The physics inputs stay hypotheses, as in AbelianCount.lean.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for every printed theorem of the three files. Build: 9.4 s, 19 s, 8 s. Oleans: closure of `Mathlib.Analysis.SpecialFunctions.Pow.Deriv` and `Mathlib.Analysis.InnerProductSpace.Projection.FiniteDimensional` (local cache, no download).
 
 ## GpyMin.lean, GpyMinCodes.lean, GpyMinCert.lean, GpyBernoulli.lean, GpyLattice.lean (SOURCES_R3S1_GPY_MIN.md §1.1–§1.4, SOURCES_R3S1_GPY_MIN_IV.md); statement check `VERIFY_GpyMin.md`
 
-- Not imported by `YmLean.lean`. Build: `lake build YmLean.GpyLattice` (builds all five; about 3 min on the Mac, almost all in GpyMinCert.lean).
+- Build: `lake build YmLean.GpyLattice` (builds all five; about 3 min on the Mac, almost all in GpyMinCert.lean).
 - GpyMin.lean (901 lines): rational Taylor bounds for cos, sin (`cosLo_le`, `le_cosHi`, `sinLo_le`, `le_sinHi`, alternating series), rational intervals (`Iv`, `Mem`), enclosure of cos(πu) (`cpi`, `mem_cpi`), second-order pair bound (`pair_bound`), box bounds (`lb3_sound`, `lb2_sound`), certificate checkers `chk3`, `chk2` with soundness (`chk3_sound`, `chk2_sound`), local bounds near the centre (`local3`, `local2`), monotonicity in a (`G3_mono`, `G2_mono`), `G3_bound_of_cert`, `G2_bound_of_cert`, and the lattice transfer (`lattice3`, `lattice2`).
 - GpyMinCodes.lean: four certificate trees (base-4 naturals), generated by `numerics/gpy_lean_export.py` (exact rationals, 2 s). Do not edit by hand.
 - GpyMinCert.lean: `cert_su3_16`, `cert_su3_8`, `cert_su2_16`, `cert_su2_8` by `decide +kernel` (no `native_decide`); (a) `su3_continuum_min` (a ≥ 0.3058672: centre is the unique global minimiser of `G3 a` on the alcove, margin min(1.15e−3, 2.5e−3·d²)), `su2_continuum_min` (a ≥ 0.2057372, margin min(4.72e−4, 2e−3·d²)), `G3_bound_8`, `G2_bound_8`; (b) `su3_lattice_16/8`, `su2_lattice_16/8` from the remainder hypothesis (H-rem).

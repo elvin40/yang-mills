@@ -211,12 +211,12 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 
 ## lean/
 
-All 45 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
+All 80 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note. The table lists the first 33 files; lean/README.md lists all 80.
 
 | File | Description | State |
 |---|---|---|
 | README.md | Toolchain, build, statement correspondence (one inventory table). | report |
-| YmLean.lean | Root file importing the 45 modules. | proved (builds) |
+| YmLean.lean | Root file importing the 80 modules. | proved (builds) |
 | YmLean/LemmaDPrime.lean | L-004 (Lemma D′) (shooting), step 8. Statement check: VERIFY_LemmaDPrime.md. | proved in Lean, no sorry |
 | YmLean/LemmaDE.lean | Lemmas D and E. Statement check: none (note verifier LEMMAS_DE_VERIFY.md). | proved in Lean, no sorry |
 | YmLean/LemmaH.lean | L-182 (Lemma H) (Gronwall telescoping, column-sum form). Statement check: none (note verifier SOURCES_HBETA_VERIFY.md). | proved in Lean, no sorry |
@@ -234,7 +234,7 @@ All 45 Lean files build with no sorry (axioms propext, Classical.choice, Quot.so
 | YmLean/TheoremC1.lean | c1_two_step, c1_kappa_bound, c1_window. Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/StripBound.lean | strip_bound_linear, strip_bound_quadratic ((3/2)τ bootstrap of N3). Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/CertBridge.lean | Entrywise enclosure to certified cell bound (cell_sup_bound, vertex_bound). Statement check: VERIFY_CertBridge.md. | proved in Lean, no sorry |
-| VERIFY_*.md (34 files) | Statement checks of the Lean files against the notes. | report |
+| VERIFY_*.md (40 files) | Statement checks of the Lean files against the notes. | report |
 | lakefile.toml, lake-manifest.json, lean-toolchain | Build configuration (Lean v4.33.1, Mathlib v4.33.1). | report |
 | YmLean/CombesThomas.lean | L-125 (Lemma CT) (Combes–Thomas) of SOURCES_A1_KERNEL §7: coercive_inv, combes_thomas, combes_thomas_schur. Statement check: VERIFY_CombesThomas.md. | proved in Lean, no sorry |
 | YmLean/Interp.lean | Interpolation and rescaling lemmas (A3_SIGMA 3.2, T2_KUNIF (K3), T2_KAPPA2 H-215 (K1)). Statement check: VERIFY_Interp.md. | proved in Lean, no sorry |
@@ -243,10 +243,11 @@ All 45 Lean files build with no sorry (axioms propext, Classical.choice, Quot.so
 | YmLean/Tower.lean | Tower property bounds for probability weights (min ≤ average ≤ max). Statement check: VERIFY_Tower.md. | proved in Lean, no sorry |
 | YmLean/BlockSchur.lean | Block-valued Schur test (block_row_le, block_schur_test). Statement check: VERIFY_BlockSchur.md. | proved in Lean, no sorry |
 | YmLean/GaugeMin.lean | Gauge condition of the constrained minimizer, A3_GAMMA0_FULL §5 Lemma 5 (lemma5, lemma5_full). Statement check: VERIFY_GaugeMin.md. | proved in Lean, no sorry |
+| other YmLean/*.lean | See lean/README.md. | proved in Lean, no sorry |
 
 ## paper/
 
-One article, 143 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
+One article, 153 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
 
 | File | Description | State |
 |---|---|---|
@@ -261,7 +262,7 @@ One article, 143 pages: "Yang–Mills on a finite torus along Bałaban's route: 
 | appendix.tex | A Lean inventory, B status ledger, C label map, D revision history. | unverified |
 | refs.bib, refs_check.md | Bibliography (entries from memory except the Sussman–Alpöge block) and its check list. | unverified |
 | README.md | Build instructions and label map. | report |
-| main.pdf | Compiled 143-page paper. | unverified |
+| main.pdf | Compiled 153-page paper. | unverified |
 | refs_check_cloud.md | Online check of every refs.bib entry (2026-10-28): all CONFIRMED, none corrected. | — |
 | drafts/open_problem.tex | Standalone draft section stating the open problem of FABLE_HARD (Gap_K, (U-Lap)_K, Theorems U1/U2/W1/W2/FD); not \input from main.tex. | unverified check |
 
@@ -275,7 +276,8 @@ One article, 143 pages: "Yang–Mills on a finite torus along Bałaban's route: 
 | h2cert_proto.py, h2cert_launch.sh | Prototype of the L = 3 point enclosure of ρ_2(∞, K*) in arb. | verified (H2_CERTIFY_VERIFY, rerun at N = 12) |
 | h1cert_rho1.py | Float ρ_1(∞) scan: 1.760, 1.963, 2.032, 2.063, 2.080, 2.0895 at L = 3, 5, 7, 9, 11, 13. | unverified (float) |
 | h1cert_cell.py, h1cert_cell2.py | Rigorous cell enclosures of ρ_1 (cell2 = 16-vertex Taylor-1 form); formulas bridged in Lean CertBridge.lean. | enclosures validated at L = 3, 5, 13; code not independently verified |
-| h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | unverified; nothing launched |
+| h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | box run done for mode M = 1 (H1CERT2_M1_RESULT.md) |
+| beta1chk_*.py, bcl_*.py, h2lean_proto.py, gpy_lean_export.py | β_1 code cross-check, B_c(L) test, Python mirror of the H2Box tree, Gpy export for Lean; see SOURCES_BETA1_CODE_CHECK, SOURCES_BCL_TEST, lean/VERIFY_H2Box.md, lean/VERIFY_GpyMin.md. | see those files |
 | h1cert_L{3,5,7,9,11,13}_{j1,j2,jinf}.json, h1cert_prof_L{11,13}.npz | Stored scan data. | report |
 | H1_OTHER_L.md | H1_OTHER_L — the (H1_L) majorant certificate at L = 15, 17, 21 (2026-10-28) | numerical |
 | BETA1_SLOPE_STAGE.md | Staged text for NUMERICS §7: converged-grid β_1 at L = 9 (three Lp) against the L = 13 anchor; the slope in log L is about 0.25 c, so the β_1 vs c log L tension stands; L = 11 and 13 not run. | unverified check |

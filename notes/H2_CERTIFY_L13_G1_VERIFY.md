@@ -82,11 +82,11 @@ Not audited in depth: tail_inf / axis_data (old code, H2_CERTIFY_VERIFY items), 
 
 ## 9. (E) launcher and (F) verdict
 Launcher h1cert_launch2.sh: OMP threads 1, 16 shards per mode via xargs -P 16, modes M = 1, 13, M0:169, skip a mode with DONE, smoke mode, MODE names match the driver (M0:169 → MM0169). Default DOMAIN=box (must be overridden). No restart loop: a shard killed by the cgroup OOM killer is lost until a manual rerun. Also, systemd expands $VAR in ExecStart, so a bash -c loop with $ must live in a file.
-Wrapper to use (create ~/ym/h1cert_loop2.sh):
+Wrapper to use (create /home/$USER/ym/h1cert_loop2.sh):
 ```
 #!/bin/bash
 # rerun the launcher until all three DONE markers exist (max 10 tries)
-cd ~/ym
+cd /home/$USER/ym
 export DOMAIN=sorted DMAX=2 H=0.08
 for try in $(seq 1 10); do
   bash h1cert_launch2.sh
@@ -97,12 +97,12 @@ for try in $(seq 1 10); do
 done
 exit 1
 ```
-Run: `sudo -n systemd-run --unit=h1cert2 --collect -p User=elvin -p MemoryMax=16G bash ~/ym/h1cert_loop2.sh` (one attached root WSL session, as the memory note). Smoke first: `DOMAIN=sorted bash h1cert_launch2.sh smoke`.
+Run: `sudo -n systemd-run --unit=h1cert2 --collect -p User=$USER -p MemoryMax=16G bash /home/$USER/ym/h1cert_loop2.sh` (one attached root WSL session, as the memory note). Smoke first: `DOMAIN=sorted bash h1cert_launch2.sh smoke`.
 DMAX=2 caps a never-certifying near-0 cell at 273 evaluations (worst case ~35 cells × 273 × 10 s ≈ 27 core-h per mode instead of ~400). Away from 0 every tested cell certified at h ≥ 0.08 directly. A FAILED leaf away from 0 can be redone later by deleting its JSON and rerunning with a larger DMAX.
 After the run: DONE means "every leaf terminal", not "certified". Certification needs status_counts with FAILED/near0 leaves only inside the G3 ball; check the list.
 
 Verdict.
 - DOMAIN=box: NOT READY. Blocker: frame pivot on axis 4 (§3); the K_4 ∈ [0, 0.16] row (8,000 top cells per mode) cannot certify at any depth, and bisection cost explodes (~1,169+ evaluations per such cell).
-- DOMAIN=sorted, DMAX=2, with the wrapper loop: READY TO LAUNCH, conditional on Elvin accepting (a) the P5a/P5b proof of §5 (written here, not yet checked by an independent verifier) and (b) G3 handled by H1_ANALYTIC (verifier pass + arb evaluation on the residual ball), with the two 1e-16 rounding gaps of §8 as optional fixes. Cost: ~55 core-h (G1 note §3) + ≤ ~80 core-h near 0, about 4–9 h wall on 16 cores.
+- DOMAIN=sorted, DMAX=2, with the wrapper loop: READY TO LAUNCH, conditional on the author accepting (a) the P5a/P5b proof of §5 (written here, not yet checked by an independent verifier) and (b) G3 handled by H1_ANALYTIC (verifier pass + arb evaluation on the residual ball), with the two 1e-16 rounding gaps of §8 as optional fixes. Cost: ~55 core-h (G1 note §3) + ≤ ~80 core-h near 0, about 4–9 h wall on 16 cores.
 
 Cleanup: scratch scripts and kr/ deleted; kept numerics/h1cert_verify/sym_check.py (P5 check). Pilot output untouched.

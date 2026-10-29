@@ -3,7 +3,7 @@ IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 
 Date: 2026-10-28. Item GAPRIME, DERIVE (second attempt; the first attempt, SOURCES_T2_GAPRIME.md, stopped after its header and plan).
 Firewall respected: /tmp/sa_repo, reports/SUSSMAN_ALPOGE_MAP.md and reports/ONLINE_SWEEP.md were not opened.
-Read: api_runs/BRIEFS.md "## ITEM GAPRIME"; SOURCES_T2_GAPRIME.md; SOURCES_T2_S123.md l. 120–215 (§5), 270–285; SOURCES_T2_S123_VERIFY.md l. 95–172; BETA_FP_M.md l. 64–101; BETA_FP_H.md l. 13–50; BETA_FP_H_VERIFY.md l. 33–39; U3_LEMMA51.md l. 70–110; numerics/t2_s123_gap2d.py, t2_s123_phys2d.py and their JSON (read only).
+Read: the private agent brief "ITEM GAPRIME"; SOURCES_T2_GAPRIME.md; SOURCES_T2_S123.md l. 120–215 (§5), 270–285; SOURCES_T2_S123_VERIFY.md l. 95–172; BETA_FP_M.md l. 64–101; BETA_FP_H.md l. 13–50; BETA_FP_H_VERIFY.md l. 33–39; U3_LEMMA51.md l. 70–110; numerics/t2_s123_gap2d.py, t2_s123_phys2d.py and their JSON (read only).
 No literature result is used. In particular no Helffer–Sjöstrand or Harper-band theorem is used; the Landau gap of the lattice magnetic Laplacian is proved here from scratch (§3).
 
 Statement needed (S123 §5, after Lemma 5.8, quoted):
