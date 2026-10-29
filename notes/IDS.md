@@ -121,7 +121,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | K-042 | convention | H-063 (A18-1)–H-066 (A18-4) and M ≥ 5M_99 with 10 \| C^{122}M: H-063 (A18-1) a_0 → … | C41 | TRUST_LEDGER.md §3 |
 | K-043 | convention | CMP 122 I–II threshold/exponent conditions H-266–H-270 (ν_I ≤ 2(p_0 − p_1 − 1); N ≥ (ν_II/log … | C42 | TRUST_LEDGER.md §3 |
 | K-044 | convention | (Cv1) U(c) = product of the L level-(i−1) links on the straight segment c_− → c_+ (CMP 98 … | C43, (Cv1), (Cv2) | TRUST_LEDGER.md §3 |
-| K-045 | convention | L-284 (Lemma T) cut-off χ(d/D_0), D_0 = D_0(d, L), with the threshold (T2): torus side > … | C44 | TRUST_LEDGER.md §3 |
+| K-045 | convention | L-284 (Lemma T) cut-off χ̃_y = Σψ_{y′}χ(d_*(y′, y)/D̃_0) (repaired (c′), closure-bond metric d_*), D̃_0 = D̃_0(d, L), with the threshold (T2): torus side > c̃_T(d, L) … | C44 | TRUST_LEDGER.md §3 |
 | K-046 | convention | (K-046) s-rule: s-versions are defined per distinct σ_0-cube met on the project's expansions … | C45, C-new-2 | TRUST_LEDGER.md §3 |
 | K-047 | convention | γ²β′ ≤ 1/L: unprinted side condition of CMP 119 (2.9) line 2 (the step L(1 + X)^{β_0} ≤ (L + … | C46 | TRUST_LEDGER.md §3 |
 | K-048 | convention | ι-domain assignment (WG 2.5); proposed, not a ledger row | C-new-1 | SOURCES_SRULE_CONVENTION.md / CLOSURE_PLAN.md (proposed) |
@@ -1363,7 +1363,7 @@ Homonym lemma names (one id per name and defining file; a reviewer merges ids wh
 - Theorem B_PW (L-103) is the paper's name for BETA_FP_PW Theorem B (L-088). Live occurrences were mapped to L-088; L-103 has no live use. Merge candidate.
 - Theorem B: L-003 (paper Target 2 theorem), L-088 (BETA_FP_PW, Route B), L-089 (BETA_FP_U), plus the MPT_STEPC and THEOREM2_PROOF homonyms; assigned per sentence.
 - Lemma CT: L-125 (SOURCES_A1_KERNEL, kernel form, Combes–Thomas), L-124 (A1_WALK_FULL, μ-weighted), L-126 (WC_FULL); assigned per sentence and per Lean source file.
-- Lemma T: L-284 (SOURCES_C_CONDITION, torus side / cut-off χ(d/D_0)), L-283 (H1_ANALYTIC majorant), L-285 (SOURCES_HTHR2 tail factor), L-286 (SOURCES_P253_P275), L-282 (ASSEMBLY_N1, no live use).
+- Lemma T: L-284 (SOURCES_C_CONDITION, torus side / cut-off χ̃ with d_*, repaired (c′) in SOURCES_LEMMA_T_REPAIR), L-283 (H1_ANALYTIC majorant), L-285 (SOURCES_HTHR2 tail factor), L-286 (SOURCES_P253_P275), L-282 (ASSEMBLY_N1, no live use).
 - Lemma C, Lemma N, Lemma S, Lemma P, Lemma E, Lemma G, Theorem L, Theorem WC, Theorem A3, Theorem W, Lemma M, Lemma A: assigned per sentence by the file the sentence names (WG_FULL, A18_REGULAR, D4D5, A2_R2, A7_CDC, A8_POS, WC_EXPGAUGE, WC_FULL, U3_AW, MJ_REST, …).
 - Lemma G3: L-174 (SOURCES_G3) for generic uses; L-175 (SOURCES_G3_N2) where the text names the G3_N2 file. Probable restatement.
 - Theorem LOC: L-026 (SOURCES_A15_LOC, paper thm:L026) for live uses; L-214, L-215 (infinite-volume files) unused in live files.
