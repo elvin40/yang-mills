@@ -3,7 +3,7 @@
 Scheme. Every project object has one id `P-nnn`: a capital letter, a hyphen, three digits (tasks: `T-nnnn`, four digits).
 Prefixes: R ledger row, K convention, X external result, N canon line, Q closure item, H hypothesis/condition/reading, L result proved here, T task.
 Numbers were assigned from scratch in logical order (ledger order, canon order, closure-table order, paper order for L); they carry no status and no trace of the old number.
-Canon lines were numbered in steps of 10 (N-010 … N-500), so a new line fits between two old ones (N-265 was added this way on 2026-10-29); Lean `CanonOrder.id_eq_rank` proves that the order of the N-numbers equals the canon order.
+Canon lines were numbered in steps of 10 (N-010 … N-500), so a new line fits between two old ones (N-265 was added this way on 2026-10-28, N-395 on 2026-10-29); Lean `CanonOrder.id_eq_rank` proves that the order of the N-numbers equals the canon order.
 Ledger rows of old Group A and Group B share the R- prefix; the group is a column of TRUST_LEDGER.md, not part of the id.
 Prose cites `ID (short name)`; a parenthesized label or a lemma name may follow its id as a description, e.g. "H-116 (H-U)", "L-005 (Lemma D″)".
 File-local labels (verify items V1–V13, Steps, WC_FULL R1–R4, A1_WALK_FULL (H1)–(H4), Route B items B1–B8, canon resolutions R1–R7, …) are not global ids; cite them qualified by file.
@@ -182,6 +182,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | N-370 | canon line | Fixed-layer α-chain, after α′ (R5): β, α′ → α_1 → α_0 → α_3 → α_2 (α_4, γ_2, α_6, Latin a_1). … | B22 | SOURCES_ORDER_CANON.md Part B |
 | N-380 | canon line | ε_0^{109} (CMP 109 real-background plaquette constant) H-064 (A18-2): ε_0^{109} ≤ α_0/(2B_3) … | B22a | SOURCES_ORDER_CANON.md Part B |
 | N-390 | canon line | α_5 (composite, not free); (Hα) (α_5 + G_Γ²δ_S)Λ_0 ≤ ½ holds by N-310 and N-370. — K-026 … | B23 | SOURCES_ORDER_CANON.md Part B |
+| N-395 | canon line | C_1^{(1.36)}, C_2^{(1.36)} (≥ C_2^{(1.43)}), q: CMP 116 Lemma 1 (1.36) constants, after the α's, before ε_1 (added 2026-10-29) … | — | SOURCES_ORDER_CANON.md Part B |
 | N-400 | canon line | ε_1: upper bounds via κ_1, B_0, C_i^{116}, α_2, α_4, Latin a_1, M^q, E_0, L; ε_1M^q ≤ 1. — … | B24 | SOURCES_ORDER_CANON.md Part B |
 | N-410 | canon line | r (= r_0^{exp}; r ≥ 2; H-261 needs r > 1), ν_I → p_0 with p_0 > (d + 5)r + ν_I + 4 → p_1 → … | B25 | SOURCES_ORDER_CANON.md Part B |
 | N-420 | canon line | A_1: γ_0A_1² ≥ 8 + 4 log F (F fixed earlier [I: IEPS_VERIFY §21]). (R1: A_1 → A_0.) | B26 | SOURCES_ORDER_CANON.md Part B |
@@ -258,7 +259,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | Q-058 | closure item (Balaban printed input, theorem-file tag) | [R-sketch: CMP 99 Cor. 3.6, p. 408, from Cor. 3.5, Thm 3.4 (3.84)–(3.86), and CM | T310-R1 | THM310_FULL.md |
 | Q-059 | closure item (obstacle) | (1.89) improved bound with −κ_1d_k(X); closed as FX_O1 Lemma | FX O1 | SOURCES_FX.md |
 | Q-060 | closure item (obstacle) | (1.100) denominator = bare Wilson integral (FX_O23) | FX O2 | SOURCES_FX.md |
-| Q-061 | closure item (obstacle) | moved d_Sζ_iP_p term (FX_O23; carried in B18) | FX O3 | SOURCES_FX.md |
+| Q-061 | closure item (obstacle) | sourced R-denominators and T′ upper bounds at complex weight (FX_O23 §4 O2 incl. the moved d_Sζ_iP_p term, §5 O3; FABLE_O3_ALC Lemma O3-den for complex U) (renamed 2026-10-29, FABLE_O3_ALC_VERIFY D.4) | FX O3 | SOURCES_FX.md |
 | Q-062 | closure item (obstacle) | optional R-step form (1.103)–(1.104); avoided by C13 | FX O4 | SOURCES_FX.md |
 
 ## H- hypotheses, conditions, readings [I]
@@ -603,6 +604,31 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | H-336 | input/reading (theorem-file tag) | [I-geo; Balaban p. 411, 414]. Geometry of ζ_□ and 𝒟′_□ with explicit margins (§6 | T310-I6 | THM310_FULL.md |
 | H-337 | input/reading (theorem-file tag) | [I; sequence-locality]. For a cube □′ of a cover at size M′, the local sequence | T310-I7 | THM310_FULL.md |
 | H-338 | input/reading (theorem-file tag) | [I, C0]: conversion of block norms to the μ-weighted kernels of WG_FULL 0.2. | T310-I8 | THM310_FULL.md |
+| H-339 | hypothesis/condition label | (NT4): four-point bound \|S^T_{4,ε}(F_d) − Lead(d)\| ≤ C_4g⁸(g + (d/ℓ)²)d^{−16} on ]0, d_1] (owned by H-101 extended to four sources) | (NT4) | SOURCES_L1_NT.md §5; SOURCES_L1_NT_VERIFY §7 |
+| H-340 | hypothesis/condition label | (NT4)_{d0}: (NT4) at the single d = d_0; (NT4-ℓ) its ℓ-uniform form | (NT4)_{d0}, (NT4-ℓ) | SOURCES_L1_NT_VERIFY §7; SOURCES_NT4.md |
+| H-341 | hypothesis/condition label | (NT-loc): per-polymer locality of the ring term at all scales | (NT-loc) | SOURCES_NT4.md |
+| H-342 | hypothesis/condition label | (S1-rel): sourced bounds at a relative source radius | (S1-rel) | SOURCES_NT4.md; SOURCES_NT4_VERIFY C2 |
+| H-343 | hypothesis/condition label | (S1-G): the G-part companion of (S1-rel) | (S1-G) | SOURCES_NT4.md |
+| H-344 | hypothesis/condition label | (H-ev): evenness input for the O(g_k²) rate of (NT4)_{d0} | (H-ev) | SOURCES_NT4.md |
+| H-345 | hypothesis/condition label | (R-op geometry): the R > 18dL family on R-operation sequences, repaired by (RB) and Lemma CC′ | (R-op geometry) | SOURCES_L1_B_VERIFY §9; SOURCES_ROP_GEOMETRY.md; SOURCES_ROP_RESIDUE.md |
+| H-346 | reading [I] | (A-σ*): g-free radius of the localized minimizer U_0 of CMP 122 II (1.3); not proved, not needed | (A-σ*), (A-σ) | SOURCES_JC_SIGMA.md §3.4; SOURCES_A_SIGMA_STAR.md §4 |
+| H-347 | condition (canon entry) | (J-σ): γ ≤ γ_σ(M), amended form, canon N-470 | (J-σ) | SOURCES_A_SIGMA_STAR.md §3.3 |
+| H-348 | condition (canon entry) | (J-c′): Φ′(γ) ≤ ½e^{−C_TV M^5}; not booked (not needed under choice B) | (J-c′) | SOURCES_W6_RESOLVE_VERIFY §6 |
+| H-349 | condition (canon entry) | (C-P5): γ ≤ γ_P5(M), canon N-470 | (C-P5) | SOURCES_L1_G.md §2.5 |
+| H-350 | condition (canon entry) | (RB): M > 24dLM_1, canon N-310 | (RB) | SOURCES_ROP_GEOMETRY.md §6 |
+| H-351 | condition (canon entry) | (G1) of the p. 387 repair: ¼γ_0A_1²p_0² ≥ Q_*C_cM^dR^{d+2}, canon N-470 (not H-200 (GC1)) | (G1) [S_P387_REPAIR] | SOURCES_P387_REPAIR.md §7 |
+| H-352 | condition (canon entry) | (G2) of the p. 387 repair: ½p_0 ≥ Q_*C_cM^dR^{d+2}, canon N-470 | (G2) [S_P387_REPAIR] | SOURCES_P387_REPAIR.md §7 |
+| H-353 | condition (canon entry) | (G3) of the p. 387 repair, volume form: min(¼γ_0A_1²p_0², ½p_0) ≥ 63^dC_ΦR^dκ_final, canon N-470 | (G3) [S_P387_REPAIR] | SOURCES_P387_REPAIR_VERIFY item 8 |
+| H-354 | condition (canon entry) | (Rγ1), (Rγ2): no two consecutive R-drops; R_n ≤ LR_m | (Rγ1), (Rγ2) | SOURCES_UW_FINAL_VERIFY §6 |
+| H-355 | hypothesis/condition label | (H-α): absolute-domain analyticity and bound of the frozen whole-lattice E-class terms | (H-α) | SOURCES_L1_F_VERIFY §5 |
+| H-356 | hypothesis/condition label | (H-α′): the weaker sufficient form of (H-α) | (H-α′) | SOURCES_L1_F_VERIFY §4 V24 |
+| H-357 | condition | K_U: the constant of the β test configurations (first order R-005, second order R-019) | K_U | SOURCES_H_ALPHA_RESIDUE.md §3 |
+| H-358 | condition | Off-shell item of R-010/R-014: the Δ^ξ_U entry at off-shell (U, J), reduced to (i) the literal (189) item, (ii) the rate ¼δ_* vs ½δ_0, (iii) c_J = L³α_0 | off-shell item | SOURCES_R005_DD §8; SOURCES_OFFSHELL_F2_VERIFY §8 |
+| H-359 | hypothesis/condition label | (U-W): no torus-danger-class estimate on the unread pages; [V + P relative to R items] | (U-W) | SOURCES_U_ELL.md §6.1 |
+| H-360 | hypothesis/condition label | (U-W)′: the unread-page sweep (D1)–(D5), joint with (W6*) | (U-W)′ | SOURCES_U_ELL_VERIFY §8; SOURCES_U_ELL_FINAL_VERIFY §7 |
+| H-361 | hypothesis/condition label | (W6*): danger-class image sweep of the CMP 109/116/122 pages | (W6*) | SOURCES_L1_E.md §6.4; SOURCES_W6_RESOLVE_VERIFY §4 |
+| H-362 | hypothesis/condition label | (U_ℓ^poly): polynomial-in-ℓ variant of (U_ℓ); no independent route | (U_ℓ^poly) | SOURCES_L2_L3L14.md |
+| H-363 | condition | (O-π): pointwise kernel bound for Δ′_π; removed on-shell by CMP 102 (138) | (O-π) | SOURCES_L1_C_VERIFY §8; SOURCES_R005_DD.md |
 
 ## L- results proved in this project
 
@@ -958,6 +984,45 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | L-348 | result proved here (theorem-file tag) | T310-P2 | T310-P2 | THM310_FULL.md |
 | L-349 | result proved here (theorem-file tag) | T310-P3 | T310-P3 | THM310_FULL.md |
 | L-350 | result proved here (theorem-file tag) | T310-P5 | T310-P5 | THM310_FULL.md |
+| L-351 | result proved here | Lemma G (global charging argument for CMP 122 II (1.80)–(1.89)) | Lemma G | SOURCES_P387_REPAIR.md §5 |
+| L-352 | result proved here | Cor G1 ((1.89) with (G1), (G2)) | Cor G1 | SOURCES_P387_REPAIR.md §6 |
+| L-353 | result proved here | Cor G2 (improved bound; volume form per verifier) | Cor G2 | SOURCES_P387_REPAIR.md §6; VERIFY item 6 |
+| L-354 | result proved here | Prop R ((1.80) in margin form) | Prop R | SOURCES_P387_REPAIR.md §6 |
+| L-355 | result proved here | Theorem 189 ((189) on-shell) | Theorem 189 | SOURCES_R005_189.md |
+| L-356 | result proved here | Theorem DD (derivative entries of (190) on-shell) | Theorem DD | SOURCES_R005_DD.md |
+| L-357 | result proved here | Theorem E (F-extension, off-shell) | Theorem E | SOURCES_OFFSHELL_H.md |
+| L-358 | result proved here | Theorem W (walk expansion of F) | Theorem W | SOURCES_OFFSHELL_F2.md |
+| L-359 | result proved here | Theorem S (s-rule for F) | Theorem S | SOURCES_OFFSHELL_F2.md |
+| L-360 | result proved here | Theorem H (Hölder bound of F) | Theorem H | SOURCES_OFFSHELL_F2.md |
+| L-361 | result proved here | Lemma CC′ | Lemma CC′ | SOURCES_ROP_GEOMETRY.md §4 |
+| L-362 | result proved here | Theorem R (R-operation background regularity) | Theorem R | SOURCES_R024_ISTRONG.md §3 |
+| L-363 | result proved here | Proposition A-σ′ | Proposition A-σ′ | SOURCES_A_SIGMA_STAR.md §2 |
+| L-364 | result proved here | Proposition Σ-B | Proposition Σ-B | SOURCES_JC_SIGMA.md |
+| L-365 | result proved here | Lemma TV | Lemma TV | SOURCES_W6_RESOLVE.md §2 |
+| L-366 | result proved here | Lemma G (per-link factor; not L-351) | Lemma G | SOURCES_W6_RESOLVE.md §1.2 |
+| L-367 | result proved here | Lemma O3-den | Lemma O3-den | FABLE_O3_ALC.md A3 |
+| L-368 | result proved here | Lemma AL-c (proves H-071) | Lemma AL-c | FABLE_O3_ALC.md B4 |
+| L-369 | result proved here | Dressing Lemma (= Lemma D of SOURCES_L1_A) | Dressing Lemma | FABLE_A25_A26_H1.md §1.2 |
+| L-370 | result proved here | Lemma G (gluing; not L-351) | Lemma G | SOURCES_L1_A.md |
+| L-371 | result proved here | Proposition A ((H-α) ⇒ \|β_j\| ≤ M_β) | Proposition A | SOURCES_H_ALPHA.md |
+| L-372 | result proved here | Lemma 2 (symmetrized Cauchy step for K_U) | Lemma 2 | SOURCES_H_ALPHA_RESIDUE.md §3 |
+| L-373 | result proved here | Theorem Z-5 (with Lemmas Z-1–Z-4, Cor. Z-6) | Theorem Z-5 | SOURCES_R030_RESIDUE.md |
+| L-374 | result proved here | Lemma P-1 (with Lemmas P-4a–P-4e) | Lemma P-1 | SOURCES_R026_PI.md |
+| L-375 | result proved here | Lemma G-1 | Lemma G-1 | SOURCES_L1_G.md §1 |
+| L-376 | result proved here | Lemma G-2 | Lemma G-2 | SOURCES_L1_G.md §2 |
+| L-377 | result proved here | Lemma G-3 | Lemma G-3 | SOURCES_L1_G.md §3 |
+| L-378 | result proved here | Lemma G-4 ((Gap_f) at fixed j) | Lemma G-4 | SOURCES_L1_G.md §4 |
+| L-379 | result proved here | Proposition J (with Lemmas J1–J3) | Proposition J | SOURCES_L1_E.md |
+| L-380 | result proved here | Lemma C1(iii′) | Lemma C1(iii′) | SOURCES_R010_CC.md |
+| L-381 | result proved here | Lemma D6 | Lemma D6 | SOURCES_U_ELL_FINAL.md §2 |
+| L-382 | result proved here | (KE′-T*) (CMP 96 Cor. 2.8 constants torus-uniform) | (KE′-T*) | SOURCES_U_ELL_FINAL.md §3 |
+| L-383 | result proved here | Lemma PB | Lemma PB | SOURCES_UK_HOLONOMY.md |
+| L-384 | result proved here | Theorem NT-G | Theorem NT-G | SOURCES_L1_NT.md §5 |
+| L-385 | result proved here | Theorem NT-F | Theorem NT-F | SOURCES_L1_NT.md §5 |
+| L-386 | result proved here | Theorem NT-IV | Theorem NT-IV | SOURCES_L1_NT.md §5 |
+| L-387 | result proved here | Lemma Sep | Lemma Sep | SOURCES_L1_B.md §3 |
+| L-388 | result proved here | Lemma U1 (uniform choice) | Lemma U1 | SOURCES_U_ELL.md |
+| L-389 | result proved here | Lemma W (wrapping (1.80_T); superseded by L-354) | Lemma W | SOURCES_UW_WRAP.md §6 |
 
 ## T- tasks (PLAN.md log)
 

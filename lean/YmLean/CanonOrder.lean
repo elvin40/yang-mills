@@ -8,12 +8,13 @@ import Mathlib.Data.Nat.Basic
 `canonEdges` is a hand transcription of SOURCES_ORDER_CANON Part B as of 2026-10-28
 (round T-0099 + the lift pass of F.5 + canon pass G: N-100–N-160, N-170 and N-180 moved;
 VERIFY2 fix pass: edges (N-180, N-310) and (N-160, N-270) added; Ω pass: edge (N-180, N-260) added;
-sweep fix pass 2026-10-28: line N-265 (M_1^{(102)}) inserted before N-270, 10 edges added). An edge `(a, b)` means "a condition of line `b` uses a
+sweep fix pass 2026-10-28: line N-265 (M_1^{(102)}) inserted before N-270, 10 edges added;
+apply pass 2026-10-29: line N-395 (CMP 116 (1.36) constants) inserted after N-390, 10 edges added). An edge `(a, b)` means "a condition of line `b` uses a
 constant fixed on line `a`". Sources of the edges: the "uses" lists of the topological
 passes E7, E8, F.3, F.5, plus the dependencies that the Part B line text names explicitly.
 There is no line before N-010; the lines are N-010–N-500 plus the sub-lines N-170, N-100–N-160,
-N-210–N-230, N-260, N-265, N-300, N-320–N-330, N-380, N-460 (51 lines). N-265 uses the gap of the
-step-10 scheme (IDS.md), so `num` is order-equivalent to `rank` but no longer equal to 10 × (rank + 1) after N-260. N-030 sits in Group 0, before N-040 (E2), and
+N-210–N-230, N-260, N-265, N-300, N-320–N-330, N-380, N-395, N-460 (52 lines). N-265 uses the gap of the
+step-10 scheme (IDS.md), so `num` is order-equivalent to `rank` but no longer equal to 10 × (rank + 1) after N-260; N-395 does the same after N-390. N-030 sits in Group 0, before N-040 (E2), and
 N-170, N-180 sit after N-160 (G.3), so the rank is the position in the file, not the line number.
 
 The theorems certify only that this transcription is acyclic. They do not certify the
@@ -26,7 +27,7 @@ inductive Line
   | N010 | N020 | N030 | N040 | N050 | N060 | N070 | N080 | N090
   | N100 | N110 | N120 | N130 | N140 | N150 | N160 | N170 | N180 | N190 | N200 | N210 | N220 | N230
   | N240 | N250 | N260 | N265 | N270 | N280 | N290 | N300 | N310 | N320 | N330 | N340 | N350 | N360 | N370
-  | N380 | N390 | N400 | N410 | N420 | N430 | N440 | N450 | N460 | N470 | N480 | N490 | N500
+  | N380 | N390 | N395 | N400 | N410 | N420 | N430 | N440 | N450 | N460 | N470 | N480 | N490 | N500
   deriving DecidableEq, Repr
 
 open Line
@@ -36,7 +37,7 @@ def canonOrder : List Line :=
   [N010, N020, N030, N040, N050, N060, N070, N080, N090,
    N100, N110, N120, N130, N140, N150, N160, N170, N180, N190, N200, N210, N220, N230,
    N240, N250, N260, N265, N270, N280, N290, N300, N310, N320, N330, N340, N350, N360, N370,
-   N380, N390, N400, N410, N420, N430, N440, N450, N460, N470, N480, N490, N500]
+   N380, N390, N395, N400, N410, N420, N430, N440, N450, N460, N470, N480, N490, N500]
 
 def rank (a : Line) : ℕ := canonOrder.idxOf a
 
@@ -73,6 +74,7 @@ def canonEdges : List (Line × Line) :=
   , (N060, N270), (N170, N270), (N090, N270), (N190, N270), (N200, N270), (N240, N270), (N250, N270), (N260, N270)
   , (N140, N270)                                   -- M_1 ≥ M_310 (G)
   , (N160, N270)                                   -- M_1 ≥ M_W^{39,c} (VERIFY2)
+  , (N150, N270)                                   -- (CF) M_1 ≥ 2C_Wc_0 (apply pass)
   , (N270, N280)
   , (N270, N290)
   , (N060, N300), (N250, N300), (N260, N300), (N270, N300)
@@ -90,9 +92,12 @@ def canonEdges : List (Line × Line) :=
   , (N060, N370), (N170, N370), (N090, N370), (N210, N370), (N230, N370), (N270, N370), (N290, N370)
   , (N310, N370), (N350, N370), (N360, N370)
   , (N110, N370)                                   -- Mα_0 ≤ a_37 (G)
+  , (N070, N370), (N150, N370)                      -- K_T^C uses κ; conditional (CF) α_0 cap uses c_0 (apply pass)
   , (N060, N380), (N270, N380), (N310, N380), (N370, N380)
   , (N265, N380)                                    -- (18L + 2)Mε_0^{109} ≤ R_1M_1^{(102)}a_1^{102}
   , (N290, N390), (N310, N390), (N370, N390)
+  , (N060, N395), (N090, N395), (N310, N395), (N370, N395)   -- (1.36) constants C_1, C_2, q (apply pass 2026-10-29)
+  , (N395, N400)                                    -- ε_2, C_3^{116} use the (1.36) constants
   , (N050, N400), (N060, N400), (N090, N400), (N310, N400), (N370, N400)
   , (N040, N400), (N070, N400)                      -- (KP-116), (R1-a): d, κ, s_0
   , (N040, N410)                                     -- exponents use only each other and d
@@ -104,6 +109,7 @@ def canonEdges : List (Line × Line) :=
   , (N060, N470), (N070, N470), (N310, N470), (N320, N470), (N330, N470), (N370, N470), (N400, N470)
   , (N410, N470), (N430, N470), (N440, N470), (N450, N470), (N460, N470)
   , (N265, N470)                                    -- B_5^{122}M^6O(1)ε_k ≤ R_1M_1^{(102)}a_1^{102}
+  , (N395, N470), (N420, N470)                      -- B13 with c_2 of N-395; (G1), (G2) use γ_0, A_1 (apply pass)
   , (N470, N480)
   , (N060, N490), (N250, N490), (N260, N490), (N310, N490), (N470, N490), (N480, N490)
   ]
@@ -115,7 +121,7 @@ def Edge (a b : Line) : Prop := (a, b) ∈ canonEdges
 
 theorem canonOrder_nodup : canonOrder.Nodup := by decide
 
-theorem counts : canonOrder.length = 51 ∧ canonEdges.length = 180 := by decide
+theorem counts : canonOrder.length = 52 ∧ canonEdges.length = 190 := by decide
 
 /-- Every transcribed edge goes forward in the file order. -/
 theorem edges_forward : ∀ e ∈ canonEdges, rank e.1 < rank e.2 := by decide
@@ -164,6 +170,7 @@ def num : Line → ℕ
   | .N370 => 370
   | .N380 => 380
   | .N390 => 390
+  | .N395 => 395
   | .N400 => 400
   | .N410 => 410
   | .N420 => 420
@@ -183,10 +190,12 @@ every line up to N-260, see `id_eq_rank_prefix`.) -/
 theorem id_eq_rank : ∀ a b : Line, num a < num b ↔ rank a < rank b := by
   intro a b; cases a <;> cases b <;> decide
 
-/-- The step-10 form holds on every line up to N-260; after it, `num a = 10 * rank a`. -/
+/-- The step-10 form holds on every line up to N-260; from N-270 to N-390, `num a = 10 * rank a`;
+after N-395, `num a = 10 * (rank a - 1)`. -/
 theorem id_eq_rank_prefix : ∀ a : Line,
     (rank a ≤ rank N260 → num a = 10 * (rank a + 1)) ∧
-    (rank N265 < rank a → num a = 10 * rank a) := by
+    (rank N265 < rank a → rank a ≤ rank N390 → num a = 10 * rank a) ∧
+    (rank N395 < rank a → num a = 10 * (rank a - 1)) := by
   intro a; cases a <;> decide
 
 /-- Every edge goes from a smaller N-id to a larger one. -/

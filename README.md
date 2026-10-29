@@ -10,35 +10,36 @@ Bałaban's renormalization-group construction of four-dimensional SU(2) lattice 
 
 ## Status
 
-Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28) and notes/PLAN.md (dated lines up to 2026-10-29). Identifiers follow notes/IDS.md and are cited as "ID (label)". Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. All derivations and verification passes were written by AI agents (Claude models) under the author's direction. No human expert has checked them.
+Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28, with the apply pass of 2026-10-29) and notes/PLAN.md (dated lines up to 2026-10-29). Identifiers follow notes/IDS.md and are cited as "ID (label)". Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. All derivations and verification passes were written by AI agents (Claude models) under the author's direction. No human expert has checked them.
 
 ### Target 1: Balaban's Theorem 2 in weak form (Theorem 2w, L-001)
 
 - Status: proved+verified, conditional, by Route K (L-009 (Theorem K) + L-005 (Lemma D″)), at odd L > 11.
 - Binding set (ledger §5, round 12): R-006 + R-025–R-031 + X-005 (1 Group A row, 7 Group B rows, 1 external). Grades:
   - R-025 (H2): certified at L = 13 (interval arithmetic, outward rounding; verified), by L-046 (Theorem (H2) at L = 13) and rho2_le (Lean). The branch-and-bound itself is also checked in Lean (lean/YmLean/H2Box.lean, `rho1_sq_le_ten`): a verified rational interval evaluator and a box tree generated inside Lean (its Python mirror numerics/h2lean_proto.py gives 25,241 boxes, worst box 9.999994 ≤ 10); the final check uses native_decide (trusts the Lean compiler); the majorant inequality ρ₁² ≤ B*, the B₄ symmetry (P5) and ρ₁(0)² ≤ 10 enter as named hypotheses (lean/VERIFY_H2Box.md). A kernel-only check has not been attempted (lean/VERIFY_H2Box.md §6). Also certified at L = 15, 17, 21. Residue: the reading of Balaban's (0.4) (second reader on CMP 109 pp. 252–255), the gauge-fixing convention, Prop. A at M >= 27, L-169 (Lemma G) beyond point checks, numerics/h1analytic/bb_arb.py audited only. Premise P4 proved and verified (2026-10-28). At L = 3, 5, 9, R-025 (H2) is numerical only.
-  - R-026 (PI): verified reduction at fixed level.
+  - R-026 (PI): proved at fixed level relative to listed inputs, verified (2026-10-29; notes/SOURCES_R026_PI.md + VERIFY). An earlier ledger note cited the wrong file for its input (I3); fixed.
   - R-027 (F): proved, verified (round 11).
   - R-028 (M_j): proved relative to listed inputs, verified, at fixed j.
   - R-029 (V1): proved+verified at fixed level, conditional on R-030 (G2), Balaban's inductive bounds, and the averaging (0.4).
-  - R-030 (G2): verified reduction at fixed level.
+  - R-030 (G2): proved at fixed j relative to listed inputs, verified (2026-10-29; notes/SOURCES_R030_RESIDUE.md + VERIFY).
   - R-031 (L5): proved relative to listed inputs, verified; no [I] left (verifier 2026-10-28, ledger addendum 2026-10-29; notes/SOURCES_CTR_RESIDUE.md + VERIFY; Lean lean/YmLean/LemmaDHist*.lean).
-  - R-006 (Balaban's inductive assumption, H-202 (H0)): taken from Balaban; its use in L-001 (Theorem 2w) is a verified reduction.
+  - R-006 (Balaban's inductive assumption, H-202 (H0)): taken from Balaban; its use in L-001 (Theorem 2w) is a verified reduction; its off-trajectory sup induction N6 is proved relative to the small-field step of R-013 (2026-10-29).
+- Open binding inputs of Target 1: no Group B row is open. It rests on R-006 (reduced to R-013's small-field step, H-040, N9) and on R-031's residue (R-013, R-018, CMP 102 Sect. G, one reading H-047), plus the conventions K-003, K-004, K-018, K-023.
 - L-001 (Theorem 2w) ⇒ Balaban's Theorem 1 (ledger §5): 4 Group A rows (R-006, R-012, R-013, R-015) + 9 Group B rows (R-025–R-032, R-034) + X-005. R-034 (the cross-scale sweep) is cleared and verified (round 7). R-012 is a verified list; R-015 is a verified reduction to conventions; R-032 is proved relative to listed inputs, verified.
 
 ### Target 2: finite-torus existence in compactness form (Theorem B, L-003)
 
 - Status: proved modulo named blocks. Given H-116 (H-U), limit points exist and satisfy the torus forms of OS0–OS3 (verified, ASSEMBLY_VERIFY.md). H-116 (H-U) is reduced, not proved.
 - Binding set (ledger §5, round 12): 21 Group A rows + X-002–X-005 + 21 Group B rows (R-025–R-032, R-034–R-046).
-- Group A rows without a verified proof or reduction: R-021 (printed CMP 99 inputs of the H-057 (C) proof) only. R-022 (CMP 109 p. 253 "valid universally"), R-023 (CMP 109 p. 275 regularity), and R-024 (Q-049, the walk expansions in the multiscale Ω-geometry) are verified reductions whose open items are unproved lemmas. Under the stricter rule "open items are readings or printed statements only", the list is R-021–R-024.
-- Group B rows without a proof or a verified reduction: none. R-035 (B-S), the sourced Theorem 1, is open as a whole; its parts are R-036–R-044 and R-046. R-043 (FX) is reduced to R-042 (N3), and R-042 (N3) is a verified reduction to R-040/R-041 (H-hol), the real uniform R-037 (H-hist), and H-120 (H2-hist). R-045 (B-N1), the bridge to H-116 (H-U), is derived given R-045 (S); its H-098 (E14-c) clause is reduced to R-045 (S), verified.
+- Apply pass 2026-10-29 (ledger last addendum): R-005 has a full proof on-shell relative to listed inputs ((189) proved; notes/SOURCES_R005_189.md + VERIFY); its off-shell literal reading is open. R-013's large-field induction (CMP 122 II (1.80)–(1.89)) holds by a new Lemma G (notes/SOURCES_P387_REPAIR.md + VERIFY); Balaban's Case 2 proof on p. 387 is invalid as written, and his conclusions stand. R-022 and R-023 lose their open lemmas. H-071 (AL-c) is proved; Q-061 is proved relative to R-042. The sourced Theorem 1, R-035, is reduced, with one residue, the page sweep (W6*).
+- Open binding inputs of Target 2 (beyond Target 1): the off-shell item H-358 of R-010/R-014 (the literal (189) item, a decay rate, and the conversion c_J = L³α_0); R-019 (one reading of CMP 98 p. 43, complex Prop. 5); R-018, including the residue (ii) of (R-op geometry); R-024 ((Sep) on R-operation-modified layers, (S_H^Ω)); page readings of R-022, R-023; H-361 (W6*) in R-035; sub-items of R-039 and the β_j part of R-038; R-042 (N3) and its inputs; R-020 ((H′-def), (O1)); R-014 (asserted by Balaban). R-021 (printed CMP 99 inputs of H-057 (C)) is taken as printed.
 - L-284 (Lemma T) (c), a step of H-057 (C) under R-001, is not proved as written (verified finding: the printed metric of CMP 96 (2.46) is constant on blocks). A repaired form (c′), with a closure-bond metric d_* ≤ d in the cut-off and c_adj ≤ 2d + (d − 1)⌊L/2⌋, is verified by two independent readers, with small corrections that change no constant (notes/SOURCES_LEMMA_T_REPAIR.md, _VERIFY.md, SOURCES_LEMMA_T_G3_VERIFY.md). H-057 (C) stays a verified reduction, through (c′); only (d, L) constants change.
-- Open: nontriviality H-081 (B-NT); the named inputs above.
+- Open: the named inputs above. Target 2 has open binding inputs, so this is not an existence result. Nontriviality is separate and open: H-081 (B-NT) needs the new hypothesis H-339 (NT4); the order-g⁴ tree route is refuted (notes/SOURCES_L1_NT.md, SOURCES_NT4.md, both verified).
 - Counts (round 12): Group A 23, Group B 22, Group C 46, externals 5.
 
 ### Outside both targets
 
-- Infinite volume: L-196 (Theorem IV) is a verified conditional statement for the joint limit (ε, ℓ) → (0, ∞) (paper §4.8; two verifier passes). Its lemmas L-320 and L-331 are reductions with no verifier; L-323 is proved relative to listed inputs and verified with corrections (notes/FABLE_HARD_VERIFY.md); L-332–L-334 are blocked.
+- Infinite volume: L-196 (Theorem IV) is a verified conditional statement for the joint limit (ε, ℓ) → (0, ∞) (paper §4.8; two verifier passes). Its lemmas L-320 and L-331 are proved relative to listed inputs and verified with corrections (2026-10-29); L-319 (ℓ-free constants) is proved relative to named [R] inputs but not verified as a whole; the remaining named hypothesis is the unread-page sweep H-360 (U-W)′; L-323 is proved relative to listed inputs and verified with corrections (notes/FABLE_HARD_VERIFY.md); L-332–L-334 are blocked.
 - No O(4) invariance, infinite volume (unconditional), mass gap, or uniqueness.
 
 ### Paper, Lean, numerics
