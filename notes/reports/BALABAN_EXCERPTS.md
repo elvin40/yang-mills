@@ -1,6 +1,8 @@
 IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Balaban excerpts: verified verbatim index
 
+License notice. The quoted passages and formulas in this file are excerpts from T. Bałaban, Commun. Math. Phys. 95–122 (1984–1989), © Springer-Verlag. They remain under the publisher's copyright, are quoted here for scholarly commentary and verification, and are NOT covered by this repository's CC BY 4.0 license. The commentary around them is CC BY 4.0.
+
 Built 2026-10-27 from the *_VERIFY files, LEMMA_DPRIME_SWEEP.md, THEOREM2.md §1–§2, and LEMMAS.md. Page numbers are printed pages. Nothing here was re-read from the papers: each entry reports what a verifier recorded.
 
 Evidence tags (the strongest tag a verifier gave):

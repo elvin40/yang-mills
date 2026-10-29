@@ -8,13 +8,13 @@ Every statement in the notes carries a tag (proved / verified / reduced / open).
 
 ## Summary (the abstract of paper/main.pdf)
 
-Balaban's renormalization-group construction of four-dimensional SU(2) lattice Yang–Mills theory rests on the control of the running coupling, his Theorem 2, whose proof was never published. The paper proves that a weak form of Theorem 2 (two-sided bounds on 1/g_k^2 with an additive constant), which is enough for Balaban's Theorem 1, follows from one uniform inequality R-025 (H2) on a two-step minimizer map together with named fixed-level and history inputs. The shooting lemmas, the arithmetic of L-009 (Theorem K), and the bridge lemmas of the certifier are formalized in Lean 4. The paper proves that, on a fixed torus, a uniform moment bound H-116 (H-U) gives compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder–Schrader axioms OS0–OS3. The bound H-116 (H-U) is reduced, not proved. It rests on sourced versions of Balaban's bounds, on a hypothesis R-043 (FX), and on a bridge from the source form to H-116 (H-U). R-043 (FX) is now reduced to a holomorphy bound R-040/R-041 (H-hol) for Balaban's increments, together with history bounds and three named inputs of the large-field step. One dependency table records the status of each block. At L = 13, inside Balaban's range L > 11, R-025 (H2) is a certified theorem: an explicit majorant and an outward-rounded interval branch-and-bound give rho_1(j, K)^2 <= 10 < 13 for every level j (including j = infinity) and every momentum K, so rho_2 <= 10 < 13, given our reading of Balaban's averaging operator. The result is not a solution of the Clay Millennium problem.
+Bałaban's renormalization-group construction of four-dimensional SU(2) lattice Yang–Mills theory depends on control of the running coupling, his Theorem 2, whose proof was never published. We prove that a weak form of Theorem 2, namely two-sided bounds on 1/g_k² with an additive constant, follows from one uniform inequality (H2) on a two-step minimizer map together with named fixed-level and history inputs; this weak form is enough for Bałaban's Theorem 1. At L = 13, inside Bałaban's range L > 11, the inequality (H2) is a certified theorem: an explicit majorant and an outward-rounded interval branch-and-bound give ρ_1(j, K)² ≤ 10 < 13 for every level j, including j = ∞, and every momentum K, so ρ_2 ≤ 10 < 13. This certificate uses our reading of Bałaban's averaging operator. The shooting lemmas, the arithmetic of Theorem K and the bridge lemmas of the certifier are formalized in Lean 4. Second, on a fixed torus, we prove that a uniform moment bound (H-U) gives compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder–Schrader axioms OS0–OS3. The bound (H-U) is reduced, not proved. It rests on sourced versions of Bałaban's bounds; on a hypothesis (FX), which we reduce to a holomorphy bound (H-hol) for Bałaban's increments, history bounds and three named inputs of the large-field step; and on a bridge from the source form to (H-U). A dependency table records the status of each block. The results do not solve the Clay Millennium problem.
 
 ## Status
 
-Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28) and notes/PLAN.md (dated lines up to 2026-10-28). Identifiers follow notes/IDS.md and are cited as "ID (label)". Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. The repository is private.
+Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28) and notes/PLAN.md (dated lines up to 2026-10-28). Identifiers follow notes/IDS.md and are cited as "ID (label)". Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. All derivations and verification passes were written by AI agents (Claude models) under the author's direction. No human expert has checked them.
 
-### Target 1: L-001 (Theorem 2w), Balaban's Theorem 2 in weak form
+### Target 1: Balaban's Theorem 2 in weak form (Theorem 2w, L-001)
 
 - Status: proved+verified, conditional, by Route K (L-009 (Theorem K) + L-005 (Lemma D″)), at odd L > 11.
 - Binding set (ledger §5, round 12): R-006 + R-025–R-031 + X-005 (1 Group A row, 7 Group B rows, 1 external). Grades:
@@ -28,7 +28,7 @@ Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28) and notes/PLAN.md (dated li
   - R-006 (Balaban's inductive assumption, H-202 (H0)): taken from Balaban; its use in L-001 (Theorem 2w) is a verified reduction.
 - L-001 (Theorem 2w) ⇒ Balaban's Theorem 1 (ledger §5): 4 Group A rows (R-006, R-012, R-013, R-015) + 9 Group B rows (R-025–R-032, R-034) + X-005. R-034 (the cross-scale sweep) is cleared and verified (round 7). R-012 is a verified list; R-015 is a verified reduction to conventions; R-032 is proved relative to listed inputs, verified.
 
-### Target 2: L-003 (Theorem B), finite-torus existence in compactness form
+### Target 2: finite-torus existence in compactness form (Theorem B, L-003)
 
 - Status: proved modulo named blocks. Given H-116 (H-U), limit points exist and satisfy the torus forms of OS0–OS3 (verified, ASSEMBLY_VERIFY.md). H-116 (H-U) is reduced, not proved.
 - Binding set (ledger §5, round 12): 21 Group A rows + X-002–X-005 + 21 Group B rows (R-025–R-032, R-034–R-046).
@@ -67,4 +67,4 @@ The Balaban papers (Communications in Mathematical Physics, 1984–1989) are not
 
 How to cite: use the metadata in CITATION.cff (GitHub shows it under "Cite this repository"), and give the commit hash you used.
 
-License: documents CC BY 4.0 (LICENSE); code in numerics/ MIT (numerics/LICENSE).
+License: documents CC BY 4.0 (LICENSE); code in numerics/ MIT (numerics/LICENSE). Exception: quoted passages and formulas from Balaban's papers (notes/reports/BALABAN_EXCERPTS.md, and short quotations elsewhere) remain under the publisher's copyright and are not covered by CC BY 4.0.
