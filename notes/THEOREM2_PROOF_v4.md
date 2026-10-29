@@ -146,13 +146,13 @@ where δσ_j^{(m)} = σ_j^{(m)} − σ_0^{(m)} are differences of the f^m Taylor
 - Given convergence β_j(0) → β_∞, Cesàro gives β_∞ = c log L − lim κ_k/k. So v1's (H′) "κ_k = o(k)" is EQUIVALENT to β_∞ = c log L, not weaker (THEOREM2_PROOF_VERIFY Point 4). Theorem K (§4) gives κ_k bounded, hence κ_k = o(k) trivially.
 
 ### 3.5 Level-uniform symbol facts used below [proved+verified]
-Source: U3_AW.md, U3_AW_VERIFY.md (grades 1–4 CONFIRMED); U3_REPAIRS_VERIFY.
+Source: U3_AW.md, U3_AW_VERIFY.md (grades 1–4 CONFIRMED); U3_REPAIRS_VERIFY. [sweep A–H 2026-10-28: U3_AW_VERIFY has no graded item for Lemma M (its grades 2–3 are (W) and (A)); Lemma M is CONFIRMED in SOURCES_SWEEP_H §6]
 - O5/A0: Δ_M real-analytic on a fixed strip, |∂^α(Δ_M − Δ_∞)| ≤ C M^{−2}, uniform to K = 0 (odd L, centered blocks). Prop. B: c_0|K̂|^{−2}P′_T ≤ P′_TS_MP′_T ≤ C_1|K̂|^{−2}P′_T, c_0 = (2/π)^{12}, C_1 ≤ 1363. Existential constants.
 - Prop. E (evenness): σ_j(f; −K) = σ_j(f; K) in the midpoint trivialization, all f, j. Tested in d = 2 only.
 - Theorem W: σ_j^{(1)}(0) = τ_c = (3ie/2)(E_{10} − E_{01}) for every j ≥ 0, from the exact Ward identity Δ_j(f)D_f = 0. Numerically 0.750000, 0.75015, 0.75051 at j = 0, 1, 2 vs 0.75 (d = 2 proxy).
 - Theorem A3: |σ_j^{(1)}(K) − τ_c| ≤ C_A|K|², real K, uniform in j (C⁰ only).
 - Prop. A2: σ_j^{(m)}, m ≤ 2, analytic on the same strip at every fixed j (not uniform in j for m = 1 derivatives, m = 2).
-- Lemma M: Maxwell coefficient exactly 1 at every level.
+- Lemma M: Maxwell coefficient exactly 1 at every level. [sweep A–H 2026-10-28, SOURCES_SWEEP_H §6: the precise statement is that, for every M ∈ {1, L, L², …} ∪ {∞}, the degree-≤3 Taylor polynomial of Δ_M at K = 0 in midpoint coordinates is |K|²1 − KK^T (U3 normalization); the uses need this whole polynomial, not only the coefficient; evenness follows from O5 (2.7) directly, without Prop. E; CONFIRMED]
 
 
 ## §4 Bounded window sums: two formally distinct conditional routes
@@ -423,16 +423,16 @@ All computed increments are positive.
 ## §10 Open list (complete for Theorem 2w ⇒ Theorem 1)
 
 Single uniform hypothesis (both routes):
-H. (H2) ρ_2 = sup_{j≥2} sup_{K real} ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L [numerical at L = 3, 5, 9; certification open]. It replaces (C1σ) + (h) and (H″) of v3 as the one uniform-in-level inequality. Route K: (H2) ⇒ (C1σ) ⇒ (B2) [proved+verified, B2_TWOSTEP_VERIFY grade 3]. Route B: (H2) + (T1) ⇒ (U) [proved, unverified, BETA_FP_U Theorem 2.4]. Values (j = ∞, uncertified lower estimates of the sup): 2.0634 (L = 3, threshold 3, margin 31%), 2.108 (L = 5, threshold 5, margin 58%), ≥ 2.1131 (L = 7), ≥ 2.1142 (L = 9, one point). At L ≥ 5 the one-step condition ρ_1² < L suffices (ρ_1²/L = 0.771 at L = 5). Certification (§5.6): a computer-assisted proof project with tail level j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), certified ‖𝔅^{−1}‖, an explicit O5 constant, and interval arithmetic over the BZ; no explicit Lipschitz constant exists today. No value exists at L > 11.
+H. (H2) ρ_2 = sup_{j≥2} sup_{K real} ‖(⊕_l H_{j−1}(k_l))H_j(K)‖/L² < L [numerical at L = 3, 5, 9; certification open] [sweep 2026-10-28: CERTIFIED at L = 13 and at L = 15, 17, 21, ledger R-025 (H1_ANALYTIC + VERIFY, VERIFY2, H2_CERTIFY_P5_VERIFY, H2_CERTIFY_L15_17_21_VERIFY)]. It replaces (C1σ) + (h) and (H″) of v3 as the one uniform-in-level inequality. Route K: (H2) ⇒ (C1σ) ⇒ (B2) [proved+verified, B2_TWOSTEP_VERIFY grade 3]. Route B: (H2) + (T1) ⇒ (U) [proved, unverified, BETA_FP_U Theorem 2.4]. Values (j = ∞, uncertified lower estimates of the sup): 2.0634 (L = 3, threshold 3, margin 31%), 2.108 (L = 5, threshold 5, margin 58%), ≥ 2.1131 (L = 7), ≥ 2.1142 (L = 9, one point). At L ≥ 5 the one-step condition ρ_1² < L suffices (ρ_1²/L = 0.771 at L = 5). Certification (§5.6): a computer-assisted proof project with tail level j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), certified ‖𝔅^{−1}‖, an explicit O5 constant, and interval arithmetic over the BZ; no explicit Lipschitz constant exists today. No value exists at L > 11.
   2026-10-28: (H2) certified at L = 13 (H1_ANALYTIC + VERIFY, VERIFY2, P5_VERIFY).
 
 Route K hypothesis set (all must hold):
 1. (B2) sup_j sup_K |σ_j^{(2)}| < ∞ (or (B2w)). Reduced to H [verified reduction]. Older reductions kept: (C1σ) + (h) [proved+verified]; (H″) [argued]. (HS) is refuted.
-2. (PI) probe independence, at each fixed level [argued].
-3. (F) lattice = continuum log coefficient at constant field [cited source checked; lattice transfer standard, not proved here].
-4. (M_j) formal = true f² coefficient at each fixed level: (S1) 𝒦_t(f) ≥ −C_1|f|, (S2) density of states ≤ C_2|f| near 0, (S3) relative bound of the level difference, all on the lattice [open]; Prop. 4.4 [argued].
-5. V1 order-g⁰ completeness of CMP 109 (1.3)–(1.5): β_{j+1}(0) is the Maxwell coefficient of the per-step Gaussian determinant [open; supported at order p²].
-6. (G2) per-cell infinite-volume densities [formal].
+2. (PI) probe independence, at each fixed level [argued] [sweep 2026-10-28: reduced [R], verified, ledger R-026 (SOURCES_T2_PI + VERIFY; (I3) [P], SOURCES_T2_I3 + VERIFY)].
+3. (F) lattice = continuum log coefficient at constant field [cited source checked; lattice transfer standard, not proved here] [sweep 2026-10-28: PROVED, verified, ledger R-027 (SOURCES_T2_MPT_STEPC + VERIFY, SOURCES_T2_MPT_REST + VERIFY), relative to textbook facts; continuum side X-005; the β_1 tension does not test (F) (SOURCES_BETA1_F_TENSION)].
+4. (M_j) formal = true f² coefficient at each fixed level: (S1) 𝒦_t(f) ≥ −C_1|f|, (S2) density of states ≤ C_2|f| near 0, (S3) relative bound of the level difference, all on the lattice [open]; Prop. 4.4 [argued] [sweep 2026-10-28: PROVED+VERIFIED at fixed j ≥ 1, ledger R-028 (SOURCES_T2_MJ_REST + VERIFY); only the o(f²) form of Prop. 4.4].
+5. V1 order-g⁰ completeness of CMP 109 (1.3)–(1.5): β_{j+1}(0) is the Maxwell coefficient of the per-step Gaussian determinant [open; supported at order p²] [sweep 2026-10-28: proved+verified at fixed level, conditional on (G2), ledger R-029 (SOURCES_T2_V1 + VERIFY)].
+6. (G2) per-cell infinite-volume densities [formal] [sweep 2026-10-28: reduced [R], verified, ledger R-030 (SOURCES_T2_G2 + VERIFY)].
 
 Route B hypothesis set (alternative to 1–5; per BETA_FP_U §4; all [proved, unverified] as implications, no verifier file for BETA_FP_U):
 B1. (T1) sup_j sup_{q real} |c^{(1)}_{T,j}(q)| < ∞, the plane-wave form of Theorem A3 [argued; the Landau-to-symmetric gauge conversion and Steps 2–5 of A3 for (2.1) are not written].
@@ -446,48 +446,48 @@ B8. Verification: BETA_FP_U has no verifier file. BETA_FP_PW_VERIFY §6 grades T
 Route B also needs 6 ((G2)) and the common items 8–13. It does not need (PI), (M_j), V1; it needs (DF) and A6 instead.
 
 Common to both routes:
-7. (H0) Balaban's smoothness in g with uniform bounds, |β_j(g) − β_j(0)| ≤ C_1 g uniform in j and history [Balaban; CMP 109 inductive assumption at odd L > 11; no explicit proof of the g-derivative bound located in CMP 116].
-8. L5 history dependence [open]. (a) The clamp proof of Lemmas D′/D″ is valid only if β_{k+1}(g_0, …, g_k) is defined and continuous on the whole cube ]0, γ]^{k+1}; Balaban does not supply this. (b) Balaban's β_{k+1} exists only on histories where his induction has run; that domain must carry (c′) + (S), not only g_i ∈ ]0, γ]. Clamped histories can violate the growth side of (c′). (c) True trajectories with all u_i ≥ γ^{−2} inherit (c′) from (a″). A nested-interval variant of Lemma D″ on these trajectories would avoid the gap [not written]; the variant is written only for Lemma D (LEMMAS_DE_VERIFY §1.5). Lean covers one-argument β only (Lemmas D′, D″, D, E).
-9. K-independence of β_j(g) [open]. The shooting needs β_j(g), γ, and the constants independent of K = −log_L ε. After rescaling, each step is the same unit-lattice block step, so β_j is K-independent only in the infinite-volume limit; a finite volume brings K-dependence back. This infinite-volume identification is not proved (LEMMAS_DE_VERIFY §2 item 2; THEOREM2_PROOF_VERIFY Point 7). It is used implicitly through (G2) and (H0).
-10. Balaban readings: the sweep (§2.3) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; "Similar inequalities hold for other constants, which will be introduced later" (CMP 119 p. 256, after (2.9)) is located; it does not name α_0/α_1; β_0 must be fixed before γ, while Balaban says β_0 "can be chosen arbitrarily small, if g is sufficiently small" (not checked line by line); BALABAN_EXCERPTS_CHECK item 11 lists unchecked readings (Π (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the "L odd" page, Sect. 3 estimates, 1989 bound lists); Theorem 1 itself rests on Balaban's published proofs.
-11. Odd L. All one-loop proofs need odd L ≥ 3 (centered blocks: U3 Lemma 1.2, O5/Prop. A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes L odd > 11 throughout CMP 109, so (H0) and β_j(g) at g > 0 exist only there. Theorem 2w is stated for odd L > 11, or with (H0) at this L as a hypothesis. Numerics: β_1(0) up to L = 11 (§8.1); (H2) at L = 3, 5 (scans), 7 (face diagonal), 9 (one point). All are outside Balaban's range (L > 11), so they are supportive only. The Windows queue continues to L = 15.
-12. SU(2) only. The charged/neutral split of Lemma 5.1 and (W) are SU(2) statements; c = 11N²/(12π²) is general but the chain is not checked for N > 2.
-13. Lean formalization of the history form of Lemmas D′/D″ [open]. Lemma D″ in the one-argument form is done (§2.2).
+7. (H0) Balaban's smoothness in g with uniform bounds, |β_j(g) − β_j(0)| ≤ C_1 g uniform in j and history [Balaban; CMP 109 inductive assumption at odd L > 11; no explicit proof of the g-derivative bound located in CMP 116] [sweep 2026-10-28: Target 1 use (item 7′) a verified reduction, L-183 (Proposition H0-red), ledger R-006 (SOURCES_T2_H0 + VERIFY), residue N1–N9].
+8. L5 history dependence [PROVED relative to listed inputs, verified with corrections, 2026-10-29: Lean LemmaDHist.lean, LemmaDHistNested.lean (nested intervals, no cube continuity); (C-tr) by SOURCES_CTR.md + SOURCES_CTR_VERIFY.md; H-047 and E_0 uniformity closed by SOURCES_CTR_RESIDUE + VERIFY (images, CMP 109 pp. 260–301, CMP 116 pp. 1–22); residue R-013 (small-field step), R-018, CMP 102 minimization in stages [R], L-024 + H-141, R-015 (definition only). The text below is the original statement of the gap.] (a) The clamp proof of Lemmas D′/D″ is valid only if β_{k+1}(g_0, …, g_k) is defined and continuous on the whole cube ]0, γ]^{k+1}; Balaban does not supply this. (b) Balaban's β_{k+1} exists only on histories where his induction has run; that domain must carry (c′) + (S), not only g_i ∈ ]0, γ]. Clamped histories can violate the growth side of (c′). (c) True trajectories with all u_i ≥ γ^{−2} inherit (c′) from (a″). A nested-interval variant of Lemma D″ on these trajectories would avoid the gap [not written]; the variant is written only for Lemma D (LEMMAS_DE_VERIFY §1.5). Lean covers one-argument β only (Lemmas D′, D″, D, E).
+9. K-independence of β_j(g) [open] [sweep 2026-10-28: CLOSED as a reduction, verified (SOURCES_T2_KUNIF + VERIFY); the residual volume question is ledger R-032, an input of Theorem 1]. The shooting needs β_j(g), γ, and the constants independent of K = −log_L ε. After rescaling, each step is the same unit-lattice block step, so β_j is K-independent only in the infinite-volume limit; a finite volume brings K-dependence back. This infinite-volume identification is not proved (LEMMAS_DE_VERIFY §2 item 2; THEOREM2_PROOF_VERIFY Point 7). It is used implicitly through (G2) and (H0).
+10. [sweep 2026-10-28: sweep CLEARED, verified, ledger R-034 (SOURCES_B10_SWEEP + VERIFY); "other constants" closed as a verified list, ledger R-012 (SOURCES_A11_CONST + VERIFY); the β_0 reading (R-048) and the item-11 readings (R-051) verified on page images (SOURCES_BOOKKEEPING_VERIFY)] Balaban readings: the sweep (§2.3) is grep plus page images, not line-by-line, with 4 of 19 rows checked by a second reader; "Similar inequalities hold for other constants, which will be introduced later" (CMP 119 p. 256, after (2.9)) is located; it does not name α_0/α_1; β_0 must be fixed before γ, while Balaban says β_0 "can be chosen arbitrarily small, if g is sufficiently small" (not checked line by line); BALABAN_EXCERPTS_CHECK item 11 lists unchecked readings (Π (4.37)/(5.1), CMP 119 (2.42), (2.12)/(2.23), the "L odd" page, Sect. 3 estimates, 1989 bound lists); Theorem 1 itself rests on Balaban's published proofs.
+11. [scope: ledger K-003] Odd L. All one-loop proofs need odd L ≥ 3 (centered blocks: U3 Lemma 1.2, O5/Prop. A, evenness, Lemma 4.1 of LEMMA43). Balaban assumes L odd > 11 throughout CMP 109, so (H0) and β_j(g) at g > 0 exist only there. Theorem 2w is stated for odd L > 11, or with (H0) at this L as a hypothesis. Numerics: β_1(0) up to L = 11 (§8.1); (H2) at L = 3, 5 (scans), 7 (face diagonal), 9 (one point). All are outside Balaban's range (L > 11), so they are supportive only. The Windows queue continues to L = 15.
+12. [scope: ledger K-004] SU(2) only. The charged/neutral split of Lemma 5.1 and (W) are SU(2) statements; c = 11N²/(12π²) is general but the chain is not checked for N > 2.
+13. Lean formalization of the history form of Lemmas D′/D″ [open] [sweep 2026-10-28: DONE, lean/YmLean/LemmaDHist.lean + LemmaDHistNested.lean, statement check lean/VERIFY_LemmaDHist.md; not imported by YmLean.lean]. Lemma D″ in the one-argument form is done (§2.2).
 
 Not needed for Theorem 1, open for the stronger statements: (A) in full and Lemma 5.1 for m = 2 (convergence, rate); C², C³ of σ^{(1)} under (H2) (not written); certified β_1(0), …, β_{j_*}(0) > 0 at odd L > 11 (literal (0.31) at every K); explicit j_*; (N).
 
 Hypothesis table (v3 table from THEOREM2_PROOF_v2_VERIFY §K, updated to v4 status).
 | hypothesis | introduced | verified / checked in | status | §10 item |
 |---|---|---|---|---|
-| (H2) | B2_TWOSTEP §2; BETA_FP_U §2.3 | B2_TWOSTEP_VERIFY §4; H2_LARGE_L_VERIFY §1–§10 | numerical at L = 3, 5, 9; certification open | H |
+| (H2) | B2_TWOSTEP §2; BETA_FP_U §2.3 | B2_TWOSTEP_VERIFY §4; H2_LARGE_L_VERIFY §1–§10 | numerical at L = 3, 5, 9; certification open [sweep 2026-10-28: certified at L = 13, 15, 17, 21, ledger R-025] | H |
 | (H2) ⇒ (C1σ) ⇒ (B2) (Theorems C1, B2) | B2_TWOSTEP §2–§3 | B2_TWOSTEP_VERIFY grades 1, 3, 4 | proved+verified, conditional on (H2) | 1, H |
 | (H2) + (T1) ⇒ (U) (Theorem 2.4) | BETA_FP_U §2.4 | none | proved, unverified | B1, B2′ |
 | ρ_1² < L ⇒ (H2) (one step, L ≥ 5) | H2_LARGE_L §3 | H2_LARGE_L_VERIFY grade 4 (measurement) | arithmetic; ρ_1²/L = 0.771 at L = 5, numerical | H |
 | certification tail j_0 | H2_LARGE_L §4.1 | H2_LARGE_L_VERIFY grade 6 | derivation confirmed; j_0 ≈ 8 (L = 3), ≈ 6 (L = 5), corrected | H |
-| (B2) / (B2w) | KAPPA §2, Rem. 2.3 | KAPPA_VERIFY §7–§9 | open; reduced to (H2) | 1 |
+| (B2) / (B2w) | KAPPA §2, Rem. 2.3 | KAPPA_VERIFY §7–§9 | open; reduced to (H2) [sweep 2026-10-28: holds at L = 13, 15, 17, 21 via the certified (H2), ledger §4.1 step 1] | 1 |
 | (C1σ) + (h) ⇒ (B2) | KAPPA Prop. 4.1 | KAPPA_VERIFY §7 | implication verified; (C1σ) ⇐ (H2); (h) numerical L = 3, 5 | 1 |
 | (H″) ⇒ (A) ⇒ (B2) | U3_AW §4.7 | none (U3_AW_VERIFY grade 5 covers (H′) only) | implication argued; not needed after (H2) | 1 |
 | (HS) | U3_AW (H′) | U3_AW_VERIFY §6 | refuted L = 3 | §5.2 |
-| (PI) | BETA_FP_H §3.1 | H_VERIFY §5 | argued | 2 |
-| (F) | BETA_FP_LEMMA43 | H_VERIFY §4 | cited, source checked | 3 |
-| (M_j): (S1)–(S3), Prop. 4.4 | BETA_FP_M §4 | none for BETA_FP_M; H_VERIFY §5 refuted old step | open / argued | 4 |
-| V1 | R2 | U3_VERIFY C4 (order p²) | open | 5 |
-| (G2) | BETA_FP_LEMMA43 | — | formal | 6 |
-| β_j(g) independent of K | LEMMAS_DE_VERIFY §2 item 2 | v1 verifier Point 7 | open | 9 |
-| (H0), uniform in j and history | CMP 109 (1.22) | BALABAN_CHECK item 10 | [Balaban], odd L > 11 | 7 |
-| L5 history form and domain | LEMMA_DPRIME Rem. 3; LEMMAS_DE_VERIFY §2.1; v2_VERIFY §F | — | open | 8 |
-| sweep reading | SWEEP §7 | LEMMA_DPRIME_VERIFY Steps 4–5 (rows 11, 12, 16, 18) | proved, unverified | 10 |
+| (PI) | BETA_FP_H §3.1 | H_VERIFY §5 | argued [sweep 2026-10-28: reduced [R], verified, ledger R-026] | 2 |
+| (F) | BETA_FP_LEMMA43 | H_VERIFY §4 | cited, source checked [sweep 2026-10-28: PROVED, verified, ledger R-027] | 3 |
+| (M_j): (S1)–(S3), Prop. 4.4 | BETA_FP_M §4 | none for BETA_FP_M; H_VERIFY §5 refuted old step | open / argued [sweep 2026-10-28: PROVED+VERIFIED at fixed j, ledger R-028] | 4 |
+| V1 | R2 | U3_VERIFY C4 (order p²) | open [sweep 2026-10-28: proved+verified at fixed level given (G2), ledger R-029] | 5 |
+| (G2) | BETA_FP_LEMMA43 | — | formal [sweep 2026-10-28: reduced [R], verified, ledger R-030] | 6 |
+| β_j(g) independent of K | LEMMAS_DE_VERIFY §2 item 2 | v1 verifier Point 7 | open [sweep 2026-10-28: closed as a reduction, verified, SOURCES_T2_KUNIF + VERIFY] | 9 |
+| (H0), uniform in j and history | CMP 109 (1.22) | BALABAN_CHECK item 10 | [Balaban], odd L > 11 [sweep 2026-10-28: Target 1 use a verified reduction, ledger R-006] | 7 |
+| L5 history form and domain | LEMMA_DPRIME Rem. 3; LEMMAS_DE_VERIFY §2.1; v2_VERIFY §F | — | open [sweep 2026-10-28: PROVED relative to listed inputs, verified, ledger R-031 (SOURCES_T2_B7_CLAMP + VERIFY; SOURCES_CTR + VERIFY)] | 8 |
+| sweep reading | SWEEP §7 | LEMMA_DPRIME_VERIFY Steps 4–5 (rows 11, 12, 16, 18) | proved, unverified [sweep 2026-10-28: cleared, verified, ledger R-034] | 10 |
 | odd L; L > 11 in Balaban | CMP 109 pp. 251–252 | v1 verifier Step 6 | input | 11 |
 | SU(2) | — | — | scope | 12 |
 | Lean D″ (one-argument) | KAPPA §5.3 | lean/README.md, `lemma_DDoublePrime` | [Lean] | §2.2 |
-| Lean history form | — | — | open | 13 |
+| Lean history form | — | lean/VERIFY_LemmaDHist.md | open [sweep 2026-10-28: done, LemmaDHist.lean + LemmaDHistNested.lean] | 13 |
 | Route B: (U) | BETA_FP_PW §1.2 | PW_VERIFY §3 | hypothesis; ⇐ (T1) + (H2) (BETA_FP_U) | B1, B2′ |
 | Route B: (T1) | BETA_FP_U §2.3 | none | argued | B1 |
 | Route B: (Bθ) = γ_rec + 𝔡_F | BETA_FP_PW §3.3; BETA_FP_U §3 | PW_VERIFY §6 (Theorem B logic); none for BETA_FP_U | γ_rec bounded given Thm 2.4 (proved, unverified); (DF) argued | B3 |
 | Route B: A6 (β identification, uniform in k) | SOURCES_D1_VERIFY 8; PW_VERIFY §3; BETA_FP_U §4.2 | — | argued | B5 |
 | Route B: θ_* < 1 | PW_VERIFY §3 | — | trivial condition | B7 |
 | LW (5.7) | cited | PW_VERIFY §3 (regime correct) | cited | B4 |
-| BALABAN_CHECK item 11 readings | BALABAN_EXCERPTS | — | unchecked | 10 |
+| BALABAN_CHECK item 11 readings | BALABAN_EXCERPTS | — | unchecked [sweep 2026-10-28: verified readings R-051, SOURCES_BOOKKEEPING_VERIFY] | 10 |
 
 ## §11 Citation and independence
 

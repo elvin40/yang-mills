@@ -3,7 +3,7 @@
 Scheme. Every project object has one id `P-nnn`: a capital letter, a hyphen, three digits (tasks: `T-nnnn`, four digits).
 Prefixes: R ledger row, K convention, X external result, N canon line, Q closure item, H hypothesis/condition/reading, L result proved here, T task.
 Numbers were assigned from scratch in logical order (ledger order, canon order, closure-table order, paper order for L); they carry no status and no trace of the old number.
-Canon lines step by 10 (N-010 … N-500), so a new line fits between two old ones; Lean `CanonOrder.id_eq_rank` proves N-order = canon rank.
+Canon lines were numbered in steps of 10 (N-010 … N-500), so a new line fits between two old ones (N-265 was added this way on 2026-10-29); Lean `CanonOrder.id_eq_rank` proves that the order of the N-numbers equals the canon order.
 Ledger rows of old Group A and Group B share the R- prefix; the group is a column of TRUST_LEDGER.md, not part of the id.
 Prose cites `ID (short name)`; a parenthesized label or a lemma name may follow its id as a description, e.g. "H-116 (H-U)", "L-005 (Lemma D″)".
 File-local labels (verify items V1–V13, Steps, WC_FULL R1–R4, A1_WALK_FULL (H1)–(H4), Route B items B1–B8, canon resolutions R1–R7, …) are not global ids; cite them qualified by file.
@@ -168,6 +168,7 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | N-240 | canon line | WC real constants: B_A, δ_A, ε_WC = min{½δ_A, γ_exp/(8B_AΣ(½δ_A))}, Γ_1 = 2B_AS(δ_A) … | B13 | SOURCES_ORDER_CANON.md Part B |
 | N-250 | canon line | Level constants (Part A.4, all M-free and α-free): c_+⁗, Γ_4, k_3, ε_3; B_1‴, δ_1‴, Γ_3, k_2 … | B14 | SOURCES_ORDER_CANON.md Part B |
 | N-260 | canon line | 𝒲_S tree constants: C′_𝒟^f := C′_𝒟 enlarged by the finite W_S tag set (a (d, L) multiple) … | B14a | SOURCES_ORDER_CANON.md Part B |
+| N-265 | canon line | M_1^{(102)} = L^{m_{102}}: CMP 102 big-block size (first M_1 line of the split; added 2026-10-28) … | — | SOURCES_ORDER_CANON.md Part B |
 | N-270 | canon line | M_1 = L^{m_1}: M_1 ≥ M_W; ≥ M_W^c at each level (the WC level thresholds of N-250); ≥ … | B15 | SOURCES_ORDER_CANON.md Part B |
 | N-280 | canon line | M_2 := L²M_1 (CMP 119 p. 245). Determined by N-270; M_2 ≥ 1/δ_[15] holds by N-270 H-258 (S4). … | B16 | SOURCES_ORDER_CANON.md Part B |
 | N-290 | canon line | G3_GGAMMA constants K_½, Ḡ (G_Γ ≤ Ḡ, M-free [I, G3_GGAMMA 4.1 unverified]), Λ̄_0, W. This slot … | B17 | SOURCES_ORDER_CANON.md Part B |

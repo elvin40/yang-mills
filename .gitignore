@@ -29,7 +29,3 @@ paper/*.out
 paper/*.synctex.gz
 # Editor and patch leftovers
 *.orig
-# local only
-notes/INBOX.md
-notes/reports/*.txt
-sync.sh

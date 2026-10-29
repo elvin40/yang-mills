@@ -199,7 +199,7 @@ theorem bootstrap (U U' : ℝ → ℝ) (R t θ M : ℝ) (hM : 0 ≤ M)
 
 /-- **L-182 (Lemma H) on `|c| ≤ 2r`** (Steps 1–3). `u k c` = û_k(c) (clamped flow, `C¹` in `c`,
 derivative `v k c`), `a c j i` = ∂β_j/∂u_i along it. Hypotheses:
-* `hder`: `c ↦ u k c` has derivative `v k c` on `[−2r, 2r]`;
+* `hder`: `c ↦ u K c` has derivative `v K c` on `[−2r, 2r]` (only `k = K` is needed);
 * `hmono`: `û_K ≤ û_k` for `k ≤ K` (all increments ≥ β > 0 by (E) on the clamped flow);
 * `hreg`: where all `u k c > γ^{−2}` (clamp inactive): `v_0 = −1`, the variational equation,
   (1.1) with history weights `w` (`Σ_{m<n} w_m ≤ A`), and increments `≥ β` ((E));
@@ -211,7 +211,7 @@ theorem lemma_H_bootstrap (u v : ℕ → ℝ → ℝ) (a : ℝ → ℕ → ℕ �
     (hA : ∀ n, ∑ m ∈ range n, w m ≤ A)
     (hx : C₁ * A * γ / β ≤ Real.log (3 / 2)) (hr : 3 * r < 1 / g ^ 2 - 1 / γ ^ 2)
     (hu0 : u K 0 = 1 / g ^ 2)
-    (hder : ∀ k ≤ K, ∀ c ∈ Icc (-(2 * r)) (2 * r), HasDerivAt (u k) (v k c) c)
+    (hder : ∀ c ∈ Icc (-(2 * r)) (2 * r), HasDerivAt (u K) (v K c) c)
     (hmono : ∀ c ∈ Icc (-(2 * r)) (2 * r), ∀ k ≤ K, u K c ≤ u k c)
     (hreg : ∀ c ∈ Icc (-(2 * r)) (2 * r), (∀ k ≤ K, 1 / γ ^ 2 < u k c) →
       v 0 c = -1 ∧ (∀ j < K, v (j + 1) c = v j c - Bp (a c) (fun i => v i c) (j + 1)) ∧
@@ -233,7 +233,7 @@ theorem lemma_H_bootstrap (u v : ℕ → ℝ → ℝ) (a : ℝ → ℕ → ℕ �
     exact ⟨hall, lemma_H_real (fun i => u i c) (fun i => v i c) (a c) w C₁ A β γ K hC₁ hβ hγ
       hA h0 hrec h11 hinc hK.le hx⟩
   have hboot := bootstrap (u K) (v K) (2 * r) (1 / g ^ 2) (1 / γ ^ 2) (3 / 2) (by norm_num)
-    (hder K le_rfl) hu0 (by linarith) (fun c hc hK => (step12 c hc hK).2.2.2 K le_rfl |>.2)
+    hder hu0 (by linarith) (fun c hc hK => (step12 c hc hK).2.2.2 K le_rfl |>.2)
   intro c hc
   obtain ⟨hlow, hθ⟩ := hboot c hc
   exact ⟨(step12 c hc hθ).1, (step12 c hc hθ).2.1, (step12 c hc hθ).2.2.1,

@@ -1,0 +1,20 @@
+5 0.5 prof 6.2 total 8.4
+K1 {'ghost': np.float64(1.1023), 'bord': np.float64(1.339), 'fine': np.float64(4.3322), 'constraint': np.float64(-2.9932), 'w': np.float64(0.4328)}
+K2 {'ghost': np.float64(0.5741), 'bord': np.float64(0.2801), 'fine': np.float64(1.8661), 'constraint': np.float64(-1.586), 'w': np.float64(0.434)}
+K3 {'ghost': np.float64(0.255), 'bord': np.float64(-0.1823), 'fine': np.float64(0.9992), 'constraint': np.float64(-1.1814), 'w': np.float64(0.3461)}
+7 0.5 prof 9.0 total 15.9
+K1 {'ghost': np.float64(1.1716), 'bord': np.float64(1.392), 'fine': np.float64(4.2071), 'constraint': np.float64(-2.8152), 'w': np.float64(0.4756)}
+K2 {'ghost': np.float64(0.5787), 'bord': np.float64(0.212), 'fine': np.float64(1.777), 'constraint': np.float64(-1.565), 'w': np.float64(0.4727)}
+K3 {'ghost': np.float64(0.2329), 'bord': np.float64(-0.3099), 'fine': np.float64(0.8795), 'constraint': np.float64(-1.1895), 'w': np.float64(0.3878)}
+9 0.5 prof 17.3 total 34.9
+K1 {'ghost': np.float64(1.2065), 'bord': np.float64(1.4288), 'fine': np.float64(4.1636), 'constraint': np.float64(-2.7348), 'w': np.float64(0.4921)}
+K2 {'ghost': np.float64(0.583), 'bord': np.float64(0.1903), 'fine': np.float64(1.7464), 'constraint': np.float64(-1.5561), 'w': np.float64(0.4878)}
+K3 {'ghost': np.float64(0.2262), 'bord': np.float64(-0.3545), 'fine': np.float64(0.8375), 'constraint': np.float64(-1.192), 'w': np.float64(0.4034)}
+11 0.5 prof 35.7 total 73.6
+K1 {'ghost': np.float64(1.2257), 'bord': np.float64(1.45), 'fine': np.float64(4.1421), 'constraint': np.float64(-2.6921), 'w': np.float64(0.5007)}
+K2 {'ghost': np.float64(0.5856), 'bord': np.float64(0.1798), 'fine': np.float64(1.7311), 'constraint': np.float64(-1.5513), 'w': np.float64(0.4957)}
+K3 {'ghost': np.float64(0.2233), 'bord': np.float64(-0.3755), 'fine': np.float64(0.8167), 'constraint': np.float64(-1.1922), 'w': np.float64(0.4111)}
+13 0.5 prof 71.5 total 145.2
+K1 {'ghost': np.float64(1.2372), 'bord': np.float64(1.4624), 'fine': np.float64(4.1292), 'constraint': np.float64(-2.6668), 'w': np.float64(0.506)}
+K2 {'ghost': np.float64(0.5873), 'bord': np.float64(0.1734), 'fine': np.float64(1.7216), 'constraint': np.float64(-1.5483), 'w': np.float64(0.5006)}
+K3 {'ghost': np.float64(0.2219), 'bord': np.float64(-0.3872), 'fine': np.float64(0.804), 'constraint': np.float64(-1.1913), 'w': np.float64(0.4155)}

@@ -1,6 +1,6 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of L-009 (Theorem K) and L-011, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib; seven files formalize lemmas of the sources block (Schur test, block-valued Schur test, Combes--Thomas, interpolation and rescaling, resolvent and weighted Neumann bounds, the gauge condition of the constrained minimizer, the slab counterexample to CMP 96 (2.127)). The inventory is as follows. Counts measured in ledger round 12: 45 Lean files, 50 canon lines, 170 edges, no sorry, standard axioms only (CanonOrder axiom-free). The ``25 files'' above is the count of the first inventory. Round 9: the directory has 45 files (waves 2--3 added Concatenation, ComplexGaussian, NeutralSpectrum, QConstants, TheoremL, ScaleChain, ParametrixCore, WGAlgebra, MagneticShift, and H1Majorant); the Lean support by ledger row is the table at the end of Section~\ref{sec:rem-ledger}, and \file{lean/README.md} lists every file.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of L-009 (Theorem K) and L-011, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib; seven files formalize lemmas of the sources block (Schur test, block-valued Schur test, Combes--Thomas, interpolation and rescaling, resolvent and weighted Neumann bounds, the gauge condition of the constrained minimizer, the slab counterexample to CMP 96 (2.127)). The inventory is as follows. Counts measured in ledger round 12: 80 Lean files, 51 canon lines, 180 edges, no sorry, standard axioms only except the native\_decide checks of H2BoxRun00--15 (CanonOrder axiom-free). The ``25 files'' above is the count of the first inventory. Round 9: the directory has 45 files (waves 2--3 added Concatenation, ComplexGaussian, NeutralSpectrum, QConstants, TheoremL, ScaleChain, ParametrixCore, WGAlgebra, MagneticShift, and H1Majorant); the Lean support by ledger row is the table at the end of Section~\ref{sec:rem-ledger}, and \file{lean/README.md} lists every file.
 
 \paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
 \begin{itemize}
@@ -79,7 +79,7 @@ This appendix indexes the results of the paper by status tag; the tags match the
 \item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$ (round 7: assembly confirmed, \file{SOURCES_B10_SWEEP_VERIFY}); neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
 \item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
 \item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given H-244 (S1)--H-247 (S3)); round 7: confirmed for $j\ge j_1$ in \file{SOURCES_B10_SWEEP_VERIFY}.
-\item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
+\item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}; sweeps A--H, 2026-10-28: verified, all steps confirmed, \file{SOURCES_SWEEP_A} \S1 and \file{SOURCES_SWEEP_AFG_VERIFY} \S6, so P4 leaves this list); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
 \end{itemize}
 
 \paragraph{\status{numerical}}

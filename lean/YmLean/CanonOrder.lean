@@ -7,11 +7,13 @@ import Mathlib.Data.Nat.Basic
 
 `canonEdges` is a hand transcription of SOURCES_ORDER_CANON Part B as of 2026-10-28
 (round T-0099 + the lift pass of F.5 + canon pass G: N-100–N-160, N-170 and N-180 moved;
-VERIFY2 fix pass: edges (N-180, N-310) and (N-160, N-270) added; Ω pass: edge (N-180, N-260) added). An edge `(a, b)` means "a condition of line `b` uses a
+VERIFY2 fix pass: edges (N-180, N-310) and (N-160, N-270) added; Ω pass: edge (N-180, N-260) added;
+sweep fix pass 2026-10-28: line N-265 (M_1^{(102)}) inserted before N-270, 10 edges added). An edge `(a, b)` means "a condition of line `b` uses a
 constant fixed on line `a`". Sources of the edges: the "uses" lists of the topological
 passes E7, E8, F.3, F.5, plus the dependencies that the Part B line text names explicitly.
 There is no line before N-010; the lines are N-010–N-500 plus the sub-lines N-170, N-100–N-160,
-N-210–N-230, N-260, N-300, N-320–N-330, N-380, N-460 (50 lines). N-030 sits in Group 0, before N-040 (E2), and
+N-210–N-230, N-260, N-265, N-300, N-320–N-330, N-380, N-460 (51 lines). N-265 uses the gap of the
+step-10 scheme (IDS.md), so `num` is order-equivalent to `rank` but no longer equal to 10 × (rank + 1) after N-260. N-030 sits in Group 0, before N-040 (E2), and
 N-170, N-180 sit after N-160 (G.3), so the rank is the position in the file, not the line number.
 
 The theorems certify only that this transcription is acyclic. They do not certify the
@@ -23,7 +25,7 @@ namespace YmLean.CanonOrder
 inductive Line
   | N010 | N020 | N030 | N040 | N050 | N060 | N070 | N080 | N090
   | N100 | N110 | N120 | N130 | N140 | N150 | N160 | N170 | N180 | N190 | N200 | N210 | N220 | N230
-  | N240 | N250 | N260 | N270 | N280 | N290 | N300 | N310 | N320 | N330 | N340 | N350 | N360 | N370
+  | N240 | N250 | N260 | N265 | N270 | N280 | N290 | N300 | N310 | N320 | N330 | N340 | N350 | N360 | N370
   | N380 | N390 | N400 | N410 | N420 | N430 | N440 | N450 | N460 | N470 | N480 | N490 | N500
   deriving DecidableEq, Repr
 
@@ -33,7 +35,7 @@ open Line
 def canonOrder : List Line :=
   [N010, N020, N030, N040, N050, N060, N070, N080, N090,
    N100, N110, N120, N130, N140, N150, N160, N170, N180, N190, N200, N210, N220, N230,
-   N240, N250, N260, N270, N280, N290, N300, N310, N320, N330, N340, N350, N360, N370,
+   N240, N250, N260, N265, N270, N280, N290, N300, N310, N320, N330, N340, N350, N360, N370,
    N380, N390, N400, N410, N420, N430, N440, N450, N460, N470, N480, N490, N500]
 
 def rank (a : Line) : ℕ := canonOrder.idxOf a
@@ -52,6 +54,7 @@ def canonEdges : List (Line × Line) :=
   , (N060, N160), (N110, N160), (N120, N160), (N130, N160), (N140, N160)  -- complex radii
   , (N060, N170), (N150, N170)                        -- N-170 moved after N-150 (G)
   , (N040, N070), (N060, N070)                            -- κ: δ, β, c_d, d
+  , (N050, N070)                                    -- κ ≥ 2(24 + s_0)/β, δLκ/2 ≥ 24 + s_0 (sweep fix pass)
   , (N060, N080), (N030, N080)                            -- κ_0: δ; β_0′ vs β_0
   , (N050, N090), (N060, N090), (N070, N090)                  -- κ_1: L, δ, κ
   , (N060, N180), (N140, N180), (N150, N180)          -- R > 18dL, RM_0, δ_WG (G)
@@ -65,6 +68,8 @@ def canonEdges : List (Line × Line) :=
   , (N160, N250)                                   -- level-4 radius k_{C′}b_1^{37} (G)
   , (N060, N260), (N230, N260), (N250, N260)
   , (N180, N260)                                   -- Ω pass; no value since the canon fix pass: δ_𝒲^Ω is read under the N-310 entry (S_H^Ω); harmless over-approximation
+  , (N060, N265), (N130, N265), (N140, N265)        -- M_1^{(102)}: R_1, R_0M_0, M_99, RM_0 (sweep fix pass)
+  , (N265, N270)                                    -- M_1 ≥ L^aR_1M_1^{(102)}
   , (N060, N270), (N170, N270), (N090, N270), (N190, N270), (N200, N270), (N240, N270), (N250, N270), (N260, N270)
   , (N140, N270)                                   -- M_1 ≥ M_310 (G)
   , (N160, N270)                                   -- M_1 ≥ M_W^{39,c} (VERIFY2)
@@ -76,6 +81,7 @@ def canonEdges : List (Line × Line) :=
   , (N140, N310), (N150, N310)                      -- (2.59) at the smallest walk rate (G)
   , (N180, N310)                                    -- R fixed at N-180: RM bounds are bounds on M (VERIFY2)
   , (N060, N320), (N270, N320), (N310, N320)
+  , (N265, N320)                                    -- cube cap with R_1M_1^{(102)}
   , (N050, N330), (N310, N330)                       -- C_1^{FX} after M
   , (N050, N340), (N310, N340)
   , (N060, N350), (N210, N350), (N250, N350), (N270, N350), (N310, N350)
@@ -85,8 +91,10 @@ def canonEdges : List (Line × Line) :=
   , (N310, N370), (N350, N370), (N360, N370)
   , (N110, N370)                                   -- Mα_0 ≤ a_37 (G)
   , (N060, N380), (N270, N380), (N310, N380), (N370, N380)
+  , (N265, N380)                                    -- (18L + 2)Mε_0^{109} ≤ R_1M_1^{(102)}a_1^{102}
   , (N290, N390), (N310, N390), (N370, N390)
   , (N050, N400), (N060, N400), (N090, N400), (N310, N400), (N370, N400)
+  , (N040, N400), (N070, N400)                      -- (KP-116), (R1-a): d, κ, s_0
   , (N040, N410)                                     -- exponents use only each other and d
   , (N060, N420)                                     -- γ_0
   , (N040, N430), (N060, N430), (N070, N430), (N180, N430), (N310, N430), (N420, N430)
@@ -95,6 +103,7 @@ def canonEdges : List (Line × Line) :=
   , (N050, N460), (N030, N460), (N310, N460), (N410, N460)
   , (N060, N470), (N070, N470), (N310, N470), (N320, N470), (N330, N470), (N370, N470), (N400, N470)
   , (N410, N470), (N430, N470), (N440, N470), (N450, N470), (N460, N470)
+  , (N265, N470)                                    -- B_5^{122}M^6O(1)ε_k ≤ R_1M_1^{(102)}a_1^{102}
   , (N470, N480)
   , (N060, N490), (N250, N490), (N260, N490), (N310, N490), (N470, N490), (N480, N490)
   ]
@@ -106,14 +115,14 @@ def Edge (a b : Line) : Prop := (a, b) ∈ canonEdges
 
 theorem canonOrder_nodup : canonOrder.Nodup := by decide
 
-theorem counts : canonOrder.length = 50 ∧ canonEdges.length = 170 := by decide
+theorem counts : canonOrder.length = 51 ∧ canonEdges.length = 180 := by decide
 
 /-- Every transcribed edge goes forward in the file order. -/
 theorem edges_forward : ∀ e ∈ canonEdges, rank e.1 < rank e.2 := by decide
 
 theorem edge_rank {a b : Line} (h : Edge a b) : rank a < rank b := edges_forward (a, b) h
 
-/-- The number of a line's id `N-nnn` (IDS.md): `N010 ↦ 10`, …, `N500 ↦ 500`. -/
+/-- The number of a line's id `N-nnn` (IDS.md): `N010 ↦ 10`, …, `N265 ↦ 265`, …, `N500 ↦ 500`. -/
 def num : Line → ℕ
   | .N010 => 10
   | .N020 => 20
@@ -141,6 +150,7 @@ def num : Line → ℕ
   | .N240 => 240
   | .N250 => 250
   | .N260 => 260
+  | .N265 => 265
   | .N270 => 270
   | .N280 => 280
   | .N290 => 290
@@ -166,9 +176,17 @@ def num : Line → ℕ
   | .N490 => 490
   | .N500 => 500
 
-/-- Numeric order of the N-ids equals canon rank: `num a = 10 * (rank a + 1)` for every line.
-So "every edge goes from a smaller N to a larger N" is the same statement as `edges_forward`. -/
-theorem id_eq_rank : ∀ a : Line, num a = 10 * (rank a + 1) := by
+/-- Numeric order of the N-ids equals canon rank: `num a < num b ↔ rank a < rank b` for all lines.
+So "every edge goes from a smaller N to a larger N" is the same statement as `edges_forward`.
+(Before N-265 was inserted this was the stronger `num a = 10 * (rank a + 1)`; it still holds for
+every line up to N-260, see `id_eq_rank_prefix`.) -/
+theorem id_eq_rank : ∀ a b : Line, num a < num b ↔ rank a < rank b := by
+  intro a b; cases a <;> cases b <;> decide
+
+/-- The step-10 form holds on every line up to N-260; after it, `num a = 10 * rank a`. -/
+theorem id_eq_rank_prefix : ∀ a : Line,
+    (rank a ≤ rank N260 → num a = 10 * (rank a + 1)) ∧
+    (rank N265 < rank a → num a = 10 * rank a) := by
   intro a; cases a <;> decide
 
 /-- Every edge goes from a smaller N-id to a larger one. -/

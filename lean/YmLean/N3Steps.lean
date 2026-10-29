@@ -345,4 +345,150 @@ theorem n3_step0_re (βj : ℂ → ℂ) {x y γ Y ρ M C₁ β : ℝ} (hγ : 0 <
   have := (abs_le.1 h3).1
   linarith
 
+/-! ## Step 1 (complex Gronwall; HBETA (2.1) for complex `v`) -/
+
+/-- `B'_j = Σ_{i<j} a_{ji} v_i`, complex. -/
+def BpC (a : ℕ → ℕ → ℂ) (v : ℕ → ℂ) (j : ℕ) : ℂ := ∑ i ∈ range j, a j i * v i
+
+/-- `ε_j = Σ_{i<j} |a_{ji}|`. -/
+def εC (a : ℕ → ℕ → ℂ) (j : ℕ) : ℝ := ∑ i ∈ range j, ‖a j i‖
+
+/-- `P_j = Π_{l∈(0,j]} (1 + ε_l)`. -/
+def PC (a : ℕ → ℕ → ℂ) (j : ℕ) : ℝ := ∏ l ∈ Ioc 0 j, (1 + εC a l)
+
+lemma εC_nonneg (a : ℕ → ℕ → ℂ) (j : ℕ) : 0 ≤ εC a j := sum_nonneg fun _ _ => norm_nonneg _
+
+lemma BpC_le (a : ℕ → ℕ → ℂ) (v : ℕ → ℂ) {j : ℕ} {M : ℝ} (h : ∀ i < j, ‖v i‖ ≤ M) :
+    ‖BpC a v j‖ ≤ εC a j * M := by
+  unfold BpC εC
+  calc ‖∑ i ∈ range j, a j i * v i‖ ≤ ∑ i ∈ range j, ‖a j i‖ * M :=
+        (norm_sum_le _ _).trans (sum_le_sum fun i hi => by
+          rw [norm_mul]; exact mul_le_mul_of_nonneg_left (h i (mem_range.1 hi)) (norm_nonneg _))
+    _ = _ := by rw [sum_mul]
+
+lemma PC_succ (a : ℕ → ℕ → ℂ) (j : ℕ) : PC a (j + 1) = PC a j * (1 + εC a (j + 1)) :=
+  prod_Ioc_succ_top (Nat.zero_le j) _
+
+lemma PC_ge_one (a : ℕ → ℕ → ℂ) (j : ℕ) : 1 ≤ PC a j := by
+  induction j with
+  | zero => simp [PC]
+  | succ j ih => rw [PC_succ]; nlinarith [εC_nonneg a (j + 1)]
+
+lemma v_le_PC (a : ℕ → ℕ → ℂ) (v : ℕ → ℂ) {K : ℕ} (hv0 : ‖v 0‖ ≤ 1)
+    (hrec : ∀ j < K, v (j + 1) = v j - BpC a v (j + 1)) :
+    ∀ j ≤ K, ∀ i ≤ j, ‖v i‖ ≤ PC a j := by
+  intro j
+  induction j with
+  | zero => intro _ i hi; obtain rfl : i = 0 := by omega
+            simpa [PC] using hv0
+  | succ j ih =>
+    intro hj i hi
+    have ih' := ih (by omega)
+    have hmono : PC a j ≤ PC a (j + 1) := by
+      rw [PC_succ]; nlinarith [εC_nonneg a (j + 1), PC_ge_one a j]
+    rcases Nat.lt_or_ge i (j + 1) with h | h
+    · exact (ih' i (by omega)).trans hmono
+    · obtain rfl : i = j + 1 := by omega
+      have hB := BpC_le a v (j := j + 1) fun i hi => ih' i (by omega)
+      rw [hrec j (by omega), PC_succ]
+      calc ‖v j - BpC a v (j + 1)‖ ≤ ‖v j‖ + ‖BpC a v (j + 1)‖ := norm_sub_le _ _
+        _ ≤ PC a j + εC a (j + 1) * PC a j := add_le_add (ih' j le_rfl) hB
+        _ = _ := by ring
+
+lemma telescopeC (v : ℕ → ℂ) (B : ℕ → ℂ) {K : ℕ} (h : ∀ j < K, v (j + 1) = v j - B (j + 1)) :
+    ∀ k ≤ K, v 0 - v k = ∑ j ∈ Ioc 0 k, B j := by
+  intro k
+  induction k with
+  | zero => intro; simp
+  | succ k ih => intro hk; rw [sum_Ioc_succ_top (Nat.zero_le k), ← ih (by omega),
+                  h k (by omega)]; ring
+
+/-- **Step 1, complex** (HBETA (2.1) verbatim for complex `v`, as SOURCES_HBETA_N3 §4 Step 1
+states): `|v_0| ≤ 1`, column sums `Σ_{j∈(i,K]} |a_{ji}| ≤ c_i`, `Σ_{i<K} c_i ≤ x` ⇒
+`Σ_{j≤K}|B'_j| ≤ Π(1+ε_j) − 1 ≤ e^x − 1` and `|v_k − v_0| ≤ e^x − 1`. -/
+theorem lemma_H_complex (a : ℕ → ℕ → ℂ) (v : ℕ → ℂ) (c : ℕ → ℝ) (x : ℝ) (K : ℕ)
+    (hv0 : ‖v 0‖ ≤ 1) (hrec : ∀ j < K, v (j + 1) = v j - BpC a v (j + 1))
+    (hcol : ∀ i < K, ∑ j ∈ Ioc i K, ‖a j i‖ ≤ c i) (hx : ∑ i ∈ range K, c i ≤ x) :
+    ∑ j ∈ Ioc 0 K, ‖BpC a v j‖ ≤ PC a K - 1 ∧ PC a K - 1 ≤ Real.exp x - 1 ∧
+    ∀ k ≤ K, ‖v k - v 0‖ ≤ Real.exp x - 1 := by
+  have hv := v_le_PC a v hv0 hrec
+  have h1 : ∑ j ∈ Ioc 0 K, ‖BpC a v j‖ ≤ PC a K - 1 := by
+    unfold PC; rw [gronwall_telescope]
+    exact sum_le_sum fun j hj => by
+      simp only [Finset.mem_Ioc] at hj
+      exact BpC_le a v fun i hi => hv (j - 1) (by omega) i (by omega)
+  have hsum : ∑ j ∈ Ioc 0 K, εC a j ≤ x := by
+    unfold εC
+    rw [sum_comm' (t' := range K) (s' := fun i => Ioc i K) (fun j i => by
+      simp only [Finset.mem_Ioc, Finset.mem_range]; omega)]
+    exact (sum_le_sum fun i hi => hcol i (mem_range.1 hi)).trans hx
+  have h2 : PC a K - 1 ≤ Real.exp x - 1 := by
+    have := (prod_le_exp _ (εC_nonneg a) (Ioc 0 K)).trans (Real.exp_le_exp.2 hsum)
+    unfold PC; linarith
+  refine ⟨h1, h2, fun k hk => ?_⟩
+  have e := telescopeC v (BpC a v) (K := k) (fun i hi => hrec i (by omega)) k le_rfl
+  have hsub : ∑ j ∈ Ioc 0 k, ‖BpC a v j‖ ≤ ∑ j ∈ Ioc 0 K, ‖BpC a v j‖ :=
+    sum_le_sum_of_subset_of_nonneg (Ioc_subset_Ioc_right hk) fun _ _ _ => norm_nonneg _
+  rw [norm_sub_rev, e]
+  exact (norm_sum_le _ _).trans (hsub.trans (h1.trans h2))
+
+/-! ## Step 2 (summability along the complex trajectory) -/
+
+/-- **Step 2, `S_3`.** `Re u_i − Re u_{i+1} ≥ β/2` (Step 0: `Re β_j ≥ β/2`) and
+`Re u_K ≥ γ^{−2}` ⇒ `S_3 = Σ_{i<K} (Re u_i)^{−3/2} ≤ 4γ/β`. -/
+theorem n3_S3 (u : ℕ → ℂ) (β γ : ℝ) (K : ℕ) (hβ : 0 < β) (hγ : 0 < γ)
+    (hinc : ∀ i < K, β / 2 ≤ (u i).re - (u (i + 1)).re) (hfloor : 1 / γ ^ 2 ≤ (u K).re) :
+    ∑ i ∈ range K, (1 / √((u i).re)) ^ 3 ≤ 4 * γ / β := by
+  have := (S3_le (fun i => (u i).re) (β / 2) γ K (by positivity) hγ hinc hfloor).2
+  calc _ ≤ 2 * γ / (β / 2) := this
+    _ = _ := by field_simp; ring
+
+/-- **L-232 (Lemma N3), Steps 1–2 at one complex `c`** (one-argument case `A = 1` and history
+case alike). `v_0 = −1`, the complex variational equation, (1.1) at the real parts
+`|a_{ji}| ≤ ½C₁′(Re u_i)^{−3/2} w_{j−1−i}` with `Σ w ≤ A` (Step 0 gives this with `w = δ_{·,0}`),
+`Re`-increments `≥ β/2` (Step 0), `Re u_K ≥ γ^{−2}`, (b) `x_C = 2C₁′Aγ/β ≤ ln(3/2)` ⇒
+`Σ_{j≤K}|B'_j| ≤ e^{x_C} − 1 ≤ ½`, `|v_k + 1| ≤ ½`, `½ ≤ |v_k| ≤ 3/2`. -/
+theorem n3_step2 (u v : ℕ → ℂ) (a : ℕ → ℕ → ℂ) (w : ℕ → ℝ) (C₁' A β γ : ℝ) (K : ℕ)
+    (hC₁ : 0 ≤ C₁') (hβ : 0 < β) (hγ : 0 < γ) (hA : ∀ n, ∑ m ∈ range n, w m ≤ A)
+    (hv0 : v 0 = -1) (hrec : ∀ j < K, v (j + 1) = v j - BpC a v (j + 1))
+    (h11 : ∀ j ≤ K, ∀ i < j, ‖a j i‖ ≤ C₁' / 2 * (1 / √((u i).re)) ^ 3 * w (j - 1 - i))
+    (hinc : ∀ i < K, β / 2 ≤ (u i).re - (u (i + 1)).re) (hfloor : 1 / γ ^ 2 ≤ (u K).re)
+    (hx : 2 * C₁' * A * γ / β ≤ Real.log (3 / 2)) :
+    ∑ j ∈ Ioc 0 K, ‖BpC a v j‖ ≤ Real.exp (2 * C₁' * A * γ / β) - 1 ∧
+    ∑ j ∈ Ioc 0 K, ‖BpC a v j‖ ≤ 1 / 2 ∧
+    ∀ k ≤ K, ‖v k + 1‖ ≤ 1 / 2 ∧ 1 / 2 ≤ ‖v k‖ ∧ ‖v k‖ ≤ 3 / 2 := by
+  have hA0 : 0 ≤ A := by simpa using hA 0
+  have hcol : ∀ i < K, ∑ j ∈ Ioc i K, ‖a j i‖ ≤ C₁' / 2 * A * (1 / √((u i).re)) ^ 3 := by
+    have := colsum_le (fun j i => ‖a j i‖) w (fun i => (1 / √((u i).re)) ^ 3) C₁' A K hC₁
+      (fun i => by positivity) hA (fun j hj i hi => by simpa using h11 j hj i hi)
+    simpa using this
+  have hs : ∑ i ∈ range K, C₁' / 2 * A * (1 / √((u i).re)) ^ 3 ≤ 2 * C₁' * A * γ / β := by
+    have := lemma_H_step2 (fun i => (u i).re) C₁' A (β / 2) γ K hC₁ hA0 (by positivity) hγ hinc
+      hfloor
+    calc _ ≤ C₁' * A * γ / (β / 2) := this
+      _ = _ := by field_simp
+  obtain ⟨h1, h2, h3⟩ := lemma_H_complex a v _ _ K (by simp [hv0]) hrec hcol hs
+  have he : Real.exp (2 * C₁' * A * γ / β) ≤ 3 / 2 := by
+    calc _ ≤ Real.exp (Real.log (3 / 2)) := Real.exp_le_exp.2 hx
+      _ = 3 / 2 := Real.exp_log (by norm_num)
+  refine ⟨h1.trans h2, by linarith, fun k hk => ?_⟩
+  have hk := h3 k hk
+  rw [hv0, sub_neg_eq_add] at hk
+  have hk' : ‖v k + 1‖ ≤ 1 / 2 := hk.trans (by linarith)
+  refine ⟨hk', ?_, ?_⟩
+  · have := norm_sub_norm_le (1 : ℂ) (-(v k))
+    rw [sub_neg_eq_add, add_comm, norm_neg, norm_one] at this; linarith
+  · have := norm_sub_le (v k + 1) 1
+    rw [add_sub_cancel_right, norm_one] at this; linarith
+
 end YmLean
+
+#print axioms YmLean.inv_sqrt_dev
+#print axioms YmLean.z_dev
+#print axioms YmLean.cauchy_second
+#print axioms YmLean.n3_step0_deriv
+#print axioms YmLean.n3_step0_du
+#print axioms YmLean.n3_step0_re
+#print axioms YmLean.lemma_H_complex
+#print axioms YmLean.n3_S3
+#print axioms YmLean.n3_step2
