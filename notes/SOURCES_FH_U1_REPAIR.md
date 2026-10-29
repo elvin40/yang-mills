@@ -173,3 +173,10 @@ The draft flags these points; this file settles them as follows.
 5. l. 65, l. 81, l. 130: the grades of (L6-𝒫), U1, W1 change to §4.2, §2.3 and §3.2 (W1 needs L3 + B18 only).
 
 STATUS: COMPLETE. Files written: SOURCES_FH_U1_REPAIR.md only. No numerics. Firewall kept.
+
+## Qualifications after verification (FABLE_HARD_VERIFY, 2026-10-29)
+
+Source: FABLE_HARD_VERIFY.md §D (six claims CONFIRMED, D-6 CORRECTED in scope) and §E. The text above is unchanged; where it disagrees with this block, this block holds.
+- §3.5 "(Gap_K) for every K is NOT sufficient by itself" and §3.7(g) "(Gap_K) for every K is not shown to suffice for a joint limit": qualify by "for an arbitrary joint sequence; for iterated joint sequences (ℓ → ∞ at fixed K first, then K → ∞) K-uniform (Gap_K) suffices (clause (e′), FABLE_HARD_VERIFY §C.2(c))". Theorem IV(a) can always be realized by an iterated sequence, so K-uniform (Gap_K) gives one limit family with OS4 for the plaquette two-point function. (Gap_U) stays the condition for every joint limit.
+- §5 item 4: the "safe reading" with K-uniform (Gap_K) is sufficient for iterated joint limits (an existence statement with OS4), not for every limit.
+- §0 item 5 and §4.2: list B18 (R-042) for both forms of L6 in the headline (as §4.2 point 4 already asks). Verified grade (FABLE_HARD_VERIFY §C.3): proved relative to listed inputs {I1 (R-035), I2, I3 incl. (D) on Ũ^c [I], I4 (Reg) [R], I7, I8 [I], R-042}; vacuum extraction is needed only for FABLE_HARD's bound (ii), not for U1′.

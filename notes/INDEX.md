@@ -199,9 +199,9 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | BALABAN_EXCERPTS.md | Index of 97 verbatim Balaban excerpts recorded by the verifiers; 12 marked "needs verification". | corrected (BALABAN_EXCERPTS_CHECK: most of the 12 verified on page images, three readings corrected) |
 | BALABAN_EXCERPTS_CHECK.md | Page-image check of the 12 "needs verification" excerpts. | report, in progress |
 | O3_TEMPLATE.md | Architecture of the OpenAI 2D O(3) continuum-limit paper, used as a template. | unverified |
-| o3_continuum.txt | Text of the OpenAI 2D O(3) paper (source text). | report |
-| clay_ym.txt | Text of the Jaffe–Witten Clay problem statement (source text). | report |
-| chatterjee.txt | Text of Chatterjee, "Yang–Mills for probabilists" (source text). | report |
+| o3_continuum.txt | Text of the OpenAI 2D O(3) paper (source text). | report (local only; not published) |
+| clay_ym.txt | Text of the Jaffe–Witten Clay problem statement (source text). | report (local only; not published) |
+| chatterjee.txt | Text of Chatterjee, "Yang–Mills for probabilists" (source text). | report (local only; not published) |
 | YM_GAPS.md | Likely formal statement and gap list of the OpenAI Yang–Mills claim. | unverified |
 | EUCLID_INV_LIT.md | Literature check on Euclidean invariance of lattice constructions. | unverified |
 | ONLINE_SWEEP.md | Online sweep for material that shortens the open items; found the Sussman–Alpöge account. | unverified |
