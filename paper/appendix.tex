@@ -1,19 +1,19 @@
 \section{Lean formalization}\label{app:lean}
 
-The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of L-009 (Theorem K) and L-011, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib; seven files formalize lemmas of the sources block (Schur test, block-valued Schur test, Combes--Thomas, interpolation and rescaling, resolvent and weighted Neumann bounds, the gauge condition of the constrained minimizer, the slab counterexample to CMP 96 (2.127)). The inventory is as follows. Counts measured in ledger round 12: 80 Lean files, 51 canon lines, 180 edges, no sorry, standard axioms only except the H2Box certificate: H2Box.lean and its 16 run files H2BoxRun00--15 (one native\_decide axiom per run; the H2Box.lean theorems inherit them) (CanonOrder axiom-free). The ``25 files'' above is the count of the first inventory. Round 9: the directory has 45 files (waves 2--3 added Concatenation, ComplexGaussian, NeutralSpectrum, QConstants, TheoremL, ScaleChain, ParametrixCore, WGAlgebra, MagneticShift, and H1Majorant); the Lean support by ledger row is the table at the end of Section~\ref{sec:rem-ledger}, and \file{lean/README.md} lists every file.
+The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of L-009 (Theorem K) and L-011, and the bridge lemmas of the certifier are formalized in Lean 4 with Mathlib; seven files formalize lemmas of the sources block (Schur test, block-valued Schur test, Combes--Thomas, interpolation and rescaling, resolvent and weighted Neumann bounds, the gauge condition of the constrained minimizer, the slab counterexample to CMP 96 (2.127)). There are 80 Lean files, with no \texttt{sorry}. The axioms are propext, Classical.choice, and Quot.sound, except for the H2Box certificate: \texttt{H2Box.lean} and its 16 run files \texttt{H2BoxRun00--15} each add one \texttt{native\_decide} axiom, and the \texttt{H2Box.lean} theorems inherit them. The Lean support by ledger row is the table at the end of Section~\ref{sec:rem-ledger}, and \file{lean/README.md} lists every file. The list below gives the main formalized statements and the first 25 files.
 
-\paragraph{\status{Lean}} (no sorry; axioms propext, Classical.choice, Quot.sound)
+\paragraph{Formalized statements.}
 \begin{itemize}
 \item L-004 (Lemma DS) (a)--(d) (\texttt{YmLean.lemma\_DPrime}), Step 8 (\texttt{lemma\_DPrime\_step8}), L-006 (Lemma D), L-007 (Lemma E) ($Cg^2$ form), L-006 (Lemma D)+E (\file{lean/YmLean/LemmaDPrime.lean}, \file{LemmaDE.lean}). One-argument $\beta$ only.
 \item L-005 (Lemma DT) (\texttt{YmLean.lemma\_DDoublePrime}, \file{lean/YmLean/LemmaDDoublePrime.lean}, 146 lines): (a-tail) bracket $(3b/4)(K-k)-2R\le T(k,K)\le(5b/4)(K-k)+2R$; (b) shooting for $g\in\,]0,g_1]$ with the clamp inactive; (c-pair) with $\beta=3b/4$, $B'=5b/4+2R$, $D'=2R$, for every trajectory with couplings in $]0,\gamma]$; (d) for $n-m\ge8R/b$, lower constant $b/2$. Hypotheses weaker than the note (continuity, any admissible $\gamma$, $R\ge0$ derived). One-argument $\beta$ only; L5 not formalized.
-\item The first 25 files (the full table of 80 files is \file{lean/README.md}; file, main theorems, source note):
+\item The first 25 files (file, main theorems, source note):
 \begin{enumerate}\small
 \item \texttt{LemmaDPrime}: \texttt{lemma\_DPrime}; \file{LEMMA_DPRIME.md} \S1--\S2.
 \item \texttt{LemmaDE}: \texttt{lemma\_D}, \texttt{lemma\_E}, \texttt{lemma\_DE}, \texttt{lemma\_DPrime\_step8}; \file{LEMMAS.md}.
 \item \texttt{LemmaH}: \texttt{gronwall\_telescope}, \texttt{lemma\_H}; \file{SOURCES_HBETA.md} L-182 (Lemma H).
 \item \texttt{DetIdentities}: \texttt{det\_bordered}, \texttt{det\_restrict\_add\_gauge}; \file{numerics/NUMERICS.md} \S1.
 \item \texttt{Telescoping}: \texttt{telescoping\_det}, \texttt{telescoping\_log}; \file{R2_TELESCOPING.md} Prop.\ 3.1.
-\item \texttt{AbelianCount}: \texttt{su2\_count}, \texttt{abelian\_share}; \file{U1_INFINITE_LATTICE.md} Prop.\ 9.1 (used here only as a cross-check, Section~\ref{sec:later}).
+\item \texttt{AbelianCount}: \texttt{su2\_count}, \texttt{abelian\_share}; \file{U1_INFINITE_LATTICE.md} Prop.\ 9.1 (a cross-check only, Section~\ref{sec:later}).
 \item \texttt{LemmaDDoublePrime}: \texttt{lemma\_DDoublePrime}; \file{KAPPA_BOUNDED.md} \S5.3.
 \item \texttt{TheoremK}: \texttt{telescoping\_bound}, \texttt{window\_of\_partial} (the window bound (5.1) from partial sums); \file{KAPPA_BOUNDED.md} \S5.
 \item \texttt{Gronwall}: \texttt{discrete\_gronwall}, \texttt{contraction\_bound} ($N_{j+1}\le qN_j+Z$); \file{KAPPA_BOUNDED.md} Prop.\ 4.1.
@@ -27,125 +27,31 @@ The shooting lemmas of Section~\ref{sec:shooting}, the arithmetic of L-009 (Theo
 \item \texttt{CertBridge}: \texttt{cell\_invertible}, \texttt{cell\_sup\_bound}, \texttt{vertex\_bound} (interval-to-norm bridge of the cell certifier); \file{numerics/h1cert_cell.py}, \file{h1cert_cell2.py}.
 \item \texttt{Tower}: \texttt{tower\_bounds}, \texttt{I1\_compress}, \texttt{majorant\_core}, \texttt{lemmaT\_core} (algebraic core of the one-step majorant, Theorem~\ref{thm:L046}); \file{H1_ANALYTIC.md}.
 \item \texttt{Schur}: \texttt{schur\_test\_weighted}, \texttt{schur\_test} (weighted Schur test for the spectral norm); \file{SOURCES_LOC.md} \S3.3, \file{SOURCES_S2_FORM.md} \S2, \file{SOURCES_A3_SIGMA.md} 2.6.
-\item \texttt{CombesThomas}: \texttt{norm\_entry\_le}, \texttt{coercive\_inv}, \texttt{combes\_thomas}, \texttt{combes\_thomas\_exp}, \texttt{combes\_thomas\_decay}, \texttt{combes\_thomas\_schur} (the proof structure of L-125 (Lemma CT), the kernel-decay reduction of ledger R-001); \file{SOURCES_A1_KERNEL.md} \S7. The identification with the block operators, the kernel-to-row-sum step, (K)/H-057 (C), and the rescaling are not formalized (\file{lean/VERIFY_CombesThomas.md}); the block-valued Schur test is in \texttt{BlockSchur}.
+\item \texttt{CombesThomas}: \texttt{norm\_entry\_le}, \texttt{coercive\_inv}, \texttt{combes\_thomas}, \texttt{combes\_thomas\_exp}, \texttt{combes\_thomas\_decay}, \texttt{combes\_thomas\_schur} (the proof structure of L-125 (Lemma CT), the kernel-decay reduction of ledger R-001); \file{SOURCES_A1_KERNEL.md} \S7. The identification with the block operators, the kernel-to-row-sum step, (K)/H-057 (C), and the rescaling are not formalized; the block-valued Schur test is in \texttt{BlockSchur}.
 \item \texttt{Interp}: \texttt{multilinear\_convex}, \texttt{monomial\_affine} (\file{SOURCES_A3_SIGMA.md} 3.2); \texttt{window\_perturb}, \texttt{window\_perturb\_partial} (\file{SOURCES_T2_KUNIF.md} 5.2, chained to L-009 (Theorem K)); \texttt{rescale\_exp}, \texttt{rescale\_rate}, \texttt{K1\_iff}, \texttt{K1\_numeric} (\file{SOURCES_T2_KAPPA2.md}); \texttt{xexp\_le}, \texttt{xexp\_absorb} (\file{SOURCES_GGAIN_LF.md} \S2).
 \item \texttt{Resolvent}: \texttt{resolvent\_identity}, \texttt{resolvent\_bound}, \texttt{lower\_transfer}, \texttt{neumann\_perturb}, \texttt{resolvent\_chain} (\file{SOURCES_A3_SIGMA.md} \S4); \texttt{wnorm\_mul\_le}, \texttt{wnorm\_neumann}, \texttt{pwnorm\_mul\_le}, \texttt{pwnorm\_neumann} (weighted Neumann series, row half; \file{SOURCES_A2_R2.md} \S2).
 \item \texttt{SlabCounterexample}: \texttt{slab\_fails\_10}--\texttt{slab\_fails\_13}, \texttt{slab\_fails}, \texttt{lambda1\_lt} (the proof step CMP 96 (2.127) fails for every $L\ge10$); \file{SOURCES_A3_GAMMA0_FULL.md} \S3.2--\S3.3.
 \item \texttt{BlockSchur}: \texttt{block\_row\_le}, \texttt{block\_schur\_test} (Schur test with block norms $\|K_{xy}\|_2$ in place of $|K|$); \file{SOURCES_A1_KERNEL.md} \S7, \file{SOURCES_S2_FORM.md} \S2 $\Pi3$.
 \item \texttt{GaugeMin}: \texttt{variational}, \texttt{constrMin\_existsUnique}, \texttt{lemma5}, \texttt{lemma5\_full} ($RD^*A_*=0$ for the constrained minimizer, from (F1), (F3), (F4) as hypotheses); \file{SOURCES_A3_GAMMA0_FULL.md} \S5.
 \end{enumerate}
-Not formalized: interval arithmetic in the arb-based certificate (the separate Lean check of the branch-and-bound, \texttt{H2Box.lean}, has its own verified rational interval evaluator), the enclosure premises P1a--P4, and the identity $\rho_1^2L^2=\lambda_{\max}(G)$. The history form of the shooting lemmas is done: LemmaDHist.lean, LemmaDHistNested.lean (\texttt{lemma\_DPrime\_hist\_adm}, \texttt{lemma\_DDoublePrime\_hist\_adm}; statement check \file{lean/VERIFY_LemmaDHist.md}); Ba{\l}aban's $\beta_j$ meeting the continuity hypotheses stays an input.
+Not formalized: interval arithmetic in the arb-based certificate (the separate Lean check of the branch-and-bound, \texttt{H2Box.lean}, has its own rational interval evaluator, proved correct in Lean), the enclosure premises P1a--P4, and the identity $\rho_1^2L^2=\lambda_{\max}(G)$. The history form of the shooting lemmas is formalized: LemmaDHist.lean, LemmaDHistNested.lean (\texttt{lemma\_DPrime\_hist\_adm}, \texttt{lemma\_DDoublePrime\_hist\_adm}). That Ba{\l}aban's $\beta_j$ meets the continuity hypotheses is an input.
 \end{itemize}
 
-\section{Index of results by status}\label{app:ledger}
+\section{Provenance of the results}\label{app:ledger}\label{app:history}
 
-This appendix indexes the results of the paper by status tag; the tags match the verifier files. Here v1--v4 denote the successive versions \texttt{THEOREM2\_PROOF.md}, \texttt{THEOREM2\_PROOF\_v2.md}, \file{THEOREM2_PROOF_v3.md}, and \file{THEOREM2_PROOF_v4.md} of the Theorem 2 notes. The statements that the main theorems take on trust are listed by item in the trust ledger \file{TRUST_LEDGER.md}, condensed in Section~\ref{sec:rem-ledger}; ledger IDs are given below where an entry corresponds to a ledger item.
+Every result of this paper was first derived in a project note and then checked by an independent reader in a separate note. All derivations and all checks were written by AI agents (Claude models) under the author's direction; no human expert has reviewed them. The table gives, for each result, the note with the derivation and the note with the check. The notes are in the \texttt{notes/} directory of the repository \cite{ymrepo}.
 
-\paragraph{\status{proved+verified}}
-\begin{itemize}
-\item L-004 (Lemma DS) (a)--(d), $K_0$, Remark 4 (\file{LEMMA_DPRIME_VERIFY} grades 1, 2, 5).
-\item L-006 (Lemma D) (corrected interval), L-007 (Lemma E) ($Cg^2$ form), nested-interval variant of L-006 (Lemma D) (\file{LEMMAS_DE_VERIFY}). L-007 (Lemma E) $C^1$ form: trivial variant, same proof.
-\item L-005 (Lemma DT) (tail-sum form, no $J$) (\file{KAPPA_BOUNDED_VERIFY} \S6).
-\item Telescoping $S_k=\sum\beta_j(0)$ for the $p\to0$ coefficient (\file{BETA_FP_VERIFY} item 1, corrected scope).
-\item Prop.\ 2.1 anchor-free identity; exact at the constant field (\file{BETA_FP_LEMMA43_VERIFY} item 1; \file{BETA_FP_H_VERIFY} item 1).
-\item $c=11N^2/(12\pi^2)$, normalization chain; R-027 (F) source (Savvidy eq.\ (1.4); ledger X-005) (\file{BETA_FP_LEMMA43_VERIFY} item 2; \file{BETA_FP_H_VERIFY} \S4).
-\item KAPPA Prop.\ 1.1 as an identity given its fixed-level inputs; Lemma 2.1 (integration by parts); Prop.\ 2.2; level-independence of the degree $-4$ part; L-009 (Theorem K) and L-001 (Theorem 2w) as conditional reductions (\file{KAPPA_BOUNDED_VERIFY} (i)--(v)).
-\item $\sup_j|\sigma_j^{(2)}(0)|<\infty$; Prop.\ 4.1 algebra (\file{KAPPA_BOUNDED_VERIFY} (vi), reason for R-005 failure corrected: obstruction = $\partial\sigma^{(1)}$ in $Q_j$ and in H-178 (W-2), \S7 there).
-\item \file{B2_TWOSTEP} two-step recursion; L-011 (R-025 (H2) $\Rightarrow$ ($C1\sigma$), factor $\rho_2^2/L^2$) and L-012 (R-025 (H2) $\Rightarrow$ (B2), factor $\rho_2^2/L^4$), conditional on R-025 (H2); threshold $\rho_2<L$ (no strip loss); R-025 (H2) weaker than (H$_A$) at $n=2$ (\file{B2_TWOSTEP_VERIFY} grades 1, 3, 4). Form of $Q_j$ by read-off (grade 8; \file{U3_LEMMA51} (3.3) not re-derived).
-\item \file{h2_scan} code structure, one-colour reduction, $H$ and $\Delta_{out}$ blocks, Gram identity, separable Prop.\ A form (\file{H2_LARGE_L_VERIFY} grade 1); tail-bound derivation (4.1)--(4.3) (grade 6, inputs corrected).
-\item Logic of L-088 (Theorem B) and Lemma 1.3 of \file{BETA_FP_PW}, as conditional implications (\file{BETA_FP_PW_VERIFY} \S6 items 1--4 CONFIRMED: doubling identity and Lemma 1.3; Prop.\ 2.2 / Lemma 2.3; Theorems A, B; Lemma 4.1, conditional). Its inputs (U), (DF), (T1) are listed under \status{proved, unverified} and \status{argued}.
-\item Prop.\ E evenness, L-309 (Theorem W0)/W, L-071, L-072, A0, Prop.\ R-003 (\file{U3_AW_VERIFY} grades 1--4).
-\item U3 Theorem 4.1 + O5, Prop.\ A, Prop.\ B, O6, Theorem 6.1 (given V1; Taylor-data norm), Lemma 5.1 neutral value bound, single-block $m=2$ failure in $d=4$, one-step recursion, R2 midpoint identity (\file{U3_VERIFY}, \file{U3_REPAIRS_VERIFY}, \file{U3_LEMMA51_VERIFY}, \file{U3_LEMMA51_R23_VERIFY}).
-\item Exact one-step factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$ (\file{H2_CERTIFY_VERIFY}; Lean \texttt{rho2\_le}).
-\item Sources block: L-174 (Lemma G3) given (Q) (\file{SOURCES_G3_VERIFY}); LOC (\file{SOURCES_LOC_VERIFY}); H-143 (M-A) given (H$-$) and H-144 (M-A2) (\file{SOURCES_MA_VERIFY}, \file{SOURCES_MA2_VERIFY}); H-145 (M-B) with $p_0\ge17/(\gamma_0A_1^2)$ (\file{SOURCES_MB_VERIFY}); condition (a) of L-232 (Lemma N3) (\file{SOURCES_N3A_VERIFY}); the sourced large-field draft B-S.D3, with corrections (\file{SOURCES_D3_VERIFY}, \file{SOURCES_D3R_VERIFY}, \file{SOURCES_D3W8_VERIFY}); R-045 (B-N1) given R-045 (S) (\file{SOURCES_HHIST_N1_VERIFY}).
-\item Ces\`aro: given convergence, $\kappa_k=o(k)\Leftrightarrow\beta_\infty=c\log L$ (equivalence, not a weaker form) (\file{THEOREM2_PROOF_VERIFY} Point 4).
-\item Item 7: the running-maximum lift of $C_\beta$ to non-monotone pasts (\file{SOURCES_GGAIN_NONMONO_VERIFY}).
-\item (KE2) by citation and H-123 (H$_Q$) (\file{SOURCES_QE_KE_HQ_VERIFY}); S2 for $G$ and $G_1$ (\file{SOURCES_S2_FORM_VERIFY}, \file{SOURCES_S2_G1_V7_VERIFY}); fixed-$j$ H-244 (S1), H-247 (S3), H-245 (S2)$|_{t=0}$, H-246 (S2c) given (I3) (\file{SOURCES_T2_S123_VERIFY}).
-\item V1 at fixed level, history-free, conditional on R-030 (G2), Ba{\l}aban's inductive bounds, and the averaging (0.4) (\file{SOURCES_T2_V1_VERIFY}); $k$-uniform decay and moments of $E_0$, ledger R-050 (\file{SOURCES_T2_EUMOM_VERIFY}).
-\item Round 5, proved relative to listed inputs and verified: R-008 (Theorem~\ref{thm:L020}), R-009 in corrected form (Theorem~\ref{thm:L021}), R-010 in the corrected form R-011 (Theorem~\ref{thm:L022}), L-174 (Lemma G3) = N2 with (Q) from R-008 + R-009 and $G_\Gamma$ bounded uniformly in $M$ (Theorem~\ref{thm:L025}), Prop.\ A15-N given H-141 (Loc), (Bd), (H), (Cnt) (Proposition~\ref{prop:L024}), and (I3) at every step (\file{SOURCES_T2_I3_VERIFY}); R-012 closed as a verified list (Proposition~\ref{prop:L023}).
-\item Round 6, proved relative to listed inputs and verified: L-026 (Theorem LOC) (Theorem~\ref{thm:L026}), L-104 (Proposition BDRY) with the replaced R-032 (Proposition~\ref{prop:L027}), (G$_{\mathrm{2D}}$) on its stated $f$-range (Theorem~\ref{thm:L028}); the canonical order of constants (\file{SOURCES_ORDER_CANON_VERIFY}).
-\item Round 7, proved relative to listed inputs and verified: ($M_j$) at fixed $j$ (Theorem~\ref{thm:L029}), L5 by nested intervals (Theorem~\ref{thm:L030}), R-016 in tree form (Theorem~\ref{thm:L035}), R-017 with $r=1$ (Proposition~\ref{prop:L031}); verified reductions: R-018 (Proposition~\ref{prop:L033}), R-019 (Proposition~\ref{prop:L032}), R-020 (Proposition~\ref{prop:L034}); (C1) of the (H$-$) chain given R-019, R-018; ledger R-034 cleared (the sweep with the CMP 122 additions, \file{BETA_FP_M} Prop.\ 4.3 for $j\ge j_1$, the Prop.\ 3.6 assembly, L-192 (Lemma HR), N3-C) (\file{SOURCES_B10_SWEEP_VERIFY}).
-\item Round 8, verified: R-039 a verified reduction with M2b, M4 derived and M5 not needed (\file{SOURCES_B15_M245_VERIFY}); H-241 (R1$_{\mathrm f}$) a verified reduction (Proposition~\ref{prop:L036}); R-044 (W4)-R proved relative to listed inputs (Proposition~\ref{prop:L037}); the $\Lambda_j$ sub-item of R-044 proved relative to listed inputs (\file{SOURCES_B20_LAMBDAJ_VERIFY}); the H-098 (E14-c) clause reduced to R-045 (S) (\file{SOURCES_B21_E14C_VERIFY}); the page readings R-047, R-048, R-049, R-051 (\file{SOURCES_BOOKKEEPING_VERIFY}); R-027 a verified reduction (\file{SOURCES_T2_F_STEPB_VERIFY}).
-\item Round 9, verified: H-137 (L-LL) proved (Theorem~\ref{thm:L040}; \file{SOURCES_T2_LLL_VERIFY}); L-039 (Lemma R) and L-284 (Lemma T), and the condition H-057 (C) as a verified reduction (Proposition~\ref{prop:L038}; \file{SOURCES_C_CONDITION_VERIFY}); H-168 (S$_\sigma$) proved (Proposition~\ref{prop:L042}); the $s$-rule convention K-046 admissible (\file{SOURCES_SRULE_CONVENTION_VERIFY}); the p.~254 transfer proved relative to listed inputs (Proposition~\ref{prop:L043}); CMP 99 Thm 3.9 written out, paper-grade relative to tagged inputs (Theorem~\ref{thm:L044}); H-105 (FX-D) = Q-060, closed (\file{SOURCES_FX_D_VERIFY}).
-\item Round 11, verified (the round-9 items whose verifiers were running): R-027 (F) by proper time, proved (Theorem~\ref{thm:L041}; \file{SOURCES_T2_MPT_STEPC_VERIFY}, \file{SOURCES_T2_MPT_REST_VERIFY}); H-035 (M1) closed as a list (\file{SOURCES_M1_SWEEP_VERIFY}); the write-outs of CMP 99 Thms 3.7 and 3.10, paper-grade relative to tagged inputs (Theorem~\ref{thm:L045}, \file{THM37_FULL_VERIFY}; \file{THM310_FULL_VERIFY}).
-\item Closures of the H-146 (M-C) inputs: H-133 (I-V0) (\file{SOURCES_MC_IV0_VERIFY}); (I-$\varepsilon$) and H-131 (I-ord) for CMP 109/116 (\file{SOURCES_T2_IEPS_VERIFY}) and for the large-field layer of CMP 119/122 (\file{SOURCES_T2_IEPS_LF_VERIFY}; residue [I], every branch closes); K-025 (M1) as convention K-025 and the bound ``order $\le2$'' on coupling and threshold derivatives (\file{SOURCES_HIGHER_M1_VERIFY}).
-\end{itemize}
-
-\paragraph{\status{proved, unverified}}
-\begin{itemize}
-\item \file{BETA_FP_U}, no verifier file: Theorem 2.4 ((U) $\Leftarrow$ (T1) + R-025 (H2)), Prop.\ 3.1 ($\Gamma^{ex}=\gamma_{rec}+\mathfrak d_F$), Prop.\ 3.2 ($\gamma_{rec}$ bounded), Corollary 4.1, L-001 (Theorem 2w) by the plane-wave route given (T1), R-025 (H2), (DF), LW (5.7), A6 (v4 label), H-202 (H0); the argued step ``R-025 (H2) closes ($C1\sigma$)'' of \S3.5 there is superseded by \file{B2_TWOSTEP} L-011 \status{proved+verified}.
-\item \file{LEMMA_DPRIME_SWEEP}: 19 cross-scale uses covered by (b) + (c-pair) + K-018 (S) (4 of 19 table rows, 11, 12, 16, 18, verified on page images by \file{LEMMA_DPRIME_VERIFY} comparisons A--E); round 7: all 19 rows second-read and verified in \file{SOURCES_B10_SWEEP_VERIFY} (ledger R-034).
-\item Step ``L-001 (Theorem 2w) $\Rightarrow$ Balaban's Theorem 1'' (depends on the sweep and on L5 in the sharpened form of Section~\ref{sec:L5}; round 7: both verified, Section~\ref{sec:src-r7}).
-\item Prop.\ 3.6 assembly with $C(1+j)^2L^{-2j}$ (round 7: assembly confirmed, \file{SOURCES_B10_SWEEP_VERIFY}); neutral-sector $K$-derivative paragraph; $\sigma^{(1)}$ convergence sketch $jL^{-2j}$.
-\item Necessity of individual positivity for literal (0.31) at every $K$ (elementary).
-\item \file{BETA_FP_M} Prop.\ 4.3 ($\log|\det|$ bound in the N--O window, given H-244 (S1)--H-247 (S3)); round 7: confirmed for $j\ge j_1$ in \file{SOURCES_B10_SWEEP_VERIFY}.
-\item Premise P4 of the one-step certificate (\file{H2_CERTIFY_P4}; identity (D) in Lean \texttt{P4\_divergence}; sweeps A--H, 2026-10-28: verified, all steps confirmed, \file{SOURCES_SWEEP_A} \S1 and \file{SOURCES_SWEEP_AFG_VERIFY} \S6, so P4 leaves this list); the $L=13$ certificate sizing after fix G1 (\file{H2_CERTIFY_L13_G1}).
-\end{itemize}
-
-\paragraph{\status{numerical}}
-\begin{itemize}
-\item $\rho_1(\infty)=1.760,\dots,2.0895$ at $L=3,\dots,13$; at $L=13$ the measured $\sup\rho_1^2=4.37$ (\file{H2_CERTIFY_L13}); the certified bound is below.
-\end{itemize}
-
-\paragraph{\status{certified (interval arithmetic, outward rounding; verified)}}
-\begin{itemize}
-\item R-025 (H2) at $L=13$ (Theorem~\ref{thm:L046}; ledger R-025): $\rho_1(j,K)^2\le10<13$ for all $j\ge1$ (including $\infty$) and all $K$, hence $\rho_2\le10<13$ by \texttt{rho2\_le} (\file{H1_ANALYTIC}; \file{H1_ANALYTIC_VERIFY} V0--V9, \file{H1_ANALYTIC_VERIFY2}, \file{H2_CERTIFY_P5_VERIFY}). Residue as in Section~\ref{sec:certH2}.
-\end{itemize}
-
-\paragraph{\status{verified reduction}}
-\begin{itemize}
-\item (Q) to CMP 99 (3.132), (E$_U$), and LOC (\file{SOURCES_Q_VERIFY}, \file{SOURCES_CDC_VERIFY}); (E$_U$) to kernel-moment bounds Ba{\l}aban does not print (\file{SOURCES_EU_VERIFY}; the bound $K\le K_0(1+\dots)$ is a \status{derived sketch}).
-\item N3 to R-040/R-041 (H-hol) + real R-037 (H-hist) + H-120 (H2-hist) (\file{SOURCES_HBETA_N3_VERIFY}).
-\item R-040 (H-hol), small field, to Ba{\l}aban's conditions with modified constants (\file{SOURCES_HHOL_VERIFY}); large field to H-143 (M-A), H-145 (M-B), H-146 (M-C), R-038 (H-hist2) (\file{SOURCES_HHOL_LF_VERIFY}); H-147 (M-D) to R-037 (H-hist) + R-039 (H-thr).
-\item (H$-$) to CMP 102 (189), an existing trust item (\file{SOURCES_MA2_VERIFY}).
-\item R-038 (H-hist2) to the real uniform R-037 (H-hist), no new input (\file{SOURCES_HHIST2_VERIFY}).
-\item Round 3 (ledger R-001--R-005, R-037, R-041, R-045, R-046): R-001 kernel-decay form via L-125 (Lemma CT) to CMP 99 Thms 3.1, 3.3, 3.12 + H-136 (KE2) + H-123 (H$_Q$) + S2 (\file{SOURCES_QE_KE_HQ_VERIFY}, \file{SOURCES_S2_FORM_VERIFY}); R-002 to (W$_G$) + H-057 (C) + CMP 96 Lemma 2.1 (\file{SOURCES_A1_WALK_VERIFY}), now written out as Theorem~\ref{thm:L017}, with (W$_G$) written out as Theorem~\ref{thm:L018} (\file{A1_WALK_FULL_VERIFY}, \file{WG_FULL_VERIFY}, paper-grade relative to their tagged inputs); R-003 with the V7 repair to (W$^c$) + R-008 + two [I] (\file{SOURCES_A2_R2_VERIFY}, \file{SOURCES_S2_G1_V7_VERIFY}), with (W$^c$) written out as Theorem~\ref{thm:L019} (\file{WC_FULL_VERIFY}, paper-grade relative to its tagged inputs); R-004, full proof with $\gamma_0\ge m_L/(48d^2L^d)$, and its $\sigma$-localized clause (\file{SOURCES_A3_GAMMA0_FULL_VERIFY}, \file{SOURCES_A3_SIGMA_VERIFY}); R-028 ($M_j$) to (I3), (G$_{\mathrm{2D}}$), Prop.\ 4.4 region 1 (\file{SOURCES_T2_S123_VERIFY}); R-005 to R-001 + CMP 102 (\file{SOURCES_A1_A4_VERIFY}); large-field R-037 (H-hist) (\file{SOURCES_GGAIN_LF_VERIFY}); H-146 (M-C) to the printed CMP 116 \S2 conditions (\file{SOURCES_MC_VERIFY}); the R-045 (S) clauses of R-045 (\file{SOURCES_B21_S_VERIFY}); the $\kappa\to\kappa/2$ recovery R-046 (\file{SOURCES_T2_KAPPA2_VERIFY}).
-\item R-030 (G2) at fixed $j$ (item 6, was \status{formal}): torus densities and coefficient extraction commute with $N\to\infty$, modulo $\tilde Q$ onto, (Gap$_f$), and the averaging-analyticity reading (\file{SOURCES_T2_G2_VERIFY}).
-\item The use of R-006 in L-001 (Theorem 2w) (item 7): L-183 (Proposition H0-red), residue N1--N9 (\file{SOURCES_T2_H0_VERIFY}); N2 proved (Theorem~\ref{thm:L025}).
-\item Item 9 ($K$-independence in the shooting) closed: $\beta_j$ is the whole-lattice coefficient by definition, Lemmas DS/DT run at fixed $K$ (\file{SOURCES_T2_KUNIF_VERIFY}).
-\end{itemize}
-
-\paragraph{\status{interval enclosure, verified}}
-\begin{itemize}
-\item Point enclosure $\rho_2(\infty,K^*)\in[1.9993,2.1273]<3$ at $L=3$; P1 (loop-family coefficients exact rationals); Oishi--Rump bound on $\|\mathfrak B^{-1}\|$ (\file{H2_CERTIFY_VERIFY}).
-\end{itemize}
-
-\paragraph{\status{argued}}
-\begin{itemize}
-\item R-026 (PI); ($M_j$) (Prop.\ 4.4 of \file{BETA_FP_M}); (T1) (plane-wave form of L-071 (Theorem A3), \file{BETA_FP_U} \S2.3); (DF) (\file{BETA_FP_U} \S3.4); A6 (v4 label, not ledger R-007) = plane-wave vs constrained-minimizer expansion point (uniform in $k$); $\mathfrak d_Y$, $\mathfrak d_{gf}$ bounds; (H$_A$) $\Rightarrow$ (A) in full $\Rightarrow$ (B2) (\file{U3_AW} \S4.7 sketch); $C^2$, $C^3$ of $\sigma^{(1)}$ under R-025 (H2) (not written); $j_*$ size; the rate $O(\Lambda^{-2}\log\Lambda)$.
-\end{itemize}
-
-\paragraph{\status{open}}
-\begin{itemize}
-\item R-025 (H2) at $L\notin\{13,15,17,21\}$ (numerical at $L=3,5,9$; certified at $L=13$ and, round 7, at $L=15,17,21$, Section~\ref{sec:numr7}); R-027 (F) is no longer open (proved and verified in round 11, Theorem~\ref{thm:L041}); the open tension of the single-step $\beta_1$ against $c\log L$ stays open (Section~\ref{sec:numr8}); (B2) is reduced to it \status{verified reduction}. The residue of R-002, R-003: the inputs of Theorems~\ref{thm:L017}, \ref{thm:L018}, \ref{thm:L019}, namely the printed inputs of H-057 (C) (R-021), the printed sketches of CMP 99 Thms 3.7, 3.9, 3.10 (round 9: 3.7, 3.9 written out), R-022, R-023, WG-1 in the $M_1$ form, and [I] geometry and convention items (O3, O4 closed). (T1), (DF), A6 (v4 label) for Route B (ledger R-033). The inputs of V1 and R-030 (G2): the averaging declaration (0.4), $\tilde Q$ onto, (Gap$_f$), and a $j$-uniform form of R-030 (G2). The residue of R-028 ($M_j$): (I3), (G$_{\mathrm{2D}}$), Prop.\ 4.4 region 1. L5 (domain of $\beta$; nested-interval DT \status{not written}). The finite-volume identification of the step, R-term part (ledger R-032; an input of Theorem 1). (A) in full. See Section~\ref{sec:remains}.
-\end{itemize}
-
-\paragraph{\status{corrected by verifiers since v3}}
-\begin{itemize}
-\item \file{B2_TWOSTEP} G1: the certification of R-025 (H2) is a computer-assisted proof project, not a check (\file{B2_TWOSTEP_VERIFY} grade 6).
-\item \file{H2_LARGE_L}: $L$-trend rate claim (grade 5); $j_0$ inputs, $\delta_m$ 45--90$\times$ larger, $a_*(L=5)=0.0107$ (grade 6), giving $j_0\approx8$ ($L=3$), $\approx6$ ($L=5$).
-\item \file{BETA_FP_PW}: comparison and numerics (\file{BETA_FP_PW_VERIFY} grades 5, 6).
-\end{itemize}
-
-\paragraph{\status{refuted}}
-\begin{itemize}
-\item (HS) $\sup\|H_j\|<L\sqrt{L-1}$ at $L=3$.
-\item Not a refuted statement, but a failed method: the one-step sup-norm $C^1$ recursion at $L=3$ (factor 1.005--1.033 for $j\ge2$; Section~\ref{sec:refuted}).
-\item \file{U3_LEMMA51} Theorem 4.1 for $m=2$ with a single block-$M$ constraint in $d=4$.
-\item v1 claims withdrawn: ``every early step must be certified for Theorem 1'' (false: L-004 (Lemma DS)/DT); ``(H$_o$) is weaker than $\beta_\infty=c\log L$'' (it is equivalent); ``the whole $\log\Lambda$ sits in the fine piece'' as a fact (it is equivalent to the open statement); ``one-loop parts hold for SU($N$)'' (Lemma 5.1's charged/neutral split is the SU(2) Cartan split); (3.2) with $Cj^2L^{-2j}$ (0 at $j=0$); the (M) resolvent bound $\|\mathcal K_t^{-1}\|\le C/|f|$ (Nielsen--Olesen zero); (H) with IR weights as stated (UNSUPPORTED).
-\end{itemize}
-
-\paragraph{\status{Balaban}}
-\begin{itemize}
-\item H-202 (H0) smoothness of $\beta_{j+1}$ in $g$ (CMP 109 (1.22), pp.\ 263--264), at odd $L>11$ only; uniformity in $j$ is our reading and uniformity in the history is not printed (ledger R-006); Theorem 1 and the inductive bounds of CMP 109, 116, 119, 122 and the propagator papers CMP 95, 96, 98, 99, 102. Uniform level bounds partly cited from CMP 95/96/99 (O6 replaced the main citation). Each Ba{\l}aban input that is printed without proof, or used without being printed, is a Group A row of the trust ledger.
-\end{itemize}
-
-\paragraph{\status{verified quote}}
-\begin{itemize}
-\item Theorem 2 and Theorem 1 wording, ``separate paper'', p.\ 298 history sentence, (0.1) with $1/g_k^2$ and $\chi_k$, (1.3)--(1.5) (print misprint $E^{(j+k)}$ read as $E^{(j+1)}$), (2.6)--(2.9) of CMP 119, items A--E of CMP 122 (\file{BALABAN_EXCERPTS_CHECK}; \file{LEMMA_DPRIME_VERIFY}; \file{LEMMA_DPRIME_SWEEP} page images). \file{BALABAN_EXCERPTS_CHECK} item 10 (CMP 116 has no $C^m$-in-$g$ statement) is unchanged since v3; the item 11 readings are verified, with corrections, in \file{SOURCES_BOOKKEEPING.md} (former ledger R-051).
-\end{itemize}
-
-\paragraph{\status{numerical}} see Section~\ref{sec:numerics}.
+\makeatletter\newcommand\provinput[1]{\@@input #1 }\makeatother
+\begingroup\small\tablefiles\catcode`\_=12
+\begin{longtable}{|p{3.6cm}|>{\raggedright\arraybackslash}p{5.4cm}|>{\raggedright\arraybackslash}p{5.4cm}|}
+\hline
+result & derivation & check \\ \hline
+\endhead
+\hline
+\endfoot
+\provinput{prov_A.tex}\provinput{prov_B.tex}\provinput{prov_C.tex}
+\end{longtable}
+\endgroup
 
 \section{Label map}\label{app:labels}
 
@@ -177,35 +83,35 @@ Lemma~\ref{lem:L016} & finite-form lemma of H-083 (B-RP) & \texttt{ASSEMBLY} \S2
 H-200 (GC1)--H-201 (GC3) & (G1)--(G3) of the dependency table & \texttt{ASSEMBLY} \S3 \\ \hline
 (S$_{\mathrm{src}}$) & R-045 (S), final sourced bound & \texttt{SOURCES\_D4D5} \\ \hline
 items H, 1--13, B1--B8 & items of the open list & \texttt{THEOREM2\_PROOF\_v4} \S10 \\ \hline
-Theorem~\ref{thm:L020} & R-008 (round 5) & \texttt{SOURCES\_A7\_CDC} \\ \hline
-Theorem~\ref{thm:L021} & R-009, corrected form (round 5) & \texttt{SOURCES\_A8\_POS} \\ \hline
-Theorem~\ref{thm:L022} & R-011 (round 5) & \texttt{SOURCES\_A10\_LOWER} \\ \hline
-Proposition~\ref{prop:L023} & R-012 list (round 5) & \texttt{SOURCES\_A11\_CONST} \\ \hline
-Proposition~\ref{prop:L024} & Prop.\ A15-N (round 5) & \texttt{SOURCES\_A15\_WHOLE} \\ \hline
-Theorem~\ref{thm:L025} & L-174 (Lemma G3) = N2 (round 5) & \texttt{SOURCES\_G3\_N2} \\ \hline
-Theorem~\ref{thm:L026} & L-026 (Theorem LOC) (round 6) & \texttt{SOURCES\_A15\_LOC} \S7.5 \\ \hline
-Proposition~\ref{prop:L027} & L-104 (Proposition BDRY) (round 6) & \texttt{SOURCES\_A15\_BDRY} \\ \hline
-Theorem~\ref{thm:L028} & (G$_{\mathrm{2D}}$), Thm 5.1 + Cor.\ 5.2 (round 6) & \texttt{SOURCES\_T2\_GAPRIME2} \\ \hline
-Remark~\ref{rem:GAprime} & range remark for (G$_{\mathrm{2D}}$) (round 6) & \texttt{SOURCES\_T2\_GAPRIME2}, \texttt{SOURCES\_T2\_FRANGE} \\ \hline
-Theorem~\ref{thm:L029} & ($M_j$), Theorem 4.2 and \S5 (round 7) & \texttt{SOURCES\_T2\_MJ\_REST} \\ \hline
-Theorem~\ref{thm:L030} & Lemmas DT-nest, DS-nest, Route 2 (round 7) & \texttt{SOURCES\_T2\_B7\_CLAMP} \\ \hline
-Proposition~\ref{prop:L031} & R-017 identity (round 7) & \texttt{SOURCES\_A17\_A19} \\ \hline
-Proposition~\ref{prop:L032} & R-019 reduction (round 7) & \texttt{SOURCES\_A17\_A19} \S4--\S5 \\ \hline
-Proposition~\ref{prop:L033} & R-018 reduction (round 7) & \texttt{SOURCES\_A18\_REGULAR} \\ \hline
-Proposition~\ref{prop:L034} & R-020 reduction (round 7) & \texttt{SOURCES\_A23\_TSTEP} \\ \hline
-Theorem~\ref{thm:L035} & R-016 in tree form (round 7) & \texttt{SOURCES\_A16\_REPLACE2} \\ \hline
-Proposition~\ref{prop:L036} & H-241 (R1$_{\mathrm f}$), frozen-threshold bounds (round 8) & \texttt{SOURCES\_HHOL\_LF\_SPRIME} \\ \hline
-Proposition~\ref{prop:L037} & R-044 (W4)-R (round 8) & \texttt{SOURCES\_B20\_W4R} \\ \hline
-Proposition~\ref{prop:L038} & the H-057 (C) condition, \S8 verdict (round 8; verified round 9) & \texttt{SOURCES\_C\_CONDITION} \\ \hline
-Lemma~\ref{lem:L039} & L-039 (Lemma R) (round 8; verified round 9) & \texttt{SOURCES\_C\_CONDITION} \S3.2 \\ \hline
-Theorem~\ref{thm:L040} & H-137 (L-LL), Theorem 5.1 (round 8; verified round 9) & \texttt{SOURCES\_T2\_LLL} \\ \hline
-Theorem~\ref{thm:L041} & H-148 (MPT) L-060 (Theorem A), L-112 (Lemma C), L-090 (Theorem B) (round 9; verified round 11) & \texttt{SOURCES\_T2\_MPT\_STEPC} \\ \hline
-Proposition~\ref{prop:L042} & H-168 (S$_\sigma$), L-127 (Lemma CS) (round 9) & \texttt{SOURCES\_B21\_S\_PRIME} \\ \hline
-Proposition~\ref{prop:L043} & p.~254 transfer (round 9) & \texttt{SOURCES\_P254\_TRANSFER} \\ \hline
-Theorem~\ref{thm:L044} & L-044, L-210 (Lemma LB) (round 9) & \texttt{THM39\_FULL} \\ \hline
-Theorem~\ref{thm:L045} & L-045, Cor.\ 3.8 forms (round 9) & \texttt{THM37\_FULL} \\ \hline
-Theorem~\ref{thm:L196} & L-196 (Theorem IV), \S7.1 (paper round 10) & \texttt{INFINITE\_VOLUME\_FABLE} \\ \hline
-Remark~\ref{rem:GapU} & (Gap$_U$), \S3.5 (paper round 10; verified with a scope correction, \texttt{FABLE\_HARD\_VERIFY}) & \texttt{SOURCES\_FH\_U1\_REPAIR} \\ \hline
+Theorem~\ref{thm:L020} & R-008 & \texttt{SOURCES\_A7\_CDC} \\ \hline
+Theorem~\ref{thm:L021} & R-009, corrected form & \texttt{SOURCES\_A8\_POS} \\ \hline
+Theorem~\ref{thm:L022} & R-011 & \texttt{SOURCES\_A10\_LOWER} \\ \hline
+Proposition~\ref{prop:L023} & R-012 list & \texttt{SOURCES\_A11\_CONST} \\ \hline
+Proposition~\ref{prop:L024} & Prop.\ A15-N & \texttt{SOURCES\_A15\_WHOLE} \\ \hline
+Theorem~\ref{thm:L025} & L-174 (Lemma G3) = N2 & \texttt{SOURCES\_G3\_N2} \\ \hline
+Theorem~\ref{thm:L026} & L-026 (Theorem LOC) & \texttt{SOURCES\_A15\_LOC} \S7.5 \\ \hline
+Proposition~\ref{prop:L027} & L-104 (Proposition BDRY) & \texttt{SOURCES\_A15\_BDRY} \\ \hline
+Theorem~\ref{thm:L028} & (G$_{\mathrm{2D}}$), Thm 5.1 + Cor.\ 5.2 & \texttt{SOURCES\_T2\_GAPRIME2} \\ \hline
+Remark~\ref{rem:GAprime} & range remark for (G$_{\mathrm{2D}}$) & \texttt{SOURCES\_T2\_GAPRIME2}, \texttt{SOURCES\_T2\_FRANGE} \\ \hline
+Theorem~\ref{thm:L029} & ($M_j$), Theorem 4.2 and \S5 & \texttt{SOURCES\_T2\_MJ\_REST} \\ \hline
+Theorem~\ref{thm:L030} & Lemmas DT-nest, DS-nest, Route 2 & \texttt{SOURCES\_T2\_B7\_CLAMP} \\ \hline
+Proposition~\ref{prop:L031} & R-017 identity & \texttt{SOURCES\_A17\_A19} \\ \hline
+Proposition~\ref{prop:L032} & R-019 reduction & \texttt{SOURCES\_A17\_A19} \S4--\S5 \\ \hline
+Proposition~\ref{prop:L033} & R-018 reduction & \texttt{SOURCES\_A18\_REGULAR} \\ \hline
+Proposition~\ref{prop:L034} & R-020 reduction & \texttt{SOURCES\_A23\_TSTEP} \\ \hline
+Theorem~\ref{thm:L035} & R-016 in tree form & \texttt{SOURCES\_A16\_REPLACE2} \\ \hline
+Proposition~\ref{prop:L036} & H-241 (R1$_{\mathrm f}$), frozen-threshold bounds & \texttt{SOURCES\_HHOL\_LF\_SPRIME} \\ \hline
+Proposition~\ref{prop:L037} & R-044 (W4)-R & \texttt{SOURCES\_B20\_W4R} \\ \hline
+Proposition~\ref{prop:L038} & the H-057 (C) condition, \S8 verdict & \texttt{SOURCES\_C\_CONDITION} \\ \hline
+Lemma~\ref{lem:L039} & L-039 (Lemma R) & \texttt{SOURCES\_C\_CONDITION} \S3.2 \\ \hline
+Theorem~\ref{thm:L040} & H-137 (L-LL), Theorem 5.1 & \texttt{SOURCES\_T2\_LLL} \\ \hline
+Theorem~\ref{thm:L041} & H-148 (MPT) L-060 (Theorem A), L-112 (Lemma C), L-090 (Theorem B) & \texttt{SOURCES\_T2\_MPT\_STEPC} \\ \hline
+Proposition~\ref{prop:L042} & H-168 (S$_\sigma$), L-127 (Lemma CS) & \texttt{SOURCES\_B21\_S\_PRIME} \\ \hline
+Proposition~\ref{prop:L043} & p.~254 transfer & \texttt{SOURCES\_P254\_TRANSFER} \\ \hline
+Theorem~\ref{thm:L044} & L-044, L-210 (Lemma LB) & \texttt{THM39\_FULL} \\ \hline
+Theorem~\ref{thm:L045} & L-045, Cor.\ 3.8 forms & \texttt{THM37\_FULL} \\ \hline
+Theorem~\ref{thm:L196} & L-196 (Theorem IV), \S7.1 & \texttt{INFINITE\_VOLUME\_FABLE} \\ \hline
+Remark~\ref{rem:GapU} & (Gap$_U$), \S3.5 & \texttt{SOURCES\_FH\_U1\_REPAIR} \\ \hline
 \end{longtable}
 \begin{longtable}{|p{6cm}|p{6cm}|}
 \hline
@@ -246,13 +152,11 @@ v4 \S8.1 & Section~\ref{sec:beta1} \\ \hline
 v4 \S8.2 & Section~\ref{sec:later} \\ \hline
 v4 \S8.3 & Section~\ref{sec:routeKnum} \\ \hline
 v4 \S9 (Lean) & Appendix~\ref{app:lean} \\ \hline
-v4 \S9 (other tags) & Appendix~\ref{app:ledger} \\ \hline
 v4 \S10 (open list) & Section~\ref{sec:remains} \\ \hline
 v4 \S10 (hypothesis table) & Section~\ref{sec:deptable} \\ \hline
 v4 \S11 & Section~\ref{sec:independence} \\ \hline
-v4 preamble (tag legend) & Section~\ref{sec:status} \\ \hline
+v4 preamble (legend) & Section~\ref{sec:status} \\ \hline
 v4 preamble (range of $L$) & Section~\ref{sec:rangeL} \\ \hline
-v4 change logs & Appendix~\ref{app:history} \\ \hline
 \texttt{ASSEMBLY} \S0 (notation) & Section~\ref{sec:lattice} \\ \hline
 \texttt{ASSEMBLY} \S0 (observables) & Section~\ref{sec:observables} \\ \hline
 \texttt{ASSEMBLY} \S1.1 & Section~\ref{sec:exists} \\ \hline
@@ -271,28 +175,7 @@ v4 change logs & Appendix~\ref{app:history} \\ \hline
 \texttt{ASSEMBLY} \S2.9 & Section~\ref{sec:BNT} \\ \hline
 \texttt{ASSEMBLY} \S3 & Section~\ref{sec:deptable} \\ \hline
 \texttt{ASSEMBLY} \S4 & Section~\ref{sec:notgiven} \\ \hline
-\texttt{ASSEMBLY} corrections & Section~\ref{sec:corrections} \\ \hline
+\texttt{ASSEMBLY} corrections & Remarks~\ref{corr:ell}, \ref{corr:nt}; Section~\ref{sec:notgiven} \\ \hline
 \texttt{NUMERICS} \S7 (rewritten) & Section~\ref{sec:numr8} \\ \hline
 \end{longtable}
 \endgroup
-
-\section{Revision history}\label{app:history}
-
-Rounds 1--2 are the v2 and v3 notes; the ledger's rounds are counted separately (\file{TRUST_LEDGER.md} change notes).
-
-\begin{itemize}
-\item \emph{Theorem 2 notes, v3.} Built on \file{THEOREM2_PROOF_v2.md} with the corrections of \file{THEOREM2_PROOF_v2_VERIFY} (cited there as \file{v2_VERIFY}): the range of $L$ (odd, $L>11$, or H-202 (H0) at this $L$ as a hypothesis); L5 sharpened (the clamped shooting leaves Ba{\l}aban's domain; the nested-interval variant of L-005 (Lemma DT) is \status{not written}); (H$_A$) $\Rightarrow$ (B2) tagged \status{argued}; ``independent'' routes replaced by ``formally distinct'', with the points $\theta_*<1$, $k$-uniform $\beta$ identification, and the first-order vertex smoothness of (U); the independence record completed (ONLINE\_SWEEP \S2 as the first channel; the O(3) paper cited); open list extended (item 9, B5, item 10, hypothesis table); sweep count ``4 of 19 table rows''; $\gamma_*$ depends on $R$ through $B'$. At that time \file{BETA_FP_PW_VERIFY.md} had no grade, and Route B stayed \status{proved, unverified}. The grades of \file{LEMMA_DPRIME_VERIFY} and \file{KAPPA_BOUNDED_VERIFY} \S9(iv) were cited explicitly.
-\item \emph{Theorem 2 notes, v4.} Added the material verified after v3: \file{B2_TWOSTEP.md} with \file{B2_TWOSTEP_VERIFY.md}, \file{H2_LARGE_L.md} with \file{H2_LARGE_L_VERIFY.md}, \file{lean/README.md} (L-005 (Lemma DT) in Lean), \file{BETA_FP_U.md} (Route B inputs), and \file{numerics/NUMERICS.md} \S7. The section on (B2) was rewritten around R-025 (H2) (Theorems L-011, L-012; threshold $\rho_2<L$; one-step sufficiency at $L\ge5$; certification plan; corrected $L$-trend and $j_0$ inputs). The ledger and open list were updated, with item H as the single uniform hypothesis of both routes. \file{KAPPA_BOUNDED_VERIFY} states the (B2) obstruction in its \S7 and \S9(vi). \file{BALABAN_EXCERPTS_CHECK} had no change since v3.
-\item \emph{Tag change in the LaTeX version of v4.} The logic of \ThmPW{} is tagged \status{proved+verified, conditional}, citing \file{BETA_FP_PW_VERIFY} \S6 items 1--4, per the tag decision in \file{PLAN.md} (2026-10-28). The Markdown v4 kept \status{proved, unverified}. The inputs (U), (DF), (T1) from \file{BETA_FP_U} stay \status{proved, unverified}.
-\item \emph{Assembly.} \file{ASSEMBLY.md} with the corrections of \file{ASSEMBLY_VERIFY.md} (Section~\ref{sec:corrections}). The verifier also found the dependency table stale in five rows (grade 7; no overclaim): B-T2.2, B-T2.3, B-T2.4, B-S.D2C, B-S.D3 lagged \file{PLAN.md}. The table was rebuilt with a tag for every block and the sub-blocks added later (Route K, Route B, R-025 (H2), R-039 (H-thr), H-111 (G-gain), R-043 (FX)). Minor items: \file{SOURCES.md} \S1.3 gives $c_j=1+O(g_j^4)$, while this paper uses $O(g^3)$ per \file{SOURCES_VERIFY} item 8 (the corrected value); the variance estimate drops a harmless $g_0^4$ (logarithmic) factor.
-\item \emph{This version.} The Theorem 2 chapter and the assembly chapter are merged into one article: one notation section, one status legend, numbered environments (Appendix~\ref{app:labels}), one numerical section, one list of open items, and the hypothesis table of v4 \S10 merged into the dependency table. Three names were changed to avoid collisions (Section~\ref{sec:names}). The dependency table and the open list were brought to the current state of \file{PLAN.md}: R-043 (FX) is reduced to N3 (Q-060 and R2 \status{proved+verified}, Q-061 \status{proved+verified, conditional on N3}, Q-062 avoided by the main form; previously Q-060, Q-061 \status{proved, unverified} and R2, Q-062 \status{open}), and the point enclosure of R-025 (H2) at $L=3$ is verified (Section~\ref{sec:enclosure}). No theorem, lemma, or proof changed.
-\item \emph{Round 3.} R-001--R-005 regraded to verified reductions (R-004 a full proof with a corrected constant), R-002 added and reduced, item 9 closed (R-032 moved to the input set of Theorem 1), item 7 restated, G4 off-chain, R-037, R-041, R-045, R-046 regraded, Lean files 21 $\to$ 22 (\file{TRUST_LEDGER.md} round 3; \file{PLAN.md}).
-\item \emph{Round 4 (integration of the write-outs).} Theorems~\ref{thm:L017}, \ref{thm:L018}, \ref{thm:L019} (Section~\ref{sec:src-full}) replace ``reduced to printed sketches'' for R-002, the final-propagator expansions, and (W$^c$); all three are paper-grade relative to their tagged inputs, and the tag stays \status{verified reduction}. Corrected constants: WG-1 in the $M_1$ form; $K_b\le64d^3L^{2d+1}$; $c_M\le4\sqrt N$; the Schur-sum factor $1+4/(e\delta)$; the $\tfrac13M_1$ band by one-layer enlargement. H-133 (I-V0), (I-$\varepsilon$), H-131 (I-ord) closed; K-025 (M1) became convention K-025; V1 proved and verified at fixed level; R-030 (G2) moved from \status{formal} to [R]; R-050 proved and verified.
-\item \emph{Round 5.} Statements with hypotheses and residues added in Section~\ref{sec:src-r5}: R-008 proved relative to listed inputs (Theorem~\ref{thm:L020}; $C$ is the constraint map and $C^*\Delta_kC$ the precision; the reduction to R-001 + R-018 is superseded); R-009 proved in corrected form (Theorem~\ref{thm:L021}; Ba{\l}aban's symmetry claim is not proved and not needed, the majorant uses $H_0=\operatorname{sym}C_0^{-1}$; Lemma D with $e^{-\varepsilon''M/8}$); R-010 proved in the corrected form R-011 (Theorem~\ref{thm:L022}; the raw Taylor terms do not obey (1.24), the transformed terms do after the exact marginal cancellation); R-012 closed as a verified list (Proposition~\ref{prop:L023}); R-015 narrowed (Proposition~\ref{prop:L024}; exact equality cannot be derived; R-015 leaves the set of L-001 (Theorem 2w), and Ba{\l}aban's assertion that the $\mathbb Z^d$ limit exists moves into R-006); L-174 (Lemma G3) proved relative to listed inputs (Theorem~\ref{thm:L025}; $G_\Gamma$ bounded uniformly in $M$, verified; (Q) in the joint form, $\Lambda$ corrected), so the use of R-006 in L-001 (Theorem 2w) is a verified reduction; (I3) proved at every step; $\beta_H$ a free parameter, first in the order of constants. Trust table: rows R-006, R-008, R-009, R-010, R-012, R-015, R-050, R-028, R-030, R-037, K-005, K-025 rewritten; rows K-026--K-031 added. Binding sets: L-001 (Theorem 2w) = $\{$R-006$\}$ + R-025--R-031 + X-005 (was R-006, R-015); L-001 (Theorem 2w) $\Rightarrow$ Theorem 1 = 4 A + 9 B + X-005; Theorem~\ref{thm:L003} unchanged in size; the only Group A row without a verified proof or reduction is R-015. The headline stays ``verified reduction''.
-\item \emph{Round 6.} Section~\ref{sec:src-r6} added: L-026 (Theorem LOC) (Theorem~\ref{thm:L026}; H-141 (Loc) exact for non-wrapping polymers, relative to K-033--K-037); L-104 (Proposition BDRY) (Proposition~\ref{prop:L027}; the $\partial\Lambda_{k+1}$ reading exact relative to K-038; threshold $N_k>22M$, $\varepsilon(M)=C_j(22M)^6e^{-11m_jM}$); R-032 found ill-posed and replaced by (a)--(c), proved; the volume hypothesis K-032 (Vol), $\ell>22M$, added to the setting (Section~\ref{sec:lattice}) with the even form $\ell=2L^{m_T}$, $m_T\ge m_M+1$; (G$_{\mathrm{2D}}$) proved for $0<|f|\le((1-c)/100)^2/2$ with gap $2c|f|$ (Theorem~\ref{thm:L028}), a narrow range, with the $f$-range check still running; the canonical acyclic order of constants, with two nominal cycles resolved by the split, 32 lower bounds on $M$, and none upper. Trust table: rows R-006, R-015, R-026, R-028, R-032, K-005, K-025, K-026 rewritten; rows K-032--K-038 added; counts A 19, B 22, C 37, X 5. Binding sets unchanged in size: L-001 (Theorem 2w) = $\{$R-006$\}$ + R-025--R-031 + X-005, and R-006 has no bare assertion left; L-001 (Theorem 2w) $\Rightarrow$ Theorem 1 = 4 A + 9 B + X-005, Group C adds K-029--K-038; Theorem~\ref{thm:L003} unchanged in size. No cited-but-unproved Group A row lacks a verified proof or reduction; the implicit rows R-016--R-019, R-020 (and R-014 inside R-013) have neither. The headline stays ``verified reduction''.
-\item \emph{Round 7.} Section~\ref{sec:src-r7} added: ($M_j$) proved at fixed $j$ (Theorem~\ref{thm:L029}; region 1 as an asymptotic identity via the shifted-log split, neutral sector (N2); only the $o(f^2)$ form), with the proved (G$_{\mathrm{2D}}$) range sufficient (\file{SOURCES_T2_FRANGE.md}); L5 proved by nested intervals on true trajectories, no clamp (Theorem~\ref{thm:L030}); R-016 proved in tree form (Theorem~\ref{thm:L035}; the first proof's locality step was false); R-017 proved by the exact identity $B'=g_kB$ on cut bonds (Proposition~\ref{prop:L031}); R-018, R-019, R-020 verified reductions (Propositions~\ref{prop:L033}, \ref{prop:L032}, \ref{prop:L034}); H-215 (K1) replaced by H-216 (K1$_\delta$) with $13\delta$ and $\delta=0.025$; R-041 chain item 5; R-034 cleared; R-025 (H2) certified at $L=15,17,21$; canon section F (28 entries, acyclic, four two-sided constants with existence conditions); R-027 reduced [R], unverified, with an open numerical tension on $\beta_1$ against $c\log L$. Trust table: rows R-016--R-019, R-020, R-025, R-027, R-028, R-031, R-034, R-041, R-046 rewritten; rows K-039--K-043 added; counts A 19, B 22, C 42, X 5. Binding sets unchanged in size. No Group A row remains without a verified proof or verified reduction; the only Group B row of Theorem~\ref{thm:L003} without one is R-027. The headline stays ``verified reduction''.
-\item \emph{Round 8.} Section~\ref{sec:src-r8} added. R-039: M2b and M4 derived, M5 not needed, a verified reduction with the new input H-241 (R1$_{\mathrm f}$), itself a verified reduction with three [I] (Proposition~\ref{prop:L036}); R-038 is no longer an input. R-044: R-044 (W4)-R proved relative to inputs (Proposition~\ref{prop:L037}; the R operation divides by nothing) and the $\Lambda_j$ sub-item proved relative to inputs, both verified with corrections; residue W4-G [R] and the Ursell bound [I]. R-045: the H-098 (E14-c) clause reduced to R-045 (S), verified. The readings R-047, R-048, R-049, R-051 confirmed on page images, so the S1 downgrade is reversed and the round-7 binding sets stand. R-027: the reduction verified; H-137 (L-LL) proved by a proper-time route, verifier running (Theorem~\ref{thm:L040}). H-057 (C): stated exactly in row R-001; a draft proof with L-039 (Lemma R) and a repair of a seam defect on the periodic lattice, verifier running (Proposition~\ref{prop:L038}). K-009 unused. Section~\ref{sec:numr8} added: \file{NUMERICS} \S7 rewritten (the old claim withdrawn), $\beta_1(13)$ certified for rounding at $N_g=8$, the converged-grid test running on the Windows GPU, the partial cross-check of the cell certificate (200 FAILED cells, not violations), the H-137 (L-LL) and H-057 (C) numerics. Trust table: rows R-001, R-027, R-039, R-044, R-045, K-009 rewritten; the Lean support table added; counts A 19, B 22, C 42, X 5 unchanged; binding sets unchanged. No Group A row remains without a verified proof or verified reduction; the only Group B row of Theorem~\ref{thm:L003} without one is R-027, now with H-137 (L-LL) proved, pending verification. The headline stays ``verified reduction''.
-\item \emph{Round 9.} The outlook sections were removed; the paper states results and scope only. Section~\ref{sec:src-r8} updated: H-057 (C) a verified reduction with L-039 (Lemma R) and L-284 (Lemma T) verified, the seam defect confirmed, and the torus-side hypothesis discharged by K-032 (Vol); H-137 (L-LL) proved and verified. Section~\ref{sec:src-r9} added: a proof of R-027 (F) by proper time, pending verification (Theorem~\ref{thm:L041}); H-168 (S$_\sigma$) (Proposition~\ref{prop:L042}); H-105 (FX-D) = Q-060; the $s$-rule convention K-046; H-035 (M1) closed as a list, verifier running; the p.~254 transfer (Proposition~\ref{prop:L043}) with the gap of \file{WC_FULL.md} \S3.1(2); CMP 99 Theorems 3.7 and 3.9 written out with corrections of printed errors, including H-180 (X-PU) (Theorems~\ref{thm:L045}, \ref{thm:L044}); the canonical order stays acyclic; condition K-047. The (E$_U$) section is now Step 15. Section~\ref{sec:numr9} added: the seam test of H-057 (C), H-137 (L-LL) to $\varphi=0.00125$, and the restart of the $\beta_1$ run on the jax port (results pending). Trust table: rows R-001, R-002, R-003, R-027, R-043, R-045 rewritten; new rows R-021--R-023 and K-044--K-047; counts A 22, B 22, C 46, X 5; Theorem~\ref{thm:L003} rests on 20 Group A items; Group A rows without a verified proof or reduction: R-021, R-022, R-023; Group B rows without one: none. For L-001 (Theorem 2w) no genuine hypothesis remains. The Lean table lists 45 files. A remark on scope records that a volume-uniform unit-scale cluster expansion is expected to be impossible (Section~\ref{sec:notgiven}). The headline stays ``verified reduction''.
-\item \emph{Trust boundary of Theorem 2w, history (rounds 5--11).} R-015 is not in this set: Theorem 2w uses only the definition of $\beta_j$ (Proposition~\ref{prop:L024} and the remark after it). The use of R-006, item 7, is a \status{verified reduction} (Proposition H0-red (L-183) of \file{SOURCES_T2_H0.md}) with residue N1--N9; its item N2, Lemma G3 (L-174), is proved relative to listed inputs (Theorem~\ref{thm:L025}). Round 6 removes the last bare assertion of R-006: the existence of the whole-lattice limit of CMP 109 (1.22) at $g>0$ now follows from Proposition~\ref{prop:L024} and Theorem~\ref{thm:L026}. R-006 stays in the set, because the rest of the H0-red residue is not proved. If one takes R-006 through this reduction instead of Ba{\l}aban's assertion, Theorem 2w also rests on R-008, R-009 (Theorems~\ref{thm:L020}, \ref{thm:L021}), R-017, the inputs of Ba{\l}aban's sup induction, the conditions K-026, K-027, and the locality conventions K-033--K-037 (K-009 is unused since round 8, because R-017 holds at $r=1$). Round 7: of R-025--R-031, only R-027 lacks a proof or a verified reduction; R-028 and R-031 are proved relative to listed inputs (Theorems~\ref{thm:L029} and~\ref{thm:L030}). Round 11 (ledger \S5): (F) (ledger row R-027) is proved and verified (Theorem~\ref{thm:L041}), so no item of R-025--R-031 is without a proof or a verified reduction.
-\item \emph{Paper round 10 (ledger round 12).} Labels checked against the new id scheme. Trust table: rows R-016 (Q-048 proved, verified), R-022, R-023 (verified reductions with open items), R-027 (proved, verified), and new row R-024; counts A 23, B 22, C 46, X 5; Theorem~\ref{thm:L003} rests on 21 Group A items; R-021 is the only Group A row without a verified proof or reduction. Dependency table: rows B-S.A and IV added, item 3 updated. Section~\ref{sec:infvol} added: L-196 (Theorem IV) in its verified conditional form (Theorem~\ref{thm:L196}) and Remark~\ref{rem:GapU} on (Gap$_U$) (unverified source). Theorem 2w chain checked against the ledger binding sets; the status of L5 and of the sweep in Section~\ref{sec:conclusion} corrected. Lean counts written in one form.
-\end{itemize}

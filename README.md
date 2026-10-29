@@ -1,4 +1,4 @@
-# Yang–Mills on a torus along Balaban's renormalization group
+# Conditional existence of four-dimensional Yang–Mills on a finite torus along Bałaban's route
 
 Working notes, lemmas, verifier reports, and numerics toward (1) Balaban's unpublished Theorem 2 (running-coupling control, CMP 109 (1987) p. 259) and (2) a finite-torus existence theorem for 4D SU(2) lattice Yang–Mills in compactness form.
 

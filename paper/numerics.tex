@@ -1,147 +1,161 @@
-\section{Numerical and certified results}\label{sec:numerics}
+\section{Numerical results and the computer-assisted proof of (H2)}\label{sec:numerics}
 
-This section collects the numerical results that support the hypotheses of Section~\ref{sec:flow}. Sections~\ref{sec:beta1}--\ref{sec:routeKnum} give the one-loop increments and the per-level quantities of the Route K proof. Sections~\ref{sec:numH2}--\ref{sec:enclosure} give the values of (H2) (ledger row R-025), the one-step values, and one rigorous point enclosure. Section~\ref{sec:certH2} proves (H2) at $L=13$ (Theorem~\ref{thm:L046}, certified). Section~\ref{sec:numr7} adds the certification at $L=15,17,21$, the round-7 checks of the 2D gap and the neutral sector, and one open tension. Section~\ref{sec:numr8} rewrites that tension, reports the first cross-check of the cell certificate, and gives the numerics of (L-LL) (H-137) and of the free constant of (C) (H-057). Section~\ref{sec:cert} gives the original plan for a cell certificate, now an independent cross-check at $L=13$.
-SU(2), infinite volume, Balaban's normalized-trace units. Except for Sections~\ref{sec:enclosure}, \ref{sec:certH2}, and the first paragraph of Section~\ref{sec:numr7}, none of this is certified. Only odd $L$ is inside the proofs; $L=2,4$ use corner blocks and are outside them.
+This section collects the numerical results that bear on the hypotheses of Section~\ref{sec:flow}. Sections~\ref{sec:beta1}--\ref{sec:routeKnum} give the one-loop increments and the per-level quantities of the Route K proof. Sections~\ref{sec:numH2}--\ref{sec:enclosure} give the values of (H2) (R-025), the one-step values, and one rigorous point enclosure. Section~\ref{sec:certH2} proves (H2) at $L=13$ (Theorem~\ref{thm:L046}). Section~\ref{sec:numr7} extends the proof to $L=15,17,21$ and gives the numerics of the 2D gap and of the neutral sector. Section~\ref{sec:numr8} treats the single-step $\beta_1$, a second certificate at $L=13$ on part of the Brillouin zone, and the numerics of (L-LL) (H-137) and of the free constant of (C) (H-057). Section~\ref{sec:numr9} gives the seam test of (C), (L-LL) at smaller flux, and the converged-grid values of $\beta_1$. Section~\ref{sec:cert} gives the design of the cell certificate.
+
+All values are for SU(2), in infinite volume, in Ba{\l}aban's normalized-trace units. Except for Sections~\ref{sec:enclosure}, \ref{sec:certH2}, the first paragraph of Section~\ref{sec:numr7}, and the cell certificate of Section~\ref{sec:numr8}, all values are floating-point values without rounding control; they enter no proof. Only odd $L$ is inside the proofs. The values at $L=2,4$ use corner blocks and are outside them.
 
 \subsection{First increment $\beta_1(0)$}\label{sec:beta1}
 
-Sources: \file{NUMERICS} \S6--\S7; \texttt{UMK\_BETA1.md}.
+Sources: \file{NUMERICS} \S6--\S7; \file{UMK_BETA1.md}.
 \begin{longtable}{|c|p{2.6cm}|p{4.6cm}|c|c|p{3.4cm}|}
 \hline
-$L$ & $\beta_1(0)$ & how & $b=c\log L$ & $\beta_1-b$ & status \\ \hline
-2 & 0.630 & $N_g=12$, $p\to0$ fit & 0.2575 & $+0.372$ & \status{numerical, reproduced} (\file{KAPPA_BOUNDED_VERIFY} \S4: 0.6296) \\ \hline
-3 & 0.664 & $N_g=8$, $p\to0$ fit (0.6625--0.6661) & 0.4082 & $+0.256$ & \status{numerical, reproduced}; $N_g$ $6\to8$ shift $\approx0.015$ \\ \hline
-4 & 0.757 & $N_g=6$, single $p=0.2$; $O((Lp)^2)$ bias $\approx0.01$ & 0.5150 & $+0.242$ & \status{numerical} \\ \hline
-5 & 0.749 ($N_g=12$, $p=0.1$); fit 0.743 & umklapp code & 0.5979 & $+0.145$ & \status{numerical} \\ \hline
-7 & 0.803 & umklapp code, $N_g=8$, $Lp=0.5$ & 0.7229 & $+0.080$ & \status{numerical} \\ \hline
-9 & 0.833 ($Lp=0.5$); 0.846 ($Lp=0.9$), 0.851 ($Lp=1.0$) & umklapp code, desktop, $N_g=8$ & 0.8163 & $\approx+0.02$ & \status{numerical} \\ \hline
-11 & 0.850 ($Lp=0.5$); 0.868 ($Lp=1.0$) & umklapp code, desktop, $N_g=8$; $N_g=8$ grid adequacy at $L=11$ unchecked & 0.8908 & $\approx-0.04$ & \status{numerical} \\ \hline
-13 & $0.857293\pm1.5\cdot10^{-5}$ ($Lp=0.5$); $0.8757528\pm3.1\cdot10^{-6}$ ($Lp=1.0$) & arb port \file{numerics/umk_beta1_arb.py}, $N_g=8$; the ball covers the rounding of the $N_g=8$ sum only & 0.9529 & $-0.096$ & \status{numerical}; rounding certified (round 8) \\ \hline
+$L$ & $\beta_1(0)$ & method & $b=c\log L$ & $\beta_1-b$ & notes \\ \hline
+2 & 0.630 & $N_g=12$, $p\to0$ fit & 0.2575 & $+0.372$ & a second code gives 0.6296 \\ \hline
+3 & 0.664 & $N_g=8$, $p\to0$ fit (0.6625--0.6661) & 0.4082 & $+0.256$ & two codes agree; $N_g$ $6\to8$ shift $\approx0.015$ \\ \hline
+4 & 0.757 & $N_g=6$, single $p=0.2$; $O((Lp)^2)$ bias $\approx0.01$ & 0.5150 & $+0.242$ & --- \\ \hline
+5 & 0.749 ($N_g=12$, $p=0.1$); fit 0.743 & umklapp code & 0.5979 & $+0.145$ & --- \\ \hline
+7 & 0.803 & umklapp code, $N_g=8$, $Lp=0.5$ & 0.7229 & $+0.080$ & --- \\ \hline
+9 & 0.833 ($Lp=0.5$); 0.846 ($Lp=0.9$), 0.851 ($Lp=1.0$) & umklapp code, $N_g=8$ & 0.8163 & $\approx+0.02$ & grid not converged; see Section~\ref{sec:numr8} \\ \hline
+11 & 0.850 ($Lp=0.5$); 0.868 ($Lp=1.0$) & umklapp code, $N_g=8$ & 0.8908 & $\approx-0.04$ & grid not converged; see Section~\ref{sec:numr8} \\ \hline
+13 & $0.857293\pm1.5\cdot10^{-5}$ ($Lp=0.5$); $0.8757528\pm3.1\cdot10^{-6}$ ($Lp=1.0$) & ball-arithmetic port \file{numerics/umk_beta1_arb.py}, $N_g=8$ & 0.9529 & $-0.096$ & the ball covers the rounding of the $N_g=8$ sum only \\ \hline
 \end{longtable}
-The first-step constant $\beta_1-c\log L$ is $+0.37,\,+0.26,\,+0.24,\,+0.15,\,+0.08,\,+0.02,\,-0.04$ for $L=2,3,4,5,7,9,11$. It decreases with $L$ and changes sign between $L=9$ and $L=11$; at $L=13$ it is $-0.096$ (round 8). $\beta_1(0)$ itself stays positive at every $L$ computed. The umklapp code was validated against \texttt{ym\_momentum} to $10^{-12}$ per $K$ by its author; no independent verifier for the $\beta_1$ values at $L\ge5$. Round 8: the value at $L=13$ is certified for rounding only. A converged-grid run at $L=9,11$ followed; as of 2026-10-28 the three $L=9$ points are in and the $L=11$ points had not finished (Sections~\ref{sec:numr8} and~\ref{sec:numr9}). Round 7: the decrease does not level off, and the slope of $\beta_1$ in $\log L$ is well below $c$; this is an open tension (Section~\ref{sec:numr7}).
+The first-step constant $\beta_1-c\log L$ is $+0.37,\,+0.26,\,+0.24,\,+0.15,\,+0.08,\,+0.02,\,-0.04$ for $L=2,3,4,5,7,9,11$, and $-0.096$ at $L=13$. It decreases with $L$ and changes sign between $L=9$ and $L=11$. $\beta_1(0)$ itself is positive at every $L$ computed. The umklapp code agrees with \texttt{ym\_momentum} to $10^{-12}$ per $K$. The decrease does not level off, and the slope of $\beta_1$ in $\log L$ is well below $c$. Section~\ref{sec:numr8} gives the converged-grid values and discusses this.
 
 \subsection{Later increments ($L=2$ only)}\label{sec:later}
 \begin{longtable}{|p{3.4cm}|p{7.2cm}|p{4.4cm}|}
 \hline
-quantity & value & status \\ \hline
-$\beta_1+\beta_2$ (composed, $N_g=4/6/8$) & 1.148 / 0.967 / 0.953 & \status{numerical}; single $p=0.2$, $Lp$ bias label \\ \hline
-per-level $\beta_2(0)$ & $\approx0.32$ ($0.953-0.630$). Per-level recursion 0.317--0.341 ($N=8$--12, single $p=0.2$). Symmetric Nyquist: 0.33334 ($N=8$, $p_1=0.2$), 0.31679 ($N=12$, $p_1=0.2$), 0.32283 ($N=12$, $p_1=0.4$) (\file{BETA_FP_VERIFY} \S7; \file{BETA_FP_PW_VERIFY} \S5--\S6). Level-1 values carry $N$-aliasing of about $\pm5\%$. & \status{numerical}; per-level recursion reproduced in \file{BETA_FP_VERIFY} \S7 \\ \hline
-$\beta_3(0)$ & 0.40 ($N=8$), 0.286 ($N=12$), 0.261 (verifier, symmetric Nyquist, $N=8$) & unconverged; not usable \\ \hline
-abelian sector $S_k^{ab}$ & $(1-L^{-4k})/4$, matched to all digits & \status{proved+verified}; \status{Lean} counting part (\texttt{AbelianCount.lean}) \\ \hline
-(U) test & $|\beta_{j+1}(p)-\beta_{j+1}(0)|\le0.2p^2$ at every computed point ($L=2$ levels 0--1, $L=3$ level 0, $p\le0.8$); uniformity in $j$ not testable with two levels & \status{numerical, run by the verifier} (\file{BETA_FP_PW_VERIFY} \S6) \\ \hline
+quantity & value & notes \\ \hline
+$\beta_1+\beta_2$ (composed, $N_g=4/6/8$) & 1.148 / 0.967 / 0.953 & single $p=0.2$; $Lp$ bias \\ \hline
+per-level $\beta_2(0)$ & $\approx0.32$ ($0.953-0.630$). Per-level recursion 0.317--0.341 ($N=8$--12, single $p=0.2$). Symmetric Nyquist: 0.33334 ($N=8$, $p_1=0.2$), 0.31679 ($N=12$, $p_1=0.2$), 0.32283 ($N=12$, $p_1=0.4$). Level-1 values carry $N$-aliasing of about $\pm5\%$. & two codes agree on the per-level recursion \\ \hline
+$\beta_3(0)$ & 0.40 ($N=8$), 0.286 ($N=12$), 0.261 (symmetric Nyquist, $N=8$) & not converged; not usable \\ \hline
+abelian sector $S_k^{ab}$ & $(1-L^{-4k})/4$, matched to all digits & exact; the counting part is formalized in Lean (\texttt{AbelianCount.lean}) \\ \hline
+(U) test & $|\beta_{j+1}(p)-\beta_{j+1}(0)|\le0.2p^2$ at every computed point ($L=2$ levels 0--1, $L=3$ level 0, $p\le0.8$) & uniformity in $j$ cannot be tested with two levels \\ \hline
 \end{longtable}
 All computed increments are positive.
 
 \subsection{Quantities of the Route K proof}\label{sec:routeKnum}
 \begin{longtable}{|p{5cm}|p{4.6cm}|p{5.4cm}|}
 \hline
-quantity & value & status \\ \hline
-$d_1=b-\beta_1$, $L=3$ & $-0.256\pm0.01$ (fits $-0.254\dots-0.258$) & \status{numerical, reproduced} \\ \hline
-$d_1$, $\kappa_1$, $L=2$ & $-0.372$, $1.114$ & \status{numerical, reproduced} \\ \hline
-$d_2$, $d_3$, $L=2$ & $\approx-0.44$, $\approx-0.45$ ($d_3$ uses unconverged $\beta_3$) & \status{numerical}; bounded-looking, not a test \\ \hline
-$\rho_1=\max_K\|H_j(K)\|/L$, $L=3$, $j=1,2,3,\infty$ & 1.652, 1.736, 1.757, 1.760 & \status{numerical, run by the verifier, \file{U3_AW_VERIFY} \S6}; refutes (HS); $h^2/L^4\approx0.34<1$; one-step $C^1$ factor $\rho_1^2/L>1$ for $j\ge2$ \\ \hline
-$\rho_1$, $L=5$, $j=1,2,\infty$ & 1.860, 1.9565, 1.963; $\rho_1^2/L=0.771$ & \status{numerical}; $j=1$ and the bound measured by the verifier (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
-$\rho_2$ (R-025 (H2)), $L=3,5,7,9$ & see Section~\ref{sec:numH2}: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$ against thresholds 3, 5, 7, 9 & \status{numerical, reproduced} at $L=3,5$; \status{numerical, run by the verifier} at $L=7,9$ \\ \hline
-$a_*$, $L=5$ & 0.0107 (binding mode near $K=0$, gauge/ghost sector) & \status{numerical, run by the verifier} (\file{H2_LARGE_L_VERIFY} \S6) \\ \hline
-(H$_A$), $n=2$, $L=3$ & $2.056<2.828$ & \status{numerical, run by the verifier}, coarse grid, one level pair \\ \hline
-$\sigma_j^{(1)}(0)$ $J$-part, $j=0,1,2$ ($d=2$ proxy) & 0.750000, 0.75015, 0.75051 vs 0.75 & \status{numerical, run by the verifier} supports L-308 (Theorem W) \\ \hline
+quantity & value & notes \\ \hline
+$d_1=b-\beta_1$, $L=3$ & $-0.256\pm0.01$ (fits $-0.254\dots-0.258$) & two codes agree \\ \hline
+$d_1$, $\kappa_1$, $L=2$ & $-0.372$, $1.114$ & two codes agree \\ \hline
+$d_2$, $d_3$, $L=2$ & $\approx-0.44$, $\approx-0.45$ ($d_3$ uses the unconverged $\beta_3$) & bounded in appearance; not a test \\ \hline
+$\rho_1=\max_K\|H_j(K)\|/L$, $L=3$, $j=1,2,3,\infty$ & 1.652, 1.736, 1.757, 1.760 & (HS) fails; $h^2/L^4\approx0.34<1$; one-step $C^1$ factor $\rho_1^2/L>1$ for $j\ge2$ \\ \hline
+$\rho_1$, $L=5$, $j=1,2,\infty$ & 1.860, 1.9565, 1.963; $\rho_1^2/L=0.771$ & --- \\ \hline
+$\rho_2$ ((H2)), $L=3,5,7,9$ & see Section~\ref{sec:numH2}: 2.0634, 2.108, $\ge2.1131$, $\ge2.1142$ at $j=\infty$ against thresholds 3, 5, 7, 9 & two codes agree at $L=3,5$ \\ \hline
+$a_*$, $L=5$ & 0.0107 (binding mode near $K=0$, gauge/ghost sector) & --- \\ \hline
+(H$_A$), $n=2$, $L=3$ & $2.056<2.828$ & coarse grid, one level pair \\ \hline
+$\sigma_j^{(1)}(0)$ $J$-part, $j=0,1,2$ ($d=2$ proxy) & 0.750000, 0.75015, 0.75051 against 0.75 & agrees with L-308 (Theorem W) \\ \hline
 $\sigma_j^{(2)}(K)$ scan & not run: no $d=4$ constant-field per-momentum code & --- \\ \hline
 \end{longtable}
 
-\subsection{Values of (H2) \status{numerical; (H2) at $L=13$ is certified in Section~\ref{sec:certH2}}}\label{sec:numH2}
-Code: \file{numerics/h2_scan.py} (umklapp Schur pieces, one colour, Gram form; \file{H2_LARGE_L} \S1). Code structure CONFIRMED (\file{H2_LARGE_L_VERIFY} grade 1): the one-colour reduction is exact at $U=1$, the $H$ and $\Delta_{out}$ blocks and the Gram identity are correct, the separable Prop.\ A form is exact. Sign slip in \file{H2_LARGE_L} \S4 ($H=+[\mathfrak B^{-1}]_{f,c}$); harmless.
+\subsection{Values of (H2)}\label{sec:numH2}
+Code: \file{numerics/h2_scan.py} (umklapp Schur pieces, one colour, Gram form; \file{H2_LARGE_L} \S1). The one-colour reduction is exact at $U=1$. The $H$ and $\Delta_{out}$ blocks and the Gram identity are exact, and so is the separable Prop.\ A form. The sign in \file{H2_LARGE_L} \S4 is $H=+[\mathfrak B^{-1}]_{f,c}$.
 \begin{longtable}{|c|c|p{3.2cm}|c|p{5.4cm}|}
 \hline
-$L$ & $j$ & $\rho_2$ (scan max) & threshold $L$ & status \\ \hline
-3 & 2 & 2.00857 & 3 & \status{numerical, reproduced} (\file{B2_TWOSTEP_VERIFY} \S4; \file{H2_LARGE_L_VERIFY} \S1) \\ \hline
-3 & 3 & 2.05601 & 3 & \status{numerical, reproduced} (spot value 2.05599 at the argmax) \\ \hline
-3 & $\infty$ & 2.0634 (2.06332--2.06377 over $l_{max}$ 2--5) & 3 & \status{numerical, reproduced}; margin 31\%; $q_1\le0.473$, $q_2\le0.053$ \\ \hline
-5 & 2, 3, 4, $\infty$ & 2.098, 2.108, 2.108, 2.108 & 5 & \status{numerical, reproduced}: independent dense code gives 2.098283 at $j=2$; the verifier's own search gives 2.107921 at $j=\infty$, same argmax; margin 58\% \\ \hline
-7 & $\infty$ & $\ge2.1131$ (face diagonal only) & 7 & \status{numerical, run by the verifier} (spot 2.11309) \\ \hline
-9 & $\infty$ & $\ge2.1142$ (one point, $(2.6,2.6,\pi,\pi)$) & 9 & \status{numerical, run by the verifier}; the $j=2$ point of \file{H2_LARGE_L} gives $\ge2.1104$ \\ \hline
+$L$ & $j$ & $\rho_2$ (scan max) & threshold $L$ & notes \\ \hline
+3 & 2 & 2.00857 & 3 & two codes agree \\ \hline
+3 & 3 & 2.05601 & 3 & spot value 2.05599 at the argmax \\ \hline
+3 & $\infty$ & 2.0634 (2.06332--2.06377 over $l_{max}$ 2--5) & 3 & margin 31\%; $q_1\le0.473$, $q_2\le0.053$ \\ \hline
+5 & 2, 3, 4, $\infty$ & 2.098, 2.108, 2.108, 2.108 & 5 & an independent dense code gives 2.098283 at $j=2$; a second search gives 2.107921 at $j=\infty$, same argmax; margin 58\% \\ \hline
+7 & $\infty$ & $\ge2.1131$ (face diagonal only) & 7 & spot value 2.11309 \\ \hline
+9 & $\infty$ & $\ge2.1142$ (one point, $(2.6,2.6,\pi,\pi)$) & 9 & the $j=2$ point of \file{H2_LARGE_L} gives $\ge2.1104$ \\ \hline
 \end{longtable}
 \begin{itemize}
-\item Shape. The argmax lies on the face $K_3=K_4=\pi$, on the diagonal $K_1=K_2$: $\approx2.22\to2.40$ ($L=3$, $j=2\to\infty$), $\approx2.54$ ($L=5$). Off-face points are lower: best off-face 1.995 ($L=3$, $j=2$), 2.004 ($L=3$, $j=\infty$), 2.088 ($L=5$, $j=\infty$). The corner $(\pi,\pi,\pi,\pi)$ stays below the face peak, but the gap shrinks: $0.0070$, $0.0028$, $\ge0.0025$, $\ge0.0023$ ($L=3,5,7,9$). The corner is the obvious place for a competing maximum at large $L$.
-\item Level dependence. At $L=5$, $\rho_2(\infty)-\rho_2(j)=9.64\cdot10^{-3},\,4.0\cdot10^{-4},\,1.6\cdot10^{-5}$ ($j=2,3,4$); ratios 24.1, 25.0, against $L^2=25$. At $L=3$ the ratios are 7.5, 8.7. Levels $j=4,\dots,\infty-1$ are not sampled at $L=3$.
-\item $L$-trend. $j=\infty$: $2.0633,\,2.1079,\,\ge2.1131,\,\ge2.1142$ ($L=3,5,7,9$). This is consistent with a bounded $\rho_2$ near 2.11--2.14. The rate claim ``at least as fast as $L^{-2}$'' is CORRECTED (\file{H2_LARGE_L_VERIFY} grade 5): it used a lower bound at $L=7$ as if it were the sup. ``(H2) (ledger row R-025) gets easier with $L$'' is a measured trend for $L\le9$, not a result for $L>11$.
-\item All values are lower estimates of a sup (grid plus local search).
+\item Shape. The argmax lies on the face $K_3=K_4=\pi$, on the diagonal $K_1=K_2$: $\approx2.22\to2.40$ ($L=3$, $j=2\to\infty$), $\approx2.54$ ($L=5$). Off-face points are lower: the best off-face values are 1.995 ($L=3$, $j=2$), 2.004 ($L=3$, $j=\infty$), 2.088 ($L=5$, $j=\infty$). The corner $(\pi,\pi,\pi,\pi)$ stays below the face peak, but the gap shrinks: $0.0070$, $0.0028$, $\ge0.0025$, $\ge0.0023$ ($L=3,5,7,9$). The corner is the obvious place for a competing maximum at large $L$.
+\item Level dependence. At $L=5$, $\rho_2(\infty)-\rho_2(j)=9.64\cdot10^{-3},\,4.0\cdot10^{-4},\,1.6\cdot10^{-5}$ ($j=2,3,4$), with ratios 24.1 and 25.0, against $L^2=25$. At $L=3$ the ratios are 7.5 and 8.7. Levels $j=4,\dots,\infty-1$ are not sampled at $L=3$.
+\item $L$-trend. At $j=\infty$: $2.0633,\,2.1079,\,\ge2.1131,\,\ge2.1142$ ($L=3,5,7,9$). This is consistent with a bounded $\rho_2$ near 2.11--2.14. The values at $L=7,9$ are lower bounds, so they do not give a rate in $L$. The statement that (H2) becomes easier with $L$ is a measured trend for $L\le9$, not a result for $L>11$.
+\item All values are lower estimates of a supremum (grid plus local search).
 \end{itemize}
 
 \subsection{One-step values}\label{sec:numonestep}
 
-The arithmetic of Section~\ref{sec:onestep} shows that $\rho_1^2<L$ implies (H2) (ledger row R-025). The measured one-step values are as follows.
+By Section~\ref{sec:onestep}, $\rho_1^2<L$ implies (H2). The measured one-step values are as follows.
 \begin{itemize}
 \item $L=3$: $\rho_1^2=3.10>3$. The one-step route fails (Section~\ref{sec:refuted}); the two-step map is needed.
-\item $L=5$: $\rho_1=1.860$ ($j=1$, Wilson fine kernel, dense, measured by the verifier), $1.9565$ ($j=2$), $1.963$ ($j=\infty$). So $\rho_1^2\le3.853<5$ and $\rho_1^2/L=0.771$ \status{numerical, CONFIRMED as a measurement, uncertified; \file{H2_LARGE_L_VERIFY} grade 4}.
-\item $L=7$: $\rho_1\ge2.032$ (diagonal only), $\rho_1^2/L\approx0.59$ \status{numerical}.
-\item $L=13$: measured $\sup\rho_1^2=4.37$; certified bound $\sup_{j,K}\rho_1^2\le10<13$ (Theorem~\ref{thm:L046}).
+\item $L=5$: $\rho_1=1.860$ ($j=1$, Wilson fine kernel, dense), $1.9565$ ($j=2$), $1.963$ ($j=\infty$). So $\rho_1^2\le3.853<5$ and $\rho_1^2/L=0.771$, as floating-point values.
+\item $L=7$: $\rho_1\ge2.032$ (diagonal only), $\rho_1^2/L\approx0.59$.
+\item $L=13$: measured $\sup\rho_1^2=4.37$; Theorem~\ref{thm:L046} gives $\sup_{j,K}\rho_1^2\le10<13$.
 \end{itemize}
-So at $L\ge5$ the one-step map suffices for L-011, as far as measured. For certification this replaces $L^8$ blocks per $K$ (two-step map) by $L^4$ blocks per $K$ (625$\times$ fewer at $L=5$).
+So at $L\ge5$ the one-step map suffices for L-011, as far as measured. For a computer-assisted proof this replaces $L^8$ blocks per $K$ (two-step map) by $L^4$ blocks per $K$ (625 times fewer at $L=5$).
 
-\subsection{A rigorous point enclosure at $L=3$ \status{interval enclosure, verified}}\label{sec:enclosure}
+\subsection{A rigorous point enclosure at $L=3$}\label{sec:enclosure}
 
-Source: \file{H2_CERTIFY.md} with the prototype \file{numerics/h2cert_proto.py}; verifier \file{H2_CERTIFY_VERIFY.md}. At $L=3$, $j=\infty$, and the face point $K^*=(2.4035,2.4035,\pi,\pi)$ near the argmax of Section~\ref{sec:numH2}, ball arithmetic (python-flint) gives
+The program \file{numerics/h2cert_proto.py} (\file{H2_CERTIFY.md}) uses ball arithmetic (python-flint). At $L=3$, $j=\infty$, and the face point $K^*=(2.4035,2.4035,\pi,\pi)$ near the argmax of Section~\ref{sec:numH2}, it gives
 \[
 \rho_2(\infty,K^*)\in[1.9993,\,2.1273]<3 .
 \]
-The width comes from the umklapp tail and scales as $N^{-4}$ in the truncation $N$. The verifier reran the code at $N=12$ and obtained $[1.5475,\,2.5792]$, which contains the floating-point value $2.063361$ and confirms the $N^{-4}$ scaling; at $N=6$ the code stops with an assertion instead of returning a wrong interval. The verdict is CONFIRMED given the premises P1--P3 of \file{H2_CERTIFY_VERIFY}; P1 (the loop-family coefficients of the (0.4) row are exact rationals $k/648$, $k$ even) is proved there, and the fidelity of the loop family to Ba{\l}aban's paper stays inside P3. Further results of the same two files:
+The width comes from the umklapp tail and scales as $N^{-4}$ in the truncation $N$. At $N=12$ the program gives $[1.5475,\,2.5792]$, which contains the floating-point value $2.063361$, in agreement with the $N^{-4}$ scaling. At $N=6$ the program stops with an assertion instead of returning a wrong interval. The enclosure holds under three premises P1--P3 on the input data. P1 states that the loop-family coefficients of the (0.4) row are exact rationals $k/648$, $k$ even; it is proved there. P3 is the fidelity of the loop family to Ba{\l}aban's paper, that is, Convention~\ref{conv:avg}. Further results:
 \begin{itemize}
-\item One-step factorization: $\rho_2(j,K)\le\rho_1(j,K)\cdot\max_l\rho_1(j-1,k_l)$, exact \status{proved+verified}. So two-step work is needed only where the right side is $\ge L$, near the face diagonal.
-\item Oishi--Rump bound $\|\mathfrak B^{-1}\|\in[42.7,\,43.6]$ at $K^*$ (bounds CONFIRMED). The values 177 and 195 of Section~\ref{sec:convergence} use the full $\Delta$ instead of $\tfrac14\Delta$; this factor reconciles them. No $\|\mathfrak B^{-1}\|$ enters $\rho_2$.
-\item The umklapp tail enclosure is CONFIRMED for $M=\infty$. For finite $M$ it is CORRECTED: its lower bound must be 0, with class-wise factors $(\pi/2)^{12}$ for two or more large components.
-\item A uniform Lipschitz grid is refuted as a route: $\Lambda_K\approx2.8\cdot10^4$ (CONFIRMED) would need about $10^{13}$ cells. The replacement is a per-cell invertibility test with a mean-value enclosure.
-\item Cost: \file{H2_CERTIFY} estimates about $1.5\cdot10^4$ core-hours for a full certification at $L=3$. The verifier grades this estimate UNSUPPORTED: at the tested sizes the arb overhead dominates, and the box-sum speedup is overstated.
+\item One-step factorization: $\rho_2(j,K)\le\rho_1(j,K)\cdot\max_l\rho_1(j-1,k_l)$, exactly. So two-step work is needed only where the right side is $\ge L$, near the face diagonal.
+\item The Oishi--Rump bound gives $\|\mathfrak B^{-1}\|\in[42.7,\,43.6]$ at $K^*$. The values 177 and 195 of Section~\ref{sec:convergence} use the full $\Delta$ instead of $\tfrac14\Delta$; this factor reconciles them. No $\|\mathfrak B^{-1}\|$ enters $\rho_2$.
+\item The enclosure of the umklapp tail holds for $M=\infty$. For finite $M$ its lower bound is 0, with class-wise factors $(\pi/2)^{12}$ for two or more large components.
+\item A uniform Lipschitz grid is not a practical route: $\Lambda_K\approx2.8\cdot10^4$ would need about $10^{13}$ cells. The replacement is a per-cell invertibility test with a mean-value enclosure.
 \end{itemize}
-This is one point at one level. It does not certify the supremum over the Brillouin zone or over $j$. Section~\ref{sec:certH2} does this at $L=13$.
+This is one point at one level. It does not bound the supremum over the Brillouin zone or over $j$. Section~\ref{sec:certH2} does this at $L=13$.
 
-\subsection{(H2) at $L=13$ \status{certified (interval arithmetic, outward rounding; verified)}}\label{sec:certH2}
+\subsection{(H2) at $L=13$}\label{sec:certH2}
 
-Sources: \file{H1_ANALYTIC.md} \S0--\S8 (statement, lemmas, majorant); verifier \file{H1_ANALYTIC_VERIFY.md} V0--V9 with \file{numerics/h1analytic/bb_arb.py}; operator check \file{H1_ANALYTIC_VERIFY2.md} with \file{numerics/h1analytic/indep_H.py}; symmetry check \file{H2_CERTIFY_P5_VERIFY.md}. Here $\rho_1(j,K)=\|H_j(K)\|/L$ with $H_j(K)$ the one-step gauge-fixed minimizer map of Section~\ref{sec:H2}.
+Here $\rho_1(j,K)=\|H_j(K)\|/L$, with $H_j(K)$ the one-step gauge-fixed minimizer map of Section~\ref{sec:H2}. The map depends on Ba{\l}aban's averaging operator, which we fix as follows.
 
-\begin{theorem}[(H2) at $L=13$, ledger row R-025]\label{thm:L046}
-For $L=13$, every level $j\ge1$ including $j=\infty$, and every coarse momentum $K\in\BZ$,
+\begin{convention}[reading of the averaging operator (0.4) of CMP 109]\label{conv:avg}
+The averaging operator is defined by the path family of \cite[(0.4)]{balaban109} as read in \file{NUMERICS} \S5, with the gauge choice fixed there. A different reading of the path family in (0.4) would change $H_j$. Theorem~\ref{thm:L046} and Proposition~\ref{prop:H2other} are statements about $H_j$ defined by this convention.
+\end{convention}
+
+\begin{theorem}[(H2) at $L=13$]\label{thm:L046}
+Assume Convention~\ref{conv:avg}. For $L=13$, every level $j\ge1$ including $j=\infty$, and every coarse momentum $K\in\BZ$,
 \[
 \rho_1(j,K)^2\le10<13 .
 \]
-Hence $\rho_2\le\sup_{j,K}\rho_1(j,K)^2\le10<L$ by the factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$ (Lean \texttt{rho2\_le}, Section~\ref{sec:onestep}). That is, (H2) (ledger row R-025) holds at $L=13$.
+Hence $\rho_2\le\sup_{j,K}\rho_1(j,K)^2\le10<L$ by the factorization $\rho_2\le\rho_1(j)\max_l\rho_1(j-1,k_l)$ (Section~\ref{sec:onestep}). That is, (H2) (R-025) holds at $L=13$.
 \end{theorem}
 
-\emph{Proof sketch.} Write $s=L^{-2}$, $k_l=(K+2\pi l)/L$, $M=L^{j-1}$, $d^M$ for the Prop.\ A symbol at level $M$, $P_\perp$ for the projection onto $\hat K^\perp$, and $T$, $T_2$, $\sigma$, $Z=(P_\perp TP_\perp)^+$ as in \file{H1_ANALYTIC} \S1.
+\begin{proof}[Proof (sketch; the full argument is in \file{H1_ANALYTIC.md} \S0--\S8)]
+Write $s=L^{-2}$, $k_l=(K+2\pi l)/L$, $M=L^{j-1}$, $d^M$ for the Prop.\ A symbol at level $M$, $P_\perp$ for the projection onto $\hat K^\perp$, and $T$, $T_2$, $\sigma$, $Z=(P_\perp TP_\perp)^+$ as in \file{H1_ANALYTIC} \S1.
 \begin{enumerate}
-\item Exact split. $\rho_1(j,K)^2L^2=\lambda_{\max}\bigl(ZT_2Z+cc^\dagger/(\sigma|\hat K|^4)\bigr)$, $c^\dagger=\hat K^\dagger(1-TZ)$: a transverse part and an orthogonal pure-gauge part.
-\item Three exact lemmas. L-264 (Lemma S): the averaging symbol is $E_q(k_l)=E^0_l-\hat Kg_l^\dagger$, with $E^0_l$ diagonal (block average times straight path), $|E^0_{l,\mu\mu}|$ built from $a_{l,\rho}=\sin(K_\rho/2)/(L\sin(k_{l,\rho}/2))$, and $\sum_l\prod_\rho a_{l,\rho}^2=1$ (Fej\'er). Tower identity: $d^{ML}_\mu(K)=L^{-2}\sum_lw_{l,\mu}d^M_\mu(k_l)$, hence $P_\perp TP_\perp=P_\perp\operatorname{diag}(d^{ML}(K))P_\perp$ and $Z$ is the next-level kernel of Prop.\ A. L-166 (Lemma G): a closed form of the gauge row $g_l$ from the path average, so the averaging operator is explicit.
-\item Majorant. L-283 (Lemma T) (transverse): $\lambda_{\max}(ZT_2Z)/L^2\le\gamma_LF(K)$, $F(K)=1/(|K|^2\underline d(K))$, $\gamma_L=\operatorname{sinc}(\pi/2L)^{-2}$, from $T_2\le d_{\max}T$, $ZTZ=Z$, $d_{\max}\le L^2\gamma_L/|K|^2$, and $\|Z\|\le1/\underline d$. Lemma Gauge (L-180): the gauge part is $\le(1+\tau)^2/(|\hat K|^2S_L)$ with explicit sums $V$, $U$ and $\tau=(V+|\hat K|U)/\underline d$. So $\rho_1(j,K)^2\le B_L(K):=\gamma_LF(K)+(1+\tau)^2/(|\hat K|^2S_L)$. By Cauchy--Schwarz $F\le F_{CS}$, a closed form made of one-dimensional factors in each $K_\rho$.
-\item Uniformity in $j$. $B_L$ does not depend on $j$. For every $M\in\{1,L,L^2,\dots,\infty\}$ the fine symbol satisfies $d^M\le1/|\tilde q^M_0|^2\le1/|\hat k|^2$, because the Fej\'er weights sum to 1. The coarse symbol $d^{ML}$ dominates the truncated $M=\infty$ sum termwise. No monotonicity in $j$ and no O5 rate is used.
-\item Branch-and-bound. $B_L$ is invariant under the 384 signed permutations of $K$ by construction, so the sup over the sorted chamber $0\le K_1\le\dots\le K_4\le\pi$ is the sup over $\BZ$. The program \file{numerics/h1analytic/bb_arb.py} encloses $\gamma_LF_{CS}+\bar G_L$ on boxes $K=\pi u$ with exact dyadic $u$, evaluates every one-dimensional value in arb (python-flint), and rounds outward by one ulp after every floating-point operation, with Higham bounds on every sum. Result: $\sup_{\text{chamber}}B_{13}\le9.9995277$, 25{,}169 boxes, 8{,}075 gauge evaluations, 0 failed leaves, 58\,s. Boxes that contain $K=0$ are enclosed directly; $\rho_1(j,0)=1$.
+\item Exact split. $\rho_1(j,K)^2L^2=\lambda_{\max}\bigl(ZT_2Z+cc^\dagger/(\sigma|\hat K|^4)\bigr)$, with $c^\dagger=\hat K^\dagger(1-TZ)$. The first term is the transverse part, the second the orthogonal pure-gauge part.
+\item Three exact lemmas. L-264 (Lemma S): the averaging symbol is $E_q(k_l)=E^0_l-\hat Kg_l^\dagger$, with $E^0_l$ diagonal (block average times straight path), $|E^0_{l,\mu\mu}|$ built from $a_{l,\rho}=\sin(K_\rho/2)/(L\sin(k_{l,\rho}/2))$, and $\sum_l\prod_\rho a_{l,\rho}^2=1$ (Fej\'er). Tower identity: $d^{ML}_\mu(K)=L^{-2}\sum_lw_{l,\mu}d^M_\mu(k_l)$. Hence $P_\perp TP_\perp=P_\perp\operatorname{diag}(d^{ML}(K))P_\perp$, and $Z$ is the next-level kernel of Prop.\ A. L-166 (Lemma G): a closed form of the gauge row $g_l$ from the path average, so the averaging operator is explicit.
+\item Majorant. L-283 (Lemma T) (transverse): $\lambda_{\max}(ZT_2Z)/L^2\le\gamma_LF(K)$, with $F(K)=1/(|K|^2\underline d(K))$ and $\gamma_L=\operatorname{sinc}(\pi/2L)^{-2}$. This follows from $T_2\le d_{\max}T$, $ZTZ=Z$, $d_{\max}\le L^2\gamma_L/|K|^2$, and $\|Z\|\le1/\underline d$. Lemma Gauge (L-180): the gauge part is $\le(1+\tau)^2/(|\hat K|^2S_L)$, with explicit sums $V$, $U$ and $\tau=(V+|\hat K|U)/\underline d$. So $\rho_1(j,K)^2\le B_L(K):=\gamma_LF(K)+(1+\tau)^2/(|\hat K|^2S_L)$. By Cauchy--Schwarz $F\le F_{CS}$, a closed form made of one-dimensional factors in each $K_\rho$.
+\item Uniformity in $j$. $B_L$ does not depend on $j$. For every $M\in\{1,L,L^2,\dots,\infty\}$ the fine symbol satisfies $d^M\le1/|\tilde q^M_0|^2\le1/|\hat k|^2$, because the Fej\'er weights sum to 1. The coarse symbol $d^{ML}$ dominates the truncated $M=\infty$ sum termwise. The proof uses no monotonicity in $j$ and no O5 rate.
+\item Branch-and-bound. $B_L$ is invariant under the 384 signed permutations of $K$ by construction. So the supremum over the sorted chamber $0\le K_1\le\dots\le K_4\le\pi$ is the supremum over $\BZ$. The program \file{numerics/h1analytic/bb_arb.py} encloses $\gamma_LF_{CS}+\bar G_L$ on boxes $K=\pi u$ with exact dyadic $u$. It evaluates every one-dimensional value in arb (python-flint), and it rounds outward by one ulp after every floating-point operation, with Higham bounds on every sum. Result: $\sup_{\text{chamber}}B_{13}\le9.9995277$, on 25{,}169 boxes with 8{,}075 gauge evaluations and no failed leaf. Boxes that contain $K=0$ are enclosed directly; $\rho_1(j,0)=1$.\qedhere
 \end{enumerate}
-Margins. The measured $\sup\rho_1^2$ is 4.37. The majorant is tight to 2.6\% at $|K|\approx1.5$ ($\min B_{13}/\rho_1^2=1.026$ over 896 cases and a local search). The certificate refines boxes only until each is $\le10$, so its margin to 10 is $5\cdot10^{-5}$; its margin to the threshold 13 is 23\%.
+\end{proof}
+\emph{Margins.} The measured $\sup\rho_1^2$ is 4.37. The majorant is tight to 2.6\% at $|K|\approx1.5$: $\min B_{13}/\rho_1^2=1.026$ over 896 cases and a local search. The program refines boxes only until each is $\le10$, so its margin to 10 is $5\cdot10^{-5}$; its margin to the threshold 13 is 23\%.
 
-Verification. \file{H1_ANALYTIC_VERIFY} rederives the split, Lemmas S, G, the tower identity, L-283 (Lemma T), and Lemma Gauge on paper and checks them against the production objects to $\le5.3\cdot10^{-13}$ (V1--V2); it checks $B_{13}\ge\rho_1^2$ at 896 $(j,K)$ cases (V3--V4); it grades the original float program CORRECTED (no directed rounding) and replaces it by \texttt{bb\_arb.py} (V5--V8). \file{H1_ANALYTIC_VERIFY2} rebuilds $H_j(K)$ from the definitions (position-space (0.4) paths, sparse KKT, ghost-domain gauge) and reproduces the production $\rho_1$ to $5.8\cdot10^{-9}$ ($10^{-14}$ with the same $d$ symbol); the two parts of the split agree to $3\cdot10^{-8}$, and the L-264 (Lemma S) conventions are derived by hand and confirmed to $1.2\cdot10^{-13}$. \file{H2_CERTIFY_P5_VERIFY} proves and checks the invariance of $\rho_1$ under the 384 signed permutations (P5a, P5b); the analytic certificate does not need it, the cell sweep does. Lean: \file{lean/YmLean/Tower.lean} formalizes the algebraic core of the majorant (tower identity in weighted form, Rayleigh and rank-one bounds, \texttt{majorant\_core}, \texttt{lemmaT\_core}); \texttt{BlockNorm.rho2\_le} is the one-step $\Rightarrow$ two-step factorization.
+\emph{Consistency checks.} The split, Lemmas S and G, the tower identity, L-283 (Lemma T), and Lemma Gauge agree with the production objects to $\le5.3\cdot10^{-13}$, and $B_{13}\ge\rho_1^2$ holds at 896 $(j,K)$ cases. A second construction of $H_j(K)$ from the definitions (position-space (0.4) paths, sparse KKT, ghost-domain gauge) reproduces the production $\rho_1$ to $5.8\cdot10^{-9}$ ($10^{-14}$ with the same $d$ symbol). The two parts of the split agree to $3\cdot10^{-8}$, and the conventions of L-264 (Lemma S) agree to $1.2\cdot10^{-13}$. The invariance of $\rho_1$ under the 384 signed permutations (P5a, P5b) holds; the analytic proof does not need it, the cell sweep does.
 
-\paragraph{Residue.} The theorem is certified given the following, which no second source has checked.
+\emph{Lean.} \file{lean/YmLean/Tower.lean} formalizes the algebraic core of the majorant: the tower identity in weighted form, the Rayleigh and rank-one bounds, \texttt{majorant\_core}, and \texttt{lemmaT\_core}. \texttt{BlockNorm.rho2\_le} is the one-step to two-step factorization.
+
+\begin{remark}[inputs of the proof]
+Besides Convention~\ref{conv:avg}, the proof uses the following.
 \begin{itemize}
-\item The reading of Ba{\l}aban's (0.4) (the path family that defines the averaging operator) and the gauge choice (\file{NUMERICS} \S5). The certificate is a statement about $H_j$ so defined; both implementations use the same reading.
-\item Prop.\ A at $M\ge27$ and $M=\infty$: checked only by a second implementation of the same formula (independent recursion at $M=3,9$).
-\item L-166 (Lemma G) and the bound chain: proved on paper and rederived by the verifier, checked numerically at points only. The Fourier/umklapp derivation, Lemmas S and G, and the identification of the split are not in Lean.
-\item \texttt{bb\_arb.py}: audited line by line and checked against the float program on 30 boxes; not formally verified. It trusts python-flint arb and IEEE correctly rounded $+,-,\times,\div,\sqrt{\ }$.
-\item Independent cross-check: the cell certificate (Section~\ref{sec:cert}). Round 8: mode $M=1$ is partial; it covers the chamber outside $|K|_\infty\le0.32$ at $j=1$ (Section~\ref{sec:numr8}).
+\item Prop.\ A at $M\ge27$ and $M=\infty$. Two implementations of the same formula agree, and an independent recursion agrees at $M=3,9$.
+\item L-166 (Lemma G) and the chain of bounds, proved in \file{H1_ANALYTIC} and checked numerically at points. The Fourier and umklapp derivation, Lemmas S and G, and the identification of the split are not formalized in Lean.
+\item The program \texttt{bb\_arb.py}, read line by line and compared with a floating-point program on 30 boxes. It is not formally verified. It relies on python-flint arb and on IEEE correctly rounded $+,-,\times,\div,\sqrt{\ }$.
 \end{itemize}
+The cell certificate of Section~\ref{sec:numr8} gives an independent bound at $j=1$ outside $|K|_\infty\le0.32$.
+\end{remark}
 
-\subsection{More certified $L$, the gap and neutral-sector checks, and an open tension}\label{sec:numr7}
+\subsection{Other values of $L$, the 2D gap, and the neutral sector}\label{sec:numr7}
 
-\paragraph{(H2) (ledger row R-025) at $L=15,17,21$ \status{certified (interval arithmetic, outward rounding; verified)}.} The program \file{numerics/h1analytic/bb_arb.py} of Theorem~\ref{thm:L046} was run with target $L-1$ on the initial grid $n_0=16$ of the sorted chamber (3{,}876 boxes, no refinement). The lemmas behind the majorant $B_L$ are stated for odd $L\ge3$, and $B_L$ does not depend on $j$. A full rerun on a laptop covered all boxes, with 0 failed leaves.
-\begin{longtable}{|c|c|c|c|c|c|}
+\begin{proposition}[(H2) at $L=15,17,21$]\label{prop:H2other}
+Assume Convention~\ref{conv:avg}. For $L\in\{15,17,21\}$, every level $j\ge1$ including $j=\infty$, and every $K\in\BZ$, $\rho_1(j,K)^2$ is bounded by the value in the table below, which is less than $L-1$. Hence $\rho_2\le\sup\rho_1^2<L$, and (H2) holds at $L=15,17,21$.
+\end{proposition}
+\begin{proof}
+The lemmas behind the majorant $B_L$ of Theorem~\ref{thm:L046} are stated for odd $L\ge3$, and $B_L$ does not depend on $j$. The program \file{numerics/h1analytic/bb_arb.py} was run with target $L-1$ on the initial grid $n_0=16$ of the sorted chamber (3{,}876 boxes, no refinement). It covered all boxes with no failed leaf (\file{numerics/H1_OTHER_L.md}). The factorization \texttt{rho2\_le} gives the bound on $\rho_2$.
+\end{proof}
+\begin{longtable}{|c|c|c|c|c|}
 \hline
-$L$ & $\sup_{j,K}\rho_1^2\le$ & target & $F_{\max}$ & $G_{\max}$ & rerun time \\ \hline
-15 & 13.737723 & 14 & 10.020 & 4.005 & 33\,s \\ \hline
-17 & 12.826432 & 16 & 10.020 & 3.061 & 51\,s \\ \hline
-21 & 11.776985 & 20 & 10.020 & 1.951 & 113\,s \\ \hline
+$L$ & $\sup_{j,K}\rho_1^2\le$ & target & $F_{\max}$ & $G_{\max}$ \\ \hline
+15 & 13.737723 & 14 & 10.020 & 4.005 \\ \hline
+17 & 12.826432 & 16 & 10.020 & 3.061 \\ \hline
+21 & 11.776985 & 20 & 10.020 & 1.951 \\ \hline
 \end{longtable}
-So $\rho_2\le\sup\rho_1^2<L$ by \texttt{rho2\_le}, and (H2) holds at $L=15,17,21$, with the same standing and the same residue as at $L=13$ (Section~\ref{sec:certH2}). Sources: \file{numerics/H1_OTHER_L.md}; verifier \file{H2_CERTIFY_L15_17_21_VERIFY.md}. The verifier reproduced the worst cell, $F_{\max}$, and $G_{\max}$ at each $L$ to the printed digits, checked 9 spot cells, and found $B_L\ge\rho_1^2$ at 5 points of an independent $H_j$ (ratio $\ge1.63$). The full sweep of 896 cases $B_L\ge\rho_1^2$ and the production cross-checks were done at $L=13$ only; neither affects the proof logic. These values of $L$ are not used by the targets (ledger K-003).
+The proof has the same inputs as that of Theorem~\ref{thm:L046}. At each $L$ an independent run reproduces the worst cell, $F_{\max}$, and $G_{\max}$ to the printed digits. At 5 points an independent construction of $H_j$ gives $B_L\ge\rho_1^2$ with ratio $\ge1.63$. These values of $L$ are not used by the two targets (K-003).
 
-\paragraph{The 2D gap (G$_{\mathrm{2D}}$) \status{numerical}.} The proof of Theorem~\ref{thm:L028} covers only $|ef|\le10^{-4}$. Numerics (\file{numerics/t2_gaprime2_check.py}; reproduced by the verifier, 141 values) show the gap on all of $\alpha=ef\in(0,3.02]$: at 11 rational fluxes with denominators up to 2213, the smallest $|\text{eigenvalue}|$ of $A'$ is $|\alpha|(1-0.125|\alpha|)$, so the ratio to $|\alpha|$ is $\ge0.95$; a sparse shift-invert run at $\alpha=10^{-4}$ gives the ratio $1.0000125$. Round 7 (\file{SOURCES_T2_FRANGE.md}) shows that ($M_j$) needs the gap only on a punctured neighbourhood of $f=0$. So these values are supporting evidence, not proof inputs.
+\paragraph{The 2D gap (G$_{\mathrm{2D}}$).} The proof of Theorem~\ref{thm:L028} covers only $|ef|\le10^{-4}$. Numerics (\file{numerics/t2_gaprime2_check.py}, 141 values) show the gap on all of $\alpha=ef\in(0,3.02]$. At 11 rational fluxes with denominators up to 2213, the smallest $|\text{eigenvalue}|$ of $A'$ is $|\alpha|(1-0.125|\alpha|)$, so the ratio to $|\alpha|$ is $\ge0.95$. A sparse shift-invert run at $\alpha=10^{-4}$ gives the ratio $1.0000125$. The input ($M_j$) needs the gap only on a punctured neighbourhood of $f=0$ (\file{SOURCES_T2_FRANGE.md}). So these values are not inputs of any proof.
 
-\paragraph{The neutral sector of ($M_j$) \status{numerical, reproduced}.} Model: the 2D $N\times N$ torus of \file{SOURCES_T2_S123.md} \S6, Landau gauge, flux $\varphi=2\pi m/N$ per plaquette, the operator $4\,\mathrm{Hess}+D_rD_r^T$ restricted to the neutral (colour-3) block. Prediction: the spectrum is $\bigcup_K\{l(K),\cos\varphi\,l(K)\}$, with exactly $d=2$ zero modes (the constant 1-forms). Author's run (\file{numerics/t2_mjrest_neutral.py}): $N=12$--48, $m=0$--2, maximal deviation from the prediction $\le4.9\cdot10^{-8}$ (the finite-difference floor), two zero modes at every flux, gap $\cos\varphi\cdot4\sin^2(\pi/N)$ to relative error $\le8\cdot10^{-8}$. Verifier's run (\file{numerics/t2_mjrest_verify_neutral.py}): the author's JSON is reproduced bit for bit, and at new sizes
+\paragraph{The neutral sector of ($M_j$).} The model is the 2D $N\times N$ torus of \file{SOURCES_T2_S123.md} \S6, in Landau gauge, with flux $\varphi=2\pi m/N$ per plaquette, and the operator $4\,\mathrm{Hess}+D_rD_r^T$ restricted to the neutral (colour-3) block. Prediction: the spectrum is $\bigcup_K\{l(K),\cos\varphi\,l(K)\}$, with exactly $d=2$ zero modes (the constant 1-forms). For $N=12$--48 and $m=0$--2 (\file{numerics/t2_mjrest_neutral.py}) the maximal deviation from the prediction is $\le4.9\cdot10^{-8}$ (the finite-difference floor). There are two zero modes at every flux, and the gap is $\cos\varphi\cdot4\sin^2(\pi/N)$ to relative error $\le8\cdot10^{-8}$. A second program (\file{numerics/t2_mjrest_verify_neutral.py}) reproduces these values and gives, at new sizes,
 \begin{longtable}{|c|c|c|c|c|c|}
 \hline
 $N$ & $m$ & $\varphi$ & zero modes & first positive & $\cos\varphi\cdot4\sin^2(\pi/N)$ \\ \hline
@@ -149,20 +163,25 @@ $N$ & $m$ & $\varphi$ & zero modes & first positive & $\cos\varphi\cdot4\sin^2(\
 20 & 3 & 0.9425 & 2 & 0.05753652 & 0.05753652 \\ \hline
 64 & 2 & 0.1963 & 2 & 0.00944548 & 0.00944550 \\ \hline
 \end{longtable}
-The zero modes span the two constant 1-forms (residual $\le5.6\cdot10^{-7}$), and the charged--neutral leak is 0. Limits: 2D, Wilson level ($t=0$, no Ba{\l}aban averaging), rational fluxes. The level-$j$ neutral symbol is not checked numerically; Theorem~\ref{thm:L029} uses only the bounds (N1), (N2).
+The zero modes span the two constant 1-forms (residual $\le5.6\cdot10^{-7}$), and the charged--neutral leak is 0. Limits: 2D, Wilson level ($t=0$, no Ba{\l}aban averaging), rational fluxes. The level-$j$ neutral symbol is not checked numerically. Theorem~\ref{thm:L029} uses only the bounds (N1), (N2).
 
-\paragraph{Open: the single-step $\beta_1$ against $c\log L$.} \file{SOURCES_T2_F_STEPB.md} \S3.3 takes the extrapolated single-step values $\beta_1(Lp\to0)=0.743,\,0.797,\,0.827,\,0.844$ at $L=5,7,9,11$. The constants $\beta_1-c\log L$ are $0.145,\,0.074,\,0.010,\,-0.047$. The local slopes $d\beta_1/d\log L$ are $0.161$ ($5\to7$), $0.119$ ($7\to9$), and $0.084$ ($9\to11$), and they decrease with $L$. Fits give slopes $0.129$ ($a+s\log L$), $0.052$ ($a+s\log L+d/L^2$), and $-0.18$ ($a+s\log L+d(\log L)^2/L^2$). None is near $c=0.3715$. The first-step constant falls by about $0.06$ per step and does not level off at $L\le11$. So the reading of \file{NUMERICS} \S7, ``decreasing toward the universal slope'', is not supported by these data, and that claim is under verification. Open: whether $0.3715$ is compared with the right quantity (a single-step $\beta_1$ at each $L$ is a different family from the fixed-$L$ sequence $\Lambda=L^j$ of Theorem 3.1 of \file{BETA_FP_H.md}), or whether the gap sits in the coarse bracket, in the dependence on the family, or in the $N_g=8$ grid at $L\ge9$ (unchecked). This tension is \status{open}. Round 8 and the later notes supersede this paragraph (Section~\ref{sec:numr8}): \file{NUMERICS} \S7 is rewritten from the converged values, and the old claim is withdrawn.
+\subsection{The single-step $\beta_1$, the cell certificate, (L-LL), and the condition (C)}\label{sec:numr8}
 
-
-\subsection{The $\beta_1$ tension rewritten, the cell cross-check, the lemma (L-LL), and the condition (C)}\label{sec:numr8}
-
-\paragraph{The single-step $\beta_1$ against $c\log L$ \status{open}.} \file{NUMERICS} \S7 is rewritten (source: \file{SOURCES_T2_F_STEPB_VERIFY.md} \S2, \S4, \S6--\S8). Its earlier sentence that the first-step constant decreases ``toward the universal slope'' was wrong as written and is withdrawn.
+\paragraph{The single-step $\beta_1$ against $c\log L$.}
 \begin{itemize}
 \item The quantity. The single-step $\beta_1(L)$ is one step from the unit lattice with block size $L$, for SU(2) at $p\to0$. Each $L$ is a different constraint family. This is not the fixed-$L$ composed family of Theorem 3.1 of \file{BETA_FP_H.md}, which concerns $\beta_\infty=\lim_k[\mathcal C(L^{k+1})-\mathcal C(L^k)]$ at fixed odd $L$.
-\item The comparison value. $c=11N^2/(12\pi^2)=0.3715$ at $N=2$ is the theoretical coefficient, not a fit. No run computed $\beta_\infty$.
-\item The slope identity. By Proposition 3.1 of \file{SOURCES_BETA1_F_TENSION.md} (a derivation, no verifier), exactly, $\beta_1(L)-\beta_1(L')=c\log(L/L')-[B_c(L)-B_c(L')]$, where $B_c(L)$ is the constant of the one-step coarse bracket (the constant-field one-loop term of the tree kernel $\Delta_1^{(L)}$). R-027 (F) controls only the fine bracket and gives the term $c\log L$; it says nothing about $B_c(L)$. So $\beta_1(L)=c\log L+C+o(1)$ holds if and only if $B_c(L)$ converges, and the $\beta_1$ data neither refute nor support R-027 (its Corollaries 3.2, 3.3).
-\item The convergence of $B_c(L)$ is unproved (\file{SOURCES_BCL_TEST.md}, unverified). The local coefficient $dB_c/d\log L$ is $0.230$, $0.257$, $0.291$, $0.330$ for $L=5\to7$, $7\to9$, $9\to11$, $11\to13$, and shows no saturation. The region $|K|\sim1/L$ carries less than 1\% of the increment of $B_c$; at $f=0$ the scaled tree kernel has the limit $\kappa^2H_\infty$ [P relative to U3 Theorem 4.1]. The open part is the bulk behaviour of the single-step soft vertices.
+\item The comparison value. $c=11N^2/(12\pi^2)=0.3715$ at $N=2$ is the theoretical coefficient, not a fit. No computation gives $\beta_\infty$.
+\item The data. The converged values are in the table below. All local slopes are far below $c$, and they decrease with $L$. So the data do not show that the first-step constant $\beta_1-c\log L$ tends to a limit.
 \end{itemize}
+
+\begin{remark}[a possible explanation of the slopes]
+A possible approach (\file{SOURCES_BETA1_F_TENSION.md}, Proposition 3.1) splits the single-step increment as $\beta_1(L)-\beta_1(L')=c\log(L/L')-[B_c(L)-B_c(L')]$. Here $B_c(L)$ is the constant of the one-step coarse bracket, the constant-field one-loop term of the tree kernel $\Delta_1^{(L)}$. The input (F) (R-027) concerns only the fine bracket and gives the term $c\log L$; it says nothing about $B_c(L)$. In this approach $\beta_1(L)=c\log L+C+o(1)$ holds if and only if $B_c(L)$ converges, and the $\beta_1$ data neither contradict nor support (F). The local coefficient $dB_c/d\log L$ is $0.230$, $0.257$, $0.291$, $0.330$ for $L=5\to7$, $7\to9$, $9\to11$, $11\to13$ (\file{SOURCES_BCL_TEST.md}), and it shows no saturation. The region $|K|\sim1/L$ carries less than 1\% of the increment of $B_c$. At $f=0$ the scaled tree kernel tends to $\kappa^2H_\infty$, relative to U3 Theorem 4.1. The open part is the bulk behaviour of the single-step soft vertices.
+\end{remark}
+
+\begin{openproblem}
+Decide whether the constant $B_c(L)$ of the one-step coarse bracket converges as $L\to\infty$ through odd values.
+\end{openproblem}
+
 \begin{longtable}{|c|c|p{6.2cm}|c|}
 \hline
 $L$ & $\beta_1(L,0)$ & grid & local slope from the previous $L$ \\ \hline
@@ -172,28 +191,26 @@ $L$ & $\beta_1(L,0)$ & grid & local slope from the previous $L$ \\ \hline
 11 & $0.8354\pm0.0005$ & $N_g=28$; $Lp=1$, $0.5$, $0.25$ & 0.081 \\ \hline
 13 & $0.8423\pm0.0014$ & $N_g\ge24$; $Lp=1$, $0.5$, $0.25$ & $0.041\pm0.009$ \\ \hline
 \end{longtable}
-Values: \file{SOURCES_BETA1_CODE_CHECK.md} \S5.3--\S5.4 ($N_g\to\infty$ first, then $Lp\to0$ at fixed $L$); \file{SOURCES_BETA1_F_TENSION.md} \S13.1 gives $0.7905$ at $L=7$. At $L=13$ the raw values are $0.8432$ ($Lp=0.25$), $0.8440$ ($Lp=0.5$), and $0.8621$ ($Lp=1$; $N_g$ $24\to28$ changes $\beta_1$ by $4\cdot10^{-4}$). At $Lp=1$ the $11\to13$ slope is $0.034$. All slopes are far below $c=0.3715$. The old formula $(4\beta(0.5)-\beta(1))/3$ is biased low by $0.003$--$0.004$ at $L\ge9$. The difference $\beta(Lp=1)-\beta(Lp=0.5)=0.0185$--$0.0195$ does not depend on $L$, so fixed $Lp$ is the right comparison (\file{SOURCES_BETA1_F_TENSION.md} \S4). The anchored-ghost scale $2.54/L$ cancels between the ghost and border parts in the total (\S4.2 there); it sets the grid requirement only. Finer grids lower $\beta_1$ more at larger $L$, so the grid cannot restore $c$. Code check (\file{SOURCES_BETA1_CODE_CHECK.md}, code correct): the two codes agree to $10^{-12}$ relative at commensurate $p$ at $L=3$, $5$, and the abelian and pure-gauge limits hold exactly. The data neither refute nor support Theorem 3.1 of \file{BETA_FP_H.md}, because the family is different.
+Values: \file{SOURCES_BETA1_CODE_CHECK.md} \S5.3--\S5.4 ($N_g\to\infty$ first, then $Lp\to0$ at fixed $L$); \file{SOURCES_BETA1_F_TENSION.md} \S13.1 gives $0.7905$ at $L=7$. At $L=13$ the raw values are $0.8432$ ($Lp=0.25$), $0.8440$ ($Lp=0.5$), and $0.8621$ ($Lp=1$; $N_g$ $24\to28$ changes $\beta_1$ by $4\cdot10^{-4}$). At $Lp=1$ the $11\to13$ slope is $0.034$. The formula $(4\beta(0.5)-\beta(1))/3$ is biased low by $0.003$--$0.004$ at $L\ge9$. The difference $\beta(Lp=1)-\beta(Lp=0.5)=0.0185$--$0.0195$ does not depend on $L$, so fixed $Lp$ is the right comparison. The anchored-ghost scale $2.54/L$ cancels between the ghost and border parts in the total; it sets only the grid requirement. Finer grids lower $\beta_1$ more at larger $L$, so the grid cannot restore $c$. The two codes agree to $10^{-12}$ relative at commensurate $p$ at $L=3$, $5$, and the abelian and pure-gauge limits hold exactly. The data neither contradict nor support Theorem 3.1 of \file{BETA_FP_H.md}, because the family is different.
 
-Decisive test (\file{numerics/BETA1_BOX_RUN.md}; its state on 2026-10-28 is in Section~\ref{sec:numr9}). $L=9$ at $N_g=24$ and $L=11$ at $N_g=28$ ($N_g\ge2.5L$), each at $Lp=1,\,0.5,\,0.25$, with the extrapolation in $(Lp)^2$. The run writes one result per point (skip if done) and a partial checkpoint every 60\,s. It started on the CPU of a desktop and was restarted on the desktop's RTX 4090 GPU (jax with CUDA, float64). The GPU smoke test at $L=5$, $N_g=12$ agrees with a laptop run to $10^{-15}$. The GPU runs at 238\,$\mu$s per $(K,l)$ block against 543\,$\mu$s on the loaded CPU ($2.3\times$); the estimate for all six points is about 150\,h (about 340\,h on the CPU). A port of the remaining numpy part to jax followed (Section~\ref{sec:numr9}). The test is done (Section~\ref{sec:numr9}): the converged slopes still fall. By the slope identity above, this measures $B_c(L)$, not R-027.
+\paragraph{The cell certificate at $L=13$, level $j=1$.} The program \file{numerics/h1cert_drive2.py} covers the sorted chamber at level $j=1$ with initial half-width $h=0.08$ and bisection depth at most 2 (\file{numerics/H1CERT2_M1_RESULT.md}). It has 8{,}855 top cells and 14{,}423 cell records: 13{,}872 succeed, 348 split, 200 fail, and 3 are near $K=0$. The largest bound on a successful leaf is $\rho_1\le3.59685<\sqrt{13}=3.60555$, so $\rho_1(1,K)^2\le12.937$ there. The margin is 0.0087 in $\rho_1$ (0.24\%); it reflects the loose depth-0 enclosure, not the true $\rho_1$.
+The 200 failed cells are cells without a bound, not violations. All have depth 2, half-width 0.02, no exception, and a finite bound between 3.621 and 9.936. All descend from two top cells next to $K=0$ ($|K|_\infty\le0.32$), where the Taylor and Oishi--Rump enclosures grow as the cell width approaches $|K|$. There the true value is small: the analytic majorant gives $\rho_1^2\approx2$ near $K=0$, and $\rho_1(j,0)=1$. The two certificates are tightest at opposite ends of the chamber: the analytic one near the face diagonal, and the cell one near $K=0$.
+Result: at $j=1$, the cell certificate bounds $\rho_1^2<13$ on the sorted chamber outside $|K|_\infty\le0.32$, independently of the analytic majorant, under the premises P1a, P2, P5b. Theorem~\ref{thm:L046} does not depend on it.
 
-\paragraph{The cell certificate at $L=13$, mode $M=1$ \status{partial cross-check}.} Source: \file{numerics/H1CERT2_M1_RESULT.md} (the desktop run \file{numerics/h1cert_drive2.py}, level $j=1$, sorted chamber, initial half-width $h=0.08$, bisection depth at most 2). Cells: 8{,}855 top cells, 14{,}423 cell records; 13{,}872 ok, 348 split, 200 FAILED, 3 near0. The largest ok bound is $\rho_1\le3.59685<\sqrt{13}=3.60555$, so $\rho_1(1,K)^2\le12.937$ on every ok leaf. The margin is 0.0087 in $\rho_1$ (0.24\%); it reflects the loose depth-0 enclosure, not the true $\rho_1$.
-The 200 FAILED cells are non-certifications, not violations. All have depth 2, half-width 0.02, no exception, and a finite bound between 3.621 and 9.936. All descend from two top cells next to $K=0$ ($|K|_\infty\le0.32$), where the Taylor and Oishi--Rump enclosures grow as the cell width approaches $|K|$. There the true value is small: the analytic majorant gives $\rho_1^2\approx2$ near $K=0$, and $\rho_1(j,0)=1$. The two certificates have their difficulty at opposite ends of the chamber: the analytic one is tightest near the face diagonal, and the cell one near $K=0$.
-Result: at $j=1$, the cell certificate covers the sorted chamber outside $|K|_\infty\le0.32$, independently of the analytic majorant, under the premises P1a, P2, P5b. Theorem~\ref{thm:L046} does not depend on it. As of 2026-10-28 no completion run (depth 3 on the 200 cells, about 27 core-hours) had been made. Modes $M=13$ and $M_0{:}169$ of the same launcher are not reported here.
-
-\paragraph{(L-LL) (H-137) \status{numerical}.} Source: \file{SOURCES_T2_LLL.md} \S6 (\file{numerics/t2_lll_window.py}, 13\,s on a laptop). The operator $A'_\alpha$ comes from the builder of \file{numerics/t2_gaprime2_check.py}, the code of the (G$_{\mathrm{2D}}$) numerics of Section~\ref{sec:numr7}, at flux $\alpha=2\pi/q$ and $\varphi=\pi/q$. $H_\varphi(\mu)$ is computed directly from its definition, not from the proof.
+\paragraph{(L-LL) (H-137).} The program \file{numerics/t2_lll_window.py} (\file{SOURCES_T2_LLL.md} \S6) takes the operator $A'_\alpha$ from the builder of \file{numerics/t2_gaprime2_check.py}, at flux $\alpha=2\pi/q$ and $\varphi=\pi/q$. It computes $H_\varphi(\mu)$ directly from its definition, not from the proof.
 \begin{longtable}{|c|c|c|c|c|c|}
 \hline
 $\varphi$ & 0.03977 & 0.02001 & 0.01001 & 0.00500 & limit $h$ (Theorem~\ref{thm:L040}) \\ \hline
 $H_\varphi(3)$ & 0.124869 & 0.121263 & 0.119109 & 0.117872 & 0.116322 \\ \hline
 $H_\varphi(5)$ & 0.183646 & 0.177929 & 0.174470 & 0.172467 & 0.169938 \\ \hline
 \end{longtable}
-Checks: the Mehler identity of L-275 to relative error $9\cdot10^{-16}$; the evenness $A'_{-\alpha}=CA'_\alpha C$ exact; the Nielsen--Olesen count $\tau(P_-)/(\alpha/2\pi)=1.00000$ at every $q$; the $k$-grid stable to all printed digits. The error behaves as $H-h\approx\varphi(0.07+0.046\ln(1/\varphi))$ at $\mu=3$ and $\varphi(0.10+0.077\ln(1/\varphi))$ at $\mu=5$, so the observed rate is $O(\varphi\ln(1/\varphi))$; no rate is proved. In the continuum, $h(\mu)-\frac{11}{12\pi^2}\ln\mu\to0.023444$. The proof of (L-LL) does not use the gap theorem, so the (G$_{\mathrm{2D}}$) values of Section~\ref{sec:numr7} stay supporting evidence for ($M_j$) only.
+Checks: the Mehler identity of L-275 holds to relative error $9\cdot10^{-16}$; the evenness $A'_{-\alpha}=CA'_\alpha C$ is exact; the Nielsen--Olesen count $\tau(P_-)/(\alpha/2\pi)$ is $1.00000$ at every $q$; the $k$-grid is stable to all printed digits. The error behaves as $H-h\approx\varphi(0.07+0.046\ln(1/\varphi))$ at $\mu=3$ and $\varphi(0.10+0.077\ln(1/\varphi))$ at $\mu=5$. So the observed rate is $O(\varphi\ln(1/\varphi))$; we prove no rate. In the continuum, $h(\mu)-\frac{11}{12\pi^2}\ln\mu\to0.023444$. The proof of (L-LL) does not use the gap theorem, so the (G$_{\mathrm{2D}}$) values of Section~\ref{sec:numr7} bear only on ($M_j$).
 
-\paragraph{The free constant of (C) (H-057) \status{numerical}.} Source: \file{SOURCES_C_CONDITION.md} \S6 (\file{numerics/t2_ccond_free.py}). For $U=1$ and a single layer, $c_-^{\mathrm{free}}=1/(1+K_0)$ equals $5.10\cdot10^{-3}$ ($d=4$), $7.82\cdot10^{-3}$ ($d=3$), and $1.37\cdot10^{-2}$ ($d=2$), independent of $L$ as $N\to\infty$. The script reproduces $K_0(4,N=3)=103.248$, with a real-space check $48.198346$ against $48.198347$. This is part of the proof of (C) (Proposition~\ref{prop:L038}), now a verified reduction (Section~\ref{sec:numr9}).
+\paragraph{The free constant of (C) (H-057).} For $U=1$ and a single layer, $c_-^{\mathrm{free}}=1/(1+K_0)$ equals $5.10\cdot10^{-3}$ ($d=4$), $7.82\cdot10^{-3}$ ($d=3$), and $1.37\cdot10^{-2}$ ($d=2$), independent of $L$ as $N\to\infty$ (\file{SOURCES_C_CONDITION.md} \S6, \file{numerics/t2_ccond_free.py}). The script reproduces $K_0(4,N=3)=103.248$, with a real-space check $48.198346$ against $48.198347$. This value enters the reduction of (C) (Proposition~\ref{prop:L038}).
 
-\subsection{The seam test of the condition (C), the lemma (L-LL) at smaller $\varphi$, and the $\beta_1$ run}\label{sec:numr9}
+\subsection{The seam test of (C), (L-LL) at smaller $\varphi$, and the converged $\beta_1$}\label{sec:numr9}
 
-\paragraph{The free constant and the seam test of (C) (H-057) \status{numerical; verified}.} The verifier of (C) reproduces the free constant $c_-^{\mathrm{free}}=1/(1+K_0)=5.10\cdot10^{-3}$ at $d=4$ (Section~\ref{sec:numr8}). Its seam test (\file{SOURCES_C_CONDITION_VERIFY.md} \S7, \file{numerics/c_verify_seam.py}, 2\,s) uses $d=2$, a torus of $N_T=6$ unit blocks with $N$ fine steps per block, and flat SU(2) links $U_1=\exp(i\theta\sigma_3/N)$ in direction 1. Every plaquette is 1, and the Polyakov angle is $\theta$. The field is the dressed extension with model kernel $E=e^{-d_1}$ and the axial path rule in the fundamental domain.
+\paragraph{The seam test of (C) (H-057).} A second program reproduces the free constant $c_-^{\mathrm{free}}=1/(1+K_0)=5.10\cdot10^{-3}$ at $d=4$ (Section~\ref{sec:numr8}). The seam test (\file{numerics/c_verify_seam.py}) uses $d=2$, a torus of $N_T=6$ unit blocks with $N$ fine steps per block, and flat SU(2) links $U_1=\exp(i\theta\sigma_3/N)$ in direction 1. Every plaquette is 1, and the Polyakov angle is $\theta$. The field is the dressed extension with model kernel $E=e^{-d_1}$ and the axial path rule in the fundamental domain.
 \begin{longtable}{|c|c|c|c|c|}
 \hline
 $N$ & $\theta=1$: total energy & seam row & cut-off $\chi(d/2.5)$: total & seam row \\ \hline
@@ -202,27 +219,26 @@ $N$ & $\theta=1$: total energy & seam row & cut-off $\chi(d/2.5)$: total & seam 
 81 & 2.565 & 0.574 & 2.485 & 0 \\ \hline
 243 & 3.699 & 1.709 & 2.486 & 0 \\ \hline
 \end{longtable}
-At $\theta=1$ the seam energy grows by a factor 2.98 per factor 3 in $N$, so it is linear in $N=L^k$. The predicted value at $N=243$ is $N|\mathrm{Ad}P-1|^2e^{-\delta N_T}\int e^{-2|t|}dt=1.70$; the measured value is 1.709. At $\theta=0$ the seam row tends to 0 like $1/N$. With the cut-off of L-283 (Lemma T) inside the fundamental domain ($D<N_T/2$) the energy is uniform in $N$. A cut-off with $D=4>N_T/2$ still meets the seam, and its energy still grows, so the threshold (T2) is needed.
+At $\theta=1$ the seam energy grows by a factor 2.98 per factor 3 in $N$, so it is linear in $N=L^k$. The predicted value at $N=243$ is $N|\mathrm{Ad}P-1|^2e^{-\delta N_T}\int e^{-2|t|}dt=1.70$; the measured value is 1.709. At $\theta=0$ the seam row tends to 0 like $1/N$. With the cut-off of L-283 (Lemma T) inside the fundamental domain ($D<N_T/2$) the energy is uniform in $N$. A cut-off with $D=4>N_T/2$ still meets the seam, and its energy still grows. So the threshold (T2) is needed.
 
-\paragraph{(L-LL) (H-137) at smaller $\varphi$ \status{numerical; verified}.} The verifier reruns \file{numerics/t2_lll_window.py} and reproduces every value of Section~\ref{sec:numr8}. Its new script \file{numerics/t2_lll_verify_window.py} (41\,s) extends the lattice values to $\varphi=0.00125$; $k$-grids $n_k=1$ and $n_k=3$ agree to 6 digits at $q=628$.
+\paragraph{(L-LL) (H-137) at smaller $\varphi$.} A second program (\file{numerics/t2_lll_verify_window.py}) reproduces every value of Section~\ref{sec:numr8} and extends them to $\varphi=0.00125$. The $k$-grids $n_k=1$ and $n_k=3$ agree to 6 digits at $q=628$.
 \begin{longtable}{|c|c|c|c|c|c|c|}
 \hline
 $\varphi$ & 0.03977 & 0.02001 & 0.01001 & 0.00500 & 0.002501 & 0.001251 \\ \hline
 $(H_\varphi(3)-h(3))/\varphi$ & 0.215 & 0.247 & 0.278 & 0.310 & 0.341 & 0.372 \\ \hline
 $(H_\varphi(5)-h(5))/\varphi$ & 0.345 & 0.399 & 0.453 & 0.506 & 0.558 & 0.609 \\ \hline
 \end{longtable}
-$H_\varphi(3)=0.117174$, $0.116787$ and $H_\varphi(5)=0.171333$, $0.170699$ at $\varphi=0.0025$, $0.00125$. The step per halving is constant, 0.031 at $\mu=3$ and 0.054 to 0.051 at $\mu=5$, so $H-h\approx\varphi(a+b\ln(1/\varphi))$ holds down to $\varphi=0.00125$, with $b\approx0.045$ ($\mu=3$) and $b\approx0.075$ ($\mu=5$). An independent continuum quadrature gives $h(3)=0.1163219$, $h(5)=0.1699377$, and $h(\mu)-\frac{11}{12\pi^2}\ln\mu=0.0142853$, $0.0204567$, $0.0234371$, $0.0234442$ at $\mu=3$, 5, $10^2$, $10^4$. A no-log test of the Nielsen--Olesen term shows that its limit is finite, with a correction of order $\alpha\ln(1/\alpha)$; this explains the observed rate $\varphi\ln(1/\varphi)$.
+$H_\varphi(3)=0.117174$, $0.116787$ and $H_\varphi(5)=0.171333$, $0.170699$ at $\varphi=0.0025$, $0.00125$. The step per halving is constant, 0.031 at $\mu=3$ and 0.054 to 0.051 at $\mu=5$. So $H-h\approx\varphi(a+b\ln(1/\varphi))$ holds down to $\varphi=0.00125$, with $b\approx0.045$ ($\mu=3$) and $b\approx0.075$ ($\mu=5$). An independent continuum quadrature gives $h(3)=0.1163219$, $h(5)=0.1699377$, and $h(\mu)-\frac{11}{12\pi^2}\ln\mu=0.0142853$, $0.0204567$, $0.0234371$, $0.0234442$ at $\mu=3$, 5, $10^2$, $10^4$. A test of the Nielsen--Olesen term without the logarithm shows that its limit is finite, with a correction of order $\alpha\ln(1/\alpha)$. This explains the observed rate $\varphi\ln(1/\varphi)$.
 
-\paragraph{The converged-grid $\beta_1$ run \status{numerical; converged grids at $L=9$, $11$, $13$ (\file{NUMERICS} \S7(f)); code cross-checked, \file{SOURCES_BETA1_CODE_CHECK}; no verifier}.} The numpy part of the run of Section~\ref{sec:numr8} is ported to jax (a full jit, float64). The port agrees with the old path to $4.4\cdot10^{-16}$ on the GPU and $7.8\cdot10^{-16}$ on a laptop. It needs 4--7\,$\mu$s per $(K,l)$ block on the RTX 4090, against 238\,$\mu$s before (about $55\times$). The three $L=9$ points ($N_g=24$) give $\beta=0.8201$, $0.8231$, $0.8423$ at $Lp=0.25$, $0.5$, $1.0$. The $L=11$ points ($N_g=28$) and the $L=13$ points (Section~\ref{sec:numr8}) are done. The $Lp\to0$ values are $0.8192$, $0.8354$, $0.8423\pm0.0014$ at $L=9$, $11$, $13$. The converged slopes still fall ($0.081$ at $9\to11$, $0.041\pm0.009$ at $11\to13$). By the slope identity of Section~\ref{sec:numr8}, these data measure $B_c(L)$; whether $B_c(L)$ converges is unproved (\file{SOURCES_BCL_TEST}, unverified).
+\paragraph{The converged-grid $\beta_1$.} The converged grids at $L=9$, $11$, $13$ are in \file{NUMERICS} \S7(f), and the code is cross-checked in \file{SOURCES_BETA1_CODE_CHECK}. The jax port of the code agrees with the numpy path to $4.4\cdot10^{-16}$ on a GPU and $7.8\cdot10^{-16}$ on a laptop. The three $L=9$ points ($N_g=24$) give $\beta=0.8201$, $0.8231$, $0.8423$ at $Lp=0.25$, $0.5$, $1.0$. The $Lp\to0$ values are $0.8192$, $0.8354$, $0.8423\pm0.0014$ at $L=9$, $11$, $13$. The converged slopes still fall: $0.081$ at $9\to11$ and $0.041\pm0.009$ at $11\to13$. In the possible approach of Section~\ref{sec:numr8}, these data measure $B_c(L)$.
 
-\subsection{Certification plan and $j_0$ \status{designed; superseded at $L=13$ by Section~\ref{sec:certH2}}}\label{sec:cert}
-At $L=13$ the analytic route of Section~\ref{sec:certH2} replaces this plan: it needs no tail level $j_0$, no $\|\mathfrak B^{-1}\|$ bound, and no Lipschitz constant. The cell certificate below is run at $L=13$ only as an independent cross-check (cell sweep: mode $M=1$ reported as a partial cross-check, Section~\ref{sec:numr8}; modes $M=13$ and $M_0{:}169$ running).
-\file{B2_TWOSTEP_VERIFY} grade 6 (CORRECTED in size): certifying (H2) (ledger row R-025) is a computer-assisted proof project, not a check. \file{H2_LARGE_L} \S4 gives the design; \file{H2_LARGE_L_VERIFY} grades 6--8 check it. Three parts.
+\subsection{Design of the cell certificate and the tail level $j_0$}\label{sec:cert}
+At $L=13$ the analytic proof of Section~\ref{sec:certH2} needs no tail level $j_0$, no bound on $\|\mathfrak B^{-1}\|$, and no Lipschitz constant. The cell certificate below gives an independent bound at $L=13$ on part of the chamber (Section~\ref{sec:numr8}). A proof of (H2) by cells is a computer-assisted proof of substantial size. \file{H2_LARGE_L} \S4 gives the design. It has three parts.
 
-(a) Tail $j\ge j_0$. From the resolvent identity, $\rho_2(j)\le R_\infty+(\rho_1^2/a_*)(\delta_{j-2}+\delta_{j-1})$, where $R_\infty=\rho_2$ at $j=\infty$, $a_*=\inf_Ka_j(K)$ with $\|[\mathfrak B^{-1}]_{f,f}\|=1/a_j(K)$ exactly, and $\delta_m=\sup_K\|\Delta_{L^m}-\Delta_\infty\|$ (O5 decay) [derivation CONFIRMED]. Inputs CORRECTED by the verifier: the 2-norm sup of $\delta_m$ is at the corner, $\delta=179,\,92.0,\,18.7,\,2.39,\,0.317$ ($M=1,3,9,27,81$), 45--90$\times$ the assumed value at small $m$; $a_*(L=5)=0.0107$, not 0.05. With these inputs, $j_0\approx8$ ($L=3$) and $\approx6$ ($L=5$). With the O6 coercivity constant, $j_0=25$, which cannot be used in practice (\file{B2_TWOSTEP_VERIFY} \S5 estimated $j\gtrsim45$ with $\|\mathfrak B^{-1}\|\le b(L)\sim10^{19}$).
+(a) Tail $j\ge j_0$. From the resolvent identity, $\rho_2(j)\le R_\infty+(\rho_1^2/a_*)(\delta_{j-2}+\delta_{j-1})$. Here $R_\infty=\rho_2$ at $j=\infty$, $a_*=\inf_Ka_j(K)$ with $\|[\mathfrak B^{-1}]_{f,f}\|=1/a_j(K)$ exactly, and $\delta_m=\sup_K\|\Delta_{L^m}-\Delta_\infty\|$ (O5 decay). The 2-norm supremum of $\delta_m$ is at the corner: $\delta=179,\,92.0,\,18.7,\,2.39,\,0.317$ ($M=1,3,9,27,81$). The value of $a_*$ at $L=5$ is $0.0107$. With these inputs, $j_0\approx8$ ($L=3$) and $\approx6$ ($L=5$). With the O6 coercivity constant, $j_0=25$, which cannot be used in practice; with $\|\mathfrak B^{-1}\|\le b(L)\sim10^{19}$ one needs $j\gtrsim45$.
 
-(b) Levels $2\le j<j_0$ and $j=\infty$. A certified sup over the BZ of $\|H_{(2),j}(K)\|$ (at $L\ge5$: of $\|H_j(K)\|$, Section~\ref{sec:onestep}). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the BZ), $4\times4$ and $5\times5$ verified inverses, one $4\times4$ $\lambda_{max}$ per $K$; about $2.5\cdot10^3$ boxes at half-width 0.05 at $L=3$; the analytic form of $\Delta$ near $K=0$, where $\rho_2(0)=1$. At $j=\infty$ also a certified tail bound for the Prop.\ A sum ($l_{max}$ truncation; observed effect $4\cdot10^{-4}$). There is no explicit global Lipschitz constant today: the A0/O5 strip width is existential, and the constant that can be made explicit is $\sim10^{40}$. Monotonicity in $j$ is not proved and is not used.
+(b) Levels $2\le j<j_0$ and $j=\infty$. One needs a certified supremum over the Brillouin zone of $\|H_{(2),j}(K)\|$ (at $L\ge5$: of $\|H_j(K)\|$, Section~\ref{sec:onestep}). Plan: interval arithmetic with local mean-value enclosures on boxes in the sorted chamber (1/384 of the Brillouin zone), $4\times4$ and $5\times5$ verified inverses, and one $4\times4$ $\lambda_{max}$ per $K$. At $L=3$ this needs about $2.5\cdot10^3$ boxes of half-width 0.05, and the analytic form of $\Delta$ near $K=0$, where $\rho_2(0)=1$. At $j=\infty$ one also needs a certified tail bound for the Prop.\ A sum ($l_{max}$ truncation; observed effect $4\cdot10^{-4}$). No explicit global Lipschitz constant is known: the strip width of A0/O5 is existential, and the constant that can be made explicit is $\sim10^{40}$. Monotonicity in $j$ is not proved and is not used.
 
-(c) Inputs to certify first: $\|\mathfrak B_j(K)^{-1}\|\le B_{num}$ for all $j$, $K$ (the O6 constant $b(L)$ is unusable), the O5 constant $C_0$ explicitly (or certified $\delta_m$), certified $a_*$, $\rho_1$, $R_\infty$.
+(c) Inputs to certify first: $\|\mathfrak B_j(K)^{-1}\|\le B_{num}$ for all $j$, $K$ (the O6 constant $b(L)$ is too large to use), the O5 constant $C_0$ explicitly (or certified $\delta_m$), and certified $a_*$, $\rho_1$, $R_\infty$.
 
-The run plan (\file{H2_LARGE_L_VERIFY} grade 8) uses atomic JSON writes and pre-copied profile caches; the profile build time at $L\ge11$ is not budgeted. At $L=13$ the cell certificate runs as a sweep (\file{numerics/h1cert_cell2.py}, sorted chamber, valid by P5), an independent cross-check of Theorem~\ref{thm:L046}; round 8 reports mode $M=1$ as partial (Section~\ref{sec:numr8}).
+At $L=13$ the cell certificate runs as a sweep (\file{numerics/h1cert_cell2.py}) over the sorted chamber, which is valid by P5.

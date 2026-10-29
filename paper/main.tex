@@ -18,12 +18,16 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{mainthm}{Theorem}
 \renewcommand{\themainthm}{\Alph{mainthm}}
+\newtheorem{conjecture}[theorem]{Conjecture}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{convention}[theorem]{Convention}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{openproblem}[theorem]{Open Problem}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-% status tags, e.g. \status{proved+verified}; legend in Section 1.4
+% legacy status tag; no longer used in the body of the paper
 \newcommand{\status}[1]{{\normalfont\scshape[#1]}}
 % project file references; footnote on first use only
 \newif\iffirstfile\firstfiletrue
@@ -35,7 +39,7 @@
 % the plane-wave theorem of BETA_FP_PW (called "Theorem B" there)
 \newcommand{\ThmPW}{Theorem~B$_{\mathrm{PW}}$}
 
-\title{Yang--Mills on a finite torus along Ba{\l}aban's route:\\ a verified reduction}
+\title{Conditional existence of four-dimensional Yang--Mills\\ on a finite torus along Ba{\l}aban's route}
 \author{Claude}
 \date{October 2026}
 
@@ -43,7 +47,7 @@
 \maketitle
 
 \begin{abstract}
-Ba{\l}aban's renormalization-group construction of four-dimensional SU(2) lattice Yang--Mills theory depends on control of the running coupling, his Theorem 2, whose proof was never published. We prove that a weak form of Theorem 2, namely two-sided bounds on $1/g_k^2$ with an additive constant, follows from one uniform inequality (H2) on a two-step minimizer map together with named fixed-level and history inputs; this weak form is enough for Ba{\l}aban's Theorem 1. At $L=13$, inside Ba{\l}aban's range $L>11$, the inequality (H2) is a certified theorem: an explicit majorant and an outward-rounded interval branch-and-bound give $\rho_1(j,K)^2\le10<13$ for every level $j$, including $j=\infty$, and every momentum $K$, so $\rho_2\le10<13$. This certificate uses our reading of Ba{\l}aban's averaging operator. The shooting lemmas, the arithmetic of Theorem K and the bridge lemmas of the certifier are formalized in Lean 4. Second, on a fixed torus, we prove that a uniform moment bound (H-U) gives compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder--Schrader axioms OS0--OS3. The bound (H-U) is reduced, not proved. It rests on sourced versions of Ba{\l}aban's bounds; on a hypothesis (FX), which we reduce to a holomorphy bound (H-hol) for Ba{\l}aban's increments, history bounds and three named inputs of the large-field step; and on a bridge from the source form to (H-U). A dependency table records the status of each block. Every derivation and every verification pass behind this paper was written by AI agents (Claude models) under the author's direction; ``verified'' means that an independent AI verifier pass confirmed the step, and no human expert has checked them.
+Ba{\l}aban's renormalization-group construction of four-dimensional SU(2) lattice Yang--Mills theory depends on control of the running coupling. This control is his Theorem 2, whose proof was never published. We prove that a weak form of Theorem 2 follows from one uniform inequality (H2) on a two-step minimizer map, together with fixed-level inputs and a history condition. The weak form gives two-sided bounds on $1/g_k^2$ with an additive constant, and it suffices for Ba{\l}aban's Theorem 1. We prove the fixed-level inputs and the history condition relative to named inputs: Ba{\l}aban's published proofs, his inductive assumption (H0), stated conventions, and one external result on the constant-field effective action. At $L=13$, inside Ba{\l}aban's range $L>11$, we prove (H2) by a computer-assisted argument. An explicit majorant and an outward-rounded interval branch-and-bound give $\rho_1(j,K)^2\le10<13$ for every level $j$, including $j=\infty$, and every momentum $K$, so $\rho_2\le10<13$. The same argument gives (H2) at $L=15,17,21$. This proof uses a stated convention for Ba{\l}aban's averaging operator. The shooting lemmas, the arithmetic of Theorem K, and the algebraic core of the majorant are formalized in Lean 4. Second, on a fixed torus, we prove that a uniform moment bound (H-U) implies compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder--Schrader axioms OS0--OS3. This is a compactness result; it is not an existence theorem for a continuum theory, and nontriviality of the limit is open. We reduce (H-U), but we do not prove it. It rests on sourced versions of Ba{\l}aban's bounds; on a hypothesis (FX), which we reduce to a holomorphy bound (H-hol) for Ba{\l}aban's increments, history bounds and three named inputs of the large-field step; and on a bridge from the source form to (H-U). A dependency table lists the hypotheses of each block. The arguments were produced and cross-checked by AI systems (Claude models); no human expert has reviewed them.
 \end{abstract}
 
 \tableofcontents
