@@ -77,10 +77,10 @@ Roger Dashen and David~J. Gross.
 \newblock {\em Phys. Rev. D}, 23:2340--2348, 1981.
 
 \bibitem{ymrepo}
-Elvin.
+Elvin Fu and Claude.
 \newblock yang-mills: project repository (notes/ directory holds the project
-  files cited as \texttt{FILE.md}), 2026.
-\newblock Local repository; no public remote.
+  files cited as \texttt{FILE.md}).
+\newblock \url{https://github.com/elvin40/yang-mills}, 2026.
 
 \bibitem{jaffewitten}
 Arthur Jaffe and Edward Witten.

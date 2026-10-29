@@ -4,9 +4,19 @@ title: "Yang–Mills on a torus along Balaban's renormalization group"
 authors:
   - given-names: Elvin
     family-names: Fu
+  - name: Claude
 year: 2026
 date-released: 2026-10-28
 url: "https://github.com/elvin40/yang-mills"
 repository-code: "https://github.com/elvin40/yang-mills"
-license: CC-BY-4.0
+license: "CC-BY-4.0 AND MIT"
 type: software
+preferred-citation:
+  type: unpublished
+  title: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction"
+  authors:
+    - name: Claude
+  year: 2026
+  month: 10
+  url: "https://github.com/elvin40/yang-mills"
+  notes: "paper/main.pdf in the repository"

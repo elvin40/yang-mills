@@ -45,4 +45,4 @@ Result: even with the grid-converged L = 9 point, the slope from 9 to 13 is abou
 - Units active: h1cert2 (mode M13 still running; M1 done), beta1, ymbetafp2. umk inactive. Load average 32 on 32 cores.
 - beta1: the GPU run is on L = 11 Lp = 1.0 (Ng = 28), partial checkpoint at 16:11.
 - h1cert2 has NOT finished.
-- E5: PLAN.md line 436 defines it only as the DMAX = 3 completion run on the 200 FAILED M1 cells (move DONE marker aside, rewrite their JSONs). It says "queue E5 (after mode M13 finishes)". No E5 launcher script exists in numerics/ or on the box, and OPUS_QUEUE.md has no E5 entry. Nothing launched.
+- E5: PLAN.md line 436 defines it only as the DMAX = 3 completion run on the 200 FAILED M1 cells (move DONE marker aside, rewrite their JSONs). It says "queue E5 (after mode M13 finishes)". No E5 launcher script exists in numerics/ or on the box, and the private run queue (not published) has no E5 entry. Nothing launched.

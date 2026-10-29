@@ -55,7 +55,7 @@ Wave 1–3 (2026-10-28): new files Concatenation, NeutralSpectrum, ComplexGaussi
 ## Toolchain
 
 - Lean `v4.33.1` (`lean-toolchain`), Lake 5.0.0.
-- Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), and the disk had 4–6 GB free, so the project uses the installed toolchain.
+- Mathlib tag `v4.33.1` (commit `0df444a3`). The newest stable tag is `v4.35.0`. It needs a second toolchain (2.7 GB), so the project uses the installed toolchain.
 - Dependencies are shallow clones in `.lake/packages` at the revisions of Mathlib's manifest. Only the import closure of `Mathlib.Analysis.Real.Sqrt` and `Mathlib.Topology.Order.IntermediateValue` was fetched (`lake exe cache get <modules>`, 1484 files, 1.5 GB). LemmaH.lean added the closure of `Mathlib.Analysis.SpecialFunctions.Log.Basic` (about 445 files from the local cache, no download; build dir now 1.5 GB). DetIdentities.lean added the closures of `Mathlib.LinearAlgebra.Matrix.SchurComplement` and `Mathlib.Data.Matrix.ColumnRowPartitioned` (140 files from the local cache, no download; `.lake` 1.9 → 2.0 GB).
 - Build: `lake build` (all 45 files). LemmaDDoublePrime.lean needed no new oleans. Each file builds in a few seconds.
 
@@ -323,3 +323,15 @@ Not formalized: Facts A, B, C themselves (geometry), the spanning-tree existence
 
 - Details, hypotheses beyond the printed ones, and not-formalized items are in the two VERIFY files. CauchyPerturbation.lean adds the closure of `Mathlib.Analysis.Complex.Liouville` (Bochner integral and Cauchy integral oleans, built locally).
 - Axioms: `[propext, Classical.choice, Quot.sound]` for all theorems of both files.
+
+## LemmaDHist.lean (ledger L5: history-dependent β_j; LEMMA_DPRIME.md Remark 3, LEMMAS_DE_VERIFY.md §1.5); statement check `VERIFY_LemmaDHist.md`
+
+- Not imported by YmLean.lean; build with `lake build YmLean.LemmaDHist`. `β j h` with `h : Fin j → ℝ` = (g_0, …, g_{j−1}); trajectories `HTraj`, shots `HShot`; cube `Cube γ j = ]0, γ]^j`.
+- `lemma_D_hist`: Lemma D with β_j continuous on the cube and `b ≤ β_j ≤ b'` on it (clamped proof). `lemma_DPrime_hist`: Lemma D′ (a)–(d) under Remark 3 (cube continuity, `|β_j(h) − β0_j| ≤ C₁M` for h ∈ ]0, M]^j, β0_j history independent). `lemma_D_hist_adm`: Lemma D by nested intervals, with bounds only on true trajectories in D_k = {u_0, …, u_k ≥ 1/γ²} and continuity of u₀ ↦ u_{k+1} on D_k.
+- `βce_separately_continuous`, `βce_no_shot`, `βce_not_cube_continuous`: β_j bounded in [1, 2] and continuous in each argument separately, but no shot trajectory exists (K = 2, g = 1/2, γ = 1). Continuity in the current argument with the past fixed is not enough; the IVT step needs continuity of u₀ ↦ u_K (joint continuity of β_j along the moving past). The sources do not supply it (THEOREM2_PROOF_v4 §10 item 8(a)).
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all eight printed theorems. Not formalized: nested-interval form of Lemma D′/D″ (negative early increments), Step 8 and Lemma D″/E for histories, and that Balaban's β_j meets the continuity hypotheses.
+
+## LemmaDHistNested.lean (L5 residue, THEOREM2_PROOF_v4 §10 item 8(c); SOURCES_T2_B7_CLAMP.md §4); statement check `VERIFY_LemmaDHist.md` (addendum)
+
+- `nested_shoot`: nested-interval shooting on true trajectories with per-step bounds l_i ≤ β_i ≤ U_i (l_i may be negative), envelope m_k = t + Σ_{i>k} l_i ≥ γ^{−2}, continuity of u₀ ↦ u_{k+1} on D_k; bounds needed only on admissible pasts whose earlier steps obey them. `lemma_DPrime_hist_adm` (Lemma D′ (b)–(d)), `lemma_DDoublePrime_hist_adm` (Lemma D″ (b), (c)) on admissible pasts; no cube continuity, no extra hypothesis.
+- Axioms: `[propext, Classical.choice, Quot.sound]` for all three.

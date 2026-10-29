@@ -5,7 +5,7 @@
 # One output file per (point, lmax) in results/h2cert_*.txt; a point is skipped if its file ends with an enclosure line,
 # so a killed run resumes at the next point (one point = one job, Mac: 5 min at lmax 20, est. 15-20 min at lmax 30; no inner checkpoint).
 # Run as a transient system unit (the user manager kills session processes), with one wsl session kept attached:
-#   sudo -n systemd-run --unit=h2cert --collect -p User=elvin -p MemoryMax=12G bash ~/ym/h2cert_launch.sh
+#   sudo -n systemd-run --unit=h2cert --collect -p User=$USER -p MemoryMax=12G bash ~/ym/h2cert_launch.sh
 # This is NOT the full certification: the per-cell driver (H2_CERTIFY section 2 (i-a)/(i-b)) is not written yet.
 # Memory: lmax 30 box sum is chunked to 61^3 doubles (~2 MB per array); peak < 1 GB per job.
 cd ~/ym && source .venv/bin/activate && mkdir -p results

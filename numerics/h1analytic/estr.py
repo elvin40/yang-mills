@@ -1,5 +1,5 @@
-import sys, numpy as np
-sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+import sys, os, numpy as np
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import h2_scan as h2
 from h1cert_rho1 import prof
 for L in (3,5,7,9,13):

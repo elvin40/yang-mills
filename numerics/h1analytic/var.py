@@ -1,5 +1,5 @@
-import sys, numpy as np
-sys.path.insert(0, "/tmp/h1a")
+import sys, os, numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from fcs import Fcs
 from gform import alpha
 sinc = lambda x: np.sinc(np.asarray(x)/np.pi)

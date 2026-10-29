@@ -1,5 +1,5 @@
-import sys, numpy as np, itertools
-sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+import sys, os, numpy as np, itertools
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import h2_scan as h2
 from h1cert_rho1 import prof
 from math import comb

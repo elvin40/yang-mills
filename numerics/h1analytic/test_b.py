@@ -1,6 +1,6 @@
 """Task B: B_L(K) (sharp: truncated F, |P g|; crude: F_CS, |g| = what bb.py encloses) >= rho_1^2, L = 13."""
-import sys, itertools, time, numpy as np
-sys.path.insert(0, "~/claude_code/yang_mills/numerics"); sys.path.insert(0, "~/claude_code/yang_mills/numerics/h1analytic")
+import sys, os, itertools, time, numpy as np
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from h1cert_rho1 import prof, rho1
 from verify_ab import B_sharp, E0_g, sinc
 def Fcs(K):  # (6.1) written from the text

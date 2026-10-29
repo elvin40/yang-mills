@@ -3,7 +3,7 @@
 # Copy to ~/ym next to h1cert_drive2.py h1cert_cell2.py h1cert_rho1.py h2_scan.py h1cert_prof_L13.npz.
 # Checkpoint: one JSON per child and one .e5.json per FAILED cell in h1cert2_out_L13_M1_h0.08_sorted_E5/; rerun = resume.
 # "wait" first polls every 5 min until unit h1cert2 is not active, then runs. Up to 3 passes; DONE_E5 marks completion.
-#   sudo -n systemd-run --unit=h1e5 --collect -p User=elvin -p MemoryMax=7G bash ~/ym/h1cert_e5_launch.sh wait
+#   sudo -n systemd-run --unit=h1e5 --collect -p User=$USER -p MemoryMax=7G bash ~/ym/h1cert_e5_launch.sh wait
 # Memory test (one child, ~1 min; measured 2026-10-28: 284 MB peak RSS, 45 s wall at load 34): nice -n 19 /usr/bin/time -v python h1cert_e5.py --test e5_test
 cd ~/ym && source .venv/bin/activate
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1

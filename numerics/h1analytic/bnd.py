@@ -1,5 +1,5 @@
-import sys, numpy as np
-sys.path.insert(0, "/tmp/h1a"); sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+import sys, os, numpy as np
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))); sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 from ft import dinf
 sinc = lambda x: np.sinc(np.asarray(x)/np.pi)
 def bound(K, L, h=None):

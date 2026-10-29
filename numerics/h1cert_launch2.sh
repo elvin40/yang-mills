@@ -7,8 +7,8 @@
 # skipped from disk, shard lists are fixed by (mode, shard, 16), bisected cells resume by name. DONE_<mode> marks a finished mode.
 # A killed cell loses at most one cell (~10 s per shard). Peak ~0.6 GB per process, 16 processes ~10 GB.
 # Run as a transient system unit with one wsl session attached (memory note wsl-windows-box-long-jobs):
-#   sudo -n systemd-run --unit=h1cert2 --collect -p User=elvin -p MemoryMax=16G bash ~/ym/h1cert_launch2.sh
-# Smoke first (~1 min): bash h1cert_launch2.sh smoke      NOT LAUNCHED (needs Elvin's word).
+#   sudo -n systemd-run --unit=h1cert2 --collect -p User=$USER -p MemoryMax=16G bash ~/ym/h1cert_launch2.sh
+# Smoke first (~1 min): bash h1cert_launch2.sh smoke      NOT LAUNCHED (needs the author's word).
 cd ~/ym && source .venv/bin/activate
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1
 H=${H:-0.08}; P=${P:-16}; DMAX=${DMAX:-3}; N=${N:-3}; DOMAIN=${DOMAIN:-box}

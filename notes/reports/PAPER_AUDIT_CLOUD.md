@@ -2,7 +2,7 @@ IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # PAPER_AUDIT_CLOUD — status consistency of paper/*.tex against the ledger and the PLAN tail
 
 Written 2026-10-28 (cloud session, P1). Read-only audit; no .tex edited.
-Sources: notes/PLAN.md from "2026-10-28 ~01:10 UTC Elvin: set Opus subscription subagents" to the end (37 entries); notes/TRUST_LEDGER.md (whole); paper/intro.tex, remains.tex, appendix.tex, assembly.tex §deptable (l. 148–229); other paper/*.tex for context only.
+Sources: notes/PLAN.md from the entry dated 2026-10-28 ~01:10 UTC to the end (37 entries); notes/TRUST_LEDGER.md (whole); paper/intro.tex, remains.tex, appendix.tex, assembly.tex §deptable (l. 148–229); other paper/*.tex for context only.
 Firewall kept: notes/reports/SUSSMAN_ALPOGE_MAP.md and §2 of notes/reports/ONLINE_SWEEP.md not read.
 
 Grades: MATCH = agrees with ledger and PLAN tail. OVERSTATED = claims more than they support (missing hypothesis, wrong constant, too strong a tag). UNDERSTATED = claims less. STALE = describes an earlier state (direction noted when it matters).

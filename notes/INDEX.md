@@ -54,10 +54,10 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | H2_LARGE_L_VERIFY.md | Verifier of H2_LARGE_L; L = 5 value rechecked with an independent code; j_0 about 8 (L = 3), 6 (L = 5). | report |
 | H2_CERTIFY.md | Plan and prototype for a computer-assisted proof of R-025 (H2) at L = 3; rigorous point enclosure ρ_2(∞, K*) ∈ [1.9993, 2.1273]. | verified (H2_CERTIFY_VERIFY: point enclosure confirmed, P1 proved, Oishi–Rump and finite-M tail corrected); full certificate ≈ 1.5e4 core-h at L = 3, not run |
 | H2_CERTIFY_VERIFY.md | Independent check of H2_CERTIFY and numerics/h2cert_proto.py (rerun at N = 12). | report |
-| H2_CERTIFY_L13.md | The one-step condition (H1_L) at L = 13: ρ_1(∞) = 1.760 … 2.0895 for L = 3 … 13, sup ρ_1² = 4.37 < 13; cell certificate and cost; numerics/h1cert_*. | reduced: float values numerical, cell certificate unrun (cost ≈ 1,100 core-h after fix G1) |
-| H2_CERTIFY_L13_G1.md | Fix G1: Taylor-1 cell certificate in the K̂-adapted frame (Schur-reduced bordered system, Oishi–Rump on the 3×3 transverse block). | unverified, in progress; launch approved 2026-10-28, not launched |
+| H2_CERTIFY_L13.md | The one-step condition (H1_L) at L = 13: ρ_1(∞) = 1.760 … 2.0895 for L = 3 … 13, sup ρ_1² = 4.37 < 13; cell certificate and cost; numerics/h1cert_*. | reduced: float values numerical; the cell certificate ran on the box as a cross-check (mode M = 1 done, numerics/H1CERT2_M1_RESULT.md); the certificate of record is H1_ANALYTIC.md |
+| H2_CERTIFY_L13_G1.md | Fix G1: Taylor-1 cell certificate in the K̂-adapted frame (Schur-reduced bordered system, Oishi–Rump on the 3×3 transverse block). | pre-launch verified (H2_CERTIFY_L13_G1_VERIFY); box run done for mode M = 1 (numerics/H1CERT2_M1_RESULT.md) |
 | H2_CERTIFY_P4.md | Premise P4 (E_q(k_l) k̂_l = K̂) proved by per-block telescoping; identity (D) of the divergence of the averaging profile. | proved (exact arithmetic); Lean Divergence.lean |
-| H1_ANALYTIC.md | Analytic bound ρ_1(j, K) ≤ C_* and (H1_L) without a computer; F → 1 as K → 0, face maximum 5.45 at h = 6. | unverified, in progress |
+| H1_ANALYTIC.md | Analytic bound ρ_1(j, K) ≤ C_* and (H1_L) without a computer; F → 1 as K → 0, face maximum 5.45 at h = 6. | certified at L = 13 (sup ρ_1² ≤ 9.99953 < 13, numerics/h1analytic/bb_arb.py); verified (H1_ANALYTIC_VERIFY, H1_ANALYTIC_VERIFY2) |
 | KAPPA_BOUNDED.md | L-009 (Theorem K) (κ_k bounded given (B2)) and Theorem 2 in weak form. | verified as a conditional reduction (KAPPA_BOUNDED_VERIFY; §4 reasoning on (B2) corrected; input R-027 (F) added) |
 | KAPPA_BOUNDED_VERIFY.md | Verifier of KAPPA_BOUNDED, with numerical check of d_1 at L = 3. | report |
 | UMK_BETA1.md | Umklapp-sum formulation of β_1(0) for any odd L; L = 5 value 0.743 (L up to 9 in numerics/NUMERICS.md). | unverified (code validated against ym_momentum to 1e−12) |
@@ -101,11 +101,11 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | SOURCES_CDC.md | The norm bound ‖C*Δ_kC‖ ≤ γ_1 reduced by a Woodbury cancellation to the block-extension lemma (E_U); "unitary U suffices" refuted. | corrected (SOURCES_CDC_VERIFY: (E_U) is not the last input, (3.132) omitted; constants corrected); reduced |
 | SOURCES_CDC_VERIFY.md | Verifier of SOURCES_CDC (text layers). | report |
 | SOURCES_EU.md | (E_U) of SOURCES_CDC §4: K_0(4) = 103.25, 146.73, 185.64, 195.19 at N = 3, 5, 13, ∞ (numerics/k0_d.py); explicit covariant extension. | unverified (numbers [N], extension [R]) |
-| SOURCES_LOC.md | L-213 (Lemma LOC): localized covariance C^{(k)}(Z_0, 0) via Balaban's (2.16) and the Schur test; c_− = (γ_1 + ε_M)^{−1}; corrects SOURCES_Q_VERIFY §1. | reduced (verifier SOURCES_LOC_VERIFY in progress; case (a) confirmed) |
-| SOURCES_LOC_VERIFY.md | Verifier of SOURCES_LOC (page images). | report, in progress |
+| SOURCES_LOC.md | L-213 (Lemma LOC): localized covariance C^{(k)}(Z_0, 0) via Balaban's (2.16) and the Schur test; c_− = (γ_1 + ε_M)^{−1}; corrects SOURCES_Q_VERIFY §1. | reduced; verified (SOURCES_LOC_VERIFY) |
+| SOURCES_LOC_VERIFY.md | Verifier of SOURCES_LOC (page images). | verified |
 | SOURCES_MA.md | H-143 (M-A): ⟨A − A_min⟩_u ≤ (n_i/u)(1 + η_x) by a virial identity; statement corrected to G = A − A_min. | corrected (SOURCES_MA_VERIFY: theorem confirmed given (H−); H-144 (M-A′) normalized-ratio bookkeeping a real open gap); reduced |
 | SOURCES_MA_VERIFY.md | Verifier of SOURCES_MA (SU(2) toy reproduced). | report |
-| SOURCES_MA2.md | H-144 (M-A′) normalized-ratio bookkeeping and (H−) from CMP 102. | unverified, in progress |
+| SOURCES_MA2.md | H-144 (M-A′) normalized-ratio bookkeeping and (H−) from CMP 102. | verified (SOURCES_MA2_VERIFY) |
 | SOURCES_MB.md | H-145 (M-B): closes with p_0(g) ≥ 17/(γ_0A_1²) (option B) or 20/(γ_0A_1²) (option A); depends on H-143 (M-A), H-146 (M-C). | corrected (SOURCES_MB_VERIFY: perturbation weights additive, g* = 0.82645 − θ_W − τ_C; condition p_0 ≥ 17/(γ_0A_1²) endorsed under θ_W + τ_C ≤ 0.2); verified |
 | SOURCES_MB_VERIFY.md | Verifier of SOURCES_MB (page images pp. 377–390). | report |
 | SOURCES_HTHR.md | R-039 (H-thr): threshold-shell contribution under model assumptions M1-M4. | corrected (SOURCES_HTHR_VERIFY: L-267 (Lemma S); superseded by SOURCES_HTHR2.md) |
@@ -125,10 +125,9 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | ASSEMBLY.md | Finite-torus existence theorem (compactness form) modulo named blocks; dependency table §3. | corrected (ASSEMBLY_VERIFY: proofs confirmed; table stale, nontriviality wording) |
 | ASSEMBLY_VERIFY.md | Verifier of ASSEMBLY. | report |
 | ASSEMBLY_N1.md | The bridge R-045 (B-N1): sourced cumulant bounds ⇒ H-116 (H-U). | verified (SOURCES_HHIST_N1_VERIFY; given R-045 (S); one constant slip) |
-| INBOX.md | Delta notes for Elvin (certification cost and launch decision). | report |
 | ALT_ROUTES.md | Two alternative routes against the wall: Chatterjee's center-symmetry equivalence and stochastic quantization; exact statements, obstructions, extractable inequalities. | unverified (Fable; verifier held) |
 | FABLE_A25_A26_H1.md | Lemma LB_Q̃ (R-022), the gluing step of R-023 (CMP 109 p. 275), and the new hypothesis (H1) of THM37: prove or discharge. | unverified (Fable; verifier held) |
-| FABLE_HARD.md | Four hard items of the infinite-volume programme: S1-pt (H-165) ν form, short-distance O(4), uniqueness, the wall; failing steps named. | unverified (Fable; verifier second attempt banked as OPUS_QUEUE VH1) |
+| FABLE_HARD.md | Four hard items of the infinite-volume programme: S1-pt (H-165) ν form, short-distance O(4), uniqueness, the wall; failing steps named. | verified with corrections (FABLE_HARD_VERIFY, PASS WITH CORRECTIONS) |
 | FABLE_O3_ALC.md | Task A: O3, non-vanishing of the sourced R-denominators on the source polydisc; Task B: (AL-c) (H-071), the complex averaged-link bound with c_N computed. | unverified (Fable; verifier held) |
 | H1_ANALYTIC_VERIFY.md | H1_ANALYTIC_VERIFY — independent check of H1_ANALYTIC.md | verified |
 | H1_ANALYTIC_VERIFY2.md | H1_ANALYTIC_VERIFY2 — independent construction of H_j(K) (residue of H1_ANALYTIC_VERIFY item 6) | numerical |
@@ -199,9 +198,6 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 | BALABAN_EXCERPTS.md | Index of 97 verbatim Balaban excerpts recorded by the verifiers; 12 marked "needs verification". | corrected (BALABAN_EXCERPTS_CHECK: most of the 12 verified on page images, three readings corrected) |
 | BALABAN_EXCERPTS_CHECK.md | Page-image check of the 12 "needs verification" excerpts. | report, in progress |
 | O3_TEMPLATE.md | Architecture of the OpenAI 2D O(3) continuum-limit paper, used as a template. | unverified |
-| o3_continuum.txt | Text of the OpenAI 2D O(3) paper (source text). | report (local only; not published) |
-| clay_ym.txt | Text of the Jaffe–Witten Clay problem statement (source text). | report (local only; not published) |
-| chatterjee.txt | Text of Chatterjee, "Yang–Mills for probabilists" (source text). | report (local only; not published) |
 | YM_GAPS.md | Likely formal statement and gap list of the OpenAI Yang–Mills claim. | unverified |
 | EUCLID_INV_LIT.md | Literature check on Euclidean invariance of lattice constructions. | unverified |
 | ONLINE_SWEEP.md | Online sweep for material that shortens the open items; found the Sussman–Alpöge account. | unverified |
@@ -215,12 +211,12 @@ States. verified = an independent pass (a *_VERIFY.md file) confirmed the claims
 
 ## lean/
 
-All 25 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
+All 45 Lean files build with no sorry (axioms propext, Classical.choice, Quot.sound; su2_count and ab_count in AbelianCount use propext and Quot.sound only). Every file: proved in Lean. A VERIFY file checks that the Lean statement matches the note.
 
 | File | Description | State |
 |---|---|---|
 | README.md | Toolchain, build, statement correspondence (one inventory table). | report |
-| YmLean.lean | Root file importing the 25 modules. | proved (builds) |
+| YmLean.lean | Root file importing the 45 modules. | proved (builds) |
 | YmLean/LemmaDPrime.lean | L-004 (Lemma D′) (shooting), step 8. Statement check: VERIFY_LemmaDPrime.md. | proved in Lean, no sorry |
 | YmLean/LemmaDE.lean | Lemmas D and E. Statement check: none (note verifier LEMMAS_DE_VERIFY.md). | proved in Lean, no sorry |
 | YmLean/LemmaH.lean | L-182 (Lemma H) (Gronwall telescoping, column-sum form). Statement check: none (note verifier SOURCES_HBETA_VERIFY.md). | proved in Lean, no sorry |
@@ -238,7 +234,7 @@ All 25 Lean files build with no sorry (axioms propext, Classical.choice, Quot.so
 | YmLean/TheoremC1.lean | c1_two_step, c1_kappa_bound, c1_window. Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/StripBound.lean | strip_bound_linear, strip_bound_quadratic ((3/2)τ bootstrap of N3). Statement check: VERIFY_TheoremC1.md. | proved in Lean, no sorry |
 | YmLean/CertBridge.lean | Entrywise enclosure to certified cell bound (cell_sup_bound, vertex_bound). Statement check: VERIFY_CertBridge.md. | proved in Lean, no sorry |
-| VERIFY_*.md (14 files) | Statement checks of the Lean files against the notes. | report |
+| VERIFY_*.md (34 files) | Statement checks of the Lean files against the notes. | report |
 | lakefile.toml, lake-manifest.json, lean-toolchain | Build configuration (Lean v4.33.1, Mathlib v4.33.1). | report |
 | YmLean/CombesThomas.lean | L-125 (Lemma CT) (Combes–Thomas) of SOURCES_A1_KERNEL §7: coercive_inv, combes_thomas, combes_thomas_schur. Statement check: VERIFY_CombesThomas.md. | proved in Lean, no sorry |
 | YmLean/Interp.lean | Interpolation and rescaling lemmas (A3_SIGMA 3.2, T2_KUNIF (K3), T2_KAPPA2 H-215 (K1)). Statement check: VERIFY_Interp.md. | proved in Lean, no sorry |
@@ -250,7 +246,7 @@ All 25 Lean files build with no sorry (axioms propext, Classical.choice, Quot.so
 
 ## paper/
 
-One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
+One article, 143 pages: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction". It merges THEOREM2_PROOF_v4 and ASSEMBLY.
 
 | File | Description | State |
 |---|---|---|
@@ -260,12 +256,12 @@ One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | theorem2.tex | §3: coupling flow, shooting lemmas, Routes K and B, (B2) and R-025 (H2). | reduced; Route K reduction verified |
 | assembly.tex | §4: finite-torus existence and the dependency table. | verified (ASSEMBLY_VERIFY corrections applied); table follows PLAN.md |
 | sources.tex | §5: the sources block, one paragraph per verified SOURCES_*.md (statement, method, verifier grade, open inputs). | unverified |
-| numerics.tex | §5: numerical results, verified point enclosure at L = 3. | unverified (floating point; one enclosure verified) |
-| remains.tex | §6: open items. | unverified |
+| numerics.tex | §6: numerical results, verified point enclosure at L = 3. | unverified (floating point; one enclosure verified) |
+| remains.tex | §7: open items. | unverified |
 | appendix.tex | A Lean inventory, B status ledger, C label map, D revision history. | unverified |
 | refs.bib, refs_check.md | Bibliography (entries from memory except the Sussman–Alpöge block) and its check list. | unverified |
 | README.md | Build instructions and label map. | report |
-| main.pdf | Compiled 87-page paper. | unverified |
+| main.pdf | Compiled 143-page paper. | unverified |
 | refs_check_cloud.md | Online check of every refs.bib entry (2026-10-28): all CONFIRMED, none corrected. | — |
 | drafts/open_problem.tex | Standalone draft section stating the open problem of FABLE_HARD (Gap_K, (U-Lap)_K, Theorems U1/U2/W1/W2/FD); not \input from main.tex. | unverified check |
 
@@ -276,7 +272,7 @@ One article, 87 pages: "Yang–Mills on a finite torus along Bałaban's route: a
 | NUMERICS.md | Log of the floating-point runs: β_1(L) for L = 2..11, per-level β_2, R-025 (H2) scans. | unverified (floating point, not certified) |
 | KAPPA_D.md, kappa_d.py | κ_4 = 104.25, 147.73, 186.64, 196.19 (N = 3, 5, 13, ∞); free-case c_− ≥ (κ_4 L^5)^{−1}. Numbers only. | unverified ([N]) |
 | k0_d.py | K_0(4) = 103.25, 146.73, 185.64, 195.19 for SOURCES_EU. | unverified ([N]) |
-| h2cert_proto.py, h2cert_launch.sh, h2cert_proto_L3_lmax30.log | Prototype of the L = 3 point enclosure of ρ_2(∞, K*) in arb. | verified (H2_CERTIFY_VERIFY, rerun at N = 12) |
+| h2cert_proto.py, h2cert_launch.sh | Prototype of the L = 3 point enclosure of ρ_2(∞, K*) in arb. | verified (H2_CERTIFY_VERIFY, rerun at N = 12) |
 | h1cert_rho1.py | Float ρ_1(∞) scan: 1.760, 1.963, 2.032, 2.063, 2.080, 2.0895 at L = 3, 5, 7, 9, 11, 13. | unverified (float) |
 | h1cert_cell.py, h1cert_cell2.py | Rigorous cell enclosures of ρ_1 (cell2 = 16-vertex Taylor-1 form); formulas bridged in Lean CertBridge.lean. | enclosures validated at L = 3, 5, 13; code not independently verified |
 | h1cert_drive.py, h1cert_launch.sh, h1cert_modal.md | Driver, box launcher, and Modal notes for the certification. | unverified; nothing launched |

@@ -29,6 +29,7 @@ paper/*.out
 paper/*.synctex.gz
 # Editor and patch leftovers
 *.orig
-# Private decision log and third-party paper text layers (never commit)
+# local only
 notes/INBOX.md
 notes/reports/*.txt
+sync.sh

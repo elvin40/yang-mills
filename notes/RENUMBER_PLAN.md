@@ -1541,7 +1541,7 @@ Each item: the string, its meanings with locations, and the resolution.
 
 ## 5. Apply pass (estimate only; nothing applied)
 
-### 5.1 Scope decision (needs Elvin, §6 item 1)
+### 5.1 Scope decision (needs the author, §6 item 1)
 
 Option A, live files only (recommended). Rewrite the files that state current status: TRUST_LEDGER.md (tables and §4–§7; change notes stay), CLOSURE_PLAN.md (tables; the status addendum quotes PLAN and stays), SOURCES_ORDER_CANON.md (Part B and the new text; sections E–G are history), INDEX.md, paper/*.tex and paper/README.md, lean/YmLean/*.lean, lean/YmLean.lean, lean/README.md, lean/LEAN_CATALOGUE.md. That is 62 files with about 5,950 short-id hits, 861 named-result hits, and 2,506 parenthesized-label hits. Every other file is a frozen record (a write-out a verifier checked, a verify report, a dated PLAN/INBOX entry, a numerics script). Each frozen file gets one banner line: "Ids in this file are pre-2026-10-28; see IDS.md." Reason: changing ids inside a verified write-out changes the text the verifier read, and a wrong context decision there cannot be caught by re-reading the verifier report.
 
@@ -1584,7 +1584,7 @@ Option A: 1 script run (mechanical, minutes), then about 4 review agents (ledger
 7. Inverse-map diff (5.2 step 9) is empty outside the manual-review edits, and each manual edit is listed in a change log.
 8. Sample: a verifier reads 60 random replacements (20 from bare B-strings, 20 from homonym lemmas, 20 from parenthesized labels) in context and confirms each target.
 
-## 6. Open choices for Elvin
+## 6. Open choices for the author
 
 1. Live-only rewrite with frozen records and a banner (recommended), or a full rewrite of all 482 files.
 2. Mnemonic blocks (B17 → R-117, C31 → K-031, I-35 → H-035, task B118 → T-0118), or contiguous numbering with no trace of the old number.
@@ -1598,7 +1598,7 @@ Option A: 1 script run (mechanical, minutes), then about 4 review agents (ledger
 
 ## Applied 2026-10-28
 
-Applied by Claude (Opus 5.5). Decisions taken by Elvin and the orchestrator: Option A (live files only); numbers assigned from scratch in logical order (no mnemonic blocks, so the "new" column of §3 above is provisional and superseded); file names unchanged; one R- prefix with the group (A/B) as a ledger column; canon step 10; Lean: CanonOrder constructors renamed, every other id-named declaration keeps its name and gains the id in its docstring (no deprecated aliases); homonym lemmas keep the provisional one-id-per-defining-file assignment and are listed in IDS.md under "To review"; only labels in the mapping got global ids. IDS.md is the authoritative registry; to map an id of §3 above to its final id, go through the old id (IDS.md column "old ids / aliases").
+Applied by Claude (Opus 5.5). Decisions taken by the author and the orchestrator: Option A (live files only); numbers assigned from scratch in logical order (no mnemonic blocks, so the "new" column of §3 above is provisional and superseded); file names unchanged; one R- prefix with the group (A/B) as a ledger column; canon step 10; Lean: CanonOrder constructors renamed, every other id-named declaration keeps its name and gains the id in its docstring (no deprecated aliases); homonym lemmas keep the provisional one-id-per-defining-file assignment and are listed in IDS.md under "To review"; only labels in the mapping got global ids. IDS.md is the authoritative registry; to map an id of §3 above to its final id, go through the old id (IDS.md column "old ids / aliases").
 
 ### What was done
 
@@ -1622,7 +1622,7 @@ Applied by Claude (Opus 5.5). Decisions taken by Elvin and the orchestrator: Opt
 3. The defining-file column for some L ids is the plan's guess (most-cited file); e.g. Lemma D′ is defined in LEMMA_DPRIME.md, registered under KAPPA_BOUNDED.
 4. Plural lists ("Lemmas D, E", "Lemmas D′/D″", "Lemmas S, G, T") keep names without ids.
 5. ~/git/yang_mills/README.md and the sync are the orchestrator's.
-6. Paper prose now shows ids beside names ("R-025 (H2)", "L-005 (Lemma D″)", section titles included); a readability pass on the abstract and section titles is a decision for Elvin.
+6. Paper prose now shows ids beside names ("R-025 (H2)", "L-005 (Lemma D″)", section titles included); a readability pass on the abstract and section titles is a decision for the author.
 
 ### Manual-review decisions (file:line in the pre-apply text, token → target)
 

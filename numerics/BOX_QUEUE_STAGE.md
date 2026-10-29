@@ -17,7 +17,7 @@ What it does:
 
 Command (inside WSL), executed:
 
-    sudo -n systemd-run --unit=h1e5 --collect -p User=elvin -p MemoryMax=7G bash ~/ym/h1cert_e5_launch.sh wait
+    sudo -n systemd-run --unit=h1e5 --collect -p User=$USER -p MemoryMax=7G bash ~/ym/h1cert_e5_launch.sh wait
 
 Trigger: the launcher's `wait` branch polls `systemctl is-active --quiet h1cert2` every 300 s. It starts the 16 shards when h1cert2 is not active. I did not use After=/BindsTo=: h1cert2 is a transient unit with --collect, and ordering dependencies on a transient unit do not wait for the unit's exit.
 
@@ -45,7 +45,7 @@ Points, in order: L = 13, Ng = 24, Lp = 1.0, 0.5, 0.25; then L = 13, Ng = 28, Lp
 
 Command (inside WSL), executed:
 
-    sudo -n systemd-run --unit=beta1L13 --collect -p User=elvin -p MemoryMax=8G -p Nice=10 bash ~/ym/beta1/run_beta1_L13.sh wait
+    sudo -n systemd-run --unit=beta1L13 --collect -p User=$USER -p MemoryMax=8G -p Nice=10 bash ~/ym/beta1/run_beta1_L13.sh wait
 
 GPU memory: 1,846 MiB of 16,376 MiB is in use at L = 11 (one K per call, 11^4 = 14,641 blocks). At L = 13 the batch is max(1, 20000 // 13^4) = 1 K, so 28,561 blocks per call, about 2× the L = 11 call, about 3.6 GB. The batch shape does not depend on Ng, so Ng = 28 needs the same GPU memory as Ng = 24. I did not run a live GPU test because it would share the GPU with the running beta1 unit. Host RSS of the L = 11 process: 1.9 GB. MemoryMax 8G allows about 2× growth at L = 13. The profile does not depend on Ng.
 

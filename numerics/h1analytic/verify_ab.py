@@ -1,7 +1,7 @@
 # IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Independent checks of H1_ANALYTIC lemmas (task A) and majorant B_L >= rho_1^2 (task B). Verifier code, own formulas."""
-import sys, itertools, time, numpy as np
-sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+import sys, os, itertools, time, numpy as np
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
 import h2_scan as h2
 from h1cert_rho1 import prof, pieces, rho1, Mof
 from math import comb

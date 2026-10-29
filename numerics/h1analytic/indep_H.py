@@ -4,7 +4,7 @@ Shares no matrix-building code with h2_scan / h1cert_rho1 / umk_beta1; those are
 Fine Bloch field A_nu(z) = sum_l x_l e^{i k_l z}, k_l = (K + 2 pi l)/L; coarse B_mu(y) = b_mu e^{iKy}; rho_1 = L sqrt(lmax(X^dag X)).
 Usage: python indep_H.py [L ...]   (default: 3 13)
 """
-import sys, time, itertools, numpy as np, scipy.sparse as sp, scipy.sparse.linalg as sla
+import sys, os, time, itertools, numpy as np, scipy.sparse as sp, scipy.sparse.linalg as sla
 
 _PROF = {}
 
@@ -118,7 +118,7 @@ def Delta_recursive(L):
 
 # ---------------- reference comparison (production / H1_ANALYTIC code used only here) ----------------
 def compare(L, Ks, js):
-    sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
     import h2_scan as h2
     from h1cert_rho1 import prof, rho1, pieces, Mof
     pf = prof(L); rows = []
@@ -155,7 +155,7 @@ if __name__ == "__main__":
 
 def extra():
     """Lemma S/G conventions vs my E and production qsym; recursive Delta at L = 3; F-bound of Lemma T at L = 13 face points."""
-    sys.path.insert(0, "~/claude_code/yang_mills/numerics")
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), ".."))
     import h2_scan as h2
     from h1cert_rho1 import prof, rho1
     from math import comb

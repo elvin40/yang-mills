@@ -3,7 +3,7 @@
 # Needs t2_fstepb_verify_umk.py umk_beta1.py ym_momentum.py ym_oneloop.py in ~/ym/beta1.
 # Skip-if-done: results/t2_fstepb_verify_umk_L{L}_Ng{Ng}_Lp{Lp}.json; resume: same name .partial.npz (K-loop partial sums, every 60 s).
 # Outer loop reruns the sequence up to 5 times (survives a killed python); DONE marker when all six JSONs exist.
-#   sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1.sh
+#   sudo -n systemd-run --unit=beta1 --collect -p User=$USER -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1.sh
 # Smoke: bash run_beta1.sh smoke   (L = 5, Ng = 12, Lp = 1 in smoke/, compare with the Mac's L5_Ng12_Lp1.0 JSON)
 cd ~/ym/beta1 && source ~/ym/.venv/bin/activate
 if [ "$1" = smoke ]; then

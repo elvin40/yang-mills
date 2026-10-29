@@ -1,6 +1,8 @@
 IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 # Numerical one-loop increment of one Balaban step (2026-10-27)
 
+Launch scripts (`*launch*.sh`, `beta1_box/*.sh`) are specific to the author's compute box (WSL, venv in ~/ym); adapt the paths before use.
+
 Code: `ym_oneloop.py` (SU(2), quaternions, JAX autodiff for local pieces, scipy sparse LU for determinants). Tests: `test_oneloop.py`. Results: `results/*.json` (one file per (n, L, q); skip-if-done).
 
 ## 1. What is computed
@@ -97,6 +99,8 @@ At Ng = 8 the 5 → 7 slope is 0.161; grid convergence lowers it to 0.142. The N
 (e) Status: open [N] tension. It does not refute Theorem 3.1, because the family is different. It also does not support it. It is the only multi-L data. Likely cause [P]: the residual gauge fixes λ = 0 at one anchor per block. The anchored ghost then has an IR scale 2.54/L in coarse units (0.51, 0.36, 0.28, 0.23 at L = 5, 7, 9, 11). The shifted Ng = 8 grid has no point with |K| < 0.785, so it does not resolve this scale at large L.
 
 (f) Decisive test (pending, box): L = 9 and L = 11 with Ng ≥ 2.5L, plus the Lp → 0 check. Results will land in numerics/BETA1_BOX_RUN.md. If the converged slopes still fall, the tension stands; if they rise toward c, the deficit was the grid.
+
+Update 2026-10-28: the three L = 9 points at Ng = 24 are in: β_1 = 0.8201, 0.8231, 0.8423 at Lp = 0.25, 0.5, 1.0 (BETA1_SLOPE_STAGE.md). No L = 11 point at Ng = 28 had finished. The staged conclusion in BETA1_SLOPE_STAGE.md (the tension stands) is unverified.
 
 Original data (2026-10-28, kept unchanged except the struck sentence):
 

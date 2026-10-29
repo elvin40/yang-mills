@@ -5,7 +5,7 @@ Purpose: the decisive test that SOURCES_T2_F_STEPB_VERIFY.md names: single-step 
 ## What runs
 
 - Unit `beta1` (transient system unit), started 2026-10-28 14:08:26 PDT. Launch command (inside WSL):
-  `sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1.sh`
+  `sudo -n systemd-run --unit=beta1 --collect -p User=$USER -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1.sh`
 - Launcher: numerics/beta1_box/run_beta1.sh (copy at ~/ym/beta1/run_beta1.sh). Sequence, one job at a time:
   L = 9, Ng = 24, Lp = 1.0, 0.5, 0.25; then L = 11, Ng = 28, Lp = 1.0, 0.5, 0.25 (p = Lp/L).
 - Code on the box, ~/ym/beta1/: t2_fstepb_verify_umk.py, umk_beta1.py, ym_momentum.py, ym_oneloop.py. md5 identical to numerics/ on the Mac.
@@ -88,7 +88,7 @@ GPU launcher: ~/ym/beta1/run_beta1_gpu.sh. It is a sed copy of run_beta1.sh with
 Inside WSL:
 
     sudo -n systemctl stop beta1
-    sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu.sh
+    sudo -n systemd-run --unit=beta1 --collect -p User=$USER -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu.sh
 
 The in-flight point (L = 9, Ng = 24, Lp = 1.0, started 14:08) resumes from its .partial.npz and loses at most 60 s of K loop plus the profile build. Never run the CPU and GPU launchers at the same time: they write the same files. Small risk: if the stop lands during `np.savez`, the .partial.npz can be truncated. In that case, delete that .partial.npz and the point restarts from zero.
 
@@ -147,7 +147,7 @@ New launcher ~/ym/beta1/run_beta1_gpu2.sh (on the box only). It is a sed copy of
 Inside WSL:
 
     sudo -n systemctl stop beta1
-    sudo -n systemd-run --unit=beta1 --collect -p User=elvin -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu2.sh
+    sudo -n systemd-run --unit=beta1 --collect -p User=$USER -p MemoryMax=16G -p Nice=10 bash ~/ym/beta1/run_beta1_gpu2.sh
 
 The in-flight point resumes from its .partial.npz. A restart costs the profile build (~3 min at L = 9) plus at most 60 s of K loop. Never run two launchers at the same time: they write the same files. The truncated-.partial.npz risk from the GPU section applies here too.
 Note: with the port, 60 s of K loop at L = 9 is ~2000 K points. The checkpoint interval is unchanged.

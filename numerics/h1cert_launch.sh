@@ -5,7 +5,7 @@
 #   ym_momentum.py, ym_oneloop.py and jax are needed to rebuild it, 74 s).
 # Checkpoint: one JSON per top cube in h1cert_out_L13_M{M}_h{H}/ (atomic tmp + rename); a rerun skips finished cubes.
 # Run as a transient system unit with one wsl session attached (memory note wsl-windows-box-long-jobs):
-#   sudo -n systemd-run --unit=h1cert --collect -p User=elvin -p MemoryMax=14G bash ~/ym/h1cert_launch.sh
+#   sudo -n systemd-run --unit=h1cert --collect -p User=$USER -p MemoryMax=14G bash ~/ym/h1cert_launch.sh
 # NOT LAUNCHED. With the present cell code (naive cell enclosures) the certifiable half-width at L = 13 is h ~ 0.002-0.02
 # (sec. 4), i.e. ~1e8 cubes per level: this script is the harness for the Taylor-1 cell code (G1), not a run to start now.
 # Smoke test first (minutes): bash h1cert_launch.sh smoke

@@ -1,7 +1,7 @@
 # IDs in this file follow the pre-2026-10-28 scheme; see IDS.md for the mapping.
 """Task A: Lemma S+G, (I1)+tower, (1.1) vs production rho1, L = 13, 10 random K, j in {1, 2, inf}."""
-import sys, time, numpy as np
-sys.path.insert(0, "~/claude_code/yang_mills/numerics"); sys.path.insert(0, "~/claude_code/yang_mills/numerics/h1analytic")
+import sys, os, time, numpy as np
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import h2_scan as h2
 from h1cert_rho1 import prof, pieces, rho1, Mof
 from verify_ab import E0_g, dsum, rho_split

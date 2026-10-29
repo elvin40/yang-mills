@@ -4,7 +4,7 @@
 # Checkpoint: every evaluated K is written to the JSON at once; a rerun skips cached K (Nelder-Mead replays from the cache) and
 # skips a finished (L, j) (key "summary"). The order-0 averaging profile is cached in results/h2_prof_L{L}.npz.
 # Run as a transient system unit, with one wsl session kept attached (memory note: wsl-windows-box-long-jobs):
-#   sudo -n systemd-run --unit=h2 --collect -p User=elvin -p MemoryMax=14G bash ~/ym/h2_launch.sh
+#   sudo -n systemd-run --unit=h2 --collect -p User=$USER -p MemoryMax=14G bash ~/ym/h2_launch.sh
 # Cost per K (Mac M-series, measured L <= 9, scaled as L^8): L=5 0.5 s, 7 6 s, 9 43 s, 11 ~3.5 min, 13 ~14 min, 15 ~45 min.
 # Memory < 2 GB per job. Phase 1: L = 5, 7, 9 (j = 2, 3, inf; full face grid + coarse 4D grid at L <= 7), four jobs at a time.
 # Phase 2: L = 11, 13 (j = 2, inf; 10-point face grid, 12 Nelder-Mead evaluations, 4 off-face probes ~ 26 K each).

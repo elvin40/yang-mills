@@ -1,6 +1,6 @@
 """Local minimisation of B_sharp/rho_1^2 (j = inf and 1) from random starts in the interior, L = 13."""
-import sys, numpy as np
-sys.path.insert(0, "~/claude_code/yang_mills/numerics"); sys.path.insert(0, "~/claude_code/yang_mills/numerics/h1analytic")
+import sys, os, numpy as np
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")); sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from scipy.optimize import minimize
 from h1cert_rho1 import prof, rho1
 from verify_ab import B_sharp

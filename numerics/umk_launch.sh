@@ -3,7 +3,7 @@
 # Needs umk_beta1.py, ym_momentum.py, ym_oneloop.py in ~/ym. One JSON per (L,Ng,p) in results/umk_*.json (skip-if-done);
 # each job checkpoints its K-grid partial sums every 60 s (results/*.partial.npz) and resumes from them after a kill.
 # Run as a transient system unit (the user manager kills session processes), with one wsl session kept attached:
-#   sudo -n systemd-run --unit=umk --collect -p User=elvin -p MemoryMax=14G bash ~/ym/umk_launch.sh
+#   sudo -n systemd-run --unit=umk --collect -p User=$USER -p MemoryMax=14G bash ~/ym/umk_launch.sh
 # p values: 0.2 and 0.1 (as requested) plus fixed coarse momentum Lp = 1 and 0.5 (p = 1/L, 0.5/L). At L >= 7, p = 0.2 means
 # Lp >= 1.4, and the p -> 0 fit in fine p is then not meaningful (the plane-wave bias is O((Lp)^2), NUMERICS.md section 6).
 # Cost (Mac M-series, measured to L = 7, extrapolated): ~40 us per (K, l) block; symmetry-reduced grid has 320 (Ng=8) and
