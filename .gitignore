@@ -19,3 +19,16 @@ notes/balaban/
 .DS_Store
 # Local API run briefs and logs (never commit)
 api_runs/
+# LaTeX build output (main.bbl and main.pdf stay tracked)
+paper/*.aux
+paper/*.blg
+paper/*.fdb_latexmk
+paper/*.fls
+paper/*.toc
+paper/*.out
+paper/*.synctex.gz
+# Editor and patch leftovers
+*.orig
+# Private decision log and third-party paper text layers (never commit)
+notes/INBOX.md
+notes/reports/*.txt
