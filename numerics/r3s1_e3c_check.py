@@ -128,7 +128,7 @@ class Box:
         fl = box_flux(th, 0, s.n)
         q = np.round(fl).astype(int)
         mino = min(float(np.min(abs(m[mu])[s.bl[mu]])) for mu in range(3))
-        s.th = th
+        s.th, s.m = th, m
         return q, float(np.max(abs(fl - q))), h1, float(np.max(rho[s.bd])), mino, E
 
     def freeze(s, F, th_old, th_new):
@@ -142,6 +142,15 @@ class Box:
                 for mu, y in ((a, z), (b, z + e[a]), (a, z + e[b]), (b, z)): F[mu][tuple(y % P)] = False
                 for y in (z, z + e[a], z + e[b], z + e[a] + e[b]): F[3][tuple(y % P)] = False
                 nfz += 1
+        return nfz
+
+    def freeze_overlap(s, F, mmin):
+        # freeze the dC links whose smallest overlap fell below mmin, together with the two end columns
+        nfz = 0; e = np.eye(3, dtype=int)
+        for mu in range(3):
+            low = np.any(abs(s.m[mu]) < mmin, -1) & s.bl[mu]
+            for z in zip(*np.nonzero(np.any(low, -1))):
+                z = np.array(z); F[mu][tuple(z)] = False; F[3][tuple(z)] = False; F[3][tuple((z + e[mu]) % s.P)] = False; nfz += 1
         return nfz
 
 def box_flux(th, lo, hi):  # boundary flux of [lo,hi)^3 per slice (as in r3s1_e2_check.box_flux)
@@ -172,6 +181,12 @@ def nf_hedgehog(B):
     m = (B.n - 1)//2; c = np.full(3, m + 0.5)
     x = np.stack(np.meshgrid(*[np.arange(B.P)]*3, indexing='ij'), -1) - c
     return x/np.linalg.norm(x, axis=-1, keepdims=True)
+
+def nf_corner(B):   # compact dipole at the corner cube [0,1]^3, n = +e3 elsewhere; partner charge sits below, outside C
+    nf = np.zeros((B.P,)*3 + (3,)); nf[..., 2] = 1; c = np.full(3, 0.5)
+    for x in it.product((0, 1), repeat=3):
+        v = np.array(x) - c; nf[x] = v/np.linalg.norm(v)
+    return nf
 
 def nf_dipole(B):   # n = -e3 except the 8 corners of the unit cube touching the top face z = n; partner charge sits outside C
     m = (B.n - 1)//2; c = np.array([m + 0.5, m + 0.5, B.n - 0.5])
@@ -233,7 +248,7 @@ def descend(B, U, q0, rho_max, iters, kappa=10.0, tau=0.02, mom=0.9, tol=1e-10, 
                 if df < tol*f: break
                 continue
             if h1 and ie < 1e-6:
-                n_ = B.freeze(Fr, th, B.th); nfz += n_
+                n_ = B.freeze(Fr, th, B.th) if not np.array_equal(q, q0) else B.freeze_overlap(Fr, mmin); nfz += n_
                 if n_: P[:] = 0; rej += 1; continue
         P[:] = 0; tau *= 0.5; rej += 1
         if tau < 1e-9: break
@@ -255,30 +270,63 @@ def family_table():
                   f" g^2S(CxS1)={s:.4f} N_4*g^2S={N4*s:.3f} spatial-dC part={s_sp:.1e} N_4*bound={N4*bnd:.4f}")
     return out
 
+def loss_budget(B, U, rho_max):
+    # factor lost at each step of the proof of Theorem E3c' on a given configuration (slice t = 0, the label j of max |q|)
+    q, ie, h1, rho, mino, E = B.flux(U, rho_max); N, N4, n = B.N, B.N4, B.n; gam = D0(N) - 2*rho
+    j = int(np.argmax(abs(q[0]))); X = np.indices(B.bd.shape)
+    sth = 0.; seQ = [0., 0.]; s2 = 0.; eta2 = 0.; lam2 = 0.; cs = 0.
+    P0 = U[3][..., 0, :, :]
+    for t in range(1, B.T): P0 = mm(P0, U[3][..., t, :, :])
+    Om = np.linalg.matrix_power(P0, B.r)
+    for a, b in it.combinations(range(3), 2):
+        M = lambda mu: np.einsum('...ji,...jk,...kl->...il', E[..., 0, :, :].conj(), U[mu][..., 0, :, :], sh(E[..., 0, :, :], mu))
+        Ma, Mb = M(a), M(b)
+        err, Q, w, mpd = lemma1([Ma, sh(Mb, a), dag(sh(Ma, b)), dag(Mb)])
+        ep = opn(B.plaqs(U, a, b)[..., 0, :, :] - np.eye(N))
+        c = B.bd & sh(B.bd, a) & sh(B.bd, b) & sh(sh(B.bd, a), b) & (X[a] <= n-1) & (X[b] <= n-1)
+        sth += np.sum(abs(np.angle(w[..., j]))[c]); seQ[0] += np.sum(ep[c]); seQ[1] += np.sum(Q[..., j][c])
+    for mu in range(3):
+        l = B.bl[mu][..., 0]
+        m = np.einsum('...i,...ik,...k->...', E[..., 0, :, j].conj(), U[mu][..., 0, :, :], sh(E[..., 0, :, j], mu))
+        s2 += np.sum((1 - abs(m)**2)[l])
+        eta = opn(mm(mm(U[mu][..., 0, :, :], sh(Om, mu)), dag(U[mu][..., 0, :, :])) - Om); eta2 += np.sum((eta**2)[l])
+        Pk = B.plaqs(U, mu, 3); e = opn(Pk - np.eye(N))*np.ones(B.T)      # (x, t) for t < T; replicate r times
+        Lam = B.r*np.sum(e, -1); lam2 += np.sum((Lam**2)[l]); cs += N4*B.r*np.sum(np.sum(e**2, -1)[l])
+    s_all, s_sp, s_lat = B.action(U, parts=True)
+    return {'2pi|q|': 2*np.pi*abs(q[0, j]), 'sum|theta|': sth, 'pi*sum(eps+Q)': np.pi*(seQ[0] + seQ[1]), 'sum eps': seQ[0], 'sum Q': seQ[1],
+            '3 sum s^2': 3*s2, '3 sum eta^2/gam^2': 3*eta2/gam**2, '3 sum Lam^2/gam^2': 3*lam2/gam**2,
+            '3 N4 sum eps_lat^2/gam^2': 3*cs/gam**2, '3 N4 g2S_lat/gam^2': 3*N4*s_lat/gam**2, 'gamma': gam}
+
+def prolong(N, nc, Uc):
+    # static configuration on the box of side 2nc from one on the box of side nc: Omega and frames constant on 2^3 blocks,
+    # U_4 = Omega^(1/N_4) by the eigen-phases (det 1 kept), fine spatial links = coarse link on block-interface links, 1 inside blocks
+    Bc, Bf = Box(nc, 1, N, nc), Box(2*nc, 1, N, 2*nc)
+    lam, W = np.linalg.eig(np.linalg.matrix_power(Uc[3][..., 0, :, :], nc)); ph = np.angle(lam)
+    ph -= (2*np.pi*np.round(ph.sum(-1)/(2*np.pi)))[..., None]/N
+    idx = np.minimum(np.arange(Bf.P)//2, Bc.P - 1); sel = np.ix_(idx, idx, idx)
+    Uf = np.zeros((4,) + (Bf.P,)*3 + (1, N, N), complex)
+    Uf[3][..., 0, :, :] = mm(W[sel]*np.exp(1j*ph[sel]/(2*nc))[..., None, :], np.linalg.inv(W[sel]))
+    X = np.stack(np.meshgrid(*[np.arange(Bf.P)]*3, indexing='ij'), -1)
+    for mu in range(3):
+        Uf[mu][..., 0, :, :] = np.eye(N); cross = X[..., mu] % 2 == 1
+        Uf[mu][..., 0, :, :][cross] = Uc[mu][..., 0, :, :][sel][cross]
+    return Uf
+
 def run_job(key, N, N4, T, start, store):
     B = Box(N4, T, N, N4); rho_max = 0.99*D0(N)/2
     if start == 'static-min':
         Us = np.load(f"/tmp/e3c/U_{N}_{N4}_1_hh.npy"); U = np.repeat(Us, T, axis=4)
-        U = np.stack([mm(expi(0.01*herm(U.shape[1:5], N)), U[mu]) for mu in range(4)])
-    elif start == 'hh-long':   # continuation of the N_4 = 16 hedgehog run in chunks of 500 steps, checkpointed
-        ck = f"/tmp/e3c/ckpt_{N}_{N4}.npy"
-        U = np.load(ck if os.path.exists(ck) else f"/tmp/e3c/U_{N}_{N4}_1_hh.npy")
+        U = np.stack([mm(expi(1e-3*herm(U.shape[1:5], N)), U[mu]) for mu in range(4)])   # t-dependent noise breaks the static symmetry
+    elif start.startswith('prolong'):   # refine the static hedgehog-start minimizer of the box of side N_4/2 (blocks of 2^3 sites)
+        U = prolong(N, N4//2, np.load(f"/tmp/e3c/U_{N}_{N4//2}_1_hh.npy"))
     else:
-        U = planted(B, nf_hedgehog(B) if start == 'hh' else nf_dipole(B))
+        U = planted(B, {'hh': nf_hedgehog, 'dip': nf_dipole, 'corner': nf_corner}[start](B))
     q0, ie, h1, rho, mino, E = B.flux(U, rho_max); s0 = B.action(U)
     t0 = time.time()
-    if start == 'hh-long':
-        acc = rej = nfz = 0; s = s0
-        for chunk in range(16):
-            U, s_new, a_, r_, n_ = descend(B, U, q0, rho_max, 500, mmin=0.1); acc += a_; rej += r_; nfz += n_
-            np.save(ck, U); print(f"    chunk {chunk}: S={s_new:.4f} N_4*S={N4*s_new:.2f}", flush=True)
-            if s - s_new < 2e-3*s_new: s = s_new; break
-            s = s_new
-        U2 = U
-    else:
-        U2, s, acc, rej, nfz = descend(B, U, q0, rho_max, (2500 if N4 == 16 else 5000) if T == 1 else (800 if N4 == 8 else 2500), mmin=0.1)
+    U2, s, acc, rej, nfz = descend(B, U, q0, rho_max, 5000 if T == 1 else (1500 if N4 == 8 else 3000), mmin=0.1 if T == 1 else 0.05)
     q, ie, h1, rho, mino, E = B.flux(U2, rho_max); bt = bound_terms(B, U2, E, rho, q)
     if T == 1: np.save(f"/tmp/e3c/U_{N}_{N4}_1_{start}.npy", U2)
+    if start == 'prolong': np.save(f"/tmp/e3c/U_{N}_{N4}_1_hh.npy", U2)
     r = dict(N=N, N4=N4, T=T, start=start, q=q[0].tolist(), q_all_t_equal=bool(np.all(q == q0)), S0=s0, S=s, N4S=N4*s,
              S_dC_frac=bt['S_dC']/s, gamma=bt['gamma'], rho_star=rho, min_overlap=mino, N4bound=N4*bt['bound'],
              ratio=s/bt['bound'], lemma_chain_ok=bt['chain_ok'], lemma_chain_slack=bt['chain_min_slack'],
@@ -293,13 +341,13 @@ if __name__ == '__main__':
     store = json.load(open(path)) if os.path.exists(path) else {}
     store['family'] = fam
     os.makedirs('/tmp/e3c', exist_ok=True)
-    jobs = [(N, N4, 1, st) for N in (2, 3) for N4 in (2, 4, 8, 16) for st in ('hh', 'dip') if not (N4 == 16 and st == 'dip')]
+    jobs = [(N, N4, 1, st) for N in (2, 3) for N4 in (2, 4, 8) for st in ('hh', 'dip', 'corner')]
+    jobs += [(N, 8, 1, 'prolong-check') for N in (2, 3)] + [(N, 16, 1, 'prolong') for N in (2, 3)]
     jobs += [(N, N4, N4, 'static-min') for N in (2, 3) for N4 in (2, 4, 8)]
-    jobs += [(N, 16, 1, 'hh-long') for N in (2, 3)]
     print("(C) constrained descent: Phi(dC,t) fixed, (H1) labels on dC, min overlap on dC links > 0.1, penalty 10 sum_dC |tr Omega^n|^2")
     for N, N4, T, st in jobs:
         key = f"{N},{N4},{T},{st}"
-        if key in store and (T == 1 and os.path.exists(f"/tmp/e3c/U_{N}_{N4}_1_{st}.npy") or T > 1 or st == 'hh-long'):
+        if key in store and (T == 1 and os.path.exists(f"/tmp/e3c/U_{N}_{N4}_1_{st}.npy") or T > 1):
             r = store[key]
         else:
             r = run_job(key, N, N4, T, st, store); json.dump(store, open(path, 'w'), indent=1)
@@ -307,3 +355,10 @@ if __name__ == '__main__':
               f" dC-frac={r['S_dC_frac']:.3f} gamma={r['gamma']:.3f} N_4*bound={r['N4bound']:.4f} S/bound={r['ratio']:.1f}"
               f" lemma-chain ok={r['lemma_chain_ok']} slack={r['lemma_chain_slack']:.2f} min|m|={r['min_overlap']:.3f}"
               f" acc/rej/frozen={r['iters_acc']}/{r['rejects']}/{r['frozen_plaq']} {r['secs']:.0f}s", flush=True)
+    print("(D) loss budget of the proof on the static hedgehog-start minimizers ")
+    for N, N4 in ((2, 4), (2, 8), (2, 16), (3, 4), (3, 8), (3, 16)):
+        f = f"/tmp/e3c/U_{N}_{N4}_1_hh.npy"
+        if os.path.exists(f):
+            lb = loss_budget(Box(N4, 1, N, N4), np.load(f), 0.99*D0(N)/2); store[f"loss,{N},{N4}"] = lb
+            print(f"  SU({N}) N_4={N4}: " + ", ".join(f"{k}={v:.3f}" for k, v in lb.items()))
+    json.dump(store, open(path, 'w'), indent=1)

@@ -6,37 +6,52 @@ Working notes, lemmas, verifier reports, and numerics toward (1) Balaban's unpub
 
 Every statement in the notes carries a tag (proved / verified / reduced / open). Nothing here is a complete proof of either target. Layout: notes/ holds the working notes (PLAN.md = dated status lines; THEOREM2_PROOF_v4.md = current Theorem 2 chapter, ASSEMBLY.md = assembly document; *_VERIFY.md = independent verification passes; notes/reports/ = literature and comparison reports), numerics/ the code and results, lean/ the Lean 4 formalizations.
 
+## Summary (the abstract of paper/main.pdf)
+
+Balaban's renormalization-group construction of four-dimensional SU(2) lattice Yang–Mills theory rests on the control of the running coupling, his Theorem 2, whose proof was never published. The paper proves that a weak form of Theorem 2 (two-sided bounds on 1/g_k^2 with an additive constant), which is enough for Balaban's Theorem 1, follows from one uniform inequality R-025 (H2) on a two-step minimizer map together with named fixed-level and history inputs. The shooting lemmas, the arithmetic of L-009 (Theorem K), and the bridge lemmas of the certifier are formalized in Lean 4. The paper proves that, on a fixed torus, a uniform moment bound H-116 (H-U) gives compactness of the lattice Schwinger functions of the centred plaquette density, and that every limit point satisfies the torus forms of the Osterwalder–Schrader axioms OS0–OS3. The bound H-116 (H-U) is reduced, not proved. It rests on sourced versions of Balaban's bounds, on a hypothesis R-043 (FX), and on a bridge from the source form to H-116 (H-U). R-043 (FX) is now reduced to a holomorphy bound R-040/R-041 (H-hol) for Balaban's increments, together with history bounds and three named inputs of the large-field step. One dependency table records the status of each block. At L = 13, inside Balaban's range L > 11, R-025 (H2) is a certified theorem: an explicit majorant and an outward-rounded interval branch-and-bound give rho_1(j, K)^2 <= 10 < 13 for every level j (including j = infinity) and every momentum K, so rho_2 <= 10 < 13, given our reading of Balaban's averaging operator. The result is not a solution of the Clay Millennium problem.
+
 ## Status
 
-Source: notes/PLAN.md (dated lines up to 2026-10-28). Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. The repository is private.
+Source: notes/TRUST_LEDGER.md (round 12, 2026-10-28) and notes/PLAN.md (dated lines up to 2026-10-28). Identifiers follow notes/IDS.md and are cited as "ID (label)". Tags: proved, verified (an independent *_VERIFY.md pass confirmed it), corrected (the verifier changed a claim), reduced, open. Both targets are conditional on Balaban's published proofs (CMP 95-122, 1984-1989), which nobody here re-checked line by line. The repository is private.
 
-### Target 1: Balaban's Theorem 2, weak form
+### Target 1: L-001 (Theorem 2w), Balaban's Theorem 2 in weak form
 
-- Reduced to the single inequality (H2) plus the fixed-level inputs (PI), (F), (M_j), V1, (G2) and (H0)/L5 (THEOREM2_PROOF_v4.md section 10). The reduction of (B2) to (H2) is verified (B2_TWOSTEP_VERIFY.md); Theorem K and Theorem 2w are verified as conditional reductions. Theorem 2 weak form implies Theorem 1: proved, unverified.
-- (H2) is certified at L = 13 (2026-10-28): rho_1(j, K)^2 <= 10 < 13 for every level j >= 1 (incl. infinity) and every K, by an explicit majorant and an outward-rounded arb branch-and-bound (25,169 boxes, 58 s), so rho_2 <= 10 < 13 by rho2_le (Lean). Verified: H1_ANALYTIC_VERIFY, H1_ANALYTIC_VERIFY2 (H_j rebuilt from the definitions, agreement 5.8e-9), H2_CERTIFY_P5_VERIFY. Residue: the reading of Balaban's (0.4), the gauge choice, Prop. A at M >= 27 (second implementation only), Lemma G and the bound chain beyond point checks, bb_arb.py audited but not formally verified. At L = 3, 5, 9 (H2) is numerical only.
-- Also: a point enclosure rho_2(inf, K*) in [1.9993, 2.1273] at L = 3 (verified, H2_CERTIFY_VERIFY.md). The L = 13 cell certificate (box sweep) runs as an independent cross-check; its result is not in yet.
-- Open: (PI), (F), (M_j), V1, (G2), and L5. The K-independence of beta_j(g) (item 9) is closed as a verified reduction (SOURCES_T2_KUNIF_VERIFY); the residual finite-volume identification (ledger B8) is an input of Theorem 1. Item 7 is restated as 7′ (C_beta on every past), from (H0) or from (G-gain) with a running-maximum lift (SOURCES_GGAIN_NONMONO; verified (SOURCES_GGAIN_NONMONO_VERIFY)). (H0) is Balaban's, so odd L must exceed 11 or (H0) must be explicit at this L. At L = 13, (H2) is certified (above).
+- Status: proved+verified, conditional, by Route K (L-009 (Theorem K) + L-005 (Lemma D″)), at odd L > 11.
+- Binding set (ledger §5, round 12): R-006 + R-025–R-031 + X-005 (1 Group A row, 7 Group B rows, 1 external). Grades:
+  - R-025 (H2): certified at L = 13 (interval arithmetic, outward rounding; verified), by L-046 (Theorem (H2) at L = 13) and rho2_le (Lean). Also certified at L = 15, 17, 21. Residue: the reading of Balaban's (0.4), the gauge choice, Prop. A at M >= 27, L-169 (Lemma G) beyond point checks, bb_arb.py audited only. At L = 3, 5, 9, R-025 (H2) is numerical only.
+  - R-026 (PI): verified reduction at fixed level.
+  - R-027 (F): proved, verified (round 11).
+  - R-028 (M_j): proved relative to listed inputs, verified, at fixed j.
+  - R-029 (V1): proved+verified at fixed level, conditional on R-030 (G2), Balaban's inductive bounds, and the averaging (0.4).
+  - R-030 (G2): verified reduction at fixed level.
+  - R-031 (L5): proved relative to listed inputs, verified (round 7).
+  - R-006 (Balaban's inductive assumption, H-202 (H0)): taken from Balaban; its use in L-001 (Theorem 2w) is a verified reduction.
+- L-001 (Theorem 2w) ⇒ Balaban's Theorem 1 (ledger §5): 4 Group A rows (R-006, R-012, R-013, R-015) + 9 Group B rows (R-025–R-032, R-034) + X-005. R-034 (the cross-scale sweep) is cleared and verified (round 7). R-012 is a verified list; R-015 is a verified reduction to conventions; R-032 is proved relative to listed inputs, verified.
 
-### Target 2: finite-torus existence (compactness form)
+### Target 2: L-003 (Theorem B), finite-torus existence in compactness form
 
-- Verified: the assembly (ASSEMBLY_VERIFY.md); limit points satisfy the torus forms of OS0-OS3 given the uniform bound (H-U). The bridge (B-N1) is derived given the Gevrey bound (S).
-- The sources block is now a verified reduction with named open inputs. D1 is verified; D2, D2C, D3, D3R and D3W8 are verified with corrections; D4/D5 are verified with (FX) as the gap.
-- (H-hist): chain (SM) + (G-gain), both verified; the large-field half is a verified reduction (SOURCES_GGAIN_LF_VERIFY), so the real uniform (H-hist) is reduced in both halves; Lemma G4 is off-chain. G3 (the chi_k surface term) is proved given (Q), verified (SOURCES_G3_VERIFY); (Q) is a verified reduction to (3.132) + (E_U) + LOC (SOURCES_Q, CDC, EU, LOC and their VERIFY files).
-- Balaban-level core (round 3, 2026-10-28): ledger A1–A4 (propagator kernel bounds, the R_2 bound (2.16), the lower bound gamma_0, CMP 102 (189)) are verified reductions to published CMP 99/102 theorems; A3 is a full proof with the corrected constant gamma_0 >= m_L/(48d^2 L^d) (0.7555 times the old (48d^2)^{-1}L^{-d-1} at L = 13; the CMP 96 (2.126)–(2.127) proof step fails for L >= 10). The residue: A1w (the walk-expansion form of A1, CMP 99 Thm 3.15) is a verified reduction to (W_G), which reduces to Balaban's printed proof sketches (Thms 3.7, 3.9, 3.10) with alpha_0 <= c'M^{-11}; A2 rests on the complex walk bound (W^c) in the exponential gauge, A7 at real U, and two [I]; the G_1 clause of A1 is closed; A18, R-Delta2, two unprinted conventions, and a stated torus-side hypothesis remain. Trust ledger: 20 Group A items, 17 behind Target 2 and 4 behind Target 1 + Theorem 1 (notes/TRUST_LEDGER.md §5).
-- (H-thr) follows from (H-hist2) (verified reduction; SOURCES_HTHR2, SOURCES_HHIST2).
-- (FX): O1, O2, O3 and R2 are verified. O3 depends on N3. N3 is a verified reduction to (H-hol) + real (H-hist) + (H2-hist); its condition (a) is settled (SOURCES_N3A_VERIFY). (H-hol): the small-field part is a verified reduction (SOURCES_HHOL); the large-field part is a verified reduction to (M-A), (M-B), (M-C) and (H-hist2). (M-B) is verified with p_0 >= 17/(gamma_0 A_1^2). (M-A') (normalized-ratio bookkeeping) is closed (SOURCES_MA2, verified); (M-A) rests on CMP 102 (189), an input Balaban's chain already uses. (M-C) is a verified reduction to the printed conditions of CMP 116 §2 (SOURCES_MC_VERIFY); open: (I-eps), (I-V0) residual, (M1). The (S) uniformity of the bridge B-N1 and the kappa -> kappa/2 recovery are verified reductions (SOURCES_B21_S_VERIFY, SOURCES_T2_KAPPA2_VERIFY).
-- Open: nontriviality (NT); the inputs named above. No O(4) invariance, infinite volume, mass gap, or uniqueness. This is not a solution of the Clay problem.
+- Status: proved modulo named blocks. Given H-116 (H-U), limit points exist and satisfy the torus forms of OS0–OS3 (verified, ASSEMBLY_VERIFY.md). H-116 (H-U) is reduced, not proved.
+- Binding set (ledger §5, round 12): 21 Group A rows + X-002–X-005 + 21 Group B rows (R-025–R-032, R-034–R-046).
+- Group A rows without a verified proof or reduction: R-021 (printed CMP 99 inputs of the H-057 (C) proof) only. R-022 (CMP 109 p. 253 "valid universally"), R-023 (CMP 109 p. 275 regularity), and R-024 (Q-049, the walk expansions in the multiscale Ω-geometry) are verified reductions whose open items are unproved lemmas. Under the stricter rule "open items are readings or printed statements only", the list is R-021–R-024.
+- Group B rows without a proof or a verified reduction: none. R-035 (B-S), the sourced Theorem 1, is open as a whole; its parts are R-036–R-044 and R-046. R-043 (FX) is reduced to R-042 (N3), and R-042 (N3) is a verified reduction to R-040/R-041 (H-hol), the real uniform R-037 (H-hist), and H-120 (H2-hist). R-045 (B-N1), the bridge to H-116 (H-U), is derived given R-045 (S); its H-098 (E14-c) clause is open.
+- Open: nontriviality H-081 (B-NT); the named inputs above.
+- Counts (round 12): Group A 23, Group B 22, Group C 46, externals 5.
+
+### Outside both targets
+
+- Infinite volume: L-196 (Theorem IV) is a verified conditional statement for the joint limit (ε, ℓ) → (0, ∞) (paper §4.8; two verifier passes). Its lemmas L-320, L-323, L-331 are reductions with no verifier; L-332–L-334 are blocked.
+- No O(4) invariance, infinite volume (unconditional), mass gap, or uniqueness. This is not a solution of the Clay problem.
 
 ### Paper, Lean, numerics
 
-- paper/main.pdf is one 66-page article (Theorem 2 chapter + assembly), unverified as a whole.
-- lean/ holds 22 files, no sorry (standard axioms only); see lean/README.md.
-- Numerics (floating point unless marked): first-step beta_1(L) for L = 2..11 is 0.630, 0.664, 0.757, 0.743, 0.803, 0.851, 0.868 (numerics/NUMERICS.md).
+- paper/main.pdf is one 143-page article (Theorem 2 chapter + assembly), unverified as a whole.
+- lean/: 45 Lean files, 50 canon lines, 170 edges, no sorry, standard axioms only (CanonOrder axiom-free); see lean/README.md.
+- Numerics (floating point unless marked): single-step beta_1(0)(L) = 0.74233, 0.79024, 0.8267, 0.8436, 0.8511 for L = 5, 7, 9, 11, 13 (numerics/NUMERICS.md §7). L = 5 and 7 are grid-converged; L = 9, 11, 13 use Ng = 8. At L = 13 the Lp = 0.5 and Lp = 1 values are arb-certified for rounding only; the Lp → 0 fit is not certified. The local slopes 0.142, 0.119, 0.084, 0.045 fall away from c = 0.3715. The tension between beta_1 and c log L is open [N]. It concerns a different family from R-027 (F), so it does not refute or support it. A converged-grid run at L = 9 and 11 is the decisive test (NUMERICS §7(f)).
 - Competing account: Sussman and Alpoge (citation below) follow the same route. Only a web-sweep agent and a mapping agent read it; derivation agents were firewalled, but one idea (the bounded-kappa route) reached the derivations through the mapping report (see Independence).
 
 ## How the pieces fit
 
-The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, and certifier bridges. The paper (paper/main.pdf, 137 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/INDEX.md lists every file with its state.
+The Theorem 2 chapter (notes/THEOREM2_PROOF_v4.md) reduces Theorem 2 (weak form) to R-025 (H2) and the fixed-level inputs. The assembly (notes/ASSEMBLY.md) turns Theorem 2 plus the sourced bounds into the finite-torus compactness theorem. The sources (notes/SOURCES*.md) supply the sourced bounds that the assembly needs. The numerics (numerics/NUMERICS.md) test R-025 (H2) and the one-loop increments beta_j(L). Lean (lean/README.md) checks the shooting lemmas, exact identities, certifier bridges, and the order of constants. The paper (paper/main.pdf, 143 pages) is the LaTeX article merging the v4 chapter and the assembly. notes/TRUST_LEDGER.md grades every trust item, notes/IDS.md lists the identifiers, and notes/INDEX.md lists every file with its state.
 
 ## Independence and prior work
 

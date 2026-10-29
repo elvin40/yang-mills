@@ -4,7 +4,14 @@ Written 2026-10-28 (Claude, Opus 5.5). Derivation file. No existing file edited.
 
 Grades. [P] proved here. [P-sketch] proof in outline; constants not optimized. [N] numerical (this file's script). [I] unchecked input or interpretation. Statements cited as "E2 (x)" are SOURCES_R3S1_E2.md §3 (x); they are [P] there and unverified.
 
-SUMMARY_PLACEHOLDER
+Summary of results.
+- Open item 1 of SOURCES_R3S1_E2 §8 is proved. For any frames, the Berry-phase part of a plaquette angle is quadratic in the frame mismatch (Lemma 1: |θ_p^j| ≤ π(ε_p + (3/2)Σ_{b∈∂p}(s_b^j)²)). For eigenframes under (H1)_ρ, s_b ≤ η_b/γ with no smallness condition (Lemma 2, a Davis–Kahan bound). [P, N]
+- Theorem E3c′. Under (H1)_ρ on ∂C and (H0) on the links of ∂C, for the cube C of side N_4 and flux q through ∂C (constant in t):
+  S(C × S¹) ≥ (min(2, γ²)/(3N_4)) ‖q‖_∞ / g²,  γ = d_0 − 2ρ.
+  At ρ → 0 the constant is 2/(3N_4) for N = 2, 3, 4. This restores the 1/N_4 law of R3S1_GAP §5.0, with a constant smaller by π², and it is linear in ‖q‖_∞. No (H2), no small-field condition, no condition inside C. [P]
+- The 1/N_4 law is the true scaling. An explicit family (a lattice-size monopole–antimonopole pair straddling a face of C; spatial links 1; Polyakov loop in the class of Ω_0 everywhere) has g²S(C × S¹) = 2N_4 sin²(α_N/N_4)(56 − 8/√3) ≤ 253.6/N_4 (SU(2)), 450.7/N_4 (SU(3)). So g²S_min = Θ(1/N_4). [P]
+- Numerics: constrained descent (N_4 = 2–16, SU(2), SU(3), static and 4d) finds N_4 g²S_min ≈ 43–58 (SU(2)) and 19–103 (SU(3)), flat in N_4 within 4% from N_4 = 8 to 16. The proved constant is 64–154 times lower. [N]
+- Consequences. (i) E3c of R3S1_GAP §5.1 holds with C_− = min(2, γ²)/(3N_4). (ii) G4: C_−/κ_3 ∝ 1/N_4, so a fixed GM threshold c_0 fails at large N_4; if GM's dilution conditions are asymptotic in β, the cost is g_0² ∝ 1/(N_4 log N_4). (iii) The per-cell sharp bound E3s (C_− = (8π²/N)(1 − δ)) is false for this charge for N_4 ≥ 7 (SU(2)), N_4 ≥ 18 (SU(3)). (iv) Theorem R with fine-flux charges conflicts with the Villain weight at large N_4; R needs a charge that does not count lattice-scale dipoles (§7.3). [P, P-sketch]
 
 ---
 
@@ -99,6 +106,25 @@ Remarks.
 (4) No condition on η. Theorem E3c′ needs no (H2) and no small-field condition. Only (H1) on ∂C and (H0) on the links of ∂C enter. The interior of C is unrestricted: the Polyakov loop may degenerate there, and spatial links there are free.
 (5) Other cells. For a box of sides n_1, n_2, n_3, use n_s = 2(n_1n_2 + n_2n_3 + n_3n_1). For a ∂C with links in more than two plaquettes of ∂C (non-manifold surface), replace 3 by (3/2)·(max multiplicity) in Step 2.
 
+
+### 4.1 Constants table
+
+| step | inequality | constant | depends on | sharp? |
+|---|---|---|---|---|
+| ε vs action | ε_p² ≤ g²S_p | 1 | N (SU(2): ε_p² = g²S_p/2) | loses ≥ N/(N−1) at small angles (eigenphases sum to 0) |
+| Lemma 1 (1a) | |(E^{−1}U_pE)_jj − w| ≤ Σ_{k<l}σ_kσ_l | 1 | none | [N] ratio up to 0.94 |
+| Lemma 1 (1b) | Σ_{k<l}σ_kσ_l ≤ (3/2)Σσ_k² | 3/2 | none | equality iff σ_k all equal |
+| Lemma 1 (1c) | |θ| ≤ π(ε + Q); ≤ arcsin(ε + Q) if < 1 | π (uniform); π/2 if r < 1; → 1 as r → 0 | none | — |
+| link multiplicity on ∂C | each link in 2 plaquettes of ∂C | 2 | geometry (manifold ∂C) | exact |
+| Lemma 2 | s_b^j ≤ η_b/γ | 1/γ, γ = d_0 − 2ρ | N, ρ | [N] equality for SU(2) |
+| ladder | η_b ≤ Λ_b = Σ_k ε_{p_k(b)} | 1 | — | [N] loses ≈ 2.3 on minimizers |
+| Cauchy–Schwarz (column) | Λ_b² ≤ N_4 Σ_k ε_{p_k(b)}² | N_4 | N_4 | equality for static columns |
+| Cauchy–Schwarz (slices × ∂C) | A ≤ (n_s/N_4)^{1/2}(g²S_s)^{1/2} | n_s/N_4 = 6N_4 (cube) | N_4 | equality for uniform spatial flux |
+| two-channel minimum | x² + y ≥ min(4q̄²/α², q̄/β) | α² = n_s/N_4, β = 3N_4/γ² | N_4, γ | within factor 2 of the exact minimum |
+| final (cube) | g²S ≥ (q̄/(3N_4)) min(2q̄, γ²) | c(γ, N) = min(2, γ²)/3 at ‖q‖_∞ = 1 | γ, N_4 | Θ(1/N_4) by §5; constant below the numerical minima by 64–154 (§6.3) |
+
+Values of c(γ, N) = min(2, γ²)/3 at ρ → 0 (γ → d_0 = 2 sin(π/N)): N = 2: 2/3; N = 3: 2/3; N = 4: 2/3; N = 5: 0.461; N = 6: 1/3; large N: 4π²/(3N²).
+
 ## 5. The true scaling is 1/N_4: an explicit family [P, N]
 
 Theorem E3c′ gives C_− ≥ min(2, γ²)/(3N_4). This section shows that no bound of the form S(C × S¹) ≥ c/g² with c independent of N_4 can hold. So the 1/N_4 law is the true scaling, not an artefact of the proof. In particular the per-cell sharp bound E3s of R3S1_GAP §3.4 and §5.1 (C_− = (8π²/N)(1 − δ)) is false for this charge when N_4 is large (§5.3).
@@ -125,8 +151,109 @@ The script reproduces these values: N_4 g²S = 250.3, 252.7, 253.4, 253.5 (SU(2)
 Let S_min(N_4) be the infimum of S(C × S¹) over configurations with (H1)_ρ on ∂C, (H0) on the links of ∂C, and Φ(∂C × {t}) = q ≠ 0 for all t, with C the cube of side N_4. Then, for N = 2 and N = 3 and all N_4 ≥ 3:
   min(2, γ²)/(3N_4) ≤ g² S_min(N_4) ≤ K_N / N_4,  K_2 = 253.6, K_3 = 450.7.
 The upper bound uses γ = d_0 − 2ρ with any ρ > 0 (the family has ρ_* = 0). So g²S_min = Θ(1/N_4). [P]
-The gap between the two constants is a factor 380 (SU(2)) and 680 (SU(3)). The descent of §6.3 finds configurations with N_4 g²S ≈ 44–60 (SU(2)) and 49–101 (SU(3)), so the truth lies between, and the lower constant is the weaker one. §6.4 lists where the proof loses.
+The gap between the two constants is a factor 380 (SU(2)) and 680 (SU(3)). The descent of §6.3 finds configurations with N_4 g²S = 43–58 (SU(2)) and 19–103 (SU(3)) for N_4 = 2–16, so the infimum lies between, much closer to the family than to the proved bound. §6.4 lists where the proof loses.
 
 ### 5.3 What the family is
 The family is a tight monopole–antimonopole pair of lattice size 1, straddling the face of C. The frame jumps by O(1) across a few links. The cost of a frame jump across one link is spread over the N_4 plaquettes of the column, so each plaquette deviates by O(1/N_4) and the column costs O(1/N_4) in total. No spatial plaquette carries action. This is the lattice form of a known continuum fact: a direction field n̂ with a point singularity has finite Dirichlet energy in three dimensions, and a dipole of size d costs ∝ v²d. The Bogomolny bound S ≥ 4πv|q|/g² needs a continuous Higgs field with a zero at the core; the lattice frame has no such constraint (E2 §5.4).
 Consequence for the sharp bound. A cell C whose boundary cuts such a pair has Φ(∂C) ≠ 0 and S(C × S¹) ≤ K_N/(N_4 g²). For SU(2), K_2/N_4 < 4π² = g²S_0 (S_0 = 8π²/(Ng²), the monopole-instanton action) as soon as N_4 ≥ 7. So a per-cell bound C_− = (8π²/N)(1 − δ) (E3s) is false for this charge for N_4 ≥ 7 (SU(2)) and N_4 ≥ 18 (SU(3), K_3/N_4 < 8π²/3 = 26.3). The total action of the whole pair, inside and outside C, is 2N_4 sin²(α_N/N_4)·64 (the 8 corners have 24 outside links in all; 16 + 12·4 = 64): also O(1/N_4). [P]
+
+
+## 6. Numerics [N]
+
+Script: numerics/r3s1_e3c_check.py (numpy; imports helpers from numerics/r3s1_e2_check.py; seeds 20261028/20261029; 3 min 49 s on the Mac). Results: numerics/r3s1_e3c_results.json. Action is reported as g²S = 2Σ_p Re tr(1 − U_p), over the plaquettes of C × S¹. C is the cube of side N_4.
+
+### 6.1 Lemma 1 and Lemma 2 on random configurations
+Lattice 4³ × 4, configurations of E2 §7 (smooth ε = 0.05, medium ε_s = 0.4, rough Haar spatial links), SU(2) and SU(3), every spatial plaquette and label. Lemma 1 is tested with eigenframes and with Haar-random frames.
+| SU(N) | config | (1a) violations | max ratio (1a) | (1c) violations | Lemma 2 violations | max s/(η/δ) |
+|---|---|---|---|---|---|---|
+| 2 | smooth / medium / rough | 0 / 0 / 0 | 0.94 / 0.83 / 0.71 | 0 / 0 / 0 | 0 / 0 / 0 | 1.000 / 1.000 / 1.000 |
+| 3 | smooth / medium / rough | 0 / 0 / 0 | 0.57 / 0.54 / 0.46 | 0 / 0 / 0 | 0 / 0 / 0 | 0.970 / 0.975 / 0.988 |
+(The max ratio column takes the larger of the eigenframe and Haar-frame values.)
+
+### 6.2 Explicit family (§5.1)
+| N_4 | 2 | 4 | 8 | 16 | 32 | 64 |
+|---|---|---|---|---|---|---|
+| SU(2): N_4 g²S(C×S¹) | 141.5 | 240.8 | 250.3 | 252.7 | 253.4 | 253.5 |
+| SU(3): N_4 g²S(C×S¹) | 212.3 | 411.1 | 440.6 | 448.2 | 450.1 | 450.6 |
+| N_4 × bound (4.2) | 0.667 | 0.667 | 0.667 | 0.667 | 0.667 | 0.667 |
+Flux (−1, 1) (SU(2)) and (1, 0, −1) (SU(3)) at every N_4; integrality error ≤ 2e−16; spatial plaquettes of ∂C carry zero action; γ = d_0. The limits match (π²/2)(56 − 8/√3) = 253.6 and (8π²/9)(56 − 8/√3) = 450.7.
+
+### 6.3 Constrained minimization
+Method. Heavy-ball gradient descent (momentum 0.9, adaptive step) of the Wilson action of C × S¹, links outside C free (they do not enter). Constraints, checked after every step: Φ(∂C × {t}) equals the planted q for every t; disc labels valid on ∂C; min_j |m_j| > 0.1 on the links of ∂C (0.05 for the 4d runs). A penalty 10 Σ_{x∈∂C} Σ_{n≤N/2} |tr Ω(x)^n|² holds the spectrum on ∂C near the class of Ω_0 (it vanishes there); without it the descent lowers the action by shrinking the eigenvalue gap, which the bound also tracks through γ². A step that changes the flux freezes the links of the plaquette whose angle jumped by 2π; a step that pushes an overlap below the margin freezes that link and its two columns. The value reported is the Wilson action only, and the bound uses the measured γ = d_0 − 2ρ_* with ρ_* = max_{x∈∂C, j} |λ_j(x) − ω_j|.
+Starts: "hh" = E2 hedgehog centred in C; "dip" = §5.1 family; "corner" = the same 8-site dipole in the corner cube with n̂ = +e_3 elsewhere; "prolong" = the hh minimizer of side N_4/2 refined to side N_4 (2³ blocks), then descended; "4d" = static minimizer plus t-dependent noise 10^{−3}, descended with T = N_4 independent slices. Static runs use one slice replicated N_4 times; this is exact for t-independent configurations.
+Best value of N_4 g²S(C×S¹) found (start in brackets), measured γ, and the ratio to the bound (4.2):
+| N_4 | SU(2): N_4 g²S | γ | S/bound | SU(3): N_4 g²S | γ | S/bound |
+|---|---|---|---|---|---|---|
+| 2 | 42.7 (dip, static) | 1.94 | 64 | 19.5 (4d) | 1.35 | 32 |
+| 4 | 51.9 (4d) | 1.80 | 78 | 89.4 (hh) | 1.44 | 134 |
+| 8 | 56.3 (4d) | 1.89 | 84 | 98.5 (4d) | 1.55 | 148 |
+| 16 | 58.4 (prolong, static) | 1.94 | 88 | 102.9 (prolong, static) | 1.64 | 154 |
+Other starts end higher: dip 92–227 and corner 72–145 at N_4 = 4, 8. The prolong route reproduces the direct hh minimum at N_4 = 8 for SU(2) (56.45 against 56.56). For SU(3) at N_4 = 8 it ends higher (181.1 against 98.7), so the SU(3) value at N_4 = 16 is less reliable as an estimate of the infimum; it is still a valid upper bound. Every run kept the planted flux on all slices, and the chain "2‖q_t‖_∞ ≤ Σε_p + ΣQ_p" of Steps 1–2 held on every slice (slack 2.0–7.3).
+Reading.
+- N_4 g²S_min grows by 4% from N_4 = 8 to 16 in both groups, and it stays far below the family values 253.6 and 450.7. So g²S_min ≈ 60/N_4 (SU(2)) and ≈ 105/N_4 (SU(3)) for N_4 ≥ 8. This agrees with the Θ(1/N_4) law of §5.2.
+- The minimizers put 99.9% of the action on P_∂ (the plaquettes the proof uses). The frame winding sits on ∂C near a corner of C; the interior of C is almost free of action.
+- For N_4 ≥ 4, the t-dependent descent lowers the static minimum by at most 1%. For SU(3) at N_4 = 2 it lowers it by a factor 2.5 (24.4 → 9.7); this case is the smallest cell and is not used for the scaling claim.
+- With the overlap margin 0.01 instead of 0.1 (SU(2), N_4 = 4, test run), the minimum drops by 1% only (13.06 → 12.95). The margin does not change the picture.
+- Descent gives upper bounds on the infimum; it does not certify the minimum.
+
+### 6.4 Where the proof loses (SU(2) / SU(3), N_4 = 16, prolong minimizers, slice 0, label of max |q|)
+| quantity | SU(2) | SU(3) | loss factor of the step |
+|---|---|---|---|
+| 2π‖q‖_∞ = Σ_{∂C}|θ| | 6.28 | 6.28 | — |
+| π Σ_{∂C}(ε_p + Q_p) | 14.96 | 15.06 | 2.4 (the π in (1c) and Q against the true Berry phase) |
+| Σ Q_p → 3Σ_b s_b² | 4.72 → 9.11 | 4.73 → 9.10 | 1.9 ((1b) and link multiplicity) |
+| 3Σ s² → 3Σ η²/γ² | 9.64 | 10.58 | 1.06 / 1.16 (Lemma 2) |
+| 3Ση²/γ² → 3ΣΛ²/γ² | 23.2 | 57.6 | 2.4 / 5.4 (ladder triangle inequality) |
+| 3ΣΛ²/γ² → 3N_4 g²S_ℓ/γ² | 46.3 | 115.1 | 2.0 (ε² ≤ g²S for an eigenphase pair; Cauchy–Schwarz on columns is exact here) |
+The remaining factor up to the totals 88 and 154 comes from the two-channel minimum (Step 5) and the action off ∂C × S¹ (0.1%). The largest single losses are the ladder (worst for SU(3)) and the π of (1c).
+
+## 7. Consequences for R3S1_GAP §5.1 (nodes E3c, G4, R) and §3.4 (E3s)
+
+### 7.1 Node E3c
+R3S1_GAP §5.1 lists E3c as "crude core bound C_− = 2π²/(3N_4), lemma [P-sketch, §5.0]". Replace it by Theorem E3c′:
+  S(C × S¹) ≥ C_− ‖q‖_∞/g²,  C_− = min(2, γ²)/(3N_4),  γ = d_0 − 2ρ,
+under (H1)_ρ on ∂C and (H0) on the links of ∂C, with q the flux through ∂C (constant in t). Grade [P] (unverified). The 1/N_4 law of §5.0 survives; the constant is smaller by π² (N ≤ 4, ρ → 0). The dependence on the holonomy is through γ² only, and γ² ≤ 2 already for N ≥ 4, so for large N, C_− ≈ (4π²/3)/(N²N_4) at ρ → 0.
+Two facts that §5.0 did not have:
+ (i) The bound is linear in ‖q‖_∞ (frame-winding channel), not quadratic; this is the form (R-a) needs (C_± ≥ c|q|).
+ (ii) The bound needs only (H1) on ∂C and (H0) on the links of ∂C. It needs no (H2) and no small-field condition. So E3c applies to large-field cells; this is the case R3S1_GAP §3.4 (E3) identified as the relevant one (every core is large-field at fixed N_4 and small g).
+
+### 7.2 Node G4 (constant check) and the g_0 cost
+G4 compares GM's convergence threshold with z = e^{−(C_−/κ_3)β}, β = κ_3/g². With C_− = c_N/N_4, c_N := min(2, γ²)/3:
+ (a) C_−/κ_3 = c_N/(κ_3 N_4) → 0 as N_4 grows. If GM's c_0 is a fixed number (a condition z ≤ e^{−c_0β} with c_0 independent of β), G4 fails for N_4 > c_N/(c_0κ_3). This is now a theorem-level statement about our side: by §5.2 the true per-cell C_− is at most K_N/N_4, so no better proof of E3c can rescue a fixed c_0. [P for our side; I for GM's form]
+ (b) If the dilution conditions are asymptotic in β (R3S1_GAP §4.1: πβ ≪ z^{−1/3} ≪ (8π²βz)^{−1/2}), both reduce to K β z^{1/3} ≪ 1 with K = 8π² (the larger of π and 8π²). With z = e^{−C_−/g²} this reads
+   C_−/(3g²) ≥ log(8π²κ_3/g²) + log(1/δ_GM),
+ with δ_GM the smallness that GM's expansion needs. To leading order
+   g_0² ≈ C_− / (3 log(8π²κ_3/(δ_GM C_−))) = c_N / (3N_4 log(8π²κ_3N_4/(δ_GM c_N))).
+ So g_0² ∝ 1/(N_4 log N_4). [P-sketch: elementary algebra; κ_3 and δ_GM are [I]]
+ (c) Cost relative to earlier claims, at the same κ_3, δ_GM: §5.0 (false) would give g_0² larger by a factor π² (up to the log); E2 §6.2 gave C_− ≈ γ²/(192N_4³), so g_0² ∝ 1/(N_4³ log N_4). The new bound gains a factor ≈ 64N_4² (for γ² ≤ 2) in g_0².
+ (d) Numerical size. SU(2), ρ → 0: C_− = 2/(3N_4). For N_4 = 8, C_− = 0.083: the core weight is ≤ e^{−0.083|q|/g²}. Compare S_0 = 8π²/(Ng²) = 39.5/g². The proved per-cell suppression is 474 times weaker than the semiclassical one.
+
+### 7.3 Node R and the sharp node E3s: a structural problem [P-sketch]
+§5 shows that the fine-flux charge q_c = Φ(∂c) counts tight lattice dipoles that straddle a cell face. Their action is ≤ K_N/(N_4g²) for the pair and for each cell (K_2 = 253.6 inside C; 2N_4 sin²(π/(2N_4))·64 ≤ 32π²/N_4 = 315.8/N_4 for the whole pair).
+ (a) E3s is false for this charge. A per-cell bound C_− = (8π²/N)(1 − δ) fails for N_4 ≥ 7 (SU(2)) and N_4 ≥ 18 (SU(3)). Making the cell larger does not help, because the dipole is local. [P]
+ (b) Theorem R in the form of R3S1_GAP §3.3, with q_c = (dn)_c read as the fine flux, is inconsistent for large N_4. Argument: in the Villain model at spacing L, two adjacent cells with charges ±1 cost at least the lattice Coulomb pair energy 2π²β_3·2(v(0) − v(e_1)) = (2π²/3)β_3 (because v(0) − v(e_1) = 1/6 for the 3d lattice Laplacian), with β_3 = κ_3/g². The true weight of the event "this cell pair carries the fine charges ±1" is ≥ c_{N_4} e^{−K_N/(N_4g²)} by the positivity argument of E4. If K_N/N_4 < (2π²/3)κ_3, the cores would need ζ_cζ_{c′} > 1, which contradicts (R-a) (ζ ≤ e^{−C_−/g²} < 1). For SU(2), κ_3 = O(1) [I], so this happens for N_4 of order K_2/(6.6κ_3) and above. [P-sketch, given κ_3 = O(1)]
+ (c) What R needs instead. The charge variable of R must not count lattice-scale dipoles. One candidate: block angles reduced mod 2π, Θ_P := principal value of Σ_{p∈P} θ_p over the fine plaquettes of an L-face P, and block charge Q_c := (2π)^{−1} Σ_{P∈∂c} Θ_P. The dipole of §5.1 has Σ_{p∈P} θ_p = ±2π on the shared face, so Θ_P = 0 and Q = 0 in both cells. For a block charge Q_c ≠ 0, some face has |Θ_P| ≥ π/3, and |Σ_{p∈P}θ_p| ≥ |Θ_P| ≥ π/3 (the principal value has the smallest modulus in its class mod 2π). Steps 2–5 of §4, run on the single face P instead of the closed surface ∂C, then give a bound of the same 1/N_4 form, with 2q̄ replaced by 1/3 and n_s by N_4². [P-sketch] Whether lattice dipoles that straddle an edge or a corner of the block lattice can produce Q ≠ 0 at cost O(1/N_4) is open. If they can, a block charge does not remove the problem, and the reduced gas carries light charged objects whose fugacity e^{−O(1/N_4)/g²} is far above e^{−S_0}.
+ (d) Scope. Nothing in (a)–(c) affects the non-sharp Theorem A at fixed N_4 if the reduction treats the tight dipoles as neutral polymers K_X: their weight e^{−c/(N_4g²)} still tends to 0 as g → 0 at fixed N_4, which is the smallness G2 needs ("any fixed exponential smallness"). It does change what the dominant charged objects are, and it forces the charge definition in R to be fixed before E3c, E4, G3 and G4 are re-run.
+
+## 8. Grades and open items
+
+| item | content | grade |
+|---|---|---|
+| Lemma 1 | |(E^{−1}U_γE)_jj − Π_k m_k| ≤ Σ_{k<l}σ_kσ_l for any closed path and any frames; |θ_p| ≤ π(ε_p + (3/2)Σσ²) | [P], [N] |
+| Lemma 2 | s_b^j ≤ η_b/γ under (H1)_ρ at both ends, no smallness | [P], [N] |
+| E2 open item 1 | |θ_p^j| ≤ π(ε_p + (3/(2γ²))Σ_{b∈∂p}η_b²) | [P] (Lemma 1 + Lemma 2) |
+| Theorem E3c′ | g²S(C×S¹) ≥ min(4N_4q̄²/n_s, γ²q̄/(3N_4)); cube: (q̄/(3N_4))min(2q̄, γ²) | [P] |
+| Remark (2) | small-angle limit reproduces 2π²q̄²/(3N_4) of R3S1_GAP §5.0 in the abelian channel | [P] |
+| §5 family | explicit charged configurations with g²S(C×S¹) = 2N_4 sin²(α_N/N_4)(56 − 8/√3) ≤ K_N/N_4 | [P] (formula), [N] (flux value) |
+| §5.2 | g²S_min = Θ(1/N_4) for N = 2, 3 | [P] |
+| §7.2 | G4: C_−/κ_3 ∝ 1/N_4; g_0² ∝ 1/(N_4 log N_4) if GM's dilution conditions are asymptotic in β | [P-sketch]; GM side [I] |
+| §7.3 (a) | per-cell sharp bound E3s false for N_4 ≥ 7 (SU(2)), ≥ 18 (SU(3)) | [P] |
+| §7.3 (b) | Theorem R with fine-flux charges inconsistent with the Villain weight for N_4 ≳ K_N/(6.6κ_3) | [P-sketch], κ_3 = O(1) [I] |
+| §7.3 (c) | block charge (principal block angles) removes face-straddling dipoles; E3c-type bound for it | [P-sketch]; edge/corner dipoles open |
+
+Open items.
+1. Charge definition for Theorem R (§7.3). Decide whether R uses the fine flux (then tight dipoles must be absorbed as neutral K_X polymers by hand) or a block charge. For the block charge: prove or refute that edge- and corner-straddling lattice dipoles give Q ≠ 0 at cost O(1/N_4).
+2. Constant. The proved c = min(2, γ²)/3 is 64–154 times below the numerical minima (§6.3). §6.4 shows where the factor goes: the π in (1c), the factor 2 from Σσσ ≤ (3/2)Σσ² against the actual Berry phase, the ladder triangle inequality, and the two-channel minimum. None of this changes the N_4 scaling.
+3. The (H1)/(H0)-failure set on ∂C. E3c′ needs (H1) on ∂C. If (H1) fails on ∂C, the frame and the flux are not defined there, and the cell is in the "deformed large-field" set of E2 open item 2. Its probability is still not estimated.
+4. Instance (B′). E3c′ uses only E2 (a4), the ladder and the Wilson form of the action. For Balaban's unit-scale effective action the inequality ε_p² ≤ g²S_p must be replaced by the lower bound on g^{−2}A(U) + E_K on large-field cells [I: not checked].
+5. Verification. This file is unverified. A SOURCES_R3S1_E3C_VERIFY.md pass should check Lemma 1 (the induction), Lemma 2, Step 5 of §4, the count D_0 = 56 − 8/√3 in §5.1, and the inconsistency argument §7.3 (b).

@@ -2,11 +2,14 @@
 % Status: pending. Every statement below repeats FABLE_HARD.md, which has no verifier report yet
 % (FABLE_HARD_VERIFY.md does not exist on 2026-10-28). Do not cite as verified.
 %
-% IDS: this draft uses the OLD (pre-2026-10-28) ids as they appear in the sources:
-%   L3 (FX-V), L6 (S1-pt) with forms (L6-nu), (L6-P), L14 (Loc-f), B18 (N3), E13, (Q), Theorem IV,
-%   Theorem U1, U2, W1, Corollary W2, Theorem FD, Proposition RP1.
-%   After the renumbering lands, map every id and every \label below through IDS.md
-%   (e.g. Theorem IV -> L-196, (FX-V) -> H-106, (Loc-f) -> H-142, (S1-pt) -> H-165 per IDS.md today).
+% Paper round 10 (2026-10-28): the second problem is now the K-uniform (Gap_U) where it concerns OS4
+%   for joint limits, and Theorem U1 is replaced by the one-way form U1' ((U-Lap)_K <=> (U-IV=)_K;
+%   (U-Lap)_K => (U-IV)_K one-way), both per SOURCES_FH_U1_REPAIR.md \S2.3, \S3.2-\S3.5
+%   (an Opus repair file, UNVERIFIED). Still pending: the FABLE_HARD verifier (OPUS_QUEUE VH1).
+% IDS: the ledger row B18 (N3) is now written R-042 (N3) (IDS.md). File-local labels are kept and
+%   qualified by file: L3 (FX-V) = L-320 / H-106, L6 (S1-pt) = L-323 / H-165 with forms (L6-nu), (L6-P),
+%   L14 (Loc-f) = L-331 / H-142, Theorem IV = L-196 (Theorem~\ref{thm:L196} of main.tex), E13, (Q),
+%   Theorems U1, U1', U2, W1, W1_fin, Corollaries W2, W2_J, Theorem FD, Proposition RP1 (no IDS rows).
 %   The labels sec:open, prob:ULap, prob:Gap, ... are provisional and follow no IDS scheme yet.
 %
 % Sources used (file : lines), read 2026-10-28:
@@ -17,6 +20,8 @@
 %   INFINITE_VOLUME_FABLE.md : 54-55 (Step B not l-uniform), 57-61 (nu_{K,l}, Delta, (2.1)),
 %                   102-124 (Theorem LOC, (3.1), (3.2), compactness), 186-216 (Theorem IV, lemmas L1-L17).
 %   PLAN.md : 551 (FABLE_HARD status: UNVERIFIED, verifier launched), 552 (ALT_ROUTES restatement of (Gap_K)).
+%   SOURCES_FH_U1_REPAIR.md : 9-16 (results), 76-85 (Theorem U1'), 86-131 (W1_fin, W2_J, (Gap_U), \S3.6),
+%                   145-175 (L6 grade, mapping to this draft). Added in paper round 10.
 %   paper/main.tex : 1-36 (preamble: environments, \status, \file, \ioc).
 %   paper/remains.tex : 91-93 (Section rem-gap, the regime separation).
 %   IDS.md : 1-12, 369, 405, 428, 802 (id scheme, sample mappings).
@@ -31,10 +36,10 @@
 
 \section{Two stated open problems}\label{sec:open}
 
-\noindent\textbf{[Pending verification: depends on FABLE\_HARD verifier]}
+\noindent\textbf{[Pending verification: depends on FABLE\_HARD verifier and on a verifier of SOURCES\_FH\_U1\_REPAIR]}
 
 \medskip
-This section states two hypotheses as open problems. Neither is proved in this paper or in the project files. Both concern the infinite-volume limit $\ell\to\infty$, which the main theorems of this paper do not treat (Section~\ref{sec:notgiven}). The first, (U-Lap)$_K$, is the condition under which the infinite-volume limit at fixed lattice spacing is unique. The second, (Gap$_K$), is a sufficient condition for clustering (OS4) and, in its exponential form, for a mass gap. The source of both is \file{FABLE_HARD.md} \S3--\S4, built on the infinite-volume theorem of \file{INFINITE_VOLUME_FABLE.md} \S7.1 (Theorem IV). All results quoted here carry the grades of that file; its verifier has not reported.
+This section states two hypotheses as open problems. Neither is proved in this paper or in the project files. Both concern the infinite-volume limit $\ell\to\infty$, which the main theorems of this paper do not treat (Section~\ref{sec:notgiven}). The first, (U-Lap)$_K$, is a sufficient condition for uniqueness of the infinite-volume limit at fixed lattice spacing; the converse is not proved. The second, (Gap$_U$), is a sufficient condition for clustering (OS4) of the joint limits $(K,\ell)\to(\infty,\infty)$ of Theorem IV and, in its exponential form, for a mass gap. It is uniform in $K$. The fixed-$K$ condition (Gap$_K$) gives clustering only for the infinite-volume lattice limits at one fixed $K$. The source of both problems is \file{FABLE_HARD.md} \S3--\S4, as repaired by \file{SOURCES_FH_U1_REPAIR.md} \S2--\S3, built on the infinite-volume theorem of \file{INFINITE_VOLUME_FABLE.md} \S7.1 (Theorem IV, L-196). All results quoted here carry the grades of those two files; no verifier has reported on either.
 
 \subsection{Setting}\label{sec:open-setting}
 
@@ -52,7 +57,7 @@ Let $f_1,\dots,f_n$ be bumps with disjoint supports. Write $N(f_i):=\|f_i\|_\inf
 \[
 \mathcal P:=\Bigl\{t\in\mathbb C^n:\ |t_i|\le c_*r/N(f_i),\ i=1,\dots,n\Bigr\},\qquad f(t):=\textstyle\sum_it_if_i,
 \]
-with $c_*r$ the common radius of \file{SOURCES_FX_D.md} \S5.2; this radius needs B18 (N3). Put $\Delta_\ell(t,V):=\Delta(f(t),V)$ on $T_\ell$. Let $\Delta_\infty(t,V)$ be the same sum of polymer activities built from the $\mathbb Z^4$ activities, with non-wrapping polymers only. The centring vector is $m_\ell:=\bigl(\mathbb E_{\nu_\ell}[\partial_{t_i}\Delta_\ell(0,\cdot)]\bigr)_{i\le n}$. The response family is
+with $c_*r$ the common radius of \file{SOURCES_FX_D.md} \S5.2; this radius needs R-042 (N3). Put $\Delta_\ell(t,V):=\Delta(f(t),V)$ on $T_\ell$. Let $\Delta_\infty(t,V)$ be the same sum of polymer activities built from the $\mathbb Z^4$ activities, with non-wrapping polymers only. The centring vector is $m_\ell:=\bigl(\mathbb E_{\nu_\ell}[\partial_{t_i}\Delta_\ell(0,\cdot)]\bigr)_{i\le n}$. The response family is
 \[
 \mathfrak F:=\bigl\{\Delta_\infty(t,\cdot):\ f_1,\dots,f_n\text{ a disjoint bump family},\ t\in\mathcal P\bigr\},
 \]
@@ -62,7 +67,7 @@ Three inputs of Theorem IV are used throughout: L3 (FX-V), the polymer represent
 \[
 \sup_V\bigl|\Delta(f(t),V)-\Delta(f(t),1)\bigr|\le C_2\sum_i|t_i|\,N(f_i)\,(1+|\operatorname{supp}f_i|_1)/r\qquad(t\in\mathcal P),
 \]
-with $C_2$ free of $K$, $\ell$, $V$; and L14 (Loc-f), which gives $\sup_{t,V}|\Delta_\ell-\Delta_\infty|\le Ce^{-c\ell}$ (\file{INFINITE_VOLUME_FABLE.md} (3.1)). \file{FABLE_HARD.md} \S1 grades (L6-$\mathcal P$) \status{proved relative to I1--I8 and B18, unverified}; L3 and L14 are \status{reductions, unverified} (\file{INFINITE_VOLUME_FABLE.md} \S7.2).
+with $C_2$ free of $K$, $\ell$, $V$; and L14 (Loc-f), which gives $\sup_{t,V}|\Delta_\ell-\Delta_\infty|\le Ce^{-c\ell}$ (\file{INFINITE_VOLUME_FABLE.md} (3.1)). \file{FABLE_HARD.md} \S1 grades (L6-$\mathcal P$) \status{proved relative to I1--I8 and R-042, unverified}; \file{SOURCES_FH_U1_REPAIR.md} \S4.2 regrades it \status{P-sketch} relative to I1--I8, R-042, and vacuum extraction (unverified). L3 and L14 are \status{reductions, unverified} (\file{INFINITE_VOLUME_FABLE.md} \S7.2).
 
 \subsection{Uniqueness at fixed lattice spacing: (U-Lap)$_K$}\label{sec:open-ulap}
 
@@ -76,27 +81,29 @@ exists, with $\ell$ running through the even integers $\ell>22M$.
 
 The functionals $\Delta_\infty(t,\cdot)$ do not depend on $\ell$. Only the measure $\nu_\ell$ and the centring vector $m_\ell$ depend on $\ell$. So (U-Lap)$_K$ is a statement about the unit-scale measures alone: convergence of their centred exponential moments on $\mathfrak F$.
 
-\paragraph{Where it enters.} Theorem IV (\file{INFINITE_VOLUME_FABLE.md} \S7.1) gives a joint subsequential limit $(K_i,\ell_i)\to(\infty,\infty)$ of the Schwinger functions of the centred plaquette density. Its part (d) does not assert convergence along the full sequence. Lemma L15 (full convergence in $\ell$) is graded \status{blocked: infrared} there. (U-Lap)$_K$ is the exact replacement for L15 at fixed $K$:
+\paragraph{Where it enters.} Theorem IV (\file{INFINITE_VOLUME_FABLE.md} \S7.1) gives a joint subsequential limit $(K_i,\ell_i)\to(\infty,\infty)$ of the Schwinger functions of the centred plaquette density. Its part (d) does not assert convergence along the full sequence. Lemma L15 (full convergence in $\ell$) is graded \status{blocked: infrared} there. (U-Lap)$_K$ is a sufficient replacement for L15 at fixed $K$. It is not an equivalent one. The statement below is the corrected form of Theorem U1 of \file{FABLE_HARD.md} \S3.2. Write (U-IV$^=$)$_K$ and (U-cum$^=$)$_K$ for the forms of (U-IV)$_K$ and (U-cum)$_K$ in which coincident points (repeated plaquettes) are allowed.
 
-\begin{theorem}[Theorem U1 of \file{FABLE_HARD.md} \S3.2 \status{proved given (L6-$\mathcal P$), L3, L14; unverified}]\label{thm:open-U1}
-At fixed $K$ the following are equivalent.
+\begin{theorem}[Theorem U1$'$ of \file{SOURCES_FH_U1_REPAIR.md} \S2.3 \status{proved given (L6-$\mathcal P$), L3, L14; unverified}]\label{thm:open-U1}
+Fix $K$. Let $\mathcal P^\circ$ be the open polydisc $\mathcal P$; its radius needs R-042. Consider the statements
 \begin{enumerate}
-\item[(U-IV)$_K$] $\lim_{\ell\to\infty}S_{n,\varepsilon,\ell}(F)$ exists for every $n$ and every $F\in\bigcup_BD_n(B)$.
+\item[(U-IV)$_K$] $\lim_{\ell\to\infty}S_{n,\varepsilon,\ell}(F)$ exists for every $n$ and every $F\in\bigcup_BD_n(B)$;
 \item[(U-cum)$_K$] $\lim_{\ell\to\infty}\kappa_B^{(K,\ell)}(f_1,\dots,f_{|B|})$ exists for every $B$ and every disjoint bump family.
-\item[(U-Lap)$_K$] Open problem~\ref{prob:ULap} holds.
+\end{enumerate}
+Then:
+\begin{enumerate}
+\item[(a)] (U-Lap)$_K$ on $\mathcal P^\circ$ $\Leftrightarrow$ (U-cum$^=$)$_K$ $\Leftrightarrow$ (U-IV$^=$)$_K$;
+\item[(b)] (U-IV)$_K$ $\Leftrightarrow$ (U-cum)$_K$;
+\item[(c)] hence (U-Lap)$_K$ $\Rightarrow$ (U-IV)$_K$. This implication is one-way. The converse holds if and only if a statement (U-diag)$_K$ on coincident points holds in addition; (U-diag)$_K$ is not proved, and the converse fails for general families of measures.
 \end{enumerate}
 \end{theorem}
 
-The proof in the source has three steps. First, centred moments and cumulants of order $\ge2$ determine each other by finite partition sums, and bump families are dense in $D_n$; this gives (U-IV)$\Leftrightarrow$(U-cum). Second, put $G_\ell(t):=\log\mathbb E_{\nu_\ell}[\exp(\Delta_\ell(t,\cdot)-t\cdot m_\ell)]$. By (L6-$\mathcal P$), $|\Delta_\ell-t\cdot m_\ell|\le C_{\mathcal P}$ uniformly in $V$ and $\ell$, so $(G_\ell)$ is a uniformly bounded family of holomorphic functions on $\mathcal P$.
-% CHECK for the FABLE_HARD verifier: at complex t, |Delta^c| <= C_P bounds |E e^{Delta^c}| above by e^{C_P},
-% but a lower bound (needed for log to be holomorphic and bounded) needs e.g. C_P < pi/2 (then Re e^{Delta^c} >= e^{-C_P} cos C_P).
-% FABLE_HARD.md l.118 asserts the range [e^{-C_P}, e^{C_P}] without this condition. Its Taylor coefficients at $0$ of order $\ge2$ are the cumulants plus $\ell$-free $W_K$-terms. Vitali's theorem then gives (U-cum)$\Rightarrow$(U-Lap), after the replacement $\Delta_\ell\to\Delta_\infty$ at cost $e^{Ce^{-c\ell}}-1$. Third, Cauchy's formula gives (U-Lap)$\Rightarrow$(U-cum).
+The proof in the repair file has three steps. First, centred moments and cumulants of order $\ge2$ determine each other by finite partition sums, and bump families are dense in $D_n$; this gives (b). Second, put $\Phi_\ell(t):=\mathbb E_{\nu_\ell}[\exp(\Delta_\ell(t,\cdot)-t\cdot m_\ell)]$. By (L6-$\mathcal P$), $(\Phi_\ell)$ is a uniformly bounded family of holomorphic functions on $\mathcal P^\circ$, and its Taylor coefficients at $0$ are polynomials in the cumulants, with repeated indices included. Vitali's theorem, applied to $\Phi_\ell$ and not to $\log\Phi_\ell$, gives (a), after the replacement $\Delta_\ell\to\Delta_\infty$ at cost $e^{Ce^{-c\ell}}-1$. No lower bound on $|\mathbb E\,e^{\Delta^c}|$ is used. (\file{FABLE_HARD.md} l.~118 applies Vitali to $\log\Phi_\ell$ and asserts the range $[e^{-C_{\mathcal P}},e^{C_{\mathcal P}}]$. A sup-based lower bound needs $C_1<\pi/2$, and it fails on $\mathcal P$ for $n>\pi/(4c_*C_2)$; \file{SOURCES_FH_U1_REPAIR.md} \S1.3--\S1.4.) Third, the coefficients with a repeated index are cumulants at coincident plaquettes. Test functions in $D_n$ vanish on the diagonals, so (U-IV)$_K$ does not control these coefficients. This gives (c).
 
-So, if (U-Lap)$_K$ holds, the limit $\ell\to\infty$ of Theorem IV exists at that fixed $K$ along the full sequence of even $\ell$, not only along a subsequence. This is the ``Theorem IV-unique'' variant that \file{FABLE_HARD.md} \S3.5 proposes to record.
+So, by (c), if (U-Lap)$_K$ holds, the limit $\ell\to\infty$ of Theorem IV exists at that fixed $K$ along the full sequence of even $\ell$, not only along a subsequence. This is the ``Theorem IV-unique'' variant that \file{FABLE_HARD.md} \S3.5 proposes to record.
 
-\paragraph{What it does not give.} (U-Lap)$_K$ for every $K$ does not by itself make the joint limit $(K,\ell)\to(\infty,\infty)$ unique (\file{FABLE_HARD.md} \S3.4). Two further inputs are needed: convergence of the fixed-$K$ limits $S^{(K,\infty)}$ as $K\to\infty$ (an E13-type ultraviolet uniqueness statement, open), and a uniformity statement, for example that the $\ell$-convergence in (U-Lap)$_K$ is uniform in $K$ on each bump family. Iterated limits do not give a joint limit without it. Conversely, uniqueness of the joint limit along all sequences implies (U-Lap)$_K$ for every $K$. The chain of this paper controls none of the three inputs.
+\paragraph{What it does not give.} (U-Lap)$_K$ for every $K$ does not by itself make the joint limit $(K,\ell)\to(\infty,\infty)$ unique (\file{FABLE_HARD.md} \S3.4). Two further inputs are needed: convergence of the fixed-$K$ limits $S^{(K,\infty)}$ as $K\to\infty$ (an E13-type ultraviolet uniqueness statement, open), and a uniformity statement, for example that the $\ell$-convergence in (U-Lap)$_K$ is uniform in $K$ on each bump family. Iterated limits do not give a joint limit without it. The precise form is this: if (U-IV)$_K$ holds for every $K\ge K_0$ with $S_{K,\ell}(F)\to S^{(K)}(F)$ uniformly in $K\ge K_0$, and $S^{(K)}(F)\to S(F)$ as $K\to\infty$, then $S_{K,\ell}(F)\to S(F)$ along every joint sequence (\file{SOURCES_FH_U1_REPAIR.md} \S3.6, unverified). Only (U-IV)$_K$ is needed here. The converse claim of \file{FABLE_HARD.md} \S3.4, that uniqueness of the joint limit along all sequences implies (U-Lap)$_K$ for every $K$, is false: $S_{K,\ell}=S+K^{-1}(-1)^{\ell/2}$ has the limit $S$ along every joint sequence and no $\ell$-limit at any fixed $K$. The chain of this paper controls none of the three inputs.
 
-\paragraph{What is known.} \file{FABLE_HARD.md} \S3.5 grades the item \status{equivalent (fixed $K$)}; it gives no proof route. The known facts are these.
+\paragraph{What is known.} \file{FABLE_HARD.md} \S3.5 grades the item \status{equivalent (fixed $K$)}; \file{SOURCES_FH_U1_REPAIR.md} \S2.3 changes this to \status{equivalent to (U-IV$^=$)$_K$; sufficient for (U-IV)$_K$}. Neither file gives a proof route. The known facts are these.
 \begin{enumerate}
 \item The $\ell$-dependence of every Schwinger function, beyond $O(e^{-c\ell})$, sits in the expectations and joint cumulants under $\nu_\ell$ of fixed local functionals (\file{INFINITE_VOLUME_FABLE.md} \S3.2). The ultraviolet activities are fixed functions; only the measure moves.
 \item Every subsequential weak limit $\nu_\infty$ of $(\nu_\ell)$ is a translation-invariant, $B_4$-invariant Gibbs measure for an absolutely summable interaction $\Phi_K$ on $\mathbb Z^4$ (Theorem U2(a) of \file{FABLE_HARD.md} \S3.3, \status{proved given L14 and (Q), unverified}). Here $\Phi_K$ consists of the plaquette terms $-g^{-2}A_p$, the single-plaquette factors of $\chi_K$, the unit-scale terms $E^{(K)}_{\mathbb Z^4}$ and $R_{\mathrm{fin},\mathbb Z^4}$, and the transported fine terms $E^{(j)}$, $R^{(j)}$ evaluated at $U_j(\cdot)$. Hypothesis (Q) is quasi-locality of the transported terms (\status{R}: A1-type kernel decay of the minimizer).
@@ -106,58 +113,68 @@ So, if (U-Lap)$_K$ holds, the limit $\ell\to\infty$ of Theorem IV exists at that
 
 \begin{remark}[equivalent, stronger, and weaker forms of (U-Lap)$_K$]\label{rem:open-ulap-forms}
 \begin{enumerate}
-\item Equivalent forms. By Theorem~\ref{thm:open-U1}, (U-Lap)$_K$ is equivalent to (U-cum)$_K$ and to (U-IV)$_K$ at fixed $K$. \file{FABLE_HARD.md} \S3.3(c) calls (U-Lap)$_K$ the exact equivalence class of (U-IV)$_K$.
+\item Equivalent forms. By Theorem~\ref{thm:open-U1}, (U-Lap)$_K$ is equivalent to (U-cum$^=$)$_K$ and to (U-IV$^=$)$_K$ at fixed $K$, and it implies (U-IV)$_K$. \file{FABLE_HARD.md} \S3.3(c) calls (U-Lap)$_K$ the exact equivalence class of (U-IV)$_K$; the repair file corrects this to (U-IV$^=$)$_K$.
 \item A stronger, sufficient form. Let (U-Gibbs)$_K$ be the statement ``$\Phi_K$ has a unique translation-invariant Gibbs measure''. Then (U-Gibbs)$_K$ implies $\nu_\ell\to\nu_\infty$ weakly, which implies (U-Lap)$_K$, which implies (U-IV)$_K$ (Theorem U2(b), \status{proved given L14 and (Q), unverified}).
 \item The converse is not claimed. The family $\mathfrak F$ need not separate Gibbs measures of $\Phi_K$. Its first-order part is the smeared unit-scale plaquette action $B_K\sum_pf(x_p)A_p(V)$ plus $E$-corrections, and plaquette traces do not generate the full gauge-invariant local algebra (a $1\times2$ loop is not a function of plaquette traces). So (U-Lap)$_K$ lies strictly between ``no condition'' and (U-Gibbs)$_K$ as stated in the source; whether it is strictly weaker than (U-Gibbs)$_K$ is not settled.
 \item The sources give no weaker form that still implies (U-IV)$_K$.
 \end{enumerate}
 \end{remark}
 
-\subsection{Clustering and the mass gap: (Gap$_K$)}\label{sec:open-gap}
+\subsection{Clustering and the mass gap: (Gap$_U$)}\label{sec:open-gap}
 
-\begin{problem}[(Gap$_K$); \file{FABLE_HARD.md} \S4.4]\label{prob:Gap}
-Fix $K$. Prove that every translation-invariant Gibbs measure $\mu$ of the interaction $\Phi_K$ has decaying covariances on $\mathfrak F$: for every pair of disjoint bumps $f_1,f_2$,
+For bumps $f_1,f_2$ and $a\in\mathbb R^4$, write $w_1:=\partial_{t_1}\Delta_\ell(0,\cdot)$ for $f_1$ and $w_{2,a}:=\partial_{t_2}\Delta_\ell(0,\cdot)$ for the translate $\tau_af_2$, on $T_\ell$ at level $K$. These are the finite-volume first-order responses; the $w_i$ of Section~\ref{sec:open-setting} are their $\mathbb Z^4$ forms.
+
+\begin{problem}[(Gap$_U$); \file{SOURCES_FH_U1_REPAIR.md} \S3.5]\label{prob:Gap}
+Prove that for every pair of disjoint bumps $f_1,f_2$,
 \[
-\operatorname{Cov}_\mu\bigl(w_1,\tau_aw_2\bigr)\longrightarrow0\qquad(|a|\to\infty),
+\lim_{R\to\infty}\ \limsup_{K,\ell\to\infty}\ \sup_{R\le|a|\le\ell/4}\bigl|\operatorname{Cov}_{\nu_{K,\ell}}(w_1,w_{2,a})\bigr|=0 .
 \]
-where $w_i=\partial_{t_i}\Delta_\infty(0,\cdot)$ and $\tau_aw_2$ is the first-order response of the translated bump $\tau_af_2$, $a\in\mathbb R^4$. The exponential form, (Gap$_K$) with rate $m$, asks for $|\operatorname{Cov}_\mu(w_1,\tau_aw_2)|\le C(f_1,f_2)\,e^{-m|a|}$ with some $m>0$ and $m<c/M$, $c$ the constant of Theorem~\ref{thm:open-W1}.
+The exponential form, (Gap$_U$) with rate $m$, asks for $|\operatorname{Cov}_{\nu_{K,\ell}}(w_1,w_{2,a})|\le A\,e^{-m|a|}$ for all $K\ge K_0$ and all $\ell\ge4|a|$, with $A=A(f_1,f_2)$ and some $m>0$.
 \end{problem}
 
-The source states (Gap$_K$) in words: ``every translation-invariant Gibbs measure of $\Phi_K$ has decaying (resp.\ exponentially decaying) covariances on $\mathfrak F$''. The display above makes explicit the form that Corollary W2 uses, namely covariances of the first-order responses $w_i$ of two bumps. The rate condition $m<c/M$ comes from Corollary W2(ii). The $n$-point form, with joint cumulants of the $w$'s, is the analogue that Corollary W2 states in one sentence.
+(Gap$_U$) is a statement about the finite-volume unit-scale measures $\nu_{K,\ell}$, uniform in $K$ and $\ell$. Where OS4 for the joint limits of Theorem IV is concerned, it replaces the fixed-$K$ statement of \file{FABLE_HARD.md} \S4.4:
+
+\begin{definition}[(Gap$_K$); \file{FABLE_HARD.md} \S4.4]\label{def:open-GapK}
+Fix $K$. Every translation-invariant Gibbs measure $\mu$ of the interaction $\Phi_K$ has decaying covariances on $\mathfrak F$: $\operatorname{Cov}_\mu(w_1,\tau_aw_2)\to0$ as $|a|\to\infty$ for every pair of disjoint bumps, with $w_i=\partial_{t_i}\Delta_\infty(0,\cdot)$. The exponential form asks for $|\operatorname{Cov}_\mu(w_1,\tau_aw_2)|\le C(f_1,f_2)\,e^{-m|a|}$ with some $m>0$.
+\end{definition}
 
 \paragraph{Where it enters.} The link is the following theorem.
 
-\begin{theorem}[Theorem W1 and Corollary W2 of \file{FABLE_HARD.md} \S4.4 \status{proved given L3, L6, L14; unverified}]\label{thm:open-W1}
-In every Theorem IV limit, for disjoint bumps $f_1,f_2$ of diameter $\le D$ and $a\in\mathbb R^4$ with $|a|\ge4D$,
+\begin{theorem}[Theorem W1$_{\mathrm{fin}}$ and Corollary W2$_J$ of \file{SOURCES_FH_U1_REPAIR.md} \S3.2--\S3.3 \status{proved given L3 and R-042; unverified}]\label{thm:open-W1}
+For all $K\ge K_0$, all even $\ell>22M$, all disjoint bumps $f_1,f_2$ of diameter $\le D$, and all $a$ with $4D\le|a|\le\ell/2-2D$,
 \[
-\bigl|\kappa_2^\infty(f_1,\tau_af_2)-\operatorname{Cov}_{\nu_\infty}(w_1,\tau_aw_2)\bigr|
-\le C\,N(f_1)N(f_2)\,(1+|\operatorname{supp}f_1|_1)(1+|\operatorname{supp}f_2|_1)\,e^{-c|a|/M},
+\bigl|\kappa_2^{(K,\ell)}(f_1,\tau_af_2)-\operatorname{Cov}_{\nu_{K,\ell}}(w_1,w_{2,a})\bigr|
+\le C_W\,N(f_1)N(f_2)\,(1+|\operatorname{supp}f_1|_1)\,e^{-c_W|a|/M},
 \]
-with $C$, $c$ free of $a$ and of the limit point. Hence, for every limit point: (i) $\kappa_2^\infty(f_1,\tau_af_2)\to0$ for all bump pairs if and only if $\operatorname{Cov}_{\nu_\infty}(w_1,\tau_aw_2)\to0$ for all bump pairs; (ii) exponential decay at a rate $m<c/M$ of one is equivalent to exponential decay at the same rate of the other.
+with $C_W$, $c_W$ free of $K$, $\ell$, $a$, and the position of the bumps ($C_W$ depends on $D/M$). Hence, for every joint limit $(K_i,\ell_i)$ of Theorem IV with limit two-point cumulant $\kappa_2^J$, and for every bump pair: (i) $\kappa_2^J(f_1,\tau_af_2)\to0$ as $|a|\to\infty$ if and only if $\lim_{|a|\to\infty}\limsup_i|\operatorname{Cov}_{\nu_{K_i,\ell_i}}(w_1,w_{2,a})|=0$; (ii) for $m<c_W/M$, exponential decay at rate $m$ of one is equivalent to exponential decay at rate $m$ of the other.
 \end{theorem}
 
-Since every subsequential $\nu_\infty$ is a translation-invariant Gibbs measure of $\Phi_K$ (Theorem U2(a)), (Gap$_K$) implies OS4 for the plaquette two-point function of every Theorem IV limit, and its exponential form implies exponential clustering at rate $m$, that is, a mass gap $m$ on the subspace generated by $\{w_f\Omega\}$ (\file{FABLE_HARD.md} \S4.4, \status{proved by W2 and U2(a), unverified}). Theorem IV(d) lists OS4 and the mass gap as not asserted, and Lemma L17 is graded \status{blocked: infrared}. \file{FABLE_HARD.md} \S5 names (Gap$_K$) as the single infrared hypothesis that would upgrade Theorem IV to OS0--OS4, and with the exponential form to OS0--OS4 plus a gap. OS1-R (full O(4)) is a separate obstruction and (Gap$_K$) does not address it (\file{FABLE_HARD.md} \S2.4).
-
-Corollary W2 also gives a necessity statement: OS4 for every limit implies decay on $\mathfrak F$ for every subsequential $\nu_\infty$. Any proof of OS4 along the route of \file{INFINITE_VOLUME_FABLE.md} (3.2) must therefore prove (Gap$_K$) restricted to the states $\nu_\infty$ that occur, and on $\mathfrak F$.
-
-\paragraph{A caveat on the joint limit.} Theorem~\ref{thm:open-W1} and Theorem U2 are statements at fixed $K$: $\nu_\infty$, $\Phi_K$, $W_\infty$, and $\Delta_\infty$ are all built at fixed $K$, and the limit in $K$ is a second extraction (\file{INFINITE_VOLUME_FABLE.md} \S3.3). For uniqueness, \file{FABLE_HARD.md} \S3.4 states that the passage to the joint limit needs a uniformity statement in $K$. \S4.4 does not state the analogous condition for clustering. The safe reading is: (Gap$_K$) for every $K$, with decay that is uniform in $K$ on each bump pair, implies OS4 for the joint limit. This draft does not claim the implication without the uniformity.
-
-\paragraph{What is known.} \file{FABLE_HARD.md} \S4.5 calls (Gap$_K$) ``the wall''. It is a correlation-decay statement for a weakly coupled lattice gauge theory on $\mathbb Z^4$ at coupling $g\le\gamma$, with no small parameter: the expected decay rate $1/\xi_g$ is exponentially small in $g^{-2}$. The known facts are these.
+The inputs are L3 and the common radius $c_*r$ of R-042; L6 and L14 are not used. \file{FABLE_HARD.md} \S4.4 states its Theorem W1 ``in every Theorem IV limit'' with inputs L3, L6, L14, but its objects $W_\infty$, $\Delta_\infty$, $\nu_\infty$ are built at fixed $K$. The repair file proves the finite-volume form above instead. Its consequences are these (\file{SOURCES_FH_U1_REPAIR.md} \S3.5, unverified).
 \begin{enumerate}
-\item Why the Step-B obstruction blocks the present method. Step~B of (FX) is a cluster expansion of the unit-scale small-field integral $\int dV_K\,\chi\exp(A^f_K+\sum_XR_{\mathrm{fin}}(X))$ on the whole torus $T_\ell$ at coupling $g$, with no block constraint (\file{INFINITE_VOLUME_FABLE.md} \S2.1). If its activities decayed exponentially with $\ell$-free constants, all connected unit-scale correlations would decay at rate $\kappa/M$, that is, the theory would have a unit-scale mass gap of order one at $g\le\gamma$. Asymptotic freedom predicts a correlation length $\xi_g\sim e^{c/g^2}\gg1$. So Step~B cannot hold with $\ell$-free constants \status{I}. At fixed $\ell$ it holds with constants that grow with $\ell$. An $\ell$-uniform Step~B was one possible way to (Gap$_K$); by this argument it is not available, and Corollary W2 shows that every proof of OS4 on this route must prove (Gap$_K$) on $\mathfrak F$ instead.
+\item Fixed $K$ \status{proved given L3, L14, (Q), R-042; unverified}. If (Gap$_K$) holds, every subsequential infinite-volume lattice limit $\ell_j\to\infty$ at that $K$ has a clustering plaquette two-point function, exponential at rate $m<c_W/M$ under the exponential form. This is a lattice statement at spacing $\varepsilon=L^{-K}$, not a continuum statement. It is the correct content of the sentence of \file{FABLE_HARD.md} \S4.4 ``(Gap$_K$) $\Rightarrow$ OS4 for every Theorem IV limit''.
+\item Joint limits \status{proved given L3, R-042; unverified}. If (Gap$_U$) holds, every limit family of Theorem IV satisfies OS4 for the plaquette two-point function. Under the exponential form at rate $m$, the limit has a mass gap $\ge\min(m,c_W/M)$ on the subspace generated by $\{w_f\Omega\}$. The $n$-point form is a sketch.
+\item (Gap$_K$) for every $K$ is not shown to suffice for a joint limit, even with decay uniform in $K$. A joint sequence uses each $\Phi_K$ at one finite $\ell$ only, and no file gives a $K$-uniform rate for the approach of $\nu_{K,\ell}$ to the Gibbs states of $\Phi_K$. A second sufficient condition is (K-conv) with (Gap$_\infty$): $\Phi_K\to\Phi_\infty$ in the quasi-local norm with convergent responses, and decay for the Gibbs states of $\Phi_\infty$ \status{sketch, given (K-conv) and (Q) uniformly in $K$}. (K-conv) is an E13-type ultraviolet statement, open.
+\item Necessity. By Corollary W2$_J$, OS4 for one joint limit is equivalent to decay of $\operatorname{Cov}_{\nu_{K_i,\ell_i}}(w_1,w_{2,a})$ along its own sequence. Any proof of OS4 for joint limits along the route of \file{INFINITE_VOLUME_FABLE.md} (3.2) must prove this decay for the measures that occur.
+\end{enumerate}
+Theorem IV (L-196) lists OS4 and the mass gap as not asserted, and Lemma L17 is graded \status{blocked: infrared}. OS1-R (full O(4)) is a separate obstruction, and neither (Gap$_U$) nor (Gap$_K$) addresses it (\file{FABLE_HARD.md} \S2.4).
+
+\paragraph{What is known.} \file{FABLE_HARD.md} \S4.5 calls (Gap$_K$) ``the wall''. (Gap$_K$) and (Gap$_U$) are correlation-decay statements for a weakly coupled lattice gauge theory on $\mathbb Z^4$ at coupling $g\le\gamma$, with no small parameter (for (Gap$_U$), uniformly in the level $K$ and the side $\ell$): the expected decay rate $1/\xi_g$ is exponentially small in $g^{-2}$. The known facts are these.
+\begin{enumerate}
+\item Why the Step-B obstruction blocks the present method. Step~B of (FX) is a cluster expansion of the unit-scale small-field integral $\int dV_K\,\chi\exp(A^f_K+\sum_XR_{\mathrm{fin}}(X))$ on the whole torus $T_\ell$ at coupling $g$, with no block constraint (\file{INFINITE_VOLUME_FABLE.md} \S2.1). If its activities decayed exponentially with $\ell$-free constants, all connected unit-scale correlations would decay at rate $\kappa/M$, that is, the theory would have a unit-scale mass gap of order one at $g\le\gamma$. Asymptotic freedom predicts a correlation length $\xi_g\sim e^{c/g^2}\gg1$. So Step~B cannot hold with $\ell$-free constants \status{I}. At fixed $\ell$ it holds with constants that grow with $\ell$. An $\ell$-uniform Step~B was one possible way to (Gap$_U$); by this argument it is not available, and Corollary W2$_J$ shows that every proof of OS4 for joint limits on this route must prove the covariance decay of Theorem~\ref{thm:open-W1} along the sequence instead.
 \item The finite window. Theorem FD (\S\ref{sec:open-ulap}, item 4) gives Step~B with $\ell$-free constants for $\ell\le22ML\,\xi_g$. Beyond the window the first inequality to fail is the Kotecký--Preiss/Cammarota smallness $\exp(-p_0(g_{K+k}))\le\varepsilon_{\mathrm{KP}}(d,L,M)$ at depth $k>k_*(g)$. It fails as an inequality, not as a divergence of constants: no statement with any constant is proved at $g>\gamma$, and the small-field set is empty as $g\to1$. Continuation of the renormalization group past the unit scale is graded \status{refuted as a route to $\ell\to\infty$; proved as a window statement}.
 \item Reflection positivity alone. For the transfer matrix $T=e^{-H}$ of any Theorem IV limit and a bounded observable $A$ of the half-space algebra, $\langle\Theta(A)\tau_tA\rangle=\int_{[0,1]}s^t\,d\mu_A(s)$, so the time-direction two-point function is non-increasing, log-convex, and convergent as $t\to\infty$, with limit $\|P_1A\Omega\|^2$ (Proposition RP1, \status{proved, standard}). Clustering for $A$ is equivalent to $P_1A\Omega=\langle\Omega,A\Omega\rangle\Omega$, that is, to uniqueness of the vacuum, which is the open statement. Chessboard and Gaussian-domination bounds give no decay. Griffiths and FKG inequalities are not available for SU(2). This route is graded \status{refuted as a replacement for the cluster expansion}.
 \item Ergodic decomposition. Each ergodic component of $\nu_\infty$ clusters in the mean on $\mathfrak F$. With Proposition RP1 this would give pointwise clustering in the time direction if the component were itself reflection positive. Reflection positivity of an arbitrary ergodic Gibbs component is not known; \file{FABLE_HARD.md} \S4.3 marks this as unsettled.
-\item Regime separation. The parameter range of Ba{\l}aban's construction at the unit scale and the strong-coupling range where a lattice mass gap is proved are separated by at least seventeen orders of magnitude in $\beta_W$ (Section~\ref{sec:rem-gap}). The project files contain no numerical test of (Gap$_K$) or of (U-Lap)$_K$; \file{FABLE_HARD.md} used no numerics.
+\item Regime separation. The parameter range of Ba{\l}aban's construction at the unit scale and the strong-coupling range where a lattice mass gap is proved are separated by at least seventeen orders of magnitude in $\beta_W$ (Section~\ref{sec:rem-gap}). The project files contain no numerical test of (Gap$_U$), (Gap$_K$), or (U-Lap)$_K$; \file{FABLE_HARD.md} used no numerics.
 \end{enumerate}
 
-\begin{remark}[equivalent, stronger, and weaker forms of (Gap$_K$)]\label{rem:open-gap-forms}
+\begin{remark}[equivalent, stronger, and weaker forms of (Gap$_U$) and (Gap$_K$)]\label{rem:open-gap-forms}
 \begin{enumerate}
-\item Equivalent form for one limit. For a fixed limit point, OS4 for the plaquette two-point function is equivalent to decay of $\operatorname{Cov}_{\nu_\infty}(w_1,\tau_aw_2)$ for all bump pairs, and a mass gap $m<c/M$ is equivalent to exponential decay at rate $m$ (Theorem~\ref{thm:open-W1}). This is a statement about the one state $\nu_\infty$ that occurs, not about all Gibbs states of $\Phi_K$.
-\item Why the source quantifies over all states. Different Gibbs states of $\Phi_K$ can have different covariance decay. An argument that uses only $(W_\infty,\Delta_\infty)$ and bounds valid for every state cannot prove OS4 (\file{FABLE_HARD.md} \S4.4). A proof must either identify the specific $\nu_\infty$ or prove decay for all translation-invariant Gibbs states; (Gap$_K$) is the second option.
-\item A possibly weaker form. (Gap$_K$) asks for decay on $\mathfrak F$ only. Whether decay on $\mathfrak F$ is strictly easier than decay for all local functionals is not settled; $\mathfrak F$ is the family of sourced response functionals and need not separate Gibbs states (Remark~\ref{rem:open-ulap-forms}(3)).
-\item A stronger form. \file{PLAN.md} (entry for \file{ALT_ROUTES.md}) restates the common target of three routes as boundary-condition-uniform and volume-uniform exponential decay of the unit-scale measure at distance $\xi_g$, and calls it ``= (Gap$_K$)''. That statement is stronger than (Gap$_K$) as defined in \file{FABLE_HARD.md} \S4.4, which asks for decay on $\mathfrak F$ of translation-invariant Gibbs states only, with no rate in its plain form. \file{ALT_ROUTES.md} has no verifier report. This draft uses the \file{FABLE_HARD.md} definition.
-\item Relation to (U-Lap)$_K$. The sources give no implication between (Gap$_K$) and (U-Lap)$_K$. Both are infrared statements about the same family $\nu_\ell$ and the same interaction $\Phi_K$, and \file{FABLE_HARD.md} \S4.3 links both to vacuum uniqueness: Proposition RP1 reduces clustering to vacuum uniqueness, which the source calls ``(U-Lap)/(Gap) again''.
+\item Equivalent form for one joint limit. For one joint limit sequence, OS4 for the plaquette two-point function is equivalent to decay of $\operatorname{Cov}_{\nu_{K_i,\ell_i}}(w_1,w_{2,a})$ along that sequence, and a mass gap $m<c_W/M$ is equivalent to exponential decay at rate $m$ (Theorem~\ref{thm:open-W1}). This concerns the measures that occur along the sequence, not all Gibbs states of any $\Phi_K$. (Gap$_U$) asks for this decay along every sequence at once.
+\item (Gap$_U$) and (Gap$_K$). (Gap$_U$) concerns the finite-volume measures $\nu_{K,\ell}$, uniformly in $(K,\ell)$. (Gap$_K$) concerns the infinite-volume Gibbs states of $\Phi_K$ at one $K$. The sources prove no implication between them. (Gap$_K$) for every $K$ gives clustering at each fixed $K$ only (item 1 after Theorem~\ref{thm:open-W1}).
+\item Why (Gap$_K$) quantifies over all states. Different Gibbs states of $\Phi_K$ can have different covariance decay. An argument that uses only $(W_\infty,\Delta_\infty)$ and bounds valid for every state cannot prove clustering at fixed $K$ (\file{FABLE_HARD.md} \S4.4). A proof must either identify the specific limit state or prove decay for all translation-invariant Gibbs states; (Gap$_K$) is the second option.
+\item A possibly weaker form. Both conditions ask for decay of first-order responses only. Whether this is strictly easier than decay for all local functionals is not settled; $\mathfrak F$ is the family of sourced response functionals and need not separate Gibbs states (Remark~\ref{rem:open-ulap-forms}(3)).
+\item A stronger form. \file{PLAN.md} (entry for \file{ALT_ROUTES.md}) restates the common target of three routes as boundary-condition-uniform and volume-uniform exponential decay of the unit-scale measure at distance $\xi_g$, and calls it ``= (Gap$_K$)''. That statement is stronger than (Gap$_K$) as defined in \file{FABLE_HARD.md} \S4.4, which asks for decay on $\mathfrak F$ of translation-invariant Gibbs states only, with no rate in its plain form. This draft does not compare it with (Gap$_U$). \file{ALT_ROUTES.md} has no verifier report.
+\item Relation to (U-Lap)$_K$. The sources give no implication between (Gap$_K$) or (Gap$_U$) and (U-Lap)$_K$. All three are infrared statements about the family $\nu_{K,\ell}$, and \file{FABLE_HARD.md} \S4.3 links clustering to vacuum uniqueness: Proposition RP1 reduces clustering to vacuum uniqueness, which the source calls ``(U-Lap)/(Gap) again''.
 \end{enumerate}
 \end{remark}
 
@@ -168,8 +185,8 @@ Corollary W2 also gives a necessity statement: OS4 for every limit implies decay
 \hline
 problem & if it holds & status in the sources \\
 \hline
-(U-Lap)$_K$ & at fixed $K$, the $\ell\to\infty$ limit of Theorem IV exists along the full sequence (Theorem U1); the joint limit needs E13-type UV uniqueness and uniformity in $K$ in addition & open; equivalent to (U-IV)$_K$ given (L6-$\mathcal P$), L3, L14 \status{proved, unverified}; implied by (U-Gibbs)$_K$; no proof route \\
-(Gap$_K$) & OS4 (resp.\ a mass gap $m<c/M$) for the plaquette field of every Theorem IV limit, read at fixed $K$; the joint limit needs uniformity in $K$ & open; necessary on $\mathfrak F$ for the states that occur (Corollary W2 \status{proved, unverified}); $\ell$-uniform Step~B, RP alone, and RG continuation are \status{refuted} as routes \\
+(U-Lap)$_K$ & at fixed $K$, the $\ell\to\infty$ limit of Theorem IV exists along the full sequence (Theorem U1$'$(c)); the joint limit needs E13-type UV uniqueness and uniformity in $K$ in addition & open; equivalent to (U-IV$^=$)$_K$ and sufficient for (U-IV)$_K$, given (L6-$\mathcal P$), L3, L14 \status{proved, unverified}; implied by (U-Gibbs)$_K$; no proof route \\
+(Gap$_U$) & OS4 for the plaquette two-point function of every joint limit of Theorem IV; under the exponential form at rate $m$, a mass gap $\ge\min(m,c_W/M)$ on the span of $\{w_f\Omega\}$ & open; given L3 and R-042 \status{proved, unverified} (Theorem W1$_{\mathrm{fin}}$, Corollary W2$_J$); (Gap$_K$) for every $K$ gives clustering only at each fixed $K$ and is not shown to suffice for joint limits; $\ell$-uniform Step~B, RP alone, and RG continuation are \status{refuted} as routes \\
 \hline
 \end{tabular}
 \end{center}
