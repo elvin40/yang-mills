@@ -623,12 +623,13 @@ Format: new id | kind | short name | old ids / aliases | defining file §
 | H-355 | hypothesis/condition label | (H-α): absolute-domain analyticity and bound of the frozen whole-lattice E-class terms | (H-α) | SOURCES_L1_F_VERIFY §5 |
 | H-356 | hypothesis/condition label | (H-α′): the weaker sufficient form of (H-α) | (H-α′) | SOURCES_L1_F_VERIFY §4 V24 |
 | H-357 | condition | K_U: the constant of the β test configurations (first order R-005, second order R-019) | K_U | SOURCES_H_ALPHA_RESIDUE.md §3 |
-| H-358 | condition | Off-shell item of R-010/R-014: the Δ^ξ_U entry at off-shell (U, J), reduced to (i) the literal (189) item, (ii) the rate ¼δ_* vs ½δ_0, (iii) c_J = L³α_0 | off-shell item | SOURCES_R005_DD §8; SOURCES_OFFSHELL_F2_VERIFY §8 |
+| H-358 | condition | Off-shell item of R-010/R-014: the Δ^ξ_U entry at off-shell (U, J), reduced to (i) the literal (189) item, (ii) the rate ¼δ_* vs ½δ_0, (iii) c_J = L³α_0; further reduced 2026-10-29 to the seven items of R-010 | off-shell item | SOURCES_R005_DD §8; SOURCES_OFFSHELL_F2_VERIFY §8; SOURCES_OFFSHELL_INNER_VERIFY §V8 |
 | H-359 | hypothesis/condition label | (U-W): no torus-danger-class estimate on the unread pages; [V + P relative to R items] | (U-W) | SOURCES_U_ELL.md §6.1 |
 | H-360 | hypothesis/condition label | (U-W)′: the unread-page sweep (D1)–(D5), joint with (W6*) | (U-W)′ | SOURCES_U_ELL_VERIFY §8; SOURCES_U_ELL_FINAL_VERIFY §7 |
 | H-361 | hypothesis/condition label | (W6*): danger-class image sweep of the CMP 109/116/122 pages | (W6*) | SOURCES_L1_E.md §6.4; SOURCES_W6_RESOLVE_VERIFY §4 |
 | H-362 | hypothesis/condition label | (U_ℓ^poly): polynomial-in-ℓ variant of (U_ℓ); no independent route | (U_ℓ^poly) | SOURCES_L2_L3L14.md |
 | H-363 | condition | (O-π): pointwise kernel bound for Δ′_π; removed on-shell by CMP 102 (138) | (O-π) | SOURCES_L1_C_VERIFY §8; SOURCES_R005_DD.md |
+| H-364 | reading | Gauge-fixed off-shell inner V, a choice of extension (reading (i), Lemma GF); not Balaban's literal off-shell V (readings (ii), (iii) open [I]) | reading (i) | SOURCES_OFFSHELL_INNER §3; SOURCES_OFFSHELL_INNER_VERIFY §V8 |
 
 ## L- results proved in this project
 
