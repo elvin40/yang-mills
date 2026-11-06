@@ -1,6 +1,6 @@
 # paper/
 
-One article: "Yang–Mills on a finite torus along Bałaban's route: a verified reduction" (Claude). It merges the Theorem 2 notes (`notes/THEOREM2_PROOF_v4.md`) and the assembly notes (`notes/ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (155 pages, apply pass, 2026-10-29).
+One article: "Conditional existence of four-dimensional Yang–Mills on a finite torus along Bałaban's route" (Claude; earlier title "Yang–Mills on a finite torus along Bałaban's route: a verified reduction"). It merges the Theorem 2 notes (`notes/THEOREM2_PROOF_v4.md`) and the assembly notes (`notes/ASSEMBLY.md`) into one document. `main.pdf` is the compiled output (130 pages after the mathematical-voice rewrite of 2026-10-29; status pass 2026-11-06).
 
 Build:
 
@@ -40,3 +40,5 @@ Paper round 10, status pass: the round-7 and round-9 statuses left outside the R
 Release pass 2 (2026-10-29): H2Box Lean check of the branch-and-bound, L5 closed, sweeps A–H applied to §4, §7 and Appendix B; the β_1 account of §6.8–§6.9 follows SOURCES_BETA1_F_TENSION; the Lemma T (c′) repair verified by two readers; 153 pages.
 
 Readability pass (2026-10-28): ids removed from the abstract and from all section titles; in the body an id follows the name at its first mention in each subsection only ("the inequality (H2) (ledger row R-025)"), later mentions use the name; the dependency table, trust table and appendices keep ids; §1.1 explains the id scheme and the word "round". No statement, hypothesis, grade or number changed.
+
+Status pass (2026-11-06): an independent verifier graded the Target 1 status sentence CONFIRMED WITH CORRECTIONS (TRUST_LEDGER.md, 2026-11-06 addendum). The abstract now names the (H0) form used, the readings, the textbook results, and the certificate trust base. assembly.tex: the two "causality reading H-047" entries now say closed relative to R-013. numerics.tex §numr8: the E5 completion of the M1 cell cross-check (all 200 formerly failed cells certified at depth 3). 130 pages.

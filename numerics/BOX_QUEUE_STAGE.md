@@ -69,3 +69,7 @@ Both waiters are transient units. A VM death (no attached wsl session for about 
 
 ## Option B applied (coordinator, 2026-10-28 16:43)
 h1e5 re-armed: starts when h1cert2_out_L13_M13_h0.08_sorted/DONE_L13_M13_h0.08_sorted exists and units beta1 and beta1L13 are inactive; P=8 shards (--setenv), MemoryMax 4G (expected ~2.3 GB). Old launcher kept as h1cert_e5_launch.sh.bak. Expected start ~02:30 Oct 29, end ~5 h later at 8 shards under M0:169 load. Cancel: sudo -n systemctl stop h1e5.
+
+## Outcome (read 2026-11-06)
+- beta1L13: DONE_L13 written 2026-10-28 21:24 PDT. Results copied to numerics/results/ (t2_fstepb_verify_umk_L13_Ng24_Lp{0.25,0.5,1.0}.json, L13_Ng28_Lp1.0.json, plus the L = 9 and L = 11 converged points).
+- h1e5: started 2026-10-29 02:08 PDT after M13 DONE; DONE_E5 present; all 8 shards finished; 200/200 parents ok, 3,200/3,200 children ok (H1CERT2_M1_RESULT.md §5).
